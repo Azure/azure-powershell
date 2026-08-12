@@ -19,13 +19,10 @@
 -->
 
 ## Upcoming Release
-* Added support for Microsoft Defender for Cloud Source Scan configuration on Recovery Services vaults:
-    - Added `-SourceScanState`, `-SourceScanIdentityType`, and `-SourceScanUserAssignedIdentityId` parameters to `Update-AzRecoveryServicesVault` to enable or disable Source Scan and configure the identity used to perform the scan
-    - `Get-AzRecoveryServicesVault` and `Get-AzRecoveryServicesVaultProperty` now expose the vault's Source Scan configuration
-* Added new cmdlet `Set-AzRecoveryServicesBackupSourceScan` to enable or disable Microsoft Defender for Cloud Source Scan for an Azure VM (Virtual Machine) backup item
-* Backup items and recovery points now expose Source Scan and threat detection information from Microsoft Defender for Cloud, where available:
-    - Backup items expose `SourceSideScanStatus` and `SourceSideScanSummary`
-    - Recovery points expose `ThreatStatus` and `ThreatInfo`
+* Added Cross Region Restore support for Azure File Share backup items (`Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`)
+* Refined soft delete behavior for Azure File share backup items
+    - `Undo-AzRecoveryServicesBackupItemDeletion` now throws a clear error when the target Azure File share item is not in the soft-deleted (`ToBeDeleted`) state instead of issuing an undelete request that cannot succeed.
+    - Corrected the `DateOfPurge` computation for soft-deleted Azure File share items; it is now derived from the service-returned remaining deferred-delete window, fixing the previous value that always fell back to a fixed 14-day period.
 
 ## Version 7.14.0
 * Added Cross Subscription Backup (CSB) support for Azure VM:
@@ -48,7 +45,7 @@
 
 ## Version 7.12.0
 * Added ChangeSafety Support
-* Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` `Get-AzRecoveryServicesBackupItem -DeleteState SoftDeleted`)
+* Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` `Get-AzRecoveryServicesBackupItem -DeleteState ToBeDeleted`)
 
 ## Version 7.11.2
 * Added Cross region restore support for upcoming regions Southeast Asia 3
