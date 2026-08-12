@@ -45,6 +45,7 @@ $property = New-AzMonitorHealthModelManagedIdentityAuthenticationSettingProperti
 New-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name default-auth -Property $property
 ```
 
+Creates an authentication setting.
 
 ## PARAMETERS
 
