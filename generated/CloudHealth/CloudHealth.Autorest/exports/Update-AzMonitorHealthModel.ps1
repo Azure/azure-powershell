@@ -20,9 +20,7 @@ Update a HealthModel
 .Description
 Update a HealthModel
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Tag @{ environment = 'production' }
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity

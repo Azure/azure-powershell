@@ -20,9 +20,7 @@ Delete a Relationship
 .Description
 Delete a Relationship
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity

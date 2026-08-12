@@ -20,9 +20,9 @@ Create an in-memory object for LogAnalyticsQuerySignalDefinitionProperties.
 .Description
 Create an in-memory object for LogAnalyticsQuerySignalDefinitionProperties.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 10
+$rules = New-AzMonitorHealthModelEvaluationRuleObject -UnhealthyRule $unhealthy
+New-AzMonitorHealthModelLogAnalyticsQuerySignalDefinitionPropertiesObject -QueryText 'AppExceptions | summarize Count = count()' -ValueColumnName Count -TimeGrain PT15M -EvaluationRule $rules -DisplayName 'Exception count'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.LogAnalyticsQuerySignalDefinitionProperties

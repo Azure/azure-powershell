@@ -52,7 +52,8 @@ $property = New-AzMonitorHealthModelDiscoveryRulePropertiesObject -Authenticatio
 New-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-vms -Property $property
 ```
 
-Adds every virtual machine returned by the query as an entity. The authentication setting's identity needs Reader on the queried scope.
+Adds every virtual machine returned by the query as an entity.
+The authentication setting's identity needs Reader on the queried scope.
 
 ## PARAMETERS
 

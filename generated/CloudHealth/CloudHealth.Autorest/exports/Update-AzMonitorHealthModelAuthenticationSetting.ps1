@@ -20,9 +20,8 @@ Update a AuthenticationSetting
 .Description
 Update a AuthenticationSetting
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$property = New-AzMonitorHealthModelManagedIdentityAuthenticationSettingPropertiesObject -ManagedIdentityName SystemAssigned -DisplayName 'Workload managed identity'
+Update-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name default-auth -Property $property
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting

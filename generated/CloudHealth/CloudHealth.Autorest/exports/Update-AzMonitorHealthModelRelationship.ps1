@@ -20,9 +20,7 @@ Update a Relationship
 .Description
 Update a Relationship
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend -DisplayName 'Frontend depends on Backend API'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity

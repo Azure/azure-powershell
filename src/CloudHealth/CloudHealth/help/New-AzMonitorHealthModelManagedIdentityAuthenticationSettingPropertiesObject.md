@@ -27,7 +27,8 @@ Create an in-memory object for ManagedIdentityAuthenticationSettingProperties.
 New-AzMonitorHealthModelManagedIdentityAuthenticationSettingPropertiesObject -ManagedIdentityName SystemAssigned -DisplayName 'Default managed identity'
 ```
 
-Creates the property object to pass to New-AzMonitorHealthModelAuthenticationSetting. Use SystemAssigned, or the resource ID of a user-assigned identity.
+Creates the property object to pass to New-AzMonitorHealthModelAuthenticationSetting.
+Use SystemAssigned, or the resource ID of a user-assigned identity.
 
 ## PARAMETERS
 

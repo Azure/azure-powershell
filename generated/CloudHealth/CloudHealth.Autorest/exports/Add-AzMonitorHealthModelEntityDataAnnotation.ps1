@@ -20,9 +20,7 @@ Add a data annotation to an entity
 .Description
 Add a data annotation to an entity
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Add-AzMonitorHealthModelEntityDataAnnotation -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service -Description 'Planned maintenance window' -AnnotationDetail @{ startTime = '2026-08-10T09:00:00Z'; endTime = '2026-08-10T11:00:00Z' }
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAddDataAnnotationRequest

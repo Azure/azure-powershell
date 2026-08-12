@@ -20,9 +20,9 @@ Create an in-memory object for ResourceMetricSignalDefinitionProperties.
 .Description
 Create an in-memory object for ResourceMetricSignalDefinitionProperties.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
+$rules = New-AzMonitorHealthModelEvaluationRuleObject -UnhealthyRule $unhealthy
+New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject -MetricNamespace 'Microsoft.Compute/virtualMachines' -MetricName 'Percentage CPU' -TimeGrain PT5M -AggregationType Average -EvaluationRule $rules -DisplayName 'CPU Utilization'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ResourceMetricSignalDefinitionProperties

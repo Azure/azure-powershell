@@ -41,7 +41,8 @@ Delete a DiscoveryRule
 Remove-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-vms
 ```
 
-Deletes the discovery rule. Entities it already created are kept.
+Deletes the discovery rule.
+Entities it already created are kept.
 
 ## PARAMETERS
 

@@ -20,9 +20,7 @@ Retrieve data annotations for an entity
 .Description
 Retrieve data annotations for an entity
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzMonitorHealthModelEntityDataAnnotation -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity

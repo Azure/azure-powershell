@@ -20,9 +20,7 @@ Retrieve the time series history for a signal on an entity
 .Description
 Retrieve the time series history for a signal on an entity
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzMonitorHealthModelEntitySignalHistory -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service -SignalName checkout-latency
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity

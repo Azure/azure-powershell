@@ -20,9 +20,7 @@ Retrieve the health state transition history for an entity
 .Description
 Retrieve the health state transition history for an entity
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzMonitorHealthModelEntityHistory -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity

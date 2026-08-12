@@ -20,9 +20,9 @@ Create an in-memory object for PrometheusMetricsSignalDefinitionProperties.
 .Description
 Create an in-memory object for PrometheusMetricsSignalDefinitionProperties.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 0.05
+$rules = New-AzMonitorHealthModelEvaluationRuleObject -UnhealthyRule $unhealthy
+New-AzMonitorHealthModelPrometheusMetricsSignalDefinitionPropertiesObject -QueryText 'rate(http_requests_failed_total[5m])' -TimeGrain PT5M -EvaluationRule $rules -DisplayName 'Failed request rate'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.PrometheusMetricsSignalDefinitionProperties
