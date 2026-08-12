@@ -20,6 +20,7 @@ Delete a SignalDefinition
 .Description
 Delete a SignalDefinition
 .Example
+# Delete the signal definition cpu-utilization
 Remove-AzMonitorHealthModelSignalDefinition -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name cpu-utilization
 
 .Inputs

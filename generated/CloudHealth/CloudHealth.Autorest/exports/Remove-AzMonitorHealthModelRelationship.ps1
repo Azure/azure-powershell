@@ -20,6 +20,7 @@ Delete a Relationship
 .Description
 Delete a Relationship
 .Example
+# Delete the relationship frontend-to-backend
 Remove-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend
 
 .Inputs

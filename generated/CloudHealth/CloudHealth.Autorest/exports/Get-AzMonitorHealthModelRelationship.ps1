@@ -20,8 +20,10 @@ Get a Relationship
 .Description
 Get a Relationship
 .Example
+# Get the relationship frontend-to-backend
 Get-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend
 .Example
+# List all relationships in the health model
 Get-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 
 .Inputs

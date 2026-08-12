@@ -47,6 +47,7 @@ Create a SignalDefinition
 
 ### Example 1: Define a CPU metric signal
 ```powershell
+# Create the signal definition cpu-utilization in the health model
 $degraded = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 70
 $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
 $rules = New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy
@@ -54,7 +55,7 @@ $property = New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObje
 New-AzMonitorHealthModelSignalDefinition -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name cpu-utilization -Property $property
 ```
 
-Creates a signal that reads the Percentage CPU metric and marks an entity degraded above 70 percent and unhealthy above 90 percent.
+Creates a signal definition for the Percentage CPU metric with a degraded threshold of 70 and an unhealthy threshold of 90.
 
 ## PARAMETERS
 

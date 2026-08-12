@@ -20,6 +20,7 @@ Create a Relationship
 .Description
 Create a Relationship
 .Example
+# Create the relationship frontend-to-backend between two entities
 New-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend -ParentEntityName frontend-service -ChildEntityName backend-api
 
 .Outputs

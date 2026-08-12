@@ -20,6 +20,10 @@ Update a Relationship
 .Description
 Update a Relationship
 .Example
+# Replace the tags on the relationship frontend-to-backend
+Update-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend -Tag @{ tier = 'critical'; owner = 'checkout-team' }
+.Example
+# Update the display name of the relationship frontend-to-backend
 Update-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend -DisplayName 'Frontend depends on Backend API'
 
 .Inputs

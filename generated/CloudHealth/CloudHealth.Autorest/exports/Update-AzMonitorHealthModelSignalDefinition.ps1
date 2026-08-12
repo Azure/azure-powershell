@@ -20,6 +20,7 @@ Update a SignalDefinition
 .Description
 Update a SignalDefinition
 .Example
+# Update the thresholds on the signal definition cpu-utilization
 $degraded = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 75
 $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 95
 $rules = New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy

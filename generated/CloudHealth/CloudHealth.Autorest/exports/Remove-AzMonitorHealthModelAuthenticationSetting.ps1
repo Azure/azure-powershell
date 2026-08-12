@@ -20,6 +20,7 @@ Delete a AuthenticationSetting
 .Description
 Delete a AuthenticationSetting
 .Example
+# Delete the authentication setting default-auth
 Remove-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name default-auth
 
 .Inputs

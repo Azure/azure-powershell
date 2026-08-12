@@ -41,8 +41,9 @@ Get a AuthenticationSetting
 
 ## EXAMPLES
 
-### Example 1: Get a authentication setting by name
+### Example 1: Get an authentication setting by name
 ```powershell
+# Get the authentication setting default
 Get-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name default
 ```
 
@@ -64,6 +65,7 @@ Gets a single authentication setting under a health model by name.
 
 ### Example 2: List every authentication setting in a health model
 ```powershell
+# List all authentication settings in the health model
 Get-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 ```
 

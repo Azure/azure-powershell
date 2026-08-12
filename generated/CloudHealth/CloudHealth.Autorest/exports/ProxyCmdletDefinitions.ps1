@@ -20,6 +20,7 @@ Add a data annotation to an entity
 .Description
 Add a data annotation to an entity
 .Example
+# Add a data annotation to the entity frontend-service
 Add-AzMonitorHealthModelEntityDataAnnotation -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service -Description 'Planned maintenance window' -AnnotationDetail @{ startTime = '2026-08-10T09:00:00Z'; endTime = '2026-08-10T11:00:00Z' }
 
 .Inputs
@@ -319,8 +320,10 @@ Get a AuthenticationSetting
 .Description
 Get a AuthenticationSetting
 .Example
+# Get the authentication setting default
 Get-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name default
 .Example
+# List all authentication settings in the health model
 Get-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 
 .Inputs
@@ -559,8 +562,10 @@ Get a DiscoveryRule
 .Description
 Get a DiscoveryRule
 .Example
+# Get the discovery rule vmss-discovery
 Get-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name vmss-discovery
 .Example
+# List all discovery rules in the health model
 Get-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 
 .Inputs
@@ -807,6 +812,7 @@ Retrieve data annotations for an entity
 .Description
 Retrieve data annotations for an entity
 .Example
+# Retrieve all data annotations on the entity frontend-service
 Get-AzMonitorHealthModelEntityDataAnnotation -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service
 
 .Inputs
@@ -1124,6 +1130,7 @@ Retrieve the health state transition history for an entity
 .Description
 Retrieve the health state transition history for an entity
 .Example
+# Retrieve the health state history of the entity frontend-service
 Get-AzMonitorHealthModelEntityHistory -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service
 
 .Inputs
@@ -1441,6 +1448,7 @@ Retrieve the time series history for a signal on an entity
 .Description
 Retrieve the time series history for a signal on an entity
 .Example
+# Retrieve the recorded values of the signal checkout-latency on the entity frontend-service
 Get-AzMonitorHealthModelEntitySignalHistory -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service -SignalName checkout-latency
 
 .Inputs
@@ -1767,6 +1775,7 @@ Get recommended signal configurations for a given Entity (only applicable for En
 .Description
 Get recommended signal configurations for a given Entity (only applicable for Entities representing Azure resources)
 .Example
+# Retrieve the recommended signals for the entity frontend-service
 Get-AzMonitorHealthModelEntitySignalRecommendation -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service
 
 .Inputs
@@ -2000,8 +2009,10 @@ Get a Entity
 .Description
 Get a Entity
 .Example
+# Get the entity app-frontend
 Get-AzMonitorHealthModelEntity -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name app-frontend
 .Example
+# List all entities in the health model
 Get-AzMonitorHealthModelEntity -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 
 .Inputs
@@ -2248,8 +2259,10 @@ Get a Relationship
 .Description
 Get a Relationship
 .Example
+# Get the relationship frontend-to-backend
 Get-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend
 .Example
+# List all relationships in the health model
 Get-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 
 .Inputs
@@ -2497,8 +2510,10 @@ Get a SignalDefinition
 .Description
 Get a SignalDefinition
 .Example
+# Get the signal definition cpu-signal
 Get-AzMonitorHealthModelSignalDefinition -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name cpu-signal
 .Example
+# List all signal definitions in the health model
 Get-AzMonitorHealthModelSignalDefinition -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 
 .Inputs
@@ -2745,8 +2760,10 @@ Get a HealthModel
 .Description
 Get a HealthModel
 .Example
+# Get the health model azpwsh-healthmodel1
 Get-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 .Example
+# List all health models in the resource group azpwsh-test-rg
 Get-AzMonitorHealthModel -ResourceGroupName azpwsh-test-rg
 
 .Inputs
@@ -2960,6 +2977,7 @@ Ingest a health report for a specific signal on an entity (the entity must alrea
 .Description
 Ingest a health report for a specific signal on an entity (the entity must already exist)
 .Example
+# Report the signal checkout-latency as Degraded on the entity frontend-service
 Invoke-AzMonitorHealthModelIngestEntityHealthReport -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service -SignalName checkout-latency -HealthState Degraded -Value 142.5 -ExpiresInMinute 60
 
 .Inputs
@@ -3324,6 +3342,7 @@ Create a AuthenticationSetting
 .Description
 Create a AuthenticationSetting
 .Example
+# Create the authentication setting default-auth using the health model's system-assigned identity
 $property = New-AzMonitorHealthModelManagedIdentityAuthenticationSettingPropertiesObject -ManagedIdentityName SystemAssigned -DisplayName 'Default managed identity'
 New-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name default-auth -Property $property
 
@@ -3568,9 +3587,16 @@ Create a DiscoveryRule
 .Description
 Create a DiscoveryRule
 .Example
+# Create the discovery rule discover-vms from an Azure Resource Graph query
 $specification = New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where type =~ 'microsoft.compute/virtualmachines' | project id"
 $property = New-AzMonitorHealthModelDiscoveryRulePropertiesObject -AuthenticationSetting default-auth -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Enabled -DisplayName 'Discover virtual machines' -Specification $specification
 New-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-vms -Property $property
+.Example
+# Create the discovery rule discover-appinsights from an Application Insights component
+$applicationInsightsId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azpwsh-test-rg/providers/microsoft.insights/components/azpwsh-appinsights'
+$specification = New-AzMonitorHealthModelApplicationInsightsTopologySpecificationObject -ApplicationInsightsResourceId $applicationInsightsId
+$property = New-AzMonitorHealthModelDiscoveryRulePropertiesObject -AuthenticationSetting default-auth -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Enabled -DisplayName 'Discover services from Application Insights' -Specification $specification
+New-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-appinsights -Property $property
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule
@@ -3825,6 +3851,7 @@ Create a Entity
 .Description
 Create a Entity
 .Example
+# Create the entity frontend-service in the health model
 New-AzMonitorHealthModelEntity -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-service -DisplayName 'Frontend Service' -Impact Standard -HealthObjective 99.9
 
 .Outputs
@@ -4190,6 +4217,7 @@ Create a Relationship
 .Description
 Create a Relationship
 .Example
+# Create the relationship frontend-to-backend between two entities
 New-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend -ParentEntityName frontend-service -ChildEntityName backend-api
 
 .Outputs
@@ -4433,6 +4461,7 @@ Create a SignalDefinition
 .Description
 Create a SignalDefinition
 .Example
+# Create the signal definition cpu-utilization in the health model
 $degraded = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 70
 $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
 $rules = New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy
@@ -4704,6 +4733,7 @@ Create a HealthModel
 .Description
 Create a HealthModel
 .Example
+# Create the health model azpwsh-healthmodel1 with a system-assigned identity
 New-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Location eastus2 -EnableSystemAssignedIdentity
 
 .Outputs
@@ -4941,6 +4971,7 @@ Delete a AuthenticationSetting
 .Description
 Delete a AuthenticationSetting
 .Example
+# Delete the authentication setting default-auth
 Remove-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name default-auth
 
 .Inputs
@@ -5193,6 +5224,7 @@ Delete a DiscoveryRule
 .Description
 Delete a DiscoveryRule
 .Example
+# Delete the discovery rule discover-vms
 Remove-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-vms
 
 .Inputs
@@ -5445,6 +5477,7 @@ Delete a Entity
 .Description
 Delete a Entity
 .Example
+# Delete the entity frontend-service
 Remove-AzMonitorHealthModelEntity -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-service
 
 .Inputs
@@ -5697,6 +5730,7 @@ Delete a Relationship
 .Description
 Delete a Relationship
 .Example
+# Delete the relationship frontend-to-backend
 Remove-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend
 
 .Inputs
@@ -5950,6 +5984,7 @@ Delete a SignalDefinition
 .Description
 Delete a SignalDefinition
 .Example
+# Delete the signal definition cpu-utilization
 Remove-AzMonitorHealthModelSignalDefinition -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name cpu-utilization
 
 .Inputs
@@ -6202,6 +6237,7 @@ Delete a HealthModel
 .Description
 Delete a HealthModel
 .Example
+# Delete the health model azpwsh-healthmodel1
 Remove-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 
 .Inputs
@@ -6428,8 +6464,10 @@ Update a AuthenticationSetting
 .Description
 Update a AuthenticationSetting
 .Example
-$property = New-AzMonitorHealthModelManagedIdentityAuthenticationSettingPropertiesObject -ManagedIdentityName SystemAssigned -DisplayName 'Workload managed identity'
-Update-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name default-auth -Property $property
+# Update the authentication setting workload-auth to use a user-assigned identity
+$identityId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/azpwsh-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpwsh-uai'
+$property = New-AzMonitorHealthModelManagedIdentityAuthenticationSettingPropertiesObject -ManagedIdentityName $identityId -DisplayName 'Checkout workload identity'
+Update-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name workload-auth -Property $property
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting
@@ -6710,9 +6748,16 @@ Update a DiscoveryRule
 .Description
 Update a DiscoveryRule
 .Example
+# Replace the Resource Graph query on the discovery rule discover-vms
 $specification = New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where type =~ 'microsoft.compute/virtualmachines' and tags['env'] =~ 'prod' | project id"
 $property = New-AzMonitorHealthModelDiscoveryRulePropertiesObject -AuthenticationSetting default-auth -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Enabled -DisplayName 'Discover production virtual machines' -Specification $specification
 Update-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-vms -Property $property
+.Example
+# Point the discovery rule discover-appinsights at a different Application Insights component
+$applicationInsightsId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azpwsh-test-rg/providers/microsoft.insights/components/azpwsh-appinsights'
+$specification = New-AzMonitorHealthModelApplicationInsightsTopologySpecificationObject -ApplicationInsightsResourceId $applicationInsightsId
+$property = New-AzMonitorHealthModelDiscoveryRulePropertiesObject -AuthenticationSetting default-auth -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Enabled -DisplayName 'Discover services from Application Insights' -Specification $specification
+Update-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-appinsights -Property $property
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -7005,6 +7050,10 @@ Update a Entity
 .Description
 Update a Entity
 .Example
+# Update the health objective and unhealthy severity of the entity frontend-service
+Update-AzMonitorHealthModelEntity -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-service -HealthObjective 99.95 -Impact Standard -UnhealthySeverity Sev1 -UnhealthyDescription 'Checkout is failing for customers'
+.Example
+# Update the display name of the entity frontend-service
 Update-AzMonitorHealthModelEntity -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-service -DisplayName 'Frontend Service (EU)'
 
 .Inputs
@@ -7395,6 +7444,10 @@ Update a Relationship
 .Description
 Update a Relationship
 .Example
+# Replace the tags on the relationship frontend-to-backend
+Update-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend -Tag @{ tier = 'critical'; owner = 'checkout-team' }
+.Example
+# Update the display name of the relationship frontend-to-backend
 Update-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend -DisplayName 'Frontend depends on Backend API'
 
 .Inputs
@@ -7655,6 +7708,7 @@ Update a SignalDefinition
 .Description
 Update a SignalDefinition
 .Example
+# Update the thresholds on the signal definition cpu-utilization
 $degraded = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 75
 $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 95
 $rules = New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy
@@ -7964,6 +8018,11 @@ Update a HealthModel
 .Description
 Update a HealthModel
 .Example
+# Replace the system-assigned identity on azpwsh-healthmodel1 with a user-assigned one
+$identityId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/azpwsh-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpwsh-uai'
+Update-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EnableSystemAssignedIdentity $false -UserAssignedIdentity $identityId
+.Example
+# Replace the tags on the health model azpwsh-healthmodel1
 Update-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Tag @{ environment = 'production' }
 
 .Inputs
@@ -8205,6 +8264,7 @@ Create an in-memory object for ApplicationInsightsTopologySpecification.
 .Description
 Create an in-memory object for ApplicationInsightsTopologySpecification.
 .Example
+# Build an Application Insights specification for use with a discovery rule
 New-AzMonitorHealthModelApplicationInsightsTopologySpecificationObject -ApplicationInsightsResourceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azpwsh-test-rg/providers/Microsoft.Insights/components/contoso-ai'
 
 .Outputs
@@ -8313,6 +8373,7 @@ Create an in-memory object for DiscoveryRuleProperties.
 .Description
 Create an in-memory object for DiscoveryRuleProperties.
 .Example
+# Build a discovery rule property object for use with New- or Update-AzMonitorHealthModelDiscoveryRule
 $specification = New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where type =~ 'microsoft.compute/virtualmachines' | project id"
 New-AzMonitorHealthModelDiscoveryRulePropertiesObject -AuthenticationSetting default-auth -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Enabled -DisplayName 'Discover virtual machines' -Specification $specification
 
@@ -8466,6 +8527,7 @@ Create an in-memory object for EvaluationRule.
 .Description
 Create an in-memory object for EvaluationRule.
 .Example
+# Build an evaluation rule object from a degraded and an unhealthy threshold
 $degraded = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 70
 $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
 New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy
@@ -8598,6 +8660,7 @@ Create an in-memory object for LogAnalyticsQuerySignalDefinitionProperties.
 .Description
 Create an in-memory object for LogAnalyticsQuerySignalDefinitionProperties.
 .Example
+# Build a signal definition property object backed by a Log Analytics query
 $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 10
 $rules = New-AzMonitorHealthModelEvaluationRuleObject -UnhealthyRule $unhealthy
 New-AzMonitorHealthModelLogAnalyticsQuerySignalDefinitionPropertiesObject -QueryText 'AppExceptions | summarize Count = count()' -ValueColumnName Count -TimeGrain PT15M -EvaluationRule $rules -DisplayName 'Exception count'
@@ -8772,6 +8835,7 @@ Create an in-memory object for ManagedIdentityAuthenticationSettingProperties.
 .Description
 Create an in-memory object for ManagedIdentityAuthenticationSettingProperties.
 .Example
+# Build an authentication setting property object for a managed identity
 New-AzMonitorHealthModelManagedIdentityAuthenticationSettingPropertiesObject -ManagedIdentityName SystemAssigned -DisplayName 'Default managed identity'
 
 .Outputs
@@ -8887,6 +8951,7 @@ Create an in-memory object for PrometheusMetricsSignalDefinitionProperties.
 .Description
 Create an in-memory object for PrometheusMetricsSignalDefinitionProperties.
 .Example
+# Build a signal definition property object backed by a Prometheus query
 $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 0.05
 $rules = New-AzMonitorHealthModelEvaluationRuleObject -UnhealthyRule $unhealthy
 New-AzMonitorHealthModelPrometheusMetricsSignalDefinitionPropertiesObject -QueryText 'rate(http_requests_failed_total[5m])' -TimeGrain PT5M -EvaluationRule $rules -DisplayName 'Failed request rate'
@@ -9052,6 +9117,7 @@ Create an in-memory object for ResourceGraphQuerySpecification.
 .Description
 Create an in-memory object for ResourceGraphQuerySpecification.
 .Example
+# Build a Resource Graph specification for use with a discovery rule
 New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where type =~ 'microsoft.compute/virtualmachines' | project id"
 
 .Outputs
@@ -9161,6 +9227,7 @@ Create an in-memory object for ResourceMetricSignalDefinitionProperties.
 .Description
 Create an in-memory object for ResourceMetricSignalDefinitionProperties.
 .Example
+# Build a signal definition property object backed by an Azure Monitor metric
 $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
 $rules = New-AzMonitorHealthModelEvaluationRuleObject -UnhealthyRule $unhealthy
 New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject -MetricNamespace 'Microsoft.Compute/virtualMachines' -MetricName 'Percentage CPU' -TimeGrain PT5M -AggregationType Average -EvaluationRule $rules -DisplayName 'CPU Utilization'
@@ -9346,6 +9413,7 @@ Create an in-memory object for ThresholdRuleV2.
 .Description
 Create an in-memory object for ThresholdRuleV2.
 .Example
+# Build a static threshold rule for use in an evaluation rule
 New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
 
 .Outputs

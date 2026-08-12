@@ -20,6 +20,7 @@ Create an in-memory object for EvaluationRule.
 .Description
 Create an in-memory object for EvaluationRule.
 .Example
+# Build an evaluation rule object from a degraded and an unhealthy threshold
 $degraded = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 70
 $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
 New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy

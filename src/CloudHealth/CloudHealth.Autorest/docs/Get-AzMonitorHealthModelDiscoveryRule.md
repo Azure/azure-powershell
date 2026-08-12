@@ -43,6 +43,7 @@ Get a DiscoveryRule
 
 ### Example 1: Get a discovery rule by name
 ```powershell
+# Get the discovery rule vmss-discovery
 Get-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name vmss-discovery
 ```
 
@@ -64,6 +65,7 @@ Gets a single discovery rule under a health model by name.
 
 ### Example 2: List every discovery rule in a health model
 ```powershell
+# List all discovery rules in the health model
 Get-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 ```
 

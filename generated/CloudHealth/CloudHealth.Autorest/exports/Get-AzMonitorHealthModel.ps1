@@ -20,8 +20,10 @@ Get a HealthModel
 .Description
 Get a HealthModel
 .Example
+# Get the health model azpwsh-healthmodel1
 Get-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 .Example
+# List all health models in the resource group azpwsh-test-rg
 Get-AzMonitorHealthModel -ResourceGroupName azpwsh-test-rg
 
 .Inputs

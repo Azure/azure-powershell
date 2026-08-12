@@ -43,6 +43,7 @@ Get a Relationship
 
 ### Example 1: Get a health model relationship by name
 ```powershell
+# Get the relationship frontend-to-backend
 Get-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend
 ```
 
@@ -64,6 +65,7 @@ Gets a single health model relationship under a health model by name.
 
 ### Example 2: List every health model relationship in a health model
 ```powershell
+# List all relationships in the health model
 Get-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 ```
 

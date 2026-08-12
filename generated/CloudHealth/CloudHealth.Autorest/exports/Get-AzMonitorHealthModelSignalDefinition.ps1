@@ -20,8 +20,10 @@ Get a SignalDefinition
 .Description
 Get a SignalDefinition
 .Example
+# Get the signal definition cpu-signal
 Get-AzMonitorHealthModelSignalDefinition -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name cpu-signal
 .Example
+# List all signal definitions in the health model
 Get-AzMonitorHealthModelSignalDefinition -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 
 .Inputs

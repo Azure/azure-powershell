@@ -20,6 +20,7 @@ Create a SignalDefinition
 .Description
 Create a SignalDefinition
 .Example
+# Create the signal definition cpu-utilization in the health model
 $degraded = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 70
 $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
 $rules = New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy
