@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Opted in to Change Safety: `New/Remove/Update-AzCdnProfile` and `New/Remove/Update-AzFrontDoorCdnProfile` now support `-AcquirePolicyToken` and `-ChangeReference`.
 
 ## Version 6.1.0
 * Upgraded API version to 2026-04-01-preview.
