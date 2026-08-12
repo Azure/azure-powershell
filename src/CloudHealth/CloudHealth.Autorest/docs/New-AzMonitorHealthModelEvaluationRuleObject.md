@@ -29,7 +29,8 @@ $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan
 New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy
 ```
 
-Creates the evaluation rules for a signal definition. Only the unhealthy rule is required.
+Creates the evaluation rules for a signal definition.
+Only the unhealthy rule is required.
 
 ## PARAMETERS
 

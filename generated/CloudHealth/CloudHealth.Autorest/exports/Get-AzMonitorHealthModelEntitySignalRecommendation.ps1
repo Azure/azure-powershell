@@ -20,9 +20,7 @@ Get recommended signal configurations for a given Entity (only applicable for En
 .Description
 Get recommended signal configurations for a given Entity (only applicable for Entities representing Azure resources)
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzMonitorHealthModelEntitySignalRecommendation -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity

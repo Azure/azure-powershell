@@ -20,9 +20,7 @@ Create an in-memory object for ManagedIdentityAuthenticationSettingProperties.
 .Description
 Create an in-memory object for ManagedIdentityAuthenticationSettingProperties.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzMonitorHealthModelManagedIdentityAuthenticationSettingPropertiesObject -ManagedIdentityName SystemAssigned -DisplayName 'Default managed identity'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ManagedIdentityAuthenticationSettingProperties

@@ -20,9 +20,7 @@ Create a HealthModel
 .Description
 Create a HealthModel
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Location eastus2 -EnableSystemAssignedIdentity
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel

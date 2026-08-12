@@ -79,7 +79,8 @@ Retrieve the time series history for a signal on an entity
 Get-AzMonitorHealthModelEntitySignalHistory -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service -SignalName checkout-latency
 ```
 
-Returns the recorded values for a single signal. SignalName is required.
+Returns the recorded values for a single signal.
+SignalName is required.
 
 ## PARAMETERS
 

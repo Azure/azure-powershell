@@ -20,9 +20,8 @@ Create an in-memory object for DiscoveryRuleProperties.
 .Description
 Create an in-memory object for DiscoveryRuleProperties.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$specification = New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where type =~ 'microsoft.compute/virtualmachines' | project id"
+New-AzMonitorHealthModelDiscoveryRulePropertiesObject -AuthenticationSetting default-auth -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Enabled -DisplayName 'Discover virtual machines' -Specification $specification
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryRuleProperties

@@ -20,9 +20,7 @@ Add a data annotation to an entity
 .Description
 Add a data annotation to an entity
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Add-AzMonitorHealthModelEntityDataAnnotation -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service -Description 'Planned maintenance window' -AnnotationDetail @{ startTime = '2026-08-10T09:00:00Z'; endTime = '2026-08-10T11:00:00Z' }
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAddDataAnnotationRequest
@@ -809,9 +807,7 @@ Retrieve data annotations for an entity
 .Description
 Retrieve data annotations for an entity
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzMonitorHealthModelEntityDataAnnotation -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -1128,9 +1124,7 @@ Retrieve the health state transition history for an entity
 .Description
 Retrieve the health state transition history for an entity
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzMonitorHealthModelEntityHistory -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -1447,9 +1441,7 @@ Retrieve the time series history for a signal on an entity
 .Description
 Retrieve the time series history for a signal on an entity
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzMonitorHealthModelEntitySignalHistory -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service -SignalName checkout-latency
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -1775,9 +1767,7 @@ Get recommended signal configurations for a given Entity (only applicable for En
 .Description
 Get recommended signal configurations for a given Entity (only applicable for Entities representing Azure resources)
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzMonitorHealthModelEntitySignalRecommendation -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -2970,9 +2960,7 @@ Ingest a health report for a specific signal on an entity (the entity must alrea
 .Description
 Ingest a health report for a specific signal on an entity (the entity must already exist)
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Invoke-AzMonitorHealthModelIngestEntityHealthReport -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service -SignalName checkout-latency -HealthState Degraded -Value 142.5 -ExpiresInMinute 60
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -3336,9 +3324,8 @@ Create a AuthenticationSetting
 .Description
 Create a AuthenticationSetting
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$property = New-AzMonitorHealthModelManagedIdentityAuthenticationSettingPropertiesObject -ManagedIdentityName SystemAssigned -DisplayName 'Default managed identity'
+New-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name default-auth -Property $property
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting
@@ -3581,9 +3568,9 @@ Create a DiscoveryRule
 .Description
 Create a DiscoveryRule
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$specification = New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where type =~ 'microsoft.compute/virtualmachines' | project id"
+$property = New-AzMonitorHealthModelDiscoveryRulePropertiesObject -AuthenticationSetting default-auth -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Enabled -DisplayName 'Discover virtual machines' -Specification $specification
+New-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-vms -Property $property
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule
@@ -3838,9 +3825,7 @@ Create a Entity
 .Description
 Create a Entity
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzMonitorHealthModelEntity -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-service -DisplayName 'Frontend Service' -Impact Standard -HealthObjective 99.9
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntity
@@ -4205,9 +4190,7 @@ Create a Relationship
 .Description
 Create a Relationship
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend -ParentEntityName frontend-service -ChildEntityName backend-api
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship
@@ -4450,9 +4433,11 @@ Create a SignalDefinition
 .Description
 Create a SignalDefinition
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$degraded = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 70
+$unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
+$rules = New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy
+$property = New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject -MetricNamespace 'Microsoft.Compute/virtualMachines' -MetricName 'Percentage CPU' -TimeGrain PT5M -AggregationType Average -EvaluationRule $rules -DisplayName 'CPU Utilization' -DataUnit Percent -RefreshInterval PT5M
+New-AzMonitorHealthModelSignalDefinition -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name cpu-utilization -Property $property
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition
@@ -4719,9 +4704,7 @@ Create a HealthModel
 .Description
 Create a HealthModel
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Location eastus2 -EnableSystemAssignedIdentity
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel
@@ -4958,9 +4941,7 @@ Delete a AuthenticationSetting
 .Description
 Delete a AuthenticationSetting
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name default-auth
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -5212,9 +5193,7 @@ Delete a DiscoveryRule
 .Description
 Delete a DiscoveryRule
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-vms
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -5466,9 +5445,7 @@ Delete a Entity
 .Description
 Delete a Entity
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzMonitorHealthModelEntity -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-service
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -5720,9 +5697,7 @@ Delete a Relationship
 .Description
 Delete a Relationship
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -5975,9 +5950,7 @@ Delete a SignalDefinition
 .Description
 Delete a SignalDefinition
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzMonitorHealthModelSignalDefinition -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name cpu-utilization
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -6229,9 +6202,7 @@ Delete a HealthModel
 .Description
 Delete a HealthModel
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -6457,9 +6428,8 @@ Update a AuthenticationSetting
 .Description
 Update a AuthenticationSetting
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$property = New-AzMonitorHealthModelManagedIdentityAuthenticationSettingPropertiesObject -ManagedIdentityName SystemAssigned -DisplayName 'Workload managed identity'
+Update-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name default-auth -Property $property
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting
@@ -6740,9 +6710,9 @@ Update a DiscoveryRule
 .Description
 Update a DiscoveryRule
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$specification = New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where type =~ 'microsoft.compute/virtualmachines' and tags['env'] =~ 'prod' | project id"
+$property = New-AzMonitorHealthModelDiscoveryRulePropertiesObject -AuthenticationSetting default-auth -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Enabled -DisplayName 'Discover production virtual machines' -Specification $specification
+Update-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-vms -Property $property
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -7035,9 +7005,7 @@ Update a Entity
 .Description
 Update a Entity
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzMonitorHealthModelEntity -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-service -DisplayName 'Frontend Service (EU)'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -7427,9 +7395,7 @@ Update a Relationship
 .Description
 Update a Relationship
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend -DisplayName 'Frontend depends on Backend API'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -7689,9 +7655,11 @@ Update a SignalDefinition
 .Description
 Update a SignalDefinition
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$degraded = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 75
+$unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 95
+$rules = New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy
+$property = New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject -MetricNamespace 'Microsoft.Compute/virtualMachines' -MetricName 'Percentage CPU' -TimeGrain PT5M -AggregationType Average -EvaluationRule $rules -DisplayName 'CPU Utilization'
+Update-AzMonitorHealthModelSignalDefinition -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name cpu-utilization -Property $property
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -7996,9 +7964,7 @@ Update a HealthModel
 .Description
 Update a HealthModel
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Tag @{ environment = 'production' }
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -8239,9 +8205,7 @@ Create an in-memory object for ApplicationInsightsTopologySpecification.
 .Description
 Create an in-memory object for ApplicationInsightsTopologySpecification.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzMonitorHealthModelApplicationInsightsTopologySpecificationObject -ApplicationInsightsResourceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azpwsh-test-rg/providers/Microsoft.Insights/components/contoso-ai'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ApplicationInsightsTopologySpecification
@@ -8349,9 +8313,8 @@ Create an in-memory object for DiscoveryRuleProperties.
 .Description
 Create an in-memory object for DiscoveryRuleProperties.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$specification = New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where type =~ 'microsoft.compute/virtualmachines' | project id"
+New-AzMonitorHealthModelDiscoveryRulePropertiesObject -AuthenticationSetting default-auth -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Enabled -DisplayName 'Discover virtual machines' -Specification $specification
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryRuleProperties
@@ -8503,9 +8466,9 @@ Create an in-memory object for EvaluationRule.
 .Description
 Create an in-memory object for EvaluationRule.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$degraded = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 70
+$unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
+New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.EvaluationRule
@@ -8635,9 +8598,9 @@ Create an in-memory object for LogAnalyticsQuerySignalDefinitionProperties.
 .Description
 Create an in-memory object for LogAnalyticsQuerySignalDefinitionProperties.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 10
+$rules = New-AzMonitorHealthModelEvaluationRuleObject -UnhealthyRule $unhealthy
+New-AzMonitorHealthModelLogAnalyticsQuerySignalDefinitionPropertiesObject -QueryText 'AppExceptions | summarize Count = count()' -ValueColumnName Count -TimeGrain PT15M -EvaluationRule $rules -DisplayName 'Exception count'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.LogAnalyticsQuerySignalDefinitionProperties
@@ -8809,9 +8772,7 @@ Create an in-memory object for ManagedIdentityAuthenticationSettingProperties.
 .Description
 Create an in-memory object for ManagedIdentityAuthenticationSettingProperties.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzMonitorHealthModelManagedIdentityAuthenticationSettingPropertiesObject -ManagedIdentityName SystemAssigned -DisplayName 'Default managed identity'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ManagedIdentityAuthenticationSettingProperties
@@ -8926,9 +8887,9 @@ Create an in-memory object for PrometheusMetricsSignalDefinitionProperties.
 .Description
 Create an in-memory object for PrometheusMetricsSignalDefinitionProperties.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 0.05
+$rules = New-AzMonitorHealthModelEvaluationRuleObject -UnhealthyRule $unhealthy
+New-AzMonitorHealthModelPrometheusMetricsSignalDefinitionPropertiesObject -QueryText 'rate(http_requests_failed_total[5m])' -TimeGrain PT5M -EvaluationRule $rules -DisplayName 'Failed request rate'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.PrometheusMetricsSignalDefinitionProperties
@@ -9091,9 +9052,7 @@ Create an in-memory object for ResourceGraphQuerySpecification.
 .Description
 Create an in-memory object for ResourceGraphQuerySpecification.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where type =~ 'microsoft.compute/virtualmachines' | project id"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ResourceGraphQuerySpecification
@@ -9202,9 +9161,9 @@ Create an in-memory object for ResourceMetricSignalDefinitionProperties.
 .Description
 Create an in-memory object for ResourceMetricSignalDefinitionProperties.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
+$rules = New-AzMonitorHealthModelEvaluationRuleObject -UnhealthyRule $unhealthy
+New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject -MetricNamespace 'Microsoft.Compute/virtualMachines' -MetricName 'Percentage CPU' -TimeGrain PT5M -AggregationType Average -EvaluationRule $rules -DisplayName 'CPU Utilization'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ResourceMetricSignalDefinitionProperties
@@ -9387,9 +9346,7 @@ Create an in-memory object for ThresholdRuleV2.
 .Description
 Create an in-memory object for ThresholdRuleV2.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ThresholdRuleV2

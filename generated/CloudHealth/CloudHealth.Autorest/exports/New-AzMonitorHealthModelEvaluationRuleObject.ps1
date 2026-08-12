@@ -20,9 +20,9 @@ Create an in-memory object for EvaluationRule.
 .Description
 Create an in-memory object for EvaluationRule.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$degraded = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 70
+$unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
+New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.EvaluationRule

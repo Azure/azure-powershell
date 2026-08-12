@@ -20,9 +20,7 @@ Create an in-memory object for ApplicationInsightsTopologySpecification.
 .Description
 Create an in-memory object for ApplicationInsightsTopologySpecification.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzMonitorHealthModelApplicationInsightsTopologySpecificationObject -ApplicationInsightsResourceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azpwsh-test-rg/providers/Microsoft.Insights/components/contoso-ai'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ApplicationInsightsTopologySpecification

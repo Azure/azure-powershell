@@ -20,9 +20,7 @@ Create an in-memory object for ResourceGraphQuerySpecification.
 .Description
 Create an in-memory object for ResourceGraphQuerySpecification.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where type =~ 'microsoft.compute/virtualmachines' | project id"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ResourceGraphQuerySpecification

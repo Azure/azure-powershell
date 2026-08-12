@@ -20,9 +20,7 @@ Create a Relationship
 .Description
 Create a Relationship
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend -ParentEntityName frontend-service -ChildEntityName backend-api
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship

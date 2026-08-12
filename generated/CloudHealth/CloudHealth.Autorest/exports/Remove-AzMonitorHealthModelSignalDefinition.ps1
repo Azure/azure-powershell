@@ -20,9 +20,7 @@ Delete a SignalDefinition
 .Description
 Delete a SignalDefinition
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzMonitorHealthModelSignalDefinition -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name cpu-utilization
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity

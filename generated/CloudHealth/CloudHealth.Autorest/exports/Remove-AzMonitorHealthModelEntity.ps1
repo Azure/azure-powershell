@@ -20,9 +20,7 @@ Delete a Entity
 .Description
 Delete a Entity
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzMonitorHealthModelEntity -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-service
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity

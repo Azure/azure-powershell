@@ -41,7 +41,8 @@ Delete a AuthenticationSetting
 Remove-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name default-auth
 ```
 
-Deletes the authentication setting. Discovery rules that reference it stop working.
+Deletes the authentication setting.
+Discovery rules that reference it stop working.
 
 ## PARAMETERS
 

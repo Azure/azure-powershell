@@ -20,9 +20,7 @@ Create an in-memory object for ThresholdRuleV2.
 .Description
 Create an in-memory object for ThresholdRuleV2.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ThresholdRuleV2

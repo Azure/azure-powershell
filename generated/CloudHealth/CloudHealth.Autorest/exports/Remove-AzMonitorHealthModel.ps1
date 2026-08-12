@@ -20,9 +20,7 @@ Delete a HealthModel
 .Description
 Delete a HealthModel
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
