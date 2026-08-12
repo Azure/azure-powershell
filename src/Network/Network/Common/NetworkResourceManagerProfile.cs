@@ -2103,6 +2103,11 @@ namespace Microsoft.Azure.Commands.Network
                         dest => dest.ManagementIPConfiguration,
                         opt => opt.MapFrom(src => src.ManagementIpConfiguration)
                     )
+                    // AFC configuration is service-managed and read-only; never send it back on create/update.
+                    .ForMember(
+                        dest => dest.AfcConfiguration,
+                        opt => opt.Ignore()
+                    )
                     .AfterMap((src, dest) =>
                     {
                         dest.AdditionalProperties = new Dictionary<string, string>()
@@ -2157,6 +2162,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureParameters, MNM.FirewallPacketCaptureParameters>();
                 cfg.CreateMap<CNM.PSAzureFirewallAutoscaleConfiguration, MNM.AzureFirewallAutoscaleConfiguration>();
                 cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureResponse, MNM.AzureFirewallPacketCaptureResponse>();
+                cfg.CreateMap<MNM.AfcConfiguration, CNM.PSAzureFirewallAfcConfiguration>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>()

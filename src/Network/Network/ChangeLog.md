@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Exposed the read-only AFC configuration on `Get-AzFirewall` output.
+    - Added the `AfcConfiguration.ServiceEndpoint` property surfacing the AFC control-plane endpoint.
+    - The value is service-managed and cannot be set or updated through `New-AzFirewall`/`Set-AzFirewall`.
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
     - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
     - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
