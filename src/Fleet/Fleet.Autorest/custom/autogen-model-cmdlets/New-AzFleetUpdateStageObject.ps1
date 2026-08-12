@@ -26,16 +26,37 @@ Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UpdateStage
 https://learn.microsoft.com/powershell/module/Az.Fleet/new-azfleetupdatestageobject
 #>
 function New-AzFleetUpdateStageObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UpdateStage')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
+        [Parameter(HelpMessage="A list of Gates that will be created after this Stage is executed.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IGateConfiguration[]]
+        $AfterGate,
         [Parameter(HelpMessage="The time in seconds to wait at the end of this stage before starting the next one. Defaults to 0 seconds if unspecified.")]
         [int]
         $AfterStageWaitInSecond,
+        [Parameter(HelpMessage="A list of Gates that will be created before this Stage is executed.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IGateConfiguration[]]
+        $BeforeGate,
         [Parameter(HelpMessage="Defines the groups to be executed in parallel in this stage. Duplicate groups are not allowed. Min size: 1.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateGroup[]]
         $Group,
+        [Parameter(HelpMessage="The max number of upgrades that can run concurrently across all groups in this stage.
+        Acts as a ceiling (and not a quota) for the number of concurrent upgrades within the stage you want to tolerate at a time.
+        Actual concurrency may be lower depending on group-level concurrency limits or individual member conditions.
+        Stage maxConcurrency has a min value of `"1`".
+        Accepts either:
+            • A fixed count, e.g., `"3`"
+            • A percentage, e.g., `"25%`" (range 1–100). Percentage is of the total number of clusters across all groups in the stage.
+              Fractional results are rounded down. A minimum of 1 upgrade is enforced.
+        Examples:
+            • `"3`"     --> up to 3 clusters from this stage upgrade at once (across all groups).
+            • `"100%`"  --> `"all at once`"; up to all clusters in this stage upgrade at the same time.
+            • `"25%`"   --> up to 25% of the stage’s total clusters upgrade at the same time.")]
+        [string]
+        $MaxConcurrency,
         [Parameter(Mandatory, HelpMessage="The name of the stage. Must be unique within the UpdateRun.")]
         [string]
         $Name
@@ -44,11 +65,20 @@ function New-AzFleetUpdateStageObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UpdateStage]::New()
 
+        if ($PSBoundParameters.ContainsKey('AfterGate')) {
+            $Object.AfterGate = $AfterGate
+        }
         if ($PSBoundParameters.ContainsKey('AfterStageWaitInSecond')) {
             $Object.AfterStageWaitInSecond = $AfterStageWaitInSecond
         }
+        if ($PSBoundParameters.ContainsKey('BeforeGate')) {
+            $Object.BeforeGate = $BeforeGate
+        }
         if ($PSBoundParameters.ContainsKey('Group')) {
             $Object.Group = $Group
+        }
+        if ($PSBoundParameters.ContainsKey('MaxConcurrency')) {
+            $Object.MaxConcurrency = $MaxConcurrency
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
