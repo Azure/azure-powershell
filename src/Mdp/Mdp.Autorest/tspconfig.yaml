@@ -28,6 +28,19 @@ options:
       - where:
           subject: SubscriptionUsage
         remove: true
+      - where:
+          subject: UsageSubscriptionUsage
+        remove: true
+      # Don't expose operations, name availability and pool resource delete
+      - where:
+          subject: Operation
+        remove: true
+      - where:
+          subject: PoolResource
+        remove: true
+      - where:
+          subject: PoolNameAvailability
+        remove: true
       # Hide set cmdlets
       - where:
           verb: Set
