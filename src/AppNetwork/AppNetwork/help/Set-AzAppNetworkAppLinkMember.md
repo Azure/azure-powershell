@@ -8,11 +8,11 @@ schema: 2.0.0
 # Set-AzAppNetworkAppLinkMember
 
 ## SYNOPSIS
-Update an AppLinkMember.
+Replace a member of an Azure Kubernetes Application Network resource.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### ReplaceExpanded (Default)
 ```
 Set-AzAppNetworkAppLinkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Location <String> [-ClusterType <String>] [-EastWestGatewayVisibility <String>]
@@ -22,14 +22,21 @@ Set-AzAppNetworkAppLinkMember -AppLinkName <String> -Name <String> -ResourceGrou
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
+### Replace
+```
+Set-AzAppNetworkAppLinkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Resource <IAppLinkMember> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ReplaceViaJsonFilePath
 ```
 Set-AzAppNetworkAppLinkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaJsonString
+### ReplaceViaJsonString
 ```
 Set-AzAppNetworkAppLinkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -37,7 +44,7 @@ Set-AzAppNetworkAppLinkMember -AppLinkName <String> -Name <String> -ResourceGrou
 ```
 
 ## DESCRIPTION
-Update an AppLinkMember.
+Replace a member of an Azure Kubernetes Application Network resource.
 
 ## EXAMPLES
 
@@ -94,7 +101,7 @@ Cluster type
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ReplaceExpanded
 Aliases:
 
 Required: False
@@ -125,7 +132,7 @@ East-West gateway visibility.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ReplaceExpanded
 Aliases:
 
 Required: False
@@ -140,7 +147,7 @@ Release channel
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ReplaceExpanded
 Aliases:
 
 Required: False
@@ -151,11 +158,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-Path of Json file supplied to the Update operation
+Path of Json file supplied to the Replace operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
+Parameter Sets: ReplaceViaJsonFilePath
 Aliases:
 
 Required: True
@@ -166,11 +173,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Update operation
+Json string supplied to the Replace operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString
+Parameter Sets: ReplaceViaJsonString
 Aliases:
 
 Required: True
@@ -185,7 +192,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ReplaceExpanded
 Aliases:
 
 Required: True
@@ -200,7 +207,7 @@ Resource ID
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ReplaceExpanded
 Aliases:
 
 Required: False
@@ -245,13 +252,28 @@ Delegated Subnet to AppLink.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ReplaceExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Resource
+A member of an Azure Kubernetes Application Network resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppNetwork.Models.IAppLinkMember
+Parameter Sets: Replace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -276,7 +298,7 @@ Istio version
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ReplaceExpanded
 Aliases:
 
 Required: False
@@ -307,7 +329,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
+Parameter Sets: ReplaceExpanded
 Aliases:
 
 Required: False
@@ -322,7 +344,7 @@ Upgrade mode.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ReplaceExpanded
 Aliases:
 
 Required: False
@@ -367,6 +389,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.AppNetwork.Models.IAppLinkMember
 
 ## OUTPUTS
 

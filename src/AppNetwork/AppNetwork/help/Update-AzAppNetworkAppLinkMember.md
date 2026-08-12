@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzAppNetworkAppLinkMember
 
 ## SYNOPSIS
-Update an AppLinkMember.
+Update a member of an Azure Kubernetes Application Network resource.
 
 ## SYNTAX
 
@@ -53,7 +53,7 @@ Update-AzAppNetworkAppLinkMember -InputObject <IAppNetworkIdentity> [-EastWestGa
 ```
 
 ## DESCRIPTION
-Update an AppLinkMember.
+Update a member of an Azure Kubernetes Application Network resource.
 
 ## EXAMPLES
 

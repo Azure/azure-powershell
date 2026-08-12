@@ -7,7 +7,7 @@
   "commands": [
     {
       "name": "Get-AzAppNetworkAppLink",
-      "description": "Get an AppLink.",
+      "description": "Get the details of an Azure Kubernetes Application Network.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/appLinks/{appLinkName}",
       "help": {
         "learnMore": {
@@ -25,7 +25,7 @@
       },
       "examples": [
         {
-          "description": "Get an AppLink.",
+          "description": "Get the details of an Azure Kubernetes Application Network.",
           "parameters": [
             {
               "name": "-Name",
@@ -45,7 +45,7 @@
     },
     {
       "name": "Remove-AzAppNetworkAppLink",
-      "description": "Delete an AppLink.",
+      "description": "Delete an Azure Kubernetes Application Network resource.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/appLinks/{appLinkName}",
       "help": {
         "learnMore": {
@@ -63,7 +63,7 @@
       },
       "examples": [
         {
-          "description": "Delete an AppLink.",
+          "description": "Delete an Azure Kubernetes Application Network resource.",
           "parameters": [
             {
               "name": "-Name",
