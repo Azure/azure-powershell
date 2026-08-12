@@ -188,6 +188,11 @@ namespace Microsoft.Azure.Management.Compute
         IVirtualMachineScaleSetVMSOperations VirtualMachineScaleSetVMS { get; }
 
         /// <summary>
+        /// Gets the IVirtualMachineScaleSetVMDiagnosticRunCommandsOperations
+        /// </summary>
+        IVirtualMachineScaleSetVMDiagnosticRunCommandsOperations VirtualMachineScaleSetVMDiagnosticRunCommands { get; }
+
+        /// <summary>
         /// Gets the IVirtualMachineScaleSetVMExtensionsOperations
         /// </summary>
         IVirtualMachineScaleSetVMExtensionsOperations VirtualMachineScaleSetVMExtensions { get; }
@@ -196,6 +201,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IVirtualMachineScaleSetVMRunCommandsOperations
         /// </summary>
         IVirtualMachineScaleSetVMRunCommandsOperations VirtualMachineScaleSetVMRunCommands { get; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineDiagnosticRunCommandsOperations
+        /// </summary>
+        IVirtualMachineDiagnosticRunCommandsOperations VirtualMachineDiagnosticRunCommands { get; }
 
         /// <summary>
         /// Gets the IVirtualMachineExtensionsOperations

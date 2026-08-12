@@ -82,7 +82,16 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.OsDisk.Validate();
             }
-
+            if (this.DataDisks != null)
+            {
+                foreach (var element in this.DataDisks)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
 
         }
     }
