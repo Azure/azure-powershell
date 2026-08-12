@@ -52,8 +52,7 @@ $property = New-AzMonitorHealthModelManagedIdentityAuthenticationSettingProperti
 New-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name default-auth -Property $property
 ```
 
-Creates an authentication setting that discovery rules reference by name.
-The identity must already be enabled on the health model.
+Creates an authentication setting.
 
 ## PARAMETERS
 
