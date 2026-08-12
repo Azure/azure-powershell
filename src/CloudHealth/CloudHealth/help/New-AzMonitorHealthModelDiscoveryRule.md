@@ -60,6 +60,8 @@ $property = New-AzMonitorHealthModelDiscoveryRulePropertiesObject -Authenticatio
 New-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-appinsights -Property $property
 ```
 
+Creates a discovery rule that reads the given Application Insights components.
+
 ## PARAMETERS
 
 ### -AddRecommendedSignal
