@@ -20,6 +20,7 @@ Retrieve data annotations for an entity
 .Description
 Retrieve data annotations for an entity
 .Example
+# Retrieve all data annotations on the entity frontend-service
 Get-AzMonitorHealthModelEntityDataAnnotation -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service
 
 .Inputs

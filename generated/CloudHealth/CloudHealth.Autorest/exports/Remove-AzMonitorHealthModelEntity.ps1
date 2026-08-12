@@ -20,6 +20,7 @@ Delete a Entity
 .Description
 Delete a Entity
 .Example
+# Delete the entity frontend-service
 Remove-AzMonitorHealthModelEntity -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-service
 
 .Inputs

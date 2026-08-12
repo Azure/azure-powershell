@@ -20,6 +20,7 @@ Ingest a health report for a specific signal on an entity (the entity must alrea
 .Description
 Ingest a health report for a specific signal on an entity (the entity must already exist)
 .Example
+# Report the signal checkout-latency as Degraded on the entity frontend-service
 Invoke-AzMonitorHealthModelIngestEntityHealthReport -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service -SignalName checkout-latency -HealthState Degraded -Value 142.5 -ExpiresInMinute 60
 
 .Inputs

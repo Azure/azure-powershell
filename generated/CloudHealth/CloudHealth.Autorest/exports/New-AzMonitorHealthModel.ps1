@@ -20,6 +20,7 @@ Create a HealthModel
 .Description
 Create a HealthModel
 .Example
+# Create the health model azpwsh-healthmodel1 with a system-assigned identity
 New-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Location eastus2 -EnableSystemAssignedIdentity
 
 .Outputs

@@ -20,6 +20,7 @@ Delete a DiscoveryRule
 .Description
 Delete a DiscoveryRule
 .Example
+# Delete the discovery rule discover-vms
 Remove-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-vms
 
 .Inputs

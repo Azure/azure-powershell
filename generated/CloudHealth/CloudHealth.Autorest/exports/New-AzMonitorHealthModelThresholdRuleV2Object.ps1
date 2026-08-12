@@ -20,6 +20,7 @@ Create an in-memory object for ThresholdRuleV2.
 .Description
 Create an in-memory object for ThresholdRuleV2.
 .Example
+# Build a static threshold rule for use in an evaluation rule
 New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
 
 .Outputs

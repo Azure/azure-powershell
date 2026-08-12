@@ -1,5 +1,6 @@
 ### Example 1: Get a health model entity by name
 ```powershell
+# Get the entity app-frontend
 Get-AzMonitorHealthModelEntity -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name app-frontend
 ```
 
@@ -21,6 +22,7 @@ Gets a single health model entity under a health model by name.
 
 ### Example 2: List every health model entity in a health model
 ```powershell
+# List all entities in the health model
 Get-AzMonitorHealthModelEntity -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 ```
 

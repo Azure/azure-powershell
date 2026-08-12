@@ -1,5 +1,6 @@
 ### Example 1: Get a health model by name
 ```powershell
+# Get the health model azpwsh-healthmodel1
 Get-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 ```
 
@@ -22,6 +23,7 @@ Gets a single health model by its name and the resource group it belongs to.
 
 ### Example 2: List all health models in a resource group
 ```powershell
+# List all health models in the resource group azpwsh-test-rg
 Get-AzMonitorHealthModel -ResourceGroupName azpwsh-test-rg
 ```
 

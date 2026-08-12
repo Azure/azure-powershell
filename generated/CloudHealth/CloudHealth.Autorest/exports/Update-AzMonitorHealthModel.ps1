@@ -20,6 +20,11 @@ Update a HealthModel
 .Description
 Update a HealthModel
 .Example
+# Replace the system-assigned identity on azpwsh-healthmodel1 with a user-assigned one
+$identityId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/azpwsh-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpwsh-uai'
+Update-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EnableSystemAssignedIdentity $false -UserAssignedIdentity $identityId
+.Example
+# Replace the tags on the health model azpwsh-healthmodel1
 Update-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Tag @{ environment = 'production' }
 
 .Inputs

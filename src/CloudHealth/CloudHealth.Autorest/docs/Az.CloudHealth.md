@@ -1,6 +1,6 @@
 ---
 Module Name: Az.CloudHealth
-Module Guid: ecf726d1-31d8-43d6-bea2-be324d49ff6f
+Module Guid: ee2a717b-c45e-486f-bd33-12edb01d28d6
 Download Help Link: https://learn.microsoft.com/powershell/module/az.cloudhealth
 Help Version: 1.0.0.0
 Locale: en-US

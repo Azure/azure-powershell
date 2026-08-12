@@ -43,6 +43,7 @@ Get a SignalDefinition
 
 ### Example 1: Get a signal definition by name
 ```powershell
+# Get the signal definition cpu-signal
 Get-AzMonitorHealthModelSignalDefinition -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name cpu-signal
 ```
 
@@ -64,6 +65,7 @@ Gets a single signal definition under a health model by name.
 
 ### Example 2: List every signal definition in a health model
 ```powershell
+# List all signal definitions in the health model
 Get-AzMonitorHealthModelSignalDefinition -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 ```
 

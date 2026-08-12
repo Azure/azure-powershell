@@ -20,8 +20,10 @@ Get a Entity
 .Description
 Get a Entity
 .Example
+# Get the entity app-frontend
 Get-AzMonitorHealthModelEntity -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name app-frontend
 .Example
+# List all entities in the health model
 Get-AzMonitorHealthModelEntity -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 
 .Inputs

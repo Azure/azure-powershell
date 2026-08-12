@@ -20,6 +20,7 @@ Retrieve the time series history for a signal on an entity
 .Description
 Retrieve the time series history for a signal on an entity
 .Example
+# Retrieve the recorded values of the signal checkout-latency on the entity frontend-service
 Get-AzMonitorHealthModelEntitySignalHistory -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service -SignalName checkout-latency
 
 .Inputs

@@ -20,6 +20,7 @@ Create an in-memory object for ManagedIdentityAuthenticationSettingProperties.
 .Description
 Create an in-memory object for ManagedIdentityAuthenticationSettingProperties.
 .Example
+# Build an authentication setting property object for a managed identity
 New-AzMonitorHealthModelManagedIdentityAuthenticationSettingPropertiesObject -ManagedIdentityName SystemAssigned -DisplayName 'Default managed identity'
 
 .Outputs

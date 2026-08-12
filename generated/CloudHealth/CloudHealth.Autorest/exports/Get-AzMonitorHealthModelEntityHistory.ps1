@@ -20,6 +20,7 @@ Retrieve the health state transition history for an entity
 .Description
 Retrieve the health state transition history for an entity
 .Example
+# Retrieve the health state history of the entity frontend-service
 Get-AzMonitorHealthModelEntityHistory -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service
 
 .Inputs

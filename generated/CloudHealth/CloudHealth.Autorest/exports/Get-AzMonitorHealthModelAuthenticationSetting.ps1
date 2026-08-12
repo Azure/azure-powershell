@@ -20,8 +20,10 @@ Get a AuthenticationSetting
 .Description
 Get a AuthenticationSetting
 .Example
+# Get the authentication setting default
 Get-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name default
 .Example
+# List all authentication settings in the health model
 Get-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 
 .Inputs

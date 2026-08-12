@@ -20,8 +20,10 @@ Get a DiscoveryRule
 .Description
 Get a DiscoveryRule
 .Example
+# Get the discovery rule vmss-discovery
 Get-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name vmss-discovery
 .Example
+# List all discovery rules in the health model
 Get-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg
 
 .Inputs
