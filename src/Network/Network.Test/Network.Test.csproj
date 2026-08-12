@@ -52,7 +52,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Network.Management.Sdk\Network.Management.Sdk.csproj" />
+    <ProjectReference Include="..\Network\Network.csproj" />
   </ItemGroup>
 
 </Project>
-
