@@ -7,11 +7,11 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 {
 
     /// <summary>
-    /// Defines values for IdentityType.
+    /// Defines values for CreatedByType.
     /// </summary>
 
 
-    public static class IdentityType
+    public static class CreatedByType
     {
         public const string User = "User";
         public const string Application = "Application";
