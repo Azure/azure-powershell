@@ -4272,6 +4272,125 @@ function Test-VirtualMachineStop
 
 <#
 .SYNOPSIS
+Test Stop-AzVM ForceDeallocate parameter metadata and parameter set behavior.
+#>
+function Test-VirtualMachineStopForceDeallocate
+{
+    # Step 1: Verify the new parameter is exposed on the cmdlet as an optional switch.
+    $stopVmCommand = Get-Command Stop-AzVM -ErrorAction Stop;
+    $forceDeallocateParameter = $stopVmCommand.Parameters["ForceDeallocate"];
+
+    Assert-NotNull $forceDeallocateParameter;
+    Assert-AreEqual ([System.Management.Automation.SwitchParameter].FullName) $forceDeallocateParameter.ParameterType.FullName;
+
+    # ForceDeallocate is available across all parameter sets (not a dedicated set), so it can be
+    # combined with the existing resource-group, id, and hibernate stop scenarios.
+    Assert-True { $forceDeallocateParameter.ParameterSets.Keys -contains "__AllParameterSets" };
+
+    # Step 2: Verify supported combinations bind successfully without issuing live requests.
+    $vmId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/virtualMachines/vm";
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -Force -WhatIf;
+    Stop-AzVM -Id $vmId -ForceDeallocate -Force -WhatIf;
+
+    # Step 3: Verify existing stop combinations still bind successfully.
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -Force -WhatIf;
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -StayProvisioned -SkipShutdown -Force -WhatIf;
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -Hibernate -Force -WhatIf;
+
+    # Step 4: Verify ForceDeallocate cannot be combined with Hibernate, StayProvisioned, or
+    # SkipShutdown. Hibernate is a distinct stop path, and StayProvisioned / SkipShutdown keep
+    # the VM provisioned instead of deallocating it.
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -Hibernate -Force -WhatIf -ErrorAction Stop; } "cannot be used together";
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -StayProvisioned -Force -WhatIf -ErrorAction Stop; } "cannot be used together";
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -SkipShutdown -Force -WhatIf -ErrorAction Stop; } "cannot be used together";
+}
+
+<#
+.SYNOPSIS
+Test Stop-AzVM -ForceDeallocate end to end against a live virtual machine.
+
+.DESCRIPTION
+This scenario creates a real VM and force deallocates it via Stop-AzVM -ForceDeallocate,
+then asserts the VM reaches the deallocated power state. It must be recorded in Record mode
+against a live subscription (see documentation/testing-docs/using-azure-test-framework.md).
+
+NOTE: -ForceDeallocate is intended for VMs with ZoneMovement enabled. The enablement cmdlet
+(Set-AzVMZoneMovement) is delivered in a separate change; when recording this test, target a
+subscription/VM where the ForceDeallocate operation is accepted by the service.
+#>
+function Test-VirtualMachineStopForceDeallocateExecution
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    # Zone movement (and therefore -ForceDeallocate) is available in the eastus2euap canary region.
+    $loc = "eastus2euap";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a zone-resilient VM pinned to a specific availability zone.
+        $vmname = 'vm' + $rgname;
+        $vmsize = "Standard_D2s_v4";
+        $domainNameLabel = "d1" + $rgname;
+        $zone = "3";
+        $vmconfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Zone $zone -SecurityType "Standard";
+
+        # Linux image (the subscription policy disallows non-compliant Windows VMs).
+        $publisherName = "Canonical";
+        $offer = "0001-com-ubuntu-server-jammy";
+        $sku = "22_04-lts-gen2";
+        $vmconfig = Set-AzVMSourceImage -VM $vmconfig -PublisherName $publisherName -Offer $offer -Skus $sku -Version 'latest';
+
+        # A zone-resilient VM requires a zone-redundant (ZRS) OS disk.
+        $vmconfig = Set-AzVMOSDisk -VM $vmconfig -Name ($vmname + '-osdisk') -StorageAccountType "StandardSSD_ZRS" -CreateOption FromImage -Caching ReadWrite;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -Sku Standard -AllocationMethod Static -Zone $zone -DomainNameLabel $domainNameLabel;
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $vmconfig = Add-AzVMNetworkInterface -VM $vmconfig -Id $nic.Id;
+
+        # OS & credentials
+        $user = "usertest";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Linux -ComputerName $computerName -Credential $cred;
+
+        # Enable zone movement so the VM qualifies for -ForceDeallocate.
+        $vmconfig = Set-AzVMZoneMovement -VM $vmconfig -IsEnabled $true;
+        Assert-AreEqual $true $vmconfig.ResiliencyProfile.ZoneMovement.IsEnabled;
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmconfig;
+
+        # Confirm zone movement is enabled on the created VM.
+        $createdVm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $true $createdVm.ResiliencyProfile.ZoneMovement.IsEnabled;
+
+        # Force deallocate the running VM.
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmname -ForceDeallocate -Force;
+
+        # Verify the VM reached the deallocated power state.
+        $vmStatus = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
+        $powerState = ($vmStatus.Statuses | Where-Object { $_.Code -like "PowerState/*" }).Code;
+        Assert-AreEqual "PowerState/deallocated" $powerState;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machine Managed Disk
 #>
 function Test-VirtualMachineRemoteDesktop
