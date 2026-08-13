@@ -37,9 +37,8 @@ Stop-AzVM [-Force] [-StayProvisioned] [-NoWait] [-SkipShutdown] [-Id] <String> [
 
 ### IdHibernateParameterSet
 ```
-Stop-AzVM [-Force] [-NoWait] [-Hibernate] [-Id] <String> [-ForceDeallocate] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Stop-AzVM [-Force] [-NoWait] [-Hibernate] [-ForceDeallocate] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,7 +142,7 @@ The ID of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: IdParameterSetName, IdHibernateParameterSet
+Parameter Sets: IdParameterSetName
 Aliases:
 
 Required: True
