@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusTopic
 
 ## SYNOPSIS
-create a topic in the specified namespace.
+Create a topic in the specified namespace.
 
 ## SYNTAX
 
@@ -18,8 +18,8 @@ New-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName 
  [-SubscriptionId <String>] [-AutoDeleteOnIdle <TimeSpan>] [-DefaultMessageTimeToLive <TimeSpan>]
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations] [-EnableExpress]
  [-EnablePartitioning] [-MaxMessageSizeInKilobytes <Int64>] [-MaxSizeInMegabytes <Int32>]
- [-RequiresDuplicateDetection] [-Status <String>] [-SupportOrdering] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RequiresDuplicateDetection] [-Status <String>] [-SupportOrdering] [-UserMetadata <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespaceExpanded
@@ -28,7 +28,8 @@ New-AzServiceBusTopic -Name <String> -NamespaceInputObject <IServiceBusIdentity>
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperations] [-EnableExpress] [-EnablePartitioning] [-MaxMessageSizeInKilobytes <Int64>]
  [-MaxSizeInMegabytes <Int32>] [-RequiresDuplicateDetection] [-Status <String>] [-SupportOrdering]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespace
@@ -38,7 +39,7 @@ New-AzServiceBusTopic -Name <String> -NamespaceInputObject <IServiceBusIdentity>
 ```
 
 ## DESCRIPTION
-create a topic in the specified namespace.
+Create a topic in the specified namespace.
 
 ## EXAMPLES
 
@@ -296,7 +297,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -326,8 +328,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -346,6 +348,21 @@ Value that indicates whether the topic supports ordering.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserMetadata
+Gets and Sets Metadata of User.
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 

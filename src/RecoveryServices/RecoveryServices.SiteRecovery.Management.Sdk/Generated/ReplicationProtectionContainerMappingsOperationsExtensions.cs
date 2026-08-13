@@ -19,11 +19,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -43,11 +42,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -72,11 +70,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -99,11 +96,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -131,11 +127,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -144,7 +139,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Protection container name.
         /// </param>
         /// <param name='mappingName'>
-        /// Protection container mapping name.
+        /// Protection Container mapping name.
         /// </param>
         public static ProtectionContainerMapping Create(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, CreateProtectionContainerMappingInputProperties properties = default(CreateProtectionContainerMappingInputProperties))
         {
@@ -158,11 +153,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -171,7 +165,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Protection container name.
         /// </param>
         /// <param name='mappingName'>
-        /// Protection container mapping name.
+        /// Protection Container mapping name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -184,73 +178,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
         }
         /// <summary>
-        /// The operation to purge(force delete) a protection container mapping.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='fabricName'>
-        /// Fabric name.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
-        /// </param>
-        /// <param name='mappingName'>
-        /// Protection container mapping name.
-        /// </param>
-        public static void Purge(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName)
-        {
-                ((IReplicationProtectionContainerMappingsOperations)operations).PurgeAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// The operation to purge(force delete) a protection container mapping.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='fabricName'>
-        /// Fabric name.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
-        /// </param>
-        /// <param name='mappingName'>
-        /// Protection container mapping name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task PurgeAsync(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.PurgeWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// The operation to update protection container mapping.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -259,7 +196,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Protection container name.
         /// </param>
         /// <param name='mappingName'>
-        /// Protection container mapping name.
+        /// Protection Container mapping name.
         /// </param>
         public static ProtectionContainerMapping Update(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, UpdateProtectionContainerMappingInputProperties properties = default(UpdateProtectionContainerMappingInputProperties))
         {
@@ -273,11 +210,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -286,7 +222,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Protection container name.
         /// </param>
         /// <param name='mappingName'>
-        /// Protection container mapping name.
+        /// Protection Container mapping name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -299,17 +235,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
         }
         /// <summary>
-        /// The operation to delete or remove a protection container mapping.
+        /// The operation to purge(force delete) a protection container mapping.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -318,11 +253,68 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Protection container name.
         /// </param>
         /// <param name='mappingName'>
-        /// Protection container mapping name.
+        /// Protection Container mapping name.
         /// </param>
-        public static void Delete(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, RemoveProtectionContainerMappingInputProperties properties = default(RemoveProtectionContainerMappingInputProperties))
+        public static ReplicationProtectionContainerMappingsPurgeHeaders Purge(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName)
         {
-                ((IReplicationProtectionContainerMappingsOperations)operations).DeleteAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName, properties).GetAwaiter().GetResult();
+                return ((IReplicationProtectionContainerMappingsOperations)operations).PurgeAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// The operation to purge(force delete) a protection container mapping.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='mappingName'>
+        /// Protection Container mapping name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationProtectionContainerMappingsPurgeHeaders> PurgeAsync(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.PurgeWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// The operation to delete or remove a protection container mapping.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='mappingName'>
+        /// Protection Container mapping name.
+        /// </param>
+        public static ReplicationProtectionContainerMappingsDeleteHeaders Delete(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, RemoveProtectionContainerMappingInputProperties properties = default(RemoveProtectionContainerMappingInputProperties))
+        {
+                return ((IReplicationProtectionContainerMappingsOperations)operations).DeleteAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -332,11 +324,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -345,14 +336,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Protection container name.
         /// </param>
         /// <param name='mappingName'>
-        /// Protection container mapping name.
+        /// Protection Container mapping name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, RemoveProtectionContainerMappingInputProperties properties = default(RemoveProtectionContainerMappingInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ReplicationProtectionContainerMappingsDeleteHeaders> DeleteAsync(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, RemoveProtectionContainerMappingInputProperties properties = default(RemoveProtectionContainerMappingInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName, properties, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName, properties, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Lists the protection container mappings in the vault.
@@ -361,8 +355,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.
@@ -379,8 +372,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.
@@ -402,11 +394,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -415,7 +406,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Protection container name.
         /// </param>
         /// <param name='mappingName'>
-        /// Protection container mapping name.
+        /// Protection Container mapping name.
         /// </param>
         public static ProtectionContainerMapping BeginCreate(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, CreateProtectionContainerMappingInputProperties properties = default(CreateProtectionContainerMappingInputProperties))
         {
@@ -429,11 +420,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -442,7 +432,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Protection container name.
         /// </param>
         /// <param name='mappingName'>
-        /// Protection container mapping name.
+        /// Protection Container mapping name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -455,73 +445,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
         }
         /// <summary>
-        /// The operation to purge(force delete) a protection container mapping.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='fabricName'>
-        /// Fabric name.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
-        /// </param>
-        /// <param name='mappingName'>
-        /// Protection container mapping name.
-        /// </param>
-        public static void BeginPurge(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName)
-        {
-                ((IReplicationProtectionContainerMappingsOperations)operations).BeginPurgeAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// The operation to purge(force delete) a protection container mapping.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='fabricName'>
-        /// Fabric name.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
-        /// </param>
-        /// <param name='mappingName'>
-        /// Protection container mapping name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginPurgeAsync(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginPurgeWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// The operation to update protection container mapping.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -530,7 +463,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Protection container name.
         /// </param>
         /// <param name='mappingName'>
-        /// Protection container mapping name.
+        /// Protection Container mapping name.
         /// </param>
         public static ProtectionContainerMapping BeginUpdate(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, UpdateProtectionContainerMappingInputProperties properties = default(UpdateProtectionContainerMappingInputProperties))
         {
@@ -544,11 +477,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -557,7 +489,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Protection container name.
         /// </param>
         /// <param name='mappingName'>
-        /// Protection container mapping name.
+        /// Protection Container mapping name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -570,17 +502,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
         }
         /// <summary>
-        /// The operation to delete or remove a protection container mapping.
+        /// The operation to purge(force delete) a protection container mapping.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -589,11 +520,68 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Protection container name.
         /// </param>
         /// <param name='mappingName'>
-        /// Protection container mapping name.
+        /// Protection Container mapping name.
         /// </param>
-        public static void BeginDelete(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, RemoveProtectionContainerMappingInputProperties properties = default(RemoveProtectionContainerMappingInputProperties))
+        public static ReplicationProtectionContainerMappingsPurgeHeaders BeginPurge(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName)
         {
-                ((IReplicationProtectionContainerMappingsOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName, properties).GetAwaiter().GetResult();
+                return ((IReplicationProtectionContainerMappingsOperations)operations).BeginPurgeAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// The operation to purge(force delete) a protection container mapping.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='mappingName'>
+        /// Protection Container mapping name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationProtectionContainerMappingsPurgeHeaders> BeginPurgeAsync(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginPurgeWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// The operation to delete or remove a protection container mapping.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='mappingName'>
+        /// Protection Container mapping name.
+        /// </param>
+        public static ReplicationProtectionContainerMappingsDeleteHeaders BeginDelete(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, RemoveProtectionContainerMappingInputProperties properties = default(RemoveProtectionContainerMappingInputProperties))
+        {
+                return ((IReplicationProtectionContainerMappingsOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -603,11 +591,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -616,14 +603,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Protection container name.
         /// </param>
         /// <param name='mappingName'>
-        /// Protection container mapping name.
+        /// Protection Container mapping name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, RemoveProtectionContainerMappingInputProperties properties = default(RemoveProtectionContainerMappingInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ReplicationProtectionContainerMappingsDeleteHeaders> BeginDeleteAsync(this IReplicationProtectionContainerMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string mappingName, RemoveProtectionContainerMappingInputProperties properties = default(RemoveProtectionContainerMappingInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName, properties, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, mappingName, properties, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Lists the protection container mappings for a protection container.

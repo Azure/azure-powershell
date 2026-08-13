@@ -27,6 +27,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="enabled">Whether to enable the Application Routing add-on.
         /// </param>
 
+        /// <param name="gatewayApiImplementations">Configurations for Gateway API providers to be used for managed ingress
+        /// with App Routing. See https://aka.ms/k8s-gateway-api for more information
+        /// on the Gateway API.
+        /// </param>
+
         /// <param name="dnsZoneResourceIds">Resource IDs of the DNS zones to be associated with the Application Routing
         /// add-on. Used only when Application Routing add-on is enabled. Public and
         /// private DNS zones can be in different resource groups, but all public DNS
@@ -45,10 +50,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// add-on](https://learn.microsoft.com/en-us/azure/aks/web-app-routing?tabs=with-osm)
         /// for more instructions.
         /// </param>
-        public ManagedClusterIngressProfileWebAppRouting(bool? enabled = default(bool?), System.Collections.Generic.IList<string> dnsZoneResourceIds = default(System.Collections.Generic.IList<string>), ManagedClusterIngressProfileNginx nginx = default(ManagedClusterIngressProfileNginx), UserAssignedIdentity identity = default(UserAssignedIdentity))
+        public ManagedClusterIngressProfileWebAppRouting(bool? enabled = default(bool?), ManagedClusterWebAppRoutingGatewayAPIImplementations gatewayApiImplementations = default(ManagedClusterWebAppRoutingGatewayAPIImplementations), System.Collections.Generic.IList<string> dnsZoneResourceIds = default(System.Collections.Generic.IList<string>), ManagedClusterIngressProfileNginx nginx = default(ManagedClusterIngressProfileNginx), UserAssignedIdentity identity = default(UserAssignedIdentity))
 
         {
             this.Enabled = enabled;
+            this.GatewayApiImplementations = gatewayApiImplementations;
             this.DnsZoneResourceIds = dnsZoneResourceIds;
             this.Nginx = nginx;
             this.Identity = identity;
@@ -66,6 +72,14 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enabled")]
         public bool? Enabled {get; set; }
+
+        /// <summary>
+        /// Gets or sets configurations for Gateway API providers to be used for
+        /// managed ingress with App Routing. See https://aka.ms/k8s-gateway-api for
+        /// more information on the Gateway API.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "gatewayAPIImplementations")]
+        public ManagedClusterWebAppRoutingGatewayAPIImplementations GatewayApiImplementations {get; set; }
 
         /// <summary>
         /// Gets or sets resource IDs of the DNS zones to be associated with the
@@ -103,6 +117,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </exception>
         public virtual void Validate()
         {
+
             if (this.DnsZoneResourceIds != null)
             {
                 if (this.DnsZoneResourceIds.Count > 5)

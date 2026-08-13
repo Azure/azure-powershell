@@ -20,14 +20,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Lists the storage classifications available in the specified fabric.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Site name of interest.
+        /// Fabric name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -50,11 +49,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the details of the specified storage classification.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -83,8 +81,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Lists the storage classifications in the vault.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.

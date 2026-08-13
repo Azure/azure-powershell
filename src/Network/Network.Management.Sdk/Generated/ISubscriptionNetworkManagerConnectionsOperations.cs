@@ -14,75 +14,6 @@ namespace Microsoft.Azure.Management.Network
     public partial interface ISubscriptionNetworkManagerConnectionsOperations
     {
         /// <summary>
-        /// Create a network manager connection on this subscription.
-        /// </summary>
-        /// <remarks>
-        /// Create a network manager connection on this subscription.
-        /// </remarks>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        /// <param name='parameters'>
-        /// Network manager connection to be created/updated.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkManagerConnection>> CreateOrUpdateWithHttpMessagesAsync(string networkManagerConnectionName, NetworkManagerConnection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Get a specified connection created by this subscription.
-        /// </summary>
-        /// <remarks>
-        /// Get a specified connection created by this subscription.
-        /// </remarks>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkManagerConnection>> GetWithHttpMessagesAsync(string networkManagerConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Delete specified connection created by this subscription.
-        /// </summary>
-        /// <remarks>
-        /// Delete specified connection created by this subscription.
-        /// </remarks>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string networkManagerConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// List all network manager connections created by this subscription.
         /// </summary>
         /// <remarks>
@@ -111,6 +42,75 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<NetworkManagerConnection>>> ListWithHttpMessagesAsync(int? top = default(int?), string skipToken = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get a specified connection created by this subscription.
+        /// </summary>
+        /// <remarks>
+        /// Get a specified connection created by this subscription.
+        /// </remarks>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkManagerConnection>> GetWithHttpMessagesAsync(string networkManagerConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Create a network manager connection on this subscription.
+        /// </summary>
+        /// <remarks>
+        /// Create a network manager connection on this subscription.
+        /// </remarks>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        /// <param name='parameters'>
+        /// Network manager connection to be created/updated.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkManagerConnection>> CreateOrUpdateWithHttpMessagesAsync(string networkManagerConnectionName, NetworkManagerConnection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete specified connection created by this subscription.
+        /// </summary>
+        /// <remarks>
+        /// Delete specified connection created by this subscription.
+        /// </remarks>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string networkManagerConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List all network manager connections created by this subscription.

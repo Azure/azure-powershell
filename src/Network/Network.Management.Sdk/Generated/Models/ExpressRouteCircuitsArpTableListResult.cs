@@ -24,12 +24,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ExpressRouteCircuitsArpTableListResult class.
         /// </summary>
 
-        /// <param name="value">A list of the ARP tables.
+        /// <param name="value">The ExpressRouteCircuitArpTable items on this page
         /// </param>
 
-        /// <param name="nextLink">The URL to get the next set of results.
+        /// <param name="nextLink">The link to the next page of items
         /// </param>
-        public ExpressRouteCircuitsArpTableListResult(System.Collections.Generic.IList<ExpressRouteCircuitArpTable> value = default(System.Collections.Generic.IList<ExpressRouteCircuitArpTable>), string nextLink = default(string))
+        public ExpressRouteCircuitsArpTableListResult(System.Collections.Generic.IList<ExpressRouteCircuitArpTable> value, string nextLink = default(string))
 
         {
             this.Value = value;
@@ -44,15 +44,30 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets a list of the ARP tables.
+        /// Gets or sets the ExpressRouteCircuitArpTable items on this page
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
         public System.Collections.Generic.IList<ExpressRouteCircuitArpTable> Value {get; set; }
 
         /// <summary>
-        /// Gets or sets the URL to get the next set of results.
+        /// Gets or sets the link to the next page of items
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nextLink")]
         public string NextLink {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Value == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Value");
+            }
+
+
+        }
     }
 }

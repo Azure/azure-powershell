@@ -31,18 +31,18 @@ namespace Microsoft.Azure.Commands.Network
     public class NewAzureRmRoutingConfigurationCommand : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The hub route table associated with this routing configuration.")]
         [ResourceIdCompleter("Microsoft.Network/virtualHubs/hubRouteTables")]
         public string AssociatedRouteTable { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The list of labels for the PropagatedRouteTables property.")]
         public string[] Label { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The list of resource ids of all the hub route tables to advertise the routes to for the PropagatedRouteTables property.")]
         public string[] Id { get; set; }
 
@@ -74,10 +74,10 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
 
             // Resolve the provided Associated RouteTable
-            var associatedRouteTable = ResolveRouteTableId(AssociatedRouteTable);
-            if (associatedRouteTable == null)
+            PSVHubRouteTable associatedRouteTable = null;
+            if (!string.IsNullOrWhiteSpace(AssociatedRouteTable))
             {
-                throw new PSArgumentException(Properties.Resources.VHubRouteTableNotFound);
+                associatedRouteTable = ResolveRouteTableId(AssociatedRouteTable);
             }
 
             // Resolve the Propagated RouteTable property
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Network
             };
 
             var resolvedIds = new List<PSResourceId>() { };
-            foreach (var id in Id)
+            foreach (var id in Id ?? Array.Empty<string>())
             {
                 var resolvedRouteTable = ResolveRouteTableId(id);
                 if (resolvedRouteTable == null)
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Network
             var routingConfig = new PSRoutingConfiguration
             {
                 PropagatedRouteTables = propagatedRouteTable,
-                AssociatedRouteTable = new PSResourceId() { Id = associatedRouteTable.Id },
+                AssociatedRouteTable = associatedRouteTable == null ? null : new PSResourceId() { Id = associatedRouteTable.Id },
                 VnetRoutes = new PSVnetRoute
                 {
                     StaticRoutes = StaticRoute?.ToList(),

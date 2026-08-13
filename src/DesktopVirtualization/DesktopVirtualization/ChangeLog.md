@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.0.0
 * Upgraded API version to 2025-10-10
 * Added MultiplePersistent enum value to HostPool property loadBalancerType.
 * Fixed `New-AzWvdRegistrationInfo`, `Remove-AzWvdRegistrationInfo`.

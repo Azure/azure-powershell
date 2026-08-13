@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Layer4 protocol type that needs to be matched.",
         SerializedName = @"layer4Protocol",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("TCP", "UDP")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("TCP", "UDP", "SCTP")]
         string Layer4Protocol { get; set; }
         /// <summary>List of the Ports that need to be matched.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Port type that needs to be matched.",
         SerializedName = @"portType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourcePort", "DestinationPort")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourcePort", "DestinationPort", "Bidirectional")]
         string PortType { get; set; }
 
     }
@@ -104,14 +104,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 
     {
         /// <summary>Layer4 protocol type that needs to be matched.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("TCP", "UDP")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("TCP", "UDP", "SCTP")]
         string Layer4Protocol { get; set; }
         /// <summary>List of the Ports that need to be matched.</summary>
         System.Collections.Generic.List<string> Port { get; set; }
         /// <summary>List of the port Group Names that need to be matched.</summary>
         System.Collections.Generic.List<string> PortGroupName { get; set; }
         /// <summary>Port type that needs to be matched.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourcePort", "DestinationPort")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourcePort", "DestinationPort", "Bidirectional")]
         string PortType { get; set; }
 
     }

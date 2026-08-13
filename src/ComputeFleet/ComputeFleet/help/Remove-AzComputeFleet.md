@@ -30,20 +30,23 @@ Delete a Fleet
 
 ## EXAMPLES
 
-### Example 1: Remove a compute fleet resource by ResourceGroupName and FleetName
+### Example 1: Delete a Compute Fleet by name
 ```powershell
-Remove-AzComputeFleet -ResourceGroupName "test-fleet" -FleetName "testFleet2"
+Remove-AzComputeFleet -Name "fleet1" -ResourceGroupName "fleet-ps-tst"
 ```
 
-This command deletes a compute fleet resource by ResourceGroupName and FleetName.
+Deletes the specified Compute Fleet and all its associated resources. The command does not produce output by default. After deletion, attempting to retrieve the fleet with `Get-AzComputeFleet` will return a "resource not found" error.
 
-### Example 2: Remove a compute fleet resource by Identity
+### Example 2: Delete a Compute Fleet with PassThru
 ```powershell
-$fleet = Get-AzComputeFleet -SubscriptionId "ca8520e1-3c83-4b64-bb99-60a64673daa3" -ResourceGroupName "test-fleet" -FleetName "testFleet3"
-Remove-AzComputeFleet -InputObject $fleet
+Remove-AzComputeFleet -Name "fleet1" -ResourceGroupName "fleet-ps-tst" -PassThru
 ```
 
-This command updates a compute fleet resource by identity.
+```output
+True
+```
+
+Deletes the specified Compute Fleet and returns a boolean indicating success when the `-PassThru` switch is used.
 
 ## PARAMETERS
 

@@ -36,7 +36,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-GEODATAREPLICATIONLOCATION <INamespaceReplicaLocation[]>: Properties for User Assigned Identities
+GEODATAREPLICATIONLOCATION <INamespaceReplicaLocation[]>: Replica locations for geo data replication.
   [ClusterArmId <String>]: Optional property that denotes the ARM ID of the Cluster. This is required, if a namespace replica should be placed in a Dedicated Event Hub Cluster
   [LocationName <String>]: Azure regions where a replica of the namespace is maintained
   [RoleType <String>]: GeoDR Role Types
@@ -151,6 +151,13 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.String]
+    # The IP address type for the namespace.
+    # Determines whether the namespace supports IPv4 only or both IPv4 and IPv6.
+    ${IPAddressType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
     # The minimum TLS version for the cluster to support, e.g.
     # '1.2'
     ${SkuName},
@@ -186,7 +193,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]]
-    # Properties for User Assigned Identities
+    # Replica locations for geo data replication.
     ${GeoDataReplicationLocation},
 
     [Parameter()]

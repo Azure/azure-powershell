@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Description(@"put a key-value.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/kv/{key}", ApiVersion = "2024-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/kv/{key}", ApiVersion = "2026-04-01")]
     public partial class SetAzAppConfigurationKeyValue_PutExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IContext
@@ -97,6 +97,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>The description of the key-value.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The description of the key-value.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The description of the key-value.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Description { get => _entityBody.Description ?? null; set => _entityBody.Description = value; }
 
         /// <summary>Backing field for <see cref="Endpoint" /> property.</summary>
         private string _endpoint;

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PowerShell;
 
-    /// <summary>The response of the List rule operation.</summary>
+    /// <summary>The response of a Rule list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(RuleListResultTypeConverter))]
     public partial class RuleListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             return ToJsonString();
         }
     }
-    /// The response of the List rule operation.
+    /// The response of a Rule list operation.
     [System.ComponentModel.TypeConverter(typeof(RuleListResultTypeConverter))]
     public partial interface IRuleListResult
 

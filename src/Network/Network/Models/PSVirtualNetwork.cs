@@ -54,6 +54,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSResourceId DefaultPublicNatGateway { get; set; }
 
+        public PSAddressSpace SummarizedGatewayPrefixes { get; set; }
+
         [JsonIgnore]
         public string AddressSpaceText
         {
@@ -132,6 +134,12 @@ namespace Microsoft.Azure.Commands.Network.Models
                 }
                 return null;
             }
+        }
+
+        [JsonIgnore]
+        public string SummarizedGatewayPrefixesText
+        {
+            get { return JsonConvert.SerializeObject(SummarizedGatewayPrefixes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

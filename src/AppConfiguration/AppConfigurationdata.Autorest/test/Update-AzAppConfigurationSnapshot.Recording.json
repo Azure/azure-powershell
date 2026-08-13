@@ -1,9 +1,9 @@
 {
-  "Update-AzAppConfigurationSnapshot+[NoContext]+UpdateExpanded+$PUT+https://sanitized.azconfig.io/snapshots/updsnap-test1?api-version=2024-09-01+1": {
+  "Update-AzAppConfigurationSnapshot+[NoContext]+UpdateExpanded+$PUT+https://sanitized.azconfig.io/snapshots/updsnap-test1?api-version=2026-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://sanitized.azconfig.io/snapshots/updsnap-test1?api-version=2024-09-01",
-      "Content": "{\r\n  \"filters\": [\r\n    {\r\n      \"key\": \"2wcg\"\r\n    }\r\n  ]\r\n}",
+      "RequestUri": "https://sanitized.azconfig.io/snapshots/updsnap-test1?api-version=2026-04-01",
+      "Content": "{\r\n  \"filters\": [\r\n    {\r\n      \"key\": \"dogp\"\r\n    }\r\n  ]\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -15,40 +15,40 @@
     "Response": {
       "StatusCode": 201,
       "Headers": {
-        "Date": [ "Thu, 16 Apr 2026 21:54:24 GMT" ],
+        "Date": [ "Tue, 02 Jun 2026 22:09:58 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"jX2ZIbCw5CZYeWnt0ezw522X8lLzjIbAX5KUzjb2eAg\"" ],
-        "Operation-Location": [ "https://sanitized.azconfig.io/operations?snapshot=updsnap-test1\u0026api-version=2024-09-01" ],
-        "Link": [ "\u003c/kv?snapshot=updsnap-test1\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNzM=;sn=79279273" ],
-        "x-ms-request-id": [ "634f9e33-c184-4e26-bc93-d1f68c743162" ],
-        "x-ms-correlation-request-id": [ "634f9e33-c184-4e26-bc93-d1f68c743162" ],
-        "x-ms-date": [ "Thu, 16 Apr 2026 21:54:24 GMT" ],
+        "ETag": [ "\"XzCnI-AhPGhV1pUiWEk4R0nYKy_lDXztFT1fkvfPCLU\"" ],
+        "Operation-Location": [ "https://sanitized.azconfig.io/operations?snapshot=updsnap-test1\u0026api-version=2026-04-01" ],
+        "Link": [ "\u003c/kv?snapshot=updsnap-test1\u0026api-version=2026-04-01\u003e; rel=\"items\"" ],
+        "Sync-Token": [ "zAJw6V16=MTQ6MTkjOTAwMzUxNjU=;sn=90035165" ],
+        "x-ms-request-id": [ "ccc8854a-1703-483c-bb30-87434dcc63ef" ],
+        "x-ms-correlation-request-id": [ "ccc8854a-1703-483c-bb30-87434dcc63ef" ],
+        "x-ms-date": [ "Tue, 02 Jun 2026 22:09:58 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Thu, 16 Apr 2026 21:54:24 GMT" ]
+        "Last-Modified": [ "Tue, 02 Jun 2026 22:09:58 GMT" ]
       },
-      "Content": "{\"etag\":\"jX2ZIbCw5CZYeWnt0ezw522X8lLzjIbAX5KUzjb2eAg\",\"name\":\"updsnap-test1\",\"status\":\"provisioning\",\"filters\":[{\"key\":\"2wcg\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-16T21:54:24.5345489+00:00\",\"size\":0,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
+      "Content": "{\"etag\":\"XzCnI-AhPGhV1pUiWEk4R0nYKy_lDXztFT1fkvfPCLU\",\"name\":\"updsnap-test1\",\"description\":null,\"status\":\"provisioning\",\"filters\":[{\"key\":\"dogp\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-06-02T22:09:58.7509212+00:00\",\"size\":0,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
       "isContentBase64": false
     }
   },
-  "Update-AzAppConfigurationSnapshot+[NoContext]+UpdateExpanded+$GET+https://sanitized.azconfig.io/operations?snapshot=updsnap-test1\u0026api-version=2024-09-01+2": {
+  "Update-AzAppConfigurationSnapshot+[NoContext]+UpdateExpanded+$GET+https://sanitized.azconfig.io/operations?snapshot=updsnap-test1\u0026api-version=2026-04-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://sanitized.azconfig.io/operations?snapshot=updsnap-test1\u0026api-version=2024-09-01",
+      "RequestUri": "https://sanitized.azconfig.io/operations?snapshot=updsnap-test1\u0026api-version=2026-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-client-request-id": [ "1f541afa-fe6b-4ac9-8b64-26c219aba98c" ],
+        "x-ms-client-request-id": [ "a0589584-a687-4477-8daa-fd87559697b1" ],
         "CommandName": [ "New-AzAppConfigurationSnapshot" ],
         "FullCommandName": [ "New-AzAppConfigurationSnapshot_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v15.6.1", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -56,13 +56,13 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 16 Apr 2026 21:54:55 GMT" ],
+        "Date": [ "Tue, 02 Jun 2026 22:10:29 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNzQ=;sn=79279274" ],
-        "x-ms-request-id": [ "5251f706-ff29-4882-b51a-8e3030fff989" ],
-        "x-ms-correlation-request-id": [ "5251f706-ff29-4882-b51a-8e3030fff989" ],
-        "x-ms-date": [ "Thu, 16 Apr 2026 21:54:55 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTQ6MTkjOTAwMzUxNzA=;sn=90035170" ],
+        "x-ms-request-id": [ "519cfaba-645d-4222-9285-0c70a2e5e1e9" ],
+        "x-ms-correlation-request-id": [ "519cfaba-645d-4222-9285-0c70a2e5e1e9" ],
+        "x-ms-date": [ "Tue, 02 Jun 2026 22:10:29 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
@@ -73,19 +73,19 @@
       "isContentBase64": false
     }
   },
-  "Update-AzAppConfigurationSnapshot+[NoContext]+UpdateExpanded+$GET+https://sanitized.azconfig.io/snapshots/updsnap-test1?api-version=2024-09-01+3": {
+  "Update-AzAppConfigurationSnapshot+[NoContext]+UpdateExpanded+$GET+https://sanitized.azconfig.io/snapshots/updsnap-test1?api-version=2026-04-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://sanitized.azconfig.io/snapshots/updsnap-test1?api-version=2024-09-01",
+      "RequestUri": "https://sanitized.azconfig.io/snapshots/updsnap-test1?api-version=2026-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-client-request-id": [ "1f541afa-fe6b-4ac9-8b64-26c219aba98c" ],
+        "x-ms-client-request-id": [ "a0589584-a687-4477-8daa-fd87559697b1" ],
         "CommandName": [ "New-AzAppConfigurationSnapshot" ],
         "FullCommandName": [ "New-AzAppConfigurationSnapshot_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v15.6.1", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -93,30 +93,30 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 16 Apr 2026 21:54:55 GMT" ],
+        "Date": [ "Tue, 02 Jun 2026 22:10:29 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"jX2ZIbCw5CZYeWnt0ezw522X8lLzjIbAX5KUzjb2eAg\"" ],
-        "Link": [ "\u003c/kv?snapshot=updsnap-test1\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNzQ=;sn=79279274" ],
-        "x-ms-request-id": [ "2e8fbf52-9b26-4f28-81f9-c4e801486995" ],
-        "x-ms-correlation-request-id": [ "2e8fbf52-9b26-4f28-81f9-c4e801486995" ],
-        "x-ms-date": [ "Thu, 16 Apr 2026 21:54:55 GMT" ],
+        "ETag": [ "\"XzCnI-AhPGhV1pUiWEk4R0nYKy_lDXztFT1fkvfPCLU\"" ],
+        "Link": [ "\u003c/kv?snapshot=updsnap-test1\u0026api-version=2026-04-01\u003e; rel=\"items\"" ],
+        "Sync-Token": [ "zAJw6V16=MTQ6MTkjOTAwMzUxNzA=;sn=90035170" ],
+        "x-ms-request-id": [ "c4eed2ab-8585-4a25-b31d-df004fbe4cf9" ],
+        "x-ms-correlation-request-id": [ "c4eed2ab-8585-4a25-b31d-df004fbe4cf9" ],
+        "x-ms-date": [ "Tue, 02 Jun 2026 22:10:29 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Thu, 16 Apr 2026 21:54:32 GMT" ]
+        "Last-Modified": [ "Tue, 02 Jun 2026 22:10:06 GMT" ]
       },
-      "Content": "{\"etag\":\"jX2ZIbCw5CZYeWnt0ezw522X8lLzjIbAX5KUzjb2eAg\",\"name\":\"updsnap-test1\",\"status\":\"ready\",\"filters\":[{\"key\":\"2wcg\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-16T21:54:24+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
+      "Content": "{\"etag\":\"XzCnI-AhPGhV1pUiWEk4R0nYKy_lDXztFT1fkvfPCLU\",\"name\":\"updsnap-test1\",\"description\":null,\"status\":\"ready\",\"filters\":[{\"key\":\"dogp\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-06-02T22:09:58+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
       "isContentBase64": false
     }
   },
-  "Update-AzAppConfigurationSnapshot+[NoContext]+UpdateExpanded+$PATCH+https://sanitized.azconfig.io/snapshots/updsnap-test1?api-version=2024-09-01+4": {
+  "Update-AzAppConfigurationSnapshot+[NoContext]+UpdateExpanded+$PATCH+https://sanitized.azconfig.io/snapshots/updsnap-test1?api-version=2026-04-01+4": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://sanitized.azconfig.io/snapshots/updsnap-test1?api-version=2024-09-01",
+      "RequestUri": "https://sanitized.azconfig.io/snapshots/updsnap-test1?api-version=2026-04-01",
       "Content": "{\r\n  \"status\": \"archived\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -129,31 +129,31 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 16 Apr 2026 21:54:55 GMT" ],
+        "Date": [ "Tue, 02 Jun 2026 22:10:29 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"DTpCiIvCq2k2NBuE7i6Zyx2T-6lqOM_amtdqCXXogrU\"" ],
-        "Link": [ "\u003c/kv?snapshot=updsnap-test1\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNzU=;sn=79279275" ],
-        "x-ms-request-id": [ "6b43c08a-85ee-493a-9974-a1e46932e0ec" ],
-        "x-ms-correlation-request-id": [ "6b43c08a-85ee-493a-9974-a1e46932e0ec" ],
-        "x-ms-date": [ "Thu, 16 Apr 2026 21:54:55 GMT" ],
+        "ETag": [ "\"FZSSDnvS6H25RPRZZucy44R4vk6SdCLwkU8fCxE7fio\"" ],
+        "Link": [ "\u003c/kv?snapshot=updsnap-test1\u0026api-version=2026-04-01\u003e; rel=\"items\"" ],
+        "Sync-Token": [ "zAJw6V16=MTQ6MTkjOTAwMzUxNzE=;sn=90035171" ],
+        "x-ms-request-id": [ "e7f20394-f8ef-403a-819f-20d6b1975bcb" ],
+        "x-ms-correlation-request-id": [ "e7f20394-f8ef-403a-819f-20d6b1975bcb" ],
+        "x-ms-date": [ "Tue, 02 Jun 2026 22:10:29 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Thu, 16 Apr 2026 21:54:32 GMT" ]
+        "Last-Modified": [ "Tue, 02 Jun 2026 22:10:06 GMT" ]
       },
-      "Content": "{\"etag\":\"DTpCiIvCq2k2NBuE7i6Zyx2T-6lqOM_amtdqCXXogrU\",\"name\":\"updsnap-test1\",\"status\":\"archived\",\"filters\":[{\"key\":\"2wcg\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-16T21:54:24+00:00\",\"expires\":\"2026-05-16T21:54:55.5611968+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
+      "Content": "{\"etag\":\"FZSSDnvS6H25RPRZZucy44R4vk6SdCLwkU8fCxE7fio\",\"name\":\"updsnap-test1\",\"description\":null,\"status\":\"archived\",\"filters\":[{\"key\":\"dogp\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-06-02T22:09:58+00:00\",\"expires\":\"2026-07-02T22:10:29.446923+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
       "isContentBase64": false
     }
   },
-  "Update-AzAppConfigurationSnapshot+[NoContext]+ArchiveAndRecover+$PUT+https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2024-09-01+1": {
+  "Update-AzAppConfigurationSnapshot+[NoContext]+ArchiveAndRecover+$PUT+https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2026-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2024-09-01",
-      "Content": "{\r\n  \"filters\": [\r\n    {\r\n      \"key\": \"2wcg\"\r\n    }\r\n  ]\r\n}",
+      "RequestUri": "https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2026-04-01",
+      "Content": "{\r\n  \"filters\": [\r\n    {\r\n      \"key\": \"dogp\"\r\n    }\r\n  ]\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -165,40 +165,40 @@
     "Response": {
       "StatusCode": 201,
       "Headers": {
-        "Date": [ "Thu, 16 Apr 2026 21:54:55 GMT" ],
+        "Date": [ "Tue, 02 Jun 2026 22:10:29 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"Y1ih9bZgFMjE4BdiBoS3QhAW0ZvYNIcocl0bcYeRoKI\"" ],
-        "Operation-Location": [ "https://sanitized.azconfig.io/operations?snapshot=updsnap-test2\u0026api-version=2024-09-01" ],
-        "Link": [ "\u003c/kv?snapshot=updsnap-test2\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNzY=;sn=79279276" ],
-        "x-ms-request-id": [ "d9532389-7763-455a-bcd0-5c0a5479efea" ],
-        "x-ms-correlation-request-id": [ "d9532389-7763-455a-bcd0-5c0a5479efea" ],
-        "x-ms-date": [ "Thu, 16 Apr 2026 21:54:55 GMT" ],
+        "ETag": [ "\"9bv2SFRplNu1hyyc0ggs3uPNgAr2l6WhrHN7CcrqsVA\"" ],
+        "Operation-Location": [ "https://sanitized.azconfig.io/operations?snapshot=updsnap-test2\u0026api-version=2026-04-01" ],
+        "Link": [ "\u003c/kv?snapshot=updsnap-test2\u0026api-version=2026-04-01\u003e; rel=\"items\"" ],
+        "Sync-Token": [ "zAJw6V16=MTQ6MTkjOTAwMzUxNzI=;sn=90035172" ],
+        "x-ms-request-id": [ "a956984b-1cee-48e3-a9ea-ddbec1c83696" ],
+        "x-ms-correlation-request-id": [ "a956984b-1cee-48e3-a9ea-ddbec1c83696" ],
+        "x-ms-date": [ "Tue, 02 Jun 2026 22:10:29 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Thu, 16 Apr 2026 21:54:55 GMT" ]
+        "Last-Modified": [ "Tue, 02 Jun 2026 22:10:29 GMT" ]
       },
-      "Content": "{\"etag\":\"Y1ih9bZgFMjE4BdiBoS3QhAW0ZvYNIcocl0bcYeRoKI\",\"name\":\"updsnap-test2\",\"status\":\"provisioning\",\"filters\":[{\"key\":\"2wcg\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-16T21:54:55.7147968+00:00\",\"size\":0,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
+      "Content": "{\"etag\":\"9bv2SFRplNu1hyyc0ggs3uPNgAr2l6WhrHN7CcrqsVA\",\"name\":\"updsnap-test2\",\"description\":null,\"status\":\"provisioning\",\"filters\":[{\"key\":\"dogp\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-06-02T22:10:29.5718913+00:00\",\"size\":0,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
       "isContentBase64": false
     }
   },
-  "Update-AzAppConfigurationSnapshot+[NoContext]+ArchiveAndRecover+$GET+https://sanitized.azconfig.io/operations?snapshot=updsnap-test2\u0026api-version=2024-09-01+2": {
+  "Update-AzAppConfigurationSnapshot+[NoContext]+ArchiveAndRecover+$GET+https://sanitized.azconfig.io/operations?snapshot=updsnap-test2\u0026api-version=2026-04-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://sanitized.azconfig.io/operations?snapshot=updsnap-test2\u0026api-version=2024-09-01",
+      "RequestUri": "https://sanitized.azconfig.io/operations?snapshot=updsnap-test2\u0026api-version=2026-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-client-request-id": [ "57bf940c-e081-4a20-9694-2e504379a1b7" ],
+        "x-ms-client-request-id": [ "44c69314-65f2-43bd-b047-738202ace350" ],
         "CommandName": [ "New-AzAppConfigurationSnapshot" ],
         "FullCommandName": [ "New-AzAppConfigurationSnapshot_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v15.6.1", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -206,13 +206,13 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 16 Apr 2026 21:55:26 GMT" ],
+        "Date": [ "Tue, 02 Jun 2026 22:11:01 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkzMDk=;sn=79279309" ],
-        "x-ms-request-id": [ "d3b2e69c-245f-41f4-8132-af13e8dda3d9" ],
-        "x-ms-correlation-request-id": [ "d3b2e69c-245f-41f4-8132-af13e8dda3d9" ],
-        "x-ms-date": [ "Thu, 16 Apr 2026 21:55:26 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTQ6MTkjOTAwMzUxNzM=;sn=90035173" ],
+        "x-ms-request-id": [ "c9cd5057-023b-4fe5-abac-e20d8784fcb3" ],
+        "x-ms-correlation-request-id": [ "c9cd5057-023b-4fe5-abac-e20d8784fcb3" ],
+        "x-ms-date": [ "Tue, 02 Jun 2026 22:11:01 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
@@ -223,19 +223,19 @@
       "isContentBase64": false
     }
   },
-  "Update-AzAppConfigurationSnapshot+[NoContext]+ArchiveAndRecover+$GET+https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2024-09-01+3": {
+  "Update-AzAppConfigurationSnapshot+[NoContext]+ArchiveAndRecover+$GET+https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2026-04-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2024-09-01",
+      "RequestUri": "https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2026-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-client-request-id": [ "57bf940c-e081-4a20-9694-2e504379a1b7" ],
+        "x-ms-client-request-id": [ "44c69314-65f2-43bd-b047-738202ace350" ],
         "CommandName": [ "New-AzAppConfigurationSnapshot" ],
         "FullCommandName": [ "New-AzAppConfigurationSnapshot_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v15.6.1", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -243,30 +243,30 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 16 Apr 2026 21:55:26 GMT" ],
+        "Date": [ "Tue, 02 Jun 2026 22:11:01 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"Y1ih9bZgFMjE4BdiBoS3QhAW0ZvYNIcocl0bcYeRoKI\"" ],
-        "Link": [ "\u003c/kv?snapshot=updsnap-test2\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkzMDk=;sn=79279309" ],
-        "x-ms-request-id": [ "145cfbcc-545a-4f62-8d9b-7257a583986b" ],
-        "x-ms-correlation-request-id": [ "145cfbcc-545a-4f62-8d9b-7257a583986b" ],
-        "x-ms-date": [ "Thu, 16 Apr 2026 21:55:26 GMT" ],
+        "ETag": [ "\"9bv2SFRplNu1hyyc0ggs3uPNgAr2l6WhrHN7CcrqsVA\"" ],
+        "Link": [ "\u003c/kv?snapshot=updsnap-test2\u0026api-version=2026-04-01\u003e; rel=\"items\"" ],
+        "Sync-Token": [ "zAJw6V16=MTQ6MTkjOTAwMzUxNzM=;sn=90035173" ],
+        "x-ms-request-id": [ "e6fa3771-6545-4950-846a-6a01a3d8a3ea" ],
+        "x-ms-correlation-request-id": [ "e6fa3771-6545-4950-846a-6a01a3d8a3ea" ],
+        "x-ms-date": [ "Tue, 02 Jun 2026 22:11:01 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Thu, 16 Apr 2026 21:54:57 GMT" ]
+        "Last-Modified": [ "Tue, 02 Jun 2026 22:10:34 GMT" ]
       },
-      "Content": "{\"etag\":\"Y1ih9bZgFMjE4BdiBoS3QhAW0ZvYNIcocl0bcYeRoKI\",\"name\":\"updsnap-test2\",\"status\":\"ready\",\"filters\":[{\"key\":\"2wcg\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-16T21:54:55+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
+      "Content": "{\"etag\":\"9bv2SFRplNu1hyyc0ggs3uPNgAr2l6WhrHN7CcrqsVA\",\"name\":\"updsnap-test2\",\"description\":null,\"status\":\"ready\",\"filters\":[{\"key\":\"dogp\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-06-02T22:10:29+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
       "isContentBase64": false
     }
   },
-  "Update-AzAppConfigurationSnapshot+[NoContext]+ArchiveAndRecover+$PATCH+https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2024-09-01+4": {
+  "Update-AzAppConfigurationSnapshot+[NoContext]+ArchiveAndRecover+$PATCH+https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2026-04-01+4": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2024-09-01",
+      "RequestUri": "https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2026-04-01",
       "Content": "{\r\n  \"status\": \"archived\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -279,30 +279,30 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 16 Apr 2026 21:55:26 GMT" ],
+        "Date": [ "Tue, 02 Jun 2026 22:11:01 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"JfFboXC7Gxb-J6ux7MwIwuptUFF8MEJpb2ZwdzIcx9c\"" ],
-        "Link": [ "\u003c/kv?snapshot=updsnap-test2\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkzMTA=;sn=79279310" ],
-        "x-ms-request-id": [ "ef7587a5-2b1c-4def-a133-0045b05accfa" ],
-        "x-ms-correlation-request-id": [ "ef7587a5-2b1c-4def-a133-0045b05accfa" ],
-        "x-ms-date": [ "Thu, 16 Apr 2026 21:55:26 GMT" ],
+        "ETag": [ "\"GuOKrQmcmgmZ2rmELWH19tQV9n-LzHS-B7SeWAjktxM\"" ],
+        "Link": [ "\u003c/kv?snapshot=updsnap-test2\u0026api-version=2026-04-01\u003e; rel=\"items\"" ],
+        "Sync-Token": [ "zAJw6V16=MTQ6MTkjOTAwMzUxNzQ=;sn=90035174" ],
+        "x-ms-request-id": [ "49740a0d-b0cc-4136-9b29-49fbd27a4f0b" ],
+        "x-ms-correlation-request-id": [ "49740a0d-b0cc-4136-9b29-49fbd27a4f0b" ],
+        "x-ms-date": [ "Tue, 02 Jun 2026 22:11:01 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Thu, 16 Apr 2026 21:54:57 GMT" ]
+        "Last-Modified": [ "Tue, 02 Jun 2026 22:10:34 GMT" ]
       },
-      "Content": "{\"etag\":\"JfFboXC7Gxb-J6ux7MwIwuptUFF8MEJpb2ZwdzIcx9c\",\"name\":\"updsnap-test2\",\"status\":\"archived\",\"filters\":[{\"key\":\"2wcg\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-16T21:54:55+00:00\",\"expires\":\"2026-05-16T21:55:26.6895757+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
+      "Content": "{\"etag\":\"GuOKrQmcmgmZ2rmELWH19tQV9n-LzHS-B7SeWAjktxM\",\"name\":\"updsnap-test2\",\"description\":null,\"status\":\"archived\",\"filters\":[{\"key\":\"dogp\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-06-02T22:10:29+00:00\",\"expires\":\"2026-07-02T22:11:01.5294497+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
       "isContentBase64": false
     }
   },
-  "Update-AzAppConfigurationSnapshot+[NoContext]+ArchiveAndRecover+$PATCH+https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2024-09-01+5": {
+  "Update-AzAppConfigurationSnapshot+[NoContext]+ArchiveAndRecover+$PATCH+https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2026-04-01+5": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2024-09-01",
+      "RequestUri": "https://sanitized.azconfig.io/snapshots/updsnap-test2?api-version=2026-04-01",
       "Content": "{\r\n  \"status\": \"ready\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -315,23 +315,23 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 16 Apr 2026 21:55:26 GMT" ],
+        "Date": [ "Tue, 02 Jun 2026 22:11:01 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"0YMwev0YLshoL0Hw2veJtyADqLaAxRMtva8a_Z4Fex0\"" ],
-        "Link": [ "\u003c/kv?snapshot=updsnap-test2\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkzMTE=;sn=79279311" ],
-        "x-ms-request-id": [ "16adabfc-de85-4cc6-91cf-eeeadf6a9af3" ],
-        "x-ms-correlation-request-id": [ "16adabfc-de85-4cc6-91cf-eeeadf6a9af3" ],
-        "x-ms-date": [ "Thu, 16 Apr 2026 21:55:26 GMT" ],
+        "ETag": [ "\"q88quMj2_xVXxh2vBZf9BQkaWFL-7KAxboYYNsJfoxE\"" ],
+        "Link": [ "\u003c/kv?snapshot=updsnap-test2\u0026api-version=2026-04-01\u003e; rel=\"items\"" ],
+        "Sync-Token": [ "zAJw6V16=MTQ6MTkjOTAwMzUxNzU=;sn=90035175" ],
+        "x-ms-request-id": [ "e406f013-e1e0-41b2-9725-bbe74e8f4cd7" ],
+        "x-ms-correlation-request-id": [ "e406f013-e1e0-41b2-9725-bbe74e8f4cd7" ],
+        "x-ms-date": [ "Tue, 02 Jun 2026 22:11:01 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Thu, 16 Apr 2026 21:55:26 GMT" ]
+        "Last-Modified": [ "Tue, 02 Jun 2026 22:11:01 GMT" ]
       },
-      "Content": "{\"etag\":\"0YMwev0YLshoL0Hw2veJtyADqLaAxRMtva8a_Z4Fex0\",\"name\":\"updsnap-test2\",\"status\":\"ready\",\"filters\":[{\"key\":\"2wcg\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-16T21:54:55+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
+      "Content": "{\"etag\":\"q88quMj2_xVXxh2vBZf9BQkaWFL-7KAxboYYNsJfoxE\",\"name\":\"updsnap-test2\",\"description\":null,\"status\":\"ready\",\"filters\":[{\"key\":\"dogp\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-06-02T22:10:29+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
       "isContentBase64": false
     }
   }

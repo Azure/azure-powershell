@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PowerShell;
 
-    /// <summary>
-    /// Result of the request to list NSP access rules. Contains a list of NSP access rules and a URL link to get the next set
-    /// of results.
-    /// </summary>
+    /// <summary>The response of a NspAccessRule list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(NspAccessRuleListResultTypeConverter))]
     public partial class NspAccessRuleListResult
     {
@@ -167,8 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             return ToJsonString();
         }
     }
-    /// Result of the request to list NSP access rules. Contains a list of NSP access rules and a URL link to get the next set
-    /// of results.
+    /// The response of a NspAccessRule list operation.
     [System.ComponentModel.TypeConverter(typeof(NspAccessRuleListResultTypeConverter))]
     public partial interface INspAccessRuleListResult
 

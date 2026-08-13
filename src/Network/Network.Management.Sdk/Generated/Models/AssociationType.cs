@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AssociationType
     {
+        /// <summary>
+        /// Associated
+        /// </summary>
         public const string Associated = "Associated";
+        /// <summary>
+        /// Contains
+        /// </summary>
         public const string Contains = "Contains";
     }
 }

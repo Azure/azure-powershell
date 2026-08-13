@@ -169,7 +169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Origin name which must be unique within the endpoint. ",
+        Description = @"Origin name which must be unique within the endpoint.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }

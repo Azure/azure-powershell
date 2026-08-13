@@ -151,6 +151,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.SnapshotTagsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotInternal)this).Description, global::System.Convert.ToString);
+            }
             if (content.Contains("Link"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotInternal)this).Link = (string) content.GetValueForProperty("Link",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotInternal)this).Link, global::System.Convert.ToString);
@@ -227,6 +231,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.SnapshotTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotInternal)this).Description, global::System.Convert.ToString);
             }
             if (content.Contains("Link"))
             {

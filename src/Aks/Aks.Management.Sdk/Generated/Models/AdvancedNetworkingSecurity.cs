@@ -36,11 +36,17 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// enabled only on cilium-based clusters. If not specified, the default value
         /// is FQDN if security.enabled is set to true.
         /// Possible values include: &#39;L7&#39;, &#39;FQDN&#39;, &#39;None&#39;</param>
-        public AdvancedNetworkingSecurity(bool? enabled = default(bool?), string advancedNetworkPolicies = default(string))
+
+        /// <param name="transitEncryption">Encryption configuration for Cilium-based clusters. Once enabled all
+        /// traffic between Cilium managed pods will be encrypted when it leaves the
+        /// node boundary.
+        /// </param>
+        public AdvancedNetworkingSecurity(bool? enabled = default(bool?), string advancedNetworkPolicies = default(string), AdvancedNetworkingSecurityTransitEncryption transitEncryption = default(AdvancedNetworkingSecurityTransitEncryption))
 
         {
             this.Enabled = enabled;
             this.AdvancedNetworkPolicies = advancedNetworkPolicies;
+            this.TransitEncryption = transitEncryption;
             CustomInit();
         }
 
@@ -68,5 +74,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "advancedNetworkPolicies")]
         public string AdvancedNetworkPolicies {get; set; }
+
+        /// <summary>
+        /// Gets or sets encryption configuration for Cilium-based clusters. Once
+        /// enabled all traffic between Cilium managed pods will be encrypted when it
+        /// leaves the node boundary.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "transitEncryption")]
+        public AdvancedNetworkingSecurityTransitEncryption TransitEncryption {get; set; }
     }
 }

@@ -84,6 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {_privateEndpointConnection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonArray>("privateEndpointConnections"), out var __jsonPrivateEndpointConnections) ? If( __jsonPrivateEndpointConnections as Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPrivateEndpointConnection>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPrivateEndpointConnection) (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.PrivateEndpointConnection.FromJson(__u) )) ))() : null : _privateEndpointConnection;}
             {_disableLocalAuth = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonBoolean>("disableLocalAuth"), out var __jsonDisableLocalAuth) ? (bool?)__jsonDisableLocalAuth : _disableLocalAuth;}
             {_alternateName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("alternateName"), out var __jsonAlternateName) ? (string)__jsonAlternateName : (string)_alternateName;}
+            {_iPAddressType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("ipAddressType"), out var __jsonIPAddressType) ? (string)__jsonIPAddressType : (string)_iPAddressType;}
             AfterFromJson(json);
         }
 
@@ -163,6 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             }
             AddIf( null != this._disableLocalAuth ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonBoolean((bool)this._disableLocalAuth) : null, "disableLocalAuth" ,container.Add );
             AddIf( null != (((object)this._alternateName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._alternateName.ToString()) : null, "alternateName" ,container.Add );
+            AddIf( null != (((object)this._iPAddressType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._iPAddressType.ToString()) : null, "ipAddressType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -1,0 +1,98 @@
+{
+  "Get-AzMongoDBCluster+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/test-project-1/clusters?api-version=2026-03-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/test-project-1/clusters?api-version=2026-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "eb1415e2-de07-4616-ae91-0edeed5ae337" ],
+        "CommandName": [ "Get-AzMongoDBCluster" ],
+        "FullCommandName": [ "Get-AzMongoDBCluster_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.2", "Az.MongoDB/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=da7826b0-7505-464c-a74d-7b72637b257f/eastus2/fef8f3a0-1f74-4d5a-8304-9ce4978e6cfe" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "9e865249-e7d8-44c2-ac79-a44799c0e051" ],
+        "x-ms-correlation-request-id": [ "8b850244-7a6f-479e-aa4b-4c14cac670bb" ],
+        "x-ms-client-request-id": [ "eb1415e2-de07-4616-ae91-0edeed5ae337" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "de8c70a4-ed90-40bd-95f0-a0227aa4910a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20260625T150613Z:8b850244-7a6f-479e-aa4b-4c14cac670bb" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 88A41DC2A6E34B928446ADBA0F6F395E Ref B: PNQ231110907031 Ref C: 2026-06-25T15:06:11Z" ],
+        "Date": [ "Thu, 25 Jun 2026 15:06:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "496" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/test-project-1/clusters/test-cluster-free\",\"name\":\"test-cluster-free\",\"type\":\"MongoDB.Atlas/organizations/projects/clusters\",\"properties\":{\"clusterName\":\"test-cluster-free\",\"clusterTier\":\"FREE\",\"regionName\":\"eastus2\",\"mongoDbVersion\":\"8.0.24-patch-6a3992052eafe5000797a34e\",\"backups\":false,\"state\":\"IDLE\",\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMongoDBCluster+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/test-project-1/clusters/test-cluster-free?api-version=2026-03-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/test-project-1/clusters/test-cluster-free?api-version=2026-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "378deac0-36bd-46f9-aa4b-fb3ddd154d0d" ],
+        "CommandName": [ "Get-AzMongoDBCluster" ],
+        "FullCommandName": [ "Get-AzMongoDBCluster_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.2", "Az.MongoDB/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=da7826b0-7505-464c-a74d-7b72637b257f/eastus2/6013814a-0a9d-4997-b4bd-872ae3a3ce7f" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "9eb0eb29-f4fd-4a62-98db-853eb786c794" ],
+        "x-ms-correlation-request-id": [ "33605180-a7ae-40c5-9ca9-a8ed4b1aea58" ],
+        "x-ms-client-request-id": [ "378deac0-36bd-46f9-aa4b-fb3ddd154d0d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "33eb4685-f936-4ffc-b886-40c32622e2bf" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20260625T150616Z:33605180-a7ae-40c5-9ca9-a8ed4b1aea58" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C12326CDC71045AEB83BB008D8B619D2 Ref B: PNQ231110907031 Ref C: 2026-06-25T15:06:14Z" ],
+        "Date": [ "Thu, 25 Jun 2026 15:06:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "484" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/test-project-1/clusters/test-cluster-free\",\"name\":\"test-cluster-free\",\"type\":\"MongoDB.Atlas/organizations/projects/clusters\",\"properties\":{\"clusterName\":\"test-cluster-free\",\"clusterTier\":\"FREE\",\"regionName\":\"eastus2\",\"mongoDbVersion\":\"8.0.24-patch-6a3992052eafe5000797a34e\",\"backups\":false,\"state\":\"IDLE\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

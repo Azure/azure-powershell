@@ -1,0 +1,9 @@
+{
+  "Names": {
+    "Test-VmssLifecycleHookConfig": []
+  },
+  "Variables": {
+    "SubscriptionId": "cfd0f5f2-722b-46ec-a74c-e62616c24b78"
+  },
+  "Entries": []
+}
