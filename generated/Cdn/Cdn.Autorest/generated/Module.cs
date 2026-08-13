@@ -14,7 +14,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
     using GetTelemetryIdDelegate = global::System.Func<string>;
     using TelemetryDelegate = global::System.Action<string, global::System.Management.Automation.InvocationInfo, string, global::System.Management.Automation.PSCmdlet>;
     using NewRequestPipelineDelegate = global::System.Action<global::System.Management.Automation.InvocationInfo, string, string, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>>;
-    using ChangeSafetyPolicyTokenDelegate = global::System.Action<global::System.Management.Automation.InvocationInfo, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>>;
     using SignalDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>;
     using EventListenerDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Management.Automation.InvocationInfo, string, string, string, global::System.Exception, global::System.Threading.Tasks.Task>;
     using NextDelegate = global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>;
@@ -46,11 +45,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         public bool _useProxy = false;
 
         public global::System.Net.WebProxy _webProxy = new global::System.Net.WebProxy();
-
-        /// <summary>
-        /// Change Safety: delegate called after OnNewRequest to (conditionally) add the policy-token pipeline step.
-        /// </summary>
-        public ChangeSafetyPolicyTokenDelegate AddChangeSafetyPolicyTokenHandler { get; set; }
 
         /// <summary>Gets completion data for azure specific fields</summary>
         public ArgumentCompleterDelegate ArgumentCompleter { get; set; }
@@ -121,7 +115,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
             AfterCreatePipeline(invocationInfo, ref pipeline);
             pipeline.Append(new Runtime.CmdInfoHandler(processRecordId, invocationInfo, parameterSetName).SendAsync);
             OnNewRequest?.Invoke( invocationInfo, correlationId,processRecordId, (step)=> { pipeline.Prepend(step); } , (step)=> { pipeline.Append(step); } );
-            AddChangeSafetyPolicyTokenHandler?.Invoke( invocationInfo, (step)=> { pipeline.Append(step); } );
             return pipeline;
         }
 

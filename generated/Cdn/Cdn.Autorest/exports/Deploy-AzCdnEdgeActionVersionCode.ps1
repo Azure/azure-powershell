@@ -233,38 +233,6 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-dynamicparam {
-    $parameterSet = $PSCmdlet.ParameterSetName
-    $mapping = @{
-        Deploy = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_Deploy';
-        DeployExpanded = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_DeployExpanded';
-        DeployViaIdentity = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_DeployViaIdentity';
-        DeployViaIdentityEdgeAction = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_DeployViaIdentityEdgeAction';
-        DeployViaIdentityEdgeActionExpanded = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_DeployViaIdentityEdgeActionExpanded';
-        DeployViaIdentityExpanded = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_DeployViaIdentityExpanded';
-        DeployViaJsonFilePath = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_DeployViaJsonFilePath';
-        DeployViaJsonString = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_DeployViaJsonString';
-    }
-    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
-    try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
-        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
-        if ($dynamicParams.Length -gt 0) {
-            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
-            foreach ($param in $dynamicParams) {
-                $param = $param.Value
-                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
-                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
-                    $paramDictionary.Add($param.Name, $dynParam)
-                }
-            }
-            return $paramDictionary
-        }
-    } catch {
-        throw
-    }
-}
-
 begin {
     try {
         $outBuffer = $null
