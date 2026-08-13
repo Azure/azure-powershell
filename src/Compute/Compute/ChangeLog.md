@@ -22,7 +22,6 @@
 ## Upcoming Release
 * Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM (Virtual Machine) during stop operations.
     - The switch cannot be used together with `-Hibernate`, `-StayProvisioned`, or `-SkipShutdown`.
-    - Related design review issue Azure/azure-powershell-cmdlet-review-pr#1560.
 
 ## Version 11.8.0
 * Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.
