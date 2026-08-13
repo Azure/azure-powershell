@@ -80,8 +80,11 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netstandard2.0", "System.Security.Permissions", "4.0.3.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Security.Principal.Windows", "4.1.3.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.ServiceModel.Primitives", "4.7.0.0").WithWindowsPowerShell(),
-                CreateAssembly("netstandard2.0", "System.Text.Encodings.Web", "10.0.0.0"),
-                CreateAssembly("netstandard2.0", "System.Text.Json", "10.0.0.0"),
+                // PowerShell 7.6+ runs on .NET 10, whose runtime already supplies these at 10.0.0.0.
+                // Loading them here too would give Utf8JsonWriter two identities across the default
+                // and shared contexts, breaking System.ClientModel's IJsonModel calls.
+                CreateAssembly("netstandard2.0", "System.Text.Encodings.Web", "10.0.0.0").WithPowerShellVersion(new Version("5.1"), new Version("7.6")),
+                CreateAssembly("netstandard2.0", "System.Text.Json", "10.0.0.0").WithPowerShellVersion(new Version("5.1"), new Version("7.6")),
                 CreateAssembly("netstandard2.0", "System.Threading.Tasks.Extensions", "4.2.1.0").WithWindowsPowerShell(),
                 #endregion
             };

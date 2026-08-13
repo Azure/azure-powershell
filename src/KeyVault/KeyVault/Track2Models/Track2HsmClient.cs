@@ -103,6 +103,128 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             throw new NotSupportedException($"{keyAttributes.KeyType} is not supported");
         }
 
+        internal PSKeyVaultKey CreateExternalKey(string managedHsmName, string keyName, string externalKeyId, PSKeyVaultKeyAttributes keyAttributes)
+        {
+            var client = CreateKeyClient(managedHsmName);
+            var options = Track2KeyOptionsFactory.BuildExternalKeyOptions(keyName, externalKeyId, keyAttributes);
+            try
+            {
+                return new PSKeyVaultKey(client.CreateExternalKey(options).Value, _uriHelper, isHsm: true);
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+        }
+
+        #region EKM connection
+        private KeyVaultEkmClient CreateEkmClient(string hsmName) => new KeyVaultEkmClient(_uriHelper.CreateVaultUri(hsmName), _credential);
+
+        internal PSKeyVaultEkmConnection CreateEkmConnection(string hsmName, string host, string pathPrefix, IEnumerable<byte[]> serverCaCertificates, string serverSubjectCommonName)
+        {
+            var client = CreateEkmClient(hsmName);
+            var connection = new KeyVaultEkmConnection(host, serverCaCertificates)
+            {
+                PathPrefix = pathPrefix,
+                ServerSubjectCommonName = serverSubjectCommonName
+            };
+            try
+            {
+                return new PSKeyVaultEkmConnection(client.CreateEkmConnection(connection).Value, hsmName);
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+        }
+
+        internal PSKeyVaultEkmConnection GetEkmConnection(string hsmName)
+        {
+            var client = CreateEkmClient(hsmName);
+            try
+            {
+                return new PSKeyVaultEkmConnection(client.GetEkmConnection().Value, hsmName);
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+        }
+
+        internal PSKeyVaultEkmConnection UpdateEkmConnection(string hsmName, string host, string pathPrefix, IEnumerable<byte[]> serverCaCertificates, string serverSubjectCommonName)
+        {
+            var client = CreateEkmClient(hsmName);
+            try
+            {
+                var existing = client.GetEkmConnection().Value;
+                if (host != null)
+                {
+                    existing.HostName = host;
+                }
+                if (pathPrefix != null)
+                {
+                    existing.PathPrefix = pathPrefix;
+                }
+                if (serverSubjectCommonName != null)
+                {
+                    existing.ServerSubjectCommonName = serverSubjectCommonName;
+                }
+                if (serverCaCertificates != null)
+                {
+                    existing.ServerCaCertificates.Clear();
+                    foreach (var cert in serverCaCertificates)
+                    {
+                        existing.ServerCaCertificates.Add(BinaryData.FromBytes(cert));
+                    }
+                }
+                return new PSKeyVaultEkmConnection(client.UpdateEkmConnection(existing).Value, hsmName);
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+        }
+
+        internal PSKeyVaultEkmConnection DeleteEkmConnection(string hsmName)
+        {
+            var client = CreateEkmClient(hsmName);
+            try
+            {
+                return new PSKeyVaultEkmConnection(client.DeleteEkmConnection().Value, hsmName);
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+        }
+
+        internal PSKeyVaultEkmProxyInfo CheckEkmConnection(string hsmName)
+        {
+            var client = CreateEkmClient(hsmName);
+            try
+            {
+                return new PSKeyVaultEkmProxyInfo(client.CheckEkmConnection().Value, hsmName);
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+        }
+
+        internal PSKeyVaultEkmConnectionCertificate GetEkmCertificate(string hsmName)
+        {
+            var client = CreateEkmClient(hsmName);
+            try
+            {
+                return new PSKeyVaultEkmConnectionCertificate(client.GetEkmCertificate().Value, hsmName);
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+        }
+        #endregion
+
         internal PSKeyOperationResult Decrypt(string managedHsmName, string keyName, string version, byte[] value, string encryptAlgorithm)
         {
             var key = GetKey(managedHsmName, keyName, version);

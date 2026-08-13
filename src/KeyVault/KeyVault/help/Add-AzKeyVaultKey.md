@@ -40,6 +40,14 @@ Add-AzKeyVaultKey -HsmName <String> [-Name] <String> [-Disable] [-KeyOps <String
  [<CommonParameters>]
 ```
 
+### HsmInteractiveCreateExternalKey
+```
+Add-AzKeyVaultKey -HsmName <String> -ExternalKeyId <String> [-Name] <String> [-Disable]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### HsmInteractiveImport
 ```
 Add-AzKeyVaultKey -HsmName <String> [-Name] <String> -KeyFilePath <String> [-KeyFilePassword <SecureString>]
@@ -75,6 +83,14 @@ Add-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [-Name] <String> [-Disable] [-KeyO
  [<CommonParameters>]
 ```
 
+### HsmInputObjectCreateExternalKey
+```
+Add-AzKeyVaultKey [-HsmObject] <PSManagedHsm> -ExternalKeyId <String> [-Name] <String> [-Disable]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### HsmInputObjectImport
 ```
 Add-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [-Name] <String> -KeyFilePath <String>
@@ -106,6 +122,14 @@ Add-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> -KeyFilePath <String>
 Add-AzKeyVaultKey -HsmResourceId <String> [-Name] <String> [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] -KeyType <String>
  [-CurveName <String>] [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### HsmResourceIdCreateExternalKey
+```
+Add-AzKeyVaultKey -HsmResourceId <String> -ExternalKeyId <String> [-Name] <String> [-Disable]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -563,6 +587,21 @@ Parameter Sets: InteractiveCreate, HsmInteractiveCreate, InputObjectCreate, HsmI
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExternalKeyId
+Create an external Managed HSM key backed by an External Key Manager (EKM) key id. (Preview)
+
+```yaml
+Type: System.String
+Parameter Sets: HsmInteractiveCreateExternalKey, HsmInputObjectCreateExternalKey, HsmResourceIdCreateExternalKey
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

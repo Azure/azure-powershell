@@ -76,6 +76,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyVaultKey CreateManagedHsmKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName);
 
+        PSKeyVaultKey CreateManagedHsmExternalKey(string managedHsmName, string keyName, string externalKeyId, PSKeyVaultKeyAttributes keyAttributes);
+
         PSDeletedKeyVaultKey DeleteManagedHsmKey(string ManagedHsm, string keyName);
 
         PSKeyVaultKey GetManagedHsmKey(string managedHsmName, string keyName, string keyVersion);
@@ -268,6 +270,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         PSKeyVaultSetting GetManagedHsmSetting(string managedHsm, string settingName);
 
         PSKeyVaultSetting UpdateManagedHsmSetting(PSKeyVaultSetting psSettingParams);
+
+        PSKeyVaultEkmConnection CreateManagedHsmEkmConnection(string hsmName, string host, string pathPrefix, IEnumerable<byte[]> serverCaCertificates, string serverSubjectCommonName);
+
+        PSKeyVaultEkmConnection GetManagedHsmEkmConnection(string hsmName);
+
+        PSKeyVaultEkmConnection UpdateManagedHsmEkmConnection(string hsmName, string host, string pathPrefix, IEnumerable<byte[]> serverCaCertificates, string serverSubjectCommonName);
+
+        PSKeyVaultEkmConnection RemoveManagedHsmEkmConnection(string hsmName);
+
+        PSKeyVaultEkmProxyInfo CheckManagedHsmEkmConnection(string hsmName);
+
+        PSKeyVaultEkmConnectionCertificate GetManagedHsmEkmCertificate(string hsmName);
 
         #endregion
     }
