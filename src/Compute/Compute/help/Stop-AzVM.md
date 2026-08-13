@@ -143,7 +143,7 @@ The ID of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: IdParameterSetName, IdForceDeallocateParameterSet, IdHibernateParameterSet
+Parameter Sets: IdParameterSetName, IdHibernateParameterSet
 Aliases:
 
 Required: True
@@ -158,7 +158,7 @@ The virtual machine name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSetName, ResourceGroupForceDeallocateParameterSet, ResourceGroupHibernateParameterSet
+Parameter Sets: ResourceGroupNameParameterSetName, ResourceGroupHibernateParameterSet
 Aliases:
 
 Required: True
@@ -188,7 +188,7 @@ Specifies the name of the resource group of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSetName, ResourceGroupForceDeallocateParameterSet, ResourceGroupHibernateParameterSet
+Parameter Sets: ResourceGroupNameParameterSetName, ResourceGroupHibernateParameterSet
 Aliases:
 
 Required: True
