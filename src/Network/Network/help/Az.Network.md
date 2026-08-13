@@ -443,6 +443,15 @@ Gets a Azure Firewall Policy Rule Collection Group
 ### [Get-AzFirewallPolicyRuleCollectionGroupDraft](Get-AzFirewallPolicyRuleCollectionGroupDraft.md)
 Gets an Azure Firewall Policy Rule Collection Group Draft.
 
+### [Get-AzInterconnectGroup](Get-AzInterconnectGroup.md)
+Gets an interconnect group.
+
+### [Get-AzInterconnectGroupNodeAvailability](Get-AzInterconnectGroupNodeAvailability.md)
+Gets the node availability of an interconnect group.
+
+### [Get-AzInterconnectGroupSubgroup](Get-AzInterconnectGroupSubgroup.md)
+Gets a subgroup of an interconnect group.
+
 ### [Get-AzIpAllocation](Get-AzIpAllocation.md)
 Gets a Azure IpAllocation.
 
@@ -1267,6 +1276,9 @@ Create a new threat intelligence allowlist for Azure Firewall
 ### [New-AzGatewayCustomBgpIpConfigurationObject](New-AzGatewayCustomBgpIpConfigurationObject.md)
 creates a new GatewayCustomBgpIpConfigurationObject.
 
+### [New-AzInterconnectGroup](New-AzInterconnectGroup.md)
+Creates an interconnect group.
+
 ### [New-AzIpAllocation](New-AzIpAllocation.md)
 Creates an Azure IpAllocation.
 
@@ -1902,6 +1914,9 @@ Removes a Azure Firewall Policy Rule Collection Group in a Azure firewall policy
 ### [Remove-AzFirewallPolicyRuleCollectionGroupDraft](Remove-AzFirewallPolicyRuleCollectionGroupDraft.md)
 Removes an Azure Firewall Policy Rule Collection Group draft in an Azure firewall policy.
 
+### [Remove-AzInterconnectGroup](Remove-AzInterconnectGroup.md)
+Removes an interconnect group.
+
 ### [Remove-AzIpAllocation](Remove-AzIpAllocation.md)
 Deletes an Azure IpAllocation.
 
@@ -2372,6 +2387,9 @@ saves a modified azure firewall policy rule collection group
 
 ### [Set-AzFirewallPolicyRuleCollectionGroupDraft](Set-AzFirewallPolicyRuleCollectionGroupDraft.md)
 Sets a modified Azure Firewall Policy Rule Collection Group draft.
+
+### [Set-AzInterconnectGroup](Set-AzInterconnectGroup.md)
+Updates an interconnect group.
 
 ### [Set-AzIpAllocation](Set-AzIpAllocation.md)
 Saves a modified IpAllocation.
