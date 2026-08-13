@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         private static readonly Regex AppServiceEnvironmentResourceIdRegex =
           new Regex(@"^\/subscriptions\/(?<subscriptionName>[^\/]+)\/resourceGroups\/(?<resourceGroupName>[^\/]+)\/providers\/Microsoft.Web\/hostingEnvironments\/(?<aseName>[^\/]+)$", RegexOptions.IgnoreCase);
 
-        private static readonly Dictionary<string, int> WorkerSizes = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase) { { "ExtraSmall", 0 }, { "Small", 1 }, { "Medium", 2 }, { "Large", 3 }, { "ExtraLarge", 4 }, { "ExtraExtraLarge", 5 } };
+        private static readonly Dictionary<string, int> WorkerSizes = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase) { { "ExtraSmall", 0 }, { "Small", 1 }, { "Medium", 2 }, { "Large", 3 }, { "ExtraLarge", 4 }, { "ExtraExtraLarge", 5 }, { "ExtraExtraExtraLarge", 6 } };
 
         private const string ProductionSlotName = "Production";
 
@@ -338,6 +338,16 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 sku = "I" + workerSize + "V2";
                 return sku;
             }
+            else if (string.Equals("IsolatedV4", tier, StringComparison.OrdinalIgnoreCase))
+            {
+                sku = "I" + workerSize + "V4";
+                return sku;
+            }
+            else if (string.Equals("IsolatedMV4", tier, StringComparison.OrdinalIgnoreCase))
+            {
+                sku = "I" + workerSize + "MV4";
+                return sku;
+            }
             else
             {
                 sku = string.Empty + tier[0];
@@ -350,6 +360,41 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         internal static string GetSkuName(string tier, string workerSize)
         {
             return GetSkuName(tier, WorkerSizes[workerSize]);
+        }
+
+        internal static string GetSkuTier(string tier)
+        {
+            return string.Equals("IsolatedMV4", tier, StringComparison.OrdinalIgnoreCase) ? "IsolatedV4" : tier;
+        }
+
+        internal static SkuDescription CreateSkuDescription(string tier, string workerSize, int capacity)
+        {
+            return new SkuDescription
+            {
+                Tier = GetSkuTier(tier),
+                Name = GetSkuName(tier, workerSize),
+                Capacity = capacity
+            };
+        }
+
+        internal static void UpdateSkuDescription(SkuDescription sku, string tier, string workerSize, bool tierIsBound, bool workerSizeIsBound)
+        {
+            if (tierIsBound || workerSizeIsBound)
+            {
+                var targetTier = tierIsBound ? tier : sku.Tier;
+                if (!tierIsBound && Regex.IsMatch(sku.Name, @"^I\d+MV4$", RegexOptions.IgnoreCase))
+                {
+                    targetTier = "IsolatedMV4";
+                }
+
+                int workerSizeAsNumber = 0;
+                int.TryParse(Regex.Match(sku.Name, @"\d+").Value, out workerSizeAsNumber);
+                sku.Name = workerSizeIsBound ? GetSkuName(targetTier, workerSize) : GetSkuName(targetTier, workerSizeAsNumber);
+                sku.Tier = GetSkuTier(targetTier);
+            }
+
+            sku.Size = sku.Name;
+            sku.Family = sku.Name.Substring(0, 1);
         }
 
         internal static bool IsDeploymentSlot(string name)

@@ -44,6 +44,22 @@ New-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP" 
 This command creates an App Service plan named ContosoASP in the resource group named Default-Web-WestUS in Geo location West US.
 The command specifies a Basic Tier and allocates two small workers.
 
+### Example 2: Create an Isolated v4 App Service plan
+```powershell
+New-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoIsolatedASP" -Location "West US" -Tier "IsolatedV4" -WorkerSize "ExtraExtraExtraLarge" -AseName "ContosoAse"
+```
+
+This command creates an I6V4 App Service plan in the App Service Environment named ContosoAse.
+Use worker sizes Small through ExtraExtraExtraLarge to select I1V4 through I6V4.
+
+### Example 3: Create a memory-optimized Isolated v4 App Service plan
+```powershell
+New-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoMemoryOptimizedASP" -Location "West US" -Tier "IsolatedMV4" -WorkerSize "ExtraExtraLarge" -AseName "ContosoAse"
+```
+
+This command creates an I5MV4 memory-optimized App Service plan in the App Service Environment named ContosoAse.
+Use worker sizes Small through ExtraExtraLarge to select I1MV4 through I5MV4.
+
 ## PARAMETERS
 
 ### -AcquirePolicyToken
@@ -287,7 +303,8 @@ Accept wildcard characters: False
 ```
 
 ### -Tier
-Tier
+The App Service plan tier.
+Use IsolatedV4 for I1V4 through I6V4 plans and IsolatedMV4 for I1MV4 through I5MV4 memory-optimized plans in an App Service Environment.
 
 ```yaml
 Type: System.String
@@ -302,13 +319,15 @@ Accept wildcard characters: False
 ```
 
 ### -WorkerSize
-Size of web worker
+The size of the workers to allocate.
+For IsolatedV4, Small through ExtraExtraExtraLarge select I1V4 through I6V4.
+For IsolatedMV4, Small through ExtraExtraLarge select I1MV4 through I5MV4.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: ExtraSmall, Small, Medium, Large, ExtraLarge, ExtraExtraLarge
+Accepted values: ExtraSmall, Small, Medium, Large, ExtraLarge, ExtraExtraLarge, ExtraExtraExtraLarge
 
 Required: False
 Position: 5
