@@ -20,9 +20,9 @@ Deletes an existing delivery rule within a rule set.
 .Description
 Deletes an existing delivery rule within a rule set.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 | Remove-AzFrontDoorCdnRule
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

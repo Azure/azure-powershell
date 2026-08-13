@@ -20,9 +20,9 @@ Stops an existing running CDN endpoint.
 .Description
 Stops an existing running CDN endpoint.
 .Example
-{{ Add code here }}
+Stop-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001
 .Example
-{{ Add code here }}
+Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Stop-AzCdnEndpoint
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

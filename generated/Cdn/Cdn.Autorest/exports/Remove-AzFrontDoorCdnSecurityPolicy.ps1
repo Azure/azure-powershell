@@ -20,9 +20,10 @@ Deletes an existing security policy within profile.
 .Description
 Deletes an existing security policy within profile.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001
 .Example
-{{ Add code here }}
+
+Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001 | Remove-AzFrontDoorCdnSecurityPolicy
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

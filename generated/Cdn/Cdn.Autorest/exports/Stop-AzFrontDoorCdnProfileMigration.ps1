@@ -24,11 +24,9 @@ Abort classic cdn migrate to AFDx.
 Your new Front Door Profile will be deleted and your existing profile will remain active.
 WAF policies will not be deleted.
 .Example
-{{ Add code here }}
-{{ Add output here }}
+Stop-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName
 .Example
-{{ Add code here }}
-{{ Add output here }}
+Stop-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
 
 .Outputs
 System.Boolean

@@ -20,9 +20,9 @@ Get EdgeAction resource
 .Description
 Get EdgeAction resource
 .Example
-{{ Add code here }}
+Get-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm
 .Example
-{{ Add code here }}
+Get-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction

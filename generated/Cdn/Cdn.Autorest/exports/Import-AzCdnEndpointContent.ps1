@@ -22,9 +22,11 @@ Available for Verizon Profiles.
 Pre-loads a content to CDN.
 Available for Verizon Profiles.
 .Example
-{{ Add code here }}
+Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verizon -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentPath @("/movies/hello","/pictures/pic1.jpg") 
 .Example
-{{ Add code here }}
+$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
+$contentFilePath = New-AzCdnLoadParametersObject -ContentPath $contentPath
+Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verizon -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentFilePath $contentFilePath
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

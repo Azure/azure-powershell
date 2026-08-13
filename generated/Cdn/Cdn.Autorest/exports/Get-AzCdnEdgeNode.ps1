@@ -20,9 +20,7 @@ Edgenodes are the global Point of Presence (POP) locations used to deliver CDN c
 .Description
 Edgenodes are the global Point of Presence (POP) locations used to deliver CDN content to end users.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzCdnEdgeNode
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeNode

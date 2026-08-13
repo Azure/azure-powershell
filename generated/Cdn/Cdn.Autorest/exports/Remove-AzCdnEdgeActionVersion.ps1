@@ -20,9 +20,7 @@ Delete EdgeActionVersion resource
 .Description
 Delete EdgeActionVersion resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1
 
 .Outputs
 System.Boolean

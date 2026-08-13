@@ -20,9 +20,9 @@ Get EdgeActionVersion resource
 .Description
 Get EdgeActionVersion resource
 .Example
-{{ Add code here }}
+Get-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
 .Example
-{{ Add code here }}
+Get-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion

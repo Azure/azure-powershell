@@ -20,9 +20,11 @@ Removes a content from AzureFrontDoor.
 .Description
 Removes a content from AzureFrontDoor.
 .Example
-{{ Add code here }}
+Clear-AzFrontDoorCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -ContentPath /a
 .Example
-{{ Add code here }}
+$contentPath = "/a"
+$content = New-AzFrontDoorCdnPurgeParametersObject -ContentPath $contentPath
+Clear-AzFrontDoorCdnEndpointContent -ResourceGroupName testps-rg-afdx -ProfileName cdn001 -EndpointName endpointTest001 -Content $content
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdPurgeParameters

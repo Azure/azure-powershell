@@ -20,9 +20,9 @@ Deletes an existing AzureFrontDoor rule set with the specified rule set name und
 .Description
 Deletes an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 | Remove-AzFrontDoorCdnRuleSet
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

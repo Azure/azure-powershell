@@ -20,9 +20,7 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestUriCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleRequestUriConditionObject -Name RequestUri -ParameterOperator Equal -ParameterMatchValue /test
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestUriCondition

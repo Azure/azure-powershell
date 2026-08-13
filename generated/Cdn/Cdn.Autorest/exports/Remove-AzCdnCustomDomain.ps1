@@ -20,9 +20,9 @@ Deletes an existing custom domain within an endpoint.
 .Description
 Deletes an existing custom domain within an endpoint.
 .Example
-{{ Add code here }}
+Remove-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001
 .Example
-{{ Add code here }}
+Get-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001 | Remove-AzCdnCustomDomain
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

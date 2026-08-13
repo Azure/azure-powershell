@@ -20,9 +20,9 @@ Starts an existing CDN endpoint that is on a stopped state.
 .Description
 Starts an existing CDN endpoint that is on a stopped state.
 .Example
-{{ Add code here }}
+Start-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001
 .Example
-{{ Add code here }}
+Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Start-AzCdnEndpoint
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

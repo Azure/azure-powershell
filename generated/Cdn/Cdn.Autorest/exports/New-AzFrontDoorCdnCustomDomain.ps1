@@ -20,9 +20,10 @@ Create a new domain within the specified profile.
 .Description
 Create a new domain within the specified profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
+$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+$tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
+New-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 -HostName "pstest001.dev.cdn.azure.cn" -TlsSetting $tlsSetting
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain

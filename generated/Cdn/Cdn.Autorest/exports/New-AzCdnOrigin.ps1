@@ -20,9 +20,7 @@ Create a new origin within the specified endpoint.
 .Description
 Create a new origin within the specified endpoint.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HostName "host1.hello.com" 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

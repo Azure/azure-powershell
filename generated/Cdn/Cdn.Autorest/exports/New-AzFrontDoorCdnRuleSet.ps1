@@ -20,9 +20,7 @@ Create or create a batch rule set within the specified profile along with the ru
 .Description
 Create or create a batch rule set within the specified profile along with the rules associate to it.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

@@ -20,9 +20,7 @@ Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
 .Description
 Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleUrlFileExtensionConditionObject -Name UrlFileExtension -ParameterOperator Equal -ParameterMatchValue txt -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileExtensionCondition

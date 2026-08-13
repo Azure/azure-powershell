@@ -20,9 +20,9 @@ Deletes an existing origin within an origin group.
 .Description
 Deletes an existing origin within an origin group.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 | Remove-AzFrontDoorCdnOrigin
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

@@ -20,9 +20,7 @@ A long-running operation for deleting an EdgeAction attachment that returns no c
 .Description
 A long-running operation for deleting an EdgeAction attachment that returns no content.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzCdnEdgeActionAttachment -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -AttachedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testps-rg-da16jm/providers/Microsoft.Cdn/profiles/fdp001/ruleSets/ruleset001/rules/rule001"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

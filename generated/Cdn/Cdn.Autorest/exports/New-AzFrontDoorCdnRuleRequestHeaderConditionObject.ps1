@@ -20,9 +20,7 @@ Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderCondition

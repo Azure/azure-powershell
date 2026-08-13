@@ -20,9 +20,7 @@ Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profi
 .Description
 Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Test-AzCdnProfileMigrationCompatibility  -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

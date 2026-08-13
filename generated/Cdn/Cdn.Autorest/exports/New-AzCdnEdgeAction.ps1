@@ -20,9 +20,7 @@ Create EdgeAction resource
 .Description
 Create EdgeAction resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Location global -SkuName Standard -SkuTier Standard
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction

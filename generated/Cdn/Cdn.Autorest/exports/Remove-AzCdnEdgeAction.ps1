@@ -20,9 +20,7 @@ Delete EdgeAction resource
 .Description
 Delete EdgeAction resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
 
 .Outputs
 System.Boolean

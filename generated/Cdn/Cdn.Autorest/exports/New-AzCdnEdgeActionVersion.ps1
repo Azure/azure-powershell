@@ -20,9 +20,7 @@ Create EdgeActionVersion version
 .Description
 Create EdgeActionVersion version
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1 -Location global -DeploymentType zip -IsDefaultVersion True
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion

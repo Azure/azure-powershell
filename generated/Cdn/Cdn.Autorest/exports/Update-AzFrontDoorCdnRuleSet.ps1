@@ -20,9 +20,19 @@ Update or update a batch rule set within the specified profile along with the ru
 .Description
 Update or update a batch rule set within the specified profile along with the rules associate to it.
 .Example
-{{ Add code here }}
+$rule = @{
+	RuleName = "rule1"
+	Order = 1
+	MatchProcessingBehavior = "Continue"
+}
+Update-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Rule $rule
 .Example
-{{ Add code here }}
+$rule = @{
+	RuleName = "rule1"
+	Order = 1
+	MatchProcessingBehavior = "Continue"
+}
+Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 | Update-AzFrontDoorCdnRuleSet -Rule $rule
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

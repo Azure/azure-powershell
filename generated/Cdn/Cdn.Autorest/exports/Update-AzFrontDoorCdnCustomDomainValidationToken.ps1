@@ -20,9 +20,9 @@ Refresh the domain validation token.
 .Description
 Refresh the domain validation token.
 .Example
-{{ Add code here }}
+Update-AzFrontDoorCdnCustomDomainValidationToken -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 | Update-AzFrontDoorCdnCustomDomainValidationToken
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

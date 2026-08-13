@@ -20,9 +20,9 @@ Deletes an existing Secret within profile.
 .Description
 Deletes an existing Secret within profile.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001 | Remove-AzFrontDoorCdnSecret
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

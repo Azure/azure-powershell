@@ -20,9 +20,7 @@ Creates an CDN profile with the specified profile name under the specified subsc
 .Description
 Creates an CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Standard_Microsoft -Location Global
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile

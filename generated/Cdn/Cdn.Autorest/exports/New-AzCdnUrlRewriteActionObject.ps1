@@ -20,9 +20,7 @@ Create an in-memory object for UrlRewriteAction.
 .Description
 Create an in-memory object for UrlRewriteAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnUrlRewriteActionObject -Name rewrite01 -ParameterDestination dest01 -ParameterSourcePattern pattern01
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRewriteAction

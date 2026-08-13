@@ -20,9 +20,7 @@ Create EdgeActionExecutionFilter resource
 .Description
 Create EdgeActionExecutionFilter resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -ExecutionFilter filter001 -Location global -ExecutionFilterIdentifierHeaderName "X-Filter-Key" -ExecutionFilterIdentifierHeaderValue "FilterValue1"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilter

@@ -20,9 +20,8 @@ Create an in-memory object for AfdPurgeParameters.
 .Description
 Create an in-memory object for AfdPurgeParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$contentPath = "/a"
+$content = New-AzFrontDoorCdnPurgeParametersObject -ContentPath $contentPath
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdPurgeParameters

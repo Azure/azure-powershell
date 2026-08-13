@@ -20,9 +20,9 @@ Deletes an existing AzureFrontDoor endpoint with the specified endpoint name und
 .Description
 Deletes an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 | Remove-AzFrontDoorCdnEndpoint
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

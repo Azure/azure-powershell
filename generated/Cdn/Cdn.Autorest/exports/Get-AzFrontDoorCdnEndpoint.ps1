@@ -20,9 +20,12 @@ Gets an existing AzureFrontDoor endpoint with the specified endpoint name under 
 .Description
 Gets an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
+.Example
+New-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end011 -Location Global -EnabledState Enabled 
+| Get-AzFrontDoorCdnEndpoint
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

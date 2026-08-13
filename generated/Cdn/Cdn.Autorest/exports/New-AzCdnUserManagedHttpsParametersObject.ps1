@@ -20,9 +20,7 @@ Create an in-memory object for UserManagedHttpsParameters.
 .Description
 Create an in-memory object for UserManagedHttpsParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnUrlRedirectActionObject -Name rule01 -ParameterRedirectType redirect
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UserManagedHttpsParameters

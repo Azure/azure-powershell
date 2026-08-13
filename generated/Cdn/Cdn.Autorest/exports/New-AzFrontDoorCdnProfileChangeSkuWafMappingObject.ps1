@@ -20,9 +20,7 @@ Create an in-memory object for ProfileChangeSkuWafMapping.
 .Description
 Create an in-memory object for ProfileChangeSkuWafMapping.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileChangeSkuWafMapping

@@ -20,9 +20,7 @@ Create an in-memory object for DeliveryRuleUrlPathCondition.
 .Description
 Create an in-memory object for DeliveryRuleUrlPathCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleUrlPathConditionObject -Name UrlPath -ParameterOperator Equal -ParameterMatchValue /a
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlPathCondition

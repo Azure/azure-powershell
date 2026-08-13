@@ -20,9 +20,7 @@ A long-running operation to deploy versioncode to EdgeActionVersion resource.
 .Description
 A long-running operation to deploy versioncode to EdgeActionVersion resource.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Deploy-AzCdnEdgeActionVersionCode -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1 -Name edge_action.js -Content "Y29uc29sZS5sb2coJ0hlbGxvJyk7"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

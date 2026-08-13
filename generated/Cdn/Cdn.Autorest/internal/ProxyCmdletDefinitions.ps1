@@ -1594,9 +1594,13 @@ Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile wit
 .Description
 Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
-{{ Add code here }}
+Get-AzCdnProfile
 .Example
-{{ Add code here }}
+Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm
+.Example
+Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001
+.Example
+New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Standard_Microsoft -Location Global | Get-AzCdnProfile
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -3271,9 +3275,7 @@ Create a new Azure Front Door Standard or Azure Front Door Premium or CDN profil
 .Description
 Create a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Standard_Microsoft -Location Global
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
@@ -3536,9 +3538,15 @@ Create a new route with the specified route name under the specified subscriptio
 .Description
 Create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
+$ruleSet = Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
+$customdomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
+
+$ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
+$customdomainResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $customdomain.Id
+
+New-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled" -CustomDomain @($customdomainResoure)
+     
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -4197,9 +4205,9 @@ Deleting a profile will result in the deletion of all of the sub-resources inclu
 Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 .Example
-{{ Add code here }}
+Remove-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn-001
 .Example
-{{ Add code here }}
+Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-cdn001 | Remove-AzCdnProfile
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -5101,9 +5109,17 @@ Update an existing Azure Front Door Standard or Azure Front Door Premium or CDN 
 .Description
 Update an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
-{{ Add code here }}
+$tags = @{
+    Tag1 = 11
+    Tag2  = 22
+}
+Update-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -Tag $tags
 .Example
-{{ Add code here }}
+$tags = @{
+    Tag1 = 11
+    Tag2  = 22
+}
+Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 | Update-AzCdnProfile -Tag $tags
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -5394,9 +5410,24 @@ Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 .Description
 Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 .Example
-{{ Add code here }}
+$nullUpgradePara = @{}
+Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $nullUpgradePara
 .Example
-{{ Add code here }}
+$waf = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/newWAFName
+$upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf
+
+Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $upgrade
+.Example
+$waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf1 -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName1
+$waf2 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf2 -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName2
+$upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList @($waf1, $waf2)
+
+Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $upgrade
+.Example
+$waf = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf -ChangeToWafPolicyId /subscriptions/testSubId01/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ExistingPremiumWAFName
+$upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf
+
+Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $upgrade -SubscriptionId testSubId01
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

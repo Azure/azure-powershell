@@ -20,9 +20,9 @@ Create an in-memory object for AfdDomainHttpsParameters.
 .Description
 Create an in-memory object for AfdDomainHttpsParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
+$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsParameters

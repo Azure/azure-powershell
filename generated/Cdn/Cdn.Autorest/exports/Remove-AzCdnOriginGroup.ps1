@@ -20,9 +20,9 @@ Deletes an existing origin group within an endpoint.
 .Description
 Deletes an existing origin group within an endpoint.
 .Example
-{{ Add code here }}
+Remove-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001
 .Example
-{{ Add code here }}
+Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001| Remove-AzCdnOriginGroup
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

@@ -20,9 +20,7 @@ Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 .Description
 Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleUrlFileNameConditionObject -Name UrlFileName -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileNameCondition

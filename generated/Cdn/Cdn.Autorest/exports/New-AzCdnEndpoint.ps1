@@ -20,9 +20,11 @@ Create a new CDN endpoint with the specified endpoint name under the specified s
 .Description
 Create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$origin = @{
+    Name = "origin1"
+    HostName = "host1.hello.com"
+};
+New-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 -Location westus -Origin $origin             
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

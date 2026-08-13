@@ -20,9 +20,7 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 .Description
 Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject -Type BYOC
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AzureFirstPartyManagedCertificateParameters

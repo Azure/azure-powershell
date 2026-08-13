@@ -20,9 +20,7 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 .Description
 Checks the quota and actual usage of endpoints under the given Azure Front Door Standard or Azure Front Door Premium or CDN profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzCdnProfileResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName cdn001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsage

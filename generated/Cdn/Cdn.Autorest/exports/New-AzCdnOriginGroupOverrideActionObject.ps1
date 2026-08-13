@@ -20,9 +20,7 @@ Create an in-memory object for OriginGroupOverrideAction.
 .Description
 Create an in-memory object for OriginGroupOverrideAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnOriginGroupOverrideActionObject -Name OriginGroupOverride -OriginGroupId 001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginGroupOverrideAction

@@ -20,9 +20,9 @@ Update a new Secret within the specified profile.
 .Description
 Update a new Secret within the specified profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$secretSourceId = "xxxxxxxx"
+$certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId  
+Update-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001 -Parameter $certificateParameter
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

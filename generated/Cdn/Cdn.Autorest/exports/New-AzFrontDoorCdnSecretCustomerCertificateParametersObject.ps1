@@ -20,9 +20,8 @@ Create an in-memory object for CustomerCertificateParameters.
 .Description
 Create an in-memory object for CustomerCertificateParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$secretSourceId = "xxxxxxxx"
+New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId               
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CustomerCertificateParameters

@@ -20,9 +20,7 @@ Create an in-memory object for DeliveryRuleCookiesCondition.
 .Description
 Create an in-memory object for DeliveryRuleCookiesCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleCookiesConditionObject -Name Cookies -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCookiesCondition

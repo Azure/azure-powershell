@@ -20,9 +20,9 @@ Deletes an existing CDN endpoint with the specified endpoint name under the spec
 .Description
 Deletes an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
+Remove-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001
 .Example
-{{ Add code here }}
+Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Remove-AzCdnEndpoint
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

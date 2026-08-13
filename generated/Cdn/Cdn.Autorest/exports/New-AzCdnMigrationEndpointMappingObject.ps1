@@ -20,9 +20,7 @@ Create an in-memory object for MigrationEndpointMapping.
 .Description
 Create an in-memory object for MigrationEndpointMapping.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$map1 = New-AzCdnMigrationEndpointMappingObject -MigratedFrom maxtestendpointcli-test-profile1.azureedge.net -MigratedTo maxtestendpointcli-test-profile2
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrationEndpointMapping

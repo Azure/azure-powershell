@@ -20,9 +20,13 @@ Gets an existing origin group within an endpoint.
 .Description
 Gets an existing origin group within an endpoint.
 .Example
-{{ Add code here }}
+Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
 .Example
-{{ Add code here }}
+Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001
+.Example
+$healthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 120 -ProbePath "/check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
+$origin = Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest010 -Name origin1
+New-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest010 -Name org001 -HealthProbeSetting $healthProbeParameters -Origin @(@{ Id = $origin.Id }) | Get-AzCdnOriginGroup
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

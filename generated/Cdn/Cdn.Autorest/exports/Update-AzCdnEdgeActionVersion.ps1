@@ -20,9 +20,7 @@ Update EdgeActionVersion resource
 .Description
 Update EdgeActionVersion resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1 -DeploymentType zip -IsDefaultVersion False
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion

@@ -20,9 +20,7 @@ Create an in-memory object for UrlSigningKeyParameters.
 .Description
 Create an in-memory object for UrlSigningKeyParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject -KeyId keyId01 -Type Byoc -SecretVersion v1.0
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlSigningKeyParameters

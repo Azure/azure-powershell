@@ -20,9 +20,9 @@ Deletes an existing origin within an endpoint.
 .Description
 Deletes an existing origin within an endpoint.
 .Example
-{{ Add code here }}
+Remove-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1
 .Example
-{{ Add code here }}
+Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 | Remove-AzCdnOrigin
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

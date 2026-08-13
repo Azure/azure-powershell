@@ -20,9 +20,7 @@ A long-running operation to get versioncode deployed to EdgeActionVersion resour
 .Description
 A long-running operation to get versioncode deployed to EdgeActionVersion resource.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzCdnEdgeActionVersionCode -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny

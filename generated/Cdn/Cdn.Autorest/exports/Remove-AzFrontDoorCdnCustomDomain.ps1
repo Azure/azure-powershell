@@ -20,9 +20,9 @@ Deletes an existing AzureFrontDoor domain with the specified domain name under t
 .Description
 Deletes an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 | Remove-AzFrontDoorCdnCustomDomain
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

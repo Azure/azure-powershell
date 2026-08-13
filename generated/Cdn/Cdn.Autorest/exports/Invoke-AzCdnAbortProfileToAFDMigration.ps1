@@ -20,9 +20,7 @@ Abort the migration to Azure Frontdoor Premium/Standard.
 .Description
 Abort the migration to Azure Frontdoor Premium/Standard.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Invoke-AzCdnAbortProfileToAFDMigration -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

@@ -20,9 +20,7 @@ Create an in-memory object for CdnManagedHttpsParameters.
 .Description
 Create an in-memory object for CdnManagedHttpsParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType Dedicated -CertificateSource Cdn -ProtocolType ServerNameIndication
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CdnManagedHttpsParameters

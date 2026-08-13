@@ -20,9 +20,7 @@ Create an in-memory object for DeliveryRuleSslProtocolCondition.
 .Description
 Create an in-memory object for DeliveryRuleSslProtocolCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleSslProtocolConditionObject -Name SslProtocol -ParameterMatchValue TLSv1.2
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleSslProtocolCondition

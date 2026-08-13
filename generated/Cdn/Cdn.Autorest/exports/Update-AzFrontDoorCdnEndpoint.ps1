@@ -28,9 +28,9 @@ To update origins, use the update Origin operation.
 To update origin groups, use the update Origin group operation.
 To update domains, use the update Custom Domain operation.
 .Example
-{{ Add code here }}
+Update-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -EnabledState Disabled
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnEndpoint  -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end011 | Update-AzFrontDoorCdnEndpoint -EnabledState Disabled
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointUpdateParameters

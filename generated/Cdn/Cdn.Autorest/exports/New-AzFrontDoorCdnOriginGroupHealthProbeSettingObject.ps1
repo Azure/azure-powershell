@@ -20,9 +20,7 @@ Create an in-memory object for HealthProbeParameters.
 .Description
 Create an in-memory object for HealthProbeParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters

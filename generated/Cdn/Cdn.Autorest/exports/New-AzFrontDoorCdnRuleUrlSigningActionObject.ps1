@@ -20,9 +20,7 @@ Create an in-memory object for UrlSigningAction.
 .Description
 Create an in-memory object for UrlSigningAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleUrlSigningActionObject -Name rule01
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlSigningAction

@@ -20,9 +20,11 @@ Removes a content from CDN.
 .Description
 Removes a content from CDN.
 .Example
-{{ Add code here }}
+Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentPath @("/movies/*","/pictures/pic1.jpg") 
 .Example
-{{ Add code here }}
+$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
+$contentFilePath = New-AzCdnPurgeParametersObject -ContentPath $contentPath
+Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentFilePath $contentFilePath
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

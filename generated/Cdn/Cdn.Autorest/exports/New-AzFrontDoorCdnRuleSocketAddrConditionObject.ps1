@@ -20,9 +20,7 @@ Create an in-memory object for DeliveryRuleSocketAddrCondition.
 .Description
 Create an in-memory object for DeliveryRuleSocketAddrCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+ New-AzFrontDoorCdnRuleSocketAddrConditionObject -Name SocketAddr -ParameterOperator IPMatch -ParameterMatchValue 222.10.0.1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleSocketAddrCondition

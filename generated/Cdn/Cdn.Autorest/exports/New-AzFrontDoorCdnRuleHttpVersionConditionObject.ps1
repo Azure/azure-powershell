@@ -20,9 +20,7 @@ Create an in-memory object for DeliveryRuleHttpVersionCondition.
 .Description
 Create an in-memory object for DeliveryRuleHttpVersionCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleHttpVersionConditionObject -Name HttpVersion -ParameterMatchValue 2.0
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleHttpVersionCondition

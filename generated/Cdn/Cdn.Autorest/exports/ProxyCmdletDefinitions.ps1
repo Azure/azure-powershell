@@ -20,9 +20,7 @@ A long-running operation for adding an EdgeAction attachment.
 .Description
 A long-running operation for adding an EdgeAction attachment.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Add-AzCdnEdgeActionAttachment -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -AttachedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testps-rg-da16jm/providers/Microsoft.Cdn/profiles/fdp001/ruleSets/ruleset001/rules/rule001"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -324,9 +322,11 @@ Removes a content from CDN.
 .Description
 Removes a content from CDN.
 .Example
-{{ Add code here }}
+Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentPath @("/movies/*","/pictures/pic1.jpg") 
 .Example
-{{ Add code here }}
+$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
+$contentFilePath = New-AzCdnPurgeParametersObject -ContentPath $contentPath
+Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentFilePath $contentFilePath
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -679,9 +679,11 @@ Removes a content from AzureFrontDoor.
 .Description
 Removes a content from AzureFrontDoor.
 .Example
-{{ Add code here }}
+Clear-AzFrontDoorCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -ContentPath /a
 .Example
-{{ Add code here }}
+$contentPath = "/a"
+$content = New-AzFrontDoorCdnPurgeParametersObject -ContentPath $contentPath
+Clear-AzFrontDoorCdnEndpointContent -ResourceGroupName testps-rg-afdx -ProfileName cdn001 -EndpointName endpointTest001 -Content $content
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdPurgeParameters
@@ -1044,9 +1046,7 @@ A long-running operation to deploy versioncode to EdgeActionVersion resource.
 .Description
 A long-running operation to deploy versioncode to EdgeActionVersion resource.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Deploy-AzCdnEdgeActionVersionCode -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1 -Name edge_action.js -Content "Y29uc29sZS5sb2coJ0hlbGxvJyk7"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -1400,9 +1400,7 @@ Disable https delivery of the custom domain.
 .Description
 Disable https delivery of the custom domain.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Disable-AzCdnCustomDomainCustomHttps -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -CustomDomainName customdomain001 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -1724,9 +1722,8 @@ Enable https delivery of the custom domain.
 .Description
 Enable https delivery of the custom domain.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$customDomainHttpsParameter = New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType Dedicated -CertificateSource Cdn  -ProtocolType ServerNameIndication
+Enable-AzCdnCustomDomainCustomHttps -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -CustomDomainName customdomain001 -CustomDomainHttpsParameter $customDomainHttpsParameter
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -2123,9 +2120,11 @@ Gets an existing custom domain within an endpoint.
 .Description
 Gets an existing custom domain within an endpoint.
 .Example
-{{ Add code here }}
+Get-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
 .Example
-{{ Add code here }}
+Get-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001
+.Example
+New-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001  -Name customdomain010 -HostName 'testcm.dev.cdn.azure.cn' | Get-AzCdnCustomDomain
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -2413,9 +2412,9 @@ Get EdgeActionExecutionFilter resource
 .Description
 Get EdgeActionExecutionFilter resource
 .Example
-{{ Add code here }}
+Get-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
 .Example
-{{ Add code here }}
+Get-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -ExecutionFilter filter001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilter
@@ -2605,9 +2604,7 @@ A long-running operation to get versioncode deployed to EdgeActionVersion resour
 .Description
 A long-running operation to get versioncode deployed to EdgeActionVersion resource.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzCdnEdgeActionVersionCode -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny
@@ -2909,9 +2906,9 @@ Get EdgeActionVersion resource
 .Description
 Get EdgeActionVersion resource
 .Example
-{{ Add code here }}
+Get-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
 .Example
-{{ Add code here }}
+Get-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion
@@ -3101,9 +3098,9 @@ Get EdgeAction resource
 .Description
 Get EdgeAction resource
 .Example
-{{ Add code here }}
+Get-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm
 .Example
-{{ Add code here }}
+Get-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction
@@ -3290,9 +3287,7 @@ Edgenodes are the global Point of Presence (POP) locations used to deliver CDN c
 .Description
 Edgenodes are the global Point of Presence (POP) locations used to deliver CDN content to end users.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzCdnEdgeNode
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeNode
@@ -3447,9 +3442,7 @@ Checks the quota and usage of geo filters and custom domains under the given end
 .Description
 Checks the quota and usage of geo filters and custom domains under the given endpoint.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzCdnEndpointResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsage
@@ -3638,9 +3631,16 @@ Gets an existing CDN endpoint with the specified endpoint name under the specifi
 .Description
 Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
+Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001
 .Example
-{{ Add code here }}
+Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001
+.Example
+$origin = @{
+    Name = "origin1"
+    HostName = "host1.hello.com"
+};
+
+New-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest010 -Location global -Origin $origin | Get-AzCdnEndpoint
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -3893,9 +3893,7 @@ Lists all available managed rule sets.
 .Description
 Lists all available managed rule sets.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzCdnManagedRuleSet
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedRuleSetDefinition
@@ -4065,9 +4063,13 @@ Gets an existing origin group within an endpoint.
 .Description
 Gets an existing origin group within an endpoint.
 .Example
-{{ Add code here }}
+Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
 .Example
-{{ Add code here }}
+Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001
+.Example
+$healthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 120 -ProbePath "/check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
+$origin = Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest010 -Name origin1
+New-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest010 -Name org001 -HealthProbeSetting $healthProbeParameters -Origin @(@{ Id = $origin.Id }) | Get-AzCdnOriginGroup
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -4355,9 +4357,11 @@ Gets an existing origin within an endpoint.
 .Description
 Gets an existing origin within an endpoint.
 .Example
-{{ Add code here }}
+Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
 .Example
-{{ Add code here }}
+Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1
+.Example
+New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest010 -Name origin1 -HostName "host1.hello.com" | Get-AzCdnOrigin
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -4645,9 +4649,7 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 .Description
 Checks the quota and actual usage of endpoints under the given Azure Front Door Standard or Azure Front Door Premium or CDN profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzCdnProfileResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName cdn001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsage
@@ -4832,9 +4834,7 @@ A user can list an endpoint with an optimization type from the listed values.
 Gets the supported optimization types for the current profile.
 A user can list an endpoint with an optimization type from the listed values.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzCdnProfileSupportedOptimizationType -ResourceGroupName testps-rg-da16jm -ProfileName cdn001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISupportedOptimizationTypesListResult
@@ -5017,9 +5017,7 @@ Check the quota and actual usage of the CDN profiles under the given subscriptio
 .Description
 Check the quota and actual usage of the CDN profiles under the given subscription.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzCdnSubscriptionResourceUsage
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsage
@@ -5189,9 +5187,11 @@ Gets an existing AzureFrontDoor domain with the specified domain name under the 
 .Description
 Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
+.Example
+New-AzFrontDoorCdnCustomDomain -CustomDomainName domain001 -ProfileName fdp-v542q6 -ResourceGroupName testps-rg-da16jm -HostName "pstest001.dev.cdn.azure.cn"| Get-AzFrontDoorCdnCustomDomain
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -5443,9 +5443,7 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 .Description
 Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzFrontDoorCdnEndpointResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsage
@@ -5634,9 +5632,12 @@ Gets an existing AzureFrontDoor endpoint with the specified endpoint name under 
 .Description
 Gets an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
+.Example
+New-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end011 -Location Global -EnabledState Enabled 
+| Get-AzFrontDoorCdnEndpoint
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -5888,9 +5889,7 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 .Description
 Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzFrontDoorCdnOriginGroupResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsage
@@ -6079,9 +6078,13 @@ Gets an existing origin group within a profile.
 .Description
 Gets an existing origin group within a profile.
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
+.Example
+$healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
+$loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200  -SampleSize 5 -SuccessfulSamplesRequired 4
+New-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting | Get-AzFrontDoorCdnOriginGroup
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -6333,9 +6336,11 @@ Gets an existing origin within an origin group.
 .Description
 Gets an existing origin within an origin group.
 .Example
-{{ Add code here }}
+ Get-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001
+.Example
+New-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -OriginHostHeader en.wikipedia.org -HostName en.wikipedia.org -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000 | Get-AzFrontDoorCdnOrigin
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -6622,9 +6627,7 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 .Description
 Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzFrontDoorCdnProfileResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsage
@@ -6807,9 +6810,18 @@ Gets an existing route with the specified route name under the specified subscri
 .Description
 Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001
+.Example
+$originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
+$ruleSet = Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
+$customdomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
+
+$ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
+$customdomainResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $customdomain.Id
+
+New-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled" -CustomDomain @($customdomainResoure) | Get-AzFrontDoorCdnRoute
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -7097,9 +7109,7 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 .Description
 Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzFrontDoorCdnRuleSetResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsage
@@ -7288,9 +7298,11 @@ Gets an existing AzureFrontDoor rule set with the specified rule set name under 
 .Description
 Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
+.Example
+New-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 | Get-AzFrontDoorCdnRuleSet
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -7543,9 +7555,24 @@ Gets an existing delivery rule within a rule set.
 .Description
 Gets an existing delivery rule within a rule set.
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1
+.Example
+$conditions = @(
+    New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81
+    New-AzFrontDoorCdnRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
+    New-AzFrontDoorCdnRuleSslProtocolConditionObject -Name SslProtocol -ParameterMatchValue TLSv1.2
+);
+
+       
+$actions = @(
+    New-AzFrontDoorCdnRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+    New-AzFrontDoorCdnRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+    New-AzFrontDoorCdnRuleUrlRedirectActionObject -Name UrlRedirect -ParameterRedirectType Moved -ParameterDestinationProtocol MatchRequest
+);
+
+New-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 -Action $actions -Condition $conditions | Get-AzFrontDoorCdnRule
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -7834,9 +7861,13 @@ Gets an existing Secret within a profile.
 .Description
 Gets an existing Secret within a profile.
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
+.Example
+$secretSourceId = "xxxxxxxx"      
+$certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId  
+New-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001 -Parameter $certificateParameter | Get-AzFrontDoorCdnSecret
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -8089,9 +8120,18 @@ Gets an existing security policy within a profile.
 .Description
 Gets an existing security policy within a profile.
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001
+.Example
+$endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
+$endpoint2 = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end002
+$updateAssociation = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
+$updateAssociation2 = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint2.Id)})            
+
+$wafPolicyId = "/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01"
+$updateWafParameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association @($updateAssociation, $updateAssociation2) -WafPolicyId $wafPolicyId
+Update-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001 -Parameter $updateWafParameter | Get-AzFrontDoorCdnSecurityPolicy
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -8346,9 +8386,11 @@ Available for Verizon Profiles.
 Pre-loads a content to CDN.
 Available for Verizon Profiles.
 .Example
-{{ Add code here }}
+Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verizon -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentPath @("/movies/hello","/pictures/pic1.jpg") 
 .Example
-{{ Add code here }}
+$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
+$contentFilePath = New-AzCdnLoadParametersObject -ContentPath $contentPath
+Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verizon -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentFilePath $contentFilePath
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -8701,9 +8743,7 @@ Abort the migration to Azure Frontdoor Premium/Standard.
 .Description
 Abort the migration to Azure Frontdoor Premium/Standard.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Invoke-AzCdnAbortProfileToAFDMigration -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -8962,9 +9002,7 @@ Create a new custom domain within an endpoint.
 .Description
 Create a new custom domain within an endpoint.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001 -HostName 'testcm.dev.cdn.azure.cn'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -9310,9 +9348,7 @@ Create EdgeActionExecutionFilter resource
 .Description
 Create EdgeActionExecutionFilter resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -ExecutionFilter filter001 -Location global -ExecutionFilterIdentifierHeaderName "X-Filter-Key" -ExecutionFilterIdentifierHeaderValue "FilterValue1"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilter
@@ -9592,9 +9628,7 @@ Create EdgeActionVersion version
 .Description
 Create EdgeActionVersion version
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1 -Location global -DeploymentType zip -IsDefaultVersion True
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion
@@ -9870,9 +9904,7 @@ Create EdgeAction resource
 .Description
 Create EdgeAction resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Location global -SkuName Standard -SkuTier Standard
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction
@@ -10141,9 +10173,11 @@ Create a new CDN endpoint with the specified endpoint name under the specified s
 .Description
 Create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$origin = @{
+    Name = "origin1"
+    HostName = "host1.hello.com"
+};
+New-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 -Location westus -Origin $origin             
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -10713,9 +10747,9 @@ Create a new origin group within the specified endpoint.
 .Description
 Create a new origin group within the specified endpoint.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$healthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 120 -ProbePath "/check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
+$origin = Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1
+New-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001 -HealthProbeSetting $healthProbeParameters -Origin @(@{ Id = $origin.Id })
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -11117,9 +11151,7 @@ Create a new origin within the specified endpoint.
 .Description
 Create a new origin within the specified endpoint.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HostName "host1.hello.com" 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -11566,9 +11598,10 @@ Create a new domain within the specified profile.
 .Description
 Create a new domain within the specified profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
+$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+$tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
+New-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 -HostName "pstest001.dev.cdn.azure.cn" -TlsSetting $tlsSetting
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain
@@ -11934,9 +11967,7 @@ Create a new AzureFrontDoor endpoint with the specified endpoint name under the 
 .Description
 Create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Location Global -EnabledState Enabled
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint
@@ -12279,9 +12310,9 @@ Create a new origin group within the specified profile.
 .Description
 Create a new origin group within the specified profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
+$loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200  -SampleSize 5 -SuccessfulSamplesRequired 4
+New-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup
@@ -12665,9 +12696,7 @@ Create a new origin within the specified origin group.
 .Description
 Create a new origin within the specified origin group.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+ New-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -OriginHostHeader en.wikipedia.org -HostName en.wikipedia.org -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin
@@ -13141,9 +13170,7 @@ Create or create a batch rule set within the specified profile along with the ru
 .Description
 Create or create a batch rule set within the specified profile along with the rules associate to it.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -13478,9 +13505,20 @@ Create a new delivery rule within the specified rule set.
 .Description
 Create a new delivery rule within the specified rule set.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$conditions = @(
+    New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81
+    New-AzFrontDoorCdnRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
+    New-AzFrontDoorCdnRuleSslProtocolConditionObject -Name SslProtocol -ParameterMatchValue TLSv1.2
+);
+
+       
+$actions = @(
+    New-AzFrontDoorCdnRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+    New-AzFrontDoorCdnRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+    New-AzFrontDoorCdnRuleUrlRedirectActionObject -Name UrlRedirect -ParameterRedirectType Moved -ParameterDestinationProtocol MatchRequest
+);
+
+New-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 -Action $actions -Condition $conditions
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -13869,9 +13907,9 @@ Create a new Secret within the specified profile.
 .Description
 Create a new Secret within the specified profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$secretSourceId = "xxxxxxxx"      
+$certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId  
+New-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001 -Parameter $certificateParameter           
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -14178,9 +14216,12 @@ Create a new security policy within the specified profile.
 .Description
 Create a new security policy within the specified profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$wafPolicyId = "/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01"
+$endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
+$association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
+$wafParameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association  $association  -WafPolicyId $wafPolicyId
+
+New-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001 -Parameter $wafParameter   
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -14483,9 +14524,9 @@ Deletes an existing custom domain within an endpoint.
 .Description
 Deletes an existing custom domain within an endpoint.
 .Example
-{{ Add code here }}
+Remove-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001
 .Example
-{{ Add code here }}
+Get-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001 | Remove-AzCdnCustomDomain
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -14814,9 +14855,7 @@ A long-running operation for deleting an EdgeAction attachment that returns no c
 .Description
 A long-running operation for deleting an EdgeAction attachment that returns no content.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzCdnEdgeActionAttachment -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -AttachedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testps-rg-da16jm/providers/Microsoft.Cdn/profiles/fdp001/ruleSets/ruleset001/rules/rule001"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -15118,9 +15157,7 @@ Delete EdgeActionExecutionFilter resource
 .Description
 Delete EdgeActionExecutionFilter resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -ExecutionFilter filter001
 
 .Outputs
 System.Boolean
@@ -15352,9 +15389,7 @@ Delete EdgeActionVersion resource
 .Description
 Delete EdgeActionVersion resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1
 
 .Outputs
 System.Boolean
@@ -15586,9 +15621,7 @@ Delete EdgeAction resource
 .Description
 Delete EdgeAction resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
 
 .Outputs
 System.Boolean
@@ -15815,9 +15848,9 @@ Deletes an existing CDN endpoint with the specified endpoint name under the spec
 .Description
 Deletes an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
+Remove-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001
 .Example
-{{ Add code here }}
+Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Remove-AzCdnEndpoint
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -16111,9 +16144,9 @@ Deletes an existing origin group within an endpoint.
 .Description
 Deletes an existing origin group within an endpoint.
 .Example
-{{ Add code here }}
+Remove-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001
 .Example
-{{ Add code here }}
+Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001| Remove-AzCdnOriginGroup
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -16442,9 +16475,9 @@ Deletes an existing origin within an endpoint.
 .Description
 Deletes an existing origin within an endpoint.
 .Example
-{{ Add code here }}
+Remove-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1
 .Example
-{{ Add code here }}
+Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 | Remove-AzCdnOrigin
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -16773,9 +16806,9 @@ Deletes an existing AzureFrontDoor domain with the specified domain name under t
 .Description
 Deletes an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 | Remove-AzFrontDoorCdnCustomDomain
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -17068,9 +17101,9 @@ Deletes an existing AzureFrontDoor endpoint with the specified endpoint name und
 .Description
 Deletes an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 | Remove-AzFrontDoorCdnEndpoint
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -17363,9 +17396,9 @@ Deletes an existing origin group within a profile.
 .Description
 Deletes an existing origin group within a profile.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 | Remove-AzFrontDoorCdnOriginGroup
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -17658,9 +17691,9 @@ Deletes an existing origin within an origin group.
 .Description
 Deletes an existing origin within an origin group.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 | Remove-AzFrontDoorCdnOrigin
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -17988,9 +18021,9 @@ Deletes an existing route with the specified route name under the specified subs
 .Description
 Deletes an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001  | Remove-AzFrontDoorCdnRoute
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -18319,9 +18352,9 @@ Deletes an existing AzureFrontDoor rule set with the specified rule set name und
 .Description
 Deletes an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 | Remove-AzFrontDoorCdnRuleSet
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -18615,9 +18648,9 @@ Deletes an existing delivery rule within a rule set.
 .Description
 Deletes an existing delivery rule within a rule set.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 | Remove-AzFrontDoorCdnRule
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -18947,9 +18980,9 @@ Deletes an existing Secret within profile.
 .Description
 Deletes an existing Secret within profile.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001 | Remove-AzFrontDoorCdnSecret
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -19243,9 +19276,10 @@ Deletes an existing security policy within profile.
 .Description
 Deletes an existing security policy within profile.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001
 .Example
-{{ Add code here }}
+
+Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001 | Remove-AzFrontDoorCdnSecurityPolicy
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -19539,9 +19573,9 @@ Starts an existing CDN endpoint that is on a stopped state.
 .Description
 Starts an existing CDN endpoint that is on a stopped state.
 .Example
-{{ Add code here }}
+Start-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001
 .Example
-{{ Add code here }}
+Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Start-AzCdnEndpoint
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -19829,9 +19863,9 @@ Stops an existing running CDN endpoint.
 .Description
 Stops an existing running CDN endpoint.
 .Example
-{{ Add code here }}
+Stop-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001
 .Example
-{{ Add code here }}
+Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Stop-AzCdnEndpoint
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -20119,9 +20153,9 @@ Validates the custom domain mapping to ensure it maps to the correct CDN endpoin
 .Description
 Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
 .Example
-{{ Add code here }}
+Test-AzCdnEndpointCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -HostName 'testcm.dev.cdn.azure.cn'
 .Example
-{{ Add code here }}
+Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Test-AzCdnEndpointCustomDomain -HostName 'testcm.dev.cdn.azure.cn'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -20416,9 +20450,7 @@ This is needed for resources where name is globally unique, such as a CDN endpoi
 Check the availability of a resource name.
 This is needed for resources where name is globally unique, such as a CDN endpoint.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Test-AzCdnNameAvailability -Name endptest001 -Type Microsoft.Cdn/Profiles/Endpoints
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput
@@ -20622,9 +20654,7 @@ Check if the probe path is a valid path and the file can be accessed.
 Probe path is the path to a file hosted on the origin server to help accelerate the delivery of dynamic content via the CDN endpoint.
 This path is relative to the origin path specified in the endpoint configuration.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Test-AzCdnProbe -ProbeUrl "https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateProbeOutput
@@ -20814,9 +20844,7 @@ Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profi
 .Description
 Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Test-AzCdnProfileMigrationCompatibility  -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -21043,9 +21071,9 @@ Validates the custom domain mapping to ensure it maps to the correct Azure Front
 .Description
 Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
 .Example
-{{ Add code here }}
+Test-AzFrontDoorCdnEndpointCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -HostName "pstest001.dev.cdn.azure.cn"
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 | Test-AzFrontDoorCdnEndpointCustomDomain -HostName "pstest001.dev.cdn.azure.cn"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -21340,9 +21368,7 @@ This is needed for resources where name is globally unique, such as a afdx endpo
 Check the availability of a resource name.
 This is needed for resources where name is globally unique, such as a afdx endpoint.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Test-AzFrontDoorCdnEndpointNameAvailability -ResourceGroupName testps-rg-da16jm -Type "Microsoft.Cdn/Profiles/AfdEndpoints" -Name end001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityOutput
@@ -21554,9 +21580,9 @@ Validates the custom domain mapping to ensure it maps to the correct Azure Front
 .Description
 Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
 .Example
-{{ Add code here }}
+Test-AzFrontDoorCdnProfileHostNameAvailability -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -HostName hello1.dev.cdn.azure.cn
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 | Test-AzFrontDoorCdnProfileHostNameAvailability -HostName hello1.dev.cdn.azure.cn
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -21798,9 +21824,7 @@ Update EdgeActionExecutionFilter resource
 .Description
 Update EdgeActionExecutionFilter resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -ExecutionFilter filter001 -ExecutionFilterIdentifierHeaderName "X-Updated-Filter" -ExecutionFilterIdentifierHeaderValue "UpdatedValue"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilter
@@ -22067,9 +22091,7 @@ Update EdgeActionVersion resource
 .Description
 Update EdgeActionVersion resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1 -DeploymentType zip -IsDefaultVersion False
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion
@@ -22332,9 +22354,7 @@ Update EdgeAction resource
 .Description
 Update EdgeAction resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Tag @{Environment="Staging"}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction
@@ -22598,9 +22618,19 @@ To update origins, use the update Origin operation.
 To update origin groups, use the update Origin group operation.
 To update custom domains, use the update Custom Domain operation.
 .Example
-{{ Add code here }}
+$tags = @{
+    Tag1 = 11
+    Tag2 = 22
+}
+Update-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 -Tag $tags -DefaultOriginGroupId $originGroup.Id
 .Example
-{{ Add code here }}
+$tags = @{
+    Tag1 = 11
+    Tag2 = 22
+}
+Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Update-AzCdnEndpoint -Tag $tags -DefaultOriginGroupId $originGroup.Id
+.Example
+Update-AzCdnEndpoint -Name cdntestcert -ProfileName classicCDNtest -ResourceGroupName yaoshitest -IsCompressionEnabled:$true
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -23132,9 +23162,11 @@ Update an existing origin group within an endpoint.
 .Description
 Update an existing origin group within an endpoint.
 .Example
-{{ Add code here }}
+$updateHealthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 60 -ProbePath "/new-check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
+Update-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001 -HealthProbeSetting $updateHealthProbeParameters
 .Example
-{{ Add code here }}
+$updateHealthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 60 -ProbePath "/new-check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
+Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001 | Update-AzCdnOriginGroup -HealthProbeSetting $updateHealthProbeParameters
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -23573,9 +23605,11 @@ Update an existing origin within an endpoint.
 .Description
 Update an existing origin within an endpoint.
 .Example
-{{ Add code here }}
+Update-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HttpPort 456 -HttpsPort 789
 .Example
-{{ Add code here }}
+Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 | Update-AzCdnOrigin -HttpPort 456 -HttpsPort 789
+.Example
+Update-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HttpPort 456 -HttpsPort 789
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -24065,9 +24099,9 @@ Refresh the domain validation token.
 .Description
 Refresh the domain validation token.
 .Example
-{{ Add code here }}
+Update-AzFrontDoorCdnCustomDomainValidationToken -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 | Update-AzFrontDoorCdnCustomDomainValidationToken
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -24360,9 +24394,15 @@ Update an existing domain within a profile.
 .Description
 Update an existing domain within a profile.
 .Example
-{{ Add code here }}
+$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
+$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+$updateTlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
+Update-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 -TlsSetting $updateSetting
 .Example
-{{ Add code here }}
+$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
+$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+$updateTlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
+Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 | Update-AzFrontDoorCdnCustomDomain -TlsSetting $updateSetting
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdateParameters
@@ -24751,9 +24791,9 @@ To update origins, use the update Origin operation.
 To update origin groups, use the update Origin group operation.
 To update domains, use the update Custom Domain operation.
 .Example
-{{ Add code here }}
+Update-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -EnabledState Disabled
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnEndpoint  -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end011 | Update-AzFrontDoorCdnEndpoint -EnabledState Disabled
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointUpdateParameters
@@ -25111,9 +25151,11 @@ Update an existing origin group within a profile.
 .Description
 Update an existing origin group within a profile.
 .Example
-{{ Add code here }}
+$updateLoadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 -SampleSize 5 -SuccessfulSamplesRequired 3
+Update-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -LoadBalancingSetting $updateLoadBalancingSetting
 .Example
-{{ Add code here }}
+$updateLoadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 -SampleSize 5 -SuccessfulSamplesRequired 3
+Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 | Update-AzFrontDoorCdnOriginGroup -LoadBalancingSetting $updateLoadBalancingSetting
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdateParameters
@@ -25536,9 +25578,11 @@ Update an existing origin within an origin group.
 .Description
 Update an existing origin within an origin group.
 .Example
-{{ Add code here }}
+Update-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -Weight 999
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 | Update-AzFrontDoorCdnOrigin -Weight 999
+.Example
+Update-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -EnforceCertificateNameCheck:$false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdateParameters
@@ -26058,9 +26102,11 @@ Update an existing route with the specified route name under the specified subsc
 .Description
 Update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Example
-{{ Add code here }}
+Update-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -EnabledState "Enabled"
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001  | Update-AzFrontDoorCdnRoute -EnabledState "Enabled"
+.Example
+Update-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -CompressionSettingIsCompressionEnabled:true
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -26596,9 +26642,19 @@ Update or update a batch rule set within the specified profile along with the ru
 .Description
 Update or update a batch rule set within the specified profile along with the rules associate to it.
 .Example
-{{ Add code here }}
+$rule = @{
+	RuleName = "rule1"
+	Order = 1
+	MatchProcessingBehavior = "Continue"
+}
+Update-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Rule $rule
 .Example
-{{ Add code here }}
+$rule = @{
+	RuleName = "rule1"
+	Order = 1
+	MatchProcessingBehavior = "Continue"
+}
+Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 | Update-AzFrontDoorCdnRuleSet -Rule $rule
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -26927,9 +26983,9 @@ Update an existing delivery rule within a rule set.
 .Description
 Update an existing delivery rule within a rule set.
 .Example
-{{ Add code here }}
+Update-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 -Order 99
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 | Update-AzFrontDoorCdnRule -Order 99
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -27355,9 +27411,9 @@ Update a new Secret within the specified profile.
 .Description
 Update a new Secret within the specified profile.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$secretSourceId = "xxxxxxxx"
+$certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId  
+Update-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001 -Parameter $certificateParameter
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -27672,9 +27728,24 @@ Patch an existing security policy within a profile.
 .Description
 Patch an existing security policy within a profile.
 .Example
-{{ Add code here }}
+$endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
+$endpoint2 = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end002
+$updateAssociation = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
+$updateAssociation2 = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint2.Id)})            
+
+$wafPolicyId = "/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01"
+$updateWafParameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association @($updateAssociation, $updateAssociation2) -WafPolicyId $wafPolicyId
+Update-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001 -Parameter $updateWafParameter
 .Example
-{{ Add code here }}
+$endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
+$endpoint2 = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end002
+$updateAssociation = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
+$updateAssociation2 = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint2.Id)})            
+                
+$wafPolicyId = "/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01"
+$updateWafParameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association @($updateAssociation, $updateAssociation2) -WafPolicyId $wafPolicyId
+
+Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001 | Update-AzFrontDoorCdnSecurityPolicy -Parameter $updateWafParameter
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -28009,11 +28080,9 @@ Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Description
 Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Example
-{{ Add code here }}
-{{ Add output here }}
+Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName
 .Example
-{{ Add code here }}
-{{ Add output here }}
+Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
 
 .Outputs
 System.Boolean
@@ -28211,9 +28280,13 @@ Gets an CDN profile with the specified profile name under the specified subscrip
 .Description
 Gets an CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
-{{ Add code here }}
+Get-AzCdnProfile
 .Example
-{{ Add code here }}
+Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm
+.Example
+Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001
+.Example
+New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Standard_Microsoft -Location Global | Get-AzCdnProfile
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -28432,9 +28505,13 @@ Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile wit
 .Description
 Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnProfile
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm
+.Example
+Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6
+.Example
+New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q7 -SkuName Standard_AzureFrontDoor -Location Global | Get-AzFrontDoorCdnProfile
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -28653,9 +28730,9 @@ Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Description
 Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Example
-{{ Add code here }}
+Invoke-AzCdnCommitProfileToAFDMigration -ProfileName name-migrated -ResourceGroupName rgName
 .Example
-{{ Add code here }}
+Invoke-AzCdnCommitProfileToAFDMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
 
 .Outputs
 System.Boolean
@@ -28855,9 +28932,13 @@ This step prepares the profile for migration and will be followed by Commit to f
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
 This step prepares the profile for migration and will be followed by Commit to finalize the migration.
 .Example
-{{ Add code here }}
+$map1 = New-AzCdnMigrationEndpointMappingObject -MigratedFrom maxtestendpointcli-test-profile1.azureedge.net -MigratedTo maxtestendpointcli-test-profile2
+
+Move-AzCdnProfileToAFD -ProfileName cli-test-profile -ResourceGroupName cli-test-rg -SkuName Premium_AzureFrontDoor -MigrationEndpointMapping @($map1)
 .Example
-{{ Add code here }}
+$map1 = New-AzCdnMigrationEndpointMappingObject -MigratedFrom maxtestendpointcli-test-profile1.azureedge.net -MigratedTo maxtestendpointcli-test-profile2
+
+Move-AzCdnProfileToAFD -ProfileName cli-test-profile -ResourceGroupName cli-test-rg -SkuName Premium_AzureFrontDoor -MigrationEndpointMapping @($map1) -IdentityType "SystemAssigned"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -29153,9 +29234,7 @@ Create an in-memory object for DeliveryRuleCacheExpirationAction.
 .Description
 Create an in-memory object for DeliveryRuleCacheExpirationAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleCacheExpirationActionObject -Name CacheExpiration -ParameterCacheBehavior SetIfMissing -ParameterCacheDuration 0.01:30:00
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheExpirationAction
@@ -29278,9 +29357,7 @@ Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 .Description
 Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject -Name CacheKeyQueryString -ParameterQueryStringBehavior IncludeAll
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheKeyQueryStringAction
@@ -29402,9 +29479,7 @@ Create an in-memory object for DeliveryRuleCookiesCondition.
 .Description
 Create an in-memory object for DeliveryRuleCookiesCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleCookiesConditionObject -Name Cookies -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCookiesCondition
@@ -29545,9 +29620,7 @@ Create an in-memory object for DeliveryRuleHttpVersionCondition.
 .Description
 Create an in-memory object for DeliveryRuleHttpVersionCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleHttpVersionConditionObject -Name HttpVersion -ParameterMatchValue 2.0
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleHttpVersionCondition
@@ -29675,9 +29748,7 @@ Create an in-memory object for DeliveryRuleIsDeviceCondition.
 .Description
 Create an in-memory object for DeliveryRuleIsDeviceCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleIsDeviceCondition
@@ -29806,9 +29877,14 @@ Create an in-memory object for DeliveryRule.
 .Description
 Create an in-memory object for DeliveryRule.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$cond1 = New-AzCdnDeliveryRuleCookiesConditionObject -Name Cookies -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
+$action1 = New-AzCdnDeliveryRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+$action2 = New-AzCdnDeliveryRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+
+
+$conditions = @($cond1)
+$actions = @($action1, $action2)
+New-AzCdnDeliveryRuleObject -Name "Rule1" -Condition $conditions -Action $actions -Order 1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRule
@@ -29948,9 +30024,7 @@ Create an in-memory object for DeliveryRulePostArgsCondition.
 .Description
 Create an in-memory object for DeliveryRulePostArgsCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRulePostArgsConditionObject -Name PostArgs -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterSelector test -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRulePostArgsCondition
@@ -30091,9 +30165,7 @@ Create an in-memory object for DeliveryRuleQueryStringCondition.
 .Description
 Create an in-memory object for DeliveryRuleQueryStringCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleQueryStringConditionObject -Name QueryString -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleQueryStringCondition
@@ -30228,9 +30300,7 @@ Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 .Description
 Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleRemoteAddressConditionObject -Name RemoteAddress -ParameterOperator GeoMatch -ParameterMatchValue BJ -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRemoteAddressCondition
@@ -30367,9 +30437,7 @@ Create an in-memory object for DeliveryRuleRequestBodyCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestBodyCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleRequestBodyConditionObject -Name RequestBody -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestBodyCondition
@@ -30504,9 +30572,7 @@ Create an in-memory object for DeliveryRuleRequestHeaderAction.
 .Description
 Create an in-memory object for DeliveryRuleRequestHeaderAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderAction
@@ -30634,9 +30700,7 @@ Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleRequestHeaderConditionObject  -Name RequestHeader -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderCondition
@@ -30777,9 +30841,7 @@ Create an in-memory object for DeliveryRuleRequestMethodCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestMethodCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleRequestMethodConditionObject -Name RequestMethod -ParameterMatchValue GET
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestMethodCondition
@@ -30908,9 +30970,7 @@ Create an in-memory object for DeliveryRuleRequestSchemeCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestSchemeCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleRequestSchemeConditionObject -Name RequestScheme -ParameterMatchValue HTTP
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestSchemeCondition
@@ -31039,9 +31099,7 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestUriCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleRequestUriConditionObject -Name RequestUri -ParameterOperator Equal -ParameterMatchValue /test
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestUriCondition
@@ -31176,9 +31234,7 @@ Create an in-memory object for DeliveryRuleResponseHeaderAction.
 .Description
 Create an in-memory object for DeliveryRuleResponseHeaderAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleResponseHeaderAction
@@ -31306,9 +31362,7 @@ Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
 .Description
 Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleUrlFileExtensionConditionObject -Name UrlFileExtension -ParameterOperator Equal -ParameterMatchValue txt -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileExtensionCondition
@@ -31443,9 +31497,7 @@ Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 .Description
 Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleUrlFileNameConditionObject -Name UrlFileName -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileNameCondition
@@ -31580,9 +31632,7 @@ Create an in-memory object for DeliveryRuleUrlPathCondition.
 .Description
 Create an in-memory object for DeliveryRuleUrlPathCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnDeliveryRuleUrlPathConditionObject -Name UrlPath -ParameterOperator Equal -ParameterMatchValue /a
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlPathCondition
@@ -31717,9 +31767,7 @@ Create an in-memory object for HealthProbeParameters.
 .Description
 Create an in-memory object for HealthProbeParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 120 -ProbePath "/check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters
@@ -31847,9 +31895,8 @@ Create an in-memory object for LoadParameters.
 .Description
 Create an in-memory object for LoadParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
+New-AzCdnLoadParametersObject -ContentPath $contentPath
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.LoadParameters
@@ -31958,9 +32005,7 @@ Create an in-memory object for CdnManagedHttpsParameters.
 .Description
 Create an in-memory object for CdnManagedHttpsParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType Dedicated -CertificateSource Cdn -ProtocolType ServerNameIndication
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CdnManagedHttpsParameters
@@ -32096,9 +32141,7 @@ Create an in-memory object for MigrationEndpointMapping.
 .Description
 Create an in-memory object for MigrationEndpointMapping.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$map1 = New-AzCdnMigrationEndpointMappingObject -MigratedFrom maxtestendpointcli-test-profile1.azureedge.net -MigratedTo maxtestendpointcli-test-profile2
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrationEndpointMapping
@@ -32213,9 +32256,7 @@ Create an in-memory object for OriginGroupOverrideAction.
 .Description
 Create an in-memory object for OriginGroupOverrideAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnOriginGroupOverrideActionObject -Name OriginGroupOverride -OriginGroupId 001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginGroupOverrideAction
@@ -32330,9 +32371,7 @@ Creates an CDN profile with the specified profile name under the specified subsc
 .Description
 Creates an CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Standard_Microsoft -Location Global
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
@@ -32578,9 +32617,8 @@ Create an in-memory object for PurgeParameters.
 .Description
 Create an in-memory object for PurgeParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
+New-AzCdnPurgeParametersObject -ContentPath $contentPath
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.PurgeParameters
@@ -32689,9 +32727,7 @@ Create an in-memory object for ResourceReference.
 .Description
 Create an in-memory object for ResourceReference.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnResourceReferenceObject -Id Idtest
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference
@@ -32799,9 +32835,7 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 .Description
 Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnResponseBasedOriginErrorDetectionParametersObject -ResponseBasedDetectedErrorType testDetctedError -ResponseBasedFailoverThresholdPercentage 6 
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResponseBasedOriginErrorDetectionParameters
@@ -32930,9 +32964,7 @@ Create an in-memory object for UrlRedirectAction.
 .Description
 Create an in-memory object for UrlRedirectAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnUrlRedirectActionObject -Name rule01 -ParameterRedirectType redirect
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRedirectAction
@@ -33088,9 +33120,7 @@ Create an in-memory object for UrlRewriteAction.
 .Description
 Create an in-memory object for UrlRewriteAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnUrlRewriteActionObject -Name rewrite01 -ParameterDestination dest01 -ParameterSourcePattern pattern01
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRewriteAction
@@ -33219,9 +33249,7 @@ Create an in-memory object for UrlSigningAction.
 .Description
 Create an in-memory object for UrlSigningAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnUrlSigningActionObject -Name action01
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlSigningAction
@@ -33352,9 +33380,7 @@ Create an in-memory object for UserManagedHttpsParameters.
 .Description
 Create an in-memory object for UserManagedHttpsParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnUrlRedirectActionObject -Name rule01 -ParameterRedirectType redirect
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UserManagedHttpsParameters
@@ -33512,9 +33538,9 @@ Create an in-memory object for AfdDomainHttpsParameters.
 .Description
 Create an in-memory object for AfdDomainHttpsParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
+$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsParameters
@@ -33662,9 +33688,7 @@ Create an in-memory object for MigrationParameters.
 .Description
 Create an in-memory object for MigrationParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnMigrationParametersObject -ProfileName test
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrationParameters
@@ -33799,9 +33823,8 @@ Create an in-memory object for MigrationWebApplicationFirewallMapping.
 .Description
 Create an in-memory object for MigrationWebApplicationFirewallMapping.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId migrateFromId -MigratedToId migrateToId
+
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrationWebApplicationFirewallMapping
@@ -33915,9 +33938,7 @@ Create an in-memory object for HealthProbeParameters.
 .Description
 Create an in-memory object for HealthProbeParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters
@@ -34045,9 +34066,7 @@ Create an in-memory object for LoadBalancingSettingsParameters.
 .Description
 Create an in-memory object for LoadBalancingSettingsParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200  -SampleSize 5 -SuccessfulSamplesRequired 4
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.LoadBalancingSettingsParameters
@@ -34167,9 +34186,10 @@ Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profi
 .Description
 Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
 .Example
-{{ Add code here }}
+New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -SkuName Standard_AzureFrontDoor -Location Global
 .Example
-{{ Add code here }}
+$rule = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
+New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -SkuName Standard_AzureFrontDoor -Location Global -LogScrubbingRule $rule -LogScrubbingState Enabled
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
@@ -34473,9 +34493,7 @@ Create an in-memory object for ProfileChangeSkuWafMapping.
 .Description
 Create an in-memory object for ProfileChangeSkuWafMapping.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileChangeSkuWafMapping
@@ -34589,9 +34607,9 @@ Create an in-memory object for ProfileLogScrubbing.
 .Description
 Create an in-memory object for ProfileLogScrubbing.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$scrubbingRule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
+$scrubbingRule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestUri -State Enabled
+New-AzFrontDoorCdnProfileLogScrubbingObject -ScrubbingRule @($scrubbingRule1, $scrubbingRule2) -State Enabled
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileLogScrubbing
@@ -34716,9 +34734,9 @@ Create an in-memory object for ProfileScrubbingRules.
 .Description
 Create an in-memory object for ProfileScrubbingRules.
 .Example
-{{ Add code here }}
+New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
 .Example
-{{ Add code here }}
+New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestUri -State Disabled
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileScrubbingRules
@@ -34841,9 +34859,12 @@ Create an in-memory object for ProfileUpgradeParameters.
 .Description
 Create an in-memory object for ProfileUpgradeParameters.
 .Example
-{{ Add code here }}
+$waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
+New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1  
 .Example
-{{ Add code here }}
+$waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
+$upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1  
+$upgrade.ToString()
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileUpgradeParameters
@@ -34959,9 +34980,8 @@ Create an in-memory object for AfdPurgeParameters.
 .Description
 Create an in-memory object for AfdPurgeParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$contentPath = "/a"
+$content = New-AzFrontDoorCdnPurgeParametersObject -ContentPath $contentPath
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdPurgeParameters
@@ -35076,9 +35096,8 @@ Create an in-memory object for ResourceReference.
 .Description
 Create an in-memory object for ResourceReference.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
+New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference
@@ -35189,6 +35208,12 @@ Create a new route with the specified route name under the specified subscriptio
 $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
 $ruleSet = Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 $customdomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
+
+$ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
+$customdomainResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $customdomain.Id
+
+New-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled" -CustomDomain @($customdomainResoure)
+     
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -35644,9 +35669,7 @@ Create an in-memory object for DeliveryRuleClientPortCondition.
 .Description
 Create an in-memory object for DeliveryRuleClientPortCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleClientPortCondition
@@ -35781,9 +35804,7 @@ Create an in-memory object for DeliveryRuleCookiesCondition.
 .Description
 Create an in-memory object for DeliveryRuleCookiesCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleCookiesConditionObject -Name Cookies -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCookiesCondition
@@ -35924,9 +35945,7 @@ Create an in-memory object for DeliveryRuleHostNameCondition.
 .Description
 Create an in-memory object for DeliveryRuleHostNameCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleHostNameConditionObject -Name HostName -ParameterOperator Equal -ParameterMatchValue azure.com
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleHostNameCondition
@@ -36061,9 +36080,7 @@ Create an in-memory object for DeliveryRuleHttpVersionCondition.
 .Description
 Create an in-memory object for DeliveryRuleHttpVersionCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleHttpVersionConditionObject -Name HttpVersion -ParameterMatchValue 2.0
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleHttpVersionCondition
@@ -36191,9 +36208,7 @@ Create an in-memory object for DeliveryRuleIsDeviceCondition.
 .Description
 Create an in-memory object for DeliveryRuleIsDeviceCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleIsDeviceCondition
@@ -36322,9 +36337,7 @@ Create an in-memory object for DeliveryRulePostArgsCondition.
 .Description
 Create an in-memory object for DeliveryRulePostArgsCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRulePostArgsConditionObject -Name PostArgs -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterSelector test -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRulePostArgsCondition
@@ -36465,9 +36478,7 @@ Create an in-memory object for DeliveryRuleQueryStringCondition.
 .Description
 Create an in-memory object for DeliveryRuleQueryStringCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleQueryStringConditionObject -Name QueryString -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleQueryStringCondition
@@ -36602,9 +36613,7 @@ Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 .Description
 Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleRemoteAddressConditionObject -Name RemoteAddress -ParameterOperator GeoMatch -ParameterMatchValue BJ -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRemoteAddressCondition
@@ -36741,9 +36750,7 @@ Create an in-memory object for DeliveryRuleRequestBodyCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestBodyCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleRequestBodyConditionObject -Name RequestBody -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestBodyCondition
@@ -36878,9 +36885,7 @@ Create an in-memory object for DeliveryRuleRequestHeaderAction.
 .Description
 Create an in-memory object for DeliveryRuleRequestHeaderAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderAction
@@ -37008,9 +37013,7 @@ Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderCondition
@@ -37151,9 +37154,7 @@ Create an in-memory object for DeliveryRuleRequestMethodCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestMethodCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleRequestMethodConditionObject -Name RequestMethod -ParameterMatchValue GET
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestMethodCondition
@@ -37282,9 +37283,7 @@ Create an in-memory object for DeliveryRuleRequestSchemeCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestSchemeCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleRequestSchemeConditionObject -Name RequestScheme -ParameterMatchValue HTTP
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestSchemeCondition
@@ -37413,9 +37412,7 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestUriCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+ New-AzFrontDoorCdnRuleRequestUriConditionObject -Name RequestUri -ParameterOperator Equal -ParameterMatchValue /test
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestUriCondition
@@ -37550,9 +37547,7 @@ Create an in-memory object for DeliveryRuleResponseHeaderAction.
 .Description
 Create an in-memory object for DeliveryRuleResponseHeaderAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleResponseHeaderAction
@@ -37680,9 +37675,8 @@ Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 .Description
 Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$originGroupId = "xxxx"
+New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name RouteConfigurationOverride -OriginGroupOverrideForwardingProtocol HttpOnly -OriginGroupId $originGroupId
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRouteConfigurationOverrideAction
@@ -37841,9 +37835,7 @@ Create an in-memory object for DeliveryRuleServerPortCondition.
 .Description
 Create an in-memory object for DeliveryRuleServerPortCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleServerPortConditionObject -Name ServerPort -ParameterOperator Equal -ParameterMatchValue 80,81
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleServerPortCondition
@@ -37978,9 +37970,7 @@ Create an in-memory object for DeliveryRuleSocketAddrCondition.
 .Description
 Create an in-memory object for DeliveryRuleSocketAddrCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+ New-AzFrontDoorCdnRuleSocketAddrConditionObject -Name SocketAddr -ParameterOperator IPMatch -ParameterMatchValue 222.10.0.1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleSocketAddrCondition
@@ -38115,9 +38105,7 @@ Create an in-memory object for DeliveryRuleSslProtocolCondition.
 .Description
 Create an in-memory object for DeliveryRuleSslProtocolCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleSslProtocolConditionObject -Name SslProtocol -ParameterMatchValue TLSv1.2
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleSslProtocolCondition
@@ -38246,9 +38234,7 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestUriCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject -Name UrlFileExtension -ParameterOperator Equal -ParameterMatchValue txt -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileExtensionCondition
@@ -38383,9 +38369,7 @@ Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 .Description
 Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleUrlFileNameConditionObject -Name UrlFileName -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileNameCondition
@@ -38520,9 +38504,7 @@ Create an in-memory object for DeliveryRuleUrlPathCondition.
 .Description
 Create an in-memory object for DeliveryRuleUrlPathCondition.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+ New-AzFrontDoorCdnRuleUrlPathConditionObject -Name UrlPath -ParameterOperator Equal -ParameterMatchValue /a
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlPathCondition
@@ -38657,9 +38639,7 @@ Create an in-memory object for UrlRedirectAction.
 .Description
 Create an in-memory object for UrlRedirectAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleUrlRedirectActionObject -Name UrlRedirect -ParameterRedirectType Moved -ParameterDestinationProtocol MatchRequest
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRedirectAction
@@ -38815,9 +38795,7 @@ Create an in-memory object for UrlRewriteAction.
 .Description
 Create an in-memory object for UrlRewriteAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleUrlRewriteActionObject -Name UrlRewrite -ParameterDestination /b -ParameterSourcePattern /a -ParameterPreserveUnmatchedPath $False
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRewriteAction
@@ -38946,9 +38924,7 @@ Create an in-memory object for UrlSigningAction.
 .Description
 Create an in-memory object for UrlSigningAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleUrlSigningActionObject -Name rule01
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlSigningAction
@@ -39079,9 +39055,8 @@ Create an in-memory object for CustomerCertificateParameters.
 .Description
 Create an in-memory object for CustomerCertificateParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$secretSourceId = "xxxxxxxx"
+New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId               
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CustomerCertificateParameters
@@ -39213,9 +39188,7 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 .Description
 Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject -Type BYOC
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AzureFirstPartyManagedCertificateParameters
@@ -39329,9 +39302,7 @@ Create an in-memory object for ManagedCertificateParameters.
 .Description
 Create an in-memory object for ManagedCertificateParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnSecretManagedCertificateParametersObject -Type ManagedCert
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedCertificateParameters
@@ -39439,9 +39410,7 @@ Create an in-memory object for UrlSigningKeyParameters.
 .Description
 Create an in-memory object for UrlSigningKeyParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject -KeyId keyId01 -Type Byoc -SecretVersion v1.0
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlSigningKeyParameters
@@ -39568,9 +39537,8 @@ Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
 .Description
 Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
+New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SecurityPolicyWebApplicationFirewallAssociation
@@ -39700,9 +39668,10 @@ Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
 .Description
 Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
+$association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
+New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association  $association `
+            -WafPolicyId $wafPolicyId
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SecurityPolicyWebApplicationFirewallParameters
@@ -39835,9 +39804,9 @@ Deleting a profile will result in the deletion of all of the sub-resources inclu
 Deletes an existing CDN profile with the specified profile name under the specified subscription.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 .Example
-{{ Add code here }}
+Remove-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn-001
 .Example
-{{ Add code here }}
+Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-cdn001 | Remove-AzCdnProfile
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -40097,9 +40066,9 @@ Deleting a profile will result in the deletion of all of the sub-resources inclu
 Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 .Example
-{{ Add code here }}
+Remove-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6
 .Example
-{{ Add code here }}
+Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 | Remove-AzFrontDoorCdnProfile
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -40361,9 +40330,30 @@ The change need to be committed after this.
 Migrate the classic AFD instance to Azure Front Door(Standard/Premium) profile.
 The change need to be committed after this.
 .Example
-{{ Add code here }}
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor
 .Example
-{{ Add code here }}
+$wafMapping = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/testSubId/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/testSubId/resourcegroups/rgName/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/newWAFName
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor -MigrationWebApplicationFirewallMapping $wafMapping
+.Example
+$wafMapping = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/testSubId/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/testSubId/resourcegroups/rgName02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor -MigrationWebApplicationFirewallMapping $wafMapping
+.Example
+$wafMapping1 = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/testSubId/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/testSubId/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01test
+
+$wafMapping2 = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/testSubId/resourcegroups/rgName02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf02 -MigratedToId  /subscriptions/testSubId/resourcegroups/rgName02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf02test
+
+# enable Managed Identity via SystemAssigned and UserAssigned
+$identityType = "SystemAssigned, UserAssigned"
+
+# UserIdentity information
+$userInfo = @{
+	"/subscriptions/testSubId/resourceGroups/rgName01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity01" = @{}
+	"/subscriptions/testSubId/resourceGroups/rgName02/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity02" = @{}
+}
+
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Premium_AzureFrontDoor -MigrationWebApplicationFirewallMapping @($wafMapping1, $wafMapping2) -IdentityType $identityType -IdentityUserAssignedIdentity $userInfo
+.Example
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/testSubId01/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor -SubscriptionId testSubId01
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult
@@ -40604,11 +40594,9 @@ Abort classic cdn migrate to AFDx.
 Your new Front Door Profile will be deleted and your existing profile will remain active.
 WAF policies will not be deleted.
 .Example
-{{ Add code here }}
-{{ Add output here }}
+Stop-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName
 .Example
-{{ Add code here }}
-{{ Add output here }}
+Stop-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
 
 .Outputs
 System.Boolean
@@ -40800,11 +40788,9 @@ Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Pre
 .Description
 Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
 .Example
-{{ Add code here }}
-{{ Add output here }}
+Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/testrg/providers/Microsoft.Network/Frontdoors/frontdoorName
 .Example
-{{ Add code here }}
-{{ Add output here }}
+Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceReferenceId /subscriptions/testSubId01/resourcegroups/testrg/providers/Microsoft.Network/Frontdoors/frontdoorName -SubscriptionId testSubId01 
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult
@@ -40996,9 +40982,17 @@ Updates an existing CDN profile with the specified profile name under the specif
 .Description
 Updates an existing CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
-{{ Add code here }}
+$tags = @{
+    Tag1 = 11
+    Tag2  = 22
+}
+Update-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -Tag $tags
 .Example
-{{ Add code here }}
+$tags = @{
+    Tag1 = 11
+    Tag2  = 22
+}
+Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 | Update-AzCdnProfile -Tag $tags
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -41264,9 +41258,34 @@ Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN
 .Description
 Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
-{{ Add code here }}
+$tags = @{
+    Tag1 = 11
+    Tag2  = 22
+}
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -Tag $tags
 .Example
-{{ Add code here }}
+$tags = @{
+    Tag1 = 11
+    Tag2  = 22
+}
+Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 | Update-AzFrontDoorCdnProfile -Tag $tags
+.Example
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -IdentityType SystemAssigned
+.Example
+$userId =  @{"/subscriptions/subId/resourceGroups/testps-rg-da16jm/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testcdnrpaadidentity" = @{}}
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -IdentityType UserAssigned -IdentityUserAssignedIdentity $userId
+.Example
+$rule = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -LogScrubbingRule $rule -LogScrubbingState Enabled
+.Example
+$rule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled 
+$rule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable QueryStringArgNames -State Enabled
+$rules = New-AzFrontDoorCdnProfileLogScrubbingObject -ScrubbingRule @($rule1, $rule2) -State Enabled
+
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -LogScrubbingRule $rules.ScrubbingRule -LogScrubbingState Enabled
+.Example
+$rule = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Disabled
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -LogScrubbingRule $rule -LogScrubbingState Disabled
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -41596,9 +41615,24 @@ Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 .Description
 Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 .Example
-{{ Add code here }}
+$nullUpgradePara = @{}
+Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $nullUpgradePara
 .Example
-{{ Add code here }}
+$waf = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/newWAFName
+$upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf
+
+Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $upgrade
+.Example
+$waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf1 -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName1
+$waf2 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf2 -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName2
+$upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList @($waf1, $waf2)
+
+Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $upgrade
+.Example
+$waf = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf -ChangeToWafPolicyId /subscriptions/testSubId01/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ExistingPremiumWAFName
+$upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf
+
+Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $upgrade -SubscriptionId testSubId01
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpgradeParameters
