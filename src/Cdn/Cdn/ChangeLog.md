@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Opted in to Change Safety: `New/Remove/Update-AzCdnProfile` and `New/Remove/Update-AzFrontDoorCdnProfile` now support `-AcquirePolicyToken` and `-ChangeReference`.
+* Opted in to Change Safety: all write cmdlets in `Az.Cdn` (CDN and Azure Front Door profiles, endpoints, origins, origin groups, custom domains, routes, rules, rule sets, secrets, security policies, and edge actions) now support `-AcquirePolicyToken` and `-ChangeReference` to automatically acquire and attach an Azure Policy evaluation token to the request.
 
 ## Version 6.1.0
 * Upgraded API version to 2026-04-01-preview.
