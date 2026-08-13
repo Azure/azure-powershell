@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -104,6 +105,19 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             Assert.Equal("I5MV4", sku.Name);
             Assert.Equal("I5MV4", sku.Size);
             Assert.Equal("I", sku.Family);
+        }
+
+        [Theory]
+        [InlineData("IsolatedV4", 0)]
+        [InlineData("IsolatedV4", 7)]
+        [InlineData("IsolatedMV4", 0)]
+        [InlineData("IsolatedMV4", 6)]
+        public void GetSkuNameRejectsUnsupportedIsolatedV4WorkerSizes(string tier, int workerSize)
+        {
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => CmdletHelpers.GetSkuName(tier, workerSize));
+
+            Assert.Equal("workerSize", exception.ParamName);
+            Assert.Contains(tier, exception.Message);
         }
     }
 }

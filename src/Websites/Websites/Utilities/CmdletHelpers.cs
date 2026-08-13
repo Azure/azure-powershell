@@ -340,11 +340,13 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
             else if (string.Equals("IsolatedV4", tier, StringComparison.OrdinalIgnoreCase))
             {
+                ValidateIsolatedV4WorkerSize(tier, workerSize, 6);
                 sku = "I" + workerSize + "V4";
                 return sku;
             }
             else if (string.Equals("IsolatedMV4", tier, StringComparison.OrdinalIgnoreCase))
             {
+                ValidateIsolatedV4WorkerSize(tier, workerSize, 5);
                 sku = "I" + workerSize + "MV4";
                 return sku;
             }
@@ -355,6 +357,17 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             sku += workerSize;
             return sku;
+        }
+
+        private static void ValidateIsolatedV4WorkerSize(string tier, int workerSize, int maximumWorkerSize)
+        {
+            if (workerSize < 1 || workerSize > maximumWorkerSize)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(workerSize),
+                    workerSize,
+                    $"Worker size for {tier} must be between 1 and {maximumWorkerSize}.");
+            }
         }
 
         internal static string GetSkuName(string tier, string workerSize)
