@@ -1,0 +1,95 @@
+{
+  "resourceType": "communities/transitHubs",
+  "apiVersion": "2026-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mission"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMissionTransitHub",
+      "description": "Get a TransitHubResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/transitHubs/{transitHubName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mission/get-azmissiontransithub"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CommunityName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a TransitHubResource",
+          "parameters": [
+            {
+              "name": "-CommunityName",
+              "value": "[Path.communityName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.transitHubName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMissionTransitHub",
+      "description": "Delete a TransitHubResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/transitHubs/{transitHubName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mission/remove-azmissiontransithub"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CommunityName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a TransitHubResource",
+          "parameters": [
+            {
+              "name": "-CommunityName",
+              "value": "[Path.communityName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.transitHubName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

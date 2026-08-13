@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class Severity
     {
+        /// <summary>
+        /// Error
+        /// </summary>
         public const string Error = "Error";
+        /// <summary>
+        /// Warning
+        /// </summary>
         public const string Warning = "Warning";
     }
 }

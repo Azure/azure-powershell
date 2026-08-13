@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location.
+        /// The name of the Azure region.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<AvailableServiceAlias> List(this IAvailableServiceAliasesOperations operations, string location)
         {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='location'>
-        /// The location.
+        /// The name of the Azure region.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<AvailableServiceAlias> ListByResourceGroup(this IAvailableServiceAliasesOperations operations, string resourceGroupName, string location)
         {
@@ -69,10 +69,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='location'>
-        /// The location.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ConnectionMonitorEndpointFilterItemType
     {
+        /// <summary>
+        /// AgentAddress
+        /// </summary>
         public const string AgentAddress = "AgentAddress";
     }
 }

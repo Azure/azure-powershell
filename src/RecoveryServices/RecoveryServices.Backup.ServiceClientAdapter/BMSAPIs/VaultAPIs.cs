@@ -236,6 +236,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             {
                 queryParams = new ODataQuery<CrrModel.BmsaadPropertiesQueryObject>(q => q.BackupManagementType == BackupManagementType.AzureWorkload);
             }
+            else if (backupManagementType == BackupManagementType.AzureStorage)
+            {
+                queryParams = new ODataQuery<CrrModel.BmsaadPropertiesQueryObject>(q => q.BackupManagementType == BackupManagementType.AzureStorage);
+            }
 
             CrrModel.AADPropertiesResource aadProperties = CrrAdapter.Client.AadProperties.GetWithHttpMessagesAsync(azureRegion, queryParams).Result.Body;
             return aadProperties;

@@ -1,0 +1,182 @@
+{
+  "Get-AzDiscoveryStorageContainer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/storageContainers/pstestsconget01?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/storageContainers/pstestsconget01?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "116" ],
+        "x-ms-client-request-id": [ "2fb78723-64d1-40bc-9b99-8269cafa9aeb" ],
+        "CommandName": [ "Get-AzDiscoveryStorageContainer" ],
+        "FullCommandName": [ "Get-AzDiscoveryStorageContainer_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"7700e687-0000-1100-0000-6a6240d80000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "e9987dcc-b6d2-4c78-876c-062616506355" ],
+        "x-ms-correlation-request-id": [ "eac2144c-189d-4a3f-b651-8baef68b00b5" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164804Z:eac2144c-189d-4a3f-b651-8baef68b00b5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0985D00766C843C68CF3F7AB4E3074B4 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:04Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "814" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/storageContainers/pstestsconget01\",\"name\":\"pstestsconget01\",\"type\":\"microsoft.discovery/storagecontainers\",\"location\":\"uksouth\",\"tags\":{\"psTest\":\"true\"},\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-20T18:00:10.7981214Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T16:25:41.1993831Z\"},\"properties\":{\"storageStore\":{\"storageAccountId\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/fixedrg-uksouth-dev3/providers/Microsoft.Storage/storageAccounts/storageuksouthdev3\",\"mountProtocol\":\"BlobfuseCaching\",\"kind\":\"AzureStorageBlob\"},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryStorageContainer+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/storageContainers?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/storageContainers?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "117" ],
+        "x-ms-client-request-id": [ "faa5c519-00ae-411b-9e14-ba62eaf51819" ],
+        "CommandName": [ "Get-AzDiscoveryStorageContainer" ],
+        "FullCommandName": [ "Get-AzDiscoveryStorageContainer_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "afceae38-e209-4aab-90a0-330fad805386" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "da79ffdc-b1da-44ba-a7d8-6b47bd32b4f4" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "da79ffdc-b1da-44ba-a7d8-6b47bd32b4f4" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164805Z:da79ffdc-b1da-44ba-a7d8-6b47bd32b4f4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 11545465B22840049C90507048E058AF Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:04Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2404" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/storageContainers/pstestsconget01\",\"name\":\"pstestsconget01\",\"type\":\"microsoft.discovery/storagecontainers\",\"location\":\"uksouth\",\"tags\":{\"psTest\":\"true\"},\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-20T18:00:10.7981214Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T16:25:41.1993831Z\"},\"properties\":{\"storageStore\":{\"storageAccountId\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/fixedrg-uksouth-dev3/providers/Microsoft.Storage/storageAccounts/storageuksouthdev3\",\"mountProtocol\":\"BlobfuseCaching\",\"kind\":\"AzureStorageBlob\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/storageContainers/pstestdelscon01\",\"name\":\"pstestdelscon01\",\"type\":\"microsoft.discovery/storagecontainers\",\"location\":\"uksouth\",\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T16:34:38.248985Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T16:34:38.248985Z\"},\"properties\":{\"storageStore\":{\"storageAccountId\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/fixedrg-uksouth-dev3/providers/Microsoft.Storage/storageAccounts/storageuksouthdev3\",\"mountProtocol\":\"BlobfuseCaching\",\"kind\":\"AzureStorageBlob\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/storageContainers/pstestdelscon02\",\"name\":\"pstestdelscon02\",\"type\":\"microsoft.discovery/storagecontainers\",\"location\":\"uksouth\",\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T16:36:13.3891325Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T16:36:13.3891325Z\"},\"properties\":{\"storageStore\":{\"storageAccountId\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/fixedrg-uksouth-dev3/providers/Microsoft.Storage/storageAccounts/storageuksouthdev3\",\"mountProtocol\":\"BlobfuseCaching\",\"kind\":\"AzureStorageBlob\"},\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryStorageContainer+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/storageContainers/pstestsconget01?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/storageContainers/pstestsconget01?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "118" ],
+        "x-ms-client-request-id": [ "65c1e07d-17ab-4475-9c5e-c08351201b65" ],
+        "CommandName": [ "Get-AzDiscoveryStorageContainer" ],
+        "FullCommandName": [ "Get-AzDiscoveryStorageContainer_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"7700e687-0000-1100-0000-6a6240d80000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "07c10494-9703-41f9-9f0e-ca2318abb282" ],
+        "x-ms-correlation-request-id": [ "a8795f57-5ff7-4d92-983c-c2b28faeb1fc" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164805Z:a8795f57-5ff7-4d92-983c-c2b28faeb1fc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BC5831F9EAEF4C4F8E2549AE52A81AC4 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:05Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "814" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/storageContainers/pstestsconget01\",\"name\":\"pstestsconget01\",\"type\":\"microsoft.discovery/storagecontainers\",\"location\":\"uksouth\",\"tags\":{\"psTest\":\"true\"},\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-20T18:00:10.7981214Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T16:25:41.1993831Z\"},\"properties\":{\"storageStore\":{\"storageAccountId\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/fixedrg-uksouth-dev3/providers/Microsoft.Storage/storageAccounts/storageuksouthdev3\",\"mountProtocol\":\"BlobfuseCaching\",\"kind\":\"AzureStorageBlob\"},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryStorageContainer+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/storageContainers/pstestsconget01?api-version=2026-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/storageContainers/pstestsconget01?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "119" ],
+        "x-ms-client-request-id": [ "3d403818-71be-46c4-baec-e56fa0d80fde" ],
+        "CommandName": [ "Get-AzDiscoveryStorageContainer" ],
+        "FullCommandName": [ "Get-AzDiscoveryStorageContainer_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"7700e687-0000-1100-0000-6a6240d80000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "fd30be62-6b52-4769-8212-1784b90913de" ],
+        "x-ms-correlation-request-id": [ "264060ce-bcbf-4e8e-8c6f-989710fb3ccd" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164806Z:264060ce-bcbf-4e8e-8c6f-989710fb3ccd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6BA6FACB2F9B4DAF834023C3AC50A509 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:06Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "814" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/storageContainers/pstestsconget01\",\"name\":\"pstestsconget01\",\"type\":\"microsoft.discovery/storagecontainers\",\"location\":\"uksouth\",\"tags\":{\"psTest\":\"true\"},\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-20T18:00:10.7981214Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T16:25:41.1993831Z\"},\"properties\":{\"storageStore\":{\"storageAccountId\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/fixedrg-uksouth-dev3/providers/Microsoft.Storage/storageAccounts/storageuksouthdev3\",\"mountProtocol\":\"BlobfuseCaching\",\"kind\":\"AzureStorageBlob\"},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

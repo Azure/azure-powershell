@@ -21,8 +21,8 @@ New-AzAppConfigurationSnapshot -Endpoint <String> -Name <String> -Entity <ISnaps
 ### CreateExpanded
 ```
 New-AzAppConfigurationSnapshot -Endpoint <String> -Name <String> -Filter <IKeyValueFilter[]>
- [-SyncToken <String>] [-CompositionType <String>] [-RetentionPeriod <Int64>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SyncToken <String>] [-CompositionType <String>] [-Description <String>] [-RetentionPeriod <Int64>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -35,8 +35,9 @@ New-AzAppConfigurationSnapshot -Endpoint <String> -InputObject <IAppConfiguratio
 ### CreateViaIdentityExpanded
 ```
 New-AzAppConfigurationSnapshot -Endpoint <String> -InputObject <IAppConfigurationdataIdentity>
- -Filter <IKeyValueFilter[]> [-SyncToken <String>] [-CompositionType <String>] [-RetentionPeriod <Int64>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Filter <IKeyValueFilter[]> [-SyncToken <String>] [-CompositionType <String>] [-Description <String>]
+ [-RetentionPeriod <Int64>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -126,6 +127,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+The description of the snapshot.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
 
 Required: False
 Position: Named

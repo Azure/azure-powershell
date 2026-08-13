@@ -46,22 +46,36 @@ function setupEnv() {
     # For any resources you created for test, you should add it to $env here.
     $env.ResourceGroupName = 'ajaykumar-rg'
     $env.ResourceName = 'MongoDBV2-11July-5'
-    $env.NewResourceName = 'MongoDBV2-11July-6'
+    $env.NewResourceName = 'MongoDBV2-09Jul-PesterNew'
+    $env.NewResourceGroupName = 'sharmaanuTest'
     $env.PartnerPropertyOrganizationName = 'MongoDBPortalTest'
     $env.Location = "East US 2"
     $env.SubscriptionId = "cbdb67be-e103-4770-a797-2a2fa42eb6f3"
-    $env.MarketplaceSubscriptionId = "cbdb67be-e103-4770-a797-2a2fa42eb6f3"
+    $env.MarketplaceSubscriptionId = "5df31f9f-6fde-4989-c709-46edf91ec655"
     $env.OfferDetailOfferId = "mongodb_atlas_azure_native_prod"
     $env.OfferDetailPlanId = "private_plan"
     $env.OfferDetailPlanName = "Pay as You Go (Free) (Private)"
     $env.OfferDetailPublisherId = "mongodb"
-    $env.OfferDetailTermId = "gmz7xq9ge3py"
+    $env.OfferDetailTermId = "n7ja87drquhy"
     $env.OfferDetailTermUnit = "P1M"
-    $env.UserEmailAddress = "ajaykumar@microsoft.com"
-    $env.UserFirstName = "Ajay" 
-    $env.UserLastName = "Kumar"
-    $env.UserUpn = "ajaykumar@microsoft.com"
-    $env.DeleteResourceName = "TestResource04July2025"
+    $env.UserEmailAddress = "sharmaanu@microsoft.com"
+    $env.UserFirstName = "Anuj" 
+    $env.UserLastName = "Sharma"
+    $env.UserUpn = "sharmaanu@microsoft.com"
+    $env.DeleteResourceName = "hoian"
+    $env.DeleteResourceGroupName = "sharmaanuTest"
+
+    # Project and Cluster test variables
+    $env.ProjectResourceGroupName = 'sharmaanuTest'
+    $env.OrganizationName = 'KanedaTest'
+    $env.ProjectName = 'test-project-1'                          # Pre-existing project (used by Get/Limit/TierRegion tests)
+    $env.NewProjectName = 'test-project-new'                     # Created by New-AzMongoDBProject test
+    $env.ClusterName = 'test-cluster-free'                       # Pre-existing cluster in test-project-1 (used by Get-AzMongoDBCluster)
+    $env.ClusterTestProjectName = 'test-project-for-cluster'     # Created by New-AzMongoDBCluster test (avoids FREE limit on test-project-1)
+    $env.NewClusterName = 'test-cluster-pester'                  # Created by New-AzMongoDBCluster test
+    $env.ClusterTier = 'FREE'
+    $env.RegionName = 'eastus2'
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

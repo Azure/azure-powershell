@@ -1,0 +1,95 @@
+{
+  "resourceType": "bookshelves/privateEndpointConnections",
+  "apiVersion": "2026-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.discovery"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDiscoveryBookshelfPrivateEndpointConnection",
+      "description": "Gets the specified private endpoint connection associated with the bookshelf.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/bookshelves/{bookshelfName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.discovery/get-azdiscoverybookshelfprivateendpointconnection"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-BookshelfName <String>",
+              "-PrivateEndpointConnectionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the specified private endpoint connection associated with the bookshelf.",
+          "parameters": [
+            {
+              "name": "-BookshelfName",
+              "value": "[Path.bookshelfName]"
+            },
+            {
+              "name": "-PrivateEndpointConnectionName",
+              "value": "[Path.privateEndpointConnectionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDiscoveryBookshelfPrivateEndpointConnection",
+      "description": "Deletes the specified private endpoint connection.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/bookshelves/{bookshelfName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.discovery/remove-azdiscoverybookshelfprivateendpointconnection"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-BookshelfName <String>",
+              "-PrivateEndpointConnectionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the specified private endpoint connection.",
+          "parameters": [
+            {
+              "name": "-BookshelfName",
+              "value": "[Path.bookshelfName]"
+            },
+            {
+              "name": "-PrivateEndpointConnectionName",
+              "value": "[Path.privateEndpointConnectionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

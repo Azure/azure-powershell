@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
     public static class TrustedAccessRoleBindingProvisioningState
     {
+        /// <summary>
+        /// Trusted access role binding provisioning was canceled.
+        /// </summary>
         public const string Canceled = "Canceled";
+        /// <summary>
+        /// Trusted access role binding is being deleted.
+        /// </summary>
         public const string Deleting = "Deleting";
+        /// <summary>
+        /// Trusted access role binding provisioning failed.
+        /// </summary>
         public const string Failed = "Failed";
+        /// <summary>
+        /// Trusted access role binding provisioning succeeded.
+        /// </summary>
         public const string Succeeded = "Succeeded";
+        /// <summary>
+        /// Trusted access role binding is being updated.
+        /// </summary>
         public const string Updating = "Updating";
     }
 }

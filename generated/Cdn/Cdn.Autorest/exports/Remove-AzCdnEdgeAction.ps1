@@ -20,7 +20,7 @@ Delete EdgeAction resource
 .Description
 Delete EdgeAction resource
 .Example
-Remove-AzCdnEdgeAction -ResourceGroupName "testps-rg-da16jm" -Name "edgeaction001"
+Remove-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
 
 .Outputs
 System.Boolean

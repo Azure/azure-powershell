@@ -76,6 +76,10 @@ namespace Microsoft.Azure.Management.Compute
         /// </summary>
         public virtual IImagesOperations Images { get; private set; }
         /// <summary>
+        /// Gets the IInterconnectBlocksOperations
+        /// </summary>
+        public virtual IInterconnectBlocksOperations InterconnectBlocks { get; private set; }
+        /// <summary>
         /// Gets the IVirtualMachineImagesEdgeZoneOperations
         /// </summary>
         public virtual IVirtualMachineImagesEdgeZoneOperations VirtualMachineImagesEdgeZone { get; private set; }
@@ -498,6 +502,7 @@ namespace Microsoft.Azure.Management.Compute
             this.CapacityReservationGroups = new CapacityReservationGroupsOperations(this);
             this.DedicatedHostGroups = new DedicatedHostGroupsOperations(this);
             this.Images = new ImagesOperations(this);
+            this.InterconnectBlocks = new InterconnectBlocksOperations(this);
             this.VirtualMachineImagesEdgeZone = new VirtualMachineImagesEdgeZoneOperations(this);
             this.VirtualMachineImages = new VirtualMachineImagesOperations(this);
             this.LogAnalytics = new LogAnalyticsOperations(this);

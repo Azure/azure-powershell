@@ -7,9 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list origins. It contains a list of origin objects and a URL link to get the next set of results.
-    /// </summary>
+    /// <summary>The response of a Origin list operation.</summary>
     public partial class OriginListResult
     {
 
@@ -101,17 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
+            if (null != this._value)
             {
-                if (null != this._value)
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.XNodeArray();
+                foreach( var __x in this._value )
                 {
-                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.XNodeArray();
-                    foreach( var __x in this._value )
-                    {
-                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
-                    }
-                    container.Add("value",__w);
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
                 }
+                container.Add("value",__w);
             }
             AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
             AfterToJson(ref container);

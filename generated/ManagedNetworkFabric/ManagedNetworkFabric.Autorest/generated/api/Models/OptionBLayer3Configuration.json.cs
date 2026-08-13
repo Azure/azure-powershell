@@ -78,9 +78,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             __layer3IPPrefixProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.Layer3IPPrefixProperties(json);
-            {_peerAsn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber>("peerASN"), out var __jsonPeerAsn) ? (long?)__jsonPeerAsn : _peerAsn;}
-            {_vlanId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber>("vlanId"), out var __jsonVlanId) ? (int?)__jsonVlanId : _vlanId;}
+            {_bmpConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("bmpConfiguration"), out var __jsonBmpConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NniBmpProperties.FromJson(__jsonBmpConfiguration) : _bmpConfiguration;}
+            {_peerAsn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber>("peerASN"), out var __jsonPeerAsn) ? (long)__jsonPeerAsn : _peerAsn;}
+            {_vlanId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber>("vlanId"), out var __jsonVlanId) ? (int)__jsonVlanId : _vlanId;}
             {_fabricAsn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber>("fabricASN"), out var __jsonFabricAsn) ? (long?)__jsonFabricAsn : _fabricAsn;}
+            {_peLoopbackIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("peLoopbackIpAddress"), out var __jsonPeLoopbackIPAddress) ? If( __jsonPeLoopbackIPAddress as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _peLoopbackIPAddress;}
+            {_prefixLimit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("prefixLimits"), out var __jsonPrefixLimits) ? If( __jsonPrefixLimits as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3PrefixLimitProperties>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3PrefixLimitProperties) (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.OptionBLayer3PrefixLimitProperties.FromJson(__p) )) ))() : null : _prefixLimit;}
             AfterFromJson(json);
         }
 
@@ -104,11 +107,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return container;
             }
             __layer3IPPrefixProperties?.ToJson(container, serializationMode);
-            AddIf( null != this._peerAsn ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber((long)this._peerAsn) : null, "peerASN" ,container.Add );
-            AddIf( null != this._vlanId ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber((int)this._vlanId) : null, "vlanId" ,container.Add );
+            AddIf( null != this._bmpConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._bmpConfiguration.ToJson(null,serializationMode) : null, "bmpConfiguration" ,container.Add );
+            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber(this._peerAsn), "peerASN" ,container.Add );
+            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber(this._vlanId), "vlanId" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._fabricAsn ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber((long)this._fabricAsn) : null, "fabricASN" ,container.Add );
+            }
+            if (null != this._peLoopbackIPAddress)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __x in this._peLoopbackIPAddress )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("peLoopbackIpAddress",__w);
+            }
+            if (null != this._prefixLimit)
+            {
+                var __r = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __s in this._prefixLimit )
+                {
+                    AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
+                }
+                container.Add("prefixLimits",__r);
             }
             AfterToJson(ref container);
             return container;

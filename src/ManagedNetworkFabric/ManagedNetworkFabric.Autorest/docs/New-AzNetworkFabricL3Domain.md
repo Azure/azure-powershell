@@ -17,9 +17,13 @@ Create isolation domain resources for layer 3 connectivity between compute nodes
 New-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> -Location <String>
  -NetworkFabricId <String> [-SubscriptionId <String>]
  [-AggregateRouteConfiguration <IAggregateRouteConfiguration>] [-Annotation <String>]
- [-ConnectedSubnetRoutePolicy <IConnectedSubnetRoutePolicy>] [-RedistributeConnectedSubnet <String>]
- [-RedistributeStaticRoute <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ConnectedSubnetRoutePolicy <IConnectedSubnetRoutePolicy>] [-EnableSystemAssignedIdentity]
+ [-ExportPolicyConfigurationExportPolicy <String[]>] [-RedistributeConnectedSubnet <String>]
+ [-RedistributeStaticRoute <String>] [-StaticRoutePolicyExportRoutePolicy <IL3ExportRoutePolicy>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-V4RoutePrefixLimitHardLimit <Int32>]
+ [-V4RoutePrefixLimitThreshold <Int32>] [-V6RoutePrefixLimitHardLimit <Int32>]
+ [-V6RoutePrefixLimitThreshold <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -139,6 +143,36 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExportPolicyConfigurationExportPolicy
+Export Policy for the BGP Monitoring Protocol (BMP) Configuration.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -285,6 +319,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StaticRoutePolicyExportRoutePolicy
+Array of ARM Resource ID of the RoutePolicies.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3ExportRoutePolicy
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -306,6 +355,82 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -V4RoutePrefixLimitHardLimit
+Hard limit for the routes.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -V4RoutePrefixLimitThreshold
+Threshold for the routes.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -V6RoutePrefixLimitHardLimit
+Hard limit for the routes.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -V6RoutePrefixLimitThreshold
+Threshold for the routes.
+
+```yaml
+Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
