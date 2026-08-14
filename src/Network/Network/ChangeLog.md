@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Surfaced the read-only `UpgradedToV2` property on public IP address and public IP prefix objects.
+    - `Get-AzPublicIpAddress` and `Get-AzPublicIpPrefix` now return `UpgradedToV2`, indicating whether the SKU has been upgraded from Standard to StandardV2.
 * Upgraded Network SDK to API version `2025-09-01`.
     - Added `DisableDefaultServerHeaderInResponse` to `PSApplicationGatewayGlobalConfiguration` to mirror the new SDK property and unblock AutoMapper strict-mode validation.
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.

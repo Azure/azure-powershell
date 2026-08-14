@@ -8893,6 +8893,10 @@
             <Alignment>Left</Alignment>
             <Label>Sku</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>UpgradedToV2</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -8932,6 +8936,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>SkuText</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>UpgradedToV2</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -8989,6 +8997,10 @@
             <Alignment>Left</Alignment>
             <Label>Sku</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>UpgradedToV2</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -9012,6 +9024,10 @@
 			  <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>SkuText</PropertyName>
+              </TableColumnItem>
+			  <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>UpgradedToV2</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
