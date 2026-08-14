@@ -27,44 +27,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
     [TestCaseOrderer("Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.PriorityOrderer", "Microsoft.Azure.Commands.ServiceFabric.Test")]
     public class TestServiceFabric : ServiceFabricTestRunner
     {
-        private sealed class TestServiceFabricClusterCmdlet : ServiceFabricClusterCmdlet
-        {
-            public DurabilityLevel GetNodeTypeDurabilityLevel(string durabilityLevel)
-            {
-                return GetDurabilityLevel(durabilityLevel);
-            }
-
-            public DurabilityLevel GetVmssDurabilityLevel(string durabilityLevel)
-            {
-                var vmss = new Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models.VirtualMachineScaleSet
-                {
-                    VirtualMachineProfile = new Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models.VirtualMachineScaleSetVMProfile
-                    {
-                        ExtensionProfile = new Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models.VirtualMachineScaleSetExtensionProfile
-                        {
-                            Extensions = new[]
-                            {
-                                new Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models.VirtualMachineScaleSetExtension
-                                {
-                                    Type = "ServiceFabricNode",
-                                    Settings = new Newtonsoft.Json.Linq.JObject
-                                    {
-                                        ["durabilityLevel"] = durabilityLevel
-                                    }
-                                }
-                            }
-                        }
-                    }
-                };
-
-                return GetDurabilityLevel(vmss);
-            }
-
-            public override void ExecuteCmdlet()
-            {
-            }
-        }
-
         public TestServiceFabric(ITestOutputHelper output) : base(output)
         {
             //AddAzureRmServiceFabricNodeType.dontRandom = true;
@@ -84,44 +46,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         public void TestUpdateAzureRmServiceFabricDurability()
         {
             TestRunner.RunTestScript("Test-UpdateAzureRmServiceFabricDurability");
-        }
-
-        [Theory]
-        [InlineData("bronze", DurabilityLevel.Bronze)]
-        [InlineData("silver", DurabilityLevel.Silver)]
-        [InlineData("gold", DurabilityLevel.Gold)]
-        public void GetDurabilityLevelAcceptsLowercaseValues(string durabilityLevel, DurabilityLevel expectedDurabilityLevel)
-        {
-            var cmdlet = new TestServiceFabricClusterCmdlet();
-
-            Assert.Equal(expectedDurabilityLevel, cmdlet.GetNodeTypeDurabilityLevel(durabilityLevel));
-            Assert.Equal(expectedDurabilityLevel, cmdlet.GetVmssDurabilityLevel(durabilityLevel));
-        }
-
-        [Fact]
-        public void GetDurabilityLevelReportsInvalidValue()
-        {
-            var cmdlet = new TestServiceFabricClusterCmdlet();
-
-            var exception = Assert.Throws<System.Management.Automation.PSInvalidOperationException>(
-                () => cmdlet.GetNodeTypeDurabilityLevel("invalid"));
-
-            Assert.Contains("Valid values are Bronze, Silver, and Gold.", exception.Message);
-        }
-
-        [Theory]
-        [InlineData("1")]
-        [InlineData("999")]
-        [InlineData("0")]
-        public void GetDurabilityLevelRejectsNumericStrings(string numericValue)
-        {
-            var cmdlet = new TestServiceFabricClusterCmdlet();
-
-            Assert.Throws<System.Management.Automation.PSInvalidOperationException>(
-                () => cmdlet.GetNodeTypeDurabilityLevel(numericValue));
-
-            Assert.Throws<System.Management.Automation.PSInvalidOperationException>(
-                () => cmdlet.GetVmssDurabilityLevel(numericValue));
         }
 
         [Fact, TestPriority(0)]

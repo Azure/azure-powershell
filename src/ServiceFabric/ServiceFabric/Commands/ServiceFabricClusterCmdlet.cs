@@ -130,7 +130,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         protected DurabilityLevel GetDurabilityLevel(string durabilityLevel)
         {
             DurabilityLevel parsedDurabilityLevel;
-            if (Enum.TryParse(durabilityLevel?.Trim(), true, out parsedDurabilityLevel) &&
+            if (!int.TryParse(durabilityLevel?.Trim(), out _) &&
+                Enum.TryParse(durabilityLevel?.Trim(), true, out parsedDurabilityLevel) &&
                 Enum.IsDefined(typeof(DurabilityLevel), parsedDurabilityLevel))
             {
                 return parsedDurabilityLevel;
