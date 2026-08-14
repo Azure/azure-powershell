@@ -14,7 +14,8 @@ Get a NetworkAnchor
 
 ### List (Default)
 ```
-Get-AzOracleNetworkAnchor [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzOracleNetworkAnchor [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -23,15 +24,16 @@ Get-AzOracleNetworkAnchor -Name <String> -ResourceGroupName <String> [-Subscript
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzOracleNetworkAnchor -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### List1
 ```
-Get-AzOracleNetworkAnchor -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzOracleNetworkAnchor -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzOracleNetworkAnchor -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +127,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
