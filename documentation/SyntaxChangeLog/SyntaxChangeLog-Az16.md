@@ -1,3 +1,31 @@
+## 16.1.0 - August 2026
+#### Az.AppConfiguration 2.1.0 
+* Modified cmdlet `New-AzAppConfigurationSnapshot`
+   - Added parameter `-Description`
+* Modified cmdlet `Set-AzAppConfigurationKeyValue`
+   - Added parameter `-Description`
+#### Az.Cdn 6.0.2 
+* Modified cmdlet `New-AzFrontDoorCdnCustomDomain`
+   - Added parameter `-MtlSettingScenario`
+* Modified cmdlet `New-AzFrontDoorCdnEndpoint`
+   - Added parameter `-EnforceMtl`
+* Modified cmdlet `New-AzFrontDoorCdnOrigin`
+   - Added parameters `-OriginCapacityResourceEnabled`, `-OriginCapacityResourceOriginIngressRateThreshold`, `-OriginCapacityResourceOriginRequestRateThreshold`, `-OriginCapacityResourceRegion`
+* Modified cmdlet `New-AzFrontDoorCdnProfileScrubbingRulesObject`
+   - Added parameter `-SelectorMatchOperator`
+* Modified cmdlet `Update-AzFrontDoorCdnCustomDomain`
+   - Added parameter `-MtlSettingScenario`
+* Modified cmdlet `Update-AzFrontDoorCdnEndpoint`
+   - Added parameter `-EnforceMtl`
+* Modified cmdlet `Update-AzFrontDoorCdnOrigin`
+   - Added parameters `-OriginCapacityResourceEnabled`, `-OriginCapacityResourceOriginIngressRateThreshold`, `-OriginCapacityResourceOriginRequestRateThreshold`, `-OriginCapacityResourceRegion`
+* Modified cmdlet `Update-AzFrontDoorCdnRoute`
+   - Added parameter `-GrpcState`
+* Added cmdlet `New-AzFrontDoorCdnRuleEdgeActionObject`
+#### Az.Dns 2.1.0 
+* Modified cmdlet `New-AzDnsRecordSet`
+   - Added parameter `-TrafficManagerProfileId`
+
 ## 16.0.0 - June 2026
 #### Az.Accounts 5.5.0 
 * Modified cmdlet `Add-AzEnvironment`
@@ -6972,5 +7000,6 @@
    - Changed the type of parameter `-StagingEnvironmentPolicy` from `StagingEnvironmentPolicy` to `String`
 * Modified cmdlet `Update-AzStaticWebAppUser`
    - Added parameters `-AuthproviderInputObject`, `-StaticSiteInputObject`, `-StaticSiteUserEnvelope`, `-JsonFilePath`, `-JsonString`
+
 
 
