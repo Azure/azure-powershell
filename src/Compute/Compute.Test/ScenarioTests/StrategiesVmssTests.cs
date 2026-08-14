@@ -186,5 +186,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VmssLifecycleHookEventEndToEnd");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVmssDisableCapacityReservationAssignment()
+        {
+            TestRunner.RunTestScript("Test-VmssDisableCapacityReservationAssignment");
+        }
     }
 }

@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity. Minimum api-version: 2026-04-01.")]
+            HelpMessage = "Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity. Minimum api-version: 2026-04-01. This parameter is only supported when updating a Virtual Machine Scale Set via the -VirtualMachineScaleSet object parameter (e.g. piping the output of Get-AzVmss).")]
         public SwitchParameter DisableCapacityReservationAssignment { get; set; }
 
         [Parameter(
@@ -1629,6 +1629,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 throw new PSArgumentException(
                     "The -ScheduledEventsApiVersion and -EnableAllInstancesDown parameters are only supported when updating a Virtual Machine Scale Set using the CreateOrUpdate path. " +
                     "Provide a VirtualMachineScaleSet object via -VirtualMachineScaleSet parameter (e.g., pipe the output of 'Get-AzVmss') when configuring Scheduled Events.");
+            }
+
+            // CapacityReservation is not supported in VirtualMachineScaleSetUpdate (PATCH) model.
+            // When using the PATCH path (VirtualMachineScaleSet is null), DisableCapacityReservationAssignment
+            // is not applied and is therefore rejected at runtime.
+            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+            {
+                throw new PSArgumentException(
+                    "The -DisableCapacityReservationAssignment parameter is only supported when updating a Virtual Machine Scale Set using the CreateOrUpdate path. " +
+                    "Provide a VirtualMachineScaleSet object via -VirtualMachineScaleSet parameter (e.g., pipe the output of 'Get-AzVmss') when configuring capacity reservation.");
             }
 
             if (this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode))
