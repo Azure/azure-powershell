@@ -4283,9 +4283,12 @@ function Test-VirtualMachineStopForceDeallocate
     Assert-NotNull $forceDeallocateParameter;
     Assert-AreEqual ([System.Management.Automation.SwitchParameter].FullName) $forceDeallocateParameter.ParameterType.FullName;
 
-    # ForceDeallocate is available across all parameter sets (not a dedicated set), so it can be
-    # combined with the existing resource-group, id, and hibernate stop scenarios.
-    Assert-True { $forceDeallocateParameter.ParameterSets.Keys -contains "__AllParameterSets" };
+    # ForceDeallocate is offered on the non-hibernate stop sets (like -StayProvisioned / -SkipShutdown),
+    # so it binds with the plain resource-group and id stop scenarios but not with -Hibernate.
+    Assert-True { $forceDeallocateParameter.ParameterSets.Keys -contains "ResourceGroupNameParameterSetName" };
+    Assert-True { $forceDeallocateParameter.ParameterSets.Keys -contains "IdParameterSetName" };
+    Assert-True { -not ($forceDeallocateParameter.ParameterSets.Keys -contains "ResourceGroupHibernateParameterSet") };
+    Assert-True { -not ($forceDeallocateParameter.ParameterSets.Keys -contains "IdHibernateParameterSet") };
 
     # Step 2: Verify supported combinations bind successfully without issuing live requests.
     $vmId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/virtualMachines/vm";
@@ -4298,9 +4301,10 @@ function Test-VirtualMachineStopForceDeallocate
     Stop-AzVM -ResourceGroupName "rg" -Name "vm" -Hibernate -Force -WhatIf;
 
     # Step 4: Verify ForceDeallocate cannot be combined with Hibernate, StayProvisioned, or
-    # SkipShutdown. Hibernate is a distinct stop path, and StayProvisioned / SkipShutdown keep
-    # the VM provisioned instead of deallocating it.
-    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -Hibernate -Force -WhatIf -ErrorAction Stop; } "cannot be used together";
+    # SkipShutdown. Hibernate lives in a separate parameter set, so the combination fails at
+    # parameter binding; StayProvisioned / SkipShutdown share ForceDeallocate's sets and are
+    # rejected by the cmdlet's runtime validation.
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -Hibernate -Force -WhatIf -ErrorAction Stop; } "Parameter set cannot be resolved";
     Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -StayProvisioned -Force -WhatIf -ErrorAction Stop; } "cannot be used together";
     Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -SkipShutdown -Force -WhatIf -ErrorAction Stop; } "cannot be used together";
 }

@@ -22,8 +22,7 @@ Stop-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Force] [-StayProvisio
 
 ### ResourceGroupHibernateParameterSet
 ```
-Stop-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Force] [-NoWait] [-Hibernate] [-ForceDeallocate]
- [-AsJob]
+Stop-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Force] [-NoWait] [-Hibernate] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -37,7 +36,7 @@ Stop-AzVM [-Force] [-StayProvisioned] [-NoWait] [-SkipShutdown] [-Id] <String> [
 
 ### IdHibernateParameterSet
 ```
-Stop-AzVM [-Force] [-NoWait] [-Hibernate] [-ForceDeallocate] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+Stop-AzVM [-Force] [-NoWait] [-Hibernate] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -108,11 +107,11 @@ Accept wildcard characters: False
 ```
 
 ### -ForceDeallocate
-Optional parameter to force deallocate a virtual machine during stop operations. Cannot be used with -Hibernate, -StayProvisioned, or -SkipShutdown.
+Optional parameter to force deallocate a virtual machine during stop operations. Cannot be used with -StayProvisioned, -SkipShutdown, or -Hibernate.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: ResourceGroupNameParameterSetName, IdParameterSetName
 Aliases:
 
 Required: False

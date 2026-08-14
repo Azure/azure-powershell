@@ -108,16 +108,21 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Optional parameter to force deallocate a virtual machine during stop operations. Cannot be used with -Hibernate, -StayProvisioned, or -SkipShutdown.")]
+            ParameterSetName = ResourceGroupNameParameterSet,
+            HelpMessage = "Optional parameter to force deallocate a virtual machine during stop operations. Cannot be used with -StayProvisioned, -SkipShutdown, or -Hibernate.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = IdParameterSet,
+            HelpMessage = "Optional parameter to force deallocate a virtual machine during stop operations. Cannot be used with -StayProvisioned, -SkipShutdown, or -Hibernate.")]
         public SwitchParameter ForceDeallocate { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            if (this.ForceDeallocate.IsPresent && (this.Hibernate.IsPresent || this.StayProvisioned.IsPresent || this.SkipShutdown.IsPresent))
+            if (this.ForceDeallocate.IsPresent && (this.StayProvisioned.IsPresent || this.SkipShutdown.IsPresent))
             {
-                throw new PSArgumentException("The -ForceDeallocate parameter cannot be used together with -Hibernate, -StayProvisioned, or -SkipShutdown.");
+                throw new PSArgumentException("The -ForceDeallocate parameter cannot be used together with -StayProvisioned or -SkipShutdown.");
             }
 
             ExecuteClientAction(() =>
