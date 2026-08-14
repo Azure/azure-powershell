@@ -2405,3 +2405,71 @@ function Test-AzureFirewallPolicyWithParentBasePolicy {
     $azureFirewallChildPolicy2 = New-AzFirewallPolicy -Name $azureFirewallChildPolicyName2 -ResourceGroupName $rgname -Location $location
     Set-AzFirewallPolicy -Name $azureFirewallChildPolicyName2 -ResourceGroupName $rgname -Location $location -BasePolicy $azureFirewallPolicy.Id
 }
+
+<#
+.SYNOPSIS
+Tests Kube Selector Group CRUD on an Azure Firewall Policy.
+#>
+function Test-AzureFirewallPolicyKubeSelectorGroupCRUD {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $ksgName = Get-ResourceName
+    $location = "australiasoutheast"
+
+    try {
+        # Create the resource group
+        New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create the firewall policy
+        New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location
+
+        # Build label selectors
+        $podExpression = New-AzFirewallPolicyLabelSelectorExpression -Key "tier" -Operator "In" -Value "frontend", "backend"
+        $podSelector = New-AzFirewallPolicyKubeLabelSelector -MatchLabel @{ app = "web"; env = "production" } -MatchExpression $podExpression
+        $namespaceSelector = New-AzFirewallPolicyKubeLabelSelector -MatchLabel @{ "kubernetes.io/metadata.name" = "production" }
+
+        # Create the Kube Selector Group
+        $created = New-AzFirewallPolicyKubeSelectorGroup -Name $ksgName -ResourceGroupName $rgname -FirewallPolicyName $azureFirewallPolicyName -PodSelector $podSelector -NamespaceSelector $namespaceSelector
+        Assert-NotNull $created
+
+        # Get and verify
+        $ksg = Get-AzFirewallPolicyKubeSelectorGroup -Name $ksgName -ResourceGroupName $rgname -AzureFirewallPolicyName $azureFirewallPolicyName
+        Assert-AreEqual $ksgName $ksg.Name
+        Assert-NotNull $ksg.Properties.PodSelector
+        Assert-AreEqual "web" $ksg.Properties.PodSelector.MatchLabels["app"]
+        Assert-AreEqual "production" $ksg.Properties.PodSelector.MatchLabels["env"]
+        Assert-AreEqual 1 @($ksg.Properties.PodSelector.MatchExpressions).Count
+        Assert-AreEqual "tier" $ksg.Properties.PodSelector.MatchExpressions[0].Key
+        Assert-AreEqual "In" $ksg.Properties.PodSelector.MatchExpressions[0].Operator
+        Assert-AreEqual 2 @($ksg.Properties.PodSelector.MatchExpressions[0].Values).Count
+        Assert-NotNull $ksg.Properties.NamespaceSelector
+        Assert-AreEqual "production" $ksg.Properties.NamespaceSelector.MatchLabels["kubernetes.io/metadata.name"]
+        Assert-AreEqual "Succeeded" $ksg.Properties.ProvisioningState
+
+        # List and verify
+        $list = Get-AzFirewallPolicyKubeSelectorGroup -ResourceGroupName $rgname -AzureFirewallPolicyName $azureFirewallPolicyName
+        Assert-AreEqual 1 @($list).Count
+
+        # Update the pod selector
+        $podExpression2 = New-AzFirewallPolicyLabelSelectorExpression -Key "tier" -Operator "In" -Value "frontend"
+        $podSelector2 = New-AzFirewallPolicyKubeLabelSelector -MatchLabel @{ app = "api" } -MatchExpression $podExpression2
+        Set-AzFirewallPolicyKubeSelectorGroup -Name $ksgName -ResourceGroupName $rgname -FirewallPolicyName $azureFirewallPolicyName -PodSelector $podSelector2
+
+        $updated = Get-AzFirewallPolicyKubeSelectorGroup -Name $ksgName -ResourceGroupName $rgname -AzureFirewallPolicyName $azureFirewallPolicyName
+        Assert-AreEqual "api" $updated.Properties.PodSelector.MatchLabels["app"]
+        Assert-AreEqual 1 @($updated.Properties.PodSelector.MatchExpressions[0].Values).Count
+
+        # Remove
+        $removed = Remove-AzFirewallPolicyKubeSelectorGroup -Name $ksgName -ResourceGroupName $rgname -FirewallPolicyName $azureFirewallPolicyName -PassThru -Force
+        Assert-AreEqual true $removed
+
+        # Verify removal
+        $listAfter = Get-AzFirewallPolicyKubeSelectorGroup -ResourceGroupName $rgname -AzureFirewallPolicyName $azureFirewallPolicyName
+        Assert-AreEqual 0 @($listAfter).Count
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
