@@ -1817,7 +1817,11 @@ namespace Microsoft.Azure.Commands.Network
                         dest => dest.PropertiesType,
                         opt => opt.MapFrom(src => src.VirtualWANType)
                     );
-                cfg.CreateMap<CNM.PSHubVirtualNetworkConnection, MNM.HubVirtualNetworkConnection>();
+                cfg.CreateMap<CNM.PSHubVirtualNetworkConnection, MNM.HubVirtualNetworkConnection>()
+                    .ForMember(
+                        dest => dest.EnableOnlyIpv6Peering,
+                        opt => opt.MapFrom(src => string.IsNullOrWhiteSpace(src.EnableOnlyIpv6Peering) ? default(bool?) : src.EnableOnlyIpv6Peering.Equals("Enabled", System.StringComparison.OrdinalIgnoreCase))
+                    );
                 cfg.CreateMap<CNM.PSVirtualHubRouteTable, MNM.VirtualHubRouteTable>();
                 cfg.CreateMap<CNM.PSVirtualHubRoute, MNM.VirtualHubRoute>()
                     .ForMember(
@@ -1899,7 +1903,11 @@ namespace Microsoft.Azure.Commands.Network
                         MapRouteTableV2sToRouteTables<MNM.VirtualHub, CNM.PSVirtualHub>(src, dest);
                     });
                 cfg.CreateMap<MNM.VirtualHubId, CNM.PSVirtualHubId>();
-                cfg.CreateMap<MNM.HubVirtualNetworkConnection, CNM.PSHubVirtualNetworkConnection>();
+                cfg.CreateMap<MNM.HubVirtualNetworkConnection, CNM.PSHubVirtualNetworkConnection>()
+                    .ForMember(
+                        dest => dest.EnableOnlyIpv6Peering,
+                        opt => opt.MapFrom(src => !src.EnableOnlyIpv6Peering.HasValue ? null : (src.EnableOnlyIpv6Peering.Value ? "Enabled" : "Disabled"))
+                    );
                 cfg.CreateMap<MNM.VirtualHubRouteTable, CNM.PSVirtualHubRouteTable>();
                 cfg.CreateMap<MNM.VirtualHubRoute, CNM.PSVirtualHubRoute>()
                     .ForMember(
