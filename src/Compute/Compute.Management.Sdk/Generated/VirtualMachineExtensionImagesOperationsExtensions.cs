@@ -75,9 +75,14 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='orderby'>
         /// 
         /// </param>
-        public static System.Collections.Generic.IList<VirtualMachineExtensionImage> ListVersions(this IVirtualMachineExtensionImagesOperations operations, string location, string publisherName, string type, string filter = default(string), int? top = default(int?), string orderby = default(string))
+        /// <param name='expand'>
+        /// Expand the response to include additional read-only metadata. Allowed
+        /// values: `properties` — returns extended metadata (`releaseCategory`,
+        /// `urgencyLevel`, `runProfile`).
+        /// </param>
+        public static System.Collections.Generic.IList<VirtualMachineExtensionImage> ListVersions(this IVirtualMachineExtensionImagesOperations operations, string location, string publisherName, string type, string filter = default(string), int? top = default(int?), string orderby = default(string), string expand = default(string))
         {
-                return ((IVirtualMachineExtensionImagesOperations)operations).ListVersionsAsync(location, publisherName, type, filter, top, orderby).GetAwaiter().GetResult();
+                return ((IVirtualMachineExtensionImagesOperations)operations).ListVersionsAsync(location, publisherName, type, filter, top, orderby, expand).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -104,12 +109,17 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='orderby'>
         /// 
         /// </param>
+        /// <param name='expand'>
+        /// Expand the response to include additional read-only metadata. Allowed
+        /// values: `properties` — returns extended metadata (`releaseCategory`,
+        /// `urgencyLevel`, `runProfile`).
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<VirtualMachineExtensionImage>> ListVersionsAsync(this IVirtualMachineExtensionImagesOperations operations, string location, string publisherName, string type, string filter = default(string), int? top = default(int?), string orderby = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<VirtualMachineExtensionImage>> ListVersionsAsync(this IVirtualMachineExtensionImagesOperations operations, string location, string publisherName, string type, string filter = default(string), int? top = default(int?), string orderby = default(string), string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListVersionsWithHttpMessagesAsync(location, publisherName, type, filter, top, orderby, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListVersionsWithHttpMessagesAsync(location, publisherName, type, filter, top, orderby, expand, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
