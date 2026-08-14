@@ -75,10 +75,10 @@ New-AzVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name 
 ```
 
 ```output
-VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+VirtualWan                : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 ResourceGroupName         : testRG
 Name                      : westushub
-Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
+Id                        : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
 AddressPrefix             : 10.0.1.0/24
 RouteTable                : 
 VirtualNetworkConnections : {}
@@ -107,10 +107,10 @@ New-AzVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name 
 ```
 
 ```output
-VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+VirtualWan                : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 ResourceGroupName         : testRG
 Name                      : westushub
-Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
+Id                        : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
 AddressPrefix             : 10.0.1.0/24
 RouteTable                : Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable
 VirtualNetworkConnections : {}
@@ -137,10 +137,10 @@ New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "west
 ```
 
 ```output
-VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+VirtualWan                : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 ResourceGroupName         : testRG
 Name                      : westushub
-Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
+Id                        : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
 AddressPrefix             : 10.0.1.0/24
 RouteTable                :
 Location                  : West US
@@ -163,10 +163,10 @@ New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "west
 ```
 
 ```output
-VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+VirtualWan                : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 ResourceGroupName         : testRG
 Name                      : westushub
-Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
+Id                        : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
 AddressPrefix             : 10.0.1.0/24
 AddressPrefixV6           : 2001:db8::/56
 RouteTable                :

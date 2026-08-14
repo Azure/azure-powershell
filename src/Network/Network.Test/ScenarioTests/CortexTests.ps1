@@ -2149,7 +2149,7 @@ function Test-VirtualHubIPv6CRUD
         # Create the Virtual Hub without IPv6 address prefix
         $createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan
 
-		# Update the Virtual Hub to add an IPv6 address prefix
+        # Update the Virtual Hub to add an IPv6 address prefix
         $updatedVirtualHub = Update-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -AddressPrefixV6 "2001:db8::/56"
 
         $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
@@ -2158,11 +2158,11 @@ function Test-VirtualHubIPv6CRUD
         Assert-AreEqual "192.168.1.0/24" $virtualHub.AddressPrefix
         Assert-AreEqual "2001:db8::/56" $virtualHub.AddressPrefixV6
 
-		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
-		Assert-AreEqual $True $delete
+        $delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+        Assert-AreEqual $True $delete
 
-		$delete = Remove-AzVirtualWan -InputObject $virtualWan -Force -PassThru
-		Assert-AreEqual $True $delete
+        $delete = Remove-AzVirtualWan -InputObject $virtualWan -Force -PassThru
+        Assert-AreEqual $True $delete
     }
     finally
     {
@@ -2198,22 +2198,22 @@ function Test-VirtualHubEnableOnlyIpv6PeeringCRUD
         Assert-AreEqual $virtualHubName $virtualHub.Name
 
         # Create a remote VNet
-		$remoteVirtualNetwork = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $remoteVirtualNetworkName -Location $rglocation -AddressPrefix @("10.0.1.0/24", "2001:db8:1::/48")
+        $remoteVirtualNetwork = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $remoteVirtualNetworkName -Location $rglocation -AddressPrefix @("10.0.1.0/24", "2001:db8:1::/48")
 
         # Create a Hub Virtual Network Connection with EnableOnlyIpv6Peering
         New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork -EnableOnlyIpv6Peering "Enabled"
-		$hubVnetConnection = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName
+        $hubVnetConnection = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName
         Assert-AreEqual $hubVnetConnectionName $hubVnetConnection.Name
         Assert-AreEqual "Enabled" $hubVnetConnection.EnableOnlyIpv6Peering
 
-		$delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -Force -PassThru
-		Assert-AreEqual $True $delete
+        $delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -Force -PassThru
+        Assert-AreEqual $True $delete
 
-		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
-		Assert-AreEqual $True $delete
+        $delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+        Assert-AreEqual $True $delete
 
-		$delete = Remove-AzVirtualWan -InputObject $virtualWan -Force -PassThru
-		Assert-AreEqual $True $delete
+        $delete = Remove-AzVirtualWan -InputObject $virtualWan -Force -PassThru
+        Assert-AreEqual $True $delete
     }
     finally
     {
