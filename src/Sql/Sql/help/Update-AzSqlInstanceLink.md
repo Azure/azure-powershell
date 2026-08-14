@@ -15,26 +15,27 @@ Updates the properties of an instance link.
 ### UpdateByNameParameterSet (Default)
 ```
 Update-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-Name] <String>
- [-ReplicationMode] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-ReplicationMode] <String>] [-Database <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByParentObjectParameterSet
 ```
-Update-AzSqlInstanceLink [-Name] <String> [-ReplicationMode] <String>
- [-InstanceObject] <AzureSqlManagedInstanceModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzSqlInstanceLink [-Name] <String> [[-ReplicationMode] <String>] [-Database <String[]>]
+ [-InstanceObject] <AzureSqlManagedInstanceModel> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectParameterSet
 ```
-Update-AzSqlInstanceLink [[-ReplicationMode] <String>] [-InputObject] <AzureSqlManagedInstanceLinkModel>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSqlInstanceLink [[-ReplicationMode] <String>] [-Database <String[]>]
+ [-InputObject] <AzureSqlManagedInstanceLinkModel> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet
 ```
-Update-AzSqlInstanceLink [-ReplicationMode] <String> [-ResourceId] <String>
+Update-AzSqlInstanceLink [[-ReplicationMode] <String>] [-Database <String[]>] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -203,7 +204,49 @@ SeedingMode                      : Automatic
 
 This command sets the replication mode of a instance link to "Async" using parent instance object.
 
+### Example 7: Remove a database from a multi-database instance link
+```powershell
+Update-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "multilink01" -Database "Database01"
+```
+
+```output
+ResourceGroupName                : ResourceGroup01
+InstanceName                     : ManagedInstance01
+Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/multilink01
+Name                             : multilink01
+Databases                        : {Database01}
+InstanceAvailabilityGroupName    : AG_MultiLink01_MI
+PartnerAvailabilityGroupName     : AG_MultiLink01
+PartnerEndpoint                  : TCP://SERVER01:5022
+InstanceLinkRole                 : Secondary
+PartnerLinkRole                  : Primary
+ReplicationMode                  : Async
+FailoverMode                     : None
+SeedingMode                      : Automatic
+LinkMode                         : MultiDatabase
+```
+
+This command replaces the database membership of a multi-database instance link. Because only `Database01` is supplied, other databases are removed from the link.
+
 ## PARAMETERS
+
+### -Database
+Database names that should remain in the distributed availability group.
+This property can be updated only for links in `MultiDatabase` mode.
+The supplied list replaces the current database membership.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases: Databases
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -286,19 +329,7 @@ Parameter will be ignored during link creation.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet, UpdateByParentObjectParameterSet, UpdateByResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateByInputObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
