@@ -17,7 +17,6 @@ using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.ServiceFabric.Commands;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
