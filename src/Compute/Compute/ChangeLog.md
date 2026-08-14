@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
 * Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM (Virtual Machine) during stop operations.
     - The switch cannot be used together with `-Hibernate`, `-StayProvisioned`, or `-SkipShutdown`.
 
