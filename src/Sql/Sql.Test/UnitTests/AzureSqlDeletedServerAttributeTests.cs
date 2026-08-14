@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
             UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.None);
 
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "Location", isMandatory: true, valueFromPipelineByName: true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "Location", isMandatory: false, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: false, valueFromPipelineByName: true);
         }
     }

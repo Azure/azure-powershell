@@ -62,9 +62,17 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         }
 
         /// <summary>
+        /// Lists all deleted Azure Sql Database Servers in a subscription
+        /// </summary>
+        public IEnumerable<Management.Sql.Models.DeletedServer> ListDeletedServers(string subscriptionId = null)
+        {
+            return GetCurrentSqlClient(subscriptionId).DeletedServers.List();
+        }
+
+        /// <summary>
         /// Lists all deleted Azure Sql Database Servers in a location
         /// </summary>
-        public IEnumerable<Management.Sql.Models.DeletedServer> ListDeletedServers(string location, string subscriptionId = null)
+        public IEnumerable<Management.Sql.Models.DeletedServer> ListDeletedServersByLocation(string location, string subscriptionId = null)
         {
             return GetCurrentSqlClient(subscriptionId).DeletedServers.ListByLocation(location);
         }
