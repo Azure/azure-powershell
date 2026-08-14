@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added the `-Mode` parameter to `New-AzLoadBalancer`.
+    - Set to `Advanced` to enable additional capabilities on a Standard SKU load balancer. Advanced mode must be specified at creation and cannot be changed afterward.
+* Added the `-EnableConnectionTracking` switch to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
+    - Enables UDP (User Datagram Protocol) flow tracking for traffic associated with the frontend IP configuration. When enabled, packets belonging to the same UDP flow are consistently directed to the same backend instance, taking precedence over rule-level connection tracking settings.
 * Upgraded Network SDK to API version `2025-09-01`.
     - Added `DisableDefaultServerHeaderInResponse` to `PSApplicationGatewayGlobalConfiguration` to mirror the new SDK property and unblock AutoMapper strict-mode validation.
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.

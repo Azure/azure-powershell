@@ -15,7 +15,7 @@ Creates a load balancer.
 
 ```
 New-AzLoadBalancer -ResourceGroupName <String> -Name <String> -Location <String> [-Tag <Hashtable>]
- [-Sku <String>] [-Tier <String>] [-FrontendIpConfiguration <PSFrontendIPConfiguration[]>]
+ [-Sku <String>] [-Tier <String>] [-Mode <String>] [-FrontendIpConfiguration <PSFrontendIPConfiguration[]>]
  [-BackendAddressPool <PSBackendAddressPool[]>] [-LoadBalancingRule <PSLoadBalancingRule[]>]
  [-Probe <PSProbe[]>] [-InboundNatRule <PSInboundNatRule[]>] [-InboundNatPool <PSInboundNatPool[]>]
  [-OutboundRule <PSOutboundRule[]>] [-EdgeZone <String>] [-Force] [-AsJob]
@@ -243,6 +243,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Mode
+The load balancer mode. Set to 'Advanced' to enable additional capabilities on a Standard SKU load balancer. Advanced mode must be specified at creation and cannot be changed afterward.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
