@@ -27,6 +27,8 @@
 * Added `-ReservationType` to `New-AzCapacityReservationGroup` and `Update-AzCapacityReservationGroup` to support creating `Open` capacity reservation groups, and surfaced `ReservationType` on the capacity reservation group output.
 * Added `-DisableCapacityReservationAssignment` to `New-AzVM`, `New-AzVMConfig`, and `Update-AzVM` to opt a VM (Virtual Machine) out of any capacity reservation.
 * Added `CapacityReservationType` to the VM (Virtual Machine) instance view returned by `Get-AzVM -Status`.
+* Added `-DisableCapacityReservationAssignment` parameter to `New-AzVmss`, `New-AzVmssConfig`, and `Update-AzVmss` to opt VMSS instances out of capacity reservation assignment.
+* Added `CapacityReservation` property to `Get-AzVmssVM` output and `CapacityReservationType` property to its `-InstanceView` output.
 
 ## Version 11.8.0
 * Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.
