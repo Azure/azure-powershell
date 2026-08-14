@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
+* Added `-ProcessorMode` support to VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) create and update flows in `New-AzVMConfig`, `New-AzVM`, `Update-AzVM`, `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss`. [#1569]
 
 ## Version 11.8.0
 * Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.

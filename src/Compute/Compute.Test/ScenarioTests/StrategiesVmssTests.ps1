@@ -749,6 +749,60 @@ function Test-UpdateVmssScheduledEventsPolicy
 
 <#
 .SYNOPSIS
+Test processor mode support in New-AzVmssConfig, New-AzVmss, and Update-AzVmss.
+#>
+function Test-SimpleNewVmssProcessorMode
+{
+    $vmssname = Get-ResourceName
+
+    try
+    {
+        # Step 1: Validate New-AzVmssConfig values and omission behavior
+        $vmssConfigDeterministic = New-AzVmssConfig -Location "westus2" -SkuCapacity 1 -SkuName "Standard_E2pds_v8" -UpgradePolicyMode "Manual" -ProcessorMode "Deterministic"
+        Assert-AreEqual "Deterministic" $vmssConfigDeterministic.VirtualMachineProfile.HardwareProfile.ProcessorMode
+
+        $vmssConfigOpportunistic = New-AzVmssConfig -Location "westus2" -SkuCapacity 1 -SkuName "Standard_E2pds_v8" -UpgradePolicyMode "Manual" -ProcessorMode "Opportunistic"
+        Assert-AreEqual "Opportunistic" $vmssConfigOpportunistic.VirtualMachineProfile.HardwareProfile.ProcessorMode
+
+        $vmssConfigDefault = New-AzVmssConfig -Location "westus2" -SkuCapacity 1 -SkuName "Standard_E2pds_v8" -UpgradePolicyMode "Manual"
+        Assert-Null $vmssConfigDefault.VirtualMachineProfile.HardwareProfile
+
+        # Step 2: Create VMSS with processor mode
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $username, $password
+        [string]$domainNameLabel = "$vmssname$vmssname".ToLower()
+
+        $vmss = New-AzVmss -Name $vmssname -Location "westus2" -Credential $cred -DomainNameLabel $domainNameLabel -VmSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+        Assert-AreEqual "Deterministic" $vmss.VirtualMachineProfile.HardwareProfile.ProcessorMode
+
+        $vmssGet = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname
+        Assert-AreEqual "Deterministic" $vmssGet.VirtualMachineProfile.HardwareProfile.ProcessorMode
+
+        # Step 3: Update with cmdlet parameter
+        Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -VirtualMachineScaleSet $vmssGet -ProcessorMode "Opportunistic" | Out-Null
+        $vmssGet = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname
+        Assert-AreEqual "Opportunistic" $vmssGet.VirtualMachineProfile.HardwareProfile.ProcessorMode
+
+        # Step 4: Update using pipeline flow
+        $vmssGet.VirtualMachineProfile.HardwareProfile.ProcessorMode = "Deterministic"
+        $vmssGet | Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname | Out-Null
+        $vmssGet = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname
+        Assert-AreEqual "Deterministic" $vmssGet.VirtualMachineProfile.HardwareProfile.ProcessorMode
+
+        # Step 5: Unsupported string is surfaced by service
+        Assert-Throws {
+            Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -VirtualMachineScaleSet $vmssGet -ProcessorMode "UnsupportedProcessorModeValue" | Out-Null
+        }
+    }
+    finally
+    {
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
 Test New-AzVmssConfig with -LifecycleHooksProfile parameter round-trips through the service.
 #>
 function Test-NewVmssConfigWithLifecycleHooksProfile
