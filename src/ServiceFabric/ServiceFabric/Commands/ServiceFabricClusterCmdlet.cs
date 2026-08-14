@@ -129,7 +129,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         protected DurabilityLevel GetDurabilityLevel(string durabilityLevel)
         {
-            return (DurabilityLevel)Enum.Parse(typeof(DurabilityLevel), durabilityLevel);
+            DurabilityLevel parsedDurabilityLevel;
+            if (Enum.TryParse(durabilityLevel, true, out parsedDurabilityLevel))
+            {
+                return parsedDurabilityLevel;
+            }
+
+            throw new PSInvalidOperationException(
+                string.Format(
+                    ServiceFabricProperties.Resources.CannotParseDurabilityLevel,
+                    durabilityLevel));
         }
 
         protected ReliabilityLevel GetReliabilityLevel(Cluster cluster)

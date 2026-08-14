@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Update-AzServiceFabricDurability` to accept durability values stored with lowercase casing.
+    - Fixed issue [#30014]
 
 ## Version 5.2.0
 * Added ChangeSafety Support
