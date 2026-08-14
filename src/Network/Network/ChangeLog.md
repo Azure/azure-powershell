@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Exposed the read-only `AfcManaged` property on `Get-AzFirewallPolicy` output.
+    - Indicates the firewall policy is managed by AFC (Azure Firewall for Containers); the value is service-managed and cannot be set or updated through the cmdlets.
 * Upgraded Network SDK to API version `2025-09-01`.
     - Added `DisableDefaultServerHeaderInResponse` to `PSApplicationGatewayGlobalConfiguration` to mirror the new SDK property and unblock AutoMapper strict-mode validation.
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
