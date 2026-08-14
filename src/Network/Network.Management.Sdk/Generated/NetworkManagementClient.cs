@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network
     using Models;
 
     /// <summary>
-    /// APIs to manage web application firewall rules.
+    /// APIs to manage Microsoft Azure network resources.
     /// </summary>
     public partial class NetworkManagementClient : Microsoft.Rest.ServiceClient<NetworkManagementClient>, INetworkManagementClient, IAzureClient
     {
@@ -104,6 +104,10 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IExpressRouteCrossConnectionsOperations ExpressRouteCrossConnections { get; private set; }
         /// <summary>
+        /// Gets the IExpressRouteLagsOperations
+        /// </summary>
+        public virtual IExpressRouteLagsOperations ExpressRouteLags { get; private set; }
+        /// <summary>
         /// Gets the IExpressRouteProviderPortsLocationOperations
         /// </summary>
         public virtual IExpressRouteProviderPortsLocationOperations ExpressRouteProviderPortsLocation { get; private set; }
@@ -176,6 +180,10 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IFirewallPolicyDraftsOperations FirewallPolicyDrafts { get; private set; }
         /// <summary>
+        /// Gets the IFirewallPolicyKubeSelectorGroupsOperations
+        /// </summary>
+        public virtual IFirewallPolicyKubeSelectorGroupsOperations FirewallPolicyKubeSelectorGroups { get; private set; }
+        /// <summary>
         /// Gets the IFirewallPolicyIdpsSignaturesFilterValuesOperations
         /// </summary>
         public virtual IFirewallPolicyIdpsSignaturesFilterValuesOperations FirewallPolicyIdpsSignaturesFilterValues { get; private set; }
@@ -195,6 +203,10 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IFirewallPolicyIdpsSignaturesOverridesOperations
         /// </summary>
         public virtual IFirewallPolicyIdpsSignaturesOverridesOperations FirewallPolicyIdpsSignaturesOverrides { get; private set; }
+        /// <summary>
+        /// Gets the IFirstPartyServiceTagsOperations
+        /// </summary>
+        public virtual IFirstPartyServiceTagsOperations FirstPartyServiceTags { get; private set; }
         /// <summary>
         /// Gets the IInterconnectGroupsOperations
         /// </summary>
@@ -511,6 +523,10 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IVirtualRoutersOperations
         /// </summary>
         public virtual IVirtualRoutersOperations VirtualRouters { get; private set; }
+        /// <summary>
+        /// Gets the IAddressPrefixSetsOperations
+        /// </summary>
+        public virtual IAddressPrefixSetsOperations AddressPrefixSets { get; private set; }
         /// <summary>
         /// Gets the IAvailableResourceGroupDelegationsOperations
         /// </summary>
@@ -953,6 +969,7 @@ namespace Microsoft.Azure.Management.Network
             this.BgpServiceCommunities = new BgpServiceCommunitiesOperations(this);
             this.ExpressRouteCircuits = new ExpressRouteCircuitsOperations(this);
             this.ExpressRouteCrossConnections = new ExpressRouteCrossConnectionsOperations(this);
+            this.ExpressRouteLags = new ExpressRouteLagsOperations(this);
             this.ExpressRouteProviderPortsLocation = new ExpressRouteProviderPortsLocationOperations(this);
             this.ExpressRouteServiceProviders = new ExpressRouteServiceProvidersOperations(this);
             this.RouteFilters = new RouteFiltersOperations(this);
@@ -971,11 +988,13 @@ namespace Microsoft.Azure.Management.Network
             this.FirewallPolicies = new FirewallPoliciesOperations(this);
             this.FirewallPolicyDeployments = new FirewallPolicyDeploymentsOperations(this);
             this.FirewallPolicyDrafts = new FirewallPolicyDraftsOperations(this);
+            this.FirewallPolicyKubeSelectorGroups = new FirewallPolicyKubeSelectorGroupsOperations(this);
             this.FirewallPolicyIdpsSignaturesFilterValues = new FirewallPolicyIdpsSignaturesFilterValuesOperations(this);
             this.FirewallPolicyIdpsSignatures = new FirewallPolicyIdpsSignaturesOperations(this);
             this.FirewallPolicyRuleCollectionGroups = new FirewallPolicyRuleCollectionGroupsOperations(this);
             this.FirewallPolicyRuleCollectionGroupDrafts = new FirewallPolicyRuleCollectionGroupDraftsOperations(this);
             this.FirewallPolicyIdpsSignaturesOverrides = new FirewallPolicyIdpsSignaturesOverridesOperations(this);
+            this.FirstPartyServiceTags = new FirstPartyServiceTagsOperations(this);
             this.InterconnectGroups = new InterconnectGroupsOperations(this);
             this.Subgroups = new SubgroupsOperations(this);
             this.LoadBalancers = new LoadBalancersOperations(this);
@@ -1055,6 +1074,7 @@ namespace Microsoft.Azure.Management.Network
             this.SecurityPartnerProviders = new SecurityPartnerProvidersOperations(this);
             this.VirtualNetworks = new VirtualNetworksOperations(this);
             this.VirtualRouters = new VirtualRoutersOperations(this);
+            this.AddressPrefixSets = new AddressPrefixSetsOperations(this);
             this.AvailableResourceGroupDelegations = new AvailableResourceGroupDelegationsOperations(this);
             this.NetworkInterfaceIPConfigurations = new NetworkInterfaceIPConfigurationsOperations(this);
             this.NetworkInterfaceLoadBalancers = new NetworkInterfaceLoadBalancersOperations(this);
