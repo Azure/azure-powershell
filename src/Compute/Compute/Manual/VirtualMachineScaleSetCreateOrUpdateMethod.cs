@@ -216,6 +216,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity. Minimum api-version: 2026-04-01.")]
+        public SwitchParameter DisableCapacityReservationAssignment { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
             HelpMessage = "Specified the gallery image unique id for vmss deployment. This can be fetched from gallery image GET call.")]
         [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
         public string ImageReferenceId { get; set; }
@@ -597,6 +603,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
+                    disableCapacityReservationAssignment: _cmdlet.IsParameterBound(c => c.DisableCapacityReservationAssignment) ? _cmdlet.DisableCapacityReservationAssignment.IsPresent : (bool?)null,
                     userData: _cmdlet.IsParameterBound(c => c.UserData) ? _cmdlet.UserData : null,
                     imageReferenceId: _cmdlet.IsParameterBound(c => c.ImageReferenceId) ? _cmdlet.ImageReferenceId : null,
                     auxAuthHeader: auxAuthHeader,
@@ -748,6 +755,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: OrchestrationModes.Flexible,
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
+                    disableCapacityReservationAssignment: _cmdlet.IsParameterBound(c => c.DisableCapacityReservationAssignment) ? _cmdlet.DisableCapacityReservationAssignment.IsPresent : (bool?)null,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
                     enableSecureBoot: _cmdlet.EnableSecureBoot,
@@ -774,6 +782,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
         {
+            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment) && this.IsParameterBound(c => c.CapacityReservationGroupId))
+            {
+                throw new PSArgumentException(
+                    "The -CapacityReservationGroupId and -DisableCapacityReservationAssignment parameters cannot be used together.");
+            }
+
             bool loadBalancerNamePassedIn = !String.IsNullOrWhiteSpace(LoadBalancerName);
 
             ResourceGroupName = ResourceGroupName ?? VMScaleSetName;
