@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-ScheduleProfileStart` and `-MinimumCommitmentDays` parameters to `New-AzCapacityReservation` to create Future capacity reservations, and surfaced the read-only `ScheduleProfile` (including `ModifiableUntil`) and instance view `ReservationStateInfo` on `Get-AzCapacityReservation` output.
 * Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
 
 ## Version 11.8.0
