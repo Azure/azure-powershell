@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="hasProvisioningIssues">Specifies if there are provisioning issues
         /// </param>
-        public NspAssociation(string id = default(string), string name = default(string), string type = default(string), SecurityPerimeterSystemData systemData = default(SecurityPerimeterSystemData), string provisioningState = default(string), SubResource privateLinkResource = default(SubResource), SubResource profile = default(SubResource), string accessMode = default(string), string hasProvisioningIssues = default(string))
+        public NspAssociation(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), SubResource privateLinkResource = default(SubResource), SubResource profile = default(SubResource), string accessMode = default(string), string hasProvisioningIssues = default(string))
 
         : base(id, name, type, systemData)
         {

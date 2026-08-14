@@ -22,6 +22,8 @@
 * Exposed the read-only AFC configuration on `Get-AzFirewall` output.
     - Added the `AfcConfiguration.ServiceEndpoint` property surfacing the AFC control-plane endpoint.
     - The value is service-managed and cannot be set or updated through `New-AzFirewall`/`Set-AzFirewall`.
+* Upgraded Network SDK to API version `2025-09-01`.
+    - Added `DisableDefaultServerHeaderInResponse` to `PSApplicationGatewayGlobalConfiguration` to mirror the new SDK property and unblock AutoMapper strict-mode validation.
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
     - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
     - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
