@@ -109,6 +109,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             Assert.Contains("Valid values are Bronze, Silver, and Gold.", exception.Message);
         }
 
+        [Theory]
+        [InlineData("1")]
+        [InlineData("999")]
+        [InlineData("0")]
+        public void GetDurabilityLevelRejectsNumericStrings(string numericValue)
+        {
+            var cmdlet = new TestServiceFabricClusterCmdlet();
+
+            Assert.Throws<System.Management.Automation.PSInvalidOperationException>(
+                () => cmdlet.GetNodeTypeDurabilityLevel(numericValue));
+
+            Assert.Throws<System.Management.Automation.PSInvalidOperationException>(
+                () => cmdlet.GetVmssDurabilityLevel(numericValue));
+        }
+
         [Fact, TestPriority(0)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateAzureRmServiceFabricReliability()
