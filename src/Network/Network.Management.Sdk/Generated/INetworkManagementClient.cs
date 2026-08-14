@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network
     using Models;
 
     /// <summary>
-    /// APIs to manage web application firewall rules.
+    /// APIs to manage Microsoft Azure network resources.
     /// </summary>
     public partial interface INetworkManagementClient :  System.IDisposable
     {
@@ -218,6 +218,11 @@ namespace Microsoft.Azure.Management.Network
         IFirewallPolicyDraftsOperations FirewallPolicyDrafts { get; }
 
         /// <summary>
+        /// Gets the IFirewallPolicyKubeSelectorGroupsOperations
+        /// </summary>
+        IFirewallPolicyKubeSelectorGroupsOperations FirewallPolicyKubeSelectorGroups { get; }
+
+        /// <summary>
         /// Gets the IFirewallPolicyIdpsSignaturesFilterValuesOperations
         /// </summary>
         IFirewallPolicyIdpsSignaturesFilterValuesOperations FirewallPolicyIdpsSignaturesFilterValues { get; }
@@ -241,6 +246,11 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IFirewallPolicyIdpsSignaturesOverridesOperations
         /// </summary>
         IFirewallPolicyIdpsSignaturesOverridesOperations FirewallPolicyIdpsSignaturesOverrides { get; }
+
+        /// <summary>
+        /// Gets the IFirstPartyServiceTagsOperations
+        /// </summary>
+        IFirstPartyServiceTagsOperations FirstPartyServiceTags { get; }
 
         /// <summary>
         /// Gets the IInterconnectGroupsOperations

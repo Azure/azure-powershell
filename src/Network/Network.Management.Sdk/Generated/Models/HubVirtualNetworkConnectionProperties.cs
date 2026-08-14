@@ -44,10 +44,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// tables on this connection.
         /// </param>
 
+        /// <param name="enableOnlyIpv6Peering">Enable Only IPv6 Peering for this connection.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+
         /// <param name="provisioningState">The provisioning state of the hub virtual network connection resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public HubVirtualNetworkConnectionProperties(SubResource remoteVirtualNetwork = default(SubResource), bool? allowHubToRemoteVnetTransit = default(bool?), bool? allowRemoteVnetToUseHubVnetGateways = default(bool?), SubResource connectionPolicy = default(SubResource), bool? enableInternetSecurity = default(bool?), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string provisioningState = default(string))
+        public HubVirtualNetworkConnectionProperties(SubResource remoteVirtualNetwork = default(SubResource), bool? allowHubToRemoteVnetTransit = default(bool?), bool? allowRemoteVnetToUseHubVnetGateways = default(bool?), SubResource connectionPolicy = default(SubResource), bool? enableInternetSecurity = default(bool?), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string enableOnlyIpv6Peering = default(string), string provisioningState = default(string))
 
         {
             this.RemoteVirtualNetwork = remoteVirtualNetwork;
@@ -56,6 +59,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ConnectionPolicy = connectionPolicy;
             this.EnableInternetSecurity = enableInternetSecurity;
             this.RoutingConfiguration = routingConfiguration;
+            this.EnableOnlyIpv6Peering = enableOnlyIpv6Peering;
             this.ProvisioningState = provisioningState;
             CustomInit();
         }
@@ -104,6 +108,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "routingConfiguration")]
         public RoutingConfiguration RoutingConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets or sets enable Only IPv6 Peering for this connection. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableOnlyIpv6Peering")]
+        public string EnableOnlyIpv6Peering {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the hub virtual network connection resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

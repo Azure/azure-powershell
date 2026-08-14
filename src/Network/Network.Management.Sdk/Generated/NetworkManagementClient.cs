@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network
     using Models;
 
     /// <summary>
-    /// APIs to manage web application firewall rules.
+    /// APIs to manage Microsoft Azure network resources.
     /// </summary>
     public partial class NetworkManagementClient : Microsoft.Rest.ServiceClient<NetworkManagementClient>, INetworkManagementClient, IAzureClient
     {
@@ -180,6 +180,10 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IFirewallPolicyDraftsOperations FirewallPolicyDrafts { get; private set; }
         /// <summary>
+        /// Gets the IFirewallPolicyKubeSelectorGroupsOperations
+        /// </summary>
+        public virtual IFirewallPolicyKubeSelectorGroupsOperations FirewallPolicyKubeSelectorGroups { get; private set; }
+        /// <summary>
         /// Gets the IFirewallPolicyIdpsSignaturesFilterValuesOperations
         /// </summary>
         public virtual IFirewallPolicyIdpsSignaturesFilterValuesOperations FirewallPolicyIdpsSignaturesFilterValues { get; private set; }
@@ -199,6 +203,10 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IFirewallPolicyIdpsSignaturesOverridesOperations
         /// </summary>
         public virtual IFirewallPolicyIdpsSignaturesOverridesOperations FirewallPolicyIdpsSignaturesOverrides { get; private set; }
+        /// <summary>
+        /// Gets the IFirstPartyServiceTagsOperations
+        /// </summary>
+        public virtual IFirstPartyServiceTagsOperations FirstPartyServiceTags { get; private set; }
         /// <summary>
         /// Gets the IInterconnectGroupsOperations
         /// </summary>
@@ -980,11 +988,13 @@ namespace Microsoft.Azure.Management.Network
             this.FirewallPolicies = new FirewallPoliciesOperations(this);
             this.FirewallPolicyDeployments = new FirewallPolicyDeploymentsOperations(this);
             this.FirewallPolicyDrafts = new FirewallPolicyDraftsOperations(this);
+            this.FirewallPolicyKubeSelectorGroups = new FirewallPolicyKubeSelectorGroupsOperations(this);
             this.FirewallPolicyIdpsSignaturesFilterValues = new FirewallPolicyIdpsSignaturesFilterValuesOperations(this);
             this.FirewallPolicyIdpsSignatures = new FirewallPolicyIdpsSignaturesOperations(this);
             this.FirewallPolicyRuleCollectionGroups = new FirewallPolicyRuleCollectionGroupsOperations(this);
             this.FirewallPolicyRuleCollectionGroupDrafts = new FirewallPolicyRuleCollectionGroupDraftsOperations(this);
             this.FirewallPolicyIdpsSignaturesOverrides = new FirewallPolicyIdpsSignaturesOverridesOperations(this);
+            this.FirstPartyServiceTags = new FirstPartyServiceTagsOperations(this);
             this.InterconnectGroups = new InterconnectGroupsOperations(this);
             this.Subgroups = new SubgroupsOperations(this);
             this.LoadBalancers = new LoadBalancersOperations(this);

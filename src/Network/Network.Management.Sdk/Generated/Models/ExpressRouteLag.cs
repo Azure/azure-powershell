@@ -13,7 +13,6 @@ namespace Microsoft.Azure.Management.Network.Models
     /// <remarks>
     /// ExpressRouteLag resource definition.
     /// </remarks>
-    [Microsoft.Rest.Serialization.JsonTransformation]
     public partial class ExpressRouteLag : Resource
     {
         /// <summary>
@@ -43,75 +42,21 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="tags">Resource tags.
         /// </param>
 
+        /// <param name="properties">ExpressRouteLag properties.
+        /// </param>
+
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
         /// <param name="identity">The identity of ExpressRouteLag, if configured.
         /// </param>
-
-        /// <param name="provisioningState">The provisioning state of the express route LAG resource.
-        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
-        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-
-        /// <param name="peeringLocation">The name of the peering location that the ExpressRouteLag is mapped to
-        /// physically.
-        /// </param>
-
-        /// <param name="bandwidthInGbps">Bandwidth of procured LAG in Gbps.
-        /// </param>
-
-        /// <param name="provisionedBandwidthInGbps">Aggregate Gbps of associated circuit bandwidths.
-        /// </param>
-
-        /// <param name="mtu">Maximum transmission unit of the LAG.
-        /// </param>
-
-        /// <param name="encapsulation">Encapsulation method on LAG.
-        /// Possible values include: &#39;Dot1Q&#39;, &#39;QinQ&#39;</param>
-
-        /// <param name="etherType">Ether type of the LAG.
-        /// </param>
-
-        /// <param name="links">The set of links of the ExpressRouteLag resource.
-        /// </param>
-
-        /// <param name="allocationDate">The date and time when the ExpressRouteLag was allocated.
-        /// </param>
-
-        /// <param name="resourceGuid">The resource GUID property of the express route LAG resource.
-        /// </param>
-
-        /// <param name="billingType">The billing type of the ExpressRouteLag resource.
-        /// Possible values include: &#39;MeteredData&#39;, &#39;UnlimitedData&#39;</param>
-
-        /// <param name="numberOfPorts">Number of ports in the LAG.
-        /// </param>
-
-        /// <param name="minimumActivePortsRequired">Minimum number of active ports required for LAG.
-        /// </param>
-
-        /// <param name="lacpTimer">LACP timer configuration.
-        /// Possible values include: &#39;Fast&#39;, &#39;Slow&#39;</param>
-        public ExpressRouteLag(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string provisioningState = default(string), string peeringLocation = default(string), int? bandwidthInGbps = default(int?), double? provisionedBandwidthInGbps = default(double?), string mtu = default(string), string encapsulation = default(string), string etherType = default(string), System.Collections.Generic.IList<ExpressRouteLagLink> links = default(System.Collections.Generic.IList<ExpressRouteLagLink>), string allocationDate = default(string), string resourceGuid = default(string), string billingType = default(string), int? numberOfPorts = default(int?), int? minimumActivePortsRequired = default(int?), string lacpTimer = default(string))
+        public ExpressRouteLag(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExpressRouteLagPropertiesFormat properties = default(ExpressRouteLagPropertiesFormat), string etag = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
 
         : base(id, name, type, location, tags)
         {
+            this.Properties = properties;
             this.Etag = etag;
             this.Identity = identity;
-            this.ProvisioningState = provisioningState;
-            this.PeeringLocation = peeringLocation;
-            this.BandwidthInGbps = bandwidthInGbps;
-            this.ProvisionedBandwidthInGbps = provisionedBandwidthInGbps;
-            this.Mtu = mtu;
-            this.Encapsulation = encapsulation;
-            this.EtherType = etherType;
-            this.Links = links;
-            this.AllocationDate = allocationDate;
-            this.ResourceGuid = resourceGuid;
-            this.BillingType = billingType;
-            this.NumberOfPorts = numberOfPorts;
-            this.MinimumActivePortsRequired = minimumActivePortsRequired;
-            this.LacpTimer = lacpTimer;
             CustomInit();
         }
 
@@ -120,6 +65,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets expressRouteLag properties.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
+        public ExpressRouteLagPropertiesFormat Properties {get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
@@ -133,91 +84,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
         public ManagedServiceIdentity Identity {get; set; }
-
-        /// <summary>
-        /// Gets the provisioning state of the express route LAG resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState {get; private set; }
-
-        /// <summary>
-        /// Gets or sets the name of the peering location that the ExpressRouteLag is
-        /// mapped to physically.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.peeringLocation")]
-        public string PeeringLocation {get; set; }
-
-        /// <summary>
-        /// Gets or sets bandwidth of procured LAG in Gbps.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.bandwidthInGbps")]
-        public int? BandwidthInGbps {get; set; }
-
-        /// <summary>
-        /// Gets aggregate Gbps of associated circuit bandwidths.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisionedBandwidthInGbps")]
-        public double? ProvisionedBandwidthInGbps {get; private set; }
-
-        /// <summary>
-        /// Gets maximum transmission unit of the LAG.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.mtu")]
-        public string Mtu {get; private set; }
-
-        /// <summary>
-        /// Gets or sets encapsulation method on LAG. Possible values include: &#39;Dot1Q&#39;, &#39;QinQ&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.encapsulation")]
-        public string Encapsulation {get; set; }
-
-        /// <summary>
-        /// Gets ether type of the LAG.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.etherType")]
-        public string EtherType {get; private set; }
-
-        /// <summary>
-        /// Gets or sets the set of links of the ExpressRouteLag resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.links")]
-        public System.Collections.Generic.IList<ExpressRouteLagLink> Links {get; set; }
-
-        /// <summary>
-        /// Gets the date and time when the ExpressRouteLag was allocated.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.allocationDate")]
-        public string AllocationDate {get; private set; }
-
-        /// <summary>
-        /// Gets the resource GUID property of the express route LAG resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceGuid")]
-        public string ResourceGuid {get; private set; }
-
-        /// <summary>
-        /// Gets or sets the billing type of the ExpressRouteLag resource. Possible values include: &#39;MeteredData&#39;, &#39;UnlimitedData&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.billingType")]
-        public string BillingType {get; set; }
-
-        /// <summary>
-        /// Gets or sets number of ports in the LAG.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.numberOfPorts")]
-        public int? NumberOfPorts {get; set; }
-
-        /// <summary>
-        /// Gets or sets minimum number of active ports required for LAG.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.minimumActivePortsRequired")]
-        public int? MinimumActivePortsRequired {get; set; }
-
-        /// <summary>
-        /// Gets or sets lACP timer configuration. Possible values include: &#39;Fast&#39;, &#39;Slow&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lacpTimer")]
-        public string LacpTimer {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -226,40 +92,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
-
-
-
-
-
-
-
-            if (this.Links != null)
+            if (this.Properties != null)
             {
-                foreach (var element in this.Links)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
+                this.Properties.Validate();
             }
 
-
-
-            if (this.NumberOfPorts != null)
-            {
-                if (this.NumberOfPorts < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "NumberOfPorts", 1);
-                }
-            }
-            if (this.MinimumActivePortsRequired != null)
-            {
-                if (this.MinimumActivePortsRequired < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "MinimumActivePortsRequired", 1);
-                }
-            }
 
         }
     }

@@ -127,7 +127,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// set routes &amp; UDR to load balance traffic between NVA instances. This field
         /// appears in dual-stack NVAs.
         /// </param>
-        public NetworkVirtualAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string etag = default(string), string provisioningState = default(string), VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), string addressPrefix = default(string), string addressPrefixV6 = default(string), System.Collections.Generic.IList<string> bootStrapConfigurationBlobs = default(System.Collections.Generic.IList<string>), SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<string> cloudInitConfigurationBlobs = default(System.Collections.Generic.IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), System.Collections.Generic.IList<VirtualApplianceNicProperties> virtualApplianceNics = default(System.Collections.Generic.IList<VirtualApplianceNicProperties>), NetworkVirtualAppliancePropertiesFormatNetworkProfile networkProfile = default(NetworkVirtualAppliancePropertiesFormatNetworkProfile), System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties>), System.Collections.Generic.IList<InternetIngressPublicIpsProperties> internetIngressPublicIps = default(System.Collections.Generic.IList<InternetIngressPublicIpsProperties>), System.Collections.Generic.IList<SubResource> virtualApplianceSites = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> virtualApplianceConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundSecurityRules = default(System.Collections.Generic.IList<SubResource>), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties), System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties> nvaInterfaceConfigurations = default(System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties>), System.Collections.Generic.IList<string> addressFamily = default(System.Collections.Generic.IList<string>), string privateIPAddress = default(string), string privateIPAddressV6 = default(string))
+
+        /// <param name="migrationStatus">The migration status of the Network Virtual Appliance.
+        /// </param>
+        public NetworkVirtualAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string etag = default(string), string provisioningState = default(string), VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), string addressPrefix = default(string), string addressPrefixV6 = default(string), System.Collections.Generic.IList<string> bootStrapConfigurationBlobs = default(System.Collections.Generic.IList<string>), SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<string> cloudInitConfigurationBlobs = default(System.Collections.Generic.IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), System.Collections.Generic.IList<VirtualApplianceNicProperties> virtualApplianceNics = default(System.Collections.Generic.IList<VirtualApplianceNicProperties>), NetworkVirtualAppliancePropertiesFormatNetworkProfile networkProfile = default(NetworkVirtualAppliancePropertiesFormatNetworkProfile), System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties>), System.Collections.Generic.IList<InternetIngressPublicIpsProperties> internetIngressPublicIps = default(System.Collections.Generic.IList<InternetIngressPublicIpsProperties>), System.Collections.Generic.IList<SubResource> virtualApplianceSites = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> virtualApplianceConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundSecurityRules = default(System.Collections.Generic.IList<SubResource>), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties), System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties> nvaInterfaceConfigurations = default(System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties>), System.Collections.Generic.IList<string> addressFamily = default(System.Collections.Generic.IList<string>), string privateIPAddress = default(string), string privateIPAddressV6 = default(string), NetworkVirtualApplianceMigrationStatus migrationStatus = default(NetworkVirtualApplianceMigrationStatus))
 
         : base(id, name, type, location, tags)
         {
@@ -157,6 +160,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.AddressFamily = addressFamily;
             this.PrivateIPAddress = privateIPAddress;
             this.PrivateIPAddressV6 = privateIPAddressV6;
+            this.MigrationStatus = migrationStatus;
             CustomInit();
         }
 
@@ -336,6 +340,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateIpAddressV6")]
         public string PrivateIPAddressV6 {get; private set; }
+
+        /// <summary>
+        /// Gets the migration status of the Network Virtual Appliance.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.migrationStatus")]
+        public NetworkVirtualApplianceMigrationStatus MigrationStatus {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -401,6 +411,7 @@ namespace Microsoft.Azure.Management.Network.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.UniqueItems, "AddressFamily");
                 }
             }
+
 
 
         }

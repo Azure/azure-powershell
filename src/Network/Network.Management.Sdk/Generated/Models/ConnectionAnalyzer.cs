@@ -9,12 +9,6 @@ namespace Microsoft.Azure.Management.Network.Models
 
     /// <summary>
     /// Defines a connection analyzer resource.
-    /// NOTE: `type` and `systemData` are intentionally omitted from this envelope
-    /// to remain consistent with the sibling NetworkWatcher child resources
-    /// (e.g. `ConnectionMonitor`, `PacketCapture`) which follow the legacy
-    /// `Azure.ResourceManager.Legacy` custom-resource pattern. Adding `systemData`
-    /// here would diverge from those siblings; the omission is the deliberate
-    /// legacy pattern and is acknowledged.
     /// </summary>
     public partial class ConnectionAnalyzer : Microsoft.Rest.Azure.IResource
     {
@@ -36,6 +30,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID of the connection analyzer.
         /// </param>
 
+        /// <param name="type">Resource type.
+        /// </param>
+
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
@@ -45,16 +42,22 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="tags">Resource tags.
         /// </param>
 
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
         /// <param name="properties">Properties of the connection analyzer.
         /// </param>
-        public ConnectionAnalyzer(string location, ConnectionAnalyzerProperties properties, string name = default(string), string id = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        public ConnectionAnalyzer(string location, ConnectionAnalyzerProperties properties, string name = default(string), string id = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData))
 
         {
             this.Name = name;
             this.Id = id;
+            this.Type = type;
             this.Etag = etag;
             this.Location = location;
             this.Tags = tags;
+            this.SystemData = systemData;
             this.Properties = properties;
             CustomInit();
         }
@@ -78,6 +81,12 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Id {get; private set; }
 
         /// <summary>
+        /// Gets resource type.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
+        public string Type {get; private set; }
+
+        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
@@ -95,6 +104,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData {get; private set; }
 
         /// <summary>
         /// Gets or sets properties of the connection analyzer.
@@ -117,6 +133,8 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Properties");
             }
+
+
 
 
 

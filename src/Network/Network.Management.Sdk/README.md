@@ -27,7 +27,7 @@ use-extension:
 
 ###
 ``` yaml
-commit: 182bea57c9ee0145d9d296ab385a7ff5b2ea835b
+commit: a48bb3329f0d841f42232e6f0086b6e43bc242ef
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/applicationGateway.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/azureWebCategory.json
@@ -35,6 +35,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/expressRoute.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/firewall.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/firewallPolicy.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/firstPartyServiceTag.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/interconnectGroup.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/loadBalancer.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/networkGateway.json
@@ -73,7 +74,7 @@ directive:
   - from: swagger-document
     where: $.paths..responses.201.headers
     transform: delete $["Azure-AsyncOperation"]
-# remove tags in https://github.com/Azure/azure-rest-api-specs/blob/182bea57c9ee0145d9d296ab385a7ff5b2ea835b/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/virtualNetwork.json, since it has been defined in the parent TrackedResourceWithOptionalLocation.
+# remove tags in https://github.com/Azure/azure-rest-api-specs/blob/906c9971ea117692ad6e7e15fe1a0b38ac109c76/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/virtualNetwork.json#L17498, since it has been defined in the parent TrackedResourceWithOptionalLocation.
 # Srijani, this is a workaround. I think it should be fixed in your typespec.
 # Yabo, Ideally, our code generator should be able to handle case like this. If the property is redundant in the child, we could just ignore it.
   - from: swagger-document
@@ -97,7 +98,7 @@ directive:
           $[k]['x-ms-client-name'] = k.substring('Common.'.length);
         }
       }
-# rename Common.CloudError to CloudError, see https://github.com/Azure/azure-rest-api-specs/blob/182bea57c9ee0145d9d296ab385a7ff5b2ea835b/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/common.json
+# rename Common.CloudError to CloudError, see https://github.com/Azure/azure-rest-api-specs/blob/906c9971ea117692ad6e7e15fe1a0b38ac109c76/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/common.json#L2026
 # Srijani, I noticed in the swaggers generated from tsp, some model names are added the prefix "common.", the change will lead to the change of the generated C# class name. As a result, it may cause some issues and breaking changes. Following is a case. I would suggest you remove the prefix "common.".
   - from: swagger-document
     where: $.definitions["Common.CloudError"]
@@ -114,11 +115,12 @@ directive:
 # Srijani, following cases are also breaking changes. I have to change them back with directives.
 # Yabo, Not sure if allof and x-ms-azure-resource could co-existed in a model. If so, we need to add support for it.
 # move x-ms-azure-resource from Common.SubResourceModel to Common.SubResource
+# 2025-09-01 note: the "Common." prefix was dropped in this api-version, so target the un-prefixed keys.
   - from: swagger-document
-    where: $.definitions["Common.SubResourceModel"]
+    where: $.definitions["SubResourceModel"]
     transform: delete $["x-ms-azure-resource"]
   - from: swagger-document
-    where: $.definitions["Common.SubResource"]
+    where: $.definitions["SubResource"]
     transform: $["x-ms-azure-resource"] = true
 # move x-ms-azure-resource from CommonProxyResource and CommonTrackedResource to CommonResource
   - from: swagger-document
