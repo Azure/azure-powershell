@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added `Move-AzVirtualNetworkIpConfiguration` cmdlet to move secondary private IP configurations between network interfaces within a virtual network.
+    - Supports moving one or more IP configurations in a single operation.
+    - Use `New-AzMoveIpConfigurationItem` to create each source and target IP configuration pair.
+    - The operation is long-running and supports the `-AsJob` parameter.
 * Upgraded Network SDK to API version `2025-09-01`.
     - Added `DisableDefaultServerHeaderInResponse` to `PSApplicationGatewayGlobalConfiguration` to mirror the new SDK property and unblock AutoMapper strict-mode validation.
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
