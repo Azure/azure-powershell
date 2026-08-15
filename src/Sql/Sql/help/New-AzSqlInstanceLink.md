@@ -340,7 +340,7 @@ Accept wildcard characters: False
 ```
 
 ### -SeedingMode
-Database seeding mode � can be Automatic (default), or Manual for supported scenarios.
+Database seeding mode - can be Automatic (default), or Manual for supported scenarios.
 
 ```yaml
 Type: System.String

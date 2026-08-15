@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
 
             if (!_isReplicationModeSpecified && !_areDatabasesSpecified)
             {
-                throw new PSArgumentException("At least one of ReplicationMode or Database must be specified.");
+                throw new PSArgumentException("At least one of -ReplicationMode or -Database must be specified.");
             }
 
             // messages describing behavior with -WhatIf and -Confirm flags
