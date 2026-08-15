@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Sql;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using Microsoft.Azure.Management.Sql.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Services
@@ -113,11 +114,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
             // while the location-scoped endpoints embed the normalized name (e.g. "centralus"). Strip spaces so
             // callers always get a consistent, normalized location value regardless of which endpoint was used.
             string[] idSegments = deletedServer.Id?.Split('/');
-            string parsedSubscriptionId = idSegments?[2];
-            string parsedLocation = idSegments?[6]?.Replace(" ", "");
-
-            // OriginalId format: /subscriptions/{sub}/resourceGroups/{rg}[4]/providers/Microsoft.Sql/servers/{name}
-            string parsedResourceGroupName = deletedServer.OriginalId?.Split('/')?[4];
+            string parsedSubscriptionId = idSegments?.Length > 2 ? idSegments[2] : null;
+            string parsedLocation = idSegments?.Length > 6
+                ? idSegments[6]?.Replace(" ", string.Empty).ToLowerInvariant()
+                : null;
 
             AzureSqlDeletedServerModel model = new AzureSqlDeletedServerModel()
             {
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
                 Location = parsedLocation,
                 ScheduledPurgeTime = deletedServer.ScheduledPurgeTime,
                 SubscriptionId = parsedSubscriptionId,
-                ResourceGroupName = deletedServer.OriginalResourceGroup ?? parsedResourceGroupName
+                ResourceGroupName = deletedServer.OriginalResourceGroup
             };
 
             return model;

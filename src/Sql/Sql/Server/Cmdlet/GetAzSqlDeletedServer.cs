@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -78,8 +79,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 
             // -ServerName without -Location: filter subscription results client-side
             return deletedServers
-                .Select(s => ModelAdapter.CreateDeletedServerModelFromResponse(s))
-                .Where(s => string.IsNullOrEmpty(this.ServerName) || s.ServerName == this.ServerName);
+                .Where(s => string.IsNullOrEmpty(this.ServerName) ||
+                    string.Equals(s.Name, this.ServerName, StringComparison.OrdinalIgnoreCase))
+                .Select(s => ModelAdapter.CreateDeletedServerModelFromResponse(s));
         }
 
         /// <summary>
