@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 11.9.0
 * Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
 
 ## Version 11.8.0
