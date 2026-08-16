@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Security
-Module Guid: 6f1c0dfd-dfcd-4e5b-b77c-a64a9d355ebf
+Module Guid: 8277b67f-1322-4066-b96d-e7a943303dba
 Download Help Link: https://learn.microsoft.com/powershell/module/az.security
 Help Version: 1.0.0.0
 Locale: en-US
@@ -11,6 +11,10 @@ Locale: en-US
 Microsoft Azure PowerShell: Security cmdlets
 
 ## Az.Security Cmdlets
+### [Add-AzSecuritySqlVulnerabilityAssessmentBaselineRule](Add-AzSecuritySqlVulnerabilityAssessmentBaselineRule.md)
+Set a list of baseline rules.
+Will overwrite any previously existing results (for all rules).
+
 ### [Get-AzSecurityApiCollection](Get-AzSecurityApiCollection.md)
 Gets an Azure API Management API if it has been onboarded to Microsoft Defender for APIs.
 If an Azure API Management API is onboarded to Microsoft Defender for APIs, the system will monitor the operations within the Azure API Management API for intrusive behaviors and provide alerts for attacks that have been detected.
@@ -54,6 +58,18 @@ Returns a monitored GitLab Project resource for a given fully-qualified group na
 ### [Get-AzSecurityConnectorGitLabSubgroup](Get-AzSecurityConnectorGitLabSubgroup.md)
 Gets nested subgroups of given GitLab Group which are onboarded to the connector.
 
+### [Get-AzSecuritySqlVulnerabilityAssessmentBaselineRule](Get-AzSecuritySqlVulnerabilityAssessmentBaselineRule.md)
+Gets the results for a given rule in the Baseline.
+
+### [Get-AzSecuritySqlVulnerabilityAssessmentScan](Get-AzSecuritySqlVulnerabilityAssessmentScan.md)
+Gets the scan details of a single scan record.
+
+### [Get-AzSecuritySqlVulnerabilityAssessmentScanResult](Get-AzSecuritySqlVulnerabilityAssessmentScanResult.md)
+Gets the scan results of a single rule in a scan record.
+
+### [Get-AzSecuritySqlVulnerabilityAssessmentSetting](Get-AzSecuritySqlVulnerabilityAssessmentSetting.md)
+Gets the SQL Vulnerability Assessment settings.
+
 ### [Invoke-AzSecurityApiCollectionApimOffboard](Invoke-AzSecurityApiCollectionApimOffboard.md)
 Offboard an Azure API Management API from Microsoft Defender for APIs.
 The system will stop monitoring the operations within the Azure API Management API for intrusive behaviors.
@@ -61,6 +77,9 @@ The system will stop monitoring the operations within the Azure API Management A
 ### [Invoke-AzSecurityApiCollectionApimOnboard](Invoke-AzSecurityApiCollectionApimOnboard.md)
 Onboard an Azure API Management API to Microsoft Defender for APIs.
 The system will start monitoring the operations within the Azure Management API for intrusive behaviors and provide alerts for attacks that have been detected.
+
+### [Invoke-AzSecurityInitiateSqlVulnerabilityAssessmentScan](Invoke-AzSecurityInitiateSqlVulnerabilityAssessmentScan.md)
+Initiates a vulnerability assessment scan.
 
 ### [New-AzSecurityAwsEnvironmentObject](New-AzSecurityAwsEnvironmentObject.md)
 Create an in-memory object for AwsEnvironment.
@@ -141,11 +160,24 @@ Create an in-memory object for GitLabScopeEnvironment.
 ### [New-AzSecurityInformationProtectionAwsOfferingObject](New-AzSecurityInformationProtectionAwsOfferingObject.md)
 Create an in-memory object for InformationProtectionAwsOffering.
 
+### [New-AzSecuritySqlVulnerabilityAssessmentBaselineRule](New-AzSecuritySqlVulnerabilityAssessmentBaselineRule.md)
+Create a Baseline for a rule in a database.
+Will overwrite any previously existing results.
+
+### [New-AzSecuritySqlVulnerabilityAssessmentSetting](New-AzSecuritySqlVulnerabilityAssessmentSetting.md)
+Create the SQL Vulnerability Assessment settings.
+
 ### [Remove-AzSecurityConnector](Remove-AzSecurityConnector.md)
 Deletes a security connector.
 
 ### [Remove-AzSecurityConnectorDevOpsConfiguration](Remove-AzSecurityConnectorDevOpsConfiguration.md)
 Deletes a DevOps Connector.
+
+### [Remove-AzSecuritySqlVulnerabilityAssessmentBaselineRule](Remove-AzSecuritySqlVulnerabilityAssessmentBaselineRule.md)
+Deletes a rule from the Baseline of a given database.
+
+### [Remove-AzSecuritySqlVulnerabilityAssessmentSetting](Remove-AzSecuritySqlVulnerabilityAssessmentSetting.md)
+Deletes the SQL Vulnerability Assessment settings.
 
 ### [Update-AzSecurityConnector](Update-AzSecurityConnector.md)
 Update a security connector
@@ -161,4 +193,7 @@ Update a monitored Azure DevOps repository resource.
 
 ### [Update-AzSecurityConnectorDevOpsConfiguration](Update-AzSecurityConnectorDevOpsConfiguration.md)
 Update a DevOps Configuration.
+
+### [Update-AzSecuritySqlVulnerabilityAssessmentSetting](Update-AzSecuritySqlVulnerabilityAssessmentSetting.md)
+Update the SQL Vulnerability Assessment settings.
 

@@ -15,20 +15,21 @@ Creates new security automation action object
 ### SecurityAutomationActionLogicApp (Default)
 ```
 New-AzSecurityAutomationActionObject -LogicAppResourceId <String> -Uri <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SecurityAutomationActionEventHub
 ```
 New-AzSecurityAutomationActionObject -EventHubResourceId <String> -ConnectionString <String>
  [-SasPolicyName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SecurityAutomationActionWorkspace
 ```
 New-AzSecurityAutomationActionObject -WorkspaceResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +59,36 @@ New-AzSecurityAutomationActionObject -EventHubResourceId 'subscriptions/03b601f1
 Creates new security automation action with even-hub type
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ConnectionString
 The target Event Hub connection string

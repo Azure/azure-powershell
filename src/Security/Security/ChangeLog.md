@@ -19,8 +19,11 @@
 -->
 
 ## Upcoming Release
+* Added new cmdlets to support SQL Vulnerability Assessment (2026-04-01-preview) API:
+    - `Get-AzSecuritySqlVulnerabilityAssessmentSetting`, `New-AzSecuritySqlVulnerabilityAssessmentSetting`, `Update-AzSecuritySqlVulnerabilityAssessmentSetting`, `Remove-AzSecuritySqlVulnerabilityAssessmentSetting`
+    - `Get-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `New-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `Add-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `Remove-AzSecuritySqlVulnerabilityAssessmentBaselineRule`
+    - `Get-AzSecuritySqlVulnerabilityAssessmentScan`, `Get-AzSecuritySqlVulnerabilityAssessmentScanResult`, `Invoke-AzSecurityInitiateSqlVulnerabilityAssessmentScan`
 
-## Version 1.9.0
 * Added ChangeSafety Support
 
 ## Version 1.8.0

@@ -18,7 +18,7 @@ New-AzSecurityAutomation -ResourceGroupName <String> -Name <String> -Location <S
  [-Tag <Hashtable>] [-Description <String>] [-IsEnabled <Boolean>] -Scope <PSSecurityAutomationScope[]>
  -Source <PSSecurityAutomationSource[]> -Action <PSSecurityAutomationAction[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -27,7 +27,7 @@ New-AzSecurityAutomation -ResourceId <String> -Location <String> [-Etag <String>
  [-Description <String>] [-IsEnabled <Boolean>] -Scope <PSSecurityAutomationScope[]>
  -Source <PSSecurityAutomationSource[]> -Action <PSSecurityAutomationAction[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -36,7 +36,7 @@ New-AzSecurityAutomation [-Location <String>] [-Etag <String>] [-Tag <Hashtable>
  [-IsEnabled <Boolean>] [-Scope <PSSecurityAutomationScope[]>] [-Source <PSSecurityAutomationSource[]>]
  -Action <PSSecurityAutomationAction[]> -InputObject <PSSecurityAutomation>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +53,21 @@ Creates new security automation named "SampleAutomation" under resource group na
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Action
 A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true
 
@@ -62,6 +77,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

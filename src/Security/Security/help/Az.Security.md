@@ -17,6 +17,10 @@ Enforces the given rules on the NSG(s) listed in the request
 ### [Add-AzSecuritySqlVulnerabilityAssessmentBaseline](Add-AzSecuritySqlVulnerabilityAssessmentBaseline.md)
 Add SQL vulnerability assessment baseline.
 
+### [Add-AzSecuritySqlVulnerabilityAssessmentBaselineRule](Add-AzSecuritySqlVulnerabilityAssessmentBaselineRule.md)
+Set a list of baseline rules.
+Will overwrite any previously existing results (for all rules).
+
 ### [Confirm-AzSecurityAutomation](Confirm-AzSecurityAutomation.md)
 Validates the security automation model before create or update. Any validation errors are returned to the client
 
@@ -174,11 +178,20 @@ Get Security Solutions Reference Data
 ### [Get-AzSecuritySqlVulnerabilityAssessmentBaseline](Get-AzSecuritySqlVulnerabilityAssessmentBaseline.md)
 Get SQL vulnerability assessment baseline.
 
+### [Get-AzSecuritySqlVulnerabilityAssessmentBaselineRule](Get-AzSecuritySqlVulnerabilityAssessmentBaselineRule.md)
+Gets the results for a given rule in the Baseline.
+
+### [Get-AzSecuritySqlVulnerabilityAssessmentScan](Get-AzSecuritySqlVulnerabilityAssessmentScan.md)
+Gets the scan details of a single scan record.
+
 ### [Get-AzSecuritySqlVulnerabilityAssessmentScanRecord](Get-AzSecuritySqlVulnerabilityAssessmentScanRecord.md)
 Gets SQL vulnerability assessment scan summary.
 
 ### [Get-AzSecuritySqlVulnerabilityAssessmentScanResult](Get-AzSecuritySqlVulnerabilityAssessmentScanResult.md)
-Gets SQL vulnerability assessment scan results.
+Gets the scan results of a single rule in a scan record.
+
+### [Get-AzSecuritySqlVulnerabilityAssessmentSetting](Get-AzSecuritySqlVulnerabilityAssessmentSetting.md)
+Gets the SQL Vulnerability Assessment settings.
 
 ### [Get-AzSecuritySubAssessment](Get-AzSecuritySubAssessment.md)
 Gets sub assessments results in a subscription.
@@ -202,6 +215,9 @@ The system will stop monitoring the operations within the Azure API Management A
 ### [Invoke-AzSecurityApiCollectionApimOnboard](Invoke-AzSecurityApiCollectionApimOnboard.md)
 Onboard an Azure API Management API to Microsoft Defender for APIs.
 The system will start monitoring the operations within the Azure Management API for intrusive behaviors and provide alerts for attacks that have been detected.
+
+### [Invoke-AzSecurityInitiateSqlVulnerabilityAssessmentScan](Invoke-AzSecurityInitiateSqlVulnerabilityAssessmentScan.md)
+Initiates a vulnerability assessment scan.
 
 ### [New-AzAlertsSuppressionRuleScope](New-AzAlertsSuppressionRuleScope.md)
 Helper cmdlet to create PSIScopeElement.
@@ -321,6 +337,13 @@ Create an in-memory object for GitLabScopeEnvironment.
 ### [New-AzSecurityInformationProtectionAwsOfferingObject](New-AzSecurityInformationProtectionAwsOfferingObject.md)
 Create an in-memory object for InformationProtectionAwsOffering.
 
+### [New-AzSecuritySqlVulnerabilityAssessmentBaselineRule](New-AzSecuritySqlVulnerabilityAssessmentBaselineRule.md)
+Create a Baseline for a rule in a database.
+Will overwrite any previously existing results.
+
+### [New-AzSecuritySqlVulnerabilityAssessmentSetting](New-AzSecuritySqlVulnerabilityAssessmentSetting.md)
+Create the SQL Vulnerability Assessment settings.
+
 ### [Remove-AzAlertsSuppressionRule](Remove-AzAlertsSuppressionRule.md)
 Deletes an alerts suppression rule.
 
@@ -353,6 +376,12 @@ Deletes a security contact.
 
 ### [Remove-AzSecuritySqlVulnerabilityAssessmentBaseline](Remove-AzSecuritySqlVulnerabilityAssessmentBaseline.md)
 Removes SQL vulnerability assessment baseline.
+
+### [Remove-AzSecuritySqlVulnerabilityAssessmentBaselineRule](Remove-AzSecuritySqlVulnerabilityAssessmentBaselineRule.md)
+Deletes a rule from the Baseline of a given database.
+
+### [Remove-AzSecuritySqlVulnerabilityAssessmentSetting](Remove-AzSecuritySqlVulnerabilityAssessmentSetting.md)
+Deletes the SQL Vulnerability Assessment settings.
 
 ### [Remove-AzSecurityWorkspaceSetting](Remove-AzSecurityWorkspaceSetting.md)
 Deletes the security workspace setting for this subscription.
@@ -425,4 +454,7 @@ Update a DevOps Configuration.
 
 ### [Update-AzSecurityDefenderForStorage](Update-AzSecurityDefenderForStorage.md)
 Update the Defender for Storage settings on a specified storage account.
+
+### [Update-AzSecuritySqlVulnerabilityAssessmentSetting](Update-AzSecuritySqlVulnerabilityAssessmentSetting.md)
+Update the SQL Vulnerability Assessment settings.
 
