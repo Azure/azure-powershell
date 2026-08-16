@@ -133,6 +133,13 @@ directive:
       subject: ^(SqlVulnerabilityAssessmentScanOperationResult)(.*)
     remove: true
 
+  # Avoid a cmdlet name collision with the legacy (2020-07-01-preview) hand-written
+  # Get-AzSecuritySqlVulnerabilityAssessmentScanResult cmdlet in src/Security/Security/Cmdlets/SqlVulnerabilityAssessment
+  - where:
+      subject: ^(SqlVulnerabilityAssessmentScanResult)(.*)
+    set:
+      subject: SqlVulnerabilityAssessmentScanResultV2
+
   # SQL Vulnerability Assessment (2026-04-01-preview) cmdlets are preview
   - where:
       subject: (.*)SqlVulnerabilityAssessment(.*)
