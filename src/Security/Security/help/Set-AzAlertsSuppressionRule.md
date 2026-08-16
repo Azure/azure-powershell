@@ -17,7 +17,7 @@ Create or update an alerts suppression rule.
 Set-AzAlertsSuppressionRule -Name <String> -AlertType <String> [-ExpirationDateUtc <DateTime>] -Reason <String>
  -State <PSRuleState> [-Comment <String>] [-SuppressionAlertsScope <PSSuppressionAlertsScope>]
  [-AllOf <PSIScopeElement[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -26,7 +26,7 @@ Set-AzAlertsSuppressionRule -InputObject <PSAlertsSuppressionRule> [-Name <Strin
  [-ExpirationDateUtc <DateTime>] [-Reason <String>] [-State <PSRuleState>] [-Comment <String>]
  [-SuppressionAlertsScope <PSSuppressionAlertsScope>] [-AllOf <PSIScopeElement[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,21 +42,6 @@ Set-AzAlertsSuppressionRule -Name "Example" -State Enabled -Comment "Example of 
 The above example creates a new suppression rule with the name "Example" to suppress alerts of type (Digital currency mining activity)[https://learn.microsoft.com/en-us/azure/defender-for-cloud/alerts-reference] that contains "example" as part of their account name.
 
 ## PARAMETERS
-
-### -AcquirePolicyToken
-Acquire an Azure Policy token automatically for this resource operation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AlertType
 Alert type to suppress.
@@ -90,21 +75,6 @@ Scope the suppression rule using specific entities.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Security.Models.AlertsSuppressionRules.PSIScopeElement[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ChangeReference
-The change reference resource ID for this resource operation.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

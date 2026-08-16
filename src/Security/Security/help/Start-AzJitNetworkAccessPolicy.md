@@ -17,21 +17,21 @@ Invokes a temporary network access request.
 Start-AzJitNetworkAccessPolicy -ResourceGroupName <String> -Location <String> -Name <String>
  -VirtualMachine <PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Start-AzJitNetworkAccessPolicy -VirtualMachine <PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[]>
  -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Start-AzJitNetworkAccessPolicy -InputObject <PSSecurityJitNetworkAccessPolicyInitiateInputObject>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,36 +59,6 @@ Start-AzJitNetworkAccessPolicy -ResourceGroupName $($MyResource.ResourceGroupNam
 Opens up a network connection for 1 hour over port 22 from my public IP (not shown).
 
 ## PARAMETERS
-
-### -AcquirePolicyToken
-Acquire an Azure Policy token automatically for this resource operation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ChangeReference
-The change reference resource ID for this resource operation.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

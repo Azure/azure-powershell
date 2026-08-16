@@ -17,8 +17,7 @@ Validates the security automation model before create or update. Any validation 
 Confirm-AzSecurityAutomation -ResourceGroupName <String> -Name <String> -Location <String> [-Etag <String>]
  [-Tag <Hashtable>] [-Description <String>] [-IsEnabled <Boolean>] -Scope <PSSecurityAutomationScope[]>
  -Source <PSSecurityAutomationSource[]> -Action <PSSecurityAutomationAction[]>
- [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
- [-ChangeReference <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -26,8 +25,7 @@ Confirm-AzSecurityAutomation -ResourceGroupName <String> -Name <String> -Locatio
 Confirm-AzSecurityAutomation -ResourceId <String> -Location <String> [-Etag <String>] [-Tag <Hashtable>]
  [-Description <String>] [-IsEnabled <Boolean>] -Scope <PSSecurityAutomationScope[]>
  -Source <PSSecurityAutomationSource[]> -Action <PSSecurityAutomationAction[]>
- [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
- [-ChangeReference <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -35,8 +33,7 @@ Confirm-AzSecurityAutomation -ResourceId <String> -Location <String> [-Etag <Str
 Confirm-AzSecurityAutomation [-Location <String>] [-Etag <String>] [-Tag <Hashtable>] [-Description <String>]
  [-IsEnabled <Boolean>] [-Scope <PSSecurityAutomationScope[]>] [-Source <PSSecurityAutomationSource[]>]
  -Action <PSSecurityAutomationAction[]> -InputObject <PSSecurityAutomation>
- [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
- [-ChangeReference <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,21 +50,6 @@ Validates that the creation of security automation named "SampleAutomation" unde
 
 ## PARAMETERS
 
-### -AcquirePolicyToken
-Acquire an Azure Policy token automatically for this resource operation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Action
 A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true
 
@@ -77,21 +59,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ChangeReference
-The change reference resource ID for this resource operation.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

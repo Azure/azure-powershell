@@ -16,35 +16,34 @@ Updates a security alert state.
 ```
 Set-AzSecurityAlert -Location <String> -Name <String> -ActionType <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
 ```
 Set-AzSecurityAlert -ResourceGroupName <String> -Location <String> -Name <String> -ActionType <String>
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Set-AzSecurityAlert -ActionType <String> -ResourceId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Set-AzSecurityAlert [-ActionType <String>] -InputObject <PSSecurityAlert> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### InputObjectV3
 ```
 Set-AzSecurityAlert -InputObjectV3 <PSSecurityAlertV3> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,21 +59,6 @@ Set-AzSecurityAlert -Location "centralus" -ResourceGroupName "RSG" -Name "251871
 Dismisses a security alert that was raised.
 
 ## PARAMETERS
-
-### -AcquirePolicyToken
-Acquire an Azure Policy token automatically for this resource operation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ActionType
 Action Type.
@@ -94,21 +78,6 @@ Accept wildcard characters: False
 ```yaml
 Type: System.String
 Parameter Sets: InputObject
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ChangeReference
-The change reference resource ID for this resource operation.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
 Aliases:
 
 Required: False

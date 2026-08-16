@@ -15,21 +15,21 @@ Update a security setting in Azure Security Center
 ### GeneralScope (Default)
 ```
 Set-AzSecuritySetting [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SettingsScope
 ```
 Set-AzSecuritySetting -SettingName <String> -SettingKind <String> -Enabled <Boolean>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Set-AzSecuritySetting -InputObject <PSSecuritySetting> [-Enabled <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,36 +52,6 @@ Enabled: true
 Updates an MCAS data export setting   
 
 ## PARAMETERS
-
-### -AcquirePolicyToken
-Acquire an Azure Policy token automatically for this resource operation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ChangeReference
-The change reference resource ID for this resource operation.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
