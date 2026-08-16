@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Security
-Module Guid: 8277b67f-1322-4066-b96d-e7a943303dba
+Module Guid: 2b6bac56-a03a-4606-8b05-c1a1f36248db
 Download Help Link: https://learn.microsoft.com/powershell/module/az.security
 Help Version: 1.0.0.0
 Locale: en-US

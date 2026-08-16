@@ -24,6 +24,7 @@
     - `Get-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `New-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `Add-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `Remove-AzSecuritySqlVulnerabilityAssessmentBaselineRule`
     - `Get-AzSecuritySqlVulnerabilityAssessmentScan`, `Get-AzSecuritySqlVulnerabilityAssessmentScanResult`, `Invoke-AzSecurityInitiateSqlVulnerabilityAssessmentScan`
 
+## Version 1.9.0
 * Added ChangeSafety Support
 
 ## Version 1.8.0
