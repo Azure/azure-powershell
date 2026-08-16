@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Security
-Module Guid: 2b6bac56-a03a-4606-8b05-c1a1f36248db
+Module Guid: 8277b67f-1322-4066-b96d-e7a943303dba
 Download Help Link: https://learn.microsoft.com/powershell/module/az.security
 Help Version: 1.0.0.0
 Locale: en-US
@@ -64,7 +64,7 @@ Gets the results for a given rule in the Baseline.
 ### [Get-AzSecuritySqlVulnerabilityAssessmentScan](Get-AzSecuritySqlVulnerabilityAssessmentScan.md)
 Gets the scan details of a single scan record.
 
-### [Get-AzSecuritySqlVulnerabilityAssessmentScanResult](Get-AzSecuritySqlVulnerabilityAssessmentScanResult.md)
+### [Get-AzSecuritySqlVulnerabilityAssessmentScanRuleResult](Get-AzSecuritySqlVulnerabilityAssessmentScanRuleResult.md)
 Gets the scan results of a single rule in a scan record.
 
 ### [Get-AzSecuritySqlVulnerabilityAssessmentSetting](Get-AzSecuritySqlVulnerabilityAssessmentSetting.md)

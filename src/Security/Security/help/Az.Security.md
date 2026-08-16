@@ -190,7 +190,7 @@ Gets SQL vulnerability assessment scan summary.
 ### [Get-AzSecuritySqlVulnerabilityAssessmentScanResult](Get-AzSecuritySqlVulnerabilityAssessmentScanResult.md)
 Gets the scan results of a single rule in a scan record.
 
-### [Get-AzSecuritySqlVulnerabilityAssessmentScanResultV2](Get-AzSecuritySqlVulnerabilityAssessmentScanResultV2.md)
+### [Get-AzSecuritySqlVulnerabilityAssessmentScanRuleResult](Get-AzSecuritySqlVulnerabilityAssessmentScanRuleResult.md)
 Gets the scan results of a single rule in a scan record.
 
 ### [Get-AzSecuritySqlVulnerabilityAssessmentSetting](Get-AzSecuritySqlVulnerabilityAssessmentSetting.md)

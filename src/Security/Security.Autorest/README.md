@@ -134,11 +134,12 @@ directive:
     remove: true
 
   # Avoid a cmdlet name collision with the legacy (2020-07-01-preview) hand-written
-  # Get-AzSecuritySqlVulnerabilityAssessmentScanResult cmdlet in src/Security/Security/Cmdlets/SqlVulnerabilityAssessment
+  # Get-AzSecuritySqlVulnerabilityAssessmentScanResult cmdlet in src/Security/Security/Cmdlets/SqlVulnerabilityAssessment.
+  # Renamed to ScanRuleResult since this resource represents the result of a single rule within a scan.
   - where:
       subject: ^(SqlVulnerabilityAssessmentScanResult)(.*)
     set:
-      subject: SqlVulnerabilityAssessmentScanResultV2
+      subject: SqlVulnerabilityAssessmentScanRuleResult
 
   # SQL Vulnerability Assessment (2026-04-01-preview) cmdlets are preview
   - where:
