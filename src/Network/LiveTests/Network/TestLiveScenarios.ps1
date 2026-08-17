@@ -346,14 +346,14 @@ Invoke-LiveTestScenario -Name "Create advanced mode load balancer with connectio
     $lbName = New-LiveTestResourceName
 
     $ipTag = New-AzPublicIpTag -IpTagType FirstPartyUsage -Tag "/NonProd"
-    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod Static -Sku Standard -IpTag $ipTag
+    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod Static -Sku StandardV2 -IpTag $ipTag
     $feIpCfg = New-AzLoadBalancerFrontendIpConfig -Name $feIpCfgName -PublicIpAddress $publicIp -EnableConnectionTracking
     Assert-AreEqual $true $feIpCfg.EnableConnectionTracking
 
     $bePoolCfg = New-AzLoadBalancerBackendAddressPoolConfig -Name $bePoolCfgName
     $probe = New-AzLoadBalancerProbeConfig -Name $probeName -Protocol "Http" -Port 80 -RequestPath "healthcheck.aspx" -IntervalInSeconds 15 -ProbeCount 5 -ProbeThreshold 5
     $lbRule = New-AzLoadBalancerRuleConfig -Name $lbRuleName -FrontendIpConfiguration $feIpCfg -BackendAddressPool $bePoolCfg -Protocol "Udp" -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 5
-    New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -Sku Standard -Mode Advanced -FrontendIpConfiguration $feIpCfg -BackendAddressPool $bePoolCfg -Probe $probe -LoadBalancingRule $lbRule
+    New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -Sku Standard -Mode Advanced -Scope Public -FrontendIpConfiguration $feIpCfg -BackendAddressPool $bePoolCfg -Probe $probe -LoadBalancingRule $lbRule
 
     $actual = Get-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName
     Assert-NotNull $actual
@@ -362,6 +362,7 @@ Invoke-LiveTestScenario -Name "Create advanced mode load balancer with connectio
     Assert-AreEqual $location $actual.Location
     Assert-AreEqual "Succeeded" $actual.ProvisioningState
     Assert-AreEqual "Advanced" $actual.Mode
+    Assert-AreEqual "Public" $actual.Scope
     Assert-AreEqual 1 $actual.FrontendIpConfigurations.Count
     Assert-AreEqual $true $actual.FrontendIpConfigurations[0].EnableConnectionTracking
 }

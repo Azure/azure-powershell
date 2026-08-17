@@ -15,7 +15,7 @@ Creates a load balancer.
 
 ```
 New-AzLoadBalancer -ResourceGroupName <String> -Name <String> -Location <String> [-Tag <Hashtable>]
- [-Sku <String>] [-Tier <String>] [-Mode <String>] [-FrontendIpConfiguration <PSFrontendIPConfiguration[]>]
+ [-Sku <String>] [-Tier <String>] [-Mode <String>] [-Scope <String>] [-FrontendIpConfiguration <PSFrontendIPConfiguration[]>]
  [-BackendAddressPool <PSBackendAddressPool[]>] [-LoadBalancingRule <PSLoadBalancingRule[]>]
  [-Probe <PSProbe[]>] [-InboundNatRule <PSInboundNatRule[]>] [-InboundNatPool <PSInboundNatPool[]>]
  [-OutboundRule <PSOutboundRule[]>] [-EdgeZone <String>] [-Force] [-AsJob]
@@ -318,6 +318,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Scope
+The scope of the load balancer: external ('Public') or internal ('Private'). Set together with '-Mode Advanced' to create an advanced (Banksy-based) load balancer.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

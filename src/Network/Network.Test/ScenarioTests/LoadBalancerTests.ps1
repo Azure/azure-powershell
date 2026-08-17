@@ -3689,8 +3689,8 @@ function Test-LoadBalancerAdvancedModeConnectionTracking
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
 
-        # Create the public IP. Standard SKU is required for Advanced mode load balancers.
-        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+        # Create the public IP. StandardV2 SKU is required for a public advanced-mode (Scope) load balancer.
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku StandardV2
 
         # Create a frontend IP configuration with UDP connection tracking enabled
         $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip -EnableConnectionTracking
@@ -3701,7 +3701,7 @@ function Test-LoadBalancerAdvancedModeConnectionTracking
         $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Udp -FrontendPort 80 -BackendPort 80
 
         # Create the load balancer in Advanced mode
-        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -Sku Standard -Mode Advanced -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -LoadBalancingRule $lbrule
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -Sku Standard -Mode Advanced -Scope Public -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -LoadBalancingRule $lbrule
 
         $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
 
@@ -3710,6 +3710,7 @@ function Test-LoadBalancerAdvancedModeConnectionTracking
         Assert-AreEqual $expectedLb.Name $actualLb.Name
         Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
         Assert-AreEqual "Advanced" $expectedLb.Mode
+        Assert-AreEqual "Public" $expectedLb.Scope
         Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
         Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
         Assert-AreEqual $true $expectedLb.FrontendIPConfigurations[0].EnableConnectionTracking

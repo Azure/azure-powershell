@@ -5504,6 +5504,10 @@
             <Alignment>Left</Alignment>
             <Label>Mode</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Scope</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -5531,6 +5535,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Mode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Scope</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
