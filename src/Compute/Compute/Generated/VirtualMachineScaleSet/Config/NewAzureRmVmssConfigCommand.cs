@@ -289,6 +289,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity. Minimum api-version: 2026-04-01.")]
+        public SwitchParameter DisableCapacityReservationAssignment { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
@@ -699,6 +704,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.CapacityReservation = new CapacityReservationProfile();
                 }
                 vVirtualMachineProfile.CapacityReservation.CapacityReservationGroup = new SubResource(this.CapacityReservationGroupId);
+            }
+
+            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+            {
+                if (this.IsParameterBound(c => c.CapacityReservationGroupId))
+                {
+                    throw new PSArgumentException(
+                        "The -CapacityReservationGroupId and -DisableCapacityReservationAssignment parameters cannot be used together.");
+                }
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.CapacityReservation == null)
+                {
+                    vVirtualMachineProfile.CapacityReservation = new CapacityReservationProfile();
+                }
+                vVirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment = this.DisableCapacityReservationAssignment.IsPresent;
             }
 
             if (this.IsParameterBound(c => c.AutomaticRepairGracePeriod))
