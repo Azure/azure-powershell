@@ -168,11 +168,55 @@ namespace Microsoft.Azure.Test.HttpRecorder
             }
         }
 
+        protected override HttpResponseMessage Send(
+            HttpRequestMessage request,
+            CancellationToken cancellationToken)
+        {
+            if (Mode == HttpRecorderMode.Playback)
+            {
+                lock (_records)
+                {
+                    var key = Matcher.GetMatchingKey(request);
+                    var queue = _records[key];
+                    if (!queue.Any())
+                    {
+                        throw new InvalidOperationException(
+                            $"Queue empty for request {RecorderUtilities.DecodeBase64AsUri(key)}");
+                    }
+
+                    HttpResponseMessage result = queue.Dequeue().GetResponse();
+                    result = AddTestModeHeaders(result);
+                    result.RequestMessage = request;
+                    return result;
+                }
+            }
+
+            lock (this)
+            {
+                HttpResponseMessage result =
+                    base.Send(request, cancellationToken);
+                if (Mode == HttpRecorderMode.Record)
+                {
+                    lock (_records)
+                    {
+                        _records.Enqueue(new RecordEntry(result));
+                    }
+                }
+
+                return result;
+            }
+        }
+
         private HttpResponseMessage AddTestModeHeaders(HttpResponseMessage response)
         {
             if (response != null)
             {
                 response?.Headers?.Add(TEST_MODE_HEADER, "true");
+                if (response.Headers.Contains("Retry-After"))
+                {
+                    response.Headers.Remove("Retry-After");
+                    response.Headers.TryAddWithoutValidation("Retry-After", "0");
+                }
             }
 
             return response;

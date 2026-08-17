@@ -130,6 +130,11 @@ function Test-GetWebAppBackup
         Assert-NotNull $result.StorageAccountUrl
         Assert-NotNull $result.BackupId
 
+        $backupItemType = [Microsoft.Azure.Management.WebSites.Models.BackupItem]
+        Assert-AreEqual "Microsoft.Azure.Management.WebSites.Models.ProxyOnlyResource" $backupItemType.BaseType.FullName
+        Assert-AreEqual "Microsoft.Azure.PowerShell.Cmdlets.Websites" $backupItemType.Assembly.GetName().Name
+        Assert-True { [Microsoft.Rest.Azure.IResource].IsAssignableFrom($backupItemType) }
+
         # Test piping - should be able to pipe result of previous get backup and get the same backup
         $pipeResult = $result | Get-AzWebAppBackup
 

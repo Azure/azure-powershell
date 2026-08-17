@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Azure;
 using Microsoft.Azure.Commands.WebApps.Models;
-using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.WebApps.Utilities;
 using System;
 using System.IO;
 using System.Management.Automation;
@@ -135,10 +135,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             Certificate cert = WebsitesClient.CreateCertificate(resourceGroupName, certificateName, certificate);
                         }
                     }
-                    catch (CloudException e)
+                    catch (RequestFailedException e)
                     {
                         // This exception is thrown when certificate already exists. Let's swallow it and continue.
-                        if (e.Response.StatusCode != HttpStatusCode.Conflict)
+                        if (e.Status != (int)HttpStatusCode.Conflict)
                         {
                             throw;
                         }
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     slot,
                     webapp.Location,
                     Name,
-                    SslState.HasValue ? SslState.Value : Management.WebSites.Models.SslState.SniEnabled,
+                    SslState.HasValue ? SslState.Value : Microsoft.Azure.Management.WebSites.Models.SslState.SniEnabled,
                     thumbPrint),
                 Name));
             }

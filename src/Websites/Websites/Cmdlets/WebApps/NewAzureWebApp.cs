@@ -12,25 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure;
 using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
-using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.Azure.Management.WebSites;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Common.Strategies.Resources;
-using Microsoft.Azure.Commands.Common.Strategies.WebApps;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.WebApps.Strategies;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using Microsoft.Azure.Commands.WebApps.Properties;
@@ -183,8 +180,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         private void ValidateWebAppName(string name)
         {
-            var available = WebsitesClient.WrappedWebsitesClient.CheckNameAvailability(name,"Site");
-            if (available.NameAvailable.HasValue && !available.NameAvailable.Value)
+            if (!WebsitesClient.IsWebAppNameAvailable(name))
             {
                 throw new InvalidOperationException(string.Format(
                     "Website name '{0}' is not available.  Please try a different name.", name));
@@ -238,15 +234,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             {
                 WriteObject(new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName, (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag))));
             }
-            catch (Exception e)
+            catch (RequestFailedException e)
+                when (e.Status == (int)System.Net.HttpStatusCode.BadRequest)
             {
-                if(e.Message.Contains("Operation returned an invalid status code \'BadRequest\'"))
-                {
-                    var message = e.Message + "\nIf AppServicePlan is present in other resourceGroup, please provide AppServicePlan in following format : \" /subscriptions/{subscriptionId}/resourcegroups/{resourcegroupName}/providers/Microsoft.Web/serverfarms/{serverFarmName}\"";
-                    WriteObject(message);
-                    throw new Exception(message, e);
-                }
-                throw e;
+                var message = e.Message + "\nIf AppServicePlan is present in other resourceGroup, please provide AppServicePlan in following format : \" /subscriptions/{subscriptionId}/resourcegroups/{resourcegroupName}/providers/Microsoft.Web/serverfarms/{serverFarmName}\"";
+                WriteObject(message);
+                throw new Exception(message, e);
             }
 
             if (cloneWebAppSlots)
@@ -259,23 +252,31 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         {
             var websiteLocation = string.IsNullOrWhiteSpace(location) ? new LocationConstraint() : new LocationConstraint(location);
             var farmResources = await ResourcesClient.ResourceManagementClient.Resources.ListAsync(new ODataQuery<GenericResourceFilter>(r => r.ResourceType == "Microsoft.Web/serverFarms"));
-            AppServicePlan defaultFarm = null;
             foreach (var resource in farmResources)
             {
-                // Try to find a policy with Sku=Free and available site capacity
                 var id = new ResourceIdentifier(resource.Id);
-                var farm = await WebsitesClient.WrappedWebsitesClient.AppServicePlans.GetAsync(id.ResourceGroupName, id.ResourceName);
-                if (websiteLocation.Match(farm.Location)
-                    && string.Equals("free", farm.Sku?.Tier?.ToLower(), StringComparison.OrdinalIgnoreCase)
-                    && farm.NumberOfSites < MaxFreeSites)
+                AppServicePlan farm;
+                try
                 {
-                    defaultFarm = farm;
-                    break;
+                    farm = WebsitesClient.GetAppServicePlan(
+                        id.ResourceGroupName,
+                        id.ResourceName);
+                }
+                catch (RequestFailedException exception)
+                    when (exception.Status == 404)
+                {
+                    continue;
                 }
 
+                if (websiteLocation.Match(farm.Location)
+                    && string.Equals("free", farm.Sku?.Tier, StringComparison.OrdinalIgnoreCase)
+                    && farm.NumberOfSites < MaxFreeSites)
+                {
+                    return farm;
+                }
             }
 
-            return defaultFarm;
+            return null;
         }
 
 
@@ -298,139 +299,200 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             return result;
         }
 
-        sealed class Parameters : IParameters<Site>
+        private string EnsureResourceGroup(
+            string resourceGroupName,
+            string location)
         {
-            readonly NewAzureWebAppCmdlet _cmdlet;
-            readonly WebsitesClient _websitesClient;
-
-            public Parameters(NewAzureWebAppCmdlet cmdlet, WebsitesClient websitesClient)
+            ResourceGroup resourceGroup = null;
+            try
             {
-                _cmdlet = cmdlet;
-                _websitesClient = websitesClient;
+                resourceGroup = ResourcesClient.ResourceManagementClient
+                    .ResourceGroups
+                    .Get(resourceGroupName);
+            }
+            catch (Microsoft.Rest.Azure.CloudException exception)
+                when (exception.Response?.StatusCode ==
+                      System.Net.HttpStatusCode.NotFound)
+            {
             }
 
-            public string DefaultLocation => "eastus";
-
-            public string Location
+            if (resourceGroup != null)
             {
-                get { return _cmdlet.Location; }
-                set { _cmdlet.Location = value; }
+                return string.IsNullOrWhiteSpace(location)
+                    ? resourceGroup.Location
+                    : location;
             }
-            private SiteConfig GetNewConfig(AppServicePlan appServiceplan)
+
+            string resourceGroupLocation = string.IsNullOrWhiteSpace(location)
+                ? "eastus"
+                : location;
+            ResourcesClient.ResourceManagementClient.ResourceGroups.CreateOrUpdate(
+                resourceGroupName,
+                new ResourceGroup { Location = resourceGroupLocation });
+            return resourceGroupLocation;
+        }
+
+        private SiteConfig GetNewConfig(AppServicePlan appServicePlan)
+        {
+            var siteConfig = new SiteConfig
             {
-                bool newConfigAdded = false;
-                SiteConfig siteConfig = new SiteConfig();
-                siteConfig.AppSettings = new List<NameValuePair>();
+                AppSettings = new List<NameValuePair>()
+            };
+            bool hasConfiguration = false;
 
-                string containerImageName = _cmdlet.ContainerImageName;
-                if (containerImageName != null)
-                {
-                    containerImageName = CmdletHelpers.DockerImagePrefix + containerImageName;
-                    if (appServiceplan == null || appServiceplan.IsXenon.GetValueOrDefault())
-                    {
-                        siteConfig.WindowsFxVersion = containerImageName;
-                        newConfigAdded = true;
-                    }
-                }
-                if (_cmdlet.ContainerRegistryUrl != null)
-                {
-                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DockerRegistryServerUrl, _cmdlet.ContainerRegistryUrl));
-                    newConfigAdded = true;
-                }
-                if (_cmdlet.ContainerRegistryUser != null)
-                {
-                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DockerRegistryServerUserName, _cmdlet.ContainerRegistryUser));
-                    newConfigAdded = true;
-                }
-                if (_cmdlet.ContainerRegistryPassword != null)
-                {
-                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DockerRegistryServerPassword, _cmdlet.ContainerRegistryPassword.ConvertToString()));
-                    newConfigAdded = true;
-                }
-                if (_cmdlet.EnableContainerContinuousDeployment.IsPresent)
-                {
-                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DockerEnableCI, "true"));
-                    newConfigAdded = true;
-                }
-                return newConfigAdded ? siteConfig : null;
-            }
-            public async Task<ResourceConfig<Site>> CreateConfigAsync()
+            if (ContainerImageName != null)
             {
-                _cmdlet.ResourceGroupName = _cmdlet.ResourceGroupName ?? _cmdlet.Name;
-                _cmdlet.AppServicePlan = _cmdlet.AppServicePlan ?? _cmdlet.Name;
-
-                var planResourceGroup = _cmdlet.ResourceGroupName;
-                var planName = _cmdlet.AppServicePlan;
-
-                var rgStrategy = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
-                var planRG = rgStrategy;
-                if (_cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(AppServicePlan)))
+                string containerImageName =
+                    CmdletHelpers.DockerImagePrefix + ContainerImageName;
+                if (appServicePlan == null ||
+                    appServicePlan.IsXenon.GetValueOrDefault())
                 {
-                    if (!_cmdlet.TryGetServerFarmFromResourceId(_cmdlet.AppServicePlan, out planResourceGroup, out planName))
-                    {
-                        planResourceGroup = _cmdlet.ResourceGroupName;
-                        planName = _cmdlet.AppServicePlan;
-                    }
-
-                    planRG = ResourceGroupStrategy.CreateResourceGroupConfig(planResourceGroup);
+                    siteConfig.WindowsFxVersion = containerImageName;
+                    hasConfiguration = true;
                 }
-                else
-                {
-                    var farm = await _cmdlet.GetDefaultServerFarm(Location);
-                    if (farm != null)
-                    {
-                        planResourceGroup = farm.ResourceGroup;
-                        planName = farm.Name;
-                        planRG = ResourceGroupStrategy.CreateResourceGroupConfig(planResourceGroup);
-                    }
-                }
-                AppServicePlan appServiceplan = _websitesClient.GetAppServicePlan(planResourceGroup, planName);
-
-                // If ContainerImageName is specified and appservice plan doesn’t exist (appServiceplan == null) we will try to create plan with windows container 
-                var farmStrategy = planRG.CreateServerFarmConfig(planResourceGroup, planName, appServiceplan == null && _cmdlet.ContainerImageName != null);
-
-                return rgStrategy.CreateSiteConfig(farmStrategy, _cmdlet.Name, this.GetNewConfig(appServiceplan)
-                    , (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(_cmdlet.Tag));
             }
+            if (ContainerRegistryUrl != null)
+            {
+                siteConfig.AppSettings.Add(
+                    new NameValuePair(
+                        CmdletHelpers.DockerRegistryServerUrl,
+                        ContainerRegistryUrl));
+                hasConfiguration = true;
+            }
+            if (ContainerRegistryUser != null)
+            {
+                siteConfig.AppSettings.Add(
+                    new NameValuePair(
+                        CmdletHelpers.DockerRegistryServerUserName,
+                        ContainerRegistryUser));
+                hasConfiguration = true;
+            }
+            if (ContainerRegistryPassword != null)
+            {
+                siteConfig.AppSettings.Add(
+                    new NameValuePair(
+                        CmdletHelpers.DockerRegistryServerPassword,
+                        ContainerRegistryPassword.ConvertToString()));
+                hasConfiguration = true;
+            }
+            if (EnableContainerContinuousDeployment.IsPresent)
+            {
+                siteConfig.AppSettings.Add(
+                    new NameValuePair(CmdletHelpers.DockerEnableCI, "true"));
+                hasConfiguration = true;
+            }
+
+            return hasConfiguration ? siteConfig : null;
         }
 
         public async Task CreateWithSimpleParameters(IAsyncCmdlet adapter)
         {
-            var parameters = new Parameters(this, WebsitesClient);
-            var client = new WebClient(DefaultContext);
-            var output = await client.RunAsync(client.SubscriptionId, parameters, adapter);
+            if (ResourceGroupName == null)
+            {
+                ResourceGroupName = Name;
+            }
 
-            output.SiteConfig = WebsitesClient
-                .WrappedWebsitesClient
-                .WebApps()
-                .GetConfiguration(output.ResourceGroup, output.Name)
-                .ConvertToSiteConfig();
+            string planResourceGroup = ResourceGroupName;
+            string planName = AppServicePlan ?? Name;
+            AppServicePlan existingPlan = null;
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(AppServicePlan)))
+            {
+                if (!TryGetServerFarmFromResourceId(
+                        AppServicePlan,
+                        out planResourceGroup,
+                        out planName))
+                {
+                    planResourceGroup = ResourceGroupName;
+                    planName = AppServicePlan;
+                }
+            }
+            else
+            {
+                existingPlan = await GetDefaultServerFarm(Location);
+                if (existingPlan != null)
+                {
+                    planResourceGroup = existingPlan.ResourceGroup;
+                    planName = existingPlan.Name;
+                }
+            }
 
+            if (existingPlan == null)
+            {
+                try
+                {
+                    existingPlan = WebsitesClient.GetAppServicePlan(
+                        planResourceGroup,
+                        planName);
+                }
+                catch (RequestFailedException exception)
+                    when (exception.Status == 404)
+                {
+                }
+            }
+
+            if (existingPlan == null)
+            {
+                Location = EnsureResourceGroup(ResourceGroupName, Location);
+                if (!string.Equals(
+                        planResourceGroup,
+                        ResourceGroupName,
+                        StringComparison.OrdinalIgnoreCase))
+                {
+                    EnsureResourceGroup(planResourceGroup, Location);
+                }
+                bool isXenon = ContainerImageName != null;
+                string tier = isXenon ? "PremiumContainer" : "Basic";
+                existingPlan = WebsitesClient.CreateOrUpdateAppServicePlan(
+                    planResourceGroup,
+                    planName,
+                    new AppServicePlan
+                    {
+                        Location = Location,
+                        IsXenon = isXenon,
+                        Sku = new SkuDescription
+                        {
+                            Tier = tier,
+                            Capacity = 1,
+                            Name = CmdletHelpers.GetSkuName(tier, 1)
+                        }
+                    });
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(Location))
+                {
+                    Location = existingPlan.Location;
+                }
+                Location = EnsureResourceGroup(ResourceGroupName, Location);
+            }
+
+            AppServicePlan = existingPlan.Id;
+            SiteConfig newConfig = GetNewConfig(existingPlan);
             try
             {
-                var appSettings = WebsitesClient
-                    .WrappedWebsitesClient
-                    .WebApps()
-                    .ListApplicationSettings(output.ResourceGroup, output.Name);
-                output.SiteConfig.AppSettings = appSettings
-                    .Properties
-                    .Select(s => new NameValuePair { Name = s.Key, Value = s.Value })
-                    .ToList();
-                var connectionStrings = WebsitesClient.WrappedWebsitesClient.WebApps().ListConnectionStrings(
-                    output.ResourceGroup, output.Name);
-                output.SiteConfig.ConnectionStrings = connectionStrings
-                    .Properties
-                    .Select(s => new ConnStringInfo()
-                    {
-                        Name = s.Key,
-                        ConnectionString = s.Value.Value,
-                        Type = s.Value.Type
-                    }).ToList();
+                WebsitesClient.GetWebApp(
+                    ResourceGroupName,
+                    Name,
+                    null);
             }
-            catch
+            catch (RequestFailedException exception)
+                when (exception.Status == 404)
             {
-                //ignore if this call fails as it will for reader RBAC
             }
+
+            var output = new PSSite(
+                WebsitesClient.CreateWebApp(
+                    ResourceGroupName,
+                    Name,
+                    null,
+                    Location,
+                    existingPlan.Id,
+                    null,
+                    null,
+                    null,
+                    (IDictionary<string, string>)
+                        CmdletHelpers.ConvertToStringDictionary(Tag),
+                    siteConfig: newConfig));
 
             string userName = null, password = null;
             try
@@ -438,9 +500,15 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 var scmHostName = output.EnabledHostNames.FirstOrDefault(s => s.Contains(".scm."));
                 if (!string.IsNullOrWhiteSpace(scmHostName))
                 {
-                    var profile = await WebsitesClient.WrappedWebsitesClient.WebApps.ListPublishingProfileXmlWithSecretsAsync(output.ResourceGroup, output.Name, new CsmPublishingProfileOptions { Format = "WebDeploy" });
+                    string profile = WebsitesClient.GetWebAppPublishingProfile(
+                        ResourceGroupName,
+                        Name,
+                        null,
+                        null,
+                        "WebDeploy",
+                        null);
                     var doc = new XmlDocument();
-                    doc.Load(profile);
+                    doc.LoadXml(profile);
                     userName = doc.SelectSingleNode("//publishProfile[@publishMethod=\"MSDeploy\"]/@userName").Value;
                     password = doc.SelectSingleNode("//publishProfile[@publishMethod=\"MSDeploy\"]/@userPWD").Value;
                     var newOutput = new PSSite(output)
@@ -489,7 +557,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         {
             var hostingEnvironmentProfile = WebsitesClient.CreateHostingEnvironmentProfile(ResourceGroupName, AseResourceGroupName, AseName);
             var template = DeploymentTemplateHelper.CreateSlotCloneDeploymentTemplate(Location, AppServicePlan, Name, SourceWebApp.Id,
-                slotNames, hostingEnvironmentProfile, WebsitesClient.WrappedWebsitesClient.ApiVersion());
+                slotNames, hostingEnvironmentProfile, WebsitesClient.ApiVersion);
 
             var deployment = new Management.Internal.Resources.Models.Deployment
             {

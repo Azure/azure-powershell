@@ -1,10 +1,11 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Azure;
 using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.WebSites.Models;
 using System.Management.Automation;
 using System.Net;
 
@@ -101,11 +102,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     {
                         kvc = WebsitesClient.CreateCertificate(ResourceGroupName, KeyVaultName + '-'+ CertName, certificate);
                     }
-                    catch (DefaultErrorResponseException e)
+                    catch (RequestFailedException e)
                     {
-                        if (e.Response.StatusCode != HttpStatusCode.Conflict)
+                        if (e.Status != (int)HttpStatusCode.Conflict)
                         {
-                            throw e;
+                            throw;
                         }
                     }
                 }

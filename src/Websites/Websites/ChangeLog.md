@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated App Service management calls to use the current Azure Resource Manager client libraries while preserving existing cmdlet behavior and output properties.
 
 ## Version 4.0.0
 * Added ChangeSafety Support

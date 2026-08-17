@@ -41,7 +41,14 @@ function Test-CreateNewAppServicePlan
 		Assert-AreEqual $skuName $createResult.Sku.Name
 		Assert-AreEqual $capacity $createResult.Sku.Capacity
 		Assert-AreEqual $tag.Keys $createResult.Tags.Keys
-        Assert-AreEqual $tag.Values $createResult.Tags.Values
+		Assert-AreEqual $tag.Values $createResult.Tags.Values
+		Assert-AreEqual $location $createResult.Location
+
+		$planType = $createResult.GetType().BaseType
+		Assert-AreEqual "Microsoft.Azure.Management.WebSites.Models.AppServicePlan" $planType.FullName
+		Assert-AreEqual "Microsoft.Azure.Management.WebSites.Models.Resource" $planType.BaseType.FullName
+		Assert-AreEqual "Microsoft.Azure.PowerShell.Cmdlets.Websites" $planType.Assembly.GetName().Name
+		Assert-True { [Microsoft.Rest.Azure.IResource].IsAssignableFrom($planType) }
 		# Assert
 
 		$getResult = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName

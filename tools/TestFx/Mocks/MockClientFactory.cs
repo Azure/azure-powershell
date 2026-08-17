@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
@@ -111,12 +112,38 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
 
         public HttpClient CreateHttpClient(string endpoint, ICredentials credentials)
         {
-            throw new NotImplementedException();
+            return CreateHttpClient(
+                endpoint,
+                ClientFactory.CreateHttpClientHandler(endpoint, credentials));
         }
 
         public HttpClient CreateHttpClient(string endpoint, HttpMessageHandler effectiveHandler)
         {
-            throw new NotImplementedException();
+            if (endpoint == null)
+            {
+                throw new ArgumentNullException(nameof(endpoint));
+            }
+
+            HttpMessageHandler pipeline =
+                effectiveHandler ?? new HttpClientHandler();
+            ServiceClientCredentials credentials =
+                HttpMockServer.Mode == HttpRecorderMode.Playback
+                    ? null
+                    : _mockContext.GetClientCredentials(
+                        AzureEnvironment.Endpoint.ResourceManager);
+            foreach (DelegatingHandler handler in _mockContext
+                .AddHandlers(credentials)
+                .Reverse())
+            {
+                handler.InnerHandler = pipeline;
+                pipeline = handler;
+            }
+
+            return new HttpClient(pipeline)
+            {
+                BaseAddress = new Uri(endpoint),
+                MaxResponseContentBufferSize = 30 * 1024 * 1024
+            };
         }
 
         public DelegatingHandler[] GetCustomHandlers()
