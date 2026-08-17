@@ -7,19 +7,19 @@ namespace Microsoft.Azure.Management.Sql.Models
 {
 
     /// <summary>
-    /// Defines values for LinkRole.
+    /// Defines values for LinkModeType.
     /// </summary>
 
 
-    public static class LinkRole
+    public static class LinkModeType
     {
         /// <summary>
-        /// Primary
+        /// The link operates in single-database mode.
         /// </summary>
-        public const string Primary = "Primary";
+        public const string SingleDatabase = "SingleDatabase";
         /// <summary>
-        /// Secondary
+        /// The link operates in multi-database mode.
         /// </summary>
-        public const string Secondary = "Secondary";
+        public const string MultiDatabase = "MultiDatabase";
     }
 }

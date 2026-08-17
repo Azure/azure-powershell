@@ -107,5 +107,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model
         /// 'Automatic', 'Manual'
         /// </summary>
         public string SeedingMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether the link operates in single-database or
+        /// multi-database mode. Possible values include: 'SingleDatabase',
+        /// 'MultiDatabase'
+        /// </summary>
+        public string LinkMode { get; set; }
     }
 }

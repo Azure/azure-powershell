@@ -26,7 +26,7 @@ use-extension:
 
 ###
 ``` yaml
-commit: 81b0bdbdff433c327c3c860d5e104a42efa3d695
+commit: fae30cdf5799e6c1323b2ecc24ba4e9669571ee4
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/Legacy/stable/2014-04-01/metrics.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/Legacy/stable/2014-04-01-legacy/sql.core_legacy.json
@@ -87,7 +87,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2024-11-01-preview/LongTermRetentionBackups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2021-05-01-preview/LongTermRetentionManagedInstanceBackups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2021-05-01-preview/RestorableDroppedManagedDatabases.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2023-08-01-preview/DistributedAvailabilityGroups.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2025-08-01-preview/distributedAvailabilityGroups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2021-11-01-preview/ServerTrustCertificates.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2021-11-01-preview/EndpointCertificates.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2020-11-01-preview/ManagedDatabaseSensitivityLabels.json

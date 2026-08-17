@@ -7,18 +7,18 @@ namespace Microsoft.Azure.Management.Sql.Models
 {
     using System.Linq;
 
-    public partial class DistributedAvailabilityGroupsFailoverHeaders
+    public partial class DistributedAvailabilityGroupsSetRoleHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the DistributedAvailabilityGroupsFailoverHeaders class.
+        /// Initializes a new instance of the DistributedAvailabilityGroupsSetRoleHeaders class.
         /// </summary>
-        public DistributedAvailabilityGroupsFailoverHeaders()
+        public DistributedAvailabilityGroupsSetRoleHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DistributedAvailabilityGroupsFailoverHeaders class.
+        /// Initializes a new instance of the DistributedAvailabilityGroupsSetRoleHeaders class.
         /// </summary>
 
         /// <param name="location">
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="retryAfter">
         /// </param>
-        public DistributedAvailabilityGroupsFailoverHeaders(string location = default(string), int? retryAfter = default(int?))
+        public DistributedAvailabilityGroupsSetRoleHeaders(string location = default(string), int? retryAfter = default(int?))
 
         {
             this.Location = location;
