@@ -8,51 +8,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Extensions;
 
     /// <summary>An error response from the service.</summary>
-    public partial class CommonCloudError :
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudError,
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorInternal
+    public partial class CloudError :
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError,
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorInternal
     {
 
         /// <summary>
         /// An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
-        public string Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)Error).Code = value ?? null; }
+        public string Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)Error).Code = value ?? null; }
 
         /// <summary>A list of additional details about the error.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody> Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)Error).Detail = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody> Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)Error).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="Error" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody _error;
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody _error;
 
         /// <summary>Cloud error body.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonCloudErrorBody()); set => this._error = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CloudErrorBody()); set => this._error = value; }
 
         /// <summary>
         /// A message describing the error, intended to be suitable for display in a user interface.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
-        public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)Error).Message = value ?? null; }
+        public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Error</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonCloudErrorBody()); set { {_error = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CloudErrorBody()); set { {_error = value;} } }
 
         /// <summary>
         /// The target of the particular error. For example, the name of the property in error.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
-        public string Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)Error).Target = value ?? null; }
+        public string Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)Error).Target = value ?? null; }
 
-        /// <summary>Creates an new <see cref="CommonCloudError" /> instance.</summary>
-        public CommonCloudError()
+        /// <summary>Creates an new <see cref="CloudError" /> instance.</summary>
+        public CloudError()
         {
 
         }
     }
     /// An error response from the service.
-    public partial interface ICommonCloudError :
+    public partial interface ICloudError :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IJsonSerializable
     {
         /// <summary>
@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         Update = true,
         Description = @"A list of additional details about the error.",
         SerializedName = @"details",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody> Detail { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody> Detail { get; set; }
         /// <summary>
         /// A message describing the error, intended to be suitable for display in a user interface.
         /// </summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 
     }
     /// An error response from the service.
-    internal partial interface ICommonCloudErrorInternal
+    internal partial interface ICloudErrorInternal
 
     {
         /// <summary>
@@ -116,9 +116,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// </summary>
         string Code { get; set; }
         /// <summary>A list of additional details about the error.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody> Detail { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody> Detail { get; set; }
         /// <summary>Cloud error body.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody Error { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody Error { get; set; }
         /// <summary>
         /// A message describing the error, intended to be suitable for display in a user interface.
         /// </summary>
