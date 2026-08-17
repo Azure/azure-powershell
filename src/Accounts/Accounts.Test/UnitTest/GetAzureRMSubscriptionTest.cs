@@ -15,6 +15,8 @@
 using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile;
+using Microsoft.Azure.Commands.Profile.Properties;
 using System;
 using System.Management.Automation;
 using Xunit;
@@ -45,7 +47,7 @@ namespace Microsoft.Azure.Commands.Profile.Test.UnitTest
 
             Assert.Equal(
                 string.Format(
-                    "The current context is using Managed Service Identity (MSI) authentication which only supports the tenant of the Managed Identity ({0}). The requested TenantId '{1}' does not match and cannot be used. Remove the -TenantId parameter or use Connect-AzAccount with a different authentication method to target a different tenant.",
+                    Resources.MSITenantMismatch,
                     defaultTenantId,
                     requestedTenantId),
                 exception.Message);
