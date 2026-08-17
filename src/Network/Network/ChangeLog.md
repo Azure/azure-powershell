@@ -19,16 +19,19 @@
 --->
 
 ## Upcoming Release
-* Added the `-Mode` and `-Scope` parameters to `New-AzLoadBalancer`.
-    - Set `-Mode Advanced` together with `-Scope Public` or `-Scope Private` to create an advanced (Banksy-based) Standard SKU load balancer. Advanced mode must be specified at creation and cannot be changed afterward.
-* Added the `-EnableConnectionTracking` switch to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
-    - Enables UDP (User Datagram Protocol) flow tracking for traffic associated with the frontend IP configuration. When enabled, packets belonging to the same UDP flow are consistently directed to the same backend instance, taking precedence over rule-level connection tracking settings. Requires the load balancer to be created with `-Mode Advanced` and `-Scope`.
+* Added support for managing Kube Selector Groups on a firewall policy.
+    - `Get-AzFirewallPolicyKubeSelectorGroup`, `New-AzFirewallPolicyKubeSelectorGroup`, `Set-AzFirewallPolicyKubeSelectorGroup`, `Remove-AzFirewallPolicyKubeSelectorGroup`.
+    - Added `New-AzFirewallPolicyKubeLabelSelector` and `New-AzFirewallPolicyLabelSelectorExpression` to build pod/namespace label selectors.
 * Upgraded Network SDK to API version `2025-09-01`.
     - Added `DisableDefaultServerHeaderInResponse` to `PSApplicationGatewayGlobalConfiguration` to mirror the new SDK property and unblock AutoMapper strict-mode validation.
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
     - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
     - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
     - DDoS custom policy association does not require a specific DDoS protection mode.
+* Added the `-Mode` and `-Scope` parameters to `New-AzLoadBalancer`.
+    - Set `-Mode Advanced` together with `-Scope Public` or `-Scope Private` to create an advanced (Banksy-based) Standard SKU load balancer. Advanced mode must be specified at creation and cannot be changed afterward.
+* Added the `-EnableConnectionTracking` switch to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
+    - Enables UDP (User Datagram Protocol) flow tracking for traffic associated with the frontend IP configuration. When enabled, packets belonging to the same UDP flow are consistently directed to the same backend instance, taking precedence over rule-level connection tracking settings. Requires the load balancer to be created with `-Mode Advanced` and `-Scope`.
 
 ## Version 8.1.0
 * Added new cmdlets for ConnectionPolicy management under VirtualHub
