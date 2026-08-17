@@ -19,7 +19,7 @@ From a short prompt like this, infer everything and run the full workflow end-to
 2. Extract the target `api-version` (e.g. `2027-01-01-preview`).
 3. Look up the **latest commit id** on `Azure/azure-rest-api-specs` (`main` branch) for the matching service spec folder (`specification/eventhub/...` or `specification/servicebus/...`) that contains that api-version.
 4. Update the service `README.md` in the AutoRest workspace to point at that api-version and commit id.
-5. Run generation ? build ? live test automatically (Steps 3 through 7 below).
+5. Run generation, build, and live test automatically (Steps 3 through 7 below).
 
 Only stop and ask the user if:
 
