@@ -301,13 +301,18 @@ function Test-ManagedInstanceLinkPiping
         $getLink = $instance | Get-AzSqlInstanceLink -LinkName $linkName
         Write-Debug ('$getLink is ' + (ConvertTo-Json $getLink))
         Assert-NotNull $getLink
-        
-        # validate forbidden updates in current link state
-        $updatedLink = $getLink | Set-AzSqlInstanceLink -ReplicationMode Sync
+
+        # Validate that an unchanged input object does not cause a no-op update
+        $missingUpdatePropertyMessage = "At least one of -ReplicationMode or -Database must be specified."
+        Assert-ThrowsContains { $getLink | Set-AzSqlInstanceLink } $missingUpdatePropertyMessage
+
+        # Validate updating replication mode by mutating the input object
+        $getLink.ReplicationMode = $replicationModeConst2
+        $updatedLink = $getLink | Set-AzSqlInstanceLink
         Assert-AreEqual $updatedLink.ReplicationMode $replicationModeConst2
 
         # validate delete pipe working
-        $removedLinkResult = $getLink | Remove-AzSqlInstanceLink -Force -PassThru
+        $removedLinkResult = $updatedLink | Remove-AzSqlInstanceLink -Force -PassThru
         Write-Debug ('$removedLinkResult is ' + (ConvertTo-Json $removedLinkResult))
         Assert-NotNull $removedLinkResult
     }

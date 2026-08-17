@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
 
         private bool _isReplicationModeSpecified;
         private bool _areDatabasesSpecified;
+        private bool _useInputObjectReplicationMode;
 
         /// <summary>
         /// Gets or sets the name of the resource group to use.
@@ -145,7 +146,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                     if (!_isReplicationModeSpecified && !_areDatabasesSpecified)
                     {
                         ReplicationMode = InputObject.ReplicationMode;
-                        _isReplicationModeSpecified = true;
+                        _useInputObjectReplicationMode = true;
                     }
                     break;
                 case UpdateByResourceIdParameterSet:
@@ -159,7 +160,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                     break;
             }
 
-            if (!_isReplicationModeSpecified && !_areDatabasesSpecified)
+            if (!_isReplicationModeSpecified && !_areDatabasesSpecified && !_useInputObjectReplicationMode)
             {
                 throw new PSArgumentException("At least one of -ReplicationMode or -Database must be specified.");
             }
@@ -183,7 +184,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         {
             List<AzureSqlManagedInstanceLinkModel> newEntity = new List<AzureSqlManagedInstanceLinkModel> { };
             var updatedModel = model.First();
-            updatedModel.ReplicationMode = _isReplicationModeSpecified ? ReplicationMode : null;
+            if (_useInputObjectReplicationMode &&
+                string.Equals(updatedModel.ReplicationMode, ReplicationMode, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new PSArgumentException("At least one of -ReplicationMode or -Database must be specified.");
+            }
+
+            updatedModel.ReplicationMode = _isReplicationModeSpecified || _useInputObjectReplicationMode
+                ? ReplicationMode
+                : null;
             updatedModel.Databases = _areDatabasesSpecified
                 ? Database.Select(databaseName => new DistributedAvailabilityGroupDatabase { DatabaseName = databaseName }).ToList()
                 : null;
