@@ -19,6 +19,17 @@
 --->
 
 ## Upcoming Release
+* Added support for managing Kube Selector Groups on a firewall policy.
+    - `Get-AzFirewallPolicyKubeSelectorGroup`, `New-AzFirewallPolicyKubeSelectorGroup`, `Set-AzFirewallPolicyKubeSelectorGroup`, `Remove-AzFirewallPolicyKubeSelectorGroup`.
+    - Added `New-AzFirewallPolicyKubeLabelSelector` and `New-AzFirewallPolicyLabelSelectorExpression` to build pod/namespace label selectors.
+* Upgraded Network SDK to API version `2025-09-01`.
+    - Added `DisableDefaultServerHeaderInResponse` to `PSApplicationGatewayGlobalConfiguration` to mirror the new SDK property and unblock AutoMapper strict-mode validation.
+* Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
+    - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
+    - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
+    - DDoS custom policy association does not require a specific DDoS protection mode.
+
+## Version 8.1.0
 * Added new cmdlets for ConnectionPolicy management under VirtualHub
     - `Get-AzConnectionPolicy`: Retrieve one or all ConnectionPolicy resources under a VirtualHub
     - `New-AzConnectionPolicy`: Create a new ConnectionPolicy under a VirtualHub
@@ -52,6 +63,7 @@
     - Supports multiple detection rules with configurable traffic type (Tcp, Udp, TcpSyn) and packets per second thresholds
 * Updated the API version of `Microsoft.HardwareSecurityModules/cloudHsmClusters` to `2025-03-31` for Private Link Common Cmdlets
 * Onboarded `Microsoft.HardwareSecurityModules/paymentHsmClusters` to Private Link Common Cmdlets
+* Fixed an issue where `VerifyClientAuthMode` was not preserved during PowerShell and SDK model conversions for Application Gateway client authentication configuration
 * Added cmdlets for cloud service public IP address operations:
     - `Invoke-AzPublicIpAddressCloudServiceReservation`: reserve a cloud service public IP or roll back to dynamic allocation (`-IsRollback`).
     - `Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp`: disassociate a standalone reserved public IP from a cloud service public IP. Use `-PublicIpArmId` for the Azure Resource Manager (ARM) resource ID of the standalone public IP.

@@ -1504,6 +1504,10 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.VerifyClientCertIssuerDn,
                         opt => opt.MapFrom(src => src.VerifyClientCertIssuerDN)
+                    )
+                    .ForMember(
+                        dest => dest.VerifyClientAuthMode,
+                        opt => opt.MapFrom(src => src.VerifyClientAuthMode)
                     );
                 cfg.CreateMap<CNM.PSApplicationGatewayPathRule, MNM.ApplicationGatewayPathRule>();
                 cfg.CreateMap<CNM.PSApplicationGatewayUrlPathMap, MNM.ApplicationGatewayUrlPathMap>();
@@ -1610,6 +1614,10 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.VerifyClientCertIssuerDN,
                         opt => opt.MapFrom(src => src.VerifyClientCertIssuerDn)
+                    )
+                    .ForMember(
+                        dest => dest.VerifyClientAuthMode,
+                        opt => opt.MapFrom(src => src.VerifyClientAuthMode)
                     );
                 cfg.CreateMap<MNM.ApplicationGatewayPathRule, CNM.PSApplicationGatewayPathRule>();
                 cfg.CreateMap<MNM.ApplicationGatewayUrlPathMap, CNM.PSApplicationGatewayUrlPathMap>();
@@ -2257,6 +2265,9 @@ namespace Microsoft.Azure.Commands.Network
                 });
                 cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroupDraft, MNM.FirewallPolicyRuleCollectionGroupDraft>();
+                cfg.CreateMap<CNM.PSKubeLabelSelector, MNM.KubeLabelSelector>();
+                cfg.CreateMap<CNM.PSLabelSelectorExpression, MNM.LabelSelectorExpression>()
+                    .ForMember(dest => dest.OperatorProperty, opt => opt.MapFrom(src => src.Operator));
                 cfg.CreateMap<CNM.PSAzureFirewallPolicyDraft, MNM.FirewallPolicyDraft>().ForCtorParam("dnsSettings", opt =>
                 {
                     opt.MapFrom(src => src.DnsSettings == null ? null : new MNM.DnsSettings(src.DnsSettings.Servers, src.DnsSettings.EnableProxy, null));
@@ -2280,6 +2291,13 @@ namespace Microsoft.Azure.Commands.Network
                 });
                 cfg.CreateMap<MNM.FirewallPolicyRuleCollectionGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<MNM.FirewallPolicyRuleCollectionGroupDraft, CNM.PSAzureFirewallPolicyRuleCollectionGroupDraft>();
+                cfg.CreateMap<MNM.KubeLabelSelector, CNM.PSKubeLabelSelector>();
+                cfg.CreateMap<MNM.LabelSelectorExpression, CNM.PSLabelSelectorExpression>()
+                    .ForMember(dest => dest.Operator, opt => opt.MapFrom(src => src.OperatorProperty));
+                cfg.CreateMap<MNM.FirewallPolicyKubeSelectorGroup, CNM.PSAzureFirewallPolicyKubeSelectorGroup>()
+                    .ForMember(dest => dest.PodSelector, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.PodSelector : null))
+                    .ForMember(dest => dest.NamespaceSelector, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.NamespaceSelector : null))
+                    .ForMember(dest => dest.ProvisioningState, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.ProvisioningState : null));
                 cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>().AfterMap((src, dst) =>
                 {
                     dst.SqlSetting = src.Sql == null ? null : new CNM.PSAzureFirewallPolicySqlSetting { AllowSqlRedirect = src.Sql.AllowSqlRedirect };
