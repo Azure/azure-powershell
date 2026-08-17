@@ -68,10 +68,9 @@ pac66,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac67,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Synapse.3.3.0.zip;sourceType=sa]Az.Synapse,3.3.0
 pac68,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Terraform.0.1.2.zip;sourceType=sa]Az.Terraform,0.1.2
 pac69,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.TimeSeriesInsights.0.2.3.zip;sourceType=sa]Az.TimeSeriesInsights,0.2.3
-pac70,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.TrafficManager.1.4.0.zip;sourceType=sa]Az.TrafficManager,1.4.0
+pac70,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.TrafficManager.1.5.0.zip;sourceType=sa]Az.TrafficManager,1.5.0
 pac71,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.VMware.0.9.1.zip;sourceType=sa]Az.VMware,0.9.1
 pac72,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.VoiceServices.0.2.0.zip;sourceType=sa]Az.VoiceServices,0.2.0
 pac73,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Websites.4.0.0.zip;sourceType=sa]Az.Websites,4.0.0
 pac74,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.WindowsIotServices.0.2.0.zip;sourceType=sa]Az.WindowsIotServices,0.2.0
 pac75,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Workloads.2.0.0.zip;sourceType=sa]Az.Workloads,2.0.0
-

@@ -254,7 +254,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.5.2'; },
             @{ModuleName = 'Az.Synapse'; RequiredVersion = '3.3.0'; }, 
             @{ModuleName = 'Az.Terraform'; RequiredVersion = '0.1.2'; }, 
             @{ModuleName = 'Az.TimeSeriesInsights'; RequiredVersion = '0.2.3'; }, 
-            @{ModuleName = 'Az.TrafficManager'; RequiredVersion = '1.4.0'; }, 
+            # @{ModuleName = 'Az.TrafficManager'; RequiredVersion = '1.5.0'; },
             @{ModuleName = 'Az.VMware'; RequiredVersion = '0.9.1'; }, 
             @{ModuleName = 'Az.VoiceServices'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.Websites'; RequiredVersion = '4.0.0'; }, 
@@ -337,4 +337,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
