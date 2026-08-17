@@ -1,0 +1,251 @@
+﻿TOPIC
+    about_Should
+
+SHORT DESCRIPTION
+    Provides assertion convenience methods for comparing objects and throwing
+    test failures when test expectations fail.
+
+LONG DESCRIPTION
+    Should is an Extension of System.Object and can be used as a native type
+    inside Describe blocks. The various Should member methods can be invoked
+    directly from an object being compared. It is typically used in individual
+    It blocks to verify the results of an expectation. The Should method is
+    typically called from the "actual" object being compared and takes the
+    expected" object as a parameter. Should includes several members that
+    perform various comparisons of objects and will throw a PesterFailure when
+    the objects do not evaluate to be comparable.
+
+SHOULD MEMBERS
+  GENERAL
+    Be
+        Compares one object with another for equality and throws if the two
+        objects are not the same.
+
+        $actual="Actual value"
+        $actual | Should -Be "actual value" # Test will pass
+        $actual | Should -Be "not actual value"  # Test will fail
+
+        Also compares an entire array for equality and throws if the array is not the same.
+
+        $array = @(1, 2, 3, 4, 'I am a string', (New-Object psobject -Property @{ IAm = 'An Object' }))
+        $array | Should -Be $array # Test will pass
+
+        $string = 'I am a string'
+        $array = @(1, 2, 3, 4, $string)
+        $arrayWithCaps = @(1, 2, 3, 4, $string.ToUpper())
+        $array | Should -Be $arrayWithCaps # Test will pass
+
+        Comparisons will fail if the arrays have the same values, but not the same order.
+
+        [int32[]]$array = (1..10)
+        $arrayoutoforder = (1,10,2,3,4,5,6,7,8,9)
+        $array | Should -Be $arrayOutOfOrder # Test will fail
+
+    BeExactly
+        Compares one object with another for equality and throws if the two objects are not the same.  This comparison is case sensitive.
+
+        $actual="Actual value"
+        $actual | Should -BeExactly "Actual value" # Test will pass
+        $actual | Should -BeExactly "actual value" # Test will fail
+
+    BeNullOrEmpty
+        Checks values for null or empty (strings). The static [String]::IsNullOrEmpty() method is used to do the comparison.
+
+        $null | Should -BeNullOrEmpty # Test will pass
+        $null | Should -Not -BeNullOrEmpty # Test will fail
+        @()   | Should -BeNullOrEmpty # Test will pass
+        ""    | Should -BeNullOrEmpty # Test will pass
+    BeTrue
+        Asserts that the value is true, or truthy.
+
+        $true | Should -BeTrue
+        1 | Should -BeTrue
+        1,2,3 | Should -BeTrue
+
+    BeFalse
+        Asserts that the value is false of falsy.
+
+        $false | Should -BeFalse
+        0 | Should -BeFalse
+        $null | Should -BeFalse
+
+    BeOfType, HaveType
+        Asserts that the actual value should be an object of a specified type (or a subclass of the specified type) using PowerShell's -is operator:
+
+        $actual = Get-Item $env:SystemRoot
+        $actual | Should -BeOfType System.IO.DirectoryInfo   # Test will pass; object is a DirectoryInfo
+        $actual | Should -BeOfType System.IO.FileSystemInfo  # Test will pass; DirectoryInfo base class is FileSystemInfo
+        $actual | Should -HaveType System.IO.FileSystemInfo  # Test will pass; DirectoryInfo base class is FileSystemInfo
+
+        $actual | Should -BeOfType System.IO.FileInfo        # Test will fail; FileInfo is not a base class of DirectoryInfo
+
+
+  TEXT
+    BeLike
+        Asserts that the actual value matches a wildcard pattern using PowerShell's -like operator.  This comparison is not case-sensitive.
+
+        $actual="Actual value"
+        $actual | Should -BeLike "actual *" # Test will pass
+        $actual | Should -BeLike "not actual *" # Test will fail
+
+    BeLikeExactly
+
+        Asserts that the actual value matches a wildcard pattern using PowerShell's -like operator.  This comparison is case-sensitive.
+
+        $actual="Actual value"
+        $actual | Should -BeLikeExactly "Actual *" # Test will pass
+        $actual | Should -BeLikeExactly "actual *" # Test will fail
+
+    Match
+        Uses a regular expression to compare two objects. This comparison is not case sensitive.
+
+        "I am a value" | Should -Match "I Am" # Test will pass
+        "I am a value" | Should -Match "I am a bad person" # Test will fail
+
+        Tip: Use [regex]::Escape("pattern") to match the exact text.
+
+        "Greg" | Should -Match ".reg" # Test will pass
+        "Greg" | Should -Match ([regex]::Escape(".reg")) # Test will fail
+
+    MatchExactly
+        Uses a regular expression to compare two objects.  This comparison is case sensitive.
+
+        "I am a value" | Should -MatchExactly "I am" # Test will pass
+        "I am a value" | Should -MatchExactly "I Am" # Test will fail
+
+  COMPARISON
+    BeGreaterThan
+        Asserts that a number (or other comparable value) is greater than an expected value. Uses PowerShell's -gt operator to compare the two values.
+
+        2 | Should -BeGreaterThan 0
+
+    BeGreaterOrEqual
+        Asserts that a number (or other comparable value) is greater than or equal to an expected value. Uses PowerShell's -ge operator to compare the two values.
+
+        2 | Should -BeGreaterOrEqual 0
+        2 | Should -BeGreaterOrEqual 2
+
+    BeLessThan
+        Asserts that a number (or other comparable value) is lower than an expected value. Uses PowerShell's -lt operator to compare the two values.
+
+        1 | Should -BeLessThan 10
+
+    BeLessOrEqual
+        Asserts that a number (or other comparable value) is lower than, or equal to an expected value. Uses PowerShell's -le operator to compare the two values.
+
+        1 | Should -BeLessOrEqual 10
+        10 | Should -BeLessOrEqual 10
+
+  COLLECTION
+    BeIn
+        Asserts that a collection of values contain a specific value. Uses PowerShell's -contains operator to confirm.
+
+        1 | Should -BeIn @(1,2,3,'a','b','c')
+
+    Contain
+        Asserts that collection contains a specific value. Uses PowerShell's -contains operator to confirm.
+
+        1,2,3 | Should -Contain 1
+
+    HaveCount
+        Asserts that a collection has the expected amount of items.
+
+        1,2,3 | Should -HaveCount 3
+
+  FILE
+    Exist
+        Does not perform any comparison but checks if the object calling Exist
+        is present in a PS Provider. The object must have valid path syntax. It
+        essentially must pass a Test-Path call.
+
+        $actual=(Dir . )[0].FullName
+        Remove-Item $actual
+        $actual | Should -Exist # Test will fail
+
+    FileContentMatch
+        Checks to see if a file contains the specified text.  This search is not case sensitive and uses regular expressions.
+
+        Set-Content -Path TestDrive:\file.txt -Value 'I am a file.'
+        'TestDrive:\file.txt' | Should -FileContentMatch 'I Am' # Test will pass
+        'TestDrive:\file.txt' | Should -FileContentMatch '^I.*file\.$' # Test will pass
+
+        'TestDrive:\file.txt' | Should -FileContentMatch 'I Am Not' # Test will fail
+
+        Tip: Use [regex]::Escape("pattern") to match the exact text.
+
+        Set-Content -Path TestDrive:\file.txt -Value 'I am a file.'
+        'TestDrive:\file.txt' | Should -FileContentMatch 'I.am.a.file' # Test will pass
+        'TestDrive:\file.txt' | Should -FileContentMatch ([regex]::Escape('I.am.a.file')) # Test will fail
+
+    FileContentMatchExactly
+        Checks to see if a file contains the specified text.  This search is case sensitive and uses regular expressions to match the text.
+
+        Set-Content -Path TestDrive:\file.txt -Value 'I am a file.'
+        'TestDrive:\file.txt' | Should -FileContentMatch 'I am' # Test will pass
+        'TestDrive:\file.txt' | Should -FileContentMatch 'I Am' # Test will fail
+
+    FileContentMatchMultiline
+        As opposed to FileContentMatch and FileContentMatchExactly operators, FileContentMatchMultiline presents content of the file
+        being tested as one string object, so that the expression you are comparing it to can consist of several lines.
+
+        $Content = "I am the first line.`nI am the second line."
+        Set-Content -Path TestDrive:\file.txt -Value $Content -NoNewline
+        'TestDrive:\file.txt' | Should -FileContentMatchMultiline 'first line\.\r?\nI am' # Test will pass
+        'TestDrive:\file.txt' | Should -FileContentMatchMultiline '^I am the first.*\n.*second line\.$' # Test will pass.
+
+        When using FileContentMatchMultiline operator, '^' and '$' represent the beginning and end of the whole file,
+        instead of the beginning and end of a line.
+
+        $Content = "I am the first line.`nI am the second line."
+        Set-Content -Path TestDrive:\file.txt -Value $Content -NoNewline
+        'TestDrive:\file.txt' | Should -FileContentMatchMultiline '^I am the first line\.$' # Test will fail.
+
+
+  EXCEPTIONS
+    Throw
+        Checks if an exception was thrown. Enclose input in a script block.
+
+        { foo } | Should -Throw # Test will pass
+        { $foo = 1 } | Should -Throw # Test will fail
+        { foo } | Should -Not -Throw # Test will fail
+        { $foo = 1 } | Should -Not -Throw # Test will pass
+
+        Warning: The input object must be a ScriptBlock, otherwise it is processed outside of the assertion.
+
+        Get-Process -Name "process" -ErrorAction Stop | Should -Throw # Should pass, but the exception thrown by Get-Process causes the test to fail.
+
+  NEGATIVE ASSERTIONS
+    Any of the Should operators described above can be negated by using the word "Not" before the operator.  For example:
+
+    'one' | Should -Not -Be 'Two'
+    { Get-Item $env:SystemRoot } | Should -Not -Throw
+
+  USING SHOULD IN A TEST
+
+    function Add-Numbers($a, $b) {
+        return $a + $b
+    }
+
+    Describe "Add-Numbers" {
+
+        It "adds positive numbers" {
+            $sum = Add-Numbers 2 3
+            $sum | Should -Be 3
+        }
+    }
+
+    This test will fail since 3 will not be equal to the sum of 2 and 3.
+
+  BECAUSE
+    Every built in assertion allows you to specify -Because parameter, to give more meaning to your tests.
+
+    function Get-Group { $null }
+    $groups = 1..10 | Get-Group -Size 3
+    $groups | Should -HaveCount 4 -Because "because 10 items are split into three groups with 3 members and one extra group with 1 member"
+
+    Which fails with: "Expected a collection with size {4}, because 10 items are split into three groups with 3 members and one extra group with 1 member, but got collection with size {1} [].
+
+SEE ALSO
+  Describe
+  Context
+  It
