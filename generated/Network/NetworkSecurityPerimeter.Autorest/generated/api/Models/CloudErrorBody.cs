@@ -8,9 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Extensions;
 
     /// <summary>An error response from the service.</summary>
-    public partial class CommonCloudErrorBody :
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody,
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal
+    public partial class CloudErrorBody :
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody,
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal
     {
 
         /// <summary>Backing field for <see cref="Code" /> property.</summary>
@@ -23,11 +23,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         public string Code { get => this._code; set => this._code = value; }
 
         /// <summary>Backing field for <see cref="Detail" /> property.</summary>
-        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody> _detail;
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody> _detail;
 
         /// <summary>A list of additional details about the error.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody> Detail { get => this._detail; set => this._detail = value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody> Detail { get => this._detail; set => this._detail = value; }
 
         /// <summary>Backing field for <see cref="Message" /> property.</summary>
         private string _message;
@@ -47,14 +47,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public string Target { get => this._target; set => this._target = value; }
 
-        /// <summary>Creates an new <see cref="CommonCloudErrorBody" /> instance.</summary>
-        public CommonCloudErrorBody()
+        /// <summary>Creates an new <see cref="CloudErrorBody" /> instance.</summary>
+        public CloudErrorBody()
         {
 
         }
     }
     /// An error response from the service.
-    public partial interface ICommonCloudErrorBody :
+    public partial interface ICloudErrorBody :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IJsonSerializable
     {
         /// <summary>
@@ -79,8 +79,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         Update = true,
         Description = @"A list of additional details about the error.",
         SerializedName = @"details",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody> Detail { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody> Detail { get; set; }
         /// <summary>
         /// A message describing the error, intended to be suitable for display in a user interface.
         /// </summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 
     }
     /// An error response from the service.
-    internal partial interface ICommonCloudErrorBodyInternal
+    internal partial interface ICloudErrorBodyInternal
 
     {
         /// <summary>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// </summary>
         string Code { get; set; }
         /// <summary>A list of additional details about the error.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody> Detail { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody> Detail { get; set; }
         /// <summary>
         /// A message describing the error, intended to be suitable for display in a user interface.
         /// </summary>
