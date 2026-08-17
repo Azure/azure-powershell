@@ -66,7 +66,20 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// </summary>
         public IEnumerable<Management.Sql.Models.DeletedServer> ListDeletedServers(string subscriptionId = null)
         {
-            return GetCurrentSqlClient(subscriptionId).DeletedServers.List();
+            List<Management.Sql.Models.DeletedServer> resultsList = new List<Management.Sql.Models.DeletedServer>();
+
+            var operations = GetCurrentSqlClient(subscriptionId).DeletedServers;
+            var pagedResponse = operations.List();
+            resultsList.AddRange(pagedResponse);
+
+            // Follow the service-provided continuation link to retrieve all deleted servers.
+            while (!string.IsNullOrEmpty(pagedResponse.NextPageLink))
+            {
+                pagedResponse = operations.ListNext(pagedResponse.NextPageLink);
+                resultsList.AddRange(pagedResponse);
+            }
+
+            return resultsList;
         }
 
         /// <summary>
@@ -74,7 +87,20 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// </summary>
         public IEnumerable<Management.Sql.Models.DeletedServer> ListDeletedServersByLocation(string location, string subscriptionId = null)
         {
-            return GetCurrentSqlClient(subscriptionId).DeletedServers.ListByLocation(location);
+            List<Management.Sql.Models.DeletedServer> resultsList = new List<Management.Sql.Models.DeletedServer>();
+
+            var operations = GetCurrentSqlClient(subscriptionId).DeletedServers;
+            var pagedResponse = operations.ListByLocation(location);
+            resultsList.AddRange(pagedResponse);
+
+            // Follow the service-provided continuation link to retrieve all deleted servers in the location.
+            while (!string.IsNullOrEmpty(pagedResponse.NextPageLink))
+            {
+                pagedResponse = operations.ListByLocationNext(pagedResponse.NextPageLink);
+                resultsList.AddRange(pagedResponse);
+            }
+
+            return resultsList;
         }
 
         /// <summary>

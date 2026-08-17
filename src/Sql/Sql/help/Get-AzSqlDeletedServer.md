@@ -18,7 +18,7 @@ Get-AzSqlDeletedServer [[-Location] <String>] [-ServerName <String>] [-DefaultPr
 ```
 
 ## DESCRIPTION
-The **Get-AzSqlDeletedServer** cmdlet returns information about one or more deleted Azure SQL servers in a subscription. Specify **-Location** to scope results to a region, or specify both **-Location** and **-ServerName** to retrieve a single deleted server.
+The **Get-AzSqlDeletedServer** cmdlet returns information about one or more deleted Azure SQL servers in a subscription. Specify **-Location** to scope results to a region, specify **-ServerName** without **-Location** to filter subscription-level results by server name, or specify both parameters to retrieve a single deleted server.
 
 ## EXAMPLES
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the deleted server to retrieve. If not specified, lists all deleted servers in the location.
+The name of the deleted server to retrieve. Without **-Location**, the cmdlet filters deleted servers across the current subscription by this name.
 
 ```yaml
 Type: System.String

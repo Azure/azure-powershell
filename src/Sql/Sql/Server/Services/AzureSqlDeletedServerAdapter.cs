@@ -118,6 +118,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
             string parsedLocation = idSegments?.Length > 6
                 ? idSegments[6]?.Replace(" ", string.Empty).ToLowerInvariant()
                 : null;
+            string[] originalIdSegments = deletedServer.OriginalId?.Split('/');
+            string parsedResourceGroupName = !string.IsNullOrEmpty(deletedServer.OriginalResourceGroup)
+                ? deletedServer.OriginalResourceGroup
+                : originalIdSegments?.Length > 4 ? originalIdSegments[4] : null;
 
             AzureSqlDeletedServerModel model = new AzureSqlDeletedServerModel()
             {
@@ -130,7 +134,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
                 Location = parsedLocation,
                 ScheduledPurgeTime = deletedServer.ScheduledPurgeTime,
                 SubscriptionId = parsedSubscriptionId,
-                ResourceGroupName = deletedServer.OriginalResourceGroup
+                ResourceGroupName = parsedResourceGroupName
             };
 
             return model;

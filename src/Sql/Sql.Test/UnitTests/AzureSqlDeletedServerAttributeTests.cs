@@ -70,5 +70,18 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             Assert.Equal("subscriptionId", model.SubscriptionId);
             Assert.Equal("centralus", model.Location);
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateDeletedServerModelGetsResourceGroupFromOriginalIdWhenPropertyIsMissing()
+        {
+            var deletedServer = new DeletedServer(
+                name: "testserver",
+                originalId: "/subscriptions/subscriptionId/resourceGroups/testResourceGroup/providers/Microsoft.Sql/servers/testserver");
+
+            var model = new AzureSqlDeletedServerAdapter(null).CreateDeletedServerModelFromResponse(deletedServer);
+
+            Assert.Equal("testResourceGroup", model.ResourceGroupName);
+        }
     }
 }
