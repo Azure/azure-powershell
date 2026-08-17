@@ -2460,6 +2460,10 @@ function Test-AzureFirewallPolicyKubeSelectorGroupCRUD {
         Assert-AreEqual "api" $updated.Properties.PodSelector.MatchLabels["app"]
         Assert-AreEqual 1 @($updated.Properties.PodSelector.MatchExpressions[0].Values).Count
 
+        # The namespace selector was not passed to Set and must be preserved.
+        Assert-NotNull $updated.Properties.NamespaceSelector
+        Assert-AreEqual "production" $updated.Properties.NamespaceSelector.MatchLabels["kubernetes.io/metadata.name"]
+
         # Remove
         $removed = Remove-AzFirewallPolicyKubeSelectorGroup -Name $ksgName -ResourceGroupName $rgname -FirewallPolicyName $azureFirewallPolicyName -PassThru -Force
         Assert-AreEqual true $removed

@@ -71,9 +71,12 @@ namespace Microsoft.Azure.Commands.Network
                 this.ResourceGroupName = FirewallPolicyObject.ResourceGroupName;
             }
 
-            var sdkModel = this.BuildSdkModel(this.PodSelector, this.NamespaceSelector);
-            var response = this.KubeSelectorGroupClient.CreateOrUpdate(this.ResourceGroupName, this.FirewallPolicyName, this.Name, sdkModel);
-            WriteObject(ToPSWrapper(response));
+            if (this.ShouldProcess(this.Name, "Creating the Kube Selector Group"))
+            {
+                var sdkModel = this.BuildSdkModel(this.PodSelector, this.NamespaceSelector);
+                var response = this.KubeSelectorGroupClient.CreateOrUpdate(this.ResourceGroupName, this.FirewallPolicyName, this.Name, sdkModel);
+                WriteObject(ToPSWrapper(response));
+            }
         }
     }
 }

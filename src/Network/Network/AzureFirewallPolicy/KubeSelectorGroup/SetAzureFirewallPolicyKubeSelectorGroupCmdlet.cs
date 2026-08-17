@@ -67,8 +67,8 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            var podSelector = this.PodSelector;
-            var namespaceSelector = this.NamespaceSelector;
+            PSKubeLabelSelector existingPodSelector;
+            PSKubeLabelSelector existingNamespaceSelector;
 
             if (this.IsParameterBound(c => c.InputObject))
             {
@@ -77,13 +77,26 @@ namespace Microsoft.Azure.Commands.Network
                 this.ResourceGroupName = resourceInfo.ResourceGroupName;
                 this.FirewallPolicyName = resourceInfo.ParentResource.Split('/')[1];
 
-                podSelector = podSelector ?? InputObject.Properties.PodSelector;
-                namespaceSelector = namespaceSelector ?? InputObject.Properties.NamespaceSelector;
+                existingPodSelector = InputObject.Properties.PodSelector;
+                existingNamespaceSelector = InputObject.Properties.NamespaceSelector;
+            }
+            else
+            {
+                var existing = this.GetKubeSelectorGroup(this.ResourceGroupName, this.FirewallPolicyName, this.Name);
+                existingPodSelector = existing.Properties.PodSelector;
+                existingNamespaceSelector = existing.Properties.NamespaceSelector;
             }
 
-            var sdkModel = this.BuildSdkModel(podSelector, namespaceSelector);
-            var response = this.KubeSelectorGroupClient.CreateOrUpdate(this.ResourceGroupName, this.FirewallPolicyName, this.Name, sdkModel);
-            WriteObject(ToPSWrapper(response));
+            // Omitting a selector preserves its current value; passing it (including $null) overwrites it.
+            var podSelector = this.IsParameterBound(c => c.PodSelector) ? this.PodSelector : existingPodSelector;
+            var namespaceSelector = this.IsParameterBound(c => c.NamespaceSelector) ? this.NamespaceSelector : existingNamespaceSelector;
+
+            if (this.ShouldProcess(this.Name, "Updating the Kube Selector Group"))
+            {
+                var sdkModel = this.BuildSdkModel(podSelector, namespaceSelector);
+                var response = this.KubeSelectorGroupClient.CreateOrUpdate(this.ResourceGroupName, this.FirewallPolicyName, this.Name, sdkModel);
+                WriteObject(ToPSWrapper(response));
+            }
         }
     }
 }
