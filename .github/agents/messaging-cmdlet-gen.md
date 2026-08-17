@@ -1,5 +1,5 @@
 ---
-name: EventHubPR
+name: messaging-cmdlett-gen
 description: Specialized agent for generating and validating Event Hub and Service Bus PowerShell cmdlets with AutoRest.
 ---
 
