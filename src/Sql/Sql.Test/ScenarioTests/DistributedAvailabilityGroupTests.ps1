@@ -657,7 +657,7 @@ function Test-ManagedInstanceMultiDatabaseLinkErrHandling
         Assert-ManagedInstanceLinkDatabases -Link $link -ExpectedDatabaseNames $databaseNames
 
         # An update must specify replication mode or database membership
-        $missingUpdatePropertyMessage = "At least one of ReplicationMode or Database must be specified."
+        $missingUpdatePropertyMessage = "At least one of -ReplicationMode or -Database must be specified."
         Assert-ThrowsContains { Update-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName } $missingUpdatePropertyMessage
 
         # Remove the multi-database link

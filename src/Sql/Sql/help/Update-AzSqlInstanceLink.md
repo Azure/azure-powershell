@@ -204,7 +204,7 @@ SeedingMode                      : Automatic
 
 This command sets the replication mode of a instance link to "Async" using parent instance object.
 
-### Example 7: Remove a database from a multi-database instance link
+### Example 7: Replace the database membership of a multi-database instance link
 ```powershell
 Update-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "multilink01" -Database "Database01"
 ```
@@ -329,11 +329,35 @@ Parameter will be ignored during link creation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: False
 Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateByParentObjectParameterSet
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateByInputObjectParameterSet, UpdateByResourceIdParameterSet
+Aliases:
+
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
