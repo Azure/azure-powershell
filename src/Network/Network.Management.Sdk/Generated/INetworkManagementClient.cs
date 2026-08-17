@@ -253,11 +253,6 @@ namespace Microsoft.Azure.Management.Network
         IFirewallPolicyIdpsSignaturesOverridesOperations FirewallPolicyIdpsSignaturesOverrides { get; }
 
         /// <summary>
-        /// Gets the IFirstPartyServiceTagsOperations
-        /// </summary>
-        IFirstPartyServiceTagsOperations FirstPartyServiceTags { get; }
-
-        /// <summary>
         /// Gets the IInterconnectGroupsOperations
         /// </summary>
         IInterconnectGroupsOperations InterconnectGroups { get; }

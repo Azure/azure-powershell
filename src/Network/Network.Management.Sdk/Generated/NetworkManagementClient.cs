@@ -208,10 +208,6 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IFirewallPolicyIdpsSignaturesOverridesOperations FirewallPolicyIdpsSignaturesOverrides { get; private set; }
         /// <summary>
-        /// Gets the IFirstPartyServiceTagsOperations
-        /// </summary>
-        public virtual IFirstPartyServiceTagsOperations FirstPartyServiceTags { get; private set; }
-        /// <summary>
         /// Gets the IInterconnectGroupsOperations
         /// </summary>
         public virtual IInterconnectGroupsOperations InterconnectGroups { get; private set; }
@@ -999,7 +995,6 @@ namespace Microsoft.Azure.Management.Network
             this.FirewallPolicyRuleCollectionGroups = new FirewallPolicyRuleCollectionGroupsOperations(this);
             this.FirewallPolicyRuleCollectionGroupDrafts = new FirewallPolicyRuleCollectionGroupDraftsOperations(this);
             this.FirewallPolicyIdpsSignaturesOverrides = new FirewallPolicyIdpsSignaturesOverridesOperations(this);
-            this.FirstPartyServiceTags = new FirstPartyServiceTagsOperations(this);
             this.InterconnectGroups = new InterconnectGroupsOperations(this);
             this.Subgroups = new SubgroupsOperations(this);
             this.LoadBalancers = new LoadBalancersOperations(this);
