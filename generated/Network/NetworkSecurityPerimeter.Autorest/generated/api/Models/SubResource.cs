@@ -8,9 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Extensions;
 
     /// <summary>Reference to another subresource.</summary>
-    public partial class CommonSubResource :
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource,
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResourceInternal
+    public partial class SubResource :
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource,
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResourceInternal
     {
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
@@ -20,14 +20,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
-        /// <summary>Creates an new <see cref="CommonSubResource" /> instance.</summary>
-        public CommonSubResource()
+        /// <summary>Creates an new <see cref="SubResource" /> instance.</summary>
+        public SubResource()
         {
 
         }
     }
     /// Reference to another subresource.
-    public partial interface ICommonSubResource :
+    public partial interface ISubResource :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IJsonSerializable
     {
         /// <summary>Resource ID.</summary>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 
     }
     /// Reference to another subresource.
-    internal partial interface ICommonSubResourceInternal
+    internal partial interface ISubResourceInternal
 
     {
         /// <summary>Resource ID.</summary>

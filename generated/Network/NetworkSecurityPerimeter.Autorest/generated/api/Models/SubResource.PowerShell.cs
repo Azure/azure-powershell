@@ -8,8 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
     using Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PowerShell;
 
     /// <summary>Reference to another subresource.</summary>
-    [System.ComponentModel.TypeConverter(typeof(CommonSubResourceTypeConverter))]
-    public partial class CommonSubResource
+    [System.ComponentModel.TypeConverter(typeof(SubResourceTypeConverter))]
+    public partial class SubResource
     {
 
         /// <summary>
@@ -63,11 +63,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonSubResource"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SubResource"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal CommonSubResource(global::System.Collections.IDictionary content)
+        /// <returns>
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource" />.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        {
+            return new SubResource(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SubResource"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
+        /// <returns>
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource" />.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        {
+            return new SubResource(content);
+        }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="SubResource" />, deserializing the content from a json string.
+        /// </summary>
+        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
+        /// <returns>an instance of the <see cref="SubResource" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonNode.Parse(jsonText));
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SubResource"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal SubResource(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -78,17 +111,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             // actually deserialize
             if (content.Contains("Id"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResourceInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResourceInternal)this).Id, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonSubResource"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SubResource"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal CommonSubResource(global::System.Management.Automation.PSObject content)
+        internal SubResource(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -99,43 +132,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             // actually deserialize
             if (content.Contains("Id"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResourceInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResourceInternal)this).Id, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonSubResource"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource" />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource DeserializeFromDictionary(global::System.Collections.IDictionary content)
-        {
-            return new CommonSubResource(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonSubResource"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource" />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
-        {
-            return new CommonSubResource(content);
-        }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="CommonSubResource" />, deserializing the content from a json string.
-        /// </summary>
-        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="CommonSubResource" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -155,8 +155,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         }
     }
     /// Reference to another subresource.
-    [System.ComponentModel.TypeConverter(typeof(CommonSubResourceTypeConverter))]
-    public partial interface ICommonSubResource
+    [System.ComponentModel.TypeConverter(typeof(SubResourceTypeConverter))]
+    public partial interface ISubResource
 
     {
 
