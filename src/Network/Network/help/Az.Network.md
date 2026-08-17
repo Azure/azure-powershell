@@ -434,6 +434,9 @@ Gets a Azure Firewall Policy
 ### [Get-AzFirewallPolicyDraft](Get-AzFirewallPolicyDraft.md)
 Gets an Azure Firewall Policy Draft.
 
+### [Get-AzFirewallPolicyKubeSelectorGroup](Get-AzFirewallPolicyKubeSelectorGroup.md)
+Gets a Kube Selector Group from an Azure Firewall Policy.
+
 ### [Get-AzFirewallPolicyRuleCollectionGroup](Get-AzFirewallPolicyRuleCollectionGroup.md)
 Gets a Azure Firewall Policy Rule Collection Group
 
@@ -1231,6 +1234,15 @@ Create a new Azure Firewall Policy Nat Rule Collection
 ### [New-AzFirewallPolicyNetworkRule](New-AzFirewallPolicyNetworkRule.md)
 Create a new Azure Firewall Policy Network Rule
 
+### [New-AzFirewallPolicyKubeLabelSelector](New-AzFirewallPolicyKubeLabelSelector.md)
+Creates an in-memory Kubernetes label selector for use in a Kube Selector Group.
+
+### [New-AzFirewallPolicyKubeSelectorGroup](New-AzFirewallPolicyKubeSelectorGroup.md)
+Creates a Kube Selector Group on an Azure Firewall Policy.
+
+### [New-AzFirewallPolicyLabelSelectorExpression](New-AzFirewallPolicyLabelSelectorExpression.md)
+Creates an in-memory label selector requirement (match expression).
+
 ### [New-AzFirewallPolicyRuleCollectionGroup](New-AzFirewallPolicyRuleCollectionGroup.md)
 Create a new Azure Firewall Policy Rule Collection Group
 
@@ -1881,6 +1893,9 @@ Removes an Azure Firewall Policy
 ### [Remove-AzFirewallPolicyDraft](Remove-AzFirewallPolicyDraft.md)
 Removes an Azure Firewall Policy
 
+### [Remove-AzFirewallPolicyKubeSelectorGroup](Remove-AzFirewallPolicyKubeSelectorGroup.md)
+Removes a Kube Selector Group from an Azure Firewall Policy.
+
 ### [Remove-AzFirewallPolicyRuleCollectionGroup](Remove-AzFirewallPolicyRuleCollectionGroup.md)
 Removes a Azure Firewall Policy Rule Collection Group in a Azure firewall policy
 
@@ -2348,6 +2363,9 @@ Saves a modified azure firewall policy
 
 ### [Set-AzFirewallPolicyDraft](Set-AzFirewallPolicyDraft.md)
 Saves a modified azure firewall policy draft
+
+### [Set-AzFirewallPolicyKubeSelectorGroup](Set-AzFirewallPolicyKubeSelectorGroup.md)
+Updates a Kube Selector Group on an Azure Firewall Policy.
 
 ### [Set-AzFirewallPolicyRuleCollectionGroup](Set-AzFirewallPolicyRuleCollectionGroup.md)
 saves a modified azure firewall policy rule collection group

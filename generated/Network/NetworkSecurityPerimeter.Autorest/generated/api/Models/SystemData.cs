@@ -8,9 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Extensions;
 
     /// <summary>Metadata pertaining to creation and last modification of the resource.</summary>
-    public partial class SecurityPerimeterSystemData :
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemData,
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal
+    public partial class SystemData :
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemData,
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal
     {
 
         /// <summary>Backing field for <see cref="CreatedAt" /> property.</summary>
@@ -55,14 +55,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public string LastModifiedByType { get => this._lastModifiedByType; set => this._lastModifiedByType = value; }
 
-        /// <summary>Creates an new <see cref="SecurityPerimeterSystemData" /> instance.</summary>
-        public SecurityPerimeterSystemData()
+        /// <summary>Creates an new <see cref="SystemData" /> instance.</summary>
+        public SystemData()
         {
 
         }
     }
     /// Metadata pertaining to creation and last modification of the resource.
-    public partial interface ISecurityPerimeterSystemData :
+    public partial interface ISystemData :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IJsonSerializable
     {
         /// <summary>The timestamp of resource creation (UTC).</summary>
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 
     }
     /// Metadata pertaining to creation and last modification of the resource.
-    internal partial interface ISecurityPerimeterSystemDataInternal
+    internal partial interface ISystemDataInternal
 
     {
         /// <summary>The timestamp of resource creation (UTC).</summary>

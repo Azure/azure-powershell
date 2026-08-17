@@ -225,6 +225,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyKubeSelectorGroupCRUD()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyKubeSelectorGroupCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallPolicyIDPSProfiles()
         {
             TestRunner.RunTestScript("Test-AzureFirewallPolicyIDPSProfiles");
