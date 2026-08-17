@@ -15,7 +15,7 @@ Updates an existing Azure Cosmos DB Garnet cache cluster.
 ### ByNameParameterSet (Default)
 ```
 Update-AzCosmosDBGarnetCluster -ResourceGroupName <String> -ClusterName <String>
- [-AuthenticationMethod <String>] [-ClusterType <String>] [-Extension <String[]>]
+ [-AuthenticationMethod <String>] [-Extension <String[]>]
  [-Persistence <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Update-AzCosmosDBGarnetCluster -ResourceGroupName <String> -ClusterName <String>
 ### ByResourceIdParameterSet
 ```
 Update-AzCosmosDBGarnetCluster -ResourceId <String>
- [-AuthenticationMethod <String>] [-ClusterType <String>] [-Extension <String[]>]
+ [-AuthenticationMethod <String>] [-Extension <String[]>]
  [-Persistence <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -31,13 +31,13 @@ Update-AzCosmosDBGarnetCluster -ResourceId <String>
 ### ByObjectParameterSet
 ```
 Update-AzCosmosDBGarnetCluster -InputObject <PSGarnetClusterResource>
- [-AuthenticationMethod <String>] [-ClusterType <String>] [-Extension <String[]>]
+ [-AuthenticationMethod <String>] [-Extension <String[]>]
  [-Persistence <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzCosmosDBGarnetCluster** cmdlet updates patchable properties of an existing Garnet cache cluster, including cluster type, extensions, authentication method, and persistence.
+The **Update-AzCosmosDBGarnetCluster** cmdlet updates properties of an existing Garnet cache cluster, including extensions, authentication method, and persistence.
 
 ## EXAMPLES
 
@@ -46,7 +46,6 @@ The **Update-AzCosmosDBGarnetCluster** cmdlet updates patchable properties of an
 Update-AzCosmosDBGarnetCluster `
  -ResourceGroupName "resourceGroupName" `
  -ClusterName "clusterName" `
- -ClusterType "NonProduction" `
  -AuthenticationMethod "Entra" `
  -Persistence $true
 ```
@@ -89,21 +88,6 @@ Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterType
-Type of the cluster. Acceptable values: `Production`, `NonProduction`.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

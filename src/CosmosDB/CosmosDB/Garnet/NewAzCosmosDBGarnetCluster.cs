@@ -59,12 +59,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 existingCluster = CosmosDBManagementClient.GarnetClusters.GetWithHttpMessagesAsync(ResourceGroupName, ClusterName).GetAwaiter().GetResult().Body;
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e) when (e.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                {
-                    throw;
-                }
+                // Cluster does not exist, proceed with creation
+            }
+            catch (CloudException e) when (e.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                // Cluster does not exist, proceed with creation
             }
 
             if (existingCluster != null)
@@ -98,7 +99,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     AvailabilityZone = AvailabilityZone,
                     AuthenticationMethod = AuthenticationMethod,
                     Persistence = Persistence,
-                    ClusterType = ClusterType,
                     Extensions = extensionsList,
                 },
                 Location = Location,

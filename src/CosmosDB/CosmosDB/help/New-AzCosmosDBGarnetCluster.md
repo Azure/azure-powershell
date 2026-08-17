@@ -16,7 +16,7 @@ Creates a new Azure Cosmos DB Garnet cache cluster.
 New-AzCosmosDBGarnetCluster -ResourceGroupName <String> -ClusterName <String> -Location <String>
  [-SubnetId <String>] [-ReplicationFactor <Int32>] [-ShardCount <Int32>] [-NodeSku <String>]
  [-AvailabilityZone <Boolean>] [-AuthenticationMethod <String>] [-Persistence <Boolean>]
- [-ClusterType <String>] [-Extension <String[]>] [-Tag <Hashtable>]
+ [-Extension <String[]>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -32,8 +32,7 @@ New-AzCosmosDBGarnetCluster `
  -ResourceGroupName "resourceGroupName" `
  -ClusterName "clusterName" `
  -Location "eastus" `
- -AuthenticationMethod "Entra" `
- -ClusterType "NonProduction"
+ -AuthenticationMethod "Entra"
 ```
 
 ### Example 2
@@ -54,7 +53,6 @@ New-AzCosmosDBGarnetCluster `
  -AvailabilityZone $true `
  -AuthenticationMethod "Entra" `
  -Persistence $true `
- -ClusterType "Production" `
  -Extension "extensionA","extensionB" `
  -Tag $tags
 ```
@@ -100,21 +98,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterType
-Type of the cluster. Acceptable values: `Production`, `NonProduction`.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

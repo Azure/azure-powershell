@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGarnetClusterCreateUpdateGetCmdlets()
         {
             TestRunner.RunTestScript("Test-GarnetClusterCreateUpdateGetCmdlets");

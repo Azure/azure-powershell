@@ -58,16 +58,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 existingCluster = CosmosDBManagementClient.GarnetClusters.GetWithHttpMessagesAsync(ResourceGroupName, ClusterName).GetAwaiter().GetResult().Body;
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e) when (e.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                {
-                    throw;
-                }
-                else
-                {
-                    throw new ResourceNotFoundException(message: string.Format(ExceptionMessage.NotFound, ClusterName), innerException: e);
-                }
+                throw new ResourceNotFoundException(message: string.Format(ExceptionMessage.NotFound, ClusterName), innerException: e);
+            }
+            catch (CloudException e) when (e.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                throw new ResourceNotFoundException(message: string.Format(ExceptionMessage.NotFound, ClusterName), innerException: e);
             }
 
             IList<string> extensionsList;
@@ -80,22 +77,26 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 extensionsList = existingCluster.Properties?.Extensions;
             }
 
-            GarnetClusterResourcePatchProperties patchProperties = new GarnetClusterResourcePatchProperties
+            GarnetClusterResource clusterUpdateParameters = new GarnetClusterResource
             {
-                ClusterType = ClusterType ?? existingCluster.Properties?.ClusterType,
-                Extensions = extensionsList,
-                AuthenticationMethod = AuthenticationMethod ?? existingCluster.Properties?.AuthenticationMethod,
-                Persistence = Persistence ?? existingCluster.Properties?.Persistence,
-            };
-
-            GarnetClusterResourcePatch patch = new GarnetClusterResourcePatch
-            {
-                Properties = patchProperties
+                Properties = new GarnetClusterResourceProperties
+                {
+                    SubnetId = existingCluster.Properties?.SubnetId,
+                    ReplicationFactor = existingCluster.Properties?.ReplicationFactor,
+                    ShardCount = existingCluster.Properties?.ShardCount,
+                    NodeSku = existingCluster.Properties?.NodeSku,
+                    AvailabilityZone = existingCluster.Properties?.AvailabilityZone,
+                    AuthenticationMethod = AuthenticationMethod ?? existingCluster.Properties?.AuthenticationMethod,
+                    Persistence = Persistence ?? existingCluster.Properties?.Persistence,
+                    Extensions = extensionsList,
+                },
+                Location = existingCluster.Location,
+                Tags = existingCluster.Tags
             };
 
             if (ShouldProcess(ClusterName, "Updating Garnet Cluster."))
             {
-                GarnetClusterResource result = CosmosDBManagementClient.GarnetClusters.UpdateWithHttpMessagesAsync(ResourceGroupName, ClusterName, patch).GetAwaiter().GetResult().Body;
+                GarnetClusterResource result = CosmosDBManagementClient.GarnetClusters.CreateUpdateWithHttpMessagesAsync(ResourceGroupName, ClusterName, clusterUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSGarnetClusterResource(result));
             }
 

@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             AllocationState = properties.AllocationState;
             ClusterType = properties.ClusterType;
             Extensions = properties.Extensions;
+            EndPoints = properties.EndPoints;
         }
 
         /// <summary>
@@ -95,5 +96,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// Gets or sets extensions for the cluster.
         /// </summary>
         public IList<string> Extensions { get; set; }
+
+        /// <summary>
+        /// Gets endpoints for clients to connect to the cluster.
+        /// </summary>
+        public IList<GarnetClusterResourcePropertiesEndPointsItem> EndPoints { get; set; }
     }
 }

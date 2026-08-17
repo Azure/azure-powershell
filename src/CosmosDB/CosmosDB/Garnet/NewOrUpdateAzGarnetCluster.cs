@@ -33,10 +33,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string AuthenticationMethod { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.GarnetClusterClusterTypeHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string ClusterType { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.GarnetClusterExtensionsHelpMessage)]
         public string[] Extension { get; set; }
 

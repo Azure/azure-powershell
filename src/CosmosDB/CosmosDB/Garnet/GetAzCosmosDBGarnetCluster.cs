@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using System;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -67,18 +68,34 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
             else if (!string.IsNullOrEmpty(ResourceGroupName))
             {
-                IEnumerable<GarnetClusterResource> garnetClusters = CosmosDBManagementClient.GarnetClusters.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).GetAwaiter().GetResult().Body;
-                foreach (GarnetClusterResource garnetCluster in garnetClusters)
+                IPage<GarnetClusterResource> page = CosmosDBManagementClient.GarnetClusters.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).GetAwaiter().GetResult().Body;
+                foreach (GarnetClusterResource garnetCluster in page)
                 {
                     WriteObject(new PSGarnetClusterResource(garnetCluster));
+                }
+                while (!string.IsNullOrEmpty(page.NextPageLink))
+                {
+                    page = CosmosDBManagementClient.GarnetClusters.ListByResourceGroupNextWithHttpMessagesAsync(page.NextPageLink).GetAwaiter().GetResult().Body;
+                    foreach (GarnetClusterResource garnetCluster in page)
+                    {
+                        WriteObject(new PSGarnetClusterResource(garnetCluster));
+                    }
                 }
             }
             else
             {
-                IEnumerable<GarnetClusterResource> garnetClusters = CosmosDBManagementClient.GarnetClusters.ListBySubscriptionWithHttpMessagesAsync().GetAwaiter().GetResult().Body;
-                foreach (GarnetClusterResource garnetCluster in garnetClusters)
+                IPage<GarnetClusterResource> page = CosmosDBManagementClient.GarnetClusters.ListBySubscriptionWithHttpMessagesAsync().GetAwaiter().GetResult().Body;
+                foreach (GarnetClusterResource garnetCluster in page)
                 {
                     WriteObject(new PSGarnetClusterResource(garnetCluster));
+                }
+                while (!string.IsNullOrEmpty(page.NextPageLink))
+                {
+                    page = CosmosDBManagementClient.GarnetClusters.ListBySubscriptionNextWithHttpMessagesAsync(page.NextPageLink).GetAwaiter().GetResult().Body;
+                    foreach (GarnetClusterResource garnetCluster in page)
+                    {
+                        WriteObject(new PSGarnetClusterResource(garnetCluster));
+                    }
                 }
             }
 
