@@ -1150,3 +1150,48 @@ function Test-PublicIpAddressInvokeDisassociateCloudServiceReservedIp
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests creating a StandardV2 SKU publicIpAddress and reading the read-only UpgradedToV2 property.
+#>
+function Test-PublicIpAddressStandardV2UpgradedToV2
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create a StandardV2 SKU public IP address
+        $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku StandardV2
+        $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected.Name $actual.Name
+        Assert-AreEqual "StandardV2" $expected.Sku.Name
+        Assert-AreEqual "Succeeded" $expected.ProvisioningState
+
+        # UpgradedToV2 is a read-only property. A natively-created StandardV2 resource has not been
+        # upgraded from Standard, so the value is not $true (it is $false or $null on a fresh resource).
+        Assert-True { $expected.UpgradedToV2 -ne $true }
+
+        # delete
+        $delete = Remove-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $list = Get-AzPublicIpAddress -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
