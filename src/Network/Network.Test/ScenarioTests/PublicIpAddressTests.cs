@@ -191,5 +191,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-PublicIpAddressInvokeDisassociateCloudServiceReservedIp");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestPublicIpAddressStandardV2UpgradedToV2()
+        {
+            TestRunner.RunTestScript("Test-PublicIpAddressStandardV2UpgradedToV2");
+        }
     }
 }
