@@ -28,6 +28,9 @@
     - Added `New-AzFirewallPolicyKubeLabelSelector` and `New-AzFirewallPolicyLabelSelectorExpression` to build pod/namespace label selectors.
 * Exposed the read-only `AfcManaged` property on `Get-AzFirewallPolicy` output.
     - Indicates the firewall policy is managed by AFC (Azure Firewall for Containers); the value is service-managed and cannot be set or updated through the cmdlets.
+* Exposed the read-only AFC configuration on `Get-AzFirewall` output.
+    - Added the `AfcConfiguration.ServiceEndpoint` property surfacing the AFC control-plane endpoint.
+    - The value is service-managed and cannot be set or updated through `New-AzFirewall`/`Set-AzFirewall`.
 * Upgraded Network SDK to API version `2025-09-01`.
     - Added `DisableDefaultServerHeaderInResponse` to `PSApplicationGatewayGlobalConfiguration` to mirror the new SDK property and unblock AutoMapper strict-mode validation.
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
