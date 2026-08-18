@@ -14,6 +14,8 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading;
 using Microsoft.Azure.Commands.Network;
 using Microsoft.Azure.Commands.Network.Models;
@@ -21,6 +23,7 @@ using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -93,6 +96,7 @@ namespace Commands.Network.Test.ScenarioTests
                 {
                     Body = new ApplicationSecurityGroup()
                 });
+            this.SetupAddressPrefixSetNotFound();
             this.addressPrefixSets
                 .Setup(client => client.CreateOrUpdateWithHttpMessagesAsync(
                     ResourceGroupName,
@@ -126,10 +130,49 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nsgdev)]
+        public void NewAddressPrefixSetChecksForExistingResourceBeforeForcedOverwrite()
+        {
+            var prefixes = new[] { "10.2.0.0/16" };
+            this.applicationSecurityGroups
+                .Setup(client => client.GetWithHttpMessagesAsync(
+                    ResourceGroupName,
+                    ApplicationSecurityGroupName,
+                    It.IsAny<Dictionary<string, List<string>>>(),
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new AzureOperationResponse<ApplicationSecurityGroup>
+                {
+                    Body = new ApplicationSecurityGroup()
+                });
+            this.SetupAddressPrefixSetGet(CreateSdkAddressPrefixSet(new[] { "10.0.0.0/16" }));
+            this.SetupAddressPrefixSetCreateOrUpdate(prefixes);
+
+            var command = this.CreateCommand<NewAzureRmAddressPrefixSetCommand>(new MockCommandRuntime());
+            command.ResourceGroupName = ResourceGroupName;
+            command.ApplicationSecurityGroupName = ApplicationSecurityGroupName;
+            command.Name = AddressPrefixSetName;
+            command.AddressPrefix = prefixes;
+            command.Force = true;
+
+            command.Execute();
+
+            this.addressPrefixSets.Verify(
+                client => client.GetWithHttpMessagesAsync(
+                    ResourceGroupName,
+                    ApplicationSecurityGroupName,
+                    AddressPrefixSetName,
+                    It.IsAny<Dictionary<string, List<string>>>(),
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsgdev)]
         public void SetAddressPrefixSetUpdatesResourceById()
         {
             AddressPrefixSet request = null;
             var prefixes = new[] { "10.1.0.0/16" };
+            this.SetupAddressPrefixSetGet(CreateSdkAddressPrefixSet(new[] { "10.0.0.0/16" }));
             this.addressPrefixSets
                 .Setup(client => client.CreateOrUpdateWithHttpMessagesAsync(
                     ResourceGroupName,
@@ -157,6 +200,30 @@ namespace Commands.Network.Test.ScenarioTests
             Assert.Equal(AddressPrefixSetName, command.Name);
             Assert.Equal(prefixes, request.Properties.AddressPrefixes);
             Assert.IsType<PSAddressPrefixSet>(Assert.Single(runtime.OutputPipeline));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsgdev)]
+        public void SetAddressPrefixSetFailsWhenResourceDoesNotExist()
+        {
+            this.SetupAddressPrefixSetNotFound();
+            var command = this.CreateCommand<SetAzureRmAddressPrefixSetCommand>(new MockCommandRuntime());
+            command.ResourceId = AddressPrefixSetId;
+            command.AddressPrefix = new[] { "10.1.0.0/16" };
+
+            var exception = Assert.Throws<System.ArgumentException>(() => command.Execute());
+
+            Assert.Equal(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, exception.Message);
+            this.addressPrefixSets.Verify(
+                client => client.CreateOrUpdateWithHttpMessagesAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<AddressPrefixSet>(),
+                    It.IsAny<Dictionary<string, List<string>>>(),
+                    It.IsAny<CancellationToken>()),
+                Times.Never);
         }
 
         [Fact]
@@ -196,6 +263,52 @@ namespace Commands.Network.Test.ScenarioTests
                 "Microsoft.Network/applicationSecurityGroups/addressPrefixSets",
                 "etag",
                 new AddressPrefixSetPropertiesFormat(prefixes.ToList(), "Succeeded"));
+        }
+
+        private void SetupAddressPrefixSetGet(AddressPrefixSet resource)
+        {
+            this.addressPrefixSets
+                .Setup(client => client.GetWithHttpMessagesAsync(
+                    ResourceGroupName,
+                    ApplicationSecurityGroupName,
+                    AddressPrefixSetName,
+                    It.IsAny<Dictionary<string, List<string>>>(),
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new AzureOperationResponse<AddressPrefixSet> { Body = resource });
+        }
+
+        private void SetupAddressPrefixSetNotFound()
+        {
+            var exception = new CloudException
+            {
+                Response = new HttpResponseMessageWrapper(
+                    new HttpResponseMessage(HttpStatusCode.NotFound),
+                    string.Empty)
+            };
+            this.addressPrefixSets
+                .Setup(client => client.GetWithHttpMessagesAsync(
+                    ResourceGroupName,
+                    ApplicationSecurityGroupName,
+                    AddressPrefixSetName,
+                    It.IsAny<Dictionary<string, List<string>>>(),
+                    It.IsAny<CancellationToken>()))
+                .ThrowsAsync(exception);
+        }
+
+        private void SetupAddressPrefixSetCreateOrUpdate(IEnumerable<string> prefixes)
+        {
+            this.addressPrefixSets
+                .Setup(client => client.CreateOrUpdateWithHttpMessagesAsync(
+                    ResourceGroupName,
+                    ApplicationSecurityGroupName,
+                    AddressPrefixSetName,
+                    It.IsAny<AddressPrefixSet>(),
+                    It.IsAny<Dictionary<string, List<string>>>(),
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new AzureOperationResponse<AddressPrefixSet>
+                {
+                    Body = CreateSdkAddressPrefixSet(prefixes)
+                });
         }
 
         private T CreateCommand<T>(MockCommandRuntime runtime)

@@ -59,6 +59,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string[] AddressPrefix { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
+        public SwitchParameter Force { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -68,14 +71,22 @@ namespace Microsoft.Azure.Commands.Network
             this.ResolveParent();
             this.EnsureApplicationSecurityGroupExists(this.ResourceGroupName, this.ApplicationSecurityGroupName);
 
+            var present = this.IsAddressPrefixSetPresent(
+                this.ResourceGroupName,
+                this.ApplicationSecurityGroupName,
+                this.Name);
+
             this.ConfirmAction(
+                this.Force.IsPresent,
+                string.Format(Properties.Resources.OverwritingResource, this.Name),
                 Properties.Resources.CreatingResourceMessage,
                 this.Name,
                 () => this.WriteObject(this.CreateOrUpdateAddressPrefixSet(
                     this.ResourceGroupName,
                     this.ApplicationSecurityGroupName,
                     this.Name,
-                    new List<string>(this.AddressPrefix))));
+                    new List<string>(this.AddressPrefix))),
+                () => present);
         }
 
         private void ResolveParent()

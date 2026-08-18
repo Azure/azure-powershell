@@ -15,7 +15,7 @@ Creates an address prefix set under an application security group.
 ### ByApplicationSecurityGroupName (Default)
 ```
 New-AzAddressPrefixSet -ResourceGroupName <String> -ApplicationSecurityGroupName <String> -Name <String>
- -AddressPrefix <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ -AddressPrefix <String[]> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ New-AzAddressPrefixSet -ResourceGroupName <String> -ApplicationSecurityGroupName
 ### ByApplicationSecurityGroupObject
 ```
 New-AzAddressPrefixSet -ApplicationSecurityGroup <PSApplicationSecurityGroup> -Name <String>
- -AddressPrefix <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ -AddressPrefix <String[]> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ New-AzAddressPrefixSet -ApplicationSecurityGroup <PSApplicationSecurityGroup> -N
 ### ByApplicationSecurityGroupResourceId
 ```
 New-AzAddressPrefixSet -ApplicationSecurityGroupResourceId <String> -Name <String> -AddressPrefix <String[]>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -144,6 +144,21 @@ The change reference resource ID for this resource operation.
 
 ```yaml
 Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Overwrites an existing address prefix set with the same name without prompting for confirmation.
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

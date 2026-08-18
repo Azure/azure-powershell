@@ -63,6 +63,14 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
             this.ResolveResource();
+            if (!this.IsAddressPrefixSetPresent(
+                this.ResourceGroupName,
+                this.ApplicationSecurityGroupName,
+                this.Name))
+            {
+                throw new ArgumentException(Properties.Resources.ResourceNotFound);
+            }
+
             this.ConfirmAction(
                 Properties.Resources.SettingResourceMessage,
                 this.Name,

@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.Network
 {
     using System.Collections.Generic;
+    using System.Net;
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Management.Network;
     using MNM = Microsoft.Azure.Management.Network.Models;
@@ -35,6 +36,25 @@ namespace Microsoft.Azure.Commands.Network
         public PSAddressPrefixSet GetAddressPrefixSet(string resourceGroupName, string applicationSecurityGroupName, string name)
         {
             return this.ToPsAddressPrefixSet(this.AddressPrefixSetClient.Get(resourceGroupName, applicationSecurityGroupName, name));
+        }
+
+        public bool IsAddressPrefixSetPresent(string resourceGroupName, string applicationSecurityGroupName, string name)
+        {
+            try
+            {
+                this.GetAddressPrefixSet(resourceGroupName, applicationSecurityGroupName, name);
+            }
+            catch (Microsoft.Rest.Azure.CloudException exception)
+            {
+                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return false;
+                }
+
+                throw;
+            }
+
+            return true;
         }
 
         public List<PSAddressPrefixSet> ListAddressPrefixSets(string resourceGroupName, string applicationSecurityGroupName)
