@@ -2284,6 +2284,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>().ForCtorParam("dnsSettings", opt =>
                 {
                     opt.MapFrom(src => src.DnsSettings == null ? null : new MNM.DnsSettings(src.DnsSettings.Servers, src.DnsSettings.EnableProxy, null));
+                }).ForCtorParam("afcManaged", opt =>
+                {
+                    opt.MapFrom(src => (bool?)null);
                 }).AfterMap((src, dst) =>
                 {
                     dst.Sql = src.SqlSetting == null ? null : new MNM.FirewallPolicySQL(src.SqlSetting.AllowSqlRedirect);
