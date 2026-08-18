@@ -570,3 +570,44 @@ Invoke-LiveTestScenario -Name "Remove private DNS zone group" -Description "Test
     $actual = Get-AzPrivateDnsZoneGroup -ResourceGroupName $rgName -Name $zoneGroupName -PrivateEndpointName $peName -ErrorAction SilentlyContinue
     Assert-Null $actual
 }
+
+Invoke-LiveTestScenario -Name "Create StandardV2 public IP address" -Description "Test creating a StandardV2 SKU public IP address and reading the read-only UpgradedToV2 property" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $location = "eastus2"
+    $pipName = New-LiveTestResourceName
+
+    New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Static -Sku StandardV2
+    $actual = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName
+
+    Assert-NotNull $actual
+    Assert-AreEqual $rgName $actual.ResourceGroupName
+    Assert-AreEqual $pipName $actual.Name
+    Assert-AreEqual "StandardV2" $actual.Sku.Name
+    Assert-AreEqual "Succeeded" $actual.ProvisioningState
+    # UpgradedToV2 is read-only; a natively-created StandardV2 resource is not marked as upgraded.
+    Assert-True { $actual.UpgradedToV2 -ne $true }
+}
+
+Invoke-LiveTestScenario -Name "Create StandardV2 public IP prefix" -Description "Test creating a StandardV2 SKU public IP prefix and reading the read-only UpgradedToV2 property" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $location = "eastus2"
+    $prefixName = New-LiveTestResourceName
+
+    New-AzPublicIpPrefix -ResourceGroupName $rgName -Name $prefixName -Location $location -Sku StandardV2 -PrefixLength 30
+    $actual = Get-AzPublicIpPrefix -ResourceGroupName $rgName -Name $prefixName
+
+    Assert-NotNull $actual
+    Assert-AreEqual $rgName $actual.ResourceGroupName
+    Assert-AreEqual $prefixName $actual.Name
+    Assert-AreEqual "StandardV2" $actual.Sku.Name
+    Assert-AreEqual 30 $actual.PrefixLength
+    Assert-AreEqual "Succeeded" $actual.ProvisioningState
+    # UpgradedToV2 is read-only; a natively-created StandardV2 resource is not marked as upgraded.
+    Assert-True { $actual.UpgradedToV2 -ne $true }
+}
