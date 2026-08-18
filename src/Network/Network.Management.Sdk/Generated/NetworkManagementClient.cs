@@ -167,6 +167,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IAzureFirewallsOperations
         /// </summary>
         public virtual IAzureFirewallsOperations AzureFirewalls { get; private set; }
+        /// <summary>
         /// Gets the IFirewallPoliciesOperations
         /// </summary>
         public virtual IFirewallPoliciesOperations FirewallPolicies { get; private set; }
