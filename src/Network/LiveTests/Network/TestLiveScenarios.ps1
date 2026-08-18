@@ -332,6 +332,41 @@ Invoke-LiveTestScenario -Name "Remove network load balancer" -Description "Test 
     Assert-Null $actual
 }
 
+Invoke-LiveTestScenario -Name "Create advanced mode load balancer with connection tracking" -Description "Test creating a Standard load balancer in Advanced mode with a frontend IP configuration that has UDP connection tracking enabled" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $location = "westus"
+    $publicIpName = New-LiveTestResourceName
+    $feIpCfgName = New-LiveTestResourceName
+    $bePoolCfgName = New-LiveTestResourceName
+    $probeName = New-LiveTestResourceName
+    $lbRuleName = New-LiveTestResourceName
+    $lbName = New-LiveTestResourceName
+
+    $ipTag = New-AzPublicIpTag -IpTagType FirstPartyUsage -Tag "/NonProd"
+    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod Static -Sku StandardV2 -IpTag $ipTag
+    $feIpCfg = New-AzLoadBalancerFrontendIpConfig -Name $feIpCfgName -PublicIpAddress $publicIp -EnableConnectionTracking
+    Assert-AreEqual $true $feIpCfg.EnableConnectionTracking
+
+    $bePoolCfg = New-AzLoadBalancerBackendAddressPoolConfig -Name $bePoolCfgName
+    $probe = New-AzLoadBalancerProbeConfig -Name $probeName -Protocol "Http" -Port 80 -RequestPath "healthcheck.aspx" -IntervalInSeconds 15 -ProbeCount 5 -ProbeThreshold 5
+    $lbRule = New-AzLoadBalancerRuleConfig -Name $lbRuleName -FrontendIpConfiguration $feIpCfg -BackendAddressPool $bePoolCfg -Protocol "Udp" -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 5
+    New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -Sku Standard -Mode Advanced -Scope Public -FrontendIpConfiguration $feIpCfg -BackendAddressPool $bePoolCfg -Probe $probe -LoadBalancingRule $lbRule
+
+    $actual = Get-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName
+    Assert-NotNull $actual
+    Assert-AreEqual $rgName $actual.ResourceGroupName
+    Assert-AreEqual $lbName $actual.Name
+    Assert-AreEqual $location $actual.Location
+    Assert-AreEqual "Succeeded" $actual.ProvisioningState
+    Assert-AreEqual "Advanced" $actual.Mode
+    Assert-AreEqual "Public" $actual.Scope
+    Assert-AreEqual 1 $actual.FrontendIpConfigurations.Count
+    Assert-AreEqual $true $actual.FrontendIpConfigurations[0].EnableConnectionTracking
+}
+
 Invoke-LiveTestScenario -Name "Create virtual network" -Description "Test creating a virtual network" -ScenarioScript `
 {
     param ($rg)
