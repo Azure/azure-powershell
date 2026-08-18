@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added IPv6 support to Virtual Hub and Hub Virtual Network Connection cmdlets
+    - `New-AzVirtualHub`: Added `-AddressPrefixV6` parameter to specify the IPv6 address prefix for the VirtualHub.
+    - `Update-AzVirtualHub`: Added `-AddressPrefixV6` parameter to update the IPv6 address prefix for the VirtualHub.
+    - `New-AzVirtualHubVnetConnection`: Added `-EnableOnlyIpv6Peering` parameter to enable only IPv6 peering for the connection.
 * Added support for managing Kube Selector Groups on a firewall policy.
     - `Get-AzFirewallPolicyKubeSelectorGroup`, `New-AzFirewallPolicyKubeSelectorGroup`, `Set-AzFirewallPolicyKubeSelectorGroup`, `Remove-AzFirewallPolicyKubeSelectorGroup`.
     - Added `New-AzFirewallPolicyKubeLabelSelector` and `New-AzFirewallPolicyLabelSelectorExpression` to build pod/namespace label selectors.
