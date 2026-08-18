@@ -559,12 +559,6 @@
       "Test-AzArtifactSigningAccountNameAvailability": {},
       "Update-AzArtifactSigningAccount": {}
     },
-    "Az.Astro": {
-      "Get-AzAstroOrganization": {},
-      "New-AzAstroOrganization": {},
-      "Remove-AzAstroOrganization": {},
-      "Update-AzAstroOrganization": {}
-    },
     "Az.Attestation": {
       "Add-AzAttestationPolicySigner": {},
       "Get-AzAttestationPolicy": {},
@@ -1437,6 +1431,7 @@
       "Set-AzVmssUefi": {},
       "Set-AzVmssVM": {},
       "Set-AzVMUefi": {},
+      "Set-AzVMZoneMovement": {},
       "Start-AzVM": {},
       "Start-AzVmss": {},
       "Start-AzVmssRollingExtensionUpgrade": {},
@@ -2578,6 +2573,11 @@
       "New-AzDedicatedHsm": {},
       "Remove-AzDedicatedHsm": {},
       "Update-AzDedicatedHsm": {}
+    },
+    "Az.Dell": {
+      "Get-AzDellFileSystem": {},
+      "New-AzDellFileSystem": {},
+      "Remove-AzDellFileSystem": {}
     },
     "Az.DependencyMap": {
       "Get-AzDependencyMap": {},
@@ -6542,9 +6542,6 @@
       "Update-AzPeeringRegisteredPrefix": {},
       "Update-AzPeeringService": {}
     },
-    "Az.Pinecone": {
-      "Get-AzPineconeOrganization": {}
-    },
     "Az.PlanetaryComputer": {
       "Get-AzPlanetaryComputerGeoCatalog": {},
       "New-AzPlanetaryComputerGeoCatalog": {},
@@ -9252,6 +9249,7 @@
       "New-AzVMwarePureStoragePolicy": {},
       "New-AzVMwareScriptSecureStringExecutionParameterObject": {},
       "New-AzVMwareScriptStringExecutionParameterObject": {},
+      "New-AzVMwareVcf5LicenseObject": {},
       "New-AzVMwareVmHostPlacementPolicyPropertyObject": {},
       "New-AzVMwareVMPlacementPolicyPropertyObject": {},
       "Remove-AzVMwareAddon": {},

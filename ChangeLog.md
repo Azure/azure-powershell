@@ -1,3 +1,34 @@
+## 16.3.0 - September 2026
+#### Az.Compute 11.9.0
+* Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
+* Added '-ForceDeallocate' to 'Stop-AzVM' to force deallocate a VM (Virtual Machine) during stop operations.
+    - The switch cannot be used together with '-Hibernate', '-StayProvisioned', or '-SkipShutdown'.
+
+#### Az.Network 8.2.0
+* Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
+    - Added the '-DdosCustomPolicyId' parameter to 'Set-AzPublicIpAddress'.
+    - Added the '-RemoveDdosCustomPolicy' switch to remove an existing association.
+    - DDoS custom policy association does not require a specific DDoS protection mode.
+* Added 'RoutingConfiguration', 'VirtualHubVnetConnection', and 'VirtualHubVnetConnectionId' parameters to 'Add-AzRouteServerPeer' and 'Update-AzRouteServerPeer'.
+    - Enabled configuring inbound and outbound route maps for Route Server BGP peer connections.
+    - Enabled specifying a hub virtual network connection for the peer (by object or resource id).
+* Added 'RoutingConfiguration' parameter to 'New-AzVirtualNetworkGatewayConnection' and 'Set-AzVirtualNetworkGatewayConnection'.
+    - Enabled configuring inbound and outbound route maps for Virtual Network Gateway connections.
+
+#### Az.RecoveryServices 7.14.1
+* Added Cross Region Restore support for Azure File Share backup items ('Get-AzRecoveryServicesBackupItem -UseSecondaryRegion', 'Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion', 'Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion')
+* Refined soft delete behavior for Azure File share backup items
+    - 'Undo-AzRecoveryServicesBackupItemDeletion' now throws a clear error when the target Azure File share item is not in the soft-deleted ('ToBeDeleted') state instead of issuing an undelete request that cannot succeed.
+    - Corrected the 'DateOfPurge' computation for soft-deleted Azure File share items; it is now derived from the service-returned remaining deferred-delete window, fixing the previous value that always fell back to a fixed 14-day period.
+
+#### Az.Sql 7.1.0
+* Added multi-database Managed Instance link support
+    - Added 'LinkMode' support to 'New-AzSqlInstanceLink'
+    - Added database membership updates to 'Update-AzSqlInstanceLink'
+
+#### Az.Websites 4.1.0
+* Added support for creating and updating App Service Environment plans with Isolated v4 and memory-optimized Isolated v4 SKUs.
+
 ## 16.2.0 - August 2026
 #### Az.Accounts 5.5.2
 * Upgraded 'Azure.Core' dependency from 1.56.0 to 1.57.0.
