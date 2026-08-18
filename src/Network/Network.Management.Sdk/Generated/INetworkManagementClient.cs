@@ -203,11 +203,6 @@ namespace Microsoft.Azure.Management.Network
         IAzureFirewallsOperations AzureFirewalls { get; }
 
         /// <summary>
-        /// Gets the IFirstPartyServiceTagsOperations
-        /// </summary>
-        IFirstPartyServiceTagsOperations FirstPartyServiceTags { get; }
-
-        /// <summary>
         /// Gets the IFirewallPoliciesOperations
         /// </summary>
         IFirewallPoliciesOperations FirewallPolicies { get; }
@@ -251,6 +246,11 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IFirewallPolicyIdpsSignaturesOverridesOperations
         /// </summary>
         IFirewallPolicyIdpsSignaturesOverridesOperations FirewallPolicyIdpsSignaturesOverrides { get; }
+
+        /// <summary>
+        /// Gets the IFirstPartyServiceTagsOperations
+        /// </summary>
+        IFirstPartyServiceTagsOperations FirstPartyServiceTags { get; }
 
         /// <summary>
         /// Gets the IInterconnectGroupsOperations

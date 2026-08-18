@@ -167,11 +167,6 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IAzureFirewallsOperations
         /// </summary>
         public virtual IAzureFirewallsOperations AzureFirewalls { get; private set; }
-        /// <summary>
-        /// Gets the IFirstPartyServiceTagsOperations
-        /// </summary>
-        public virtual IFirstPartyServiceTagsOperations FirstPartyServiceTags { get; private set; }
-        /// <summary>
         /// Gets the IFirewallPoliciesOperations
         /// </summary>
         public virtual IFirewallPoliciesOperations FirewallPolicies { get; private set; }
@@ -207,6 +202,10 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IFirewallPolicyIdpsSignaturesOverridesOperations
         /// </summary>
         public virtual IFirewallPolicyIdpsSignaturesOverridesOperations FirewallPolicyIdpsSignaturesOverrides { get; private set; }
+        /// <summary>
+        /// Gets the IFirstPartyServiceTagsOperations
+        /// </summary>
+        public virtual IFirstPartyServiceTagsOperations FirstPartyServiceTags { get; private set; }
         /// <summary>
         /// Gets the IInterconnectGroupsOperations
         /// </summary>
@@ -985,7 +984,6 @@ namespace Microsoft.Azure.Management.Network
             this.ServiceEndpointPolicyDefinitions = new ServiceEndpointPolicyDefinitionsOperations(this);
             this.AzureFirewallFqdnTags = new AzureFirewallFqdnTagsOperations(this);
             this.AzureFirewalls = new AzureFirewallsOperations(this);
-            this.FirstPartyServiceTags = new FirstPartyServiceTagsOperations(this);
             this.FirewallPolicies = new FirewallPoliciesOperations(this);
             this.FirewallPolicyDeployments = new FirewallPolicyDeploymentsOperations(this);
             this.FirewallPolicyDrafts = new FirewallPolicyDraftsOperations(this);
@@ -995,6 +993,7 @@ namespace Microsoft.Azure.Management.Network
             this.FirewallPolicyRuleCollectionGroups = new FirewallPolicyRuleCollectionGroupsOperations(this);
             this.FirewallPolicyRuleCollectionGroupDrafts = new FirewallPolicyRuleCollectionGroupDraftsOperations(this);
             this.FirewallPolicyIdpsSignaturesOverrides = new FirewallPolicyIdpsSignaturesOverridesOperations(this);
+            this.FirstPartyServiceTags = new FirstPartyServiceTagsOperations(this);
             this.InterconnectGroups = new InterconnectGroupsOperations(this);
             this.Subgroups = new SubgroupsOperations(this);
             this.LoadBalancers = new LoadBalancersOperations(this);
