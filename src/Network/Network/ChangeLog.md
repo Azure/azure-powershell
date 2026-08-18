@@ -23,15 +23,30 @@
     - Supports moving one or more IP configurations in a single operation.
     - Use `New-AzMoveIpConfigurationItem` to create each source and target IP configuration pair.
     - The operation is long-running and supports the `-AsJob` parameter.
+* Added IPv6 support to Virtual Hub and Hub Virtual Network Connection cmdlets
+    - `New-AzVirtualHub`: Added `-AddressPrefixV6` parameter to specify the IPv6 address prefix for the VirtualHub.
+    - `Update-AzVirtualHub`: Added `-AddressPrefixV6` parameter to update the IPv6 address prefix for the VirtualHub.
+    - `New-AzVirtualHubVnetConnection`: Added `-EnableOnlyIpv6Peering` parameter to enable only IPv6 peering for the connection.
 * Added support for managing Kube Selector Groups on a firewall policy.
     - `Get-AzFirewallPolicyKubeSelectorGroup`, `New-AzFirewallPolicyKubeSelectorGroup`, `Set-AzFirewallPolicyKubeSelectorGroup`, `Remove-AzFirewallPolicyKubeSelectorGroup`.
     - Added `New-AzFirewallPolicyKubeLabelSelector` and `New-AzFirewallPolicyLabelSelectorExpression` to build pod/namespace label selectors.
+* Exposed the read-only `AfcManaged` property on `Get-AzFirewallPolicy` output.
+    - Indicates the firewall policy is managed by AFC (Azure Firewall for Containers); the value is service-managed and cannot be set or updated through the cmdlets.
+* Exposed the read-only AFC configuration on `Get-AzFirewall` output.
+    - Added the `AfcConfiguration.ServiceEndpoint` property surfacing the AFC control-plane endpoint.
+    - The value is service-managed and cannot be set or updated through `New-AzFirewall`/`Set-AzFirewall`.
 * Upgraded Network SDK to API version `2025-09-01`.
     - Added `DisableDefaultServerHeaderInResponse` to `PSApplicationGatewayGlobalConfiguration` to mirror the new SDK property and unblock AutoMapper strict-mode validation.
+* Surfaced the read-only `UpgradedToV2` property on public IP address and public IP prefix objects.
+    - `Get-AzPublicIpAddress` and `Get-AzPublicIpPrefix` now return `UpgradedToV2`, indicating whether the SKU has been upgraded from Standard to StandardV2.
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
     - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
     - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
     - DDoS custom policy association does not require a specific DDoS protection mode.
+* Added the `-Mode` and `-Scope` parameters to `New-AzLoadBalancer`.
+    - Set `-Mode Advanced` together with `-Scope Public` or `-Scope Private` to create an advanced (Banksy-based) Standard SKU load balancer. Advanced mode must be specified at creation and cannot be changed afterward.
+* Added the `-EnableConnectionTracking` switch to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
+    - Enables UDP (User Datagram Protocol) flow tracking for traffic associated with the frontend IP configuration. When enabled, packets belonging to the same UDP flow are consistently directed to the same backend instance, taking precedence over rule-level connection tracking settings. Requires the load balancer to be created with `-Mode Advanced` and `-Scope`.
 
 ## Version 8.1.0
 * Added new cmdlets for ConnectionPolicy management under VirtualHub
