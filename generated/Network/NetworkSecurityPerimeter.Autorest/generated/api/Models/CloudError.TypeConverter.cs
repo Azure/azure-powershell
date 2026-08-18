@@ -8,9 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
     using Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="CommonCloudErrorBody" />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="CloudError" />
     /// </summary>
-    public partial class CommonCloudErrorBodyTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class CloudErrorTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -26,13 +26,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="CommonCloudErrorBody"/>
-        /// type.
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="CloudError"/> type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="CommonCloudErrorBody"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="CloudError"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="CommonCloudErrorBody" /> type, otherwise <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="CloudError" /> type, otherwise <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -95,31 +94,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="CommonCloudErrorBody" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="CloudError" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="CommonCloudErrorBody" />
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="CloudError" />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="CommonCloudErrorBody" />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="CloudError" />.</param>
         /// <returns>
-        /// an instance of <see cref="CommonCloudErrorBody" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="CloudError" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return CommonCloudErrorBody.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return CloudError.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -127,11 +126,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return CommonCloudErrorBody.DeserializeFromPSObject(sourceValue);
+                return CloudError.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return CommonCloudErrorBody.DeserializeFromDictionary(sourceValue);
+                return CloudError.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }

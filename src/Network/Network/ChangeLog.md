@@ -19,6 +19,15 @@
 --->
 
 ## Upcoming Release
+* Added IPv6 support to Virtual Hub and Hub Virtual Network Connection cmdlets
+    - `New-AzVirtualHub`: Added `-AddressPrefixV6` parameter to specify the IPv6 address prefix for the VirtualHub.
+    - `Update-AzVirtualHub`: Added `-AddressPrefixV6` parameter to update the IPv6 address prefix for the VirtualHub.
+    - `New-AzVirtualHubVnetConnection`: Added `-EnableOnlyIpv6Peering` parameter to enable only IPv6 peering for the connection.
+* Added support for managing Kube Selector Groups on a firewall policy.
+    - `Get-AzFirewallPolicyKubeSelectorGroup`, `New-AzFirewallPolicyKubeSelectorGroup`, `Set-AzFirewallPolicyKubeSelectorGroup`, `Remove-AzFirewallPolicyKubeSelectorGroup`.
+    - Added `New-AzFirewallPolicyKubeLabelSelector` and `New-AzFirewallPolicyLabelSelectorExpression` to build pod/namespace label selectors.
+* Exposed the read-only `AfcManaged` property on `Get-AzFirewallPolicy` output.
+    - Indicates the firewall policy is managed by AFC (Azure Firewall for Containers); the value is service-managed and cannot be set or updated through the cmdlets.
 * Exposed the read-only AFC configuration on `Get-AzFirewall` output.
     - Added the `AfcConfiguration.ServiceEndpoint` property surfacing the AFC control-plane endpoint.
     - The value is service-managed and cannot be set or updated through `New-AzFirewall`/`Set-AzFirewall`.
