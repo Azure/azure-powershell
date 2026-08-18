@@ -33,14 +33,17 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(Mandatory = true, ParameterSetName = ByApplicationSecurityGroupName, HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Alias("ParentName", "ParentResourceName")]
         [Parameter(Mandatory = true, ParameterSetName = ByApplicationSecurityGroupName, HelpMessage = "The application security group name.")]
+        [ValidateNotNullOrEmpty]
         public string ApplicationSecurityGroupName { get; set; }
 
         [Alias("ResourceName", "AddressPrefixSetName")]
         [Parameter(Mandatory = true, ParameterSetName = ByApplicationSecurityGroupName, HelpMessage = "The address prefix set name.")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Alias("AddressPrefixSet")]

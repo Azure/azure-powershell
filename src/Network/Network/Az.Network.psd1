@@ -829,9 +829,8 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* Added address prefix set management for application security groups
-    - Added ''Get-AzAddressPrefixSet'', ''New-AzAddressPrefixSet'', ''Set-AzAddressPrefixSet'', and ''Remove-AzAddressPrefixSet''
-    - Supports IPv4 and IPv6 prefixes in CIDR notation
-    - Related Swagger change: Azure/azure-rest-api-specs [#44737]
+        - Added ''Get-AzAddressPrefixSet'', ''New-AzAddressPrefixSet'', ''Set-AzAddressPrefixSet'', and ''Remove-AzAddressPrefixSet''
+        - Supports IPv4 and IPv6 prefixes in Classless Inter-Domain Routing (CIDR) notation
 * Added new cmdlets for ConnectionPolicy management under VirtualHub
     - ''Get-AzConnectionPolicy'': Retrieve one or all ConnectionPolicy resources under a VirtualHub
     - ''New-AzConnectionPolicy'': Create a new ConnectionPolicy under a VirtualHub

@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ParentName", "ParentResourceName")]
         [Parameter(Mandatory = true, ParameterSetName = ByApplicationSecurityGroupName, HelpMessage = "The application security group name.")]
         [ResourceNameCompleter("Microsoft.Network/applicationSecurityGroups", "ResourceGroupName")]
+        [ValidateNotNullOrEmpty]
         public string ApplicationSecurityGroupName { get; set; }
 
         [Alias("ParentObject")]
