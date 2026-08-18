@@ -1,19 +1,17 @@
 ---
 name: azure-powershell-code-review
-description: Review Azure PowerShell pull requests using the repository's generated-module, changelog, help, testing, cmdlet-design, compatibility, and release-readiness requirements.
-compatibility: Requires authenticated GitHub access to inspect pull request metadata, diffs, checks, reviews, and discussion threads.
+description: Review Azure PowerShell pull requests, comment on concrete issues, and apply relevant repository labels.
 ---
 
 # Azure PowerShell Code Review
 
 Use this skill for pull request reviews in `Azure/azure-powershell`.
 
-The workflow has two phases:
+The workflow has three phases:
 
-1. **Triage:** identify generated modules, new modules, release routing, and conditions that prevent normal review.
+1. **Triage:** identify generated modules, new modules, and special review requirements.
 2. **Code review:** inspect correctness, compatibility, documentation, tests, generated artifacts, and release readiness.
-
-Do not post a review, comment, approval, assignment, email, or Teams message unless the user explicitly requests that external action. When asked only to review, return findings and concise comment drafts.
+3. **Review actions:** post focused review comments and apply relevant labels.
 
 ## Phase 1: Triage
 
@@ -21,12 +19,11 @@ Do not post a review, comment, approval, assignment, email, or Teams message unl
 
 Before reviewing:
 
-- Confirm the PR is not a draft.
-- Check for `do-not-merge` or equivalent labels.
 - Confirm the target branch is appropriate.
 - Inspect the current head, all commits, CI checks, review threads, resolved threads, and suppressed Copilot comments.
 - Do not repeat an existing finding.
 - Verify that a resolved thread was actually fixed rather than merely resolved.
+- Treat draft state and the existing `Do Not Merge :no_entry_sign:` label as context, not as code findings.
 
 ### Generated modules
 
@@ -46,11 +43,9 @@ Determine the source from the **complete base and head Git trees**, not only the
 
 If the project is Swagger sourced:
 
-1. Stop the normal ownership flow.
-2. Mark the PR for handoff to the Codegen Squad for TypeSpec migration.
-3. Contact Bernard Pan `<bernardpan@microsoft.com>`.
-4. Do not guess a GitHub username; resolve it before assigning.
-5. Resume normal review after the migration is complete.
+1. Comment that the project must be handled by the Codegen Squad for TypeSpec migration.
+2. Apply the `Generator` and `needs-revision` labels.
+3. Do not review generated implementation details as handwritten code.
 
 An upstream TypeSpec-generated `openapi.json` is still non-TypeSpec under this repository rule when `tsp-location.yaml` is absent.
 
@@ -70,16 +65,7 @@ For `.Autorest` changes, require these related updates unless the PR is document
 - `src/<Module>/<Module>/Az.<Module>.psd1`
 - For a new or rebranded module: `tools/CreateMappings_rules.json`
 
-After a generated-module PR merges:
-
-- A `[skip ci] Archive ...` PR should be created for protected branches.
-- Verify that archive changes are only under `generated/**`.
-- Verify `generated/<Module>/<SubModule>.Autorest/generate-info.json` changed.
-- Ensure the archive PR is also reviewed and merged.
-
-Protected branches include `main`, `release-*`, `Az.*`, `LTS`, `generation-LTS`, `stack-dev`, `preview`, `AzureRM*`, `DeploymentRollouts`, `Compute-*`, and documented test or generation branches.
-
-`release-network-*` is excluded. For non-protected branches, remind the reviewer to manually trigger Azure DevOps pipeline definition `787` with the branch and affected modules.
+For an archive PR, verify that changes are limited to `generated/**` and that the relevant `generate-info.json` changed.
 
 ### New modules
 
@@ -91,25 +77,7 @@ For each changed `src/<ModuleName>/`:
 2. If absent, inspect added `.psd1`, `.csproj`, `.sln`, `.Autorest/README.md`, module mapping, help, and packaging files.
 3. Treat rebrands as new-module onboarding when they create a new distributable module identity.
 
-Do not merge a new module until:
-
-1. Code review is complete.
-2. An MCR manifest PR updates `microsoft/mcr/teams/psresource/azurepsmar.yaml`.
-3. The MAR team approves that PR.
-
-MCR/MAR approval is a merge blocker.
-
-### Out-of-band releases
-
-If the target is a module branch such as:
-
-- `Az.<Module>`
-- `Az.<Module>-preview`
-- `<Module>-preview`
-
-flag a likely out-of-band release and remind the Scrum Master to trigger the OOB release process.
-
-Do not flag `main` or normal release branches solely because they contain a module name.
+For a new or rebranded module, check whether the PR links the required onboarding work for `microsoft/mcr/teams/psresource/azurepsmar.yaml` and its MAR approval. If the evidence is absent, comment on the missing onboarding requirement and apply `needs-revision`.
 
 ## Phase 2: Code Review
 
@@ -119,7 +87,6 @@ Do not flag `main` or normal release branches solely because they contain a modu
 - Link the tracked issue when applicable.
 - Public cmdlet API changes require a completed design review linked from the PR.
 - Large or user-visible changes require service-team owner sign-off.
-- Commits should be reasonably small and purposeful.
 
 ### Changelog and versioning
 
@@ -134,7 +101,7 @@ Treat the changelog as mandatory unless a clear exception applies.
 
 - Check `BreakingChangeAnalyzer` results.
 - Inspect `BreakingChangeIssues.csv`, `SignatureIssues.csv`, and other suppression changes.
-- Stable modules must not introduce unapproved breaking changes.
+- Stable modules must not introduce breaking changes without explicit justification.
 - Preview suppressions still require intentionality and service-owner confirmation.
 - Verify parameter names, aliases, types, mandatory state, positions, parameter sets, pipeline binding, output types, and defaults.
 - Cmdlets with multiple parameter sets require an interactive `DefaultParameterSetName`.
@@ -215,29 +182,47 @@ Pay extra attention to:
 5. Tests that assert only null or default values.
 6. Resolved or suppressed Copilot comments whose underlying issue remains.
 
-## Review Result
+## Review Actions
 
-Use one of:
+### Post review comments
 
-- `HANDOFF_CODEGEN` — Swagger-sourced `.Autorest` PR requiring Codegen Squad migration.
-- `BLOCKED_NEW_MODULE` — MCR/MAR onboarding is incomplete.
-- `NEEDS_OOB_RELEASE` — the Scrum Master must trigger the OOB process.
-- `APPROVE` — no blocking correctness or process issue remains.
-- `REQUEST_CHANGES` — concrete blocking findings remain.
-- `NEEDS_SERVICE_OWNER` — behavior or compatibility requires owner confirmation.
+Post comments for concrete correctness, user-impact, test-coverage, documentation, compatibility, or required-review issues.
 
-Lead with the recommendation. Include only high-confidence findings and state:
+- Prefer inline comments on the smallest relevant changed line.
+- Post one issue per comment.
+- Do not post a duplicate when an equivalent open, resolved, or suppressed comment already exists.
+- If a prior comment exists but the issue remains, refer to that thread instead of restating it.
+- Do not comment on speculative risks without evidence from code, tests, recordings, API behavior, or repository precedent.
+- Prioritize issues that can make a cmdlet fail, modify the wrong resource, lose configuration, expose an unsafe public contract, or ship without meaningful validation.
 
-- Severity.
-- Exact file and line.
-- User impact.
-- Evidence.
-- Suggested fix.
-- Whether an equivalent comment already exists.
+Each comment should:
 
-Write comments like a teammate:
-
-- Start with the observed behavior.
+- Start with the observed behavior and user impact.
 - Include the smallest concrete example or recording evidence.
-- Ask for the intended fix or owner confirmation.
+- Ask for a specific fix or confirmation.
 - Avoid boilerplate labels and exaggerated severity.
+
+### Apply labels
+
+Use only labels that already exist in this repository. Preserve unrelated existing labels.
+
+- Apply the module or service label matching the changed area, such as `Network`, `SQL`, `Compute`, or `KeyVault`.
+- Apply `needs-revision` when blocking review comments require author changes.
+- Apply `Cmdlet Review Required :warning:` when public cmdlet API changes lack a completed design review.
+- Apply `Contains Breaking Change` only for a verified public breaking change.
+- Apply `Merge Conflicts` when GitHub reports that the PR conflicts with its target branch.
+- Apply `Generator` for AutoRest or code-generation concerns.
+- Apply `Test Debt` when required live, scenario, or playback coverage is absent.
+- Apply `ps1xml` when the issue concerns PowerShell formatting data.
+- Apply `Service Attention` when a behavior or compatibility decision requires service-owner input.
+
+Do not invent labels. Do not use a label as a substitute for a review comment that explains the issue.
+
+### Final summary
+
+After commenting and labeling, summarize:
+
+- The concrete issues commented on.
+- Existing comments that already cover unresolved issues.
+- Labels added.
+- Whether no additional high-confidence issue was found.
