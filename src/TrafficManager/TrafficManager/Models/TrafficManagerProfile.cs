@@ -70,8 +70,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                 this.Name,
                 Constants.ProfileType,
                 tags,
-                this.RecordType,
-                TrafficManagerClient.ProfileResourceLocation)
+                location: TrafficManagerClient.ProfileResourceLocation,
+                recordType: this.RecordType)
             {
                 ProfileStatus = this.ProfileStatus,
                 TrafficRoutingMethod = this.TrafficRoutingMethod,
