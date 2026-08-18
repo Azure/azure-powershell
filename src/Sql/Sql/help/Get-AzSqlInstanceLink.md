@@ -62,6 +62,7 @@ PartnerLinkRole                  : Primary
 ReplicationMode                  : Async
 FailoverMode                     : Manual
 SeedingMode                      : Automatic
+LinkMode                         : SingleDatabase
 ```
 
 This command gets information about the instance link named "Link01" on instance "Instance01" and resource group "ResourceGroup01".
@@ -88,6 +89,7 @@ PartnerLinkRole                  : Primary
 ReplicationMode                  : Async
 FailoverMode                     : Manual
 SeedingMode                      : Automatic
+LinkMode                         : SingleDatabase
 
 ResourceGroupName                : ResourceGroup01
 InstanceName                     : ManagedInstance01
@@ -105,6 +107,7 @@ PartnerLinkRole                  : Primary
 ReplicationMode                  : Async
 FailoverMode                     : Manual
 SeedingMode                      : Automatic
+LinkMode                         : SingleDatabase
 ```
 
 This command gets information about all active instance links on instance "ManagedInstance01" and resource group "ResourceGroup01".
@@ -132,6 +135,7 @@ PartnerLinkRole                  : Primary
 ReplicationMode                  : Async
 FailoverMode                     : Manual
 SeedingMode                      : Automatic
+LinkMode                         : SingleDatabase
 
 ResourceGroupName                : ResourceGroup01
 InstanceName                     : ManagedInstance01
@@ -149,6 +153,7 @@ PartnerLinkRole                  : Primary
 ReplicationMode                  : Async
 FailoverMode                     : Manual
 SeedingMode                      : Automatic
+LinkMode                         : SingleDatabase
 ```
 
 This command gets information on all active instance links on the instance "ManagedInstance01".
@@ -175,6 +180,7 @@ PartnerLinkRole                  : Primary
 ReplicationMode                  : Async
 FailoverMode                     : Manual
 SeedingMode                      : Automatic
+LinkMode                         : SingleDatabase
 
 ResourceGroupName                : ResourceGroup01
 InstanceName                     : ManagedInstance01
@@ -192,6 +198,7 @@ PartnerLinkRole                  : Primary
 ReplicationMode                  : Async
 FailoverMode                     : Manual
 SeedingMode                      : Automatic
+LinkMode                         : SingleDatabase
 ```
 
 This command gets information about all instance links for the instance "ManagedInstance01".
@@ -218,6 +225,7 @@ PartnerLinkRole                  : Primary
 ReplicationMode                  : Async
 FailoverMode                     : Manual
 SeedingMode                      : Automatic
+LinkMode                         : SingleDatabase
 ```
 
 This command gets information about the instance link named "Link01".
@@ -244,6 +252,7 @@ PartnerLinkRole                  : Primary
 ReplicationMode                  : Async
 FailoverMode                     : Manual
 SeedingMode                      : Automatic
+LinkMode                         : SingleDatabase
 
 ResourceGroupName                : ResourceGroup01
 InstanceName                     : ManagedInstance01
@@ -261,6 +270,7 @@ PartnerLinkRole                  : Primary
 ReplicationMode                  : Async
 FailoverMode                     : Manual
 SeedingMode                      : Automatic
+LinkMode                         : SingleDatabase
 ```
 
 This command gets information about all instance links within the instance "ManagedInstance01".
@@ -287,6 +297,7 @@ PartnerLinkRole                  : Primary
 ReplicationMode                  : Async
 FailoverMode                     : Manual
 SeedingMode                      : Automatic
+LinkMode                         : SingleDatabase
 ```
 
 This command gets information about the instance link named "Link01: within the instance "Instance01".
@@ -313,6 +324,7 @@ PartnerLinkRole                  : Primary
 ReplicationMode                  : Async
 FailoverMode                     : Manual
 SeedingMode                      : Automatic
+LinkMode                         : SingleDatabase
 ```
 
 This command gets information about the instance link named "Link01" on instance "Instance01" and resource group "ResourceGroup01".
