@@ -65,7 +65,7 @@ SeedingMode                      : Automatic
 LinkMode                         : SingleDatabase
 ```
 
-This command gets information about the instance link named "Link01" on instance "Instance01" and resource group "ResourceGroup01".
+This command gets information about the instance link named "Link01" on instance "ManagedInstance01" and resource group "ResourceGroup01".
 
 ### Example 2: Get information about all active links on Azure SQL Managed Instance
 ```powershell
@@ -300,7 +300,7 @@ SeedingMode                      : Automatic
 LinkMode                         : SingleDatabase
 ```
 
-This command gets information about the instance link named "Link01: within the instance "Instance01".
+This command gets information about the instance link named "Link01: within the instance "ManagedInstance01".
 
 ### Example 8: Get information about instance link using positional parameters
 ```powershell
@@ -327,7 +327,7 @@ SeedingMode                      : Automatic
 LinkMode                         : SingleDatabase
 ```
 
-This command gets information about the instance link named "Link01" on instance "Instance01" and resource group "ResourceGroup01".
+This command gets information about the instance link named "Link01" on instance "ManagedInstance01" and resource group "ResourceGroup01".
 
 ## PARAMETERS
 
