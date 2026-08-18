@@ -300,7 +300,7 @@ SeedingMode                      : Automatic
 LinkMode                         : SingleDatabase
 ```
 
-This command gets information about the instance link named "Link01: within the instance "ManagedInstance01".
+This command gets information about the instance link named "Link01": within the instance "ManagedInstance01".
 
 ### Example 8: Get information about instance link using positional parameters
 ```powershell
