@@ -8,8 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
     using Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PowerShell;
 
     /// <summary>An error response from the service.</summary>
-    [System.ComponentModel.TypeConverter(typeof(CommonCloudErrorBodyTypeConverter))]
-    public partial class CommonCloudErrorBody
+    [System.ComponentModel.TypeConverter(typeof(CloudErrorBodyTypeConverter))]
+    public partial class CloudErrorBody
     {
 
         /// <summary>
@@ -63,11 +63,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonCloudErrorBody"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CloudErrorBody"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal CommonCloudErrorBody(global::System.Collections.IDictionary content)
+        internal CloudErrorBody(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -78,29 +78,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             // actually deserialize
             if (content.Contains("Code"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Code, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Code, global::System.Convert.ToString);
             }
             if (content.Contains("Message"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Message, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Message, global::System.Convert.ToString);
             }
             if (content.Contains("Target"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Target, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Target, global::System.Convert.ToString);
             }
             if (content.Contains("Detail"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonCloudErrorBodyTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CloudErrorBodyTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonCloudErrorBody"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CloudErrorBody"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal CommonCloudErrorBody(global::System.Management.Automation.PSObject content)
+        internal CloudErrorBody(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -111,55 +111,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             // actually deserialize
             if (content.Contains("Code"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Code, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Code, global::System.Convert.ToString);
             }
             if (content.Contains("Message"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Message, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Message, global::System.Convert.ToString);
             }
             if (content.Contains("Target"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Target, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Target, global::System.Convert.ToString);
             }
             if (content.Contains("Detail"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBodyInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonCloudErrorBodyTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBodyInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CloudErrorBodyTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonCloudErrorBody"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CloudErrorBody"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new CommonCloudErrorBody(content);
+            return new CloudErrorBody(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonCloudErrorBody"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CloudErrorBody"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new CommonCloudErrorBody(content);
+            return new CloudErrorBody(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="CommonCloudErrorBody" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="CloudErrorBody" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="CommonCloudErrorBody" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonCloudErrorBody FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonNode.Parse(jsonText));
+        /// <returns>an instance of the <see cref="CloudErrorBody" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudErrorBody FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -179,8 +179,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         }
     }
     /// An error response from the service.
-    [System.ComponentModel.TypeConverter(typeof(CommonCloudErrorBodyTypeConverter))]
-    public partial interface ICommonCloudErrorBody
+    [System.ComponentModel.TypeConverter(typeof(CloudErrorBodyTypeConverter))]
+    public partial interface ICloudErrorBody
 
     {
 
