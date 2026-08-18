@@ -136,12 +136,15 @@ namespace Microsoft.Azure.Commands.Network.Models
 
             set
             {
-                if (this.GlobalConfiguration == null)
+                if (this.GlobalConfiguration == null && !string.Equals(this.Sku.Tier, "Standard", StringComparison.OrdinalIgnoreCase) && !string.Equals(this.Sku.Tier, "WAF", StringComparison.OrdinalIgnoreCase))
                 {
                     this.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
                 }
 
-                this.GlobalConfiguration.DisableDefaultServerHeaderInResponse = value;
+                if (this.GlobalConfiguration != null)
+                {
+                    this.GlobalConfiguration.DisableDefaultServerHeaderInResponse = value;
+                }
             }
         }
 

@@ -1381,22 +1381,24 @@ function Test-ApplicationGatewayGlobalConfig
 		# Delete Application Gateway
 		Remove-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
 
-		# Create Application Gateway with request and response buffering set and assert that the values are set properly
-		$getgw2 = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01 -EnableRequestBuffering $false -EnableResponseBuffering $true
+		# Create Application Gateway with global configuration values set and assert that the values are set properly
+		$getgw2 = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01 -EnableRequestBuffering $false -EnableResponseBuffering $true -DisableDefaultServerHeaderInResponse $true
 
 		$getgw3 = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 		Assert-AreEqual "Running" $getgw3.OperationalState
 
 		Assert-AreEqual $false $getgw3.EnableRequestBuffering
 		Assert-AreEqual $true $getgw3.EnableResponseBuffering
+		Assert-AreEqual $true $getgw3.DisableDefaultServerHeaderInResponse
 
-		# Assert that the values for request and response buffering remain after other powershell commands are executed (ensure bug is fixed)
+		# Assert that the global configuration values remain after other PowerShell commands are executed
 		$getgw3 = Set-AzApplicationGatewayBackendAddressPool -ApplicationGateway $getgw3 -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com, www.amazon.com
 		Set-AzApplicationGateway -ApplicationGateway $getgw3
 		$getgw3 = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 
 		Assert-AreEqual $false $getgw3.EnableRequestBuffering
 		Assert-AreEqual $true $getgw3.EnableResponseBuffering
+		Assert-AreEqual $true $getgw3.DisableDefaultServerHeaderInResponse
 
 		# Stop Application Gateway
 		$getgw2Stopped = Stop-AzApplicationGateway -ApplicationGateway $getgw3
