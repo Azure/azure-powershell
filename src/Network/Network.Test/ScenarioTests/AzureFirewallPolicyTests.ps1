@@ -2060,6 +2060,31 @@ function Test-AzureFirewallPolicySizeProperty {
     }
 }
 
+function Test-AzureFirewallPolicyAfcManaged {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $location = "westus2"
+
+    try {
+        # Create the resource group
+        New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create AzureFirewallPolicy
+        New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location
+
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        # AfcManaged is a read-only property surfaced from the RP; a standard policy is not AFC-managed
+        Assert-Null $getAzureFirewallPolicy.AfcManaged
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 function Test-AzureFirewallPolicyRuleCollectionGroupSizeProperty {
     # Setup
     $rgname = Get-ResourceGroupName
