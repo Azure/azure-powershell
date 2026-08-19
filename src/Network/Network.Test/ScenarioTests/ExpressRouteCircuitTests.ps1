@@ -155,7 +155,7 @@ function Test-ExpressRouteCircuitMultiCloudWithPartnerAccountIdCRUD
     $circuitName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "West US 2"
-    $partnerAccountId = "123456789012"
+    $partnerAccountId = "123456789"
 
     try
     {
@@ -163,7 +163,7 @@ function Test-ExpressRouteCircuitMultiCloudWithPartnerAccountIdCRUD
 
       $circuit = New-AzExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname `
           -SkuTier MultiCloud -SkuFamily MeteredData `
-          -ServiceProviderName "aws" -PeeringLocation "uswest2" -BandwidthInMbps 100 `
+          -ServiceProviderName "aws" -PeeringLocation "uswest2" -BandwidthInMbps 1000 `
           -PartnerAccountId $partnerAccountId
 
       $getCircuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
@@ -174,8 +174,8 @@ function Test-ExpressRouteCircuitMultiCloudWithPartnerAccountIdCRUD
       Assert-AreEqual "AWS" $getCircuit.ServiceProviderProperties.ServiceProviderName
       Assert-AreEqual "uswest2" $getCircuit.ServiceProviderProperties.PeeringLocation
       Assert-AreEqual $partnerAccountId $getCircuit.PartnerAccountId
-      Assert-Null $getCircuit.ActivationKey
-      Assert-NotNull $getCircuit.ResiliencyLevel
+      Assert-NotNull $getCircuit.ActivationKey
+      Assert-AreEqual "Maximum" $getCircuit.ResiliencyLevel
 
       $delete = Remove-AzExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
       Assert-AreEqual true $delete
@@ -197,7 +197,7 @@ function Test-ExpressRouteCircuitMultiCloudWithActivationKeyCRUD
     $circuitName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "West US 2"
-    $activationKey = "dGVzdC1hY3RpdmF0aW9uLWtleQ=="
+    $activationKey = "eyJjb25uZWN0aW9uU2l6ZU1icHMiOjEwMDAsInNoYXJlZENvbm5lY3Rpb25VdWlkIjoiOTE1Nzg2YjAtNjA4Ny00YzNiLThiNjktNDAxOTFkMzMxNDVmIiwiZGVzdGluYXRpb25BY2NvdW50SWQiOiI3ZDc0N2VlZC1iNDRjLTQyNTctOGQ0My1kZjllYmQ5NDU0NmIiLCJ2ZXJzaW9uIjoxLCJkZXN0aW5hdGlvbkVudmlyb25tZW50VXJpIjoiaHR0cHM6Ly9lYXN0dXMyZXVhcC1tdWx0aWNsb3VkLnBhcnRuZXItaW50ZXJjb25uZWN0LmF6dXJlLmNvbS9wcm92aWRlcnMvYXdzL2Vudmlyb25tZW50cy91c2Vhc3QyZXVhcCJ9"
 
     try
     {
@@ -205,7 +205,7 @@ function Test-ExpressRouteCircuitMultiCloudWithActivationKeyCRUD
 
       $circuit = New-AzExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname `
           -SkuTier MultiCloud -SkuFamily MeteredData `
-          -ServiceProviderName "AWS" -PeeringLocation "uswest2" -BandwidthInMbps 500 `
+          -ServiceProviderName "AWS" -PeeringLocation "uswest2" -BandwidthInMbps 1000 `
           -ActivationKey $activationKey
 
       $getCircuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
@@ -213,8 +213,8 @@ function Test-ExpressRouteCircuitMultiCloudWithActivationKeyCRUD
       Assert-AreEqual "MultiCloud_MeteredData" $getCircuit.Sku.Name
       Assert-AreEqual "MultiCloud" $getCircuit.Sku.Tier
       Assert-AreEqual "AWS" $getCircuit.ServiceProviderProperties.ServiceProviderName
-      Assert-Null $getCircuit.PartnerAccountId
-      Assert-NotNull $getCircuit.ResiliencyLevel
+      Assert-NotNull $getCircuit.ActivationKey
+      Assert-AreEqual "Maximum" $getCircuit.ResiliencyLevel
 
       $delete = Remove-AzExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
       Assert-AreEqual true $delete
