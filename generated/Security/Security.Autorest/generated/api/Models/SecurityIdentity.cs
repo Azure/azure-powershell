@@ -36,6 +36,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Security.Origin(Microsoft.Azure.PowerShell.Cmdlets.Security.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
+        private string _operationId;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Security.Origin(Microsoft.Azure.PowerShell.Cmdlets.Security.PropertyOrigin.Owned)]
+        public string OperationId { get => this._operationId; set => this._operationId = value; }
+
         /// <summary>Backing field for <see cref="OperationResultId" /> property.</summary>
         private string _operationResultId;
 
@@ -79,6 +85,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Security.Origin(Microsoft.Azure.PowerShell.Cmdlets.Security.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="ResourceId" /> property.</summary>
+        private string _resourceId;
+
+        /// <summary>The fully qualified Azure Resource manager identifier of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Security.Origin(Microsoft.Azure.PowerShell.Cmdlets.Security.PropertyOrigin.Owned)]
+        public string ResourceId { get => this._resourceId; set => this._resourceId = value; }
+
+        /// <summary>Backing field for <see cref="RuleId" /> property.</summary>
+        private string _ruleId;
+
+        /// <summary>The rule Id.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Security.Origin(Microsoft.Azure.PowerShell.Cmdlets.Security.PropertyOrigin.Owned)]
+        public string RuleId { get => this._ruleId; set => this._ruleId = value; }
+
+        /// <summary>Backing field for <see cref="ScanId" /> property.</summary>
+        private string _scanId;
+
+        /// <summary>The scan Id. Type 'latest' to get the scan record for the latest scan.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Security.Origin(Microsoft.Azure.PowerShell.Cmdlets.Security.PropertyOrigin.Owned)]
+        public string ScanId { get => this._scanId; set => this._scanId = value; }
+
+        /// <summary>Backing field for <see cref="ScanResultId" /> property.</summary>
+        private string _scanResultId;
+
+        /// <summary>The rule Id of the results.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Security.Origin(Microsoft.Azure.PowerShell.Cmdlets.Security.PropertyOrigin.Owned)]
+        public string ScanResultId { get => this._scanResultId; set => this._scanResultId = value; }
 
         /// <summary>Backing field for <see cref="SecurityConnectorName" /> property.</summary>
         private string _securityConnectorName;
@@ -146,6 +180,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"",
+        SerializedName = @"operationId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OperationId { get; set; }
         /// <summary>The operation result Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Info(
         Required = false,
@@ -214,6 +259,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>The fully qualified Azure Resource manager identifier of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The fully qualified Azure Resource manager identifier of the resource.",
+        SerializedName = @"resourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceId { get; set; }
+        /// <summary>The rule Id.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The rule Id.",
+        SerializedName = @"ruleId",
+        PossibleTypes = new [] { typeof(string) })]
+        string RuleId { get; set; }
+        /// <summary>The scan Id. Type 'latest' to get the scan record for the latest scan.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The scan Id. Type 'latest' to get the scan record for the latest scan.",
+        SerializedName = @"scanId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ScanId { get; set; }
+        /// <summary>The rule Id of the results.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The rule Id of the results.",
+        SerializedName = @"scanResultId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ScanResultId { get; set; }
         /// <summary>The security connector name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Info(
         Required = false,
@@ -261,6 +350,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         string GroupFqName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+
+        string OperationId { get; set; }
         /// <summary>The operation result Id.</summary>
         string OperationResultId { get; set; }
         /// <summary>The Azure DevOps organization name.</summary>
@@ -275,6 +366,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         /// The name of the resource group within the user's subscription. The name is case insensitive.
         /// </summary>
         string ResourceGroupName { get; set; }
+        /// <summary>The fully qualified Azure Resource manager identifier of the resource.</summary>
+        string ResourceId { get; set; }
+        /// <summary>The rule Id.</summary>
+        string RuleId { get; set; }
+        /// <summary>The scan Id. Type 'latest' to get the scan record for the latest scan.</summary>
+        string ScanId { get; set; }
+        /// <summary>The rule Id of the results.</summary>
+        string ScanResultId { get; set; }
         /// <summary>The security connector name.</summary>
         string SecurityConnectorName { get; set; }
         /// <summary>The name of the API Management service.</summary>
