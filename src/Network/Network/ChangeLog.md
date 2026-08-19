@@ -50,6 +50,9 @@
     - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
     - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
     - DDoS custom policy association does not require a specific DDoS protection mode.
+* Added cmdlets to create, retrieve, update, and remove First Party Service Tag resources.
+    - Added `New-AzFirstPartyServiceTag`, `Get-AzFirstPartyServiceTag`, `Set-AzFirstPartyServiceTag`, and `Remove-AzFirstPartyServiceTag`.
+    - Added first party service tag association support to `New-AzPublicIpTag`.
 * Added new cmdlet to retrieve effective routes for a Virtual Network Gateway
     - `Get-AzVirtualNetworkGatewayEffectiveRoute` : Get effective routes for a Virtual Network Gateway
 * Added the `-Mode` and `-Scope` parameters to `New-AzLoadBalancer`.
