@@ -60,8 +60,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="enableOnlyIpv6Peering">Enable Only IPv6 Peering for this connection.
-        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
-        public HubVirtualNetworkConnection(string id = default(string), string name = default(string), string etag = default(string), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string provisioningState = default(string), SubResource remoteVirtualNetwork = default(SubResource), bool? allowHubToRemoteVnetTransit = default(bool?), bool? allowRemoteVnetToUseHubVnetGateways = default(bool?), SubResource connectionPolicy = default(SubResource), bool? enableInternetSecurity = default(bool?), string enableOnlyIpv6Peering = default(string))
+        /// </param>
+        public HubVirtualNetworkConnection(string id = default(string), string name = default(string), string etag = default(string), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string provisioningState = default(string), SubResource remoteVirtualNetwork = default(SubResource), bool? allowHubToRemoteVnetTransit = default(bool?), bool? allowRemoteVnetToUseHubVnetGateways = default(bool?), SubResource connectionPolicy = default(SubResource), bool? enableInternetSecurity = default(bool?), bool? enableOnlyIpv6Peering = default(bool?))
 
         : base(id)
         {
@@ -144,9 +144,9 @@ namespace Microsoft.Azure.Management.Network.Models
         public bool? EnableInternetSecurity {get; set; }
 
         /// <summary>
-        /// Gets or sets enable Only IPv6 Peering for this connection. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// Gets or sets enable Only IPv6 Peering for this connection.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableOnlyIpv6Peering")]
-        public string EnableOnlyIpv6Peering {get; set; }
+        public bool? EnableOnlyIpv6Peering {get; set; }
     }
 }

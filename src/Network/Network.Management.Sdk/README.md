@@ -66,6 +66,13 @@ directive:
           $["FirstPartyServiceTagPropertiesFormat"].properties.resourceGuid;
         delete $["FirstPartyServiceTagPropertiesFormat"].properties.resourceGuid;
       }
+# NRP wire format uses boolean for enableOnlyIpv6Peering, override the shared swagger enum.
+  - from: common.json
+    where: $.definitions.EnableOnlyIpv6PeeringState
+    transform: >
+      $.type = "boolean";
+      delete $.enum;
+      delete $["x-ms-enum"];
 # start of directives added by xiaogang
 # Remove lro response headers. Srijani, you may ignore this part.
   - from: swagger-document
