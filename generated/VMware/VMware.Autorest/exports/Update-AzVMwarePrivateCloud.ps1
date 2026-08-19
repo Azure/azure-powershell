@@ -255,6 +255,12 @@ param(
     ${VcenterPassword},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense]
+    # The private cloud license
+    ${VcfLicense},
+
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
     [System.String[]]

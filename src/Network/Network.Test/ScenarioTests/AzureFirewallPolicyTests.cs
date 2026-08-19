@@ -209,9 +209,25 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyAfcManaged()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyAfcManaged");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallPolicyRuleCollectionGroupSizeProperty()
         {
             TestRunner.RunTestScript("Test-AzureFirewallPolicyRuleCollectionGroupSizeProperty");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyKubeSelectorGroupCRUD()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyKubeSelectorGroupCRUD");
         }
 
         [Fact]

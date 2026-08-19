@@ -1,0 +1,25 @@
+{
+  "properties": {
+    "marketplace": {
+      "marketplaceSubscriptionId": "00000000-0000-0000-0000-000000000000",
+      "planId": "plus1",
+      "offerId": "dell-managed-powerscale-for-azure",
+      "publisherId": "dellemc",
+      "planName": "Plus Plan",
+      "termUnit": "P1Y"
+    },
+    "delegatedSubnetId": "/subscriptions/834be33e-67e6-45ed-a454-c25a34cdec1f/resourceGroups/santhosh-test/providers/Microsoft.Network/virtualNetworks/eastus2euap-vnet-test/subnets/default",
+    "delegatedSubnetCidr": "10.0.0.0/24",
+    "user": {
+      "email": "dummy@example.com"
+    },
+    "dellReferenceNumber": "3123123",
+    "encryption": {
+      "encryptionType": "Microsoft-managed keys (MMK)"
+    }
+  },
+  "location": "eastus2euap",
+  "tags": {
+    "bypassPartner": "true"
+  }
+}

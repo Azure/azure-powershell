@@ -434,11 +434,23 @@ Gets a Azure Firewall Policy
 ### [Get-AzFirewallPolicyDraft](Get-AzFirewallPolicyDraft.md)
 Gets an Azure Firewall Policy Draft.
 
+### [Get-AzFirewallPolicyKubeSelectorGroup](Get-AzFirewallPolicyKubeSelectorGroup.md)
+Gets a Kube Selector Group from an Azure Firewall Policy.
+
 ### [Get-AzFirewallPolicyRuleCollectionGroup](Get-AzFirewallPolicyRuleCollectionGroup.md)
 Gets a Azure Firewall Policy Rule Collection Group
 
 ### [Get-AzFirewallPolicyRuleCollectionGroupDraft](Get-AzFirewallPolicyRuleCollectionGroupDraft.md)
 Gets an Azure Firewall Policy Rule Collection Group Draft.
+
+### [Get-AzInterconnectGroup](Get-AzInterconnectGroup.md)
+Gets an interconnect group.
+
+### [Get-AzInterconnectGroupNodeAvailability](Get-AzInterconnectGroupNodeAvailability.md)
+Gets the node availability of an interconnect group.
+
+### [Get-AzInterconnectGroupSubgroup](Get-AzInterconnectGroupSubgroup.md)
+Gets a subgroup of an interconnect group.
 
 ### [Get-AzIpAllocation](Get-AzIpAllocation.md)
 Gets a Azure IpAllocation.
@@ -1231,6 +1243,15 @@ Create a new Azure Firewall Policy Nat Rule Collection
 ### [New-AzFirewallPolicyNetworkRule](New-AzFirewallPolicyNetworkRule.md)
 Create a new Azure Firewall Policy Network Rule
 
+### [New-AzFirewallPolicyKubeLabelSelector](New-AzFirewallPolicyKubeLabelSelector.md)
+Creates an in-memory Kubernetes label selector for use in a Kube Selector Group.
+
+### [New-AzFirewallPolicyKubeSelectorGroup](New-AzFirewallPolicyKubeSelectorGroup.md)
+Creates a Kube Selector Group on an Azure Firewall Policy.
+
+### [New-AzFirewallPolicyLabelSelectorExpression](New-AzFirewallPolicyLabelSelectorExpression.md)
+Creates an in-memory label selector requirement (match expression).
+
 ### [New-AzFirewallPolicyRuleCollectionGroup](New-AzFirewallPolicyRuleCollectionGroup.md)
 Create a new Azure Firewall Policy Rule Collection Group
 
@@ -1254,6 +1275,9 @@ Create a new threat intelligence allowlist for Azure Firewall
 
 ### [New-AzGatewayCustomBgpIpConfigurationObject](New-AzGatewayCustomBgpIpConfigurationObject.md)
 creates a new GatewayCustomBgpIpConfigurationObject.
+
+### [New-AzInterconnectGroup](New-AzInterconnectGroup.md)
+Creates an interconnect group.
 
 ### [New-AzIpAllocation](New-AzIpAllocation.md)
 Creates an Azure IpAllocation.
@@ -1881,11 +1905,17 @@ Removes an Azure Firewall Policy
 ### [Remove-AzFirewallPolicyDraft](Remove-AzFirewallPolicyDraft.md)
 Removes an Azure Firewall Policy
 
+### [Remove-AzFirewallPolicyKubeSelectorGroup](Remove-AzFirewallPolicyKubeSelectorGroup.md)
+Removes a Kube Selector Group from an Azure Firewall Policy.
+
 ### [Remove-AzFirewallPolicyRuleCollectionGroup](Remove-AzFirewallPolicyRuleCollectionGroup.md)
 Removes a Azure Firewall Policy Rule Collection Group in a Azure firewall policy
 
 ### [Remove-AzFirewallPolicyRuleCollectionGroupDraft](Remove-AzFirewallPolicyRuleCollectionGroupDraft.md)
 Removes an Azure Firewall Policy Rule Collection Group draft in an Azure firewall policy.
+
+### [Remove-AzInterconnectGroup](Remove-AzInterconnectGroup.md)
+Removes an interconnect group.
 
 ### [Remove-AzIpAllocation](Remove-AzIpAllocation.md)
 Deletes an Azure IpAllocation.
@@ -2349,11 +2379,17 @@ Saves a modified azure firewall policy
 ### [Set-AzFirewallPolicyDraft](Set-AzFirewallPolicyDraft.md)
 Saves a modified azure firewall policy draft
 
+### [Set-AzFirewallPolicyKubeSelectorGroup](Set-AzFirewallPolicyKubeSelectorGroup.md)
+Updates a Kube Selector Group on an Azure Firewall Policy.
+
 ### [Set-AzFirewallPolicyRuleCollectionGroup](Set-AzFirewallPolicyRuleCollectionGroup.md)
 saves a modified azure firewall policy rule collection group
 
 ### [Set-AzFirewallPolicyRuleCollectionGroupDraft](Set-AzFirewallPolicyRuleCollectionGroupDraft.md)
 Sets a modified Azure Firewall Policy Rule Collection Group draft.
+
+### [Set-AzInterconnectGroup](Set-AzInterconnectGroup.md)
+Updates an interconnect group.
 
 ### [Set-AzIpAllocation](Set-AzIpAllocation.md)
 Saves a modified IpAllocation.
