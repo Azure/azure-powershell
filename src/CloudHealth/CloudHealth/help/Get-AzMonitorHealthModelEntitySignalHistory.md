@@ -15,58 +15,57 @@ Retrieve the time series history for a signal on an entity
 ### GetExpanded (Default)
 ```
 Get-AzMonitorHealthModelEntitySignalHistory -EntityName <String> -HealthModelName <String>
- -ResourceGroupName <String> -SignalName <String> [-SubscriptionId <String[]>] [-EndAt <DateTime>]
- [-NextMarker <String>] [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] -SignalName <String> [-EndAt <DateTime>]
+ [-NextMarker <String>] [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### Get
+### GetViaJsonString
 ```
 Get-AzMonitorHealthModelEntitySignalHistory -EntityName <String> -HealthModelName <String>
- -ResourceGroupName <String> -Body <ISignalHistoryRequest> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzMonitorHealthModelEntitySignalHistory -InputObject <ICloudHealthIdentity> -Body <ISignalHistoryRequest>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentityExpanded
-```
-Get-AzMonitorHealthModelEntitySignalHistory -InputObject <ICloudHealthIdentity> -SignalName <String>
- [-EndAt <DateTime>] [-NextMarker <String>] [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentityHealthmodel
-```
-Get-AzMonitorHealthModelEntitySignalHistory -EntityName <String>
- -HealthmodelInputObject <ICloudHealthIdentity> -Body <ISignalHistoryRequest> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentityHealthmodelExpanded
-```
-Get-AzMonitorHealthModelEntitySignalHistory -EntityName <String>
- -HealthmodelInputObject <ICloudHealthIdentity> -SignalName <String> [-EndAt <DateTime>]
- [-NextMarker <String>] [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] -JsonString <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaJsonFilePath
 ```
 Get-AzMonitorHealthModelEntitySignalHistory -EntityName <String> -HealthModelName <String>
- -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### GetViaJsonString
+### GetViaIdentityHealthmodelExpanded
+```
+Get-AzMonitorHealthModelEntitySignalHistory -EntityName <String> -HealthmodelInputObject <ICloudHealthIdentity>
+ -SignalName <String> [-EndAt <DateTime>] [-NextMarker <String>] [-StartAt <DateTime>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityHealthmodel
+```
+Get-AzMonitorHealthModelEntitySignalHistory -EntityName <String> -HealthmodelInputObject <ICloudHealthIdentity>
+ -Body <ISignalHistoryRequest> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get
 ```
 Get-AzMonitorHealthModelEntitySignalHistory -EntityName <String> -HealthModelName <String>
- -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] -Body <ISignalHistoryRequest>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityExpanded
+```
+Get-AzMonitorHealthModelEntitySignalHistory -InputObject <ICloudHealthIdentity> -SignalName <String>
+ [-EndAt <DateTime>] [-NextMarker <String>] [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzMonitorHealthModelEntitySignalHistory -InputObject <ICloudHealthIdentity> -Body <ISignalHistoryRequest>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +89,7 @@ Request body for getting signal history
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalHistoryRequest
-Parameter Sets: Get, GetViaIdentity, GetViaIdentityHealthmodel
+Parameter Sets: GetViaIdentityHealthmodel, Get, GetViaIdentity
 Aliases:
 
 Required: True
@@ -122,7 +121,7 @@ Defaults to now if not specified.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityHealthmodelExpanded
+Parameter Sets: GetExpanded, GetViaIdentityHealthmodelExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -138,7 +137,7 @@ Must be unique within a health model.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded, GetViaIdentityHealthmodel, GetViaIdentityHealthmodelExpanded, GetViaJsonFilePath, GetViaJsonString
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, GetViaIdentityHealthmodelExpanded, GetViaIdentityHealthmodel, Get
 Aliases:
 
 Required: True
@@ -153,7 +152,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-Parameter Sets: GetViaIdentityHealthmodel, GetViaIdentityHealthmodelExpanded
+Parameter Sets: GetViaIdentityHealthmodelExpanded, GetViaIdentityHealthmodel
 Aliases:
 
 Required: True
@@ -168,7 +167,7 @@ Name of health model resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get
 Aliases:
 
 Required: True
@@ -183,7 +182,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentityExpanded
+Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
 Aliases:
 
 Required: True
@@ -229,7 +228,7 @@ Must not be combined with startAt or endAt.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityHealthmodelExpanded
+Parameter Sets: GetExpanded, GetViaIdentityHealthmodelExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -245,7 +244,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get
 Aliases:
 
 Required: True
@@ -260,7 +259,7 @@ Name of the signal to get history for
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityHealthmodelExpanded
+Parameter Sets: GetExpanded, GetViaIdentityHealthmodelExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -276,7 +275,7 @@ Defaults to 24 hours ago if not specified.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityHealthmodelExpanded
+Parameter Sets: GetExpanded, GetViaIdentityHealthmodelExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -292,7 +291,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get
 Aliases:
 
 Required: False
@@ -308,39 +307,8 @@ Defaults to 1000.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityHealthmodelExpanded
+Parameter Sets: GetExpanded, GetViaIdentityHealthmodelExpanded, GetViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
 
 Required: False
 Position: Named
@@ -365,4 +333,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

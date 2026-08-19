@@ -14,24 +14,24 @@ Create a HealthModel
 
 ### CreateExpanded (Default)
 ```
-New-AzMonitorHealthModel -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-EnableSystemAssignedIdentity] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzMonitorHealthModel -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-EnableSystemAssignedIdentity] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzMonitorHealthModel -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzMonitorHealthModel -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzMonitorHealthModel -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzMonitorHealthModel -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -279,4 +279,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

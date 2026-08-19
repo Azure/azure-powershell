@@ -19,8 +19,7 @@ Describe 'Update-AzMonitorHealthModelDiscoveryRule' {
     It 'UpdateExpanded' {
         {
             $specification = New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where type =~ 'microsoft.compute/virtualmachines' | project id | take 1"
-            $property = New-AzMonitorHealthModelDiscoveryRulePropertiesObject -AuthenticationSetting $env.AuthenticationSettingName -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Disabled -DisplayName 'Updated discovery rule' -Specification $specification
-            $result = Update-AzMonitorHealthModelDiscoveryRule -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.DiscoveryRuleName -Property $property
+            $result = Update-AzMonitorHealthModelDiscoveryRule -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.DiscoveryRuleName -AuthenticationSetting $env.AuthenticationSettingName -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Disabled -DisplayName 'Updated discovery rule' -Specification $specification
             $result | Should -Not -BeNullOrEmpty
             $result.Name | Should -Be $env.DiscoveryRuleName
             ($result | ConvertTo-Json -Depth 20) | Should -Match 'Updated discovery rule'

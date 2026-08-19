@@ -15,25 +15,27 @@ Get a Relationship
 ### List (Default)
 ```
 Get-AzMonitorHealthModelRelationship -HealthModelName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-Timestamp <DateTime>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-Timestamp <DateTime>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMonitorHealthModelRelationship -HealthModelName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityHealthmodel
+```
+Get-AzMonitorHealthModelRelationship -Name <String> -HealthmodelInputObject <ICloudHealthIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzMonitorHealthModelRelationship -InputObject <ICloudHealthIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetViaIdentityHealthmodel
-```
-Get-AzMonitorHealthModelRelationship -HealthmodelInputObject <ICloudHealthIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,7 +118,7 @@ Name of health model resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -164,7 +166,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -180,7 +182,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -221,4 +223,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -16,19 +16,21 @@ Delete a AuthenticationSetting
 ```
 Remove-AzMonitorHealthModelAuthenticationSetting -HealthModelName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentityHealthmodel
+```
+Remove-AzMonitorHealthModelAuthenticationSetting -Name <String> -HealthmodelInputObject <ICloudHealthIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzMonitorHealthModelAuthenticationSetting -InputObject <ICloudHealthIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentityHealthmodel
-```
-Remove-AzMonitorHealthModelAuthenticationSetting -HealthmodelInputObject <ICloudHealthIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -169,6 +171,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -246,4 +263,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

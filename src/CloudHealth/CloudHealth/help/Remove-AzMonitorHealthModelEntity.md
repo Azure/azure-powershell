@@ -15,20 +15,21 @@ Delete a Entity
 ### Delete (Default)
 ```
 Remove-AzMonitorHealthModelEntity -HealthModelName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentityHealthmodel
+```
+Remove-AzMonitorHealthModelEntity -Name <String> -HealthmodelInputObject <ICloudHealthIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzMonitorHealthModelEntity -InputObject <ICloudHealthIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentityHealthmodel
-```
-Remove-AzMonitorHealthModelEntity -HealthmodelInputObject <ICloudHealthIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -168,6 +169,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -245,4 +261,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

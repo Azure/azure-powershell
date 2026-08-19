@@ -19,22 +19,22 @@ New-AzMonitorHealthModelEntity -HealthModelName <String> -Name <String> -Resourc
  [-DegradedActionGroupId <String[]>] [-DegradedDescription <String>] [-DegradedSeverity <String>]
  [-DisplayName <String>] [-HealthObjective <Single>] [-IconCustomData <String>] [-IconName <String>]
  [-Impact <String>] [-SignalGroup <ISignalGroups>] [-Tag <Hashtable>] [-UnhealthyActionGroupId <String[]>]
- [-UnhealthyDescription <String>] [-UnhealthySeverity <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UnhealthyDescription <String>] [-UnhealthySeverity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzMonitorHealthModelEntity -HealthModelName <String> -Name <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzMonitorHealthModelEntity -HealthModelName <String> -Name <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -311,6 +311,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -461,4 +476,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

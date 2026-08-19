@@ -15,21 +15,45 @@ Update a AuthenticationSetting
 ### UpdateExpanded (Default)
 ```
 Update-AzMonitorHealthModelAuthenticationSetting -HealthModelName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DisplayName <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Property <IAuthenticationSettingProperties>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### Update
 ```
-Update-AzMonitorHealthModelAuthenticationSetting -InputObject <ICloudHealthIdentity> [-DisplayName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMonitorHealthModelAuthenticationSetting -HealthModelName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Resource <IAuthenticationSetting>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityHealthmodelExpanded
 ```
-Update-AzMonitorHealthModelAuthenticationSetting -HealthmodelInputObject <ICloudHealthIdentity> -Name <String>
- [-DisplayName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzMonitorHealthModelAuthenticationSetting -Name <String> -HealthmodelInputObject <ICloudHealthIdentity>
+ [-Property <IAuthenticationSettingProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityHealthmodel
+```
+Update-AzMonitorHealthModelAuthenticationSetting -Name <String> -HealthmodelInputObject <ICloudHealthIdentity>
+ -Resource <IAuthenticationSetting> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzMonitorHealthModelAuthenticationSetting -InputObject <ICloudHealthIdentity>
+ [-Property <IAuthenticationSettingProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzMonitorHealthModelAuthenticationSetting -InputObject <ICloudHealthIdentity>
+ -Resource <IAuthenticationSetting> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,27 +105,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisplayName
-Display name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -HealthmodelInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-Parameter Sets: UpdateViaIdentityHealthmodelExpanded
+Parameter Sets: UpdateViaIdentityHealthmodelExpanded, UpdateViaIdentityHealthmodel
 Aliases:
 
 Required: True
@@ -116,7 +125,7 @@ Name of health model resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -131,7 +140,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -147,7 +156,7 @@ Must be unique within a health model.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityHealthmodelExpanded
+Parameter Sets: UpdateExpanded, Update, UpdateViaIdentityHealthmodelExpanded, UpdateViaIdentityHealthmodel
 Aliases: AuthenticationSettingName
 
 Required: True
@@ -172,13 +181,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Property
+The resource-specific properties for this resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties
+Parameter Sets: UpdateExpanded, UpdateViaIdentityHealthmodelExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Resource
+An authentication setting in a health model
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting
+Parameter Sets: Update, UpdateViaIdentityHealthmodel, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -194,7 +248,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: False
@@ -240,6 +294,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting
+
 ### Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
 
 ## OUTPUTS
@@ -249,4 +305,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -17,22 +17,29 @@ Create a DiscoveryRule
 New-AzMonitorHealthModelDiscoveryRule -HealthModelName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AddRecommendedSignal <String>] [-AddResourceHealthSignal <String>]
  [-AuthenticationSetting <String>] [-DiscoverRelationship <String>] [-DisplayName <String>]
- [-SpecificationKind <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Specification <IDiscoveryRuleSpecification>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzMonitorHealthModelDiscoveryRule -HealthModelName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Resource <IDiscoveryRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzMonitorHealthModelDiscoveryRule -HealthModelName <String> -Name <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzMonitorHealthModelDiscoveryRule -HealthModelName <String> -Name <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -250,6 +257,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Resource
+A discovery rule which automatically finds entities and relationships in a health model based on an Azure Resource Graph query
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule
+Parameter Sets: Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -266,11 +288,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SpecificationKind
-Kind of the discovery rule specification
+### -Specification
+Specification of the discovery rule defining how entities are discovered.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecification
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -333,6 +355,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule
@@ -340,4 +364,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

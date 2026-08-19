@@ -14,9 +14,9 @@ Create an in-memory object for ResourceMetricSignalDefinitionProperties.
 
 ```
 New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject -AggregationType <String>
- -EvaluationRule <IEvaluationRule> -MetricName <String> -MetricNamespace <String> -TimeGrain <String>
- [-DataUnit <String>] [-DimensionFilter <String>] [-DisplayName <String>] [-RefreshInterval <String>]
- [-Tag <ISignalDefinitionPropertiesTags>] [<CommonParameters>]
+ -MetricName <String> -MetricNamespace <String> -TimeGrain <String> -EvaluationRule <IEvaluationRule>
+ [-DimensionFilter <String>] [-DataUnit <String>] [-DisplayName <String>] [-RefreshInterval <String>]
+ [-Tag <ISignalDefinitionPropertiesTags>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,6 +143,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RefreshInterval
 Interval in which the signal is being evaluated.
 Defaults to PT1M (1 minute).
@@ -202,4 +217,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
