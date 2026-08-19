@@ -25,7 +25,7 @@ The **New-AzPublicIpTag** cmdlet creates a IP Tag.
 
 ### Example 1: Create a new IP Tag
 ```powershell
-$ipTag = New-AzPublicIpTag -IpTagType $ipTagType -Tag $tag
+$ipTag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/Sql"
 ```
 
 This command creates a new IP Tag with the Tagtype like "FirstPartyUsage"
