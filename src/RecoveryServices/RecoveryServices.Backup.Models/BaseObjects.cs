@@ -239,13 +239,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Cloud Source Scan is configured for this item. Mapped from the protected item's
         /// sourceSideScanInfo.sourceSideScanStatus.
         /// </summary>
-        public ServiceClientModel.SourceSideScanStatus? SourceSideScanStatus { get; set; }
+        public string SourceSideScanStatus { get; set; }
 
         /// <summary>
         /// Source Scan threat summary of the protected item. Mapped from the protected item's
         /// sourceSideScanInfo.sourceSideScanSummary.
         /// </summary>
-        public ServiceClientModel.SourceSideScanSummary? SourceSideScanSummary { get; set; }
+        public string SourceSideScanSummary { get; set; }
 
         public ItemBase(ServiceClientModel.ProtectedItemResource protectedItemResource,
             string containerName, ContainerType containerType)
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Threat status of this recovery point, mapped from the recovery point's threatStatus.
         /// </summary>
-        public ServiceClientModel.ThreatStatus? ThreatStatus { get; set; }
+        public string ThreatStatus { get; set; }
 
         /// <summary>
         /// Threat information associated with this recovery point, mapped from the recovery

@@ -18,22 +18,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection.
+        /// The name of the PrivateEndpointConnectionResource
         /// </param>
         /// <param name='operationId'>
-        /// Operation id
+        /// The name of the PrivateEndpointConnectionResource
         /// </param>
-        public static OperationStatus GetOperationStatus(this IPrivateEndpointOperations operations, string vaultName, string resourceGroupName, string privateEndpointConnectionName, string operationId)
+        public static OperationStatus GetOperationStatus(this IPrivateEndpointOperations operations, string resourceGroupName, string vaultName, string privateEndpointConnectionName, string operationId)
         {
-                return ((IPrivateEndpointOperations)operations).GetOperationStatusAsync(vaultName, resourceGroupName, privateEndpointConnectionName, operationId).GetAwaiter().GetResult();
+                return ((IPrivateEndpointOperations)operations).GetOperationStatusAsync(resourceGroupName, vaultName, privateEndpointConnectionName, operationId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -42,25 +41,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection.
+        /// The name of the PrivateEndpointConnectionResource
         /// </param>
         /// <param name='operationId'>
-        /// Operation id
+        /// The name of the PrivateEndpointConnectionResource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<OperationStatus> GetOperationStatusAsync(this IPrivateEndpointOperations operations, string vaultName, string resourceGroupName, string privateEndpointConnectionName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<OperationStatus> GetOperationStatusAsync(this IPrivateEndpointOperations operations, string resourceGroupName, string vaultName, string privateEndpointConnectionName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetOperationStatusWithHttpMessagesAsync(vaultName, resourceGroupName, privateEndpointConnectionName, operationId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetOperationStatusWithHttpMessagesAsync(resourceGroupName, vaultName, privateEndpointConnectionName, operationId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

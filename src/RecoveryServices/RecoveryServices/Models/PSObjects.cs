@@ -547,16 +547,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     /// <summary>
-    /// Enum to define the identity type used for the Source Scan operation.
-    /// Does not include 'None' since Source Scan identity is only meaningful when an identity is configured.
-    /// </summary>
-    public enum SourceScanIdentityType
-    {
-        SystemAssigned = 1,
-        UserAssigned
-    }
-
-    /// <summary>
     /// Class to define the vault BackupStorageRedundancy settings.
     /// </summary>
     public enum MSIdentity

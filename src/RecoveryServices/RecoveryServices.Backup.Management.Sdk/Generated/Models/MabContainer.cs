@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="protectableObjectType">Type of the protectable object associated with this container
         /// </param>
 
+        /// <param name="sourceLocation">Source location of the container
+        /// </param>
+
         /// <param name="canReRegister">Can the container be registered one more time.
         /// </param>
 
@@ -62,9 +65,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="containerHealthState">Health state of mab container.
         /// </param>
-        public MabContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), bool? canReRegister = default(bool?), long? containerId = default(long?), long? protectedItemCount = default(long?), string agentVersion = default(string), MabContainerExtendedInfo extendedInfo = default(MabContainerExtendedInfo), System.Collections.Generic.IList<MABContainerHealthDetails> mabContainerHealthDetails = default(System.Collections.Generic.IList<MABContainerHealthDetails>), string containerHealthState = default(string))
+        public MabContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string sourceLocation = default(string), bool? canReRegister = default(bool?), long? containerId = default(long?), long? protectedItemCount = default(long?), string agentVersion = default(string), MabContainerExtendedInfo extendedInfo = default(MabContainerExtendedInfo), System.Collections.Generic.IList<MABContainerHealthDetails> mabContainerHealthDetails = default(System.Collections.Generic.IList<MABContainerHealthDetails>), string containerHealthState = default(string))
 
-        : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType)
+        : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType, sourceLocation)
         {
             this.CanReRegister = canReRegister;
             this.ContainerId = containerId;

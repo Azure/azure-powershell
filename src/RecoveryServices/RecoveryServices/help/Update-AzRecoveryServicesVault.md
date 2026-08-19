@@ -21,7 +21,6 @@ Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> [-
  [-DisableAzureMonitorAlertsForAllFailoverIssue <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-ImmutabilityState <ImmutabilityState>] [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>]
  [-CostManagementGranularity <CostManagementGranularity>] [-SourceScanState <SourceScanState>]
- [-SourceScanIdentityType <SourceScanIdentityType>] [-SourceScanUserAssignedIdentityId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-Token <String>] 
  [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -35,7 +34,6 @@ Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> -I
  [-DisableAzureMonitorAlertsForAllFailoverIssue <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-ImmutabilityState <ImmutabilityState>] [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>]
  [-CostManagementGranularity <CostManagementGranularity>] [-SourceScanState <SourceScanState>]
- [-SourceScanIdentityType <SourceScanIdentityType>] [-SourceScanUserAssignedIdentityId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-Token <String>] 
  [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -145,43 +143,22 @@ The first cmdlet fetches the recovery services vault.
 The second cmdlet updates the CostManagementGranularity to "VaultLevel". Allowed values are "VaultLevel", "ProtectedItemLevel", and "ProtectedItemWithParentTag".
 The third command gets the cost management granularity level of the vault.
 
-### Example 7: Enable Source Scan with a system-assigned identity for a recovery services vault
+### Example 7: Enable Source Scan for a recovery services vault
 ```powershell
 $vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
-$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -SourceScanState Enabled -SourceScanIdentityType SystemAssigned
-$updatedVault.Properties.SecuritySettings.SourceScanConfiguration
+$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -SourceScanState Enabled
+$updatedVault.Properties.SecuritySettings.SourceScanConfiguration.State
 ```
 
 ```output
-State                SourceScanIdentity
------                ------------------
-Enabled              Microsoft.Azure.Management.RecoveryServices.Models.AssociatedIdentity
+Enabled
 ```
 
 The first cmdlet fetches the recovery services vault.
-The second cmdlet enables Source Scan (Microsoft Defender for Cloud) for the vault, using the vault's system-assigned managed identity.
-The third command shows the Source Scan configuration of the vault.
+The second cmdlet enables Source Scan (Microsoft Defender for Cloud) for the vault. The service manages the operation identity.
+The third command shows the Source Scan state of the vault.
 
-### Example 8: Enable Source Scan with a user-assigned identity for a recovery services vault
-```powershell
-$vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
-$identity = Get-AzUserAssignedIdentity -ResourceGroupName "resourceGroupName" -Name "UserIdentity1"
-$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -SourceScanState Enabled -SourceScanIdentityType UserAssigned -SourceScanUserAssignedIdentityId $identity.Id
-$updatedVault.Properties.SecuritySettings.SourceScanConfiguration.SourceScanIdentity
-```
-
-```output
-OperationIdentityType UserAssignedIdentity
----------------------- --------------------
-UserAssigned           /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UserIdentity1
-```
-
-The first cmdlet fetches the recovery services vault.
-The second cmdlet fetches the user created MSI.
-The third cmdlet enables Source Scan for the vault, using the specified user-assigned identity.
-The fourth command shows the identity configured for Source Scan.
-
-### Example 9: Disable Source Scan for a recovery services vault
+### Example 8: Disable Source Scan for a recovery services vault
 ```powershell
 $vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
 $updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -SourceScanState Disabled
@@ -461,22 +438,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceScanIdentityType
-Identity type to be used for the Source Scan (Microsoft Defender for Cloud) operation. Allowed values are "SystemAssigned", "UserAssigned". Applicable only when SourceScanState is Enabled.
-
-```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.SourceScanIdentityType]
-Parameter Sets: (All)
-Aliases:
-Accepted values: SystemAssigned, UserAssigned
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SourceScanState
 Source Scan (Microsoft Defender for Cloud) state of the vault. Allowed values are "Enabled", "Disabled".
 
@@ -485,21 +446,6 @@ Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.SourceScanStat
 Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceScanUserAssignedIdentityId
-Resource ID of the user assigned identity to be used for the Source Scan operation. Required when SourceScanIdentityType is UserAssigned.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named

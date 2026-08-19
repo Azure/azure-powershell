@@ -183,7 +183,7 @@ CmdletsToExport = 'Add-AzRecoveryServicesAsrReplicationProtectedItemDisk',
                'Set-AzRecoveryServicesAsrVaultContext', 
                'Set-AzRecoveryServicesBackupProperty', 
                'Set-AzRecoveryServicesBackupProtectionPolicy', 
-               'Set-AzRecoveryServicesBackupSourceScan', 
+               'Set-AzRecoveryServicesBackupItemSourceScanConfiguration',
                'Set-AzRecoveryServicesResourceGuardMapping', 
                'Set-AzRecoveryServicesVaultContext', 
                'Set-AzRecoveryServicesVaultProperty', 
@@ -260,6 +260,7 @@ AliasesToExport = 'Add-ASRReplicationProtectedItemDisk', 'Edit-ASRRecoveryPlan',
                'Restart-ASRJob', 'Resume-ASRJob', 'Set-ASRAlertSetting', 
                'Set-ASRNotificationSetting', 'Set-ASRReplicationProtectedItem', 
                'Set-ASRVaultContext', 'Set-ASRVaultSettings', 
+               'Set-AzRecoveryServicesBISourceScanConfiguration',
                'Set-AzRecoveryServicesAsrNotificationSetting', 
                'Set-AzRecoveryServicesAsrVaultSettings', 
                'Start-ASRApplyClusterRecoveryPoint', 'Start-ASRApplyRecoveryPoint', 
@@ -342,4 +343,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

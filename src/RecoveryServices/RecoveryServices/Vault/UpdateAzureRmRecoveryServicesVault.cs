@@ -156,20 +156,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateSet("Enabled", "Disabled")]
         public SourceScanState? SourceScanState { get; set; }
 
-        /// <summary>
-        /// Identity type to be used for the Source Scan operation. Applicable only when SourceScanState is Enabled.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Identity type to be used for the Source Scan operation. Allowed values are \"SystemAssigned\", \"UserAssigned\". Applicable only when SourceScanState is Enabled.")]
-        [ValidateSet("SystemAssigned", "UserAssigned")]
-        public SourceScanIdentityType? SourceScanIdentityType { get; set; }
-
-        /// <summary>
-        /// Resource ID of the user assigned identity to be used for the Source Scan operation. Required when SourceScanIdentityType is UserAssigned.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Resource ID of the user assigned identity to be used for the Source Scan operation. Required when SourceScanIdentityType is UserAssigned.")]
-        [ValidateNotNullOrEmpty]
-        public string SourceScanUserAssignedIdentityId { get; set; }
-
         #endregion
 
         public override void ExecuteCmdlet()
@@ -410,43 +396,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     // update source scan configuration of the vault
                     if (SourceScanState != null)
                     {
-                        if (SourceScanState == cmdletModel.SourceScanState.Disabled && (SourceScanIdentityType != null || !string.IsNullOrEmpty(SourceScanUserAssignedIdentityId)))
-                        {
-                            throw new ArgumentException(Resources.SourceScanIdentityNotAllowedWhenDisabled);
-                        }
-
-                        if (SourceScanIdentityType == cmdletModel.SourceScanIdentityType.UserAssigned && string.IsNullOrEmpty(SourceScanUserAssignedIdentityId))
-                        {
-                            throw new ArgumentException(Resources.SourceScanIdentityIdRequired);
-                        }
-
-                        if (SourceScanIdentityType == cmdletModel.SourceScanIdentityType.SystemAssigned && !string.IsNullOrEmpty(SourceScanUserAssignedIdentityId))
-                        {
-                            throw new ArgumentException(Resources.SourceScanIdentityIdNotAllowed);
-                        }
-
                         ServiceClientModel.SourceScanConfiguration sourceScanConfiguration = new ServiceClientModel.SourceScanConfiguration();
                         sourceScanConfiguration.State = SourceScanState.ToString();
-
-                        if (SourceScanState == cmdletModel.SourceScanState.Enabled)
-                        {
-                            if (SourceScanIdentityType != null)
-                            {
-                                sourceScanConfiguration.SourceScanIdentity = new AssociatedIdentity();
-                                sourceScanConfiguration.SourceScanIdentity.OperationIdentityType = SourceScanIdentityType.ToString();
-
-                                if (SourceScanIdentityType == cmdletModel.SourceScanIdentityType.UserAssigned)
-                                {
-                                    sourceScanConfiguration.SourceScanIdentity.UserAssignedIdentity = SourceScanUserAssignedIdentityId;
-                                }
-                            }
-                            else if (!string.IsNullOrEmpty(SourceScanUserAssignedIdentityId))
-                            {
-                                sourceScanConfiguration.SourceScanIdentity = new AssociatedIdentity();
-                                sourceScanConfiguration.SourceScanIdentity.OperationIdentityType = cmdletModel.SourceScanIdentityType.UserAssigned.ToString();
-                                sourceScanConfiguration.SourceScanIdentity.UserAssignedIdentity = SourceScanUserAssignedIdentityId;
-                            }
-                        }
 
                         if (patchVault.Properties == null) { patchVault.Properties = new VaultProperties(); }
                         if (patchVault.Properties.SecuritySettings == null) { patchVault.Properties.SecuritySettings = new SecuritySettings(); }

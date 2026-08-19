@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupsourcescan
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupitemsourcescanconfiguration
 schema: 2.0.0
 ---
 
-# Set-AzRecoveryServicesBackupSourceScan
+# Set-AzRecoveryServicesBackupItemSourceScanConfiguration
 
 ## SYNOPSIS
 Configures Source Scan (Microsoft Defender for Cloud) for a Backup-protected item.
@@ -13,12 +13,12 @@ Configures Source Scan (Microsoft Defender for Cloud) for a Backup-protected ite
 ## SYNTAX
 
 ```
-Set-AzRecoveryServicesBackupSourceScan [-Item] <ItemBase> [-State] <String> [-Force] [-VaultId <String>]
+Set-AzRecoveryServicesBackupItemSourceScanConfiguration [-Item] <ItemBase> [-State] <String> [-Force] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzRecoveryServicesBackupSourceScan** cmdlet enables or disables Source Scan (Microsoft Defender for Cloud) for an Azure VM (Virtual Machine) Backup-protected item. Source Scan lets Microsoft Defender for Cloud scan the item's recovery points for malware and other threats. This cmdlet supports both enabling and disabling Source Scan, and preserves all other properties of the protected item.
+The **Set-AzRecoveryServicesBackupItemSourceScanConfiguration** cmdlet enables or disables Source Scan (Microsoft Defender for Cloud) for an Azure VM (Virtual Machine) Backup-protected item. Source Scan lets Microsoft Defender for Cloud scan the item's recovery points for malware and other threats. The alias **Set-AzRecoveryServicesBISourceScanConfiguration** is also available.
 
 Currently, only Azure VM backup items are supported. Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet, or pass the -VaultId parameter, before you use the current cmdlet.
 
@@ -28,7 +28,7 @@ Currently, only Azure VM backup items are supported. Set the vault context by us
 ```powershell
 $Cont = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -VaultId $vault.ID
 $PI = Get-AzRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVM -VaultId $vault.ID
-Set-AzRecoveryServicesBackupSourceScan -Item $PI[0] -State Enabled -VaultId $vault.ID
+Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $PI[0] -State Enabled -VaultId $vault.ID
 ```
 
 The first command gets an array of backup containers, and then stores it in the $Cont array.
@@ -38,7 +38,7 @@ The last command enables Source Scan for the item in $PI\[0\], and returns the t
 ### Example 2: Disable Source Scan for an Azure VM backup item without confirmation
 ```powershell
 $item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
-Set-AzRecoveryServicesBackupSourceScan -Item $item[0] -State Disabled -VaultId $vault.ID -Force
+Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $item[0] -State Disabled -VaultId $vault.ID -Force
 ```
 
 The first cmdlet fetches the AzureVM backup items for the recovery services vault.
