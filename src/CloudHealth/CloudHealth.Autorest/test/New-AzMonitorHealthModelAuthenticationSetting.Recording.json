@@ -1,0 +1,267 @@
+{
+  "New-AzMonitorHealthModelAuthenticationSetting+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/authenticationsettings/azps-auth-create-ms1q6l?api-version=2026-05-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/authenticationsettings/azps-auth-create-ms1q6l?api-version=2026-05-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"displayName\": \"Create auth\",\n    \"authenticationKind\": \"ManagedIdentity\",\n    \"managedIdentityName\": \"SystemAssigned\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "148"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/centralus/197d944d-54c1-4117-8040-d9dc20e0b7a7"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "d8619856-036c-450f-bc5f-834fde081964"
+        ],
+        "x-ms-correlation-request-id": [
+          "2c9b0943-4134-4a03-a030-e9613e87f11b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "199"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "2999"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20260818T105808Z:2c9b0943-4134-4a03-a030-e9613e87f11b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: C6E9404E5EF341DE97F4C23A4A654FA1 Ref B: AMS231020615029 Ref C: 2026-08-18T10:58:07Z"
+        ],
+        "Date": [
+          "Tue, 18 Aug 2026 10:58:07 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "684"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/authenticationsettings/azps-auth-create-ms1q6l\",\"name\":\"azps-auth-create-ms1q6l\",\"type\":\"microsoft.cloudhealth/healthmodels/authenticationsettings\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-18T10:58:07.9179449Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-08-18T10:58:07.9179449Z\"},\"properties\":{\"authenticationKind\":\"ManagedIdentity\",\"managedIdentityName\":\"SystemAssigned\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Create auth\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMonitorHealthModelAuthenticationSetting+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/authenticationsettings/azps-auth-create-ms1q6l?api-version=2026-05-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/authenticationsettings/azps-auth-create-ms1q6l?api-version=2026-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "56"
+        ],
+        "x-ms-client-request-id": [
+          "746ad8ba-6bcc-47c8-9763-bcdd8a73a38d"
+        ],
+        "CommandName": [
+          "New-AzMonitorHealthModelAuthenticationSetting"
+        ],
+        "FullCommandName": [
+          "New-AzMonitorHealthModelAuthenticationSetting_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v7.1.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/centralus/5c8dc063-bcb2-406d-bac9-a0d0885d07ca"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "8391fcc5-eb10-4662-8d3b-701ce4f1993c"
+        ],
+        "x-ms-correlation-request-id": [
+          "0d8e20b0-96a1-4412-85c8-3dd3ff716600"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20260818T105838Z:0d8e20b0-96a1-4412-85c8-3dd3ff716600"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 3AF2D275DBFA48C1AEF7A7094B5B1A40 Ref B: AMS231020615029 Ref C: 2026-08-18T10:58:38Z"
+        ],
+        "Date": [
+          "Tue, 18 Aug 2026 10:58:38 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "684"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/azps-ch-rg-ms1q6l/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-ms1q6l/authenticationsettings/azps-auth-create-ms1q6l\",\"name\":\"azps-auth-create-ms1q6l\",\"type\":\"Microsoft.CloudHealth/healthmodels/authenticationsettings\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-18T10:58:07.9179449Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-08-18T10:58:08.2014375Z\"},\"properties\":{\"authenticationKind\":\"ManagedIdentity\",\"managedIdentityName\":\"SystemAssigned\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Create auth\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMonitorHealthModelAuthenticationSetting+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/authenticationsettings/azps-auth-create-ms1q6l?api-version=2026-05-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/authenticationsettings/azps-auth-create-ms1q6l?api-version=2026-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "57"
+        ],
+        "x-ms-client-request-id": [
+          "746ad8ba-6bcc-47c8-9763-bcdd8a73a38d"
+        ],
+        "CommandName": [
+          "New-AzMonitorHealthModelAuthenticationSetting"
+        ],
+        "FullCommandName": [
+          "New-AzMonitorHealthModelAuthenticationSetting_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v7.1.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/centralus/c73382d5-ad8b-42d1-b464-82b2a160d5f4"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "b874d493-29e8-4a1e-a985-65310d25ef24"
+        ],
+        "x-ms-correlation-request-id": [
+          "bbde01b2-1907-4644-a47f-53888cb10d3a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20260818T105839Z:bbde01b2-1907-4644-a47f-53888cb10d3a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 09D9E066239F4610858C7C5F2928AD0B Ref B: AMS231020615029 Ref C: 2026-08-18T10:58:39Z"
+        ],
+        "Date": [
+          "Tue, 18 Aug 2026 10:58:38 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "684"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/azps-ch-rg-ms1q6l/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-ms1q6l/authenticationsettings/azps-auth-create-ms1q6l\",\"name\":\"azps-auth-create-ms1q6l\",\"type\":\"Microsoft.CloudHealth/healthmodels/authenticationsettings\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-18T10:58:07.9179449Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-08-18T10:58:08.2014375Z\"},\"properties\":{\"authenticationKind\":\"ManagedIdentity\",\"managedIdentityName\":\"SystemAssigned\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Create auth\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -7,6 +7,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMonitorHealthModel'))
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzMonitorHealthModel.Recording.json'
   $currentPath = $PSScriptRoot
+  $mockingPath = $null
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
       $currentPath = Split-Path -Path $currentPath -Parent
@@ -14,29 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMonitorHealthModel'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-# Playback-safe surface tests: the CloudHealth data plane has no recorded cassettes in this
-# environment (live integration is tracked separately), so these assertions exercise the
-# imported cmdlets' exported surface and parameter binding rather than issuing ARM calls.
-Describe 'HealthModel resource family' {
-    $verbCases = @(
-        @{ Verb = 'Get' }
-        @{ Verb = 'New' }
-        @{ Verb = 'Update' }
-        @{ Verb = 'Remove' }
-    )
-
-    It '<Verb>-AzMonitorHealthModel is exported' -TestCases $verbCases {
-        param($Verb)
-        Get-Command "$Verb-AzMonitorHealthModel" -Module 'Az.CloudHealth' -ErrorAction SilentlyContinue | Should -Not -BeNullOrEmpty
+Describe 'Get-AzMonitorHealthModel' {
+    It 'List' {
+        {
+            $list = Get-AzMonitorHealthModel -ResourceGroupName $env.ResourceGroupName
+            $list | Should -Not -BeNullOrEmpty
+            @($list | Where-Object Name -eq $env.HealthModelName).Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
-    It 'Get-AzMonitorHealthModel binds the ARM lookup parameters' {
-        $cmd = Get-Command 'Get-AzMonitorHealthModel' -Module 'Az.CloudHealth'
-        $cmd.Parameters.Keys | Should -Contain 'ResourceGroupName'
-        $cmd.Parameters.Keys | Should -Contain 'SubscriptionId'
+    It 'Get' {
+        {
+            $result = Get-AzMonitorHealthModel -ResourceGroupName $env.ResourceGroupName -Name $env.HealthModelName
+            $result | Should -Not -BeNullOrEmpty
+            $result.Name | Should -Be $env.HealthModelName
+        } | Should -Not -Throw
     }
 
-    It 'Get-AzMonitorHealthModel uses the MonitorHealthModel subject prefix' {
-        (Get-Command 'Get-AzMonitorHealthModel' -Module 'Az.CloudHealth').Noun | Should -BeLike 'AzMonitorHealthModel*'
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
 }

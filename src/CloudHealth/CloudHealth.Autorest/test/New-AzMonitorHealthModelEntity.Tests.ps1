@@ -7,6 +7,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMonitorHealthModelEntit
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzMonitorHealthModelEntity.Recording.json'
   $currentPath = $PSScriptRoot
+  $mockingPath = $null
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
       $currentPath = Split-Path -Path $currentPath -Parent
@@ -15,8 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMonitorHealthModelEntit
 }
 
 Describe 'New-AzMonitorHealthModelEntity' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        {
+            $result = New-AzMonitorHealthModelEntity -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.EntityCreateName -DisplayName 'Create entity' -Impact Standard -HealthObjective 99.5
+            $result | Should -Not -BeNullOrEmpty
+            $result.Name | Should -Be $env.EntityCreateName
+            $result.DisplayName | Should -Be 'Create entity'
+        } | Should -Not -Throw
     }
 
     It 'CreateViaJsonFilePath' -skip {
@@ -26,4 +32,5 @@ Describe 'New-AzMonitorHealthModelEntity' {
     It 'CreateViaJsonString' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
 }

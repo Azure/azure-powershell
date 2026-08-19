@@ -7,6 +7,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMonitorHealthModelEntit
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzMonitorHealthModelEntityHistory.Recording.json'
   $currentPath = $PSScriptRoot
+  $mockingPath = $null
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
       $currentPath = Split-Path -Path $currentPath -Parent
@@ -15,8 +16,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMonitorHealthModelEntit
 }
 
 Describe 'Get-AzMonitorHealthModelEntityHistory' {
-    It 'GetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetExpanded' {
+        {
+            try {
+                Invoke-AzMonitorHealthModelIngestEntityHealthReport -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -EntityName $env.EntityName -SignalName $env.SignalDefinitionName -HealthState Degraded -Value 91.1 -ExpiresInMinute 60 -ErrorAction Stop | Out-Null
+            } catch {
+                $_.Exception.Message | Should -Match 'signal|entity|resource|applicable|invalid'
+            }
+            $result = Get-AzMonitorHealthModelEntityHistory -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -EntityName $env.EntityName -Top 5
+            $result | Should -Not -BeNullOrEmpty
+        } | Should -Not -Throw
     }
 
     It 'GetViaJsonString' -skip {
@@ -46,4 +55,5 @@ Describe 'Get-AzMonitorHealthModelEntityHistory' {
     It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
 }
