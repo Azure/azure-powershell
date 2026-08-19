@@ -401,6 +401,11 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost.IsPresent;
             }
 
+            if (this.IsParameterBound(c => c.CapacityReservationGroupId) && this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+            {
+                throw new ArgumentException("Parameters '-CapacityReservationGroupId' and '-DisableCapacityReservationAssignment' cannot be used together. '-DisableCapacityReservationAssignment' opts the virtual machine out of any capacity reservation.");
+            }
+
             if (this.IsParameterBound(c => c.CapacityReservationGroupId))
             {
                 vm.CapacityReservation = new CapacityReservationProfile();
