@@ -7,37 +7,37 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 {
 
     /// <summary>
-    /// Defines values for Type.
+    /// Defines values for VaultCheckNameAvailabilityParametersType.
     /// </summary>
 
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum Type
+    public enum VaultCheckNameAvailabilityParametersType
     {
         [System.Runtime.Serialization.EnumMember(Value = "Microsoft.KeyVault/vaults")]
         MicrosoftKeyVaultVaults
     }
-    internal static class TypeEnumExtension
+    internal static class VaultCheckNameAvailabilityParametersTypeEnumExtension
     {
-        internal static string ToSerializedValue(this Type? value)
+        internal static string ToSerializedValue(this VaultCheckNameAvailabilityParametersType? value)
         {
-            return value == null ? null : ((Type)value).ToSerializedValue();
+            return value == null ? null : ((VaultCheckNameAvailabilityParametersType)value).ToSerializedValue();
         }
-        internal static string ToSerializedValue(this Type value)
+        internal static string ToSerializedValue(this VaultCheckNameAvailabilityParametersType value)
         {
             switch( value )
             {
-                case Type.MicrosoftKeyVaultVaults:
+                case VaultCheckNameAvailabilityParametersType.MicrosoftKeyVaultVaults:
                     return "Microsoft.KeyVault/vaults";
             }
             return null;
         }
-        internal static Type? ParseType(this string value)
+        internal static VaultCheckNameAvailabilityParametersType? ParseVaultCheckNameAvailabilityParametersType(this string value)
         {
             switch( value )
             {
                 case "Microsoft.KeyVault/vaults":
-                    return Type.MicrosoftKeyVaultVaults;
+                    return VaultCheckNameAvailabilityParametersType.MicrosoftKeyVaultVaults;
             }
             return null;
         }

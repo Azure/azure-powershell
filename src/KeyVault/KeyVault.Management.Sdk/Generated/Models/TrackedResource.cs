@@ -8,20 +8,25 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     using System.Linq;
 
     /// <summary>
-    /// Resource information with extended details.
+    /// The resource model definition for an Azure Resource Manager tracked top
+    /// level resource which has &#39;tags&#39; and a &#39;location&#39;
     /// </summary>
-    public partial class ManagedHsm : ProxyResource
+    /// <remarks>
+    /// The resource model definition for an Azure Resource Manager tracked top
+    /// level resource which has &#39;tags&#39; and a &#39;location&#39;
+    /// </remarks>
+    public partial class TrackedResource : Resource
     {
         /// <summary>
-        /// Initializes a new instance of the ManagedHsm class.
+        /// Initializes a new instance of the TrackedResource class.
         /// </summary>
-        public ManagedHsm()
+        public TrackedResource()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ManagedHsm class.
+        /// Initializes a new instance of the TrackedResource class.
         /// </summary>
 
         /// <param name="id">Fully qualified resource ID for the resource. E.g.
@@ -39,29 +44,17 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// information.
         /// </param>
 
-        /// <param name="properties">Properties of the managed HSM
-        /// </param>
-
-        /// <param name="sku">SKU details
-        /// </param>
-
-        /// <param name="identity">Managed service identity
+        /// <param name="tags">Resource tags.
         /// </param>
 
         /// <param name="location">The geo-location where the resource lives
         /// </param>
-
-        /// <param name="tags">Resource tags.
-        /// </param>
-        public ManagedHsm(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), ManagedHsmProperties properties = default(ManagedHsmProperties), ManagedHsmSku sku = default(ManagedHsmSku), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        public TrackedResource(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
 
         : base(id, name, type, systemData)
         {
-            this.Properties = properties;
-            this.Sku = sku;
-            this.Identity = identity;
-            this.Location = location;
             this.Tags = tags;
+            this.Location = location;
             CustomInit();
         }
 
@@ -72,34 +65,16 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
 
         /// <summary>
-        /// Gets or sets properties of the managed HSM
+        /// Gets or sets resource tags.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
-        public ManagedHsmProperties Properties {get; set; }
-
-        /// <summary>
-        /// Gets or sets sKU details
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
-        public ManagedHsmSku Sku {get; set; }
-
-        /// <summary>
-        /// Gets or sets managed service identity
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
-        public ManagedServiceIdentity Identity {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
         /// Gets or sets the geo-location where the resource lives
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
         public string Location {get; set; }
-
-        /// <summary>
-        /// Gets or sets resource tags.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
-        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -108,14 +83,9 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </exception>
         public virtual void Validate()
         {
-
-            if (this.Sku != null)
+            if (this.Location == null)
             {
-                this.Sku.Validate();
-            }
-            if (this.Identity != null)
-            {
-                this.Identity.Validate();
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Location");
             }
 
 
