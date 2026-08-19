@@ -173,6 +173,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).AdministrativeState = (string) content.GetValueForProperty("AdministrativeState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).AdministrativeState, global::System.Convert.ToString);
             }
+            if (content.Contains("LastOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).LastOperation = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties) content.GetValueForProperty("LastOperation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).LastOperation, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Annotation"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).Annotation, global::System.Convert.ToString);
@@ -180,6 +184,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("Rule"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).Rule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityRule>) content.GetValueForProperty("Rule",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).Rule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPExtendedCommunityRuleTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NetworkFabricId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).NetworkFabricId = (string) content.GetValueForProperty("NetworkFabricId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).NetworkFabricId, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastOperationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).LastOperationDetail = (string) content.GetValueForProperty("LastOperationDetail",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).LastOperationDetail, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -262,6 +274,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).AdministrativeState = (string) content.GetValueForProperty("AdministrativeState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).AdministrativeState, global::System.Convert.ToString);
             }
+            if (content.Contains("LastOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).LastOperation = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties) content.GetValueForProperty("LastOperation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).LastOperation, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Annotation"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).Annotation, global::System.Convert.ToString);
@@ -269,6 +285,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("Rule"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).Rule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityRule>) content.GetValueForProperty("Rule",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).Rule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPExtendedCommunityRuleTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NetworkFabricId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).NetworkFabricId = (string) content.GetValueForProperty("NetworkFabricId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).NetworkFabricId, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastOperationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).LastOperationDetail = (string) content.GetValueForProperty("LastOperationDetail",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityInternal)this).LastOperationDetail, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

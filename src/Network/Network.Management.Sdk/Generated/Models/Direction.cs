@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class Direction
     {
+        /// <summary>
+        /// Inbound
+        /// </summary>
         public const string Inbound = "Inbound";
+        /// <summary>
+        /// Outbound
+        /// </summary>
         public const string Outbound = "Outbound";
     }
 }

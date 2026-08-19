@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the regional application gateway waf manifest.
         /// </remarks>
         /// <param name='location'>
-        /// The region where the nrp are located at.
+        /// The location for which the WAF dynamic manifest is requested.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

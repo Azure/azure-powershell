@@ -13,11 +13,29 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class SecurityRuleProtocol
     {
+        /// <summary>
+        /// Tcp
+        /// </summary>
         public const string Tcp = "Tcp";
+        /// <summary>
+        /// Udp
+        /// </summary>
         public const string Udp = "Udp";
+        /// <summary>
+        /// Icmp
+        /// </summary>
         public const string Icmp = "Icmp";
+        /// <summary>
+        /// Esp
+        /// </summary>
         public const string Esp = "Esp";
+        /// <summary>
+        /// *
+        /// </summary>
         public const string Asterisk = "*";
+        /// <summary>
+        /// Ah
+        /// </summary>
         public const string Ah = "Ah";
     }
 }

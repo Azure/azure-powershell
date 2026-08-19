@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// minutes.
         /// </param>
 
-        /// <param name="captchaCookieExpirationInMins">Web Application Firewall CAPTCHA Cookie Expiration time in minutes.
+        /// <param name="captchaExpirationInMins">Web Application Firewall CAPTCHA Cookie Expiration time in minutes.
         /// </param>
-        public PolicySettings(string state = default(string), string mode = default(string), bool? requestBodyCheck = default(bool?), int? requestBodyInspectLimitInKb = default(int?), bool? requestBodyEnforcement = default(bool?), int? maxRequestBodySizeInKb = default(int?), bool? fileUploadEnforcement = default(bool?), int? fileUploadLimitInMb = default(int?), int? customBlockResponseStatusCode = default(int?), string customBlockResponseBody = default(string), PolicySettingsLogScrubbing logScrubbing = default(PolicySettingsLogScrubbing), int? jsChallengeCookieExpirationInMins = default(int?), int? captchaCookieExpirationInMins = default(int?))
+        public PolicySettings(string state = default(string), string mode = default(string), bool? requestBodyCheck = default(bool?), int? requestBodyInspectLimitInKb = default(int?), bool? requestBodyEnforcement = default(bool?), int? maxRequestBodySizeInKb = default(int?), bool? fileUploadEnforcement = default(bool?), int? fileUploadLimitInMb = default(int?), int? customBlockResponseStatusCode = default(int?), string customBlockResponseBody = default(string), PolicySettingsLogScrubbing logScrubbing = default(PolicySettingsLogScrubbing), int? jsChallengeCookieExpirationInMins = default(int?), int? captchaExpirationInMins = default(int?))
 
         {
             this.State = state;
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.CustomBlockResponseBody = customBlockResponseBody;
             this.LogScrubbing = logScrubbing;
             this.JsChallengeCookieExpirationInMins = jsChallengeCookieExpirationInMins;
-            this.CaptchaCookieExpirationInMins = captchaCookieExpirationInMins;
+            this.CaptchaExpirationInMins = captchaExpirationInMins;
             CustomInit();
         }
 
@@ -170,8 +170,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets web Application Firewall CAPTCHA Cookie Expiration time in
         /// minutes.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "captchaCookieExpirationInMins")]
-        public int? CaptchaCookieExpirationInMins {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "captchaExpirationInMins")]
+        public int? CaptchaExpirationInMins {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -226,15 +226,15 @@ namespace Microsoft.Azure.Management.Network.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "JsChallengeCookieExpirationInMins", 5);
                 }
             }
-            if (this.CaptchaCookieExpirationInMins != null)
+            if (this.CaptchaExpirationInMins != null)
             {
-                if (this.CaptchaCookieExpirationInMins > 1440)
+                if (this.CaptchaExpirationInMins > 1440)
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "CaptchaCookieExpirationInMins", 1440);
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "CaptchaExpirationInMins", 1440);
                 }
-                if (this.CaptchaCookieExpirationInMins < 5)
+                if (this.CaptchaExpirationInMins < 5)
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "CaptchaCookieExpirationInMins", 5);
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "CaptchaExpirationInMins", 5);
                 }
             }
         }

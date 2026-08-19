@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Description(@"create a monitor resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}", ApiVersion = "2025-06-11")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}", ApiVersion = "2025-12-26-preview")]
     public partial class NewAzDatadogMonitor_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IContext
@@ -111,6 +111,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         public string Location { get => _body.Location ?? null; set => _body.Location = value; }
+
+        /// <summary>The offer ID (e.g., "dd_liftr_v3_decoupled").</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The offer ID (e.g., \"dd_liftr_v3_decoupled\").")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The offer ID (e.g., ""dd_liftr_v3_decoupled"").",
+        SerializedName = @"offerId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string MarketplaceOfferDetailOfferId { get => _body.MarketplaceOfferDetailOfferId ?? null; set => _body.MarketplaceOfferDetailOfferId = value; }
+
+        /// <summary>The publisher ID (e.g., "datadog1591740804488").</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The publisher ID (e.g., \"datadog1591740804488\").")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The publisher ID (e.g., ""datadog1591740804488"").",
+        SerializedName = @"publisherId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string MarketplaceOfferDetailPublisherId { get => _body.MarketplaceOfferDetailPublisherId ?? null; set => _body.MarketplaceOfferDetailPublisherId = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -278,6 +300,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
+
+        /// <summary>SaaS resource id</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SaaS resource id")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"SaaS resource id",
+        SerializedName = @"saaSResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SaaSDataSaaSresourceId { get => _body.SaaSDataSaaSresourceId ?? null; set => _body.SaaSDataSaaSresourceId = value; }
 
         /// <summary>
         /// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.

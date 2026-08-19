@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public bool DisableBgpRoutePropagation { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string DisablePeeringRoute { get; set; }
+
         [JsonIgnore]
         public string RoutesText
         {

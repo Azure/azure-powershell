@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Post to List of Network Manager Deployment Status.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
