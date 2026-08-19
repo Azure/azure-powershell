@@ -39,6 +39,8 @@
     - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
     - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
     - DDoS custom policy association does not require a specific DDoS protection mode.
+* Added new cmdlet to retrieve effective routes for a Virtual Network Gateway
+    - `Get-AzVirtualNetworkGatewayEffectiveRoute` : Get effective routes for a Virtual Network Gateway
 * Added the `-Mode` and `-Scope` parameters to `New-AzLoadBalancer`.
     - Set `-Mode Advanced` together with `-Scope Public` or `-Scope Private` to create an advanced (Banksy-based) Standard SKU load balancer. Advanced mode must be specified at creation and cannot be changed afterward.
 * Added the `-EnableConnectionTracking` switch to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
