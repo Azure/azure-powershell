@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added `Move-AzVirtualNetworkIpConfiguration` cmdlet to move secondary private IP configurations between network interfaces within a virtual network.
+    - Supports moving one or more IP configurations in a single operation.
+    - Use `New-AzMoveIpConfigurationItem` to create each source and target IP configuration pair.
+    - The operation is long-running and supports the `-AsJob` parameter.
 * Added IPv6 support to Virtual Hub and Hub Virtual Network Connection cmdlets
     - `New-AzVirtualHub`: Added `-AddressPrefixV6` parameter to specify the IPv6 address prefix for the VirtualHub.
     - `Update-AzVirtualHub`: Added `-AddressPrefixV6` parameter to update the IPv6 address prefix for the VirtualHub.
