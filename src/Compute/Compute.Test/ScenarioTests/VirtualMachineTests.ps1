@@ -7779,7 +7779,8 @@ function Test-VMDisableCapacityReservationAssignment
         $CRGName = 'CRG' + $rgname;
         $CRG = New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -Location $loc;
 
-        Assert-ThrowsContains { Update-AzVM -ResourceGroupName $rgname -VM $vm2 -CapacityReservationGroupId $CRG.Id -DisableCapacityReservationAssignment } "capacityReservation";
+        Assert-ThrowsContains { Update-AzVM -ResourceGroupName $rgname -VM $vm2 -CapacityReservationGroupId $CRG.Id -DisableCapacityReservationAssignment } "cannot be used together";
+        Assert-ThrowsContains { New-AzVMConfig -VMName ('cfg2' + $rgname) -VMSize $vmsize -CapacityReservationGroupId $CRG.Id -DisableCapacityReservationAssignment } "cannot be used together";
 
         # remove VMs
         Remove-AzVm -ResourceGroupName $rgname -Name $vmname1 -Force;
