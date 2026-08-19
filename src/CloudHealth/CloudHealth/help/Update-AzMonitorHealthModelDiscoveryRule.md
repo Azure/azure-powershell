@@ -18,14 +18,14 @@ Update-AzMonitorHealthModelDiscoveryRule -HealthModelName <String> -Name <String
  [-SubscriptionId <String>] [-AddRecommendedSignal <String>] [-AddResourceHealthSignal <String>]
  [-AuthenticationSetting <String>] [-DiscoverRelationship <String>] [-DisplayName <String>]
  [-Specification <IDiscoveryRuleSpecification>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzMonitorHealthModelDiscoveryRule -HealthModelName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Resource <IDiscoveryRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityHealthmodelExpanded
@@ -33,7 +33,7 @@ Update-AzMonitorHealthModelDiscoveryRule -HealthModelName <String> -Name <String
 Update-AzMonitorHealthModelDiscoveryRule -Name <String> -HealthmodelInputObject <ICloudHealthIdentity>
  [-AddRecommendedSignal <String>] [-AddResourceHealthSignal <String>] [-AuthenticationSetting <String>]
  [-DiscoverRelationship <String>] [-DisplayName <String>] [-Specification <IDiscoveryRuleSpecification>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ Update-AzMonitorHealthModelDiscoveryRule -Name <String> -HealthmodelInputObject 
 ```
 Update-AzMonitorHealthModelDiscoveryRule -Name <String> -HealthmodelInputObject <ICloudHealthIdentity>
  -Resource <IDiscoveryRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -49,13 +49,13 @@ Update-AzMonitorHealthModelDiscoveryRule -Name <String> -HealthmodelInputObject 
 Update-AzMonitorHealthModelDiscoveryRule -InputObject <ICloudHealthIdentity> [-AddRecommendedSignal <String>]
  [-AddResourceHealthSignal <String>] [-AuthenticationSetting <String>] [-DiscoverRelationship <String>]
  [-DisplayName <String>] [-Specification <IDiscoveryRuleSpecification>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
 Update-AzMonitorHealthModelDiscoveryRule -InputObject <ICloudHealthIdentity> -Resource <IDiscoveryRule>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -265,21 +265,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
