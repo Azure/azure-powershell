@@ -1159,6 +1159,31 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ExpressRouteLink, CNM.PSExpressRouteLink>();
                 cfg.CreateMap<MNM.ExpressRoutePortAuthorization, CNM.PSExpressRoutePortAuthorization>();
 
+                // ExpressRouteLag
+                // The SDK model is nested (Properties of type ExpressRouteLagPropertiesFormat) while the
+                // PowerShell model is flat, so bridge the flat PS members to/from the nested SDK Properties.
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteLag, MNM.ExpressRouteLag>()
+                    .ForMember(dest => dest.Properties, opt => opt.MapFrom(src => src));
+                cfg.CreateMap<CNM.PSExpressRouteLag, MNM.ExpressRouteLagPropertiesFormat>();
+                cfg.CreateMap<CNM.PSExpressRouteLagLink, MNM.ExpressRouteLagLink>()
+                    .ForMember(dest => dest.Properties, opt => opt.MapFrom(src => src));
+                cfg.CreateMap<CNM.PSExpressRouteLagLink, MNM.ExpressRouteLagLinkPropertiesFormat>();
+                cfg.CreateMap<CNM.PSExpressRouteLagMember, MNM.ExpressRouteLagMember>()
+                    .ForMember(dest => dest.Properties, opt => opt.MapFrom(src => src));
+                cfg.CreateMap<CNM.PSExpressRouteLagMember, MNM.ExpressRouteLagMemberPropertiesFormat>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteLag, CNM.PSExpressRouteLag>()
+                    .AfterMap((src, dest, ctx) => { if (src.Properties != null) { ctx.Mapper.Map(src.Properties, dest); } });
+                cfg.CreateMap<MNM.ExpressRouteLagPropertiesFormat, CNM.PSExpressRouteLag>();
+                cfg.CreateMap<MNM.ExpressRouteLagLink, CNM.PSExpressRouteLagLink>()
+                    .AfterMap((src, dest, ctx) => { if (src.Properties != null) { ctx.Mapper.Map(src.Properties, dest); } });
+                cfg.CreateMap<MNM.ExpressRouteLagLinkPropertiesFormat, CNM.PSExpressRouteLagLink>();
+                cfg.CreateMap<MNM.ExpressRouteLagMember, CNM.PSExpressRouteLagMember>()
+                    .AfterMap((src, dest, ctx) => { if (src.Properties != null) { ctx.Mapper.Map(src.Properties, dest); } });
+                cfg.CreateMap<MNM.ExpressRouteLagMemberPropertiesFormat, CNM.PSExpressRouteLagMember>();
+
                 // ExpressRouteCircuit
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSExpressRouteCircuit, MNM.ExpressRouteCircuit>();

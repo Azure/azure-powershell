@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added cmdlets to manage `ExpressRouteLag` resources (Microsoft.Network 2025-09-01 API).
+    - `Get-AzExpressRouteLag`, `New-AzExpressRouteLag`, `Set-AzExpressRouteLag`, `Remove-AzExpressRouteLag` for core CRUD operations.
+    - `New-AzExpressRouteLagLOA` to generate a letter of authorization for an ExpressRouteLag.
+    - `Get-AzExpressRouteLagLink` to retrieve the links of an ExpressRouteLag.
+    - `Get-AzExpressRouteLagMember` to retrieve the members of an ExpressRouteLag link.
 * Added `Move-AzVirtualNetworkIpConfiguration` cmdlet to move secondary private IP configurations between network interfaces within a virtual network.
     - Supports moving one or more IP configurations in a single operation.
     - Use `New-AzMoveIpConfigurationItem` to create each source and target IP configuration pair.

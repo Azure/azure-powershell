@@ -401,6 +401,15 @@ Gets a route table summary of an ExpressRoute cross connection.
 ### [Get-AzExpressRouteGateway](Get-AzExpressRouteGateway.md)
 Gets a ExpressRouteGateway resource using ResourceGroupName and GatewayName OR lists all gateways by ResourceGroupName or SubscriptionId.
 
+### [Get-AzExpressRouteLag](Get-AzExpressRouteLag.md)
+Gets an Azure ExpressRouteLag resource.
+
+### [Get-AzExpressRouteLagLink](Get-AzExpressRouteLagLink.md)
+Gets the links of an Azure ExpressRouteLag.
+
+### [Get-AzExpressRouteLagMember](Get-AzExpressRouteLagMember.md)
+Gets the members of an Azure ExpressRouteLag link.
+
 ### [Get-AzExpressRoutePort](Get-AzExpressRoutePort.md)
 Gets an Azure ExpressRoutePort resource.
 
@@ -1153,6 +1162,12 @@ Creates an ExpressRoute connection that connects an ExpressRoute gateway to an o
 ### [New-AzExpressRouteGateway](New-AzExpressRouteGateway.md)
 Creates a Scalable ExpressRoute Gateway.
 
+### [New-AzExpressRouteLag](New-AzExpressRouteLag.md)
+Creates an Azure ExpressRouteLag resource.
+
+### [New-AzExpressRouteLagLOA](New-AzExpressRouteLagLOA.md)
+Generates and downloads a letter of authorization (LOA) for an Azure ExpressRouteLag.
+
 ### [New-AzExpressRoutePort](New-AzExpressRoutePort.md)
 Creates an Azure ExpressRoutePort.
 
@@ -1875,6 +1890,9 @@ Removes an ExpressRoute cross connection peering configuration.
 ### [Remove-AzExpressRouteGateway](Remove-AzExpressRouteGateway.md)
 The Remove-AzExpressRouteGateway cmdlet removes an Azure ExpressRoute gateway. This is a gateway specific to Azure Virtual WAN's software defined connectivity.
 
+### [Remove-AzExpressRouteLag](Remove-AzExpressRouteLag.md)
+Removes an Azure ExpressRouteLag resource.
+
 ### [Remove-AzExpressRoutePort](Remove-AzExpressRoutePort.md)
 Removes an ExpressRoutePort.
 
@@ -2348,6 +2366,9 @@ Modifies an ExpressRoute cross connection.
 
 ### [Set-AzExpressRouteGateway](Set-AzExpressRouteGateway.md)
 Updates a Scalable ExpressRoute Gateway.
+
+### [Set-AzExpressRouteLag](Set-AzExpressRouteLag.md)
+Updates an Azure ExpressRouteLag resource.
 
 ### [Set-AzExpressRoutePort](Set-AzExpressRoutePort.md)
 Modifies an ExpressRoutePort.
