@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Security.Models.GcpOrganizationalDataMember
 https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritygcporganizationaldatamemberobject
 #>
 function New-AzSecurityGcpOrganizationalDataMemberObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Security.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Security.Models.GcpOrganizationalDataMember')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

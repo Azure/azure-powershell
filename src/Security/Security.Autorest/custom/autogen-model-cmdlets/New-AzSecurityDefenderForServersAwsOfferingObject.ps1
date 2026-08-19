@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderForServersAwsOffering
 https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforserversawsofferingobject
 #>
 function New-AzSecurityDefenderForServersAwsOfferingObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Security.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderForServersAwsOffering')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

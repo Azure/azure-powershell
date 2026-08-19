@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Security.Models.AzureDevOpsScopeEnvironment
 https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityazuredevopsscopeenvironmentobject
 #>
 function New-AzSecurityAzureDevOpsScopeEnvironmentObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Security.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Security.Models.AzureDevOpsScopeEnvironment')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
