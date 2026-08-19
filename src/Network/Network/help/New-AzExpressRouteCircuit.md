@@ -29,7 +29,7 @@ New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <
 New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String> [-SkuTier <String>]
  [-SkuFamily <String>] -ExpressRoutePort <PSExpressRoutePort> -BandwidthInGbps <Double>
  [-AuthorizationKey <String>] [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
- [-AllowClassicOperations <Boolean>] [-PartnerAccountId <String>] [-ActivationKey <String>]
+ [-AllowClassicOperations <Boolean>]
  [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
@@ -91,7 +91,7 @@ Activation Key from partner cloud provider. Mutually exclusive with -PartnerAcco
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ServiceProvider
 Aliases:
 
 Required: False
@@ -287,7 +287,7 @@ Account ID of customer account on partner cloud provider. Mutually exclusive wit
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ServiceProvider
 Aliases:
 
 Required: False

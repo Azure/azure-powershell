@@ -129,12 +129,14 @@ namespace Microsoft.Azure.Commands.Network
         public bool? AllowClassicOperations { get; set; }
 
         [Parameter(
+            ParameterSetName = "ServiceProvider",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Account ID of customer account on partner cloud provider. Mutually exclusive with -ActivationKey.")]
         public string PartnerAccountId { get; set; }
 
         [Parameter(
+            ParameterSetName = "ServiceProvider",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Activation Key from partner cloud provider. Mutually exclusive with -PartnerAccountId.")]
