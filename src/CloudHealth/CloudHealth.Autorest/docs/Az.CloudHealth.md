@@ -59,9 +59,6 @@ Create a AuthenticationSetting
 ### [New-AzMonitorHealthModelDiscoveryRule](New-AzMonitorHealthModelDiscoveryRule.md)
 Create a DiscoveryRule
 
-### [New-AzMonitorHealthModelDiscoveryRulePropertiesObject](New-AzMonitorHealthModelDiscoveryRulePropertiesObject.md)
-Create an in-memory object for DiscoveryRuleProperties.
-
 ### [New-AzMonitorHealthModelEntity](New-AzMonitorHealthModelEntity.md)
 Create a Entity
 

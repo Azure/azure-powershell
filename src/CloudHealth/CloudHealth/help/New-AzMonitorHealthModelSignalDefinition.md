@@ -15,26 +15,29 @@ Create a SignalDefinition
 ### CreateExpanded (Default)
 ```
 New-AzMonitorHealthModelSignalDefinition -HealthModelName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DataUnit <String>] [-DegradedRuleLookBackWindow <String>]
- [-DegradedRuleOperator <String>] [-DegradedRuleSensitivity <String>] [-DegradedRuleThreshold <Double>]
- [-DisplayName <String>] [-RefreshInterval <String>] [-SignalKind <String>] [-Tag <Hashtable>]
- [-UnhealthyRuleLookBackWindow <String>] [-UnhealthyRuleOperator <String>]
- [-UnhealthyRuleSensitivity <String>] [-UnhealthyRuleThreshold <Double>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Property <ISignalDefinitionProperties>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzMonitorHealthModelSignalDefinition -HealthModelName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Resource <ISignalDefinition> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzMonitorHealthModelSignalDefinition -HealthModelName <String> -Name <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzMonitorHealthModelSignalDefinition -HealthModelName <String> -Name <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,22 +74,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DataUnit
-Unit of the signal result (e.g.
-Bytes, MilliSeconds, Percent, Count))
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -95,83 +82,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DegradedRuleLookBackWindow
-ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DegradedRuleOperator
-Operator how to compare the signal value with the threshold
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DegradedRuleSensitivity
-Sensitivity level for dynamic threshold detection.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DegradedRuleThreshold
-Threshold value
-
-```yaml
-Type: System.Double
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-Display name
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
 
 Required: False
 Position: Named
@@ -256,12 +166,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RefreshInterval
-Interval in which the signal is being evaluated.
-Defaults to PT1M (1 minute).
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Property
+The resource-specific properties for this resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinitionProperties
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -269,6 +193,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Resource
+A signal definition in a health model
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition
+Parameter Sets: Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -288,21 +227,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SignalKind
-Kind of the signal definition
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -315,83 +239,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Optional set of tags (key-value pairs)
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleLookBackWindow
-ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleOperator
-Operator how to compare the signal value with the threshold
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleSensitivity
-Sensitivity level for dynamic threshold detection.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleThreshold
-Threshold value
-
-```yaml
-Type: System.Double
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -432,6 +279,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition
@@ -439,4 +288,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

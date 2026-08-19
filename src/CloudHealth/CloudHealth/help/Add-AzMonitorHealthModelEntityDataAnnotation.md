@@ -15,55 +15,57 @@ Add a data annotation to an entity
 ### AddExpanded (Default)
 ```
 Add-AzMonitorHealthModelEntityDataAnnotation -EntityName <String> -HealthModelName <String>
- -ResourceGroupName <String> -AnnotationDetail <Hashtable> [-SubscriptionId <String>] [-Description <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -AnnotationDetail <Hashtable> [-Description <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Add
+### AddViaJsonString
 ```
 Add-AzMonitorHealthModelEntityDataAnnotation -EntityName <String> -HealthModelName <String>
- -ResourceGroupName <String> -Body <IAddDataAnnotationRequest> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AddViaIdentity
+### AddViaJsonFilePath
 ```
-Add-AzMonitorHealthModelEntityDataAnnotation -InputObject <ICloudHealthIdentity>
- -Body <IAddDataAnnotationRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AddViaIdentityExpanded
-```
-Add-AzMonitorHealthModelEntityDataAnnotation -InputObject <ICloudHealthIdentity> -AnnotationDetail <Hashtable>
- [-Description <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AddViaIdentityHealthmodel
-```
-Add-AzMonitorHealthModelEntityDataAnnotation -EntityName <String>
- -HealthmodelInputObject <ICloudHealthIdentity> -Body <IAddDataAnnotationRequest> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzMonitorHealthModelEntityDataAnnotation -EntityName <String> -HealthModelName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddViaIdentityHealthmodelExpanded
 ```
 Add-AzMonitorHealthModelEntityDataAnnotation -EntityName <String>
  -HealthmodelInputObject <ICloudHealthIdentity> -AnnotationDetail <Hashtable> [-Description <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AddViaJsonFilePath
+### AddViaIdentityHealthmodel
 ```
-Add-AzMonitorHealthModelEntityDataAnnotation -EntityName <String> -HealthModelName <String>
- -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzMonitorHealthModelEntityDataAnnotation -EntityName <String>
+ -HealthmodelInputObject <ICloudHealthIdentity> -Body <IAddDataAnnotationRequest> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AddViaJsonString
+### Add
 ```
 Add-AzMonitorHealthModelEntityDataAnnotation -EntityName <String> -HealthModelName <String>
- -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Body <IAddDataAnnotationRequest>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaIdentityExpanded
+```
+Add-AzMonitorHealthModelEntityDataAnnotation -InputObject <ICloudHealthIdentity> -AnnotationDetail <Hashtable>
+ [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### AddViaIdentity
+```
+Add-AzMonitorHealthModelEntityDataAnnotation -InputObject <ICloudHealthIdentity>
+ -Body <IAddDataAnnotationRequest> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +90,7 @@ Requests exceeding these limits will be rejected with a 400 response.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: AddExpanded, AddViaIdentityExpanded, AddViaIdentityHealthmodelExpanded
+Parameter Sets: AddExpanded, AddViaIdentityHealthmodelExpanded, AddViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -103,7 +105,7 @@ Request body for adding a data annotation.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAddDataAnnotationRequest
-Parameter Sets: Add, AddViaIdentity, AddViaIdentityHealthmodel
+Parameter Sets: AddViaIdentityHealthmodel, Add, AddViaIdentity
 Aliases:
 
 Required: True
@@ -134,7 +136,7 @@ Optional description of the annotation
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, AddViaIdentityExpanded, AddViaIdentityHealthmodelExpanded
+Parameter Sets: AddExpanded, AddViaIdentityHealthmodelExpanded, AddViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -150,7 +152,7 @@ Must be unique within a health model.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded, AddViaIdentityHealthmodel, AddViaIdentityHealthmodelExpanded, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, AddViaIdentityHealthmodelExpanded, AddViaIdentityHealthmodel, Add
 Aliases:
 
 Required: True
@@ -165,7 +167,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-Parameter Sets: AddViaIdentityHealthmodel, AddViaIdentityHealthmodelExpanded
+Parameter Sets: AddViaIdentityHealthmodelExpanded, AddViaIdentityHealthmodel
 Aliases:
 
 Required: True
@@ -180,7 +182,7 @@ Name of health model resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, Add
 Aliases:
 
 Required: True
@@ -195,7 +197,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-Parameter Sets: AddViaIdentity, AddViaIdentityExpanded
+Parameter Sets: AddViaIdentityExpanded, AddViaIdentity
 Aliases:
 
 Required: True
@@ -241,7 +243,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, Add
 Aliases:
 
 Required: True
@@ -257,7 +259,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, Add
 Aliases:
 
 Required: False
@@ -314,4 +316,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -16,57 +16,55 @@ Retrieve the time series history for a signal on an entity
 ```
 Get-AzMonitorHealthModelEntitySignalHistory -EntityName <String> -HealthModelName <String>
  -ResourceGroupName <String> -SignalName <String> [-SubscriptionId <String[]>] [-EndAt <DateTime>]
- [-NextMarker <String>] [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-NextMarker <String>] [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMonitorHealthModelEntitySignalHistory -EntityName <String> -HealthModelName <String>
  -ResourceGroupName <String> -Body <ISignalHistoryRequest> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzMonitorHealthModelEntitySignalHistory -InputObject <ICloudHealthIdentity> -Body <ISignalHistoryRequest>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
 ```
 Get-AzMonitorHealthModelEntitySignalHistory -InputObject <ICloudHealthIdentity> -SignalName <String>
  [-EndAt <DateTime>] [-NextMarker <String>] [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityHealthmodel
 ```
 Get-AzMonitorHealthModelEntitySignalHistory -EntityName <String>
  -HealthmodelInputObject <ICloudHealthIdentity> -Body <ISignalHistoryRequest> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityHealthmodelExpanded
 ```
 Get-AzMonitorHealthModelEntitySignalHistory -EntityName <String>
  -HealthmodelInputObject <ICloudHealthIdentity> -SignalName <String> [-EndAt <DateTime>]
- [-NextMarker <String>] [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-NextMarker <String>] [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaJsonFilePath
 ```
 Get-AzMonitorHealthModelEntitySignalHistory -EntityName <String> -HealthModelName <String>
  -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaJsonString
 ```
 Get-AzMonitorHealthModelEntitySignalHistory -EntityName <String> -HealthModelName <String>
  -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -310,37 +308,6 @@ Defaults to 1000.
 Type: System.Int32
 Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityHealthmodelExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
 
 Required: False
 Position: Named

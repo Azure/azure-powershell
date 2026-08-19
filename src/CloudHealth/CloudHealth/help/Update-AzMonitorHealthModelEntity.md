@@ -19,8 +19,19 @@ Update-AzMonitorHealthModelEntity -HealthModelName <String> -Name <String> -Reso
  [-DegradedActionGroupId <String[]>] [-DegradedDescription <String>] [-DegradedSeverity <String>]
  [-DisplayName <String>] [-HealthObjective <Single>] [-IconCustomData <String>] [-IconName <String>]
  [-Impact <String>] [-SignalGroup <ISignalGroups>] [-Tag <Hashtable>] [-UnhealthyActionGroupId <String[]>]
- [-UnhealthyDescription <String>] [-UnhealthySeverity <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UnhealthyDescription <String>] [-UnhealthySeverity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityHealthmodelExpanded
+```
+Update-AzMonitorHealthModelEntity -Name <String> -HealthmodelInputObject <ICloudHealthIdentity>
+ [-CanvaPositionX <Single>] [-CanvaPositionY <Single>] [-DegradedActionGroupId <String[]>]
+ [-DegradedDescription <String>] [-DegradedSeverity <String>] [-DisplayName <String>]
+ [-HealthObjective <Single>] [-IconCustomData <String>] [-IconName <String>] [-Impact <String>]
+ [-SignalGroup <ISignalGroups>] [-Tag <Hashtable>] [-UnhealthyActionGroupId <String[]>]
+ [-UnhealthyDescription <String>] [-UnhealthySeverity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -30,18 +41,8 @@ Update-AzMonitorHealthModelEntity -InputObject <ICloudHealthIdentity> [-CanvaPos
  [-DegradedSeverity <String>] [-DisplayName <String>] [-HealthObjective <Single>] [-IconCustomData <String>]
  [-IconName <String>] [-Impact <String>] [-SignalGroup <ISignalGroups>] [-Tag <Hashtable>]
  [-UnhealthyActionGroupId <String[]>] [-UnhealthyDescription <String>] [-UnhealthySeverity <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityHealthmodelExpanded
-```
-Update-AzMonitorHealthModelEntity -HealthmodelInputObject <ICloudHealthIdentity> -Name <String>
- [-CanvaPositionX <Single>] [-CanvaPositionY <Single>] [-DegradedActionGroupId <String[]>]
- [-DegradedDescription <String>] [-DegradedSeverity <String>] [-DisplayName <String>]
- [-HealthObjective <Single>] [-IconCustomData <String>] [-IconName <String>] [-Impact <String>]
- [-SignalGroup <ISignalGroups>] [-Tag <Hashtable>] [-UnhealthyActionGroupId <String[]>]
- [-UnhealthyDescription <String>] [-UnhealthySeverity <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -326,6 +327,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -478,4 +494,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

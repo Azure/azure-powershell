@@ -14,7 +14,7 @@ Create an in-memory object for EvaluationRule.
 
 ```
 New-AzMonitorHealthModelEvaluationRuleObject -UnhealthyRule <IThresholdRuleV2>
- [-DegradedRule <IThresholdRuleV2>] [<CommonParameters>]
+ [-DegradedRule <IThresholdRuleV2>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +50,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UnhealthyRule
 Unhealthy rule with static threshold.
 
@@ -77,4 +92,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

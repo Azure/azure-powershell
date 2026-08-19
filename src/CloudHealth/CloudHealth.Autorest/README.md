@@ -100,7 +100,6 @@ directive:
     - ResourceMetricSignalDefinitionProperties
     - LogAnalyticsQuerySignalDefinitionProperties
     - PrometheusMetricsSignalDefinitionProperties
-    - DiscoveryRuleProperties
     - DiscoveryRuleSpecification
     - ApplicationInsightsTopologySpecification
     - ResourceGraphQuerySpecification
@@ -112,7 +111,6 @@ directive:
     - model-name: ResourceMetricSignalDefinitionProperties
     - model-name: LogAnalyticsQuerySignalDefinitionProperties
     - model-name: PrometheusMetricsSignalDefinitionProperties
-    - model-name: DiscoveryRuleProperties
     - model-name: ApplicationInsightsTopologySpecification
     - model-name: ResourceGraphQuerySpecification
     - model-name: EvaluationRule

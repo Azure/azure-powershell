@@ -14,7 +14,7 @@ Create an in-memory object for ResourceGraphQuerySpecification.
 
 ```
 New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery <String>
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +32,21 @@ Creates a Resource Graph specification for use with a discovery rule.
 The query projects the resource id.
 
 ## PARAMETERS
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ResourceGraphQuery
 Azure Resource Graph query text in KQL syntax.
@@ -61,4 +76,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

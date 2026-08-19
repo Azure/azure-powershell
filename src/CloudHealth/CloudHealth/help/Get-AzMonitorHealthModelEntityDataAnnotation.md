@@ -16,55 +16,58 @@ Retrieve data annotations for an entity
 ```
 Get-AzMonitorHealthModelEntityDataAnnotation -EntityName <String> -HealthModelName <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-EndAt <DateTime>] [-NextMarker <String>]
- [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzMonitorHealthModelEntityDataAnnotation -EntityName <String> -HealthModelName <String>
- -ResourceGroupName <String> -Body <IGetDataAnnotationsRequest> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzMonitorHealthModelEntityDataAnnotation -InputObject <ICloudHealthIdentity>
- -Body <IGetDataAnnotationsRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentityExpanded
-```
-Get-AzMonitorHealthModelEntityDataAnnotation -InputObject <ICloudHealthIdentity> [-EndAt <DateTime>]
- [-NextMarker <String>] [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### GetViaIdentityHealthmodel
+### GetViaJsonString
 ```
-Get-AzMonitorHealthModelEntityDataAnnotation -EntityName <String>
- -HealthmodelInputObject <ICloudHealthIdentity> -Body <IGetDataAnnotationsRequest>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzMonitorHealthModelEntityDataAnnotation -EntityName <String> -HealthModelName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaJsonFilePath
+```
+Get-AzMonitorHealthModelEntityDataAnnotation -EntityName <String> -HealthModelName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityHealthmodelExpanded
 ```
 Get-AzMonitorHealthModelEntityDataAnnotation -EntityName <String>
  -HealthmodelInputObject <ICloudHealthIdentity> [-EndAt <DateTime>] [-NextMarker <String>]
- [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### GetViaJsonFilePath
+### GetViaIdentityHealthmodel
 ```
-Get-AzMonitorHealthModelEntityDataAnnotation -EntityName <String> -HealthModelName <String>
- -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzMonitorHealthModelEntityDataAnnotation -EntityName <String>
+ -HealthmodelInputObject <ICloudHealthIdentity> -Body <IGetDataAnnotationsRequest> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### GetViaJsonString
+### Get
 ```
 Get-AzMonitorHealthModelEntityDataAnnotation -EntityName <String> -HealthModelName <String>
- -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] -Body <IGetDataAnnotationsRequest>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityExpanded
+```
+Get-AzMonitorHealthModelEntityDataAnnotation -InputObject <ICloudHealthIdentity> [-EndAt <DateTime>]
+ [-NextMarker <String>] [-StartAt <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzMonitorHealthModelEntityDataAnnotation -InputObject <ICloudHealthIdentity>
+ -Body <IGetDataAnnotationsRequest> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +90,7 @@ Request body for querying data annotations
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetDataAnnotationsRequest
-Parameter Sets: Get, GetViaIdentity, GetViaIdentityHealthmodel
+Parameter Sets: GetViaIdentityHealthmodel, Get, GetViaIdentity
 Aliases:
 
 Required: True
@@ -119,7 +122,7 @@ Defaults to now if not specified.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityHealthmodelExpanded
+Parameter Sets: GetExpanded, GetViaIdentityHealthmodelExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -135,7 +138,7 @@ Must be unique within a health model.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded, GetViaIdentityHealthmodel, GetViaIdentityHealthmodelExpanded, GetViaJsonFilePath, GetViaJsonString
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, GetViaIdentityHealthmodelExpanded, GetViaIdentityHealthmodel, Get
 Aliases:
 
 Required: True
@@ -150,7 +153,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-Parameter Sets: GetViaIdentityHealthmodel, GetViaIdentityHealthmodelExpanded
+Parameter Sets: GetViaIdentityHealthmodelExpanded, GetViaIdentityHealthmodel
 Aliases:
 
 Required: True
@@ -165,7 +168,7 @@ Name of health model resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get
 Aliases:
 
 Required: True
@@ -180,7 +183,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentityExpanded
+Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
 Aliases:
 
 Required: True
@@ -226,7 +229,7 @@ Must not be combined with startAt or endAt.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityHealthmodelExpanded
+Parameter Sets: GetExpanded, GetViaIdentityHealthmodelExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -242,7 +245,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get
 Aliases:
 
 Required: True
@@ -258,7 +261,7 @@ Defaults to 24 hours ago if not specified.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityHealthmodelExpanded
+Parameter Sets: GetExpanded, GetViaIdentityHealthmodelExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -274,7 +277,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get
 Aliases:
 
 Required: False
@@ -290,39 +293,8 @@ Defaults to 100.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityHealthmodelExpanded
+Parameter Sets: GetExpanded, GetViaIdentityHealthmodelExpanded, GetViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
 
 Required: False
 Position: Named
@@ -347,4 +319,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

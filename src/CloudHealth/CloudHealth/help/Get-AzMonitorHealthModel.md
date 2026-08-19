@@ -14,7 +14,8 @@ Get a HealthModel
 
 ### List (Default)
 ```
-Get-AzMonitorHealthModel [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMonitorHealthModel [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -23,14 +24,15 @@ Get-AzMonitorHealthModel -Name <String> -ResourceGroupName <String> [-Subscripti
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzMonitorHealthModel -InputObject <ICloudHealthIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzMonitorHealthModel -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzMonitorHealthModel -InputObject <ICloudHealthIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -147,7 +149,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -171,4 +173,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
