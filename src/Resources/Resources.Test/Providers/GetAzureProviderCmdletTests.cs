@@ -133,11 +133,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 new Management.ResourceManager.Models.Location(name: "southus", displayName: "South US")
             };
 
-            var pagableLocations = new Management.ResourceManager.Models.Page<Management.ResourceManager.Models.Location>();
-            pagableLocations.SetItemValue(locationList);
-            var locationsResult = new AzureOperationResponse<IPage<Management.ResourceManager.Models.Location>>()
+            var locationsResult = new AzureOperationResponse<IEnumerable<Management.ResourceManager.Models.Location>>()
             {
-                Body = pagableLocations
+                Body = locationList
             };
             this.subscriptionsOperationsMock
                 .Setup(f => f.ListLocationsWithHttpMessagesAsync(It.IsAny<string>(), null, null, It.IsAny<System.Threading.CancellationToken>()))
