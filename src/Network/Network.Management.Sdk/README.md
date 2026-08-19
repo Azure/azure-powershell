@@ -54,6 +54,18 @@ output-folder: Generated
 namespace: Microsoft.Azure.Management.Network
 
 directive:
+# The 2025-09-01 service response returns resourceGuid at the resource root, while the
+# published swagger places it under properties. Move the schema property during generation
+# until the current and next API specifications are corrected.
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      if ($["FirstPartyServiceTag"] &&
+          $["FirstPartyServiceTagPropertiesFormat"]?.properties?.resourceGuid) {
+        $["FirstPartyServiceTag"].properties.resourceGuid =
+          $["FirstPartyServiceTagPropertiesFormat"].properties.resourceGuid;
+        delete $["FirstPartyServiceTagPropertiesFormat"].properties.resourceGuid;
+      }
 # start of directives added by xiaogang
 # Remove lro response headers. Srijani, you may ignore this part.
   - from: swagger-document

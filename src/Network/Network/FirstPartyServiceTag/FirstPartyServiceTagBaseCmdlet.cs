@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
                 Etag = serviceTag.Etag,
                 Value = serviceTag.Properties?.Value,
                 FailedReason = serviceTag.Properties?.FailedReason,
-                ResourceGuid = serviceTag.Properties?.ResourceGuid,
+                ResourceGuid = serviceTag.ResourceGuid,
                 ProvisioningState = serviceTag.Properties?.ProvisioningState
             };
         }

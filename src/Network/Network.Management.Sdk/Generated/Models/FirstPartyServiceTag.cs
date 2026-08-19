@@ -44,12 +44,16 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
-        public FirstPartyServiceTag(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), FirstPartyServiceTagPropertiesFormat properties = default(FirstPartyServiceTagPropertiesFormat), string etag = default(string))
+
+        /// <param name="resourceGuid">The resource GUID property of the first party service tag resource.
+        /// </param>
+        public FirstPartyServiceTag(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), FirstPartyServiceTagPropertiesFormat properties = default(FirstPartyServiceTagPropertiesFormat), string etag = default(string), string resourceGuid = default(string))
 
         : base(id, name, type, location, tags)
         {
             this.Properties = properties;
             this.Etag = etag;
+            this.ResourceGuid = resourceGuid;
             CustomInit();
         }
 
@@ -71,6 +75,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
+
+        /// <summary>
+        /// Gets the resource GUID property of the first party service tag resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resourceGuid")]
+        public string ResourceGuid {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -83,6 +93,7 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 this.Properties.Validate();
             }
+
 
         }
     }

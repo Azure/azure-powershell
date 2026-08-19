@@ -23,9 +23,11 @@ function Test-FirstPartyServiceTagBasicOperations
 
         Assert-AreEqual $serviceTagName $created.Name
         Assert-AreEqual "/RnmRunners" $created.Value
+        Assert-NotNull $created.ResourceGuid
 
         $retrieved = Get-AzFirstPartyServiceTag -ResourceGroupName $resourceGroupName -Name $serviceTagName
         Assert-AreEqual $created.Id $retrieved.Id
+        Assert-AreEqual $created.ResourceGuid $retrieved.ResourceGuid
 
         $ipTag = New-AzPublicIpTag `
             -IpTagType "FirstPartyUsage" `
