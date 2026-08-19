@@ -283,6 +283,18 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSNatGatewaySku, MNM.NatGatewaySku>();
                 cfg.CreateMap<MNM.NatGatewaySku, CNM.PSNatGatewaySku>();
 
+                // Interconnect Group
+                cfg.CreateMap<CNM.PSInterconnectGroup, MNM.InterconnectGroup>();
+                cfg.CreateMap<MNM.InterconnectGroup, CNM.PSInterconnectGroup>();
+                cfg.CreateMap<CNM.PSSubgroupProfile, MNM.SubgroupProfile>();
+                cfg.CreateMap<MNM.SubgroupProfile, CNM.PSSubgroupProfile>();
+                cfg.CreateMap<CNM.PSSubgroup, MNM.Subgroup>();
+                cfg.CreateMap<MNM.Subgroup, CNM.PSSubgroup>();
+                cfg.CreateMap<CNM.PSInterconnectGroupNodeAvailability, MNM.InterconnectGroupNodeAvailability>();
+                cfg.CreateMap<MNM.InterconnectGroupNodeAvailability, CNM.PSInterconnectGroupNodeAvailability>();
+                cfg.CreateMap<CNM.PSSubgroupNodeAvailabilityEntry, MNM.SubgroupNodeAvailabilityEntry>();
+                cfg.CreateMap<MNM.SubgroupNodeAvailabilityEntry, CNM.PSSubgroupNodeAvailabilityEntry>();
+
                 // Bgp Service Community
                 cfg.CreateMap<CNM.PSBgpServiceCommunity, MNM.BgpServiceCommunity>();
                 cfg.CreateMap<CNM.PSBgpCommunity, MNM.BGPCommunity>();
@@ -1349,6 +1361,7 @@ namespace Microsoft.Azure.Commands.Network
                     });
                 cfg.CreateMap<CNM.PSBGPPeerStatus, MNM.BgpPeerStatus>();
                 cfg.CreateMap<CNM.PSGatewayRoute, MNM.GatewayRoute>();
+                cfg.CreateMap<CNM.PSGatewayEffectiveRoute, MNM.GatewayEffectiveRoute>();
                 cfg.CreateMap<CNM.PSVpnClientConnectionHealthDetail, MNM.VpnClientConnectionHealthDetail>()
                     .ForMember(
                         dest => dest.PublicIPAddress,
@@ -1442,6 +1455,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.BgpSettings, CNM.PSBgpSettings>();
                 cfg.CreateMap<MNM.BgpPeerStatus, CNM.PSBGPPeerStatus>();
                 cfg.CreateMap<MNM.GatewayRoute, CNM.PSGatewayRoute>();
+                cfg.CreateMap<MNM.GatewayEffectiveRoute, CNM.PSGatewayEffectiveRoute>();
                 cfg.CreateMap<MNM.VpnClientConnectionHealthDetail, CNM.PSVpnClientConnectionHealthDetail>()
                     .ForMember(
                         dest => dest.PublicIpAddress,

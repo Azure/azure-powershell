@@ -13,7 +13,8 @@ Creates an IP Tag.
 ## SYNTAX
 
 ```
-New-AzPublicIpTag -IpTagType <String> -Tag <String> [-DefaultProfile <IAzureContextContainer>]
+New-AzPublicIpTag -IpTagType <String> -Tag <String> [-FirstPartyServiceTagId <String>]
+ [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
@@ -31,6 +32,14 @@ $ipTag = New-AzPublicIpTag -IpTagType $ipTagType -Tag $tag
 This command creates a new IP Tag with the Tagtype like "FirstPartyUsage"
 and tag like "/Sql". This is used in publicIpAddress creation with these
 specific tags for allocation.
+
+### Example 2: Create an IP Tag associated with a First Party Service Tag
+```powershell
+$serviceTagId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoResourceGroup/providers/Microsoft.Network/firstPartyServiceTags/ContosoServiceTag"
+$ipTag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/Sql" -FirstPartyServiceTagId $serviceTagId
+```
+
+This command creates an IP Tag that is associated with the specified First Party Service Tag resource.
 
 ## PARAMETERS
 
@@ -88,6 +97,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FirstPartyServiceTagId
+The resource ID of the First Party Service Tag to associate with the IP Tag.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

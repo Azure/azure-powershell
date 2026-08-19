@@ -22,6 +22,10 @@
 * Added address prefix set management for application security groups
     - Added `Get-AzAddressPrefixSet`, `New-AzAddressPrefixSet`, `Set-AzAddressPrefixSet`, and `Remove-AzAddressPrefixSet`
     - Supports IPv4 and IPv6 prefixes in Classless Inter-Domain Routing (CIDR) notation
+* Added `Move-AzVirtualNetworkIpConfiguration` cmdlet to move secondary private IP configurations between network interfaces within a virtual network.
+    - Supports moving one or more IP configurations in a single operation.
+    - Use `New-AzMoveIpConfigurationItem` to create each source and target IP configuration pair.
+    - The operation is long-running and supports the `-AsJob` parameter.
 * Added IPv6 support to Virtual Hub and Hub Virtual Network Connection cmdlets
     - `New-AzVirtualHub`: Added `-AddressPrefixV6` parameter to specify the IPv6 address prefix for the VirtualHub.
     - `Update-AzVirtualHub`: Added `-AddressPrefixV6` parameter to update the IPv6 address prefix for the VirtualHub.
@@ -38,10 +42,22 @@
     - Added `DisableDefaultServerHeaderInResponse` to `PSApplicationGatewayGlobalConfiguration` to mirror the new SDK property and unblock AutoMapper strict-mode validation.
 * Surfaced the read-only `UpgradedToV2` property on public IP address and public IP prefix objects.
     - `Get-AzPublicIpAddress` and `Get-AzPublicIpPrefix` now return `UpgradedToV2`, indicating whether the SKU has been upgraded from Standard to StandardV2.
+* Added new cmdlets for InterconnectGroup management
+    - `Get-AzInterconnectGroup`: Retrieve one or more InterconnectGroup resources
+    - `New-AzInterconnectGroup`: Create a new InterconnectGroup
+    - `Set-AzInterconnectGroup`: Update an existing InterconnectGroup
+    - `Remove-AzInterconnectGroup`: Delete an InterconnectGroup
+    - `Get-AzInterconnectGroupSubgroup`: Retrieve one or all subgroups under an InterconnectGroup
+    - `Get-AzInterconnectGroupNodeAvailability`: Retrieve node availability for an InterconnectGroup
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
     - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
     - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
     - DDoS custom policy association does not require a specific DDoS protection mode.
+* Added cmdlets to create, retrieve, update, and remove First Party Service Tag resources.
+    - Added `New-AzFirstPartyServiceTag`, `Get-AzFirstPartyServiceTag`, `Set-AzFirstPartyServiceTag`, and `Remove-AzFirstPartyServiceTag`.
+    - Added first party service tag association support to `New-AzPublicIpTag`.
+* Added new cmdlet to retrieve effective routes for a Virtual Network Gateway
+    - `Get-AzVirtualNetworkGatewayEffectiveRoute` : Get effective routes for a Virtual Network Gateway
 * Added the `-Mode` and `-Scope` parameters to `New-AzLoadBalancer`.
     - Set `-Mode Advanced` together with `-Scope Public` or `-Scope Private` to create an advanced (Banksy-based) Standard SKU load balancer. Advanced mode must be specified at creation and cannot be changed afterward.
 * Added the `-EnableConnectionTracking` switch to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
