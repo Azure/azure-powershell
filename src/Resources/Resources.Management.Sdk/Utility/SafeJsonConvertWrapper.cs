@@ -9,7 +9,7 @@
 
 namespace Microsoft.Azure.Management.Resources.Utility
 {
-    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.Rest;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;

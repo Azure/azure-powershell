@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Migrated the `Microsoft.Azure.Management.ResourceManager` dependency from the retired NuGet package to the locally generated `Resources.Management.Sdk` (Track 1 SDK migration). No cmdlet behavior or surface changes.
 
 ## Version 10.1.0
 * Added deployment stack WhatIfResult cmdlets for resource group, subscription, and management group scopes.

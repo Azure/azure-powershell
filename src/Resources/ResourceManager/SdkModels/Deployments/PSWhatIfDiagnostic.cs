@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Management.Resources.Models;
+﻿using Microsoft.Azure.Management.ResourceManager.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

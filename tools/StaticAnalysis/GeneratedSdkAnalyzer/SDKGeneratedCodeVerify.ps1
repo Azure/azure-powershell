@@ -114,22 +114,7 @@ try {
             if ([regex]::Matches($readMeContent, '\s*powershell\s*:\s*true\s*') -and [regex]::Matches($readMeContent, '\s*isSdkGenerator\s*:\s*true\s*'))
             {
                 Write-Host "Using autorest powershell v4:`nRe-generating SDK under Generated folder for $ModuleName..."
-                if ($IsResources)
-                {
-                    Write-Host "Specific generation for Resources.Management.Sdk"
-                    rm -r Generated/*
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-privatelinks-2020-05
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-resources-2024-11
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2025-07
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
-                }
-                else
-                {
-                    npx autorest
-                }
+                npx autorest
             }
             elseif ([regex]::Matches($readMeContent, '\s*csharp\s*:\s*true\s*'))
             {
@@ -151,6 +136,18 @@ try {
                     ProblemId = $GenSdkChanged
                     Description = "Do not find correct autorest version, please check Readme.md"
                     Remediation = "Please determine autorest v4 in Readme file."
+                }
+            }
+            
+            If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
+            {
+                $ExceptionList += [GeneratedSdkIssue]@{
+                    Module = $ModuleName;
+                    Sdk = $_;
+                    Severity = 1;
+                    ProblemId = $GenSdkChanged
+                    Description = "Failed to set autorest.csharp@2.3.90 for $ModuleName."
+                    Remediation = ""
                 }
             }
 
@@ -184,9 +181,7 @@ try {
             # Prevent EOL changes detected
             git config --global core.safecrlf false
             git config --global core.autocrlf true
-            # Use a single regex to ignore comments in .cs and .psd1 files
-            $diff = git diff --ignore-matching-lines="^\s*(//|/\*.*\*/|#)" ".\Generated"
-
+            $diff = git diff ".\Generated"
             if($diff -ne $null){
                 $changes = $changes.replace("  ", "`n")
                 $ExceptionList += [GeneratedSdkIssue]@{
