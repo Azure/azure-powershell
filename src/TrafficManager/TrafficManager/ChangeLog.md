@@ -21,6 +21,9 @@
 * Upgraded TrafficManager SDK to API version 2024-04-01-preview [#29711]
     - With this release User can Create STP enabled Traffic Manager Profiles ie "RecordType" property is available to be added/modified on TrafficManagerProfile.
     - Updated corresponding test cases
+* Fixed a bug where `Set-AzTrafficManagerProfile` failed with `The provided location 'A'/'AAAA' is not permitted for subscription` whenever the profile's `RecordType` was set
+    - Caused by `RecordType` being passed as a positional constructor argument to the underlying SDK `Profile` model, which placed it into the `location` slot instead of `recordType`
+    - Added a unit test covering the `ToSDKProfile()` mapping and strengthened `Test-ProfileChangeRecordTypeShouldFail` to assert on the expected exception message
 
 ## Version 1.4.0
 * Added ChangeSafety Support
