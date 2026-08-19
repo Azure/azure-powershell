@@ -22,8 +22,8 @@ Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtabl
  [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-SecurityType <String>]
  [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AlignRegionalDisksToVMZone <Boolean>] [-ScheduledEventsApiVersion <String>]
- [-EnableAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableAllInstancesDown <Boolean>] [-DisableCapacityReservationAssignment]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
@@ -36,8 +36,8 @@ Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtabl
  [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AlignRegionalDisksToVMZone <Boolean>] [-ScheduledEventsApiVersion <String>]
- [-EnableAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableAllInstancesDown <Boolean>] [-DisableCapacityReservationAssignment]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
@@ -49,8 +49,8 @@ Update-AzVM [-Id] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-OsDiskWri
  [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AlignRegionalDisksToVMZone <Boolean>] [-ScheduledEventsApiVersion <String>]
- [-EnableAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableAllInstancesDown <Boolean>] [-DisableCapacityReservationAssignment]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,6 +88,14 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm -vCPUCountAvailable $vCPUsAvailab
 # The $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore property is 1, and the $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable property is 1.
 # Hyperthreading is now disabled for this VM.
 ```
+
+### Example 3: Opt a virtual machine out of capacity reservation
+```powershell
+$vm = Get-AzVM -ResourceGroupName "myRG" -Name "myVM";
+Update-AzVM -ResourceGroupName "myRG" -VM $vm -DisableCapacityReservationAssignment;
+```
+
+This example updates a virtual machine so that it is explicitly opted out from any capacity reservation assignment and consumes publicly available capacity instead.
 
 ## PARAMETERS
 
@@ -143,6 +151,23 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableCapacityReservationAssignment
+Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment.
+When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.
+Minimum api-version: 2026-04-01.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
