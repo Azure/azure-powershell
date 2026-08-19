@@ -16,7 +16,7 @@ Update a SignalDefinition
 ```
 Update-AzMonitorHealthModelSignalDefinition -HealthModelName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-Property <ISignalDefinitionProperties>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzMonitorHealthModelSignalDefinition -HealthModelName <String> -Name <Str
 ```
 Update-AzMonitorHealthModelSignalDefinition -HealthModelName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -Resource <ISignalDefinition>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,27 +32,27 @@ Update-AzMonitorHealthModelSignalDefinition -HealthModelName <String> -Name <Str
 ```
 Update-AzMonitorHealthModelSignalDefinition -Name <String> -HealthmodelInputObject <ICloudHealthIdentity>
  [-Property <ISignalDefinitionProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityHealthmodel
 ```
 Update-AzMonitorHealthModelSignalDefinition -Name <String> -HealthmodelInputObject <ICloudHealthIdentity>
  -Resource <ISignalDefinition> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzMonitorHealthModelSignalDefinition -InputObject <ICloudHealthIdentity>
  [-Property <ISignalDefinitionProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
 Update-AzMonitorHealthModelSignalDefinition -InputObject <ICloudHealthIdentity> -Resource <ISignalDefinition>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -174,21 +174,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
