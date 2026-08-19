@@ -79,6 +79,18 @@ directive:
       verb: Set
     remove: true
 
+  # Strip ShouldProcess/ConfirmImpact from every Get-* cmdlet.
+  # Why: several health-model reads 
+  #    - entity history
+  #    - signal history/recommendation
+  #    - data annotation
+  # are using POST, so AutoRest gives them SupportsShouldProcess + ConfirmImpact='Medium'. 
+  
+  - where:
+      verb: Get
+    set:
+      suppress-should-process: true
+
   # Keep the discriminated property bags as explicit models and emit constructor
   # cmdlets for them, so the unexpanded variants above are actually usable.
   - no-inline:
