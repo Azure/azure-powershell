@@ -32,7 +32,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-ZonePlacementPolicy <String>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
  [-AlignRegionalDisksToVMZone] [-EnableProxyAgent] [-AddProxyAgentExtension]
  [-ScheduledEventsApiVersion <String>] [-EnableAllInstancesDown <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DisableCapacityReservationAssignment] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -59,9 +59,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
  [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
- [-ProcessorMode <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProcessorMode <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DisableCapacityReservationAssignment]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -572,6 +571,23 @@ Indicates that this cmdlet does not install the **BG Info** extension on the vir
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableCapacityReservationAssignment
+Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment.
+When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.
+Minimum api-version: 2026-04-01.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
 Required: False

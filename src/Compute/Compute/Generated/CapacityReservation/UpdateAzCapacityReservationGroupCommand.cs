@@ -78,6 +78,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false)]
         public string[] SharingProfile { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the type of the capacity reservation group. 'Targeted' reservations are consumed by virtual machines that are explicitly associated with the group. 'Block' reservations are consumed only from the capacity block. 'Open' reservations are implicitly consumed by eligible virtual machines with a matching VM size and zone without associating the group. The reservation type cannot be changed after the group is created. Minimum api-version for 'Open': 2026-04-01.")]
+        [PSArgumentCompleter("Targeted", "Block", "Open")]
+        public string ReservationType { get; set; }
+
         [Parameter(Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -119,6 +126,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     var tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     capacityReservationGroupUpdate.Tags = tags;
+                }
+
+                if (this.IsParameterBound(c => c.ReservationType))
+                {
+                    capacityReservationGroupUpdate.ReservationType = this.ReservationType;
                 }
 
                 if (this.IsParameterBound(c => c.SharingProfile))

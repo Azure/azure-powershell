@@ -120,6 +120,11 @@ namespace Microsoft.Azure.Commands.Compute
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead. Minimum api-version: 2026-04-01.")]
+        public SwitchParameter DisableCapacityReservationAssignment { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -425,6 +430,15 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.CapacityReservation = new CapacityReservationProfile();
                         }
                         parameters.CapacityReservation.CapacityReservationGroup = new SubResource(CapacityReservationGroupId);
+                    }
+
+                    if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+                    {
+                        if (parameters.CapacityReservation == null)
+                        {
+                            parameters.CapacityReservation = new CapacityReservationProfile();
+                        }
+                        parameters.CapacityReservation.DisableCapacityReservationAssignment = this.DisableCapacityReservationAssignment.IsPresent;
                     }
 
                     if (parameters.StorageProfile != null && parameters.StorageProfile.ImageReference != null && parameters.StorageProfile.ImageReference.Id != null)

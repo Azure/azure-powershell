@@ -24,6 +24,9 @@
 * Updated ComputeRP cmdlets to API version 2026-04-01, DiskRP cmdlets to 2026-03-02, and GalleryRP cmdlets to 2025-12-03.
 * Added `-ProcessorMode` to VM and VMSS create and update flows in `New-AzVMConfig`, `New-AzVM`, `Update-AzVM`, `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss`. [#30012]
 * Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM during stop; it cannot be used with `-Hibernate`, `-StayProvisioned`, or `-SkipShutdown`.
+* Added `-ReservationType` to `New-AzCapacityReservationGroup` and `Update-AzCapacityReservationGroup` to support creating `Open` capacity reservation groups, and surfaced `ReservationType` on the capacity reservation group output.
+* Added `-DisableCapacityReservationAssignment` to `New-AzVM`, `New-AzVMConfig`, and `Update-AzVM` to opt a VM (Virtual Machine) out of any capacity reservation.
+* Added `CapacityReservationType` to the VM (Virtual Machine) instance view returned by `Get-AzVM -Status`.
 
 ## Version 11.8.0
 * Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.

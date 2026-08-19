@@ -664,6 +664,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestOpenCapacityReservationGroup()
+        {
+            TestRunner.RunTestScript("Test-OpenCapacityReservationGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestVMDisableCapacityReservationAssignment()
+        {
+            TestRunner.RunTestScript("Test-VMDisableCapacityReservationAssignment");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestVMDefaultsToTrustedLaunchImgWhenStnd()
         {
             TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchImgWhenStnd");
