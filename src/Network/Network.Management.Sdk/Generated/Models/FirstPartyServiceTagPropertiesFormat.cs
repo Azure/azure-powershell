@@ -30,18 +30,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="failedReason">The reason for failure, if any.
         /// </param>
 
-        /// <param name="resourceGuid">The resource GUID property of the first party service tag resource.
-        /// </param>
-
         /// <param name="provisioningState">The provisioning state of the first party service tag resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public FirstPartyServiceTagPropertiesFormat(string value, string failedReason = default(string), string resourceGuid = default(string), string provisioningState = default(string))
+        public FirstPartyServiceTagPropertiesFormat(string value, string failedReason = default(string), string provisioningState = default(string))
 
         {
             this.Value = value;
             this.FailedReason = failedReason;
-            this.ResourceGuid = resourceGuid;
             this.ProvisioningState = provisioningState;
             CustomInit();
         }
@@ -65,12 +61,6 @@ namespace Microsoft.Azure.Management.Network.Models
         public string FailedReason {get; private set; }
 
         /// <summary>
-        /// Gets the resource GUID property of the first party service tag resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "resourceGuid")]
-        public string ResourceGuid {get; private set; }
-
-        /// <summary>
         /// Gets the provisioning state of the first party service tag resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
@@ -87,7 +77,6 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Value");
             }
-
 
 
 

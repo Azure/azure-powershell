@@ -39,21 +39,31 @@
     - Added `DisableDefaultServerHeaderInResponse` to `PSApplicationGatewayGlobalConfiguration` to mirror the new SDK property and unblock AutoMapper strict-mode validation.
 * Surfaced the read-only `UpgradedToV2` property on public IP address and public IP prefix objects.
     - `Get-AzPublicIpAddress` and `Get-AzPublicIpPrefix` now return `UpgradedToV2`, indicating whether the SKU has been upgraded from Standard to StandardV2.
-* Added support for multi-cloud ExpressRoute circuits.
-    - Added `MultiCloud` value to the `-SkuTier` parameter of `New-AzExpressRouteCircuit`.
-    - Added `-PartnerAccountId` parameter to `New-AzExpressRouteCircuit`.
-    - Added `-ActivationKey` parameter to `New-AzExpressRouteCircuit`.
-    - Exposed `PartnerAccountId`, `ActivationKey`, and `ResiliencyLevel` on `PSExpressRouteCircuit`.
+* Added new cmdlets for InterconnectGroup management
+    - `Get-AzInterconnectGroup`: Retrieve one or more InterconnectGroup resources
+    - `New-AzInterconnectGroup`: Create a new InterconnectGroup
+    - `Set-AzInterconnectGroup`: Update an existing InterconnectGroup
+    - `Remove-AzInterconnectGroup`: Delete an InterconnectGroup
+    - `Get-AzInterconnectGroupSubgroup`: Retrieve one or all subgroups under an InterconnectGroup
+    - `Get-AzInterconnectGroupNodeAvailability`: Retrieve node availability for an InterconnectGroup
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
     - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
     - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
     - DDoS custom policy association does not require a specific DDoS protection mode.
+* Added cmdlets to create, retrieve, update, and remove First Party Service Tag resources.
+    - Added `New-AzFirstPartyServiceTag`, `Get-AzFirstPartyServiceTag`, `Set-AzFirstPartyServiceTag`, and `Remove-AzFirstPartyServiceTag`.
+    - Added first party service tag association support to `New-AzPublicIpTag`.
 * Added new cmdlet to retrieve effective routes for a Virtual Network Gateway
     - `Get-AzVirtualNetworkGatewayEffectiveRoute` : Get effective routes for a Virtual Network Gateway
 * Added the `-Mode` and `-Scope` parameters to `New-AzLoadBalancer`.
     - Set `-Mode Advanced` together with `-Scope Public` or `-Scope Private` to create an advanced (Banksy-based) Standard SKU load balancer. Advanced mode must be specified at creation and cannot be changed afterward.
 * Added the `-EnableConnectionTracking` switch to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
     - Enables UDP (User Datagram Protocol) flow tracking for traffic associated with the frontend IP configuration. When enabled, packets belonging to the same UDP flow are consistently directed to the same backend instance, taking precedence over rule-level connection tracking settings. Requires the load balancer to be created with `-Mode Advanced` and `-Scope`.
+* Added support for multi-cloud ExpressRoute circuits.
+    - Added `MultiCloud` value to the `-SkuTier` parameter of `New-AzExpressRouteCircuit`.
+    - Added `-PartnerAccountId` parameter to `New-AzExpressRouteCircuit`.
+    - Added `-ActivationKey` parameter to `New-AzExpressRouteCircuit`.
+    - Exposed `PartnerAccountId`, `ActivationKey`, and `ResiliencyLevel` on `PSExpressRouteCircuit`.
 
 ## Version 8.1.0
 * Added new cmdlets for ConnectionPolicy management under VirtualHub

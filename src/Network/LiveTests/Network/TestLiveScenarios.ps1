@@ -339,7 +339,9 @@ Invoke-LiveTestScenario -Name "Create advanced mode load balancer with connectio
     $rgName = $rg.ResourceGroupName
     $location = "westus"
     $publicIpName = New-LiveTestResourceName
+    $publicIpName2 = New-LiveTestResourceName
     $feIpCfgName = New-LiveTestResourceName
+    $feIpCfgName2 = New-LiveTestResourceName
     $bePoolCfgName = New-LiveTestResourceName
     $probeName = New-LiveTestResourceName
     $lbRuleName = New-LiveTestResourceName
@@ -365,6 +367,25 @@ Invoke-LiveTestScenario -Name "Create advanced mode load balancer with connectio
     Assert-AreEqual "Public" $actual.Scope
     Assert-AreEqual 1 $actual.FrontendIpConfigurations.Count
     Assert-AreEqual $true $actual.FrontendIpConfigurations[0].EnableConnectionTracking
+
+    # Set: disable connection tracking on the existing frontend (omitting the switch clears it).
+    # NRP omits enableConnectionTracking when it is not enabled, so the property reads back as null.
+    $actual = Get-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName | Set-AzLoadBalancerFrontendIpConfig -Name $feIpCfgName -PublicIpAddress $publicIp | Set-AzLoadBalancer
+    $actual = Get-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName
+    Assert-True { $actual.FrontendIpConfigurations[0].EnableConnectionTracking -ne $true }
+
+    # Set: re-enable connection tracking on the existing frontend
+    $actual = Get-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName | Set-AzLoadBalancerFrontendIpConfig -Name $feIpCfgName -PublicIpAddress $publicIp -EnableConnectionTracking | Set-AzLoadBalancer
+    $actual = Get-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName
+    Assert-AreEqual $true $actual.FrontendIpConfigurations[0].EnableConnectionTracking
+
+    # Add: add a second frontend (StandardV2 public IP required for a public advanced-mode LB) with connection tracking enabled
+    $publicIp2 = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName2 -Location $location -AllocationMethod Static -Sku StandardV2 -IpTag $ipTag
+    $actual = Get-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName | Add-AzLoadBalancerFrontendIpConfig -Name $feIpCfgName2 -PublicIpAddress $publicIp2 -EnableConnectionTracking | Set-AzLoadBalancer
+    $actual = Get-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName
+    Assert-AreEqual 2 $actual.FrontendIpConfigurations.Count
+    $addedFrontend = $actual.FrontendIpConfigurations | Where-Object { $_.Name -eq $feIpCfgName2 }
+    Assert-AreEqual $true $addedFrontend.EnableConnectionTracking
 }
 
 Invoke-LiveTestScenario -Name "Create virtual network" -Description "Test creating a virtual network" -ScenarioScript `
