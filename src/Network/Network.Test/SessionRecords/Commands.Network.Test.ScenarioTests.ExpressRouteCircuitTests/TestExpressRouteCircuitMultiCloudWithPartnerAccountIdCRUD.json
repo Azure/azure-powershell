@@ -1,0 +1,283 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/7d747eed-b44c-4257-8d43-df9ebd94546b/providers/Microsoft.Network?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q3NDdlZWQtYjQ0Yy00MjU3LThkNDMtZGY5ZWJkOTQ1NDZiL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yaz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a4d5e748-d1ec-460a-a59b-92fe6ecf33a7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3026.36720",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.113"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "b977b55c-959b-4ed2-ad06-b0828c5cf07d"
+        ],
+        "x-ms-correlation-request-id": [
+          "b977b55c-959b-4ed2-ad06-b0828c5cf07d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20260818T232826Z:b977b55c-959b-4ed2-ad06-b0828c5cf07d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 4D5FE3DABCBE428385DC2FFDD4B4FA8B Ref B: MWH011020809040 Ref C: 2026-08-18T23:28:26Z"
+        ],
+        "Date": [
+          "Tue, 18 Aug 2026 23:28:25 GMT"
+        ],
+        "Content-Length": [
+          "397"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AuthorizationFailed\",\r\n    \"message\": \"The client 'mshrimankar@microsoft.com' with object id 'b2518563-eafc-4ef4-aa06-011b62695a06' does not have authorization to perform action 'Microsoft.Resources/subscriptions/providers/read' over scope '/subscriptions/7d747eed-b44c-4257-8d43-df9ebd94546b' or the scope is invalid. If access was recently granted, please refresh your credentials.\"\r\n  }\r\n}",
+      "StatusCode": 403
+    },
+    {
+      "RequestUri": "/subscriptions/7d747eed-b44c-4257-8d43-df9ebd94546b/resourcegroups/ps8010?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q3NDdlZWQtYjQ0Yy00MjU3LThkNDMtZGY5ZWJkOTQ1NDZiL3Jlc291cmNlZ3JvdXBzL3BzODAxMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "714cfc1c-72f0-420e-b8ed-5b5def31cd6f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3026.36720",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.113"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "37"
+        ]
+      },
+      "RequestBody": "{\r\n  \"location\": \"West Central US\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "97ce1842-b91e-4d7c-8bef-3735a72a2f02"
+        ],
+        "x-ms-correlation-request-id": [
+          "97ce1842-b91e-4d7c-8bef-3735a72a2f02"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20260818T232826Z:97ce1842-b91e-4d7c-8bef-3735a72a2f02"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 46422EEA7E8940B5BEC8F8C109E5D8A4 Ref B: CO1AA3060814023 Ref C: 2026-08-18T23:28:26Z"
+        ],
+        "Date": [
+          "Tue, 18 Aug 2026 23:28:25 GMT"
+        ],
+        "Content-Length": [
+          "425"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AuthorizationFailed\",\r\n    \"message\": \"The client 'mshrimankar@microsoft.com' with object id 'b2518563-eafc-4ef4-aa06-011b62695a06' does not have authorization to perform action 'Microsoft.Resources/subscriptions/resourcegroups/write' over scope '/subscriptions/7d747eed-b44c-4257-8d43-df9ebd94546b/resourcegroups/ps8010' or the scope is invalid. If access was recently granted, please refresh your credentials.\"\r\n  }\r\n}",
+      "StatusCode": 403
+    },
+    {
+      "RequestUri": "/subscriptions/7d747eed-b44c-4257-8d43-df9ebd94546b/resourceGroups/ps8010/providers/Microsoft.Network/expressRouteCircuits/ps5493?api-version=2025-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q3NDdlZWQtYjQ0Yy00MjU3LThkNDMtZGY5ZWJkOTQ1NDZiL3Jlc291cmNlR3JvdXBzL3BzODAxMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZXhwcmVzc1JvdXRlQ2lyY3VpdHMvcHM1NDkzP2FwaS12ZXJzaW9uPTIwMjUtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "aeb8c539-0bd4-4092-97b2-c6fe47b05c73"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3026.36720",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/27.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "24f03a06-feaf-465a-a6be-5db6ec4a5038"
+        ],
+        "x-ms-correlation-request-id": [
+          "24f03a06-feaf-465a-a6be-5db6ec4a5038"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20260818T232826Z:24f03a06-feaf-465a-a6be-5db6ec4a5038"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 25A3365A058346738579B14757AA7455 Ref B: CO6AA3150220011 Ref C: 2026-08-18T23:28:26Z"
+        ],
+        "Date": [
+          "Tue, 18 Aug 2026 23:28:26 GMT"
+        ],
+        "Content-Length": [
+          "470"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AuthorizationFailed\",\r\n    \"message\": \"The client 'mshrimankar@microsoft.com' with object id 'b2518563-eafc-4ef4-aa06-011b62695a06' does not have authorization to perform action 'Microsoft.Network/expressRouteCircuits/read' over scope '/subscriptions/7d747eed-b44c-4257-8d43-df9ebd94546b/resourceGroups/ps8010/providers/Microsoft.Network/expressRouteCircuits/ps5493' or the scope is invalid. If access was recently granted, please refresh your credentials.\"\r\n  }\r\n}",
+      "StatusCode": 403
+    },
+    {
+      "RequestUri": "/subscriptions/7d747eed-b44c-4257-8d43-df9ebd94546b/resourcegroups/ps8010?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q3NDdlZWQtYjQ0Yy00MjU3LThkNDMtZGY5ZWJkOTQ1NDZiL3Jlc291cmNlZ3JvdXBzL3BzODAxMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "221e4ded-a90e-4566-bdfc-ec77fb627c7b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3026.36720",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.113"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "476e9d64-b3a0-42ae-a940-8e9ad1d9ca3a"
+        ],
+        "x-ms-correlation-request-id": [
+          "476e9d64-b3a0-42ae-a940-8e9ad1d9ca3a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20260818T232826Z:476e9d64-b3a0-42ae-a940-8e9ad1d9ca3a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: F83B2EB55335472F93A423DD85C8A080 Ref B: CO6AA3150217049 Ref C: 2026-08-18T23:28:26Z"
+        ],
+        "Date": [
+          "Tue, 18 Aug 2026 23:28:26 GMT"
+        ],
+        "Content-Length": [
+          "426"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AuthorizationFailed\",\r\n    \"message\": \"The client 'mshrimankar@microsoft.com' with object id 'b2518563-eafc-4ef4-aa06-011b62695a06' does not have authorization to perform action 'Microsoft.Resources/subscriptions/resourcegroups/delete' over scope '/subscriptions/7d747eed-b44c-4257-8d43-df9ebd94546b/resourcegroups/ps8010' or the scope is invalid. If access was recently granted, please refresh your credentials.\"\r\n  }\r\n}",
+      "StatusCode": 403
+    }
+  ],
+  "Names": {
+    "Test-ExpressRouteCircuitMultiCloudWithPartnerAccountIdCRUD": [
+      "ps8010",
+      "ps5493"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "7d747eed-b44c-4257-8d43-df9ebd94546b"
+  }
+}

@@ -39,6 +39,11 @@
     - Added `DisableDefaultServerHeaderInResponse` to `PSApplicationGatewayGlobalConfiguration` to mirror the new SDK property and unblock AutoMapper strict-mode validation.
 * Surfaced the read-only `UpgradedToV2` property on public IP address and public IP prefix objects.
     - `Get-AzPublicIpAddress` and `Get-AzPublicIpPrefix` now return `UpgradedToV2`, indicating whether the SKU has been upgraded from Standard to StandardV2.
+* Added support for multi-cloud ExpressRoute circuits.
+    - Added `MultiCloud` value to the `-SkuTier` parameter of `New-AzExpressRouteCircuit`.
+    - Added `-PartnerAccountId` parameter to `New-AzExpressRouteCircuit`.
+    - Added `-ActivationKey` parameter to `New-AzExpressRouteCircuit`.
+    - Exposed `PartnerAccountId`, `ActivationKey`, and `ResiliencyLevel` on `PSExpressRouteCircuit`.
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
     - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
     - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.

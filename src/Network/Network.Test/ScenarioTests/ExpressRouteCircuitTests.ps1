@@ -146,6 +146,115 @@ function Test-ExpressRouteCircuitStageCRUD
 
 <#
 .SYNOPSIS
+Tests ExpressRouteCircuit CRUD for a multi-cloud circuit (SkuTier=MultiCloud) using -PartnerAccountId.
+#>
+function Test-ExpressRouteCircuitMultiCloudWithPartnerAccountIdCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $circuitName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "West US 2"
+    $partnerAccountId = "123456789012"
+
+    try
+    {
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+      $circuit = New-AzExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname `
+          -SkuTier MultiCloud -SkuFamily MeteredData `
+          -ServiceProviderName "aws" -PeeringLocation "uswest2" -BandwidthInMbps 100 `
+          -PartnerAccountId $partnerAccountId
+
+      $getCircuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+
+      Assert-AreEqual "MultiCloud_MeteredData" $getCircuit.Sku.Name
+      Assert-AreEqual "MultiCloud" $getCircuit.Sku.Tier
+      Assert-AreEqual "MeteredData" $getCircuit.Sku.Family
+      Assert-AreEqual "AWS" $getCircuit.ServiceProviderProperties.ServiceProviderName
+      Assert-AreEqual "uswest2" $getCircuit.ServiceProviderProperties.PeeringLocation
+      Assert-AreEqual $partnerAccountId $getCircuit.PartnerAccountId
+      Assert-Null $getCircuit.ActivationKey
+      Assert-NotNull $getCircuit.ResiliencyLevel
+
+      $delete = Remove-AzExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
+      Assert-AreEqual true $delete
+    }
+    finally
+    {
+      Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests ExpressRouteCircuit CRUD for a multi-cloud circuit (SkuTier=MultiCloud) using -ActivationKey.
+#>
+function Test-ExpressRouteCircuitMultiCloudWithActivationKeyCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $circuitName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "West US 2"
+    $activationKey = "dGVzdC1hY3RpdmF0aW9uLWtleQ=="
+
+    try
+    {
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+      $circuit = New-AzExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname `
+          -SkuTier MultiCloud -SkuFamily MeteredData `
+          -ServiceProviderName "AWS" -PeeringLocation "uswest2" -BandwidthInMbps 500 `
+          -ActivationKey $activationKey
+
+      $getCircuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+
+      Assert-AreEqual "MultiCloud_MeteredData" $getCircuit.Sku.Name
+      Assert-AreEqual "MultiCloud" $getCircuit.Sku.Tier
+      Assert-AreEqual "AWS" $getCircuit.ServiceProviderProperties.ServiceProviderName
+      Assert-Null $getCircuit.PartnerAccountId
+      Assert-NotNull $getCircuit.ResiliencyLevel
+
+      $delete = Remove-AzExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
+      Assert-AreEqual true $delete
+    }
+    finally
+    {
+      Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Verifies that passing both -PartnerAccountId and -ActivationKey together fails with a client-side error.
+#>
+function Test-ExpressRouteCircuitMultiCloudMutualExclusion
+{
+    $rgname = Get-ResourceGroupName
+    $circuitName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "West US 2"
+
+    try
+    {
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+      Assert-ThrowsContains {
+          New-AzExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname `
+              -SkuTier MultiCloud -SkuFamily MeteredData `
+              -ServiceProviderName "AWS" -PeeringLocation "uswest2" -BandwidthInMbps 500 `
+              -PartnerAccountId "123456789012" -ActivationKey "dGVzdC1hY3RpdmF0aW9uLWtleQ=="
+      } "mutually exclusive"
+    }
+    finally
+    {
+      Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests ExpressRouteCircuitCRUD.
 #>
 function Test-ExpressRouteCircuitCRUD

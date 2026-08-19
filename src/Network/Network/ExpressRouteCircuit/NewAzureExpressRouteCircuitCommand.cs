@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.ExpressRouteCircuitSkuTier.Premium,
             MNM.ExpressRouteCircuitSkuTier.Basic,
             MNM.ExpressRouteCircuitSkuTier.Local,
+            MNM.ExpressRouteCircuitSkuTier.MultiCloud,
             IgnoreCase = true)]
         public string SkuTier { get; set; }
 
@@ -127,6 +128,18 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public bool? AllowClassicOperations { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Account ID of customer account on partner cloud provider. Mutually exclusive with -ActivationKey.")]
+        public string PartnerAccountId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Activation Key from partner cloud provider. Mutually exclusive with -PartnerAccountId.")]
+        public string ActivationKey { get; set; }
+
 
         [Parameter(
             Mandatory = false,
@@ -144,6 +157,11 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            if (!string.IsNullOrEmpty(this.PartnerAccountId) && !string.IsNullOrEmpty(this.ActivationKey))
+            {
+                throw new PSArgumentException("-PartnerAccountId and -ActivationKey are mutually exclusive. Provide one of them, not both.");
+            }
+
             var present = this.IsExpressRouteCircuitPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
@@ -195,6 +213,16 @@ namespace Microsoft.Azure.Commands.Network
             circuit.Peerings = this.Peering?.ToList();
             circuit.Authorizations = this.Authorization?.ToList();
             circuit.AllowClassicOperations = this.AllowClassicOperations;
+
+            if (!string.IsNullOrEmpty(this.PartnerAccountId))
+            {
+                circuit.PartnerAccountId = this.PartnerAccountId;
+            }
+
+            if (!string.IsNullOrEmpty(this.ActivationKey))
+            {
+                circuit.ActivationKey = this.ActivationKey;
+            }
 
             // Map to the sdk object
             var circuitModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCircuit>(circuit);
