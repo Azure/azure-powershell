@@ -7,6 +7,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMonitorHealthModelEntit
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzMonitorHealthModelEntity.Recording.json'
   $currentPath = $PSScriptRoot
+  $mockingPath = $null
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
       $currentPath = Split-Path -Path $currentPath -Parent
@@ -14,45 +15,29 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMonitorHealthModelEntit
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-# Playback-safe surface tests: the CloudHealth data plane has no recorded cassettes in this
-# environment (live integration is tracked separately), so these assertions exercise the
-# imported cmdlets' exported surface and parameter binding rather than issuing ARM calls.
-Describe 'Entity resource family' {
-    $verbCases = @(
-        @{ Verb = 'Get' }
-        @{ Verb = 'New' }
-        @{ Verb = 'Update' }
-        @{ Verb = 'Remove' }
-    )
-
-    It '<Verb>-AzMonitorHealthModelEntity is exported' -TestCases $verbCases {
-        param($Verb)
-        Get-Command "$Verb-AzMonitorHealthModelEntity" -Module 'Az.CloudHealth' -ErrorAction SilentlyContinue | Should -Not -BeNullOrEmpty
+Describe 'Get-AzMonitorHealthModelEntity' {
+    It 'List' {
+        {
+            $result = Get-AzMonitorHealthModelEntity -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName
+            $result | Should -Not -BeNullOrEmpty
+            @($result | Where-Object Name -eq $env.EntityName).Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
-    It 'Get-AzMonitorHealthModelEntity binds the ARM lookup parameters' {
-        $cmd = Get-Command 'Get-AzMonitorHealthModelEntity' -Module 'Az.CloudHealth'
-        $cmd.Parameters.Keys | Should -Contain 'ResourceGroupName'
-        $cmd.Parameters.Keys | Should -Contain 'SubscriptionId'
+    It 'Get' {
+        {
+            $result = Get-AzMonitorHealthModelEntity -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.EntityName
+            $result | Should -Not -BeNullOrEmpty
+            $result.Name | Should -Be $env.EntityName
+        } | Should -Not -Throw
     }
 
-    It 'Get-AzMonitorHealthModelEntity uses the MonitorHealthModel subject prefix' {
-        (Get-Command 'Get-AzMonitorHealthModelEntity' -Module 'Az.CloudHealth').Noun | Should -BeLike 'AzMonitorHealthModel*'
+    It 'GetViaIdentityHealthmodel' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-}
 
-Describe 'Entity data-plane action cmdlets' {
-    $actionCases = @(
-        @{ Name = 'Add-AzMonitorHealthModelEntityDataAnnotation' }
-        @{ Name = 'Get-AzMonitorHealthModelEntityDataAnnotation' }
-        @{ Name = 'Get-AzMonitorHealthModelEntityHistory' }
-        @{ Name = 'Get-AzMonitorHealthModelEntitySignalHistory' }
-        @{ Name = 'Get-AzMonitorHealthModelEntitySignalRecommendation' }
-        @{ Name = 'Invoke-AzMonitorHealthModelIngestEntityHealthReport' }
-    )
-
-    It '<Name> is exported' -TestCases $actionCases {
-        param($Name)
-        Get-Command $Name -Module 'Az.CloudHealth' -ErrorAction SilentlyContinue | Should -Not -BeNullOrEmpty
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
 }

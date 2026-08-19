@@ -7,6 +7,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMonitorHealthModelAuthe
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzMonitorHealthModelAuthenticationSetting.Recording.json'
   $currentPath = $PSScriptRoot
+  $mockingPath = $null
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
       $currentPath = Split-Path -Path $currentPath -Parent
@@ -14,29 +15,29 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMonitorHealthModelAuthe
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-# Playback-safe surface tests: the CloudHealth data plane has no recorded cassettes in this
-# environment (live integration is tracked separately), so these assertions exercise the
-# imported cmdlets' exported surface and parameter binding rather than issuing ARM calls.
-Describe 'AuthenticationSetting resource family' {
-    $verbCases = @(
-        @{ Verb = 'Get' }
-        @{ Verb = 'New' }
-        @{ Verb = 'Update' }
-        @{ Verb = 'Remove' }
-    )
-
-    It '<Verb>-AzMonitorHealthModelAuthenticationSetting is exported' -TestCases $verbCases {
-        param($Verb)
-        Get-Command "$Verb-AzMonitorHealthModelAuthenticationSetting" -Module 'Az.CloudHealth' -ErrorAction SilentlyContinue | Should -Not -BeNullOrEmpty
+Describe 'Get-AzMonitorHealthModelAuthenticationSetting' {
+    It 'List' {
+        {
+            $result = Get-AzMonitorHealthModelAuthenticationSetting -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName
+            $result | Should -Not -BeNullOrEmpty
+            @($result | Where-Object Name -eq $env.AuthenticationSettingName).Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
-    It 'Get-AzMonitorHealthModelAuthenticationSetting binds the ARM lookup parameters' {
-        $cmd = Get-Command 'Get-AzMonitorHealthModelAuthenticationSetting' -Module 'Az.CloudHealth'
-        $cmd.Parameters.Keys | Should -Contain 'ResourceGroupName'
-        $cmd.Parameters.Keys | Should -Contain 'SubscriptionId'
+    It 'Get' {
+        {
+            $result = Get-AzMonitorHealthModelAuthenticationSetting -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.AuthenticationSettingName
+            $result | Should -Not -BeNullOrEmpty
+            $result.Name | Should -Be $env.AuthenticationSettingName
+        } | Should -Not -Throw
     }
 
-    It 'Get-AzMonitorHealthModelAuthenticationSetting uses the MonitorHealthModel subject prefix' {
-        (Get-Command 'Get-AzMonitorHealthModelAuthenticationSetting' -Module 'Az.CloudHealth').Noun | Should -BeLike 'AzMonitorHealthModel*'
+    It 'GetViaIdentityHealthmodel' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
 }

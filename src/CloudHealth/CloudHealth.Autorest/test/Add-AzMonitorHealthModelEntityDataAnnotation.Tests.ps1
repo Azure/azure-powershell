@@ -7,6 +7,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-AzMonitorHealthModelEntit
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'Add-AzMonitorHealthModelEntityDataAnnotation.Recording.json'
   $currentPath = $PSScriptRoot
+  $mockingPath = $null
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
       $currentPath = Split-Path -Path $currentPath -Parent
@@ -15,8 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-AzMonitorHealthModelEntit
 }
 
 Describe 'Add-AzMonitorHealthModelEntityDataAnnotation' {
-    It 'AddExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'AddExpanded' {
+        {
+            $detail = @{ source = 'test'; ticket = 'CH-1001' }
+            $result = Add-AzMonitorHealthModelEntityDataAnnotation -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -EntityName $env.EntityName -Description 'annotation created by test' -AnnotationDetail $detail
+            $result | Should -Not -BeNullOrEmpty
+        } | Should -Not -Throw
     }
 
     It 'AddViaJsonString' -skip {
@@ -46,4 +51,5 @@ Describe 'Add-AzMonitorHealthModelEntityDataAnnotation' {
     It 'AddViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
 }

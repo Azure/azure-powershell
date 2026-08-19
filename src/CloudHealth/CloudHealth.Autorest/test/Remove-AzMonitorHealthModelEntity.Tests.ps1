@@ -7,6 +7,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMonitorHealthModelEn
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzMonitorHealthModelEntity.Recording.json'
   $currentPath = $PSScriptRoot
+  $mockingPath = $null
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
       $currentPath = Split-Path -Path $currentPath -Parent
@@ -15,8 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMonitorHealthModelEn
 }
 
 Describe 'Remove-AzMonitorHealthModelEntity' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            New-AzMonitorHealthModelEntity -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.EntityDeleteName -DisplayName 'Delete entity' -Impact Standard -HealthObjective 99.0 | Out-Null
+            $deleted = Remove-AzMonitorHealthModelEntity -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.EntityDeleteName -PassThru
+            $deleted | Should -BeTrue
+            { Get-AzMonitorHealthModelEntity -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.EntityDeleteName -ErrorAction Stop } | Should -Throw
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentityHealthmodel' -skip {
@@ -26,4 +32,5 @@ Describe 'Remove-AzMonitorHealthModelEntity' {
     It 'DeleteViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
 }

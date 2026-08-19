@@ -7,6 +7,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzMonitorHealthModel')
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzMonitorHealthModel.Recording.json'
   $currentPath = $PSScriptRoot
+  $mockingPath = $null
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
       $currentPath = Split-Path -Path $currentPath -Parent
@@ -15,11 +16,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzMonitorHealthModel')
 }
 
 Describe 'Update-AzMonitorHealthModel' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        {
+            $result = Update-AzMonitorHealthModel -Name $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Tag @{ phase = 'updated'; owner = 'test' }
+            $result | Should -Not -BeNullOrEmpty
+            $result.Name | Should -Be $env.HealthModelName
+        } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
 }
