@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.Policy Module
 ## Description
-${$project.metadata.description}
+Microsoft Azure PowerShell: Policy cmdlets
 
 ## Az.Policy Cmdlets
 ### [Get-AzPolicyAssignment](Get-AzPolicyAssignment.md)
