@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.Maintenance
     public partial interface IConfigurationAssignmentsWithinSubscriptionOperations
     {
         /// <summary>
-        /// Get configuration assignment within a subscription
+        /// [UNSUPPORTED] Get configuration assignment within a subscription. This API
+        /// is not implemented yet.
         /// </summary>
         /// <remarks>
-        /// Get configuration assignment within a subscription
+        /// [UNSUPPORTED] Get configuration assignment within a subscription. This API
+        /// is not implemented yet.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -31,7 +33,32 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<ConfigurationAssignment>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ConfigurationAssignment>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// [UNSUPPORTED] Get configuration assignment within a subscription. This API
+        /// is not implemented yet.
+        /// </summary>
+        /// <remarks>
+        /// [UNSUPPORTED] Get configuration assignment within a subscription. This API
+        /// is not implemented yet.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ConfigurationAssignment>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

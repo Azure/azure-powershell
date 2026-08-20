@@ -380,27 +380,32 @@ function Test-AzConfigurationAssignment
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $maintenanceConfigurationName = Get-RandomMaintenanceConfigurationName
-    $maintenanceConfigurationInGuestPatchName = Get-RandomMaintenanceConfigurationName
+    $dedicatedHostGroupName = Get-RandomDedicatedHostGroupName
+    $dedicatedHostName = Get-RandomDedicatedHostName
     $location = "eastus2euap"
     $maintenanceScope = "Host"
 
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
+        New-DedicatedHost $dedicatedHostName $dedicatedHostGroupName $resourceGroupName $location | Out-Null
         $maintenanceConfigurationCreated = New-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -MaintenanceScope $maintenanceScope -Location $location
 
-		$configurationAssignmentCreated = New-AzConfigurationAssignment -ResourceGroupName mrptest$location -ResourceParentType hostGroups -ResourceParentName mrpdhg$location -ResourceType hosts -ResourceName mrpdh$location -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName -MaintenanceConfigurationId $maintenanceConfigurationCreated.Id -Location $location
+        # Wait for the dedicated host to become available to Maintenance.
+        Start-TestSleep -Seconds (15 * 60)
+
+		$configurationAssignmentCreated = New-AzConfigurationAssignment -ResourceGroupName $resourceGroupName -ResourceParentType hostGroups -ResourceParentName $dedicatedHostGroupName -ResourceType hosts -ResourceName $dedicatedHostName -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName -MaintenanceConfigurationId $maintenanceConfigurationCreated.Id -Location $location
 
         Assert-AreEqual $configurationAssignmentCreated.Name $maintenanceConfigurationName
 		Assert-AreEqual $configurationAssignmentCreated.Type "Microsoft.Maintenance/configurationAssignments"
         Assert-AreEqual $configurationAssignmentCreated.MaintenanceConfigurationId $maintenanceConfigurationCreated.Id
 
-        $retrievedConfigurationAssignmentList = Get-AzConfigurationAssignment -ResourceGroupName mrptest$location -ResourceParentType hostGroups -ResourceParentName mrpdhg$location -ResourceType hosts -ResourceName mrpdh$location -ProviderName Microsoft.Compute
+        $retrievedConfigurationAssignmentList = Get-AzConfigurationAssignment -ResourceGroupName $resourceGroupName -ResourceParentType hostGroups -ResourceParentName $dedicatedHostGroupName -ResourceType hosts -ResourceName $dedicatedHostName -ProviderName Microsoft.Compute
 
         Assert-AreEqual $retrievedConfigurationAssignmentList.Count 1
         #Assert-ConfigurationAssignment $configurationAssignmentCreated $retrievedConfigurationAssignmentList[0]
 
-        Remove-AzConfigurationAssignment -ResourceGroupName mrptest$location -ResourceParentType hostGroups -ResourceParentName mrpdhg$location -ResourceType hosts -ResourceName mrpdh$location -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName -Force
+        Remove-AzConfigurationAssignment -ResourceGroupName $resourceGroupName -ResourceParentType hostGroups -ResourceParentName $dedicatedHostGroupName -ResourceType hosts -ResourceName $dedicatedHostName -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName -Force
 
         Remove-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -Force
        
@@ -578,25 +583,30 @@ function Test-AzMaintenanceUpdate
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $maintenanceConfigurationName = Get-RandomMaintenanceConfigurationName
-	$virtualMachineName = Get-RandomMaintenanceConfigurationName
+    $dedicatedHostGroupName = Get-RandomDedicatedHostGroupName
+    $dedicatedHostName = Get-RandomDedicatedHostName
     $location = "eastus2euap"
     $maintenanceScope = "Host"
 
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
+        New-DedicatedHost $dedicatedHostName $dedicatedHostGroupName $resourceGroupName $location | Out-Null
         $maintenanceConfigurationCreated = New-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -MaintenanceScope $maintenanceScope -Location $location
 
-		$configurationAssignmentCreated = New-AzConfigurationAssignment -ResourceGroupName mrptest$location -ResourceParentType hostGroups -ResourceParentName mrpdhg$location -ResourceType hosts -ResourceName mrpdh$location -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName -MaintenanceConfigurationId $maintenanceConfigurationCreated.Id -Location $location
+        # Wait for the dedicated host to become available to Maintenance.
+        Start-TestSleep -Seconds (15 * 60)
+
+		$configurationAssignmentCreated = New-AzConfigurationAssignment -ResourceGroupName $resourceGroupName -ResourceParentType hostGroups -ResourceParentName $dedicatedHostGroupName -ResourceType hosts -ResourceName $dedicatedHostName -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName -MaintenanceConfigurationId $maintenanceConfigurationCreated.Id -Location $location
 
         Assert-AreEqual $configurationAssignmentCreated.Name $maintenanceConfigurationName
 		Assert-AreEqual $configurationAssignmentCreated.Type "Microsoft.Maintenance/configurationAssignments"
         Assert-AreEqual $configurationAssignmentCreated.MaintenanceConfigurationId $maintenanceConfigurationCreated.Id
 
-        $retrievedMaintenanceUpdateList = Get-AzMaintenanceUpdate -ResourceGroupName mrptest$location -ResourceParentType hostGroups -ResourceParentName mrpdhg$location -ResourceType hosts -ResourceName mrpdh$location -ProviderName Microsoft.Compute
+        $retrievedMaintenanceUpdateList = Get-AzMaintenanceUpdate -ResourceGroupName $resourceGroupName -ResourceParentType hostGroups -ResourceParentName $dedicatedHostGroupName -ResourceType hosts -ResourceName $dedicatedHostName -ProviderName Microsoft.Compute
 		Assert-NotNull $retrievedMaintenanceUpdateList
 
-        Remove-AzConfigurationAssignment -ResourceGroupName mrptest$location -ResourceParentType hostGroups -ResourceParentName mrpdhg$location -ResourceType hosts -ResourceName mrpdh$location -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName -Force
+        Remove-AzConfigurationAssignment -ResourceGroupName $resourceGroupName -ResourceParentType hostGroups -ResourceParentName $dedicatedHostGroupName -ResourceType hosts -ResourceName $dedicatedHostName -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName -Force
 
 		Remove-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -Force
     }
@@ -826,6 +836,180 @@ function Test-GetAzApplyUpdateWithoutParentResource
     }
     finally
     {
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Asserts that a script throws InvalidScheduledEventId.
+
+.PARAMETER cmd
+Script block expected to throw InvalidScheduledEventId.
+#>
+function Assert-InvalidScheduledEventId
+{
+    param([scriptblock] $cmd)
+
+    try
+    {
+        & $cmd
+        throw "Expected InvalidScheduledEventId exception was not thrown."
+    }
+    catch
+    {
+        Assert-AreEqual "Microsoft.Azure.Management.Maintenance.Models.MaintenanceErrorException" $_.Exception.GetType().FullName
+        Assert-AreEqual "NotFound" $_.Exception.Response.StatusCode.ToString()
+        Assert-AreEqual "InvalidScheduledEventId" $_.Exception.Body.Error.Code
+    }
+}
+
+<#
+.SYNOPSIS
+Asserts that a list of invalid Scheduled Event IDs returns a MultiStatus response.
+
+.PARAMETER cmd
+Script block expected to throw ScheduledEventsListAcknowledgeErrorException.
+
+.PARAMETER expectedErrorCount
+Expected number of per-event NotFound details.
+#>
+function Assert-InvalidScheduledEventIdList
+{
+    param(
+        [scriptblock] $cmd,
+        [int] $expectedErrorCount)
+
+    try
+    {
+        & $cmd
+        throw "Expected ScheduledEventsListAcknowledgeErrorException was not thrown."
+    }
+    catch
+    {
+        Assert-AreEqual "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsListAcknowledgeErrorException" $_.Exception.GetType().FullName
+        Assert-AreEqual "MultiStatus" $_.Exception.Response.StatusCode.ToString()
+
+        $responseBody = $_.Exception.Response.Content | ConvertFrom-Json
+        Assert-AreEqual "MultiStatusResponse" $responseBody.Response.Code
+        Assert-AreEqual $expectedErrorCount $responseBody.Details.Count
+        foreach ($detail in $responseBody.Details)
+        {
+            Assert-AreEqual "NotFound" $detail.Code
+            Assert-AreEqual "Scheduled event not found" $detail.Message
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+Test Set-AzScheduledEvents and Set-AzScheduledEventsList
+#>
+function Test-SetAzScheduledEvents
+{
+    $resourceGroupName = Get-RandomResourceGroupName
+    $resourceType = "virtualmachinescalesets"
+    $virtualMachineScaleSetName = Get-RandomVirtualMachineName
+    $location = "West Central US"
+    $subscriptionId = $((Get-AzContext).Subscription.Id)
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        try
+        {
+            $virtualMachineScaleSetId = New-VirtualMachineScaleSet $virtualMachineScaleSetName $resourceGroupName $location
+            Write-Warning "Created VMSS '$virtualMachineScaleSetName' successfully: $virtualMachineScaleSetId"
+
+            # Wait for VMSS created to succeed and ScheduledEventsPolicy is updated
+            $null = Wait-VirtualMachineScaleSetReady `
+                $virtualMachineScaleSetName `
+                $resourceGroupName `
+                -RequireScheduledEventsPolicy
+
+            $restartJob = Restart-AzVmss `
+                -ResourceGroupName $resourceGroupName `
+                -VMScaleSetName $virtualMachineScaleSetName `
+                -AsJob `
+                -ErrorAction Stop
+
+            Write-Warning "Started VMSS restart job '$($restartJob.Id)' for '$virtualMachineScaleSetName'."
+        }
+        catch
+        {
+            Write-Warning "[ERROR] VMSS creation or restart failed: $($_.Exception.Message)"
+            Write-Warning "[ERROR] Full error: $($_ | Out-String)"
+            throw
+        }
+
+        # Allow scheduled events to begin indexing in ARG before the first query.
+        Start-TestSleep -Seconds 60
+
+        # ARG query to get the scheduledEventIds
+        $kql = "maintenanceresources " +
+                        "| where type == 'microsoft.maintenance/scheduledevents' " +
+                        "| where subscriptionId contains '$subscriptionId' " +
+                        "| where properties.Resources contains '$virtualMachineScaleSetName' " +
+                        "| where properties.EventStatus contains 'scheduled' " +
+                        "| project EventId = tostring(properties.EventId)"
+
+        try
+        {
+            $kqlResponse = Search-AzGraph -Subscription $subscriptionId -Query $kql
+            if ($null -ne $kqlResponse.PSObject.Properties["Data"])
+            {
+                $kqlResults = @($kqlResponse.Data)
+            }
+            else
+            {
+                $kqlResults = @($kqlResponse)
+            }
+
+            Write-Warning "KQL Results: $($kqlResults | ConvertTo-Json -Depth 5 -Compress)"
+        }
+        catch
+        {
+            Write-Warning "[ERROR] KQL query failed: $($_.Exception.Message)"
+            Write-Warning "[ERROR] Full error: $($_ | Out-String)"
+            throw
+        }
+
+        $scheduledEventsIds = @($kqlResults | ForEach-Object {
+            $_.EventId
+        })
+
+        # Approving 1st event using standalone api
+        $success_response = Set-AzScheduledEvents -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $virtualMachineScaleSetName -ScheduledEventsId $scheduledEventsIds[0]
+        Assert-AreEqual "Successfully approved scheduled event" $success_response.Value
+
+        # Approving all remaining events using list api
+        $remainingScheduledEventsIds = @($scheduledEventsIds | Select-Object -Skip 1)
+        Assert-True { $remainingScheduledEventsIds.Count -gt 0 }
+        $success_response = Set-AzScheduledEventsList -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $virtualMachineScaleSetName -ScheduledEventsIdList $remainingScheduledEventsIds
+        Assert-NotNull $success_response
+        Assert-AreEqual "Successfully approved all Scheduled Events in the list" $success_response.Value
+
+        # Approving a random guid to test InvalidScheduledEventId exception
+        $scheduledEventsId = [guid]::NewGuid().ToString()
+        Assert-InvalidScheduledEventId {
+            Write-Warning "Calling Set-AzScheduledEvents"
+            $result = Set-AzScheduledEvents -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $virtualMachineScaleSetName -ScheduledEventsId $scheduledEventsId
+            Write-Warning "Set-AzScheduledEvents returned: $($result | ConvertTo-Json -Depth 5 -Compress)"
+            return $result
+        }
+
+        # Approving a random list of guids to test InvalidScheduledEventId exception
+        $invalidScheduledEventsIds = @($scheduledEventsId, [guid]::NewGuid().ToString())
+        Assert-InvalidScheduledEventIdList -ExpectedErrorCount $invalidScheduledEventsIds.Count -Cmd {
+            Write-Warning "Calling Set-AzScheduledEventsList"
+            $result = Set-AzScheduledEventsList -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $virtualMachineScaleSetName -ScheduledEventsIdList $invalidScheduledEventsIds
+            Write-Warning "Set-AzScheduledEventsList returned: $($result | ConvertTo-Json -Depth 5 -Compress)"
+            return $result
+        }
+    }
+    finally
+    {
+        # Cleanup
         Clean-ResourceGroup $resourceGroupName
     }
 }

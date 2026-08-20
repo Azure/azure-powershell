@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Maintenance
                 else
                 {
                     var psObject = new List<PSMaintenanceConfiguration>();
+                    var processedIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
                     var result = MaintenanceConfigurationsClient.List();
 
                     foreach (var maintenanceConfiguration in result)
@@ -64,6 +65,11 @@ namespace Microsoft.Azure.Commands.Maintenance
                             {
                                 continue;
                             }
+                        }
+
+                        if (!string.IsNullOrEmpty(maintenanceConfiguration.Id) && !processedIds.Add(maintenanceConfiguration.Id))
+                        {
+                            continue;
                         }
 
                         PSMaintenanceConfiguration psMaintenanceConfiguration = new PSMaintenanceConfiguration();

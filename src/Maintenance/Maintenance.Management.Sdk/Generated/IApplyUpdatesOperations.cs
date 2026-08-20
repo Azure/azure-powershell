@@ -14,13 +14,33 @@ namespace Microsoft.Azure.Management.Maintenance
     public partial interface IApplyUpdatesOperations
     {
         /// <summary>
+        /// Get Configuration records within a subscription
+        /// </summary>
+        /// <remarks>
+        /// Get Configuration records within a subscription
+        /// </remarks>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ApplyUpdate>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Track maintenance updates to resource with parent
         /// </summary>
         /// <remarks>
         /// Track maintenance updates to resource with parent
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
@@ -29,16 +49,16 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Resource parent type
         /// </param>
         /// <param name='resourceParentName'>
-        /// Resource parent identifier
+        /// Resource parent name
         /// </param>
         /// <param name='resourceType'>
         /// Resource type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource name
         /// </param>
         /// <param name='applyUpdateName'>
-        /// applyUpdate Id
+        /// The name of the ApplyUpdate
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -61,19 +81,19 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Track maintenance updates to resource
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
         /// </param>
         /// <param name='resourceType'>
-        /// Resource type
+        /// Resource parent type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource parent name
         /// </param>
         /// <param name='applyUpdateName'>
-        /// applyUpdate Id
+        /// The name of the ApplyUpdate
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -96,19 +116,19 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Apply maintenance updates to resource
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
         /// </param>
         /// <param name='resourceType'>
-        /// Resource type
+        /// Resource parent type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource parent name
         /// </param>
         /// <param name='applyUpdateName'>
-        /// ApplyUpdate name
+        /// The name of the ApplyUpdate
         /// </param>
         /// <param name='applyUpdate'>
         /// The ApplyUpdate
@@ -134,7 +154,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Apply maintenance updates to resource with parent
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
@@ -163,7 +183,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplyUpdate>> CreateOrUpdateParentWithHttpMessagesAsync(string resourceGroupName, string providerName, string resourceParentType, string resourceParentName, string resourceType, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplyUpdate,ApplyUpdatesCreateOrUpdateParentHeaders>> CreateOrUpdateParentWithHttpMessagesAsync(string resourceGroupName, string providerName, string resourceParentType, string resourceParentName, string resourceType, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Apply maintenance updates to resource
@@ -172,7 +192,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Apply maintenance updates to resource
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
@@ -195,7 +215,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplyUpdate>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string providerName, string resourceType, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplyUpdate,ApplyUpdatesCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string providerName, string resourceType, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get Configuration records within a subscription
@@ -203,6 +223,9 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <remarks>
         /// Get Configuration records within a subscription
         /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -215,7 +238,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<ApplyUpdate>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ApplyUpdate>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }
