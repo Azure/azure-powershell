@@ -9,6 +9,7 @@
   "storageAccountPermissionsForRestore": [],
   "isProxyResource": true,
   "enableDataSourceSetInfo": true,
+  "dataSourceSetParentResource": true,
   "resourceType": "Microsoft.ElasticSan/elasticSans/volumeGroups",
   "parentResourceType": "Microsoft.ElasticSan/elasticSans",
   "datasourceType": "Microsoft.ElasticSan/elasticSans/volumeGroups",

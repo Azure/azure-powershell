@@ -31,11 +31,11 @@ This file contains the configuration for generating My API from the OpenAPI spec
 
 ``` yaml
 # it's the same options as command line options, just drop the double-dash!
-commit: 263c810dfe74ca6c7283d88c8a42d6ad93e20660
+commit: e3c032a5034cbe7ab0e1332ce4ccf603f7ae2c08
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/DataProtection/stable/2026-03-01/dataprotection.json
+  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/DataProtection/stable/2026-06-01/dataprotection.json
 title: DataProtection
 
 directive:

@@ -23,15 +23,15 @@ Describe 'ElasticSanBackupRestoreConfiguration' {
     }
 
     It 'BackupConfigThrowsWhenResourceSelectorMissing' {
-        { New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureElasticSAN } | Should -Throw "*ResourceSelector*"
+        { New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureElasticSAN } | Should -Throw "ResourceSelector"
     }
 
     It 'BackupConfigThrowsWhenMoreThanOneVolume' {
-        { New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceSelector @("volume001","volume002") } | Should -Throw "*exactly one volume*"
+        { New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceSelector @("volume001","volume002") } | Should -Throw "exactly one volume"
     }
 
     It 'BackupConfigThrowsWhenForeignParametersSupplied' {
-        { New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceSelector @("volume001") -IncludedNamespace @("ns1") } | Should -Throw "*Invalid parameters*"
+        { New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceSelector @("volume001") -IncludedNamespace @("ns1") } | Should -Throw "Invalid parameters"
     }
 
     It 'RestoreConfigSingleIdentifier' {
@@ -39,31 +39,30 @@ Describe 'ElasticSanBackupRestoreConfiguration' {
 
         ($restoreConfig -ne $null) | Should Be $true
         $restoreConfig.ObjectType | Should Be "GenericRestoreDatasourceCriteria"
-        ($restoreConfig.ResourceSelector -ne $null) | Should Be $true
-        $restoreConfig.ResourceSelector.ObjectType | Should Be "ResourceListSelectionCriteria"
-        $restoreConfig.ResourceSelector.ResourceIdentifier.Count | Should Be 1
-        $restoreConfig.ResourceSelector.ResourceIdentifier[0] | Should Be "source-vol1"
+        $restoreConfig.ResourceSelectorObjectType | Should Be "ResourceListSelectionCriteria"
+        $restoreConfig.ResourceSelectorResourceIdentifier.Count | Should Be 1
+        $restoreConfig.ResourceSelectorResourceIdentifier[0] | Should Be "source-vol1"
     }
 
     It 'RestoreConfigWithResourceNameOverride' {
         $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1") -ResourceNameOverride @{"source-vol1" = "restored-vol1"}
 
-        $restoreConfig.ResourceSelector.ResourceNameOverride["source-vol1"] | Should Be "restored-vol1"
+        $restoreConfig.ResourceSelectorResourceNameOverride["source-vol1"] | Should Be "restored-vol1"
     }
 
     It 'RestoreConfigThrowsWhenResourceIdentifierMissing' {
-        { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN } | Should -Throw "*ResourceIdentifier*"
+        { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN } | Should -Throw "ResourceIdentifier"
     }
 
     It 'RestoreConfigThrowsWhenMoreThanOneIdentifier' {
-        { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1","source-vol2") } | Should -Throw "*exactly one volume*"
+        { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1","source-vol2") } | Should -Throw "exactly one volume"
     }
 
     It 'RestoreConfigThrowsWhenOverrideKeyNotInIdentifier' {
-        { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1") -ResourceNameOverride @{"other-vol" = "restored-vol1"} } | Should -Throw "*not present in ResourceIdentifier*"
+        { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1") -ResourceNameOverride @{"other-vol" = "restored-vol1"} } | Should -Throw "not present in ResourceIdentifier"
     }
 
     It 'RestoreConfigThrowsWhenOverrideTargetEmpty' {
-        { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1") -ResourceNameOverride @{"source-vol1" = ""} } | Should -Throw "*non-empty target volume name*"
+        { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1") -ResourceNameOverride @{"source-vol1" = ""} } | Should -Throw "non-empty target volume name"
     }
 }

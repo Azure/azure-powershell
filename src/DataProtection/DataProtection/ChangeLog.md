@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded the DataProtection API version to `2026-06-01` (GA), which natively models the Azure Elastic SAN backup and restore types
 * Added `AzureElasticSAN` (Azure Elastic SAN) datasource support for backup and restore
     - Added `-ResourceSelector` parameter to `New-AzDataProtectionBackupConfigurationClientObject` for selecting the volume to back up (the service currently supports one volume per backup instance)
     - Added `-ResourceIdentifier` and `-ResourceNameOverride` parameters to `New-AzDataProtectionRestoreConfigurationClientObject` for selecting and optionally renaming the volume to restore

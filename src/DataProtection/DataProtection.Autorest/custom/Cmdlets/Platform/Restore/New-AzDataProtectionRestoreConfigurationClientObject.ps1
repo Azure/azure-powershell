@@ -90,13 +90,14 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
                 throw "DatasourceType AzureElasticSAN currently supports exactly one volume per restore request. Please provide a single entry in ResourceIdentifier."
             }
 
-            $resourceListCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteria]::new()
-            $resourceListCriteria.ObjectType = "ResourceListSelectionCriteria"
-            $resourceListCriteria.ResourceIdentifier = $ResourceIdentifier
+            # The 2026-06-01 GA API flattens the nested ResourceListSelectionCriteria onto
+            # GenericRestoreDatasourceCriteria, so populate the inlined ResourceSelector* properties.
+            $restoreCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.GenericRestoreDatasourceCriteria]::new()
+            $restoreCriteria.ResourceSelectorObjectType = "ResourceListSelectionCriteria"
+            $restoreCriteria.ResourceSelectorResourceIdentifier = $ResourceIdentifier
 
             if($ResourceNameOverride -ne $null -and $ResourceNameOverride.Count -gt 0){
 
-                $overrideMap = [System.Collections.Generic.Dictionary[string,string]]::new()
                 $seenTargets = @{}
 
                 foreach($key in $ResourceNameOverride.Keys){
@@ -114,15 +115,9 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
                     }
                     $seenTargets[$value] = $true
 
-                    $overrideMap[$key] = $value
+                    $restoreCriteria.ResourceSelectorResourceNameOverride[$key] = $value
                 }
-
-                $resourceListCriteria.ResourceNameOverride = $overrideMap
             }
-
-            $restoreCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.GenericRestoreDatasourceCriteria]::new()
-            $restoreCriteria.ObjectType = "GenericRestoreDatasourceCriteria"
-            $restoreCriteria.ResourceSelector = $resourceListCriteria
 
             return $restoreCriteria
         }

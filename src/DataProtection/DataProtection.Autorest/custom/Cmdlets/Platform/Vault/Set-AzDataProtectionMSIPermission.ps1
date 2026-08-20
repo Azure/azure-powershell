@@ -16,6 +16,7 @@ function Get-VaultIdentity {
         Write-Host "Using Vault UAMI with ARMId: $UserAssignedIdentityARMId with Principal ID: $vaultIdentity"
     } else {
         $vaultIdentity = $vault.Identity.PrincipalId
+        if (-not $vaultIdentity) { $vaultIdentity = $vault.IdentityPrincipalId }
         Write-Host "Using system-assigned identity with Principal ID: $vaultIdentity"
     }
 
