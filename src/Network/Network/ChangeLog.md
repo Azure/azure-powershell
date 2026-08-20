@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added address prefix set management for application security groups
+    - Added `Get-AzAddressPrefixSet`, `New-AzAddressPrefixSet`, `Set-AzAddressPrefixSet`, and `Remove-AzAddressPrefixSet`
+    - Supports IPv4 and IPv6 prefixes in Classless Inter-Domain Routing (CIDR) notation
 * Added `Move-AzVirtualNetworkIpConfiguration` cmdlet to move secondary private IP configurations between network interfaces within a virtual network.
     - Supports moving one or more IP configurations in a single operation.
     - Use `New-AzMoveIpConfigurationItem` to create each source and target IP configuration pair.

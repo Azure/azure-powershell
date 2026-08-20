@@ -194,7 +194,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Get-AzApplicationGatewayUrlPathMapConfig', 
                'Get-AzApplicationGatewayWafDynamicManifest', 
                'Get-AzApplicationGatewayWebApplicationFirewallConfiguration', 
-               'Get-AzApplicationSecurityGroup', 
+               'Get-AzAddressPrefixSet', 'Get-AzApplicationSecurityGroup',
                'Get-AzAutoApprovedPrivateLinkService', 
                'Get-AzAvailablePrivateEndpointType', 'Get-AzAvailableServiceAlias', 
                'Get-AzAvailableServiceDelegation', 'Get-AzBastion', 
@@ -406,7 +406,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzApplicationGatewayTrustedRootCertificate', 
                'New-AzApplicationGatewayUrlPathMapConfig', 
                'New-AzApplicationGatewayWebApplicationFirewallConfiguration', 
-               'New-AzApplicationSecurityGroup', 'New-AzBastion', 
+               'New-AzAddressPrefixSet', 'New-AzApplicationSecurityGroup', 'New-AzBastion',
                'New-AzBastionShareableLink', 'New-AzContainerNicConfig', 
                'New-AzContainerNicConfigIpConfig', 'New-AzCustomIpPrefix', 
                'New-AzDdosCustomPolicy', 'New-AzDdosCustomPolicyDetectionRule', 
@@ -580,7 +580,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Remove-AzApplicationGatewayTrustedClientCertificate', 
                'Remove-AzApplicationGatewayTrustedRootCertificate', 
                'Remove-AzApplicationGatewayUrlPathMapConfig', 
-               'Remove-AzApplicationSecurityGroup', 'Remove-AzBastion', 
+               'Remove-AzAddressPrefixSet', 'Remove-AzApplicationSecurityGroup', 'Remove-AzBastion',
                'Remove-AzBastionShareableLink', 'Remove-AzCustomIpPrefix', 
                'Remove-AzDdosCustomPolicy', 
                'Remove-AzDdosCustomPolicyDetectionRule', 
@@ -673,7 +673,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Reset-AzVirtualNetworkGatewayConnectionSharedKey', 
                'Reset-AzVpnGateway', 'Reset-AzVpnSiteLinkConnection', 
                'Resize-AzVirtualNetworkGateway', 
-               'Restart-AzNetworkVirtualAppliance', 'Set-AzApplicationGateway', 
+               'Restart-AzNetworkVirtualAppliance', 'Set-AzAddressPrefixSet', 'Set-AzApplicationGateway',
                'Set-AzApplicationGatewayAuthenticationCertificate', 
                'Set-AzApplicationGatewayAutoscaleConfiguration', 
                'Set-AzApplicationGatewayBackendAddressPool', 
@@ -840,7 +840,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added new cmdlets for ConnectionPolicy management under VirtualHub
+        ReleaseNotes = '* Added address prefix set management for application security groups
+        - Added ''Get-AzAddressPrefixSet'', ''New-AzAddressPrefixSet'', ''Set-AzAddressPrefixSet'', and ''Remove-AzAddressPrefixSet''
+        - Supports IPv4 and IPv6 prefixes in Classless Inter-Domain Routing (CIDR) notation
+* Added new cmdlets for ConnectionPolicy management under VirtualHub
     - ''Get-AzConnectionPolicy'': Retrieve one or all ConnectionPolicy resources under a VirtualHub
     - ''New-AzConnectionPolicy'': Create a new ConnectionPolicy under a VirtualHub
     - ''Set-AzConnectionPolicy'': Update an existing ConnectionPolicy under a VirtualHub
