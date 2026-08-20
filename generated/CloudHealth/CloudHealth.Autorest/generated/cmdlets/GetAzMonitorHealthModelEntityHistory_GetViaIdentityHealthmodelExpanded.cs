@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
     /// <remarks>
     /// [OpenAPI] GetHistory=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/entities/{entityName}/getHistory"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMonitorHealthModelEntityHistory_GetViaIdentityHealthmodelExpanded", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMonitorHealthModelEntityHistory_GetViaIdentityHealthmodelExpanded")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityHistoryResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Description(@"Retrieve the health state transition history for an entity")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Generated]
@@ -357,12 +357,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'EntitiesGetHistory' operation"))
+                using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener)this).Token) )
                 {
-                    using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener)this).Token) )
-                    {
-                        asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener)this).Token);
-                    }
+                    asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener)this).Token);
                 }
             }
             catch (global::System.AggregateException aggregateException)

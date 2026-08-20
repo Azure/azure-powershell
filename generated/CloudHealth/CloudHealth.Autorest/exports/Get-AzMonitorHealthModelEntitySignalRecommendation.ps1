@@ -58,7 +58,7 @@ https://learn.microsoft.com/powershell/module/az.cloudhealth/get-azmonitorhealth
 #>
 function Get-AzMonitorHealthModelEntitySignalRecommendation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetSignalRecommendationsResponse])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='GetViaIdentityHealthmodel', Mandatory)]

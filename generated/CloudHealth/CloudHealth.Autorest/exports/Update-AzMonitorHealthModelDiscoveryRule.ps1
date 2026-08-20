@@ -22,14 +22,12 @@ Update a DiscoveryRule
 .Example
 # Replace the Resource Graph query on the discovery rule discover-vms
 $specification = New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where type =~ 'microsoft.compute/virtualmachines' and tags['env'] =~ 'prod' | project id"
-$property = New-AzMonitorHealthModelDiscoveryRulePropertiesObject -AuthenticationSetting default-auth -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Enabled -DisplayName 'Discover production virtual machines' -Specification $specification
-Update-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-vms -Property $property
+Update-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-vms -AuthenticationSetting default-auth -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Enabled -DisplayName 'Discover production virtual machines' -Specification $specification
 .Example
 # Point the discovery rule discover-appinsights at a different Application Insights component
 $applicationInsightsId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azpwsh-test-rg/providers/microsoft.insights/components/azpwsh-appinsights'
 $specification = New-AzMonitorHealthModelApplicationInsightsTopologySpecificationObject -ApplicationInsightsResourceId $applicationInsightsId
-$property = New-AzMonitorHealthModelDiscoveryRulePropertiesObject -AuthenticationSetting default-auth -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Enabled -DisplayName 'Discover services from Application Insights' -Specification $specification
-Update-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-appinsights -Property $property
+Update-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-appinsights -AuthenticationSetting default-auth -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Enabled -DisplayName 'Discover services from Application Insights' -Specification $specification
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
@@ -64,24 +62,17 @@ INPUTOBJECT <ICloudHealthIdentity>: Identity Parameter
   [SignalDefinitionName <String>]: Name of the signal definition. Must be unique within a health model.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
-PROPERTY <IDiscoveryRuleProperties>: The resource-specific properties for this resource.
-  AddRecommendedSignal <String>: Whether to add all recommended signals to the discovered entities.
-  AuthenticationSetting <String>: Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
-  DiscoverRelationship <String>: Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
-  Specification <IDiscoveryRuleSpecification>: Specification of the discovery rule defining how entities are discovered.
-    Kind <String>: Kind of the discovery rule specification
-  [AddResourceHealthSignal <String>]: Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities. Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal. Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior.
-  [DisplayName <String>]: Display name
-
 RESOURCE <IDiscoveryRule>: A discovery rule which automatically finds entities and relationships in a health model based on an Azure Resource Graph query
-  [Property <IDiscoveryRuleProperties>]: The resource-specific properties for this resource.
-    AddRecommendedSignal <String>: Whether to add all recommended signals to the discovered entities.
-    AuthenticationSetting <String>: Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
-    DiscoverRelationship <String>: Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
-    Specification <IDiscoveryRuleSpecification>: Specification of the discovery rule defining how entities are discovered.
-      Kind <String>: Kind of the discovery rule specification
-    [AddResourceHealthSignal <String>]: Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities. Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal. Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior.
-    [DisplayName <String>]: Display name
+  [AddRecommendedSignal <String>]: Whether to add all recommended signals to the discovered entities.
+  [AddResourceHealthSignal <String>]: Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities. Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal. Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior.
+  [AuthenticationSetting <String>]: Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+  [DiscoverRelationship <String>]: Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+  [DisplayName <String>]: Display name
+  [Specification <IDiscoveryRuleSpecification>]: Specification of the discovery rule defining how entities are discovered.
+    Kind <String>: Kind of the discovery rule specification
+
+SPECIFICATION <IDiscoveryRuleSpecification>: Specification of the discovery rule defining how entities are discovered.
+  Kind <String>: Kind of the discovery rule specification
 .Link
 https://learn.microsoft.com/powershell/module/az.cloudhealth/update-azmonitorhealthmodeldiscoveryrule
 #>
@@ -149,10 +140,57 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityHealthmodelExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleProperties]
-    # The resource-specific properties for this resource.
-    ${Property},
+    [System.String]
+    # Whether to add all recommended signals to the discovered entities.
+    ${AddRecommendedSignal},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityHealthmodelExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [System.String]
+    # Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities.
+    # Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal.
+    # Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior.
+    ${AddResourceHealthSignal},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityHealthmodelExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [System.String]
+    # Reference to the name of the authentication setting which is used for querying Azure Resource Graph.
+    # The same authentication setting will also be assigned to any discovered entities.
+    ${AuthenticationSetting},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityHealthmodelExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [System.String]
+    # Whether to create relationships between the discovered entities based on a set of built-in rules.
+    # These relationships cannot be manually deleted.
+    ${DiscoverRelationship},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityHealthmodelExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [System.String]
+    # Display name
+    ${DisplayName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityHealthmodelExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecification]
+    # Specification of the discovery rule defining how entities are discovered.
+    ${Specification},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

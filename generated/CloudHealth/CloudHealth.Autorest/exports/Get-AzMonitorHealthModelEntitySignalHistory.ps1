@@ -67,7 +67,7 @@ https://learn.microsoft.com/powershell/module/az.cloudhealth/get-azmonitorhealth
 #>
 function Get-AzMonitorHealthModelEntitySignalHistory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalHistoryResponse])]
-[CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='GetExpanded', Mandatory)]
