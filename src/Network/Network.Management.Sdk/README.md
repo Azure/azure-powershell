@@ -54,6 +54,18 @@ output-folder: Generated
 namespace: Microsoft.Azure.Management.Network
 
 directive:
+# The 2025-09-01 service response returns resourceGuid at the resource root, while the
+# published swagger places it under properties. Move the schema property during generation
+# until the current and next API specifications are corrected.
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      if ($["FirstPartyServiceTag"] &&
+          $["FirstPartyServiceTagPropertiesFormat"]?.properties?.resourceGuid) {
+        $["FirstPartyServiceTag"].properties.resourceGuid =
+          $["FirstPartyServiceTagPropertiesFormat"].properties.resourceGuid;
+        delete $["FirstPartyServiceTagPropertiesFormat"].properties.resourceGuid;
+      }
 # NRP wire format uses boolean for enableOnlyIpv6Peering, override the shared swagger enum.
   - from: common.json
     where: $.definitions.EnableOnlyIpv6PeeringState

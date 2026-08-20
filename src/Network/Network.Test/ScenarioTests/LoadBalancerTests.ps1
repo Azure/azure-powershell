@@ -3668,15 +3668,18 @@ function Test-LoadBalancerInEdgeZone
 
 <#
 .SYNOPSIS
-Tests creating a public Load Balancer in Advanced mode with a frontend IP configuration that has UDP connection tracking enabled.
+Tests creating a public Load Balancer in Advanced mode with a frontend IP configuration that has UDP connection tracking enabled,
+then toggling connection tracking off/on with Set-AzLoadBalancerFrontendIpConfig and adding a second tracked frontend with Add-AzLoadBalancerFrontendIpConfig.
 #>
 function Test-LoadBalancerAdvancedModeConnectionTracking
 {
     # Setup
     $rgname = Get-ResourceGroupName
     $publicIpName = Get-ResourceName
+    $publicIpName2 = Get-ResourceName
     $lbName = Get-ResourceName
     $frontendName = Get-ResourceName
+    $frontendName2 = Get-ResourceName
     $backendAddressPoolName = Get-ResourceName
     $probeName = Get-ResourceName
     $lbruleName = Get-ResourceName
@@ -3714,6 +3717,25 @@ function Test-LoadBalancerAdvancedModeConnectionTracking
         Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
         Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
         Assert-AreEqual $true $expectedLb.FrontendIPConfigurations[0].EnableConnectionTracking
+
+        # Set: disable connection tracking on the existing frontend (omitting the switch clears it).
+        # NRP omits enableConnectionTracking when it is not enabled, so the property reads back as null.
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Set-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip | Set-AzLoadBalancer
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-True { $expectedLb.FrontendIPConfigurations[0].EnableConnectionTracking -ne $true }
+
+        # Set: re-enable connection tracking on the existing frontend
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Set-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip -EnableConnectionTracking | Set-AzLoadBalancer
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-AreEqual $true $expectedLb.FrontendIPConfigurations[0].EnableConnectionTracking
+
+        # Add: add a second frontend (StandardV2 public IP required for a public advanced-mode LB) with connection tracking enabled
+        $publicip2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName2 -location $location -AllocationMethod Static -Sku StandardV2
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Add-AzLoadBalancerFrontendIpConfig -Name $frontendName2 -PublicIpAddress $publicip2 -EnableConnectionTracking | Set-AzLoadBalancer
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-AreEqual 2 @($expectedLb.FrontendIPConfigurations).Count
+        $addedFrontend = $expectedLb.FrontendIPConfigurations | Where-Object { $_.Name -eq $frontendName2 }
+        Assert-AreEqual $true $addedFrontend.EnableConnectionTracking
 
         # Delete
         $deleteLb = Remove-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
