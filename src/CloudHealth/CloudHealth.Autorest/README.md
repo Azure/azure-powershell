@@ -19,9 +19,78 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
-## Development
-For information on how to develop for `Az.CloudHealth`, see [how-to.md](how-to.md).
+
 <!-- endregion -->
+
+### Regenerating the module and help
+
+Prerequisites:
+- `autorest` and `platyPS` must be available in your PowerShell session.
+- `Az.Accounts` and `Az.CloudHealth` must already be built under `./artifacts/Debug`.
+
+From the repository root, run:
+
+```powershell
+$repoRoot = (Resolve-Path .).Path
+& (Join-Path $repoRoot "tools/BuildScripts/BuildModules.ps1") -RepoRoot $repoRoot -Configuration Debug -TargetModule CloudHealth
+```
+
+`BuildModules.ps1` always appends `Accounts` to `-TargetModule`, so this command builds both `CloudHealth` and `Accounts`.
+
+The source of truth depends on the content:
+
+| Content | Source of truth | Generated output |
+| --- | --- | --- |
+| Cmdlet syntax, parameters, and descriptions | This AutoRest configuration, the referenced API specification, and files under `custom` | `exports`, `internal`, and `docs` |
+| Examples | Files under `examples` | Example sections in `docs` and the parent module `help` folder |
+| Shipped help | Generated `docs` combined with the built module metadata | `../CloudHealth/help` |
+
+Do not edit files under `docs`, `exports`, `internal`, the parent module `help` folder, or `generated/CloudHealth` directly.
+
+From the repository root, regenerate the local AutoRest output, build the module, and propagate the generated documentation to the shipped help:
+
+```powershell
+$repoRoot = (Resolve-Path .).Path
+$autorestModulePath = Join-Path $repoRoot "src/CloudHealth/CloudHealth.Autorest"
+
+Push-Location -Path $autorestModulePath
+try {
+    autorest --max-memory-size=8192
+    ./build-module.ps1
+}
+finally {
+    Pop-Location
+}
+```
+
+The first regeneration step may rewrite tracked files such as the `Project(...)` entry (project GUID and `src/CloudHealth/CloudHealth.Autorest/Az.CloudHealth.csproj` path) in `src/CloudHealth/CloudHealth.sln`, the assembly version attributes in `src/CloudHealth/CloudHealth.Autorest/Properties/AssemblyInfo.cs`, and the `generate_Id` in `src/CloudHealth/CloudHealth.Autorest/generate-info.json`.
+
+To refresh the committed module under `generated/CloudHealth`, use the repository build tooling:
+
+```powershell
+$repoRoot = (Resolve-Path .).Path
+$prepareScript = Join-Path $repoRoot "tools/BuildScripts/PrepareAutorestModule.ps1"
+
+Push-Location -Path $repoRoot
+try {
+    & $prepareScript -RepoRoot $repoRoot -ModuleRootName CloudHealth -Configuration Debug -ForceRegenerate
+}
+finally {
+    Pop-Location
+}
+```
+
+`PrepareAutorestModule.ps1` regenerates in `src/CloudHealth/CloudHealth.Autorest`, then moves its known generated output set into `generated/CloudHealth/CloudHealth.Autorest` (`generated`, `resources`, module `.psd1/.psm1/.format.ps1xml`, `exports`, `internal`, `test-module.ps1`, and `check-dependencies.ps1`). Source-side disappearance of those paths is expected.
+
+Always inspect the generated changes before committing:
+
+```powershell
+git status --short
+git diff --name-status
+git diff --check
+```
+
+The diff should contain only the source changes you intended and their generated outputs. Files removed under `generated/CloudHealth` may be expected when directives remove cmdlets. If the source and committed `generate-info.json` files have different `generate_Id` values, rerun the PrepareAutorestModule block above to reconcile them. `-ForceRegenerate` forces refresh even when the two `generate_Id` values already match.
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
