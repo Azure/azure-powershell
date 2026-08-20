@@ -36,21 +36,27 @@ function Test-ExpressRouteLagCRUD
     $rname = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/expressRouteLags"
     $location = Get-ProviderLocation $resourceTypeParent
-    $peeringLocation = "Cheyenne-ERDirect"
+    $peeringLocation = "Azure"
     $encapsulation = "QinQ"
-    $bandwidthInGbps = 100
+    $bandwidthInGbps = 10
+    $numberOfPorts = 2
+    $lacpTimer = "fast"
+    $minimumActivePortsRequired = 2
 
     try
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
 
         # Create ExpressRouteLag
-        $vExpressRouteLag = New-AzExpressRouteLag -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps
+        $vExpressRouteLag = New-AzExpressRouteLag -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps -NumberOfPorts $numberOfPorts -MinimumActivePortsRequired $minimumActivePortsRequired -LacpTimer $lacpTimer
         Assert-NotNull $vExpressRouteLag
         Assert-True { Check-CmdletReturnType "New-AzExpressRouteLag" $vExpressRouteLag }
         Assert-AreEqual $rname $vExpressRouteLag.Name
         Assert-AreEqual $peeringLocation $vExpressRouteLag.PeeringLocation
         Assert-AreEqual $bandwidthInGbps $vExpressRouteLag.BandwidthInGbps
+        Assert-AreEqual $numberOfPorts $vExpressRouteLag.NumberOfPorts
+        Assert-AreEqual $minimumActivePortsRequired $vExpressRouteLag.MinimumActivePortsRequired
+        Assert-AreEqual $lacpTimer $vExpressRouteLag.LacpTimer
 
         # Get ExpressRouteLag by name
         $vExpressRouteLag = Get-AzExpressRouteLag -ResourceGroupName $rgname -Name $rname
@@ -81,70 +87,54 @@ function Test-ExpressRouteLagCRUD
         Assert-NotNull $vExpressRouteLagsAll
 
         # Update ExpressRouteLag
-        $vExpressRouteLag.Tag = @{ environment = "test" }
+        $vExpressRouteLag.NumberOfPorts = 1
+        $vExpressRouteLag.MinimumActivePortsRequired = 1
+        $vExpressRouteLag.LacpTimer = "slow"
         $vExpressRouteLag = Set-AzExpressRouteLag -ExpressRouteLag $vExpressRouteLag
         Assert-NotNull $vExpressRouteLag
         Assert-True { Check-CmdletReturnType "Set-AzExpressRouteLag" $vExpressRouteLag }
+        Assert-AreEqual 1 $vExpressRouteLag.NumberOfPorts
+        Assert-AreEqual 1 $vExpressRouteLag.MinimumActivePortsRequired
+        Assert-AreEqual "slow" $vExpressRouteLag.LacpTimer
 
-        # Remove ExpressRouteLag
-        $removeExpressRouteLag = Remove-AzExpressRouteLag -ResourceGroupName $rgname -Name $rname -PassThru -Force
-        Assert-AreEqual $true $removeExpressRouteLag
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Test getting ExpressRouteLag links and members.
-#>
-function Test-ExpressRouteLagLinkAndMember
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rglocation = Get-ProviderLocation ResourceManagement
-    $rname = Get-ResourceName
-    $resourceTypeParent = "Microsoft.Network/expressRouteLags"
-    $location = Get-ProviderLocation $resourceTypeParent
-    $peeringLocation = "Cheyenne-ERDirect"
-    $encapsulation = "QinQ"
-    $bandwidthInGbps = 100
-
-    try
-    {
-        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
-
-        # Create ExpressRouteLag
-        $vExpressRouteLag = New-AzExpressRouteLag -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps
+        # Refresh the ExpressRouteLag
+        $vExpressRouteLag = Get-AzExpressRouteLag -ResourceId $vExpressRouteLag.Id
         Assert-NotNull $vExpressRouteLag
 
-        # List links of the ExpressRouteLag
-        $vLinks = Get-AzExpressRouteLagLink -ResourceGroupName $rgname -ExpressRouteLagName $rname
-        Assert-NotNull $vLinks
-        Assert-True { $vLinks.Count -ge 1 }
+        # Update minimumActivePortsRequired (min links) and numberOfPorts back to 2
+        $vExpressRouteLag.NumberOfPorts = 2
+        $vExpressRouteLag.MinimumActivePortsRequired = 2
+        $vExpressRouteLag = Set-AzExpressRouteLag -ExpressRouteLag $vExpressRouteLag
+        Assert-NotNull $vExpressRouteLag
+        Assert-AreEqual 2 $vExpressRouteLag.NumberOfPorts
+        Assert-AreEqual 2 $vExpressRouteLag.MinimumActivePortsRequired
 
-        $firstLink = $vLinks[0]
+        # Refresh the ExpressRouteLag
+        $vExpressRouteLag = Get-AzExpressRouteLag -ResourceId $vExpressRouteLag.Id
+        Assert-NotNull $vExpressRouteLag
 
-        # Get a single link by name
-        $vLink = Get-AzExpressRouteLagLink -ResourceGroupName $rgname -ExpressRouteLagName $rname -Name $firstLink.Name
-        Assert-NotNull $vLink
-        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteLagLink" $vLink }
-        Assert-AreEqual $firstLink.Name $vLink.Name
+        # Update tags
+        $vExpressRouteLag.Tag = @{ environment = "test" }
+        $vExpressRouteLag = Set-AzExpressRouteLag -ExpressRouteLag $vExpressRouteLag
+        Assert-NotNull $vExpressRouteLag
 
-        # List members of the link
-        $vMembers = Get-AzExpressRouteLagMember -ResourceGroupName $rgname -ExpressRouteLagName $rname -LinkName $firstLink.Name
-        Assert-NotNull $vMembers
-        Assert-True { $vMembers.Count -ge 1 }
+        # Refresh the ExpressRouteLag
+        $vExpressRouteLag = Get-AzExpressRouteLag -ResourceId $vExpressRouteLag.Id
+        Assert-NotNull $vExpressRouteLag
 
-        # Get a single member by name
-        $firstMember = $vMembers[0]
-        $vMember = Get-AzExpressRouteLagMember -ResourceGroupName $rgname -ExpressRouteLagName $rname -LinkName $firstLink.Name -Name $firstMember.Name
-        Assert-NotNull $vMember
-        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteLagMember" $vMember }
-        Assert-AreEqual $firstMember.Name $vMember.Name
+        # Update link and member AdminState
+        Assert-NotNull $vExpressRouteLag.Links
+        Assert-True { $vExpressRouteLag.Links.Count -ge 1 }
+        $vExpressRouteLag.Links[0].AdminState = "Enabled"
+        Assert-NotNull $vExpressRouteLag.Links[0].Members
+        Assert-True { $vExpressRouteLag.Links[0].Members.Count -ge 1 }
+        $vExpressRouteLag.Links[0].Members[0].AdminState = "Disabled"
+        $vExpressRouteLag = Set-AzExpressRouteLag -ExpressRouteLag $vExpressRouteLag
+        Assert-NotNull $vExpressRouteLag
+        Assert-AreEqual "Enabled" $vExpressRouteLag.Links[0].AdminState
+        Assert-AreEqual "Disabled" $vExpressRouteLag.Links[0].Members[0].AdminState
+        Assert-AreEqual "Disabled" $vExpressRouteLag.Links[1].AdminState
+        Assert-AreEqual "Enabled" $vExpressRouteLag.Links[1].Members[0].AdminState
 
         # Remove ExpressRouteLag
         $removeExpressRouteLag = Remove-AzExpressRouteLag -ResourceGroupName $rgname -Name $rname -PassThru -Force
@@ -169,9 +159,12 @@ function Test-ExpressRouteLagGenerateLOA
     $rname = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/expressRouteLags"
     $location = Get-ProviderLocation $resourceTypeParent
-    $peeringLocation = "Cheyenne-ERDirect"
+    $peeringLocation = "Azure"
     $encapsulation = "QinQ"
-    $bandwidthInGbps = 100
+    $bandwidthInGbps = 10
+    $numberOfPorts = 2
+    $lacpTimer = "slow"
+    $minimumActivePortsRequired = 2
     $customerName = "someCustomer"
     $destination = "$env:TEMP\ExpressRouteLagLOA.pdf"
 
@@ -180,12 +173,111 @@ function Test-ExpressRouteLagGenerateLOA
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
 
         # Create ExpressRouteLag
-        $vExpressRouteLag = New-AzExpressRouteLag -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps
+        $vExpressRouteLag = New-AzExpressRouteLag -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps -NumberOfPorts $numberOfPorts -MinimumActivePortsRequired $minimumActivePortsRequired -LacpTimer $lacpTimer
         Assert-NotNull $vExpressRouteLag
 
+        # Collect the distinct member names for which the LOA should be generated.
+        # Member names repeat across links (e.g. every link exposes member1/member2),
+        # so the LOA request must contain each member name only once.
+        $vLinks = Get-AzExpressRouteLagLink -ResourceGroupName $rgname -ExpressRouteLagName $rname
+        Assert-NotNull $vLinks
+        Assert-True { $vLinks.Count -ge 1 }
+        $memberNames = @()
+        foreach ($link in $vLinks)
+        {
+            $linkMembers = Get-AzExpressRouteLagMember -ResourceGroupName $rgname -ExpressRouteLagName $rname -LinkName $link.Name
+            foreach ($member in $linkMembers)
+            {
+                if ($memberNames -notcontains $member.Name)
+                {
+                    $memberNames += $member.Name
+                }
+            }
+        }
+        Assert-True { $memberNames.Count -ge 1 }
+
         # Generate LOA
-        New-AzExpressRouteLagLOA -ResourceGroupName $rgname -LagName $rname -CustomerName $customerName -Destination $destination
+        New-AzExpressRouteLagLOA -ResourceGroupName $rgname -LagName $rname -CustomerName $customerName -Members $memberNames -Destination $destination
         Assert-True { Test-Path $destination }
+
+        # Remove ExpressRouteLag
+        $removeExpressRouteLag = Remove-AzExpressRouteLag -ResourceGroupName $rgname -Name $rname -PassThru -Force
+        Assert-AreEqual $true $removeExpressRouteLag
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test assigning, getting, and removing a user-assigned identity on an ExpressRouteLag.
+#>
+function Test-ExpressRouteLagIdentity
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $rname = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/expressRouteLags"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $peeringLocation = "Azure"
+    $encapsulation = "QinQ"
+    $bandwidthInGbps = 10
+    $numberOfPorts = 2
+    $lacpTimer = "fast"
+    $minimumActivePortsRequired = 2
+
+    # Pre-provisioned user-assigned identity, referenced by resource id.
+    # New-AzUserAssignedIdentity (Az.ManagedServiceIdentity, AutoRest) is NOT routed through the
+    # TestFx HTTP mock server, so it cannot be recorded/replayed in playback. Instead we reference a
+    # long-lived identity that already exists in the recording subscription (same approach as the
+    # AzureFirewallPolicy UAMI tests). Replace with a real UAMI id before (re)recording.
+    $userAssignedIdentityId = "/subscriptions/7d747eed-b44c-4257-8d43-df9ebd94546b/resourceGroups/ExpressRouteLagTestIdentities/providers/Microsoft.ManagedIdentity/userAssignedIdentities/expressRouteLagTestIdentity"
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        # Create ExpressRouteLag
+        $vExpressRouteLag = New-AzExpressRouteLag -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps -NumberOfPorts $numberOfPorts -MinimumActivePortsRequired $minimumActivePortsRequired -LacpTimer $lacpTimer
+        Assert-NotNull $vExpressRouteLag
+
+        # New-AzExpressRouteLagIdentity builds a local identity object
+        $expressRouteLagIdentity = New-AzExpressRouteLagIdentity -UserAssignedIdentityId $userAssignedIdentityId
+        Assert-NotNull $expressRouteLagIdentity
+        Assert-True { Check-CmdletReturnType "New-AzExpressRouteLagIdentity" $expressRouteLagIdentity }
+        Assert-AreEqual "UserAssigned" $expressRouteLagIdentity.Type.ToString()
+
+        # Set-AzExpressRouteLagIdentity assigns the identity on the local object
+        $vExpressRouteLag = Set-AzExpressRouteLagIdentity -ExpressRouteLag $vExpressRouteLag -UserAssignedIdentityId $userAssignedIdentityId
+        Assert-NotNull $vExpressRouteLag
+        Assert-True { Check-CmdletReturnType "Set-AzExpressRouteLagIdentity" $vExpressRouteLag }
+        Assert-NotNull $vExpressRouteLag.Identity
+
+        # Persist the identity assignment
+        $vExpressRouteLag = Set-AzExpressRouteLag -ExpressRouteLag $vExpressRouteLag
+        Assert-NotNull $vExpressRouteLag
+        Assert-NotNull $vExpressRouteLag.Identity
+
+        # Get-AzExpressRouteLagIdentity returns the assigned identity
+        $vExpressRouteLag = Get-AzExpressRouteLag -ResourceId $vExpressRouteLag.Id
+        $vIdentity = Get-AzExpressRouteLagIdentity -ExpressRouteLag $vExpressRouteLag
+        Assert-NotNull $vIdentity
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteLagIdentity" $vIdentity }
+        Assert-AreEqual "UserAssigned" $vIdentity.Type.ToString()
+
+        # Remove-AzExpressRouteLagIdentity removes the identity from the local object
+        $vExpressRouteLag = Remove-AzExpressRouteLagIdentity -ExpressRouteLag $vExpressRouteLag
+        Assert-NotNull $vExpressRouteLag
+        Assert-True { Check-CmdletReturnType "Remove-AzExpressRouteLagIdentity" $vExpressRouteLag }
+        Assert-Null $vExpressRouteLag.Identity
+
+        # Persist the identity removal
+        $vExpressRouteLag = Set-AzExpressRouteLag -ExpressRouteLag $vExpressRouteLag
+        Assert-NotNull $vExpressRouteLag
 
         # Remove ExpressRouteLag
         $removeExpressRouteLag = Remove-AzExpressRouteLag -ResourceGroupName $rgname -Name $rname -PassThru -Force

@@ -15,22 +15,22 @@ Generates and downloads a letter of authorization (LOA) for an Azure ExpressRout
 ### ResourceNameParameterSet (Default)
 ```
 New-AzExpressRouteLagLOA -LagName <String> -ResourceGroupName <String> -CustomerName <String>
- [-Destination <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ -Members <String[]> [-Destination <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ResourceObjectParameterSet
 ```
-New-AzExpressRouteLagLOA -ExpressRouteLag <PSExpressRouteLag> -CustomerName <String> [-Destination <String>]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+New-AzExpressRouteLagLOA -ExpressRouteLag <PSExpressRouteLag> -CustomerName <String> -Members <String[]>
+ [-Destination <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-New-AzExpressRouteLagLOA -Id <String> -CustomerName <String> [-Destination <String>] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-AcquirePolicyToken]
- [-ChangeReference <String>] [<CommonParameters>]
+New-AzExpressRouteLagLOA -Id <String> -CustomerName <String> -Members <String[]> [-Destination <String>]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,10 +40,10 @@ The **New-AzExpressRouteLagLOA** cmdlet generates a letter of authorization (LOA
 
 ### Example 1: Generate a letter of authorization
 ```powershell
-New-AzExpressRouteLagLOA -ResourceGroupName "MyResourceGroup" -LagName "MyLag" -CustomerName "Contoso" -Destination "C:\LOA.pdf"
+New-AzExpressRouteLagLOA -ResourceGroupName "MyResourceGroup" -LagName "MyLag" -CustomerName "Contoso" -Members "member1","member2" -Destination "C:\LOA.pdf"
 ```
 
-Generates a letter of authorization for the ExpressRouteLag named `MyLag` on behalf of `Contoso` and saves it to `C:\LOA.pdf`.
+Generates a letter of authorization for the `member1` and `member2` members of the ExpressRouteLag named `MyLag` on behalf of `Contoso` and saves it to `C:\LOA.pdf`.
 
 ## PARAMETERS
 
@@ -173,6 +173,21 @@ The express route LAG name.
 ```yaml
 Type: String
 Parameter Sets: ResourceNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Members
+The list of member names for which the Letter of Authorization should be generated.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True

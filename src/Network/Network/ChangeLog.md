@@ -24,6 +24,7 @@
     - `New-AzExpressRouteLagLOA` to generate a letter of authorization for an ExpressRouteLag.
     - `Get-AzExpressRouteLagLink` to retrieve the links of an ExpressRouteLag.
     - `Get-AzExpressRouteLagMember` to retrieve the members of an ExpressRouteLag link.
+    - `New-AzExpressRouteLagIdentity`, `Get-AzExpressRouteLagIdentity`, `Set-AzExpressRouteLagIdentity`, `Remove-AzExpressRouteLagIdentity` to manage the user-assigned managed identity of an ExpressRouteLag.
 * Added `Move-AzVirtualNetworkIpConfiguration` cmdlet to move secondary private IP configurations between network interfaces within a virtual network.
     - Supports moving one or more IP configurations in a single operation.
     - Use `New-AzMoveIpConfigurationItem` to create each source and target IP configuration pair.

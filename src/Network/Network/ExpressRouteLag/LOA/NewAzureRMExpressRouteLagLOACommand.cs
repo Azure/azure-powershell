@@ -79,6 +79,13 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = false)]
         public string Destination { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The list of member names for which the Letter of Authorization should be generated.",
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public string[] Members { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -105,7 +112,7 @@ namespace Microsoft.Azure.Commands.Network
                 Console.WriteLine("Empty resource group or LAG name.");
                 return;
             }
-            GenerateExpressRouteLagsLOARequest generateExpressRouteLagsLOARequest = new GenerateExpressRouteLagsLOARequest(CustomerName);
+            GenerateExpressRouteLagsLOARequest generateExpressRouteLagsLOARequest = new GenerateExpressRouteLagsLOARequest(CustomerName, this.Members);
             var response = this.NetworkClient.NetworkManagementClient.ExpressRouteLags.GenerateLoa(this.ResourceGroupName, this.LagName, generateExpressRouteLagsLOARequest);
             var decodedDocument = Convert.FromBase64String(response.EncodedContent);
             if (String.IsNullOrEmpty(Destination))

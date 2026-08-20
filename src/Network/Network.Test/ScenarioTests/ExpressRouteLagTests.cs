@@ -25,7 +25,7 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip = "No bandwidth available")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestExpressRouteLagCRUD()
@@ -33,20 +33,20 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ExpressRouteLagCRUD");
         }
 
-        [Fact(Skip = "No bandwidth available")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
-        public void TestExpressRouteLagLinkAndMember()
-        {
-            TestRunner.RunTestScript("Test-ExpressRouteLagLinkAndMember");
-        }
-
-        [Fact(Skip = "Nfv-RP rollout in progress")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestExpressRouteLagGenerateLOA()
         {
             TestRunner.RunTestScript("Test-ExpressRouteLagGenerateLOA");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRouteLagIdentity()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteLagIdentity");
         }
     }
 }
