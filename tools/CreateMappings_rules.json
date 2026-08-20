@@ -889,10 +889,6 @@
     "alias": "Oracle"
   },
   {
-    "alias": "Astro",
-    "module": "Astro"
-  },
-  {
     "module": "Fabric",
     "alias": "Fabric"
   },

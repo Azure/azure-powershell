@@ -142,7 +142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         internal Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderForContainersAwsOfferingMdcContainersImageAssessment MdcContainersImageAssessment { get => (this._mdcContainersImageAssessment = this._mdcContainersImageAssessment ?? new Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderForContainersAwsOfferingMdcContainersImageAssessment()); set => this._mdcContainersImageAssessment = value; }
 
         /// <summary>Internal Acessors for Description</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description = value ?? null; }
 
         /// <summary>Internal Acessors for CloudWatchToKinesi</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderForContainersAwsOfferingCloudWatchToKinesis Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderForContainersAwsOfferingInternal.CloudWatchToKinesi { get => (this._cloudWatchToKinesi = this._cloudWatchToKinesi ?? new Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderForContainersAwsOfferingCloudWatchToKinesis()); set { {_cloudWatchToKinesi = value;} } }

@@ -13,6 +13,47 @@ namespace Microsoft.Azure.Management.KeyVault
     public static partial class PrivateEndpointConnectionsOperationsExtensions
     {
         /// <summary>
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the vault.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<PrivateEndpointConnection> ListByResource(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string vaultName)
+        {
+                return ((IPrivateEndpointConnectionsOperations)operations).ListByResourceAsync(resourceGroupName, vaultName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the vault.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpointConnection>> ListByResourceAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string vaultName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets the specified private endpoint connection associated with the key
         /// vault.
         /// </summary>
@@ -20,10 +61,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// The name of the vault.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the key vault.
@@ -41,10 +82,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// The name of the vault.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the key vault.
@@ -67,10 +108,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// The name of the vault.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the key vault.
@@ -88,10 +129,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// The name of the vault.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the key vault.
@@ -114,10 +155,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// The name of the vault.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the key vault.
@@ -135,10 +176,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// The name of the vault.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the key vault.
@@ -154,47 +195,6 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the private endpoint connections
-        /// associated with the vault.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
-        /// </param>
-        /// <param name='vaultName'>
-        /// The name of the key vault.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<PrivateEndpointConnection> ListByResource(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string vaultName)
-        {
-                return ((IPrivateEndpointConnectionsOperations)operations).ListByResourceAsync(resourceGroupName, vaultName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// The List operation gets information about the private endpoint connections
-        /// associated with the vault.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
-        /// </param>
-        /// <param name='vaultName'>
-        /// The name of the key vault.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpointConnection>> ListByResourceAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string vaultName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByResourceWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Deletes the specified private endpoint connection associated with the key
         /// vault.
         /// </summary>
@@ -202,10 +202,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// The name of the vault.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the key vault.
@@ -223,10 +223,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// The name of the vault.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the key vault.
