@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// The current migration status of a Network Virtual Appliance.
+    /// The migration status of a Network Virtual Appliance.
     /// </summary>
     public partial class NetworkVirtualApplianceMigrationStatus
     {
@@ -23,11 +23,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the NetworkVirtualApplianceMigrationStatus class.
         /// </summary>
-        /// <param name="migrationType">The type of migration in progress. Possible values
-        /// include: 'MigrateToNewOSVersion', 'MigrateToNewILBArchitecture'</param>
-        /// <param name="migrationPhase">The current phase of the migration.</param>
-        /// <param name="migrationPhaseStatus">The status of the current migration phase.</param>
+
+        /// <param name="migrationType">The type of migration workflow currently in progress or last performed.
+        /// Possible values include: &#39;MigrateToNewOSVersion&#39;,
+        /// &#39;MigrateToNewILBArchitecture&#39;</param>
+
+        /// <param name="migrationPhase">The current phase of the migration workflow (for example, Prepare, Execute,
+        /// Commit, or Abort).
+        /// </param>
+
+        /// <param name="migrationPhaseStatus">The detailed status of the current migration phase.
+        /// </param>
         public NetworkVirtualApplianceMigrationStatus(string migrationType = default(string), string migrationPhase = default(string), string migrationPhaseStatus = default(string))
+
         {
             this.MigrationType = migrationType;
             this.MigrationPhase = migrationPhase;
@@ -40,23 +48,25 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
+
         /// <summary>
-        /// Gets the type of migration in progress. Possible values include:
-        /// 'MigrateToNewOSVersion', 'MigrateToNewILBArchitecture'
+        /// Gets or sets the type of migration workflow currently in progress or last
+        /// performed. Possible values include: &#39;MigrateToNewOSVersion&#39;, &#39;MigrateToNewILBArchitecture&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "migrationType")]
-        public string MigrationType {get; private set; }
+        public string MigrationType {get; set; }
 
         /// <summary>
-        /// Gets the current phase of the migration.
+        /// Gets or sets the current phase of the migration workflow (for example,
+        /// Prepare, Execute, Commit, or Abort).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "migrationPhase")]
-        public string MigrationPhase {get; private set; }
+        public string MigrationPhase {get; set; }
 
         /// <summary>
-        /// Gets the status of the current migration phase.
+        /// Gets or sets the detailed status of the current migration phase.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "migrationPhaseStatus")]
-        public string MigrationPhaseStatus {get; private set; }
+        public string MigrationPhaseStatus {get; set; }
     }
 }

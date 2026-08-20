@@ -19,9 +19,57 @@
 --->
 
 ## Upcoming Release
-* Added support for Network Virtual Appliance (NVA) migration workflow (API version 2025-09-01).
-    - Added `Invoke-AzNetworkVirtualAppliancePrepareMigration`, `Invoke-AzNetworkVirtualApplianceExecuteMigration`, `Invoke-AzNetworkVirtualApplianceCommitMigration`, and `Invoke-AzNetworkVirtualApplianceAbortMigration` cmdlets to migrate an NVA to a new OS version or to the new internal load balancer (ILB) architecture.
-    - Added the `MigrationStatus` property to the Network Virtual Appliance output.
+* Added address prefix set management for application security groups
+    - Added `Get-AzAddressPrefixSet`, `New-AzAddressPrefixSet`, `Set-AzAddressPrefixSet`, and `Remove-AzAddressPrefixSet`
+    - Supports IPv4 and IPv6 prefixes in Classless Inter-Domain Routing (CIDR) notation
+* Added `Move-AzVirtualNetworkIpConfiguration` cmdlet to move secondary private IP configurations between network interfaces within a virtual network.
+    - Supports moving one or more IP configurations in a single operation.
+    - Use `New-AzMoveIpConfigurationItem` to create each source and target IP configuration pair.
+    - The operation is long-running and supports the `-AsJob` parameter.
+* Added IPv6 support to Virtual Hub and Hub Virtual Network Connection cmdlets
+    - `New-AzVirtualHub`: Added `-AddressPrefixV6` parameter to specify the IPv6 address prefix for the VirtualHub.
+    - `Update-AzVirtualHub`: Added `-AddressPrefixV6` parameter to update the IPv6 address prefix for the VirtualHub.
+    - `New-AzVirtualHubVnetConnection`: Added `-EnableOnlyIpv6Peering` parameter to enable only IPv6 peering for the connection.
+* Added support for managing Kube Selector Groups on a firewall policy.
+    - `Get-AzFirewallPolicyKubeSelectorGroup`, `New-AzFirewallPolicyKubeSelectorGroup`, `Set-AzFirewallPolicyKubeSelectorGroup`, `Remove-AzFirewallPolicyKubeSelectorGroup`.
+    - Added `New-AzFirewallPolicyKubeLabelSelector` and `New-AzFirewallPolicyLabelSelectorExpression` to build pod/namespace label selectors.
+* Exposed the read-only `AfcManaged` property on `Get-AzFirewallPolicy` output.
+    - Indicates the firewall policy is managed by AFC (Azure Firewall for Containers); the value is service-managed and cannot be set or updated through the cmdlets.
+* Exposed the read-only AFC configuration on `Get-AzFirewall` output.
+    - Added the `AfcConfiguration.ServiceEndpoint` property surfacing the AFC control-plane endpoint.
+    - The value is service-managed and cannot be set or updated through `New-AzFirewall`/`Set-AzFirewall`.
+* Upgraded Network SDK to API version `2025-09-01`.
+    - Added `DisableDefaultServerHeaderInResponse` to `Get-AzApplicationGateway` output.
+    - Added the `-DisableDefaultServerHeaderInResponse` parameter to `New-AzApplicationGateway`.
+* Surfaced the read-only `UpgradedToV2` property on public IP address and public IP prefix objects.
+    - `Get-AzPublicIpAddress` and `Get-AzPublicIpPrefix` now return `UpgradedToV2`, indicating whether the SKU has been upgraded from Standard to StandardV2.
+* Added new cmdlets for InterconnectGroup management
+    - `Get-AzInterconnectGroup`: Retrieve one or more InterconnectGroup resources
+    - `New-AzInterconnectGroup`: Create a new InterconnectGroup
+    - `Set-AzInterconnectGroup`: Update an existing InterconnectGroup
+    - `Remove-AzInterconnectGroup`: Delete an InterconnectGroup
+    - `Get-AzInterconnectGroupSubgroup`: Retrieve one or all subgroups under an InterconnectGroup
+    - `Get-AzInterconnectGroupNodeAvailability`: Retrieve node availability for an InterconnectGroup
+* Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
+    - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
+    - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
+    - DDoS custom policy association does not require a specific DDoS protection mode.
+* Added cmdlets to create, retrieve, update, and remove First Party Service Tag resources.
+    - Added `New-AzFirstPartyServiceTag`, `Get-AzFirstPartyServiceTag`, `Set-AzFirstPartyServiceTag`, and `Remove-AzFirstPartyServiceTag`.
+    - Added first party service tag association support to `New-AzPublicIpTag`.
+* Added new cmdlet to retrieve effective routes for a Virtual Network Gateway
+    - `Get-AzVirtualNetworkGatewayEffectiveRoute` : Get effective routes for a Virtual Network Gateway
+* Added the `-Mode` and `-Scope` parameters to `New-AzLoadBalancer`.
+    - Set `-Mode Advanced` together with `-Scope Public` or `-Scope Private` to create an advanced (Banksy-based) Standard SKU load balancer. Advanced mode must be specified at creation and cannot be changed afterward.
+* Added the `-EnableConnectionTracking` switch to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
+    - Enables UDP (User Datagram Protocol) flow tracking for traffic associated with the frontend IP configuration. When enabled, packets belonging to the same UDP flow are consistently directed to the same backend instance, taking precedence over rule-level connection tracking settings. Requires the load balancer to be created with `-Mode Advanced` and `-Scope`.
+* Added support for multi-cloud ExpressRoute circuits.
+    - Added `MultiCloud` value to the `-SkuTier` parameter of `New-AzExpressRouteCircuit`.
+    - Added `-PartnerAccountId` parameter to `New-AzExpressRouteCircuit`.
+    - Added `-ActivationKey` parameter to `New-AzExpressRouteCircuit`.
+    - Exposed `PartnerAccountId`, `ActivationKey`, and `ResiliencyLevel` on `PSExpressRouteCircuit`.
+
+## Version 8.1.0
 * Added new cmdlets for ConnectionPolicy management under VirtualHub
     - `Get-AzConnectionPolicy`: Retrieve one or all ConnectionPolicy resources under a VirtualHub
     - `New-AzConnectionPolicy`: Create a new ConnectionPolicy under a VirtualHub
@@ -55,6 +103,7 @@
     - Supports multiple detection rules with configurable traffic type (Tcp, Udp, TcpSyn) and packets per second thresholds
 * Updated the API version of `Microsoft.HardwareSecurityModules/cloudHsmClusters` to `2025-03-31` for Private Link Common Cmdlets
 * Onboarded `Microsoft.HardwareSecurityModules/paymentHsmClusters` to Private Link Common Cmdlets
+* Fixed an issue where `VerifyClientAuthMode` was not preserved during PowerShell and SDK model conversions for Application Gateway client authentication configuration
 * Added cmdlets for cloud service public IP address operations:
     - `Invoke-AzPublicIpAddressCloudServiceReservation`: reserve a cloud service public IP or roll back to dynamic allocation (`-IsRollback`).
     - `Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp`: disassociate a standalone reserved public IP from a cloud service public IP. Use `-PublicIpArmId` for the Azure Resource Manager (ARM) resource ID of the standalone public IP.

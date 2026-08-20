@@ -356,6 +356,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public IInterconnectBlocksOperations InterconnectBlocksClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.InterconnectBlocks;
+            }
+        }
+
         public static string FormatObject(Object obj)
         {
             var objType = obj.GetType();

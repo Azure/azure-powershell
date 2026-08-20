@@ -20,6 +20,11 @@
 
 ## Upcoming Release
 
+## Version 10.1.0
+* Added deployment stack WhatIfResult cmdlets for resource group, subscription, and management group scopes.
+    - Added help content and aligned new parameter names with Azure PowerShell naming conventions.
+    - Exported all deployment stack WhatIfResult cmdlets from the module manifest.
+
 ## Version 10.0.1
 * Updated `Microsoft.Extensions.DependencyInjection.Abstractions` dependency from `8.0.2` to `10.0.3`.
 

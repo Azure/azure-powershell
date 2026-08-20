@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
         /// information.
         /// </param>
-        public SecurityPerimeterProxyResource(string id = default(string), string name = default(string), string type = default(string), SecurityPerimeterSystemData systemData = default(SecurityPerimeterSystemData))
+        public SecurityPerimeterProxyResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
 
         : base(id, name, type, systemData)
         {

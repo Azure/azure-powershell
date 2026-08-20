@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Request body for committing a Network Virtual Appliance migration.
+    /// Parameters supplied to commit the migration of a Network Virtual Appliance.
     /// </summary>
     public partial class NetworkVirtualApplianceCommitMigrationRequest
     {
@@ -23,8 +23,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the NetworkVirtualApplianceCommitMigrationRequest class.
         /// </summary>
-        /// <param name="properties">The commit-migration request properties.</param>
-        public NetworkVirtualApplianceCommitMigrationRequest(NetworkVirtualApplianceMigrationRequestProperties properties = default(NetworkVirtualApplianceMigrationRequestProperties))
+
+        /// <param name="properties">Properties of the commit migration request.
+        /// </param>
+        public NetworkVirtualApplianceCommitMigrationRequest(NetworkVirtualApplianceCommitMigrationProperties properties = default(NetworkVirtualApplianceCommitMigrationProperties))
+
         {
             this.Properties = properties;
             CustomInit();

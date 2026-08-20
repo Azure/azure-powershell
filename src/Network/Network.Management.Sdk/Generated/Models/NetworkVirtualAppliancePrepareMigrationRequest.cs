@@ -8,7 +8,8 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Request body for preparing a Network Virtual Appliance for migration.
+    /// Parameters supplied to prepare the migration of a Network Virtual
+    /// Appliance.
     /// </summary>
     public partial class NetworkVirtualAppliancePrepareMigrationRequest
     {
@@ -23,8 +24,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the NetworkVirtualAppliancePrepareMigrationRequest class.
         /// </summary>
-        /// <param name="properties">The prepare-migration request properties.</param>
-        public NetworkVirtualAppliancePrepareMigrationRequest(NetworkVirtualAppliancePrepareMigrationRequestProperties properties = default(NetworkVirtualAppliancePrepareMigrationRequestProperties))
+
+        /// <param name="properties">Properties of the prepare migration request.
+        /// </param>
+        public NetworkVirtualAppliancePrepareMigrationRequest(NetworkVirtualAppliancePrepareMigrationProperties properties = default(NetworkVirtualAppliancePrepareMigrationProperties))
+
         {
             this.Properties = properties;
             CustomInit();
@@ -35,10 +39,24 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
+
         /// <summary>
-        /// Gets or sets the prepare-migration request properties.
+        /// Gets or sets properties of the prepare migration request.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
-        public NetworkVirtualAppliancePrepareMigrationRequestProperties Properties {get; set; }
+        public NetworkVirtualAppliancePrepareMigrationProperties Properties {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Properties != null)
+            {
+                this.Properties.Validate();
+            }
+        }
     }
 }

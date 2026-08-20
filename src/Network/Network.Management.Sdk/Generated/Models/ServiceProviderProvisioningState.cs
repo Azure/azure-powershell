@@ -29,5 +29,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Deprovisioning
         /// </summary>
         public const string Deprovisioning = "Deprovisioning";
+        /// <summary>
+        /// DeProvisioned State
+        /// </summary>
+        public const string DeProvisioned = "DeProvisioned";
     }
 }
