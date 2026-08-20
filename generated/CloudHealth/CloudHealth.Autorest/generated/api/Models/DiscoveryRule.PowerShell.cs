@@ -149,6 +149,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryError) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).AuthenticationSetting = (string) content.GetValueForProperty("AuthenticationSetting",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).AuthenticationSetting, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiscoverRelationship"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).DiscoverRelationship = (string) content.GetValueForProperty("DiscoverRelationship",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).DiscoverRelationship, global::System.Convert.ToString);
+            }
+            if (content.Contains("AddRecommendedSignal"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).AddRecommendedSignal = (string) content.GetValueForProperty("AddRecommendedSignal",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).AddRecommendedSignal, global::System.Convert.ToString);
+            }
+            if (content.Contains("Specification"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Specification = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecification) content.GetValueForProperty("Specification",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Specification, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryRuleSpecificationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AddResourceHealthSignal"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).AddResourceHealthSignal = (string) content.GetValueForProperty("AddResourceHealthSignal",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).AddResourceHealthSignal, global::System.Convert.ToString);
+            }
+            if (content.Contains("EntityName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).EntityName = (string) content.GetValueForProperty("EntityName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).EntityName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Context"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Context = (System.Collections.Generic.List<string>) content.GetValueForProperty("Context",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Context, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -209,6 +253,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryError) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).AuthenticationSetting = (string) content.GetValueForProperty("AuthenticationSetting",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).AuthenticationSetting, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiscoverRelationship"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).DiscoverRelationship = (string) content.GetValueForProperty("DiscoverRelationship",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).DiscoverRelationship, global::System.Convert.ToString);
+            }
+            if (content.Contains("AddRecommendedSignal"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).AddRecommendedSignal = (string) content.GetValueForProperty("AddRecommendedSignal",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).AddRecommendedSignal, global::System.Convert.ToString);
+            }
+            if (content.Contains("Specification"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Specification = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecification) content.GetValueForProperty("Specification",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Specification, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryRuleSpecificationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AddResourceHealthSignal"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).AddResourceHealthSignal = (string) content.GetValueForProperty("AddResourceHealthSignal",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).AddResourceHealthSignal, global::System.Convert.ToString);
+            }
+            if (content.Contains("EntityName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).EntityName = (string) content.GetValueForProperty("EntityName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).EntityName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Context"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Context = (System.Collections.Generic.List<string>) content.GetValueForProperty("Context",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleInternal)this).Context, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }
