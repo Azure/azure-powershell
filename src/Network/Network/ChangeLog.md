@@ -63,6 +63,11 @@
     - Set `-Mode Advanced` together with `-Scope Public` or `-Scope Private` to create an advanced (Banksy-based) Standard SKU load balancer. Advanced mode must be specified at creation and cannot be changed afterward.
 * Added the `-EnableConnectionTracking` switch to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
     - Enables UDP (User Datagram Protocol) flow tracking for traffic associated with the frontend IP configuration. When enabled, packets belonging to the same UDP flow are consistently directed to the same backend instance, taking precedence over rule-level connection tracking settings. Requires the load balancer to be created with `-Mode Advanced` and `-Scope`.
+* Added support for multi-cloud ExpressRoute circuits.
+    - Added `MultiCloud` value to the `-SkuTier` parameter of `New-AzExpressRouteCircuit`.
+    - Added `-PartnerAccountId` parameter to `New-AzExpressRouteCircuit`.
+    - Added `-ActivationKey` parameter to `New-AzExpressRouteCircuit`.
+    - Exposed `PartnerAccountId`, `ActivationKey`, and `ResiliencyLevel` on `PSExpressRouteCircuit`.
 
 ## Version 8.1.0
 * Added new cmdlets for ConnectionPolicy management under VirtualHub
