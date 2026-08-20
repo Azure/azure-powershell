@@ -1,3 +1,27 @@
+## 16.3.0 - September 2026
+#### Az.Compute 11.9.0 
+* Modified cmdlet `Stop-AzVM`
+   - Added parameter `-ForceDeallocate`
+* Added cmdlet `Set-AzVMZoneMovement`
+#### Az.Network 8.2.0 
+* Modified cmdlet `Add-AzRouteServerPeer`
+   - Added parameters `-RoutingConfiguration`, `-VirtualHubVnetConnection`, `-VirtualHubVnetConnectionId`
+* Modified cmdlet `New-AzVirtualNetworkGatewayConnection`
+   - Added parameter `-RoutingConfiguration`
+* Modified cmdlet `Set-AzPublicIpAddress`
+   - Added parameters `-DdosCustomPolicyId`, `-RemoveDdosCustomPolicy`
+* Modified cmdlet `Set-AzVirtualNetworkGatewayConnection`
+   - Added parameter `-RoutingConfiguration`
+* Modified cmdlet `Update-AzRouteServerPeer`
+   - Added parameters `-RoutingConfiguration`, `-VirtualHubVnetConnection`, `-VirtualHubVnetConnectionId`
+#### Az.Security 1.10.0 
+* Added cmdlet `Add-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `Get-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `Get-AzSecuritySqlVulnerabilityAssessmentScan`, `Get-AzSecuritySqlVulnerabilityAssessmentScanRuleResult`, `Get-AzSecuritySqlVulnerabilityAssessmentSetting`, `Invoke-AzSecurityInitiateSqlVulnerabilityAssessmentScan`, `New-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `New-AzSecuritySqlVulnerabilityAssessmentSetting`, `Remove-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `Remove-AzSecuritySqlVulnerabilityAssessmentSetting`, `Update-AzSecuritySqlVulnerabilityAssessmentSetting`
+#### Az.Sql 7.1.0 
+* Modified cmdlet `New-AzSqlInstanceLink`
+   - Added parameter `-LinkMode`
+* Modified cmdlet `Update-AzSqlInstanceLink`
+   - Added parameter `-Database`
+
 ## 16.2.0 - August 2026
 #### Az.Cdn 6.1.0 
 * Modified cmdlet `New-AzCdnEdgeAction`
@@ -7092,6 +7116,7 @@
    - Changed the type of parameter `-StagingEnvironmentPolicy` from `StagingEnvironmentPolicy` to `String`
 * Modified cmdlet `Update-AzStaticWebAppUser`
    - Added parameters `-AuthproviderInputObject`, `-StaticSiteInputObject`, `-StaticSiteUserEnvelope`, `-JsonFilePath`, `-JsonString`
+
 
 
 
