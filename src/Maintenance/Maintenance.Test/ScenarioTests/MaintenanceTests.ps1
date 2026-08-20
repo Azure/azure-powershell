@@ -380,27 +380,32 @@ function Test-AzConfigurationAssignment
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $maintenanceConfigurationName = Get-RandomMaintenanceConfigurationName
-    $maintenanceConfigurationInGuestPatchName = Get-RandomMaintenanceConfigurationName
+    $dedicatedHostGroupName = Get-RandomDedicatedHostGroupName
+    $dedicatedHostName = Get-RandomDedicatedHostName
     $location = "eastus2euap"
     $maintenanceScope = "Host"
 
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
+        New-DedicatedHost $dedicatedHostName $dedicatedHostGroupName $resourceGroupName $location | Out-Null
         $maintenanceConfigurationCreated = New-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -MaintenanceScope $maintenanceScope -Location $location
 
-		$configurationAssignmentCreated = New-AzConfigurationAssignment -ResourceGroupName mrptest$location -ResourceParentType hostGroups -ResourceParentName mrpdhg$location -ResourceType hosts -ResourceName mrpdh$location -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName -MaintenanceConfigurationId $maintenanceConfigurationCreated.Id -Location $location
+        # Wait for the dedicated host to become available to Maintenance.
+        Start-TestSleep -Seconds (15 * 60)
+
+		$configurationAssignmentCreated = New-AzConfigurationAssignment -ResourceGroupName $resourceGroupName -ResourceParentType hostGroups -ResourceParentName $dedicatedHostGroupName -ResourceType hosts -ResourceName $dedicatedHostName -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName -MaintenanceConfigurationId $maintenanceConfigurationCreated.Id -Location $location
 
         Assert-AreEqual $configurationAssignmentCreated.Name $maintenanceConfigurationName
 		Assert-AreEqual $configurationAssignmentCreated.Type "Microsoft.Maintenance/configurationAssignments"
         Assert-AreEqual $configurationAssignmentCreated.MaintenanceConfigurationId $maintenanceConfigurationCreated.Id
 
-        $retrievedConfigurationAssignmentList = Get-AzConfigurationAssignment -ResourceGroupName mrptest$location -ResourceParentType hostGroups -ResourceParentName mrpdhg$location -ResourceType hosts -ResourceName mrpdh$location -ProviderName Microsoft.Compute
+        $retrievedConfigurationAssignmentList = Get-AzConfigurationAssignment -ResourceGroupName $resourceGroupName -ResourceParentType hostGroups -ResourceParentName $dedicatedHostGroupName -ResourceType hosts -ResourceName $dedicatedHostName -ProviderName Microsoft.Compute
 
         Assert-AreEqual $retrievedConfigurationAssignmentList.Count 1
         #Assert-ConfigurationAssignment $configurationAssignmentCreated $retrievedConfigurationAssignmentList[0]
 
-        Remove-AzConfigurationAssignment -ResourceGroupName mrptest$location -ResourceParentType hostGroups -ResourceParentName mrpdhg$location -ResourceType hosts -ResourceName mrpdh$location -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName -Force
+        Remove-AzConfigurationAssignment -ResourceGroupName $resourceGroupName -ResourceParentType hostGroups -ResourceParentName $dedicatedHostGroupName -ResourceType hosts -ResourceName $dedicatedHostName -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName -Force
 
         Remove-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -Force
        
