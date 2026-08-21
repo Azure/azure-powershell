@@ -176,6 +176,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
                 return ResourceManager.GetString("CannotParseReliabilityLevel", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot parse durability level {0}. Valid values are Bronze, Silver, and Gold..
+        /// </summary>
+        internal static string CannotParseDurabilityLevel {
+            get {
+                return ResourceManager.GetString("CannotParseDurabilityLevel", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Cannot parse vmImage {0}..
