@@ -212,7 +212,91 @@ function Update-AzRedisEnterpriseCacheDatabase {
     )
 
     process {
-        $null = $PSBoundParameters.Add("DatabaseName", "default")
-        Az.RedisEnterpriseCache.internal\Update-AzRedisEnterpriseCacheDatabase @PSBoundParameters
+        $getParameters = @{}
+        $putParameters = @{}
+        $runtimeParameterNames = @(
+            'DefaultProfile',
+            'Break',
+            'HttpPipelineAppend',
+            'HttpPipelinePrepend',
+            'Proxy',
+            'ProxyCredential',
+            'ProxyUseDefaultCredentials'
+        )
+
+        foreach ($parameterName in $runtimeParameterNames) {
+            if ($PSBoundParameters.ContainsKey($parameterName)) {
+                $getParameters[$parameterName] = $PSBoundParameters[$parameterName]
+                $putParameters[$parameterName] = $PSBoundParameters[$parameterName]
+            }
+        }
+
+        foreach ($parameterName in @('AsJob', 'NoWait')) {
+            if ($PSBoundParameters.ContainsKey($parameterName)) {
+                $putParameters[$parameterName] = $PSBoundParameters[$parameterName]
+            }
+        }
+
+        foreach ($parameterName in @('WhatIf', 'Confirm')) {
+            if ($PSBoundParameters.ContainsKey($parameterName)) {
+                $putParameters[$parameterName] = $PSBoundParameters[$parameterName]
+            }
+        }
+
+        if ($PSCmdlet.ParameterSetName -eq 'UpdateViaIdentityExpanded') {
+            $getParameters['RedisEnterpriseInputObject'] = $InputObject
+            $putParameters['InputObject'] = $InputObject
+        } else {
+            $getParameters['ClusterName'] = $ClusterName
+            $getParameters['ResourceGroupName'] = $ResourceGroupName
+            $getParameters['Name'] = 'default'
+            $putParameters['ClusterName'] = $ClusterName
+            $putParameters['ResourceGroupName'] = $ResourceGroupName
+            $putParameters['Name'] = 'default'
+            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                $getParameters['SubscriptionId'] = $SubscriptionId
+                $putParameters['SubscriptionId'] = $SubscriptionId
+            }
+        }
+
+        $currentDatabase = Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCacheDatabase @getParameters
+
+        $propertyMappings = @{
+            AccessKeysAuthentication = 'AccessKeysAuthentication'
+            ClientProtocol = 'ClientProtocol'
+            EvictionPolicy = 'EvictionPolicy'
+            AofPersistenceEnabled = 'PersistenceAofEnabled'
+            AofPersistenceFrequency = 'PersistenceAofFrequency'
+            RdbPersistenceEnabled = 'PersistenceRdbEnabled'
+            RdbPersistenceFrequency = 'PersistenceRdbFrequency'
+            ClusteringPolicy = 'ClusteringPolicy'
+            DeferUpgrade = 'DeferUpgrade'
+            GroupNickname = 'GeoReplicationGroupNickname'
+            LinkedDatabase = 'GeoReplicationLinkedDatabase'
+            Module = 'Module'
+            Port = 'Port'
+        }
+
+        foreach ($parameterName in $propertyMappings.Keys) {
+            $propertyName = $propertyMappings[$parameterName]
+            if ($null -ne $currentDatabase.$propertyName) {
+                $putParameters[$parameterName] = $currentDatabase.$propertyName
+            }
+        }
+
+        foreach ($parameterName in @(
+            'AccessKeysAuthentication',
+            'ClientProtocol',
+            'EvictionPolicy',
+            'AofPersistenceEnabled',
+            'AofPersistenceFrequency',
+            'RdbPersistenceEnabled',
+            'RdbPersistenceFrequency')) {
+            if ($PSBoundParameters.ContainsKey($parameterName)) {
+                $putParameters[$parameterName] = $PSBoundParameters[$parameterName]
+            }
+        }
+
+        Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCacheDatabase @putParameters
     }
 }
