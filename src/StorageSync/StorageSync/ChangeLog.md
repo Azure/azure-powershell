@@ -25,6 +25,8 @@
 * Added `Set-AzStorageSyncCloudEndpoint` cmdlet
     - Allows customers to update the `ChangeEnumerationIntervalDays` property of an existing cloud endpoint
     - Valid range: 1 to 20 days
+
+## Version 2.6.0
 * Added ChangeSafety Support
 
 ## Version 2.5.2

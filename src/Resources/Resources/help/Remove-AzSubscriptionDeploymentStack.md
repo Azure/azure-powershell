@@ -16,7 +16,7 @@ Removes a Subscription scoped Deployment Stack.
 ```
 Remove-AzSubscriptionDeploymentStack [-Name] <String> -ActionOnUnmanage <PSActionOnUnmanage> [-PassThru]
  [-Force] [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Remove-AzSubscriptionDeploymentStack [-Name] <String> -ActionOnUnmanage <PSActio
 ```
 Remove-AzSubscriptionDeploymentStack -ResourceId <String> -ActionOnUnmanage <PSActionOnUnmanage> [-PassThru]
  [-Force] [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Remove-AzSubscriptionDeploymentStack -ResourceId <String> -ActionOnUnmanage <PSA
 Remove-AzSubscriptionDeploymentStack [-InputObject] <PSDeploymentStack> -ActionOnUnmanage <PSActionOnUnmanage>
  [-PassThru] [-Force] [-BypassStackOutOfSyncError]
  [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -164,21 +164,6 @@ When set, indicates that the cmdlet should use pre-release API versions when aut
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

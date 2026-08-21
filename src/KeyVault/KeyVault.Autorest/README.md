@@ -28,15 +28,15 @@ For information on how to develop for `Az.KeyVault`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: b92fe44fbb8e415302342ecd6c2c5bb764da7949
+commit: 9f0ad696cc186c2d16cb522abc0fbd4aa3854ca5
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 
 input-file:
-# You need to specify your swagger files here.
-  - $(repo)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2024-11-01/keyvault.json
-  - $(repo)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2024-11-01/managedHsm.json
+# Key Vault migrated its control plane specification to TypeSpec, so a single emitted openapi.json
+# replaces the previous keyvault.json / managedHsm.json pair.
+  - $(repo)/specification/keyvault/resource-manager/Microsoft.KeyVault/KeyVault/stable/2026-02-01/openapi.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger
 
@@ -72,6 +72,45 @@ directive:
     transform: return $.replace(/^ManagedHsms_CheckMhsmNameAvailability$/g, "ManagedHsms_CheckNameAvailability")
   - no-inline:
       - Error
+  # The emitted document also carries the ARM keys/secrets/operations APIs. Strip those paths: the
+  # subject filter below keeps anything matching "ManagedHsm", which would otherwise let the new
+  # ManagedHsmKey cmdlets through.
+  - from: swagger-document
+    where: $.paths
+    transform: >
+      delete $["/providers/Microsoft.KeyVault/operations"];
+      delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/keys"];
+      delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/keys/{keyName}"];
+      delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/keys/{keyName}/versions"];
+      delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/keys/{keyName}/versions/{keyVersion}"];
+      delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/keys"];
+      delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/keys/{keyName}"];
+      delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/keys/{keyName}/versions"];
+      delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/keys/{keyName}/versions/{keyVersion}"];
+      delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets"];
+      delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets/{secretName}"];
+  # Deleting the paths above leaves their schemas behind, and a model class is emitted for every
+  # schema in the document. Drop the now unreferenced ones so no new model types appear either.
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      for (const name of [
+        "Action", "Attributes", "DeletionRecoveryLevel", "DimensionProperties",
+        "JsonWebKeyCurveName", "JsonWebKeyOperation", "JsonWebKeyType",
+        "Key", "KeyAttributes", "KeyCreateParameters", "KeyListResult", "KeyProperties",
+        "KeyReleasePolicy", "KeyRotationPolicyActionType", "KeyRotationPolicyAttributes",
+        "LifetimeAction", "LogSpecification", "ManagedHsmAction",
+        "ManagedHsmKey", "ManagedHsmKeyAttributes", "ManagedHsmKeyCreateParameters",
+        "ManagedHsmKeyListResult", "ManagedHsmKeyProperties", "ManagedHsmKeyReleasePolicy",
+        "ManagedHsmKeyRotationPolicyAttributes", "ManagedHsmLifetimeAction",
+        "ManagedHsmRotationPolicy", "ManagedHsmTrigger", "MetricSpecification",
+        "Operation", "OperationDisplay", "OperationListResult", "OperationProperties",
+        "RotationPolicy", "Secret", "SecretAttributes", "SecretCreateOrUpdateParameters",
+        "SecretListResult", "SecretPatchParameters", "SecretPatchProperties",
+        "SecretProperties", "ServiceSpecification", "Trigger"
+      ]) {
+        delete $[name];
+      }
   # Remove all commands except Test-AzKeyVault*NameAvailability, *-AzKeyVaultManagedHsm, *-AzKeyVaultRegion
   - where:
       subject: ^((?!MhsmRegion|ManagedHsm|NameAvailability).)*$

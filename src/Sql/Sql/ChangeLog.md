@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added multi-database Managed Instance link support
+    - Added `LinkMode` support to `New-AzSqlInstanceLink`
+    - Added database membership updates to `Update-AzSqlInstanceLink`
+
+## Version 7.0.0
 * Added ChangeSafety Support
 * Removed `EnableSoftDelete` from `New-AzSqlServer`, `Set-AzSqlServer`. Used `SoftDeleteRetentionDays` instead: setting `SoftDeleteRetentionDays`.
 * Reverted "the support for UAMI authentication in Data Sync cmdlets"

@@ -47,22 +47,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Error</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal.Error { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Error = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal.Error { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Error = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal)__errorResponse).Target = value ?? null; }
 
         /// <summary>Internal Acessors for ConfigurationState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IValidateConfigurationResponseInternal.ConfigurationState { get => this._configurationState; set { {_configurationState = value;} } }
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Gets the configuration state.",
         SerializedName = @"configurationState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl", "Provisioning", "PendingCommit", "PendingAdministrativeUpdate")]
         string ConfigurationState { get;  }
         /// <summary>URL for the details of the response.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IErrorResponseInternal
     {
         /// <summary>Gets the configuration state.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl", "Provisioning", "PendingCommit", "PendingAdministrativeUpdate")]
         string ConfigurationState { get; set; }
         /// <summary>URL for the details of the response.</summary>
         string Url { get; set; }

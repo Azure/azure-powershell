@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class SecurityType
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// TrustedLaunch
+        /// </summary>
         public const string TrustedLaunch = "TrustedLaunch";
+        /// <summary>
+        /// ConfidentialVM
+        /// </summary>
         public const string ConfidentialVM = "ConfidentialVM";
     }
 }

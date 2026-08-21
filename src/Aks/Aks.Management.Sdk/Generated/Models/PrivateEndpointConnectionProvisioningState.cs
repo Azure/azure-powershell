@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
     public static class PrivateEndpointConnectionProvisioningState
     {
+        /// <summary>
+        /// Private endpoint connection provisioning was canceled.
+        /// </summary>
         public const string Canceled = "Canceled";
+        /// <summary>
+        /// Private endpoint connection is being created.
+        /// </summary>
         public const string Creating = "Creating";
+        /// <summary>
+        /// Private endpoint connection is being deleted.
+        /// </summary>
         public const string Deleting = "Deleting";
+        /// <summary>
+        /// Private endpoint connection provisioning failed.
+        /// </summary>
         public const string Failed = "Failed";
+        /// <summary>
+        /// Private endpoint connection provisioning succeeded.
+        /// </summary>
         public const string Succeeded = "Succeeded";
     }
 }

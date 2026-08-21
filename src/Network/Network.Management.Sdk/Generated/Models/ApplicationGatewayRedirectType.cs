@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewayRedirectType
     {
+        /// <summary>
+        /// Permanent
+        /// </summary>
         public const string Permanent = "Permanent";
+        /// <summary>
+        /// Found
+        /// </summary>
         public const string Found = "Found";
+        /// <summary>
+        /// SeeOther
+        /// </summary>
         public const string SeeOther = "SeeOther";
+        /// <summary>
+        /// Temporary
+        /// </summary>
         public const string Temporary = "Temporary";
     }
 }

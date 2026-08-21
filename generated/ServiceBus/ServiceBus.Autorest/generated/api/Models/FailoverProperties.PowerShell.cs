@@ -104,10 +104,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverPropertiesInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties1) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverPropertiesInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.FailoverProperties1TypeConverter.ConvertFrom);
-            }
             if (content.Contains("IsSafeFailover"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverPropertiesInternal)this).IsSafeFailover = (bool?) content.GetValueForProperty("IsSafeFailover",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverPropertiesInternal)this).IsSafeFailover, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -129,10 +125,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverPropertiesInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties1) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverPropertiesInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.FailoverProperties1TypeConverter.ConvertFrom);
-            }
             if (content.Contains("IsSafeFailover"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverPropertiesInternal)this).IsSafeFailover = (bool?) content.GetValueForProperty("IsSafeFailover",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverPropertiesInternal)this).IsSafeFailover, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderForServersGcpOffering
 https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforserversgcpofferingobject
 #>
 function New-AzSecurityDefenderForServersGcpOfferingObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Security.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderForServersGcpOffering')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -14,8 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     public partial class Origin :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IHeaderSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates
     {
         /// <summary>
         /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProxyResource" />
@@ -54,12 +53,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__proxyResource).Id; }
-
-        /// <summary>Backing field for <see cref="Location" /> property.</summary>
-        private string _location;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Internal Acessors for PrivateEndpointStatus</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginInternal.PrivateEndpointStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginPropertiesInternal)Property).PrivateEndpointStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginPropertiesInternal)Property).PrivateEndpointStatus = value ?? null; }
@@ -211,15 +204,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public int? Weight { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginUpdatePropertiesParametersInternal)Property).Weight; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginUpdatePropertiesParametersInternal)Property).Weight = value ?? default(int); }
 
-        /// <param name="headers"></param>
-        void Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
-        {
-            if (headers.TryGetValues("location", out var __locationHeader0))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginInternal)this).Location = System.Linq.Enumerable.FirstOrDefault(__locationHeader0) is string __headerLocationHeader0 ? __headerLocationHeader0 : (string)null;
-            }
-        }
-
         /// <summary>Creates an new <see cref="Origin" /> instance.</summary>
         public Origin()
         {
@@ -306,17 +290,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"httpsPort",
         PossibleTypes = new [] { typeof(int) })]
         int? HttpsPort { get; set; }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"",
-        SerializedName = @"location",
-        PossibleTypes = new [] { typeof(string) })]
-        string Location { get; set; }
         /// <summary>
         /// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if
         /// any lower priority origin is healthy.Must be between 1 and 5
@@ -456,8 +429,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         int? HttpPort { get; set; }
         /// <summary>The value of the HTTPS port. Must be between 1 and 65535.</summary>
         int? HttpsPort { get; set; }
-
-        string Location { get; set; }
         /// <summary>
         /// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if
         /// any lower priority origin is healthy.Must be between 1 and 5

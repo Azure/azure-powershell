@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ExpressRoutePeeringType
     {
+        /// <summary>
+        /// AzurePublicPeering
+        /// </summary>
         public const string AzurePublicPeering = "AzurePublicPeering";
+        /// <summary>
+        /// AzurePrivatePeering
+        /// </summary>
         public const string AzurePrivatePeering = "AzurePrivatePeering";
+        /// <summary>
+        /// MicrosoftPeering
+        /// </summary>
         public const string MicrosoftPeering = "MicrosoftPeering";
     }
 }

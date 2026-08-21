@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -HsmName
-Name of the managed HSM Pool
+The name of the managed HSM Pool.
 
 ```yaml
 Type: System.String
@@ -70,7 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group that contains the managed HSM pool.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -85,8 +86,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

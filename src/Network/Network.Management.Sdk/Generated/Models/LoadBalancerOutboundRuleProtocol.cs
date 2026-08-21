@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class LoadBalancerOutboundRuleProtocol
     {
+        /// <summary>
+        /// Tcp
+        /// </summary>
         public const string Tcp = "Tcp";
+        /// <summary>
+        /// Udp
+        /// </summary>
         public const string Udp = "Udp";
+        /// <summary>
+        /// All
+        /// </summary>
         public const string All = "All";
     }
 }

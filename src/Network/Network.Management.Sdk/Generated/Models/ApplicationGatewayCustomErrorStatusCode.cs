@@ -13,14 +13,41 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewayCustomErrorStatusCode
     {
+        /// <summary>
+        /// HttpStatus400
+        /// </summary>
         public const string HttpStatus400 = "HttpStatus400";
+        /// <summary>
+        /// HttpStatus403
+        /// </summary>
         public const string HttpStatus403 = "HttpStatus403";
+        /// <summary>
+        /// HttpStatus404
+        /// </summary>
         public const string HttpStatus404 = "HttpStatus404";
+        /// <summary>
+        /// HttpStatus405
+        /// </summary>
         public const string HttpStatus405 = "HttpStatus405";
+        /// <summary>
+        /// HttpStatus408
+        /// </summary>
         public const string HttpStatus408 = "HttpStatus408";
+        /// <summary>
+        /// HttpStatus500
+        /// </summary>
         public const string HttpStatus500 = "HttpStatus500";
+        /// <summary>
+        /// HttpStatus502
+        /// </summary>
         public const string HttpStatus502 = "HttpStatus502";
+        /// <summary>
+        /// HttpStatus503
+        /// </summary>
         public const string HttpStatus503 = "HttpStatus503";
+        /// <summary>
+        /// HttpStatus504
+        /// </summary>
         public const string HttpStatus504 = "HttpStatus504";
     }
 }

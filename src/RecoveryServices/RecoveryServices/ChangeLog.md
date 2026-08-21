@@ -19,8 +19,33 @@
 -->
 
 ## Upcoming Release
+* Added Cross Region Restore support for Azure File Share backup items (`Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`)
+* Refined soft delete behavior for Azure File share backup items
+    - `Undo-AzRecoveryServicesBackupItemDeletion` now throws a clear error when the target Azure File share item is not in the soft-deleted (`ToBeDeleted`) state instead of issuing an undelete request that cannot succeed.
+    - Corrected the `DateOfPurge` computation for soft-deleted Azure File share items; it is now derived from the service-returned remaining deferred-delete window, fixing the previous value that always fell back to a fixed 14-day period.
+
+## Version 7.14.0
+* Added Cross Subscription Backup (CSB) support for Azure VM:
+    - Added optional `-ContainerSubscriptionId` parameter in `Enable-AzRecoveryServicesBackupProtection` to configure backup for a VM residing in a different subscription than the vault.
+    - Added Original Location Recovery (OLR) support for cross-subscription protected items in `Restore-AzRecoveryServicesBackupItem` (the container subscription is derived from the recovery point, no additional input required).
+    - Added `ContainerSubscriptionId` property to the backup item response of `Get-AzRecoveryServicesBackupItem`.
+    - Added `ContainerSubscriptionId` property to the detailed job response of `Get-AzRecoveryServicesBackupJobDetail`.
+    - Added client-side validation when `-ContainerSubscriptionId` is supplied so a non-existent VM/resource group/subscription or a VM in a different region than the vault fails with a clear, VM-specific error message.
+* Fixed Private Disk Access parameters being silently dropped when adding disks to, reprotecting, or cluster-reprotecting an Azure-to-Azure managed-disk replication
+    - `Add-AzRecoveryServicesAsrReplicationProtectedItemDisk` now honors `-RecoveryNetworkAccessPolicy`, `-RecoveryDiskAccessId` and `-RecoveryPublicNetworkAccess` supplied on the disk replication configuration
+    - `Update-AzRecoveryServicesAsrProtectionDirection` (reprotect) forwards the same three fields on the switch-protection call
+    - `Update-AzRecoveryServicesAsrClusterProtectionDirection` (cluster reprotect) forwards the same three fields on the cluster switch-protection call
+* Added support for configuring Cost Management Settings (granularity level) on Recovery Services vaults via `New-AzRecoveryServicesVault` and `Update-AzRecoveryServicesVault`.
+
+## Version 7.13.0
+* Updated `System.Security.Cryptography.Cng` dependency from `4.4.0` to `5.0.0`.
+* Added Cross region restore support for Delos cloud regions
+* Updated Az.RecoveryServices.SiteRecovery to use API version 2026-02-01.
+* Added Private Disk Access support for Azure-to-Azure managed disk replication: new `-RecoveryNetworkAccessPolicy`, `-RecoveryDiskAccessId` and `-RecoveryPublicNetworkAccess` parameters on `New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig`; values are honored by `New-AzRecoveryServicesAsrReplicationProtectedItem` and surfaced on `ASRAzureToAzureProtectedDiskDetails`.
+
+## Version 7.12.0
 * Added ChangeSafety Support
-* Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` `Get-AzRecoveryServicesBackupItem -DeleteState SoftDeleted`)
+* Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` `Get-AzRecoveryServicesBackupItem -DeleteState ToBeDeleted`)
 
 ## Version 7.11.2
 * Added Cross region restore support for upcoming regions Southeast Asia 3

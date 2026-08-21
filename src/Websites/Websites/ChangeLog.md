@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for creating and updating App Service Environment plans with Isolated v4 and memory-optimized Isolated v4 SKUs.
+
+## Version 4.0.0
 * Added ChangeSafety Support
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
 

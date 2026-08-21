@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string Id { get; set; }
 
-        public Identity Identity { get; set; }
+        public Microsoft.Azure.Management.ResourceManager.Models.Identity Identity { get; set; }
 
         public string Kind { get; set; }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string ETag { get; set; }
 
-        private PSResource(string id, string name, string kind, string location, string type, Identity identity, PSObject properties, Plan plan, Sku sku, IDictionary<string, string> tags)
+        private PSResource(string id, string name, string kind, string location, string type, Microsoft.Azure.Management.ResourceManager.Models.Identity identity, PSObject properties, Plan plan, Sku sku, IDictionary<string, string> tags)
         {
             this.ResourceId = id;
             this.Id = id;
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             resource.Kind,
             resource.Location,
             string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceType(resource.Id),
-            resource.Identity == null ? null : new Identity(resource.Identity.PrincipalId, resource.Identity.TenantId),
+            resource.Identity == null ? null : new Microsoft.Azure.Management.ResourceManager.Models.Identity(resource.Identity.PrincipalId, resource.Identity.TenantId),
             resource.Properties?.ToPsObject(),
             resource.Plan == null ? null : new Plan
             {

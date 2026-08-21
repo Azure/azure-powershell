@@ -22,10 +22,11 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
  [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-EdgeZone <String>]
- [-SkuName <String>] [-SkuTier <String>] [-VirtualHubId <String>] 
- [-HubIPAddress <PSAzureFirewallHubIpAddresses>] [-FirewallPolicyId <String>] [-AllowActiveFTP] 
- [-EnableFatFlowLogging] [-EnableDnstapLogging] [-EnableUDPLogOptimization] [-RouteServerId <String>] 
- [-MinCapacity <Int32>] [-MaxCapacity <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SkuName <String>] [-SkuTier <String>] [-VirtualHubId <String>]
+ [-HubIPAddress <PSAzureFirewallHubIpAddresses>] [-FirewallPolicyId <String>] [-AllowActiveFTP]
+ [-EnableFatFlowLogging] [-EnableDnstapLogging] [-EnableUDPLogOptimization] [-RouteServerId <String>]
+ [-MinCapacity <Int32>] [-MaxCapacity <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -38,10 +39,11 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
  [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-EdgeZone <String>]
- [-SkuName <String>] [-SkuTier <String>] [-VirtualHubId <String>] 
- [-HubIPAddress <PSAzureFirewallHubIpAddresses>] [-FirewallPolicyId <String>] [-AllowActiveFTP] 
- [-EnableFatFlowLogging] [-EnableDnstapLogging] [-EnableUDPLogOptimization] [-RouteServerId <String>] 
- [-MinCapacity <Int32>] [-MaxCapacity <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SkuName <String>] [-SkuTier <String>] [-VirtualHubId <String>]
+ [-HubIPAddress <PSAzureFirewallHubIpAddresses>] [-FirewallPolicyId <String>] [-AllowActiveFTP]
+ [-EnableFatFlowLogging] [-EnableDnstapLogging] [-EnableUDPLogOptimization] [-RouteServerId <String>]
+ [-MinCapacity <Int32>] [-MaxCapacity <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -54,10 +56,11 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
  [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-EdgeZone <String>]
- [-SkuName <String>] [-SkuTier <String>] [-VirtualHubId <String>] 
- [-HubIPAddress <PSAzureFirewallHubIpAddresses>] [-FirewallPolicyId <String>] [-AllowActiveFTP] 
- [-EnableFatFlowLogging] [-EnableDnstapLogging] [-EnableUDPLogOptimization] [-RouteServerId <String>] 
- [-MinCapacity <Int32>] [-MaxCapacity <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SkuName <String>] [-SkuTier <String>] [-VirtualHubId <String>]
+ [-HubIPAddress <PSAzureFirewallHubIpAddresses>] [-FirewallPolicyId <String>] [-AllowActiveFTP]
+ [-EnableFatFlowLogging] [-EnableDnstapLogging] [-EnableUDPLogOptimization] [-RouteServerId <String>]
+ [-MinCapacity <Int32>] [-MaxCapacity <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -286,6 +289,21 @@ This example creates a Firewall deployed into the specified edge zone. When -Edg
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AllowActiveFTP
 Allows Active FTP on the Firewall. By default it is disabled.
 
@@ -332,6 +350,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -359,6 +392,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EdgeZone
+The edge zone where the firewall needs to be deployed. Cannot be used together with -Zone. If -EdgeZone is specified, availability zones are not supported and -Zone must be omitted.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -778,21 +826,6 @@ A list of availability zones denoting where the firewall needs to come from.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EdgeZone
-The edge zone where the firewall needs to be deployed. Cannot be used together with -Zone. If -EdgeZone is specified, availability zones are not supported and -Zone must be omitted.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

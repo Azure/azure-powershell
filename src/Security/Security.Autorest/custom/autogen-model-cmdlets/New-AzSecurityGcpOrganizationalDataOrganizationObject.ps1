@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Security.Models.GcpOrganizationalDataOrganiza
 https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritygcporganizationaldataorganizationobject
 #>
 function New-AzSecurityGcpOrganizationalDataOrganizationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Security.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Security.Models.GcpOrganizationalDataOrganization')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

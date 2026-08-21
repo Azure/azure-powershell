@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class IpAllocationType
     {
+        /// <summary>
+        /// Undefined
+        /// </summary>
         public const string Undefined = "Undefined";
+        /// <summary>
+        /// Hypernet
+        /// </summary>
         public const string Hypernet = "Hypernet";
     }
 }

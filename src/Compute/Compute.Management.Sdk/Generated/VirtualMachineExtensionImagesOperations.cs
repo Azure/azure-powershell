@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "publisherName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-04-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -281,6 +281,11 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='orderby'>
         /// 
         /// </param>
+        /// <param name='expand'>
+        /// Expand the response to include additional read-only metadata. Allowed
+        /// values: `properties` — returns extended metadata (`releaseCategory`,
+        /// `urgencyLevel`, `runProfile`).
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -302,7 +307,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<VirtualMachineExtensionImage>>> ListVersionsWithHttpMessagesAsync(string location, string publisherName, string type, string filter = default(string), int? top = default(int?), string orderby = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<VirtualMachineExtensionImage>>> ListVersionsWithHttpMessagesAsync(string location, string publisherName, string type, string filter = default(string), int? top = default(int?), string orderby = default(string), string expand = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -343,7 +348,8 @@ namespace Microsoft.Azure.Management.Compute
 
 
 
-            string apiVersion = "2025-11-01";
+
+            string apiVersion = "2026-04-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -358,6 +364,7 @@ namespace Microsoft.Azure.Management.Compute
                 tracingParameters.Add("filter", filter);
                 tracingParameters.Add("top", top);
                 tracingParameters.Add("orderby", orderby);
+                tracingParameters.Add("expand", expand);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -388,6 +395,10 @@ namespace Microsoft.Azure.Management.Compute
             if (orderby != null)
             {
                 _queryParameters.Add(string.Format("$orderby={0}", System.Uri.EscapeDataString(orderby)));
+            }
+            if (expand != null)
+            {
+                _queryParameters.Add(string.Format("$expand={0}", System.Uri.EscapeDataString(expand)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -598,7 +609,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "version");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-04-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

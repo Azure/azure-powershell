@@ -46,10 +46,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="location">The geo-location where the resource lives
         /// </param>
 
-        /// <param name="eTag">Unique read-only string used to implement optimistic concurrency. The eTag
-        /// value will change when the resource is updated. Specify an if-match or
-        /// if-none-match header with the eTag value for a subsequent request to enable
-        /// optimistic concurrency per the normal etag convention.
+        /// <param name="eTag">If eTag is provided in the response body, it may also be provided as a
+        /// header per the normal etag convention.  Entity tags are used for comparing
+        /// two or more entities from the same requested resource. HTTP/1.1 uses entity
+        /// tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match
+        /// (section 14.26), and If-Range (section 14.27) header fields.
         /// </param>
 
         /// <param name="sku">The managed cluster SKU.
@@ -233,9 +234,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="aiToolchainOperatorProfile">AI toolchain operator settings that apply to the whole cluster.
         /// </param>
 
+        /// <param name="hostedSystemProfile">Settings for hosted system addons. For more information, see
+        /// https://aka.ms/aks/automatic/systemcomponents.
+        /// </param>
+
         /// <param name="status">Contains read-only information about the Managed Cluster.
         /// </param>
-        public ManagedCluster(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string eTag = default(string), ManagedClusterSKU sku = default(ManagedClusterSKU), ExtendedLocation extendedLocation = default(ExtendedLocation), ManagedClusterIdentity identity = default(ManagedClusterIdentity), string kind = default(string), PowerState powerState = default(PowerState), string provisioningState = default(string), int? maxAgentPools = default(int?), string kubernetesVersion = default(string), string currentKubernetesVersion = default(string), string dnsPrefix = default(string), string fqdnSubdomain = default(string), string fqdn = default(string), string privateFqdn = default(string), string azurePortalFqdn = default(string), System.Collections.Generic.IList<ManagedClusterAgentPoolProfile> agentPoolProfiles = default(System.Collections.Generic.IList<ManagedClusterAgentPoolProfile>), ContainerServiceLinuxProfile linuxProfile = default(ContainerServiceLinuxProfile), ManagedClusterWindowsProfile windowsProfile = default(ManagedClusterWindowsProfile), ManagedClusterServicePrincipalProfile servicePrincipalProfile = default(ManagedClusterServicePrincipalProfile), System.Collections.Generic.IDictionary<string, ManagedClusterAddonProfile> addonProfiles = default(System.Collections.Generic.IDictionary<string, ManagedClusterAddonProfile>), ManagedClusterPodIdentityProfile podIdentityProfile = default(ManagedClusterPodIdentityProfile), ManagedClusterOidcIssuerProfile oidcIssuerProfile = default(ManagedClusterOidcIssuerProfile), string nodeResourceGroup = default(string), ManagedClusterNodeResourceGroupProfile nodeResourceGroupProfile = default(ManagedClusterNodeResourceGroupProfile), bool? enableRbac = default(bool?), string supportPlan = default(string), ContainerServiceNetworkProfile networkProfile = default(ContainerServiceNetworkProfile), ManagedClusterAADProfile aadProfile = default(ManagedClusterAADProfile), ManagedClusterAutoUpgradeProfile autoUpgradeProfile = default(ManagedClusterAutoUpgradeProfile), ClusterUpgradeSettings upgradeSettings = default(ClusterUpgradeSettings), ManagedClusterPropertiesAutoScalerProfile autoScalerProfile = default(ManagedClusterPropertiesAutoScalerProfile), ManagedClusterAPIServerAccessProfile apiServerAccessProfile = default(ManagedClusterAPIServerAccessProfile), string diskEncryptionSetId = default(string), System.Collections.Generic.IDictionary<string, UserAssignedIdentity> identityProfile = default(System.Collections.Generic.IDictionary<string, UserAssignedIdentity>), System.Collections.Generic.IList<PrivateLinkResource> privateLinkResources = default(System.Collections.Generic.IList<PrivateLinkResource>), bool? disableLocalAccounts = default(bool?), ManagedClusterHttpProxyConfig httpProxyConfig = default(ManagedClusterHttpProxyConfig), ManagedClusterSecurityProfile securityProfile = default(ManagedClusterSecurityProfile), ManagedClusterStorageProfile storageProfile = default(ManagedClusterStorageProfile), ManagedClusterIngressProfile ingressProfile = default(ManagedClusterIngressProfile), string publicNetworkAccess = default(string), ManagedClusterWorkloadAutoScalerProfile workloadAutoScalerProfile = default(ManagedClusterWorkloadAutoScalerProfile), ManagedClusterAzureMonitorProfile azureMonitorProfile = default(ManagedClusterAzureMonitorProfile), ServiceMeshProfile serviceMeshProfile = default(ServiceMeshProfile), string resourceUid = default(string), ManagedClusterMetricsProfile metricsProfile = default(ManagedClusterMetricsProfile), ManagedClusterNodeProvisioningProfile nodeProvisioningProfile = default(ManagedClusterNodeProvisioningProfile), ManagedClusterBootstrapProfile bootstrapProfile = default(ManagedClusterBootstrapProfile), ManagedClusterAIToolchainOperatorProfile aiToolchainOperatorProfile = default(ManagedClusterAIToolchainOperatorProfile), ManagedClusterStatus status = default(ManagedClusterStatus))
+        public ManagedCluster(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string eTag = default(string), ManagedClusterSKU sku = default(ManagedClusterSKU), ExtendedLocation extendedLocation = default(ExtendedLocation), ManagedClusterIdentity identity = default(ManagedClusterIdentity), string kind = default(string), PowerState powerState = default(PowerState), string provisioningState = default(string), int? maxAgentPools = default(int?), string kubernetesVersion = default(string), string currentKubernetesVersion = default(string), string dnsPrefix = default(string), string fqdnSubdomain = default(string), string fqdn = default(string), string privateFqdn = default(string), string azurePortalFqdn = default(string), System.Collections.Generic.IList<ManagedClusterAgentPoolProfile> agentPoolProfiles = default(System.Collections.Generic.IList<ManagedClusterAgentPoolProfile>), ContainerServiceLinuxProfile linuxProfile = default(ContainerServiceLinuxProfile), ManagedClusterWindowsProfile windowsProfile = default(ManagedClusterWindowsProfile), ManagedClusterServicePrincipalProfile servicePrincipalProfile = default(ManagedClusterServicePrincipalProfile), System.Collections.Generic.IDictionary<string, ManagedClusterAddonProfile> addonProfiles = default(System.Collections.Generic.IDictionary<string, ManagedClusterAddonProfile>), ManagedClusterPodIdentityProfile podIdentityProfile = default(ManagedClusterPodIdentityProfile), ManagedClusterOidcIssuerProfile oidcIssuerProfile = default(ManagedClusterOidcIssuerProfile), string nodeResourceGroup = default(string), ManagedClusterNodeResourceGroupProfile nodeResourceGroupProfile = default(ManagedClusterNodeResourceGroupProfile), bool? enableRbac = default(bool?), string supportPlan = default(string), ContainerServiceNetworkProfile networkProfile = default(ContainerServiceNetworkProfile), ManagedClusterAADProfile aadProfile = default(ManagedClusterAADProfile), ManagedClusterAutoUpgradeProfile autoUpgradeProfile = default(ManagedClusterAutoUpgradeProfile), ClusterUpgradeSettings upgradeSettings = default(ClusterUpgradeSettings), ManagedClusterPropertiesAutoScalerProfile autoScalerProfile = default(ManagedClusterPropertiesAutoScalerProfile), ManagedClusterAPIServerAccessProfile apiServerAccessProfile = default(ManagedClusterAPIServerAccessProfile), string diskEncryptionSetId = default(string), System.Collections.Generic.IDictionary<string, UserAssignedIdentity> identityProfile = default(System.Collections.Generic.IDictionary<string, UserAssignedIdentity>), System.Collections.Generic.IList<PrivateLinkResource> privateLinkResources = default(System.Collections.Generic.IList<PrivateLinkResource>), bool? disableLocalAccounts = default(bool?), ManagedClusterHttpProxyConfig httpProxyConfig = default(ManagedClusterHttpProxyConfig), ManagedClusterSecurityProfile securityProfile = default(ManagedClusterSecurityProfile), ManagedClusterStorageProfile storageProfile = default(ManagedClusterStorageProfile), ManagedClusterIngressProfile ingressProfile = default(ManagedClusterIngressProfile), string publicNetworkAccess = default(string), ManagedClusterWorkloadAutoScalerProfile workloadAutoScalerProfile = default(ManagedClusterWorkloadAutoScalerProfile), ManagedClusterAzureMonitorProfile azureMonitorProfile = default(ManagedClusterAzureMonitorProfile), ServiceMeshProfile serviceMeshProfile = default(ServiceMeshProfile), string resourceUid = default(string), ManagedClusterMetricsProfile metricsProfile = default(ManagedClusterMetricsProfile), ManagedClusterNodeProvisioningProfile nodeProvisioningProfile = default(ManagedClusterNodeProvisioningProfile), ManagedClusterBootstrapProfile bootstrapProfile = default(ManagedClusterBootstrapProfile), ManagedClusterAIToolchainOperatorProfile aiToolchainOperatorProfile = default(ManagedClusterAIToolchainOperatorProfile), ManagedClusterHostedSystemProfile hostedSystemProfile = default(ManagedClusterHostedSystemProfile), ManagedClusterStatus status = default(ManagedClusterStatus))
 
         : base(location, id, name, type, systemData, tags)
         {
@@ -288,6 +293,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             this.NodeProvisioningProfile = nodeProvisioningProfile;
             this.BootstrapProfile = bootstrapProfile;
             this.AiToolchainOperatorProfile = aiToolchainOperatorProfile;
+            this.HostedSystemProfile = hostedSystemProfile;
             this.Status = status;
             CustomInit();
         }
@@ -299,10 +305,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
 
         /// <summary>
-        /// Gets unique read-only string used to implement optimistic concurrency. The
-        /// eTag value will change when the resource is updated. Specify an if-match or
-        /// if-none-match header with the eTag value for a subsequent request to enable
-        /// optimistic concurrency per the normal etag convention.
+        /// Gets if eTag is provided in the response body, it may also be provided as a
+        /// header per the normal etag convention.  Entity tags are used for comparing
+        /// two or more entities from the same requested resource. HTTP/1.1 uses entity
+        /// tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match
+        /// (section 14.26), and If-Range (section 14.27) header fields.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "eTag")]
         public string ETag {get; private set; }
@@ -639,6 +646,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public ManagedClusterAIToolchainOperatorProfile AiToolchainOperatorProfile {get; set; }
 
         /// <summary>
+        /// Gets or sets settings for hosted system addons. For more information, see
+        /// https://aka.ms/aks/automatic/systemcomponents.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hostedSystemProfile")]
+        public ManagedClusterHostedSystemProfile HostedSystemProfile {get; set; }
+
+        /// <summary>
         /// Gets or sets contains read-only information about the Managed Cluster.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.status")]
@@ -738,6 +752,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             {
                 this.ServiceMeshProfile.Validate();
             }
+
 
 
 

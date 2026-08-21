@@ -31,6 +31,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SshKeyType <String>]
  [-ZonePlacementPolicy <String>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
  [-AlignRegionalDisksToVMZone] [-EnableProxyAgent] [-AddProxyAgentExtension]
+ [-ScheduledEventsApiVersion <String>] [-EnableAllInstancesDown <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -65,7 +66,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
 ## DESCRIPTION
 The **New-AzVM** cmdlet creates a virtual machine in Azure.
 This cmdlet takes a virtual machine object as input. The **New-AzVM** cmdlet will create a new storage account for boot diagnostics if one does not already exist. <br> <br>
-Use the **[New-AzVMConfig](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvmconfig)** cmdlet to create a virtual machine object. <br> 
+Use the **[New-AzVMConfig](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvmconfig)** cmdlet to create a virtual machine object. <br>
 Then use the following cmdlets to set different properties of the virtual machine object:
 - **[Add-AzVMNetworkInterface](https://learn.microsoft.com/en-us/powershell/module/az.compute/add-azvmnetworkinterface)** to set the network profile.<br>
 - **[Set-AzVMOperatingSystem](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmoperatingsystem)** to set the OS profile. <br>
@@ -151,7 +152,7 @@ $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroupNa
 $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
 
 $securityTypeStnd = "Standard"
-$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize -SecurityType $securityTypeStnd 
+$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize -SecurityType $securityTypeStnd
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
 $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -SourceImageUri $SourceImageUri -Caching $OSDiskCaching -CreateOption $OSCreateOption -Windows
@@ -221,7 +222,7 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Credential $Creden
 $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -UserData;
 ```
 
-The UserData value must always be Base64 encoded. 
+The UserData value must always be Base64 encoded.
 
 ### Example 5: Creating a new VM with an existing subnet in another resource group
 ```powershell
@@ -285,15 +286,15 @@ $vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $
 $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmname
 ```
 
-This example creates a new VM using the -Image parameter, providing many default values to the VM. 
+This example creates a new VM using the -Image parameter, providing many default values to the VM.
 
 ### Example 8: Creating a VM for Trusted Launch SecurityType.
 ```powershell
 $rgname = <Resource Group Name>;
 $loc = "eastus";
- 
-New-AzResourceGroup -Name $rgname -Location $loc -Force;    
-# VM Profile & Hardware       
+
+New-AzResourceGroup -Name $rgname -Location $loc -Force;
+# VM Profile & Hardware
 $domainNameLabel1 = 'd1' + $rgname;
 $vmsize = 'Standard_D4s_v3';
 $vmname1 = 'v' + $rgname;
@@ -370,15 +371,13 @@ $securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 $user = <Username>;
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 # Create VM
-$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel; 
+$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel;
 $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
 # Verify $vm.SecurityProfile.SecurityType is TrustedLaunch.
 # Verify the $vm.StorageProfile.ImageReference.Sku has defaulted to "2022-datacenter-azure-edition", a Gen2 image.
 ```
 
 This example shows how the simple cmdlet call with minimal parameters will result in a TrustedLaunch enabled VM with a Gen2 image. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
-
-=======
 
 ## PARAMETERS
 
@@ -634,6 +633,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EnableAllInstancesDown
+Specifies if Scheduled Events should be auto-approved when all instances are down.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableProxyAgent
 Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.
 
@@ -695,8 +709,8 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionAtHost
-EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. 
-This will enable the encryption for all the disks including Resource/Temp disk at host itself. 
+EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set.
+This will enable the encryption for all the disks including Resource/Temp disk at host itself.
 Default: The Encryption at host will be disabled unless this property is set to true for the resource.
 
 ```yaml
@@ -882,9 +896,9 @@ Possible values for Windows Server are:
 - Windows_Client
 - Windows_Server
 
-Possible values for Linux Server operating system are: 
-- RHEL_BYOS (for RHEL) 
-- SLES_BYOS (for SUSE) 
+Possible values for Linux Server operating system are:
+- RHEL_BYOS (for RHEL)
+- SLES_BYOS (for SUSE)
 
 ```yaml
 Type: System.String
@@ -1119,6 +1133,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduledEventsApiVersion
+Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
