@@ -1017,7 +1017,8 @@ namespace Microsoft.Azure.Commands.Compute
                         UserData = this.VM.UserData,
                         PlatformFaultDomain = this.VM.PlatformFaultDomain,
                         Placement = this.VM.Placement,
-                        ScheduledEventsPolicy = this.VM.ScheduledEventsPolicy
+                        ScheduledEventsPolicy = this.VM.ScheduledEventsPolicy,
+                        ResiliencyProfile = this.VM.ResiliencyProfile
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;

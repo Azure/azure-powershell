@@ -20,12 +20,17 @@
 
 -->
 ## Upcoming Release
+* Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
+* Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM (Virtual Machine) during stop operations.
+    - The switch cannot be used together with `-Hibernate`, `-StayProvisioned`, or `-SkipShutdown`.
 
 ## Version 11.8.0
 * Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.
 * Added `New-AzInterconnectBlock`, `Get-AzInterconnectBlock`, `Update-AzInterconnectBlock`, and `Remove-AzInterconnectBlock` cmdlets to manage Microsoft.Compute/interconnectBlocks resources for high-performance artificial intelligence (AI) and machine learning (ML) workloads.
 * Marked the `-EnableWAD`, `-SkipStorage`, and `-InstallNewExtension` parameters of `Set-AzVMAEMExtension` as deprecated using breaking-change attributes. They will be removed in a future major release.
 * Preserved CMD-special characters in `Invoke-AzVMRunCommand` and `Invoke-AzVmssVMRunCommand` parameter values for Windows PowerShell RunCommand execution. [#29880]
+* Added `Set-AzVMZoneMovement` to set ZoneMovement configuration on a VM (Virtual Machine) model and persist it with `Update-AzVM`.
+    - Added `ResiliencyProfile` support in VM create and update flows so ZoneMovement is sent to the Compute API.
 
 ## Version 11.7.0
 * ComputeRP related cmdlets will now use 2026-03-01 version of the ComputeRP API.

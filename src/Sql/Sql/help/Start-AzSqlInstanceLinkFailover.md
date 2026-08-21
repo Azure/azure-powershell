@@ -66,6 +66,7 @@ PartnerLinkRole                  : Secondary
 ReplicationMode                  : Async
 FailoverMode                     : Manual
 SeedingMode                      : Automatic
+LinkMode                         : SingleDatabase
 ```
 
 This command does forced failover of the instance link with name "Link01".
@@ -93,6 +94,7 @@ PartnerLinkRole                  : Secondary
 ReplicationMode                  : Async
 FailoverMode                     : Manual
 SeedingMode                      : Automatic
+LinkMode                         : SingleDatabase
 ```
 
 This command does planned failover of the instance link by piping an instance object.

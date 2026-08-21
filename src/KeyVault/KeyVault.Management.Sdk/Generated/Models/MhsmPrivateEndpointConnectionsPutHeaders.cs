@@ -21,16 +21,16 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// Initializes a new instance of the MhsmPrivateEndpointConnectionsPutHeaders class.
         /// </summary>
 
-        /// <param name="retryAfter">
-        /// </param>
-
         /// <param name="azureAsyncOperation">
         /// </param>
-        public MhsmPrivateEndpointConnectionsPutHeaders(int? retryAfter = default(int?), string azureAsyncOperation = default(string))
+
+        /// <param name="retryAfter">
+        /// </param>
+        public MhsmPrivateEndpointConnectionsPutHeaders(string azureAsyncOperation = default(string), int? retryAfter = default(int?))
 
         {
-            this.RetryAfter = retryAfter;
             this.AzureAsyncOperation = azureAsyncOperation;
+            this.RetryAfter = retryAfter;
             CustomInit();
         }
 
@@ -43,13 +43,13 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// <summary>
         /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
-        public int? RetryAfter {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Azure-AsyncOperation")]
+        public string AzureAsyncOperation {get; set; }
 
         /// <summary>
         /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "Azure-AsyncOperation")]
-        public string AzureAsyncOperation {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
+        public int? RetryAfter {get; set; }
     }
 }
