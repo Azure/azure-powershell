@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.DeploymentStacks
 {
+    using System.Collections;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -86,6 +87,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             "Possible values include: 'Fail' (default) and 'Detach'.")]
         public PSResourcesWithoutDeleteSupport ResourcesWithoutDeleteSupport { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The tags to put on the deployment stack WhatIf result.")]
+        public Hashtable Tag { get; set; }
+
         #endregion
 
         #region Cmdlet Implementation
@@ -119,7 +123,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
                 ValidationLevel = ValidationLevel,
                 DebugSettingDetailLevel = DebugSettingDetailLevel,
                 BypassStackOutOfSyncError = BypassStackOutOfSyncError.IsPresent,
-                ResourcesWithoutDeleteSupport = ResourcesWithoutDeleteSupport.ToString().ToLowerInvariant()
+                ResourcesWithoutDeleteSupport = ResourcesWithoutDeleteSupport.ToString().ToLowerInvariant(),
+                Tags = Tag
             };
         }
 

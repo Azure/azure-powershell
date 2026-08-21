@@ -39,11 +39,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
             Assert.NotNull(cmdletType.GetProperty("DenySettingsApplyToChildScopes"));
             Assert.Null(cmdletType.GetProperty("DenySettingsApplyToChildScope"));
             Assert.NotNull(cmdletType.GetProperty("ResourcesWithoutDeleteSupport"));
+            Assert.NotNull(cmdletType.GetProperty("Tag"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CreateDeploymentStacksWhatIfResult_SetsResourcesWithoutDeleteSupport()
+        public void CreateDeploymentStacksWhatIfResult_SetsActionAndTags()
         {
             var client = new DeploymentStacksWhatIfSdkClient(deploymentStacksClient: null);
 
@@ -55,6 +56,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
                 stackResourceId: "/subscriptions/subscriptionId/providers/Microsoft.Resources/deploymentStacks/stackName"));
 
             Assert.Equal("fail", result.Properties.ActionOnUnmanage.ResourcesWithoutDeleteSupport);
+            Assert.Equal("value", result.Tags["key"]);
         }
 
         // Verify a running What-If result is polled once and uses the injectable delay hook.
@@ -165,6 +167,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
                 "detach",
                 "detach",
                 "fail",
+                new Hashtable { { "key", "value" } },
                 null,
                 "none",
                 null,
