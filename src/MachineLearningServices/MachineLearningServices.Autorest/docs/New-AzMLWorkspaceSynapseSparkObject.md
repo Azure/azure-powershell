@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceSynapseSparkObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacesynapsesparkobject
 schema: 2.0.0
 ---
 
@@ -16,9 +16,9 @@ Create an in-memory object for SynapseSpark.
 New-AzMLWorkspaceSynapseSparkObject [-AutoPausePropertyDelayInMinute <Int32>]
  [-AutoPausePropertyEnabled <Boolean>] [-AutoScalePropertyEnabled <Boolean>]
  [-AutoScalePropertyMaxNodeCount <Int32>] [-AutoScalePropertyMinNodeCount <Int32>] [-Description <String>]
- [-DisableLocalAuth <Boolean>] [-NodeCount <Int32>] [-NodeSize <String>] [-NodeSizeFamily <String>]
- [-PoolName <String>] [-ResourceGroup <String>] [-ResourceId <String>] [-SparkVersion <String>]
- [-SubscriptionId <String>] [-WorkspaceName <String>] [<CommonParameters>]
+ [-DisableLocalAuth <Boolean>] [-Location <String>] [-NodeCount <Int32>] [-NodeSize <String>]
+ [-NodeSizeFamily <String>] [-PoolName <String>] [-ResourceGroup <String>] [-ResourceId <String>]
+ [-SparkVersion <String>] [-SubscriptionId <String>] [-WorkspaceName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,6 +130,21 @@ Opt-out of local authentication and ensure customers can use only MSI and AAD ex
 
 ```yaml
 Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Location for the underlying compute.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -282,7 +297,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SynapseSpark
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.SynapseSpark
 
 ## NOTES
 

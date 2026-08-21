@@ -19,6 +19,13 @@ Remove-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String>
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityBackupVault
+```
+Remove-AzDataProtectionBackupInstance -Name <String> -BackupVaultInputObject <IDataProtectionIdentity>
+ [-Token <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzDataProtectionBackupInstance -InputObject <IDataProtectionIdentity> [-Token <String>]
@@ -56,6 +63,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BackupVaultInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+Parameter Sets: DeleteViaIdentityBackupVault
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -74,7 +96,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -93,7 +114,7 @@ The name of the backup instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityBackupVault
 Aliases: BackupInstanceName
 
 Required: True

@@ -1,0 +1,47 @@
+{
+  "resourceType": "locations/meshRevisionProfiles",
+  "apiVersion": "2025-08-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.aks"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAksManagedClusterMeshRevisionProfile",
+      "description": "Contains extra metadata on the revision, including supported revisions, cluster compatibility and available upgrades",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/meshRevisionProfiles/{mode}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.aks/get-azaksmanagedclustermeshrevisionprofile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Location <String>",
+              "-Mode <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Contains extra metadata on the revision, including supported revisions, cluster compatibility and available upgrades",
+          "parameters": [
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-Mode",
+              "value": "[Path.mode]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

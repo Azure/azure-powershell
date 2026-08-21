@@ -76,18 +76,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_clusterName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("clusterName"), out var __jsonClusterName) ? (string)__jsonClusterName : (string)ClusterName;}
-            {_arcSettingName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("arcSettingName"), out var __jsonArcSettingName) ? (string)__jsonArcSettingName : (string)ArcSettingName;}
-            {_extensionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("extensionName"), out var __jsonExtensionName) ? (string)__jsonExtensionName : (string)ExtensionName;}
-            {_deploymentSettingsName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("deploymentSettingsName"), out var __jsonDeploymentSettingsName) ? (string)__jsonDeploymentSettingsName : (string)DeploymentSettingsName;}
-            {_resourceUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("resourceUri"), out var __jsonResourceUri) ? (string)__jsonResourceUri : (string)ResourceUri;}
-            {_edgeDeviceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("edgeDeviceName"), out var __jsonEdgeDeviceName) ? (string)__jsonEdgeDeviceName : (string)EdgeDeviceName;}
-            {_securitySettingsName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("securitySettingsName"), out var __jsonSecuritySettingsName) ? (string)__jsonSecuritySettingsName : (string)SecuritySettingsName;}
-            {_updateName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("updateName"), out var __jsonUpdateName) ? (string)__jsonUpdateName : (string)UpdateName;}
-            {_updateRunName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("updateRunName"), out var __jsonUpdateRunName) ? (string)__jsonUpdateRunName : (string)UpdateRunName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_clusterName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("clusterName"), out var __jsonClusterName) ? (string)__jsonClusterName : (string)_clusterName;}
+            {_arcSettingName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("arcSettingName"), out var __jsonArcSettingName) ? (string)__jsonArcSettingName : (string)_arcSettingName;}
+            {_extensionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("extensionName"), out var __jsonExtensionName) ? (string)__jsonExtensionName : (string)_extensionName;}
+            {_deploymentSettingsName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("deploymentSettingsName"), out var __jsonDeploymentSettingsName) ? (string)__jsonDeploymentSettingsName : (string)_deploymentSettingsName;}
+            {_resourceUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("resourceUri"), out var __jsonResourceUri) ? (string)__jsonResourceUri : (string)_resourceUri;}
+            {_edgeDeviceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("edgeDeviceName"), out var __jsonEdgeDeviceName) ? (string)__jsonEdgeDeviceName : (string)_edgeDeviceName;}
+            {_securitySettingsName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("securitySettingsName"), out var __jsonSecuritySettingsName) ? (string)__jsonSecuritySettingsName : (string)_securitySettingsName;}
+            {_updateName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("updateName"), out var __jsonUpdateName) ? (string)__jsonUpdateName : (string)_updateName;}
+            {_updateRunName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("updateRunName"), out var __jsonUpdateRunName) ? (string)__jsonUpdateRunName : (string)_updateRunName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

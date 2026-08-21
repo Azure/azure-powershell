@@ -9,7 +9,7 @@ schema: 2.0.0
 # Resume-AzAutomationJob
 
 ## SYNOPSIS
-Resumes a suspended Automation job.
+Resumes a suspended Automation job (Only applicable for PowerShell Workflow jobs).
 
 ## SYNTAX
 
@@ -21,7 +21,7 @@ Resume-AzAutomationJob [-Id] <Guid> [-ResourceGroupName] <String> [-AutomationAc
 ## DESCRIPTION
 The **Resume-AzAutomationJob** cmdlet resumes a suspended Azure Automation job.
 Specify the suspended job.
-To suspend a job, use the Suspend-AzAutomationJob cmdlet.
+To suspend a PowerShell Workflow job, use the Suspend-AzAutomationJob cmdlet.
 
 ## EXAMPLES
 

@@ -22,7 +22,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Backing field for <see cref="Flag" /> property.</summary>
         private System.Collections.Generic.List<string> _flag;
 
-        /// <summary>List of protocol flags that need to be matched.</summary>
+        /// <summary>
+        /// List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible
+        /// TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> Flag { get => this._flag; set => this._flag = value; }
 
@@ -65,14 +68,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPortCondition
     {
-        /// <summary>List of protocol flags that need to be matched.</summary>
+        /// <summary>
+        /// List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible
+        /// TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of protocol flags that need to be matched.",
+        Description = @"List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg",
         SerializedName = @"flags",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> Flag { get; set; }
@@ -82,7 +88,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     internal partial interface IAccessControlListPortConditionInternal :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPortConditionInternal
     {
-        /// <summary>List of protocol flags that need to be matched.</summary>
+        /// <summary>
+        /// List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible
+        /// TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+        /// </summary>
         System.Collections.Generic.List<string> Flag { get; set; }
 
     }

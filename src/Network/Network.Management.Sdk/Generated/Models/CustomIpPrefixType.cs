@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class CustomIpPrefixType
     {
+        /// <summary>
+        /// Singular
+        /// </summary>
         public const string Singular = "Singular";
+        /// <summary>
+        /// Parent
+        /// </summary>
         public const string Parent = "Parent";
+        /// <summary>
+        /// Child
+        /// </summary>
         public const string Child = "Child";
     }
 }

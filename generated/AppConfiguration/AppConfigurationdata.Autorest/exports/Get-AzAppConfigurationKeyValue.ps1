@@ -68,6 +68,14 @@ param(
     # Instructs the server to return elements that appear after the element referred to by the specified token.
     ${After},
 
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
+    [System.String]
+    # A filter used get key-values for a snapshot.
+    # The value should be the name of the snapshot.
+    # Not valid when used with 'key' and 'label' filters.
+    ${Snapshot},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
     [System.String]
@@ -154,8 +162,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

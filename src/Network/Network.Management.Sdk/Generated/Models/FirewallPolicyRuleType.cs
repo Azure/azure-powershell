@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class FirewallPolicyRuleType
     {
+        /// <summary>
+        /// ApplicationRule
+        /// </summary>
         public const string ApplicationRule = "ApplicationRule";
+        /// <summary>
+        /// NetworkRule
+        /// </summary>
         public const string NetworkRule = "NetworkRule";
+        /// <summary>
+        /// NatRule
+        /// </summary>
         public const string NatRule = "NatRule";
     }
 }

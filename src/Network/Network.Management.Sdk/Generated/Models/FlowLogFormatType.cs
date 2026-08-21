@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class FlowLogFormatType
     {
+        /// <summary>
+        /// JSON
+        /// </summary>
         public const string Json = "JSON";
     }
 }

@@ -15,16 +15,16 @@ This operation updates an existing policy set definition in the given subscripti
 ### Name (Default)
 ```
 Update-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
- [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-Version <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
 Update-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-Version <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Update-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-Disp
 ```
 Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-Version <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,14 +40,13 @@ Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-DisplayNa
 ```
 Update-AzPolicySetDefinition -Id <String> [-DisplayName <String>] [-Description <String>]
  [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Update-AzPolicySetDefinition [-DisplayName <String>] [-Description <String>] [-PolicyDefinition <String>]
- [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>] [-BackwardCompatible]
+ [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
  -InputObject <IPolicySetDefinition> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -89,29 +88,14 @@ Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $gro
 
 This command updates the groups of a policy set definition named VMPolicySetDefinition from a hash table.
 
-### Example 5: [Backcompat] Update the metadata of a policy set definition
+### Example 5: Update a policy set definition to add an older version by using a policy set file
 ```powershell
-Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}'
+Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Version '1.1.0'
 ```
 
-This command updates the metadata of a policy set definition named VMPolicySetDefinition to indicate its category is "Virtual Machine".
+This command updates the existing policy set definition named VMPolicySetDefinition by adding version 1.1.0 that contains the policy definitions specified in C:\VMPolicySet.json.
 
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -160,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The resource Id of the policy definition to update.
+The resource Id of the policy set definition to update.
 
 ```yaml
 Type: System.String
@@ -251,7 +235,7 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinition
-The policy definition array in JSON string form.
+The policy set definition array in JSON string form.
 
 ```yaml
 Type: System.String
@@ -290,6 +274,21 @@ Parameter Sets: SubscriptionId
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Version
+The policy set definition version in #.#.# format.
+
+```yaml
+Type: System.String
+Parameter Sets: Name, ManagementGroupName, SubscriptionId
+Aliases: PolicySetDefinitionVersion
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

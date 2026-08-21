@@ -197,6 +197,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).DnsZoneType = (string) content.GetValueForProperty("DnsZoneType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).DnsZoneType, global::System.Convert.ToString);
             }
+            if (content.Contains("VcfLicense"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VcfLicense = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense) content.GetValueForProperty("VcfLicense",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VcfLicense, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VcfLicenseTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ManagementClusterHost"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterHost = (System.Collections.Generic.List<string>) content.GetValueForProperty("ManagementClusterHost",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterHost, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -421,6 +425,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("DnsZoneType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).DnsZoneType = (string) content.GetValueForProperty("DnsZoneType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).DnsZoneType, global::System.Convert.ToString);
+            }
+            if (content.Contains("VcfLicense"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VcfLicense = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense) content.GetValueForProperty("VcfLicense",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VcfLicense, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VcfLicenseTypeConverter.ConvertFrom);
             }
             if (content.Contains("ManagementClusterHost"))
             {

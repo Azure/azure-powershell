@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class HubRoutingPreference
     {
+        /// <summary>
+        /// ExpressRoute
+        /// </summary>
         public const string ExpressRoute = "ExpressRoute";
+        /// <summary>
+        /// VpnGateway
+        /// </summary>
         public const string VpnGateway = "VpnGateway";
+        /// <summary>
+        /// ASPath
+        /// </summary>
         public const string ASPath = "ASPath";
     }
 }

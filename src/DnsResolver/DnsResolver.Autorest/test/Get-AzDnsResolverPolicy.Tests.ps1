@@ -1,59 +1,34 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDnsResolverPolicy'))
-{
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-  if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-  }
-  . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzDnsResolverPolicy.Recording.json'
-  $currentPath = $PSScriptRoot
-  while(-not $mockingPath) {
-      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-      $currentPath = Split-Path -Path $currentPath -Parent
-  }
-  . ($mockingPath | Select-Object -First 1).FullName
+$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzDnsResolverPolicy.Recording.json'
+$currentPath = $PSScriptRoot
+while(-not $mockingPath) {
+    $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+    $currentPath = Split-Path -Path $currentPath -Parent
 }
+. ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDnsResolverPolicy' {
-    It 'Get single DNS resolver policy by name, expect DNS resolver policy by name retrieved' {
-        # ARRANGE
-        $dnsResolverPolicyName = "psdnsresolverpolicyname62";
-        $resourceGroupName = "powershell-test-rg-debug-get";
-        
-        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
-
-        # ACT
-        $dnsResolver =  Get-AzDnsResolverPolicy -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $resourceGroupName
-
-        # ASSERT
-        $dnsResolver | Should -BeSuccessfullyCreated
+    BeforeAll {
+        $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'
+        $location = 'westus2'
+        $rgName = "ps-policy-get-45432"
+        if ($TestMode -ne 'playback') {
+            Select-AzSubscription -SubscriptionId $subscriptionId
+            New-AzResourceGroup -Name $rgName -Location $location
+            New-AzDnsResolverPolicy -Name "policy-get-1" -ResourceGroupName $rgName -Location $location
+        }
     }
-
-    It 'List DNS resolver policies in a resource group, expected least number of DNS resolver policies retrieved' {
-        # ARRANGE
-        $dnsResolverPolicyName = "psdnsresolverpolicyname63";
-        $resourceGroupName = "powershell-test-rg-debug-get";
-
-        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
-
-        # ACT
-        $dnsResolvers =  Get-AzDnsResolverPolicy -ResourceGroupName $resourceGroupName
-
-        # ASSERT
-        $dnsResolvers.Count | Should -BeGreaterThan 0
+    AfterAll {
+        if ($TestMode -ne 'playback') {
+            Remove-AzResourceGroup -Name $rgName -ErrorAction SilentlyContinue -AsJob | Out-Null
+        }
     }
-
-    It 'List DNS resolver policies in a subscription, expected least number of DNS resolver policies retrieved' {
-        # ARRANGE
-        $dnsResolverPolicyName = "psdnsresolverpolicyname64";
-        $resourceGroupName = "powershell-test-rg-debug-get";
-
-        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
-
-        # ACT
-        $dnsResolvers =  Get-AzDnsResolverPolicy
-
-        # ASSERT
-        $dnsResolvers.Count | Should -BeGreaterThan 0
+    It 'Get a DNS resolver policy by name' {
+        $policy = Get-AzDnsResolverPolicy -Name "policy-get-1" -ResourceGroupName $rgName
+        $policy.ProvisioningState | Should -Be "Succeeded"
+        $policy.Name | Should -Be "policy-get-1"
+    }
+    It 'List DNS resolver policies in resource group' {
+        $policies = Get-AzDnsResolverPolicy -ResourceGroupName $rgName
+        $policies.Count | Should -BeGreaterThan 0
     }
 }

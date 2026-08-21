@@ -115,7 +115,7 @@ function Set-AzEventHubNamespace{
         [System.Int64]
         ${GeoDataReplicationMaxReplicationLagDurationInSecond},
 
-        [Parameter(HelpMessage = "Properties for User Assigned Identities")]
+        [Parameter(HelpMessage = "Replica locations for geo data replication.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]]
         ${GeoDataReplicationLocation},
 
@@ -163,6 +163,11 @@ function Set-AzEventHubNamespace{
         # Run the command asynchronously
         ${NoWait},
 
+        [Parameter(HelpMessage = "The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.String]
+        ${IPAddressType},
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
         [System.Uri]
@@ -197,6 +202,7 @@ function Set-AzEventHubNamespace{
             $hasSkuCapacity = $PSBoundParameters.Remove('SkuCapacity')
             $hasTag = $PSBoundParameters.Remove('Tag')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
+            $hasIPAddressType = $PSBoundParameters.Remove('IPAddressType')
             $hasGeoDataReplicationLocation = $PSBoundParameters.Remove('GeoDataReplicationLocation')
             $hasGeoDataReplicationMaxReplicationLagDurationInSecond = $PSBoundParameters.Remove('GeoDataReplicationMaxReplicationLagDurationInSecond')
             $null = $PSBoundParameters.Remove('WhatIf')
@@ -238,6 +244,9 @@ function Set-AzEventHubNamespace{
             }
             if ($GeoDataReplicationMaxReplicationLagDurationInSecond) {
                 $eventHubNamespace.GeoDataReplicationMaxReplicationLagDurationInSecond = $GeoDataReplicationMaxReplicationLagDurationInSecond
+            }
+            if($hasIPAddressType){
+                   $eventHubNamespace.IPAddressType = $IPAddressType
             }
             if ($GeoDataReplicationLocation) {
                 $eventHubNamespace.GeoDataReplicationLocation = $GeoDataReplicationLocation

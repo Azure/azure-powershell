@@ -27,6 +27,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> PatternsToMatch { get => this._patternsToMatch; set => this._patternsToMatch = value; }
 
+        /// <summary>Backing field for <see cref="Route" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference> _route;
+
+        /// <summary>List of routes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference> Route { get => this._route; set => this._route = value; }
+
         /// <summary>
         /// Creates an new <see cref="SecurityPolicyWebApplicationFirewallAssociation" /> instance.
         /// </summary>
@@ -61,6 +68,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"patternsToMatch",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> PatternsToMatch { get; set; }
+        /// <summary>List of routes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of routes.",
+        SerializedName = @"routes",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference> Route { get; set; }
 
     }
     /// settings for security policy patterns to match
@@ -71,6 +89,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference> Domain { get; set; }
         /// <summary>List of paths</summary>
         System.Collections.Generic.List<string> PatternsToMatch { get; set; }
+        /// <summary>List of routes.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference> Route { get; set; }
 
     }
 }

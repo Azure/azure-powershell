@@ -44,14 +44,17 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
-    $env.Add("ResourceGroupName", "bvt-test-automation")
-    $env.Add("Name", "test-automation")
+    $env.Add("ResourceGroupName", "winfield-demo-rg-2")
+    $env.Add("Name", "winfield-ps-test")
+    $env.Add("HardwareSettingName", "default")
     $env.Add("ImageName", "default")
     $env.Add("ArtifactName", "thirdpartynotices")
-    $env.Add("Location", "westus3")
-    $env.Add("NewResource", "ps-test-automation")
+    $env.Add("Location", "eastus2euap")
     $env.Add("RegistrationStatusRegistered", "Registered")
     $env.Add("RegistrationStatusUnregistered", "Unregistered")
+    $env.Add("CurrentCore", 8)
+    $env.Add("AnnualPricingModel", "Annual")
+    $env.Add("DisabledAutoRenew", "Disabled")
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

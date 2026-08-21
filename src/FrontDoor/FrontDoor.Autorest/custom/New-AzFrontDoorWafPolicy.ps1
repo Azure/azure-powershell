@@ -157,6 +157,13 @@ param(
 
   [Parameter(ParameterSetName='CreateExpanded')]
   [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[]]
+    # List of exceptions.
+    ${ExceptionListException},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
   [Alias("ManagedRule")]
   [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
   [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[]]
@@ -286,6 +293,8 @@ param(
         if ($PSBoundParameters.ContainsKey('ManagedRuleSet')) {
             $null = $PSBoundParameters.Remove('ManagedRuleSet')
         }
+
+        $hasExceptionListException = $PSBoundParameters.Remove('ExceptionListException')
         
         $EnabledState = $EnabledState
         if ($PSBoundParameters.ContainsKey('EnabledState')) {
@@ -342,6 +351,9 @@ param(
         }
         if ($ManagedRuleSet) {
             $PSBoundParameters.Add('ManagedRuleSet', $ManagedRuleSet)
+        }
+        if ($hasExceptionListException) {
+            $PSBoundParameters.Add('ExceptionListException', $ExceptionListException)
         }
         if (![string]::IsNullOrEmpty($EnabledState)) {
             $PSBoundParameters.Add('EnabledState', $EnabledState)

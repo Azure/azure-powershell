@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)this).KeyVaultId = (string) content.GetValueForProperty("KeyVaultId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)this).KeyVaultId, global::System.Convert.ToString);
             }
+            if (content.Contains("KeyVaultUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)this).KeyVaultUri = (string) content.GetValueForProperty("KeyVaultUri",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)this).KeyVaultUri, global::System.Convert.ToString);
+            }
             if (content.Contains("SecretName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)this).SecretName = (string) content.GetValueForProperty("SecretName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)this).SecretName, global::System.Convert.ToString);
@@ -141,6 +145,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("KeyVaultId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)this).KeyVaultId = (string) content.GetValueForProperty("KeyVaultId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)this).KeyVaultId, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVaultUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)this).KeyVaultUri = (string) content.GetValueForProperty("KeyVaultUri",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)this).KeyVaultUri, global::System.Convert.ToString);
             }
             if (content.Contains("SecretName"))
             {

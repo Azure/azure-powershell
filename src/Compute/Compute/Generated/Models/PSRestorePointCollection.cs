@@ -35,5 +35,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         // Summary:
         //     Gets a list containing all restore points created under this restore point collection.
         public IList<RestorePoint> RestorePoints { get; set; }
+        //
+        // Summary:
+        //     Gets or sets whether instant access snapshot is enabled for restore points created
+        //     under this restore point collection for Premium SSD v2 or Ultra disk.
+        public bool? InstantAccess { get; set; }
     }
 }

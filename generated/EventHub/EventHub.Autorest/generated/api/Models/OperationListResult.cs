@@ -7,18 +7,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list Event Hub operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
-    /// </summary>
+    /// <summary>Paged collection of Operation items</summary>
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.DoNotFormat]
     public partial class OperationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IOperationListResult,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IOperationListResultInternal
     {
-
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IOperationListResultInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
 
         /// <summary>Internal Acessors for Value</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IOperation> Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IOperationListResultInternal.Value { get => this._value; set { {_value = value;} } }
@@ -26,16 +20,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next set of operation list results if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IOperation> _value;
 
-        /// <summary>
-        /// List of Event Hub operations supported by the Microsoft.EventHub resource provider.
-        /// </summary>
+        /// <summary>The Operation items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IOperation> Value { get => this._value; }
 
@@ -45,47 +37,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 
         }
     }
-    /// Result of the request to list Event Hub operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
+    /// Paged collection of Operation items
     public partial interface IOperationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next set of operation list results if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"URL to get the next set of operation list results if there are any.",
+        Create = true,
+        Update = true,
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>
-        /// List of Event Hub operations supported by the Microsoft.EventHub resource provider.
-        /// </summary>
+        string NextLink { get; set; }
+        /// <summary>The Operation items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"List of Event Hub operations supported by the Microsoft.EventHub resource provider.",
+        Description = @"The Operation items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IOperation) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IOperation> Value { get;  }
 
     }
-    /// Result of the request to list Event Hub operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
+    /// Paged collection of Operation items
     internal partial interface IOperationListResultInternal
 
     {
-        /// <summary>URL to get the next set of operation list results if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>
-        /// List of Event Hub operations supported by the Microsoft.EventHub resource provider.
-        /// </summary>
+        /// <summary>The Operation items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IOperation> Value { get; set; }
 
     }

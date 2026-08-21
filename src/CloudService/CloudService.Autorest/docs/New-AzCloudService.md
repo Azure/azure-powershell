@@ -8,18 +8,31 @@ schema: 2.0.0
 # New-AzCloudService
 
 ## SYNOPSIS
-Create or update a cloud service.
+Create a cloud service.
 Please note some properties can be set only during cloud service creation.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzCloudService -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-AllowModelOverride] [-Configuration <String>] [-ConfigurationUrl <String>]
- [-ExtensionProfile <ICloudServiceExtensionProfile>] [-NetworkProfile <ICloudServiceNetworkProfile>]
- [-OSProfile <ICloudServiceOSProfile>] [-PackageUrl <String>] [-RoleProfile <ICloudServiceRoleProfile>]
- [-StartCloudService] [-Tag <Hashtable>] [-UpgradeMode <CloudServiceUpgradeMode>] [-Zone <String[]>]
+New-AzCloudService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-AllowModelOverride]
+ [-Configuration <String>] [-ConfigurationUrl <String>] [-ExtensionProfile <ICloudServiceExtensionProfile>]
+ [-Location <String>] [-NetworkProfile <ICloudServiceNetworkProfile>] [-OSProfile <ICloudServiceOSProfile>]
+ [-PackageUrl <String>] [-RoleProfile <ICloudServiceRoleProfile>] [-StartCloudService] [-Tag <Hashtable>]
+ [-UpgradeMode <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzCloudService -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzCloudService -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -28,8 +41,7 @@ New-AzCloudService -Name <String> -ResourceGroupName <String> -Location <String>
 New-AzCloudService -Name <String> -ResourceGroupName <String> -ConfigurationFile <String>
  -DefinitionFile <String> -Location <String> -PackageUrl <String> [-SubscriptionId <String>]
  [-DnsName <String>] [-ExtensionProfile <ICloudServiceExtensionProfile>] [-KeyVaultName <String>]
- [-StartCloudService] [-Tag <Hashtable>] [-UpgradeMode <CloudServiceUpgradeMode>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-StartCloudService] [-Tag <Hashtable>] [-UpgradeMode <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### quickCreateParameterSetWithStorage
@@ -37,12 +49,12 @@ New-AzCloudService -Name <String> -ResourceGroupName <String> -ConfigurationFile
 New-AzCloudService -Name <String> -ResourceGroupName <String> -ConfigurationFile <String>
  -DefinitionFile <String> -Location <String> -PackageFile <String> -StorageAccount <String>
  [-SubscriptionId <String>] [-DnsName <String>] [-ExtensionProfile <ICloudServiceExtensionProfile>]
- [-KeyVaultName <String>] [-StartCloudService] [-Tag <Hashtable>] [-UpgradeMode <CloudServiceUpgradeMode>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-KeyVaultName <String>] [-StartCloudService] [-Tag <Hashtable>] [-UpgradeMode <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update a cloud service.
+Create a cloud service.
 Please note some properties can be set only during cloud service creation.
 
 ## EXAMPLES
@@ -266,7 +278,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -328,7 +340,7 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -370,14 +382,43 @@ Accept wildcard characters: False
 
 ### -ExtensionProfile
 Describes a cloud service extension profile.
-To construct, see NOTES section for EXTENSIONPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceExtensionProfile
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceExtensionProfile
+Parameter Sets: CreateExpanded, quickCreateParameterSetWithoutStorage, quickCreateParameterSetWithStorage
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -404,7 +445,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, quickCreateParameterSetWithoutStorage, quickCreateParameterSetWithStorage
 Aliases:
 
 Required: True
@@ -431,10 +472,9 @@ Accept wildcard characters: False
 
 ### -NetworkProfile
 Network Profile for the cloud service.
-To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceNetworkProfile
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceNetworkProfile
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -450,7 +490,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -462,10 +502,9 @@ Accept wildcard characters: False
 
 ### -OSProfile
 Describes the OS profile for the cloud service.
-To construct, see NOTES section for OSPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceOSProfile
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceOSProfile
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -525,10 +564,9 @@ Accept wildcard characters: False
 
 ### -RoleProfile
 Describes the role profile for the cloud service.
-To construct, see NOTES section for ROLEPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceRoleProfile
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceRoleProfile
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -547,7 +585,7 @@ A deployed service still incurs charges, even if it is poweredoff.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, quickCreateParameterSetWithoutStorage, quickCreateParameterSetWithStorage
 Aliases:
 
 Required: False
@@ -593,7 +631,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, quickCreateParameterSetWithoutStorage, quickCreateParameterSetWithStorage
 Aliases:
 
 Required: False
@@ -611,8 +649,8 @@ If set to Manual, PUT UpdateDomain must be called to apply the update.
 If set to Auto, the update is automatically applied to each update domain in sequence.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, quickCreateParameterSetWithoutStorage, quickCreateParameterSetWithStorage
 Aliases:
 
 Required: False
@@ -677,7 +715,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService
 
 ## NOTES
 

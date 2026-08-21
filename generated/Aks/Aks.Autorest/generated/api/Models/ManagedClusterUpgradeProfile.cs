@@ -41,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public string Id { get => this._id; }
 
         /// <summary>Internal Acessors for ControlPlaneProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterUpgradeProfileInternal.ControlPlaneProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterUpgradeProfilePropertiesInternal)Property).ControlPlaneProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterUpgradeProfilePropertiesInternal)Property).ControlPlaneProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterUpgradeProfileInternal.ControlPlaneProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterUpgradeProfilePropertiesInternal)Property).ControlPlaneProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterUpgradeProfilePropertiesInternal)Property).ControlPlaneProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterUpgradeProfileInternal.Id { get => this._id; set { {_id = value;} } }

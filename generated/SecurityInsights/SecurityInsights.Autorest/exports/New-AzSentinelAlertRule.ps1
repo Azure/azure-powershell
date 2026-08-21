@@ -32,27 +32,27 @@ Creates the alert rule.
  $AlertRuleTemplateName = "a2e0eb51-1f11-461a-999b-cd0ebe5c7a72"
  New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind MicrosoftSecurityIncidentCreation -Enabled -AlertRuleTemplateName $AlertRuleTemplateName -ProductFilter "Azure Security Center for IoT"
 .Example
-New-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind Scheduled -Enabled -DisplayName "Powershell Exection Alert (Several Times per Hour)" -Severity Low -Query "SecurityEvent | where EventId == 4688" -QueryFrequency (New-TimeSpan -Hours 1) -QueryPeriod (New-TimeSpan -Hours 1) -TriggerThreshold 10
+New-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind Scheduled -Enabled -DisplayName "Powershell Execution Alert (Several Times per Hour)" -Severity Low -Query "SecurityEvent | where EventID == 4688" -QueryFrequency (New-TimeSpan -Hours 1) -QueryPeriod (New-TimeSpan -Hours 1) -TriggerThreshold 10
 .Example
 New-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind NRT -Enabled -DisplayName "Break glass account accessed" -Severity High -Query "let Break_Glass_Account = _GetWatchlist('break_glass_account')\n|project UPN;\nSigninLogs\n| where UserPrincipalName in (Break_Glass_Account)"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AlertRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 ENTITYMAPPING <EntityMapping[]>: 'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
-  [EntityType <EntityMappingType?>]: The V3 type of the mapped entity
-  [FieldMapping <IFieldMapping[]>]: array of field mappings for the given entity mapping
+  [EntityType <String>]: The V3 type of the mapped entity
+  [FieldMapping <List<IFieldMapping>>]: array of field mappings for the given entity mapping
     [ColumnName <String>]: the column name to be mapped to the identifier
     [Identifier <String>]: the V3 identifier of the entity
 .Link
 https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertrule
 #>
 function New-AzSentinelAlertRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AlertRule])]
 [CmdletBinding(DefaultParameterSetName='FusionMLTI', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -84,9 +84,9 @@ param(
     ${RuleId},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertRuleKind])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Scheduled", "MicrosoftSecurityIncidentCreation", "Fusion", "MLBehaviorAnalytics", "ThreatIntelligence", "NRT")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertRuleKind]
+    [System.String]
     # Kind of the the data connection
     ${Kind},
 
@@ -114,9 +114,9 @@ param(
 
     [Parameter(ParameterSetName='Scheduled', Mandatory)]
     [Parameter(ParameterSetName='NRT', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("High", "Medium", "Low", "Informational")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity]
+    [System.String]
     ${Severity},
 
     [Parameter(ParameterSetName='Scheduled', Mandatory)]
@@ -130,9 +130,9 @@ param(
     ${QueryPeriod},
 
     [Parameter(ParameterSetName='Scheduled', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.TriggerOperator])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "Equal", "NotEqual")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.TriggerOperator]
+    [System.String]
     ${TriggerOperator},
 
     [Parameter(ParameterSetName='Scheduled', Mandatory)]
@@ -169,9 +169,9 @@ param(
 
     [Parameter(ParameterSetName='Scheduled')]
     [Parameter(ParameterSetName='NRT')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("InitialAccess", "Execution", "Persistence", "PrivilegeEscalation", "DefenseEvasion", "CredentialAccess", "Discovery", "LateralMovement", "Collection", "Exfiltration", "CommandAndControl", "Impact", "PreAttack")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String[]]
-    # [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AttackTactic]
     # InitialAccess, Execution, Persistence, PrivilegeEscalation, DefenseEvasion, CredentialAccess, Discovery, LateralMovement, Collection, Exfiltration, CommandAndControl, Impact, PreAttack
     ${Tactic},
 
@@ -209,9 +209,9 @@ param(
 
     [Parameter(ParameterSetName='Scheduled')]
     [Parameter(ParameterSetName='NRT')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("DisplayName", "Severity")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail[]]
+    [System.String[]]
     ${GroupByAlertDetail},
 
     [Parameter(ParameterSetName='Scheduled')]
@@ -222,17 +222,16 @@ param(
 
     [Parameter(ParameterSetName='Scheduled')]
     [Parameter(ParameterSetName='NRT')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Account", "Host", "IP", "Malware", "File", "Process", "CloudApplication", "DNS", "AzureResource", "FileHash", "RegistryKey", "RegistryValue", "SecurityGroup", "URL", "Mailbox", "MailCluster", "MailMessage", "SubmissionMail")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType[]]
+    [System.String[]]
     ${GroupByEntity},
 
     [Parameter(ParameterSetName='Scheduled')]
     [Parameter(ParameterSetName='NRT')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.EntityMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.EntityMapping[]]
     # 'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
-    # To construct, see NOTES section for ENTITYMAPPING properties and create a hash table.
     ${EntityMapping},
 
     [Parameter(ParameterSetName='Scheduled')]
@@ -260,15 +259,15 @@ param(
     ${AlertTacticsColumnName},
 
     [Parameter(ParameterSetName='Scheduled')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EventGroupingAggregationKind])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("SingleAlert", "AlertPerResult")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EventGroupingAggregationKind]
+    [System.String]
     ${EventGroupingSettingAggregationKind},
 
     [Parameter(ParameterSetName='MicrosoftSecurityIncidentCreation', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.MicrosoftSecurityProductName])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Microsoft Cloud App Security", "Azure Security Center", "Azure Advanced Threat Protection", "Azure Active Directory Identity Protection", "Azure Security Center for IoT", "Office 365 Advanced Threat Protection", "Microsoft Defender Advanced Threat Protection")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.MicrosoftSecurityProductName]
+    [System.String]
     ${ProductFilter},
 
     [Parameter(ParameterSetName='MicrosoftSecurityIncidentCreation')]
@@ -283,7 +282,7 @@ param(
 
     [Parameter(ParameterSetName='MicrosoftSecurityIncidentCreation')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity[]]
+    [System.String[]]
     # High, Medium, Low, Informational
     ${SeveritiesFilter},
 
@@ -354,6 +353,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -378,25 +385,23 @@ begin {
             NRT = 'Az.SecurityInsights.custom\New-AzSentinelAlertRule';
             MicrosoftSecurityIncidentCreation = 'Az.SecurityInsights.custom\New-AzSentinelAlertRule';
         }
-        if (('FusionMLTI', 'Scheduled', 'NRT', 'MicrosoftSecurityIncidentCreation') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('FusionMLTI', 'Scheduled', 'NRT', 'MicrosoftSecurityIncidentCreation') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
         }
-        if (('FusionMLTI', 'Scheduled', 'NRT', 'MicrosoftSecurityIncidentCreation') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('RuleId')) {
+        if (('FusionMLTI', 'Scheduled', 'NRT', 'MicrosoftSecurityIncidentCreation') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('RuleId') ) {
             $PSBoundParameters['RuleId'] = (New-Guid).Guid
         }
-        if (('Scheduled', 'NRT') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SuppressionDuration')) {
+        if (('Scheduled', 'NRT') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SuppressionDuration') ) {
             $PSBoundParameters['SuppressionDuration'] = New-TimeSpan -Hours 5
         }
-        if (('Scheduled', 'NRT') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('LookbackDuration')) {
+        if (('Scheduled', 'NRT') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('LookbackDuration') ) {
             $PSBoundParameters['LookbackDuration'] = New-TimeSpan -Hours 5
         }
-        if (('Scheduled', 'NRT') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('MatchingMethod')) {
+        if (('Scheduled', 'NRT') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('MatchingMethod') ) {
             $PSBoundParameters['MatchingMethod'] = "AllEntities"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -406,6 +411,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -7,31 +7,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list security policies. It contains a list of security policy objects and a URL link to get the
-    /// next set of results.
-    /// </summary>
+    /// <summary>The response of a SecurityPolicy list operation.</summary>
     public partial class SecurityPolicyListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyListResultInternal
     {
 
-        /// <summary>Internal Acessors for Value</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy> Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyListResultInternal.Value { get => this._value; set { {_value = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next set of security policy objects if there is any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy> _value;
 
-        /// <summary>List of Security policies within a profile</summary>
+        /// <summary>The SecurityPolicy items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy> Value { get => this._value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy> Value { get => this._value; set => this._value = value; }
 
         /// <summary>Creates an new <see cref="SecurityPolicyListResult" /> instance.</summary>
         public SecurityPolicyListResult()
@@ -39,43 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         }
     }
-    /// Result of the request to list security policies. It contains a list of security policy objects and a URL link to get the
-    /// next set of results.
+    /// The response of a SecurityPolicy list operation.
     public partial interface ISecurityPolicyListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next set of security policy objects if there is any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"URL to get the next set of security policy objects if there is any.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>List of Security policies within a profile</summary>
+        /// <summary>The SecurityPolicy items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"List of Security policies within a profile",
+        Create = true,
+        Update = true,
+        Description = @"The SecurityPolicy items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy> Value { get;  }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy> Value { get; set; }
 
     }
-    /// Result of the request to list security policies. It contains a list of security policy objects and a URL link to get the
-    /// next set of results.
+    /// The response of a SecurityPolicy list operation.
     internal partial interface ISecurityPolicyListResultInternal
 
     {
-        /// <summary>URL to get the next set of security policy objects if there is any.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of Security policies within a profile</summary>
+        /// <summary>The SecurityPolicy items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy> Value { get; set; }
 
     }

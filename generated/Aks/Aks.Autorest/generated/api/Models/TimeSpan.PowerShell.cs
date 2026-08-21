@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell;
 
-    /// <summary>For example, between 2021-05-25T13:00:00Z and 2021-05-25T14:00:00Z.</summary>
+    /// <summary>
+    /// A time range. For example, between 2021-05-25T13:00:00Z and 2021-05-25T14:00:00Z.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(TimeSpanTypeConverter))]
     public partial class TimeSpan
     {
@@ -162,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             return ToJsonString();
         }
     }
-    /// For example, between 2021-05-25T13:00:00Z and 2021-05-25T14:00:00Z.
+    /// A time range. For example, between 2021-05-25T13:00:00Z and 2021-05-25T14:00:00Z.
     [System.ComponentModel.TypeConverter(typeof(TimeSpanTypeConverter))]
     public partial interface ITimeSpan
 

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICheckNameAvailabilityResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Check the give Namespace name availability.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/checkNameAvailability", ApiVersion = "2024-05-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/checkNameAvailability", ApiVersion = "2026-01-01")]
     public partial class TestAzEventHubDisasterRecoveryConfigNameAvailability_CheckViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IContext
@@ -109,11 +109,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         private Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICheckNameAvailabilityParameter _parameter;
 
         /// <summary>Parameter supplied to check Namespace name availability operation</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Parameter supplied to check Namespace name availability operation ", ValueFromPipeline = true)]
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Parameter supplied to check Namespace name availability operation", ValueFromPipeline = true)]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Parameter supplied to check Namespace name availability operation ",
+        Description = @"Parameter supplied to check Namespace name availability operation",
         SerializedName = @"parameters",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICheckNameAvailabilityParameter) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Body)]

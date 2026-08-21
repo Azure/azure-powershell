@@ -15,7 +15,7 @@ creates a new GatewayCustomBgpIpConfigurationObject.
 ```
 New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId <String> -CustomBgpIpAddress <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +38,36 @@ $address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId "Inst
 The above will create a IpConfigurationBgpPeeringAddressObject.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CustomBgpIpAddress
 The virtual network gateway CustomBgpIpAddress for BgpPeeringAddresses used in connection.

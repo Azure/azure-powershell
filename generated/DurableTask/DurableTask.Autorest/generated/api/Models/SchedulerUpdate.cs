@@ -47,6 +47,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Origin(Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PropertyOrigin.Inlined)]
         public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesUpdateInternal)Property).ProvisioningState; }
 
+        /// <summary>Allow or disallow public network access to durable task scheduler</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Origin(Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PropertyOrigin.Inlined)]
+        public string PublicNetworkAccess { get => ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesUpdateInternal)Property).PublicNetworkAccess; set => ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesUpdateInternal)Property).PublicNetworkAccess = value ?? null; }
+
         /// <summary>
         /// The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy
         /// </summary>
@@ -112,6 +116,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get;  }
+        /// <summary>Allow or disallow public network access to durable task scheduler</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Allow or disallow public network access to durable task scheduler",
+        SerializedName = @"publicNetworkAccess",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PublicNetworkAccess { get; set; }
         /// <summary>
         /// The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy
         /// </summary>
@@ -175,6 +191,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models
         /// <summary>The status of the last operation</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get; set; }
+        /// <summary>Allow or disallow public network access to durable task scheduler</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PublicNetworkAccess { get; set; }
         /// <summary>SKU of the durable task scheduler</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerSkuUpdate Sku { get; set; }
         /// <summary>

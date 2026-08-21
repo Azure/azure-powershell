@@ -110,7 +110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         /// <summary>Backing field for <see cref="VirtualNetworkName" /> property.</summary>
         private string _virtualNetworkName;
 
-        /// <summary>The name of the virtual network.</summary>
+        /// <summary>The name of the VirtualNetwork</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Origin(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.PropertyOrigin.Owned)]
         public string VirtualNetworkName { get => this._virtualNetworkName; set => this._virtualNetworkName = value; }
 
@@ -127,6 +127,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the DNS forwarding ruleset.",
         SerializedName = @"dnsForwardingRulesetName",
         PossibleTypes = new [] { typeof(string) })]
@@ -135,6 +138,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the DNS resolver domain list.",
         SerializedName = @"dnsResolverDomainListName",
         PossibleTypes = new [] { typeof(string) })]
@@ -143,6 +149,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the DNS resolver.",
         SerializedName = @"dnsResolverName",
         PossibleTypes = new [] { typeof(string) })]
@@ -151,6 +160,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the DNS resolver policy.",
         SerializedName = @"dnsResolverPolicyName",
         PossibleTypes = new [] { typeof(string) })]
@@ -161,6 +173,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the DNS resolver policy virtual network link for the DNS resolver policy.",
         SerializedName = @"dnsResolverPolicyVirtualNetworkLinkName",
         PossibleTypes = new [] { typeof(string) })]
@@ -169,6 +184,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the DNS security rule.",
         SerializedName = @"dnsSecurityRuleName",
         PossibleTypes = new [] { typeof(string) })]
@@ -177,6 +195,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the forwarding rule.",
         SerializedName = @"forwardingRuleName",
         PossibleTypes = new [] { typeof(string) })]
@@ -185,6 +206,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -193,6 +217,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the inbound endpoint for the DNS resolver.",
         SerializedName = @"inboundEndpointName",
         PossibleTypes = new [] { typeof(string) })]
@@ -201,6 +228,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the outbound endpoint for the DNS resolver.",
         SerializedName = @"outboundEndpointName",
         PossibleTypes = new [] { typeof(string) })]
@@ -209,6 +239,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -217,6 +250,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -225,15 +261,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the virtual network link.",
         SerializedName = @"virtualNetworkLinkName",
         PossibleTypes = new [] { typeof(string) })]
         string VirtualNetworkLinkName { get; set; }
-        /// <summary>The name of the virtual network.</summary>
+        /// <summary>The name of the VirtualNetwork</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the virtual network.",
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the VirtualNetwork",
         SerializedName = @"virtualNetworkName",
         PossibleTypes = new [] { typeof(string) })]
         string VirtualNetworkName { get; set; }
@@ -270,7 +312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         string SubscriptionId { get; set; }
         /// <summary>The name of the virtual network link.</summary>
         string VirtualNetworkLinkName { get; set; }
-        /// <summary>The name of the virtual network.</summary>
+        /// <summary>The name of the VirtualNetwork</summary>
         string VirtualNetworkName { get; set; }
 
     }

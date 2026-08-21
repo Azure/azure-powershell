@@ -36,17 +36,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         /// </summary>
         protected CancellationToken CmdletCancellationToken { get; private set; }
 
+        /// <summary>
+        /// Forces the command to run without asking for user confirmation to overwrite existing SSH key pairs.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation to overwrite existing SSH key pairs.")]
+        public SwitchParameter Force { get; set; }
+
         protected override void BeginProcessing()
         {
             CmdletCancellationToken = cancellationTokenSource.Token;
             base.BeginProcessing();
-            WriteVerbose("Initializing SFTP cmdlet");
+            WriteVerbose($"[{MyInvocation.MyCommand.Name}] Initializing (OS: {RuntimeInformation.OSDescription}, Arch: {RuntimeInformation.OSArchitecture})");
         }
 
         protected override void EndProcessing()
         {
             base.EndProcessing();
-            WriteVerbose("SFTP cmdlet execution completed");
+            WriteVerbose($"[{MyInvocation.MyCommand.Name}] Execution completed");
         }
 
         /// <summary>
@@ -54,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         /// </summary>
         protected override void StopProcessing()
         {
-            WriteVerbose("SFTP cmdlet cancellation requested");
+            WriteVerbose($"[{MyInvocation.MyCommand.Name}] Cancellation requested by user");
             cancellationTokenSource.Cancel();
             base.StopProcessing();
         }
@@ -72,18 +78,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         }
 
         /// <summary>
+        /// Checks if SSH key pair files exist at the specified paths and prompts the user
+        /// to confirm whether to overwrite or reuse existing keys.
+        /// Returns true if new keys should be generated (no existing keys or user confirmed overwrite),
+        /// false if existing keys should be reused.
+        /// </summary>
+        /// <param name="privateKeyFile">Path to the private key file</param>
+        /// <param name="publicKeyFile">Path to the public key file</param>
+        /// <returns>True to generate new keys, false to use existing keys</returns>
+        protected bool ShouldRegenerateKeyPair(string privateKeyFile, string publicKeyFile)
+        {
+            bool privateKeyExists = !string.IsNullOrEmpty(privateKeyFile) && File.Exists(privateKeyFile);
+            bool publicKeyExists = !string.IsNullOrEmpty(publicKeyFile) && File.Exists(publicKeyFile);
+
+            if (!privateKeyExists && !publicKeyExists)
+            {
+                return true; // No existing keys, safe to generate
+            }
+
+            string keysFolder = Path.GetDirectoryName(privateKeyFile ?? publicKeyFile);
+            string existingFiles = privateKeyExists && publicKeyExists
+                ? "private key and public key"
+                : privateKeyExists ? "private key only" : "public key only";
+
+            WriteVerbose($"[KeyPair] Existing SSH key pair detected in '{keysFolder}' ({existingFiles})");
+
+            if (Force.IsPresent)
+            {
+                WriteVerbose("[KeyPair] -Force specified, will overwrite existing key pair");
+                return true;
+            }
+
+            bool shouldOverwrite = ShouldContinue(
+                $"An existing SSH key pair was found in '{keysFolder}' ({existingFiles}). " +
+                "Selecting 'Yes' will generate a new key pair and overwrite the existing files. " +
+                "Selecting 'No' will use the existing key pair for certificate generation.",
+                "Existing SSH key pair detected");
+
+            WriteVerbose(shouldOverwrite
+                ? "[KeyPair] User confirmed overwrite of existing key pair"
+                : "[KeyPair] User chose to use existing key pair");
+
+            return shouldOverwrite;
+        }
+
+        /// <summary>
         /// Validate SSH client availability
         /// </summary>
         /// <param name="sshClientFolder">Optional folder containing SSH executables</param>
         protected void ValidateSshClient(string sshClientFolder = null)
         {
-            WriteVerbose("Validating SSH client availability");
+            WriteVerbose(string.IsNullOrEmpty(sshClientFolder)
+                ? "[SSH] Validating SSH client availability from system PATH"
+                : $"[SSH] Validating SSH client availability in folder: '{sshClientFolder}'");
             
             try
             {
-                GetSshClientPath("ssh", sshClientFolder);
-                GetSshClientPath("sftp", sshClientFolder);
-                GetSshClientPath("ssh-keygen", sshClientFolder);
+                string sshPath = GetSshClientPath("ssh", sshClientFolder);
+                string sftpPath = GetSshClientPath("sftp", sshClientFolder);
+                string keygenPath = GetSshClientPath("ssh-keygen", sshClientFolder);
+                WriteVerbose($"[SSH] Found ssh: '{sshPath}', sftp: '{sftpPath}', ssh-keygen: '{keygenPath}'");
             }
             catch (Exception ex)
             {

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// in the account.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElements LiveShare { get => (this._liveShare = this._liveShare ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountUsageElements()); }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElements LiveShare { get => (this._liveShare = this._liveShare ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountUsageElements()); set => this._liveShare = value; }
 
         /// <summary>The total number of file shares.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// in the account.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElements SoftDeletedShare { get => (this._softDeletedShare = this._softDeletedShare ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountUsageElements()); }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElements SoftDeletedShare { get => (this._softDeletedShare = this._softDeletedShare ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountUsageElements()); set => this._softDeletedShare = value; }
 
         /// <summary>The total number of file shares.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]

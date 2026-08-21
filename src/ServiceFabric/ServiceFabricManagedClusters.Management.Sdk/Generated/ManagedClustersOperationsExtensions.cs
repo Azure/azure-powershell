@@ -239,162 +239,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Gets a fault simulation by the simulationId.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        public static FaultSimulation GetFaultSimulation(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, string simulationId)
-        {
-                return ((IManagedClustersOperations)operations).GetFaultSimulationAsync(resourceGroupName, clusterName, simulationId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a fault simulation by the simulationId.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<FaultSimulation> GetFaultSimulationAsync(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, string simulationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetFaultSimulationWithHttpMessagesAsync(resourceGroupName, clusterName, simulationId, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets the list of recent fault simulations for the cluster.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<FaultSimulation> ListFaultSimulation(this IManagedClustersOperations operations, string resourceGroupName, string clusterName)
-        {
-                return ((IManagedClustersOperations)operations).ListFaultSimulationAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the list of recent fault simulations for the cluster.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<FaultSimulation>> ListFaultSimulationAsync(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListFaultSimulationWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Starts a fault simulation on the cluster.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        public static FaultSimulation StartFaultSimulation(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, FaultSimulationContent parameters)
-        {
-                return ((IManagedClustersOperations)operations).StartFaultSimulationAsync(resourceGroupName, clusterName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Starts a fault simulation on the cluster.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<FaultSimulation> StartFaultSimulationAsync(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, FaultSimulationContent parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.StartFaultSimulationWithHttpMessagesAsync(resourceGroupName, clusterName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Stops a fault simulation on the cluster.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        public static FaultSimulation StopFaultSimulation(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, string simulationId)
-        {
-                return ((IManagedClustersOperations)operations).StopFaultSimulationAsync(resourceGroupName, clusterName, simulationId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Stops a fault simulation on the cluster.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<FaultSimulation> StopFaultSimulationAsync(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, string simulationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.StopFaultSimulationWithHttpMessagesAsync(resourceGroupName, clusterName, simulationId, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Create or update a Service Fabric managed cluster resource with the
         /// specified name.
         /// </summary>
@@ -436,6 +280,47 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
+        /// Update the tags of of a Service Fabric managed cluster resource with the
+        /// specified name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        public static ManagedCluster BeginUpdate(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        {
+                return ((IManagedClustersOperations)operations).BeginUpdateAsync(resourceGroupName, clusterName, tags).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Update the tags of of a Service Fabric managed cluster resource with the
+        /// specified name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedCluster> BeginUpdateAsync(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, tags, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Delete a Service Fabric managed cluster resource with the specified name.
         /// </summary>
         /// <param name='operations'>
@@ -472,84 +357,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// Starts a fault simulation on the cluster.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        public static FaultSimulation BeginStartFaultSimulation(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, FaultSimulationContent parameters)
-        {
-                return ((IManagedClustersOperations)operations).BeginStartFaultSimulationAsync(resourceGroupName, clusterName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Starts a fault simulation on the cluster.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<FaultSimulation> BeginStartFaultSimulationAsync(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, FaultSimulationContent parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginStartFaultSimulationWithHttpMessagesAsync(resourceGroupName, clusterName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Stops a fault simulation on the cluster.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        public static FaultSimulation BeginStopFaultSimulation(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, string simulationId)
-        {
-                return ((IManagedClustersOperations)operations).BeginStopFaultSimulationAsync(resourceGroupName, clusterName, simulationId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Stops a fault simulation on the cluster.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<FaultSimulation> BeginStopFaultSimulationAsync(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, string simulationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginStopFaultSimulationWithHttpMessagesAsync(resourceGroupName, clusterName, simulationId, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
             }
         }
         /// <summary>
@@ -618,39 +425,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ManagedCluster>> ListByResourceGroupNextAsync(this IManagedClustersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets the list of recent fault simulations for the cluster.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<FaultSimulation> ListFaultSimulationNext(this IManagedClustersOperations operations, string nextPageLink)
-        {
-                return ((IManagedClustersOperations)operations).ListFaultSimulationNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the list of recent fault simulations for the cluster.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<FaultSimulation>> ListFaultSimulationNextAsync(this IManagedClustersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListFaultSimulationNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

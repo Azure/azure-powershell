@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdScalingPlan
 
 ## SYNOPSIS
-create a scaling plan.
+Create a scaling plan.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ New-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> -JsonString <Str
 ```
 
 ## DESCRIPTION
-create a scaling plan.
+Create a scaling plan.
 
 ## EXAMPLES
 
@@ -227,7 +227,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identity type.
+Type of managed service identity (either system assigned, or none).
 
 ```yaml
 Type: System.String
@@ -272,8 +272,7 @@ Accept wildcard characters: False
 ```
 
 ### -Kind
-Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
-E.g.
+Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
 ApiApps are a kind of Microsoft.Web/sites type.
 If supported, the resource provider must validate and persist this value.
 

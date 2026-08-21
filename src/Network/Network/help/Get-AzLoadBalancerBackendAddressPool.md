@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzLoadBalancerBackendAddressPool
 
 ## SYNOPSIS
-Get-AzLoadBalancerBackendAddressPool retrieves one or more backend address pools associated with a load balancer. 
+Get-AzLoadBalancerBackendAddressPool retrieves one or more backend address pools associated with a load balancer.
 
 ## SYNTAX
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -LoadBalancer
-{{ Fill LoadBalancer Description }}
+Specifies a **LoadBalancer** object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer

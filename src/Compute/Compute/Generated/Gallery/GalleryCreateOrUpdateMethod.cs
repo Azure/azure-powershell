@@ -92,6 +92,42 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         gallery.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
+                    bool hasSystemAssigned = this.IsParameterBound(c => c.EnableSystemAssignedIdentity) && this.EnableSystemAssignedIdentity.IsPresent;
+                    bool hasUserAssigned = this.IsParameterBound(c => c.UserAssignedIdentity)
+                        && this.UserAssignedIdentity != null
+                        && this.UserAssignedIdentity.Length > 0;
+
+                    if (hasUserAssigned && this.UserAssignedIdentity.Any(id => string.IsNullOrWhiteSpace(id)))
+                    {
+                        throw new ArgumentException("Parameter '-UserAssignedIdentity' does not accept null or empty values.");
+                    }
+
+                    if (hasSystemAssigned || hasUserAssigned)
+                    {
+                        gallery.Identity = new GalleryIdentity();
+
+                        if (hasSystemAssigned && hasUserAssigned)
+                        {
+                            gallery.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
+                        }
+                        else if (hasSystemAssigned)
+                        {
+                            gallery.Identity.Type = ResourceIdentityType.SystemAssigned;
+                        }
+                        else
+                        {
+                            gallery.Identity.Type = ResourceIdentityType.UserAssigned;
+                        }
+
+                        if (hasUserAssigned)
+                        {
+                            gallery.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>(StringComparer.OrdinalIgnoreCase);
+                            foreach (var id in this.UserAssignedIdentity.Distinct(StringComparer.OrdinalIgnoreCase))
+                            {
+                                gallery.Identity.UserAssignedIdentities[id] = new UserAssignedIdentitiesValue();
+                            }
+                        }
+                    }
 
                     var result = GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
                     var psObject = new PSGallery();
@@ -169,6 +205,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Gets or sets the prefix of the gallery name that will be displayed publicly. Visible to all users.")]
         public string PublicNamePrefix { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enables system-assigned managed identity on the gallery.")]
+        public SwitchParameter EnableSystemAssignedIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of user-assigned managed identity resource IDs to associate with the gallery. The resource IDs are in the form '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
+        public string[] UserAssignedIdentity { get; set; }
+
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Gallery", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
@@ -201,11 +248,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
 
                     Gallery gallery = new Gallery();
+                    GalleryUpdate galleryUpdate = new GalleryUpdate();
                     CommunityGalleryInfo communityGalleryInfo = new CommunityGalleryInfo();
 
                     if (this.ParameterSetName == "ObjectParameter")
                     {
                         ComputeAutomationAutoMapperProfile.Mapper.Map<PSGallery, Gallery>(this.InputObject, gallery);
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<PSGallery, GalleryUpdate>(this.InputObject, galleryUpdate);
                     }
                     else
                     {
@@ -214,7 +263,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     if (this.IsParameterBound(c => c.Description))
                     {
-                        gallery.Description = this.Description;
+                        galleryUpdate.Description = this.Description;
                     }
 
                     if (this.IsParameterBound(c => c.PublisherUri))
@@ -239,25 +288,139 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     if (this.IsParameterBound(c => c.Tag))
                     {
-                        gallery.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
+                        galleryUpdate.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
+                    }
+
+                    bool hasSystemAssigned = this.IsParameterBound(c => c.EnableSystemAssignedIdentity) && this.EnableSystemAssignedIdentity.IsPresent;
+                    bool hasUserAssigned = this.IsParameterBound(c => c.UserAssignedIdentity) && this.UserAssignedIdentity != null && this.UserAssignedIdentity.Length > 0;
+                    bool disableSystem = this.IsParameterBound(c => c.DisableSystemAssignedIdentity) && this.DisableSystemAssignedIdentity.IsPresent;
+                    bool removeUserBound = this.IsParameterBound(c => c.RemoveUserAssignedIdentity) && this.RemoveUserAssignedIdentity != null && this.RemoveUserAssignedIdentity.Length > 0;
+                    bool removeAllUser = removeUserBound && this.RemoveUserAssignedIdentity.Any(id => string.Equals(id, "All", StringComparison.OrdinalIgnoreCase));
+
+                    if (hasUserAssigned && this.UserAssignedIdentity.Any(id => string.IsNullOrWhiteSpace(id)))
+                    {
+                        throw new ArgumentException("Parameter '-UserAssignedIdentity' does not accept null or empty values.");
+                    }
+
+                    if (removeUserBound && !removeAllUser && this.RemoveUserAssignedIdentity.Any(id => string.IsNullOrWhiteSpace(id)))
+                    {
+                        throw new ArgumentException("Parameter '-RemoveUserAssignedIdentity' does not accept null or empty values.");
+                    }
+
+                    if (hasSystemAssigned && disableSystem)
+                    {
+                        throw new ArgumentException("Parameters '-EnableSystemAssignedIdentity' and '-DisableSystemAssignedIdentity' cannot be used together.");
+                    }
+
+                    if (hasUserAssigned && removeAllUser)
+                    {
+                        throw new ArgumentException("Parameters '-UserAssignedIdentity' and '-RemoveUserAssignedIdentity All' cannot be used together.");
+                    }
+
+                    if (hasSystemAssigned || hasUserAssigned || disableSystem || removeUserBound)
+                    {
+                        galleryUpdate.Identity = new GalleryIdentity();
+
+                        // Merge with the existing identity type on the resource
+                        var existingType = gallery.Identity?.Type;
+                        bool existingHasSystem = existingType == ResourceIdentityType.SystemAssigned
+                            || existingType == ResourceIdentityType.SystemAssignedUserAssigned;
+                        bool existingHasUser = existingType == ResourceIdentityType.UserAssigned
+                            || existingType == ResourceIdentityType.SystemAssignedUserAssigned;
+
+                        bool wantSystem = (hasSystemAssigned || existingHasSystem) && !disableSystem;
+                        bool wantUser = (hasUserAssigned || existingHasUser) && !removeAllUser;
+
+                        if (wantSystem && wantUser)
+                        {
+                            galleryUpdate.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
+                        }
+                        else if (wantSystem)
+                        {
+                            galleryUpdate.Identity.Type = ResourceIdentityType.SystemAssigned;
+                        }
+                        else if (wantUser)
+                        {
+                            galleryUpdate.Identity.Type = ResourceIdentityType.UserAssigned;
+                        }
+                        else
+                        {
+                            galleryUpdate.Identity.Type = ResourceIdentityType.None;
+                        }
+
+                        if (removeAllUser && wantSystem)
+                        {
+                            // Type is SystemAssigned (not None) — explicitly null out all user identities via PATCH
+                            var existingKeys = gallery.Identity?.UserAssignedIdentities?.Keys;
+                            if (existingKeys != null && existingKeys.Count > 0)
+                            {
+                                galleryUpdate.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
+                                foreach (var existingKey in existingKeys)
+                                {
+                                    galleryUpdate.Identity.UserAssignedIdentities[existingKey] = null;
+                                }
+                            }
+                        }
+                        // When type is None, don't include userAssignedIdentities — the API rejects identity ids with type None
+                        else if (hasUserAssigned || (removeUserBound && !removeAllUser))
+                        {
+                            galleryUpdate.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>(StringComparer.OrdinalIgnoreCase);
+
+                            // Null out specific identities being removed
+                            if (removeUserBound && !removeAllUser)
+                            {
+                                foreach (var id in this.RemoveUserAssignedIdentity.Distinct(StringComparer.OrdinalIgnoreCase))
+                                {
+                                    galleryUpdate.Identity.UserAssignedIdentities[id] = null;
+                                }
+                            }
+
+                            // Append the desired identities
+                            if (hasUserAssigned)
+                            {
+                                foreach (var id in this.UserAssignedIdentity.Distinct(StringComparer.OrdinalIgnoreCase))
+                                {
+                                    galleryUpdate.Identity.UserAssignedIdentities[id] = new UserAssignedIdentitiesValue();
+                                }
+                            }
+                        }
                     }
 
                     if (this.IsParameterBound(c => c.Permission))
                     {
-                        if (gallery.SharingProfile == null)
+                        if (galleryUpdate.SharingProfile == null)
                         {
-                            gallery.SharingProfile = new SharingProfile();
+                            galleryUpdate.SharingProfile = new SharingProfile();
                         }
-                        gallery.SharingProfile.Permissions = this.Permission;
+                        galleryUpdate.SharingProfile.Permissions = this.Permission;
 
-                        if (gallery.SharingProfile.Permissions.ToLower() == "community")
+                        if (string.Equals(this.Permission, "community", StringComparison.OrdinalIgnoreCase))
                         {
-                            gallery.SharingProfile.CommunityGalleryInfo = communityGalleryInfo;
+                            galleryUpdate.SharingProfile.CommunityGalleryInfo = communityGalleryInfo;
                         }
 
                     }
                     
                     SharingUpdate sharingUpdate = new SharingUpdate();
+
+                    bool isSharingOperation = this.Share.IsPresent || this.Community.IsPresent || this.Reset.IsPresent;
+                    if (isSharingOperation)
+                    {
+                        // Sharing operations use a separate API call that does not send galleryUpdate,
+                        // so reject parameters that would be silently discarded.
+                        bool hasNonSharingParams = this.IsParameterBound(c => c.Description)
+                            || this.IsParameterBound(c => c.Tag)
+                            || hasSystemAssigned || hasUserAssigned || disableSystem || removeUserBound;
+
+                        if (hasNonSharingParams)
+                        {
+                            throw new ArgumentException(
+                                "Parameters '-Description', '-Tag', '-EnableSystemAssignedIdentity', '-DisableSystemAssignedIdentity', "
+                                + "'-UserAssignedIdentity', and '-RemoveUserAssignedIdentity' cannot be combined with '-Share', '-Community', or '-Reset'. "
+                                + "Please run the sharing update and property update as separate commands.");
+                        }
+                    }
+
                     if (this.Reset.IsPresent)
                     {
                         sharingUpdate.OperationType = "Reset";
@@ -367,11 +530,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.Share.IsPresent || this.Community.IsPresent || this.Reset.IsPresent)
                     {
                         GallerySharingProfileClient.Update(resourceGroupName, galleryName, sharingUpdate);
-                        result = GalleriesClient.Get(ResourceGroupName, galleryName, "Permissions");
+                        result = GalleriesClient.Get(resourceGroupName, galleryName, "Permissions");
                     }
                     else
                     {
-                        GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
+                        result = GalleriesClient.Update(resourceGroupName, galleryName, galleryUpdate);
                     }
                     var psObject = new PSGallery();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<Gallery, PSGallery>(result, psObject);
@@ -496,5 +659,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Gets or sets the prefix of the gallery name that will be displayed publicly. Visible to all users.")]
         public string PublicNamePrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enables system-assigned managed identity on the gallery.")]
+        public SwitchParameter EnableSystemAssignedIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Disables system-assigned managed identity on the gallery.")]
+        public SwitchParameter DisableSystemAssignedIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of user-assigned managed identity resource IDs to associate with the gallery. The resource IDs are in the form '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
+        public string[] UserAssignedIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of user-assigned managed identity resource IDs to remove from the gallery, or 'All' to remove all user-assigned identities.")]
+        public string[] RemoveUserAssignedIdentity { get; set; }
     }
 }

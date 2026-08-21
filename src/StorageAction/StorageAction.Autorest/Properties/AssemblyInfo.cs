@@ -19,12 +19,8 @@ using System.Runtime.InteropServices;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Microsoft")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Microsoft")]
 [assembly: System.Reflection.AssemblyProductAttribute("Microsoft Azure PowerShell")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Microsoft Azure PowerShell - StorageAction")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("0.1.2")]
-[assembly: System.Reflection.AssemblyVersionAttribute("0.1.2")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Microsoft Azure PowerShell - StorageActionsManagementClient")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0")]
 [assembly: System.Runtime.InteropServices.ComVisibleAttribute(false)]
 [assembly: System.CLSCompliantAttribute(false)]
-
-
-
-

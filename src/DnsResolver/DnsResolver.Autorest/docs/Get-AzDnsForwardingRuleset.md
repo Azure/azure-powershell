@@ -12,7 +12,7 @@ Gets a DNS forwarding ruleset properties.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzDnsForwardingRuleset [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -30,7 +30,7 @@ Get-AzDnsForwardingRuleset -InputObject <IDnsResolverIdentity> [-DefaultProfile 
  [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzDnsForwardingRuleset -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -126,7 +126,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
@@ -161,7 +160,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List2
+Parameter Sets: Get, List1, List2
 Aliases:
 
 Required: True
@@ -204,7 +203,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkName
-The name of the virtual network.
+The name of the VirtualNetwork
 
 ```yaml
 Type: System.String
@@ -258,9 +257,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsForwardingRuleset
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsForwardingRuleset
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IVirtualNetworkDnsForwardingRuleset
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IVirtualNetworkDnsForwardingRuleset
 
 ## NOTES
 

@@ -82,6 +82,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {_privateDnsZone = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("privateDNSZone"), out var __jsonPrivateDnsZone) ? (string)__jsonPrivateDnsZone : (string)_privateDnsZone;}
             {_enablePrivateClusterPublicFqdn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonBoolean>("enablePrivateClusterPublicFQDN"), out var __jsonEnablePrivateClusterPublicFqdn) ? (bool?)__jsonEnablePrivateClusterPublicFqdn : _enablePrivateClusterPublicFqdn;}
             {_disableRunCommand = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonBoolean>("disableRunCommand"), out var __jsonDisableRunCommand) ? (bool?)__jsonDisableRunCommand : _disableRunCommand;}
+            {_enableVnetIntegration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonBoolean>("enableVnetIntegration"), out var __jsonEnableVnetIntegration) ? (bool?)__jsonEnableVnetIntegration : _enableVnetIntegration;}
+            {_subnetId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("subnetId"), out var __jsonSubnetId) ? (string)__jsonSubnetId : (string)_subnetId;}
             AfterFromJson(json);
         }
 
@@ -118,6 +120,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             AddIf( null != (((object)this._privateDnsZone)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._privateDnsZone.ToString()) : null, "privateDNSZone" ,container.Add );
             AddIf( null != this._enablePrivateClusterPublicFqdn ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonBoolean((bool)this._enablePrivateClusterPublicFqdn) : null, "enablePrivateClusterPublicFQDN" ,container.Add );
             AddIf( null != this._disableRunCommand ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonBoolean((bool)this._disableRunCommand) : null, "disableRunCommand" ,container.Add );
+            AddIf( null != this._enableVnetIntegration ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonBoolean((bool)this._enableVnetIntegration) : null, "enableVnetIntegration" ,container.Add );
+            AddIf( null != (((object)this._subnetId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._subnetId.ToString()) : null, "subnetId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

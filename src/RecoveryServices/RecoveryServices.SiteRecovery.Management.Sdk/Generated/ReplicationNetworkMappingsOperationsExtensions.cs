@@ -19,14 +19,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -43,14 +42,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -72,14 +70,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -99,14 +96,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -131,14 +127,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -158,14 +153,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -184,76 +178,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
         }
         /// <summary>
-        /// The operation to delete a network mapping.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='fabricName'>
-        /// Primary fabric name.
-        /// </param>
-        /// <param name='networkName'>
-        /// Primary network name.
-        /// </param>
-        /// <param name='networkMappingName'>
-        /// ARM Resource Name for network mapping.
-        /// </param>
-        public static void Delete(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName)
-        {
-                ((IReplicationNetworkMappingsOperations)operations).DeleteAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// The operation to delete a network mapping.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='fabricName'>
-        /// Primary fabric name.
-        /// </param>
-        /// <param name='networkName'>
-        /// Primary network name.
-        /// </param>
-        /// <param name='networkMappingName'>
-        /// ARM Resource Name for network mapping.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// The operation to update an ASR network mapping.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -273,14 +210,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -299,14 +235,70 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
         }
         /// <summary>
+        /// The operation to delete a network mapping.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='networkName'>
+        /// Primary network name.
+        /// </param>
+        /// <param name='networkMappingName'>
+        /// Network mapping name.
+        /// </param>
+        public static ReplicationNetworkMappingsDeleteHeaders Delete(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName)
+        {
+                return ((IReplicationNetworkMappingsOperations)operations).DeleteAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// The operation to delete a network mapping.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='networkName'>
+        /// Primary network name.
+        /// </param>
+        /// <param name='networkMappingName'>
+        /// Network mapping name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationNetworkMappingsDeleteHeaders> DeleteAsync(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Lists all ASR network mappings in the vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.
@@ -323,8 +315,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.
@@ -346,14 +337,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -373,14 +363,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -399,76 +388,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
         }
         /// <summary>
-        /// The operation to delete a network mapping.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='fabricName'>
-        /// Primary fabric name.
-        /// </param>
-        /// <param name='networkName'>
-        /// Primary network name.
-        /// </param>
-        /// <param name='networkMappingName'>
-        /// ARM Resource Name for network mapping.
-        /// </param>
-        public static void BeginDelete(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName)
-        {
-                ((IReplicationNetworkMappingsOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// The operation to delete a network mapping.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='fabricName'>
-        /// Primary fabric name.
-        /// </param>
-        /// <param name='networkName'>
-        /// Primary network name.
-        /// </param>
-        /// <param name='networkMappingName'>
-        /// ARM Resource Name for network mapping.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// The operation to update an ASR network mapping.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -488,14 +420,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -511,6 +442,63 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// The operation to delete a network mapping.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='networkName'>
+        /// Primary network name.
+        /// </param>
+        /// <param name='networkMappingName'>
+        /// Network mapping name.
+        /// </param>
+        public static ReplicationNetworkMappingsDeleteHeaders BeginDelete(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName)
+        {
+                return ((IReplicationNetworkMappingsOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// The operation to delete a network mapping.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='networkName'>
+        /// Primary network name.
+        /// </param>
+        /// <param name='networkMappingName'>
+        /// Network mapping name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationNetworkMappingsDeleteHeaders> BeginDeleteAsync(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>

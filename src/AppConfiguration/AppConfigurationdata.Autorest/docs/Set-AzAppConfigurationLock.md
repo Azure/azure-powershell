@@ -13,9 +13,9 @@ Locks a key-value.
 ## SYNTAX
 
 ```
-Set-AzAppConfigurationLock -Endpoint <String> -Key <String> [-Label <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] [-SyncToken <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzAppConfigurationLock -Endpoint <String> -Key <String> [-Label <String>] [-ClientRequestId <String>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-SyncToken <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +45,21 @@ Lock a key-value in an App Configuration store.
 This key-value will be locked and can not be modified.
 
 ## PARAMETERS
+
+### -ClientRequestId
+An opaque, globally-unique, client-generated string identifier for the request.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -78,7 +93,8 @@ Accept wildcard characters: False
 ```
 
 ### -IfMatch
-Used to perform an operation only if the targeted resource's etag matches the value provided.
+Used to perform an operation only if the targeted resource's etag matches the
+value provided.
 
 ```yaml
 Type: System.String
@@ -93,7 +109,8 @@ Accept wildcard characters: False
 ```
 
 ### -IfNoneMatch
-Used to perform an operation only if the targeted resource's etag does not match the value provided.
+Used to perform an operation only if the targeted resource's etag does not
+match the value provided.
 
 ```yaml
 Type: System.String

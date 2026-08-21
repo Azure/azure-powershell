@@ -22,7 +22,8 @@ Create a in-memory object for EnvironmentVariable
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceEnvironmentVariableObject
 #>
 function New-AzContainerInstanceEnvironmentVariableObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.EnvironmentVariable')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.EnvironmentVariable')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -38,7 +39,7 @@ function New-AzContainerInstanceEnvironmentVariableObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.EnvironmentVariable]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.EnvironmentVariable]::New()
         if ($PSBoundParameters.ContainsKey('SecureValue')) {
             $psTxt = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['SecureValue']
         }

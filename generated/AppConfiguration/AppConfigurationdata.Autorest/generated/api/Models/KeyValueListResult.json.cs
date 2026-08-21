@@ -78,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
                 return;
             }
             {_item = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonArray>("items"), out var __jsonItems) ? If( __jsonItems as Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue) (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.KeyValue.FromJson(__u) )) ))() : null : _item;}
+            {_etag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("etag"), out var __jsonEtag) ? (string)__jsonEtag : (string)_etag;}
             {_nextLink = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("@nextLink"), out var __jsonNextLink) ? (string)__jsonNextLink : (string)_nextLink;}
             AfterFromJson(json);
         }
@@ -110,6 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
                 }
                 container.Add("items",__w);
             }
+            AddIf( null != (((object)this._etag)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString(this._etag.ToString()) : null, "etag" ,container.Add );
             AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "@nextLink" ,container.Add );
             AfterToJson(ref container);
             return container;

@@ -13,9 +13,11 @@ Describe 'PolicyObjectPiping' {
         $array = @("westus", "eastus")
 
         # make a policy definition and policy set definition that references it
-        $policyDefinition = New-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -Policy "$testFilesFolder\SamplePolicyDefinitionObject.json" -Description $description
+        $policyDefinition = New-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -Policy "$testFilesFolder\SamplePolicyDefinitionObject.json" -Description $description 
+        $policyDefinition = New-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -Policy "$testFilesFolder\SamplePolicyDefinitionObject.json" -Description $description -Version $someNewVersion
         $policySet = "[{""policyDefinitionId"":""" + $policyDefinition.Id + """}]"
-        $expected = New-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -PolicyDefinition $policySet -Description $description
+        $policySetDefinition = New-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -PolicyDefinition $policySet -Description $description 
+        $policySetDefinition = New-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -PolicyDefinition $policySet -Description $description -Version $someNewVersion
     }
 
     It 'Make policy assignment from piped definition' {
@@ -93,6 +95,11 @@ Describe 'PolicyObjectPiping' {
         $updatedDescription | Should -Be $expected.Description
     }
 
+    It 'Update policy definition version from piped object' {
+        { Get-AzPolicyDefinition -Name $policyDefName -Version $defaultVersion | Update-AzPolicyDefinition -Description $updatedDescription } | Should -Throw $oldVersionsImmutable
+        { Get-AzPolicyDefinition -Name $policyDefName -Version $someNewVersion | Update-AzPolicyDefinition -Description $updatedDescription } | Should -Throw $oldVersionsImmutable
+    }
+
     It 'Update policy set definition from piped object' {
         # update the policy set definition
         $actual = Get-AzPolicySetDefinition -Name $policySetDefName | Update-AzPolicySetDefinition -Description $updatedDescription
@@ -106,6 +113,11 @@ Describe 'PolicyObjectPiping' {
         $expected.Id | Should -Be $actual.Id
         $updatedDescription | Should -Be $actual.Description
         $updatedDescription | Should -Be $expected.Description
+    }
+
+    It 'Update policy set definition version from piped object' {
+        { Get-AzPolicySetDefinition -Name $policySetDefName -Version $defaultVersion | Update-AzPolicySetDefinition -Description $updatedDescription } | Should -Throw $oldVersionsImmutable
+        { Get-AzPolicySetDefinition -Name $policySetDefName -Version $someNewVersion | Update-AzPolicySetDefinition -Description $updatedDescription } | Should -Throw $oldVersionsImmutable
     }
 
     It 'Update policy assignment from pipline and command line' {
@@ -127,7 +139,9 @@ Describe 'PolicyObjectPiping' {
     AfterAll {
         # clean up
         $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $rgScope | Remove-AzPolicyAssignment -PassThru
+        $remove = (Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -Version $defaultVersion | Remove-AzPolicySetDefinition -Force -PassThru) -and $remove
         $remove = (Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId | Remove-AzPolicySetDefinition -Force -PassThru) -and $remove
+        $remove = (Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -Version $defaultVersion | Remove-AzPolicyDefinition -Force -PassThru) -and $remove
         $remove = (Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId | Remove-AzPolicyDefinition -Force -PassThru) -and $remove
         $remove | Should -Be $true
 

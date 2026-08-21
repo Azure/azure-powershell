@@ -70,21 +70,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
             switch ( json.StringProperty("type") )
             {
-                case "UrlSigningKey":
+                case "MtlsCertificateChain":
                 {
-                    return new UrlSigningKeyParameters(json);
+                    return new AfdSecretMtlsCertificateChain(json);
                 }
-                case "ManagedCertificate":
+                case "AzureFirstPartyManagedCertificate":
                 {
-                    return new ManagedCertificateParameters(json);
+                    return new AzureFirstPartyManagedCertificateParameters(json);
                 }
                 case "CustomerCertificate":
                 {
                     return new CustomerCertificateParameters(json);
                 }
-                case "AzureFirstPartyManagedCertificate":
+                case "ManagedCertificate":
                 {
-                    return new AzureFirstPartyManagedCertificateParameters(json);
+                    return new ManagedCertificateParameters(json);
+                }
+                case "UrlSigningKey":
+                {
+                    return new UrlSigningKeyParameters(json);
                 }
             }
             return new SecretParameters(json);

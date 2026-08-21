@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// resource.
         /// </param>
 
-        /// <param name="etag">String representing unique etag for the resource document.
+        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
         public IpamPool(string location, IpamPoolProperties properties, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string))
 
@@ -74,7 +74,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public IpamPoolProperties Properties {get; set; }
 
         /// <summary>
-        /// Gets string representing unique etag for the resource document.
+        /// Gets a unique read-only string that changes whenever the resource is
+        /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }

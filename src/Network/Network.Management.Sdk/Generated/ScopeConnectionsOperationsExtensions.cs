@@ -13,145 +13,13 @@ namespace Microsoft.Azure.Management.Network
     public static partial class ScopeConnectionsOperationsExtensions
     {
         /// <summary>
-        /// Creates or updates scope connection from Network Manager
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='scopeConnectionName'>
-        /// Name for the cross-tenant connection.
-        /// </param>
-        public static ScopeConnection CreateOrUpdate(this IScopeConnectionsOperations operations, string resourceGroupName, string networkManagerName, string scopeConnectionName, ScopeConnection parameters)
-        {
-                return ((IScopeConnectionsOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkManagerName, scopeConnectionName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates scope connection from Network Manager
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='scopeConnectionName'>
-        /// Name for the cross-tenant connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ScopeConnection> CreateOrUpdateAsync(this IScopeConnectionsOperations operations, string resourceGroupName, string networkManagerName, string scopeConnectionName, ScopeConnection parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkManagerName, scopeConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Get specified scope connection created by this Network Manager.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='scopeConnectionName'>
-        /// Name for the cross-tenant connection.
-        /// </param>
-        public static ScopeConnection Get(this IScopeConnectionsOperations operations, string resourceGroupName, string networkManagerName, string scopeConnectionName)
-        {
-                return ((IScopeConnectionsOperations)operations).GetAsync(resourceGroupName, networkManagerName, scopeConnectionName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Get specified scope connection created by this Network Manager.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='scopeConnectionName'>
-        /// Name for the cross-tenant connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ScopeConnection> GetAsync(this IScopeConnectionsOperations operations, string resourceGroupName, string networkManagerName, string scopeConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkManagerName, scopeConnectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Delete the pending scope connection created by this network manager.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='scopeConnectionName'>
-        /// Name for the cross-tenant connection.
-        /// </param>
-        public static void Delete(this IScopeConnectionsOperations operations, string resourceGroupName, string networkManagerName, string scopeConnectionName)
-        {
-                ((IScopeConnectionsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, scopeConnectionName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Delete the pending scope connection created by this network manager.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='scopeConnectionName'>
-        /// Name for the cross-tenant connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IScopeConnectionsOperations operations, string resourceGroupName, string networkManagerName, string scopeConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, scopeConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// List all scope connections created by this network manager.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -178,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -202,6 +70,138 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Get specified scope connection created by this Network Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='scopeConnectionName'>
+        /// Name for the cross-tenant connection.
+        /// </param>
+        public static ScopeConnection Get(this IScopeConnectionsOperations operations, string resourceGroupName, string networkManagerName, string scopeConnectionName)
+        {
+                return ((IScopeConnectionsOperations)operations).GetAsync(resourceGroupName, networkManagerName, scopeConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get specified scope connection created by this Network Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='scopeConnectionName'>
+        /// Name for the cross-tenant connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ScopeConnection> GetAsync(this IScopeConnectionsOperations operations, string resourceGroupName, string networkManagerName, string scopeConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkManagerName, scopeConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates scope connection from Network Manager
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='scopeConnectionName'>
+        /// Name for the cross-tenant connection.
+        /// </param>
+        public static ScopeConnection CreateOrUpdate(this IScopeConnectionsOperations operations, string resourceGroupName, string networkManagerName, string scopeConnectionName, ScopeConnection parameters)
+        {
+                return ((IScopeConnectionsOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkManagerName, scopeConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates scope connection from Network Manager
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='scopeConnectionName'>
+        /// Name for the cross-tenant connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ScopeConnection> CreateOrUpdateAsync(this IScopeConnectionsOperations operations, string resourceGroupName, string networkManagerName, string scopeConnectionName, ScopeConnection parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkManagerName, scopeConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Delete the pending scope connection created by this network manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='scopeConnectionName'>
+        /// Name for the cross-tenant connection.
+        /// </param>
+        public static void Delete(this IScopeConnectionsOperations operations, string resourceGroupName, string networkManagerName, string scopeConnectionName)
+        {
+                ((IScopeConnectionsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, scopeConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete the pending scope connection created by this network manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='scopeConnectionName'>
+        /// Name for the cross-tenant connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IScopeConnectionsOperations operations, string resourceGroupName, string networkManagerName, string scopeConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, scopeConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// List all scope connections created by this network manager.

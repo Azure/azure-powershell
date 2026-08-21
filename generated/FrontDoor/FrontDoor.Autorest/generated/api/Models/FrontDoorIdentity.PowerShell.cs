@@ -120,9 +120,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).PolicyName = (string) content.GetValueForProperty("PolicyName",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).PolicyName, global::System.Convert.ToString);
             }
+            if (content.Contains("ProfileName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).ProfileName, global::System.Convert.ToString);
+            }
             if (content.Contains("FrontDoorName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).FrontDoorName = (string) content.GetValueForProperty("FrontDoorName",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).FrontDoorName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExperimentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).ExperimentName = (string) content.GetValueForProperty("ExperimentName",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).ExperimentName, global::System.Convert.ToString);
             }
             if (content.Contains("FrontendEndpointName"))
             {
@@ -165,9 +173,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).PolicyName = (string) content.GetValueForProperty("PolicyName",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).PolicyName, global::System.Convert.ToString);
             }
+            if (content.Contains("ProfileName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).ProfileName, global::System.Convert.ToString);
+            }
             if (content.Contains("FrontDoorName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).FrontDoorName = (string) content.GetValueForProperty("FrontDoorName",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).FrontDoorName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExperimentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).ExperimentName = (string) content.GetValueForProperty("ExperimentName",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal)this).ExperimentName, global::System.Convert.ToString);
             }
             if (content.Contains("FrontendEndpointName"))
             {

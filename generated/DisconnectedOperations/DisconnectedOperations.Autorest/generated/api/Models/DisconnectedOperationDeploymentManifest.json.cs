@@ -63,6 +63,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             {
                 return;
             }
+            {_billingConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonObject>("billingConfiguration"), out var __jsonBillingConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BillingConfiguration.FromJson(__jsonBillingConfiguration) : _billingConfiguration;}
+            {_benefitPlan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonObject>("benefitPlans"), out var __jsonBenefitPlans) ? Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BenefitPlans.FromJson(__jsonBenefitPlans) : _benefitPlan;}
             {_resourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonString>("resourceId"), out var __jsonResourceId) ? (string)__jsonResourceId : (string)_resourceId;}
             {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)_resourceName;}
             {_stampId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonString>("stampId"), out var __jsonStampId) ? (string)__jsonStampId : (string)_stampId;}
@@ -105,6 +107,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             if (returnNow)
             {
                 return container;
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._billingConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonNode) this._billingConfiguration.ToJson(null,serializationMode) : null, "billingConfiguration" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._benefitPlan ? (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonNode) this._benefitPlan.ToJson(null,serializationMode) : null, "benefitPlans" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.SerializationMode.IncludeRead))
             {

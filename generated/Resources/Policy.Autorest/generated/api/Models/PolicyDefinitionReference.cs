@@ -20,6 +20,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
         public string DefinitionVersion { get => this._definitionVersion; set => this._definitionVersion = value; }
 
+        /// <summary>Backing field for <see cref="EffectiveDefinitionVersion" /> property.</summary>
+        private string _effectiveDefinitionVersion;
+
+        /// <summary>
+        /// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public string EffectiveDefinitionVersion { get => this._effectiveDefinitionVersion; }
+
         /// <summary>Backing field for <see cref="GroupName" /> property.</summary>
         private System.Collections.Generic.List<string> _groupName;
 
@@ -35,6 +44,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
+
+        /// <summary>Backing field for <see cref="LatestDefinitionVersion" /> property.</summary>
+        private string _latestDefinitionVersion;
+
+        /// <summary>
+        /// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public string LatestDefinitionVersion { get => this._latestDefinitionVersion; }
+
+        /// <summary>Internal Acessors for EffectiveDefinitionVersion</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal.EffectiveDefinitionVersion { get => this._effectiveDefinitionVersion; set { {_effectiveDefinitionVersion = value;} } }
+
+        /// <summary>Internal Acessors for LatestDefinitionVersion</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal.LatestDefinitionVersion { get => this._latestDefinitionVersion; set { {_latestDefinitionVersion = value;} } }
 
         /// <summary>Backing field for <see cref="Parameter" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IParameterValues _parameter;
@@ -73,6 +97,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         SerializedName = @"definitionVersion",
         PossibleTypes = new [] { typeof(string) })]
         string DefinitionVersion { get; set; }
+        /// <summary>
+        /// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.",
+        SerializedName = @"effectiveDefinitionVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string EffectiveDefinitionVersion { get;  }
         /// <summary>The name of the groups that this policy definition reference belongs to.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
         Required = false,
@@ -97,6 +134,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         SerializedName = @"policyDefinitionReferenceId",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>
+        /// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The latest version of the policy definition available. This is only present if requested via the $expand query parameter.",
+        SerializedName = @"latestDefinitionVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string LatestDefinitionVersion { get;  }
         /// <summary>
         /// The parameter values for the referenced policy rule. The keys are the parameter names.
         /// </summary>
@@ -129,12 +179,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
     {
         /// <summary>The version of the policy definition to use.</summary>
         string DefinitionVersion { get; set; }
+        /// <summary>
+        /// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        string EffectiveDefinitionVersion { get; set; }
         /// <summary>The name of the groups that this policy definition reference belongs to.</summary>
         System.Collections.Generic.List<string> GroupName { get; set; }
         /// <summary>
         /// A unique id (within the policy set definition) for this policy definition reference.
         /// </summary>
         string Id { get; set; }
+        /// <summary>
+        /// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        string LatestDefinitionVersion { get; set; }
         /// <summary>
         /// The parameter values for the referenced policy rule. The keys are the parameter names.
         /// </summary>

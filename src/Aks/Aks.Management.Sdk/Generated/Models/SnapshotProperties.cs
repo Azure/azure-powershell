@@ -43,8 +43,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="osSku">Specifies the OS SKU used by the agent pool. The default is Ubuntu if
         /// OSType is Linux. The default is Windows2019 when Kubernetes &lt;= 1.24 or
         /// Windows2022 when Kubernetes &gt;= 1.25 if OSType is Windows.
-        /// Possible values include: &#39;Ubuntu&#39;, &#39;AzureLinux&#39;, &#39;CBLMariner&#39;,
-        /// &#39;Windows2019&#39;, &#39;Windows2022&#39;</param>
+        /// Possible values include: &#39;Ubuntu&#39;, &#39;AzureLinux&#39;, &#39;AzureLinux3&#39;,
+        /// &#39;CBLMariner&#39;, &#39;Windows2019&#39;, &#39;Windows2022&#39;, &#39;Ubuntu2204&#39;, &#39;Windows2025&#39;,
+        /// &#39;Ubuntu2404&#39;, &#39;AzureContainerLinux&#39;</param>
 
         /// <param name="vmSize">The size of the VM.
         /// </param>
@@ -105,7 +106,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <summary>
         /// Gets specifies the OS SKU used by the agent pool. The default is Ubuntu if
         /// OSType is Linux. The default is Windows2019 when Kubernetes &lt;= 1.24 or
-        /// Windows2022 when Kubernetes &gt;= 1.25 if OSType is Windows. Possible values include: &#39;Ubuntu&#39;, &#39;AzureLinux&#39;, &#39;CBLMariner&#39;, &#39;Windows2019&#39;, &#39;Windows2022&#39;
+        /// Windows2022 when Kubernetes &gt;= 1.25 if OSType is Windows. Possible values include: &#39;Ubuntu&#39;, &#39;AzureLinux&#39;, &#39;AzureLinux3&#39;, &#39;CBLMariner&#39;, &#39;Windows2019&#39;, &#39;Windows2022&#39;, &#39;Ubuntu2204&#39;, &#39;Windows2025&#39;, &#39;Ubuntu2404&#39;, &#39;AzureContainerLinux&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osSku")]
         public string OSSku {get; private set; }

@@ -1,0 +1,47 @@
+{
+  "resourceType": "managementGroups/groupQuotas/groupQuotaRequests",
+  "apiVersion": "2025-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.quota"
+  },
+  "commands": [
+    {
+      "name": "Get-AzQuotaGroupQuotaLimitsRequest",
+      "description": "Get API to check the status of a GroupQuota request by requestId.",
+      "path": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/groupQuotaRequests/{requestId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.quota/get-azquotagroupquotalimitsrequest"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-GroupQuotaName <String>",
+              "-ManagementGroupId <String>",
+              "-RequestId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get API to check the status of a GroupQuota request by requestId.",
+          "parameters": [
+            {
+              "name": "-GroupQuotaName",
+              "value": "[Path.groupQuotaName]"
+            },
+            {
+              "name": "-ManagementGroupId",
+              "value": "[Path.managementGroupId]"
+            },
+            {
+              "name": "-RequestId",
+              "value": "[Path.requestId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

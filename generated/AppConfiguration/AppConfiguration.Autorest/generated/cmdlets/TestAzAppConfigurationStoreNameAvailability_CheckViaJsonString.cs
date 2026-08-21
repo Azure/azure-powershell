@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.INameAvailabilityStatus))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Description(@"Checks whether the configuration store name is available for use.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/checkNameAvailability", ApiVersion = "2022-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/checkNameAvailability", ApiVersion = "2024-06-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.NotSuggestDefaultParameterSet]
     public partial class TestAzAppConfigurationStoreNameAvailability_CheckViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.IEventListener,

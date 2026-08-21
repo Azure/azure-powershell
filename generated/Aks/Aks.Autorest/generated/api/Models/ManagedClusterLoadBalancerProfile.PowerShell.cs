@@ -139,6 +139,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)this).EnableMultipleStandardLoadBalancer = (bool?) content.GetValueForProperty("EnableMultipleStandardLoadBalancer",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)this).EnableMultipleStandardLoadBalancer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("BackendPoolType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)this).BackendPoolType = (string) content.GetValueForProperty("BackendPoolType",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)this).BackendPoolType, global::System.Convert.ToString);
+            }
             if (content.Contains("ManagedOutboundIPCount"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)this).ManagedOutboundIPCount = (int?) content.GetValueForProperty("ManagedOutboundIPCount",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)this).ManagedOutboundIPCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
@@ -199,6 +203,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("EnableMultipleStandardLoadBalancer"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)this).EnableMultipleStandardLoadBalancer = (bool?) content.GetValueForProperty("EnableMultipleStandardLoadBalancer",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)this).EnableMultipleStandardLoadBalancer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("BackendPoolType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)this).BackendPoolType = (string) content.GetValueForProperty("BackendPoolType",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)this).BackendPoolType, global::System.Convert.ToString);
             }
             if (content.Contains("ManagedOutboundIPCount"))
             {

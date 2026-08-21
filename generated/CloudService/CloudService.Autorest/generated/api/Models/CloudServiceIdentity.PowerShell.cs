@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.CloudServiceIdentity"
         /// />.
         /// </summary>
@@ -67,21 +75,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("RoleInstanceName"))
+            if (content.Contains("SubscriptionId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName = (string) content.GetValueForProperty("RoleInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
+            if (content.Contains("RoleInstanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName = (string) content.GetValueForProperty("RoleInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName, global::System.Convert.ToString);
+            }
             if (content.Contains("CloudServiceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).CloudServiceName = (string) content.GetValueForProperty("CloudServiceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).CloudServiceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("RoleName"))
             {
@@ -136,21 +144,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("RoleInstanceName"))
+            if (content.Contains("SubscriptionId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName = (string) content.GetValueForProperty("RoleInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
+            if (content.Contains("RoleInstanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName = (string) content.GetValueForProperty("RoleInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName, global::System.Convert.ToString);
+            }
             if (content.Contains("CloudServiceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).CloudServiceName = (string) content.GetValueForProperty("CloudServiceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).CloudServiceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("RoleName"))
             {
@@ -228,6 +236,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(CloudServiceIdentityTypeConverter))]
     public partial interface ICloudServiceIdentity

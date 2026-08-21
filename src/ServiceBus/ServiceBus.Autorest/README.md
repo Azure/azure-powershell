@@ -28,25 +28,14 @@ For information on how to develop for `Az.ServiceBus`, see [how-to.md](how-to.md
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 1e790cfc5ee4e7ff98f99dd19a3174c4dd58432b
+commit: 2605aac932e54e2f6c1b335bc034a1edc44d5783
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/Queue.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/topics.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/namespace-preview.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/AuthorizationRules.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/CheckNameAvailability.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/DisasterRecoveryConfig.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/migrationconfigs.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/networksets.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/operations.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/Rules.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/subscriptions.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/ServiceBus/stable/2026-01-01/servicebus.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-# - (this-folder)/relative-path-to-your-swagger
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
@@ -72,10 +61,18 @@ directive:
     hide: true
   - where:
       verb: Set
-    remove: true
+    hide: true
   - where:
       verb: Update
     remove: true
+
+# Rename the swagger schema 'FailOverProperties' (POST failover action body) to avoid
+# a case-only collision with 'FailoverProperties' (inner properties of NamespaceFailoverProperties),
+# which the PowerShell generator collapses into a single type and causes CS0234 in
+# generated/api/Models/NamespaceFailoverProperties.cs.
+  - rename-model:
+      from: FailOverProperties
+      to: ServiceBusFailOverProperties
 
 # Migration Configs
   - where:
@@ -140,6 +137,21 @@ directive:
       property-name: EncryptionKeySource
     set:
       property-name: KeySource
+
+  - where:
+      verb: New
+      subject: NetworkSecurityPerimeterConfiguration
+    hide: true
+
+  - where:
+      verb: Invoke
+      subject: ReconcileNetworkSecurityPerimeterConfiguration
+    remove: true
+  
+  - where:
+      subject: NetworkSecurityPerimeterConfigurationResourceAssociationName
+    set:
+      subject: NetworkSecurityPerimeterConfigurationsForAssociation
 
   - where:
       verb: New
@@ -525,4 +537,9 @@ directive:
   - model-cmdlet:
     - model-name: KeyVaultProperties
       cmdlet-name: New-AzServiceBusKeyVaultPropertiesObject
+  
+  - model-cmdlet:
+    - model-name: NamespaceReplicaLocation
+      cmdlet-name: New-AzServiceBusLocationsNameObject
+
 ```

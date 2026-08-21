@@ -2130,6 +2130,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.PrimaryExtendedLocation = details.PrimaryExtendedLocation;
             this.RecoveryExtendedLocation = details.RecoveryExtendedLocation;
             this.LifecycleId = details.LifecycleId;
+            this.PlatformFaultDomain = details.PlatformFaultDomain;
 
             if (details.LastHeartbeat != null)
             {
@@ -2361,6 +2362,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// (with multiple switch protections in the middle) - Recovery Plans refer this ID.
         /// </summary>
         public string LifecycleId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the platform fault domain value.
+        /// </summary>
+        public int? PlatformFaultDomain { get; set; }
 
         // check do we need to exposed these 2 (TODO)
         // public string RecoveryFabricObjectId;  //how it is different from parent RecoveryFabricId

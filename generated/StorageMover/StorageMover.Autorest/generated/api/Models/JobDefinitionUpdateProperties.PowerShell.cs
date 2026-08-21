@@ -109,6 +109,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Schedule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).Schedule = (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfo) content.GetValueForProperty("Schedule",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).Schedule, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ScheduleInfoTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Description"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).Description, global::System.Convert.ToString);
@@ -120,6 +124,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (content.Contains("AgentName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).AgentName = (string) content.GetValueForProperty("AgentName",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).AgentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Connection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).Connection = (System.Collections.Generic.List<string>) content.GetValueForProperty("Connection",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).Connection, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DataIntegrityValidation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).DataIntegrityValidation = (string) content.GetValueForProperty("DataIntegrityValidation",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).DataIntegrityValidation, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScheduleFrequency"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleFrequency = (string) content.GetValueForProperty("ScheduleFrequency",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleFrequency, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScheduleExecutionTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleExecutionTime = (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ISchedulerTime) content.GetValueForProperty("ScheduleExecutionTime",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleExecutionTime, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.SchedulerTimeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ScheduleIsActive"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleIsActive = (bool?) content.GetValueForProperty("ScheduleIsActive",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleIsActive, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ScheduleStartDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleStartDate = (global::System.DateTime?) content.GetValueForProperty("ScheduleStartDate",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleStartDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ScheduleDaysOfWeek"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleDaysOfWeek = (System.Collections.Generic.List<string>) content.GetValueForProperty("ScheduleDaysOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleDaysOfWeek, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ScheduleDaysOfMonth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleDaysOfMonth = (System.Collections.Generic.List<int>) content.GetValueForProperty("ScheduleDaysOfMonth",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleDaysOfMonth, __y => TypeConverterExtensions.SelectToList<int>(__y, (__w)=> (int) global::System.Convert.ChangeType(__w, typeof(int))));
+            }
+            if (content.Contains("ScheduleCronExpression"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleCronExpression = (string) content.GetValueForProperty("ScheduleCronExpression",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleCronExpression, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScheduleEndDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleEndDate = (global::System.DateTime?) content.GetValueForProperty("ScheduleEndDate",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleEndDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ExecutionTimeMinute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ExecutionTimeMinute = (float?) content.GetValueForProperty("ExecutionTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ExecutionTimeMinute, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            }
+            if (content.Contains("ExecutionTimeHour"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ExecutionTimeHour = (int?) content.GetValueForProperty("ExecutionTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ExecutionTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -138,6 +190,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Schedule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).Schedule = (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfo) content.GetValueForProperty("Schedule",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).Schedule, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ScheduleInfoTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Description"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).Description, global::System.Convert.ToString);
@@ -149,6 +205,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (content.Contains("AgentName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).AgentName = (string) content.GetValueForProperty("AgentName",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).AgentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Connection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).Connection = (System.Collections.Generic.List<string>) content.GetValueForProperty("Connection",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).Connection, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DataIntegrityValidation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).DataIntegrityValidation = (string) content.GetValueForProperty("DataIntegrityValidation",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).DataIntegrityValidation, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScheduleFrequency"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleFrequency = (string) content.GetValueForProperty("ScheduleFrequency",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleFrequency, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScheduleExecutionTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleExecutionTime = (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ISchedulerTime) content.GetValueForProperty("ScheduleExecutionTime",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleExecutionTime, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.SchedulerTimeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ScheduleIsActive"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleIsActive = (bool?) content.GetValueForProperty("ScheduleIsActive",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleIsActive, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ScheduleStartDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleStartDate = (global::System.DateTime?) content.GetValueForProperty("ScheduleStartDate",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleStartDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ScheduleDaysOfWeek"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleDaysOfWeek = (System.Collections.Generic.List<string>) content.GetValueForProperty("ScheduleDaysOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleDaysOfWeek, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ScheduleDaysOfMonth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleDaysOfMonth = (System.Collections.Generic.List<int>) content.GetValueForProperty("ScheduleDaysOfMonth",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleDaysOfMonth, __y => TypeConverterExtensions.SelectToList<int>(__y, (__w)=> (int) global::System.Convert.ChangeType(__w, typeof(int))));
+            }
+            if (content.Contains("ScheduleCronExpression"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleCronExpression = (string) content.GetValueForProperty("ScheduleCronExpression",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleCronExpression, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScheduleEndDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleEndDate = (global::System.DateTime?) content.GetValueForProperty("ScheduleEndDate",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ScheduleEndDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ExecutionTimeMinute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ExecutionTimeMinute = (float?) content.GetValueForProperty("ExecutionTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ExecutionTimeMinute, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            }
+            if (content.Contains("ExecutionTimeHour"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ExecutionTimeHour = (int?) content.GetValueForProperty("ExecutionTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal)this).ExecutionTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

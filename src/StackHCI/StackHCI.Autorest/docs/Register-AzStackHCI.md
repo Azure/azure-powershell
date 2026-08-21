@@ -18,7 +18,7 @@ Register-AzStackHCI [-SubscriptionId] <String> [-Region] <String> [[-ResourceNam
  [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-ComputerName] <String>]
  [[-CertificateThumbprint] <String>] [[-Credential] <PSCredential>] [[-ArcServerResourceGroupName] <String>]
  [[-ArcSpnCredential] <PSCredential>] [[-LogsDirectory] <String>] [-IsWAC] [-RepairRegistration]
- [-UseDeviceAuthentication] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UseDeviceAuthentication] [-useStableAgentVersion] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -358,6 +358,23 @@ Accept wildcard characters: False
 
 ### -UseDeviceAuthentication
 Use device code authentication instead of an interactive browser prompt.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -useStableAgentVersion
+Specifies whether to use the stable HCI Arc agent for server registration.
+When set to true, uses the stable HCI Arc agent.
+When set to false or not specified, uses the default Azure Connected Machine Agent.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

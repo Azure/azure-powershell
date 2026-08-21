@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.PowerShell;
 
-    /// <summary>Dictionary of <string></summary>
+    /// <summary>The tags of the key-value</summary>
     [System.ComponentModel.TypeConverter(typeof(KeyValueTagsTypeConverter))]
     public partial class KeyValueTags
     {
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             return ToJsonString();
         }
     }
-    /// Dictionary of <string>
+    /// The tags of the key-value
     [System.ComponentModel.TypeConverter(typeof(KeyValueTagsTypeConverter))]
     public partial interface IKeyValueTags
 

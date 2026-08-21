@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a maintenance configuration in the specified managed cluster.
+Create a maintenance configuration in the specified managed cluster.
 .Description
-create a maintenance configuration in the specified managed cluster.
+Create a maintenance configuration in the specified managed cluster.
 .Example
 $TimeSpan = New-AzAksTimeSpanObject -Start (Get-Date -Year 2023 -Month 3 -Day 1) -End (Get-Date -Year 2023 -Month 3 -Day 2)
 $TimeInWeek = New-AzAksTimeInWeekObject -Day Sunday -HourSlot 1,2
@@ -31,13 +31,17 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+MAINTENANCEWINDOWNOTALLOWEDDATE <IDateSpan[]>: Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.
+  End <DateTime>: The end date of the date span.
+  Start <DateTime>: The start date of the date span.
+
 NOTALLOWEDTIME <ITimeSpan[]>: Time slots on which upgrade is not allowed.
   [End <DateTime?>]: The end of a time span
   [Start <DateTime?>]: The start of a time span
 
-TIMEINWEEK <ITimeInWeek[]>: If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
+TIMEINWEEK <ITimeInWeek[]>: Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
   [Day <String>]: The day of the week.
-  [HourSlot <List<Int32>>]: Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.
+  [HourSlot <List<Int32>>]: A list of hours in the day used to identify a time range. Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.
 .Link
 https://learn.microsoft.com/powershell/module/az.aks/new-azaksmaintenanceconfiguration
 #>
@@ -69,7 +73,66 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.Int32]
+    # The date of the month.
+    ${AbsoluteMonthlyDayOfMonth},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.Int32]
+    # Specifies the number of months between each set of occurrences.
+    ${AbsoluteMonthlyIntervalMonth},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.Int32]
+    # Specifies the number of days between each set of occurrences.
+    ${DailyIntervalDay},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.Int32]
+    # Length of maintenance window range from 4 to 24 hours.
+    ${MaintenanceWindowDurationHour},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDateSpan[]]
+    # Date ranges on which upgrade is not allowed.
+    # 'utcOffset' applies to this field.
+    # For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.
+    ${MaintenanceWindowNotAllowedDate},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.DateTime]
+    # The date the maintenance window activates.
+    # If the current date is before this date, the maintenance window is inactive and will not be used for upgrades.
+    # If not specified, the maintenance window will be active right away.
+    ${MaintenanceWindowStartDate},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # The start time of the maintenance window.
+    # Accepted values are from '00:00' to '23:59'.
+    # 'utcOffset' applies to this field.
+    # For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
+    ${MaintenanceWindowStartTime},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # The UTC offset in format +/-HH:mm.
+    # For example, '+05:30' for IST and '-07:00' for PST.
+    # If not specified, the default is '+00:00'.
+    ${MaintenanceWindowUtcOffset},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
@@ -79,11 +142,46 @@ param(
     ${NotAllowedTime},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # Specifies on which day of the week the maintenance occurs.
+    ${RelativeMonthlyDayOfWeek},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.Int32]
+    # Specifies the number of months between each set of occurrences.
+    ${RelativeMonthlyIntervalMonth},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("First", "Second", "Third", "Fourth", "Last")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # The week index.
+    # Specifies on which week of the month the dayOfWeek applies.
+    ${RelativeMonthlyWeekIndex},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek[]]
+    # Time slots during the week when planned maintenance is allowed to proceed.
     # If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
     ${TimeInWeek},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # Specifies on which day of the week the maintenance occurs.
+    ${WeeklyDayOfWeek},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.Int32]
+    # Specifies the number of weeks between each set of occurrences.
+    ${WeeklyIntervalWeek},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]

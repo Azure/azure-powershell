@@ -183,9 +183,9 @@ namespace Microsoft.Azure.Management.Network
         /// configuration has been deployed, the service will do a cleanup deployment
         /// in the background, prior to the delete.
         /// </param>
-        public static SecurityUserConfigurationsDeleteHeaders Delete(this ISecurityUserConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, bool? force = default(bool?))
+        public static void Delete(this ISecurityUserConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, bool? force = default(bool?))
         {
-                return ((ISecurityUserConfigurationsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, configurationName, force).GetAwaiter().GetResult();
+                ((ISecurityUserConfigurationsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, configurationName, force).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -211,12 +211,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SecurityUserConfigurationsDeleteHeaders> DeleteAsync(this ISecurityUserConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this ISecurityUserConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deletes a network manager security user configuration.
@@ -238,9 +235,9 @@ namespace Microsoft.Azure.Management.Network
         /// configuration has been deployed, the service will do a cleanup deployment
         /// in the background, prior to the delete.
         /// </param>
-        public static SecurityUserConfigurationsDeleteHeaders BeginDelete(this ISecurityUserConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, bool? force = default(bool?))
+        public static void BeginDelete(this ISecurityUserConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, bool? force = default(bool?))
         {
-                return ((ISecurityUserConfigurationsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, configurationName, force).GetAwaiter().GetResult();
+                ((ISecurityUserConfigurationsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, configurationName, force).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -266,12 +263,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SecurityUserConfigurationsDeleteHeaders> BeginDeleteAsync(this ISecurityUserConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ISecurityUserConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all the network manager security user configurations in a network

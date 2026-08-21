@@ -1,6 +1,6 @@
 {
   "resourceType": "privateClouds",
-  "apiVersion": "2024-09-01",
+  "apiVersion": "2025-09-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.vmware"
   },
@@ -26,6 +26,44 @@
       "examples": [
         {
           "description": "Get a IscsiPath",
+          "parameters": [
+            {
+              "name": "-PrivateCloudName",
+              "value": "[Path.privateCloudName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzVMwarePrivateCloudVcfLicense",
+      "description": "Get the license for the private cloud",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/getVcfLicense",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloudvcflicense"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PrivateCloudName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the license for the private cloud",
           "parameters": [
             {
               "name": "-PrivateCloudName",

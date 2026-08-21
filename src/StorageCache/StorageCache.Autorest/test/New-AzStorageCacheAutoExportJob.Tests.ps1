@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStorageCacheAutoExportJ
 Describe 'New-AzStorageCacheAutoExportJob' {
     It 'CreateExpanded' {
         {
-            $job = New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoExportPrefix @('/path1')
+            $job = New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoExportPrefix @('/')
             Start-Sleep 30
             Remove-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511' -Confirm:$false
         } | Should -Not -Throw
@@ -28,10 +28,10 @@ Describe 'New-AzStorageCacheAutoExportJob' {
             $json = @{
                 location = "Canada Central"
                 properties = @{
-                    autoExportPrefixes = @("/path1")
+                    autoExportPrefixes = @("/")
                 }
             } | ConvertTo-Json -Depth 3
-            
+
             $job = New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateJson' -ResourceGroupName 'acctest43511' -JsonString $json
             Start-Sleep 30
             Remove-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateJson' -ResourceGroupName 'acctest43511' -Confirm:$false
@@ -43,13 +43,13 @@ Describe 'New-AzStorageCacheAutoExportJob' {
             $json = @{
                 location = "Canada Central"
                 properties = @{
-                    autoExportPrefixes = @("/path1")
+                    autoExportPrefixes = @("/")
                 }
             } | ConvertTo-Json -Depth 3
-            
+
             $tempFile = New-TemporaryFile
             $json | Out-File -FilePath $tempFile.FullName -Encoding UTF8
-            
+
             try {
                 $job = New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateFile' -ResourceGroupName 'acctest43511' -JsonFilePath $tempFile.FullName
                 Start-Sleep 30
@@ -67,7 +67,7 @@ Describe 'New-AzStorageCacheAutoExportJob' {
             $identity.ResourceGroupName = "acctest43511"
             $identity.SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
 
-            $job = New-AzStorageCacheAutoExportJob -AmlFilesystemInputObject $identity -Name 'sampleCreateAmlId' -Location 'Canada Central' -AutoExportPrefix @('/path1')
+            $job = New-AzStorageCacheAutoExportJob -AmlFilesystemInputObject $identity -Name 'sampleCreateAmlId' -Location 'Canada Central' -AutoExportPrefix @('/')
             Start-Sleep 30
             Remove-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateAmlId' -ResourceGroupName 'acctest43511' -Confirm:$false
         } | Should -Not -Throw
@@ -81,7 +81,7 @@ Describe 'New-AzStorageCacheAutoExportJob' {
             $identity.SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
             $identity.AutoExportJobName = "sampleCreateIdentity"
 
-            $job = New-AzStorageCacheAutoExportJob -InputObject $identity -Location 'Canada Central' -AutoExportPrefix @('/path1')
+            $job = New-AzStorageCacheAutoExportJob -InputObject $identity -Location 'Canada Central' -AutoExportPrefix @('/')
             Start-Sleep 30
             Remove-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateIdentity' -ResourceGroupName 'acctest43511' -Confirm:$false
         } | Should -Not -Throw

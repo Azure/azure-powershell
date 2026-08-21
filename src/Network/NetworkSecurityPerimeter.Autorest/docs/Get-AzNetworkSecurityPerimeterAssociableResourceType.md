@@ -47,6 +47,24 @@ Microsoft.ServiceBus.namespaces
 
 List NetworkSecurityPerimeter AssociableResourceTypes
 
+### Example 2: List AssociableResourceTypes with new properties
+```powershell
+Get-AzNetworkSecurityPerimeterAssociableResourceType -Location eastus2euap | Select-Object DisplayName, ReadinessState, OutboundSupported, Description, ServiceTag
+```
+
+```output
+DisplayName                                         ReadinessState OutboundSupported Description ServiceTag
+-----------                                         -------------- ----------------- ----------- ----------
+Microsoft.AppConfiguration/configurationStores      Onboarding                  True             {}
+Microsoft.CognitiveServices/accounts                GA                          True             {}
+Microsoft.DocumentDB/databaseAccounts               Preview                     True             {}
+Microsoft.EventGrid/domains                         Preview                     True             {}
+Microsoft.Sql/servers                               Preview                     True             {}
+Microsoft.KeyVault/vaults                           GA                         False             {}
+```
+
+List AssociableResourceTypes showing the new ReadinessState, OutboundSupported, Description, and ServiceTag properties
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -66,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location of network security perimeter.
+The name of the Azure region.
 
 ```yaml
 Type: System.String
@@ -81,8 +99,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

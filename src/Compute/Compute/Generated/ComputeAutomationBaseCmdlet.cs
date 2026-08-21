@@ -279,11 +279,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
-        public IVirtualMachineScaleSetVMsOperations VirtualMachineScaleSetVMsClient
+        public IVirtualMachineScaleSetVMSOperations VirtualMachineScaleSetVMsClient
         {
             get
             {
-                return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetVMs;
+                return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetVMS;
             }
         }
 
@@ -292,6 +292,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             get
             {
                 return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetVMRunCommands;
+            }
+        }
+
+        public IVirtualMachineScaleSetLifeCycleHookEventsOperations VirtualMachineScaleSetLifeCycleHookEventsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetLifeCycleHookEvents;
             }
         }
 
@@ -345,6 +353,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             get
             {
                 return ComputeClient.ComputeManagementClient.GalleryInVMAccessControlProfileVersions;
+            }
+        }
+
+        public IInterconnectBlocksOperations InterconnectBlocksClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.InterconnectBlocks;
             }
         }
 

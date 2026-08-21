@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a StandbyContainerGroupPoolResource
+Create a StandbyContainerGroupPoolResource
 .Description
-create a StandbyContainerGroupPoolResource
+Create a StandbyContainerGroupPoolResource
 .Example
 New-AzStandbyContainerGroupPool `
 -Name testPool `
@@ -31,6 +31,7 @@ New-AzStandbyContainerGroupPool `
 -ProfileRevision 1 `
 -SubnetId @{id="/subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"} `
 -Zone @("1", "2", "3") `
+-DynamicSizingEnabled
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource
@@ -81,6 +82,12 @@ param(
     [System.String]
     # Specifies container group profile id of standby container groups.
     ${ContainerProfileId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicates whether dynamic sizing is enabled for the standby pool.
+    ${DynamicSizingEnabled},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category('Body')]
@@ -208,8 +215,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

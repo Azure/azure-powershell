@@ -65,5 +65,10 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// cluster or not.
         /// </summary>
         public bool? EnableMultipleStandardLoadBalancers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the managed inbound Load Balancer BackendPool. Possible values include: &#39;NodeIPConfiguration&#39;, &#39;NodeIP&#39;
+        /// </summary>
+        public string BackendPoolType { get; set; }
     }
 }

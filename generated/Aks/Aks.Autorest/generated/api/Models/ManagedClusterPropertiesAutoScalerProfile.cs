@@ -16,31 +16,71 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Backing field for <see cref="BalanceSimilarNodeGroup" /> property.</summary>
         private string _balanceSimilarNodeGroup;
 
-        /// <summary>Valid values are 'true' and 'false'</summary>
+        /// <summary>
+        /// Detects similar node pools and balances the number of nodes between them. Valid values are 'true' and 'false'
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string BalanceSimilarNodeGroup { get => this._balanceSimilarNodeGroup; set => this._balanceSimilarNodeGroup = value; }
+
+        /// <summary>Backing field for <see cref="DaemonsetEvictionForEmptyNode" /> property.</summary>
+        private bool? _daemonsetEvictionForEmptyNode;
+
+        /// <summary>
+        /// DaemonSet pods will be gracefully terminated from empty nodes. If set to true, all daemonset pods on empty nodes will
+        /// be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling.
+        /// If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public bool? DaemonsetEvictionForEmptyNode { get => this._daemonsetEvictionForEmptyNode; set => this._daemonsetEvictionForEmptyNode = value; }
+
+        /// <summary>Backing field for <see cref="DaemonsetEvictionForOccupiedNode" /> property.</summary>
+        private bool? _daemonsetEvictionForOccupiedNode;
+
+        /// <summary>
+        /// DaemonSet pods will be gracefully terminated from non-empty nodes. If set to true, all daemonset pods on occupied nodes
+        /// will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling.
+        /// If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public bool? DaemonsetEvictionForOccupiedNode { get => this._daemonsetEvictionForOccupiedNode; set => this._daemonsetEvictionForOccupiedNode = value; }
 
         /// <summary>Backing field for <see cref="Expander" /> property.</summary>
         private string _expander;
 
         /// <summary>
-        /// If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
+        /// The expander to use when scaling up. If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
         /// for more information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string Expander { get => this._expander; set => this._expander = value; }
 
+        /// <summary>Backing field for <see cref="IgnoreDaemonsetsUtilization" /> property.</summary>
+        private bool? _ignoreDaemonsetsUtilization;
+
+        /// <summary>
+        /// Should CA ignore DaemonSet pods when calculating resource utilization for scaling down. If set to true, the resources
+        /// used by daemonset will be taken into account when making scaling down decisions.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public bool? IgnoreDaemonsetsUtilization { get => this._ignoreDaemonsetsUtilization; set => this._ignoreDaemonsetsUtilization = value; }
+
         /// <summary>Backing field for <see cref="MaxEmptyBulkDelete" /> property.</summary>
         private string _maxEmptyBulkDelete;
 
-        /// <summary>The default is 10.</summary>
+        /// <summary>
+        /// The maximum number of empty nodes that can be deleted at the same time. This must be a positive integer. The default is
+        /// 10.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string MaxEmptyBulkDelete { get => this._maxEmptyBulkDelete; set => this._maxEmptyBulkDelete = value; }
 
         /// <summary>Backing field for <see cref="MaxGracefulTerminationSec" /> property.</summary>
         private string _maxGracefulTerminationSec;
 
-        /// <summary>The default is 600.</summary>
+        /// <summary>
+        /// The maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node. The default
+        /// is 600.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string MaxGracefulTerminationSec { get => this._maxGracefulTerminationSec; set => this._maxGracefulTerminationSec = value; }
 
@@ -48,7 +88,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _maxNodeProvisionTime;
 
         /// <summary>
-        /// The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// The maximum time the autoscaler waits for a node to be provisioned. The default is '15m'. Values must be an integer followed
+        /// by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string MaxNodeProvisionTime { get => this._maxNodeProvisionTime; set => this._maxNodeProvisionTime = value; }
@@ -56,7 +97,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Backing field for <see cref="MaxTotalUnreadyPercentage" /> property.</summary>
         private string _maxTotalUnreadyPercentage;
 
-        /// <summary>The default is 45. The maximum is 100 and the minimum is 0.</summary>
+        /// <summary>
+        /// The maximum percentage of unready nodes in the cluster. After this percentage is exceeded, cluster autoscaler halts operations.
+        /// The default is 45. The maximum is 100 and the minimum is 0.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string MaxTotalUnreadyPercentage { get => this._maxTotalUnreadyPercentage; set => this._maxTotalUnreadyPercentage = value; }
 
@@ -64,9 +108,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _newPodScaleUpDelay;
 
         /// <summary>
-        /// For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all
-        /// the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be
-        /// an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).
+        /// Ignore unscheduled pods before they're a certain age. For scenarios like burst/batch scale where you don't want CA to
+        /// act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're
+        /// a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h'
+        /// for hours, etc).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string NewPodScaleUpDelay { get => this._newPodScaleUpDelay; set => this._newPodScaleUpDelay = value; }
@@ -74,7 +119,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Backing field for <see cref="OkTotalUnreadyCount" /> property.</summary>
         private string _okTotalUnreadyCount;
 
-        /// <summary>This must be an integer. The default is 3.</summary>
+        /// <summary>
+        /// The number of allowed unready nodes, irrespective of max-total-unready-percentage. This must be an integer. The default
+        /// is 3.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string OkTotalUnreadyCount { get => this._okTotalUnreadyCount; set => this._okTotalUnreadyCount = value; }
 
@@ -82,7 +130,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _scaleDownDelayAfterAdd;
 
         /// <summary>
-        /// The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long after scale up that scale down evaluation resumes. The default is '10m'. Values must be an integer followed by
+        /// an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string ScaleDownDelayAfterAdd { get => this._scaleDownDelayAfterAdd; set => this._scaleDownDelayAfterAdd = value; }
@@ -91,8 +140,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _scaleDownDelayAfterDelete;
 
         /// <summary>
-        /// The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m)
-        /// is supported.
+        /// How long after node deletion that scale down evaluation resumes. The default is the scan-interval. Values must be an integer
+        /// followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string ScaleDownDelayAfterDelete { get => this._scaleDownDelayAfterDelete; set => this._scaleDownDelayAfterDelete = value; }
@@ -101,7 +150,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _scaleDownDelayAfterFailure;
 
         /// <summary>
-        /// The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long after scale down failure that scale down evaluation resumes. The default is '3m'. Values must be an integer followed
+        /// by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string ScaleDownDelayAfterFailure { get => this._scaleDownDelayAfterFailure; set => this._scaleDownDelayAfterFailure = value; }
@@ -110,7 +160,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _scaleDownUnneededTime;
 
         /// <summary>
-        /// The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long a node should be unneeded before it is eligible for scale down. The default is '10m'. Values must be an integer
+        /// followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string ScaleDownUnneededTime { get => this._scaleDownUnneededTime; set => this._scaleDownUnneededTime = value; }
@@ -119,7 +170,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _scaleDownUnreadyTime;
 
         /// <summary>
-        /// The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long an unready node should be unneeded before it is eligible for scale down. The default is '20m'. Values must be
+        /// an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string ScaleDownUnreadyTime { get => this._scaleDownUnreadyTime; set => this._scaleDownUnreadyTime = value; }
@@ -127,28 +179,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Backing field for <see cref="ScaleDownUtilizationThreshold" /> property.</summary>
         private string _scaleDownUtilizationThreshold;
 
-        /// <summary>The default is '0.5'.</summary>
+        /// <summary>
+        /// Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered
+        /// for scale down. The default is '0.5'.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string ScaleDownUtilizationThreshold { get => this._scaleDownUtilizationThreshold; set => this._scaleDownUtilizationThreshold = value; }
 
         /// <summary>Backing field for <see cref="ScanInterval" /> property.</summary>
         private string _scanInterval;
 
-        /// <summary>The default is '10'. Values must be an integer number of seconds.</summary>
+        /// <summary>
+        /// How often cluster is reevaluated for scale up or down. The default is '10'. Values must be an integer number of seconds.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string ScanInterval { get => this._scanInterval; set => this._scanInterval = value; }
 
         /// <summary>Backing field for <see cref="SkipNodesWithLocalStorage" /> property.</summary>
         private string _skipNodesWithLocalStorage;
 
-        /// <summary>The default is true.</summary>
+        /// <summary>
+        /// If cluster autoscaler will skip deleting nodes with pods with local storage, for example, EmptyDir or HostPath. The default
+        /// is true.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string SkipNodesWithLocalStorage { get => this._skipNodesWithLocalStorage; set => this._skipNodesWithLocalStorage = value; }
 
         /// <summary>Backing field for <see cref="SkipNodesWithSystemPod" /> property.</summary>
         private string _skipNodesWithSystemPod;
 
-        /// <summary>The default is true.</summary>
+        /// <summary>
+        /// If cluster autoscaler will skip deleting nodes with pods from kube-system (except for DaemonSet or mirror pods). The default
+        /// is true.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string SkipNodesWithSystemPod { get => this._skipNodesWithSystemPod; set => this._skipNodesWithSystemPod = value; }
 
@@ -164,19 +227,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     public partial interface IManagedClusterPropertiesAutoScalerProfile :
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IJsonSerializable
     {
-        /// <summary>Valid values are 'true' and 'false'</summary>
+        /// <summary>
+        /// Detects similar node pools and balances the number of nodes between them. Valid values are 'true' and 'false'
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Valid values are 'true' and 'false'",
+        Description = @"Detects similar node pools and balances the number of nodes between them. Valid values are 'true' and 'false'",
         SerializedName = @"balance-similar-node-groups",
         PossibleTypes = new [] { typeof(string) })]
         string BalanceSimilarNodeGroup { get; set; }
         /// <summary>
-        /// If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
+        /// DaemonSet pods will be gracefully terminated from empty nodes. If set to true, all daemonset pods on empty nodes will
+        /// be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling.
+        /// If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"DaemonSet pods will be gracefully terminated from empty nodes. If set to true, all daemonset pods on empty nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.",
+        SerializedName = @"daemonset-eviction-for-empty-nodes",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? DaemonsetEvictionForEmptyNode { get; set; }
+        /// <summary>
+        /// DaemonSet pods will be gracefully terminated from non-empty nodes. If set to true, all daemonset pods on occupied nodes
+        /// will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling.
+        /// If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"DaemonSet pods will be gracefully terminated from non-empty nodes. If set to true, all daemonset pods on occupied nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.",
+        SerializedName = @"daemonset-eviction-for-occupied-nodes",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? DaemonsetEvictionForOccupiedNode { get; set; }
+        /// <summary>
+        /// The expander to use when scaling up. If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
         /// for more information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
@@ -185,35 +280,56 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.",
+        Description = @"The expander to use when scaling up. If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.",
         SerializedName = @"expander",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("least-waste", "most-pods", "priority", "random")]
         string Expander { get; set; }
-        /// <summary>The default is 10.</summary>
+        /// <summary>
+        /// Should CA ignore DaemonSet pods when calculating resource utilization for scaling down. If set to true, the resources
+        /// used by daemonset will be taken into account when making scaling down decisions.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is 10.",
+        Description = @"Should CA ignore DaemonSet pods when calculating resource utilization for scaling down. If set to true, the resources used by daemonset will be taken into account when making scaling down decisions.",
+        SerializedName = @"ignore-daemonsets-utilization",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? IgnoreDaemonsetsUtilization { get; set; }
+        /// <summary>
+        /// The maximum number of empty nodes that can be deleted at the same time. This must be a positive integer. The default is
+        /// 10.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The maximum number of empty nodes that can be deleted at the same time. This must be a positive integer. The default is 10.",
         SerializedName = @"max-empty-bulk-delete",
         PossibleTypes = new [] { typeof(string) })]
         string MaxEmptyBulkDelete { get; set; }
-        /// <summary>The default is 600.</summary>
+        /// <summary>
+        /// The maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node. The default
+        /// is 600.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is 600.",
+        Description = @"The maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node. The default is 600.",
         SerializedName = @"max-graceful-termination-sec",
         PossibleTypes = new [] { typeof(string) })]
         string MaxGracefulTerminationSec { get; set; }
         /// <summary>
-        /// The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// The maximum time the autoscaler waits for a node to be provisioned. The default is '15m'. Values must be an integer followed
+        /// by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -221,25 +337,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+        Description = @"The maximum time the autoscaler waits for a node to be provisioned. The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
         SerializedName = @"max-node-provision-time",
         PossibleTypes = new [] { typeof(string) })]
         string MaxNodeProvisionTime { get; set; }
-        /// <summary>The default is 45. The maximum is 100 and the minimum is 0.</summary>
+        /// <summary>
+        /// The maximum percentage of unready nodes in the cluster. After this percentage is exceeded, cluster autoscaler halts operations.
+        /// The default is 45. The maximum is 100 and the minimum is 0.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is 45. The maximum is 100 and the minimum is 0.",
+        Description = @"The maximum percentage of unready nodes in the cluster. After this percentage is exceeded, cluster autoscaler halts operations. The default is 45. The maximum is 100 and the minimum is 0.",
         SerializedName = @"max-total-unready-percentage",
         PossibleTypes = new [] { typeof(string) })]
         string MaxTotalUnreadyPercentage { get; set; }
         /// <summary>
-        /// For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all
-        /// the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be
-        /// an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).
+        /// Ignore unscheduled pods before they're a certain age. For scenarios like burst/batch scale where you don't want CA to
+        /// act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're
+        /// a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h'
+        /// for hours, etc).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -247,23 +367,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).",
+        Description = @"Ignore unscheduled pods before they're a certain age. For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).",
         SerializedName = @"new-pod-scale-up-delay",
         PossibleTypes = new [] { typeof(string) })]
         string NewPodScaleUpDelay { get; set; }
-        /// <summary>This must be an integer. The default is 3.</summary>
+        /// <summary>
+        /// The number of allowed unready nodes, irrespective of max-total-unready-percentage. This must be an integer. The default
+        /// is 3.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"This must be an integer. The default is 3.",
+        Description = @"The number of allowed unready nodes, irrespective of max-total-unready-percentage. This must be an integer. The default is 3.",
         SerializedName = @"ok-total-unready-count",
         PossibleTypes = new [] { typeof(string) })]
         string OkTotalUnreadyCount { get; set; }
         /// <summary>
-        /// The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long after scale up that scale down evaluation resumes. The default is '10m'. Values must be an integer followed by
+        /// an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -271,13 +395,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+        Description = @"How long after scale up that scale down evaluation resumes. The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
         SerializedName = @"scale-down-delay-after-add",
         PossibleTypes = new [] { typeof(string) })]
         string ScaleDownDelayAfterAdd { get; set; }
         /// <summary>
-        /// The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m)
-        /// is supported.
+        /// How long after node deletion that scale down evaluation resumes. The default is the scan-interval. Values must be an integer
+        /// followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -285,12 +409,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+        Description = @"How long after node deletion that scale down evaluation resumes. The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
         SerializedName = @"scale-down-delay-after-delete",
         PossibleTypes = new [] { typeof(string) })]
         string ScaleDownDelayAfterDelete { get; set; }
         /// <summary>
-        /// The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long after scale down failure that scale down evaluation resumes. The default is '3m'. Values must be an integer followed
+        /// by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -298,12 +423,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+        Description = @"How long after scale down failure that scale down evaluation resumes. The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
         SerializedName = @"scale-down-delay-after-failure",
         PossibleTypes = new [] { typeof(string) })]
         string ScaleDownDelayAfterFailure { get; set; }
         /// <summary>
-        /// The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long a node should be unneeded before it is eligible for scale down. The default is '10m'. Values must be an integer
+        /// followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -311,12 +437,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+        Description = @"How long a node should be unneeded before it is eligible for scale down. The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
         SerializedName = @"scale-down-unneeded-time",
         PossibleTypes = new [] { typeof(string) })]
         string ScaleDownUnneededTime { get; set; }
         /// <summary>
-        /// The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long an unready node should be unneeded before it is eligible for scale down. The default is '20m'. Values must be
+        /// an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -324,51 +451,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+        Description = @"How long an unready node should be unneeded before it is eligible for scale down. The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
         SerializedName = @"scale-down-unready-time",
         PossibleTypes = new [] { typeof(string) })]
         string ScaleDownUnreadyTime { get; set; }
-        /// <summary>The default is '0.5'.</summary>
+        /// <summary>
+        /// Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered
+        /// for scale down. The default is '0.5'.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is '0.5'.",
+        Description = @"Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down. The default is '0.5'.",
         SerializedName = @"scale-down-utilization-threshold",
         PossibleTypes = new [] { typeof(string) })]
         string ScaleDownUtilizationThreshold { get; set; }
-        /// <summary>The default is '10'. Values must be an integer number of seconds.</summary>
+        /// <summary>
+        /// How often cluster is reevaluated for scale up or down. The default is '10'. Values must be an integer number of seconds.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is '10'. Values must be an integer number of seconds.",
+        Description = @"How often cluster is reevaluated for scale up or down. The default is '10'. Values must be an integer number of seconds.",
         SerializedName = @"scan-interval",
         PossibleTypes = new [] { typeof(string) })]
         string ScanInterval { get; set; }
-        /// <summary>The default is true.</summary>
+        /// <summary>
+        /// If cluster autoscaler will skip deleting nodes with pods with local storage, for example, EmptyDir or HostPath. The default
+        /// is true.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is true.",
+        Description = @"If cluster autoscaler will skip deleting nodes with pods with local storage, for example, EmptyDir or HostPath. The default is true.",
         SerializedName = @"skip-nodes-with-local-storage",
         PossibleTypes = new [] { typeof(string) })]
         string SkipNodesWithLocalStorage { get; set; }
-        /// <summary>The default is true.</summary>
+        /// <summary>
+        /// If cluster autoscaler will skip deleting nodes with pods from kube-system (except for DaemonSet or mirror pods). The default
+        /// is true.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is true.",
+        Description = @"If cluster autoscaler will skip deleting nodes with pods from kube-system (except for DaemonSet or mirror pods). The default is true.",
         SerializedName = @"skip-nodes-with-system-pods",
         PossibleTypes = new [] { typeof(string) })]
         string SkipNodesWithSystemPod { get; set; }
@@ -378,60 +516,108 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     internal partial interface IManagedClusterPropertiesAutoScalerProfileInternal
 
     {
-        /// <summary>Valid values are 'true' and 'false'</summary>
+        /// <summary>
+        /// Detects similar node pools and balances the number of nodes between them. Valid values are 'true' and 'false'
+        /// </summary>
         string BalanceSimilarNodeGroup { get; set; }
         /// <summary>
-        /// If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
+        /// DaemonSet pods will be gracefully terminated from empty nodes. If set to true, all daemonset pods on empty nodes will
+        /// be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling.
+        /// If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+        /// </summary>
+        bool? DaemonsetEvictionForEmptyNode { get; set; }
+        /// <summary>
+        /// DaemonSet pods will be gracefully terminated from non-empty nodes. If set to true, all daemonset pods on occupied nodes
+        /// will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling.
+        /// If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+        /// </summary>
+        bool? DaemonsetEvictionForOccupiedNode { get; set; }
+        /// <summary>
+        /// The expander to use when scaling up. If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
         /// for more information.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("least-waste", "most-pods", "priority", "random")]
         string Expander { get; set; }
-        /// <summary>The default is 10.</summary>
+        /// <summary>
+        /// Should CA ignore DaemonSet pods when calculating resource utilization for scaling down. If set to true, the resources
+        /// used by daemonset will be taken into account when making scaling down decisions.
+        /// </summary>
+        bool? IgnoreDaemonsetsUtilization { get; set; }
+        /// <summary>
+        /// The maximum number of empty nodes that can be deleted at the same time. This must be a positive integer. The default is
+        /// 10.
+        /// </summary>
         string MaxEmptyBulkDelete { get; set; }
-        /// <summary>The default is 600.</summary>
+        /// <summary>
+        /// The maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node. The default
+        /// is 600.
+        /// </summary>
         string MaxGracefulTerminationSec { get; set; }
         /// <summary>
-        /// The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// The maximum time the autoscaler waits for a node to be provisioned. The default is '15m'. Values must be an integer followed
+        /// by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         string MaxNodeProvisionTime { get; set; }
-        /// <summary>The default is 45. The maximum is 100 and the minimum is 0.</summary>
+        /// <summary>
+        /// The maximum percentage of unready nodes in the cluster. After this percentage is exceeded, cluster autoscaler halts operations.
+        /// The default is 45. The maximum is 100 and the minimum is 0.
+        /// </summary>
         string MaxTotalUnreadyPercentage { get; set; }
         /// <summary>
-        /// For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all
-        /// the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be
-        /// an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).
+        /// Ignore unscheduled pods before they're a certain age. For scenarios like burst/batch scale where you don't want CA to
+        /// act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're
+        /// a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h'
+        /// for hours, etc).
         /// </summary>
         string NewPodScaleUpDelay { get; set; }
-        /// <summary>This must be an integer. The default is 3.</summary>
+        /// <summary>
+        /// The number of allowed unready nodes, irrespective of max-total-unready-percentage. This must be an integer. The default
+        /// is 3.
+        /// </summary>
         string OkTotalUnreadyCount { get; set; }
         /// <summary>
-        /// The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long after scale up that scale down evaluation resumes. The default is '10m'. Values must be an integer followed by
+        /// an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         string ScaleDownDelayAfterAdd { get; set; }
         /// <summary>
-        /// The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m)
-        /// is supported.
+        /// How long after node deletion that scale down evaluation resumes. The default is the scan-interval. Values must be an integer
+        /// followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         string ScaleDownDelayAfterDelete { get; set; }
         /// <summary>
-        /// The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long after scale down failure that scale down evaluation resumes. The default is '3m'. Values must be an integer followed
+        /// by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         string ScaleDownDelayAfterFailure { get; set; }
         /// <summary>
-        /// The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long a node should be unneeded before it is eligible for scale down. The default is '10m'. Values must be an integer
+        /// followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         string ScaleDownUnneededTime { get; set; }
         /// <summary>
-        /// The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long an unready node should be unneeded before it is eligible for scale down. The default is '20m'. Values must be
+        /// an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         string ScaleDownUnreadyTime { get; set; }
-        /// <summary>The default is '0.5'.</summary>
+        /// <summary>
+        /// Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered
+        /// for scale down. The default is '0.5'.
+        /// </summary>
         string ScaleDownUtilizationThreshold { get; set; }
-        /// <summary>The default is '10'. Values must be an integer number of seconds.</summary>
+        /// <summary>
+        /// How often cluster is reevaluated for scale up or down. The default is '10'. Values must be an integer number of seconds.
+        /// </summary>
         string ScanInterval { get; set; }
-        /// <summary>The default is true.</summary>
+        /// <summary>
+        /// If cluster autoscaler will skip deleting nodes with pods with local storage, for example, EmptyDir or HostPath. The default
+        /// is true.
+        /// </summary>
         string SkipNodesWithLocalStorage { get; set; }
-        /// <summary>The default is true.</summary>
+        /// <summary>
+        /// If cluster autoscaler will skip deleting nodes with pods from kube-system (except for DaemonSet or mirror pods). The default
+        /// is true.
+        /// </summary>
         string SkipNodesWithSystemPod { get; set; }
 
     }

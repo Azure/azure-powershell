@@ -1,0 +1,95 @@
+{
+  "resourceType": "virtualEnclaves/enclaveEndpoints",
+  "apiVersion": "2026-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mission"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMissionEnclaveEndpoint",
+      "description": "Get a EnclaveEndpointResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints/{enclaveEndpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mission/get-azmissionenclaveendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-VirtualEnclaveName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a EnclaveEndpointResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.enclaveEndpointName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VirtualEnclaveName",
+              "value": "[Path.virtualEnclaveName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMissionEnclaveEndpoint",
+      "description": "Delete a EnclaveEndpointResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints/{enclaveEndpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mission/remove-azmissionenclaveendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-VirtualEnclaveName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a EnclaveEndpointResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.enclaveEndpointName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VirtualEnclaveName",
+              "value": "[Path.virtualEnclaveName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

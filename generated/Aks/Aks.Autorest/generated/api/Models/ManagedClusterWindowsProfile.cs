@@ -41,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private bool? _enableCsiProxy;
 
         /// <summary>
-        /// For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
+        /// Whether to enable CSI proxy. For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public bool? EnableCsiProxy { get => this._enableCsiProxy; set => this._enableCsiProxy = value; }
@@ -60,7 +60,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string GmsaProfileDnsServer { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IWindowsGmsaProfileInternal)GmsaProfile).DnsServer; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IWindowsGmsaProfileInternal)GmsaProfile).DnsServer = value ?? null; }
 
-        /// <summary>Specifies whether to enable Windows gMSA in the managed cluster.</summary>
+        /// <summary>
+        /// Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public bool? GmsaProfileEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IWindowsGmsaProfileInternal)GmsaProfile).Enabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IWindowsGmsaProfileInternal)GmsaProfile).Enabled = value ?? default(bool); }
 
@@ -127,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(string) })]
         string AdminUsername { get; set; }
         /// <summary>
-        /// For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
+        /// Whether to enable CSI proxy. For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -135,7 +137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).",
+        Description = @"Whether to enable CSI proxy. For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).",
         SerializedName = @"enableCSIProxy",
         PossibleTypes = new [] { typeof(bool) })]
         bool? EnableCsiProxy { get; set; }
@@ -153,14 +155,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"dnsServer",
         PossibleTypes = new [] { typeof(string) })]
         string GmsaProfileDnsServer { get; set; }
-        /// <summary>Specifies whether to enable Windows gMSA in the managed cluster.</summary>
+        /// <summary>
+        /// Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies whether to enable Windows gMSA in the managed cluster.",
+        Description = @"Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.",
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? GmsaProfileEnabled { get; set; }
@@ -214,7 +218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// </summary>
         string AdminUsername { get; set; }
         /// <summary>
-        /// For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
+        /// Whether to enable CSI proxy. For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
         /// </summary>
         bool? EnableCsiProxy { get; set; }
         /// <summary>The Windows gMSA Profile in the Managed Cluster.</summary>
@@ -224,7 +228,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// which is used to create the managed cluster.
         /// </summary>
         string GmsaProfileDnsServer { get; set; }
-        /// <summary>Specifies whether to enable Windows gMSA in the managed cluster.</summary>
+        /// <summary>
+        /// Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.
+        /// </summary>
         bool? GmsaProfileEnabled { get; set; }
         /// <summary>
         /// Specifies the root domain name for Windows gMSA. <br><br> Set it to empty if you have configured the DNS server in the

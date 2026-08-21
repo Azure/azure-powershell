@@ -8,15 +8,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     using System.Linq;
 
     /// <summary>
-    /// See [AKS custom node
+    /// OS configurations of Linux agent nodes. See [AKS custom node
     /// configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration)
     /// for more details.
     /// </summary>
-    /// <remarks>
-    /// See [AKS custom node
-    /// configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration)
-    /// for more details.
-    /// </remarks>
     public partial class LinuxOSConfig
     {
         /// <summary>
@@ -34,13 +29,16 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="sysctls">Sysctl settings for Linux agent nodes.
         /// </param>
 
-        /// <param name="transparentHugePageEnabled">Valid values are &#39;always&#39;, &#39;madvise&#39;, and &#39;never&#39;. The default is &#39;always&#39;.
-        /// For more information see [Transparent
+        /// <param name="transparentHugePageEnabled">Whether transparent hugepages are enabled. Valid values are &#39;always&#39;,
+        /// &#39;madvise&#39;, and &#39;never&#39;. The default is &#39;always&#39;. For more information see
+        /// [Transparent
         /// Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
         /// </param>
 
-        /// <param name="transparentHugePageDefrag">Valid values are &#39;always&#39;, &#39;defer&#39;, &#39;defer+madvise&#39;, &#39;madvise&#39; and &#39;never&#39;.
-        /// The default is &#39;madvise&#39;. For more information see [Transparent
+        /// <param name="transparentHugePageDefrag">Whether the kernel should make aggressive use of memory compaction to make
+        /// more hugepages available. Valid values are &#39;always&#39;, &#39;defer&#39;,
+        /// &#39;defer+madvise&#39;, &#39;madvise&#39; and &#39;never&#39;. The default is &#39;madvise&#39;. For more
+        /// information see [Transparent
         /// Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
         /// </param>
 
@@ -69,17 +67,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public SysctlConfig Sysctls {get; set; }
 
         /// <summary>
-        /// Gets or sets valid values are &#39;always&#39;, &#39;madvise&#39;, and &#39;never&#39;. The default
-        /// is &#39;always&#39;. For more information see [Transparent
+        /// Gets or sets whether transparent hugepages are enabled. Valid values are
+        /// &#39;always&#39;, &#39;madvise&#39;, and &#39;never&#39;. The default is &#39;always&#39;. For more
+        /// information see [Transparent
         /// Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "transparentHugePageEnabled")]
         public string TransparentHugePageEnabled {get; set; }
 
         /// <summary>
-        /// Gets or sets valid values are &#39;always&#39;, &#39;defer&#39;, &#39;defer+madvise&#39;, &#39;madvise&#39;
-        /// and &#39;never&#39;. The default is &#39;madvise&#39;. For more information see
-        /// [Transparent
+        /// Gets or sets whether the kernel should make aggressive use of memory
+        /// compaction to make more hugepages available. Valid values are &#39;always&#39;,
+        /// &#39;defer&#39;, &#39;defer+madvise&#39;, &#39;madvise&#39; and &#39;never&#39;. The default is &#39;madvise&#39;.
+        /// For more information see [Transparent
         /// Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "transparentHugePageDefrag")]
@@ -91,5 +91,20 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "swapFileSizeMB")]
         public int? SwapFileSizeMb {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Sysctls != null)
+            {
+                this.Sysctls.Validate();
+            }
+
+
+        }
     }
 }

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class SourceSiteOperations
     {
+        /// <summary>
+        /// Required
+        /// </summary>
         public const string Required = "Required";
+        /// <summary>
+        /// NotRequired
+        /// </summary>
         public const string NotRequired = "NotRequired";
     }
 }

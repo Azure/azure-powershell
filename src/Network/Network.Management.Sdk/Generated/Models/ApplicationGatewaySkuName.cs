@@ -13,13 +13,37 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewaySkuName
     {
+        /// <summary>
+        /// Standard_Small
+        /// </summary>
         public const string StandardSmall = "Standard_Small";
+        /// <summary>
+        /// Standard_Medium
+        /// </summary>
         public const string StandardMedium = "Standard_Medium";
+        /// <summary>
+        /// Standard_Large
+        /// </summary>
         public const string StandardLarge = "Standard_Large";
+        /// <summary>
+        /// WAF_Medium
+        /// </summary>
         public const string WAFMedium = "WAF_Medium";
+        /// <summary>
+        /// WAF_Large
+        /// </summary>
         public const string WAFLarge = "WAF_Large";
+        /// <summary>
+        /// Standard_v2
+        /// </summary>
         public const string StandardV2 = "Standard_v2";
+        /// <summary>
+        /// WAF_v2
+        /// </summary>
         public const string WAFV2 = "WAF_v2";
+        /// <summary>
+        /// Basic
+        /// </summary>
         public const string Basic = "Basic";
     }
 }

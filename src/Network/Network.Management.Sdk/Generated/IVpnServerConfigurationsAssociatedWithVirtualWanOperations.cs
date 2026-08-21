@@ -22,11 +22,10 @@ namespace Microsoft.Azure.Management.Network
         /// resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN whose associated VpnServerConfigurations is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -51,11 +50,10 @@ namespace Microsoft.Azure.Management.Network
         /// resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN whose associated VpnServerConfigurations is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

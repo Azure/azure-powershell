@@ -39,16 +39,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// object stored in KeyVault.
         /// </param>
 
+        /// <param name="hsm">Managed HSM properties of the Application Gateway resource.
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the SSL certificate resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public ApplicationGatewaySslCertificatePropertiesFormat(string data = default(string), string password = default(string), string publicCertData = default(string), string keyVaultSecretId = default(string), string provisioningState = default(string))
+        public ApplicationGatewaySslCertificatePropertiesFormat(string data = default(string), string password = default(string), string publicCertData = default(string), string keyVaultSecretId = default(string), ApplicationGatewayManagedHsm hsm = default(ApplicationGatewayManagedHsm), string provisioningState = default(string))
 
         {
             this.Data = data;
             this.Password = password;
             this.PublicCertData = publicCertData;
             this.KeyVaultSecretId = keyVaultSecretId;
+            this.Hsm = hsm;
             this.ProvisioningState = provisioningState;
             CustomInit();
         }
@@ -86,6 +90,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "keyVaultSecretId")]
         public string KeyVaultSecretId {get; set; }
+
+        /// <summary>
+        /// Gets or sets managed HSM properties of the Application Gateway resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "hsm")]
+        public ApplicationGatewayManagedHsm Hsm {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the SSL certificate resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

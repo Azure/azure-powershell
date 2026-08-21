@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
-    /// <summary>List of Network Fabric SKUs.</summary>
+    /// <summary>Paged collection of NetworkFabricSku items</summary>
     public partial class NetworkFabricSkusListResult
     {
 

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// VirtualHub Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VirtualHub : Resource
+    public partial class VirtualHub : TrackedResourceWithSettableIdOptionalLocation
     {
         /// <summary>
         /// Initializes a new instance of the VirtualHub class.

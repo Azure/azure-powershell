@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     /// A private link resource
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class MhsmPrivateLinkResource : ManagedHsmResource
+    public partial class MhsmPrivateLinkResource : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the MhsmPrivateLinkResource class.
@@ -25,26 +25,28 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// Initializes a new instance of the MhsmPrivateLinkResource class.
         /// </summary>
 
-        /// <param name="id">The Azure Resource Manager resource ID for the managed HSM Pool.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the managed HSM Pool.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The resource type of the managed HSM Pool.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">The supported Azure location where the managed HSM Pool should be created.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
+        /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="sku">SKU details
-        /// </param>
-
-        /// <param name="tags">Resource tags
-        /// </param>
-
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the key vault
-        /// resource.
         /// </param>
 
         /// <param name="identity">Managed service identity (system assigned and/or user assigned identities)
@@ -58,10 +60,12 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <param name="requiredZoneNames">Required DNS zone names of the the private link resource.
         /// </param>
-        public MhsmPrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), ManagedHsmSku sku = default(ManagedHsmSku), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
+        public MhsmPrivateLinkResource(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedHsmSku sku = default(ManagedHsmSku), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
 
-        : base(id, name, type, location, sku, tags, systemData, identity)
+        : base(location, id, name, type, systemData, tags)
         {
+            this.Sku = sku;
+            this.Identity = identity;
             this.GroupId = groupId;
             this.RequiredMembers = requiredMembers;
             this.RequiredZoneNames = requiredZoneNames;
@@ -73,6 +77,19 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets sKU details
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
+        public ManagedHsmSku Sku {get; set; }
+
+        /// <summary>
+        /// Gets or sets managed service identity (system assigned and/or user assigned
+        /// identities)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity {get; set; }
 
         /// <summary>
         /// Gets group identifier of private link resource.
@@ -100,6 +117,14 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         public override void Validate()
         {
             base.Validate();
+            if (this.Sku != null)
+            {
+                this.Sku.Validate();
+            }
+            if (this.Identity != null)
+            {
+                this.Identity.Validate();
+            }
 
 
 

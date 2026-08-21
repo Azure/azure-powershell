@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Extensions;
 
-    /// <summary>Dictionary of <any></summary>
+    /// <summary>The collection of allowed values for the parameter.</summary>
     public partial class ParameterDefinitionsValueAllowedValuesItem
     {
 

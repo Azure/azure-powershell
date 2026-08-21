@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class NicTypeInRequest
     {
+        /// <summary>
+        /// PublicNic
+        /// </summary>
         public const string PublicNic = "PublicNic";
+        /// <summary>
+        /// PrivateNic
+        /// </summary>
         public const string PrivateNic = "PrivateNic";
     }
 }

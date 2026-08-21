@@ -144,6 +144,12 @@
   <data name="Error_RecordSetNameEndsWithZoneName" xml:space="preserve">
     <value>The relative record set name "{0}" includes the zone name "{1}". This will result in the set name "{0}.{1}".</value>
   </data>
+  <data name="Error_RecordSetRecordsWithLink" xml:space="preserve">
+    <value>A record set cannot contain DNS records together with an alias target resource or a Traffic Manager profile link. Specify either -DnsRecords or one of -TargetResourceId / -TrafficManagerProfileId, but not both.</value>
+  </data>
+  <data name="Error_RecordSetTargetResourceAndTrafficManagerProfile" xml:space="preserve">
+    <value>A record set cannot specify both an alias target resource and a Traffic Manager profile link. Specify either -TargetResourceId or -TrafficManagerProfileId, but not both.</value>
+  </data>
   <data name="Error_RemoveRecordTypeMismatch" xml:space="preserve">
     <value>Cannot remove a record of type {0} from a record set of type {1}. The types must match.</value>
   </data>

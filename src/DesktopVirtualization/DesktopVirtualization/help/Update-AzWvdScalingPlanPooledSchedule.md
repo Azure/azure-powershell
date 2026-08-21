@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdScalingPlanPooledSchedule
 
 ## SYNOPSIS
-update a ScalingPlanPooledSchedule.
+Update a ScalingPlanPooledSchedule.
 
 ## SYNTAX
 
@@ -76,7 +76,7 @@ Update-AzWvdScalingPlanPooledSchedule -InputObject <IDesktopVirtualizationIdenti
 ```
 
 ## DESCRIPTION
-update a ScalingPlanPooledSchedule.
+Update a ScalingPlanPooledSchedule.
 
 ## EXAMPLES
 

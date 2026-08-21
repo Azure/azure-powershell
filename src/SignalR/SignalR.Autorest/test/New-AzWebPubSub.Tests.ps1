@@ -24,7 +24,7 @@ Describe 'New-AzWebPubSub' {
         It 'CreateExpandedWithMoreParameters' {
             $name = $env.WpsPrefix + 'new-wps-' + "CreateExpandedWithMoreParameters"
 
-            $wps = New-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -Name $name -Location 'eastus' -SkuName Standard_S1 -IdentityType SystemAssigned -LiveTraceEnabled true -LiveTraceCategory @{ Name='ConnectivityLogs' ; Enabled = 'true' }, @{ Name='MessageLogs' ; Enabled = 'true' }
+            $wps = New-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -Name $name -Location 'eastus' -SkuName Standard_S1 -EnableSystemAssignedIdentity -LiveTraceEnabled true -LiveTraceCategory @{ Name='ConnectivityLogs' ; Enabled = 'true' }, @{ Name='MessageLogs' ; Enabled = 'true' }
 
             $wps.ProvisioningState | Should -Be "Succeeded"
             $wps.LiveTraceEnabled | Should -Be $True

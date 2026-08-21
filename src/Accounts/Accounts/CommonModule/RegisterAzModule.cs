@@ -74,6 +74,9 @@ namespace Microsoft.Azure.Commands.Common
 
                     AddAuthorizeRequestHandler = ContextAdapter.Instance.AddAuthorizeRequestHandler,
 
+                    // change safety policy-token step; the generated module invokes this after OnNewRequest
+                    AddChangeSafetyPolicyTokenHandler = ContextAdapter.Instance.AddChangeSafetyPolicyTokenHandler,
+
                     // Called for well-known parameters that require argument completers
                     ArgumentCompleter = ContextAdapter.Instance.CompleteArgument,
 

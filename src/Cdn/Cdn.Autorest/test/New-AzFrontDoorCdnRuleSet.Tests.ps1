@@ -14,9 +14,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnRuleSet'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnRuleSet'  {
+Describe 'New-AzFrontDoorCdnRuleSet' {
+    BeforeAll {
+        $script:rsName = 'rsNameNew'
+    }
+
+    AfterAll {
+        Remove-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $script:rsName -ErrorAction SilentlyContinue
+    }
+
     It 'Create' {
-        $rulesetName = 'rsName070'
-        New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
+        $rs = New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $script:rsName
+        $rs.Name | Should -Be $script:rsName
     }
 }

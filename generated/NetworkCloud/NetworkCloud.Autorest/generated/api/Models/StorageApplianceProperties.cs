@@ -28,6 +28,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string AdministratorCredentialsUsername { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAdministrativeCredentialsInternal)AdministratorCredentials).Username; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAdministrativeCredentialsInternal)AdministratorCredentials).Username = value ?? null; }
 
+        /// <summary>Backing field for <see cref="CaCertificate" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfo _caCertificate;
+
+        /// <summary>
+        /// The CA certificate information issued by the platform for connecting to TLS interfaces for the storage appliance. Callers
+        /// add this certificate to their trusted CA store to allow secure communication with the storage appliance.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfo CaCertificate { get => (this._caCertificate = this._caCertificate ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CertificateInfo()); }
+
+        /// <summary>The hash value of the X.509 Certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string CaCertificateHash { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfoInternal)CaCertificate).Hash; }
+
+        /// <summary>The textual value of the X.509 Certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string CaCertificateValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfoInternal)CaCertificate).Value; }
+
         /// <summary>Backing field for <see cref="Capacity" /> property.</summary>
         private long? _capacity;
 
@@ -38,16 +56,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>Backing field for <see cref="CapacityUsed" /> property.</summary>
         private long? _capacityUsed;
 
-        /// <summary>The amount of storage consumed.</summary>
+        /// <summary>The amount of storage consumed. Measured in GiB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public long? CapacityUsed { get => this._capacityUsed; }
 
         /// <summary>Backing field for <see cref="ClusterId" /> property.</summary>
         private string _clusterId;
 
-        /// <summary>
-        /// The resource ID of the cluster this storage appliance is associated with. Measured in GiB.
-        /// </summary>
+        /// <summary>The resource ID of the cluster this storage appliance is associated with.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string ClusterId { get => this._clusterId; }
 
@@ -81,6 +97,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
 
         /// <summary>Internal Acessors for AdministratorCredentials</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAdministrativeCredentials Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal.AdministratorCredentials { get => (this._administratorCredentials = this._administratorCredentials ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.AdministrativeCredentials()); set { {_administratorCredentials = value;} } }
+
+        /// <summary>Internal Acessors for CaCertificate</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfo Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal.CaCertificate { get => (this._caCertificate = this._caCertificate ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CertificateInfo()); set { {_caCertificate = value;} } }
+
+        /// <summary>Internal Acessors for CaCertificateHash</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal.CaCertificateHash { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfoInternal)CaCertificate).Hash; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfoInternal)CaCertificate).Hash = value ?? null; }
+
+        /// <summary>Internal Acessors for CaCertificateValue</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal.CaCertificateValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfoInternal)CaCertificate).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfoInternal)CaCertificate).Value = value ?? null; }
 
         /// <summary>Internal Acessors for Capacity</summary>
         long? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal.Capacity { get => this._capacity; set { {_capacity = value;} } }
@@ -228,6 +253,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         SerializedName = @"username",
         PossibleTypes = new [] { typeof(string) })]
         string AdministratorCredentialsUsername { get; set; }
+        /// <summary>The hash value of the X.509 Certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The hash value of the X.509 Certificate.",
+        SerializedName = @"hash",
+        PossibleTypes = new [] { typeof(string) })]
+        string CaCertificateHash { get;  }
+        /// <summary>The textual value of the X.509 Certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The textual value of the X.509 Certificate.",
+        SerializedName = @"value",
+        PossibleTypes = new [] { typeof(string) })]
+        string CaCertificateValue { get;  }
         /// <summary>The total capacity of the storage appliance. Measured in GiB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -239,27 +286,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         SerializedName = @"capacity",
         PossibleTypes = new [] { typeof(long) })]
         long? Capacity { get;  }
-        /// <summary>The amount of storage consumed.</summary>
+        /// <summary>The amount of storage consumed. Measured in GiB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The amount of storage consumed.",
+        Description = @"The amount of storage consumed. Measured in GiB.",
         SerializedName = @"capacityUsed",
         PossibleTypes = new [] { typeof(long) })]
         long? CapacityUsed { get;  }
-        /// <summary>
-        /// The resource ID of the cluster this storage appliance is associated with. Measured in GiB.
-        /// </summary>
+        /// <summary>The resource ID of the cluster this storage appliance is associated with.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The resource ID of the cluster this storage appliance is associated with. Measured in GiB.",
+        Description = @"The resource ID of the cluster this storage appliance is associated with.",
         SerializedName = @"clusterId",
         PossibleTypes = new [] { typeof(string) })]
         string ClusterId { get;  }
@@ -438,13 +483,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         System.Security.SecureString AdministratorCredentialsPassword { get; set; }
         /// <summary>The username of the administrator of the device used during initialization.</summary>
         string AdministratorCredentialsUsername { get; set; }
+        /// <summary>
+        /// The CA certificate information issued by the platform for connecting to TLS interfaces for the storage appliance. Callers
+        /// add this certificate to their trusted CA store to allow secure communication with the storage appliance.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfo CaCertificate { get; set; }
+        /// <summary>The hash value of the X.509 Certificate.</summary>
+        string CaCertificateHash { get; set; }
+        /// <summary>The textual value of the X.509 Certificate.</summary>
+        string CaCertificateValue { get; set; }
         /// <summary>The total capacity of the storage appliance. Measured in GiB.</summary>
         long? Capacity { get; set; }
-        /// <summary>The amount of storage consumed.</summary>
+        /// <summary>The amount of storage consumed. Measured in GiB.</summary>
         long? CapacityUsed { get; set; }
-        /// <summary>
-        /// The resource ID of the cluster this storage appliance is associated with. Measured in GiB.
-        /// </summary>
+        /// <summary>The resource ID of the cluster this storage appliance is associated with.</summary>
         string ClusterId { get; set; }
         /// <summary>The detailed status of the storage appliance.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Available", "Degraded", "Error", "Provisioning")]

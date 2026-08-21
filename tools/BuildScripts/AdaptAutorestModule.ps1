@@ -63,7 +63,7 @@ Write-Host "Adapting $SubModuleName to $ModuleRootName ..." -ForegroundColor Dar
 #>
 if (-not (Test-Path $slnPath)) {
     Write-Host "Creating $slnPath ..." -ForegroundColor DarkGreen
-    dotnet new sln -n $ModuleRootName -o $moduleRootPath
+    New-SlnFile -SolutionName $ModuleRootName -SolutionPath $moduleRootPath
     Join-Path $SourceDirectory 'Accounts' | Get-ChildItem -Filter "*.csproj" -File -Recurse | Where-Object { $_.FullName -notmatch '^*.test.csproj$' } | Foreach-Object {
         dotnet sln $slnPath add $_.FullName --solution-folder 'Accounts'
     }

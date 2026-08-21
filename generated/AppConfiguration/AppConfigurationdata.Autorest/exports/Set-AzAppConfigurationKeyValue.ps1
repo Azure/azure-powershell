@@ -52,13 +52,21 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
     [System.String]
-    # Used to perform an operation only if the targeted resource's etag matches the value provided.
+    # An opaque, globally-unique, client-generated string identifier for the request.
+    ${ClientRequestId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
+    [System.String]
+    # Used to perform an operation only if the targeted resource's etag matches the
+    # value provided.
     ${IfMatch},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
     [System.String]
-    # Used to perform an operation only if the targeted resource's etag does not match the value provided.
+    # Used to perform an operation only if the targeted resource's etag does not
+    # match the value provided.
     ${IfNoneMatch},
 
     [Parameter()]
@@ -70,50 +78,44 @@ param(
     [Parameter(ParameterSetName='PutExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Body')]
     [System.String]
-    # .
+    # The content type of the value stored within the key-value.
     ${ContentType},
 
     [Parameter(ParameterSetName='PutExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Body')]
     [System.String]
-    # .
+    # The description of the key-value.
+    ${Description},
+
+    [Parameter(ParameterSetName='PutExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Body')]
+    [System.String]
+    # A value representing the current state of the resource.
     ${Etag},
 
     [Parameter(ParameterSetName='PutExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Body')]
-    [System.String]
-    # .
-    ${Key1},
-
-    [Parameter(ParameterSetName='PutExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Body')]
-    [System.String]
-    # .
-    ${Label1},
-
-    [Parameter(ParameterSetName='PutExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Body')]
     [System.DateTime]
-    # .
+    # A date representing the last time the key-value was modified.
     ${LastModified},
 
     [Parameter(ParameterSetName='PutExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # .
+    # Indicates whether the key-value is locked.
     ${Locked},
 
     [Parameter(ParameterSetName='PutExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueTags]))]
     [System.Collections.Hashtable]
-    # Dictionary of <string>
+    # The tags of the key-value
     ${Tag},
 
     [Parameter(ParameterSetName='PutExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Body')]
     [System.String]
-    # .
+    # The value of the key-value.
     ${Value},
 
     [Parameter(ParameterSetName='PutViaJsonFilePath', Mandatory)]
@@ -190,8 +192,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

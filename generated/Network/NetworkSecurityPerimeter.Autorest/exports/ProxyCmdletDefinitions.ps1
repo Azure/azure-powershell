@@ -42,13 +42,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -56,13 +56,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 PROFILEINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -70,13 +70,13 @@ PROFILEINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeteraccessrule
 #>
@@ -107,6 +107,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -122,8 +123,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -219,8 +220,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -316,6 +316,8 @@ Gets the list of resources that are onboarded with NSP.
 These resources can be associated with a network security perimeter
 .Example
 Get-AzNetworkSecurityPerimeterAssociableResourceType -Location eastus2euap
+.Example
+Get-AzNetworkSecurityPerimeterAssociableResourceType -Location eastus2euap | Select-Object DisplayName, ReadinessState, OutboundSupported, Description, ServiceTag
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResource
@@ -329,15 +331,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
-    # The location of network security perimeter.
+    # The name of the Azure region.
     ${Location},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]
@@ -402,8 +404,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -514,13 +515,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -528,13 +529,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterassociation
 #>
@@ -555,6 +556,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -570,8 +572,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -661,8 +663,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -773,13 +774,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -787,13 +788,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterlinkreference
 #>
@@ -814,6 +815,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -829,8 +831,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -920,8 +922,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1032,13 +1033,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -1046,13 +1047,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterlink
 #>
@@ -1073,6 +1074,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1088,8 +1090,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1179,8 +1181,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1289,13 +1290,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -1303,13 +1304,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterloggingconfiguration
 #>
@@ -1332,6 +1333,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1347,8 +1349,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1425,8 +1427,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1543,13 +1544,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -1557,13 +1558,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterprofile
 #>
@@ -1584,6 +1585,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1599,8 +1601,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1690,8 +1692,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1799,15 +1800,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
-    # The location of network security perimeter.
+    # The name of the Azure region.
     ${Location},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]
@@ -1872,8 +1873,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1986,13 +1986,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeter
 #>
@@ -2012,6 +2012,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -2020,8 +2021,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -2107,8 +2108,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -2221,13 +2221,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -2235,13 +2235,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 PARAMETER <INspAccessRule>: The NSP access rule resource
   [AddressPrefix <List<String>>]: Inbound address prefixes (IPv4/IPv6)
@@ -2259,13 +2259,13 @@ PROFILEINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 SUBSCRIPTION <ISubscriptionId[]>: List of subscription ids
   [Id <String>]: Subscription id in the ARM id format.
@@ -2309,6 +2309,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -2328,8 +2329,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -2507,8 +2508,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -2626,13 +2626,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -2640,13 +2640,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 PARAMETER <INspAssociation>: The NSP resource association resource
   [AccessMode <String>]: Access mode on the association.
@@ -2678,6 +2678,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -2697,8 +2698,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -2832,8 +2833,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -2948,13 +2948,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -2962,13 +2962,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 PARAMETER <INspLink>: The network security perimeter link resource
   [AutoApprovedRemotePerimeterResourceId <String>]: Perimeter ARM Id for the remote NSP with which the link gets created in Auto-approval mode. It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.
@@ -3001,6 +3001,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -3020,8 +3021,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -3158,8 +3159,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -3273,13 +3273,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -3287,13 +3287,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 PARAMETER <INspLoggingConfiguration>: The NSP logging configuration
   [EnabledLogCategory <List<String>>]: The log categories to enable in the NSP logging configuration.
@@ -3326,6 +3326,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -3345,8 +3346,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -3460,8 +3461,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -3578,13 +3578,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -3592,13 +3592,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeterprofile
 #>
@@ -3625,6 +3625,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -3644,8 +3645,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -3742,8 +3743,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -3857,17 +3857,17 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 PARAMETER <INetworkSecurityPerimeter>: The Network Security Perimeter resource
   [Location <String>]: The geo-location where the resource lives
-  [Tag <ITrackedResourceTags>]: Resource tags.
+  [Tag <ISecurityPerimeterTrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeter
@@ -3893,6 +3893,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Create')]
@@ -3902,8 +3903,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -3928,7 +3929,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterTrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -4007,8 +4008,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -4121,13 +4121,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -4135,13 +4135,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 PROFILEINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -4149,13 +4149,13 @@ PROFILEINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeteraccessrule
 #>
@@ -4184,6 +4184,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -4197,8 +4198,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -4287,8 +4288,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -4400,13 +4400,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -4414,13 +4414,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeterassociation
 #>
@@ -4440,6 +4440,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -4453,8 +4454,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -4549,8 +4550,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -4661,13 +4661,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -4675,13 +4675,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeterlinkreference
 #>
@@ -4701,6 +4701,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -4714,8 +4715,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -4810,8 +4811,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -4922,13 +4922,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -4936,13 +4936,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeterlink
 #>
@@ -4962,6 +4962,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -4975,8 +4976,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -5071,8 +5072,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -5183,13 +5183,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -5197,13 +5197,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeterloggingconfiguration
 #>
@@ -5225,6 +5225,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -5238,8 +5239,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -5322,8 +5323,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -5437,13 +5437,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [AccessRuleName <String>]: The name of the NSP access rule.
@@ -5451,13 +5451,13 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeterprofile
 #>
@@ -5477,6 +5477,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -5490,8 +5491,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -5574,8 +5575,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -5686,13 +5686,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeter
 #>
@@ -5711,14 +5711,15 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -5813,8 +5814,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -5926,13 +5926,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 PARAMETER <IUpdateTagsRequest>: Update tags request.
   [Tag <IUpdateTagsRequestTags>]: List of tags for Network Security Perimeter
@@ -5961,6 +5961,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Patch')]
@@ -5970,8 +5971,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='PatchViaIdentity', Mandatory, ValueFromPipeline)]
@@ -6070,8 +6071,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -6185,13 +6185,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity parameter. To construc
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 SUBSCRIPTION <ISubscriptionId[]>: Subscription ids
   [Id <String>]: Subscription id in the ARM id format.
@@ -6358,8 +6358,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -6469,13 +6468,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity parameter. To construc
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/update-aznetworksecurityperimeterassociation
 #>
@@ -6609,8 +6608,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -6720,13 +6718,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity parameter. To construc
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/update-aznetworksecurityperimeterlink
 #>
@@ -6860,8 +6858,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -6968,13 +6965,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity parameter. To construc
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/update-aznetworksecurityperimeterloggingconfiguration
 #>
@@ -7096,8 +7093,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

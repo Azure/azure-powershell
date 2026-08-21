@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AzureFirewallSkuTier
     {
+        /// <summary>
+        /// Standard
+        /// </summary>
         public const string Standard = "Standard";
+        /// <summary>
+        /// Premium
+        /// </summary>
         public const string Premium = "Premium";
+        /// <summary>
+        /// Basic
+        /// </summary>
         public const string Basic = "Basic";
     }
 }

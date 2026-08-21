@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PowerShell;
 
-    /// <summary>
-    /// Result of the request to list NSP link resources. Contains a list of NSP link resources and a URL link to get the next
-    /// set of results.
-    /// </summary>
+    /// <summary>The response of a NspLink list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(NspLinkListResultTypeConverter))]
     public partial class NspLinkListResult
     {
@@ -165,8 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             return ToJsonString();
         }
     }
-    /// Result of the request to list NSP link resources. Contains a list of NSP link resources and a URL link to get the next
-    /// set of results.
+    /// The response of a NspLink list operation.
     [System.ComponentModel.TypeConverter(typeof(NspLinkListResultTypeConverter))]
     public partial interface INspLinkListResult
 

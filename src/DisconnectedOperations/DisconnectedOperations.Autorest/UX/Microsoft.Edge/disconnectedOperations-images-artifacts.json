@@ -1,6 +1,6 @@
 {
   "resourceType": "disconnectedOperations/images/artifacts",
-  "apiVersion": "2025-06-01-preview",
+  "apiVersion": "2026-03-15",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.disconnectedoperations"
   },

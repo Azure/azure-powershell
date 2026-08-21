@@ -99,6 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).CommandId = (string) content.GetValueForProperty("CommandId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).CommandId, global::System.Convert.ToString);
             }
+            if (content.Contains("Mode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Mode = (string) content.GetValueForProperty("Mode",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Mode, global::System.Convert.ToString);
+            }
             if (content.Contains("ConfigName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ConfigName = (string) content.GetValueForProperty("ConfigName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ConfigName, global::System.Convert.ToString);
@@ -110,6 +114,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("PrivateEndpointConnectionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TrustedAccessRoleBindingName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).TrustedAccessRoleBindingName = (string) content.GetValueForProperty("TrustedAccessRoleBindingName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).TrustedAccessRoleBindingName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MachineName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).MachineName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -156,6 +168,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).CommandId = (string) content.GetValueForProperty("CommandId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).CommandId, global::System.Convert.ToString);
             }
+            if (content.Contains("Mode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Mode = (string) content.GetValueForProperty("Mode",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Mode, global::System.Convert.ToString);
+            }
             if (content.Contains("ConfigName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ConfigName = (string) content.GetValueForProperty("ConfigName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ConfigName, global::System.Convert.ToString);
@@ -167,6 +183,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("PrivateEndpointConnectionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TrustedAccessRoleBindingName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).TrustedAccessRoleBindingName = (string) content.GetValueForProperty("TrustedAccessRoleBindingName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).TrustedAccessRoleBindingName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MachineName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).MachineName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

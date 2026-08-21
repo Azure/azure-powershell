@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PowerShell;
 
-    /// <summary>The response from the List Deleted Accounts operation.</summary>
+    /// <summary>The response of a DeletedAccount list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(DeletedAccountListResultTypeConverter))]
     public partial class DeletedAccountListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             return ToJsonString();
         }
     }
-    /// The response from the List Deleted Accounts operation.
+    /// The response of a DeletedAccount list operation.
     [System.ComponentModel.TypeConverter(typeof(DeletedAccountListResultTypeConverter))]
     public partial interface IDeletedAccountListResult
 

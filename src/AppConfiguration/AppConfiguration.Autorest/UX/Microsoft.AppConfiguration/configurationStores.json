@@ -1,6 +1,6 @@
 {
   "resourceType": "configurationStores",
-  "apiVersion": "2022-05-01",
+  "apiVersion": "2024-06-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration"
   },

@@ -127,14 +127,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupVault
             else if (ParameterSetName == ObjectParameterSet)
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
-                var NameParts = InputObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(InputObject.Id);
                 AccountName = NameParts[0];
                 Name = NameParts[3];
             }
             else if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = AccountObject.ResourceGroupName;                
-                var NameParts = AccountObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(AccountObject.Id);
                 AccountName = NameParts[0];
             }
 

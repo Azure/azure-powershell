@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     /// <summary>
     /// Parameters for creating or updating a vault
     /// </summary>
-    public partial class VaultCreateOrUpdateParameters : Microsoft.Rest.Azure.IResource
+    public partial class VaultCreateOrUpdateParameters
     {
         /// <summary>
         /// Initializes a new instance of the VaultCreateOrUpdateParameters class.

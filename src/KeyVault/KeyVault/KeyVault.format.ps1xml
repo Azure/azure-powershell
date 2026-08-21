@@ -47,6 +47,10 @@
                 <PropertyName>Updated</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Key Size</Label>
+                <PropertyName>KeySize</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Recovery Level</Label>
                 <PropertyName>RecoveryLevel</PropertyName>
               </ListItem>

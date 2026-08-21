@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class CircuitConnectionStatus
     {
+        /// <summary>
+        /// Connected
+        /// </summary>
         public const string Connected = "Connected";
+        /// <summary>
+        /// Connecting
+        /// </summary>
         public const string Connecting = "Connecting";
+        /// <summary>
+        /// Disconnected
+        /// </summary>
         public const string Disconnected = "Disconnected";
     }
 }

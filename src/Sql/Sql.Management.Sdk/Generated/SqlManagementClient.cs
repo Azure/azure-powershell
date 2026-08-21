@@ -342,6 +342,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         public virtual IRecommendedSensitivityLabelsOperations RecommendedSensitivityLabels { get; private set; }
         /// <summary>
+        /// Gets the IFirewallRulesOperations
+        /// </summary>
+        public virtual IFirewallRulesOperations FirewallRules { get; private set; }
+        /// <summary>
         /// Gets the IIPv6FirewallRulesOperations
         /// </summary>
         public virtual IIPv6FirewallRulesOperations IPv6FirewallRules { get; private set; }
@@ -746,6 +750,7 @@ namespace Microsoft.Azure.Management.Sql
             this.ManagedDatabaseRecommendedSensitivityLabels = new ManagedDatabaseRecommendedSensitivityLabelsOperations(this);
             this.SensitivityLabels = new SensitivityLabelsOperations(this);
             this.RecommendedSensitivityLabels = new RecommendedSensitivityLabelsOperations(this);
+            this.FirewallRules = new FirewallRulesOperations(this);
             this.IPv6FirewallRules = new IPv6FirewallRulesOperations(this);
             this.ReplicationLinks = new ReplicationLinksOperations(this);
             this.VirtualClusters = new VirtualClustersOperations(this);

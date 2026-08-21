@@ -12,7 +12,7 @@ Implements an IP Community GET method.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzNetworkFabricIPCommunity [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -29,7 +29,7 @@ Get-AzNetworkFabricIPCommunity -InputObject <IManagedNetworkFabricIdentity> [-De
  [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzNetworkFabricIPCommunity -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -140,7 +140,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True

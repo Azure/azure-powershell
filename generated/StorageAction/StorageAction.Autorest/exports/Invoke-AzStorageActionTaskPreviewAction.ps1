@@ -74,7 +74,7 @@ CONTAINERMETADATA <IStorageTaskPreviewKeyValueProperties[]>: metadata key value 
 
 INPUTOBJECT <IStorageActionIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [Location <String>]: The location to perform preview of the actions.
+  [Location <String>]: Represents an Azure geography region where supported resource providers live.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [StorageTaskName <String>]: The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -90,14 +90,14 @@ param(
     [Parameter(ParameterSetName='PreviewViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Category('Path')]
     [System.String]
-    # The location to perform preview of the actions.
+    # Represents an Azure geography region where supported resource providers live.
     ${Location},
 
     [Parameter(ParameterSetName='PreviewExpanded')]
     [Parameter(ParameterSetName='PreviewViaJsonFilePath')]
     [Parameter(ParameterSetName='PreviewViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.DefaultInfo(Name='SubscriptionId Default', Description='Gets the SubscriptionId from the current context.', Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     # The value must be an UUID.
@@ -220,8 +220,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

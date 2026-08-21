@@ -16,8 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql.LegacySdk;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
@@ -59,25 +58,36 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
         /// <summary>
         /// Gets the Azure Sql Database Server FirewallRules
         /// </summary>
-        public Management.Sql.LegacySdk.Models.FirewallRule Get(string resourceGroupName, string serverName, string firewallRuleName)
+        public Management.Sql.Models.FirewallRule Get(string resourceGroupName, string serverName, string firewallRuleName)
         {
-            return GetCurrentSqlClient().FirewallRules.Get(resourceGroupName, serverName, firewallRuleName).FirewallRule;
+            return GetCurrentSqlClient().FirewallRules.Get(resourceGroupName, serverName, firewallRuleName);
         }
 
         /// <summary>
         /// Lists Azure Sql Databases Server FirewallRules
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.FirewallRule> List(string resourceGroupName, string serverName)
+        public IList<Management.Sql.Models.FirewallRule> List(string resourceGroupName, string serverName)
         {
-            return GetCurrentSqlClient().FirewallRules.List(resourceGroupName, serverName).FirewallRules;
+            List<Management.Sql.Models.FirewallRule> resultsList = new List<Management.Sql.Models.FirewallRule>();
+
+            var pagedResponse = GetCurrentSqlClient().FirewallRules.ListByServer(resourceGroupName, serverName);
+            resultsList.AddRange(pagedResponse);
+
+            while (!string.IsNullOrEmpty(pagedResponse.NextPageLink))
+            {
+                pagedResponse = GetCurrentSqlClient().FirewallRules.ListByServerNext(pagedResponse.NextPageLink);
+                resultsList.AddRange(pagedResponse);
+            }
+
+            return resultsList;
         }
 
         /// <summary>
         /// Creates or updates an Azure Sql Database Server FirewallRule
         /// </summary>
-        public Management.Sql.LegacySdk.Models.FirewallRule CreateOrUpdate(string resourceGroupName, string serverName, string firewallRuleName, FirewallRuleCreateOrUpdateParameters parameters)
+        public Management.Sql.Models.FirewallRule CreateOrUpdate(string resourceGroupName, string serverName, string firewallRuleName, Management.Sql.Models.FirewallRule parameters)
         {
-            return GetCurrentSqlClient().FirewallRules.CreateOrUpdate(resourceGroupName, serverName, firewallRuleName, parameters).FirewallRule;
+            return GetCurrentSqlClient().FirewallRules.CreateOrUpdate(resourceGroupName, serverName, firewallRuleName, parameters);
         }
 
         /// <summary>
@@ -93,14 +103,16 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient()
+        private SqlManagementClient GetCurrentSqlClient(string subscriptionId = null)
         {
             // Get the SQL management client for the current subscription
-            if (SqlClient == null)
+            // Note: client is not cached in static field because that causes ObjectDisposedException in functional tests.
+            var sqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+            if (subscriptionId != null)
             {
-                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                sqlClient.SubscriptionId = subscriptionId;
             }
-            return SqlClient;
+            return sqlClient;
         }
     }
 }

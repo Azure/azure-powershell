@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Extensions;
 
-    /// <summary>The response to the List Subscriptions operation.</summary>
+    /// <summary>The response of a SBSubscription list operation.</summary>
     public partial class SbSubscriptionListResult
     {
 

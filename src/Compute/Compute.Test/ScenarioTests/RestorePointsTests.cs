@@ -30,5 +30,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RestorePoints");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestRestorePointsInstantAccess()
+        {
+            TestRunner.RunTestScript("Test-RestorePointsInstantAccess");
+        }
     }
 }

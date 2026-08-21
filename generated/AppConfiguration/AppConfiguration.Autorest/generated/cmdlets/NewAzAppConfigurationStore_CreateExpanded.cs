@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStore))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Description(@"create a configuration store with the specified parameters.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}", ApiVersion = "2022-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}", ApiVersion = "2024-06-01")]
     public partial class NewAzAppConfigurationStore_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.IContext
@@ -45,15 +45,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
 
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
-
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -82,6 +73,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Recover", "Default")]
         public string CreateMode { get => _configStoreCreationParametersBody.CreateMode ?? null; set => _configStoreCreationParametersBody.CreateMode = value; }
+
+        /// <summary>
+        /// The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.",
+        SerializedName = @"authenticationMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Local", "Pass-through")]
+        public string DataPlaneProxyAuthenticationMode { get => _configStoreCreationParametersBody.DataPlaneProxyAuthenticationMode ?? null; set => _configStoreCreationParametersBody.DataPlaneProxyAuthenticationMode = value; }
+
+        /// <summary>
+        /// The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager
+        /// (ARM) private link is allowed when the data plane resource requires private link.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.",
+        SerializedName = @"privateLinkDelegation",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string DataPlaneProxyPrivateLinkDelegation { get => _configStoreCreationParametersBody.DataPlaneProxyPrivateLinkDelegation ?? null; set => _configStoreCreationParametersBody.DataPlaneProxyPrivateLinkDelegation = value; }
+
+        /// <summary>
+        /// The duration in seconds to retain new key value revisions. Defaults to 604800 (7 days) for Free SKU stores and 2592000
+        /// (30 days) for Standard SKU stores and Premium SKU stores.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The duration in seconds to retain new key value revisions. Defaults to 604800 (7 days) for Free SKU stores and 2592000 (30 days) for Standard SKU stores and Premium SKU stores.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The duration in seconds to retain new key value revisions. Defaults to 604800 (7 days) for Free SKU stores and 2592000 (30 days) for Standard SKU stores and Premium SKU stores.",
+        SerializedName = @"defaultKeyValueRevisionRetentionPeriodInSeconds",
+        PossibleTypes = new [] { typeof(long) })]
+        public long DefaultKeyValueRevisionRetentionPeriodInSecond { get => _configStoreCreationParametersBody.DefaultKeyValueRevisionRetentionPeriodInSecond ?? default(long); set => _configStoreCreationParametersBody.DefaultKeyValueRevisionRetentionPeriodInSecond = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -383,11 +417,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -729,24 +758,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStore
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

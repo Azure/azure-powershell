@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IOperationDefinition))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Description(@"Lists the operations available from this provider.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.HttpPath(Path = "/providers/Microsoft.AppConfiguration/operations", ApiVersion = "2022-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.HttpPath(Path = "/providers/Microsoft.AppConfiguration/operations", ApiVersion = "2024-06-01")]
     public partial class GetAzAppConfigurationOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.IContext

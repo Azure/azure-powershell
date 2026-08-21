@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class PcStatus
     {
+        /// <summary>
+        /// NotStarted
+        /// </summary>
         public const string NotStarted = "NotStarted";
+        /// <summary>
+        /// Running
+        /// </summary>
         public const string Running = "Running";
+        /// <summary>
+        /// Stopped
+        /// </summary>
         public const string Stopped = "Stopped";
+        /// <summary>
+        /// Error
+        /// </summary>
         public const string Error = "Error";
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
     }
 }

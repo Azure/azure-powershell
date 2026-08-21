@@ -15,15 +15,16 @@ Requests the headers and status of the given resource.
 ### Check (Default)
 ```
 Test-AzAppConfigurationKeyValue -Endpoint <String> -Key <String> [-Label <String>] [-Select <List<String>>]
- [-AcceptDatetime <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SyncToken <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-Tag <List<String>>] [-AcceptDatetime <String>] [-ClientRequestId <String>] [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-SyncToken <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
 ```
 Test-AzAppConfigurationKeyValue -Endpoint <String> -InputObject <IAppConfigurationdataIdentity>
- [-Label <String>] [-Select <List<String>>] [-AcceptDatetime <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] [-SyncToken <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-Label <String>] [-Select <List<String>>] [-Tag <List<String>>] [-AcceptDatetime <String>]
+ [-ClientRequestId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SyncToken <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +60,23 @@ If the key-value does not exist, the cmdlet will throw an error.
 ## PARAMETERS
 
 ### -AcceptDatetime
-Requests the server to respond with the state of the resource at the specified time.
+Requests the server to respond with the state of the resource at the specified
+time.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClientRequestId
+An opaque, globally-unique, client-generated string identifier for the request.
 
 ```yaml
 Type: System.String
@@ -105,7 +122,8 @@ Accept wildcard characters: False
 ```
 
 ### -IfMatch
-Used to perform an operation only if the targeted resource's etag matches the value provided.
+Used to perform an operation only if the targeted resource's etag matches the
+value provided.
 
 ```yaml
 Type: System.String
@@ -120,7 +138,8 @@ Accept wildcard characters: False
 ```
 
 ### -IfNoneMatch
-Used to perform an operation only if the targeted resource's etag does not match the value provided.
+Used to perform an operation only if the targeted resource's etag does not
+match the value provided.
 
 ```yaml
 Type: System.String
@@ -214,6 +233,23 @@ Used to guarantee real-time consistency between requests.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+A filter used to query by tags.
+Syntax reference:
+https://aka.ms/azconfig/docs/keyvaluefiltering
+
+```yaml
+Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 

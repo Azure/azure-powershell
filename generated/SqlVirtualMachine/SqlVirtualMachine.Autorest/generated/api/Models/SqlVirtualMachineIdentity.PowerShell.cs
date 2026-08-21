@@ -108,6 +108,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -119,10 +123,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
             if (content.Contains("AvailabilityGroupListenerName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).AvailabilityGroupListenerName = (string) content.GetValueForProperty("AvailabilityGroupListenerName",((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).AvailabilityGroupListenerName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("SqlVirtualMachineName"))
             {
@@ -149,6 +149,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -160,10 +164,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
             if (content.Contains("AvailabilityGroupListenerName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).AvailabilityGroupListenerName = (string) content.GetValueForProperty("AvailabilityGroupListenerName",((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).AvailabilityGroupListenerName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("SqlVirtualMachineName"))
             {

@@ -48,5 +48,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 
         public ApiEntityReference SourceRestorePoint { get; set; }
 
+        //
+        // Summary:
+        //     Gets or sets the time in minutes the snapshot is retained as instant access for
+        //     restoring Premium SSD v2 or Ultra disk with fast restore performance in this restore point.
+        public int? InstantAccessDurationInMinutes { get; set; }
+
     }
 }

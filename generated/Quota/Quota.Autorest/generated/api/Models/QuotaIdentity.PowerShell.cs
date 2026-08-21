@@ -112,13 +112,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Scope = (string) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Scope, global::System.Convert.ToString);
             }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).ResourceName, global::System.Convert.ToString);
             }
-            if (content.Contains("Id"))
+            if (content.Contains("ManagementGroupId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).ManagementGroupId = (string) content.GetValueForProperty("ManagementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).ManagementGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("GroupQuotaName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).GroupQuotaName = (string) content.GetValueForProperty("GroupQuotaName",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).GroupQuotaName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RequestId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).RequestId = (string) content.GetValueForProperty("RequestId",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).RequestId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceProviderName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).ResourceProviderName = (string) content.GetValueForProperty("ResourceProviderName",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).ResourceProviderName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AllocationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).AllocationId = (string) content.GetValueForProperty("AllocationId",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).AllocationId, global::System.Convert.ToString);
             }
             if (content.Contains("Id1"))
             {
@@ -145,13 +173,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Scope = (string) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Scope, global::System.Convert.ToString);
             }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).ResourceName, global::System.Convert.ToString);
             }
-            if (content.Contains("Id"))
+            if (content.Contains("ManagementGroupId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).ManagementGroupId = (string) content.GetValueForProperty("ManagementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).ManagementGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("GroupQuotaName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).GroupQuotaName = (string) content.GetValueForProperty("GroupQuotaName",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).GroupQuotaName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RequestId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).RequestId = (string) content.GetValueForProperty("RequestId",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).RequestId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceProviderName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).ResourceProviderName = (string) content.GetValueForProperty("ResourceProviderName",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).ResourceProviderName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AllocationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).AllocationId = (string) content.GetValueForProperty("AllocationId",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal)this).AllocationId, global::System.Convert.ToString);
             }
             if (content.Contains("Id1"))
             {

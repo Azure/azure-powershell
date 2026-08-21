@@ -80,6 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IEncryptionProperties) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.EncryptionPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("DataPlaneProxy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DataPlaneProxy = (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDataPlaneProxyProperties) content.GetValueForProperty("DataPlaneProxy",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DataPlaneProxy, Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.DataPlaneProxyPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -108,6 +112,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).SoftDeleteRetentionInDay = (int?) content.GetValueForProperty("SoftDeleteRetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).SoftDeleteRetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("DefaultKeyValueRevisionRetentionPeriodInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DefaultKeyValueRevisionRetentionPeriodInSecond = (long?) content.GetValueForProperty("DefaultKeyValueRevisionRetentionPeriodInSecond",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DefaultKeyValueRevisionRetentionPeriodInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             if (content.Contains("EnablePurgeProtection"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).EnablePurgeProtection = (bool?) content.GetValueForProperty("EnablePurgeProtection",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).EnablePurgeProtection, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -116,6 +124,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).CreateMode = (string) content.GetValueForProperty("CreateMode",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).CreateMode, global::System.Convert.ToString);
             }
+            if (content.Contains("DataPlaneProxyAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DataPlaneProxyAuthenticationMode = (string) content.GetValueForProperty("DataPlaneProxyAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DataPlaneProxyAuthenticationMode, global::System.Convert.ToString);
+            }
             if (content.Contains("EncryptionKeyVaultProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).EncryptionKeyVaultProperty = (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyVaultProperties) content.GetValueForProperty("EncryptionKeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).EncryptionKeyVaultProperty, Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.KeyVaultPropertiesTypeConverter.ConvertFrom);
@@ -123,6 +135,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
             if (content.Contains("KeyVaultPropertyKeyIdentifier"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).KeyVaultPropertyKeyIdentifier = (string) content.GetValueForProperty("KeyVaultPropertyKeyIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).KeyVaultPropertyKeyIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneProxyPrivateLinkDelegation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DataPlaneProxyPrivateLinkDelegation = (string) content.GetValueForProperty("DataPlaneProxyPrivateLinkDelegation",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DataPlaneProxyPrivateLinkDelegation, global::System.Convert.ToString);
             }
             if (content.Contains("KeyVaultPropertyIdentityClientId"))
             {
@@ -149,6 +165,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IEncryptionProperties) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.EncryptionPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("DataPlaneProxy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DataPlaneProxy = (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDataPlaneProxyProperties) content.GetValueForProperty("DataPlaneProxy",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DataPlaneProxy, Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.DataPlaneProxyPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -177,6 +197,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).SoftDeleteRetentionInDay = (int?) content.GetValueForProperty("SoftDeleteRetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).SoftDeleteRetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("DefaultKeyValueRevisionRetentionPeriodInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DefaultKeyValueRevisionRetentionPeriodInSecond = (long?) content.GetValueForProperty("DefaultKeyValueRevisionRetentionPeriodInSecond",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DefaultKeyValueRevisionRetentionPeriodInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             if (content.Contains("EnablePurgeProtection"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).EnablePurgeProtection = (bool?) content.GetValueForProperty("EnablePurgeProtection",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).EnablePurgeProtection, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -185,6 +209,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).CreateMode = (string) content.GetValueForProperty("CreateMode",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).CreateMode, global::System.Convert.ToString);
             }
+            if (content.Contains("DataPlaneProxyAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DataPlaneProxyAuthenticationMode = (string) content.GetValueForProperty("DataPlaneProxyAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DataPlaneProxyAuthenticationMode, global::System.Convert.ToString);
+            }
             if (content.Contains("EncryptionKeyVaultProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).EncryptionKeyVaultProperty = (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyVaultProperties) content.GetValueForProperty("EncryptionKeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).EncryptionKeyVaultProperty, Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.KeyVaultPropertiesTypeConverter.ConvertFrom);
@@ -192,6 +220,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
             if (content.Contains("KeyVaultPropertyKeyIdentifier"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).KeyVaultPropertyKeyIdentifier = (string) content.GetValueForProperty("KeyVaultPropertyKeyIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).KeyVaultPropertyKeyIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneProxyPrivateLinkDelegation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DataPlaneProxyPrivateLinkDelegation = (string) content.GetValueForProperty("DataPlaneProxyPrivateLinkDelegation",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)this).DataPlaneProxyPrivateLinkDelegation, global::System.Convert.ToString);
             }
             if (content.Contains("KeyVaultPropertyIdentityClientId"))
             {

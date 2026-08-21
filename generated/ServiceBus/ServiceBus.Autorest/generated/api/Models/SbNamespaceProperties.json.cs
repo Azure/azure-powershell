@@ -78,6 +78,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
                 return;
             }
             {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonObject>("encryption"), out var __jsonEncryption) ? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Encryption.FromJson(__jsonEncryption) : _encryption;}
+            {_platformCapability = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonObject>("platformCapabilities"), out var __jsonPlatformCapabilities) ? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.PlatformCapabilities.FromJson(__jsonPlatformCapabilities) : _platformCapability;}
+            {_geoDataReplication = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonObject>("geoDataReplication"), out var __jsonGeoDataReplication) ? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.GeoDataReplicationProperties.FromJson(__jsonGeoDataReplication) : _geoDataReplication;}
             {_minimumTlsVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("minimumTlsVersion"), out var __jsonMinimumTlsVersion) ? (string)__jsonMinimumTlsVersion : (string)_minimumTlsVersion;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)_status;}
@@ -91,6 +93,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {_alternateName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("alternateName"), out var __jsonAlternateName) ? (string)__jsonAlternateName : (string)_alternateName;}
             {_publicNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("publicNetworkAccess"), out var __jsonPublicNetworkAccess) ? (string)__jsonPublicNetworkAccess : (string)_publicNetworkAccess;}
             {_premiumMessagingPartition = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNumber>("premiumMessagingPartitions"), out var __jsonPremiumMessagingPartitions) ? (int?)__jsonPremiumMessagingPartitions : _premiumMessagingPartition;}
+            {_iPAddressType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("ipAddressType"), out var __jsonIPAddressType) ? (string)__jsonIPAddressType : (string)_iPAddressType;}
             AfterFromJson(json);
         }
 
@@ -114,6 +117,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
                 return container;
             }
             AddIf( null != this._encryption ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) this._encryption.ToJson(null,serializationMode) : null, "encryption" ,container.Add );
+            AddIf( null != this._platformCapability ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) this._platformCapability.ToJson(null,serializationMode) : null, "platformCapabilities" ,container.Add );
+            AddIf( null != this._geoDataReplication ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) this._geoDataReplication.ToJson(null,serializationMode) : null, "geoDataReplication" ,container.Add );
             AddIf( null != (((object)this._minimumTlsVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._minimumTlsVersion.ToString()) : null, "minimumTlsVersion" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeRead))
             {
@@ -156,6 +161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             AddIf( null != (((object)this._alternateName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._alternateName.ToString()) : null, "alternateName" ,container.Add );
             AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
             AddIf( null != this._premiumMessagingPartition ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNumber((int)this._premiumMessagingPartition) : null, "premiumMessagingPartitions" ,container.Add );
+            AddIf( null != (((object)this._iPAddressType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._iPAddressType.ToString()) : null, "ipAddressType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

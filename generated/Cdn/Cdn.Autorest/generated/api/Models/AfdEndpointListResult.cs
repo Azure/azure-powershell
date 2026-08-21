@@ -7,31 +7,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list endpoints. It contains a list of endpoint objects and a URL link to get the next set of
-    /// results.
-    /// </summary>
+    /// <summary>The response of a AFDEndpoint list operation.</summary>
     public partial class AfdEndpointListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointListResultInternal
     {
 
-        /// <summary>Internal Acessors for Value</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint> Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointListResultInternal.Value { get => this._value; set { {_value = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next set of endpoint objects if there is any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint> _value;
 
-        /// <summary>List of AzureFrontDoor endpoints within a profile</summary>
+        /// <summary>The AFDEndpoint items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint> Value { get => this._value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint> Value { get => this._value; set => this._value = value; }
 
         /// <summary>Creates an new <see cref="AfdEndpointListResult" /> instance.</summary>
         public AfdEndpointListResult()
@@ -39,43 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         }
     }
-    /// Result of the request to list endpoints. It contains a list of endpoint objects and a URL link to get the next set of
-    /// results.
+    /// The response of a AFDEndpoint list operation.
     public partial interface IAfdEndpointListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next set of endpoint objects if there is any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"URL to get the next set of endpoint objects if there is any.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>List of AzureFrontDoor endpoints within a profile</summary>
+        /// <summary>The AFDEndpoint items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"List of AzureFrontDoor endpoints within a profile",
+        Create = true,
+        Update = true,
+        Description = @"The AFDEndpoint items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint> Value { get;  }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint> Value { get; set; }
 
     }
-    /// Result of the request to list endpoints. It contains a list of endpoint objects and a URL link to get the next set of
-    /// results.
+    /// The response of a AFDEndpoint list operation.
     internal partial interface IAfdEndpointListResultInternal
 
     {
-        /// <summary>URL to get the next set of endpoint objects if there is any.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of AzureFrontDoor endpoints within a profile</summary>
+        /// <summary>The AFDEndpoint items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint> Value { get; set; }
 
     }

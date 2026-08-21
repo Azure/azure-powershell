@@ -30,6 +30,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Inlined)]
         public global::System.DateTime? CreationDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).CreationDate; }
 
+        /// <summary>
+        /// The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Inlined)]
+        public string DataPlaneProxyAuthenticationMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).DataPlaneProxyAuthenticationMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).DataPlaneProxyAuthenticationMode = value ?? null; }
+
+        /// <summary>
+        /// The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager
+        /// (ARM) private link is allowed when the data plane resource requires private link.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Inlined)]
+        public string DataPlaneProxyPrivateLinkDelegation { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).DataPlaneProxyPrivateLinkDelegation; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).DataPlaneProxyPrivateLinkDelegation = value ?? null; }
+
+        /// <summary>
+        /// The duration in seconds to retain new key value revisions. Defaults to 604800 (7 days) for Free SKU stores and 2592000
+        /// (30 days) for Standard SKU stores and Premium SKU stores.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Inlined)]
+        public long? DefaultKeyValueRevisionRetentionPeriodInSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).DefaultKeyValueRevisionRetentionPeriodInSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).DefaultKeyValueRevisionRetentionPeriodInSecond = value ?? default(long); }
+
         /// <summary>Disables all authentication methods other than AAD authentication.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Inlined)]
         public bool? DisableLocalAuth { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).DisableLocalAuth; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).DisableLocalAuth = value ?? default(bool); }
@@ -96,34 +116,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for CreationDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.CreationDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).CreationDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).CreationDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.CreationDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).CreationDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).CreationDate = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for DataPlaneProxy</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDataPlaneProxyProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.DataPlaneProxy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).DataPlaneProxy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).DataPlaneProxy = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Encryption</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IEncryptionProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).Encryption = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IEncryptionProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).Encryption = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for EncryptionKeyVaultProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).EncryptionKeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).EncryptionKeyVaultProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).EncryptionKeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).EncryptionKeyVaultProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Endpoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).Endpoint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).Endpoint = value ?? null; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentity Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ResourceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference> Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).PrivateEndpointConnection = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference> Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).PrivateEndpointConnection = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ConfigurationStoreProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Sku()); set { {_sku = value;} } }
@@ -132,31 +155,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Inherited)]
@@ -292,6 +315,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         SerializedName = @"creationDate",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? CreationDate { get;  }
+        /// <summary>
+        /// The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.",
+        SerializedName = @"authenticationMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Local", "Pass-through")]
+        string DataPlaneProxyAuthenticationMode { get; set; }
+        /// <summary>
+        /// The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager
+        /// (ARM) private link is allowed when the data plane resource requires private link.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.",
+        SerializedName = @"privateLinkDelegation",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string DataPlaneProxyPrivateLinkDelegation { get; set; }
+        /// <summary>
+        /// The duration in seconds to retain new key value revisions. Defaults to 604800 (7 days) for Free SKU stores and 2592000
+        /// (30 days) for Standard SKU stores and Premium SKU stores.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The duration in seconds to retain new key value revisions. Defaults to 604800 (7 days) for Free SKU stores and 2592000 (30 days) for Standard SKU stores and Premium SKU stores.",
+        SerializedName = @"defaultKeyValueRevisionRetentionPeriodInSeconds",
+        PossibleTypes = new [] { typeof(long) })]
+        long? DefaultKeyValueRevisionRetentionPeriodInSecond { get; set; }
         /// <summary>Disables all authentication methods other than AAD authentication.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
@@ -545,6 +611,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         string CreateMode { get; set; }
         /// <summary>The creation date of configuration store.</summary>
         global::System.DateTime? CreationDate { get; set; }
+        /// <summary>
+        /// Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM).
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDataPlaneProxyProperties DataPlaneProxy { get; set; }
+        /// <summary>
+        /// The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Local", "Pass-through")]
+        string DataPlaneProxyAuthenticationMode { get; set; }
+        /// <summary>
+        /// The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager
+        /// (ARM) private link is allowed when the data plane resource requires private link.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string DataPlaneProxyPrivateLinkDelegation { get; set; }
+        /// <summary>
+        /// The duration in seconds to retain new key value revisions. Defaults to 604800 (7 days) for Free SKU stores and 2592000
+        /// (30 days) for Standard SKU stores and Premium SKU stores.
+        /// </summary>
+        long? DefaultKeyValueRevisionRetentionPeriodInSecond { get; set; }
         /// <summary>Disables all authentication methods other than AAD authentication.</summary>
         bool? DisableLocalAuth { get; set; }
         /// <summary>

@@ -125,13 +125,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location, global::System.Convert.ToString);
-            }
             if (content.Contains("SubscriptionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("ResourceGroupName"))
             {
@@ -198,13 +198,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location, global::System.Convert.ToString);
-            }
             if (content.Contains("SubscriptionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("ResourceGroupName"))
             {

@@ -12,16 +12,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
 
     /// <summary>
     /// Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can
-    /// be leveraged to submit requests to update a quota.
+    /// be leveraged to submit requests to list a quota.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/{scope}/providers/Microsoft.Quota/quotas"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzQuota_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Description(@"Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can be leveraged to submit requests to update a quota.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Description(@"Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can be leveraged to submit requests to list a quota.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.HttpPath(Path = "/{scope}/providers/Microsoft.Quota/quotas", ApiVersion = "2023-02-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.HttpPath(Path = "/{scope}/providers/Microsoft.Quota/quotas", ApiVersion = "2025-09-01")]
     public partial class GetAzQuota_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IContext
@@ -120,16 +120,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         /// <summary>Backing field for <see cref="Scope" /> property.</summary>
         private string _scope;
 
-        /// <summary>
-        /// The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
-        /// This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then
-        /// it's the target Azure resource URI in the GET operation for the specific resource.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.")]
+        /// <summary>The fully qualified Azure Resource manager identifier of the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The fully qualified Azure Resource manager identifier of the resource.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.",
+        Description = @"The fully qualified Azure Resource manager identifier of the resource.",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Quota.ParameterCategory.Path)]

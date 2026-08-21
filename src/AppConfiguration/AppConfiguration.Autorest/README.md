@@ -25,15 +25,13 @@ For information on how to develop for `Az.AppConfiguration`, see [how-to.md](how
 
 ---
 ## Generation Requirements
-Use of the beta version of `autorest.powershell` generator requires the following:
-- [NodeJS LTS](https://nodejs.org) (10.15.x LTS preferred)
-  - **Note**: It *will not work* with Node < 10.x. Using 11.x builds may cause issues as they may introduce instability or breaking changes.
-> If you want an easy way to install and update Node, [NVS - Node Version Switcher](../nodejs/installing-via-nvs.md) or [NVM - Node Version Manager](../nodejs/installing-via-nvm.md) is recommended.
-- [AutoRest](https://aka.ms/autorest) v3 beta <br>`npm install -g autorest@beta`<br>&nbsp;
-- PowerShell 6.0 or greater
+Use of the `autorest.powershell` generator requires the following:
+- [NodeJS LTS](https://nodejs.org) (18.x LTS or greater)
+- [AutoRest](https://aka.ms/autorest) v3 <br>`npm install -g autorest@latest`<br>&nbsp;
+- PowerShell 7.0 or greater
   - If you don't have it installed, you can use the cross-platform npm package <br>`npm install -g pwsh`<br>&nbsp;
-- .NET Core SDK 2.0 or greater
-  - If you don't have it installed, you can use the cross-platform npm package <br>`npm install -g dotnet-sdk-2.2`<br>&nbsp;
+- .NET SDK 8.0 or greater
+  - If you don't have it installed, download from [https://dotnet.microsoft.com/download](https://dotnet.microsoft.com/download)<br>&nbsp;
 
 ## Run Generation
 In this directory, run AutoRest:
@@ -44,17 +42,37 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 7d6b4765562b238310ea80d652ac08597fec0476
+commit: 45cbb1a2b5a68c01b7182dbcaa57c3052f992647
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2022-05-01/appconfiguration.json
+  - $(repo)/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2024-06-01/appconfiguration.json
 
 module-version: 1.0.0
 title: AppConfiguration
 subject-prefix: $(service-name)
 
 directive:
+  # Strip x-ms-identifiers extension to avoid schema validation errors
+  - from: swagger-document
+    where: $.definitions.OperationDefinitionListResult.properties.value
+    transform: delete $['x-ms-identifiers']
+  - from: swagger-document
+    where: $.definitions.ServiceSpecification.properties.logSpecifications
+    transform: delete $['x-ms-identifiers']
+  - from: swagger-document
+    where: $.definitions.ServiceSpecification.properties.metricSpecifications
+    transform: delete $['x-ms-identifiers']
+  - from: swagger-document
+    where: $.definitions.MetricSpecification.properties.dimensions
+    transform: delete $['x-ms-identifiers']
+  - from: swagger-document
+    where: $.definitions.ErrorDetails.properties.additionalInfo
+    transform: delete $['x-ms-identifiers']
+  - from: swagger-document
+    where: $.definitions.SnapshotProperties.properties.filters
+    transform: delete $['x-ms-identifiers']
+
   - where:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
@@ -125,4 +143,47 @@ directive:
       subject: ^ConfigurationStoreDeleted$
     set:
       subject: ConfigurationDeletedStore
+
+  # Snapshot operations are ARM proxies for data plane; exclude from this module
+  - where:
+      subject: ^Snapshot$
+    remove: true
+
+  # CreateMode is create-only (x-ms-mutability: create), not applicable to Update
+  - where:
+      verb: Update
+      subject: ConfigurationStore
+      parameter-name: CreateMode
+    hide: true
+
+  # Location is create-only on stores, not updatable
+  - where:
+      verb: Update
+      subject: ConfigurationStore
+      parameter-name: Location
+    hide: true
+
+  # Location is required when creating a replica
+  - from: swagger-document
+    where: $.definitions.Replica
+    transform: >
+      if (!$.required) { $.required = []; }
+      if (!$.required.includes('location')) { $.required.push('location'); }
+
+  # Hide Update-AzAppConfigurationReplica; replicas have no updatable properties
+  - where:
+      verb: Update
+      subject: Replica
+    hide: true
+
+  # Format output
+  - where:
+      model-name: Replica
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - ProvisioningState
+          - ResourceGroupName
 ```

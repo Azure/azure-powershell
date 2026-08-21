@@ -44,22 +44,26 @@ CUSTOMHTTPSCONFIGURATION <ICustomHttpsConfiguration>: Https settings for a domai
   [VaultId <String>]: Resource ID.
 
 FRONTDOORINPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/enable-azfrontdoorcustomdomainhttps
 #>
@@ -92,7 +96,8 @@ param(
     [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Enable')]
@@ -102,8 +107,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='EnableViaIdentity', Mandatory, ValueFromPipeline)]
@@ -310,6 +314,203 @@ end {
 
 <#
 .Synopsis
+Gets an Experiment by ExperimentName
+.Description
+Gets an Experiment by ExperimentName
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IExperiment
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
+  [FrontDoorName <String>]: Name of the Front Door which is globally unique.
+  [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
+  [Id <String>]: Resource identity path
+  [PolicyName <String>]: The name of the Web Application Firewall Policy.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+NETWORKEXPERIMENTPROFILEINPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
+  [FrontDoorName <String>]: Name of the Front Door which is globally unique.
+  [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
+  [Id <String>]: Resource identity path
+  [PolicyName <String>]: The name of the Web Application Firewall Policy.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorexperiment
+#>
+function Get-AzFrontDoorExperiment {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IExperiment])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityNetworkExperimentProfile', Mandatory)]
+    [Alias('ExperimentName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Experiment identifier associated with the Experiment
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Profile identifier associated with the Tenant and Partner
+    ${ProfileName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityNetworkExperimentProfile', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
+    # Identity Parameter
+    ${NetworkExperimentProfileInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Get = 'Az.FrontDoor.private\Get-AzFrontDoorExperiment_Get';
+            GetViaIdentity = 'Az.FrontDoor.private\Get-AzFrontDoorExperiment_GetViaIdentity';
+            GetViaIdentityNetworkExperimentProfile = 'Az.FrontDoor.private\Get-AzFrontDoorExperiment_GetViaIdentityNetworkExperimentProfile';
+            List = 'Az.FrontDoor.private\Get-AzFrontDoorExperiment_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Gets a Frontend endpoint with the specified name within the specified Front Door.
 .Description
 Gets a Frontend endpoint with the specified name within the specified Front Door.
@@ -326,22 +527,26 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 FRONTDOORINPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorfrontendendpoint
 #>
@@ -368,7 +573,8 @@ param(
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -376,8 +582,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -501,6 +706,1185 @@ end {
 
 <#
 .Synopsis
+Gets an NetworkExperiment Profile by ProfileName
+.Description
+Gets an NetworkExperiment Profile by ProfileName
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IProfile
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
+  [FrontDoorName <String>]: Name of the Front Door which is globally unique.
+  [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
+  [Id <String>]: Resource identity path
+  [PolicyName <String>]: The name of the Web Application Firewall Policy.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoornetworkexperimentprofile
+#>
+function Get-AzFrontDoorNetworkExperimentProfile {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IProfile])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Profile identifier associated with the Tenant and Partner
+    ${ProfileName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Get = 'Az.FrontDoor.private\Get-AzFrontDoorNetworkExperimentProfile_Get';
+            GetViaIdentity = 'Az.FrontDoor.private\Get-AzFrontDoorNetworkExperimentProfile_GetViaIdentity';
+            List = 'Az.FrontDoor.private\Get-AzFrontDoorNetworkExperimentProfile_List';
+            List1 = 'Az.FrontDoor.private\Get-AzFrontDoorNetworkExperimentProfile_List1';
+        }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets a list of Preconfigured Endpoints
+.Description
+Gets a list of Preconfigured Endpoints
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPreconfiguredEndpoint
+.Link
+https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorpreconfiguredendpoint
+#>
+function Get-AzFrontDoorPreconfiguredEndpoint {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPreconfiguredEndpoint])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Profile identifier associated with the Tenant and Partner
+    ${ProfileName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            List = 'Az.FrontDoor.private\Get-AzFrontDoorPreconfiguredEndpoint_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets a Latency Scorecard for a given Experiment
+.Description
+Gets a Latency Scorecard for a given Experiment
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ILatencyScorecard
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
+  [FrontDoorName <String>]: Name of the Front Door which is globally unique.
+  [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
+  [Id <String>]: Resource identity path
+  [PolicyName <String>]: The name of the Web Application Firewall Policy.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+NETWORKEXPERIMENTPROFILEINPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
+  [FrontDoorName <String>]: Name of the Front Door which is globally unique.
+  [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
+  [Id <String>]: Resource identity path
+  [PolicyName <String>]: The name of the Web Application Firewall Policy.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorreportlatencyscorecard
+#>
+function Get-AzFrontDoorReportLatencyScorecard {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ILatencyScorecard])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityNetworkExperimentProfile', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Experiment identifier associated with the Experiment
+    ${ExperimentName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Profile identifier associated with the Tenant and Partner
+    ${ProfileName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityNetworkExperimentProfile', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
+    # Identity Parameter
+    ${NetworkExperimentProfileInputObject},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Daily", "Weekly", "Monthly")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Query')]
+    [System.String]
+    # The aggregation interval of the Latency Scorecard
+    ${AggregationInterval},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Query')]
+    [System.String]
+    # The country associated with the Latency Scorecard.
+    # Values are country ISO codes as specified here- https://www.iso.org/iso-3166-country-codes.html
+    ${Country},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Query')]
+    [System.String]
+    # The end DateTime of the Latency Scorecard in UTC
+    ${EndDateTimeUtc},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Get = 'Az.FrontDoor.private\Get-AzFrontDoorReportLatencyScorecard_Get';
+            GetViaIdentity = 'Az.FrontDoor.private\Get-AzFrontDoorReportLatencyScorecard_GetViaIdentity';
+            GetViaIdentityNetworkExperimentProfile = 'Az.FrontDoor.private\Get-AzFrontDoorReportLatencyScorecard_GetViaIdentityNetworkExperimentProfile';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets a Timeseries for a given Experiment
+.Description
+Gets a Timeseries for a given Experiment
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ITimeseries
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
+  [FrontDoorName <String>]: Name of the Front Door which is globally unique.
+  [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
+  [Id <String>]: Resource identity path
+  [PolicyName <String>]: The name of the Web Application Firewall Policy.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+NETWORKEXPERIMENTPROFILEINPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
+  [FrontDoorName <String>]: Name of the Front Door which is globally unique.
+  [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
+  [Id <String>]: Resource identity path
+  [PolicyName <String>]: The name of the Web Application Firewall Policy.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorreporttimesery
+#>
+function Get-AzFrontDoorReportTimesery {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ITimeseries])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityNetworkExperimentProfile', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Experiment identifier associated with the Experiment
+    ${ExperimentName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Profile identifier associated with the Tenant and Partner
+    ${ProfileName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityNetworkExperimentProfile', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
+    # Identity Parameter
+    ${NetworkExperimentProfileInputObject},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Hourly", "Daily")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Query')]
+    [System.String]
+    # The aggregation interval of the Timeseries
+    ${AggregationInterval},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Query')]
+    [System.DateTime]
+    # The end DateTime of the Timeseries in UTC
+    ${EndDateTimeUtc},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Query')]
+    [System.DateTime]
+    # The start DateTime of the Timeseries in UTC
+    ${StartDateTimeUtc},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("MeasurementCounts", "LatencyP50", "LatencyP75", "LatencyP95")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Query')]
+    [System.String]
+    # The type of Timeseries
+    ${TimeseriesType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Query')]
+    [System.String]
+    # The country associated with the Timeseries.
+    # Values are country ISO codes as specified here- https://www.iso.org/iso-3166-country-codes.html
+    ${Country},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Query')]
+    [System.String]
+    # The specific endpoint
+    ${Endpoint},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Get = 'Az.FrontDoor.private\Get-AzFrontDoorReportTimesery_Get';
+            GetViaIdentity = 'Az.FrontDoor.private\Get-AzFrontDoorReportTimesery_GetViaIdentity';
+            GetViaIdentityNetworkExperimentProfile = 'Az.FrontDoor.private\Get-AzFrontDoorReportTimesery_GetViaIdentityNetworkExperimentProfile';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an Experiment
+.Description
+Create an Experiment
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IExperiment
+.Link
+https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorexperiment
+#>
+function New-AzFrontDoorExperiment {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IExperiment])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('ExperimentName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Experiment identifier associated with the Experiment
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Profile identifier associated with the Tenant and Partner
+    ${ProfileName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The description of the details or intents of the Experiment
+    ${Description},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The state of the Experiment
+    ${EnabledState},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The endpoint URL
+    ${EndpointAEndpoint},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The name of the endpoint
+    ${EndpointAName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The endpoint URL
+    ${EndpointBEndpoint},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The name of the endpoint
+    ${EndpointBName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Resource location.
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            CreateExpanded = 'Az.FrontDoor.private\New-AzFrontDoorExperiment_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.FrontDoor.private\New-AzFrontDoorExperiment_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.FrontDoor.private\New-AzFrontDoorExperiment_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an NetworkExperiment Profile
+.Description
+Create an NetworkExperiment Profile
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IProfile
+.Link
+https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoornetworkexperimentprofile
+#>
+function New-AzFrontDoorNetworkExperimentProfile {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IProfile])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Profile identifier associated with the Tenant and Partner
+    ${ProfileName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The state of the Experiment
+    ${EnabledState},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Gets a unique read-only string that changes whenever the resource is updated.
+    ${Etag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Resource location.
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourcewithSettableNameTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            CreateExpanded = 'Az.FrontDoor.private\New-AzFrontDoorNetworkExperimentProfile_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.FrontDoor.private\New-AzFrontDoorNetworkExperimentProfile_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.FrontDoor.private\New-AzFrontDoorNetworkExperimentProfile_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Create policy with specified rule set name within a resource group.
 .Description
 Create policy with specified rule set name within a resource group.
@@ -531,6 +1915,20 @@ CUSTOMRULE <ICustomRule[]>: List of rules
   [Name <String>]: Describes the name of the rule.
   [RateLimitDurationInMinutes <Int32?>]: Time window for resetting the rate limit count. Default is 1 minute.
   [RateLimitThreshold <Int32?>]: Number of allowed requests per client within the time window.
+
+EXCEPTIONLISTEXCEPTION <IManagedRuleSetException[]>: List of exceptions.
+  MatchValue <List<String>>: List of values to be matched with.
+  MatchVariable <String>: The variable to be evaluated for excluding the request.
+  Scope <List<IManagedRuleSetScope>>: Scope(s) of the exception.
+    RuleSetType <String>: Defines the rule set type.         Examples: DefaultRuleSet, Microsoft_DefaultRuleSet,         Microsoft_BotManagerRuleSet, Microsoft_HTTPDDoSRuleSet, BotProtection
+    RuleSetVersion <String>: Defines the version of the rule set.
+    [RuleGroupScope <List<IRuleGroupScope>>]: List of rule group scopes.
+      RuleGroupName <String>: Defines the rule group name.
+      [RuleScope <List<IRuleScope>>]: List of rule scopes.
+        RuleId <String>: Defines the rule id.
+  ValueMatchOperator <String>: Comparison operator to apply to the value to be matched.
+  [Selector <String>]: When matchVariable is a collection, operator used to specify which elements         in the collection this exception applies to.         Currently supported only for RequestHeaderNames.
+  [SelectorMatchOperator <String>]: Comparison operator to apply to the selector when specifying which elements         in the collection this exception applies to.
 
 MANAGEDRULESET <IManagedRuleSet[]>: List of rule sets.
   Type <String>: Defines the rule set type to use.
@@ -583,15 +1981,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -606,6 +2004,13 @@ param(
     [System.String]
     # Gets a unique read-only string that changes whenever the resource is updated.
     ${Etag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[]]
+    # List of exceptions.
+    ${ExceptionListException},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
@@ -805,10 +2210,10 @@ BACKENDPOOLSSETTING <IBackendPoolsSettings>: Settings for all backendPools
   [SendRecvTimeoutInSeconds <Int32?>]: Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
 
 FRONTENDENDPOINT <IFrontendEndpoint[]>: Frontend endpoints available to routing rules.
-  [Id <String>]: Resource ID.
   [CertificateSource <String>]: Defines the source of the SSL certificate
   [CertificateType <String>]: Defines the type of the certificate used for secure connections to a frontendEndpoint
   [HostName <String>]: The host name of the frontendEndpoint. Must be a domain name.
+  [Id <String>]: Resource ID.
   [MinimumTlsVersion <String>]: The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
   [Name <String>]: Resource name.
   [SecretName <String>]: The name of the Key Vault secret representing the full certificate PFX
@@ -863,15 +2268,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1075,6 +2480,823 @@ end {
 
 <#
 .Synopsis
+Deletes an Experiment
+.Description
+Deletes an Experiment
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
+  [FrontDoorName <String>]: Name of the Front Door which is globally unique.
+  [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
+  [Id <String>]: Resource identity path
+  [PolicyName <String>]: The name of the Web Application Firewall Policy.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+NETWORKEXPERIMENTPROFILEINPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
+  [FrontDoorName <String>]: Name of the Front Door which is globally unique.
+  [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
+  [Id <String>]: Resource identity path
+  [PolicyName <String>]: The name of the Web Application Firewall Policy.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorexperiment
+#>
+function Remove-AzFrontDoorExperiment {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityNetworkExperimentProfile', Mandatory)]
+    [Alias('ExperimentName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Experiment identifier associated with the Experiment
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Profile identifier associated with the Tenant and Partner
+    ${ProfileName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityNetworkExperimentProfile', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
+    # Identity Parameter
+    ${NetworkExperimentProfileInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Delete = 'Az.FrontDoor.private\Remove-AzFrontDoorExperiment_Delete';
+            DeleteViaIdentity = 'Az.FrontDoor.private\Remove-AzFrontDoorExperiment_DeleteViaIdentity';
+            DeleteViaIdentityNetworkExperimentProfile = 'Az.FrontDoor.private\Remove-AzFrontDoorExperiment_DeleteViaIdentityNetworkExperimentProfile';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Deletes an NetworkExperiment Profile by ProfileName
+.Description
+Deletes an NetworkExperiment Profile by ProfileName
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
+  [FrontDoorName <String>]: Name of the Front Door which is globally unique.
+  [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
+  [Id <String>]: Resource identity path
+  [PolicyName <String>]: The name of the Web Application Firewall Policy.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoornetworkexperimentprofile
+#>
+function Remove-AzFrontDoorNetworkExperimentProfile {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Profile identifier associated with the Tenant and Partner
+    ${ProfileName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Delete = 'Az.FrontDoor.private\Remove-AzFrontDoorNetworkExperimentProfile_Delete';
+            DeleteViaIdentity = 'Az.FrontDoor.private\Remove-AzFrontDoorNetworkExperimentProfile_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update an Experiment
+.Description
+Update an Experiment
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IExperiment
+.Link
+https://learn.microsoft.com/powershell/module/az.frontdoor/set-azfrontdoorexperiment
+#>
+function Set-AzFrontDoorExperiment {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IExperiment])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('ExperimentName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Experiment identifier associated with the Experiment
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Profile identifier associated with the Tenant and Partner
+    ${ProfileName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The description of the details or intents of the Experiment
+    ${Description},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The state of the Experiment
+    ${EnabledState},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The endpoint URL
+    ${EndpointAEndpoint},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The name of the endpoint
+    ${EndpointAName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The endpoint URL
+    ${EndpointBEndpoint},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The name of the endpoint
+    ${EndpointBName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Resource location.
+    ${Location},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.FrontDoor.private\Set-AzFrontDoorExperiment_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.FrontDoor.private\Set-AzFrontDoorExperiment_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.FrontDoor.private\Set-AzFrontDoorExperiment_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update an NetworkExperiment Profile
+.Description
+Update an NetworkExperiment Profile
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IProfile
+.Link
+https://learn.microsoft.com/powershell/module/az.frontdoor/set-azfrontdoornetworkexperimentprofile
+#>
+function Set-AzFrontDoorNetworkExperimentProfile {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IProfile])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Profile identifier associated with the Tenant and Partner
+    ${ProfileName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The state of the Experiment
+    ${EnabledState},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Gets a unique read-only string that changes whenever the resource is updated.
+    ${Etag},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Resource location.
+    ${Location},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourcewithSettableNameTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.FrontDoor.private\Set-AzFrontDoorNetworkExperimentProfile_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.FrontDoor.private\Set-AzFrontDoorNetworkExperimentProfile_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.FrontDoor.private\Set-AzFrontDoorNetworkExperimentProfile_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Update a new Rules Engine Configuration with the specified name within the specified Front Door.
 .Description
 Update a new Rules Engine Configuration with the specified name within the specified Front Door.
@@ -1107,7 +3329,7 @@ RULE <IRulesEngineRule[]>: A list of rules that define a particular Rules Engine
     [RouteConfigurationOverride <IRouteConfiguration>]: Override the route configuration.
       OdataType <String>: 
   Name <String>: A name to refer to this specific rule.
-  Priority <Int32>: A priority assigned to this rule. 
+  Priority <Int32>: A priority assigned to this rule.
   [MatchCondition <List<IRulesEngineMatchCondition>>]: A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.
     MatchValue <List<String>>: Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
     MatchVariable <String>: Match Variable
@@ -1139,15 +3361,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -1322,6 +3544,20 @@ CUSTOMRULE <ICustomRule[]>: List of rules
   [RateLimitDurationInMinutes <Int32?>]: Time window for resetting the rate limit count. Default is 1 minute.
   [RateLimitThreshold <Int32?>]: Number of allowed requests per client within the time window.
 
+EXCEPTIONLISTEXCEPTION <IManagedRuleSetException[]>: List of exceptions.
+  MatchValue <List<String>>: List of values to be matched with.
+  MatchVariable <String>: The variable to be evaluated for excluding the request.
+  Scope <List<IManagedRuleSetScope>>: Scope(s) of the exception.
+    RuleSetType <String>: Defines the rule set type.         Examples: DefaultRuleSet, Microsoft_DefaultRuleSet,         Microsoft_BotManagerRuleSet, Microsoft_HTTPDDoSRuleSet, BotProtection
+    RuleSetVersion <String>: Defines the version of the rule set.
+    [RuleGroupScope <List<IRuleGroupScope>>]: List of rule group scopes.
+      RuleGroupName <String>: Defines the rule group name.
+      [RuleScope <List<IRuleScope>>]: List of rule scopes.
+        RuleId <String>: Defines the rule id.
+  ValueMatchOperator <String>: Comparison operator to apply to the value to be matched.
+  [Selector <String>]: When matchVariable is a collection, operator used to specify which elements         in the collection this exception applies to.         Currently supported only for RequestHeaderNames.
+  [SelectorMatchOperator <String>]: Comparison operator to apply to the selector when specifying which elements         in the collection this exception applies to.
+
 MANAGEDRULESET <IManagedRuleSet[]>: List of rule sets.
   Type <String>: Defines the rule set type to use.
   Version <String>: Defines the version of the rule set to use.
@@ -1373,15 +3609,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -1396,6 +3632,13 @@ param(
     [System.String]
     # Gets a unique read-only string that changes whenever the resource is updated.
     ${Etag},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[]]
+    # List of exceptions.
+    ${ExceptionListException},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
@@ -1595,10 +3838,10 @@ BACKENDPOOLSSETTING <IBackendPoolsSettings>: Settings for all backendPools
   [SendRecvTimeoutInSeconds <Int32?>]: Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
 
 FRONTENDENDPOINT <IFrontendEndpoint[]>: Frontend endpoints available to routing rules.
-  [Id <String>]: Resource ID.
   [CertificateSource <String>]: Defines the source of the SSL certificate
   [CertificateType <String>]: Defines the type of the certificate used for secure connections to a frontendEndpoint
   [HostName <String>]: The host name of the frontendEndpoint. Must be a domain name.
+  [Id <String>]: Resource ID.
   [MinimumTlsVersion <String>]: The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
   [Name <String>]: Resource name.
   [SecretName <String>]: The name of the Key Vault secret representing the full certificate PFX
@@ -1653,15 +3896,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -1884,13 +4127,15 @@ CUSTOMDOMAINPROPERTY <IValidateCustomDomainInput>: Input of the custom domain to
   HostName <String>: The host name of the custom domain. Must be a domain name.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/test-azfrontdoorcustomdomain
 #>
@@ -1913,7 +4158,8 @@ param(
     [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Validate')]
@@ -1923,8 +4169,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='ValidateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -2103,8 +4348,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
@@ -2407,6 +4651,474 @@ end {
 
 <#
 .Synopsis
+Update an Experiment
+.Description
+Update an Experiment
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IExperiment
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
+  [FrontDoorName <String>]: Name of the Front Door which is globally unique.
+  [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
+  [Id <String>]: Resource identity path
+  [PolicyName <String>]: The name of the Web Application Firewall Policy.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+NETWORKEXPERIMENTPROFILEINPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
+  [FrontDoorName <String>]: Name of the Front Door which is globally unique.
+  [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
+  [Id <String>]: Resource identity path
+  [PolicyName <String>]: The name of the Web Application Firewall Policy.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.frontdoor/update-azfrontdoorexperiment
+#>
+function Update-AzFrontDoorExperiment {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IExperiment])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityNetworkExperimentProfileExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Alias('ExperimentName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Experiment identifier associated with the Experiment
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Profile identifier associated with the Tenant and Partner
+    ${ProfileName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityNetworkExperimentProfileExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
+    # Identity Parameter
+    ${NetworkExperimentProfileInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityNetworkExperimentProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The description of the intent or details of the Experiment
+    ${Description},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityNetworkExperimentProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The state of the Experiment
+    ${EnabledState},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityNetworkExperimentProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IExperimentUpdateModelTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.FrontDoor.private\Update-AzFrontDoorExperiment_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.FrontDoor.private\Update-AzFrontDoorExperiment_UpdateViaIdentityExpanded';
+            UpdateViaIdentityNetworkExperimentProfileExpanded = 'Az.FrontDoor.private\Update-AzFrontDoorExperiment_UpdateViaIdentityNetworkExperimentProfileExpanded';
+            UpdateViaJsonFilePath = 'Az.FrontDoor.private\Update-AzFrontDoorExperiment_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.FrontDoor.private\Update-AzFrontDoorExperiment_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update an NetworkExperimentProfiles
+.Description
+Update an NetworkExperimentProfiles
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IProfile
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
+  [FrontDoorName <String>]: Name of the Front Door which is globally unique.
+  [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
+  [Id <String>]: Resource identity path
+  [PolicyName <String>]: The name of the Web Application Firewall Policy.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.frontdoor/update-azfrontdoornetworkexperimentprofile
+#>
+function Update-AzFrontDoorNetworkExperimentProfile {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IProfile])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The Profile identifier associated with the Tenant and Partner
+    ${ProfileName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # The enabled state of the Profile
+    ${EnabledState},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IProfileUpdateModelTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.FrontDoor.private\Update-AzFrontDoorNetworkExperimentProfile_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.FrontDoor.private\Update-AzFrontDoorNetworkExperimentProfile_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.FrontDoor.private\Update-AzFrontDoorNetworkExperimentProfile_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.FrontDoor.private\Update-AzFrontDoorNetworkExperimentProfile_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Update policy with specified rule set name within a resource group.
 .Description
 Update policy with specified rule set name within a resource group.
@@ -2446,14 +5158,30 @@ CUSTOMRULE <ICustomRule[]>: List of rules
   [RateLimitDurationInMinutes <Int32?>]: Time window for resetting the rate limit count. Default is 1 minute.
   [RateLimitThreshold <Int32?>]: Number of allowed requests per client within the time window.
 
+EXCEPTIONLISTEXCEPTION <IManagedRuleSetException[]>: List of exceptions.
+  MatchValue <List<String>>: List of values to be matched with.
+  MatchVariable <String>: The variable to be evaluated for excluding the request.
+  Scope <List<IManagedRuleSetScope>>: Scope(s) of the exception.
+    RuleSetType <String>: Defines the rule set type.         Examples: DefaultRuleSet, Microsoft_DefaultRuleSet,         Microsoft_BotManagerRuleSet, Microsoft_HTTPDDoSRuleSet, BotProtection
+    RuleSetVersion <String>: Defines the version of the rule set.
+    [RuleGroupScope <List<IRuleGroupScope>>]: List of rule group scopes.
+      RuleGroupName <String>: Defines the rule group name.
+      [RuleScope <List<IRuleScope>>]: List of rule scopes.
+        RuleId <String>: Defines the rule id.
+  ValueMatchOperator <String>: Comparison operator to apply to the value to be matched.
+  [Selector <String>]: When matchVariable is a collection, operator used to specify which elements         in the collection this exception applies to.         Currently supported only for RequestHeaderNames.
+  [SelectorMatchOperator <String>]: Comparison operator to apply to the selector when specifying which elements         in the collection this exception applies to.
+
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 MANAGEDRULESET <IManagedRuleSet[]>: List of rule sets.
   Type <String>: Defines the rule set type to use.
@@ -2506,15 +5234,15 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -2535,6 +5263,13 @@ param(
     [System.String]
     # Gets a unique read-only string that changes whenever the resource is updated.
     ${Etag},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[]]
+    # List of exceptions.
+    ${ExceptionListException},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -2725,10 +5460,10 @@ BACKENDPOOLSSETTING <IBackendPoolsSettings>: Settings for all backendPools
   [SendRecvTimeoutInSeconds <Int32?>]: Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
 
 FRONTENDENDPOINT <IFrontendEndpoint[]>: Frontend endpoints available to routing rules.
-  [Id <String>]: Resource ID.
   [CertificateSource <String>]: Defines the source of the SSL certificate
   [CertificateType <String>]: Defines the type of the certificate used for secure connections to a frontendEndpoint
   [HostName <String>]: The host name of the frontendEndpoint. Must be a domain name.
+  [Id <String>]: Resource ID.
   [MinimumTlsVersion <String>]: The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
   [Name <String>]: Resource name.
   [SecretName <String>]: The name of the Key Vault secret representing the full certificate PFX
@@ -2748,13 +5483,15 @@ HEALTHPROBESETTING <IHealthProbeSettingsModel[]>: Health probe settings associat
   [Protocol <String>]: Protocol scheme to use for this probe
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 LOADBALANCINGSETTING <ILoadBalancingSettingsModel[]>: Load balancing settings associated with this Front Door instance.
   [Id <String>]: Resource ID.
@@ -2792,15 +5529,15 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]

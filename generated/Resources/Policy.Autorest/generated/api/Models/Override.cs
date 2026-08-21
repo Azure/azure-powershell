@@ -54,7 +54,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         Description = @"The override kind.",
         SerializedName = @"kind",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("policyEffect")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("policyEffect", "definitionVersion")]
         string Kind { get; set; }
         /// <summary>The list of the selector expressions.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
     {
         /// <summary>The override kind.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("policyEffect")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("policyEffect", "definitionVersion")]
         string Kind { get; set; }
         /// <summary>The list of the selector expressions.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISelector> Selector { get; set; }

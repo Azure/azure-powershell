@@ -238,6 +238,12 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense]
+    # The private cloud license
+    ${VcfLicense},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
     [System.String]
     # Azure resource ID of the virtual network
     ${VirtualNetworkId},

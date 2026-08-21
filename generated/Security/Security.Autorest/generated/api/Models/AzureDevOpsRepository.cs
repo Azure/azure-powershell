@@ -32,31 +32,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryProperties Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Security.Models.AzureDevOpsRepositoryProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningStatusMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.ProvisioningStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).ProvisioningStatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).ProvisioningStatusMessage = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.ProvisioningStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).ProvisioningStatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).ProvisioningStatusMessage = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningStatusUpdateTimeUtc</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.ProvisioningStatusUpdateTimeUtc { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).ProvisioningStatusUpdateTimeUtc; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).ProvisioningStatusUpdateTimeUtc = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.ProvisioningStatusUpdateTimeUtc { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).ProvisioningStatusUpdateTimeUtc; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).ProvisioningStatusUpdateTimeUtc = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for RepoId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.RepoId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).RepoId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).RepoId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.RepoId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).RepoId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).RepoId = value ?? null; }
 
         /// <summary>Internal Acessors for RepoUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.RepoUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).RepoUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).RepoUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.RepoUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).RepoUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).RepoUrl = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Security.Models.SystemData()); set { {_systemData = value;} } }
 
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for Visibility</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.Visibility { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).Visibility; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).Visibility = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryInternal.Visibility { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).Visibility; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepositoryPropertiesInternal)Property).Visibility = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceAutoGeneratedInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Security.Origin(Microsoft.Azure.PowerShell.Cmdlets.Security.PropertyOrigin.Inherited)]
@@ -132,27 +150,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Security.Origin(Microsoft.Azure.PowerShell.Cmdlets.Security.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).CreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Security.Origin(Microsoft.Azure.PowerShell.Cmdlets.Security.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).CreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Security.Origin(Microsoft.Azure.PowerShell.Cmdlets.Security.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).CreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Security.Origin(Microsoft.Azure.PowerShell.Cmdlets.Security.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Security.Origin(Microsoft.Azure.PowerShell.Cmdlets.Security.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Security.Origin(Microsoft.Azure.PowerShell.Cmdlets.Security.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

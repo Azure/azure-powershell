@@ -181,13 +181,17 @@ namespace Microsoft.Azure.Commands.Common
                 AzurePSQoSEvent qos;
                 if (_telemetry.TryGetValue(processRecordId, out qos) && null != response?.Headers)
                 {
-                    IEnumerable<string> headerValues;
-                    foreach (var headerName in ClientHeaders)
+                    // Only set ClientRequestId if it hasn't been set already by OnBeforeCall from request headers
+                    if (string.IsNullOrEmpty(qos.ClientRequestId))
                     {
-                        if (response.Headers.TryGetValues(headerName, out headerValues) && headerValues.Any())
+                        IEnumerable<string> headerValues;
+                        foreach (var headerName in ClientHeaders)
                         {
-                            qos.ClientRequestId = headerValues.First();
-                            break;
+                            if (response.Headers.TryGetValues(headerName, out headerValues) && headerValues.Any())
+                            {
+                                qos.ClientRequestId = headerValues.First();
+                                break;
+                            }
                         }
                     }
                 }

@@ -38,6 +38,20 @@ Invoke-AzKustoClusterMigration -InputObject <IKustoIdentity> -ClusterResourceId 
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### MigrateViaJsonFilePath
+```
+Invoke-AzKustoClusterMigration -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### MigrateViaJsonString
+```
+Invoke-AzKustoClusterMigration -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Migrate data from a Kusto cluster to another cluster.
 
@@ -69,10 +83,9 @@ Accept wildcard characters: False
 
 ### -ClusterMigrateRequest
 A cluster migrate request.
-To construct, see NOTES section for CLUSTERMIGRATEREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterMigrateRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IClusterMigrateRequest
 Parameter Sets: Migrate, MigrateViaIdentity
 Aliases:
 
@@ -116,7 +129,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -130,12 +142,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Migrate operation
+
+```yaml
+Type: System.String
+Parameter Sets: MigrateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Migrate operation
+
+```yaml
+Type: System.String
+Parameter Sets: MigrateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Migrate, MigrateExpanded
+Parameter Sets: Migrate, MigrateExpanded, MigrateViaJsonFilePath, MigrateViaJsonString
 Aliases: ClusterName
 
 Required: True
@@ -181,7 +223,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Migrate, MigrateExpanded
+Parameter Sets: Migrate, MigrateExpanded, MigrateViaJsonFilePath, MigrateViaJsonString
 Aliases:
 
 Required: True
@@ -196,7 +238,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Migrate, MigrateExpanded
+Parameter Sets: Migrate, MigrateExpanded, MigrateViaJsonFilePath, MigrateViaJsonString
 Aliases:
 
 Required: False
@@ -242,7 +284,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterMigrateRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IClusterMigrateRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 

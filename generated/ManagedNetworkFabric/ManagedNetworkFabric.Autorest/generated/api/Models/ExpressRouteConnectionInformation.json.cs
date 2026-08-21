@@ -68,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             {_expressRouteCircuitId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("expressRouteCircuitId"), out var __jsonExpressRouteCircuitId) ? (string)__jsonExpressRouteCircuitId : (string)_expressRouteCircuitId;}
-            {_expressRouteAuthorizationKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("expressRouteAuthorizationKey"), out var __jsonExpressRouteAuthorizationKey) ? (string)__jsonExpressRouteAuthorizationKey : (string)_expressRouteAuthorizationKey;}
+            {_expressRouteAuthorizationKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("expressRouteAuthorizationKey"), out var __jsonExpressRouteAuthorizationKey) ? new System.Net.NetworkCredential("",(string)__jsonExpressRouteAuthorizationKey).SecurePassword : _expressRouteAuthorizationKey;}
             AfterFromJson(json);
         }
 
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return container;
             }
             AddIf( null != (((object)this._expressRouteCircuitId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._expressRouteCircuitId.ToString()) : null, "expressRouteCircuitId" ,container.Add );
-            AddIf( null != (((object)this._expressRouteAuthorizationKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._expressRouteAuthorizationKey.ToString()) : null, "expressRouteAuthorizationKey" ,container.Add );
+            AddIf( null != (((object)this._expressRouteAuthorizationKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._expressRouteAuthorizationKey))) : null, "expressRouteAuthorizationKey" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

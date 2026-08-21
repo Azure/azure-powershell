@@ -16,7 +16,7 @@ function Test-AccountRelatedCmdlets
   $rgName = "CosmosDBResourceGroup92"
   $location = "East US"
   $locationlist = "East US", "West US"
-  $locationlist2 = "East US", "UK South", "UK West", "South India"                                                                                     
+  $locationlist2 = "East US", "UK South", "UK West", "South India"                                                     
   $locationlist3 = "West US", "East US"
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
@@ -33,7 +33,7 @@ function Test-AccountRelatedCmdlets
   $networkAclBypass = "AzureServices"
   $networkAclBypassResourceId = @("/subscriptions/subId/resourcegroups/rgName/providers/Microsoft.Synapse/workspaces/workspaceName")
   
-  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRule $IpRule -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess -EnableFreeTier 0 -EnableAnalyticalStorage 0 -ServerVersion "3.2" -NetworkAclBypass $NetworkAclBypass -BackupRetentionIntervalInHours 16 -BackupIntervalInMinutes 480 -EnableBurstCapacity 1 -MinimalTlsVersion "Tls12" -EnablePerRegionPerPartitionAutoscale 1 -EnablePriorityBasedExecution 1 -DefaultPriorityLevel "Low"
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRule $IpRule -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess -EnableFreeTier 0 -EnableAnalyticalStorage 0 -ServerVersion "3.2" -NetworkAclBypass $NetworkAclBypass -BackupRetentionIntervalInHours 16 -BackupIntervalInMinutes 480 -EnableBurstCapacity 1 -MinimalTlsVersion "Tls12" -EnablePerRegionPerPartitionAutoscale 1 -EnablePriorityBasedExecution 1 -DefaultPriorityLevel "Low" -DisableLocalAuth 1
   
   Assert-AreEqual $cosmosDBAccountName $cosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $cosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
@@ -55,6 +55,7 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $cosmosDBAccount.EnablePerRegionPerPartitionAutoscale 1
   Assert-AreEqual $cosmosDBAccount.EnablePriorityBasedExecution 1
   Assert-AreEqual $cosmosDBAccount.DefaultPriorityLevel "Low"
+  Assert-AreEqual $cosmosDBAccount.DisableLocalAuth 1
 
   # create an existing database
   Try {
@@ -100,6 +101,25 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupRetentionIntervalInHours 16
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupStorageRedundancy "Local"
 
+  # Add capability
+  $capabilities = @("DisableRateLimitingResponses")
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Capabilities $capabilities
+  Assert-NotNull $updatedCosmosDBAccount.Capabilities
+  $capabilityNames = $updatedCosmosDBAccount.Capabilities | ForEach-Object { $_.Name }
+  Assert-AreEqual $true ($capabilityNames -contains "DisableRateLimitingResponses")
+
+  # Update without specifying -Capabilities should leave the property unchanged
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Tag @{ name = "tag1" }
+  Assert-NotNull $updatedCosmosDBAccount.Capabilities
+  $capabilityNames = $updatedCosmosDBAccount.Capabilities | ForEach-Object { $_.Name }
+  Assert-AreEqual $true ($capabilityNames -contains "DisableRateLimitingResponses")
+
+  # Setting -Capabilities to empty array should remove all capabilities from the account
+  $emptyCapabilities = @()
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Capabilities $emptyCapabilities
+  $capabilityNames = $updatedCosmosDBAccount.Capabilities | ForEach-Object { $_.Name }
+  Assert-AreEqual $false ($capabilityNames -contains "DisableRateLimitingResponses")
+
   $cosmosDBAccountKey = Get-AzCosmosDBAccountKey -Name $cosmosDBAccountName -ResourceGroupName $rgname
   Assert-NotNull $cosmosDBAccountKey
 
@@ -130,7 +150,7 @@ function Test-AccountRelatedCmdletsUsingRid
   $IpRule = "201.168.50.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
 
-  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover -DisableLocalAuth 1
   $cosmosDBAccountByRid = Get-AzCosmosDBAccount -ResourceId $cosmosDBAccount.Id
 
   Assert-AreEqual $cosmosDBAccountByRid.Name $cosmosDBAccount.Name
@@ -177,7 +197,7 @@ function Test-AccountRelatedCmdletsUsingObject
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $existingResourceGroupName  -Location   $location
-  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover -DisableLocalAuth 1
 
   $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
  

@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 BuildAndUseBicepTemplate();
             }
 
-            var dynamicParameters = new RuntimeDefinedParameterDictionary();
+            var dynamicParameters = base.GetDynamicParameters() as RuntimeDefinedParameterDictionary ?? new RuntimeDefinedParameterDictionary();
             
             if (!this.IsParameterBound(c => c.SkipTemplateParameterPrompt))
             {

@@ -21,30 +21,31 @@ Create an in-memory object for AgReplica.
 Create an in-memory object for AgReplica.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AgReplica
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AgReplica
 .Link
-https://learn.microsoft.com/powershell/module/Az.SqlVirtualMachine/new-AzSqlVirtualMachineAgReplicaObject
+https://learn.microsoft.com/powershell/module/Az.SqlVirtualMachine/new-azsqlvirtualmachineagreplicaobject
 #>
 function New-AzSqlVirtualMachineAgReplicaObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AgReplica')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AgReplica')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Replica commit mode in availability group.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.Commit])]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.Commit]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("SYNCHRONOUS_COMMIT", "ASYNCHRONOUS_COMMIT")]
+        [string]
         $Commit,
         [Parameter(HelpMessage="Replica failover mode in availability group.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.Failover])]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.Failover]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("AUTOMATIC", "MANUAL")]
+        [string]
         $Failover,
         [Parameter(HelpMessage="Replica readable secondary mode in availability group.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ReadableSecondary])]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ReadableSecondary]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("NO", "ALL", "READ_ONLY")]
+        [string]
         $ReadableSecondary,
         [Parameter(HelpMessage="Replica Role in availability group.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.Role])]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.Role]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("PRIMARY", "SECONDARY")]
+        [string]
         $Role,
         [Parameter(HelpMessage="Sql VirtualMachine Instance Id.")]
         [string]
@@ -52,7 +53,7 @@ function New-AzSqlVirtualMachineAgReplicaObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AgReplica]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AgReplica]::New()
 
         if ($PSBoundParameters.ContainsKey('Commit')) {
             $Object.Commit = $Commit

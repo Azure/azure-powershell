@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// <summary>
     /// Describes a Virtual Machine Scale Set.
     /// </summary>
-    public partial class VirtualMachineScaleSet : Resource
+    public partial class VirtualMachineScaleSet : TrackedResource
     {
         public VirtualMachineScaleSet(string location, string id, string name, string type, IDictionary<string, string> tags, Sku sku, Plan plan, UpgradePolicy upgradePolicy, AutomaticRepairsPolicy automaticRepairsPolicy, VirtualMachineScaleSetVMProfile virtualMachineProfile, string provisioningState, bool? overprovision, bool? doNotRunExtensionsOnOverprovisionedVMs, string uniqueId, bool? singlePlacementGroup, bool? zoneBalance, int? platformFaultDomainCount, SubResource proximityPlacementGroup, SubResource hostGroup, AdditionalCapabilities additionalCapabilities, ScaleInPolicy scaleInPolicy, string orchestrationMode, SpotRestorePolicy spotRestorePolicy, PriorityMixPolicy priorityMixPolicy, System.DateTime? timeCreated, VirtualMachineScaleSetIdentity identity, IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation))
     : base(location, id, name, type, tags)

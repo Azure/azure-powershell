@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Extensions;
 
-    /// <summary>The response of the List rule operation.</summary>
+    /// <summary>The response of a Rule list operation.</summary>
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.DoNotFormat]
     public partial class RuleListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRuleListResult,
@@ -17,16 +17,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// Link to the next set of results. Not empty if Value contains incomplete list of rules
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule> _value;
 
-        /// <summary>Result of the List Rules operation.</summary>
+        /// <summary>The Rule items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule> Value { get => this._value; set => this._value = value; }
 
@@ -36,45 +34,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 
         }
     }
-    /// The response of the List rule operation.
+    /// The response of a Rule list operation.
     public partial interface IRuleListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Link to the next set of results. Not empty if Value contains incomplete list of rules
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Link to the next set of results. Not empty if Value contains incomplete list of rules",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>Result of the List Rules operation.</summary>
+        /// <summary>The Rule items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Result of the List Rules operation.",
+        Description = @"The Rule items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule> Value { get; set; }
 
     }
-    /// The response of the List rule operation.
+    /// The response of a Rule list operation.
     internal partial interface IRuleListResultInternal
 
     {
-        /// <summary>
-        /// Link to the next set of results. Not empty if Value contains incomplete list of rules
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>Result of the List Rules operation.</summary>
+        /// <summary>The Rule items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule> Value { get; set; }
 
     }

@@ -33,7 +33,22 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             "System.Memory.Data",
             "System.Text.Json",
             "Microsoft.Bcl.AsyncInterfaces",
+            "Microsoft.IdentityModel.Abstractions", // Azure.Identity 1.13 depends on v6, MSAL 4.82 depends on v8 (what we ship)
             "System.Text.Encodings.Web"
+        };
+
+        /// <summary>
+        /// System.Memory is a special case on Windows PowerShell / .NET Framework. Newer
+        /// packages (e.g. System.Text.Json 10.x) are compiled against reference assemblies
+        /// that record a System.Memory reference version of 4.0.5.0, but no NuGet
+        /// System.Memory package has ever shipped a DLL with that assembly version - the
+        /// highest shipping version is 4.0.2.0 (from package 4.6.x), which is what we
+        /// carry. On .NET Framework the binder cannot satisfy the 4.0.5.0 request on its
+        /// own, so we redirect down to the 4.0.2.0 DLL we ship.
+        /// </summary>
+        private static ISet<string> LowerVersionRedirectionAllowList = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "System.Memory"
         };
 
         public static void Initialize()
@@ -49,14 +64,12 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         {
             try
             {
-                AssemblyName name = new AssemblyName(args.Name);
-                if (NetFxPreloadAssemblies.TryGetValue(name.Name, out var assembly))
+                AssemblyName requested = new AssemblyName(args.Name);
+                if (NetFxPreloadAssemblies.TryGetValue(requested.Name, out var available))
                 {
-                    if (assembly.Version >= name.Version
-                        && (assembly.Version.Major == name.Version.Major
-                            || IsCrossMajorVersionRedirectionAllowed(name.Name)))
+                    if (CanProvideAssembly(requested, available.Version))
                     {
-                        return Assembly.LoadFrom(assembly.Path);
+                        return Assembly.LoadFrom(available.Path);
                     }
                 }
             }
@@ -64,6 +77,27 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             {
             }
             return null;
+        }
+
+        private static bool CanProvideAssembly(AssemblyName requested, Version availableVersion)
+        {
+            // Normal case: the on-disk asm is at least as new as what fusion asked for.
+            if (availableVersion >= requested.Version)
+            {
+                return availableVersion.Major == requested.Version.Major
+                    || IsCrossMajorVersionRedirectionAllowed(requested.Name);
+            }
+
+            // Special case for System.Memory: newer packages bind against a reference
+            // version (4.0.5.0) that no NuGet System.Memory package has ever shipped.
+            // .NET Framework cannot satisfy that request on its own, so we hand back the
+            // highest shipping NuGet assembly (4.0.2.0) we already carry.
+            if (IsLowerVersionRedirectionAllowed(requested.Name))
+            {
+                return requested.Version == new Version(4, 0, 5, 0);
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -75,6 +109,15 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         private static bool IsCrossMajorVersionRedirectionAllowed(string assemblyName)
         {
             return CrossMajorVersionRedirectionAllowList.Contains(assemblyName);
+        }
+
+        /// <summary>
+        /// We allow downward redirection only for System.Memory, whose highest shipped
+        /// NuGet assembly version is lower than the reference version newer packages bind against.
+        /// </summary>
+        private static bool IsLowerVersionRedirectionAllowed(string assemblyName)
+        {
+            return LowerVersionRedirectionAllowList.Contains(assemblyName);
         }
     }
 }

@@ -13,12 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
 using System.IO.Compression;
 using System.Linq;
 using System.Threading;
+using AzDev.Models.Dep;
 using NuGet.Common;
+using NuGet.Frameworks;
 using NuGet.Packaging;
 using NuGet.Protocol;
 using NuGet.Protocol.Core.Types;
@@ -85,6 +88,46 @@ namespace AzDev.Services.Assembly
             }
 
             return destAssemblyPath;
+        }
+
+        public IEnumerable<PackageDep> GetPackageDependencies(
+            string packageName,
+            string packageVersion,
+            string targetFramework)
+        {
+            _logger.Debug($"[{nameof(DefaultNugetService)}] Getting dependencies for {packageName} version {packageVersion} for {targetFramework}");
+
+            using var packageStream = new MemoryStream();
+            _findPackageByIdResource.Value.CopyNupkgToStreamAsync(
+                packageName,
+                new NuGetVersion(packageVersion),
+                packageStream,
+                _cache,
+                NullLogger.Instance,
+                default).ConfigureAwait(false).GetAwaiter().GetResult();
+
+            using var packageReader = new PackageArchiveReader(packageStream);
+            var dependencyGroups = packageReader.GetPackageDependencies();
+
+            var framework = NuGetFramework.Parse(targetFramework);
+            var reducer = new FrameworkReducer();
+            var nearestFramework = reducer.GetNearest(framework, dependencyGroups.Select(g => g.TargetFramework));
+
+            if (nearestFramework == null)
+            {
+                _logger.Debug($"[{nameof(DefaultNugetService)}] No compatible dependency group found for {targetFramework}");
+                return Enumerable.Empty<PackageDep>();
+            }
+
+            var dependencyGroup = dependencyGroups.FirstOrDefault(g => g.TargetFramework.Equals(nearestFramework));
+            var nugetDependencies = dependencyGroup?.Packages ?? Enumerable.Empty<NuGet.Packaging.Core.PackageDependency>();
+
+            // Convert NuGet SDK model to our model
+            return nugetDependencies.Select(d => new PackageDep
+            {
+                Id = d.Id,
+                Version = d.VersionRange.MinVersion.ToString()
+            });
         }
     }
 }

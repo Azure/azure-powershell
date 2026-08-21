@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
             }
             return base.GetDynamicParameters();
         }
-
+       
         public void WriteOutput(TemplateValidationInfo validationInfo)
         {
             if (validationInfo.Errors.Count > 0)

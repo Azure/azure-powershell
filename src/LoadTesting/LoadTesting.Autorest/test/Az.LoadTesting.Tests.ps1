@@ -18,10 +18,10 @@ Describe 'New-AzLoad' {
     It 'Create with MI' {
         $name = $env.loadTestResource1
         $tags = @{"tag1"="value1"}
-        $userAssigned = @{$env.identityid1=@{};$env.identityid2=@{}}
+        $userAssigned = @($env.identityid1, $env.identityid2)
         $identityType = "SystemAssigned, UserAssigned"
 
-        $res = New-AzLoad -Name $name -ResourceGroupName $env.resourceGroup -Location $env.location -IdentityType $identityType -IdentityUserAssigned $userAssigned -Tag $tags
+        $res = New-AzLoad -Name $name -ResourceGroupName $env.resourceGroup -Location $env.location -EnableSystemAssignedIdentity -UserAssignedIdentity $userAssigned -Tag $tags
         $res.Name | Should -Be $name
         $res.ResourceGroupName | Should -Be $env.resourceGroup
         $res.Location | Should -Be $env.location
@@ -107,10 +107,10 @@ Describe 'Get-AzLoad' {
 Describe 'Update-AzLoad (Recorded)' {
     It 'Remove a Managed Identity' {
         $name = $env.loadTestResource1
-        $userAssigned = @{$env.identityid1=@{};$env.identityid2=$null}
+        $userAssigned = @($env.identityid1)
         $identityType = "UserAssigned"
 
-        $res = Update-AzLoad -Name $name -ResourceGroupName $env.resourceGroup -IdentityType $identityType -IdentityUserAssigned $userAssigned
+        $res = Update-AzLoad -Name $name -ResourceGroupName $env.resourceGroup -EnableSystemAssignedIdentity $false -UserAssignedIdentity $userAssigned
         $res.Name | Should -Be $name
         $res.ResourceGroupName | Should -Be $env.resourceGroup
         $res.Location | Should -Be $env.location
@@ -133,7 +133,7 @@ Describe 'Update-AzLoad (Recorded)' {
         $cmkKey = $env.cmkkeyid2
         $cmkIdentity = $env.identityid1
 
-        $res = Update-AzLoad -Name $name -ResourceGroupName $env.resourceGroup -IdentityType $identityType -EncryptionKey $cmkKey
+        $res = Update-AzLoad -Name $name -ResourceGroupName $env.resourceGroup -EnableSystemAssignedIdentity $true -EncryptionKey $cmkKey
         $res.Name | Should -Be $name
         $res.ResourceGroupName | Should -Be $env.resourceGroup
         $res.Location | Should -Be $env.location

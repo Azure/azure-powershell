@@ -143,19 +143,19 @@ function Test-FailoverGroup()
 
 		#Alter again but piping in the server object
 		$serverObject = Get-AzSqlServer -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
-		$fg3 = $serverObject | Set-AzSqlDatabaseFailoverGroup –ResourceGroupName $server.ResourceGroupName –FailoverGroupName $fg.FailoverGroupName -FailoverPolicy Automatic
+		$fg3 = $serverObject | Set-AzSqlDatabaseFailoverGroup -ResourceGroupName $server.ResourceGroupName -FailoverGroupName $fg.FailoverGroupName -FailoverPolicy Automatic
 		Validate-FailoverGroup $server $partnerServer $fgName Primary Automatic 1 Disabled @() $fg3
 
 		#Get Failover Group
 		Validate-FailoverGroupWithGet $fg3
 
 		#Get Failover Group
-		$fgs = $serverObject | Get-AzSqlDatabaseFailoverGroup –ResourceGroupName $server.ResourceGroupName -FailoverGroupName *
+		$fgs = $serverObject | Get-AzSqlDatabaseFailoverGroup -ResourceGroupName $server.ResourceGroupName -FailoverGroupName *
 		Assert-AreEqual 1 ($fgs | where { $_.FailoverGroupName.Equals($fg.FailoverGroupName) }).Count
 
 		#Remove Failover Group
-		Remove-AzSqlDatabaseFailoverGroup -ServerName $server.ServerName -ResourceGroupName $server.ResourceGroupName –FailoverGroupName $fg.FailoverGroupName
-		$all = $server | Get-AzSqlDatabaseFailoverGroup –ResourceGroupName $server.ResourceGroupName
+		Remove-AzSqlDatabaseFailoverGroup -ServerName $server.ServerName -ResourceGroupName $server.ResourceGroupName -FailoverGroupName $fg.FailoverGroupName
+		$all = $server | Get-AzSqlDatabaseFailoverGroup -ResourceGroupName $server.ResourceGroupName
 		Assert-AreEqual 0 ($all | where { $_.FailoverGroupName.Equals($fg.FailoverGroupName) }).Count
 	}
 }

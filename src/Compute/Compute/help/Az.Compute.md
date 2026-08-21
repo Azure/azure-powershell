@@ -83,6 +83,9 @@ Adds a data disk to a Vmss VM.
 ### [Add-AzVmssWinRMListener](Add-AzVmssWinRMListener.md)
 Adds a WinRM listener to the VMSS.
 
+### [Convert-AzAvailabilitySet](Convert-AzAvailabilitySet.md)
+Converts an Availability Set to a Flexible Virtual Machine Scale Set.
+
 ### [ConvertTo-AzVMManagedDisk](ConvertTo-AzVMManagedDisk.md)
 Converts a virtual machine with blob-based disks to a virtual machine with managed disks.
 
@@ -154,6 +157,9 @@ Get List of possible Host Sizes.
 
 ### [Get-AzImage](Get-AzImage.md)
 Gets the properties of an image.
+
+### [Get-AzInterconnectBlock](Get-AzInterconnectBlock.md)
+Gets the properties of an Interconnect Block or lists Interconnect Blocks in a resource group or subscription.
 
 ### [Get-AzProximityPlacementGroup](Get-AzProximityPlacementGroup.md)
 Get or list Proximity Placement Group resource(s).
@@ -245,6 +251,9 @@ Gets the properties of a VMSS.
 ### [Get-AzVmssDiskEncryption](Get-AzVmssDiskEncryption.md)
 Shows the disk encryption status of a VM scale set.
 
+### [Get-AzVmssLifecycleHookEvent](Get-AzVmssLifecycleHookEvent.md)
+Lists or retrieves lifecycle hook events for a Virtual Machine Scale Set (VMSS).
+
 ### [Get-AzVmssRollingUpgrade](Get-AzVmssRollingUpgrade.md)
 Shows the status of the latest virtual machine scale set rolling upgrade.
 
@@ -286,6 +295,9 @@ Run a command on the VM.
 
 ### [Invoke-AzVmssVMRunCommand](Invoke-AzVmssVMRunCommand.md)
 Run command on the Virtual Machine Scale Set VM.
+
+### [Move-AzVirtualMachineToVmss](Move-AzVirtualMachineToVmss.md)
+Migrates a virtual machine from an Availability Set to a Flexible Virtual Machine Scale Set.
 
 ### [New-AzAvailabilitySet](New-AzAvailabilitySet.md)
 Creates an Azure availability set.
@@ -353,6 +365,9 @@ Creates an image.
 ### [New-AzImageConfig](New-AzImageConfig.md)
 Creates a configurable image object.
 
+### [New-AzInterconnectBlock](New-AzInterconnectBlock.md)
+Creates an Interconnect Block resource.
+
 ### [New-AzProximityPlacementGroup](New-AzProximityPlacementGroup.md)
 Create Proximity Placement Group resource.
 
@@ -409,6 +424,9 @@ Creates an IP configuration for a network interface of a VMSS.
 
 ### [New-AzVmssIpTagConfig](New-AzVmssIpTagConfig.md)
 Creates an IP Tag object for a network interface of a VMSS.
+
+### [New-AzVmssLifecycleHookConfig](New-AzVmssLifecycleHookConfig.md)
+Creates an in-memory lifecycle hook configuration object for use with a Virtual Machine Scale Set (VMSS).
 
 ### [New-AzVmssVaultCertificateConfig](New-AzVmssVaultCertificateConfig.md)
 Creates a Key Vault certificate configuration.
@@ -478,6 +496,9 @@ Removes an image.
 
 ### [Remove-AzImageDataDisk](Remove-AzImageDataDisk.md)
 Removes a data disk from an image object.
+
+### [Remove-AzInterconnectBlock](Remove-AzInterconnectBlock.md)
+Deletes an Interconnect Block.
 
 ### [Remove-AzProximityPlacementGroup](Remove-AzProximityPlacementGroup.md)
 Delete Proximity Placement Group resource.
@@ -556,6 +577,9 @@ Removes an extension from the VMSS.
 
 ### [Remove-AzVmssGalleryApplication](Remove-AzVmssGalleryApplication.md)
 Remove a VMGalleryApplication object from the PSVirtualMachineScaleSetVMProfile object.
+
+### [Remove-AzVmssLifecycleHook](Remove-AzVmssLifecycleHook.md)
+Removes one or all lifecycle hooks from a Virtual Machine Scale Set (VMSS).
 
 ### [Remove-AzVmssNetworkInterfaceConfiguration](Remove-AzVmssNetworkInterfaceConfiguration.md)
 Removes a network interface configuration from a VMSS.
@@ -707,6 +731,9 @@ Sets the virtual machine scale set boot diagnostics profile.
 ### [Set-AzVmssDiskEncryptionExtension](Set-AzVmssDiskEncryptionExtension.md)
 Enables disk encryption on a VM scale set.
 
+### [Set-AzVmssLifecycleHooksProfile](Set-AzVmssLifecycleHooksProfile.md)
+Attaches lifecycle hooks to a Virtual Machine Scale Set (VMSS) configuration or live VMSS object.
+
 ### [Set-AzVmssOrchestrationServiceState](Set-AzVmssOrchestrationServiceState.md)
 Sets the orchestration service state for the VMSS.
 
@@ -737,6 +764,12 @@ The operation to update the VMSS VM run command.
 ### [Set-AzVMUefi](Set-AzVMUefi.md)
 Modifies UEFI properties of a gen 2 virtual machine
 
+### [Set-AzVMZoneMovement](Set-AzVMZoneMovement.md)
+Sets the ZoneMovement configuration on a PSVirtualMachine object.
+
+### [Start-AzAvailabilitySetMigration](Start-AzAvailabilitySetMigration.md)
+Starts the migration operation on an Availability Set to a Flexible Virtual Machine Scale Set.
+
 ### [Start-AzVM](Start-AzVM.md)
 Starts an Azure virtual machine.
 
@@ -749,6 +782,9 @@ This cmdlet starts a rolling upgrade for all extensions on the given Virtual Mac
 ### [Start-AzVmssRollingOSUpgrade](Start-AzVmssRollingOSUpgrade.md)
 Starts a rolling upgrade to move all virtual machine scale set instances to the latest available Platform Image OS version.
 
+### [Stop-AzAvailabilitySetMigration](Stop-AzAvailabilitySetMigration.md)
+Cancels the migration operation on an Availability Set.
+
 ### [Stop-AzVM](Stop-AzVM.md)
 Stops an Azure virtual machine.
 
@@ -757,6 +793,9 @@ Stops the VMSS or a set of virtual machines within the VMSS.
 
 ### [Stop-AzVmssRollingUpgrade](Stop-AzVmssRollingUpgrade.md)
 Cancels the current virtual machine scale set rolling upgrade.
+
+### [Test-AzAvailabilitySetMigration](Test-AzAvailabilitySetMigration.md)
+Validates that the Virtual Machines in an Availability Set can be migrated to the specified Virtual Machine Scale Set.
 
 ### [Test-AzVMAEMExtension](Test-AzVMAEMExtension.md)
 Checks the configuration of the AEM extension.
@@ -803,6 +842,9 @@ Updates the Dedicated Host.
 ### [Update-AzImage](Update-AzImage.md)
 Updates an image.
 
+### [Update-AzInterconnectBlock](Update-AzInterconnectBlock.md)
+Updates an Interconnect Block. Tags and SKU properties provided by parameters are sent in the update request (subject to service support).
+
 ### [Update-AzRestorePointCollection](Update-AzRestorePointCollection.md)
 Update Restore Point Collection.
 
@@ -821,6 +863,8 @@ Updates the state of a VMSS.
 ### [Update-AzVmssInstance](Update-AzVmssInstance.md)
 Starts a manual upgrade of the VMSS instance.
 
+### [Update-AzVmssLifecycleHookEvent](Update-AzVmssLifecycleHookEvent.md)
+Responds to a Virtual Machine Scale Set (VMSS) lifecycle hook event by approving, rejecting, or delaying it.
+
 ### [Update-AzVmssVM](Update-AzVmssVM.md)
 Updates the state of a Vmss VM.
-

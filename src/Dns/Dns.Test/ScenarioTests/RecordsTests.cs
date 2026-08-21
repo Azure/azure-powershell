@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,6 +28,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         public void TestAliasRecordSet()
         {
             TestRunner.RunTestScript("Test-AliasRecordSet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTrafficManagerProfileRecordSet()
+        {
+            TestRunner.RunTestScript("Test-TrafficManagerProfileRecordSet");
         }
 
         [Fact]

@@ -14,10 +14,10 @@ namespace Microsoft.Azure.Management.Dns
     public partial interface IRecordSetsOperations
     {
         /// <summary>
-        /// Updates a record set within a DNS zone.
+        /// Lists the record sets of a specified type in a DNS zone.
         /// </summary>
         /// <remarks>
-        /// Updates a record set within a DNS zone.
+        /// Lists the record sets of a specified type in a DNS zone.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -25,17 +25,17 @@ namespace Microsoft.Azure.Management.Dns
         /// <param name='zoneName'>
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
-        /// <param name='relativeRecordSetName'>
-        /// The name of the record set, relative to the name of the zone.
-        /// </param>
         /// <param name='recordType'>
         /// The type of DNS record in this record set.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The etag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen etag value to prevent accidentally overwriting concurrent changes.
+        /// <param name='top'>
+        /// The maximum number of record sets to return. If not specified, returns up
+        /// to 100 record sets.
         /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the Update operation.
+        /// <param name='recordsetnamesuffix'>
+        /// The suffix label of the record set name that has to be used to filter the
+        /// record set enumerations. If this parameter is specified, Enumeration will
+        /// return only records that end with .&lt;recordSetNameSuffix&gt;
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -49,80 +49,7 @@ namespace Microsoft.Azure.Management.Dns
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecordSet>> UpdateWithHttpMessagesAsync(string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, RecordSet parameters, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Creates or updates a record set within a DNS zone. Record sets of type SOA can be updated but not created (they are created when the DNS zone is created).
-        /// </summary>
-        /// <remarks>
-        /// Creates or updates a record set within a DNS zone. Record sets of type SOA can be updated but not created (they are created when the DNS zone is created).
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='zoneName'>
-        /// The name of the DNS zone (without a terminating dot).
-        /// </param>
-        /// <param name='relativeRecordSetName'>
-        /// The name of the record set, relative to the name of the zone.
-        /// </param>
-        /// <param name='recordType'>
-        /// The type of DNS record in this record set.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The etag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
-        /// </param>
-        /// <param name='ifNoneMatch'>
-        /// Set to &#39;*&#39; to allow a new record set to be created, but to prevent updating an existing record set. Other values will be ignored.
-        /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the CreateOrUpdate operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecordSet>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, RecordSet parameters, string ifMatch = default(string), string ifNoneMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Deletes a record set from a DNS zone. This operation cannot be undone. Record sets of type SOA cannot be deleted (they are deleted when the DNS zone is deleted).
-        /// </summary>
-        /// <remarks>
-        /// Deletes a record set from a DNS zone. This operation cannot be undone. Record sets of type SOA cannot be deleted (they are deleted when the DNS zone is deleted).
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='zoneName'>
-        /// The name of the DNS zone (without a terminating dot).
-        /// </param>
-        /// <param name='relativeRecordSetName'>
-        /// The name of the record set, relative to the name of the zone.
-        /// </param>
-        /// <param name='recordType'>
-        /// The type of DNS record in this record set.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The etag of the record set. Omit this value to always delete the current record set. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecordSet>>> ListByTypeWithHttpMessagesAsync(string resourceGroupName, string zoneName, RecordType recordType, int? top = default(int?), string recordsetnamesuffix = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a record set.
@@ -157,25 +84,38 @@ namespace Microsoft.Azure.Management.Dns
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecordSet>> GetWithHttpMessagesAsync(string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the record sets of a specified type in a DNS zone.
+        /// Creates or updates a record set within a DNS zone. Record sets of type SOA
+        /// can be updated but not created (they are created when the DNS zone is
+        /// created).
         /// </summary>
         /// <remarks>
-        /// Lists the record sets of a specified type in a DNS zone.
+        /// Creates or updates a record set within a DNS zone. Record sets of type SOA
+        /// can be updated but not created (they are created when the DNS zone is
+        /// created).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='zoneName'>
         /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='relativeRecordSetName'>
+        /// The name of the record set, relative to the name of the zone.
         /// </param>
         /// <param name='recordType'>
         /// The type of DNS record in this record set.
         /// </param>
-        /// <param name='top'>
-        /// The maximum number of record sets to return. If not specified, returns up to 100 record sets.
+        /// <param name='ifMatch'>
+        /// The etag of the record set. Omit this value to always overwrite the current
+        /// record set. Specify the last-seen etag value to prevent accidentally
+        /// overwriting any concurrent changes.
         /// </param>
-        /// <param name='recordsetnamesuffix'>
-        /// The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .&lt;recordSetNameSuffix&gt;
+        /// <param name='ifNoneMatch'>
+        /// Set to &#39;*&#39; to allow a new record set to be created, but to prevent updating
+        /// an existing record set. Other values will be ignored.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the CreateOrUpdate operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -189,7 +129,85 @@ namespace Microsoft.Azure.Management.Dns
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecordSet>>> ListByTypeWithHttpMessagesAsync(string resourceGroupName, string zoneName, RecordType recordType, int? top = default(int?), string recordsetnamesuffix = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecordSet>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, RecordSet parameters, string ifMatch = default(string), string ifNoneMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Updates a record set within a DNS zone.
+        /// </summary>
+        /// <remarks>
+        /// Updates a record set within a DNS zone.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='relativeRecordSetName'>
+        /// The name of the record set, relative to the name of the zone.
+        /// </param>
+        /// <param name='recordType'>
+        /// The type of DNS record in this record set.
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The etag of the record set. Omit this value to always overwrite the current
+        /// record set. Specify the last-seen etag value to prevent accidentally
+        /// overwriting concurrent changes.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Update operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecordSet>> UpdateWithHttpMessagesAsync(string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, RecordSet parameters, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes a record set from a DNS zone. This operation cannot be undone.
+        /// Record sets of type SOA cannot be deleted (they are deleted when the DNS
+        /// zone is deleted).
+        /// </summary>
+        /// <remarks>
+        /// Deletes a record set from a DNS zone. This operation cannot be undone.
+        /// Record sets of type SOA cannot be deleted (they are deleted when the DNS
+        /// zone is deleted).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='relativeRecordSetName'>
+        /// The name of the record set, relative to the name of the zone.
+        /// </param>
+        /// <param name='recordType'>
+        /// The type of DNS record in this record set.
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The etag of the record set. Omit this value to always delete the current
+        /// record set. Specify the last-seen etag value to prevent accidentally
+        /// deleting any concurrent changes.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all record sets in a DNS zone.
@@ -204,42 +222,13 @@ namespace Microsoft.Azure.Management.Dns
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
         /// <param name='top'>
-        /// The maximum number of record sets to return. If not specified, returns up to 100 record sets.
-        /// </param>
-        /// <param name='recordsetnamesuffix'>
-        /// The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .&lt;recordSetNameSuffix&gt;
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecordSet>>> ListByDnsZoneWithHttpMessagesAsync(string resourceGroupName, string zoneName, int? top = default(int?), string recordsetnamesuffix = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Lists all record sets in a DNS zone.
-        /// </summary>
-        /// <remarks>
-        /// Lists all record sets in a DNS zone.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='zoneName'>
-        /// The name of the DNS zone (without a terminating dot).
-        /// </param>
-        /// <param name='top'>
-        /// The maximum number of record sets to return. If not specified, returns up to 100 record sets.
+        /// The maximum number of record sets to return. If not specified, returns up
+        /// to 100 record sets.
         /// </param>
         /// <param name='recordSetNameSuffix'>
-        /// The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .&lt;recordSetNameSuffix&gt;
+        /// The suffix label of the record set name that has to be used to filter the
+        /// record set enumerations. If this parameter is specified, Enumeration will
+        /// return only records that end with .&lt;recordSetNameSuffix&gt;
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -254,6 +243,41 @@ namespace Microsoft.Azure.Management.Dns
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecordSet>>> ListAllByDnsZoneWithHttpMessagesAsync(string resourceGroupName, string zoneName, int? top = default(int?), string recordSetNameSuffix = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists all record sets in a DNS zone.
+        /// </summary>
+        /// <remarks>
+        /// Lists all record sets in a DNS zone.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='top'>
+        /// The maximum number of record sets to return. If not specified, returns up
+        /// to 100 record sets.
+        /// </param>
+        /// <param name='recordsetnamesuffix'>
+        /// The suffix label of the record set name that has to be used to filter the
+        /// record set enumerations. If this parameter is specified, Enumeration will
+        /// return only records that end with .&lt;recordSetNameSuffix&gt;
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecordSet>>> ListByDnsZoneWithHttpMessagesAsync(string resourceGroupName, string zoneName, int? top = default(int?), string recordsetnamesuffix = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the record sets of a specified type in a DNS zone.
@@ -299,7 +323,7 @@ namespace Microsoft.Azure.Management.Dns
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecordSet>>> ListByDnsZoneNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecordSet>>> ListAllByDnsZoneNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all record sets in a DNS zone.
@@ -322,7 +346,7 @@ namespace Microsoft.Azure.Management.Dns
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecordSet>>> ListAllByDnsZoneNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecordSet>>> ListByDnsZoneNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

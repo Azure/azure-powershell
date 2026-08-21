@@ -13,153 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class DscpConfigurationOperationsExtensions
     {
         /// <summary>
-        /// Creates or updates a DSCP Configuration.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='dscpConfigurationName'>
-        /// The name of the resource.
-        /// </param>
-        public static DscpConfiguration CreateOrUpdate(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName, DscpConfiguration parameters)
-        {
-                return ((IDscpConfigurationOperations)operations).CreateOrUpdateAsync(resourceGroupName, dscpConfigurationName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates a DSCP Configuration.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='dscpConfigurationName'>
-        /// The name of the resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<DscpConfiguration> CreateOrUpdateAsync(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName, DscpConfiguration parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, dscpConfigurationName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes a DSCP Configuration.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='dscpConfigurationName'>
-        /// The name of the resource.
-        /// </param>
-        public static void Delete(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName)
-        {
-                ((IDscpConfigurationOperations)operations).DeleteAsync(resourceGroupName, dscpConfigurationName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a DSCP Configuration.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='dscpConfigurationName'>
-        /// The name of the resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, dscpConfigurationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets a DSCP Configuration.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='dscpConfigurationName'>
-        /// The name of the resource.
-        /// </param>
-        public static DscpConfiguration Get(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName)
-        {
-                return ((IDscpConfigurationOperations)operations).GetAsync(resourceGroupName, dscpConfigurationName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a DSCP Configuration.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='dscpConfigurationName'>
-        /// The name of the resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<DscpConfiguration> GetAsync(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, dscpConfigurationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets a DSCP Configuration.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<DscpConfiguration> List(this IDscpConfigurationOperations operations, string resourceGroupName)
-        {
-                return ((IDscpConfigurationOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a DSCP Configuration.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DscpConfiguration>> ListAsync(this IDscpConfigurationOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all dscp configurations in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -187,13 +40,160 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Gets a DSCP Configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DscpConfiguration> List(this IDscpConfigurationOperations operations, string resourceGroupName)
+        {
+                return ((IDscpConfigurationOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets a DSCP Configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DscpConfiguration>> ListAsync(this IDscpConfigurationOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets a DSCP Configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='dscpConfigurationName'>
+        /// The name of the resource.
+        /// </param>
+        public static DscpConfiguration Get(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName)
+        {
+                return ((IDscpConfigurationOperations)operations).GetAsync(resourceGroupName, dscpConfigurationName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets a DSCP Configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='dscpConfigurationName'>
+        /// The name of the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DscpConfiguration> GetAsync(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, dscpConfigurationName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates or updates a DSCP Configuration.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='dscpConfigurationName'>
+        /// The name of the resource.
+        /// </param>
+        public static DscpConfiguration CreateOrUpdate(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName, DscpConfiguration parameters)
+        {
+                return ((IDscpConfigurationOperations)operations).CreateOrUpdateAsync(resourceGroupName, dscpConfigurationName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates a DSCP Configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='dscpConfigurationName'>
+        /// The name of the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DscpConfiguration> CreateOrUpdateAsync(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName, DscpConfiguration parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, dscpConfigurationName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes a DSCP Configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='dscpConfigurationName'>
+        /// The name of the resource.
+        /// </param>
+        public static void Delete(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName)
+        {
+                ((IDscpConfigurationOperations)operations).DeleteAsync(resourceGroupName, dscpConfigurationName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a DSCP Configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='dscpConfigurationName'>
+        /// The name of the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, dscpConfigurationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Creates or updates a DSCP Configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='dscpConfigurationName'>
         /// The name of the resource.
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='dscpConfigurationName'>
         /// The name of the resource.
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='dscpConfigurationName'>
         /// The name of the resource.
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='dscpConfigurationName'>
         /// The name of the resource.
@@ -260,39 +260,6 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task BeginDeleteAsync(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, dscpConfigurationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets a DSCP Configuration.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<DscpConfiguration> ListNext(this IDscpConfigurationOperations operations, string nextPageLink)
-        {
-                return ((IDscpConfigurationOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a DSCP Configuration.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DscpConfiguration>> ListNextAsync(this IDscpConfigurationOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
         }
         /// <summary>
         /// Gets all dscp configurations in a subscription.
@@ -323,6 +290,39 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DscpConfiguration>> ListAllNextAsync(this IDscpConfigurationOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets a DSCP Configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DscpConfiguration> ListNext(this IDscpConfigurationOperations operations, string nextPageLink)
+        {
+                return ((IDscpConfigurationOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets a DSCP Configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DscpConfiguration>> ListNextAsync(this IDscpConfigurationOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

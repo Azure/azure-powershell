@@ -105,6 +105,14 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Whether Nat64 is enabled for the nat gateway resource. Allowed values are None, Enabled, and Disabled.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(MNM.Nat64State.None, MNM.Nat64State.Enabled, MNM.Nat64State.Disabled, IgnoreCase = true)]
+        [PSArgumentCompleter(MNM.Nat64State.None, MNM.Nat64State.Enabled, MNM.Nat64State.Disabled)]
+        public string Nat64 { get; set; }
+
+        [Parameter(
+            Mandatory = false,
              HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
 
@@ -153,7 +161,8 @@ namespace Microsoft.Azure.Commands.Network
                 PublicIpPrefixes = vPublicIpPrefixes,
                 PublicIpAddressesV6 = vPublicIpAddressesV6,
                 PublicIpPrefixesV6 = vPublicIpPrefixesV6,
-                SourceVirtualNetwork = this.SourceVirtualNetwork
+                SourceVirtualNetwork = this.SourceVirtualNetwork,
+                Nat64 = this.Nat64
             };
 
             vNatGateway.Zones = this.Zone?.ToList();

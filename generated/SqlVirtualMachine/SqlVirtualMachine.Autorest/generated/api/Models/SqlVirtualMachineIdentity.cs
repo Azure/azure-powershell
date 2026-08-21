@@ -70,6 +70,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the availability group listener.",
         SerializedName = @"availabilityGroupListenerName",
         PossibleTypes = new [] { typeof(string) })]
@@ -78,6 +81,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -89,6 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -97,6 +106,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the SQL virtual machine group.",
         SerializedName = @"sqlVirtualMachineGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -105,6 +117,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the SQL virtual machine.",
         SerializedName = @"sqlVirtualMachineName",
         PossibleTypes = new [] { typeof(string) })]
@@ -113,6 +128,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Subscription ID that identifies an Azure subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

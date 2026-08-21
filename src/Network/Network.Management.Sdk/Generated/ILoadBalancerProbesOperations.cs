@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets all the load balancer probes.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets load balancer probe.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.

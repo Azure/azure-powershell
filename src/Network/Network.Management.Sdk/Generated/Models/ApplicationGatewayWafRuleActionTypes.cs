@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewayWafRuleActionTypes
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// AnomalyScoring
+        /// </summary>
         public const string AnomalyScoring = "AnomalyScoring";
+        /// <summary>
+        /// Allow
+        /// </summary>
         public const string Allow = "Allow";
+        /// <summary>
+        /// Block
+        /// </summary>
         public const string Block = "Block";
+        /// <summary>
+        /// Log
+        /// </summary>
         public const string Log = "Log";
     }
 }

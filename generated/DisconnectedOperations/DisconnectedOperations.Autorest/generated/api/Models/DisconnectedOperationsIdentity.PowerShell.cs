@@ -121,6 +121,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentityInternal)this).ArtifactName = (string) content.GetValueForProperty("ArtifactName",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentityInternal)this).ArtifactName, global::System.Convert.ToString);
             }
+            if (content.Contains("HardwareSettingName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentityInternal)this).HardwareSettingName = (string) content.GetValueForProperty("HardwareSettingName",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentityInternal)this).HardwareSettingName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -161,6 +165,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             if (content.Contains("ArtifactName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentityInternal)this).ArtifactName = (string) content.GetValueForProperty("ArtifactName",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentityInternal)this).ArtifactName, global::System.Convert.ToString);
+            }
+            if (content.Contains("HardwareSettingName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentityInternal)this).HardwareSettingName = (string) content.GetValueForProperty("HardwareSettingName",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentityInternal)this).HardwareSettingName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ServiceProviderProvisioningState
     {
+        /// <summary>
+        /// NotProvisioned
+        /// </summary>
         public const string NotProvisioned = "NotProvisioned";
+        /// <summary>
+        /// Provisioning
+        /// </summary>
         public const string Provisioning = "Provisioning";
+        /// <summary>
+        /// Provisioned
+        /// </summary>
         public const string Provisioned = "Provisioned";
+        /// <summary>
+        /// Deprovisioning
+        /// </summary>
         public const string Deprovisioning = "Deprovisioning";
     }
 }

@@ -16,16 +16,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
     {
 
         /// <summary>Internal Acessors for OSDiskImageSizeInMb</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal.OSDiskImageSizeInMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal)Property).OSDiskImageSizeInMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal)Property).OSDiskImageSizeInMb = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal.OSDiskImageSizeInMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal)Property).OSDiskImageSizeInMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal)Property).OSDiskImageSizeInMb = value ?? default(long); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionProperties Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.GalleryImageVersionProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for StorageProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfile Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal.StorageProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal)Property).StorageProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal)Property).StorageProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfile Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal.StorageProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal)Property).StorageProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal)Property).StorageProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StorageProfileOSDiskImage</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryOSDiskImage Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal.StorageProfileOSDiskImage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal)Property).StorageProfileOSDiskImage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal)Property).StorageProfileOSDiskImage = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryOSDiskImage Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal.StorageProfileOSDiskImage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal)Property).StorageProfileOSDiskImage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal)Property).StorageProfileOSDiskImage = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

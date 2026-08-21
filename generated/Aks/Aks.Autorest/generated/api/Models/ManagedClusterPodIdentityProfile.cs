@@ -8,8 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Extensions;
 
     /// <summary>
-    /// See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod identity
-    /// integration.
+    /// The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
+    /// for more details on pod identity integration.
     /// </summary>
     public partial class ManagedClusterPodIdentityProfile :
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProfile,
@@ -20,8 +20,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private bool? _allowNetworkPluginKubenet;
 
         /// <summary>
-        /// Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing.
-        /// See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
+        /// Whether pod identity is allowed to run on clusters with Kubenet networking. Running in Kubenet is disabled by default
+        /// due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin
+        /// with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
         /// for more information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
@@ -54,14 +55,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 
         }
     }
-    /// See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod identity
-    /// integration.
+    /// The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
+    /// for more details on pod identity integration.
     public partial interface IManagedClusterPodIdentityProfile :
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing.
-        /// See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
+        /// Whether pod identity is allowed to run on clusters with Kubenet networking. Running in Kubenet is disabled by default
+        /// due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin
+        /// with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
         /// for more information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
@@ -70,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities) for more information.",
+        Description = @"Whether pod identity is allowed to run on clusters with Kubenet networking. Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities) for more information.",
         SerializedName = @"allowNetworkPluginKubenet",
         PossibleTypes = new [] { typeof(bool) })]
         bool? AllowNetworkPluginKubenet { get; set; }
@@ -109,14 +111,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityException> UserAssignedIdentityException { get; set; }
 
     }
-    /// See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod identity
-    /// integration.
+    /// The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
+    /// for more details on pod identity integration.
     internal partial interface IManagedClusterPodIdentityProfileInternal
 
     {
         /// <summary>
-        /// Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing.
-        /// See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
+        /// Whether pod identity is allowed to run on clusters with Kubenet networking. Running in Kubenet is disabled by default
+        /// due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin
+        /// with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
         /// for more information.
         /// </summary>
         bool? AllowNetworkPluginKubenet { get; set; }

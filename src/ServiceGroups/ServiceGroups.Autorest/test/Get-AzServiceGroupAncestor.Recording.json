@@ -1,0 +1,96 @@
+{
+  "Get-AzServiceGroupAncestor+[NoContext]+List+$POST+https://management.azure.com/providers/Microsoft.Management/serviceGroups/testsggetce7mwf/listAncestors?api-version=2024-02-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/testsggetce7mwf/listAncestors?api-version=2024-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "3a9e954c-94b3-4372-9a86-35518e88282d" ],
+        "CommandName": [ "Get-AzServiceGroupAncestor" ],
+        "FullCommandName": [ "Get-AzServiceGroupAncestor_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.0", "Az.ServiceGroups/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "" ],
+        "client-request-id": [ "704a88e2-ccf5-4b3f-bb17-5f61cdce3683" ],
+        "Request-Id": [ "704a88e2-ccf5-4b3f-bb17-5f61cdce3683" ],
+        "x-ba-restapi": [ "3.2026.0302.1" ],
+        "x-ms-request-id": [ "eastus2:704a88e2-ccf5-4b3f-bb17-5f61cdce3683" ],
+        "mise-correlation-id": [ "cd1e32c4-1097-4ecd-9b8f-0edb0afc6fd5" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-correlation-request-id": [ "704a88e2-ccf5-4b3f-bb17-5f61cdce3683" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20260323T203940Z:704a88e2-ccf5-4b3f-bb17-5f61cdce3683" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 431D0D0FFE784CA5AF87F5C083E3F8C2 Ref B: BN1AA2051012027 Ref C: 2026-03-23T20:39:40Z" ],
+        "Date": [ "Mon, 23 Mar 2026 20:39:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "575" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/providers/Microsoft.Management/serviceGroups/testsggetce7mwf\",\"type\":\"Microsoft.Management/serviceGroups\",\"name\":\"testsggetce7mwf\",\"properties\":{\"displayName\":\"Az PS Test Service Group\"},\"systemData\":{\"lastModifiedAt\":\"2026-03-23T20:37:37.4395353Z\"}},{\"id\":\"/providers/Microsoft.Management/serviceGroups/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"Microsoft.Management/serviceGroups\",\"name\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"properties\":{\"displayName\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"systemData\":{\"lastModifiedAt\":\"0001-01-01T00:00:00Z\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzServiceGroupAncestor+[NoContext]+ListForChild+$POST+https://management.azure.com/providers/Microsoft.Management/serviceGroups/testsgchildce7mwf/listAncestors?api-version=2024-02-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/testsgchildce7mwf/listAncestors?api-version=2024-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "d0dc96ef-140b-4fc6-8c3e-1591b0b11bd3" ],
+        "CommandName": [ "Get-AzServiceGroupAncestor" ],
+        "FullCommandName": [ "Get-AzServiceGroupAncestor_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.0", "Az.ServiceGroups/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "" ],
+        "client-request-id": [ "c524e2c4-1420-4f58-9ef0-adb1423dbb5f" ],
+        "Request-Id": [ "c524e2c4-1420-4f58-9ef0-adb1423dbb5f" ],
+        "x-ba-restapi": [ "3.2026.0302.1" ],
+        "x-ms-request-id": [ "eastus2:c524e2c4-1420-4f58-9ef0-adb1423dbb5f" ],
+        "mise-correlation-id": [ "e8d79aa5-8c0f-45d3-9d1a-f7981a9f2a06" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-correlation-request-id": [ "c524e2c4-1420-4f58-9ef0-adb1423dbb5f" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20260323T203944Z:c524e2c4-1420-4f58-9ef0-adb1423dbb5f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FC1DBB4DC51C4E4298FF0B2856A09BF1 Ref B: BN1AA2051012027 Ref C: 2026-03-23T20:39:44Z" ],
+        "Date": [ "Mon, 23 Mar 2026 20:39:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "839" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/providers/Microsoft.Management/serviceGroups/testsgchildce7mwf\",\"type\":\"Microsoft.Management/serviceGroups\",\"name\":\"testsgchildce7mwf\",\"properties\":{\"displayName\":\"Az PS Child Service Group\"},\"systemData\":{\"lastModifiedAt\":\"2026-03-23T20:39:20.1469808Z\"}},{\"id\":\"/providers/Microsoft.Management/serviceGroups/testsggetce7mwf\",\"type\":\"Microsoft.Management/serviceGroups\",\"name\":\"testsggetce7mwf\",\"properties\":{\"displayName\":\"Az PS Test Service Group\"},\"systemData\":{\"lastModifiedAt\":\"2026-03-23T20:37:37.4395353Z\"}},{\"id\":\"/providers/Microsoft.Management/serviceGroups/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"Microsoft.Management/serviceGroups\",\"name\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"properties\":{\"displayName\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"systemData\":{\"lastModifiedAt\":\"0001-01-01T00:00:00Z\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -13,46 +13,43 @@ namespace Microsoft.Azure.Management.Network
     public static partial class RoutesOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified route from a route table.
+        /// Gets all routes in a route table.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeTableName'>
         /// The name of the route table.
         /// </param>
-        /// <param name='routeName'>
-        /// The name of the route.
-        /// </param>
-        public static void Delete(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName)
+        public static Microsoft.Rest.Azure.IPage<Route> List(this IRoutesOperations operations, string resourceGroupName, string routeTableName)
         {
-                ((IRoutesOperations)operations).DeleteAsync(resourceGroupName, routeTableName, routeName).GetAwaiter().GetResult();
+                return ((IRoutesOperations)operations).ListAsync(resourceGroupName, routeTableName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes the specified route from a route table.
+        /// Gets all routes in a route table.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeTableName'>
         /// The name of the route table.
-        /// </param>
-        /// <param name='routeName'>
-        /// The name of the route.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Route>> ListAsync(this IRoutesOperations operations, string resourceGroupName, string routeTableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, routeTableName, routeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, routeTableName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Gets the specified route from a route table.
@@ -61,7 +58,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeTableName'>
         /// The name of the route table.
@@ -81,7 +78,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeTableName'>
         /// The name of the route table.
@@ -106,7 +103,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeTableName'>
         /// The name of the route table.
@@ -126,7 +123,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeTableName'>
         /// The name of the route table.
@@ -145,52 +142,13 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Gets all routes in a route table.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='routeTableName'>
-        /// The name of the route table.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<Route> List(this IRoutesOperations operations, string resourceGroupName, string routeTableName)
-        {
-                return ((IRoutesOperations)operations).ListAsync(resourceGroupName, routeTableName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all routes in a route table.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='routeTableName'>
-        /// The name of the route table.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Route>> ListAsync(this IRoutesOperations operations, string resourceGroupName, string routeTableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, routeTableName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Deletes the specified route from a route table.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeTableName'>
         /// The name of the route table.
@@ -198,9 +156,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='routeName'>
         /// The name of the route.
         /// </param>
-        public static void BeginDelete(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName)
+        public static void Delete(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName)
         {
-                ((IRoutesOperations)operations).BeginDeleteAsync(resourceGroupName, routeTableName, routeName).GetAwaiter().GetResult();
+                ((IRoutesOperations)operations).DeleteAsync(resourceGroupName, routeTableName, routeName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -210,7 +168,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeTableName'>
         /// The name of the route table.
@@ -221,9 +179,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, routeTableName, routeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, routeTableName, routeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a route in the specified route table.
@@ -232,7 +190,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeTableName'>
         /// The name of the route table.
@@ -252,7 +210,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeTableName'>
         /// The name of the route table.
@@ -269,6 +227,48 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Deletes the specified route from a route table.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='routeTableName'>
+        /// The name of the route table.
+        /// </param>
+        /// <param name='routeName'>
+        /// The name of the route.
+        /// </param>
+        public static void BeginDelete(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName)
+        {
+                ((IRoutesOperations)operations).BeginDeleteAsync(resourceGroupName, routeTableName, routeName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified route from a route table.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='routeTableName'>
+        /// The name of the route table.
+        /// </param>
+        /// <param name='routeName'>
+        /// The name of the route.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, routeTableName, routeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all routes in a route table.

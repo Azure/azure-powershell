@@ -133,7 +133,6 @@ Accept wildcard characters: False
 ### -InputObject
 Specifies the replicating server for which migration needs to be initiated.
 The server object can be retrieved using the Get-AzMigrateLocalServerReplication cmdlet.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
@@ -233,7 +232,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel
 
 ## NOTES
 

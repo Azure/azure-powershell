@@ -26,10 +26,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="tags">Application update parameters
         /// </param>
-        public ApplicationUpdateParameters(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+
+        /// <param name="properties">Application update parameters properties.
+        /// </param>
+        public ApplicationUpdateParameters(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ApplicationUpdateParametersProperties properties = default(ApplicationUpdateParametersProperties))
 
         {
             this.Tags = tags;
+            this.Properties = properties;
             CustomInit();
         }
 
@@ -44,5 +48,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets or sets application update parameters properties.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
+        public ApplicationUpdateParametersProperties Properties {get; set; }
     }
 }

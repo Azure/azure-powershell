@@ -35,9 +35,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _keyVaultNetworkAccess;
 
         /// <summary>
-        /// Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public
-        /// access from all networks. `Private` means the key vault disables public access and enables private link. The default value
-        /// is `Public`.
+        /// Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public`
+        /// means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables
+        /// private link. The default value is `Public`.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string KeyVaultNetworkAccess { get => this._keyVaultNetworkAccess; set => this._keyVaultNetworkAccess = value; }
@@ -89,9 +89,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(string) })]
         string KeyId { get; set; }
         /// <summary>
-        /// Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public
-        /// access from all networks. `Private` means the key vault disables public access and enables private link. The default value
-        /// is `Public`.
+        /// Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public`
+        /// means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables
+        /// private link. The default value is `Public`.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. The default value is `Public`.",
+        Description = @"Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. The default value is `Public`.",
         SerializedName = @"keyVaultNetworkAccess",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Public", "Private")]
@@ -133,9 +133,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// </summary>
         string KeyId { get; set; }
         /// <summary>
-        /// Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public
-        /// access from all networks. `Private` means the key vault disables public access and enables private link. The default value
-        /// is `Public`.
+        /// Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public`
+        /// means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables
+        /// private link. The default value is `Public`.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Public", "Private")]
         string KeyVaultNetworkAccess { get; set; }

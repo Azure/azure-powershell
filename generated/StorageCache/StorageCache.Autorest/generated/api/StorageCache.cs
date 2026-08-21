@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsArchive(string subscriptionId, string resourceGroupName, string amlFilesystemName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemArchiveInfo body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsArchiveViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemArchiveInfo body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsArchiveViaJsonString(string subscriptionId, string resourceGroupName, string amlFilesystemName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsCancelArchive(string subscriptionId, string resourceGroupName, string amlFilesystemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsCancelArchiveViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsCreateOrUpdate(string subscriptionId, string resourceGroupName, string amlFilesystemName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -500,7 +500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -558,7 +558,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem> AmlFilesystemsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -619,7 +619,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string amlFilesystemName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -666,7 +666,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem> AmlFilesystemsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -715,7 +715,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem> AmlFilesystemsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1092,7 +1092,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsDelete(string subscriptionId, string resourceGroupName, string amlFilesystemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1134,7 +1134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1368,7 +1368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsGet(string subscriptionId, string resourceGroupName, string amlFilesystemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1409,7 +1409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1460,7 +1460,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem> AmlFilesystemsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1514,7 +1514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem> AmlFilesystemsGetWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1693,7 +1693,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1732,7 +1732,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1772,7 +1772,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1821,7 +1821,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemsListResult> AmlFilesystemsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1871,7 +1871,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemsListResult> AmlFilesystemsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2045,7 +2045,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2091,7 +2091,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemsListResult> AmlFilesystemsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2137,7 +2137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemsListResult> AmlFilesystemsListWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2309,7 +2309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsUpdate(string subscriptionId, string resourceGroupName, string amlFilesystemName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2357,7 +2357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2415,7 +2415,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem> AmlFilesystemsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2476,7 +2476,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AmlFilesystemsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string amlFilesystemName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2523,7 +2523,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem> AmlFilesystemsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2572,7 +2572,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem> AmlFilesystemsUpdateWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2951,7 +2951,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoExportJobsCreateOrUpdate(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoExportJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3001,7 +3001,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoExportJobsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3062,7 +3062,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob> AutoExportJobsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3128,7 +3128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoExportJobsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoExportJobName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3179,7 +3179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob> AutoExportJobsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoExportJobName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3232,7 +3232,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob> AutoExportJobsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoExportJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3619,7 +3619,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoExportJobsDelete(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoExportJobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3663,7 +3663,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoExportJobsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3908,7 +3908,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoExportJobsGet(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoExportJobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3951,7 +3951,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoExportJobsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4005,7 +4005,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob> AutoExportJobsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4064,7 +4064,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob> AutoExportJobsGetWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoExportJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4256,7 +4256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoExportJobsListByAmlFilesystem(string subscriptionId, string resourceGroupName, string amlFilesystemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJobsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4300,7 +4300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoExportJobsListByAmlFilesystemViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJobsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4354,7 +4354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJobsListResult> AutoExportJobsListByAmlFilesystemViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4411,7 +4411,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJobsListResult> AutoExportJobsListByAmlFilesystemWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4601,7 +4601,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoExportJobsUpdate(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoExportJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJobUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4651,7 +4651,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoExportJobsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJobUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4712,7 +4712,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob> AutoExportJobsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJobUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4778,7 +4778,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoExportJobsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoExportJobName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4829,7 +4829,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob> AutoExportJobsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoExportJobName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4882,7 +4882,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob> AutoExportJobsUpdateWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoExportJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJobUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5269,7 +5269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoImportJobsCreateOrUpdate(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoImportJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5319,7 +5319,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoImportJobsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5380,7 +5380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob> AutoImportJobsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5446,7 +5446,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoImportJobsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoImportJobName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5497,7 +5497,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob> AutoImportJobsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoImportJobName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5550,7 +5550,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob> AutoImportJobsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoImportJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5937,7 +5937,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoImportJobsDelete(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoImportJobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5981,7 +5981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoImportJobsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6226,7 +6226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoImportJobsGet(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoImportJobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6269,7 +6269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoImportJobsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6323,7 +6323,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob> AutoImportJobsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6382,7 +6382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob> AutoImportJobsGetWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoImportJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6574,7 +6574,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoImportJobsListByAmlFilesystem(string subscriptionId, string resourceGroupName, string amlFilesystemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJobsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6618,7 +6618,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoImportJobsListByAmlFilesystemViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJobsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6672,7 +6672,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJobsListResult> AutoImportJobsListByAmlFilesystemViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6729,7 +6729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJobsListResult> AutoImportJobsListByAmlFilesystemWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6919,7 +6919,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoImportJobsUpdate(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoImportJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJobUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6969,7 +6969,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoImportJobsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJobUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7030,7 +7030,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob> AutoImportJobsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJobUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7096,7 +7096,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AutoImportJobsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoImportJobName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7147,7 +7147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob> AutoImportJobsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoImportJobName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7200,7 +7200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob> AutoImportJobsUpdateWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string autoImportJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJobUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7581,7 +7581,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckAmlFsSubnets(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemSubnetInfo body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7625,7 +7625,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckAmlFsSubnetsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemSubnetInfo body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7678,7 +7678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckAmlFsSubnetsViaJsonString(string subscriptionId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7779,6 +7779,2316 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
             }
         }
 
+        /// <summary>update an expansion job.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="expansionJobName">Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end
+        /// with alphanumeric.</param>
+        /// <param name="body">Object containing the user-selectable properties of the expansion job. If read-only properties are
+        /// included, they must match the existing values of those properties.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ExpansionJobsCreateOrUpdate(string subscriptionId, string resourceGroupName, string amlFilesystemName, string expansionJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + global::System.Uri.EscapeDataString(amlFilesystemName)
+                        + "/expansionJobs/"
+                        + global::System.Uri.EscapeDataString(expansionJobName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ExpansionJobsCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update an expansion job.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Object containing the user-selectable properties of the expansion job. If read-only properties are
+        /// included, they must match the existing values of those properties.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ExpansionJobsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StorageCache/amlFilesystems/(?<amlFilesystemName>[^/]+)/expansionJobs/(?<expansionJobName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var amlFilesystemName = _match.Groups["amlFilesystemName"].Value;
+                var expansionJobName = _match.Groups["expansionJobName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + amlFilesystemName
+                        + "/expansionJobs/"
+                        + expansionJobName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ExpansionJobsCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update an expansion job.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Object containing the user-selectable properties of the expansion job. If read-only properties are
+        /// included, they must match the existing values of those properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob> ExpansionJobsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StorageCache/amlFilesystems/(?<amlFilesystemName>[^/]+)/expansionJobs/(?<expansionJobName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var amlFilesystemName = _match.Groups["amlFilesystemName"].Value;
+                var expansionJobName = _match.Groups["expansionJobName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + amlFilesystemName
+                        + "/expansionJobs/"
+                        + expansionJobName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ExpansionJobsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update an expansion job.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="expansionJobName">Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end
+        /// with alphanumeric.</param>
+        /// <param name="jsonString">Json string supplied to the ExpansionJobsCreateOrUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ExpansionJobsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string amlFilesystemName, string expansionJobName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + global::System.Uri.EscapeDataString(amlFilesystemName)
+                        + "/expansionJobs/"
+                        + global::System.Uri.EscapeDataString(expansionJobName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ExpansionJobsCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update an expansion job.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="expansionJobName">Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end
+        /// with alphanumeric.</param>
+        /// <param name="jsonString">Json string supplied to the ExpansionJobsCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob> ExpansionJobsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string expansionJobName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + global::System.Uri.EscapeDataString(amlFilesystemName)
+                        + "/expansionJobs/"
+                        + global::System.Uri.EscapeDataString(expansionJobName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ExpansionJobsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update an expansion job.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="expansionJobName">Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end
+        /// with alphanumeric.</param>
+        /// <param name="body">Object containing the user-selectable properties of the expansion job. If read-only properties are
+        /// included, they must match the existing values of those properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob> ExpansionJobsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string expansionJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + global::System.Uri.EscapeDataString(amlFilesystemName)
+                        + "/expansionJobs/"
+                        + global::System.Uri.EscapeDataString(expansionJobName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ExpansionJobsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ExpansionJobsCreateOrUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob> ExpansionJobsCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ExpansionJob.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ExpansionJobsCreateOrUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ExpansionJobsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ExpansionJob.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ExpansionJobsCreateOrUpdate" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="expansionJobName">Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end
+        /// with alphanumeric.</param>
+        /// <param name="body">Object containing the user-selectable properties of the expansion job. If read-only properties are
+        /// included, they must match the existing values of those properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ExpansionJobsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string amlFilesystemName, string expansionJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(amlFilesystemName),amlFilesystemName);
+                await eventListener.AssertMinimumLength(nameof(amlFilesystemName),amlFilesystemName,2);
+                await eventListener.AssertMaximumLength(nameof(amlFilesystemName),amlFilesystemName,80);
+                await eventListener.AssertRegEx(nameof(amlFilesystemName), amlFilesystemName, @"^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$");
+                await eventListener.AssertNotNull(nameof(expansionJobName),expansionJobName);
+                await eventListener.AssertMinimumLength(nameof(expansionJobName),expansionJobName,2);
+                await eventListener.AssertMaximumLength(nameof(expansionJobName),expansionJobName,80);
+                await eventListener.AssertRegEx(nameof(expansionJobName), expansionJobName, @"^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Schedules an expansion job for deletion.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="expansionJobName">Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end
+        /// with alphanumeric.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ExpansionJobsDelete(string subscriptionId, string resourceGroupName, string amlFilesystemName, string expansionJobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + global::System.Uri.EscapeDataString(amlFilesystemName)
+                        + "/expansionJobs/"
+                        + global::System.Uri.EscapeDataString(expansionJobName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ExpansionJobsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Schedules an expansion job for deletion.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ExpansionJobsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StorageCache/amlFilesystems/(?<amlFilesystemName>[^/]+)/expansionJobs/(?<expansionJobName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var amlFilesystemName = _match.Groups["amlFilesystemName"].Value;
+                var expansionJobName = _match.Groups["expansionJobName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + amlFilesystemName
+                        + "/expansionJobs/"
+                        + expansionJobName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ExpansionJobsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ExpansionJobsDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ExpansionJobsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ExpansionJobsDelete" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="expansionJobName">Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end
+        /// with alphanumeric.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ExpansionJobsDelete_Validate(string subscriptionId, string resourceGroupName, string amlFilesystemName, string expansionJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(amlFilesystemName),amlFilesystemName);
+                await eventListener.AssertMinimumLength(nameof(amlFilesystemName),amlFilesystemName,2);
+                await eventListener.AssertMaximumLength(nameof(amlFilesystemName),amlFilesystemName,80);
+                await eventListener.AssertRegEx(nameof(amlFilesystemName), amlFilesystemName, @"^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$");
+                await eventListener.AssertNotNull(nameof(expansionJobName),expansionJobName);
+                await eventListener.AssertMinimumLength(nameof(expansionJobName),expansionJobName,2);
+                await eventListener.AssertMaximumLength(nameof(expansionJobName),expansionJobName,80);
+                await eventListener.AssertRegEx(nameof(expansionJobName), expansionJobName, @"^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$");
+            }
+        }
+
+        /// <summary>Returns an expansion job.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="expansionJobName">Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end
+        /// with alphanumeric.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ExpansionJobsGet(string subscriptionId, string resourceGroupName, string amlFilesystemName, string expansionJobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + global::System.Uri.EscapeDataString(amlFilesystemName)
+                        + "/expansionJobs/"
+                        + global::System.Uri.EscapeDataString(expansionJobName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ExpansionJobsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns an expansion job.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ExpansionJobsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StorageCache/amlFilesystems/(?<amlFilesystemName>[^/]+)/expansionJobs/(?<expansionJobName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var amlFilesystemName = _match.Groups["amlFilesystemName"].Value;
+                var expansionJobName = _match.Groups["expansionJobName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + amlFilesystemName
+                        + "/expansionJobs/"
+                        + expansionJobName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ExpansionJobsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns an expansion job.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob> ExpansionJobsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StorageCache/amlFilesystems/(?<amlFilesystemName>[^/]+)/expansionJobs/(?<expansionJobName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var amlFilesystemName = _match.Groups["amlFilesystemName"].Value;
+                var expansionJobName = _match.Groups["expansionJobName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + amlFilesystemName
+                        + "/expansionJobs/"
+                        + expansionJobName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ExpansionJobsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns an expansion job.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="expansionJobName">Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end
+        /// with alphanumeric.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob> ExpansionJobsGetWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string expansionJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + global::System.Uri.EscapeDataString(amlFilesystemName)
+                        + "/expansionJobs/"
+                        + global::System.Uri.EscapeDataString(expansionJobName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ExpansionJobsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ExpansionJobsGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob> ExpansionJobsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ExpansionJob.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ExpansionJobsGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ExpansionJobsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ExpansionJob.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ExpansionJobsGet" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="expansionJobName">Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end
+        /// with alphanumeric.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ExpansionJobsGet_Validate(string subscriptionId, string resourceGroupName, string amlFilesystemName, string expansionJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(amlFilesystemName),amlFilesystemName);
+                await eventListener.AssertMinimumLength(nameof(amlFilesystemName),amlFilesystemName,2);
+                await eventListener.AssertMaximumLength(nameof(amlFilesystemName),amlFilesystemName,80);
+                await eventListener.AssertRegEx(nameof(amlFilesystemName), amlFilesystemName, @"^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$");
+                await eventListener.AssertNotNull(nameof(expansionJobName),expansionJobName);
+                await eventListener.AssertMinimumLength(nameof(expansionJobName),expansionJobName,2);
+                await eventListener.AssertMaximumLength(nameof(expansionJobName),expansionJobName,80);
+                await eventListener.AssertRegEx(nameof(expansionJobName), expansionJobName, @"^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$");
+            }
+        }
+
+        /// <summary>Returns all the expansion jobs the user has access to under an AML File System.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ExpansionJobsListByAmlFilesystem(string subscriptionId, string resourceGroupName, string amlFilesystemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJobsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + global::System.Uri.EscapeDataString(amlFilesystemName)
+                        + "/expansionJobs"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ExpansionJobsListByAmlFilesystem_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns all the expansion jobs the user has access to under an AML File System.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ExpansionJobsListByAmlFilesystemViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJobsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StorageCache/amlFilesystems/(?<amlFilesystemName>[^/]+)/expansionJobs$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var amlFilesystemName = _match.Groups["amlFilesystemName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + amlFilesystemName
+                        + "/expansionJobs"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ExpansionJobsListByAmlFilesystem_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns all the expansion jobs the user has access to under an AML File System.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJobsListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJobsListResult> ExpansionJobsListByAmlFilesystemViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StorageCache/amlFilesystems/(?<amlFilesystemName>[^/]+)/expansionJobs$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var amlFilesystemName = _match.Groups["amlFilesystemName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + amlFilesystemName
+                        + "/expansionJobs"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ExpansionJobsListByAmlFilesystemWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns all the expansion jobs the user has access to under an AML File System.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJobsListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJobsListResult> ExpansionJobsListByAmlFilesystemWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + global::System.Uri.EscapeDataString(amlFilesystemName)
+                        + "/expansionJobs"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ExpansionJobsListByAmlFilesystemWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ExpansionJobsListByAmlFilesystemWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJobsListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJobsListResult> ExpansionJobsListByAmlFilesystemWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ExpansionJobsListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ExpansionJobsListByAmlFilesystem" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ExpansionJobsListByAmlFilesystem_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJobsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ExpansionJobsListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ExpansionJobsListByAmlFilesystem" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ExpansionJobsListByAmlFilesystem_Validate(string subscriptionId, string resourceGroupName, string amlFilesystemName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(amlFilesystemName),amlFilesystemName);
+                await eventListener.AssertMinimumLength(nameof(amlFilesystemName),amlFilesystemName,2);
+                await eventListener.AssertMaximumLength(nameof(amlFilesystemName),amlFilesystemName,80);
+                await eventListener.AssertRegEx(nameof(amlFilesystemName), amlFilesystemName, @"^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$");
+            }
+        }
+
+        /// <summary>update an expansion job instance.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="expansionJobName">Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end
+        /// with alphanumeric.</param>
+        /// <param name="body">Object containing the user-selectable properties of the expansion job. If read-only properties are
+        /// included, they must match the existing values of those properties.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ExpansionJobsUpdate(string subscriptionId, string resourceGroupName, string amlFilesystemName, string expansionJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJobUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + global::System.Uri.EscapeDataString(amlFilesystemName)
+                        + "/expansionJobs/"
+                        + global::System.Uri.EscapeDataString(expansionJobName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ExpansionJobsUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update an expansion job instance.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Object containing the user-selectable properties of the expansion job. If read-only properties are
+        /// included, they must match the existing values of those properties.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ExpansionJobsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJobUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StorageCache/amlFilesystems/(?<amlFilesystemName>[^/]+)/expansionJobs/(?<expansionJobName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var amlFilesystemName = _match.Groups["amlFilesystemName"].Value;
+                var expansionJobName = _match.Groups["expansionJobName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + amlFilesystemName
+                        + "/expansionJobs/"
+                        + expansionJobName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ExpansionJobsUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update an expansion job instance.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Object containing the user-selectable properties of the expansion job. If read-only properties are
+        /// included, they must match the existing values of those properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob> ExpansionJobsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJobUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StorageCache/amlFilesystems/(?<amlFilesystemName>[^/]+)/expansionJobs/(?<expansionJobName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var amlFilesystemName = _match.Groups["amlFilesystemName"].Value;
+                var expansionJobName = _match.Groups["expansionJobName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + amlFilesystemName
+                        + "/expansionJobs/"
+                        + expansionJobName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ExpansionJobsUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update an expansion job instance.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="expansionJobName">Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end
+        /// with alphanumeric.</param>
+        /// <param name="jsonString">Json string supplied to the ExpansionJobsUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ExpansionJobsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string amlFilesystemName, string expansionJobName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + global::System.Uri.EscapeDataString(amlFilesystemName)
+                        + "/expansionJobs/"
+                        + global::System.Uri.EscapeDataString(expansionJobName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ExpansionJobsUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update an expansion job instance.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="expansionJobName">Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end
+        /// with alphanumeric.</param>
+        /// <param name="jsonString">Json string supplied to the ExpansionJobsUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob> ExpansionJobsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string expansionJobName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + global::System.Uri.EscapeDataString(amlFilesystemName)
+                        + "/expansionJobs/"
+                        + global::System.Uri.EscapeDataString(expansionJobName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ExpansionJobsUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update an expansion job instance.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="expansionJobName">Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end
+        /// with alphanumeric.</param>
+        /// <param name="body">Object containing the user-selectable properties of the expansion job. If read-only properties are
+        /// included, they must match the existing values of those properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob> ExpansionJobsUpdateWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string expansionJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJobUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StorageCache/amlFilesystems/"
+                        + global::System.Uri.EscapeDataString(amlFilesystemName)
+                        + "/expansionJobs/"
+                        + global::System.Uri.EscapeDataString(expansionJobName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ExpansionJobsUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ExpansionJobsUpdateWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob> ExpansionJobsUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ExpansionJob.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ExpansionJobsUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ExpansionJobsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ExpansionJob.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ExpansionJobsUpdate" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="amlFilesystemName">Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and
+        /// end with alphanumeric.</param>
+        /// <param name="expansionJobName">Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end
+        /// with alphanumeric.</param>
+        /// <param name="body">Object containing the user-selectable properties of the expansion job. If read-only properties are
+        /// included, they must match the existing values of those properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ExpansionJobsUpdate_Validate(string subscriptionId, string resourceGroupName, string amlFilesystemName, string expansionJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJobUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(amlFilesystemName),amlFilesystemName);
+                await eventListener.AssertMinimumLength(nameof(amlFilesystemName),amlFilesystemName,2);
+                await eventListener.AssertMaximumLength(nameof(amlFilesystemName),amlFilesystemName,80);
+                await eventListener.AssertRegEx(nameof(amlFilesystemName), amlFilesystemName, @"^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$");
+                await eventListener.AssertNotNull(nameof(expansionJobName),expansionJobName);
+                await eventListener.AssertMinimumLength(nameof(expansionJobName),expansionJobName,2);
+                await eventListener.AssertMaximumLength(nameof(expansionJobName),expansionJobName,80);
+                await eventListener.AssertRegEx(nameof(expansionJobName), expansionJobName, @"^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
         /// <summary>
         /// Get the number of available IP addresses needed for the AML file system information provided.
         /// </summary>
@@ -7795,7 +10105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task GetRequiredAmlFsSubnetsSize(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IRequiredAmlFilesystemSubnetsSizeInfo body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IRequiredAmlFilesystemSubnetsSize>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7841,7 +10151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task GetRequiredAmlFsSubnetsSizeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IRequiredAmlFilesystemSubnetsSizeInfo body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IRequiredAmlFilesystemSubnetsSize>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7895,7 +10205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IRequiredAmlFilesystemSubnetsSize> GetRequiredAmlFsSubnetsSizeViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IRequiredAmlFilesystemSubnetsSizeInfo body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7950,7 +10260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task GetRequiredAmlFsSubnetsSizeViaJsonString(string subscriptionId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IRequiredAmlFilesystemSubnetsSize>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7993,7 +10303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IRequiredAmlFilesystemSubnetsSize> GetRequiredAmlFsSubnetsSizeViaJsonStringWithResult(string subscriptionId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8037,7 +10347,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IRequiredAmlFilesystemSubnetsSize> GetRequiredAmlFsSubnetsSizeWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IRequiredAmlFilesystemSubnetsSizeInfo body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8220,7 +10530,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task ImportJobsCreateOrUpdate(string subscriptionId, string resourceGroupName, string amlFilesystemName, string importJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8270,7 +10580,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task ImportJobsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8331,7 +10641,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob> ImportJobsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8397,7 +10707,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task ImportJobsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string amlFilesystemName, string importJobName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8448,7 +10758,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob> ImportJobsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string importJobName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8501,7 +10811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob> ImportJobsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string importJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8886,7 +11196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task ImportJobsDelete(string subscriptionId, string resourceGroupName, string amlFilesystemName, string importJobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8930,7 +11240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task ImportJobsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9175,7 +11485,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task ImportJobsGet(string subscriptionId, string resourceGroupName, string amlFilesystemName, string importJobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9218,7 +11528,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task ImportJobsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9272,7 +11582,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob> ImportJobsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9331,7 +11641,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob> ImportJobsGetWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string importJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9521,7 +11831,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task ImportJobsListByAmlFilesystem(string subscriptionId, string resourceGroupName, string amlFilesystemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJobsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9563,7 +11873,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task ImportJobsListByAmlFilesystemViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJobsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9615,7 +11925,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJobsListResult> ImportJobsListByAmlFilesystemViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9670,7 +11980,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJobsListResult> ImportJobsListByAmlFilesystemWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9860,7 +12170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task ImportJobsUpdate(string subscriptionId, string resourceGroupName, string amlFilesystemName, string importJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJobUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9910,7 +12220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task ImportJobsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJobUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9971,7 +12281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob> ImportJobsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJobUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10037,7 +12347,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task ImportJobsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string amlFilesystemName, string importJobName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10088,7 +12398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob> ImportJobsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string importJobName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10141,7 +12451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob> ImportJobsUpdateWithResult(string subscriptionId, string resourceGroupName, string amlFilesystemName, string importJobName, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJobUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

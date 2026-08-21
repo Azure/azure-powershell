@@ -16,27 +16,27 @@
 
 <#
 .Synopsis
-Description for Creates a backup of an app.
+Description for backup a backup of an app.
 .Description
-Description for Creates a backup of an app.
+Description for backup a backup of an app.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IBackupRequest
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IBackupRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IBackupItem
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IBackupItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 DATABASE <IDatabaseBackupSetting[]>: Databases included in the backup.
-  DatabaseType <DatabaseType>: Database type (e.g. SqlAzure / MySql).
+  DatabaseType <String>: Database type (e.g. SqlAzure / MySql).
   [ConnectionString <String>]: Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
   [ConnectionStringName <String>]: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
   [Name <String>]: 
@@ -49,7 +49,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -79,7 +79,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -116,12 +116,12 @@ REQUEST <IBackupRequest>: Description of a backup which will be performed.
   [Kind <String>]: Kind of resource.
   [BackupName <String>]: Name of the backup.
   [BackupScheduleFrequencyInterval <Int32?>]: How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
-  [BackupScheduleFrequencyUnit <FrequencyUnit?>]: The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
+  [BackupScheduleFrequencyUnit <String>]: The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
   [BackupScheduleKeepAtLeastOneBackup <Boolean?>]: True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
   [BackupScheduleRetentionPeriodInDay <Int32?>]: After how many days backups should be deleted.
   [BackupScheduleStartTime <DateTime?>]: When the schedule should start working.
-  [Database <IDatabaseBackupSetting[]>]: Databases included in the backup.
-    DatabaseType <DatabaseType>: Database type (e.g. SqlAzure / MySql).
+  [Database <List<IDatabaseBackupSetting>>]: Databases included in the backup.
+    DatabaseType <String>: Database type (e.g. SqlAzure / MySql).
     [ConnectionString <String>]: Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
     [ConnectionStringName <String>]: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
     [Name <String>]: 
@@ -131,11 +131,13 @@ REQUEST <IBackupRequest>: Description of a backup which will be performed.
 https://learn.microsoft.com/powershell/module/az.functions/backup-azfunctionapp
 #>
 function Backup-AzFunctionApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IBackupItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IBackupItem])]
 [CmdletBinding(DefaultParameterSetName='BackupExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Backup', Mandatory)]
     [Parameter(ParameterSetName='BackupExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the app.
@@ -143,6 +145,8 @@ param(
 
     [Parameter(ParameterSetName='Backup', Mandatory)]
     [Parameter(ParameterSetName='BackupExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
@@ -150,6 +154,8 @@ param(
 
     [Parameter(ParameterSetName='Backup')]
     [Parameter(ParameterSetName='BackupExpanded')]
+    [Parameter(ParameterSetName='BackupViaJsonFilePath')]
+    [Parameter(ParameterSetName='BackupViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -163,15 +169,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Backup', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='BackupViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IBackupRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IBackupRequest]
     # Description of a backup which will be performed.
-    # To construct, see NOTES section for REQUEST properties and create a hash table.
     ${Request},
 
     [Parameter(ParameterSetName='BackupExpanded')]
@@ -191,9 +195,9 @@ param(
 
     [Parameter(ParameterSetName='BackupExpanded')]
     [Parameter(ParameterSetName='BackupViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Day", "Hour")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit]
+    [System.String]
     # The unit of time for how often the backup should be executed (e.g.
     # for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
     ${BackupScheduleFrequencyUnit},
@@ -223,9 +227,8 @@ param(
     [Parameter(ParameterSetName='BackupViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDatabaseBackupSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IDatabaseBackupSetting[]]
     # Databases included in the backup.
-    # To construct, see NOTES section for DATABASE properties and create a hash table.
     ${Database},
 
     [Parameter(ParameterSetName='BackupExpanded')]
@@ -248,6 +251,18 @@ param(
     [System.String]
     # SAS URL to the container.
     ${StorageAccountUrl},
+
+    [Parameter(ParameterSetName='BackupViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Backup operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='BackupViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Backup operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -305,16 +320,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Backup = 'Az.Functions.private\Backup-AzFunctionApp_Backup';
             BackupExpanded = 'Az.Functions.private\Backup-AzFunctionApp_BackupExpanded';
             BackupViaIdentity = 'Az.Functions.private\Backup-AzFunctionApp_BackupViaIdentity';
             BackupViaIdentityExpanded = 'Az.Functions.private\Backup-AzFunctionApp_BackupViaIdentityExpanded';
+            BackupViaJsonFilePath = 'Az.Functions.private\Backup-AzFunctionApp_BackupViaJsonFilePath';
+            BackupViaJsonString = 'Az.Functions.private\Backup-AzFunctionApp_BackupViaJsonString';
         }
-        if (('Backup', 'BackupExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Backup', 'BackupExpanded', 'BackupViaJsonFilePath', 'BackupViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -323,6 +341,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

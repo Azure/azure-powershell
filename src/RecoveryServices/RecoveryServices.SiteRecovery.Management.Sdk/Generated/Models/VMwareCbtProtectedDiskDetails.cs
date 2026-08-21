@@ -52,6 +52,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="diskEncryptionSetId">The DiskEncryptionSet ARM Id.
         /// </param>
 
+        /// <param name="confidentialDiskEncryptionSetId">The ConfidentialDiskEncryptionSet ARM Id.
+        /// </param>
+
         /// <param name="seedManagedDiskId">The ARM Id of the seed managed disk.
         /// </param>
 
@@ -72,7 +75,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="sectorSizeInBytes">The logical sector size (in bytes), 512 by default.
         /// </param>
-        public VMwareCbtProtectedDiskDetails(string diskId = default(string), string diskName = default(string), string diskType = default(string), string diskPath = default(string), string isOSDisk = default(string), long? capacityInBytes = default(long?), string logStorageAccountId = default(string), string logStorageAccountSasSecretName = default(string), string diskEncryptionSetId = default(string), string seedManagedDiskId = default(string), string seedBlobUri = default(string), string targetManagedDiskId = default(string), string targetBlobUri = default(string), string targetDiskName = default(string), GatewayOperationDetails gatewayOperationDetails = default(GatewayOperationDetails), int? sectorSizeInBytes = default(int?))
+
+        /// <param name="iops">The number of IOPS allowed for Premium V2 and Ultra disks.
+        /// </param>
+
+        /// <param name="throughputInMbps">The total throughput in Mbps for Premium V2 and Ultra disks.
+        /// </param>
+
+        /// <param name="diskSizeInGb">The target disk size in GB.
+        /// </param>
+        public VMwareCbtProtectedDiskDetails(string diskId = default(string), string diskName = default(string), string diskType = default(string), string diskPath = default(string), string isOSDisk = default(string), long? capacityInBytes = default(long?), string logStorageAccountId = default(string), string logStorageAccountSasSecretName = default(string), string diskEncryptionSetId = default(string), string confidentialDiskEncryptionSetId = default(string), string seedManagedDiskId = default(string), string seedBlobUri = default(string), string targetManagedDiskId = default(string), string targetBlobUri = default(string), string targetDiskName = default(string), GatewayOperationDetails gatewayOperationDetails = default(GatewayOperationDetails), int? sectorSizeInBytes = default(int?), long? iops = default(long?), long? throughputInMbps = default(long?), long? diskSizeInGb = default(long?))
 
         {
             this.DiskId = diskId;
@@ -84,6 +96,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.LogStorageAccountId = logStorageAccountId;
             this.LogStorageAccountSasSecretName = logStorageAccountSasSecretName;
             this.DiskEncryptionSetId = diskEncryptionSetId;
+            this.ConfidentialDiskEncryptionSetId = confidentialDiskEncryptionSetId;
             this.SeedManagedDiskId = seedManagedDiskId;
             this.SeedBlobUri = seedBlobUri;
             this.TargetManagedDiskId = targetManagedDiskId;
@@ -91,6 +104,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.TargetDiskName = targetDiskName;
             this.GatewayOperationDetails = gatewayOperationDetails;
             this.SectorSizeInBytes = sectorSizeInBytes;
+            this.Iops = iops;
+            this.ThroughputInMbps = throughputInMbps;
+            this.DiskSizeInGb = diskSizeInGb;
             CustomInit();
         }
 
@@ -155,6 +171,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string DiskEncryptionSetId {get; private set; }
 
         /// <summary>
+        /// Gets the ConfidentialDiskEncryptionSet ARM Id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "confidentialDiskEncryptionSetId")]
+        public string ConfidentialDiskEncryptionSetId {get; private set; }
+
+        /// <summary>
         /// Gets the ARM Id of the seed managed disk.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "seedManagedDiskId")]
@@ -195,5 +217,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sectorSizeInBytes")]
         public int? SectorSizeInBytes {get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of IOPS allowed for Premium V2 and Ultra disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "iops")]
+        public long? Iops {get; set; }
+
+        /// <summary>
+        /// Gets or sets the total throughput in Mbps for Premium V2 and Ultra disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "throughputInMbps")]
+        public long? ThroughputInMbps {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target disk size in GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "diskSizeInGB")]
+        public long? DiskSizeInGb {get; set; }
     }
 }

@@ -35,14 +35,14 @@ Get-AzMigrateDiscoveredServer  -SubscriptionId xxx-xxx-xxx -ResourceGroupName Bu
 Get-AzMigrateDiscoveredServer -SubscriptionId xxx-xxx-xxx -ResourceGroupName "test-rg" -ProjectName "testproj" -SourceMachineType "HyperV" | Format-Table DisplayName,Name,Type
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVMachine
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVMachine
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareMachine
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratediscoveredserver
 #>
 function Get-AzMigrateDiscoveredServer {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareMachine], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVMachine])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -65,7 +65,6 @@ param(
     ${DisplayName},
 
     [Parameter()]
-    [ArgumentCompleter({ "VMware", "HyperV" })]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the source machine type.
@@ -79,22 +78,22 @@ param(
     # Specifies the subscription id.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='ListInSite', Mandatory)]
     [Parameter(ParameterSetName='GetInSite', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the appliance name.
+    # This internally maps to a site.
+    ${ApplianceName},
+
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetInSite', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the source machine name.
     # This is an internal Name.
     # For users, use display name.
-    ${Name},
-
-    [Parameter(ParameterSetName='GetInSite', Mandatory)]
-    [Parameter(ParameterSetName='ListInSite', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the appliance name.
-    # This internally maps to a site.
-    ${ApplianceName}
+    ${Name}
 )
 
 begin {
@@ -104,6 +103,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -124,13 +131,11 @@ begin {
 
         $mapping = @{
             List = 'Az.Migrate.custom\Get-AzMigrateDiscoveredServer';
-            GetInSite = 'Az.Migrate.custom\Get-AzMigrateDiscoveredServer';
-            Get = 'Az.Migrate.custom\Get-AzMigrateDiscoveredServer';
             ListInSite = 'Az.Migrate.custom\Get-AzMigrateDiscoveredServer';
+            Get = 'Az.Migrate.custom\Get-AzMigrateDiscoveredServer';
+            GetInSite = 'Az.Migrate.custom\Get-AzMigrateDiscoveredServer';
         }
-        if (('List', 'GetInSite', 'Get', 'ListInSite') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List', 'ListInSite', 'Get', 'GetInSite') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -144,6 +149,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

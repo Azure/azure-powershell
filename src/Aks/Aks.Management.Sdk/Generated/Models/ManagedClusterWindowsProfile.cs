@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// details.
         /// Possible values include: &#39;None&#39;, &#39;Windows_Server&#39;</param>
 
-        /// <param name="enableCsiProxy">For more details on CSI proxy, see the [CSI proxy GitHub
-        /// repo](https://github.com/kubernetes-csi/csi-proxy).
+        /// <param name="enableCsiProxy">Whether to enable CSI proxy. For more details on CSI proxy, see the [CSI
+        /// proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
         /// </param>
 
         /// <param name="gmsaProfile">The Windows gMSA Profile in the Managed Cluster.
@@ -106,7 +106,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string LicenseType {get; set; }
 
         /// <summary>
-        /// Gets or sets for more details on CSI proxy, see the [CSI proxy GitHub
+        /// Gets or sets whether to enable CSI proxy. For more details on CSI proxy,
+        /// see the [CSI proxy GitHub
         /// repo](https://github.com/kubernetes-csi/csi-proxy).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enableCSIProxy")]

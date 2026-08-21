@@ -24,13 +24,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the ManagedClusterAutoUpgradeProfile class.
         /// </summary>
 
-        /// <param name="upgradeChannel">For more information see [setting the AKS cluster auto-upgrade
+        /// <param name="upgradeChannel">The upgrade channel for auto upgrade. The default is &#39;none&#39;. For more
+        /// information see [setting the AKS cluster auto-upgrade
         /// channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
         /// Possible values include: &#39;rapid&#39;, &#39;stable&#39;, &#39;patch&#39;, &#39;node-image&#39;, &#39;none&#39;</param>
-        public ManagedClusterAutoUpgradeProfile(string upgradeChannel = default(string))
+
+        /// <param name="nodeOSUpgradeChannel">Node OS Upgrade Channel. Manner in which the OS on your nodes is updated.
+        /// The default is NodeImage.
+        /// Possible values include: &#39;None&#39;, &#39;Unmanaged&#39;, &#39;NodeImage&#39;, &#39;SecurityPatch&#39;</param>
+        public ManagedClusterAutoUpgradeProfile(string upgradeChannel = default(string), string nodeOSUpgradeChannel = default(string))
 
         {
             this.UpgradeChannel = upgradeChannel;
+            this.NodeOSUpgradeChannel = nodeOSUpgradeChannel;
             CustomInit();
         }
 
@@ -41,10 +47,18 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
 
         /// <summary>
-        /// Gets or sets for more information see [setting the AKS cluster auto-upgrade
+        /// Gets or sets the upgrade channel for auto upgrade. The default is &#39;none&#39;.
+        /// For more information see [setting the AKS cluster auto-upgrade
         /// channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel). Possible values include: &#39;rapid&#39;, &#39;stable&#39;, &#39;patch&#39;, &#39;node-image&#39;, &#39;none&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "upgradeChannel")]
         public string UpgradeChannel {get; set; }
+
+        /// <summary>
+        /// Gets or sets node OS Upgrade Channel. Manner in which the OS on your nodes
+        /// is updated. The default is NodeImage. Possible values include: &#39;None&#39;, &#39;Unmanaged&#39;, &#39;NodeImage&#39;, &#39;SecurityPatch&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "nodeOSUpgradeChannel")]
+        public string NodeOSUpgradeChannel {get; set; }
     }
 }

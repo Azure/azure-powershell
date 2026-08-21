@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Management.Network
         /// Gets all peerings in a specified ExpressRouteCrossConnection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -40,42 +40,16 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ExpressRouteCrossConnectionPeering>>> ListWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes the specified peering from the ExpressRouteCrossConnection.
-        /// </summary>
-        /// <remarks>
-        /// Deletes the specified peering from the ExpressRouteCrossConnection.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Gets the specified peering for the ExpressRouteCrossConnection.
         /// </summary>
         /// <remarks>
         /// Gets the specified peering for the ExpressRouteCrossConnection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// Name for the express route cross connection.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -101,10 +75,10 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates a peering in the specified ExpressRouteCrossConnection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// Name for the express route cross connection.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -134,10 +108,10 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes the specified peering from the ExpressRouteCrossConnection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// Name for the express route cross connection.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -151,7 +125,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates a peering in the specified ExpressRouteCrossConnection.
@@ -160,10 +134,10 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates a peering in the specified ExpressRouteCrossConnection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// Name for the express route cross connection.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -185,6 +159,32 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCrossConnectionPeering>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, ExpressRouteCrossConnectionPeering peeringParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes the specified peering from the ExpressRouteCrossConnection.
+        /// </summary>
+        /// <remarks>
+        /// Deletes the specified peering from the ExpressRouteCrossConnection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// Name for the express route cross connection.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets all peerings in a specified ExpressRouteCrossConnection.

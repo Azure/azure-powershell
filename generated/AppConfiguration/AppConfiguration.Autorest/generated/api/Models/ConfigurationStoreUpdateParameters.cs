@@ -13,6 +13,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreUpdateParametersInternal
     {
 
+        /// <summary>
+        /// The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Inlined)]
+        public string DataPlaneProxyAuthenticationMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).DataPlaneProxyAuthenticationMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).DataPlaneProxyAuthenticationMode = value ?? null; }
+
+        /// <summary>
+        /// The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager
+        /// (ARM) private link is allowed when the data plane resource requires private link.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Inlined)]
+        public string DataPlaneProxyPrivateLinkDelegation { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).DataPlaneProxyPrivateLinkDelegation; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).DataPlaneProxyPrivateLinkDelegation = value ?? null; }
+
+        /// <summary>
+        /// The duration in seconds to retain new key value revisions. Defaults to 604800 (7 days) for Free SKU stores and 2592000
+        /// (30 days) for Standard SKU stores and Premium SKU stores.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Inlined)]
+        public long? DefaultKeyValueRevisionRetentionPeriodInSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).DefaultKeyValueRevisionRetentionPeriodInSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).DefaultKeyValueRevisionRetentionPeriodInSecond = value ?? default(long); }
+
         /// <summary>Disables all authentication methods other than AAD authentication.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Inlined)]
         public bool? DisableLocalAuth { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).DisableLocalAuth; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).DisableLocalAuth = value ?? default(bool); }
@@ -64,20 +84,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Inlined)]
         public string KeyVaultPropertyKeyIdentifier { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).KeyVaultPropertyKeyIdentifier; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).KeyVaultPropertyKeyIdentifier = value ?? null; }
 
+        /// <summary>Internal Acessors for DataPlaneProxy</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDataPlaneProxyProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreUpdateParametersInternal.DataPlaneProxy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).DataPlaneProxy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).DataPlaneProxy = value ?? null /* model class */; }
+
         /// <summary>Internal Acessors for Encryption</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IEncryptionProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreUpdateParametersInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).Encryption = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IEncryptionProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreUpdateParametersInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).Encryption = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for EncryptionKeyVaultProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreUpdateParametersInternal.EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).EncryptionKeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).EncryptionKeyVaultProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreUpdateParametersInternal.EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).EncryptionKeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParametersInternal)Property).EncryptionKeyVaultProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentity Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreUpdateParametersInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ResourceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreUpdateParametersInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreUpdateParametersInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreUpdateParametersInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreUpdateParametersInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IResourceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesUpdateParameters Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStoreUpdateParametersInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ConfigurationStorePropertiesUpdateParameters()); set { {_property = value;} } }
@@ -126,6 +149,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
     public partial interface IConfigurationStoreUpdateParameters :
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.",
+        SerializedName = @"authenticationMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Local", "Pass-through")]
+        string DataPlaneProxyAuthenticationMode { get; set; }
+        /// <summary>
+        /// The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager
+        /// (ARM) private link is allowed when the data plane resource requires private link.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.",
+        SerializedName = @"privateLinkDelegation",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string DataPlaneProxyPrivateLinkDelegation { get; set; }
+        /// <summary>
+        /// The duration in seconds to retain new key value revisions. Defaults to 604800 (7 days) for Free SKU stores and 2592000
+        /// (30 days) for Standard SKU stores and Premium SKU stores.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The duration in seconds to retain new key value revisions. Defaults to 604800 (7 days) for Free SKU stores and 2592000 (30 days) for Standard SKU stores and Premium SKU stores.",
+        SerializedName = @"defaultKeyValueRevisionRetentionPeriodInSeconds",
+        PossibleTypes = new [] { typeof(long) })]
+        long? DefaultKeyValueRevisionRetentionPeriodInSecond { get; set; }
         /// <summary>Disables all authentication methods other than AAD authentication.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
@@ -269,6 +335,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
     internal partial interface IConfigurationStoreUpdateParametersInternal
 
     {
+        /// <summary>
+        /// Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM).
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDataPlaneProxyProperties DataPlaneProxy { get; set; }
+        /// <summary>
+        /// The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Local", "Pass-through")]
+        string DataPlaneProxyAuthenticationMode { get; set; }
+        /// <summary>
+        /// The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager
+        /// (ARM) private link is allowed when the data plane resource requires private link.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string DataPlaneProxyPrivateLinkDelegation { get; set; }
+        /// <summary>
+        /// The duration in seconds to retain new key value revisions. Defaults to 604800 (7 days) for Free SKU stores and 2592000
+        /// (30 days) for Standard SKU stores and Premium SKU stores.
+        /// </summary>
+        long? DefaultKeyValueRevisionRetentionPeriodInSecond { get; set; }
         /// <summary>Disables all authentication methods other than AAD authentication.</summary>
         bool? DisableLocalAuth { get; set; }
         /// <summary>

@@ -80,6 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BfdConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration) content.GetValueForProperty("BfdConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BfdConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BfdConfigurationTypeConverter.ConvertFrom);
             }
+            if (content.Contains("BmpConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkBmpProperties) content.GetValueForProperty("BmpConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.InternalNetworkBmpPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("DefaultRouteOriginate"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).DefaultRouteOriginate = (string) content.GetValueForProperty("DefaultRouteOriginate",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).DefaultRouteOriginate, global::System.Convert.ToString);
@@ -98,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             }
             if (content.Contains("PeerAsn"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).PeerAsn = (long?) content.GetValueForProperty("PeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).PeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).PeerAsn = (long) content.GetValueForProperty("PeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).PeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("Ipv4ListenRangePrefix"))
             {
@@ -116,6 +120,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).Ipv6NeighborAddress = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddress>) content.GetValueForProperty("Ipv6NeighborAddress",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).Ipv6NeighborAddress, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddress>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NeighborAddressTypeConverter.ConvertFrom));
             }
+            if (content.Contains("V4OverV6BgpSession"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).V4OverV6BgpSession = (string) content.GetValueForProperty("V4OverV6BgpSession",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).V4OverV6BgpSession, global::System.Convert.ToString);
+            }
+            if (content.Contains("V6OverV4BgpSession"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).V6OverV4BgpSession = (string) content.GetValueForProperty("V6OverV4BgpSession",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).V6OverV4BgpSession, global::System.Convert.ToString);
+            }
             if (content.Contains("Annotation"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation, global::System.Convert.ToString);
@@ -131,6 +143,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("BfdConfigurationIntervalInMilliSecond"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BfdConfigurationIntervalInMilliSecond = (int?) content.GetValueForProperty("BfdConfigurationIntervalInMilliSecond",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BfdConfigurationIntervalInMilliSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("BmpConfigurationExportPolicyConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfigurationExportPolicyConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBmpExportPolicyProperties) content.GetValueForProperty("BmpConfigurationExportPolicyConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfigurationExportPolicyConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BmpExportPolicyPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BmpConfigurationNeighborIPExclusion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfigurationNeighborIPExclusion = (System.Collections.Generic.List<string>) content.GetValueForProperty("BmpConfigurationNeighborIPExclusion",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfigurationNeighborIPExclusion, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("BmpConfigurationState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfigurationState = (string) content.GetValueForProperty("BmpConfigurationState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfigurationState, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExportPolicyConfigurationExportPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).ExportPolicyConfigurationExportPolicy = (System.Collections.Generic.List<string>) content.GetValueForProperty("ExportPolicyConfigurationExportPolicy",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).ExportPolicyConfigurationExportPolicy, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializeDictionary(content);
         }
@@ -153,6 +181,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BfdConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration) content.GetValueForProperty("BfdConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BfdConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BfdConfigurationTypeConverter.ConvertFrom);
             }
+            if (content.Contains("BmpConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkBmpProperties) content.GetValueForProperty("BmpConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.InternalNetworkBmpPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("DefaultRouteOriginate"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).DefaultRouteOriginate = (string) content.GetValueForProperty("DefaultRouteOriginate",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).DefaultRouteOriginate, global::System.Convert.ToString);
@@ -171,7 +203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             }
             if (content.Contains("PeerAsn"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).PeerAsn = (long?) content.GetValueForProperty("PeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).PeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).PeerAsn = (long) content.GetValueForProperty("PeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).PeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("Ipv4ListenRangePrefix"))
             {
@@ -189,6 +221,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).Ipv6NeighborAddress = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddress>) content.GetValueForProperty("Ipv6NeighborAddress",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).Ipv6NeighborAddress, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddress>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NeighborAddressTypeConverter.ConvertFrom));
             }
+            if (content.Contains("V4OverV6BgpSession"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).V4OverV6BgpSession = (string) content.GetValueForProperty("V4OverV6BgpSession",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).V4OverV6BgpSession, global::System.Convert.ToString);
+            }
+            if (content.Contains("V6OverV4BgpSession"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).V6OverV4BgpSession = (string) content.GetValueForProperty("V6OverV4BgpSession",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).V6OverV4BgpSession, global::System.Convert.ToString);
+            }
             if (content.Contains("Annotation"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation, global::System.Convert.ToString);
@@ -204,6 +244,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("BfdConfigurationIntervalInMilliSecond"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BfdConfigurationIntervalInMilliSecond = (int?) content.GetValueForProperty("BfdConfigurationIntervalInMilliSecond",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BfdConfigurationIntervalInMilliSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("BmpConfigurationExportPolicyConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfigurationExportPolicyConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBmpExportPolicyProperties) content.GetValueForProperty("BmpConfigurationExportPolicyConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfigurationExportPolicyConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BmpExportPolicyPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BmpConfigurationNeighborIPExclusion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfigurationNeighborIPExclusion = (System.Collections.Generic.List<string>) content.GetValueForProperty("BmpConfigurationNeighborIPExclusion",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfigurationNeighborIPExclusion, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("BmpConfigurationState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfigurationState = (string) content.GetValueForProperty("BmpConfigurationState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).BmpConfigurationState, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExportPolicyConfigurationExportPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).ExportPolicyConfigurationExportPolicy = (System.Collections.Generic.List<string>) content.GetValueForProperty("ExportPolicyConfigurationExportPolicy",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal)this).ExportPolicyConfigurationExportPolicy, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }

@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Dns
         /// Returns the DNS records specified by the referencing targetResourceIds.
         /// </summary>
         /// <param name='targetResources'>
-        /// A list of references to azure resources for which referencing dns records need to be queried.
+        /// A list of references to azure resources for which referencing dns records
+        /// need to be queried.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

@@ -19,6 +19,19 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.0
+* Added support for Front Door WAF managed rule exceptions.
+    - Added `ExceptionListException` to `New-AzFrontDoorWafPolicy` and `Update-AzFrontDoorWafPolicy`.
+    - Added helper cmdlets for WAF managed rule exception scopes.
+
+## Version 2.2.0
+* Upgraded API version to 2025-11-01
+* Hid Network Experiment cmdlets
+* Fixed `New/Remove-AzFrontDoorWafPolicy` `UriFormatException`
+
+## Version 2.1.0
+* Fixed New-AzFrontDoorWafManagedRuleOverrideObject issue.
+
 ## Version 2.0.0
 * Bumped swagger version to 2025-10-01
 * Added support for DDos RuleSet

@@ -38,6 +38,20 @@ Remove-AzKustoClusterCalloutPolicy -InputObject <IKustoIdentity> [-CalloutId <St
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### RemoveViaJsonFilePath
+```
+Remove-AzKustoClusterCalloutPolicy -ClusterName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RemoveViaJsonString
+```
+Remove-AzKustoClusterCalloutPolicy -ClusterName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Removes callout policy for engine services.
 
@@ -84,10 +98,9 @@ Accept wildcard characters: False
 
 ### -CalloutPolicy
 Configuration for an external callout policy to remove.
-To construct, see NOTES section for CALLOUTPOLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicyToRemove
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICalloutPolicyToRemove
 Parameter Sets: Remove, RemoveViaIdentity
 Aliases:
 
@@ -103,7 +116,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Remove, RemoveExpanded
+Parameter Sets: Remove, RemoveExpanded, RemoveViaJsonFilePath, RemoveViaJsonString
 Aliases:
 
 Required: True
@@ -131,7 +144,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -142,6 +154,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Remove operation
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Remove operation
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -181,7 +223,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Remove, RemoveExpanded
+Parameter Sets: Remove, RemoveExpanded, RemoveViaJsonFilePath, RemoveViaJsonString
 Aliases:
 
 Required: True
@@ -196,7 +238,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Remove, RemoveExpanded
+Parameter Sets: Remove, RemoveExpanded, RemoveViaJsonFilePath, RemoveViaJsonString
 Aliases:
 
 Required: False
@@ -242,7 +284,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicyToRemove
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICalloutPolicyToRemove
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 

@@ -20,16 +20,16 @@ namespace Microsoft.Azure.Management.Network
         /// Retrieves the details of a vpn site link connection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
         /// The name of the vpn connection.
         /// </param>
         /// <param name='linkConnectionName'>
-        /// The name of the vpn connection.
+        /// The name of the vpn link connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

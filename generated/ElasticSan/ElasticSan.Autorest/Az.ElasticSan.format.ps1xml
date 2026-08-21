@@ -330,6 +330,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.PreValidationResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.PreValidationResponse#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ValidationStatus</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ValidationStatus</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.PrivateEndpointConnection</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.PrivateEndpointConnection#Multiple</TypeName>
@@ -647,6 +669,46 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ScaleUpProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ScaleUpProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AutoScalePolicyEnforcement</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CapacityUnitScaleUpLimitTiB</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IncreaseCapacityUnitByTiB</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UnusedSizeTiB</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AutoScalePolicyEnforcement</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CapacityUnitScaleUpLimitTiB</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IncreaseCapacityUnitByTiB</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UnusedSizeTiB</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

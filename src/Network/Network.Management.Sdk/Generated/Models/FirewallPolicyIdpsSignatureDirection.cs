@@ -14,16 +14,34 @@ namespace Microsoft.Azure.Management.Network.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FirewallPolicyIdpsSignatureDirection
     {
+        /// <summary>
+        /// 0
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "0")]
         Zero,
+        /// <summary>
+        /// 1
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "1")]
         One,
+        /// <summary>
+        /// 2
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "2")]
         Two,
+        /// <summary>
+        /// 3
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "3")]
         Three,
+        /// <summary>
+        /// 4
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "4")]
         Four,
+        /// <summary>
+        /// 5
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "5")]
         Five
     }

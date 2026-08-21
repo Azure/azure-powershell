@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StackHCIVM
-Module Guid: 7389f67c-ec9d-4c13-9c9a-308834413af6
+Module Guid: 7248437d-25dc-486a-9a70-1e95d847ca42
 Download Help Link: https://learn.microsoft.com/powershell/module/az.stackhcivm
 Help Version: 1.0.0.0
 Locale: en-US
@@ -86,11 +86,17 @@ The operation to delete a network interface from a virtual machine.
 ### [Restart-AzStackHCIVMVirtualMachine](Restart-AzStackHCIVMVirtualMachine.md)
 The operation to restart a virtual machine instance.
 
+### [Save-AzStackHCIVMVirtualMachine](Save-AzStackHCIVMVirtualMachine.md)
+The operation to save a virtual machine instance.
+
 ### [Start-AzStackHCIVMVirtualMachine](Start-AzStackHCIVMVirtualMachine.md)
 The operation to start a virtual machine instance.
 
 ### [Stop-AzStackHCIVMVirtualMachine](Stop-AzStackHCIVMVirtualMachine.md)
 The operation to stop a virtual machine instance.
+
+### [Suspend-AzStackHCIVMVirtualMachine](Suspend-AzStackHCIVMVirtualMachine.md)
+The operation to Suspend a virtual machine instance.
 
 ### [Update-AzStackHCIVMImage](Update-AzStackHCIVMImage.md)
 The operation to update an image.

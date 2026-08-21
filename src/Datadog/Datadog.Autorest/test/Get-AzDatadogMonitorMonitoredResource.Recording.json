@@ -1,17 +1,17 @@
 {
-  "Get-AzDatadogMonitorMonitoredResource+[NoContext]+List+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/bhanu-rg/providers/Microsoft.Datadog/monitors/monitorus1yz8/listMonitoredResources?api-version=2025-06-11+1": {
+  "Get-AzDatadogMonitorMonitoredResource+[NoContext]+List+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/listMonitoredResources?api-version=2025-12-26-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/bhanu-rg/providers/Microsoft.Datadog/monitors/monitorus1yz8/listMonitoredResources?api-version=2025-06-11",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/listMonitoredResources?api-version=2025-12-26-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "92fe5ef3-49fa-4dbd-9554-5fd66a57d58a" ],
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "392d8045-8117-4750-828a-3e6110c87224" ],
         "CommandName": [ "Get-AzDatadogMonitorMonitoredResource" ],
         "FullCommandName": [ "Get-AzDatadogMonitorMonitoredResource_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Datadog/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.4", "Az.Datadog/0.3.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,20 +22,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=88551f9d-e011-4f80-8154-fa258dcd4ccb/eastus2euap/a13e6e9d-a934-4ce2-923f-229628a885cb" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=ab48980c-f752-44ae-9263-c9242c6fb64f/eastus2euap/d028d807-8606-4129-baf9-44453b64baa1" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0b211baa-00db-496b-b625-0e3961b2c5bd" ],
-        "mise-correlation-id": [ "f00488a5-5a10-4440-a11a-a0015e0292f4" ],
+        "mise-correlation-id": [ "6169b1a8-2176-46f2-827c-c064e20de62f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "fa5f78ab-a719-4d88-aa7f-4087d312aafb" ],
-        "x-ms-correlation-request-id": [ "ffad773b-c458-4da2-84e1-2bd15ddabb92" ],
+        "x-ms-request-id": [ "7354259e-d578-4f1c-8d6e-2bf0f39d3a2c" ],
+        "x-ms-correlation-request-id": [ "79125c19-87e0-4919-b144-cb23e4534e08" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20251108T170940Z:ffad773b-c458-4da2-84e1-2bd15ddabb92" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "246" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260723T095111Z:79125c19-87e0-4919-b144-cb23e4534e08" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7F2070DCDB1B4EAD9555312F42030386 Ref B: MAA201060515021 Ref C: 2025-11-08T17:09:38Z" ],
-        "Date": [ "Sat, 08 Nov 2025 17:09:40 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C9107F1A96D04E06A0CD5A514E652180 Ref B: SG2AA1070304036 Ref C: 2026-07-23T09:51:09Z" ],
+        "Date": [ "Thu, 23 Jul 2026 09:51:10 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "28" ],

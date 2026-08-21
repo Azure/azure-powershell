@@ -51,16 +51,19 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 roleDefinition = new PSRoleDefinition
                 {
                     Name = role.RoleName,
-                    Actions = new List<string>(role.Permissions.SelectMany(r => r.Actions)),
-                    NotActions = new List<string>(role.Permissions.SelectMany(r => r.NotActions)),
-                    DataActions = new List<string>(role.Permissions.SelectMany(r => r.DataActions)),
-                    NotDataActions = new List<string>(role.Permissions.SelectMany(r => r.NotDataActions)),
                     Id = role.Id.GuidFromFullyQualifiedId(),
                     AssignableScopes = role.AssignableScopes.ToList(),
                     Description = role.Description,
                     IsCustom = role.RoleType == CustomRole ? true : false,
-                    Condition = (role.Permissions != null && role.Permissions.Count > 0) ? role.Permissions[0].Condition : null,
-                    ConditionVersion = (role.Permissions != null && role.Permissions.Count > 0) ? role.Permissions[0].ConditionVersion : null
+                    Permissions = role.Permissions?.Select(p => new PSPermission
+                    {
+                        Actions = p.Actions?.ToList() ?? new List<string>(),
+                        NotActions = p.NotActions?.ToList() ?? new List<string>(),
+                        DataActions = p.DataActions?.ToList() ?? new List<string>(),
+                        NotDataActions = p.NotDataActions?.ToList() ?? new List<string>(),
+                        Condition = p.Condition,
+                        ConditionVersion = p.ConditionVersion
+                    }).ToList()
                 };
             }
 
@@ -244,18 +247,29 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         private static IEnumerable<PSPrincipal> ToPSPrincipals(this IEnumerable<Principal> principals, IEnumerable<PSADObject> adObjects)
         {
+            return principals.ToPSPrincipalsCore(adObjects, p => p.Id, p => p.Type);
+        }
+
+        private static IEnumerable<PSPrincipal> ToPSPrincipals(this IEnumerable<DenyAssignmentPrincipal> principals, IEnumerable<PSADObject> adObjects)
+        {
+            return principals.ToPSPrincipalsCore(adObjects, p => p.Id, p => p.Type);
+        }
+
+        private static IEnumerable<PSPrincipal> ToPSPrincipalsCore<T>(this IEnumerable<T> principals, IEnumerable<PSADObject> adObjects,
+            Func<T, string> idSelector, Func<T, string> typeSelector)
+        {
             var psPrincipals = new List<PSPrincipal>();
             foreach (var p in principals)
             {
-                var pid = Guid.Parse(p.Id);
+                var pid = Guid.Parse(idSelector(p));
                 if (pid == Guid.Empty)
                 {
-                    psPrincipals.Add(new PSPrincipal { DisplayName = AllPrincipals, ObjectType = SystemDefined, ObjectId = new Guid(p.Id) });
+                    psPrincipals.Add(new PSPrincipal { DisplayName = AllPrincipals, ObjectType = SystemDefined, ObjectId = pid });
                 }
                 else
                 {
                     var adObject = adObjects.SingleOrDefault(o => o.Id == pid.ToString()) ?? new PSADObject() { Id = pid.ToString()};
-                    psPrincipals.Add(new PSPrincipal { DisplayName = adObject?.DisplayName, ObjectType = p.Type, ObjectId = new Guid(p.Id) });
+                    psPrincipals.Add(new PSPrincipal { DisplayName = adObject?.DisplayName, ObjectType = typeSelector(p), ObjectId = pid });
                 }
             }
             return psPrincipals;

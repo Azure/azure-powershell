@@ -18,14 +18,14 @@ Describe 'Remove-AzDurableTaskScheduler' {
 
     It 'Delete' {
         $testSchedulerName = "test-scheduler-delete-8803"
-        New-AzDurableTaskScheduler -Name $testSchedulerName -ResourceGroupName $env.resourceGroup -Location $env.location -SkuName 'Dedicated' -SkuCapacity 1 -IPAllowlist @('10.0.0.0/8')
+        New-AzDurableTaskScheduler -Name $testSchedulerName -ResourceGroupName $env.resourceGroup -Location $env.location -SkuName 'Consumption' -IPAllowlist @('10.0.0.0/8')
         Remove-AzDurableTaskScheduler -Name $testSchedulerName -ResourceGroupName $env.resourceGroup
         { Get-AzDurableTaskScheduler -Name $testSchedulerName -ResourceGroupName $env.resourceGroup -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity' {
         $testSchedulerName = "test-scheduler-delid-3694"
-        $scheduler = New-AzDurableTaskScheduler -Name $testSchedulerName -ResourceGroupName $env.resourceGroup -Location $env.location -SkuName 'Dedicated' -SkuCapacity 1 -IPAllowlist @('10.0.0.0/8')
+        $scheduler = New-AzDurableTaskScheduler -Name $testSchedulerName -ResourceGroupName $env.resourceGroup -Location $env.location -SkuName 'Consumption' -IPAllowlist @('10.0.0.0/8')
         Remove-AzDurableTaskScheduler -InputObject $scheduler
         { Get-AzDurableTaskScheduler -Name $testSchedulerName -ResourceGroupName $env.resourceGroup -ErrorAction Stop } | Should -Throw
     }

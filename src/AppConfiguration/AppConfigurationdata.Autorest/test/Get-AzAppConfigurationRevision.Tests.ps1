@@ -14,10 +14,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAppConfigurationRevisio
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzAppConfigurationRevision' -Tag 'LiveOnly' {
+Describe 'Get-AzAppConfigurationRevision' {
     It 'Get' {
-        {
-            Get-AzAppConfigurationRevision -Endpoint $env.endpoint
-        } | Should -Not -Throw
+        $results = Get-AzAppConfigurationRevision -Endpoint $env.endpoint
+        $results | Should -Not -BeNullOrEmpty
+        $results[0].PSObject.Properties.Name | Should -Contain 'Description'
     }
 }

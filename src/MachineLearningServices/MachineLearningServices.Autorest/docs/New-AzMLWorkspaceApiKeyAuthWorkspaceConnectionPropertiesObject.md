@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceApiKeyAuthWorkspaceConnectionPropertiesObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspaceapikeyauthworkspaceconnectionpropertiesobject
 schema: 2.0.0
 ---
 
@@ -13,10 +13,10 @@ Create an in-memory object for ApiKeyAuthWorkspaceConnectionProperties.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceApiKeyAuthWorkspaceConnectionPropertiesObject [-Category <ConnectionCategory>]
- [-CredentialsKey <String>] [-ExpiryTime <DateTime>] [-IsSharedToAll <Boolean>]
- [-Metadata <IWorkspaceConnectionPropertiesV2Metadata>] [-SharedUserList <String[]>] [-Target <String>]
- [-Value <String>] [-ValueFormat <ValueFormat>] [<CommonParameters>]
+New-AzMLWorkspaceApiKeyAuthWorkspaceConnectionPropertiesObject [-Category <String>] [-CredentialsKey <String>]
+ [-ExpiryTime <DateTime>] [-IsSharedToAll <Boolean>] [-Metadata <IWorkspaceConnectionPropertiesV2Metadata>]
+ [-SharedUserList <String[]>] [-Target <String>] [-Value <String>] [-ValueFormat <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ This command creates an in-memory object for ApiKeyAuthWorkspaceConnectionProper
 Category of the connection.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -95,10 +95,9 @@ Accept wildcard characters: False
 
 ### -Metadata
 Store user metadata for this connection.
-To construct, see NOTES section for METADATA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceConnectionPropertiesV2Metadata
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IWorkspaceConnectionPropertiesV2Metadata
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +157,7 @@ Accept wildcard characters: False
 format for the workspace connection value.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ValueFormat
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -176,7 +175,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ApiKeyAuthWorkspaceConnectionProperties
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ApiKeyAuthWorkspaceConnectionProperties
 
 ## NOTES
 

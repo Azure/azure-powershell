@@ -1,17 +1,17 @@
 {
-  "Get-AzDatadogMonitorLinkedResource+[NoContext]+List+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/bhanu-rg/providers/Microsoft.Datadog/monitors/monitorus1yz8/listLinkedResources?api-version=2025-06-11+1": {
+  "Get-AzDatadogMonitorLinkedResource+[NoContext]+List+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/listLinkedResources?api-version=2025-12-26-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/bhanu-rg/providers/Microsoft.Datadog/monitors/monitorus1yz8/listLinkedResources?api-version=2025-06-11",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/listLinkedResources?api-version=2025-12-26-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "31" ],
-        "x-ms-client-request-id": [ "66a5d2cf-4ea9-4791-ac97-003907f025c9" ],
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "4ea9c81c-ab71-4e2c-b869-7305bdf5a772" ],
         "CommandName": [ "Get-AzDatadogMonitorLinkedResource" ],
         "FullCommandName": [ "Get-AzDatadogMonitorLinkedResource_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Datadog/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.4", "Az.Datadog/0.3.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,27 +22,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=88551f9d-e011-4f80-8154-fa258dcd4ccb/eastus2euap/c778d04f-0a01-44c2-94ef-3a9ccf82c50a" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=ab48980c-f752-44ae-9263-c9242c6fb64f/eastus2euap/04fcd764-9e20-4d6e-ab3f-b8f3ce3ce4ba" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0b211baa-00db-496b-b625-0e3961b2c5bd" ],
-        "mise-correlation-id": [ "b3408fd8-7c7d-4f1b-9619-7094234d708b" ],
+        "mise-correlation-id": [ "1def1586-d084-49c2-abfc-7e5f1c4d4850" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "fcbae10f-3acb-448d-897a-20fac8eeb556" ],
-        "x-ms-correlation-request-id": [ "2d950acc-e675-4531-96e2-bc5f78dcdc0f" ],
+        "x-ms-request-id": [ "33422202-fc19-4c78-910d-eeae29e39894" ],
+        "x-ms-correlation-request-id": [ "fb3cdb77-4913-4171-9a3d-efe0c6644cbd" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20251108T170902Z:2d950acc-e675-4531-96e2-bc5f78dcdc0f" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "195" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260723T095109Z:fb3cdb77-4913-4171-9a3d-efe0c6644cbd" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 09375C1EB25C48D58DFDB3C0AA86F2D4 Ref B: MAA201060515021 Ref C: 2025-11-08T17:09:02Z" ],
-        "Date": [ "Sat, 08 Nov 2025 17:09:02 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 62A2B020C67549DE8C2C982BB9814446 Ref B: SG2AA1070304036 Ref C: 2026-07-23T09:51:07Z" ],
+        "Date": [ "Thu, 23 Jul 2026 09:51:08 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "190" ],
+        "Content-Length": [ "206" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/SUBSCRIPTIONS/B16E4B4E-2ED8-4F32-BAC1-0E3EB56BEF5C/RESOURCEGROUPS/BHANU-RG/PROVIDERS/MICROSOFT.DATADOG/MONITORS/MONITORUS1YZ8\",\"location\":\"centraluseuap\"}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"id\":\"/SUBSCRIPTIONS/B16E4B4E-2ED8-4F32-BAC1-0E3EB56BEF5C/RESOURCEGROUPS/DATADOGMONITOR-RG-KSJ4XG/PROVIDERS/MICROSOFT.DATADOG/MONITORS/MONITORNWLCJS\",\"location\":\"centraluseuap\"}],\"nextLink\":null}",
       "isContentBase64": false
     }
   }

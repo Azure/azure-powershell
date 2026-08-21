@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             {
                 ResourceGroupName = VolumeObject.ResourceGroupName;
                 Location = VolumeObject.Location;
-                var NameParts = VolumeObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(VolumeObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 VolumeName = NameParts[2];

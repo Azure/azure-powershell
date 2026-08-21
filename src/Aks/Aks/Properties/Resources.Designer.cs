@@ -943,6 +943,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating node OS disk type.
+        /// </summary>
+        internal static string UpdatingNodeOSDiskType {
+            get {
+                return ResourceManager.GetString("UpdatingNodeOSDiskType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating node pool labels.
         /// </summary>
         internal static string UpdatingNodePoolLabels {

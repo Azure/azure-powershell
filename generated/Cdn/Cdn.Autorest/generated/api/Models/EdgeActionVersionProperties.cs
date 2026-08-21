@@ -37,9 +37,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Internal Acessors for LastPackageUpdateTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionPropertiesInternal.LastPackageUpdateTime { get => this._lastPackageUpdateTime; set { {_lastPackageUpdateTime = value;} } }
 
-        /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
-
         /// <summary>Internal Acessors for ValidationStatus</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionPropertiesInternal.ValidationStatus { get => this._validationStatus; set { {_validationStatus = value;} } }
 
@@ -48,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         /// <summary>The provisioning state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string ProvisioningState { get => this._provisioningState; }
+        public string ProvisioningState { get => this._provisioningState; set => this._provisioningState = value; }
 
         /// <summary>Backing field for <see cref="ValidationStatus" /> property.</summary>
         private string _validationStatus;
@@ -105,15 +102,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>The provisioning state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The provisioning state",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
-        string ProvisioningState { get;  }
+        string ProvisioningState { get; set; }
         /// <summary>The validation status</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,

@@ -75,6 +75,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -82,10 +86,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
             if (content.Contains("WorkspaceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("GroupId"))
             {
@@ -124,6 +124,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -131,10 +135,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
             if (content.Contains("WorkspaceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("GroupId"))
             {

@@ -88,41 +88,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
             switch ( json.StringProperty("name") )
             {
-                case "RemoteAddress":
+                case "ClientPort":
                 {
-                    return new DeliveryRuleRemoteAddressCondition(json);
+                    return new DeliveryRuleClientPortCondition(json);
                 }
-                case "RequestMethod":
+                case "Cookies":
                 {
-                    return new DeliveryRuleRequestMethodCondition(json);
+                    return new DeliveryRuleCookiesCondition(json);
                 }
-                case "QueryString":
+                case "HostName":
                 {
-                    return new DeliveryRuleQueryStringCondition(json);
+                    return new DeliveryRuleHostNameCondition(json);
+                }
+                case "HttpVersion":
+                {
+                    return new DeliveryRuleHttpVersionCondition(json);
+                }
+                case "IsDevice":
+                {
+                    return new DeliveryRuleIsDeviceCondition(json);
                 }
                 case "PostArgs":
                 {
                     return new DeliveryRulePostArgsCondition(json);
                 }
-                case "RequestUri":
+                case "QueryString":
                 {
-                    return new DeliveryRuleRequestUriCondition(json);
+                    return new DeliveryRuleQueryStringCondition(json);
                 }
-                case "RequestHeader":
+                case "RemoteAddress":
                 {
-                    return new DeliveryRuleRequestHeaderCondition(json);
+                    return new DeliveryRuleRemoteAddressCondition(json);
                 }
                 case "RequestBody":
                 {
                     return new DeliveryRuleRequestBodyCondition(json);
                 }
+                case "RequestHeader":
+                {
+                    return new DeliveryRuleRequestHeaderCondition(json);
+                }
+                case "RequestMethod":
+                {
+                    return new DeliveryRuleRequestMethodCondition(json);
+                }
                 case "RequestScheme":
                 {
                     return new DeliveryRuleRequestSchemeCondition(json);
                 }
-                case "UrlPath":
+                case "RequestUri":
                 {
-                    return new DeliveryRuleUrlPathCondition(json);
+                    return new DeliveryRuleRequestUriCondition(json);
+                }
+                case "ServerPort":
+                {
+                    return new DeliveryRuleServerPortCondition(json);
+                }
+                case "SocketAddr":
+                {
+                    return new DeliveryRuleSocketAddrCondition(json);
+                }
+                case "SslProtocol":
+                {
+                    return new DeliveryRuleSslProtocolCondition(json);
                 }
                 case "UrlFileExtension":
                 {
@@ -132,37 +160,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 {
                     return new DeliveryRuleUrlFileNameCondition(json);
                 }
-                case "HttpVersion":
+                case "UrlPath":
                 {
-                    return new DeliveryRuleHttpVersionCondition(json);
-                }
-                case "Cookies":
-                {
-                    return new DeliveryRuleCookiesCondition(json);
-                }
-                case "IsDevice":
-                {
-                    return new DeliveryRuleIsDeviceCondition(json);
-                }
-                case "SocketAddr":
-                {
-                    return new DeliveryRuleSocketAddrCondition(json);
-                }
-                case "ClientPort":
-                {
-                    return new DeliveryRuleClientPortCondition(json);
-                }
-                case "ServerPort":
-                {
-                    return new DeliveryRuleServerPortCondition(json);
-                }
-                case "HostName":
-                {
-                    return new DeliveryRuleHostNameCondition(json);
-                }
-                case "SslProtocol":
-                {
-                    return new DeliveryRuleSslProtocolCondition(json);
+                    return new DeliveryRuleUrlPathCondition(json);
                 }
             }
             return new DeliveryRuleCondition(json);

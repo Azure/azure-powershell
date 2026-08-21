@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>
-    /// Result of the request to list rule sets. It contains a list of rule set objects and a URL link to get the next set of
-    /// results.
-    /// </summary>
+    /// <summary>The response of a RuleSet list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(RuleSetListResultTypeConverter))]
     public partial class RuleSetListResult
     {
@@ -165,8 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// Result of the request to list rule sets. It contains a list of rule set objects and a URL link to get the next set of
-    /// results.
+    /// The response of a RuleSet list operation.
     [System.ComponentModel.TypeConverter(typeof(RuleSetListResultTypeConverter))]
     public partial interface IRuleSetListResult
 

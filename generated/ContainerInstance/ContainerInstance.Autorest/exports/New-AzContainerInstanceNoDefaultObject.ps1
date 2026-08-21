@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a in-memory object for Container with no default values
+Create an in-memory object for Container.
 .Description
-Create a in-memory object for Container with no default values
+Create an in-memory object for Container.
 .Example
 New-AzContainerInstanceNoDefaultObject -Name "test-container" -Image alpine -RequestCpu 1 -RequestMemoryInGb 1.5
 .Example
@@ -28,13 +28,13 @@ $container = New-AzContainerInstanceNoDefaultObject -Name test-container -Image 
 New-AzContainerGroup -ResourceGroupName testrg-rg -Name test-cg -Location eastus -Container $container
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Container
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Container
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-CONFIGMAPKEYVALUEPAIR <IConfigMapKeyValuePairs>: The key value pairs dictionary in the config map to set in the container instance.
+CONFIGMAPKEYVALUEPAIR <IConfigMapKeyValuePairs>: The key value pairs dictionary in the config map.
   [(Any) <String>]: This indicates any property can be added to this object.
 
 ENVIRONMENTVARIABLE <IEnvironmentVariable[]>: The environment variables to set in the container instance.
@@ -42,15 +42,15 @@ ENVIRONMENTVARIABLE <IEnvironmentVariable[]>: The environment variables to set i
   [SecureValue <String>]: The value of the secure environment variable.
   [Value <String>]: The value of the environment variable.
 
-LIVENESSPROBEHTTPGETHTTPHEADER <IHttpHeader[]>: The HTTP headers for liveness probe.
+LIVENESSPROBEHTTPGETHTTPHEADER <IHttpHeader[]>: The HTTP headers.
   [Name <String>]: The header name.
   [Value <String>]: The header value.
 
 PORT <IContainerPort[]>: The exposed ports on the container instance.
   Port <Int32>: The port number exposed within the container group.
-  [Protocol <ContainerNetworkProtocol?>]: The protocol associated with the port.
+  [Protocol <String>]: The protocol associated with the port.
 
-READINESSPROBEHTTPGETHTTPHEADER <IHttpHeader[]>: The HTTP headers for readiness probe.
+READINESSPROBEHTTPGETHTTPHEADER <IHttpHeader[]>: The HTTP headers.
   [Name <String>]: The header name.
   [Value <String>]: The header value.
 
@@ -59,10 +59,10 @@ VOLUMEMOUNT <IVolumeMount[]>: The volume mounts available to the container insta
   Name <String>: The name of the volume mount.
   [ReadOnly <Boolean?>]: The flag indicating whether the volume mount is read-only.
 .Link
-https://learn.microsoft.com/powershell/module/az.ContainerInstance/New-AzContainerInstanceNoDefaultObject
+https://learn.microsoft.com/powershell/module/Az.ContainerInstance/new-azcontainerinstancenodefaultobject
 #>
 function New-AzContainerInstanceNoDefaultObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Container])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Container])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -79,16 +79,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IConfigMapKeyValuePairs]
-    # The key value pairs dictionary in the config map to set in the container instance.
-    # To construct, see NOTES section for CONFIGMAPKEYVALUEPAIR properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IConfigMapKeyValuePairs]
+    # The key value pairs dictionary in the config map.
     ${ConfigMapKeyValuePair},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IEnvironmentVariable[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IEnvironmentVariable[]]
     # The environment variables to set in the container instance.
-    # To construct, see NOTES section for ENVIRONMENTVARIABLE properties and create a hash table.
     ${EnvironmentVariable},
 
     [Parameter()]
@@ -116,7 +114,7 @@ param(
     ${LimitsGpuCount},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.GpuSku])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PSArgumentCompleterAttribute("K80", "P100", "V100")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The SKU of the GPU resource.
@@ -136,9 +134,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IHttpHeader[]]
-    # The HTTP headers for liveness probe.
-    # To construct, see NOTES section for LIVENESSPROBEHTTPGETHTTPHEADER properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IHttpHeader[]]
+    # The HTTP headers.
     ${LivenessProbeHttpGetHttpHeader},
 
     [Parameter()]
@@ -154,7 +151,7 @@ param(
     ${LivenessProbeHttpGetPort},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.Scheme])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PSArgumentCompleterAttribute("http", "https")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The scheme.
@@ -186,9 +183,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerPort[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerPort[]]
     # The exposed ports on the container instance.
-    # To construct, see NOTES section for PORT properties and create a hash table.
     ${Port},
 
     [Parameter()]
@@ -205,9 +201,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IHttpHeader[]]
-    # The HTTP headers for readiness probe.
-    # To construct, see NOTES section for READINESSPROBEHTTPGETHTTPHEADER properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IHttpHeader[]]
+    # The HTTP headers.
     ${ReadinessProbeHttpGetHttpHeader},
 
     [Parameter()]
@@ -223,7 +218,7 @@ param(
     ${ReadinessProbeHttpGetPort},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.Scheme])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PSArgumentCompleterAttribute("http", "https")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The scheme.
@@ -272,7 +267,7 @@ param(
     ${RequestsGpuCount},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.GpuSku])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PSArgumentCompleterAttribute("K80", "P100", "V100")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The SKU of the GPU resource.
@@ -280,9 +275,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IVolumeMount[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IVolumeMount[]]
     # The volume mounts available to the container instance.
-    # To construct, see NOTES section for VOLUMEMOUNT properties and create a hash table.
     ${VolumeMount}
 )
 
@@ -293,6 +287,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -321,6 +318,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

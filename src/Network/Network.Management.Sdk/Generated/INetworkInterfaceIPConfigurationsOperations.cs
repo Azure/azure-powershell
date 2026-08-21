@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Get all ip configurations in a network interface.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the specified network interface ip configuration.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.

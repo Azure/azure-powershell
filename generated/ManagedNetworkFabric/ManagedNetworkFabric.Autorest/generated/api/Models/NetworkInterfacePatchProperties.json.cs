@@ -78,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             __annotationResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AnnotationResource(json);
+            {_additionalDescription = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("additionalDescription"), out var __jsonAdditionalDescription) ? (string)__jsonAdditionalDescription : (string)_additionalDescription;}
             AfterFromJson(json);
         }
 
@@ -101,6 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return container;
             }
             __annotationResource?.ToJson(container, serializationMode);
+            AddIf( null != (((object)this._additionalDescription)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._additionalDescription.ToString()) : null, "additionalDescription" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

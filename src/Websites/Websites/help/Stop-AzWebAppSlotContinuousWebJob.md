@@ -19,6 +19,20 @@ Stop-AzWebAppSlotContinuousWebJob -AppName <String> -Name <String> -ResourceGrou
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### StopViaIdentitySite
+```
+Stop-AzWebAppSlotContinuousWebJob -Name <String> -SlotName <String> -SiteInputObject <IWebsitesIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### StopViaIdentityContinuouswebjob
+```
+Stop-AzWebAppSlotContinuousWebJob -SlotName <String> -ContinuouswebjobInputObject <IWebsitesIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### StopViaIdentity
 ```
 Stop-AzWebAppSlotContinuousWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
@@ -61,6 +75,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ContinuouswebjobInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: StopViaIdentityContinuouswebjob
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -79,7 +108,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
@@ -98,7 +126,7 @@ Name of Web Job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopViaIdentitySite
 Aliases:
 
 Required: True
@@ -138,13 +166,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SiteInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: StopViaIdentitySite
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SlotName
 Name of the deployment slot.
 If a slot is not specified, the API deletes a deployment for the production slot.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopViaIdentitySite, StopViaIdentityContinuouswebjob
 Aliases:
 
 Required: True

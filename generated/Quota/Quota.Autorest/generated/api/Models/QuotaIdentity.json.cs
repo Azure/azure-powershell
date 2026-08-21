@@ -75,8 +75,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
                 return;
             }
             {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)_scope;}
-            {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)_resourceName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
+            {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)_resourceName;}
+            {_managementGroupId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString>("managementGroupId"), out var __jsonManagementGroupId) ? (string)__jsonManagementGroupId : (string)_managementGroupId;}
+            {_groupQuotaName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString>("groupQuotaName"), out var __jsonGroupQuotaName) ? (string)__jsonGroupQuotaName : (string)_groupQuotaName;}
+            {_requestId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString>("requestId"), out var __jsonRequestId) ? (string)__jsonRequestId : (string)_requestId;}
+            {_resourceProviderName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString>("resourceProviderName"), out var __jsonResourceProviderName) ? (string)__jsonResourceProviderName : (string)_resourceProviderName;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_allocationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString>("allocationId"), out var __jsonAllocationId) ? (string)__jsonAllocationId : (string)_allocationId;}
             {_id1 = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id1;}
             AfterFromJson(json);
         }
@@ -101,8 +108,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
                 return container;
             }
             AddIf( null != (((object)this._scope)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString(this._scope.ToString()) : null, "scope" ,container.Add );
-            AddIf( null != (((object)this._resourceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString(this._resourceName.ToString()) : null, "resourceName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
+            AddIf( null != (((object)this._resourceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString(this._resourceName.ToString()) : null, "resourceName" ,container.Add );
+            AddIf( null != (((object)this._managementGroupId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString(this._managementGroupId.ToString()) : null, "managementGroupId" ,container.Add );
+            AddIf( null != (((object)this._groupQuotaName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString(this._groupQuotaName.ToString()) : null, "groupQuotaName" ,container.Add );
+            AddIf( null != (((object)this._requestId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString(this._requestId.ToString()) : null, "requestId" ,container.Add );
+            AddIf( null != (((object)this._resourceProviderName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString(this._resourceProviderName.ToString()) : null, "resourceProviderName" ,container.Add );
+            AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
+            AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
+            AddIf( null != (((object)this._allocationId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString(this._allocationId.ToString()) : null, "allocationId" ,container.Add );
             AddIf( null != (((object)this._id1)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Json.JsonString(this._id1.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

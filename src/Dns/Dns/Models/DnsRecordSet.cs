@@ -67,6 +67,11 @@ namespace Microsoft.Azure.Commands.Dns
         public string TargetResourceId { get; set; }
 
         /// <summary>
+        /// Gets or sets the Traffic Manager profile resource Id of the record set.
+        /// </summary>
+        public string TrafficManagerProfileId { get; set; }
+
+        /// <summary>
         /// Gets or sets the list of records in this record set.
         /// </summary>
         public List<DnsRecordBase> Records { get; set; }
@@ -91,6 +96,7 @@ namespace Microsoft.Azure.Commands.Dns
 
             clone.Name = this.Name;
             clone.TargetResourceId = this.TargetResourceId;
+            clone.TrafficManagerProfileId = this.TrafficManagerProfileId;
             clone.ProvisioningState = this.ProvisioningState;
             clone.Id = this.Id;
             clone.ZoneName = this.ZoneName;

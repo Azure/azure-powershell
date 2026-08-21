@@ -36,13 +36,22 @@ namespace Microsoft.Azure.Management.Authorization.Models
         /// <param name="notDataActions">Data actions to exclude from that the deny assignment does not grant
         /// access.
         /// </param>
-        public DenyAssignmentPermission(System.Collections.Generic.IList<string> actions = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> notActions = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> dataActions = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> notDataActions = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="condition">The conditions on the Deny assignment permission. This limits the resources
+        /// it applies to.
+        /// </param>
+
+        /// <param name="conditionVersion">Version of the condition.
+        /// </param>
+        public DenyAssignmentPermission(System.Collections.Generic.IList<string> actions = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> notActions = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> dataActions = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> notDataActions = default(System.Collections.Generic.IList<string>), string condition = default(string), string conditionVersion = default(string))
 
         {
             this.Actions = actions;
             this.NotActions = notActions;
             this.DataActions = dataActions;
             this.NotDataActions = notDataActions;
+            this.Condition = condition;
+            this.ConditionVersion = conditionVersion;
             CustomInit();
         }
 
@@ -78,5 +87,18 @@ namespace Microsoft.Azure.Management.Authorization.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "notDataActions")]
         public System.Collections.Generic.IList<string> NotDataActions {get; set; }
+
+        /// <summary>
+        /// Gets or sets the conditions on the Deny assignment permission. This limits
+        /// the resources it applies to.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "condition")]
+        public string Condition {get; set; }
+
+        /// <summary>
+        /// Gets or sets version of the condition.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "conditionVersion")]
+        public string ConditionVersion {get; set; }
     }
 }

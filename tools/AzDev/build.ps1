@@ -1,5 +1,7 @@
 $module = 'AzDev'
-$artifacts = "$PSScriptRoot/../../artifacts"
+$artifacts = Join-Path $PSScriptRoot ".." ".." "artifacts"
+$moduleOut = Join-Path $artifacts $module
 
-dotnet publish $PSScriptRoot/src --sc -o "$artifacts/$module/bin"
-Copy-Item "$PSScriptRoot/$module/*" "$artifacts/$module" -Recurse -Force
+if (Test-Path $moduleOut) { Remove-Item $moduleOut -Recurse -Force }
+dotnet publish (Join-Path $PSScriptRoot "src") --sc -o (Join-Path $moduleOut "bin")
+Copy-Item (Join-Path $PSScriptRoot $module "*") $moduleOut -Recurse -Force

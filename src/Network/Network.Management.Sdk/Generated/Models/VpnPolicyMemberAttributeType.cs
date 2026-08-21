@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VpnPolicyMemberAttributeType
     {
+        /// <summary>
+        /// CertificateGroupId
+        /// </summary>
         public const string CertificateGroupId = "CertificateGroupId";
+        /// <summary>
+        /// AADGroupId
+        /// </summary>
         public const string AADGroupId = "AADGroupId";
+        /// <summary>
+        /// RadiusAzureGroupId
+        /// </summary>
         public const string RadiusAzureGroupId = "RadiusAzureGroupId";
     }
 }

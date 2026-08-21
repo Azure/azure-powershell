@@ -759,6 +759,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("InvalidAzureVMName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified Azure Virtual Machine &apos;{0}&apos; was not found in resource group &apos;{1}&apos; under subscription &apos;{2}&apos;. Verify that the VM exists and that -Name, -ResourceGroupName and -ContainerSubscriptionId are correct..
+        /// </summary>
+        public static string CSBVMNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("CSBVMNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified Azure Virtual Machine &apos;{0}&apos; (location &apos;{1}&apos;) is not in the same location as the Recovery Services vault (location &apos;{2}&apos;). For Cross Subscription Backup, the VM must reside in the same region as the vault..
+        /// </summary>
+        public static string CSBVMNotInVaultLocation
+        {
+            get
+            {
+                return ResourceManager.GetString("CSBVMNotInVaultLocation", resourceCulture);
+            }
+        }
 
         /// <summary>
         ///   Looks up a localized string similar to Only one BackupTime is Allowed in SchedulePolicy.
@@ -1864,6 +1886,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             }
         }
         /// <summary>
+        ///   Looks up a localized string similar to Cross Region Restore for Azure File Share supports only Alternate Location Restore. Please provide -TargetStorageAccountName and -TargetFileShareName.
+        /// </summary>
+        public static string AzureFileShareCrossRegionRestoreAlrOnly
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareCrossRegionRestoreAlrOnly", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Item-level restore is not supported for Cross Region Restore of Azure File Share. Please remove -SourceFilePath/-MultipleSourceFilePath and retry a full-share restore.
+        /// </summary>
+        public static string AzureFileShareCrossRegionRestoreItemLevelNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareCrossRegionRestoreItemLevelNotSupported", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to construct the cross-region restore request: the target or source details were not populated. This indicates an internal error. Please retry; if the issue persists, contact support.
+        /// </summary>
+        public static string AzureFileShareCrossRegionRestoreRequestBuildFailed
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareCrossRegionRestoreRequestBuildFailed", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to The Azure File Share item &apos;{0}&apos; is not in a soft-deleted state. Undo-AzRecoveryServicesBackupItemDeletion can only be run on an item whose DeleteState is &apos;ToBeDeleted&apos;.
+        /// </summary>
+        public static string AzureFileShareUndeleteItemNotInSoftDeletedState
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareUndeleteItemNotInSoftDeletedState", resourceCulture);
+            }
+        }
+        /// <summary>
         ///   Looks up a localized string similar to Please ensure that the Recovery point is Zone pinned or remove TargetZone.
         /// </summary>
         public static string RecoveryPointZonePinnedException
@@ -2751,6 +2813,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("CRRAccessTokenCouldNotBeFetchedException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The target storage account location should be same as the secondary (paired) region when restoring to the secondary region.
+        /// </summary>
+        public static string CrossRegionRestoreIncorrectTargetRegion
+        {
+            get
+            {
+                return ResourceManager.GetString("CrossRegionRestoreIncorrectTargetRegion", resourceCulture);
             }
         }
 

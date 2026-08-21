@@ -7,6 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Extensions;
 
+    /// <summary>A key-value pair representing application settings.</summary>
     public partial class KeyValue :
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal,
@@ -16,38 +17,57 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
         /// <summary>Backing field for <see cref="ContentType" /> property.</summary>
         private string _contentType;
 
+        /// <summary>The content type of the value stored within the key-value.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
         public string ContentType { get => this._contentType; set => this._contentType = value; }
+
+        /// <summary>Backing field for <see cref="Description" /> property.</summary>
+        private string _description;
+
+        /// <summary>The description of the key-value.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
+        public string Description { get => this._description; set => this._description = value; }
 
         /// <summary>Backing field for <see cref="Etag" /> property.</summary>
         private string _etag;
 
+        /// <summary>A value representing the current state of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
         public string Etag { get => this._etag; set => this._etag = value; }
 
         /// <summary>Backing field for <see cref="Key" /> property.</summary>
         private string _key;
 
+        /// <summary>The key of the key-value.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
-        public string Key { get => this._key; set => this._key = value; }
+        public string Key { get => this._key; }
 
         /// <summary>Backing field for <see cref="Label" /> property.</summary>
         private string _label;
 
+        /// <summary>The label the key-value belongs to.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
-        public string Label { get => this._label; set => this._label = value; }
+        public string Label { get => this._label; }
 
         /// <summary>Backing field for <see cref="LastModified" /> property.</summary>
         private global::System.DateTime? _lastModified;
 
+        /// <summary>A date representing the last time the key-value was modified.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
         public global::System.DateTime? LastModified { get => this._lastModified; set => this._lastModified = value; }
 
         /// <summary>Backing field for <see cref="Locked" /> property.</summary>
         private bool? _locked;
 
+        /// <summary>Indicates whether the key-value is locked.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
         public bool? Locked { get => this._locked; set => this._locked = value; }
+
+        /// <summary>Internal Acessors for Key</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal.Key { get => this._key; set { {_key = value;} } }
+
+        /// <summary>Internal Acessors for Label</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal.Label { get => this._label; set { {_label = value;} } }
 
         /// <summary>Backing field for <see cref="SyncToken" /> property.</summary>
         private string _syncToken;
@@ -58,15 +78,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
         /// <summary>Backing field for <see cref="Tag" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueTags _tag;
 
-        /// <summary>Dictionary of <string></summary>
+        /// <summary>The tags of the key-value</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.KeyValueTags()); set => this._tag = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private string _value;
 
+        /// <summary>The value of the key-value.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
         public string Value { get => this._value; set => this._value = value; }
+
+        /// <summary>Backing field for <see cref="XmsRequestId" /> property.</summary>
+        private string _xmsRequestId;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
+        public string XmsRequestId { get => this._xmsRequestId; set => this._xmsRequestId = value; }
 
         /// <summary>Creates an new <see cref="KeyValue" /> instance.</summary>
         public KeyValue()
@@ -81,73 +108,90 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).SyncToken = System.Linq.Enumerable.FirstOrDefault(__syncTokenHeader0) is string __headerSyncTokenHeader0 ? __headerSyncTokenHeader0 : (string)null;
             }
+            if (headers.TryGetValues("x-ms-request-id", out var __xMSRequestIdHeader1))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).XmsRequestId = System.Linq.Enumerable.FirstOrDefault(__xMSRequestIdHeader1) is string __headerXMSRequestIdHeader1 ? __headerXMSRequestIdHeader1 : (string)null;
+            }
         }
     }
+    /// A key-value pair representing application settings.
     public partial interface IKeyValue :
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IJsonSerializable
     {
+        /// <summary>The content type of the value stored within the key-value.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"",
+        Description = @"The content type of the value stored within the key-value.",
         SerializedName = @"content_type",
         PossibleTypes = new [] { typeof(string) })]
         string ContentType { get; set; }
-
+        /// <summary>The description of the key-value.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"",
+        Description = @"The description of the key-value.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        string Description { get; set; }
+        /// <summary>A value representing the current state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A value representing the current state of the resource.",
         SerializedName = @"etag",
         PossibleTypes = new [] { typeof(string) })]
         string Etag { get; set; }
-
+        /// <summary>The key of the key-value.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
-        Description = @"",
+        Create = false,
+        Update = false,
+        Description = @"The key of the key-value.",
         SerializedName = @"key",
         PossibleTypes = new [] { typeof(string) })]
-        string Key { get; set; }
-
+        string Key { get;  }
+        /// <summary>The label the key-value belongs to.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
-        Description = @"",
+        Create = false,
+        Update = false,
+        Description = @"The label the key-value belongs to.",
         SerializedName = @"label",
         PossibleTypes = new [] { typeof(string) })]
-        string Label { get; set; }
-
+        string Label { get;  }
+        /// <summary>A date representing the last time the key-value was modified.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"",
+        Description = @"A date representing the last time the key-value was modified.",
         SerializedName = @"last_modified",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? LastModified { get; set; }
-
+        /// <summary>Indicates whether the key-value is locked.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"",
+        Description = @"Indicates whether the key-value is locked.",
         SerializedName = @"locked",
         PossibleTypes = new [] { typeof(bool) })]
         bool? Locked { get; set; }
@@ -162,17 +206,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
         SerializedName = @"Sync-Token",
         PossibleTypes = new [] { typeof(string) })]
         string SyncToken { get; set; }
-        /// <summary>Dictionary of <string></summary>
+        /// <summary>The tags of the key-value</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Dictionary of <string>",
+        Description = @"The tags of the key-value",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueTags) })]
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueTags Tag { get; set; }
+        /// <summary>The value of the key-value.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The value of the key-value.",
+        SerializedName = @"value",
+        PossibleTypes = new [] { typeof(string) })]
+        string Value { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
@@ -181,31 +236,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
         Create = true,
         Update = true,
         Description = @"",
-        SerializedName = @"value",
+        SerializedName = @"x-ms-request-id",
         PossibleTypes = new [] { typeof(string) })]
-        string Value { get; set; }
+        string XmsRequestId { get; set; }
 
     }
+    /// A key-value pair representing application settings.
     internal partial interface IKeyValueInternal
 
     {
+        /// <summary>The content type of the value stored within the key-value.</summary>
         string ContentType { get; set; }
-
+        /// <summary>The description of the key-value.</summary>
+        string Description { get; set; }
+        /// <summary>A value representing the current state of the resource.</summary>
         string Etag { get; set; }
-
+        /// <summary>The key of the key-value.</summary>
         string Key { get; set; }
-
+        /// <summary>The label the key-value belongs to.</summary>
         string Label { get; set; }
-
+        /// <summary>A date representing the last time the key-value was modified.</summary>
         global::System.DateTime? LastModified { get; set; }
-
+        /// <summary>Indicates whether the key-value is locked.</summary>
         bool? Locked { get; set; }
 
         string SyncToken { get; set; }
-        /// <summary>Dictionary of <string></summary>
+        /// <summary>The tags of the key-value</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueTags Tag { get; set; }
-
+        /// <summary>The value of the key-value.</summary>
         string Value { get; set; }
+
+        string XmsRequestId { get; set; }
 
     }
 }

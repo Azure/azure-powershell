@@ -105,7 +105,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="userSelectedOSName">The OS name selected by user.
         /// </param>
-        public VMwareCbtEnableMigrationInput(string vmwareMachineId, System.Collections.Generic.IList<VMwareCbtDiskInput> disksToInclude, string dataMoverRunAsAccountId, string snapshotRunAsAccountId, string targetResourceGroupId, string targetNetworkId, string licenseType = default(string), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), string performSqlBulkRegistration = default(string), string targetVMName = default(string), string targetVMSize = default(string), string testNetworkId = default(string), string targetSubnetName = default(string), string testSubnetName = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string confidentialVMKeyVaultId = default(string), VMwareCbtSecurityProfileProperties targetVMSecurityProfile = default(VMwareCbtSecurityProfileProperties), string targetBootDiagnosticsStorageAccountId = default(string), string performAutoResync = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> seedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>), string userSelectedOSName = default(string))
+
+        /// <param name="targetCapacityReservationGroupId">The target capacity reservation group ARM Id.
+        /// </param>
+        public VMwareCbtEnableMigrationInput(string vmwareMachineId, System.Collections.Generic.IList<VMwareCbtDiskInput> disksToInclude, string dataMoverRunAsAccountId, string snapshotRunAsAccountId, string targetResourceGroupId, string targetNetworkId, string licenseType = default(string), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), string performSqlBulkRegistration = default(string), string targetVMName = default(string), string targetVMSize = default(string), string testNetworkId = default(string), string targetSubnetName = default(string), string testSubnetName = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string confidentialVMKeyVaultId = default(string), VMwareCbtSecurityProfileProperties targetVMSecurityProfile = default(VMwareCbtSecurityProfileProperties), string targetBootDiagnosticsStorageAccountId = default(string), string performAutoResync = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> seedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>), string userSelectedOSName = default(string), string targetCapacityReservationGroupId = default(string))
 
         {
             this.VmwareMachineId = vmwareMachineId;
@@ -135,6 +138,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.TargetDiskTags = targetDiskTags;
             this.TargetNicTags = targetNicTags;
             this.UserSelectedOSName = userSelectedOSName;
+            this.TargetCapacityReservationGroupId = targetCapacityReservationGroupId;
             CustomInit();
         }
 
@@ -306,6 +310,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "userSelectedOSName")]
         public string UserSelectedOSName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target capacity reservation group ARM Id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetCapacityReservationGroupId")]
+        public string TargetCapacityReservationGroupId {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -349,6 +359,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
                     }
                 }
             }
+
 
 
 

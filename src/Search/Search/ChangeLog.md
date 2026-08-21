@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.12.1
+* Updated Search service identity casts to explicitly use the Search SDK `Identity` model.
+
+## Version 0.12.0
+* Added ChangeSafety Support
+
 ## Version 0.11.0
 * Added support for 2025-05-01 RP API 
 * Added support for ACC compute type option

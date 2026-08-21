@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class Protocol
     {
+        /// <summary>
+        /// Tcp
+        /// </summary>
         public const string Tcp = "Tcp";
+        /// <summary>
+        /// Http
+        /// </summary>
         public const string Http = "Http";
+        /// <summary>
+        /// Https
+        /// </summary>
         public const string Https = "Https";
+        /// <summary>
+        /// Icmp
+        /// </summary>
         public const string Icmp = "Icmp";
     }
 }

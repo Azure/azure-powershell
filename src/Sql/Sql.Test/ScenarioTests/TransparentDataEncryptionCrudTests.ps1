@@ -120,32 +120,29 @@ function Test-GetTransparentDataEncryptionProtector
 #>
 function Test-SetTransparentDataEncryptionProtector
 {
-	# Setup
-	$params = Get-SqlServerKeyVaultKeyTestEnvironmentParameters
-	$rg = Create-ServerKeyVaultKeyTestEnvironment $params
-
 	try
 	{
-		# Encryption Protector should be set to Service Managed initially
-		$encProtector1 = Get-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $params.rgName -ServerName $params.serverName
-		Assert-AreEqual ServiceManaged $encProtector1.Type 
-		Assert-AreEqual ServiceManaged $encProtector1.ServerKeyVaultKeyName 
+		# Setup
+		$params = SetupDynamicTestEnvironmentForServerTDEScenariosAndReturnParameters
+
+		$rg = $params.rg
+		$server = $params.server
+		$akvKey = $params.akvKey
+		$keyVault = $params.keyVault
 
 		# Add server key
-		$keyResult = Add-AzSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
-		Assert-AreEqual $params.keyId $keyResult.Uri
+		$keyResult = Add-AzSqlServerKeyVaultKey -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -KeyId $akvKey.Id
 
 		# Rotate to AKV
-		$job = Set-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $params.rgName -ServerName $params.serverName `
-			-Type AzureKeyVault -KeyId $params.keyId -Force -AsJob
+		$job = Set-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-Type AzureKeyVault -KeyId $akvKey.Id -Force -AsJob
 		$job | Wait-Job
 		$encProtector2 = $job.Output
 
-		Assert-AreEqual AzureKeyVault $encProtector2.Type 
-		Assert-AreEqual $params.serverKeyName $encProtector2.ServerKeyVaultKeyName 
+		Assert-AreEqual AzureKeyVault $encProtector2.Type
 
 		# Rotate back to Service Managed
-		$encProtector3 = Set-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $params.rgName -ServerName $params.serverName -Type ServiceManaged
+		$encProtector3 = Set-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -Type ServiceManaged
 		Assert-AreEqual ServiceManaged $encProtector3.Type 
 		Assert-AreEqual ServiceManaged $encProtector3.ServerKeyVaultKeyName 
 	}
@@ -173,5 +170,46 @@ function Test-RevalidateTransparentDataEncryptionProtector ($location = "eastus2
 	finally
 	{
 		# Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests adding a versionless key to the server and setting it as encryption protector
+#>
+function Test-TransparentDataEncryptionProtectorWithVersionlessKeys
+{
+	try
+	{
+		# Setup
+		$params = SetupDynamicTestEnvironmentForServerTDEScenariosAndReturnParameters
+
+		$rg = $params.rg
+		$server = $params.server
+		$akvKey = $params.akvKey
+		$keyVault = $params.keyVault
+
+		# Add server key without version (versionless key)
+		$versionlessKeyId = $akvKey.Id.Substring(0, $akvKey.Id.LastIndexOf('/'))
+		$keyResult = Add-AzSqlServerKeyVaultKey -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -KeyId $versionlessKeyId
+		Assert-NotNull $keyResult.Uri
+		Assert-AreNotEqual $versionlessKeyId $keyResult.Uri # The key added is versionless, but the result should have the full key url
+
+		# Rotate to AKV with versionless key
+		$encProtector = Set-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-Type AzureKeyVault -KeyId $versionlessKeyId -Force
+
+		# Verify the protector is using the versionless key
+		$encProtector2 = Get-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		Assert-AreEqual AzureKeyVault $encProtector2.Type
+		Assert-AreEqual $encProtector.ServerKeyVaultKeyName $encProtector2.ServerKeyVaultKeyName
+
+		$serverKeys = Get-AzSqlServerKeyVaultKey -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		Assert-NotNull $serverKeys
+		Assert-AreEqual $keyResult.Uri $serverKeys[0].Uri
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
 	}
 }

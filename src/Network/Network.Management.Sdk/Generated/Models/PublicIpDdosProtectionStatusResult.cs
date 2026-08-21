@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string IsWorkloadProtected {get; set; }
 
         /// <summary>
-        /// Gets or sets  DDoS protection plan Resource Id of a if IP address is
+        /// Gets or sets dDoS protection plan Resource Id of a if IP address is
         /// protected through a plan.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ddosProtectionPlanId")]

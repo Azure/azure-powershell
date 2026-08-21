@@ -56,10 +56,10 @@ BACKENDPOOLSSETTING <IBackendPoolsSettings>: Settings for all backendPools
   [SendRecvTimeoutInSeconds <Int32?>]: Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
 
 FRONTENDENDPOINT <IFrontendEndpoint[]>: Frontend endpoints available to routing rules.
-  [Id <String>]: Resource ID.
   [CertificateSource <String>]: Defines the source of the SSL certificate
   [CertificateType <String>]: Defines the type of the certificate used for secure connections to a frontendEndpoint
   [HostName <String>]: The host name of the frontendEndpoint. Must be a domain name.
+  [Id <String>]: Resource ID.
   [MinimumTlsVersion <String>]: The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
   [Name <String>]: Resource name.
   [SecretName <String>]: The name of the Key Vault secret representing the full certificate PFX
@@ -79,13 +79,15 @@ HEALTHPROBESETTING <IHealthProbeSettingsModel[]>: Health probe settings associat
   [Protocol <String>]: Protocol scheme to use for this probe
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 LOADBALANCINGSETTING <ILoadBalancingSettingsModel[]>: Load balancing settings associated with this Front Door instance.
   [Id <String>]: Resource ID.
@@ -123,15 +125,15 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]

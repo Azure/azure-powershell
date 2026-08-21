@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceName Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ISubRequestInternal.Name { get => (this._name = this._name ?? new Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ResourceName()); set { {_name = value;} } }
 
         /// <summary>Internal Acessors for NameLocalizedValue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ISubRequestInternal.NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceNameInternal)Name).LocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceNameInternal)Name).LocalizedValue = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ISubRequestInternal.NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceNameInternal)Name).LocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceNameInternal)Name).LocalizedValue = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ISubRequestInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @" Quota limit units, such as Count and Bytes. When requesting quota, use the **unit** value returned in the GET response in the request body of your PUT operation.",
+        Description = @"Quota limit units, such as Count and Bytes. When requesting quota, use the **unit** value returned in the GET response in the request body of your PUT operation.",
         SerializedName = @"unit",
         PossibleTypes = new [] { typeof(string) })]
         string Unit { get; set; }

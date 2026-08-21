@@ -13,185 +13,6 @@ namespace Microsoft.Azure.Management.Storage
     public static partial class EncryptionScopesOperationsExtensions
     {
         /// <summary>
-        /// Synchronously creates or updates an encryption scope under the specified
-        /// storage account. If an encryption scope is already created and a subsequent
-        /// request is issued with different properties, the encryption scope
-        /// properties will be updated per the specified request.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account.
-        /// Encryption scope names must be between 3 and 63 characters in length and
-        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
-        /// must be immediately preceded and followed by a letter or number.
-        /// </param>
-        public static EncryptionScope Put(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName, EncryptionScope encryptionScope)
-        {
-                return ((IEncryptionScopesOperations)operations).PutAsync(resourceGroupName, accountName, encryptionScopeName, encryptionScope).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Synchronously creates or updates an encryption scope under the specified
-        /// storage account. If an encryption scope is already created and a subsequent
-        /// request is issued with different properties, the encryption scope
-        /// properties will be updated per the specified request.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account.
-        /// Encryption scope names must be between 3 and 63 characters in length and
-        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
-        /// must be immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<EncryptionScope> PutAsync(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName, EncryptionScope encryptionScope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.PutWithHttpMessagesAsync(resourceGroupName, accountName, encryptionScopeName, encryptionScope, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Update encryption scope properties as specified in the request body. Update
-        /// fails if the specified encryption scope does not already exist.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account.
-        /// Encryption scope names must be between 3 and 63 characters in length and
-        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
-        /// must be immediately preceded and followed by a letter or number.
-        /// </param>
-        public static EncryptionScope Patch(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName, EncryptionScope encryptionScope)
-        {
-                return ((IEncryptionScopesOperations)operations).PatchAsync(resourceGroupName, accountName, encryptionScopeName, encryptionScope).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Update encryption scope properties as specified in the request body. Update
-        /// fails if the specified encryption scope does not already exist.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account.
-        /// Encryption scope names must be between 3 and 63 characters in length and
-        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
-        /// must be immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<EncryptionScope> PatchAsync(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName, EncryptionScope encryptionScope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.PatchWithHttpMessagesAsync(resourceGroupName, accountName, encryptionScopeName, encryptionScope, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Returns the properties for the specified encryption scope.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account.
-        /// Encryption scope names must be between 3 and 63 characters in length and
-        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
-        /// must be immediately preceded and followed by a letter or number.
-        /// </param>
-        public static EncryptionScope Get(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName)
-        {
-                return ((IEncryptionScopesOperations)operations).GetAsync(resourceGroupName, accountName, encryptionScopeName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Returns the properties for the specified encryption scope.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account.
-        /// Encryption scope names must be between 3 and 63 characters in length and
-        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
-        /// must be immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<EncryptionScope> GetAsync(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, accountName, encryptionScopeName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Lists all the encryption scopes available under the specified storage
         /// account.
         /// </summary>
@@ -199,8 +20,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -232,8 +52,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -258,6 +77,179 @@ namespace Microsoft.Azure.Management.Storage
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<EncryptionScope>> ListAsync(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, int? maxpagesize = default(int?), string filter = default(string), string include = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, accountName, maxpagesize, filter, include, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Returns the properties for the specified encryption scope.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='encryptionScopeName'>
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        public static EncryptionScope Get(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName)
+        {
+                return ((IEncryptionScopesOperations)operations).GetAsync(resourceGroupName, accountName, encryptionScopeName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns the properties for the specified encryption scope.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='encryptionScopeName'>
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<EncryptionScope> GetAsync(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, accountName, encryptionScopeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Synchronously creates or updates an encryption scope under the specified
+        /// storage account. If an encryption scope is already created and a subsequent
+        /// request is issued with different properties, the encryption scope
+        /// properties will be updated per the specified request.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='encryptionScopeName'>
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        public static EncryptionScope Put(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName, EncryptionScope encryptionScope)
+        {
+                return ((IEncryptionScopesOperations)operations).PutAsync(resourceGroupName, accountName, encryptionScopeName, encryptionScope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Synchronously creates or updates an encryption scope under the specified
+        /// storage account. If an encryption scope is already created and a subsequent
+        /// request is issued with different properties, the encryption scope
+        /// properties will be updated per the specified request.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='encryptionScopeName'>
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<EncryptionScope> PutAsync(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName, EncryptionScope encryptionScope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.PutWithHttpMessagesAsync(resourceGroupName, accountName, encryptionScopeName, encryptionScope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Update encryption scope properties as specified in the request body. Update
+        /// fails if the specified encryption scope does not already exist.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='encryptionScopeName'>
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        public static EncryptionScope Patch(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName, EncryptionScope encryptionScope)
+        {
+                return ((IEncryptionScopesOperations)operations).PatchAsync(resourceGroupName, accountName, encryptionScopeName, encryptionScope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Update encryption scope properties as specified in the request body. Update
+        /// fails if the specified encryption scope does not already exist.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='encryptionScopeName'>
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<EncryptionScope> PatchAsync(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName, EncryptionScope encryptionScope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.PatchWithHttpMessagesAsync(resourceGroupName, accountName, encryptionScopeName, encryptionScope, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

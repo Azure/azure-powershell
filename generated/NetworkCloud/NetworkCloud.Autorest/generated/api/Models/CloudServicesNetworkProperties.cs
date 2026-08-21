@@ -117,6 +117,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
+        /// <summary>Internal Acessors for StorageOption</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageOptions Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPropertiesInternal.StorageOption { get => (this._storageOption = this._storageOption ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkStorageOptions()); set { {_storageOption = value;} } }
+
+        /// <summary>Internal Acessors for StorageStatus</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPropertiesInternal.StorageStatus { get => (this._storageStatus = this._storageStatus ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkStorageStatus1()); set { {_storageStatus = value;} } }
+
+        /// <summary>Internal Acessors for StorageStatusMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPropertiesInternal.StorageStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1Internal)StorageStatus).StatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1Internal)StorageStatus).StatusMessage = value ?? null; }
+
+        /// <summary>Internal Acessors for StorageStatusMode</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPropertiesInternal.StorageStatusMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1Internal)StorageStatus).Mode; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1Internal)StorageStatus).Mode = value ?? null; }
+
+        /// <summary>Internal Acessors for StorageStatusSizeMiB</summary>
+        long? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPropertiesInternal.StorageStatusSizeMiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1Internal)StorageStatus).SizeMiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1Internal)StorageStatus).SizeMiB = value ?? default(long); }
+
+        /// <summary>Internal Acessors for StorageStatusStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPropertiesInternal.StorageStatusStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1Internal)StorageStatus).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1Internal)StorageStatus).Status = value ?? null; }
+
+        /// <summary>Internal Acessors for StorageStatusVolumeId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPropertiesInternal.StorageStatusVolumeId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1Internal)StorageStatus).VolumeId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1Internal)StorageStatus).VolumeId = value ?? null; }
+
         /// <summary>Internal Acessors for VirtualMachinesAssociatedId</summary>
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPropertiesInternal.VirtualMachinesAssociatedId { get => this._virtualMachinesAssociatedId; set { {_virtualMachinesAssociatedId = value;} } }
 
@@ -126,6 +147,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>The provisioning state of the cloud services network.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; }
+
+        /// <summary>Backing field for <see cref="StorageOption" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageOptions _storageOption;
+
+        /// <summary>The storage options for the cloud services network.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageOptions StorageOption { get => (this._storageOption = this._storageOption ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkStorageOptions()); set => this._storageOption = value; }
+
+        /// <summary>
+        /// The indicator to enable shared storage on the cloud services network. If not specified, the allocation will align with
+        /// the standard storage enablement.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string StorageOptionMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageOptionsInternal)StorageOption).Mode; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageOptionsInternal)StorageOption).Mode = value ?? null; }
+
+        /// <summary>The requested storage allocation for the volume in Mebibytes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public long? StorageOptionSizeMiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageOptionsInternal)StorageOption).SizeMiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageOptionsInternal)StorageOption).SizeMiB = value ?? default(long); }
+
+        /// <summary>The resource ID of the storage appliance that hosts the storage.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string StorageOptionStorageApplianceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageOptionsInternal)StorageOption).StorageApplianceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageOptionsInternal)StorageOption).StorageApplianceId = value ?? null; }
+
+        /// <summary>Backing field for <see cref="StorageStatus" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1 _storageStatus;
+
+        /// <summary>The storage status for the cloud services network.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1 StorageStatus { get => (this._storageStatus = this._storageStatus ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkStorageStatus1()); }
+
+        /// <summary>The description for the status of the shared storage.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string StorageStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1Internal)StorageStatus).StatusMessage; }
+
+        /// <summary>The indicator of if shared storage is enabled on the cloud services network.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string StorageStatusMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1Internal)StorageStatus).Mode; }
+
+        /// <summary>The size in Mebibytes of the storage allocation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public long? StorageStatusSizeMiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1Internal)StorageStatus).SizeMiB; }
+
+        /// <summary>The status of the storage allocation for the cloud services network.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string StorageStatusStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1Internal)StorageStatus).Status; }
+
+        /// <summary>The resource ID of the volume created to host the shared storage.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string StorageStatusVolumeId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1Internal)StorageStatus).VolumeId; }
 
         /// <summary>Backing field for <see cref="VirtualMachinesAssociatedId" /> property.</summary>
         private System.Collections.Generic.List<string> _virtualMachinesAssociatedId;
@@ -276,6 +346,100 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Accepted")]
         string ProvisioningState { get;  }
         /// <summary>
+        /// The indicator to enable shared storage on the cloud services network. If not specified, the allocation will align with
+        /// the standard storage enablement.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The indicator to enable shared storage on the cloud services network. If not specified, the allocation will align with the standard storage enablement.",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("None", "Standard")]
+        string StorageOptionMode { get; set; }
+        /// <summary>The requested storage allocation for the volume in Mebibytes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The requested storage allocation for the volume in Mebibytes.",
+        SerializedName = @"sizeMiB",
+        PossibleTypes = new [] { typeof(long) })]
+        long? StorageOptionSizeMiB { get; set; }
+        /// <summary>The resource ID of the storage appliance that hosts the storage.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The resource ID of the storage appliance that hosts the storage.",
+        SerializedName = @"storageApplianceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string StorageOptionStorageApplianceId { get; set; }
+        /// <summary>The description for the status of the shared storage.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The description for the status of the shared storage.",
+        SerializedName = @"statusMessage",
+        PossibleTypes = new [] { typeof(string) })]
+        string StorageStatusMessage { get;  }
+        /// <summary>The indicator of if shared storage is enabled on the cloud services network.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The indicator of if shared storage is enabled on the cloud services network.",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("None", "Standard")]
+        string StorageStatusMode { get;  }
+        /// <summary>The size in Mebibytes of the storage allocation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The size in Mebibytes of the storage allocation.",
+        SerializedName = @"sizeMiB",
+        PossibleTypes = new [] { typeof(long) })]
+        long? StorageStatusSizeMiB { get;  }
+        /// <summary>The status of the storage allocation for the cloud services network.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The status of the storage allocation for the cloud services network.",
+        SerializedName = @"status",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Available", "ExpandingVolume", "ExpansionFailed")]
+        string StorageStatusStatus { get;  }
+        /// <summary>The resource ID of the volume created to host the shared storage.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The resource ID of the volume created to host the shared storage.",
+        SerializedName = @"volumeId",
+        PossibleTypes = new [] { typeof(string) })]
+        string StorageStatusVolumeId { get;  }
+        /// <summary>
         /// Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS
         /// virtual machines, that are currently using this cloud services network.
         /// </summary>
@@ -333,6 +497,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>The provisioning state of the cloud services network.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Accepted")]
         string ProvisioningState { get; set; }
+        /// <summary>The storage options for the cloud services network.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageOptions StorageOption { get; set; }
+        /// <summary>
+        /// The indicator to enable shared storage on the cloud services network. If not specified, the allocation will align with
+        /// the standard storage enablement.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("None", "Standard")]
+        string StorageOptionMode { get; set; }
+        /// <summary>The requested storage allocation for the volume in Mebibytes.</summary>
+        long? StorageOptionSizeMiB { get; set; }
+        /// <summary>The resource ID of the storage appliance that hosts the storage.</summary>
+        string StorageOptionStorageApplianceId { get; set; }
+        /// <summary>The storage status for the cloud services network.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageStatus1 StorageStatus { get; set; }
+        /// <summary>The description for the status of the shared storage.</summary>
+        string StorageStatusMessage { get; set; }
+        /// <summary>The indicator of if shared storage is enabled on the cloud services network.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("None", "Standard")]
+        string StorageStatusMode { get; set; }
+        /// <summary>The size in Mebibytes of the storage allocation.</summary>
+        long? StorageStatusSizeMiB { get; set; }
+        /// <summary>The status of the storage allocation for the cloud services network.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Available", "ExpandingVolume", "ExpansionFailed")]
+        string StorageStatusStatus { get; set; }
+        /// <summary>The resource ID of the volume created to host the shared storage.</summary>
+        string StorageStatusVolumeId { get; set; }
         /// <summary>
         /// Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS
         /// virtual machines, that are currently using this cloud services network.

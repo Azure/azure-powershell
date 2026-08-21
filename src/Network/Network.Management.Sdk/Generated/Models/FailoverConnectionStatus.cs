@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class FailoverConnectionStatus
     {
+        /// <summary>
+        /// Connected
+        /// </summary>
         public const string Connected = "Connected";
+        /// <summary>
+        /// Disconnected
+        /// </summary>
         public const string Disconnected = "Disconnected";
     }
 }

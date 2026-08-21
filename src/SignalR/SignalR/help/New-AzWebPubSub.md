@@ -14,15 +14,12 @@ Create or update a resource.
 
 ```
 New-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- -SkuName <String> [-DisableAadAuth] [-DisableLocalAuth] [-EnableTlsClientCert]
- [-IdentityType <ManagedIdentityType>] [-LiveTraceCategory <ILiveTraceCategory[]>] [-LiveTraceEnabled <String>]
- [-NetworkAcLDefaultAction <AclAction>] [-PrivateEndpointAcl <IPrivateEndpointAcl[]>]
- [-PublicNetworkAccess <String>] [-PublicNetworkAllow <WebPubSubRequestType[]>]
- [-PublicNetworkDeny <WebPubSubRequestType[]>] [-ResourceLogCategory <IResourceLogCategory[]>]
- [-SkuCapacity <Int32>] [-SkuTier <WebPubSubSkuTier>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SkuName <String> [-DisableAadAuth] [-DisableLocalAuth] [-EnableTlsClientCert] [-EnableSystemAssignedIdentity]
+ [-LiveTraceCategory <ILiveTraceCategory[]>] [-LiveTraceEnabled <String>] [-NetworkAcLDefaultAction <String>]
+ [-PrivateEndpointAcl <IPrivateEndpointAcl[]>] [-PublicNetworkAccess <String>] [-PublicNetworkAllow <String[]>]
+ [-PublicNetworkDeny <String[]>] [-ResourceLogCategory <IResourceLogCategory[]>] [-SkuCapacity <Int32>]
+ [-SkuTier <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +41,7 @@ psdemo-wps          eastus        Standard_S1
 ### Example 2: Create a Web PubSub resource with more parameters and show the result
 ```powershell
 $wps = New-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps `
--Location eastus -SkuName Standard_S1 -IdentityType SystemAssigned -LiveTraceEnabled true `
+-Location eastus -SkuName Standard_S1 -EnableSystemAssignedIdentity -LiveTraceEnabled true `
 -LiveTraceCategory @{ Name='ConnectivityLogs' ; Enabled = 'true' }, @{ Name='MessageLogs' ; Enabled = 'true' }
 ```
 
@@ -67,21 +64,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -131,6 +113,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType])]
+[System.String]
+[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType]
+Represent the identity type: systemAssigned, userAssigned, None
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableTlsClientCert
 Request client certificate during TLS handshake if enabled
 
@@ -146,57 +146,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Represent the identity type: systemAssigned, userAssigned, None
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -LiveTraceCategory
 Gets or sets the list of category configurations.
 To construct, see NOTES section for LIVETRACECATEGORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ILiveTraceCategory[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ILiveTraceCategory[]
 Parameter Sets: (All)
 Aliases:
 
@@ -255,10 +210,12 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkAcLDefaultAction
+[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction])]
+[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction]
 Default action when no other rule matches
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -289,58 +246,13 @@ ACLs for requests from private endpoints
 To construct, see NOTES section for PRIVATEENDPOINTACL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IPrivateEndpointAcl[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IPrivateEndpointAcl[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -362,11 +274,13 @@ Accept wildcard characters: False
 ```
 
 ### -PublicNetworkAllow
+[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType])]
+[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]]
 Allowed request types.
 The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -378,11 +292,13 @@ Accept wildcard characters: False
 ```
 
 ### -PublicNetworkDeny
+[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType])]
+[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]]
 Denied request types.
 The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -414,7 +330,7 @@ Gets or sets the list of category configurations.
 To construct, see NOTES section for RESOURCELOGCATEGORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IResourceLogCategory[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceLogCategory[]
 Parameter Sets: (All)
 Aliases:
 
@@ -459,12 +375,14 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
+[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier])]
+[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier]
 Optional tier of this particular SKU.
 'Standard' or 'Free'.
 `Basic` is deprecated, use `Standard` instead.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -559,7 +477,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubResource
 
 ## NOTES
 

@@ -66,6 +66,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
                 return;
             }
             {_maxSurge = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("maxSurge"), out var __jsonMaxSurge) ? (string)__jsonMaxSurge : (string)_maxSurge;}
+            {_maxUnavailable = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("maxUnavailable"), out var __jsonMaxUnavailable) ? (string)__jsonMaxUnavailable : (string)_maxUnavailable;}
+            {_drainTimeoutInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNumber>("drainTimeoutInMinutes"), out var __jsonDrainTimeoutInMinutes) ? (int?)__jsonDrainTimeoutInMinutes : _drainTimeoutInMinute;}
+            {_nodeSoakDurationInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNumber>("nodeSoakDurationInMinutes"), out var __jsonNodeSoakDurationInMinutes) ? (int?)__jsonNodeSoakDurationInMinutes : _nodeSoakDurationInMinute;}
+            {_undrainableNodeBehavior = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("undrainableNodeBehavior"), out var __jsonUndrainableNodeBehavior) ? (string)__jsonUndrainableNodeBehavior : (string)_undrainableNodeBehavior;}
             AfterFromJson(json);
         }
 
@@ -101,6 +105,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
                 return container;
             }
             AddIf( null != (((object)this._maxSurge)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._maxSurge.ToString()) : null, "maxSurge" ,container.Add );
+            AddIf( null != (((object)this._maxUnavailable)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._maxUnavailable.ToString()) : null, "maxUnavailable" ,container.Add );
+            AddIf( null != this._drainTimeoutInMinute ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNumber((int)this._drainTimeoutInMinute) : null, "drainTimeoutInMinutes" ,container.Add );
+            AddIf( null != this._nodeSoakDurationInMinute ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNumber((int)this._nodeSoakDurationInMinute) : null, "nodeSoakDurationInMinutes" ,container.Add );
+            AddIf( null != (((object)this._undrainableNodeBehavior)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._undrainableNodeBehavior.ToString()) : null, "undrainableNodeBehavior" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

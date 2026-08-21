@@ -47,10 +47,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         public string IPConditionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).IPConditionType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).IPConditionType = value ?? null; }
 
         /// <summary>Internal Acessors for IPCondition</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPMatchCondition Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal.IPCondition { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).IPCondition; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).IPCondition = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPMatchCondition Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal.IPCondition { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).IPCondition; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).IPCondition = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VlanMatchCondition</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVlanMatchCondition Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal.VlanMatchCondition { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchCondition; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchCondition = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVlanMatchCondition Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal.VlanMatchCondition { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchCondition; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchCondition = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PortCondition</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPortCondition Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConditionInternal.PortCondition { get => (this._portCondition = this._portCondition ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.PortCondition()); set { {_portCondition = value;} } }
@@ -86,11 +86,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
         internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVlanMatchCondition VlanMatchCondition { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchCondition; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchCondition = value ?? null /* model class */; }
 
-        /// <summary>List of inner vlans that need to be matched.</summary>
+        /// <summary>
+        /// List of inner vlans that need to be matched.Inputs can be single vlan or the range of vlans.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
         public System.Collections.Generic.List<string> VlanMatchConditionInnerVlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchConditionInnerVlan; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchConditionInnerVlan = value ?? null /* arrayOf */; }
 
-        /// <summary>List of vlans that need to be matched.</summary>
+        /// <summary>
+        /// List of vlans that need to be matched. Inputs can be single vlan or the range of vlans.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
         public System.Collections.Generic.List<string> VlanMatchConditionVlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchConditionVlan; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchConditionVlan = value ?? null /* arrayOf */; }
 
@@ -143,7 +147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Layer4 protocol type that needs to be matched.",
         SerializedName = @"layer4Protocol",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("TCP", "UDP")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("TCP", "UDP", "SCTP")]
         string PortConditionLayer4Protocol { get; set; }
         /// <summary>List of the Ports that need to be matched.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
@@ -177,7 +181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Port type that needs to be matched.",
         SerializedName = @"portType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourcePort", "DestinationPort")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourcePort", "DestinationPort", "Bidirectional")]
         string PortConditionPortType { get; set; }
 
     }
@@ -191,14 +195,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Defines the port condition that needs to be matched.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPortCondition PortCondition { get; set; }
         /// <summary>Layer4 protocol type that needs to be matched.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("TCP", "UDP")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("TCP", "UDP", "SCTP")]
         string PortConditionLayer4Protocol { get; set; }
         /// <summary>List of the Ports that need to be matched.</summary>
         System.Collections.Generic.List<string> PortConditionPort { get; set; }
         /// <summary>List of the port Group Names that need to be matched.</summary>
         System.Collections.Generic.List<string> PortConditionPortGroupName { get; set; }
         /// <summary>Port type that needs to be matched.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourcePort", "DestinationPort")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourcePort", "DestinationPort", "Bidirectional")]
         string PortConditionPortType { get; set; }
 
     }

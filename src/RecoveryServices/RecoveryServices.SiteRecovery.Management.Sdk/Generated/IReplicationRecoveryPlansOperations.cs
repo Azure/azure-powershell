@@ -20,11 +20,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Lists the recovery plans in the vault.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -47,11 +46,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the details of the recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
         /// Name of the recovery plan.
@@ -77,14 +75,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to create a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='properties'>
         /// Recovery plan creation properties.
@@ -101,34 +98,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> CreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, CreateRecoveryPlanInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Delete a recovery plan.
-        /// </summary>
-        /// <remarks>
-        /// Delete a recovery plan.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, CreateRecoveryPlanInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to update a recovery plan.
@@ -137,14 +107,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to update a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='properties'>
         /// Recovery plan update properties.
@@ -161,7 +130,33 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, UpdateRecoveryPlanInputProperties properties = default(UpdateRecoveryPlanInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, UpdateRecoveryPlanInputProperties properties = default(UpdateRecoveryPlanInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete a recovery plan.
+        /// </summary>
+        /// <remarks>
+        /// Delete a recovery plan.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='recoveryPlanName'>
+        /// Name of the recovery plan.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationRecoveryPlansDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to cancel the failover of a recovery plan.
@@ -170,14 +165,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to cancel the failover of a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -191,7 +185,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> FailoverCancelWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansFailoverCancelHeaders>> FailoverCancelWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to commit the failover of a recovery plan.
@@ -200,14 +194,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to commit the failover of a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -221,7 +214,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> FailoverCommitWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansFailoverCommitHeaders>> FailoverCommitWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to start the planned failover of a recovery plan.
@@ -230,14 +223,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to start the planned failover of a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='properties'>
         /// The recovery plan planned failover input properties.
@@ -254,7 +246,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> PlannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanPlannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansPlannedFailoverHeaders>> PlannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanPlannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to reprotect(reverse replicate) a recovery plan. This api is
@@ -265,14 +257,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// for deprecated scenarios and no longer works.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -286,7 +277,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> ReprotectWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansReprotectHeaders>> ReprotectWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to start the test failover of a recovery plan.
@@ -295,14 +286,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to start the test failover of a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='properties'>
         /// The recovery plan test failover input properties.
@@ -319,7 +309,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> TestFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansTestFailoverHeaders>> TestFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to cleanup test failover of a recovery plan.
@@ -328,14 +318,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to cleanup test failover of a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='properties'>
         /// The recovery plan test failover cleanup input properties.
@@ -352,7 +341,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> TestFailoverCleanupWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansTestFailoverCleanupHeaders>> TestFailoverCleanupWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to start the unplanned failover of a recovery plan.
@@ -361,14 +350,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to start the unplanned failover of a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='properties'>
         /// The recovery plan unplanned failover input properties.
@@ -385,7 +373,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> UnplannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanUnplannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansUnplannedFailoverHeaders>> UnplannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanUnplannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to create a recovery plan.
@@ -394,14 +382,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to create a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='properties'>
         /// Recovery plan creation properties.
@@ -418,34 +405,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, CreateRecoveryPlanInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Delete a recovery plan.
-        /// </summary>
-        /// <remarks>
-        /// Delete a recovery plan.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, CreateRecoveryPlanInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to update a recovery plan.
@@ -454,14 +414,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to update a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='properties'>
         /// Recovery plan update properties.
@@ -478,7 +437,33 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, UpdateRecoveryPlanInputProperties properties = default(UpdateRecoveryPlanInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, UpdateRecoveryPlanInputProperties properties = default(UpdateRecoveryPlanInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete a recovery plan.
+        /// </summary>
+        /// <remarks>
+        /// Delete a recovery plan.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='recoveryPlanName'>
+        /// Name of the recovery plan.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationRecoveryPlansDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to cancel the failover of a recovery plan.
@@ -487,14 +472,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to cancel the failover of a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -508,7 +492,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> BeginFailoverCancelWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansFailoverCancelHeaders>> BeginFailoverCancelWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to commit the failover of a recovery plan.
@@ -517,14 +501,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to commit the failover of a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -538,7 +521,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> BeginFailoverCommitWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansFailoverCommitHeaders>> BeginFailoverCommitWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to start the planned failover of a recovery plan.
@@ -547,14 +530,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to start the planned failover of a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='properties'>
         /// The recovery plan planned failover input properties.
@@ -571,7 +553,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> BeginPlannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanPlannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansPlannedFailoverHeaders>> BeginPlannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanPlannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to reprotect(reverse replicate) a recovery plan. This api is
@@ -582,14 +564,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// for deprecated scenarios and no longer works.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -603,7 +584,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> BeginReprotectWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansReprotectHeaders>> BeginReprotectWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to start the test failover of a recovery plan.
@@ -612,14 +593,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to start the test failover of a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='properties'>
         /// The recovery plan test failover input properties.
@@ -636,7 +616,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> BeginTestFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansTestFailoverHeaders>> BeginTestFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to cleanup test failover of a recovery plan.
@@ -645,14 +625,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to cleanup test failover of a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='properties'>
         /// The recovery plan test failover cleanup input properties.
@@ -669,7 +648,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> BeginTestFailoverCleanupWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansTestFailoverCleanupHeaders>> BeginTestFailoverCleanupWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to start the unplanned failover of a recovery plan.
@@ -678,14 +657,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to start the unplanned failover of a recovery plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='recoveryPlanName'>
-        /// Recovery plan name.
+        /// Name of the recovery plan.
         /// </param>
         /// <param name='properties'>
         /// The recovery plan unplanned failover input properties.
@@ -702,7 +680,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan>> BeginUnplannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanUnplannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPlan,ReplicationRecoveryPlansUnplannedFailoverHeaders>> BeginUnplannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanUnplannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the recovery plans in the vault.

@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontendEndpointPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Id, global::System.Convert.ToString);
+            }
             if (content.Contains("Name"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Name, global::System.Convert.ToString);
@@ -120,10 +124,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Type, global::System.Convert.ToString);
-            }
-            if (content.Contains("Id"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ISubResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ISubResourceInternal)this).Id, global::System.Convert.ToString);
             }
             if (content.Contains("WebApplicationFirewallPolicyLink"))
             {
@@ -222,6 +222,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontendEndpointPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Id, global::System.Convert.ToString);
+            }
             if (content.Contains("Name"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Name, global::System.Convert.ToString);
@@ -229,10 +233,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal)this).Type, global::System.Convert.ToString);
-            }
-            if (content.Contains("Id"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ISubResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ISubResourceInternal)this).Id, global::System.Convert.ToString);
             }
             if (content.Contains("WebApplicationFirewallPolicyLink"))
             {

@@ -22,7 +22,7 @@ trigger: none
 jobs:
 - job: Build
   displayName: Build
-  pool: pool-windows-2019
+  pool: pool-windows-2022
 
   steps:
   - task: UseDotNet@2
@@ -47,7 +47,7 @@ jobs:
 - job: TestCoverage
   dependsOn: Build
   timeoutInMinutes: 600
-  pool: pool-windows-2019
+  pool: pool-windows-2022
 
   steps:
   - task: UseDotNet@2

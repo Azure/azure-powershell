@@ -10,117 +10,582 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     /// <summary>Network Fabric Patch properties.</summary>
     public partial class NetworkFabricPatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchPropertiesInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchPropertiesInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource __annotationResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AnnotationResource();
 
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchableProperties"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchableProperties __networkFabricPatchableProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkFabricPatchableProperties();
+        /// <summary>Backing field for <see cref="Annotation" /> property.</summary>
+        private string _annotation;
 
         /// <summary>Switch configuration description.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string Annotation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string Annotation { get => this._annotation; set => this._annotation = value; }
+
+        /// <summary>Backing field for <see cref="AuthorizedTransceiver" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAuthorizedTransceiverPatchProperties _authorizedTransceiver;
+
+        /// <summary>Authorized transciever configuration for NetworkFabric.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAuthorizedTransceiverPatchProperties AuthorizedTransceiver { get => (this._authorizedTransceiver = this._authorizedTransceiver ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AuthorizedTransceiverPatchProperties()); set => this._authorizedTransceiver = value; }
+
+        /// <summary>Key that must be configured on the fabric.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string AuthorizedTransceiverKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAuthorizedTransceiverPatchPropertiesInternal)AuthorizedTransceiver).Key; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAuthorizedTransceiverPatchPropertiesInternal)AuthorizedTransceiver).Key = value ?? null; }
+
+        /// <summary>Vendor of the transceiver.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string AuthorizedTransceiverVendor { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAuthorizedTransceiverPatchPropertiesInternal)AuthorizedTransceiver).Vendor; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAuthorizedTransceiverPatchPropertiesInternal)AuthorizedTransceiver).Vendor = value ?? null; }
+
+        /// <summary>Backing field for <see cref="ControlPlaneAcls" /> property.</summary>
+        private System.Collections.Generic.List<string> _controlPlaneAcls;
+
+        /// <summary>Control Plane Access Control List ARM resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> ControlPlaneAcls { get => this._controlPlaneAcls; set => this._controlPlaneAcls = value; }
+
+        /// <summary>Backing field for <see cref="FabricAsn" /> property.</summary>
+        private long? _fabricAsn;
 
         /// <summary>ASN of CE devices for CE/PE connectivity.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public long? FabricAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).FabricAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).FabricAsn = value ?? default(long); }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public long? FabricAsn { get => this._fabricAsn; set => this._fabricAsn = value; }
+
+        /// <summary>Backing field for <see cref="FeatureFlag" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties> _featureFlag;
+
+        /// <summary>NetworkFabric feature flag configuration information</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties> FeatureFlag { get => this._featureFlag; set => this._featureFlag = value; }
+
+        /// <summary>Backing field for <see cref="HardwareAlertThreshold" /> property.</summary>
+        private int? _hardwareAlertThreshold;
+
+        /// <summary>Hardware alert threshold percentage. Possible values are from 20 to 100.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public int? HardwareAlertThreshold { get => this._hardwareAlertThreshold; set => this._hardwareAlertThreshold = value; }
+
+        /// <summary>Backing field for <see cref="Ipv4Prefix" /> property.</summary>
+        private string _ipv4Prefix;
 
         /// <summary>IPv4Prefix for Management Network. Example: 10.1.0.0/19.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string Ipv4Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).Ipv4Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).Ipv4Prefix = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string Ipv4Prefix { get => this._ipv4Prefix; set => this._ipv4Prefix = value; }
+
+        /// <summary>Backing field for <see cref="Ipv6Prefix" /> property.</summary>
+        private string _ipv6Prefix;
 
         /// <summary>IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string Ipv6Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).Ipv6Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).Ipv6Prefix = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string Ipv6Prefix { get => this._ipv6Prefix; set => this._ipv6Prefix = value; }
+
+        /// <summary>Backing field for <see cref="ManagementNetworkConfiguration" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkPatchConfiguration _managementNetworkConfiguration;
 
         /// <summary>Configuration to be used to setup the management network.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPatchableProperties ManagementNetworkConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).ManagementNetworkConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).ManagementNetworkConfiguration = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkPatchConfiguration ManagementNetworkConfiguration { get => (this._managementNetworkConfiguration = this._managementNetworkConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagementNetworkPatchConfiguration()); set => this._managementNetworkConfiguration = value; }
+
+        /// <summary>Internal Acessors for AuthorizedTransceiver</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAuthorizedTransceiverPatchProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchPropertiesInternal.AuthorizedTransceiver { get => (this._authorizedTransceiver = this._authorizedTransceiver ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AuthorizedTransceiverPatchProperties()); set { {_authorizedTransceiver = value;} } }
+
+        /// <summary>Internal Acessors for QosConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IQosPatchProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchPropertiesInternal.QosConfiguration { get => (this._qosConfiguration = this._qosConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.QosPatchProperties()); set { {_qosConfiguration = value;} } }
+
+        /// <summary>Internal Acessors for StorageAccountConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStorageAccountPatchConfiguration Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchPropertiesInternal.StorageAccountConfiguration { get => (this._storageAccountConfiguration = this._storageAccountConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StorageAccountPatchConfiguration()); set { {_storageAccountConfiguration = value;} } }
+
+        /// <summary>Internal Acessors for StorageAccountConfigurationStorageAccountIdentity</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatch Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchPropertiesInternal.StorageAccountConfigurationStorageAccountIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStorageAccountPatchConfigurationInternal)StorageAccountConfiguration).StorageAccountIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStorageAccountPatchConfigurationInternal)StorageAccountConfiguration).StorageAccountIdentity = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for TerminalServerConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesTerminalServerConfiguration Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal.TerminalServerConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfiguration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfiguration Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchPropertiesInternal.TerminalServerConfiguration { get => (this._terminalServerConfiguration = this._terminalServerConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.TerminalServerPatchConfiguration()); set { {_terminalServerConfiguration = value;} } }
+
+        /// <summary>Internal Acessors for UniqueRdConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUniqueRouteDistinguisherPatchProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchPropertiesInternal.UniqueRdConfiguration { get => (this._uniqueRdConfiguration = this._uniqueRdConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.UniqueRouteDistinguisherPatchProperties()); set { {_uniqueRdConfiguration = value;} } }
+
+        /// <summary>QoS configuration state. Default is Disabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string QoConfigurationQosConfigurationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IQosPatchPropertiesInternal)QosConfiguration).QosConfigurationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IQosPatchPropertiesInternal)QosConfiguration).QosConfigurationState = value ?? null; }
+
+        /// <summary>Backing field for <see cref="QosConfiguration" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IQosPatchProperties _qosConfiguration;
+
+        /// <summary>NetworkFabric QoS Configuration</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IQosPatchProperties QosConfiguration { get => (this._qosConfiguration = this._qosConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.QosPatchProperties()); set => this._qosConfiguration = value; }
+
+        /// <summary>Backing field for <see cref="RackCount" /> property.</summary>
+        private int? _rackCount;
 
         /// <summary>Number of compute racks associated to Network Fabric.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public int? RackCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).RackCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).RackCount = value ?? default(int); }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public int? RackCount { get => this._rackCount; set => this._rackCount = value; }
+
+        /// <summary>Backing field for <see cref="ServerCountPerRack" /> property.</summary>
+        private int? _serverCountPerRack;
 
         /// <summary>Number of servers.Possible values are from 1-16.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public int? ServerCountPerRack { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).ServerCountPerRack; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).ServerCountPerRack = value ?? default(int); }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public int? ServerCountPerRack { get => this._serverCountPerRack; set => this._serverCountPerRack = value; }
+
+        /// <summary>Backing field for <see cref="StorageAccountConfiguration" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStorageAccountPatchConfiguration _storageAccountConfiguration;
+
+        /// <summary>Bring your own storage account configurations for Network Fabric.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStorageAccountPatchConfiguration StorageAccountConfiguration { get => (this._storageAccountConfiguration = this._storageAccountConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StorageAccountPatchConfiguration()); set => this._storageAccountConfiguration = value; }
+
+        /// <summary>Network Fabric storage account resource identifier.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string StorageAccountConfigurationStorageAccountId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStorageAccountPatchConfigurationInternal)StorageAccountConfiguration).StorageAccountId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStorageAccountPatchConfigurationInternal)StorageAccountConfiguration).StorageAccountId = value ?? null; }
+
+        /// <summary>The type of managed identity that is being selected.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string StorageAccountIdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStorageAccountPatchConfigurationInternal)StorageAccountConfiguration).StorageAccountIdentityType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStorageAccountPatchConfigurationInternal)StorageAccountConfiguration).StorageAccountIdentityType = value ?? null; }
+
+        /// <summary>
+        /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string StorageAccountIdentityUserAssignedIdentityResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStorageAccountPatchConfigurationInternal)StorageAccountConfiguration).StorageAccountIdentityUserAssignedIdentityResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStorageAccountPatchConfigurationInternal)StorageAccountConfiguration).StorageAccountIdentityUserAssignedIdentityResourceId = value ?? null; }
+
+        /// <summary>Backing field for <see cref="TerminalServerConfiguration" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfiguration _terminalServerConfiguration;
 
         /// <summary>Network and credentials configuration already applied to terminal server.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesTerminalServerConfiguration TerminalServerConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfiguration = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfiguration TerminalServerConfiguration { get => (this._terminalServerConfiguration = this._terminalServerConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.TerminalServerPatchConfiguration()); set => this._terminalServerConfiguration = value; }
 
         /// <summary>Password for the terminal server connection.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string TerminalServerConfigurationPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfigurationPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfigurationPassword = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Security.SecureString TerminalServerConfigurationPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfigurationInternal)TerminalServerConfiguration).Password; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfigurationInternal)TerminalServerConfiguration).Password = value ?? null; }
 
         /// <summary>IPv4 Address Prefix.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string TerminalServerConfigurationPrimaryIpv4Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfigurationPrimaryIpv4Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfigurationPrimaryIpv4Prefix = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string TerminalServerConfigurationPrimaryIpv4Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfigurationInternal)TerminalServerConfiguration).PrimaryIpv4Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfigurationInternal)TerminalServerConfiguration).PrimaryIpv4Prefix = value ?? null; }
 
         /// <summary>IPv6 Address Prefix.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string TerminalServerConfigurationPrimaryIpv6Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfigurationPrimaryIpv6Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfigurationPrimaryIpv6Prefix = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string TerminalServerConfigurationPrimaryIpv6Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfigurationInternal)TerminalServerConfiguration).PrimaryIpv6Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfigurationInternal)TerminalServerConfiguration).PrimaryIpv6Prefix = value ?? null; }
 
         /// <summary>Secondary IPv4 Address Prefix.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string TerminalServerConfigurationSecondaryIpv4Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfigurationSecondaryIpv4Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfigurationSecondaryIpv4Prefix = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string TerminalServerConfigurationSecondaryIpv4Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfigurationInternal)TerminalServerConfiguration).SecondaryIpv4Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfigurationInternal)TerminalServerConfiguration).SecondaryIpv4Prefix = value ?? null; }
 
         /// <summary>Secondary IPv6 Address Prefix.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string TerminalServerConfigurationSecondaryIpv6Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfigurationSecondaryIpv6Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfigurationSecondaryIpv6Prefix = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string TerminalServerConfigurationSecondaryIpv6Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfigurationInternal)TerminalServerConfiguration).SecondaryIpv6Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfigurationInternal)TerminalServerConfiguration).SecondaryIpv6Prefix = value ?? null; }
 
         /// <summary>Serial Number of Terminal server.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string TerminalServerConfigurationSerialNumber { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfigurationSerialNumber; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfigurationSerialNumber = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string TerminalServerConfigurationSerialNumber { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfigurationInternal)TerminalServerConfiguration).SerialNumber; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfigurationInternal)TerminalServerConfiguration).SerialNumber = value ?? null; }
 
         /// <summary>Username for the terminal server connection.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string TerminalServerConfigurationUsername { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfigurationUsername; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal)__networkFabricPatchableProperties).TerminalServerConfigurationUsername = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string TerminalServerConfigurationUsername { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfigurationInternal)TerminalServerConfiguration).Username; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfigurationInternal)TerminalServerConfiguration).Username = value ?? null; }
+
+        /// <summary>Backing field for <see cref="TrustedIPPrefix" /> property.</summary>
+        private System.Collections.Generic.List<string> _trustedIPPrefix;
+
+        /// <summary>Trusted IP Prefix ARM resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> TrustedIPPrefix { get => this._trustedIPPrefix; set => this._trustedIPPrefix = value; }
+
+        /// <summary>Backing field for <see cref="UniqueRdConfiguration" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUniqueRouteDistinguisherPatchProperties _uniqueRdConfiguration;
+
+        /// <summary>Unique Route Distinguisher configuration</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUniqueRouteDistinguisherPatchProperties UniqueRdConfiguration { get => (this._uniqueRdConfiguration = this._uniqueRdConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.UniqueRouteDistinguisherPatchProperties()); set => this._uniqueRdConfiguration = value; }
+
+        /// <summary>NNI derived unique Route Distinguisher state. Default is Disabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string UniqueRdConfigurationNniDerivedUniqueRdConfigurationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUniqueRouteDistinguisherPatchPropertiesInternal)UniqueRdConfiguration).NniDerivedUniqueRdConfigurationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUniqueRouteDistinguisherPatchPropertiesInternal)UniqueRdConfiguration).NniDerivedUniqueRdConfigurationState = value ?? null; }
+
+        /// <summary>Unique Route Distinguisher configuration state. Default is Enabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string UniqueRdConfigurationUniqueRdConfigurationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUniqueRouteDistinguisherPatchPropertiesInternal)UniqueRdConfiguration).UniqueRdConfigurationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUniqueRouteDistinguisherPatchPropertiesInternal)UniqueRdConfiguration).UniqueRdConfigurationState = value ?? null; }
 
         /// <summary>Creates an new <see cref="NetworkFabricPatchProperties" /> instance.</summary>
         public NetworkFabricPatchProperties()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__annotationResource), __annotationResource);
-            await eventListener.AssertObjectIsValid(nameof(__annotationResource), __annotationResource);
-            await eventListener.AssertNotNull(nameof(__networkFabricPatchableProperties), __networkFabricPatchableProperties);
-            await eventListener.AssertObjectIsValid(nameof(__networkFabricPatchableProperties), __networkFabricPatchableProperties);
-        }
     }
     /// Network Fabric Patch properties.
     public partial interface INetworkFabricPatchProperties :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchableProperties
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable
     {
+        /// <summary>Switch configuration description.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Switch configuration description.",
+        SerializedName = @"annotation",
+        PossibleTypes = new [] { typeof(string) })]
+        string Annotation { get; set; }
+        /// <summary>Key that must be configured on the fabric.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Key that must be configured on the fabric.",
+        SerializedName = @"key",
+        PossibleTypes = new [] { typeof(string) })]
+        string AuthorizedTransceiverKey { get; set; }
+        /// <summary>Vendor of the transceiver.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Vendor of the transceiver.",
+        SerializedName = @"vendor",
+        PossibleTypes = new [] { typeof(string) })]
+        string AuthorizedTransceiverVendor { get; set; }
+        /// <summary>Control Plane Access Control List ARM resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Control Plane Access Control List ARM resource IDs.",
+        SerializedName = @"controlPlaneAcls",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ControlPlaneAcls { get; set; }
+        /// <summary>ASN of CE devices for CE/PE connectivity.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"ASN of CE devices for CE/PE connectivity.",
+        SerializedName = @"fabricASN",
+        PossibleTypes = new [] { typeof(long) })]
+        long? FabricAsn { get; set; }
+        /// <summary>NetworkFabric feature flag configuration information</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"NetworkFabric feature flag configuration information",
+        SerializedName = @"featureFlags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties> FeatureFlag { get; set; }
+        /// <summary>Hardware alert threshold percentage. Possible values are from 20 to 100.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Hardware alert threshold percentage. Possible values are from 20 to 100.",
+        SerializedName = @"hardwareAlertThreshold",
+        PossibleTypes = new [] { typeof(int) })]
+        int? HardwareAlertThreshold { get; set; }
+        /// <summary>IPv4Prefix for Management Network. Example: 10.1.0.0/19.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"IPv4Prefix for Management Network. Example: 10.1.0.0/19.",
+        SerializedName = @"ipv4Prefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv4Prefix { get; set; }
+        /// <summary>IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59.",
+        SerializedName = @"ipv6Prefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6Prefix { get; set; }
+        /// <summary>Configuration to be used to setup the management network.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Configuration to be used to setup the management network.",
+        SerializedName = @"managementNetworkConfiguration",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkPatchConfiguration) })]
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkPatchConfiguration ManagementNetworkConfiguration { get; set; }
+        /// <summary>QoS configuration state. Default is Disabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"QoS configuration state. Default is Disabled.",
+        SerializedName = @"qosConfigurationState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string QoConfigurationQosConfigurationState { get; set; }
+        /// <summary>Number of compute racks associated to Network Fabric.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Number of compute racks associated to Network Fabric.",
+        SerializedName = @"rackCount",
+        PossibleTypes = new [] { typeof(int) })]
+        int? RackCount { get; set; }
+        /// <summary>Number of servers.Possible values are from 1-16.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Number of servers.Possible values are from 1-16.",
+        SerializedName = @"serverCountPerRack",
+        PossibleTypes = new [] { typeof(int) })]
+        int? ServerCountPerRack { get; set; }
+        /// <summary>Network Fabric storage account resource identifier.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Network Fabric storage account resource identifier.",
+        SerializedName = @"storageAccountId",
+        PossibleTypes = new [] { typeof(string) })]
+        string StorageAccountConfigurationStorageAccountId { get; set; }
+        /// <summary>The type of managed identity that is being selected.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The type of managed identity that is being selected.",
+        SerializedName = @"identityType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        string StorageAccountIdentityType { get; set; }
+        /// <summary>
+        /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.",
+        SerializedName = @"userAssignedIdentityResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string StorageAccountIdentityUserAssignedIdentityResourceId { get; set; }
+        /// <summary>Password for the terminal server connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Password for the terminal server connection.",
+        SerializedName = @"password",
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString TerminalServerConfigurationPassword { get; set; }
+        /// <summary>IPv4 Address Prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"IPv4 Address Prefix.",
+        SerializedName = @"primaryIpv4Prefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string TerminalServerConfigurationPrimaryIpv4Prefix { get; set; }
+        /// <summary>IPv6 Address Prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"IPv6 Address Prefix.",
+        SerializedName = @"primaryIpv6Prefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string TerminalServerConfigurationPrimaryIpv6Prefix { get; set; }
+        /// <summary>Secondary IPv4 Address Prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Secondary IPv4 Address Prefix.",
+        SerializedName = @"secondaryIpv4Prefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string TerminalServerConfigurationSecondaryIpv4Prefix { get; set; }
+        /// <summary>Secondary IPv6 Address Prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Secondary IPv6 Address Prefix.",
+        SerializedName = @"secondaryIpv6Prefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string TerminalServerConfigurationSecondaryIpv6Prefix { get; set; }
+        /// <summary>Serial Number of Terminal server.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Serial Number of Terminal server.",
+        SerializedName = @"serialNumber",
+        PossibleTypes = new [] { typeof(string) })]
+        string TerminalServerConfigurationSerialNumber { get; set; }
+        /// <summary>Username for the terminal server connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Username for the terminal server connection.",
+        SerializedName = @"username",
+        PossibleTypes = new [] { typeof(string) })]
+        string TerminalServerConfigurationUsername { get; set; }
+        /// <summary>Trusted IP Prefix ARM resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Trusted IP Prefix ARM resource IDs.",
+        SerializedName = @"trustedIpPrefixes",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> TrustedIPPrefix { get; set; }
+        /// <summary>NNI derived unique Route Distinguisher state. Default is Disabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"NNI derived unique Route Distinguisher state. Default is Disabled.",
+        SerializedName = @"nniDerivedUniqueRdConfigurationState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string UniqueRdConfigurationNniDerivedUniqueRdConfigurationState { get; set; }
+        /// <summary>Unique Route Distinguisher configuration state. Default is Enabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Unique Route Distinguisher configuration state. Default is Enabled.",
+        SerializedName = @"uniqueRdConfigurationState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string UniqueRdConfigurationUniqueRdConfigurationState { get; set; }
 
     }
     /// Network Fabric Patch properties.
-    internal partial interface INetworkFabricPatchPropertiesInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricPatchablePropertiesInternal
+    internal partial interface INetworkFabricPatchPropertiesInternal
+
     {
+        /// <summary>Switch configuration description.</summary>
+        string Annotation { get; set; }
+        /// <summary>Authorized transciever configuration for NetworkFabric.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAuthorizedTransceiverPatchProperties AuthorizedTransceiver { get; set; }
+        /// <summary>Key that must be configured on the fabric.</summary>
+        string AuthorizedTransceiverKey { get; set; }
+        /// <summary>Vendor of the transceiver.</summary>
+        string AuthorizedTransceiverVendor { get; set; }
+        /// <summary>Control Plane Access Control List ARM resource IDs.</summary>
+        System.Collections.Generic.List<string> ControlPlaneAcls { get; set; }
+        /// <summary>ASN of CE devices for CE/PE connectivity.</summary>
+        long? FabricAsn { get; set; }
+        /// <summary>NetworkFabric feature flag configuration information</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties> FeatureFlag { get; set; }
+        /// <summary>Hardware alert threshold percentage. Possible values are from 20 to 100.</summary>
+        int? HardwareAlertThreshold { get; set; }
+        /// <summary>IPv4Prefix for Management Network. Example: 10.1.0.0/19.</summary>
+        string Ipv4Prefix { get; set; }
+        /// <summary>IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59.</summary>
+        string Ipv6Prefix { get; set; }
+        /// <summary>Configuration to be used to setup the management network.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkPatchConfiguration ManagementNetworkConfiguration { get; set; }
+        /// <summary>QoS configuration state. Default is Disabled.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string QoConfigurationQosConfigurationState { get; set; }
+        /// <summary>NetworkFabric QoS Configuration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IQosPatchProperties QosConfiguration { get; set; }
+        /// <summary>Number of compute racks associated to Network Fabric.</summary>
+        int? RackCount { get; set; }
+        /// <summary>Number of servers.Possible values are from 1-16.</summary>
+        int? ServerCountPerRack { get; set; }
+        /// <summary>Bring your own storage account configurations for Network Fabric.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStorageAccountPatchConfiguration StorageAccountConfiguration { get; set; }
+        /// <summary>Network Fabric storage account resource identifier.</summary>
+        string StorageAccountConfigurationStorageAccountId { get; set; }
+        /// <summary>
+        /// The selection of the managed identity to use with this storage account. The identity type must be either system assigned
+        /// or user assigned.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatch StorageAccountConfigurationStorageAccountIdentity { get; set; }
+        /// <summary>The type of managed identity that is being selected.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        string StorageAccountIdentityType { get; set; }
+        /// <summary>
+        /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+        /// </summary>
+        string StorageAccountIdentityUserAssignedIdentityResourceId { get; set; }
+        /// <summary>Network and credentials configuration already applied to terminal server.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchConfiguration TerminalServerConfiguration { get; set; }
+        /// <summary>Password for the terminal server connection.</summary>
+        System.Security.SecureString TerminalServerConfigurationPassword { get; set; }
+        /// <summary>IPv4 Address Prefix.</summary>
+        string TerminalServerConfigurationPrimaryIpv4Prefix { get; set; }
+        /// <summary>IPv6 Address Prefix.</summary>
+        string TerminalServerConfigurationPrimaryIpv6Prefix { get; set; }
+        /// <summary>Secondary IPv4 Address Prefix.</summary>
+        string TerminalServerConfigurationSecondaryIpv4Prefix { get; set; }
+        /// <summary>Secondary IPv6 Address Prefix.</summary>
+        string TerminalServerConfigurationSecondaryIpv6Prefix { get; set; }
+        /// <summary>Serial Number of Terminal server.</summary>
+        string TerminalServerConfigurationSerialNumber { get; set; }
+        /// <summary>Username for the terminal server connection.</summary>
+        string TerminalServerConfigurationUsername { get; set; }
+        /// <summary>Trusted IP Prefix ARM resource IDs.</summary>
+        System.Collections.Generic.List<string> TrustedIPPrefix { get; set; }
+        /// <summary>Unique Route Distinguisher configuration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUniqueRouteDistinguisherPatchProperties UniqueRdConfiguration { get; set; }
+        /// <summary>NNI derived unique Route Distinguisher state. Default is Disabled.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string UniqueRdConfigurationNniDerivedUniqueRdConfigurationState { get; set; }
+        /// <summary>Unique Route Distinguisher configuration state. Default is Enabled.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string UniqueRdConfigurationUniqueRdConfigurationState { get; set; }
 
     }
 }

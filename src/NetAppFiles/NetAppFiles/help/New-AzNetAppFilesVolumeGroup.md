@@ -25,9 +25,13 @@ New-AzNetAppFilesVolumeGroup -ResourceGroupName <String> -Location <String> -Acc
  [-LogBackupPerformance <Int32>] [-HannaSystemReplication] [-DisasterRecoveryDestination]
  [-BackupProtocolType <String[]>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
- [-EncryptionKeySource <String>] [-KeyVaultPrivateEndpointResourceId <String>] [-NetworkFeature <String>]
- [-Zone <String[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionKeySource <String>] [-NetworkFeature <String>] [-BreakthroughMode <String>]
+ [-DataBreakthroughMode <String>] [-LogBreakthroughMode <String>] [-SharedBreakthroughMode <String>]
+ [-DataBackupBreakthroughMode <String>] [-LogBackupBreakthroughMode <String>]
+ [-BinaryBreakthroughMode <String>] [-BackupBreakthroughMode <String>] [-LogMirrorBreakthroughMode <String>]
+ [-KeyVaultPrivateEndpointResourceId <String>] [-Zone <String[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ORACLE
@@ -46,9 +50,12 @@ New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescript
  [-DisasterRecoveryDestination] [-BackupProtocolType <String[]>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
- [-EncryptionKeySource <String>] [-KeyVaultPrivateEndpointResourceId <String>] [-NetworkFeature <String>]
- [-Zone <String[]>] [-OracleDatabaseSize <Int32>] [-NumberOfDataVolume <Int32>]
- [-AdditionalCapacityForSnapshots <Int32>] [-OracleDatabaseThroughput <Int32>] [-DataSize2 <Int64>]
+ [-EncryptionKeySource <String>] [-NetworkFeature <String>] [-BreakthroughMode <String>]
+ [-DataBreakthroughMode <String>] [-LogBreakthroughMode <String>] [-SharedBreakthroughMode <String>]
+ [-DataBackupBreakthroughMode <String>] [-LogBackupBreakthroughMode <String>]
+ [-BinaryBreakthroughMode <String>] [-BackupBreakthroughMode <String>] [-LogMirrorBreakthroughMode <String>]
+ [-KeyVaultPrivateEndpointResourceId <String>] [-Zone <String[]>] [-OracleDatabaseSize <Int32>]
+ [-NumberOfDataVolume <Int32>] [-OracleDatabaseThroughput <Int32>] [-DataSize2 <Int64>]
  [-Data2Performance <Int32>] [-Data2ReplicationSourceId <String>] [-Data2ReplicationSchedule <String>]
  [-DataSize3 <Int64>] [-Data3Performance <Int32>] [-Data3ReplicationSourceId <String>]
  [-Data3ReplicationSchedule <String>] [-Data4Size <Int64>] [-Data4Performance <Int32>]
@@ -63,7 +70,8 @@ New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescript
  [-BackupReplicationSourceId <String>] [-BackupReplicationSchedule <String>] [-LogMirrorSize <Int64>]
  [-LogMirrorPerformance <Int32>] [-LogMirrorReplicationSourceId <String>]
  [-LogMirrorReplicationSchedule <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -78,9 +86,13 @@ New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescript
  [-DisasterRecoveryDestination] [-BackupProtocolType <String[]>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
- [-EncryptionKeySource <String>] [-KeyVaultPrivateEndpointResourceId <String>] [-NetworkFeature <String>]
- [-Zone <String[]>] [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-EncryptionKeySource <String>] [-NetworkFeature <String>] [-BreakthroughMode <String>]
+ [-DataBreakthroughMode <String>] [-LogBreakthroughMode <String>] [-SharedBreakthroughMode <String>]
+ [-DataBackupBreakthroughMode <String>] [-LogBackupBreakthroughMode <String>]
+ [-BinaryBreakthroughMode <String>] [-BackupBreakthroughMode <String>] [-LogMirrorBreakthroughMode <String>]
+ [-KeyVaultPrivateEndpointResourceId <String>] [-Zone <String[]>] [-Tag <Hashtable>]
+ -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -135,12 +147,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -AdditionalCapacityForSnapshots
-Additional capacity for snapshots (%). If you use snapshots for data protection, you need to plan for extra capacity. This field adds an additional size (%) for the data volume. For Oracle Application Volume Groups only
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: ORACLE
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -167,6 +179,21 @@ Accept wildcard characters: False
 
 ### -ApplicationType
 Application Type, default SAP-HANA
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupBreakthroughMode
+Breakthrough Mode override for backup volumes. Possible values include: 'Enabled', 'Disabled'
 
 ```yaml
 Type: System.String
@@ -255,6 +282,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BinaryBreakthroughMode
+Breakthrough Mode override for binary volumes. Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -BinaryPerformance
 Specify throughput in MiB/s. If omitted BinaryPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
 
@@ -315,11 +357,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BreakthroughMode
+Default Breakthrough Mode applied to all volumes in the group unless overridden per volume type. Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CapacityOverhead
 Capacity overhead %, Additional quota reserved for snapshots during best-practice sizing of data volume, default 50
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -690,6 +762,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DataBackupBreakthroughMode
+Breakthrough Mode override for data-backup volumes. Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DataBackupPerformance
 Specify throughput in MiB/s.
 If omitted DataBackupPerformance will be autocalculated or specify an integer value representing throughput.
@@ -742,6 +829,21 @@ If omitted DataSize will be autocalculated or specify an integer value represent
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataBreakthroughMode
+Breakthrough Mode override for data volumes. Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -1028,6 +1130,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LogBackupBreakthroughMode
+Breakthrough Mode override for log-backup volumes. Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LogBackupPerformance
 Specify throughput in MiB/s.
 If omitted LogBackupPerformance will be autocalculated or specify an integer value representing throughput.
@@ -1080,6 +1197,36 @@ If omitted DataSize will be autocalculated or specify an integer value represent
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogBreakthroughMode
+Breakthrough Mode override for log volumes. Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogMirrorBreakthroughMode
+Breakthrough Mode override for log-mirror volumes. Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -1243,21 +1390,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkFeature
-Basic network, or Standard features available to the volume (Basic, Standard).
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NodeMemory
 SAP node memory (GiB), Memory on SAP compute host
 
@@ -1375,6 +1507,21 @@ Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedBreakthroughMode
+Breakthrough Mode override for shared volumes. Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

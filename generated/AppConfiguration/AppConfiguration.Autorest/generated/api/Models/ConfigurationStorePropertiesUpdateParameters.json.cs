@@ -67,9 +67,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
                 return;
             }
             {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonObject>("encryption"), out var __jsonEncryption) ? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.EncryptionProperties.FromJson(__jsonEncryption) : _encryption;}
+            {_dataPlaneProxy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonObject>("dataPlaneProxy"), out var __jsonDataPlaneProxy) ? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.DataPlaneProxyProperties.FromJson(__jsonDataPlaneProxy) : _dataPlaneProxy;}
             {_disableLocalAuth = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonBoolean>("disableLocalAuth"), out var __jsonDisableLocalAuth) ? (bool?)__jsonDisableLocalAuth : _disableLocalAuth;}
             {_publicNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonString>("publicNetworkAccess"), out var __jsonPublicNetworkAccess) ? (string)__jsonPublicNetworkAccess : (string)_publicNetworkAccess;}
             {_enablePurgeProtection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonBoolean>("enablePurgeProtection"), out var __jsonEnablePurgeProtection) ? (bool?)__jsonEnablePurgeProtection : _enablePurgeProtection;}
+            {_defaultKeyValueRevisionRetentionPeriodInSecond = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNumber>("defaultKeyValueRevisionRetentionPeriodInSeconds"), out var __jsonDefaultKeyValueRevisionRetentionPeriodInSeconds) ? (long?)__jsonDefaultKeyValueRevisionRetentionPeriodInSeconds : _defaultKeyValueRevisionRetentionPeriodInSecond;}
             AfterFromJson(json);
         }
 
@@ -107,9 +109,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
                 return container;
             }
             AddIf( null != this._encryption ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode) this._encryption.ToJson(null,serializationMode) : null, "encryption" ,container.Add );
+            AddIf( null != this._dataPlaneProxy ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode) this._dataPlaneProxy.ToJson(null,serializationMode) : null, "dataPlaneProxy" ,container.Add );
             AddIf( null != this._disableLocalAuth ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonBoolean((bool)this._disableLocalAuth) : null, "disableLocalAuth" ,container.Add );
             AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
             AddIf( null != this._enablePurgeProtection ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonBoolean((bool)this._enablePurgeProtection) : null, "enablePurgeProtection" ,container.Add );
+            AddIf( null != this._defaultKeyValueRevisionRetentionPeriodInSecond ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNumber((long)this._defaultKeyValueRevisionRetentionPeriodInSecond) : null, "defaultKeyValueRevisionRetentionPeriodInSeconds" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

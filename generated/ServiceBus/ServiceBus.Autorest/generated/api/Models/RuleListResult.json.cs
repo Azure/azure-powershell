@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Extensions;
 
-    /// <summary>The response of the List rule operation.</summary>
+    /// <summary>The response of a Rule list operation.</summary>
     public partial class RuleListResult
     {
 

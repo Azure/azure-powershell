@@ -14,39 +14,39 @@ This operation updates an existing policy set definition in the given subscripti
 
 ### Name (Default)
 ```
-Update-AzPolicySetDefinition -Name <String> [-BackwardCompatible] [-Description <String>]
- [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
- [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzPolicySetDefinition -Name <String> [-Description <String>] [-DisplayName <String>]
+ [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Update-AzPolicySetDefinition -Id <String> [-BackwardCompatible] [-Description <String>]
- [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
- [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzPolicySetDefinition -Id <String> [-Description <String>] [-DisplayName <String>] [-Metadata <String>]
+ [-Parameter <String>] [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Update-AzPolicySetDefinition -InputObject <IPolicySetDefinition> [-BackwardCompatible] [-Description <String>]
+Update-AzPolicySetDefinition -InputObject <IPolicySetDefinition> [-Description <String>]
  [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
  [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-Update-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> [-Description <String>]
+ [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
+ [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Description <String>]
+ [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
+ [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,29 +86,14 @@ Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $gro
 
 This command updates the groups of a policy set definition named VMPolicySetDefinition from a hash table.
 
-### Example 5: [Backcompat] Update the metadata of a policy set definition
+### Example 5: Update a policy set definition to add an older version by using a policy set file
 ```powershell
-Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}'
+Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Version '1.1.0'
 ```
 
-This command updates the metadata of a policy set definition named VMPolicySetDefinition to indicate its category is "Virtual Machine".
+This command updates the existing policy set definition named VMPolicySetDefinition by adding version 1.1.0 that contains the policy definitions specified in C:\VMPolicySet.json.
 
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -157,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The resource Id of the policy definition to update.
+The resource Id of the policy set definition to update.
 
 ```yaml
 Type: System.String
@@ -249,7 +234,7 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinition
-The policy definition array in JSON string form.
+The policy set definition array in JSON string form.
 
 ```yaml
 Type: System.String
@@ -288,6 +273,21 @@ Parameter Sets: SubscriptionId
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Version
+The policy set definition version in #.#.# format.
+
+```yaml
+Type: System.String
+Parameter Sets: ManagementGroupName, Name, SubscriptionId
+Aliases: PolicySetDefinitionVersion
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

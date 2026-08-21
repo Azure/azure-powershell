@@ -113,9 +113,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).Endpoint = (string) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).Endpoint, global::System.Convert.ToString);
             }
-            if (content.Contains("Protocol"))
+            if (content.Contains("AllowedFormat"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).Protocol = (string) content.GetValueForProperty("Protocol",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).Protocol, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).AllowedFormat = (System.Collections.Generic.List<string>) content.GetValueForProperty("AllowedFormat",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).AllowedFormat, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TransportProtocol"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).TransportProtocol = (string) content.GetValueForProperty("TransportProtocol",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).TransportProtocol, global::System.Convert.ToString);
+            }
+            if (content.Contains("AllowSkipPriHeader"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).AllowSkipPriHeader = (bool?) content.GetValueForProperty("AllowSkipPriHeader",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).AllowSkipPriHeader, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -138,9 +146,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).Endpoint = (string) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).Endpoint, global::System.Convert.ToString);
             }
-            if (content.Contains("Protocol"))
+            if (content.Contains("AllowedFormat"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).Protocol = (string) content.GetValueForProperty("Protocol",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).Protocol, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).AllowedFormat = (System.Collections.Generic.List<string>) content.GetValueForProperty("AllowedFormat",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).AllowedFormat, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TransportProtocol"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).TransportProtocol = (string) content.GetValueForProperty("TransportProtocol",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).TransportProtocol, global::System.Convert.ToString);
+            }
+            if (content.Contains("AllowSkipPriHeader"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).AllowSkipPriHeader = (bool?) content.GetValueForProperty("AllowSkipPriHeader",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)this).AllowSkipPriHeader, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>List of NetworkTaps.</summary>
+    /// <summary>Paged collection of NetworkTap items</summary>
     [System.ComponentModel.TypeConverter(typeof(NetworkTapsListResultTypeConverter))]
     public partial class NetworkTapsListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// List of NetworkTaps.
+    /// Paged collection of NetworkTap items
     [System.ComponentModel.TypeConverter(typeof(NetworkTapsListResultTypeConverter))]
     public partial interface INetworkTapsListResult
 

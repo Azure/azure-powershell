@@ -17,8 +17,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         private long? _maxUnavailable;
 
         /// <summary>
-        /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
-        /// Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
+        /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack. Limited by
+        /// the maximum number of machines in the increment. Defaults to the whole increment size.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public long? MaxUnavailable { get => this._maxUnavailable; set => this._maxUnavailable = value; }
@@ -62,8 +62,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
-        /// Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
+        /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack. Limited by
+        /// the maximum number of machines in the increment. Defaults to the whole increment size.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -71,8 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
-        Limited by the maximum number of machines in the increment. Defaults to the whole increment size.",
+        Description = @"The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack. Limited by the maximum number of machines in the increment. Defaults to the whole increment size.",
         SerializedName = @"maxUnavailable",
         PossibleTypes = new [] { typeof(long) })]
         long? MaxUnavailable { get; set; }
@@ -129,8 +128,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
 
     {
         /// <summary>
-        /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
-        /// Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
+        /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack. Limited by
+        /// the maximum number of machines in the increment. Defaults to the whole increment size.
         /// </summary>
         long? MaxUnavailable { get; set; }
         /// <summary>The mode of operation for runtime protection.</summary>

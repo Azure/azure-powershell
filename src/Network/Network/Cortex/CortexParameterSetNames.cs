@@ -88,6 +88,10 @@ namespace Microsoft.Azure.Commands.Network
         internal const string ByRoutingIntentResourceId = "ByRoutingIntentResourceId";
         internal const string ByRoutingIntentObject = "ByRoutingIntentObject";
 
+        internal const string ByConnectionPolicyName = "ByConnectionPolicyName";
+        internal const string ByConnectionPolicyResourceId = "ByConnectionPolicyResourceId";
+        internal const string ByConnectionPolicyObject = "ByConnectionPolicyObject";
+
         internal const string ByRouteMapName = "ByRouteMapName";
         internal const string ByRouteMapResourceId = "ByRouteMapResourceId";
         internal const string ByRouteMapObject = "ByRouteMapObject";

@@ -118,14 +118,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("Order"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Order = (int?) content.GetValueForProperty("Order",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Order, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("Description"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Description, global::System.Convert.ToString);
-            }
             if (content.Contains("Size"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Size = (long?) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Size, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
@@ -134,9 +126,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("Order"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Order = (int?) content.GetValueForProperty("Order",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Order, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("Title"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Title = (string) content.GetValueForProperty("Title",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Title, global::System.Convert.ToString);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Description, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -199,14 +199,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("Order"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Order = (int?) content.GetValueForProperty("Order",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Order, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("Description"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Description, global::System.Convert.ToString);
-            }
             if (content.Contains("Size"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Size = (long?) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Size, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
@@ -215,9 +207,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("Order"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Order = (int?) content.GetValueForProperty("Order",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Order, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("Title"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Title = (string) content.GetValueForProperty("Title",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Title, global::System.Convert.ToString);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IArtifactInternal)this).Description, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

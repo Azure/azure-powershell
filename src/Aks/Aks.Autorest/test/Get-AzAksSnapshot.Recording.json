@@ -1,17 +1,17 @@
 {
-  "Get-AzAksSnapshot+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/snapshots?api-version=2023-02-01+1": {
+  "Get-AzAksSnapshot+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/snapshots?api-version=2025-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/snapshots?api-version=2023-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/snapshots?api-version=2025-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "83085859-cdc3-41ad-acdd-50c26f705b57" ],
+        "x-ms-client-request-id": [ "7b348c8c-8cfa-4392-b86a-832a9b8f4c13" ],
         "CommandName": [ "Get-AzAksSnapshot" ],
         "FullCommandName": [ "Get-AzAksSnapshot_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,38 +22,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230330T101620Z:499057d4-f298-4260-b181-745ffc75969a" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-correlation-request-id": [ "499057d4-f298-4260-b181-745ffc75969a" ],
-        "x-ms-request-id": [ "d4659b62-af2b-44ab-a424-65999a77078d" ],
+        "x-ms-original-request-ids": [ "ea8c0dbf-f2e1-4e12-b3fd-835ddd925528" ],
+        "x-ms-correlation-request-id": [ "3603d3da-a131-4194-98a7-e3aa76f19ca6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "3603d3da-a131-4194-98a7-e3aa76f19ca6" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251104T091027Z:3603d3da-a131-4194-98a7-e3aa76f19ca6" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "nginx" ],
-        "Date": [ "Thu, 30 Mar 2023 10:16:20 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C34DFD776E4D443F86F603F696975447 Ref B: JKT201051406054 Ref C: 2025-11-04T09:10:26Z" ],
+        "Date": [ "Tue, 04 Nov 2025 09:10:27 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "3005" ],
-        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "3074" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"value\": [\n   {\n    \"name\": \"snapshot1\",\n    \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot1\",\n    \"type\": \"Microsoft.ContainerService/Snapshots\",\n    \"location\": \"eastus\",\n    \"systemData\": {\n     \"createdBy\": \"yanxu1@microsoft.com\",\n     \"createdByType\": \"User\",\n     \"createdAt\": \"2023-03-30T10:09:35.2240768Z\",\n     \"lastModifiedBy\": \"yanxu1@microsoft.com\",\n     \"lastModifiedByType\": \"User\",\n     \"lastModifiedAt\": \"2023-03-30T10:09:35.2240768Z\"\n    },\n    \"properties\": {\n     \"creationData\": {\n      \"sourceResourceId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default\"\n     },\n     \"snapshotType\": \"NodePool\",\n     \"kubernetesVersion\": \"1.24.9\",\n     \"nodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\",\n     \"osType\": \"Linux\",\n     \"osSku\": \"Ubuntu\",\n     \"vmSize\": \"Standard_D2_v2\"\n    }\n   },\n   {\n    \"name\": \"snapshot2\",\n    \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot2\",\n    \"type\": \"Microsoft.ContainerService/Snapshots\",\n    \"location\": \"eastus\",\n    \"systemData\": {\n     \"createdBy\": \"yanxu1@microsoft.com\",\n     \"createdByType\": \"User\",\n     \"createdAt\": \"2023-03-30T10:09:38.1460107Z\",\n     \"lastModifiedBy\": \"yanxu1@microsoft.com\",\n     \"lastModifiedByType\": \"User\",\n     \"lastModifiedAt\": \"2023-03-30T10:09:38.1460107Z\"\n    },\n    \"properties\": {\n     \"creationData\": {\n      \"sourceResourceId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default\"\n     },\n     \"snapshotType\": \"NodePool\",\n     \"kubernetesVersion\": \"1.24.9\",\n     \"nodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\",\n     \"osType\": \"Linux\",\n     \"osSku\": \"Ubuntu\",\n     \"vmSize\": \"Standard_D2_v2\"\n    }\n   },\n   {\n    \"name\": \"snapshot3\",\n    \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test2/providers/Microsoft.ContainerService/snapshots/snapshot3\",\n    \"type\": \"Microsoft.ContainerService/Snapshots\",\n    \"location\": \"eastus\",\n    \"systemData\": {\n     \"createdBy\": \"yanxu1@microsoft.com\",\n     \"createdByType\": \"User\",\n     \"createdAt\": \"2023-03-30T10:11:24.72674Z\",\n     \"lastModifiedBy\": \"yanxu1@microsoft.com\",\n     \"lastModifiedByType\": \"User\",\n     \"lastModifiedAt\": \"2023-03-30T10:11:24.72674Z\"\n    },\n    \"properties\": {\n     \"creationData\": {\n      \"sourceResourceId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default\"\n     },\n     \"snapshotType\": \"NodePool\",\n     \"kubernetesVersion\": \"1.24.9\",\n     \"nodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\",\n     \"osType\": \"Linux\",\n     \"osSku\": \"Ubuntu\",\n     \"vmSize\": \"Standard_D2_v2\"\n    }\n   }\n  ]\n }",
+      "Content": "{\"value\":[{\"name\":\"snapshot1\",\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots/snapshot1\",\"type\":\"Microsoft.ContainerService/Snapshots\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"yanxu1@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-04T09:09:49.5053664Z\",\"lastModifiedBy\":\"yanxu1@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-04T09:09:49.5053664Z\"},\"properties\":{\"creationData\":{\"sourceResourceId\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default\"},\"snapshotType\":\"NodePool\",\"kubernetesVersion\":\"1.32.7\",\"nodeImageVersion\":\"AKSUbuntu-2204containerd-202510.19.1\",\"osType\":\"Linux\",\"osSku\":\"Ubuntu\",\"vmSize\":\"standard_a2_v2\"}},{\"name\":\"snapshot2\",\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots/snapshot2\",\"type\":\"Microsoft.ContainerService/Snapshots\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"yanxu1@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-04T09:09:50.7930084Z\",\"lastModifiedBy\":\"yanxu1@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-04T09:09:50.7930084Z\"},\"properties\":{\"creationData\":{\"sourceResourceId\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default\"},\"snapshotType\":\"NodePool\",\"kubernetesVersion\":\"1.32.7\",\"nodeImageVersion\":\"AKSUbuntu-2204containerd-202510.19.1\",\"osType\":\"Linux\",\"osSku\":\"Ubuntu\",\"vmSize\":\"standard_a2_v2\"}},{\"name\":\"snapshot3\",\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots/snapshot3\",\"type\":\"Microsoft.ContainerService/Snapshots\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"yanxu1@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-04T09:09:51.3867593Z\",\"lastModifiedBy\":\"yanxu1@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-04T09:09:51.3867593Z\"},\"properties\":{\"creationData\":{\"sourceResourceId\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default\"},\"snapshotType\":\"NodePool\",\"kubernetesVersion\":\"1.32.7\",\"nodeImageVersion\":\"AKSUbuntu-2204containerd-202510.19.1\",\"osType\":\"Linux\",\"osSku\":\"Ubuntu\",\"vmSize\":\"standard_a2_v2\"}}],\"nextLink\":\"https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/snapshots?api-version=2025-08-01\u0026%24skiptoken=1c%2fLasMwEAXQfxE0q8jyQ6kfEIop3dWbOt15I8sTRxhLYkYxpcb%2fXhO66Sd0O9y5l7MyC1%2fh3diJWLWyt7q9fLasYrcQPFVCzMqqEWawIVLfd4RIu1nQvSeNxgfjLIkYcnmSzyWX5bXgstAlL%2fKs56nUqsgTmQ19Ijy6xQyAJBqj0ZG7hujV2aCMBWwBF6NBkFWebi7Qy1MqaTL%2b4iawZ5nL7KC84cv%2bv0%2be0zg98bjgcXL4m2LbkSmc63FEGFWA4VGwc%2bqPhh0f1EbhBLif1u5X27Gq%2b6fejm1s%2bwE%3d\"}",
       "isContentBase64": false
     }
   },
-  "Get-AzAksSnapshot+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots?api-version=2023-02-01+1": {
+  "Get-AzAksSnapshot+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/snapshots?api-version=2025-08-01\u0026%24skiptoken=1c%2fLasMwEAXQfxE0q8jyQ6kfEIop3dWbOt15I8sTRxhLYkYxpcb%2fXhO66Sd0O9y5l7MyC1%2fh3diJWLWyt7q9fLasYrcQPFVCzMqqEWawIVLfd4RIu1nQvSeNxgfjLIkYcnmSzyWX5bXgstAlL%2fKs56nUqsgTmQ19Ijy6xQyAJBqj0ZG7hujV2aCMBWwBF6NBkFWebi7Qy1MqaTL%2b4iawZ5nL7KC84cv%2bv0%2be0zg98bjgcXL4m2LbkSmc63FEGFWA4VGwc%2bqPhh0f1EbhBLif1u5X27Gq%2b6fejm1s%2bwE%3d+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots?api-version=2023-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/snapshots?api-version=2025-08-01\u0026%24skiptoken=1c%2fLasMwEAXQfxE0q8jyQ6kfEIop3dWbOt15I8sTRxhLYkYxpcb%2fXhO66Sd0O9y5l7MyC1%2fh3diJWLWyt7q9fLasYrcQPFVCzMqqEWawIVLfd4RIu1nQvSeNxgfjLIkYcnmSzyWX5bXgstAlL%2fKs56nUqsgTmQ19Ijy6xQyAJBqj0ZG7hujV2aCMBWwBF6NBkFWebi7Qy1MqaTL%2b4iawZ5nL7KC84cv%2bv0%2be0zg98bjgcXL4m2LbkSmc63FEGFWA4VGwc%2bqPhh0f1EbhBLif1u5X27Gq%2b6fejm1s%2bwE%3d",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
+        "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "1fb7acd7-edd4-4210-88c0-f336b3315e15" ],
+        "x-ms-client-request-id": [ "7b348c8c-8cfa-4392-b86a-832a9b8f4c13" ],
         "CommandName": [ "Get-AzAksSnapshot" ],
-        "FullCommandName": [ "Get-AzAksSnapshot_List1" ],
+        "FullCommandName": [ "Get-AzAksSnapshot_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -63,37 +66,40 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-correlation-request-id": [ "fa207895-b30b-4208-bc0e-b2e2b7ea5a42" ],
-        "x-ms-request-id": [ "0c52d236-eb88-48fc-862f-f09585fd3dc1" ],
+        "x-ms-original-request-ids": [ "c19e5705-f14c-4d3e-8a1c-d97a8ad081ea" ],
+        "x-ms-correlation-request-id": [ "ec53032d-4219-4538-8c57-cb9617201229" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "ec53032d-4219-4538-8c57-cb9617201229" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251104T091028Z:ec53032d-4219-4538-8c57-cb9617201229" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230330T101622Z:fa207895-b30b-4208-bc0e-b2e2b7ea5a42" ],
-        "Date": [ "Thu, 30 Mar 2023 10:16:21 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C046F825DE6F42FBB01A4331E552109C Ref B: JKT201051406054 Ref C: 2025-11-04T09:10:27Z" ],
+        "Date": [ "Tue, 04 Nov 2025 09:10:28 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2012" ],
-        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"value\": [\n   {\n    \"name\": \"snapshot1\",\n    \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot1\",\n    \"type\": \"Microsoft.ContainerService/Snapshots\",\n    \"location\": \"eastus\",\n    \"systemData\": {\n     \"createdBy\": \"yanxu1@microsoft.com\",\n     \"createdByType\": \"User\",\n     \"createdAt\": \"2023-03-30T10:09:35.2240768Z\",\n     \"lastModifiedBy\": \"yanxu1@microsoft.com\",\n     \"lastModifiedByType\": \"User\",\n     \"lastModifiedAt\": \"2023-03-30T10:09:35.2240768Z\"\n    },\n    \"properties\": {\n     \"creationData\": {\n      \"sourceResourceId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default\"\n     },\n     \"snapshotType\": \"NodePool\",\n     \"kubernetesVersion\": \"1.24.9\",\n     \"nodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\",\n     \"osType\": \"Linux\",\n     \"osSku\": \"Ubuntu\",\n     \"vmSize\": \"Standard_D2_v2\"\n    }\n   },\n   {\n    \"name\": \"snapshot2\",\n    \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot2\",\n    \"type\": \"Microsoft.ContainerService/Snapshots\",\n    \"location\": \"eastus\",\n    \"systemData\": {\n     \"createdBy\": \"yanxu1@microsoft.com\",\n     \"createdByType\": \"User\",\n     \"createdAt\": \"2023-03-30T10:09:38.1460107Z\",\n     \"lastModifiedBy\": \"yanxu1@microsoft.com\",\n     \"lastModifiedByType\": \"User\",\n     \"lastModifiedAt\": \"2023-03-30T10:09:38.1460107Z\"\n    },\n    \"properties\": {\n     \"creationData\": {\n      \"sourceResourceId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default\"\n     },\n     \"snapshotType\": \"NodePool\",\n     \"kubernetesVersion\": \"1.24.9\",\n     \"nodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\",\n     \"osType\": \"Linux\",\n     \"osSku\": \"Ubuntu\",\n     \"vmSize\": \"Standard_D2_v2\"\n    }\n   }\n  ]\n }",
+      "Content": "{\"value\":[]}",
       "isContentBase64": false
     }
   },
-  "Get-AzAksSnapshot+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot1?api-version=2023-02-01+1": {
+  "Get-AzAksSnapshot+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots?api-version=2025-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot1?api-version=2023-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots?api-version=2025-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "e09c4d92-7e97-4679-ace5-43209b3ecabd" ],
+        "x-ms-client-request-id": [ "e03f530e-f2db-477c-be29-a2ada4ed2cdc" ],
         "CommandName": [ "Get-AzAksSnapshot" ],
-        "FullCommandName": [ "Get-AzAksSnapshot_Get" ],
+        "FullCommandName": [ "Get-AzAksSnapshot_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -104,37 +110,84 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-correlation-request-id": [ "f927ee6c-9358-4906-85ef-645467c927e2" ],
-        "x-ms-request-id": [ "a6002970-c3a2-4c58-8208-17906d4766c0" ],
+        "x-ms-original-request-ids": [ "f32c860b-0394-4735-80ef-316b5ad7a770" ],
+        "x-ms-correlation-request-id": [ "4d13d632-7b8f-4e50-b68d-794905e042d0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "4d13d632-7b8f-4e50-b68d-794905e042d0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251104T091030Z:4d13d632-7b8f-4e50-b68d-794905e042d0" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230330T101622Z:f927ee6c-9358-4906-85ef-645467c927e2" ],
-        "Date": [ "Thu, 30 Mar 2023 10:16:22 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DF8FFC198CF84511AB4470CFCEE879E6 Ref B: JKT201051406054 Ref C: 2025-11-04T09:10:28Z" ],
+        "Date": [ "Tue, 04 Nov 2025 09:10:30 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "943" ],
-        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "3129" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"name\": \"snapshot1\",\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot1\",\n  \"type\": \"Microsoft.ContainerService/Snapshots\",\n  \"location\": \"eastus\",\n  \"systemData\": {\n   \"createdBy\": \"yanxu1@microsoft.com\",\n   \"createdByType\": \"User\",\n   \"createdAt\": \"2023-03-30T10:09:35.2240768Z\",\n   \"lastModifiedBy\": \"yanxu1@microsoft.com\",\n   \"lastModifiedByType\": \"User\",\n   \"lastModifiedAt\": \"2023-03-30T10:09:35.2240768Z\"\n  },\n  \"properties\": {\n   \"creationData\": {\n    \"sourceResourceId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default\"\n   },\n   \"snapshotType\": \"NodePool\",\n   \"kubernetesVersion\": \"1.24.9\",\n   \"nodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\",\n   \"osType\": \"Linux\",\n   \"osSku\": \"Ubuntu\",\n   \"vmSize\": \"Standard_D2_v2\"\n  }\n }",
+      "Content": "{\"value\":[{\"name\":\"snapshot1\",\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots/snapshot1\",\"type\":\"Microsoft.ContainerService/Snapshots\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"yanxu1@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-04T09:09:49.5053664Z\",\"lastModifiedBy\":\"yanxu1@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-04T09:09:49.5053664Z\"},\"properties\":{\"creationData\":{\"sourceResourceId\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default\"},\"snapshotType\":\"NodePool\",\"kubernetesVersion\":\"1.32.7\",\"nodeImageVersion\":\"AKSUbuntu-2204containerd-202510.19.1\",\"osType\":\"Linux\",\"osSku\":\"Ubuntu\",\"vmSize\":\"standard_a2_v2\"}},{\"name\":\"snapshot2\",\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots/snapshot2\",\"type\":\"Microsoft.ContainerService/Snapshots\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"yanxu1@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-04T09:09:50.7930084Z\",\"lastModifiedBy\":\"yanxu1@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-04T09:09:50.7930084Z\"},\"properties\":{\"creationData\":{\"sourceResourceId\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default\"},\"snapshotType\":\"NodePool\",\"kubernetesVersion\":\"1.32.7\",\"nodeImageVersion\":\"AKSUbuntu-2204containerd-202510.19.1\",\"osType\":\"Linux\",\"osSku\":\"Ubuntu\",\"vmSize\":\"standard_a2_v2\"}},{\"name\":\"snapshot3\",\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots/snapshot3\",\"type\":\"Microsoft.ContainerService/Snapshots\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"yanxu1@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-04T09:09:51.3867593Z\",\"lastModifiedBy\":\"yanxu1@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-04T09:09:51.3867593Z\"},\"properties\":{\"creationData\":{\"sourceResourceId\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default\"},\"snapshotType\":\"NodePool\",\"kubernetesVersion\":\"1.32.7\",\"nodeImageVersion\":\"AKSUbuntu-2204containerd-202510.19.1\",\"osType\":\"Linux\",\"osSku\":\"Ubuntu\",\"vmSize\":\"standard_a2_v2\"}}],\"nextLink\":\"https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots?api-version=2025-08-01\u0026%24skiptoken=3ZDBasMwEET%2fRdCcoshxlNoxhGBKyKH1JXZvhqDIG0cYS2JXNqXB%2f14Teukv9DrMDDPvwSx8hQ9jO2LZgx3zsvosWcbuIXjKhOiVVS30YMNKfQ8IK%2b16QcOVNBofjLMkIkjkVr7uuNzdUi5TveNpsrnyWGqVJmu5aa5rgUBuQA0ndIMnkb%2bXl%2bpYVpfzSXh0o2kASRRGoyN3C6s3Z4MyFrAEHI0GQVZ5urtAh5dYUmd85Tqwe5nIzUJ5w8c5P6%2fZx1G85VHKo%2fXir4tNS6awz9sWoVUBmmfB%2fDQ%2fF2z5pFAo7ABn6VH%2fgqhZVv8%2fFDWb2PQD\"}",
       "isContentBase64": false
     }
   },
-  "Get-AzAksSnapshot+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot1?api-version=2023-02-01+1": {
+  "Get-AzAksSnapshot+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots?api-version=2025-08-01\u0026%24skiptoken=3ZDBasMwEET%2fRdCcoshxlNoxhGBKyKH1JXZvhqDIG0cYS2JXNqXB%2f14Teukv9DrMDDPvwSx8hQ9jO2LZgx3zsvosWcbuIXjKhOiVVS30YMNKfQ8IK%2b16QcOVNBofjLMkIkjkVr7uuNzdUi5TveNpsrnyWGqVJmu5aa5rgUBuQA0ndIMnkb%2bXl%2bpYVpfzSXh0o2kASRRGoyN3C6s3Z4MyFrAEHI0GQVZ5urtAh5dYUmd85Tqwe5nIzUJ5w8c5P6%2fZx1G85VHKo%2fXir4tNS6awz9sWoVUBmmfB%2fDQ%2fF2z5pFAo7ABn6VH%2fgqhZVv8%2fFDWb2PQD+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot1?api-version=2023-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots?api-version=2025-08-01\u0026%24skiptoken=3ZDBasMwEET%2fRdCcoshxlNoxhGBKyKH1JXZvhqDIG0cYS2JXNqXB%2f14Teukv9DrMDDPvwSx8hQ9jO2LZgx3zsvosWcbuIXjKhOiVVS30YMNKfQ8IK%2b16QcOVNBofjLMkIkjkVr7uuNzdUi5TveNpsrnyWGqVJmu5aa5rgUBuQA0ndIMnkb%2bXl%2bpYVpfzSXh0o2kASRRGoyN3C6s3Z4MyFrAEHI0GQVZ5urtAh5dYUmd85Tqwe5nIzUJ5w8c5P6%2fZx1G85VHKo%2fXir4tNS6awz9sWoVUBmmfB%2fDQ%2fF2z5pFAo7ABn6VH%2fgqhZVv8%2fFDWb2PQD",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
+        "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "312e553c-98c2-4eca-b442-0739fe4e5090" ],
+        "x-ms-client-request-id": [ "e03f530e-f2db-477c-be29-a2ada4ed2cdc" ],
         "CommandName": [ "Get-AzAksSnapshot" ],
-        "FullCommandName": [ "Get-AzAksSnapshot_GetViaIdentity" ],
+        "FullCommandName": [ "Get-AzAksSnapshot_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "99a3e38b-19cc-4fc8-8a1e-0d47d8856bcc" ],
+        "x-ms-correlation-request-id": [ "57b8e374-6ebf-4e14-b534-c6da370f53d1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "57b8e374-6ebf-4e14-b534-c6da370f53d1" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251104T091031Z:57b8e374-6ebf-4e14-b534-c6da370f53d1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2B0138787FFE4690BCB3AF2C025F2C8B Ref B: JKT201051406054 Ref C: 2025-11-04T09:10:30Z" ],
+        "Date": [ "Tue, 04 Nov 2025 09:10:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksSnapshot+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots/snapshot1?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots/snapshot1?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "c4574b4a-457b-403c-a35a-1f6a93eafe72" ],
+        "CommandName": [ "Get-AzAksSnapshot" ],
+        "FullCommandName": [ "Get-AzAksSnapshot_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -145,21 +198,66 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-correlation-request-id": [ "3e4dc256-7d48-4acb-a81e-edcd13049044" ],
-        "x-ms-request-id": [ "4917d28b-0f40-4cbe-a8b0-99a2ec5c8cf9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-correlation-request-id": [ "71baf5b4-72a3-4fe5-830c-bf7c743d9bf9" ],
+        "x-ms-request-id": [ "45e7bf6c-5531-4ed8-a334-f258f25f251d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251104T091032Z:71baf5b4-72a3-4fe5-830c-bf7c743d9bf9" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230330T101623Z:3e4dc256-7d48-4acb-a81e-edcd13049044" ],
-        "Date": [ "Thu, 30 Mar 2023 10:16:23 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6E9C0541BDB9410EB8529B5CCBEAA525 Ref B: JKT201051406054 Ref C: 2025-11-04T09:10:31Z" ],
+        "Date": [ "Tue, 04 Nov 2025 09:10:32 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "943" ],
+        "Content-Length": [ "938" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"name\": \"snapshot1\",\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot1\",\n  \"type\": \"Microsoft.ContainerService/Snapshots\",\n  \"location\": \"eastus\",\n  \"systemData\": {\n   \"createdBy\": \"yanxu1@microsoft.com\",\n   \"createdByType\": \"User\",\n   \"createdAt\": \"2023-03-30T10:09:35.2240768Z\",\n   \"lastModifiedBy\": \"yanxu1@microsoft.com\",\n   \"lastModifiedByType\": \"User\",\n   \"lastModifiedAt\": \"2023-03-30T10:09:35.2240768Z\"\n  },\n  \"properties\": {\n   \"creationData\": {\n    \"sourceResourceId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default\"\n   },\n   \"snapshotType\": \"NodePool\",\n   \"kubernetesVersion\": \"1.24.9\",\n   \"nodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\",\n   \"osType\": \"Linux\",\n   \"osSku\": \"Ubuntu\",\n   \"vmSize\": \"Standard_D2_v2\"\n  }\n }",
+      "Content": "{\n \"name\": \"snapshot1\",\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots/snapshot1\",\n \"type\": \"Microsoft.ContainerService/Snapshots\",\n \"location\": \"eastus\",\n \"systemData\": {\n  \"createdBy\": \"yanxu1@microsoft.com\",\n  \"createdByType\": \"User\",\n  \"createdAt\": \"2025-11-04T09:09:49.5053664Z\",\n  \"lastModifiedBy\": \"yanxu1@microsoft.com\",\n  \"lastModifiedByType\": \"User\",\n  \"lastModifiedAt\": \"2025-11-04T09:09:49.5053664Z\"\n },\n \"properties\": {\n  \"creationData\": {\n   \"sourceResourceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default\"\n  },\n  \"snapshotType\": \"NodePool\",\n  \"kubernetesVersion\": \"1.32.7\",\n  \"nodeImageVersion\": \"AKSUbuntu-2204containerd-202510.19.1\",\n  \"osType\": \"Linux\",\n  \"osSku\": \"Ubuntu\",\n  \"vmSize\": \"standard_a2_v2\"\n }\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksSnapshot+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots/snapshot1?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots/snapshot1?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "14d6462b-6d14-4526-85e1-18e6916fb96e" ],
+        "CommandName": [ "Get-AzAksSnapshot" ],
+        "FullCommandName": [ "Get-AzAksSnapshot_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-correlation-request-id": [ "ee13d7c5-00e1-4d67-93f6-b5eaaf05d7e4" ],
+        "x-ms-request-id": [ "8136ccfb-5907-4698-9445-67a8414b9c67" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251104T091033Z:ee13d7c5-00e1-4d67-93f6-b5eaaf05d7e4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 760D95F3FC2D49DCADEB0E9AAD4EC1AB Ref B: JKT201051406054 Ref C: 2025-11-04T09:10:32Z" ],
+        "Date": [ "Tue, 04 Nov 2025 09:10:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "938" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"name\": \"snapshot1\",\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/snapshots/snapshot1\",\n \"type\": \"Microsoft.ContainerService/Snapshots\",\n \"location\": \"eastus\",\n \"systemData\": {\n  \"createdBy\": \"yanxu1@microsoft.com\",\n  \"createdByType\": \"User\",\n  \"createdAt\": \"2025-11-04T09:09:49.5053664Z\",\n  \"lastModifiedBy\": \"yanxu1@microsoft.com\",\n  \"lastModifiedByType\": \"User\",\n  \"lastModifiedAt\": \"2025-11-04T09:09:49.5053664Z\"\n },\n \"properties\": {\n  \"creationData\": {\n   \"sourceResourceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default\"\n  },\n  \"snapshotType\": \"NodePool\",\n  \"kubernetesVersion\": \"1.32.7\",\n  \"nodeImageVersion\": \"AKSUbuntu-2204containerd-202510.19.1\",\n  \"osType\": \"Linux\",\n  \"osSku\": \"Ubuntu\",\n  \"vmSize\": \"standard_a2_v2\"\n }\n}",
       "isContentBase64": false
     }
   }

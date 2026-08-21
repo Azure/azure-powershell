@@ -64,16 +64,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_containerGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("containerGroupName"), out var __jsonContainerGroupName) ? (string)__jsonContainerGroupName : (string)ContainerGroupName;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_containerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("containerName"), out var __jsonContainerName) ? (string)__jsonContainerName : (string)ContainerName;}
-            {_virtualNetworkName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("virtualNetworkName"), out var __jsonVirtualNetworkName) ? (string)__jsonVirtualNetworkName : (string)VirtualNetworkName;}
-            {_subnetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("subnetName"), out var __jsonSubnetName) ? (string)__jsonSubnetName : (string)SubnetName;}
-            {_containerGroupProfileName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("containerGroupProfileName"), out var __jsonContainerGroupProfileName) ? (string)__jsonContainerGroupProfileName : (string)ContainerGroupProfileName;}
-            {_revisionNumber = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("revisionNumber"), out var __jsonRevisionNumber) ? (string)__jsonRevisionNumber : (string)RevisionNumber;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_containerGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("containerGroupName"), out var __jsonContainerGroupName) ? (string)__jsonContainerGroupName : (string)_containerGroupName;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_containerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("containerName"), out var __jsonContainerName) ? (string)__jsonContainerName : (string)_containerName;}
+            {_virtualNetworkName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("virtualNetworkName"), out var __jsonVirtualNetworkName) ? (string)__jsonVirtualNetworkName : (string)_virtualNetworkName;}
+            {_subnetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("subnetName"), out var __jsonSubnetName) ? (string)__jsonSubnetName : (string)_subnetName;}
+            {_containerGroupProfileName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("containerGroupProfileName"), out var __jsonContainerGroupProfileName) ? (string)__jsonContainerGroupProfileName : (string)_containerGroupProfileName;}
+            {_revisionNumber = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("revisionNumber"), out var __jsonRevisionNumber) ? (string)__jsonRevisionNumber : (string)_revisionNumber;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

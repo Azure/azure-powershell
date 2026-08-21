@@ -113,6 +113,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IDurableTaskIdentityInternal)this).SchedulerName = (string) content.GetValueForProperty("SchedulerName",((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IDurableTaskIdentityInternal)this).SchedulerName, global::System.Convert.ToString);
             }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IDurableTaskIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IDurableTaskIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateLinkResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IDurableTaskIdentityInternal)this).PrivateLinkResourceName = (string) content.GetValueForProperty("PrivateLinkResourceName",((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IDurableTaskIdentityInternal)this).PrivateLinkResourceName, global::System.Convert.ToString);
+            }
             if (content.Contains("TaskHubName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IDurableTaskIdentityInternal)this).TaskHubName = (string) content.GetValueForProperty("TaskHubName",((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IDurableTaskIdentityInternal)this).TaskHubName, global::System.Convert.ToString);
@@ -149,6 +157,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models
             if (content.Contains("SchedulerName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IDurableTaskIdentityInternal)this).SchedulerName = (string) content.GetValueForProperty("SchedulerName",((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IDurableTaskIdentityInternal)this).SchedulerName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IDurableTaskIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IDurableTaskIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateLinkResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IDurableTaskIdentityInternal)this).PrivateLinkResourceName = (string) content.GetValueForProperty("PrivateLinkResourceName",((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IDurableTaskIdentityInternal)this).PrivateLinkResourceName, global::System.Convert.ToString);
             }
             if (content.Contains("TaskHubName"))
             {

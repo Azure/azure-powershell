@@ -55,6 +55,21 @@ function getPrimaryZoneLocation
     return "EastUS2"
 }
 
+function getLocationWus2
+{
+    return "westus2"
+}
+
+function getLocationEcy
+{
+    return "eastus2euap"
+}
+
+function getLocationCcy
+{
+    return "centraluseuap"
+}
+
 function getPrimaryExtendedLocation
 {
     return "microsoftrrdclab4"
@@ -153,6 +168,10 @@ function getCacheStorageAccountName{
 
 function getRecoveryCacheStorageAccountName{
      return "rlog"+ $seed;
+}
+
+function getPrimaryResourceGroupName{
+       return "priRG"+ $seed;
 }
 
 function getRecoveryResourceGroupName{
@@ -349,6 +368,31 @@ function createRecoveryNetworkId{
     return $virtualNetwork.Id
 }
 
+function createRecoveryNetworkIdForced{
+    param([string] $location , [switch] $force)
+
+	$NetworkName = getRecoveryNetworkName
+	$NetworkLocation = if ($location) { $location } else { getRecoveryLocation }
+	$ResourceGroupName = getRecoveryResourceGroupName
+	$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+    if ($force) {
+        $virtualNetwork = New-AzVirtualNetwork `
+            -ResourceGroupName $ResourceGroupName `
+            -Location $NetworkLocation `
+            -Name $NetworkName `
+            -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet `
+            -Force
+        return $virtualNetwork.Id
+    } else {
+        $virtualNetwork = New-AzVirtualNetwork `
+            -ResourceGroupName $ResourceGroupName `
+            -Location $NetworkLocation `
+            -Name $NetworkName `
+            -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet
+        return $virtualNetwork.Id
+    }
+}
+
 function createRecoveryNetworkIdForZone{
     param([string] $location , [string] $resourceGroup)
 
@@ -388,6 +432,19 @@ function createCacheStorageAccount{
 	$storageRes = getAzureVmName
     $storageAccount = New-AzStorageAccount `
           -ResourceGroupName $storageRes `
+          -Location $cacheLocation `
+          -Name $StorageAccountName `
+          -Type 'Standard_LRS'
+    return $storageAccount.Id
+}
+
+function createCacheStorageAccountWithPrimaryRg{
+    param([string] $location , [string] $primaryRg)
+
+	$StorageAccountName = getCacheStorageAccountName
+	$cacheLocation = if ($location) { $location } else { getPrimaryLocation }
+    $storageAccount = New-AzStorageAccount `
+          -ResourceGroupName $primaryRg `
           -Location $cacheLocation `
           -Name $StorageAccountName `
           -Type 'Standard_LRS'

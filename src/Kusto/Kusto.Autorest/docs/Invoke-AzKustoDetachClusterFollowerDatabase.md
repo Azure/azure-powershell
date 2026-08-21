@@ -26,6 +26,20 @@ Invoke-AzKustoDetachClusterFollowerDatabase -InputObject <IKustoIdentity>
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DetachViaJsonFilePath
+```
+Invoke-AzKustoDetachClusterFollowerDatabase -ClusterName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DetachViaJsonString
+```
+Invoke-AzKustoDetachClusterFollowerDatabase -ClusterName <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Detaches all followers of a database owned by this cluster.
 
@@ -60,7 +74,7 @@ Resource name of the attached database configuration in the follower cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DetachExpanded, DetachViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -75,7 +89,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: DetachExpanded
+Parameter Sets: DetachExpanded, DetachViaJsonFilePath, DetachViaJsonString
 Aliases:
 
 Required: True
@@ -90,7 +104,7 @@ Resource id of the cluster that follows a database owned by this cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DetachExpanded, DetachViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -118,7 +132,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -129,6 +142,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Detach operation
+
+```yaml
+Type: System.String
+Parameter Sets: DetachViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Detach operation
+
+```yaml
+Type: System.String
+Parameter Sets: DetachViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -168,7 +211,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: DetachExpanded
+Parameter Sets: DetachExpanded, DetachViaJsonFilePath, DetachViaJsonString
 Aliases:
 
 Required: True
@@ -183,7 +226,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: DetachExpanded
+Parameter Sets: DetachExpanded, DetachViaJsonFilePath, DetachViaJsonString
 Aliases:
 
 Required: False

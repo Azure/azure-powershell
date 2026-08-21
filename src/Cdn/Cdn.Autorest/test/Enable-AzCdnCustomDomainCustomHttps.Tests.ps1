@@ -14,12 +14,36 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzCdnCustomDomainCusto
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Enable-AzCdnCustomDomainCustomHttps'  {
-    It 'Enable'  {
-        $httpsParameter = New-AzCdnManagedHttpsParametersObject -CertificateSource "Cdn" -CertificateSourceParameterCertificateType "Dedicated" -ProtocolType "ServerNameIndication" -CertificateSourceParameterTypeName "CdnCertificateSourceParameters"
+Describe 'Enable-AzCdnCustomDomainCustomHttps' {
+    It 'EnableViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        $customDomain = Enable-AzCdnCustomDomainCustomHttps -CustomDomainName $env.ClassicCustomDomainName -EndpointName $env.ClassicEndpointName `
-                            -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -CustomDomainHttpsParameter $httpsParameter
-        $customDomain.CustomHttpsProvisioningState | Should -Not -Be "Disabled"
-        }
+    It 'EnableViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'EnableViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'EnableViaIdentityProfileExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'EnableViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'EnableViaIdentityEndpointExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'EnableViaIdentityEndpoint' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'Enable' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 }

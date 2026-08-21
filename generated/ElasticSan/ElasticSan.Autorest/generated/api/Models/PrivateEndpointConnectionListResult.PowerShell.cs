@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PowerShell;
 
-    /// <summary>List of private endpoint connections associated with SAN</summary>
+    /// <summary>The response of a PrivateEndpointConnection list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(PrivateEndpointConnectionListResultTypeConverter))]
     public partial class PrivateEndpointConnectionListResult
     {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             return ToJsonString();
         }
     }
-    /// List of private endpoint connections associated with SAN
+    /// The response of a PrivateEndpointConnection list operation.
     [System.ComponentModel.TypeConverter(typeof(PrivateEndpointConnectionListResultTypeConverter))]
     public partial interface IPrivateEndpointConnectionListResult
 

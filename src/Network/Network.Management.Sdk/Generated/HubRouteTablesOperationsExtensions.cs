@@ -13,147 +13,13 @@ namespace Microsoft.Azure.Management.Network
     public static partial class HubRouteTablesOperationsExtensions
     {
         /// <summary>
-        /// Creates a RouteTable resource if it doesn&#39;t exist else updates the existing
-        /// RouteTable.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='routeTableName'>
-        /// The name of the RouteTable.
-        /// </param>
-        public static HubRouteTable CreateOrUpdate(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, HubRouteTable routeTableParameters)
-        {
-                return ((IHubRouteTablesOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualHubName, routeTableName, routeTableParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates a RouteTable resource if it doesn&#39;t exist else updates the existing
-        /// RouteTable.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='routeTableName'>
-        /// The name of the RouteTable.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<HubRouteTable> CreateOrUpdateAsync(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, HubRouteTable routeTableParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, routeTableParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Retrieves the details of a RouteTable.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='routeTableName'>
-        /// The name of the RouteTable.
-        /// </param>
-        public static HubRouteTable Get(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName)
-        {
-                return ((IHubRouteTablesOperations)operations).GetAsync(resourceGroupName, virtualHubName, routeTableName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the details of a RouteTable.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='routeTableName'>
-        /// The name of the RouteTable.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<HubRouteTable> GetAsync(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes a RouteTable.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteTable.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='routeTableName'>
-        /// The name of the RouteTable.
-        /// </param>
-        public static void Delete(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName)
-        {
-                ((IHubRouteTablesOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, routeTableName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a RouteTable.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteTable.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='routeTableName'>
-        /// The name of the RouteTable.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Retrieves the details of all RouteTables.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -170,7 +36,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -186,6 +52,53 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Retrieves the details of a RouteTable.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='routeTableName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static HubRouteTable Get(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName)
+        {
+                return ((IHubRouteTablesOperations)operations).GetAsync(resourceGroupName, virtualHubName, routeTableName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of a RouteTable.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='routeTableName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<HubRouteTable> GetAsync(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates a RouteTable resource if it doesn&#39;t exist else updates the existing
         /// RouteTable.
         /// </summary>
@@ -193,13 +106,107 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeTableName'>
-        /// The name of the RouteTable.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static HubRouteTable CreateOrUpdate(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, HubRouteTable routeTableParameters)
+        {
+                return ((IHubRouteTablesOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualHubName, routeTableName, routeTableParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates a RouteTable resource if it doesn&#39;t exist else updates the existing
+        /// RouteTable.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='routeTableName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<HubRouteTable> CreateOrUpdateAsync(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, HubRouteTable routeTableParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, routeTableParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes a RouteTable.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='routeTableName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static void Delete(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName)
+        {
+                ((IHubRouteTablesOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, routeTableName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a RouteTable.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='routeTableName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Creates a RouteTable resource if it doesn&#39;t exist else updates the existing
+        /// RouteTable.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='routeTableName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static HubRouteTable BeginCreateOrUpdate(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, HubRouteTable routeTableParameters)
         {
@@ -214,13 +221,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeTableName'>
-        /// The name of the RouteTable.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -239,13 +247,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteTable.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeTableName'>
-        /// The name of the RouteTable.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static void BeginDelete(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName)
         {
@@ -259,13 +268,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteTable.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeTableName'>
-        /// The name of the RouteTable.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

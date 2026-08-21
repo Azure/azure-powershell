@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional basis. Specified in bytes.")]
+            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 50 GiB. Upper limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional basis. Specified in bytes.")]
         [ValidateNotNullOrEmpty]
         public long UsageThreshold { get; set; }
 
@@ -298,6 +298,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Specifies whether the volume operates in Breakthrough Mode. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string BreakthroughMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A list of Availability Zones")]
         public string[] Zone { get; set; }
 
@@ -342,6 +348,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The desired state of the Advanced Ransomware Protection (ARP) feature. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string DesiredRansomwareProtectionState { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -373,7 +385,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             {
                 ResourceGroupName = PoolObject.ResourceGroupName;
                 Location = PoolObject.Location;
-                var NameParts = PoolObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(PoolObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }
@@ -385,13 +397,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             //else
             //{
                 PSNetAppFilesVolumeDataProtection dataProtection = null;
-                if (ReplicationObject != null || !string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null)
+                if (ReplicationObject != null || !string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null || !string.IsNullOrWhiteSpace(DesiredRansomwareProtectionState))
                 {
                     dataProtection = new PSNetAppFilesVolumeDataProtection
                     {
                         Replication = ReplicationObject,
-                        Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
-                        Backup = Backup
+                        Snapshot = !string.IsNullOrWhiteSpace(SnapshotPolicyId) ? new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId } : null,
+                        Backup = Backup,
+                        RansomwareProtection = !string.IsNullOrWhiteSpace(DesiredRansomwareProtectionState) ? new PSNetAppFilesVolumeRansomwareProperties { DesiredRansomwareProtectionState = DesiredRansomwareProtectionState } : null
                     };
                 }
 
@@ -429,6 +442,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                     VolumeSpecName = VolumeSpecName,
                     PlacementRules = PlacementRule?.ToPlacementKeyValuePairs(),
                     EnableSubvolumes = EnableSubvolume.IsPresent ? EnableSubvolumes.Enabled : EnableSubvolumes.Disabled,
+                    BreakthroughMode = BreakthroughMode,
                     EncryptionKeySource = EncryptionKeySource,
                     KeyVaultPrivateEndpointResourceId = KeyVaultPrivateEndpointResourceId,
                     DeleteBaseSnapshot = DeleteBaseSnapshot,
@@ -512,6 +526,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 SmbNonBrowsable = SmbNonBrowsable,
                 CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy
             };
+
+            var breakthroughModeProperty = volumeBody.GetType().GetProperty("BreakthroughMode");
+            if (breakthroughModeProperty != null)
+            {
+                breakthroughModeProperty.SetValue(volumeBody, BreakthroughMode);
+            }
+
             if (IsLargeVolume.IsPresent)
             {
                 volumeBody.IsLargeVolume = IsLargeVolume;

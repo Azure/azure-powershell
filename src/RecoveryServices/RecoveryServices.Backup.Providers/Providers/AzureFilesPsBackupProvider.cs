@@ -20,12 +20,14 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using BackupManagementType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
@@ -167,7 +169,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
         {
-            throw new Exception(Resources.SoftdeleteNotImplementedException);
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            AzureFileShareItem item = (AzureFileShareItem)ProviderData[ItemParams.Item];
+
+            // Undo (rehydrate) is only valid for an item currently in the soft-deleted state.
+            // Guard client-side so a friendly error is thrown instead of a cryptic service rejection.
+            if (item.DeleteState != ItemDeleteState.ToBeDeleted)
+            {
+                throw new ArgumentException(string.Format(Resources.AzureFileShareUndeleteItemNotInSoftDeletedState, item.FriendlyName));
+            }
+
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
+
+            AzureFileshareProtectedItem properties = new AzureFileshareProtectedItem();
+            properties.PolicyId = null;
+            properties.ProtectionState = ProtectionState.ProtectionStopped;
+            properties.SourceResourceId = item.SourceResourceId;
+            properties.IsRehydrate = true;
+
+            ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
+            {
+                Properties = properties,
+            };
+
+            return ServiceClientAdapter.CreateOrUpdateProtectedItem(
+                containerUri,
+                protectedItemUri,
+                serviceClientRequest,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
         }
 
         public List<ContainerBase> ListProtectionContainers()
@@ -229,9 +262,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (string[])ProviderData[RestoreFSBackupItemParams.MultipleSourceFilePath] : null;
             string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
+            bool useSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
+            string secondaryRegion = useSecondaryRegion ? (string)ProviderData[CRRParams.SecondaryRegion] : null;
 
             //validate file recovery request
             ValidateFileRestoreRequest(sourceFilePath, sourceFileType, multipleSourceFilePaths);
+
+            // CRR supports only Full Share Restore for AFS; item-level restore is not supported cross-region
+            if (useSecondaryRegion && (sourceFilePath != null || multipleSourceFilePaths != null))
+            {
+                throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreItemLevelNotSupported);
+            }
+
+            // CRR supports only Alternate Location Restore for AFS; both target storage account and target file share are required
+            if (useSecondaryRegion && (string.IsNullOrEmpty(targetStorageAccountName) || targetFileShareName == null))
+            {
+                throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreAlrOnly);
+            }
 
             //validate alternate location restore request
             ValidateLocationRestoreRequest(targetFileShareName, targetStorageAccountName, targetFolder);
@@ -244,7 +291,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(recoveryPoint.ContainerName.Split(';')[2]);
             GenericResource targetStorageAccountResource = null;
             string targetStorageAccountLocation = null;
-            if (targetStorageAccountName != null)
+            if (!string.IsNullOrEmpty(targetStorageAccountName))
             {                
                 targetStorageAccountResource = ServiceClientAdapter.GetStorageAccountResource(targetStorageAccountName);
                 
@@ -343,6 +390,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             // check for MUA
             bool isMUAProtected = isMUAOperation;
+
+            // CRR path: serialize restoreRequest to CRR model and trigger cross-region restore
+            if (useSecondaryRegion)
+            {
+                var restoreRequestSerialized = JsonConvert.SerializeObject(restoreRequest);
+                CrrModel.AzureFileShareRestoreRequest restoreRequestCrr =
+                    JsonConvert.DeserializeObject<CrrModel.AzureFileShareRestoreRequest>(restoreRequestSerialized);
+
+                // The two model types are bridged via JSON, so guard against a silently-dropped payload
+                // and confirm the key fields survived the round-trip before triggering the restore.
+                if (restoreRequestCrr == null ||
+                    restoreRequestCrr.TargetDetails == null ||
+                    string.IsNullOrEmpty(restoreRequestCrr.SourceResourceId))
+                {
+                    throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreRequestBuildFailed);
+                }
+
+                CrrModel.CrrAccessToken accessToken = ServiceClientAdapter.GetCRRAccessToken(
+                    recoveryPoint, secondaryRegion,
+                    vaultName: vaultName, resourceGroupName: resourceGroupName,
+                    backupManagementType: ServiceClientModel.BackupManagementType.AzureStorage);
+
+                CrrModel.CrossRegionRestoreRequest crrRestoreRequest = new CrrModel.CrossRegionRestoreRequest();
+                crrRestoreRequest.CrossRegionRestoreAccessDetails = accessToken;
+                crrRestoreRequest.RestoreRequest = restoreRequestCrr;
+
+                return ServiceClientAdapter.RestoreDiskSecondryRegion(
+                    recoveryPoint,
+                    crrRestoreRequest,
+                    targetStorageAccountLocation,
+                    secondaryRegion: secondaryRegion);
+            }
 
             var response = ServiceClientAdapter.RestoreDisk(
                 recoveryPoint,
@@ -927,46 +1006,83 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (ItemProtectionState)ProviderData[ItemParams.ProtectionState];
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
+            ItemDeleteState deleteState =
+                (ItemDeleteState)ProviderData[ItemParams.DeleteState];
             PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
             string friendlyName = (string)ProviderData[ItemParams.FriendlyName];
+            bool useSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
 
             if( itemName != null && isFriendlyName(itemName) )
             {
                 Logger.Instance.WriteWarning(Resources.FriendlyNamePassedWarning);
             }
 
-            // 1. Filter by container
-            List<ProtectedItemResource> protectedItems = AzureWorkloadProviderHelper.ListProtectedItemsByContainer(
-                vaultName,
-                resourceGroupName,
-                container,
-                policy,
-                ServiceClientModel.BackupManagementType.AzureStorage,
-                DataSourceType.AzureFileShare);
+            List<ItemBase> itemModels = null;
 
-            List<ProtectedItemResource> protectedItemGetResponses =
-                new List<ProtectedItemResource>();
+            if (useSecondaryRegion)
+            {
+                // 1. Filter by container from secondary region
+                List<CrrModel.ProtectedItemResource> protectedItemsCrr = AzureWorkloadProviderHelper.ListProtectedItemsByContainerCrr(
+                    vaultName,
+                    resourceGroupName,
+                    container,
+                    policy,
+                    ServiceClientModel.BackupManagementType.AzureStorage,
+                    DataSourceType.AzureFileShare);
 
-            // 2. Filter by item name
-            List<ItemBase> itemModels = AzureWorkloadProviderHelper.ListProtectedItemsByItemName(
-                protectedItems,
-                itemName,
-                vaultName,
-                resourceGroupName,
-                (itemModel, protectedItemGetResponse) =>
-                {
-                    AzureFileShareItemExtendedInfo extendedInfo = new AzureFileShareItemExtendedInfo();
-                    var serviceClientExtendedInfo = ((AzureFileshareProtectedItem)protectedItemGetResponse.Properties).ExtendedInfo;
-                    if (serviceClientExtendedInfo.OldestRecoveryPoint.HasValue)
+                // 2. Filter by item name from secondary region
+                itemModels = AzureWorkloadProviderHelper.ListProtectedItemsByItemNameCrr(
+                    protectedItemsCrr,
+                    itemName,
+                    vaultName,
+                    resourceGroupName,
+                    (itemModel, protectedItemGetResponse) =>
                     {
-                        extendedInfo.OldestRecoveryPoint = serviceClientExtendedInfo.OldestRecoveryPoint;
-                    }
-                    extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyState.ToString();
-                    extendedInfo.RecoveryPointCount =
-                        (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
-                            serviceClientExtendedInfo.RecoveryPointCount : 0);
-                    ((AzureFileShareItem)itemModel).ExtendedInfo = extendedInfo;
-                }, friendlyName);
+                        AzureFileShareItemExtendedInfo extendedInfo = new AzureFileShareItemExtendedInfo();
+                        var serviceClientExtendedInfo = ((AzureFileshareProtectedItem)protectedItemGetResponse.Properties).ExtendedInfo;
+                        if (serviceClientExtendedInfo.OldestRecoveryPoint.HasValue)
+                        {
+                            extendedInfo.OldestRecoveryPoint = serviceClientExtendedInfo.OldestRecoveryPoint;
+                        }
+                        extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyState.ToString();
+                        extendedInfo.RecoveryPointCount =
+                            (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
+                                serviceClientExtendedInfo.RecoveryPointCount : 0);
+                        ((AzureFileShareItem)itemModel).ExtendedInfo = extendedInfo;
+                    }, friendlyName);
+            }
+            else
+            {
+                // 1. Filter by container
+                List<ProtectedItemResource> protectedItems = AzureWorkloadProviderHelper.ListProtectedItemsByContainer(
+                    vaultName,
+                    resourceGroupName,
+                    container,
+                    policy,
+                    ServiceClientModel.BackupManagementType.AzureStorage,
+                    DataSourceType.AzureFileShare);
+
+                // 2. Filter by item name
+                itemModels = AzureWorkloadProviderHelper.ListProtectedItemsByItemName(
+                    protectedItems,
+                    itemName,
+                    vaultName,
+                    resourceGroupName,
+                    (itemModel, protectedItemGetResponse) =>
+                    {
+                        AzureFileShareItemExtendedInfo extendedInfo = new AzureFileShareItemExtendedInfo();
+                        var serviceClientExtendedInfo = ((AzureFileshareProtectedItem)protectedItemGetResponse.Properties).ExtendedInfo;
+                        if (serviceClientExtendedInfo.OldestRecoveryPoint.HasValue)
+                        {
+                            extendedInfo.OldestRecoveryPoint = serviceClientExtendedInfo.OldestRecoveryPoint;
+                        }
+                        extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyState.ToString();
+                        extendedInfo.RecoveryPointCount =
+                            (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
+                                serviceClientExtendedInfo.RecoveryPointCount : 0);
+                        ((AzureFileShareItem)itemModel).ExtendedInfo = extendedInfo;
+                    }, friendlyName);
+            }
 
             // 3. Filter by item's Protection Status
             if (protectionStatus != 0)
@@ -992,6 +1108,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 itemModels = itemModels.Where(itemModel =>
                 {
                     return itemModel.WorkloadType == workloadType;
+                }).ToList();
+            }
+
+            // 6. Filter by Delete State
+            if (deleteState != 0)
+            {
+                itemModels = itemModels.Where(itemModel =>
+                {
+                    return ((AzureFileShareItem)itemModel).DeleteState == deleteState;
                 }).ToList();
             }
 

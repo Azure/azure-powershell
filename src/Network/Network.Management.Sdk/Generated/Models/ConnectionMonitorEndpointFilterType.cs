@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ConnectionMonitorEndpointFilterType
     {
+        /// <summary>
+        /// Include
+        /// </summary>
         public const string Include = "Include";
     }
 }

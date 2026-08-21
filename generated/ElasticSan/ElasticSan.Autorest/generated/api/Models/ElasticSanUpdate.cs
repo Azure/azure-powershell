@@ -14,13 +14,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdateInternal
     {
 
+        /// <summary>Enable or Disable scale up setting on Elastic San Appliance.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public string AutoScalePolicyEnforcement { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).AutoScalePolicyEnforcement; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).AutoScalePolicyEnforcement = value ?? null; }
+
         /// <summary>Base size of the Elastic San appliance in TiB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
         public long? BaseSizeTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).BaseSizeTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).BaseSizeTiB = value ?? default(long); }
 
+        /// <summary>Maximum scale up size on Elastic San appliance in TiB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public long? CapacityUnitScaleUpLimitTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).CapacityUnitScaleUpLimitTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).CapacityUnitScaleUpLimitTiB = value ?? default(long); }
+
         /// <summary>Extended size of the Elastic San appliance in TiB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
         public long? ExtendedCapacitySizeTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).ExtendedCapacitySizeTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).ExtendedCapacitySizeTiB = value ?? default(long); }
+
+        /// <summary>Unit to increase Capacity Unit on Elastic San appliance in TiB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public long? IncreaseCapacityUnitByTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).IncreaseCapacityUnitByTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).IncreaseCapacityUnitByTiB = value ?? default(long); }
+
+        /// <summary>Internal Acessors for AutoScaleProperty</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IAutoScaleProperties Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdateInternal.AutoScaleProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).AutoScaleProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).AutoScaleProperty = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for AutoScalePropertyScaleUpProperty</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IScaleUpProperties Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdateInternal.AutoScalePropertyScaleUpProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).AutoScalePropertyScaleUpProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).AutoScalePropertyScaleUpProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ElasticSanUpdateProperties()); set { {_property = value;} } }
@@ -46,6 +64,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdateTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ElasticSanUpdateTags()); set => this._tag = value; }
 
+        /// <summary>Unused size on Elastic San appliance in TiB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public long? UnusedSizeTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).UnusedSizeTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)Property).UnusedSizeTiB = value ?? default(long); }
+
         /// <summary>Creates an new <see cref="ElasticSanUpdate" /> instance.</summary>
         public ElasticSanUpdate()
         {
@@ -56,6 +78,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
     public partial interface IElasticSanUpdate :
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IJsonSerializable
     {
+        /// <summary>Enable or Disable scale up setting on Elastic San Appliance.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Enable or Disable scale up setting on Elastic San Appliance.",
+        SerializedName = @"autoScalePolicyEnforcement",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("None", "Enabled", "Disabled")]
+        string AutoScalePolicyEnforcement { get; set; }
         /// <summary>Base size of the Elastic San appliance in TiB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -67,6 +101,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         SerializedName = @"baseSizeTiB",
         PossibleTypes = new [] { typeof(long) })]
         long? BaseSizeTiB { get; set; }
+        /// <summary>Maximum scale up size on Elastic San appliance in TiB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Maximum scale up size on Elastic San appliance in TiB.",
+        SerializedName = @"capacityUnitScaleUpLimitTiB",
+        PossibleTypes = new [] { typeof(long) })]
+        long? CapacityUnitScaleUpLimitTiB { get; set; }
         /// <summary>Extended size of the Elastic San appliance in TiB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -78,6 +123,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         SerializedName = @"extendedCapacitySizeTiB",
         PossibleTypes = new [] { typeof(long) })]
         long? ExtendedCapacitySizeTiB { get; set; }
+        /// <summary>Unit to increase Capacity Unit on Elastic San appliance in TiB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Unit to increase Capacity Unit on Elastic San appliance in TiB.",
+        SerializedName = @"increaseCapacityUnitByTiB",
+        PossibleTypes = new [] { typeof(long) })]
+        long? IncreaseCapacityUnitByTiB { get; set; }
         /// <summary>
         /// Allow or disallow public network access to ElasticSan Account. Value is optional but if passed in, must be 'Enabled' or
         /// 'Disabled'.
@@ -104,16 +160,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdateTags) })]
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdateTags Tag { get; set; }
+        /// <summary>Unused size on Elastic San appliance in TiB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Unused size on Elastic San appliance in TiB.",
+        SerializedName = @"unusedSizeTiB",
+        PossibleTypes = new [] { typeof(long) })]
+        long? UnusedSizeTiB { get; set; }
 
     }
     /// Response for ElasticSan update request.
     internal partial interface IElasticSanUpdateInternal
 
     {
+        /// <summary>Enable or Disable scale up setting on Elastic San Appliance.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("None", "Enabled", "Disabled")]
+        string AutoScalePolicyEnforcement { get; set; }
+        /// <summary>Auto Scale Properties for Elastic San Appliance.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IAutoScaleProperties AutoScaleProperty { get; set; }
+        /// <summary>Scale up settings on Elastic San Appliance.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IScaleUpProperties AutoScalePropertyScaleUpProperty { get; set; }
         /// <summary>Base size of the Elastic San appliance in TiB.</summary>
         long? BaseSizeTiB { get; set; }
+        /// <summary>Maximum scale up size on Elastic San appliance in TiB.</summary>
+        long? CapacityUnitScaleUpLimitTiB { get; set; }
         /// <summary>Extended size of the Elastic San appliance in TiB.</summary>
         long? ExtendedCapacitySizeTiB { get; set; }
+        /// <summary>Unit to increase Capacity Unit on Elastic San appliance in TiB.</summary>
+        long? IncreaseCapacityUnitByTiB { get; set; }
         /// <summary>Properties of ElasticSan.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdateProperties Property { get; set; }
         /// <summary>
@@ -124,6 +202,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         string PublicNetworkAccess { get; set; }
         /// <summary>Update tags</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdateTags Tag { get; set; }
+        /// <summary>Unused size on Elastic San appliance in TiB.</summary>
+        long? UnusedSizeTiB { get; set; }
 
     }
 }

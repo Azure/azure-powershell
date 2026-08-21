@@ -47,17 +47,17 @@ namespace Microsoft.Azure.Management.Storage.Models
 
 
         /// <summary>
-        /// Gets usage of provisioned storage, IOPS, bandwidth and number of file
-        /// shares across all live shares or soft-deleted shares in the account.
+        /// Gets or sets usage of provisioned storage, IOPS, bandwidth and number of
+        /// file shares across all live shares or soft-deleted shares in the account.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "liveShares")]
-        public AccountUsageElements LiveShares {get; private set; }
+        public AccountUsageElements LiveShares {get; set; }
 
         /// <summary>
-        /// Gets usage of provisioned storage, IOPS, bandwidth and number of file
-        /// shares across all live shares or soft-deleted shares in the account.
+        /// Gets or sets usage of provisioned storage, IOPS, bandwidth and number of
+        /// file shares across all live shares or soft-deleted shares in the account.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "softDeletedShares")]
-        public AccountUsageElements SoftDeletedShares {get; private set; }
+        public AccountUsageElements SoftDeletedShares {get; set; }
     }
 }

@@ -245,6 +245,31 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
         }
 
+        /// <summary>
+        /// Determine whether the resolved file path stays within the destination directory,
+        /// preventing path traversal (e.g. a source name containing "../").
+        /// </summary>
+        public static bool IsFilePathWithinDirectory(string filePath, string destinationDirectory)
+        {
+            if (string.IsNullOrEmpty(filePath) || string.IsNullOrEmpty(destinationDirectory))
+            {
+                return false;
+            }
+
+            string fullDestinationDirectory = Path.GetFullPath(destinationDirectory);
+
+            // Append a separator so a sibling like "C:\DownloadsEvil" doesn't match "C:\Downloads".
+            if (!fullDestinationDirectory.EndsWith(Path.DirectorySeparatorChar.ToString(), StringComparison.Ordinal)
+                && !fullDestinationDirectory.EndsWith(Path.AltDirectorySeparatorChar.ToString(), StringComparison.Ordinal))
+            {
+                fullDestinationDirectory += Path.DirectorySeparatorChar;
+            }
+
+            string fullFilePath = Path.GetFullPath(filePath);
+
+            return fullFilePath.StartsWith(fullDestinationDirectory, StringComparison.Ordinal);
+        }
+
         public static bool IsValidStoredAccessPolicyName(string policyName)
         {
             if (string.IsNullOrEmpty(policyName) || policyName.Length > MaxStoredAccessPolicyNameLength)

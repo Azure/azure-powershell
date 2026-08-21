@@ -189,6 +189,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Endpoint = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpoints) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Endpoint, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.EndpointsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("VcfLicense"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicense = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense) content.GetValueForProperty("VcfLicense",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicense, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VcfLicenseTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SkuName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuName, global::System.Convert.ToString);
@@ -509,6 +513,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("Endpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Endpoint = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpoints) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Endpoint, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.EndpointsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("VcfLicense"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicense = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense) content.GetValueForProperty("VcfLicense",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicense, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VcfLicenseTypeConverter.ConvertFrom);
             }
             if (content.Contains("SkuName"))
             {

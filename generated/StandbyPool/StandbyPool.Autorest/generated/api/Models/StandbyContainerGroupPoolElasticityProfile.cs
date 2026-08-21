@@ -13,12 +13,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileInternal
     {
 
+        /// <summary>Backing field for <see cref="DynamicSizing" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IDynamicSizing _dynamicSizing;
+
+        /// <summary>Specifies the dynamic sizing configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IDynamicSizing DynamicSizing { get => (this._dynamicSizing = this._dynamicSizing ?? new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.DynamicSizing()); set => this._dynamicSizing = value; }
+
+        /// <summary>Indicates whether dynamic sizing is enabled for the standby pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Inlined)]
+        public bool? DynamicSizingEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IDynamicSizingInternal)DynamicSizing).Enabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IDynamicSizingInternal)DynamicSizing).Enabled = value ?? default(bool); }
+
         /// <summary>Backing field for <see cref="MaxReadyCapacity" /> property.</summary>
         private long _maxReadyCapacity;
 
         /// <summary>Specifies maximum number of standby container groups in the standby pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Owned)]
         public long MaxReadyCapacity { get => this._maxReadyCapacity; set => this._maxReadyCapacity = value; }
+
+        /// <summary>Internal Acessors for DynamicSizing</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IDynamicSizing Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileInternal.DynamicSizing { get => (this._dynamicSizing = this._dynamicSizing ?? new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.DynamicSizing()); set { {_dynamicSizing = value;} } }
 
         /// <summary>Backing field for <see cref="RefillPolicy" /> property.</summary>
         private string _refillPolicy;
@@ -39,6 +53,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
     public partial interface IStandbyContainerGroupPoolElasticityProfile :
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IJsonSerializable
     {
+        /// <summary>Indicates whether dynamic sizing is enabled for the standby pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether dynamic sizing is enabled for the standby pool.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? DynamicSizingEnabled { get; set; }
         /// <summary>Specifies maximum number of standby container groups in the standby pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Info(
         Required = true,
@@ -68,6 +93,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
     internal partial interface IStandbyContainerGroupPoolElasticityProfileInternal
 
     {
+        /// <summary>Specifies the dynamic sizing configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IDynamicSizing DynamicSizing { get; set; }
+        /// <summary>Indicates whether dynamic sizing is enabled for the standby pool.</summary>
+        bool? DynamicSizingEnabled { get; set; }
         /// <summary>Specifies maximum number of standby container groups in the standby pool.</summary>
         long MaxReadyCapacity { get; set; }
         /// <summary>Specifies refill policy of the pool.</summary>

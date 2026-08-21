@@ -14,8 +14,8 @@ Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
 
 ```
 New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject
- [-Association <ISecurityPolicyWebApplicationFirewallAssociation[]>] [-WafPolicyId <String>]
- [<CommonParameters>]
+ [-Association <ISecurityPolicyWebApplicationFirewallAssociation[]>] [-IsProfileLevel <Boolean>]
+ [-WafPolicyId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +46,21 @@ Waf associations.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallAssociation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsProfileLevel
+Indicates if this is a profile-level WAF policy.
+
+```yaml
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 

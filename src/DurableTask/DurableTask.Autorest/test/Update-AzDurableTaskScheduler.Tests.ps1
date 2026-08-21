@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDurableTaskScheduler
 
 Describe 'Update-AzDurableTaskScheduler' {
     It 'UpdateExpanded' {
-        $scheduler = Update-AzDurableTaskScheduler -Name $env.schedulerName -ResourceGroupName $env.resourceGroup -Tag @{"Environment"="Test"}
+        $scheduler = Update-AzDurableTaskScheduler -Name $env.schedulerName -ResourceGroupName $env.resourceGroup -Tag @{"Environment"="Test"} -PublicNetworkAccess 'Disabled'
         $scheduler.Name | Should -Be $env.schedulerName
         $scheduler.Tag["Environment"] | Should -Be "Test"
     }
@@ -26,10 +26,14 @@ Describe 'Update-AzDurableTaskScheduler' {
             tags = @{
                 "Department" = "Engineering"
             }
+            properties = @{
+                publicNetworkAccess = "Disabled"
+            }
         } | ConvertTo-Json
         $scheduler = Update-AzDurableTaskScheduler -Name $env.schedulerName -ResourceGroupName $env.resourceGroup -JsonString $body
         $scheduler.Name | Should -Be $env.schedulerName
         $scheduler.Tag["Department"] | Should -Be "Engineering"
+        $scheduler.PublicNetworkAccess | Should -Be "Disabled"
     }
 
     It 'UpdateViaJsonFilePath' {
@@ -37,6 +41,9 @@ Describe 'Update-AzDurableTaskScheduler' {
         @{
             tags = @{
                 "Project" = "DurableTask"
+            }
+            properties = @{
+                publicNetworkAccess = "Disabled"
             }
         } | ConvertTo-Json | Set-Content -Path $jsonFilePath
         $scheduler = Update-AzDurableTaskScheduler -Name $env.schedulerName -ResourceGroupName $env.resourceGroup -JsonFilePath $jsonFilePath
@@ -47,8 +54,9 @@ Describe 'Update-AzDurableTaskScheduler' {
 
     It 'UpdateViaIdentityExpanded' {
         $scheduler = Get-AzDurableTaskScheduler -Name $env.schedulerName -ResourceGroupName $env.resourceGroup
-        $updatedScheduler = Update-AzDurableTaskScheduler -InputObject $scheduler -Tag @{"Status"="Active"}
+        $updatedScheduler = Update-AzDurableTaskScheduler -InputObject $scheduler -Tag @{"Status"="Active"} -PublicNetworkAccess 'Disabled'
         $updatedScheduler.Name | Should -Be $env.schedulerName
         $updatedScheduler.Tag["Status"] | Should -Be "Active"
+        $updatedScheduler.PublicNetworkAccess | Should -Be "Disabled"
     }
 }

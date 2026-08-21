@@ -25,11 +25,9 @@ Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "test-clus" 
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "test-clus" -ResourceGroupName "test-rg" -SoftwareAssuranceIntent "Disable"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ISoftwareAssuranceChangeRequest
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,33 +46,33 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UpdateName <String>]: The name of the Update
   [UpdateRunName <String>]: The name of the Update Run
-
-SOFTWAREASSURANCECHANGEREQUEST <ISoftwareAssuranceChangeRequest>: .
-  [SoftwareAssuranceIntent <SoftwareAssuranceIntent?>]: Customer Intent for Software Assurance Benefit.
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhci/invoke-azstackhciextendclustersoftwareassurancebenefit
 #>
 function Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ICluster])]
 [CmdletBinding(DefaultParameterSetName='ExtendExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Extend', Mandatory)]
     [Parameter(ParameterSetName='ExtendExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ExtendViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ExtendViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
     [System.String]
     # The name of the cluster.
     ${ClusterName},
 
-    [Parameter(ParameterSetName='Extend', Mandatory)]
     [Parameter(ParameterSetName='ExtendExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ExtendViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ExtendViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Extend')]
     [Parameter(ParameterSetName='ExtendExpanded')]
+    [Parameter(ParameterSetName='ExtendViaJsonFilePath')]
+    [Parameter(ParameterSetName='ExtendViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -82,30 +80,32 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='ExtendViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ExtendViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='Extend', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ExtendViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ISoftwareAssuranceChangeRequest]
-    # .
-    # To construct, see NOTES section for SOFTWAREASSURANCECHANGEREQUEST properties and create a hash table.
-    ${SoftwareAssuranceChangeRequest},
 
     [Parameter(ParameterSetName='ExtendExpanded')]
     [Parameter(ParameterSetName='ExtendViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceIntent])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.DefaultInfo(Script='"Enable"')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceIntent]
+    [System.String]
     # Customer Intent for Software Assurance Benefit.
     ${SoftwareAssuranceIntent},
+
+    [Parameter(ParameterSetName='ExtendViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Extend operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ExtendViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [System.String]
+    # Json string supplied to the Extend operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -175,6 +175,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -194,21 +202,19 @@ begin {
         }
 
         $mapping = @{
-            Extend = 'Az.StackHCI.private\Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit_Extend';
             ExtendExpanded = 'Az.StackHCI.private\Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit_ExtendExpanded';
-            ExtendViaIdentity = 'Az.StackHCI.private\Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit_ExtendViaIdentity';
             ExtendViaIdentityExpanded = 'Az.StackHCI.private\Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit_ExtendViaIdentityExpanded';
+            ExtendViaJsonFilePath = 'Az.StackHCI.private\Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit_ExtendViaJsonFilePath';
+            ExtendViaJsonString = 'Az.StackHCI.private\Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit_ExtendViaJsonString';
         }
-        if (('Extend', 'ExtendExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ExtendExpanded', 'ExtendViaJsonFilePath', 'ExtendViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
         }
-        if (('ExtendExpanded', 'ExtendViaIdentityExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SoftwareAssuranceIntent')) {
+        if (('ExtendExpanded', 'ExtendViaIdentityExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SoftwareAssuranceIntent') ) {
             $PSBoundParameters['SoftwareAssuranceIntent'] = "Enable"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -218,6 +224,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

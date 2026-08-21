@@ -155,6 +155,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).ReleaseType = (string) content.GetValueForProperty("ReleaseType",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).ReleaseType, global::System.Convert.ToString);
             }
+            if (content.Contains("UpdateProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdateProperty = (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdateProperties) content.GetValueForProperty("UpdateProperty",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdateProperty, Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.ImageUpdatePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -178,6 +182,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             if (content.Contains("CompatibleVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).CompatibleVersion = (System.Collections.Generic.List<string>) content.GetValueForProperty("CompatibleVersion",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).CompatibleVersion, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("UpdatePropertySystemReboot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertySystemReboot = (string) content.GetValueForProperty("UpdatePropertySystemReboot",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertySystemReboot, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdatePropertySecurityUpdate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertySecurityUpdate = (string) content.GetValueForProperty("UpdatePropertySecurityUpdate",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertySecurityUpdate, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdatePropertyOSVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertyOSVersion = (string) content.GetValueForProperty("UpdatePropertyOSVersion",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertyOSVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdatePropertyAgentVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertyAgentVersion = (string) content.GetValueForProperty("UpdatePropertyAgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertyAgentVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdatePropertyFeatureUpdate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertyFeatureUpdate = (string) content.GetValueForProperty("UpdatePropertyFeatureUpdate",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertyFeatureUpdate, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -244,6 +268,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).ReleaseType = (string) content.GetValueForProperty("ReleaseType",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).ReleaseType, global::System.Convert.ToString);
             }
+            if (content.Contains("UpdateProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdateProperty = (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdateProperties) content.GetValueForProperty("UpdateProperty",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdateProperty, Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.ImageUpdatePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -267,6 +295,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             if (content.Contains("CompatibleVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).CompatibleVersion = (System.Collections.Generic.List<string>) content.GetValueForProperty("CompatibleVersion",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).CompatibleVersion, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("UpdatePropertySystemReboot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertySystemReboot = (string) content.GetValueForProperty("UpdatePropertySystemReboot",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertySystemReboot, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdatePropertySecurityUpdate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertySecurityUpdate = (string) content.GetValueForProperty("UpdatePropertySecurityUpdate",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertySecurityUpdate, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdatePropertyOSVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertyOSVersion = (string) content.GetValueForProperty("UpdatePropertyOSVersion",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertyOSVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdatePropertyAgentVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertyAgentVersion = (string) content.GetValueForProperty("UpdatePropertyAgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertyAgentVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdatePropertyFeatureUpdate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertyFeatureUpdate = (string) content.GetValueForProperty("UpdatePropertyFeatureUpdate",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageInternal)this).UpdatePropertyFeatureUpdate, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

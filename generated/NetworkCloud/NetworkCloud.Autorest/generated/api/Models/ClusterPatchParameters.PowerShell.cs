@@ -104,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             }
             if (content.Contains("IdentityUserAssignedIdentity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("AggregatorOrSingleRackDefinition"))
             {
@@ -157,6 +157,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("CommandOutputSettingContainerUrl"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).CommandOutputSettingContainerUrl = (string) content.GetValueForProperty("CommandOutputSettingContainerUrl",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).CommandOutputSettingContainerUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommandOutputSettingOverride"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).CommandOutputSettingOverride = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>) content.GetValueForProperty("CommandOutputSettingOverride",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).CommandOutputSettingOverride, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CommandOutputOverrideTypeConverter.ConvertFrom));
             }
             if (content.Contains("SecretArchiveSettingVaultUri"))
             {
@@ -337,7 +341,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             }
             if (content.Contains("IdentityUserAssignedIdentity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("AggregatorOrSingleRackDefinition"))
             {
@@ -390,6 +394,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("CommandOutputSettingContainerUrl"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).CommandOutputSettingContainerUrl = (string) content.GetValueForProperty("CommandOutputSettingContainerUrl",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).CommandOutputSettingContainerUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommandOutputSettingOverride"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).CommandOutputSettingOverride = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>) content.GetValueForProperty("CommandOutputSettingOverride",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchParametersInternal)this).CommandOutputSettingOverride, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CommandOutputOverrideTypeConverter.ConvertFrom));
             }
             if (content.Contains("SecretArchiveSettingVaultUri"))
             {

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.0
+* Added ChangeSafety Support
+
 ## Version 2.1.0
 * Upgraded nuget package to signed package.
 * Removed "Microsoft.Azure.Management.PowerBIEmbedded" Version "1.1.1-preview" PackageReference

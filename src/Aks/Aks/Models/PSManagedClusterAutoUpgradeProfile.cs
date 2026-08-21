@@ -25,5 +25,11 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// Gets or sets the upgrade channel for auto upgrade. The default is 'none'.
         /// </summary>
         public string UpgradeChannel { get; set; }
+
+        /// <summary>
+        /// Gets or sets node OS Upgrade Channel. Manner in which the OS on your nodes
+        /// is updated. The default is NodeImage. Possible values include: &#39;None&#39;, &#39;Unmanaged&#39;, &#39;NodeImage&#39;, &#39;SecurityPatch&#39;
+        /// </summary>
+        public string NodeOSUpgradeChannel { get; set; }
     }
 }

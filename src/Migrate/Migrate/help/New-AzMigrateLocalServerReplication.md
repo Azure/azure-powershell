@@ -140,7 +140,7 @@ Accept wildcard characters: False
 Specifies the disks on the source server to be included for replication.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalDiskInput[]
 Parameter Sets: ByIdPowerUser
 Aliases:
 
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 Specifies the NICs on the source server to be included for replication.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalNicInput[]
 Parameter Sets: ByIdPowerUser
 Aliases:
 
@@ -399,7 +399,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel
 
 ## NOTES
 

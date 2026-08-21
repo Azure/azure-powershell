@@ -4272,6 +4272,129 @@ function Test-VirtualMachineStop
 
 <#
 .SYNOPSIS
+Test Stop-AzVM ForceDeallocate parameter metadata and parameter set behavior.
+#>
+function Test-VirtualMachineStopForceDeallocate
+{
+    # Step 1: Verify the new parameter is exposed on the cmdlet as an optional switch.
+    $stopVmCommand = Get-Command Stop-AzVM -ErrorAction Stop;
+    $forceDeallocateParameter = $stopVmCommand.Parameters["ForceDeallocate"];
+
+    Assert-NotNull $forceDeallocateParameter;
+    Assert-AreEqual ([System.Management.Automation.SwitchParameter].FullName) $forceDeallocateParameter.ParameterType.FullName;
+
+    # ForceDeallocate is offered on the non-hibernate stop sets (like -StayProvisioned / -SkipShutdown),
+    # so it binds with the plain resource-group and id stop scenarios but not with -Hibernate.
+    Assert-True { $forceDeallocateParameter.ParameterSets.Keys -contains "ResourceGroupNameParameterSetName" };
+    Assert-True { $forceDeallocateParameter.ParameterSets.Keys -contains "IdParameterSetName" };
+    Assert-True { -not ($forceDeallocateParameter.ParameterSets.Keys -contains "ResourceGroupHibernateParameterSet") };
+    Assert-True { -not ($forceDeallocateParameter.ParameterSets.Keys -contains "IdHibernateParameterSet") };
+
+    # Step 2: Verify supported combinations bind successfully without issuing live requests.
+    $vmId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/virtualMachines/vm";
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -Force -WhatIf;
+    Stop-AzVM -Id $vmId -ForceDeallocate -Force -WhatIf;
+
+    # Step 3: Verify existing stop combinations still bind successfully.
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -Force -WhatIf;
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -StayProvisioned -SkipShutdown -Force -WhatIf;
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -Hibernate -Force -WhatIf;
+
+    # Step 4: Verify ForceDeallocate cannot be combined with Hibernate, StayProvisioned, or
+    # SkipShutdown. Hibernate lives in a separate parameter set, so the combination fails at
+    # parameter binding; StayProvisioned / SkipShutdown share ForceDeallocate's sets and are
+    # rejected by the cmdlet's runtime validation.
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -Hibernate -Force -WhatIf -ErrorAction Stop; } "Parameter set cannot be resolved";
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -StayProvisioned -Force -WhatIf -ErrorAction Stop; } "cannot be used together";
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -SkipShutdown -Force -WhatIf -ErrorAction Stop; } "cannot be used together";
+}
+
+<#
+.SYNOPSIS
+Test Stop-AzVM -ForceDeallocate end to end against a live virtual machine.
+
+.DESCRIPTION
+This scenario creates a real VM and force deallocates it via Stop-AzVM -ForceDeallocate,
+then asserts the VM reaches the deallocated power state. It must be recorded in Record mode
+against a live subscription (see documentation/testing-docs/using-azure-test-framework.md).
+
+NOTE: -ForceDeallocate is intended for VMs with ZoneMovement enabled. The enablement cmdlet
+(Set-AzVMZoneMovement) is delivered in a separate change; when recording this test, target a
+subscription/VM where the ForceDeallocate operation is accepted by the service.
+#>
+function Test-VirtualMachineStopForceDeallocateExecution
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    # Zone movement (and therefore -ForceDeallocate) is available in the eastus2euap canary region.
+    $loc = "eastus2euap";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a zone-resilient VM pinned to a specific availability zone.
+        $vmname = 'vm' + $rgname;
+        $vmsize = "Standard_D2s_v4";
+        $domainNameLabel = "d1" + $rgname;
+        $zone = "3";
+        $vmconfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Zone $zone -SecurityType "Standard";
+
+        # Linux image (the subscription policy disallows non-compliant Windows VMs).
+        $publisherName = "Canonical";
+        $offer = "0001-com-ubuntu-server-jammy";
+        $sku = "22_04-lts-gen2";
+        $vmconfig = Set-AzVMSourceImage -VM $vmconfig -PublisherName $publisherName -Offer $offer -Skus $sku -Version 'latest';
+
+        # A zone-resilient VM requires a zone-redundant (ZRS) OS disk.
+        $vmconfig = Set-AzVMOSDisk -VM $vmconfig -Name ($vmname + '-osdisk') -StorageAccountType "StandardSSD_ZRS" -CreateOption FromImage -Caching ReadWrite;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -Sku Standard -AllocationMethod Static -Zone $zone -DomainNameLabel $domainNameLabel;
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $vmconfig = Add-AzVMNetworkInterface -VM $vmconfig -Id $nic.Id;
+
+        # OS & credentials
+        $user = "usertest";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Linux -ComputerName $computerName -Credential $cred;
+
+        # Enable zone movement so the VM qualifies for -ForceDeallocate.
+        $vmconfig = Set-AzVMZoneMovement -VM $vmconfig -IsEnabled $true;
+        Assert-AreEqual $true $vmconfig.ResiliencyProfile.ZoneMovement.IsEnabled;
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmconfig;
+
+        # Confirm zone movement is enabled on the created VM.
+        $createdVm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $true $createdVm.ResiliencyProfile.ZoneMovement.IsEnabled;
+
+        # Force deallocate the running VM.
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmname -ForceDeallocate -Force;
+
+        # Verify the VM reached the deallocated power state.
+        $vmStatus = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
+        $powerState = ($vmStatus.Statuses | Where-Object { $_.Code -like "PowerState/*" }).Code;
+        Assert-AreEqual "PowerState/deallocated" $powerState;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machine Managed Disk
 #>
 function Test-VirtualMachineRemoteDesktop
@@ -8114,5 +8237,175 @@ function Test-VirtualMachineGalleryApplicationFlags
     }
     finally {
         Clean-ResourceGroup $resourceGroupName
+    }
+}
+<#
+.SYNOPSIS
+Test Virtual Machine Data Disk with IOPS and MBPS parameters
+#>
+function Test-VMDataDiskIOPSMBPS
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D4s_v3';
+        $vmname = 'vm' + $rgname;
+        $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+
+        # Test adding data disk with DiskIOPSReadWrite and DiskMBpsReadWrite parameters
+        $diskName = 'testdisk1';
+        $diskLun = 0;
+        $diskSize = 10;
+        $diskIOPS = 100;
+        $diskMBPS = 1;
+        
+        # Add data disk with IOPS and MBPS for managed disk (implicit creation scenario)
+        $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name $diskName -Lun $diskLun -CreateOption 'Empty' -DiskSizeInGB $diskSize -StorageAccountType 'UltraSSD_LRS' -Caching 'None' -DiskIOPSReadWrite $diskIOPS -DiskMBpsReadWrite $diskMBPS;
+
+        # Verify the disk was added with correct properties
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks.Count 1;
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].DiskIOPSReadWrite $diskIOPS;
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].DiskMBpsReadWrite $diskMBPS;
+
+        # Test adding another data disk without IOPS/MBPS parameters
+        $diskName2 = 'testdisk2';
+        $diskLun2 = 1;
+        $diskSize2 = 20;
+        
+        $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name $diskName2 -Lun $diskLun2 -CreateOption 'Empty' `
+            -DiskSizeInGB $diskSize2 -StorageAccountType 'Premium_LRS' -Caching 'ReadOnly';
+
+        # Verify the second disk was added without IOPS/MBPS
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks.Count 2;
+        Assert-Null $vmConfig.StorageProfile.DataDisks[1].DiskIOPSReadWrite;
+        Assert-Null $vmConfig.StorageProfile.DataDisks[1].DiskMBpsReadWrite;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Set-AzVMOSDisk and Add-AzVMDataDisk with StorageFaultDomainAlignment parameter
+#>
+function Test-VMStorageFaultDomainAlignment
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = "eastus2euap";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D4s_v3';
+        $vmname = 'vm' + $rgname;
+        $stnd = "Standard";
+
+        # Create VMSS Flex (required for StorageFaultDomainAlignment - CRP rejects it on standalone VMs)
+        $vmssName = "vmss" + $rgname;
+
+        # NRP (needed for both VMSS and VM)
+        $vnetname = "vnet" + $rgname;
+        $subnetname = "subnet" + $rgname;
+        $NICName = "nic" + $rgname;
+        $NSGName = "nsg" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $vnetAddress = "10.0.0.0/16";
+
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP -Protocol Tcp -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgname -Location $loc -Name $NSGName -SecurityRules $nsgRuleRDP;
+
+        # Credentials
+        $password = Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # VMSS Flex config with full VM profile (storage + OS + network required for Flex)
+        $subnetId = $vnet.Subnets[0].Id;
+        $ipConfig = New-AzVmssIpConfig -Name 'ipconfig1' -SubnetId $subnetId;
+        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 0 -SkuName $vmsize -OrchestrationMode 'Flexible' -SecurityType $stnd -Zone "1","2","3" -PlatformFaultDomainCount 2 -ZonalPlatformFaultDomainAlignMode "BestEffortAligned";
+        Set-AzVmssStorageProfile $vmssConfig -OsDiskCreateOption "FromImage" -ManagedDisk "Premium_LRS" -ImageReferencePublisher "MicrosoftWindowsServer" -ImageReferenceOffer "WindowsServer" -ImageReferenceSku "2022-Datacenter" -ImageReferenceVersion "latest";
+        Set-AzVmssOsProfile $vmssConfig -AdminUsername $cred.UserName -AdminPassword $cred.Password -ComputerNamePrefix "vm";
+        Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig -Name 'nicconfig1' -Primary $true -IPConfiguration $ipConfig -NetworkApiVersion "2020-11-01";
+
+        $VMSS = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssConfig;
+
+        # Create a separate NIC for the individual VM
+        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+        # VM Config within VMSS Flex
+        $OSDiskName = $vmname + "-osdisk";
+        $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize -VmssId $VMSS.Id -SecurityType $stnd;
+        Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname -Credential $cred;
+        Set-AzVMSourceImage -VM $vmConfig -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2022-Datacenter" -Version latest;
+        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+
+        # Set OS disk with StorageFaultDomainAlignment
+        Set-AzVMOSDisk -VM $vmConfig -Name $OSDiskName -StorageAccountType "Premium_LRS" -Caching ReadWrite -CreateOption FromImage -StorageFaultDomainAlignment 'BestEffortAligned';
+        Assert-AreEqual $vmConfig.StorageProfile.OsDisk.StorageFaultDomainAlignment 'BestEffortAligned';
+
+        # Add data disk with BestEffortAligned StorageFaultDomainAlignment
+        Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk0' -Lun 0 -CreateOption 'Empty' -DiskSizeInGB 128 -StorageAccountType 'Premium_LRS' -Caching 'ReadOnly' -StorageFaultDomainAlignment 'BestEffortAligned';
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].StorageFaultDomainAlignment 'BestEffortAligned';
+
+        # Add data disk with BestEffortAligned StorageFaultDomainAlignment
+        Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk1' -Lun 1 -CreateOption 'Empty' -DiskSizeInGB 64 -StorageAccountType 'Premium_LRS' -Caching 'None' -StorageFaultDomainAlignment 'BestEffortAligned';
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks[1].StorageFaultDomainAlignment 'BestEffortAligned';
+
+        # Add data disk without StorageFaultDomainAlignment
+        Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk2' -Lun 2 -CreateOption 'Empty' -DiskSizeInGB 32 -StorageAccountType 'Premium_LRS' -Caching 'None';
+        Assert-Null $vmConfig.StorageProfile.DataDisks[2].StorageFaultDomainAlignment;
+
+        # Create the VM within the VMSS Flex
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+
+        # Get the VM instance view and verify StorageAlignmentStatus on disk instance views
+        $vmStatus = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
+
+        $validAlignmentStatuses = @('Aligned', 'Unaligned');
+
+        # OS disk alignment status from instance view
+        Assert-NotNull $vmStatus.Disks;
+        $osDisk = $vmStatus.Disks | Where-Object { $_.Name -eq $OSDiskName };
+        Assert-NotNull $osDisk;
+        Assert-NotNull $osDisk.StorageAlignmentStatus;
+        Assert-True { $validAlignmentStatuses -contains $osDisk.StorageAlignmentStatus };
+
+        # Data disk alignment statuses from instance view
+        $dataDisk0 = $vmStatus.Disks | Where-Object { $_.Name -eq 'datadisk0' };
+        Assert-NotNull $dataDisk0;
+        Assert-NotNull $dataDisk0.StorageAlignmentStatus;
+        Assert-True { $validAlignmentStatuses -contains $dataDisk0.StorageAlignmentStatus };
+
+        $dataDisk1 = $vmStatus.Disks | Where-Object { $_.Name -eq 'datadisk1' };
+        Assert-NotNull $dataDisk1;
+        Assert-NotNull $dataDisk1.StorageAlignmentStatus;
+        Assert-True { $validAlignmentStatuses -contains $dataDisk1.StorageAlignmentStatus };
+
+        $dataDisk2 = $vmStatus.Disks | Where-Object { $_.Name -eq 'datadisk2' };
+        Assert-NotNull $dataDisk2;
+        Assert-NotNull $dataDisk2.StorageAlignmentStatus;
+        Assert-True { $validAlignmentStatuses -contains $dataDisk2.StorageAlignmentStatus };
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
     }
 }

@@ -120,21 +120,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).NamespaceName = (string) content.GetValueForProperty("NamespaceName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).NamespaceName, global::System.Convert.ToString);
             }
-            if (content.Contains("QueueName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).QueueName = (string) content.GetValueForProperty("QueueName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).QueueName, global::System.Convert.ToString);
-            }
             if (content.Contains("AuthorizationRuleName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).AuthorizationRuleName = (string) content.GetValueForProperty("AuthorizationRuleName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).AuthorizationRuleName, global::System.Convert.ToString);
-            }
-            if (content.Contains("TopicName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).TopicName = (string) content.GetValueForProperty("TopicName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).TopicName, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrivateEndpointConnectionName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
             }
             if (content.Contains("Alias"))
             {
@@ -143,6 +131,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             if (content.Contains("ConfigName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ConfigName = (string) content.GetValueForProperty("ConfigName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ConfigName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAssociationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ResourceAssociationName = (string) content.GetValueForProperty("ResourceAssociationName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ResourceAssociationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("QueueName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).QueueName = (string) content.GetValueForProperty("QueueName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).QueueName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TopicName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).TopicName = (string) content.GetValueForProperty("TopicName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).TopicName, global::System.Convert.ToString);
             }
             if (content.Contains("SubscriptionName"))
             {
@@ -185,21 +189,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).NamespaceName = (string) content.GetValueForProperty("NamespaceName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).NamespaceName, global::System.Convert.ToString);
             }
-            if (content.Contains("QueueName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).QueueName = (string) content.GetValueForProperty("QueueName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).QueueName, global::System.Convert.ToString);
-            }
             if (content.Contains("AuthorizationRuleName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).AuthorizationRuleName = (string) content.GetValueForProperty("AuthorizationRuleName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).AuthorizationRuleName, global::System.Convert.ToString);
-            }
-            if (content.Contains("TopicName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).TopicName = (string) content.GetValueForProperty("TopicName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).TopicName, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrivateEndpointConnectionName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
             }
             if (content.Contains("Alias"))
             {
@@ -208,6 +200,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             if (content.Contains("ConfigName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ConfigName = (string) content.GetValueForProperty("ConfigName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ConfigName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAssociationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ResourceAssociationName = (string) content.GetValueForProperty("ResourceAssociationName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ResourceAssociationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("QueueName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).QueueName = (string) content.GetValueForProperty("QueueName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).QueueName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TopicName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).TopicName = (string) content.GetValueForProperty("TopicName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).TopicName, global::System.Convert.ToString);
             }
             if (content.Contains("SubscriptionName"))
             {

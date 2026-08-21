@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnableMultipleWriteLocations = databaseAccountGetResults.EnableMultipleWriteLocations;
             ConnectorOffer = databaseAccountGetResults.ConnectorOffer;
             DisableKeyBasedMetadataWriteAccess = databaseAccountGetResults.DisableKeyBasedMetadataWriteAccess;
+            DisableLocalAuth = databaseAccountGetResults.DisableLocalAuth;
             PublicNetworkAccess = databaseAccountGetResults.PublicNetworkAccess;
             KeyVaultKeyUri = databaseAccountGetResults.KeyVaultKeyUri;
             CustomerManagedKeyStatus = databaseAccountGetResults.CustomerManagedKeyStatus;
@@ -171,6 +172,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets or sets disable write operations on metadata resources (databases, containers,
         //     throughput) via account keys
         public bool? DisableKeyBasedMetadataWriteAccess { get; set; }
+        //
+        // Summary:
+        //     Gets or sets opt-out of local authentication and ensure only MSI and AAD can
+        //     be used exclusively for authentication.
+        public bool? DisableLocalAuth { get; set; }
         //
         // Summary:
         //     Gets or sets Whether or not public endpoint access is allowed for this server.

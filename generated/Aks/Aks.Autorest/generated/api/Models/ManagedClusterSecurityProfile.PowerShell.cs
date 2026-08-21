@@ -125,6 +125,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)this).ImageCleaner = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileImageCleaner) content.GetValueForProperty("ImageCleaner",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)this).ImageCleaner, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterSecurityProfileImageCleanerTypeConverter.ConvertFrom);
             }
+            if (content.Contains("CustomCaTrustCertificate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)this).CustomCaTrustCertificate = (System.Collections.Generic.List<byte[]>) content.GetValueForProperty("CustomCaTrustCertificate",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)this).CustomCaTrustCertificate, __y => TypeConverterExtensions.SelectToList<byte[]>(__y, i => i));
+            }
             if (content.Contains("AzureKeyVaultKmKeyId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)this).AzureKeyVaultKmKeyId = (string) content.GetValueForProperty("AzureKeyVaultKmKeyId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)this).AzureKeyVaultKmKeyId, global::System.Convert.ToString);
@@ -197,6 +201,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("ImageCleaner"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)this).ImageCleaner = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileImageCleaner) content.GetValueForProperty("ImageCleaner",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)this).ImageCleaner, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterSecurityProfileImageCleanerTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CustomCaTrustCertificate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)this).CustomCaTrustCertificate = (System.Collections.Generic.List<byte[]>) content.GetValueForProperty("CustomCaTrustCertificate",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)this).CustomCaTrustCertificate, __y => TypeConverterExtensions.SelectToList<byte[]>(__y, i => i));
             }
             if (content.Contains("AzureKeyVaultKmKeyId"))
             {

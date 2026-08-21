@@ -19,7 +19,7 @@
     },
     "adminPassword": {
       "type": "securestring",
-      "defaultValue": "Pa$$word2017"
+      "defaultValue": "[concat('P', uniqueString(resourceGroup().id), 'x!2A')]"
     },
     "storageLocation": {
       "type": "string",
@@ -59,7 +59,7 @@
     },
     "imageSKU": {
       "type": "string",
-      "defaultValue": "2012-R2-Datacenter",
+      "defaultValue": "2022-datacenter",
       "metadata": {
         "description": "Image SKU"
       }
@@ -89,24 +89,6 @@
     "subnetID": "[concat(variables('vnetID'),'/subnets/subnet1')]"
   },
   "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[parameters('newStorageAccountName')]",
-      "apiVersion": "2015-06-15",
-      "location": "[parameters('storageLocation')]",
-      "properties": {
-        "accountType": "[variables('storageAccountType')]"
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('newStorageAccountName2')]",
-      "apiVersion": "2015-06-15",
-      "location": "[parameters('storageLocation')]",
-      "properties": {
-        "accountType": "[variables('storageAccountType')]"
-      }
-    },
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -310,8 +292,6 @@
         "vmsstag1": "Myriad"
       },
       "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('newStorageAccountName2'))]",
         "[concat('Microsoft.Network/virtualNetworks/', variables('vnetName'))]",
         "[concat('Microsoft.Network/loadBalancers/', variables('lbName'))]",
         "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
@@ -328,13 +308,11 @@
         "virtualMachineProfile": {
           "storageProfile": {
             "osDisk": {
-              "vhdContainers": [
-                "[concat('https://', parameters('newStorageAccountName'), '.blob.core.windows.net', '/vmss1')]",
-                "[concat('https://', variables('newStorageAccountName2'), '.blob.core.windows.net', '/vmss2')]"
-              ],
-              "name": "vmssosdisk",
               "caching": "ReadOnly",
-              "createOption": "FromImage"
+              "createOption": "FromImage",
+              "managedDisk": {
+                "storageAccountType": "[variables('storageAccountType')]"
+              }
             },
             "imageReference": {
               "publisher": "[parameters('imagePublisher')]",

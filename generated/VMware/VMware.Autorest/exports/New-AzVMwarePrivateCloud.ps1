@@ -200,6 +200,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense]
+    # The VMware Cloud Foundation (VCF) license for the private cloud.
+    # To construct, see NOTES section for VCFLICENSE properties and create a hash table,
+    # or use New-AzVMwareVcf5LicenseObject to create a Vcf5License object.
+    ${VcfLicense},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Accept EULA of AVS, legal term will pop up without this parameter provided
     ${AcceptEULA},
@@ -278,8 +286,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

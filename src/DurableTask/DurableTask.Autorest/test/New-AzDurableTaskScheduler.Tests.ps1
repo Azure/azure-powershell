@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDurableTaskScheduler'))
 Describe 'New-AzDurableTaskScheduler' {
     It 'CreateExpanded' {
         $testSchedulerName = "test-scheduler-create-1277"
-        $scheduler = New-AzDurableTaskScheduler -Name $testSchedulerName -ResourceGroupName $env.resourceGroup -Location $env.location -SkuName 'Dedicated' -SkuCapacity 1 -IPAllowlist @('10.0.0.0/8')
+        $scheduler = New-AzDurableTaskScheduler -Name $testSchedulerName -ResourceGroupName $env.resourceGroup -Location $env.location -SkuName 'Consumption' -IPAllowlist @('10.0.0.0/8') -PublicNetworkAccess 'Enabled'
         $scheduler.Name | Should -Be $testSchedulerName
         $scheduler.Location | Should -Be $env.location
         Remove-AzDurableTaskScheduler -Name $testSchedulerName -ResourceGroupName $env.resourceGroup
@@ -29,15 +29,18 @@ Describe 'New-AzDurableTaskScheduler' {
             location = $env.location
             properties = @{
                 sku = @{
-                    name = "Dedicated"
-                    capacity = 1
+                    name = "Consumption"
                 }
                 ipAllowlist = @("10.0.0.0/8")
+                publicNetworkAccess = "Enabled"
             }
         } | ConvertTo-Json
         $scheduler = New-AzDurableTaskScheduler -Name $testSchedulerName -ResourceGroupName $env.resourceGroup -JsonString $body
         $scheduler.Name | Should -Be $testSchedulerName
         $scheduler.Location | Should -Be $env.location
+        $scheduler.SkuName | Should -Be "Consumption"
+        $scheduler.IPAllowlist | Should -Contain "10.0.0.0/8"
+        $scheduler.PublicNetworkAccess | Should -Be "Enabled"
         Remove-AzDurableTaskScheduler -Name $testSchedulerName -ResourceGroupName $env.resourceGroup
     }
 
@@ -48,15 +51,18 @@ Describe 'New-AzDurableTaskScheduler' {
             location = $env.location
             properties = @{
                 sku = @{
-                    name = "Dedicated"
-                    capacity = 1
+                    name = "Consumption"
                 }
                 ipAllowlist = @("10.0.0.0/8")
+                publicNetworkAccess = "Enabled"
             }
         } | ConvertTo-Json | Set-Content -Path $jsonFilePath
         $scheduler = New-AzDurableTaskScheduler -Name $testSchedulerName -ResourceGroupName $env.resourceGroup -JsonFilePath $jsonFilePath
         $scheduler.Name | Should -Be $testSchedulerName
         $scheduler.Location | Should -Be $env.location
+        $scheduler.SkuName | Should -Be "Consumption"
+        $scheduler.IPAllowlist | Should -Contain "10.0.0.0/8"
+        $scheduler.PublicNetworkAccess | Should -Be "Enabled"
         Remove-AzDurableTaskScheduler -Name $testSchedulerName -ResourceGroupName $env.resourceGroup
         Remove-Item -Path $jsonFilePath -Force
     }

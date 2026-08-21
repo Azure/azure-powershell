@@ -13,26 +13,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagesInternal
     {
 
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagesInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
-
         /// <summary>Internal Acessors for Value</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsage> Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagesInternal.Value { get => this._value; set { {_value = value;} } }
 
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// Request URL that can be used to query next page of file service usages. Returned when total number of requested file service
-        /// usages exceed maximum page size.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsage> _value;
 
-        /// <summary>List of file service usages returned.</summary>
+        /// <summary>The FileServiceUsage items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsage> Value { get => this._value; }
 
@@ -46,28 +40,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     public partial interface IFileServiceUsages :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Request URL that can be used to query next page of file service usages. Returned when total number of requested file service
-        /// usages exceed maximum page size.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Request URL that can be used to query next page of file service usages. Returned when total number of requested file service usages exceed maximum page size.",
+        Create = true,
+        Update = true,
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>List of file service usages returned.</summary>
+        string NextLink { get; set; }
+        /// <summary>The FileServiceUsage items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"List of file service usages returned.",
+        Description = @"The FileServiceUsage items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsage) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsage> Value { get;  }
@@ -77,12 +68,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     internal partial interface IFileServiceUsagesInternal
 
     {
-        /// <summary>
-        /// Request URL that can be used to query next page of file service usages. Returned when total number of requested file service
-        /// usages exceed maximum page size.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of file service usages returned.</summary>
+        /// <summary>The FileServiceUsage items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsage> Value { get; set; }
 
     }

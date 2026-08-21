@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PowerShell;
 
-    /// <summary>
-    /// Result of the request to list Front Doors. It contains a list of Front Door objects and a URL link to get the next set
-    /// of results.
-    /// </summary>
+    /// <summary>Paged collection of FrontDoor items</summary>
     [System.ComponentModel.TypeConverter(typeof(FrontDoorListResultTypeConverter))]
     public partial class FrontDoorListResult
     {
@@ -165,8 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             return ToJsonString();
         }
     }
-    /// Result of the request to list Front Doors. It contains a list of Front Door objects and a URL link to get the next set
-    /// of results.
+    /// Paged collection of FrontDoor items
     [System.ComponentModel.TypeConverter(typeof(FrontDoorListResultTypeConverter))]
     public partial interface IFrontDoorListResult
 

@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.AppConfigurationdata.private.dll'
   FormatsToProcess = './Az.AppConfigurationdata.format.ps1xml'
-  FunctionsToExport = 'Get-AzAppConfigurationKey', 'Get-AzAppConfigurationKeyValue', 'Get-AzAppConfigurationLabel', 'Get-AzAppConfigurationRevision', 'Remove-AzAppConfigurationKeyValue', 'Remove-AzAppConfigurationLock', 'Set-AzAppConfigurationKeyValue', 'Set-AzAppConfigurationLock', 'Test-AzAppConfigurationKeyValue'
+  FunctionsToExport = 'Get-AzAppConfigurationKey', 'Get-AzAppConfigurationKeyValue', 'Get-AzAppConfigurationLabel', 'Get-AzAppConfigurationOperationDetail', 'Get-AzAppConfigurationRevision', 'Get-AzAppConfigurationSnapshot', 'New-AzAppConfigurationSnapshot', 'Remove-AzAppConfigurationKeyValue', 'Remove-AzAppConfigurationLock', 'Set-AzAppConfigurationKeyValue', 'Set-AzAppConfigurationLock', 'Test-AzAppConfigurationKeyValue', 'Test-AzAppConfigurationSnapshot', 'Update-AzAppConfigurationSnapshot'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'AppConfigurationdata'

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StandbyPool-help.xml
 Module Name: Az.StandbyPool
 online version: https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbycontainergrouppoolstatus
 schema: 2.0.0

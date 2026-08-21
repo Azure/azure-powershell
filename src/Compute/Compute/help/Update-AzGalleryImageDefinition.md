@@ -19,6 +19,7 @@ Update-AzGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <St
  [-MinimumMemory <Int32>] [-MinimumVCPU <Int32>] [-MaximumMemory <Int32>] [-MaximumVCPU <Int32>]
  [-PrivacyStatementUri <String>] [-PurchasePlanName <String>] [-PurchasePlanProduct <String>]
  [-PurchasePlanPublisher <String>] [-ReleaseNoteUri <String>] [-Tag <Hashtable>]
+ [-Feature <GalleryImageFeature[]>] [-AllowUpdateImage <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -29,7 +30,8 @@ Update-AzGalleryImageDefinition [-ResourceId] <String> [-AsJob] [-Description <S
  [-DisallowedDiskType <String[]>] [-EndOfLifeDate <DateTime>] [-Eula <String>] [-MinimumMemory <Int32>]
  [-MinimumVCPU <Int32>] [-MaximumMemory <Int32>] [-MaximumVCPU <Int32>] [-PrivacyStatementUri <String>]
  [-PurchasePlanName <String>] [-PurchasePlanProduct <String>] [-PurchasePlanPublisher <String>]
- [-ReleaseNoteUri <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-ReleaseNoteUri <String>] [-Tag <Hashtable>] [-Feature <GalleryImageFeature[]>]
+ [-AllowUpdateImage <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,7 +41,8 @@ Update-AzGalleryImageDefinition [-InputObject] <PSGalleryImage> [-AsJob] [-Descr
  [-DisallowedDiskType <String[]>] [-EndOfLifeDate <DateTime>] [-Eula <String>] [-MinimumMemory <Int32>]
  [-MinimumVCPU <Int32>] [-MaximumMemory <Int32>] [-MaximumVCPU <Int32>] [-PrivacyStatementUri <String>]
  [-PurchasePlanName <String>] [-PurchasePlanProduct <String>] [-PurchasePlanPublisher <String>]
- [-ReleaseNoteUri <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-ReleaseNoteUri <String>] [-Tag <Hashtable>] [-Feature <GalleryImageFeature[]>]
+ [-AllowUpdateImage <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -66,6 +69,20 @@ Update-AzGalleryImageDefinition -ResourceGroupName $resourceGroupName -GalleryNa
 
 Update a gallery image definition's recommended configuration settings
 
+### Example 2: Update gallery image features with StartsAtVersion
+
+```powershell
+$rgName = "myResourceGroup"
+$galleryName = "myGallery"
+$imageDefinitionName = "myImageDefinition"
+$DiskControllerType = @{Name='DiskControllerTypes'; Value='SCSI'; StartsAtVersion='4.0.0'}
+$SecurityType = @{Name='SecurityType'; Value='TrustedLaunch'; StartsAtVersion='4.0.0'}
+$features = @($DiskControllerType, $SecurityType)
+Update-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $imageDefinitionName -Feature $features -AllowUpdateImage $true
+```
+
+Update a gallery image definition's features, setting the minimum gallery image version that supports each feature via StartsAtVersion. The AllowUpdateImage parameter must be set to true when updating features.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -80,6 +97,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AllowUpdateImage
+Must be set to `$true` when the gallery image features are being updated using the `-Feature` parameter.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -148,6 +180,21 @@ The Eula agreement for the gallery Image Definition.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Feature
+A list of gallery image features to update. Each feature can include a StartsAtVersion property to indicate the minimum gallery image version that supports it.
+
+```yaml
+Type: Microsoft.Azure.Management.Compute.Models.GalleryImageFeature[]
 Parameter Sets: (All)
 Aliases:
 
@@ -430,6 +477,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Int32
 
 ### System.String[]
+
+### Microsoft.Azure.Management.Compute.Models.GalleryImageFeature[]
+
+### System.Boolean
 
 ## OUTPUTS
 

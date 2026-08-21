@@ -435,7 +435,7 @@ function Test-RaPropertiesValidation
     $roleDef = Get-AzRoleDefinition -Name "Reader"
     $roleDef.Id = "ff9cd1ab-d763-486f-b253-51a816c92aaf"
     $roleDef.Name = "Reader vm For Test"
-    $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
+    $roleDef.Permissions[0].Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
     $roleDef.Description = "Read, monitor and restart virtual machines"
     $roleDef.AssignableScopes[0] = '/subscriptions/'+$subscription[0].Id
 
@@ -918,12 +918,12 @@ function Test-CreateRAWhenIdNotExist
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId ="6d764d35-6b3b-49ea-83f8-5c223b56eac5"
     $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
-    $ExpectedError = 'Exception calling "ExecuteCmdlet" with "0" argument(s): "Operation returned an invalid status code ''BadRequest''"'
+    $ExpectedError = "PrincipalNotFound: Principal $($PrincipalId.Replace('-','')) does not exist in the directory"
 
     #When
     $function = { New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId 0f7b6fb6-a5f4-4046-83eb-dfd93c5e4b72 }
 
-    Assert-Throws $function $ExpectedError
+    Assert-ThrowsContains $function $ExpectedError
 }
 
 <#

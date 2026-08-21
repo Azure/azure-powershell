@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Management.Search.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Search.Models;
+using SdkSearchModels = Microsoft.Azure.Management.Search.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -194,7 +195,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                         // Update the properties passed in (treating nulls as no change to be consistent)
                         NetworkRuleSet = networkRuleSet ?? service.NetworkRuleSet,
                         PublicNetworkAccess = publicNetworkAccess ?? service.PublicNetworkAccess,
-                        Identity = (Identity)identity ?? service.Identity,
+                        Identity = (SdkSearchModels.Identity)identity ?? service.Identity,
 
                         PartitionCount = PartitionCount,
                         ReplicaCount = ReplicaCount,

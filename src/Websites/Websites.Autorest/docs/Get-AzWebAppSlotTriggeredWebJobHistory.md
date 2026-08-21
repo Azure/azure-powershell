@@ -15,20 +15,38 @@ Get or list triggered web job's history for a deployment slot.
 ### List (Default)
 ```
 Get-AzWebAppSlotTriggeredWebJobHistory -AppName <String> -Name <String> -ResourceGroupName <String>
- -SlotName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ -SlotName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWebAppSlotTriggeredWebJobHistory -AppName <String> -Id <String> -Name <String>
  -ResourceGroupName <String> -SlotName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-PassThru] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzWebAppSlotTriggeredWebJobHistory -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [<CommonParameters>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityHistory
+```
+Get-AzWebAppSlotTriggeredWebJobHistory -HistoryInputObject <IWebsitesIdentity> -SlotName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentitySite
+```
+Get-AzWebAppSlotTriggeredWebJobHistory -Id <String> -Name <String> -SiteInputObject <IWebsitesIdentity>
+ -SlotName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityTriggeredwebjob
+```
+Get-AzWebAppSlotTriggeredWebJobHistory -Id <String> -SlotName <String>
+ -TriggeredwebjobInputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,12 +127,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HistoryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: GetViaIdentityHistory
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Id
 History ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentitySite, GetViaIdentityTriggeredwebjob
 Aliases:
 
 Required: True
@@ -126,7 +159,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
@@ -145,25 +177,10 @@ Name of Web Job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentitySite, List
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -185,13 +202,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SiteInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: GetViaIdentitySite
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SlotName
 Name of the deployment slot.
 If a slot is not specified, the API uses the production slot.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityHistory, GetViaIdentitySite, GetViaIdentityTriggeredwebjob, List
 Aliases:
 
 Required: True
@@ -218,6 +250,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TriggeredwebjobInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: GetViaIdentityTriggeredwebjob
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -227,7 +274,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.ITriggeredJobHistory
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.ITriggeredJobHistory
 
 ## NOTES
 

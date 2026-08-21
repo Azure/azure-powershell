@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='skipToken'>
         /// Optional skip token.
@@ -54,13 +54,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='skipToken'>
         /// Optional skip token.
@@ -94,13 +94,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisRunName'>
         /// Reachability Analysis Run name.
@@ -117,13 +117,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisRunName'>
         /// Reachability Analysis Run name.
@@ -145,13 +145,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisRunName'>
         /// Reachability Analysis Run name.
@@ -168,13 +168,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisRunName'>
         /// Reachability Analysis Run name.
@@ -196,20 +196,20 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisRunName'>
         /// Reachability Analysis Run name.
         /// </param>
-        public static ReachabilityAnalysisRunsDeleteHeaders Delete(this IReachabilityAnalysisRunsOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName)
+        public static void Delete(this IReachabilityAnalysisRunsOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName)
         {
-                return ((IReachabilityAnalysisRunsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisRunName).GetAwaiter().GetResult();
+                ((IReachabilityAnalysisRunsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisRunName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -219,13 +219,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisRunName'>
         /// Reachability Analysis Run name.
@@ -233,12 +233,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ReachabilityAnalysisRunsDeleteHeaders> DeleteAsync(this IReachabilityAnalysisRunsOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IReachabilityAnalysisRunsOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisRunName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisRunName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deletes Reachability Analysis Run.
@@ -247,20 +244,20 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisRunName'>
         /// Reachability Analysis Run name.
         /// </param>
-        public static ReachabilityAnalysisRunsDeleteHeaders BeginDelete(this IReachabilityAnalysisRunsOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName)
+        public static void BeginDelete(this IReachabilityAnalysisRunsOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName)
         {
-                return ((IReachabilityAnalysisRunsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisRunName).GetAwaiter().GetResult();
+                ((IReachabilityAnalysisRunsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisRunName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -270,13 +267,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisRunName'>
         /// Reachability Analysis Run name.
@@ -284,12 +281,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ReachabilityAnalysisRunsDeleteHeaders> BeginDeleteAsync(this IReachabilityAnalysisRunsOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReachabilityAnalysisRunsOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisRunName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisRunName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets list of Reachability Analysis Runs.

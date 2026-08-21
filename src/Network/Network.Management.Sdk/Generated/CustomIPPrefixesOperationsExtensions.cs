@@ -13,165 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class CustomIPPrefixesOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified custom IP prefix.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='customIpPrefixName'>
-        /// The name of the CustomIpPrefix.
-        /// </param>
-        public static void Delete(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName)
-        {
-                ((ICustomIPPrefixesOperations)operations).DeleteAsync(resourceGroupName, customIpPrefixName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified custom IP prefix.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='customIpPrefixName'>
-        /// The name of the CustomIpPrefix.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, customIpPrefixName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets the specified custom IP prefix in a specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='customIpPrefixName'>
-        /// The name of the custom IP prefix.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        public static CustomIpPrefix Get(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, string expand = default(string))
-        {
-                return ((ICustomIPPrefixesOperations)operations).GetAsync(resourceGroupName, customIpPrefixName, expand).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified custom IP prefix in a specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='customIpPrefixName'>
-        /// The name of the custom IP prefix.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<CustomIpPrefix> GetAsync(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, customIpPrefixName, expand, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates a custom IP prefix.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='customIpPrefixName'>
-        /// The name of the custom IP prefix.
-        /// </param>
-        public static CustomIpPrefix CreateOrUpdate(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, CustomIpPrefix parameters)
-        {
-                return ((ICustomIPPrefixesOperations)operations).CreateOrUpdateAsync(resourceGroupName, customIpPrefixName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates a custom IP prefix.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='customIpPrefixName'>
-        /// The name of the custom IP prefix.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<CustomIpPrefix> CreateOrUpdateAsync(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, CustomIpPrefix parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, customIpPrefixName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates custom IP prefix tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='customIpPrefixName'>
-        /// The name of the custom IP prefix.
-        /// </param>
-        public static CustomIpPrefix UpdateTags(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, TagsObject parameters)
-        {
-                return ((ICustomIPPrefixesOperations)operations).UpdateTagsAsync(resourceGroupName, customIpPrefixName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates custom IP prefix tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='customIpPrefixName'>
-        /// The name of the custom IP prefix.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<CustomIpPrefix> UpdateTagsAsync(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, customIpPrefixName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all the custom IP prefixes in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -205,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<CustomIpPrefix> List(this ICustomIPPrefixesOperations operations, string resourceGroupName)
         {
@@ -219,7 +60,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -232,20 +73,143 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Gets the specified custom IP prefix in a specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='customIpPrefixName'>
+        /// The name of the custom IP prefix.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        public static CustomIpPrefix Get(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, string expand = default(string))
+        {
+                return ((ICustomIPPrefixesOperations)operations).GetAsync(resourceGroupName, customIpPrefixName, expand).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified custom IP prefix in a specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='customIpPrefixName'>
+        /// The name of the custom IP prefix.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CustomIpPrefix> GetAsync(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, customIpPrefixName, expand, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates a custom IP prefix.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='customIpPrefixName'>
+        /// The name of the custom IP prefix.
+        /// </param>
+        public static CustomIpPrefix CreateOrUpdate(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, CustomIpPrefix parameters)
+        {
+                return ((ICustomIPPrefixesOperations)operations).CreateOrUpdateAsync(resourceGroupName, customIpPrefixName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates a custom IP prefix.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='customIpPrefixName'>
+        /// The name of the custom IP prefix.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CustomIpPrefix> CreateOrUpdateAsync(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, CustomIpPrefix parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, customIpPrefixName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates custom IP prefix tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='customIpPrefixName'>
+        /// The name of the custom IP prefix.
+        /// </param>
+        public static CustomIpPrefix UpdateTags(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, TagsObject parameters)
+        {
+                return ((ICustomIPPrefixesOperations)operations).UpdateTagsAsync(resourceGroupName, customIpPrefixName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates custom IP prefix tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='customIpPrefixName'>
+        /// The name of the custom IP prefix.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CustomIpPrefix> UpdateTagsAsync(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, customIpPrefixName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified custom IP prefix.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customIpPrefixName'>
-        /// The name of the CustomIpPrefix.
+        /// The name of the custom IP prefix.
         /// </param>
-        public static void BeginDelete(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName)
+        public static void Delete(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName)
         {
-                ((ICustomIPPrefixesOperations)operations).BeginDeleteAsync(resourceGroupName, customIpPrefixName).GetAwaiter().GetResult();
+                ((ICustomIPPrefixesOperations)operations).DeleteAsync(resourceGroupName, customIpPrefixName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -255,17 +219,17 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customIpPrefixName'>
-        /// The name of the CustomIpPrefix.
+        /// The name of the custom IP prefix.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, customIpPrefixName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, customIpPrefixName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a custom IP prefix.
@@ -274,7 +238,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customIpPrefixName'>
         /// The name of the custom IP prefix.
@@ -291,7 +255,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customIpPrefixName'>
         /// The name of the custom IP prefix.
@@ -305,6 +269,42 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Deletes the specified custom IP prefix.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='customIpPrefixName'>
+        /// The name of the custom IP prefix.
+        /// </param>
+        public static void BeginDelete(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName)
+        {
+                ((ICustomIPPrefixesOperations)operations).BeginDeleteAsync(resourceGroupName, customIpPrefixName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified custom IP prefix.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='customIpPrefixName'>
+        /// The name of the custom IP prefix.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, customIpPrefixName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the custom IP prefixes in a subscription.

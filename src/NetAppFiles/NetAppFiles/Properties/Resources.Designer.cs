@@ -77,7 +77,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.Properties {
                 return ResourceManager.GetString("BreakFileLockOnVolumeMessage", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Clearing ransomware suspects on report {0}.
+        /// </summary>
+        internal static string ClearRansomwareSuspectsMessage {
+            get {
+                return ResourceManager.GetString("ClearRansomwareSuspectsMessage", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Create the new {0}.
         /// </summary>

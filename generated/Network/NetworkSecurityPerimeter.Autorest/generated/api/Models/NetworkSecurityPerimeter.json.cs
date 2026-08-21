@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             {
                 return;
             }
-            __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.TrackedResource(json);
+            __securityPerimeterTrackedResource = new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SecurityPerimeterTrackedResource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.NetworkSecurityPerimeterProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             {
                 return container;
             }
-            __trackedResource?.ToJson(container, serializationMode);
+            __securityPerimeterTrackedResource?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;

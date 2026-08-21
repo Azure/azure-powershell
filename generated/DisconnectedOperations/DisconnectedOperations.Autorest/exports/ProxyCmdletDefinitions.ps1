@@ -126,8 +126,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -255,6 +254,7 @@ To create the parameters described below, construct a hash table containing the 
 
 DISCONNECTEDOPERATIONINPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
   [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the Image
   [Name <String>]: Name of the resource
@@ -263,6 +263,7 @@ DISCONNECTEDOPERATIONINPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Par
 
 IMAGEINPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
   [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the Image
   [Name <String>]: Name of the resource
@@ -271,6 +272,7 @@ IMAGEINPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
 
 INPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
   [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the Image
   [Name <String>]: Name of the resource
@@ -403,8 +405,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -497,7 +498,7 @@ Get deployment manifest.
 .Description
 Get deployment manifest.
 .Example
-Get-AzDisconnectedOperationsDisconnectedOperationDeploymentManifest -Name "Resource-1" -ResourceGroupName "ResourceGroup-1"
+Get-AzDisconnectedOperationsDisconnectedOperationDeploymentManifest -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationDeploymentManifest
@@ -591,8 +592,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -683,11 +683,11 @@ Get a DisconnectedOperation
 .Example
 Get-AzDisconnectedOperationsDisconnectedOperation
 .Example
-Get-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1"
+Get-AzDisconnectedOperationsDisconnectedOperation -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2"
 .Example
 $disconnectedOperation = @{
-  "ResourceGroupName" = "ResourceGroup-1";
-  "DisconnectedOperationName" = "Resource-1";
+  "ResourceGroupName" = "winfield-demo-rg-2";
+  "Name" = "winfield-ps-test";
   "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
 }
 Get-AzDisconnectedOperationsDisconnectedOperation -InputObject $disconnectedOperation
@@ -705,6 +705,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
   [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the Image
   [Name <String>]: Name of the resource
@@ -809,8 +810,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -837,6 +837,253 @@ begin {
             List1 = 'Az.DisconnectedOperations.private\Get-AzDisconnectedOperationsDisconnectedOperation_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get the hardware settings resource
+.Description
+Get the hardware settings resource
+.Example
+Get-AzDisconnectedOperationsHardwareSetting -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -HardwareSettingName "default"
+.Example
+$inputObject = @{
+  "HardwareSettingName" = "default";
+  "Name" = "disconnected-operation-name";
+  "ResourceGroupName" = "my-resource-group";
+  "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
+}
+Get-AzDisconnectedOperationsHardwareSetting -InputObject $inputObject
+.Example
+$disconnectedOperation = @{
+  "ResourceGroupName" = "winfield-demo-rg-2";
+  "Name" = "winfield-ps-test";
+  "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
+}
+Get-AzDisconnectedOperationsHardwareSetting -DisconnectedOperationInputObject $disconnectedOperation -HardwareSettingName "default"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IHardwareSetting
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DISCONNECTEDOPERATIONINPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
+  [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the Image
+  [Name <String>]: Name of the resource
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+INPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
+  [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the Image
+  [Name <String>]: Name of the resource
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.disconnectedoperations/get-azdisconnectedoperationshardwaresetting
+#>
+function Get-AzDisconnectedOperationsHardwareSetting {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IHardwareSetting])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityDisconnectedOperation', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [System.String]
+    # The name of the HardwareSetting
+    ${HardwareSettingName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [System.String]
+    # Name of the resource
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityDisconnectedOperation', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentity]
+    # Identity Parameter
+    ${DisconnectedOperationInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DisconnectedOperations.private\Get-AzDisconnectedOperationsHardwareSetting_Get';
+            GetViaIdentity = 'Az.DisconnectedOperations.private\Get-AzDisconnectedOperationsHardwareSetting_GetViaIdentity';
+            GetViaIdentityDisconnectedOperation = 'Az.DisconnectedOperations.private\Get-AzDisconnectedOperationsHardwareSetting_GetViaIdentityDisconnectedOperation';
+            List = 'Az.DisconnectedOperations.private\Get-AzDisconnectedOperationsHardwareSetting_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1002,8 +1249,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1122,6 +1368,7 @@ To create the parameters described below, construct a hash table containing the 
 
 DISCONNECTEDOPERATIONINPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
   [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the Image
   [Name <String>]: Name of the resource
@@ -1130,6 +1377,7 @@ DISCONNECTEDOPERATIONINPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Par
 
 INPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
   [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the Image
   [Name <String>]: Name of the resource
@@ -1265,8 +1513,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1358,11 +1605,11 @@ Create a DisconnectedOperation
 .Description
 Create a DisconnectedOperation
 .Example
-New-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -Location "westus3" -ConnectionIntent "Disconnected" -Tag @{}
+New-AzDisconnectedOperationsDisconnectedOperation -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -ConnectionIntent "Disconnected" -BillingConfigurationAutoRenew "Disabled" -CurrentCore 8 -CurrentPricingModel "Annual" -BenefitPlanAzureHybridWindowsServerBenefit "Enabled" -BenefitPlanWindowsServerVMCount 10 -Location "eastus2euap" -Tag @{}
 .Example
-New-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -JsonFilePath "path/to/jsonFiles/CreateDisconnectedOperations.json"
+New-AzDisconnectedOperationsDisconnectedOperation -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -JsonFilePath "path/to/jsonFiles/CreateDisconnectedOperations.json"
 .Example
-New-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -JsonString '{"properties":{"connectionIntent":"Disconnected","billingModel":"Capacity"},"tags":{},"location":"westus3"}'
+New-AzDisconnectedOperationsDisconnectedOperation -Name "winfield-ps-test-2" -ResourceGroupName "winfield-demo-rg-2" -JsonString '{"properties":{"connectionIntent":"Disconnected","billingModel":"Capacity","billingConfiguration":{"autoRenew":"Disabled","current":{"cores":8,"pricingModel":"Annual"},"upcoming":{"cores":8,"pricingModel":"Annual"}},"benefitPlans":{"azureHybridWindowsServerBenefit":"Enabled","windowsServerVmCount":10}},"tags":{},"location":"eastus2euap"}'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperation
@@ -1401,11 +1648,44 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # Azure Hybrid Windows Server Benefit plan
+    ${BenefitPlanAzureHybridWindowsServerBenefit},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # Number of Windows Server VMs to license under the Azure Hybrid Benefit plan
+    ${BenefitPlanWindowsServerVMCount},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The auto renew setting
+    ${BillingConfigurationAutoRenew},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Connected", "Disconnected")]
     [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
     [System.String]
     # The connection intent
     ${ConnectionIntent},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # The number of cores
+    ${CurrentCore},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Trial", "Annual")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The pricing model
+    ${CurrentPricingModel},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
@@ -1500,8 +1780,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1525,6 +1804,323 @@ begin {
             CreateExpanded = 'Az.DisconnectedOperations.private\New-AzDisconnectedOperationsDisconnectedOperation_CreateExpanded';
             CreateViaJsonFilePath = 'Az.DisconnectedOperations.private\New-AzDisconnectedOperationsDisconnectedOperation_CreateViaJsonFilePath';
             CreateViaJsonString = 'Az.DisconnectedOperations.private\New-AzDisconnectedOperationsDisconnectedOperation_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create hardware settings
+.Description
+Create hardware settings
+.Example
+New-AzDisconnectedOperationsHardwareSetting -HardwareSettingName "default" -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -DeviceId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -DiskSpaceInGb 1024 -HardwareSku "MC-760" -MemoryInGb 64 -Node 3 -Oem "contoso" -SolutionBuilderExtension "xyz" -TotalCore 200 -VersionAtRegistration "xxxx.x"
+.Example
+$disconnectedOperation = @{
+  "ResourceGroupName" = "winfield-demo-rg-2";
+  "Name" = "winfield-ps-test";
+  "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
+}
+New-AzDisconnectedOperationsHardwareSetting -DisconnectedOperationInputObject $disconnectedOperation -HardwareSettingName "default" -DeviceId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx" -DiskSpaceInGb 1024 -HardwareSku "MC-760" -MemoryInGb 64 -Node 3 -Oem "contoso" -SolutionBuilderExtension "xyz" -TotalCore 200 -VersionAtRegistration "xxxx.x"
+.Example
+New-AzDisconnectedOperationsHardwareSetting -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -HardwareSettingName "default" -JsonFilePath "path/to/jsonFiles/CreateHardwareSetting.json"
+.Example
+New-AzDisconnectedOperationsHardwareSetting -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -HardwareSettingName "default" -JsonString '{"properties":{"totalCores":200,"diskSpaceInGb":1024,"memoryInGb":64,"oem":"Contoso","hardwareSku":"MC-760","nodes":3,"versionAtRegistration":"xxxx.x","solutionBuilderExtension":"xyz","deviceId":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}}'
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IHardwareSetting
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DISCONNECTEDOPERATIONINPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
+  [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the Image
+  [Name <String>]: Name of the resource
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.disconnectedoperations/new-azdisconnectedoperationshardwaresetting
+#>
+function New-AzDisconnectedOperationsHardwareSetting {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IHardwareSetting])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [System.String]
+    # The name of the HardwareSetting
+    ${HardwareSettingName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [System.String]
+    # Name of the resource
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityDisconnectedOperationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentity]
+    # Identity Parameter
+    ${DisconnectedOperationInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityDisconnectedOperationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The unique Id of the device
+    ${DeviceId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityDisconnectedOperationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # The disk space in GB
+    ${DiskSpaceInGb},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityDisconnectedOperationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The hardware SKU
+    ${HardwareSku},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityDisconnectedOperationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # The memory in GB
+    ${MemoryInGb},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityDisconnectedOperationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # The number of nodes
+    ${Node},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityDisconnectedOperationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The OEM
+    ${Oem},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityDisconnectedOperationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The solution builder extension at registration
+    ${SolutionBuilderExtension},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityDisconnectedOperationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # The total number of cores
+    ${TotalCore},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityDisconnectedOperationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The active version at registration
+    ${VersionAtRegistration},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.DisconnectedOperations.private\New-AzDisconnectedOperationsHardwareSetting_CreateExpanded';
+            CreateViaIdentityDisconnectedOperationExpanded = 'Az.DisconnectedOperations.private\New-AzDisconnectedOperationsHardwareSetting_CreateViaIdentityDisconnectedOperationExpanded';
+            CreateViaJsonFilePath = 'Az.DisconnectedOperations.private\New-AzDisconnectedOperationsHardwareSetting_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DisconnectedOperations.private\New-AzDisconnectedOperationsHardwareSetting_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
@@ -1613,6 +2209,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
   [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the Image
   [Name <String>]: Name of the resource
@@ -1732,8 +2329,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1819,19 +2415,280 @@ end {
 
 <#
 .Synopsis
+Delete hardware settings
+.Description
+Delete hardware settings
+.Example
+Remove-AzDisconnectedOperationsHardwareSetting -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -HardwareSettingName "default"
+.Example
+$inputObject = @{
+  "HardwareSettingName" = "default";
+  "Name" = "disconnected-operation-name";
+  "ResourceGroupName" = "my-resource-group";
+  "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
+}
+Remove-AzDisconnectedOperationsHardwareSetting -InputObject $inputObject
+.Example
+$disconnectedOperations = @{
+  "Name" = "disconnected-operation-name";
+  "ResourceGroupName" = "my-resource-group";
+  "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
+}
+Remove-AzDisconnectedOperationsHardwareSetting -HardwareSettingName "default" -DisconnectedOperationInputObject $disconnectedOperations
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DISCONNECTEDOPERATIONINPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
+  [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the Image
+  [Name <String>]: Name of the resource
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+INPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
+  [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the Image
+  [Name <String>]: Name of the resource
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.disconnectedoperations/remove-azdisconnectedoperationshardwaresetting
+#>
+function Remove-AzDisconnectedOperationsHardwareSetting {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityDisconnectedOperation', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [System.String]
+    # The name of the HardwareSetting
+    ${HardwareSettingName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [System.String]
+    # Name of the resource
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityDisconnectedOperation', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentity]
+    # Identity Parameter
+    ${DisconnectedOperationInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.DisconnectedOperations.private\Remove-AzDisconnectedOperationsHardwareSetting_Delete';
+            DeleteViaIdentity = 'Az.DisconnectedOperations.private\Remove-AzDisconnectedOperationsHardwareSetting_DeleteViaIdentity';
+            DeleteViaIdentityDisconnectedOperation = 'Az.DisconnectedOperations.private\Remove-AzDisconnectedOperationsHardwareSetting_DeleteViaIdentityDisconnectedOperation';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Update a DisconnectedOperation
 .Description
 Update a DisconnectedOperation
 .Example
-Update-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -RegistrationStatus "Registered"
+Update-AzDisconnectedOperationsDisconnectedOperation -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -RegistrationStatus "Registered"
 .Example
-Update-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -JsonFilePath "path/to/jsonFiles/UpdateDisconnectedOperations.json"
+Update-AzDisconnectedOperationsDisconnectedOperation -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -JsonFilePath "path/to/jsonFiles/UpdateDisconnectedOperations.json"
 .Example
-Update-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -JsonString '{"properties": {"registrationStatus": "Registered"}}'
+Update-AzDisconnectedOperationsDisconnectedOperation -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -JsonString '{"properties": {"registrationStatus": "Registered"}}'
 .Example
 $disconnectedOperation = @{
-  "ResourceGroupName" = "ResourceGroup-1";
-  "DisconnectedOperationName" = "Resource-1";
+  "ResourceGroupName" = "winfield-demo-rg-2";
+  "DisconnectedOperationName" = "winfield-ps-test";
   "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
 }
 
@@ -1848,6 +2705,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
   [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the Image
   [Name <String>]: Name of the resource
@@ -1895,11 +2753,49 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # Azure Hybrid Windows Server Benefit plan
+    ${BenefitPlanAzureHybridWindowsServerBenefit},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # Number of Windows Server VMs to license under the Azure Hybrid Benefit plan
+    ${BenefitPlanWindowsServerVMCount},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The auto renew setting
+    ${BillingConfigurationAutoRenew},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Connected", "Disconnected")]
     [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
     [System.String]
     # The connection intent
     ${ConnectionIntent},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # The number of cores
+    ${CurrentCore},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Trial", "Annual")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The pricing model
+    ${CurrentPricingModel},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -1923,6 +2819,21 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # The number of cores
+    ${UpcomingCore},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Trial", "Annual")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The pricing model
+    ${UpcomingPricingModel},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
@@ -1998,8 +2909,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -2026,6 +2936,315 @@ begin {
             UpdateViaJsonString = 'Az.DisconnectedOperations.private\Update-AzDisconnectedOperationsDisconnectedOperation_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update hardware settings
+.Description
+Update hardware settings
+.Example
+Update-AzDisconnectedOperationsHardwareSetting -HardwareSettingName "default" -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -MemoryInGb 32
+.Example
+$disconnectedOperation = @{
+  "ResourceGroupName" = "winfield-demo-rg-2";
+  "Name" = "winfield-ps-test";
+  "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
+}
+Update-AzDisconnectedOperationsHardwareSetting -HardwareSettingName "default" -DisconnectedOperationInputObject $disconnectedOperation -MemoryInGb 32
+.Example
+$inputObject = @{
+  "HardwareSettingName" = "default";
+  "ResourceGroupName" = "winfield-demo-rg-2";
+  "Name" = "winfield-ps-test";
+  "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
+}
+Update-AzDisconnectedOperationsHardwareSetting -InputObject $inputObject -MemoryInGb 32
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IHardwareSetting
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DISCONNECTEDOPERATIONINPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
+  [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the Image
+  [Name <String>]: Name of the resource
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+INPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
+  [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the Image
+  [Name <String>]: Name of the resource
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.disconnectedoperations/update-azdisconnectedoperationshardwaresetting
+#>
+function Update-AzDisconnectedOperationsHardwareSetting {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IHardwareSetting])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityDisconnectedOperationExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [System.String]
+    # The name of the HardwareSetting
+    ${HardwareSettingName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [System.String]
+    # Name of the resource
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityDisconnectedOperationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentity]
+    # Identity Parameter
+    ${DisconnectedOperationInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationsIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The unique Id of the device
+    ${DeviceId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # The disk space in GB
+    ${DiskSpaceInGb},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The hardware SKU
+    ${HardwareSku},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # The memory in GB
+    ${MemoryInGb},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # The number of nodes
+    ${Node},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The OEM
+    ${Oem},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The solution builder extension at registration
+    ${SolutionBuilderExtension},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # The total number of cores
+    ${TotalCore},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The active version at registration
+    ${VersionAtRegistration},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.DisconnectedOperations.private\Update-AzDisconnectedOperationsHardwareSetting_UpdateExpanded';
+            UpdateViaIdentityDisconnectedOperationExpanded = 'Az.DisconnectedOperations.private\Update-AzDisconnectedOperationsHardwareSetting_UpdateViaIdentityDisconnectedOperationExpanded';
+            UpdateViaIdentityExpanded = 'Az.DisconnectedOperations.private\Update-AzDisconnectedOperationsHardwareSetting_UpdateViaIdentityExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

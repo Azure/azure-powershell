@@ -109,6 +109,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the proxy resource holding details of HCI ArcSetting information.",
         SerializedName = @"arcSettingName",
         PossibleTypes = new [] { typeof(string) })]
@@ -117,6 +120,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the cluster.",
         SerializedName = @"clusterName",
         PossibleTypes = new [] { typeof(string) })]
@@ -125,6 +131,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of Deployment Setting",
         SerializedName = @"deploymentSettingsName",
         PossibleTypes = new [] { typeof(string) })]
@@ -133,6 +142,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of Device",
         SerializedName = @"edgeDeviceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -141,6 +153,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the machine extension.",
         SerializedName = @"extensionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -149,6 +164,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -157,6 +175,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -165,6 +186,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The fully qualified Azure Resource manager identifier of the resource.",
         SerializedName = @"resourceUri",
         PossibleTypes = new [] { typeof(string) })]
@@ -173,6 +197,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of security setting",
         SerializedName = @"securitySettingsName",
         PossibleTypes = new [] { typeof(string) })]
@@ -181,6 +208,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -189,6 +219,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Update",
         SerializedName = @"updateName",
         PossibleTypes = new [] { typeof(string) })]
@@ -197,6 +230,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Update Run",
         SerializedName = @"updateRunName",
         PossibleTypes = new [] { typeof(string) })]

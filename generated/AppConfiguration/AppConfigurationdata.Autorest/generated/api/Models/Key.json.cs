@@ -7,6 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Extensions;
 
+    /// <summary>
+    /// Keys serve as identifiers for key-values and are used to store and retrieve corresponding values.
+    /// </summary>
     public partial class Key
     {
 

@@ -15,12 +15,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     {
         /// <summary>
         /// The upgrade will stop after completing each upgrade domain and
-        /// automatically monitor health before proceeding. The value is 0.
+        /// automatically monitor health before proceeding.
         /// </summary>
         public const string Monitored = "Monitored";
         /// <summary>
         /// The upgrade will proceed automatically without performing any health
-        /// monitoring. The value is 1.
+        /// monitoring.
         /// </summary>
         public const string UnmonitoredAuto = "UnmonitoredAuto";
     }

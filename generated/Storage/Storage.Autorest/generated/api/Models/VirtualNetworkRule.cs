@@ -20,12 +20,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string Action { get => this._action; set => this._action = value; }
 
+        /// <summary>Internal Acessors for State</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IVirtualNetworkRuleInternal.State { get => this._state; set { {_state = value;} } }
+
         /// <summary>Backing field for <see cref="State" /> property.</summary>
         private string _state;
 
         /// <summary>Gets the state of virtual network rule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string State { get => this._state; set => this._state = value; }
+        public string State { get => this._state; }
 
         /// <summary>Backing field for <see cref="VirtualNetworkResourceId" /> property.</summary>
         private string _virtualNetworkResourceId;
@@ -61,15 +64,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Gets the state of virtual network rule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
+        Create = false,
+        Update = false,
         Description = @"Gets the state of virtual network rule.",
         SerializedName = @"state",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Provisioning", "Deprovisioning", "Succeeded", "Failed", "NetworkSourceDeleted")]
-        string State { get; set; }
+        string State { get;  }
         /// <summary>
         /// Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
         /// </summary>

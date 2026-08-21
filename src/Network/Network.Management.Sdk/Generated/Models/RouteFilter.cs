@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Route Filter Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class RouteFilter : Resource
+    public partial class RouteFilter : TrackedResourceWithSettableIdOptionalLocation
     {
         /// <summary>
         /// Initializes a new instance of the RouteFilter class.

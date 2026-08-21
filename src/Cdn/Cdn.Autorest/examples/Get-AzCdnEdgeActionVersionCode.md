@@ -1,16 +1,6 @@
-### Example 1: Get Edge Action Version Code
+### Example 1: Get EdgeAction version code
 ```powershell
-Get-AzCdnEdgeActionVersionCode -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -Version "v1"
+Get-AzCdnEdgeActionVersionCode -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1
 ```
 
-```output
-Name    : main.js
-Content : function handleRequest(request, response) {
-    // Edge action logic here
-    console.log('Processing request:', request.url);
-    response.setHeader('X-Edge-Action', 'v1');
-    return response;
-}
-```
-
-Get the source code for a specific Edge Action Version
+Gets the code deployed to the specified EdgeAction version.

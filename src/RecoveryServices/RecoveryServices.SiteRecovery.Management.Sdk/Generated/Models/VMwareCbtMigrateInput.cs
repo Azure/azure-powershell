@@ -33,12 +33,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="postMigrationSteps">The managed run command script input.
         /// </param>
-        public VMwareCbtMigrateInput(string performShutdown, string osUpgradeVersion = default(string), System.Collections.Generic.IList<ManagedRunCommandScriptInput> postMigrationSteps = default(System.Collections.Generic.IList<ManagedRunCommandScriptInput>))
+
+        /// <param name="targetCapacityReservationGroupId">The target capacity reservation group ARM Id.
+        /// </param>
+        public VMwareCbtMigrateInput(string performShutdown, string osUpgradeVersion = default(string), System.Collections.Generic.IList<ManagedRunCommandScriptInput> postMigrationSteps = default(System.Collections.Generic.IList<ManagedRunCommandScriptInput>), string targetCapacityReservationGroupId = default(string))
 
         {
             this.PerformShutdown = performShutdown;
             this.OSUpgradeVersion = osUpgradeVersion;
             this.PostMigrationSteps = postMigrationSteps;
+            this.TargetCapacityReservationGroupId = targetCapacityReservationGroupId;
             CustomInit();
         }
 
@@ -65,6 +69,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "postMigrationSteps")]
         public System.Collections.Generic.IList<ManagedRunCommandScriptInput> PostMigrationSteps {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target capacity reservation group ARM Id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetCapacityReservationGroupId")]
+        public string TargetCapacityReservationGroupId {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -89,6 +99,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
                     }
                 }
             }
+
         }
     }
 }

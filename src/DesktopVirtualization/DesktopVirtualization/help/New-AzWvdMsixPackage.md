@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdMsixPackage
 
 ## SYNOPSIS
-create a MSIX package.
+Create a MSIX package.
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ New-AzWvdMsixPackage -HostPoolName <String> -ResourceGroupName <String> [-Subscr
 ```
 
 ## DESCRIPTION
-create a MSIX package.
+Create a MSIX package.
 
 ## EXAMPLES
 

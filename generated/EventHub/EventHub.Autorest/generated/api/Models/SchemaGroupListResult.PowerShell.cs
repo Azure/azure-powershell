@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell;
 
-    /// <summary>The result of the List SchemaGroup operation.</summary>
+    /// <summary>The response of a SchemaGroup list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(SchemaGroupListResultTypeConverter))]
     public partial class SchemaGroupListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             return ToJsonString();
         }
     }
-    /// The result of the List SchemaGroup operation.
+    /// The response of a SchemaGroup list operation.
     [System.ComponentModel.TypeConverter(typeof(SchemaGroupListResultTypeConverter))]
     public partial interface ISchemaGroupListResult
 

@@ -19,6 +19,12 @@ Invoke-AzStackHciUpdate -ClusterName <String> -Name <String> -ResourceGroupName 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### PostViaIdentityCluster
+```
+Invoke-AzStackHciUpdate -Name <String> -ClusterInputObject <IStackHciIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### PostViaIdentity
 ```
 Invoke-AzStackHciUpdate -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -51,6 +57,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
+Parameter Sets: PostViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -87,7 +108,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
@@ -106,7 +126,7 @@ The name of the Update
 
 ```yaml
 Type: System.String
-Parameter Sets: Post
+Parameter Sets: Post, PostViaIdentityCluster
 Aliases: UpdateName
 
 Required: True

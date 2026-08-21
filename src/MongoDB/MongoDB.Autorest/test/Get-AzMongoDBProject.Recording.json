@@ -1,0 +1,98 @@
+{
+  "Get-AzMongoDBProject+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects?api-version=2026-03-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects?api-version=2026-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "34a6c5a0-8739-4ac9-968e-8d71fa0e2003" ],
+        "CommandName": [ "Get-AzMongoDBProject" ],
+        "FullCommandName": [ "Get-AzMongoDBProject_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.2", "Az.MongoDB/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=da7826b0-7505-464c-a74d-7b72637b257f/eastus2/5cd51198-fc83-4cf1-9a5e-f3e0327c5ed7" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "2c82259f-38bb-42d8-b19e-6621000e9394" ],
+        "x-ms-correlation-request-id": [ "077bfa4a-ec3a-4f34-9f0a-04f1d8e645b5" ],
+        "x-ms-client-request-id": [ "34a6c5a0-8739-4ac9-968e-8d71fa0e2003" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "e6c6e86f-1a21-489a-a066-328b09a2c14b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20260625T150621Z:077bfa4a-ec3a-4f34-9f0a-04f1d8e645b5" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 448AA3A7D3E94BAEBE7BBB83D76313EC Ref B: PNQ231110907031 Ref C: 2026-06-25T15:06:18Z" ],
+        "Date": [ "Thu, 25 Jun 2026 15:06:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2021" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/asdfsadf\",\"name\":\"asdfsadf\",\"type\":\"MongoDB.Atlas/organizations/projects\",\"properties\":{\"projectId\":\"6a3937eb751e66481282d3a7\",\"projectName\":\"asdfsadf\",\"organizationId\":\"6a2b114e620de528f66a43eb\",\"clusterCount\":0,\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/mavarsh-test-1\",\"name\":\"mavarsh-test-1\",\"type\":\"MongoDB.Atlas/organizations/projects\",\"properties\":{\"projectId\":\"6a39281864733305129a1678\",\"projectName\":\"mavarsh-test-1\",\"organizationId\":\"6a2b114e620de528f66a43eb\",\"clusterCount\":0,\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/mavarsh-test2\",\"name\":\"mavarsh-test2\",\"type\":\"MongoDB.Atlas/organizations/projects\",\"properties\":{\"projectId\":\"6a3a5afd00951c0d035780e6\",\"projectName\":\"mavarsh-test2\",\"organizationId\":\"6a2b114e620de528f66a43eb\",\"clusterCount\":1,\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/tesgin\",\"name\":\"tesgin\",\"type\":\"MongoDB.Atlas/organizations/projects\",\"properties\":{\"projectId\":\"6a33fb13df0e8aafd33b404b\",\"projectName\":\"tesgin\",\"organizationId\":\"6a2b114e620de528f66a43eb\",\"clusterCount\":3,\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/test-project-1\",\"name\":\"test-project-1\",\"type\":\"MongoDB.Atlas/organizations/projects\",\"properties\":{\"projectId\":\"6a3d3a7fee32a7a117663313\",\"projectName\":\"test-project-1\",\"organizationId\":\"6a2b114e620de528f66a43eb\",\"clusterCount\":1,\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMongoDBProject+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/test-project-1?api-version=2026-03-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/test-project-1?api-version=2026-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "d2c54260-a009-49c4-a887-0b138b172933" ],
+        "CommandName": [ "Get-AzMongoDBProject" ],
+        "FullCommandName": [ "Get-AzMongoDBProject_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.2", "Az.MongoDB/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=da7826b0-7505-464c-a74d-7b72637b257f/eastus2/00a00c57-87b1-417d-afca-32a912dd9efe" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "6b1683f4-4cac-4c9c-b248-d05fc878e68c" ],
+        "x-ms-correlation-request-id": [ "38ac7ff1-ad86-4618-a69b-ee33a80077c7" ],
+        "x-ms-client-request-id": [ "d2c54260-a009-49c4-a887-0b138b172933" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "a67797e0-28bb-42a7-a4d9-d062c43f802e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20260625T150622Z:38ac7ff1-ad86-4618-a69b-ee33a80077c7" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3174DE958CDD4F50B8E75F13F91D94A6 Ref B: PNQ231110907031 Ref C: 2026-06-25T15:06:21Z" ],
+        "Date": [ "Thu, 25 Jun 2026 15:06:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "410" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/test-project-1\",\"name\":\"test-project-1\",\"type\":\"MongoDB.Atlas/organizations/projects\",\"properties\":{\"projectId\":\"6a3d3a7fee32a7a117663313\",\"projectName\":\"test-project-1\",\"organizationId\":\"6a2b114e620de528f66a43eb\",\"clusterCount\":1,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

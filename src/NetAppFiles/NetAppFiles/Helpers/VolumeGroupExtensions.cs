@@ -126,6 +126,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 VolumeSpecName = volumeGroupVolumeProperties.VolumeSpecName,
                 PlacementRules = volumeGroupVolumeProperties.PlacementRules.ToPPSKeyValuePairs(),
                 EnableSubvolumes = volumeGroupVolumeProperties.EnableSubvolumes,
+                BreakthroughMode = volumeGroupVolumeProperties.BreakthroughMode,
                 Encrypted = volumeGroupVolumeProperties.Encrypted,                
                 KeyVaultPrivateEndpointResourceId = volumeGroupVolumeProperties.KeyVaultPrivateEndpointResourceId
             };

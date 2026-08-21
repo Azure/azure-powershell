@@ -1,4 +1,4 @@
-function RandomString([bool]$allChars, [int32]$len) {
+﻿function RandomString([bool]$allChars, [int32]$len) {
     if ($allChars) {
         return -join ((33..126) | Get-Random -Count $len | % {[char]$_})
     } else {
@@ -99,7 +99,7 @@ function setupEnv() {
     New-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName -Location $env.location -ClusterExtensionId $env.ClusterExtensionId -HostResourceId $env.HostResourceId -DisplayName $env.clusterLocationName -Namespace azps1
 
     # Wait for extension creation to complete
-    Start-Sleep –s 180
+    Start-Sleep -s 180
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

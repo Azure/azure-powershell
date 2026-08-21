@@ -15,7 +15,8 @@ Creates collection setting for migration according for the mongoDb migration
 ```
 New-AzDataMigrationMongoDbCollectionSetting [-TargetRequestUnit <Int32>] [-CanDelete] [-UniqueShard]
  [-ShardKey <String>] [-DefaultProfile <IAzureContextContainer>] -Name <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +47,21 @@ CanDelete ShardKey                                                              
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CanDelete
 Whether the target data is supposed to be deleted, if the switch is set, it will be cleaned up at migration
 
@@ -53,6 +69,21 @@ Whether the target data is supposed to be deleted, if the switch is set, it will
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: Clean
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

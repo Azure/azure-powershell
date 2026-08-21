@@ -31,8 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         /// <summary>Internal Acessors for Batch</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IBatchProcessor Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal.Batch { get => (this._batch = this._batch ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.BatchProcessor()); set { {_batch = value;} } }
 
-        /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal.Type { get => this._type; set { {_type = value;} } }
+        /// <summary>Internal Acessors for TransformLanguage</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITransformLanguageProcessor Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal.TransformLanguage { get => (this._transformLanguage = this._transformLanguage ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TransformLanguageProcessor()); set { {_transformLanguage = value;} } }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -41,12 +41,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
         public string Name { get => this._name; set => this._name = value; }
 
+        /// <summary>Backing field for <see cref="TransformLanguage" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITransformLanguageProcessor _transformLanguage;
+
+        /// <summary>Transform language processor configurations.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITransformLanguageProcessor TransformLanguage { get => (this._transformLanguage = this._transformLanguage ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TransformLanguageProcessor()); set => this._transformLanguage = value; }
+
+        /// <summary>Transform statement to execute over the data passing through the processor.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
+        public string TransformLanguageTransformStatement { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITransformLanguageProcessorInternal)TransformLanguage).TransformStatement; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITransformLanguageProcessorInternal)TransformLanguage).TransformStatement = value ?? null; }
+
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private string _type= @"Batch";
+        private string _type;
 
         /// <summary>The type of processor.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
-        public string Type { get => this._type; }
+        public string Type { get => this._type; set => this._type = value; }
 
         /// <summary>Creates an new <see cref="Processor" /> instance.</summary>
         public Processor()
@@ -91,17 +102,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
+        /// <summary>Transform statement to execute over the data passing through the processor.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Transform statement to execute over the data passing through the processor.",
+        SerializedName = @"transformStatement",
+        PossibleTypes = new [] { typeof(string) })]
+        string TransformLanguageTransformStatement { get; set; }
         /// <summary>The type of processor.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = true,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
         Description = @"The type of processor.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        string Type { get;  }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("Batch", "TransformLanguage", "MicrosoftSyslog", "MicrosoftCommonSecurityLog")]
+        string Type { get; set; }
 
     }
     /// Processor Info.
@@ -116,7 +139,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         int? BatchTimeout { get; set; }
         /// <summary>The name of processor.</summary>
         string Name { get; set; }
+        /// <summary>Transform language processor configurations.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITransformLanguageProcessor TransformLanguage { get; set; }
+        /// <summary>Transform statement to execute over the data passing through the processor.</summary>
+        string TransformLanguageTransformStatement { get; set; }
         /// <summary>The type of processor.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("Batch", "TransformLanguage", "MicrosoftSyslog", "MicrosoftCommonSecurityLog")]
         string Type { get; set; }
 
     }

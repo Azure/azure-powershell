@@ -12,7 +12,7 @@ Shows the provisioning status of Network Fabric Controller.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzNetworkFabricController [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -24,7 +24,7 @@ Get-AzNetworkFabricController -Name <String> -ResourceGroupName <String> [-Subsc
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzNetworkFabricController -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -140,7 +140,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -156,7 +156,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, Get, List
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False

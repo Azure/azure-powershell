@@ -45,6 +45,7 @@ $signalrName = "mysignalr"
 $rule = New-AzSignalRNetworkIpRuleObject -Value "10.1.0.0/16" -Action Allow
 $updated = Remove-AzSignalRNetworkIpRule -ResourceGroupName $rg -Name $signalrName -IpRule $rule
 ```
+
 Removes the allow rule for the given CIDR range from the specified SignalR instance.
 
 ### Example 2: Remove a rule using resource ID (ResourceIdParameterSet)
@@ -53,6 +54,7 @@ $signalr = Get-AzSignalR -ResourceGroupName "my-rg" -Name "mysignalr"
 $denyRule = New-AzSignalRNetworkIpRuleObject -Value "20.2.2.2" -Action Deny
 $acls = Remove-AzSignalRNetworkIpRule -ResourceId $signalr.Id -IpRule $denyRule
 ```
+
 Removes a deny rule identified by value/action using the resource ID parameter set.
 
 ### Example 3: Remove rules via pipeline SignalR object (InputObjectParameterSet)
@@ -61,6 +63,7 @@ $rule1 = New-AzSignalRNetworkIpRuleObject -Value "30.3.3.3" -Action Allow
 $rule2 = New-AzSignalRNetworkIpRuleObject -Value "40.4.0.0/24" -Action Deny
 Get-AzSignalR -ResourceGroupName "my-rg" -Name "mysignalr" | Remove-AzSignalRNetworkIpRule -IpRule $rule1,$rule2
 ```
+
 Pipes the SignalR resource object and removes two IP rules at once.
 
 ## PARAMETERS
@@ -69,7 +72,7 @@ Pipes the SignalR resource object and removes two IP rules at once.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -84,7 +87,7 @@ Accept wildcard characters: False
 The SignalR resource object.
 
 ```yaml
-Type: PSSignalRResource
+Type: Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -99,7 +102,7 @@ Accept wildcard characters: False
 IP rule object(s) created by New-AzSignalRNetworkIpRuleObject.
 
 ```yaml
-Type: PSIpRule[]
+Type: Microsoft.Azure.Commands.SignalR.Models.PSIpRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +117,7 @@ Accept wildcard characters: False
 The SignalR service name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -129,7 +132,7 @@ Accept wildcard characters: False
 The resource group name. The default one will be used if not specified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -144,7 +147,7 @@ Accept wildcard characters: False
 The SignalR service resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -159,7 +162,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -174,7 +177,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

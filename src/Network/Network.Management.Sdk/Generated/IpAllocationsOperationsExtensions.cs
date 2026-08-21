@@ -13,168 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class IPAllocationsOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified IpAllocation.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipAllocationName'>
-        /// The name of the IpAllocation.
-        /// </param>
-        public static IPAllocationsDeleteHeaders Delete(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName)
-        {
-                return ((IIPAllocationsOperations)operations).DeleteAsync(resourceGroupName, ipAllocationName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified IpAllocation.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipAllocationName'>
-        /// The name of the IpAllocation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<IPAllocationsDeleteHeaders> DeleteAsync(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ipAllocationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// Gets the specified IpAllocation by resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipAllocationName'>
-        /// The name of the IpAllocation.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        public static IpAllocation Get(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, string expand = default(string))
-        {
-                return ((IIPAllocationsOperations)operations).GetAsync(resourceGroupName, ipAllocationName, expand).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified IpAllocation by resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipAllocationName'>
-        /// The name of the IpAllocation.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<IpAllocation> GetAsync(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, ipAllocationName, expand, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates an IpAllocation in the specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipAllocationName'>
-        /// The name of the IpAllocation.
-        /// </param>
-        public static IpAllocation CreateOrUpdate(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, IpAllocation parameters)
-        {
-                return ((IIPAllocationsOperations)operations).CreateOrUpdateAsync(resourceGroupName, ipAllocationName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates an IpAllocation in the specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipAllocationName'>
-        /// The name of the IpAllocation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<IpAllocation> CreateOrUpdateAsync(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, IpAllocation parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, ipAllocationName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates a IpAllocation tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipAllocationName'>
-        /// The name of the IpAllocation.
-        /// </param>
-        public static IpAllocation UpdateTags(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, TagsObject parameters)
-        {
-                return ((IIPAllocationsOperations)operations).UpdateTagsAsync(resourceGroupName, ipAllocationName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates a IpAllocation tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipAllocationName'>
-        /// The name of the IpAllocation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<IpAllocation> UpdateTagsAsync(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, ipAllocationName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all IpAllocations in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -208,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<IpAllocation> ListByResourceGroup(this IIPAllocationsOperations operations, string resourceGroupName)
         {
@@ -222,7 +60,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -235,42 +73,48 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Deletes the specified IpAllocation.
+        /// Gets the specified IpAllocation by resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ipAllocationName'>
         /// The name of the IpAllocation.
         /// </param>
-        public static IPAllocationsDeleteHeaders BeginDelete(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName)
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        public static IpAllocation Get(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, string expand = default(string))
         {
-                return ((IIPAllocationsOperations)operations).BeginDeleteAsync(resourceGroupName, ipAllocationName).GetAwaiter().GetResult();
+                return ((IIPAllocationsOperations)operations).GetAsync(resourceGroupName, ipAllocationName, expand).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes the specified IpAllocation.
+        /// Gets the specified IpAllocation by resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ipAllocationName'>
         /// The name of the IpAllocation.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<IPAllocationsDeleteHeaders> BeginDeleteAsync(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<IpAllocation> GetAsync(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, ipAllocationName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, ipAllocationName, expand, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Headers;
+                return _result.Body;
             }
         }
         /// <summary>
@@ -280,7 +124,121 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipAllocationName'>
+        /// The name of the IpAllocation.
+        /// </param>
+        public static IpAllocation CreateOrUpdate(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, IpAllocation parameters)
+        {
+                return ((IIPAllocationsOperations)operations).CreateOrUpdateAsync(resourceGroupName, ipAllocationName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an IpAllocation in the specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipAllocationName'>
+        /// The name of the IpAllocation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<IpAllocation> CreateOrUpdateAsync(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, IpAllocation parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, ipAllocationName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates a IpAllocation tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipAllocationName'>
+        /// The name of the IpAllocation.
+        /// </param>
+        public static IpAllocation UpdateTags(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, TagsObject parameters)
+        {
+                return ((IIPAllocationsOperations)operations).UpdateTagsAsync(resourceGroupName, ipAllocationName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates a IpAllocation tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipAllocationName'>
+        /// The name of the IpAllocation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<IpAllocation> UpdateTagsAsync(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, ipAllocationName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified IpAllocation.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipAllocationName'>
+        /// The name of the IpAllocation.
+        /// </param>
+        public static void Delete(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName)
+        {
+                ((IIPAllocationsOperations)operations).DeleteAsync(resourceGroupName, ipAllocationName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified IpAllocation.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipAllocationName'>
+        /// The name of the IpAllocation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ipAllocationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Creates or updates an IpAllocation in the specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ipAllocationName'>
         /// The name of the IpAllocation.
@@ -297,7 +255,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ipAllocationName'>
         /// The name of the IpAllocation.
@@ -311,6 +269,42 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Deletes the specified IpAllocation.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipAllocationName'>
+        /// The name of the IpAllocation.
+        /// </param>
+        public static void BeginDelete(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName)
+        {
+                ((IIPAllocationsOperations)operations).BeginDeleteAsync(resourceGroupName, ipAllocationName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified IpAllocation.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipAllocationName'>
+        /// The name of the IpAllocation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, ipAllocationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all IpAllocations in a subscription.

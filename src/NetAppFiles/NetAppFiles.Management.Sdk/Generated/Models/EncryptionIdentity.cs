@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// &#39;UserAssigned&#39;. It should match key of identity.userAssignedIdentities.
         /// </param>
 
-        /// <param name="federatedClientId">ClientId of the multi-tenant AAD Application. Used to access cross-tenant
-        /// keyvaults.
+        /// <param name="federatedClientId">ClientId of the multi-tenant Entra ID Application. Used to access
+        /// cross-tenant keyvaults.
         /// </param>
         public EncryptionIdentity(string principalId = default(string), string userAssignedIdentity = default(string), string federatedClientId = default(string))
 
@@ -67,8 +67,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string UserAssignedIdentity {get; set; }
 
         /// <summary>
-        /// Gets or sets clientId of the multi-tenant AAD Application. Used to access
-        /// cross-tenant keyvaults.
+        /// Gets or sets clientId of the multi-tenant Entra ID Application. Used to
+        /// access cross-tenant keyvaults.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "federatedClientId")]
         public string FederatedClientId {get; set; }

@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ConfigurationType
     {
+        /// <summary>
+        /// SecurityAdmin
+        /// </summary>
         public const string SecurityAdmin = "SecurityAdmin";
+        /// <summary>
+        /// Connectivity
+        /// </summary>
         public const string Connectivity = "Connectivity";
+        /// <summary>
+        /// SecurityUser
+        /// </summary>
         public const string SecurityUser = "SecurityUser";
+        /// <summary>
+        /// Routing
+        /// </summary>
         public const string Routing = "Routing";
     }
 }

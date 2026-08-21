@@ -81,6 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             {_marketplaceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString>("marketplaceName"), out var __jsonMarketplaceName) ? (string)__jsonMarketplaceName : (string)_marketplaceName;}
             {_marketplaceStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString>("marketplaceStatus"), out var __jsonMarketplaceStatus) ? (string)__jsonMarketplaceStatus : (string)_marketplaceStatus;}
             {_billedAzureSubscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString>("billedAzureSubscriptionId"), out var __jsonBilledAzureSubscriptionId) ? (string)__jsonBilledAzureSubscriptionId : (string)_billedAzureSubscriptionId;}
+            {_offerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString>("offerId"), out var __jsonOfferId) ? (string)__jsonOfferId : (string)_offerId;}
             {_subscribed = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonBoolean>("subscribed"), out var __jsonSubscribed) ? (bool?)__jsonSubscribed : _subscribed;}
             AfterFromJson(json);
         }
@@ -108,6 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             AddIf( null != (((object)this._marketplaceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(this._marketplaceName.ToString()) : null, "marketplaceName" ,container.Add );
             AddIf( null != (((object)this._marketplaceStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(this._marketplaceStatus.ToString()) : null, "marketplaceStatus" ,container.Add );
             AddIf( null != (((object)this._billedAzureSubscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(this._billedAzureSubscriptionId.ToString()) : null, "billedAzureSubscriptionId" ,container.Add );
+            AddIf( null != (((object)this._offerId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(this._offerId.ToString()) : null, "offerId" ,container.Add );
             AddIf( null != this._subscribed ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonBoolean((bool)this._subscribed) : null, "subscribed" ,container.Add );
             AfterToJson(ref container);
             return container;

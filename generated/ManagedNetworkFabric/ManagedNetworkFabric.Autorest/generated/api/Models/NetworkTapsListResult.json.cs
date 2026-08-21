@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
-    /// <summary>List of NetworkTaps.</summary>
+    /// <summary>Paged collection of NetworkTap items</summary>
     public partial class NetworkTapsListResult
     {
 

@@ -33,7 +33,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-PARAMETER <ICheckNameAvailabilityParameter>: Parameter supplied to check Namespace name availability operation 
+PARAMETER <ICheckNameAvailabilityParameter>: Parameter supplied to check Namespace name availability operation
   Name <String>: Name to check the namespace name availability
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/test-azeventhubnamespacenameavailability
@@ -46,8 +46,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]

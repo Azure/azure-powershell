@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list Rules Engine Configurations. It contains a list of RulesEngine objects and a URL link to
-    /// get the next set of results.
-    /// </summary>
+    /// <summary>Paged collection of RulesEngine items</summary>
     public partial class RulesEngineListResult :
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineListResult,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineListResultInternal
@@ -22,14 +19,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next set of RulesEngine objects if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine> _value;
 
-        /// <summary>List of rulesEngines within a Front Door.</summary>
+        /// <summary>The RulesEngine items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine> Value { get => this._value; }
 
@@ -39,43 +36,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 
         }
     }
-    /// Result of the request to list Rules Engine Configurations. It contains a list of RulesEngine objects and a URL link to
-    /// get the next set of results.
+    /// Paged collection of RulesEngine items
     public partial interface IRulesEngineListResult :
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next set of RulesEngine objects if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"URL to get the next set of RulesEngine objects if there are any.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>List of rulesEngines within a Front Door.</summary>
+        /// <summary>The RulesEngine items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"List of rulesEngines within a Front Door.",
+        Description = @"The RulesEngine items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine> Value { get;  }
 
     }
-    /// Result of the request to list Rules Engine Configurations. It contains a list of RulesEngine objects and a URL link to
-    /// get the next set of results.
+    /// Paged collection of RulesEngine items
     internal partial interface IRulesEngineListResultInternal
 
     {
-        /// <summary>URL to get the next set of RulesEngine objects if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of rulesEngines within a Front Door.</summary>
+        /// <summary>The RulesEngine items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine> Value { get; set; }
 
     }

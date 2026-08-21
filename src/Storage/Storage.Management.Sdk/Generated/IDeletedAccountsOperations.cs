@@ -39,11 +39,11 @@ namespace Microsoft.Azure.Management.Storage
         /// <remarks>
         /// Get properties of specified deleted account resource.
         /// </remarks>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
         /// <param name='deletedAccountName'>
         /// Name of the deleted storage account.
-        /// </param>
-        /// <param name='location'>
-        /// The location of the deleted storage account.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeletedAccount>> GetWithHttpMessagesAsync(string deletedAccountName, string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeletedAccount>> GetWithHttpMessagesAsync(string location, string deletedAccountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists deleted accounts under the subscription.

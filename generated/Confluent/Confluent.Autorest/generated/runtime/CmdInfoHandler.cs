@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime
 {
     using NextDelegate = Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>;
     using SignalDelegate = Func<string, CancellationToken, Func<EventArgs>, Task>;

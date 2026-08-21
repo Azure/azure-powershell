@@ -1,6 +1,6 @@
 ---
 external help file: Az.Confluent-help.xml
-Module Name: Az.Confluent
+Module Name: Az.confluent
 online version: https://learn.microsoft.com/powershell/module/az.confluent/get-azconfluentmarketplaceagreement
 schema: 2.0.0
 ---
@@ -55,7 +55,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Microsoft Azure subscription id
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -76,7 +77,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResource
+### Microsoft.Azure.PowerShell.Cmdlets.confluent.Models.IConfluentAgreementResource
 
 ## NOTES
 

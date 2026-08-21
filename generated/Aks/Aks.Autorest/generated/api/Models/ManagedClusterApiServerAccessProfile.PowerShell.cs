@@ -131,6 +131,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)this).DisableRunCommand = (bool?) content.GetValueForProperty("DisableRunCommand",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)this).DisableRunCommand, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("EnableVnetIntegration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)this).EnableVnetIntegration = (bool?) content.GetValueForProperty("EnableVnetIntegration",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)this).EnableVnetIntegration, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SubnetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)this).SubnetId = (string) content.GetValueForProperty("SubnetId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)this).SubnetId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -167,6 +175,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("DisableRunCommand"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)this).DisableRunCommand = (bool?) content.GetValueForProperty("DisableRunCommand",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)this).DisableRunCommand, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EnableVnetIntegration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)this).EnableVnetIntegration = (bool?) content.GetValueForProperty("EnableVnetIntegration",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)this).EnableVnetIntegration, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SubnetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)this).SubnetId = (string) content.GetValueForProperty("SubnetId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)this).SubnetId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

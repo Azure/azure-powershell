@@ -13,9 +13,10 @@ while(-not $mockingPath) {
 
 $env:FunctionsTestMode = $true
 
-# Please note that these tests can run in Playback mode only when executed locally. They fail in the pipeline due to the environment.
-# However, they can be used for local deployment in Playback mode.
-# Describe 'New-AzFunctionApp - Flex Consumption' {
+# These tests require a live Azure context because New-AzFunctionApp calls
+# Get-AzFunctionAppFlexConsumptionRuntime, which needs SubscriptionId from
+# the Azure context. In CI playback, there is no Azure context, so
+# SubscriptionId is null and the tests fail with parameter binding errors.
 Describe 'New-AzFunctionApp - Flex Consumption' -Tag 'LiveOnly' {
 
     BeforeAll {
@@ -474,7 +475,7 @@ Describe 'New-AzFunctionApp - Flex Consumption' -Tag 'LiveOnly' {
                               -Runtime $runtime `
                               -FlexConsumptionLocation $flexLocation `
                               -DeploymentStorageAuthType "SystemAssignedIdentity" `
-                              -IdentityType "SystemAssigned" `
+                              -EnableSystemAssignedIdentity `
                               -EnableZoneRedundancy
 
             Write-Verbose "Validating SystemAssigned identity configuration..." -Verbose
@@ -545,8 +546,7 @@ Describe 'New-AzFunctionApp - Flex Consumption' -Tag 'LiveOnly' {
                               -FlexConsumptionLocation $flexLocation `
                               -DeploymentStorageAuthType "UserAssignedIdentity" `
                               -DeploymentStorageAuthValue $flexIdentityInfo.Id `
-                              -IdentityType "UserAssigned" `
-                              -IdentityID $flexIdentityInfo.Id
+                              -UserAssignedIdentity $flexIdentityInfo.Id
 
             # Validate basic properties using base test case expectations
             Write-Verbose "Validating Flex function app basic properties..." -Verbose

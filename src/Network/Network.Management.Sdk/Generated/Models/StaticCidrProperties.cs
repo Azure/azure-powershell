@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Management.Network.Models
         public string TotalNumberOfIPAddresses {get; private set; }
 
         /// <summary>
-        /// Gets or sets provisioning states of a resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
+        /// Gets provisioning states of a resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
-        public string ProvisioningState {get; set; }
+        public string ProvisioningState {get; private set; }
     }
 }

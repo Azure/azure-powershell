@@ -87,6 +87,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputSettingsInternal)this).ContainerUrl = (string) content.GetValueForProperty("ContainerUrl",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputSettingsInternal)this).ContainerUrl, global::System.Convert.ToString);
             }
+            if (content.Contains("Override"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputSettingsInternal)this).Override = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>) content.GetValueForProperty("Override",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputSettingsInternal)this).Override, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CommandOutputOverrideTypeConverter.ConvertFrom));
+            }
             if (content.Contains("AssociatedIdentityType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputSettingsInternal)this).AssociatedIdentityType = (string) content.GetValueForProperty("AssociatedIdentityType",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputSettingsInternal)this).AssociatedIdentityType, global::System.Convert.ToString);
@@ -119,6 +123,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("ContainerUrl"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputSettingsInternal)this).ContainerUrl = (string) content.GetValueForProperty("ContainerUrl",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputSettingsInternal)this).ContainerUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("Override"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputSettingsInternal)this).Override = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>) content.GetValueForProperty("Override",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputSettingsInternal)this).Override, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CommandOutputOverrideTypeConverter.ConvertFrom));
             }
             if (content.Contains("AssociatedIdentityType"))
             {

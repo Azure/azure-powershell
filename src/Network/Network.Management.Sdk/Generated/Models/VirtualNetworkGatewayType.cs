@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VirtualNetworkGatewayType
     {
+        /// <summary>
+        /// Vpn
+        /// </summary>
         public const string Vpn = "Vpn";
+        /// <summary>
+        /// ExpressRoute
+        /// </summary>
         public const string ExpressRoute = "ExpressRoute";
+        /// <summary>
+        /// LocalGateway
+        /// </summary>
         public const string LocalGateway = "LocalGateway";
     }
 }

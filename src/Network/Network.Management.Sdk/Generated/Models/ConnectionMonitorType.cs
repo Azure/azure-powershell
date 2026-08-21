@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ConnectionMonitorType
     {
+        /// <summary>
+        /// MultiEndpoint
+        /// </summary>
         public const string MultiEndpoint = "MultiEndpoint";
+        /// <summary>
+        /// SingleSourceDestination
+        /// </summary>
         public const string SingleSourceDestination = "SingleSourceDestination";
     }
 }

@@ -20,11 +20,11 @@ Create a DisconnectedOperation
 .Description
 Create a DisconnectedOperation
 .Example
-New-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -Location "westus3" -ConnectionIntent "Disconnected" -Tag @{}
+New-AzDisconnectedOperationsDisconnectedOperation -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -ConnectionIntent "Disconnected" -BillingConfigurationAutoRenew "Disabled" -CurrentCore 8 -CurrentPricingModel "Annual" -BenefitPlanAzureHybridWindowsServerBenefit "Enabled" -BenefitPlanWindowsServerVMCount 10 -Location "eastus2euap" -Tag @{}
 .Example
-New-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -JsonFilePath "path/to/jsonFiles/CreateDisconnectedOperations.json"
+New-AzDisconnectedOperationsDisconnectedOperation -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -JsonFilePath "path/to/jsonFiles/CreateDisconnectedOperations.json"
 .Example
-New-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -JsonString '{"properties":{"connectionIntent":"Disconnected","billingModel":"Capacity"},"tags":{},"location":"westus3"}'
+New-AzDisconnectedOperationsDisconnectedOperation -Name "winfield-ps-test-2" -ResourceGroupName "winfield-demo-rg-2" -JsonString '{"properties":{"connectionIntent":"Disconnected","billingModel":"Capacity","billingConfiguration":{"autoRenew":"Disabled","current":{"cores":8,"pricingModel":"Annual"},"upcoming":{"cores":8,"pricingModel":"Annual"}},"benefitPlans":{"azureHybridWindowsServerBenefit":"Enabled","windowsServerVmCount":10}},"tags":{},"location":"eastus2euap"}'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperation
@@ -63,11 +63,44 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # Azure Hybrid Windows Server Benefit plan
+    ${BenefitPlanAzureHybridWindowsServerBenefit},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # Number of Windows Server VMs to license under the Azure Hybrid Benefit plan
+    ${BenefitPlanWindowsServerVMCount},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The auto renew setting
+    ${BillingConfigurationAutoRenew},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Connected", "Disconnected")]
     [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
     [System.String]
     # The connection intent
     ${ConnectionIntent},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # The number of cores
+    ${CurrentCore},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Trial", "Annual")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The pricing model
+    ${CurrentPricingModel},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
@@ -162,8 +195,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class RecoveryPlanActionLocation
     {
+        /// <summary>
+        /// Primary
+        /// </summary>
         public const string Primary = "Primary";
+        /// <summary>
+        /// Recovery
+        /// </summary>
         public const string Recovery = "Recovery";
     }
 }

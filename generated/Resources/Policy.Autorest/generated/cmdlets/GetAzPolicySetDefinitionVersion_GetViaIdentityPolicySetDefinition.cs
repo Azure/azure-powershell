@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation retrieves the policy set definition version in the given subscription with the given name and version.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}", ApiVersion = "2023-04-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}", ApiVersion = "2025-03-01")]
     public partial class GetAzPolicySetDefinitionVersion_GetViaIdentityPolicySetDefinition : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IContext
@@ -72,6 +72,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Backing field for <see cref="Expand" /> property.</summary>
+        private string _expand;
+
+        /// <summary>
+        /// Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion,
+        /// EffectiveDefinitionVersion'.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.",
+        SerializedName = @"$expand",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Query)]
+        public string Expand { get => this._expand; set => this._expand = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -150,12 +167,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
@@ -363,7 +380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                     if (PolicySetDefinitionInputObject?.Id != null)
                     {
                         this.PolicySetDefinitionInputObject.Id += $"/versions/{(global::System.Uri.EscapeDataString(this.PolicyDefinitionVersion.ToString()))}";
-                        await this.Client.PolicySetDefinitionVersionsGetViaIdentity(PolicySetDefinitionInputObject.Id, onOk, onDefault, this, Pipeline);
+                        await this.Client.PolicySetDefinitionVersionsGetViaIdentity(PolicySetDefinitionInputObject.Id, this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -376,13 +393,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("PolicySetDefinitionInputObject has null value for PolicySetDefinitionInputObject.PolicySetDefinitionName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, PolicySetDefinitionInputObject) );
                         }
-                        await this.Client.PolicySetDefinitionVersionsGet(PolicySetDefinitionInputObject.SubscriptionId ?? null, PolicySetDefinitionInputObject.PolicySetDefinitionName ?? null, PolicyDefinitionVersion, onOk, onDefault, this, Pipeline);
+                        await this.Client.PolicySetDefinitionVersionsGet(PolicySetDefinitionInputObject.SubscriptionId ?? null, PolicySetDefinitionInputObject.PolicySetDefinitionName ?? null, PolicyDefinitionVersion, this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { PolicyDefinitionVersion=PolicyDefinitionVersion})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { PolicyDefinitionVersion=PolicyDefinitionVersion,Expand=this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -420,12 +437,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -442,7 +459,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }

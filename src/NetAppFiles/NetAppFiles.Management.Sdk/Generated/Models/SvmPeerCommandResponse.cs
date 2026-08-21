@@ -24,14 +24,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Initializes a new instance of the SvmPeerCommandResponse class.
         /// </summary>
 
-        /// <param name="svmPeeringCommand">A command that needs to be run on the external ONTAP to accept svm peering.
-        /// Will only be present if &lt;code&gt;svmPeeringStatus&lt;/code&gt; is
-        /// &lt;code&gt;pending&lt;/code&gt;
+        /// <param name="properties">Represents the properties of the SVM peer command response.
         /// </param>
-        public SvmPeerCommandResponse(string svmPeeringCommand = default(string))
+        public SvmPeerCommandResponse(SvmPeerCommandResponseProperties properties = default(SvmPeerCommandResponseProperties))
 
         {
-            this.SvmPeeringCommand = svmPeeringCommand;
+            this.Properties = properties;
             CustomInit();
         }
 
@@ -42,11 +40,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
         /// <summary>
-        /// Gets or sets a command that needs to be run on the external ONTAP to accept
-        /// svm peering.  Will only be present if &lt;code&gt;svmPeeringStatus&lt;/code&gt; is
-        /// &lt;code&gt;pending&lt;/code&gt;
+        /// Gets or sets represents the properties of the SVM peer command response.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "svmPeeringCommand")]
-        public string SvmPeeringCommand {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
+        public SvmPeerCommandResponseProperties Properties {get; set; }
     }
 }

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class RecoveryPointSyncType
     {
+        /// <summary>
+        /// MultiVmSyncRecoveryPoint
+        /// </summary>
         public const string MultiVmSyncRecoveryPoint = "MultiVmSyncRecoveryPoint";
+        /// <summary>
+        /// PerVmRecoveryPoint
+        /// </summary>
         public const string PerVmRecoveryPoint = "PerVmRecoveryPoint";
     }
 }

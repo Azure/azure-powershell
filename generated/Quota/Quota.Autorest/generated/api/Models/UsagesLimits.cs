@@ -23,16 +23,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// The URI used to fetch the next page of quota limits. When there are no more pages, this is null.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBase> _value;
 
-        /// <summary>List of quota limits.</summary>
+        /// <summary>The CurrentUsagesBase items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBase> Value { get => this._value; set => this._value = value; }
 
@@ -65,27 +63,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         SerializedName = @"ETag",
         PossibleTypes = new [] { typeof(string) })]
         string ETag { get; set; }
-        /// <summary>
-        /// The URI used to fetch the next page of quota limits. When there are no more pages, this is null.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The URI used to fetch the next page of quota limits. When there are no more pages, this is null.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>List of quota limits.</summary>
+        /// <summary>The CurrentUsagesBase items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of quota limits.",
+        Description = @"The CurrentUsagesBase items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBase) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBase> Value { get; set; }
@@ -96,11 +92,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
 
     {
         string ETag { get; set; }
-        /// <summary>
-        /// The URI used to fetch the next page of quota limits. When there are no more pages, this is null.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of quota limits.</summary>
+        /// <summary>The CurrentUsagesBase items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBase> Value { get; set; }
 
     }

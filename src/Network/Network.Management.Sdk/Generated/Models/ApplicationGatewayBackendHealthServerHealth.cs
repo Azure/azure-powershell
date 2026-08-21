@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewayBackendHealthServerHealth
     {
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
+        /// <summary>
+        /// Up
+        /// </summary>
         public const string Up = "Up";
+        /// <summary>
+        /// Down
+        /// </summary>
         public const string Down = "Down";
+        /// <summary>
+        /// Partial
+        /// </summary>
         public const string Partial = "Partial";
+        /// <summary>
+        /// Draining
+        /// </summary>
         public const string Draining = "Draining";
     }
 }

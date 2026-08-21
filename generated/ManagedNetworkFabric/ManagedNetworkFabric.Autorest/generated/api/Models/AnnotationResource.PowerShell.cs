@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
     /// <summary>
-    /// Switch configuration entries require a description to discern between configuration groups.
+    /// Switch configuration entries require a description to discern between configuration group
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(AnnotationResourceTypeConverter))]
     public partial class AnnotationResource
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// Switch configuration entries require a description to discern between configuration groups.
+    /// Switch configuration entries require a description to discern between configuration group
     [System.ComponentModel.TypeConverter(typeof(AnnotationResourceTypeConverter))]
     public partial interface IAnnotationResource
 

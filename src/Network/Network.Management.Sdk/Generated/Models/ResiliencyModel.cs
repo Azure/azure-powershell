@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ResiliencyModel
     {
+        /// <summary>
+        /// SingleHomed
+        /// </summary>
         public const string SingleHomed = "SingleHomed";
+        /// <summary>
+        /// MultiHomed
+        /// </summary>
         public const string MultiHomed = "MultiHomed";
     }
 }

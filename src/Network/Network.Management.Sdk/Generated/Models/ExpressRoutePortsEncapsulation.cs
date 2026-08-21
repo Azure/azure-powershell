@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ExpressRoutePortsEncapsulation
     {
+        /// <summary>
+        /// Dot1Q
+        /// </summary>
         public const string Dot1Q = "Dot1Q";
+        /// <summary>
+        /// QinQ
+        /// </summary>
         public const string QinQ = "QinQ";
     }
 }

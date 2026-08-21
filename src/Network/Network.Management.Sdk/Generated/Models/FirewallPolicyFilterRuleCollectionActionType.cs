@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class FirewallPolicyFilterRuleCollectionActionType
     {
+        /// <summary>
+        /// Allow
+        /// </summary>
         public const string Allow = "Allow";
+        /// <summary>
+        /// Deny
+        /// </summary>
         public const string Deny = "Deny";
     }
 }

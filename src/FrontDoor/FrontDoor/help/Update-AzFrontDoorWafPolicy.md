@@ -15,8 +15,9 @@ Update policy with specified rule set name within a resource group.
 ### UpdateExpanded (Default)
 ```
 Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Customrule <ICustomRule[]>] [-Etag <String>] [-ManagedRuleSet <IManagedRuleSet[]>]
- [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-EnabledState <String>]
+ [-Customrule <ICustomRule[]>] [-Etag <String>] [-ExceptionListException <IManagedRuleSetException[]>]
+ [-ManagedRuleSet <IManagedRuleSet[]>] [-CustomBlockResponseBody <String>]
+ [-CustomBlockResponseStatusCode <Int32>] [-EnabledState <String>]
  [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-Mode <String>] [-RedirectUrl <String>]
  [-RequestBodyCheck <String>] [-JavascriptChallengeExpirationInMinutes <Int32>]
  [-CaptchaExpirationInMinutes <Int32>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
@@ -26,8 +27,9 @@ Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-Subscri
 ### ByFieldsParameterSet
 ```
 Update-AzFrontDoorWafPolicy [-Name <String>] [-ResourceGroupName <String>] [-SubscriptionId <String>]
- [-Customrule <ICustomRule[]>] [-Etag <String>] [-ManagedRuleSet <IManagedRuleSet[]>]
- [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-EnabledState <String>]
+ [-Customrule <ICustomRule[]>] [-Etag <String>] [-ExceptionListException <IManagedRuleSetException[]>]
+ [-ManagedRuleSet <IManagedRuleSet[]>] [-CustomBlockResponseBody <String>]
+ [-CustomBlockResponseStatusCode <Int32>] [-EnabledState <String>]
  [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-Mode <String>] [-RedirectUrl <String>]
  [-RequestBodyCheck <String>] [-JavascriptChallengeExpirationInMinutes <Int32>]
  [-CaptchaExpirationInMinutes <Int32>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
@@ -37,8 +39,8 @@ Update-AzFrontDoorWafPolicy [-Name <String>] [-ResourceGroupName <String>] [-Sub
 ### UpdateViaIdentityExpanded
 ```
 Update-AzFrontDoorWafPolicy -InputObject <IFrontDoorIdentity> [-Customrule <ICustomRule[]>] [-Etag <String>]
- [-ManagedRuleSet <IManagedRuleSet[]>] [-CustomBlockResponseBody <String>]
- [-CustomBlockResponseStatusCode <Int32>] [-EnabledState <String>]
+ [-ExceptionListException <IManagedRuleSetException[]>] [-ManagedRuleSet <IManagedRuleSet[]>]
+ [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-EnabledState <String>]
  [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-Mode <String>] [-RedirectUrl <String>]
  [-RequestBodyCheck <String>] [-JavascriptChallengeExpirationInMinutes <Int32>]
  [-CaptchaExpirationInMinutes <Int32>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
@@ -294,6 +296,21 @@ Gets a unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExceptionListException
+List of exceptions.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[]
 Parameter Sets: (All)
 Aliases:
 

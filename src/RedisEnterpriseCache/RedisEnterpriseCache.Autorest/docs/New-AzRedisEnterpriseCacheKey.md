@@ -13,7 +13,7 @@ Regenerates an access key for a Redis Enterprise database.
 ## SYNTAX
 
 ```
-New-AzRedisEnterpriseCacheKey -ClusterName <String> -ResourceGroupName <String> -KeyType <AccessKeyType>
+New-AzRedisEnterpriseCacheKey -ClusterName <String> -ResourceGroupName <String> -KeyType <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Which access key to regenerate.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -197,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessKeys
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessKeys
 
 ## NOTES
 

@@ -13,12 +13,33 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class MigrationItemOperation
     {
+        /// <summary>
+        /// DisableMigration
+        /// </summary>
         public const string DisableMigration = "DisableMigration";
+        /// <summary>
+        /// TestMigrate
+        /// </summary>
         public const string TestMigrate = "TestMigrate";
+        /// <summary>
+        /// TestMigrateCleanup
+        /// </summary>
         public const string TestMigrateCleanup = "TestMigrateCleanup";
+        /// <summary>
+        /// Migrate
+        /// </summary>
         public const string Migrate = "Migrate";
+        /// <summary>
+        /// StartResync
+        /// </summary>
         public const string StartResync = "StartResync";
+        /// <summary>
+        /// PauseReplication
+        /// </summary>
         public const string PauseReplication = "PauseReplication";
+        /// <summary>
+        /// ResumeReplication
+        /// </summary>
         public const string ResumeReplication = "ResumeReplication";
     }
 }

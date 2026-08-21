@@ -22,6 +22,18 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
         UbuntuServer1604,
         UbuntuServer1804,
         UbuntuServer2004,
-        WindowsServer2022
+        UbuntuServer2204,
+        UbuntuServer2404,
+        WindowsServer2019Datacenter,
+        WindowsServer2019DatacenterGen2,
+        WindowsServer2022,
+        WindowsServer2022Standard,
+        WindowsServer2022Core,
+        WindowsServer2022Gen2,
+        WindowsServer2022Hotpatch,
+        WindowsServer2025,
+        WindowsServer2025AzureEdition,
+        WindowsServer2025AzureEditionCore,
+        WindowsServer2025Gen2
     }
 }

@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 using System;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
+namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
 {
     public class AzLocalDiskInput
     {

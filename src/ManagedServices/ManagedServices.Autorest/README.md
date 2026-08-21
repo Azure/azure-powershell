@@ -38,14 +38,6 @@ title: ManagedServices
 module-version: 2.0.0
 subject-prefix: $(service-name)
 
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - where:
       verb: New|Get
@@ -59,8 +51,8 @@ directive:
           - List[Authorization]
           - List[EligibleAuthorization]
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
   - where:
       verb: New
       subject: RegistrationDefinition
@@ -77,8 +69,8 @@ directive:
           - List[DelegatedRoleDefinitionId]
           - List[JustInTimeAccessPolicyManagedByTenantApprover]
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
   - where:
       verb: Get
       subject: RegistrationDefinition
@@ -91,8 +83,8 @@ directive:
           - List[Authorization]
           - List[EligibleAuthorization]
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
   - where:
       verb: New|Get
       subject: MarketplaceRegistrationDefinition
@@ -105,8 +97,8 @@ directive:
           - List[Authorization]
           - List[EligibleAuthorization]
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
   - where:
       parameter-name: Authorization
     set:
@@ -114,8 +106,8 @@ directive:
         old-parameter-type: Array
         new-parameter-type: List
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
   - where:
       parameter-name: EligibleAuthorization
     set:
@@ -123,8 +115,8 @@ directive:
         old-parameter-type: Array
         new-parameter-type: List
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 
   # Remove unnecessary cmdlet.
   - where:
@@ -139,8 +131,7 @@ directive:
 
   # Remove variant of the cmdlet
   - where:
-      verb: New
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
     remove: true
 
   # Hide cmdlet
@@ -162,18 +153,12 @@ directive:
       default:
         script: '"subscriptions/" + (Get-AzContext).Subscription.Id'
 
-  # The regex(^/(?<scope>[^/]+)/) mathch failed because the scope inlcude '/' character.
-  # Replace regex to fixed it. 
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/global::System.Text.RegularExpressions.Regex\(\"\^\/\(\?\<scope\>\[\^\/\]\+\)/g, 'global::System.Text.RegularExpressions.Regex("^/(?<scope>.+)');
-
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
-    # - Authorization
-    - EligibleApprover
+    - model-name: Authorization
+    - model-name: EligibleApprover
     # Need custom that add ArgumentCompleterAttribute for JustInTimeAccessPolicyMultiFactorAuthProvider parameter.
-    # - EligibleAuthorization
+    # - model-name: EligibleAuthorization
   
   # The function invalid for memory cmdlet.
   # Custom cmdlet.

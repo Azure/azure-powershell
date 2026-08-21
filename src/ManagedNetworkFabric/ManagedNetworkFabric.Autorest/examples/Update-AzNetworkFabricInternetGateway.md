@@ -8,7 +8,7 @@ Update-AzNetworkFabricInternetGateway -Name $name -ResourceGroupName $resourceGr
 ```output
 Annotation Id
 ---------- --
-           /subscriptions/<identity>/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/797b2b4…
+           /subscriptions/<identity>/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/internetGateways/example-internetGateway
 ```
 
 This command updates the properties of the given Internet Gateway.

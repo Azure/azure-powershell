@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         public static Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Module Instance { get { if (_instance == null) { lock (_singletonLock) { if (_instance == null) { _instance = new Module(); }}} return _instance; } }
 
         /// <summary>The Name of this module</summary>
-        public string Name => @"Az.AppConfigurationdata";
+        public string Name => @"Az.AppConfiguration";
 
         /// <summary>The delegate to call when this module is loaded (supporting a commmon module).</summary>
         public ModuleLoadPipelineDelegate OnModuleLoad { get; set; }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         public global::System.String ProfileName { get; set; }
 
         /// <summary>The ResourceID for this module (azure arm).</summary>
-        public string ResourceId => @"Az.AppConfigurationdata";
+        public string ResourceId => @"Az.AppConfiguration";
 
         /// <summary>The delegate to call in WriteObject to sanitize the output object.</summary>
         public SanitizerDelegate SanitizeOutput { get; set; }

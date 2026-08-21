@@ -49,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileMetrics Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileInternal.Metric { get => (this._metric = this._metric ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterAzureMonitorProfileMetrics()); set { {_metric = value;} } }
 
         /// <summary>Internal Acessors for MetricKubeStateMetric</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileKubeStateMetrics Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileInternal.MetricKubeStateMetric { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileMetricsInternal)Metric).KubeStateMetric; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileMetricsInternal)Metric).KubeStateMetric = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileKubeStateMetrics Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileInternal.MetricKubeStateMetric { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileMetricsInternal)Metric).KubeStateMetric; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileMetricsInternal)Metric).KubeStateMetric = value ?? null /* model class */; }
 
         /// <summary>Creates an new <see cref="ManagedClusterAzureMonitorProfile" /> instance.</summary>
         public ManagedClusterAzureMonitorProfile()

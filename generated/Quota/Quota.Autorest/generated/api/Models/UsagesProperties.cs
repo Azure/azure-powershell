@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceName Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal.Name { get => (this._name = this._name ?? new Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ResourceName()); set { {_name = value;} } }
 
         /// <summary>Internal Acessors for NameLocalizedValue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal.NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceNameInternal)Name).LocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceNameInternal)Name).LocalizedValue = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal.NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceNameInternal)Name).LocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceNameInternal)Name).LocalizedValue = value ?? null; }
 
         /// <summary>Internal Acessors for QuotaPeriod</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal.QuotaPeriod { get => this._quotaPeriod; set { {_quotaPeriod = value;} } }
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @" The units for the quota usage, such as Count and Bytes. When requesting quota, use the **unit** value returned in the GET response in the request body of your PUT operation.",
+        Description = @"The units for the quota usage, such as Count and Bytes. When requesting quota, use the **unit** value returned in the GET response in the request body of your PUT operation.",
         SerializedName = @"unit",
         PossibleTypes = new [] { typeof(string) })]
         string Unit { get;  }

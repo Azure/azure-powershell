@@ -14,12 +14,24 @@ namespace Microsoft.Azure.Management.Network.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PublicIpAddressDnsSettingsDomainNameLabelScope
     {
+        /// <summary>
+        /// TenantReuse
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "TenantReuse")]
         TenantReuse,
+        /// <summary>
+        /// SubscriptionReuse
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "SubscriptionReuse")]
         SubscriptionReuse,
+        /// <summary>
+        /// ResourceGroupReuse
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "ResourceGroupReuse")]
         ResourceGroupReuse,
+        /// <summary>
+        /// NoReuse
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "NoReuse")]
         NoReuse
     }

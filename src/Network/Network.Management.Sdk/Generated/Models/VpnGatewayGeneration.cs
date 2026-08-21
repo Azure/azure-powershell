@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VpnGatewayGeneration
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// Generation1
+        /// </summary>
         public const string Generation1 = "Generation1";
+        /// <summary>
+        /// Generation2
+        /// </summary>
         public const string Generation2 = "Generation2";
     }
 }

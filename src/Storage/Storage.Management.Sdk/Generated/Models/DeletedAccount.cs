@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the DeletedAccount class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
@@ -34,6 +34,10 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
         /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="storageAccountResourceId">Full resource id of the original storage account.
@@ -51,9 +55,9 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="deletionTime">Deletion time of the deleted account.
         /// </param>
-        public DeletedAccount(string id = default(string), string name = default(string), string type = default(string), string storageAccountResourceId = default(string), string location = default(string), string restoreReference = default(string), string creationTime = default(string), string deletionTime = default(string))
+        public DeletedAccount(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string storageAccountResourceId = default(string), string location = default(string), string restoreReference = default(string), string creationTime = default(string), string deletionTime = default(string))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.StorageAccountResourceId = storageAccountResourceId;
             this.Location = location;

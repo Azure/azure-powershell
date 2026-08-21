@@ -22,16 +22,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// URL to get the next set of WebApplicationFirewallPolicy objects if there are any.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy> _value;
 
-        /// <summary>List of WebApplicationFirewallPolicies within a resource group.</summary>
+        /// <summary>The WebApplicationFirewallPolicy items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy> Value { get => this._value; }
 
@@ -46,27 +44,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
     public partial interface IWebApplicationFirewallPolicyList :
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// URL to get the next set of WebApplicationFirewallPolicy objects if there are any.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"URL to get the next set of WebApplicationFirewallPolicy objects if there are any.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>List of WebApplicationFirewallPolicies within a resource group.</summary>
+        /// <summary>The WebApplicationFirewallPolicy items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"List of WebApplicationFirewallPolicies within a resource group.",
+        Description = @"The WebApplicationFirewallPolicy items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy> Value { get;  }
@@ -77,11 +73,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
     internal partial interface IWebApplicationFirewallPolicyListInternal
 
     {
-        /// <summary>
-        /// URL to get the next set of WebApplicationFirewallPolicy objects if there are any.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of WebApplicationFirewallPolicies within a resource group.</summary>
+        /// <summary>The WebApplicationFirewallPolicy items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy> Value { get; set; }
 
     }

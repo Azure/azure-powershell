@@ -1,15 +1,15 @@
 {
-  "New-AzSentinelIncidentTeam+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/4354e208-22e9-4185-b549-2f958633bed6?api-version=2021-09-01-preview+1": {
+  "New-AzSentinelIncidentTeam+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/e4719943-91c5-45c6-a8c1-8dc6698191a6?api-version=2021-09-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/4354e208-22e9-4185-b549-2f958633bed6?api-version=2021-09-01-preview",
-      "Content": "{\n  \"properties\": {\n    \"severity\": \"Informational\",\n    \"status\": \"New\",\n    \"title\": \"NewincidentTeamIncidentName1pg5hu\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/e4719943-91c5-45c6-a8c1-8dc6698191a6?api-version=2021-09-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"severity\": \"Informational\",\r\n    \"status\": \"New\",\r\n    \"title\": \"NewincidentTeamIncidentName7u2zch\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "128" ]
+        "Content-Length": [ "134" ]
       }
     },
     "Response": {
@@ -17,35 +17,37 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "495" ],
-        "x-ms-request-id": [ "adbc6a77-6a49-4ce8-89da-aac2644f42e1" ],
-        "x-ms-correlation-request-id": [ "adbc6a77-6a49-4ce8-89da-aac2644f42e1" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220816T160808Z:adbc6a77-6a49-4ce8-89da-aac2644f42e1" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/ff25c3f9-b0d1-4dcb-8805-73aa9ecb0c8b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "559e99fb-cf5c-49b4-ab1b-0a6b50c20824" ],
+        "x-ms-correlation-request-id": [ "559e99fb-cf5c-49b4-ab1b-0a6b50c20824" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074538Z:559e99fb-cf5c-49b4-ab1b-0a6b50c20824" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Aug 2022 16:08:07 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DF562EEA78984E95833462EC3412886C Ref B: AMS231020512027 Ref C: 2026-03-25T07:45:38Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:45:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1229" ],
+        "Content-Length": [ "1227" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Incidents/4354e208-22e9-4185-b549-2f958633bed6\",\"name\":\"4354e208-22e9-4185-b549-2f958633bed6\",\"etag\":\"\\\"4a00ae52-0000-0100-0000-62fbc0e80000\\\"\",\"type\":\"Microsoft.SecurityInsights/Incidents\",\"properties\":{\"title\":\"NewincidentTeamIncidentName1pg5hu\",\"severity\":\"Informational\",\"status\":\"New\",\"owner\":{\"objectId\":null,\"email\":null,\"assignedTo\":null,\"userPrincipalName\":null,\"ownerType\":null},\"labels\":[],\"lastModifiedTimeUtc\":\"2022-08-16T16:08:08.4803973Z\",\"createdTimeUtc\":\"2022-08-16T16:08:08.4803973Z\",\"incidentNumber\":26,\"additionalData\":{\"alertsCount\":0,\"bookmarksCount\":0,\"commentsCount\":0,\"alertProductNames\":[],\"tactics\":[]},\"relatedAnalyticRuleIds\":[],\"incidentUrl\":\"https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Incidents/4354e208-22e9-4185-b549-2f958633bed6\",\"providerName\":\"Azure Sentinel\",\"providerIncidentId\":\"26\"}}",
+      "Content": "{\"id\":\"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/Incidents/e4719943-91c5-45c6-a8c1-8dc6698191a6\",\"name\":\"e4719943-91c5-45c6-a8c1-8dc6698191a6\",\"etag\":\"\\\"2f009e9d-0000-0100-0000-69c392a20000\\\"\",\"type\":\"Microsoft.SecurityInsights/Incidents\",\"properties\":{\"title\":\"NewincidentTeamIncidentName7u2zch\",\"severity\":\"Informational\",\"status\":\"New\",\"owner\":{\"objectId\":null,\"email\":null,\"assignedTo\":null,\"userPrincipalName\":null,\"ownerType\":null},\"labels\":[],\"lastModifiedTimeUtc\":\"2026-03-25T07:45:38.820876Z\",\"createdTimeUtc\":\"2026-03-25T07:45:38.820876Z\",\"incidentNumber\":26,\"additionalData\":{\"alertsCount\":0,\"bookmarksCount\":0,\"commentsCount\":0,\"alertProductNames\":[],\"tactics\":[]},\"relatedAnalyticRuleIds\":[],\"incidentUrl\":\"https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/Incidents/e4719943-91c5-45c6-a8c1-8dc6698191a6\",\"providerName\":\"Azure Sentinel\",\"providerIncidentId\":\"26\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzSentinelIncidentTeam+[NoContext]+CreateExpanded+$POST+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/4354e208-22e9-4185-b549-2f958633bed6/createTeam?api-version=2021-09-01-preview+2": {
+  "New-AzSentinelIncidentTeam+[NoContext]+CreateExpanded+$POST+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/e4719943-91c5-45c6-a8c1-8dc6698191a6/createTeam?api-version=2021-09-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/4354e208-22e9-4185-b549-2f958633bed6/createTeam?api-version=2021-09-01-preview",
-      "Content": "{\n  \"teamName\": \"NITPSTest\"\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/e4719943-91c5-45c6-a8c1-8dc6698191a6/createTeam?api-version=2021-09-01-preview",
+      "Content": "{\r\n  \"teamName\": \"NITPSTest\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "29" ]
+        "Content-Length": [ "31" ]
       }
     },
     "Response": {
@@ -53,21 +55,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "ac4eebbb-1d24-44ec-9b41-a302e0e1e793" ],
-        "x-ms-correlation-request-id": [ "ac4eebbb-1d24-44ec-9b41-a302e0e1e793" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220816T160814Z:ac4eebbb-1d24-44ec-9b41-a302e0e1e793" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/af46eb85-be58-445b-984c-c8ef0938b91f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "945aa154-ba49-4af2-bc7e-a2de2a08d8b4" ],
+        "x-ms-correlation-request-id": [ "945aa154-ba49-4af2-bc7e-a2de2a08d8b4" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074545Z:945aa154-ba49-4af2-bc7e-a2de2a08d8b4" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Aug 2022 16:08:13 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 06E824979B0644D2AFCB9B210B28F7D6 Ref B: AMS231020512027 Ref C: 2026-03-25T07:45:39Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:45:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "353" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"teamId\":\"eb3db1ba-a3a3-4d76-90fe-606deb37edcf\",\"primaryChannelUrl\":\"https://teams.microsoft.com/l/team/19%3azDlBuh8NgSjPNVW91N7sSavKtEXjAVX69fhyWjLdBpY1%40thread.tacv2/conversations?groupId=eb3db1ba-a3a3-4d76-90fe-606deb37edcf\u0026tenantId=d6eebbdd-d77c-465e-b008-4339027b4006\",\"teamCreationTimeUtc\":\"2022-08-16T16:08:14.1063041+00:00\",\"name\":\"NITPSTest\"}",
+      "Content": "{\"teamId\":\"0d35a690-c59e-4cfb-ae49-a280dfe8976e\",\"primaryChannelUrl\":\"https://teams.microsoft.com/l/team/19%3arALj5nkvMcLGi5rNoPEudiXcV7REDCuIth9fIrVzXA01%40thread.tacv2/conversations?groupId=0d35a690-c59e-4cfb-ae49-a280dfe8976e\u0026tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47\",\"teamCreationTimeUtc\":\"2026-03-25T07:45:45.3213834+00:00\",\"name\":\"NITPSTest\"}",
       "isContentBase64": false
     }
   }

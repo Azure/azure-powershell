@@ -79,6 +79,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             }
             __afdStateProperties = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdStateProperties(json);
             {_profileName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("profileName"), out var __jsonProfileName) ? (string)__jsonProfileName : (string)_profileName;}
+            {_batchMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonBoolean>("batchMode"), out var __jsonBatchMode) ? (bool?)__jsonBatchMode : _batchMode;}
+            {_rule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray>("rules"), out var __jsonRules) ? If( __jsonRules as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties) (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.BatchRuleProperties.FromJson(__u) )) ))() : null : _rule;}
             AfterFromJson(json);
         }
 
@@ -105,6 +107,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._profileName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._profileName.ToString()) : null, "profileName" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != this._batchMode ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonBoolean((bool)this._batchMode) : null, "batchMode" ,container.Add );
+            }
+            if (null != this._rule)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.XNodeArray();
+                foreach( var __x in this._rule )
+                {
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                }
+                container.Add("rules",__w);
             }
             AfterToJson(ref container);
             return container;

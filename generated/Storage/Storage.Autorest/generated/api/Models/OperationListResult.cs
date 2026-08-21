@@ -7,19 +7,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list Storage operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
-    /// </summary>
+    /// <summary>The list of available operations.</summary>
     public partial class OperationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationListResultInternal
     {
 
+        /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
+        private string _nextLink;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
+
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperation> _value;
 
-        /// <summary>List of Storage operations supported by the Storage resource provider.</summary>
+        /// <summary>List of operations supported by the resource provider.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperation> Value { get => this._value; set => this._value = value; }
 
@@ -29,30 +32,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         }
     }
-    /// Result of the request to list Storage operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
+    /// The list of available operations.
     public partial interface IOperationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable
     {
-        /// <summary>List of Storage operations supported by the Storage resource provider.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of Storage operations supported by the Storage resource provider.",
+        Description = @"",
+        SerializedName = @"nextLink",
+        PossibleTypes = new [] { typeof(string) })]
+        string NextLink { get; set; }
+        /// <summary>List of operations supported by the resource provider.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of operations supported by the resource provider.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperation) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperation> Value { get; set; }
 
     }
-    /// Result of the request to list Storage operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
+    /// The list of available operations.
     internal partial interface IOperationListResultInternal
 
     {
-        /// <summary>List of Storage operations supported by the Storage resource provider.</summary>
+        string NextLink { get; set; }
+        /// <summary>List of operations supported by the resource provider.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperation> Value { get; set; }
 
     }

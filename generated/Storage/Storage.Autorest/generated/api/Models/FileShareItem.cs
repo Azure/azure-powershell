@@ -75,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         public int? FileSharePaidBurstingMaxIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).FileSharePaidBurstingMaxIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).FileSharePaidBurstingMaxIop = value ?? default(int); }
 
         /// <summary>
-        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Id; }
@@ -153,13 +153,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         long? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.MaxBurstCreditsForIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).MaxBurstCreditsForIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).MaxBurstCreditsForIop = value ?? default(long); }
 
         /// <summary>Internal Acessors for NextAllowedProvisionedBandwidthDowngradeTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.NextAllowedProvisionedBandwidthDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedBandwidthDowngradeTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedBandwidthDowngradeTime = value ?? default(global::System.DateTime); }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.NextAllowedProvisionedBandwidthDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedBandwidthDowngradeTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedBandwidthDowngradeTime = value ?? null; }
 
         /// <summary>Internal Acessors for NextAllowedProvisionedIopsDowngradeTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.NextAllowedProvisionedIopsDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedIopsDowngradeTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedIopsDowngradeTime = value ?? default(global::System.DateTime); }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.NextAllowedProvisionedIopsDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedIopsDowngradeTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedIopsDowngradeTime = value ?? null; }
 
         /// <summary>Internal Acessors for NextAllowedQuotaDowngradeTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.NextAllowedQuotaDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedQuotaDowngradeTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedQuotaDowngradeTime = value ?? default(global::System.DateTime); }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.NextAllowedQuotaDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedQuotaDowngradeTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedQuotaDowngradeTime = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileShareProperties()); set { {_property = value;} } }
@@ -182,6 +182,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Name = value ?? null; }
 
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataLastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Type = value ?? null; }
 
@@ -194,21 +215,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// under Files Provisioned v2 account type.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public global::System.DateTime? NextAllowedProvisionedBandwidthDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedBandwidthDowngradeTime; }
+        public string NextAllowedProvisionedBandwidthDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedBandwidthDowngradeTime; }
 
         /// <summary>
         /// Returns the next allowed provisioned IOPS downgrade time for the share. This property is only for file shares created
         /// under Files Provisioned v2 account type.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public global::System.DateTime? NextAllowedProvisionedIopsDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedIopsDowngradeTime; }
+        public string NextAllowedProvisionedIopsDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedIopsDowngradeTime; }
 
         /// <summary>
         /// Returns the next allowed provisioned storage size downgrade time for the share. This property is only for file shares
         /// created under Files Provisioned v1 SSD and Files Provisioned v2 account type
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public global::System.DateTime? NextAllowedQuotaDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedQuotaDowngradeTime; }
+        public string NextAllowedQuotaDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedQuotaDowngradeTime; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareProperties _property;
@@ -264,6 +285,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public global::System.DateTime? SnapshotTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).SnapshotTime; }
+
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataCreatedAt; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataCreatedBy; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataCreatedByType; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataLastModifiedAt; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataLastModifiedBy; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).SystemDataLastModifiedByType; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -514,8 +565,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Update = false,
         Description = @"Returns the next allowed provisioned bandwidth downgrade time for the share. This property is only for file shares created under Files Provisioned v2 account type.",
         SerializedName = @"nextAllowedProvisionedBandwidthDowngradeTime",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? NextAllowedProvisionedBandwidthDowngradeTime { get;  }
+        PossibleTypes = new [] { typeof(string) })]
+        string NextAllowedProvisionedBandwidthDowngradeTime { get;  }
         /// <summary>
         /// Returns the next allowed provisioned IOPS downgrade time for the share. This property is only for file shares created
         /// under Files Provisioned v2 account type.
@@ -528,8 +579,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Update = false,
         Description = @"Returns the next allowed provisioned IOPS downgrade time for the share. This property is only for file shares created under Files Provisioned v2 account type.",
         SerializedName = @"nextAllowedProvisionedIopsDowngradeTime",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? NextAllowedProvisionedIopsDowngradeTime { get;  }
+        PossibleTypes = new [] { typeof(string) })]
+        string NextAllowedProvisionedIopsDowngradeTime { get;  }
         /// <summary>
         /// Returns the next allowed provisioned storage size downgrade time for the share. This property is only for file shares
         /// created under Files Provisioned v1 SSD and Files Provisioned v2 account type
@@ -542,8 +593,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Update = false,
         Description = @"Returns the next allowed provisioned storage size downgrade time for the share. This property is only for file shares created under Files Provisioned v1 SSD and Files Provisioned v2 account type",
         SerializedName = @"nextAllowedQuotaDowngradeTime",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? NextAllowedQuotaDowngradeTime { get;  }
+        PossibleTypes = new [] { typeof(string) })]
+        string NextAllowedQuotaDowngradeTime { get;  }
         /// <summary>
         /// The provisioned bandwidth of the share, in mebibytes per second. This property is only for file shares created under Files
         /// Provisioned v2 account type. Please refer to the GetFileServiceUsage API response for the minimum and maximum allowed
@@ -732,17 +783,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// Returns the next allowed provisioned bandwidth downgrade time for the share. This property is only for file shares created
         /// under Files Provisioned v2 account type.
         /// </summary>
-        global::System.DateTime? NextAllowedProvisionedBandwidthDowngradeTime { get; set; }
+        string NextAllowedProvisionedBandwidthDowngradeTime { get; set; }
         /// <summary>
         /// Returns the next allowed provisioned IOPS downgrade time for the share. This property is only for file shares created
         /// under Files Provisioned v2 account type.
         /// </summary>
-        global::System.DateTime? NextAllowedProvisionedIopsDowngradeTime { get; set; }
+        string NextAllowedProvisionedIopsDowngradeTime { get; set; }
         /// <summary>
         /// Returns the next allowed provisioned storage size downgrade time for the share. This property is only for file shares
         /// created under Files Provisioned v1 SSD and Files Provisioned v2 account type
         /// </summary>
-        global::System.DateTime? NextAllowedQuotaDowngradeTime { get; set; }
+        string NextAllowedQuotaDowngradeTime { get; set; }
         /// <summary>The file share properties be listed out.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareProperties Property { get; set; }
         /// <summary>

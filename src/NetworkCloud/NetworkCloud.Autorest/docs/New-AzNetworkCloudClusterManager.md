@@ -93,7 +93,6 @@ Accept wildcard characters: False
 ```
 
 ### -AvailabilityZone
-Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version.
 The Azure availability zones within the region that will be used to support the cluster manager resource.
 
 ```yaml
@@ -358,7 +357,6 @@ Accept wildcard characters: False
 ```
 
 ### -VMSize
-Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version.
 The size of the Azure virtual machines to use for hosting the cluster manager resource.
 
 ```yaml

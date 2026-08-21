@@ -79,12 +79,12 @@ Accept wildcard characters: False
 ```
 
 ### -Filter
-| Field | Supported operators 
+| Field | Supported operators
 |---------------------|------------------------
 
 |requestSubmitTime | ge, le, eq, gt, lt
- |provisioningState eq {QuotaRequestState}
- |resourceName eq {resourceName}
+|provisioningState eq {QuotaRequestState}
+|resourceName eq {resourceName}
 
 ```yaml
 Type: System.String
@@ -114,10 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The target Azure resource URI.
-For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
-This is the target Azure resource URI for the List GET operation.
-If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.
+The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml
 Type: System.String

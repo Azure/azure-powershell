@@ -18,7 +18,7 @@ Update-AzVpnServerConfigurationPolicyGroup -ResourceGroupName <String> -ServerCo
  -Name <String> [-Priority <Int32>] [-DefaultPolicyGroup <Boolean>]
  [-PolicyMember <PSVpnServerConfigurationPolicyGroupMember[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByVpnServerConfigurationObject
@@ -27,7 +27,7 @@ Update-AzVpnServerConfigurationPolicyGroup -ServerConfigurationObject <PSVpnServ
  [-Priority <Int32>] [-DefaultPolicyGroup <Boolean>]
  [-PolicyMember <PSVpnServerConfigurationPolicyGroupMember[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByVpnServerConfigurationResourceId
@@ -35,7 +35,7 @@ Update-AzVpnServerConfigurationPolicyGroup -ServerConfigurationObject <PSVpnServ
 Update-AzVpnServerConfigurationPolicyGroup -ServerConfigurationResourceId <String> [-Priority <Int32>]
  [-DefaultPolicyGroup <Boolean>] [-PolicyMember <PSVpnServerConfigurationPolicyGroupMember[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,11 +76,41 @@ The **Update-AzVpnServerConfigurationPolicyGroup** cmdlet enables you to update 
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

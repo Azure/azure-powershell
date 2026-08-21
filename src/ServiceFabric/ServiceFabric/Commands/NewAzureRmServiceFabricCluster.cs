@@ -47,9 +47,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {OperatingSystem.UbuntuServer1604, "16.04-LTS"},
             {OperatingSystem.UbuntuServer1804, "18.04-LTS"},
             {OperatingSystem.UbuntuServer2004, "20_04-LTS"},
+            {OperatingSystem.UbuntuServer2204, "22_04-lts-gen2"},
+            {OperatingSystem.UbuntuServer2404, "server"},
             {OperatingSystem.WindowsServer2016DatacenterwithContainers, "2016-Datacenter-with-Containers"},
             {OperatingSystem.WindowsServer2016Datacenter, "2016-Datacenter"},
-            {OperatingSystem.WindowsServer2022, "2022-datacenter-azure-edition"}
+            {OperatingSystem.WindowsServer2019Datacenter, "2019-Datacenter"},
+            {OperatingSystem.WindowsServer2019DatacenterGen2, "2019-datacenter-gensecond"},
+            {OperatingSystem.WindowsServer2022, "2022-datacenter-azure-edition"},
+            {OperatingSystem.WindowsServer2022Standard, "2022-datacenter"},
+            {OperatingSystem.WindowsServer2022Core, "2022-datacenter-azure-edition-core"},
+            {OperatingSystem.WindowsServer2022Gen2, "2022-datacenter-g2"},
+            {OperatingSystem.WindowsServer2022Hotpatch, "2022-datacenter-azure-edition-hotpatch"},
+            {OperatingSystem.WindowsServer2025, "2025-datacenter"},
+            {OperatingSystem.WindowsServer2025AzureEdition, "2025-datacenter-azure-edition"},
+            {OperatingSystem.WindowsServer2025AzureEditionCore, "2025-datacenter-azure-edition-core"},
+            {OperatingSystem.WindowsServer2025Gen2, "2025-datacenter-g2"}
         };
 
         private string resourceLocation;
@@ -443,7 +455,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     case OperatingSystem.WindowsServer2012R2Datacenter:
                     case OperatingSystem.WindowsServer2016Datacenter:
                     case OperatingSystem.WindowsServer2016DatacenterwithContainers:
+                    case OperatingSystem.WindowsServer2019Datacenter:
+                    case OperatingSystem.WindowsServer2019DatacenterGen2:
                     case OperatingSystem.WindowsServer2022:
+                    case OperatingSystem.WindowsServer2022Standard:
+                    case OperatingSystem.WindowsServer2022Core:
+                    case OperatingSystem.WindowsServer2022Gen2:
+                    case OperatingSystem.WindowsServer2022Hotpatch:
+                    case OperatingSystem.WindowsServer2025:
+                    case OperatingSystem.WindowsServer2025AzureEdition:
+                    case OperatingSystem.WindowsServer2025AzureEditionCore:
+                    case OperatingSystem.WindowsServer2025Gen2:
                         osRelativePath = Constants.WindowsTemplateRelativePath;
                         break;
                     case OperatingSystem.UbuntuServer1604:
@@ -454,6 +476,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         break;
                     case OperatingSystem.UbuntuServer2004:
                         osRelativePath = Constants.UbuntuServer20TemplateRelativePath;
+                        break;
+                    case OperatingSystem.UbuntuServer2204:
+                        osRelativePath = Constants.UbuntuServer22TemplateRelativePath;
+                        break;
+                    case OperatingSystem.UbuntuServer2404:
+                        osRelativePath = Constants.UbuntuServer24TemplateRelativePath;
                         break;
                     default:
                         throw new NotImplementedException("OS not defined for DeployWithDefaultTemplate");

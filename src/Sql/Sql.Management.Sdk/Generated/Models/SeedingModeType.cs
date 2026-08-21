@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class SeedingModeType
     {
+        /// <summary>
+        /// Automatic
+        /// </summary>
         public const string Automatic = "Automatic";
+        /// <summary>
+        /// Manual
+        /// </summary>
         public const string Manual = "Manual";
     }
 }

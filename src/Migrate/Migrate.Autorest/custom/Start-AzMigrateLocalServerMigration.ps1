@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratelocalser
 #>
 function Start-AzMigrateLocalServerMigration {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ByID', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName = 'ByID', Mandatory)]
@@ -153,13 +153,13 @@ function Start-AzMigrateLocalServerMigration {
         $instanceType = $protectedItem.Property.CustomProperty.InstanceType
 
         # Setup PlannedFailover deployment parameters
-        $properties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.PlannedFailoverModelProperties]::new()
+        $properties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PlannedFailoverModelProperties]::new()
         
         if ($instanceType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
-            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHciPlannedFailoverModelCustomProperties]::new()
+            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHciPlannedFailoverModelCustomProperties]::new()
         }
         elseif ($instanceType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
-            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHciPlannedFailoverModelCustomProperties]::new()
+            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHciPlannedFailoverModelCustomProperties]::new()
         }
         else {
             throw "Currently, for AzLocal scenario, only HyperV and VMware as the source is supported."

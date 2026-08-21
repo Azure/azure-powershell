@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IApiKey))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Description(@"Regenerates an access key for the specified configuration store.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/regenerateKey", ApiVersion = "2022-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/regenerateKey", ApiVersion = "2024-06-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.NotSuggestDefaultParameterSet]
     public partial class NewAzAppConfigurationStoreKey_RegenerateViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.IEventListener,

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// VpnSiteLink Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VpnSiteLink : SubResource
+    public partial class VpnSiteLink : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the VpnSiteLink class.
@@ -28,14 +28,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
-
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
+        /// <param name="name">Name of the resource.
         /// </param>
 
         /// <param name="type">Resource type.
+        /// </param>
+
+        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the VPN site link resource.
@@ -53,13 +52,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="bgpProperties">The set of bgp properties.
         /// </param>
-        public VpnSiteLink(string id = default(string), string etag = default(string), string name = default(string), string type = default(string), string provisioningState = default(string), VpnLinkProviderProperties linkProperties = default(VpnLinkProviderProperties), string ipAddress = default(string), string fqdn = default(string), VpnLinkBgpSettings bgpProperties = default(VpnLinkBgpSettings))
+        public VpnSiteLink(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), VpnLinkProviderProperties linkProperties = default(VpnLinkProviderProperties), string ipAddress = default(string), string fqdn = default(string), VpnLinkBgpSettings bgpProperties = default(VpnLinkBgpSettings))
 
-        : base(id)
+        : base(id, name, type)
         {
             this.Etag = etag;
-            this.Name = name;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
             this.LinkProperties = linkProperties;
             this.IPAddress = ipAddress;
@@ -80,19 +77,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets or sets the name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
-        /// Gets resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the VPN site link resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

@@ -27,12 +27,14 @@ Creates a PSIpRule object (not persisted in Azure) that defines a single IP rule
 $rule = New-AzSignalRNetworkIpRuleObject -Value "10.1.0.0/16" -Action Allow
 $rule
 ```
+
 Creates an IP rule permitting traffic from the specified CIDR range.
 
 ### Example 2: Create a deny rule for a single IP
 ```powershell
 $denyRule = New-AzSignalRNetworkIpRuleObject -Value "52.23.45.10" -Action Deny
 ```
+
 Creates an IP rule that denies access for a specific IP address.
 
 ## PARAMETERS
@@ -41,7 +43,7 @@ Creates an IP rule that denies access for a specific IP address.
 Action for the IP rule. Allow or Deny. Default: Allow
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Allow, Deny
@@ -57,7 +59,7 @@ Accept wildcard characters: False
 IP rule value. Accepts IP, CIDR or ServiceTag.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

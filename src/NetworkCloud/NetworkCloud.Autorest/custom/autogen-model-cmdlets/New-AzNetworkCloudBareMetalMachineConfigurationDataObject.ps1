@@ -46,8 +46,7 @@ function New-AzNetworkCloudBareMetalMachineConfigurationDataObject {
         [Parameter(HelpMessage="The free-form additional information about the machine, e.g. an asset tag.")]
         [string]
         $MachineDetail,
-        [Parameter(HelpMessage="The user-provided name for the bare metal machine created from this specification.
-        If not provided, the machine name will be generated programmatically.")]
+        [Parameter(HelpMessage="The user-provided name for the bare metal machine created from this specification. If not provided, the machine name will be generated programmatically.")]
         [string]
         $MachineName,
         [Parameter(Mandatory, HelpMessage="The slot the physical machine is in the rack based on the BOM configuration.")]

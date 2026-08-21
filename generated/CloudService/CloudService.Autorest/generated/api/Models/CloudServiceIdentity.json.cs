@@ -64,19 +64,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
             {
                 return;
             }
-            {_roleInstanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("roleInstanceName"), out var __jsonRoleInstanceName) ? (string)__jsonRoleInstanceName : (string)RoleInstanceName;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_cloudServiceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("cloudServiceName"), out var __jsonCloudServiceName) ? (string)__jsonCloudServiceName : (string)CloudServiceName;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_roleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("roleName"), out var __jsonRoleName) ? (string)__jsonRoleName : (string)RoleName;}
-            {_updateDomain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNumber>("updateDomain"), out var __jsonUpdateDomain) ? (int?)__jsonUpdateDomain : UpdateDomain;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_oSVersionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("osVersionName"), out var __jsonOSVersionName) ? (string)__jsonOSVersionName : (string)OSVersionName;}
-            {_oSFamilyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("osFamilyName"), out var __jsonOSFamilyName) ? (string)__jsonOSFamilyName : (string)OSFamilyName;}
-            {_networkInterfaceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("networkInterfaceName"), out var __jsonNetworkInterfaceName) ? (string)__jsonNetworkInterfaceName : (string)NetworkInterfaceName;}
-            {_iPConfigurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("ipConfigurationName"), out var __jsonIPConfigurationName) ? (string)__jsonIPConfigurationName : (string)IPConfigurationName;}
-            {_publicIPAddressName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("publicIpAddressName"), out var __jsonPublicIPAddressName) ? (string)__jsonPublicIPAddressName : (string)PublicIPAddressName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_roleInstanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("roleInstanceName"), out var __jsonRoleInstanceName) ? (string)__jsonRoleInstanceName : (string)_roleInstanceName;}
+            {_cloudServiceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("cloudServiceName"), out var __jsonCloudServiceName) ? (string)__jsonCloudServiceName : (string)_cloudServiceName;}
+            {_roleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("roleName"), out var __jsonRoleName) ? (string)__jsonRoleName : (string)_roleName;}
+            {_updateDomain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNumber>("updateDomain"), out var __jsonUpdateDomain) ? (int?)__jsonUpdateDomain : _updateDomain;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_oSVersionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("osVersionName"), out var __jsonOSVersionName) ? (string)__jsonOSVersionName : (string)_oSVersionName;}
+            {_oSFamilyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("osFamilyName"), out var __jsonOSFamilyName) ? (string)__jsonOSFamilyName : (string)_oSFamilyName;}
+            {_networkInterfaceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("networkInterfaceName"), out var __jsonNetworkInterfaceName) ? (string)__jsonNetworkInterfaceName : (string)_networkInterfaceName;}
+            {_iPConfigurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("ipConfigurationName"), out var __jsonIPConfigurationName) ? (string)__jsonIPConfigurationName : (string)_iPConfigurationName;}
+            {_publicIPAddressName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("publicIpAddressName"), out var __jsonPublicIPAddressName) ? (string)__jsonPublicIPAddressName : (string)_publicIPAddressName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 
@@ -111,10 +111,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._roleInstanceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._roleInstanceName.ToString()) : null, "roleInstanceName" ,container.Add );
-            AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
-            AddIf( null != (((object)this._cloudServiceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._cloudServiceName.ToString()) : null, "cloudServiceName" ,container.Add );
             AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
+            AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
+            AddIf( null != (((object)this._roleInstanceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._roleInstanceName.ToString()) : null, "roleInstanceName" ,container.Add );
+            AddIf( null != (((object)this._cloudServiceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._cloudServiceName.ToString()) : null, "cloudServiceName" ,container.Add );
             AddIf( null != (((object)this._roleName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._roleName.ToString()) : null, "roleName" ,container.Add );
             AddIf( null != this._updateDomain ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNumber((int)this._updateDomain) : null, "updateDomain" ,container.Add );
             AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );

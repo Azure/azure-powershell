@@ -1,0 +1,133 @@
+{
+  "New-AzStorageMoverS3WithHmacEndpoint+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/tests3ep1y8nedf6x?api-version=2025-12-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/tests3ep1y8nedf6x?api-version=2025-12-01",
+      "Content": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"endpointType\": \"S3WithHMAC\",\r\n    \"description\": \"new s3 endpoint\",\r\n    \"credentials\": {\r\n      \"type\": \"AzureKeyVaultS3WithHMAC\",\r\n      \"accessKeyUri\": \"https://examples-azureKeyVault.vault.azure.net/secrets/examples-accesskey\",\r\n      \"secretKeyUri\": \"https://examples-azureKeyVault.vault.azure.net/secrets/examples-secretkey\"\r\n    },\r\n    \"sourceUri\": \"https://s3.example.com/bucket\",\r\n    \"sourceType\": \"MINIO\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "504" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"39002374-0000-3300-0000-69eb6dfe0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=015c25ba-27a0-4b6a-966a-7895f723f13e/eastus2euap/b02f7d74-7780-489e-a375-9ecd67fe07f0" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "a9fff0fe-4e1b-4b52-89fe-2ea57407fb34" ],
+        "x-ms-request-id": [ "0dea3c87-5493-42c3-9069-164023936c33" ],
+        "x-ms-correlation-request-id": [ "94f5837d-fced-44c0-9d63-3f56b153e5a7" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "0" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260424T131958Z:94f5837d-fced-44c0-9d63-3f56b153e5a7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A49D74AA68E24239A397EC8D2555025E Ref B: PNQ231110908023 Ref C: 2026-04-24T13:19:56Z" ],
+        "Date": [ "Fri, 24 Apr 2026 13:19:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1076" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/tests3ep1y8nedf6x\",\"name\":\"tests3ep1y8nedf6x\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"raipiyush@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-04-24T13:19:57.0630602Z\",\"lastModifiedBy\":\"raipiyush@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-04-24T13:19:57.0630602Z\"},\"identity\":{\"principalId\":\"7bb01e8b-84c5-4ea3-a069-aa1c117fee51\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"sourceType\":\"MINIO\",\"sourceUri\":\"https://s3.example.com/bucket\",\"credentials\":{\"accessKeyUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-accesskey\",\"secretKeyUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-secretkey\",\"type\":\"AzureKeyVaultS3WithHMAC\"},\"endpointType\":\"S3WithHMAC\",\"endpointKind\":\"Source\",\"description\":\"new s3 endpoint\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzStorageMoverS3WithHmacEndpoint+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/tests3ep1y8nedf6x?api-version=2025-12-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/tests3ep1y8nedf6x?api-version=2025-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "d5d4a993-104b-411c-b4e1-0d45011f1eda" ],
+        "CommandName": [ "Get-AzStorageMoverEndpoint" ],
+        "FullCommandName": [ "Get-AzStorageMoverEndpoint_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.6.1", "Az.StorageMover/2.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"39002374-0000-3300-0000-69eb6dfe0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=015c25ba-27a0-4b6a-966a-7895f723f13e/eastus2euap/6e82a0c6-3453-4e13-afe3-889aea55405c" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "cb147206-5906-4a1d-8113-2b79871c2061" ],
+        "x-ms-request-id": [ "2f63f988-db65-4dd4-8a81-a0d4fe4a6a53" ],
+        "x-ms-correlation-request-id": [ "fedb2a0a-0c76-42ef-8230-7ecdece1af73" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "0" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260424T131959Z:fedb2a0a-0c76-42ef-8230-7ecdece1af73" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 163A3A9B3C234506928FE2D7236423E1 Ref B: PNQ231110908023 Ref C: 2026-04-24T13:19:58Z" ],
+        "Date": [ "Fri, 24 Apr 2026 13:19:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1076" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/tests3ep1y8nedf6x\",\"name\":\"tests3ep1y8nedf6x\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"raipiyush@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-04-24T13:19:57.0630602Z\",\"lastModifiedBy\":\"raipiyush@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-04-24T13:19:57.0630602Z\"},\"identity\":{\"principalId\":\"7bb01e8b-84c5-4ea3-a069-aa1c117fee51\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"sourceType\":\"MINIO\",\"sourceUri\":\"https://s3.example.com/bucket\",\"credentials\":{\"accessKeyUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-accesskey\",\"secretKeyUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-secretkey\",\"type\":\"AzureKeyVaultS3WithHMAC\"},\"endpointType\":\"S3WithHMAC\",\"endpointKind\":\"Source\",\"description\":\"new s3 endpoint\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzStorageMoverS3WithHmacEndpoint+[NoContext]+CreateWithOtherSourceType+$PUT+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/tests3ep2y8nedf6x?api-version=2025-12-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/tests3ep2y8nedf6x?api-version=2025-12-01",
+      "Content": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"endpointType\": \"S3WithHMAC\",\r\n    \"description\": \"s3 other source\",\r\n    \"credentials\": {\r\n      \"type\": \"AzureKeyVaultS3WithHMAC\",\r\n      \"accessKeyUri\": \"https://examples-azureKeyVault.vault.azure.net/secrets/examples-accesskey\",\r\n      \"secretKeyUri\": \"https://examples-azureKeyVault.vault.azure.net/secrets/examples-secretkey\"\r\n    },\r\n    \"sourceUri\": \"https://s3.custom.com/bucket\",\r\n    \"sourceType\": \"OTHER\",\r\n    \"otherSourceTypeDescription\": \"Custom S3 provider\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "560" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"39002774-0000-3300-0000-69eb6e010000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=015c25ba-27a0-4b6a-966a-7895f723f13e/eastus2euap/76eef846-1c55-481b-ab98-29cbfa649f1b" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "9295a325-e7ec-4229-a603-60d677325d8f" ],
+        "x-ms-request-id": [ "7ca5bc3e-2d6b-4acd-ac11-2e6f60deffc8" ],
+        "x-ms-correlation-request-id": [ "e3e4548b-fe5c-4455-9c9a-ca6b998d5f72" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "0" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260424T132001Z:e3e4548b-fe5c-4455-9c9a-ca6b998d5f72" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 147D4F03A2DD40308EF573D4D5D625A9 Ref B: PNQ231110908023 Ref C: 2026-04-24T13:19:59Z" ],
+        "Date": [ "Fri, 24 Apr 2026 13:20:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1125" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/tests3ep2y8nedf6x\",\"name\":\"tests3ep2y8nedf6x\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"raipiyush@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-04-24T13:19:59.7228187Z\",\"lastModifiedBy\":\"raipiyush@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-04-24T13:19:59.7228187Z\"},\"identity\":{\"principalId\":\"f1b310a8-5c83-4103-9c8d-fe5cffdae73f\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"sourceType\":\"OTHER\",\"sourceUri\":\"https://s3.custom.com/bucket\",\"otherSourceTypeDescription\":\"Custom S3 provider\",\"credentials\":{\"accessKeyUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-accesskey\",\"secretKeyUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-secretkey\",\"type\":\"AzureKeyVaultS3WithHMAC\"},\"endpointType\":\"S3WithHMAC\",\"endpointKind\":\"Source\",\"description\":\"s3 other source\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

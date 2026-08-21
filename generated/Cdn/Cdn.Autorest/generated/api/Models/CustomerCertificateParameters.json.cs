@@ -124,14 +124,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 AddIf( null != (((object)this._certificateAuthority)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._certificateAuthority.ToString()) : null, "certificateAuthority" ,container.Add );
             }
-            if (null != this._subjectAlternativeName)
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
             {
-                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.XNodeArray();
-                foreach( var __x in this._subjectAlternativeName )
+                if (null != this._subjectAlternativeName)
                 {
-                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._subjectAlternativeName )
+                    {
+                        AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                    }
+                    container.Add("subjectAlternativeNames",__w);
                 }
-                container.Add("subjectAlternativeNames",__w);
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
             {

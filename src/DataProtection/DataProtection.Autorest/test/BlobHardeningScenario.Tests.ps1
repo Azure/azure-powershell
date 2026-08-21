@@ -22,9 +22,9 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         $storageAccId = $env.TestBlobHardeningScenario.StorageAccId
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
-        $pol = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName | Where-Object { $_.Name -match $policyName }
+        $pol = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName | Where-Object { $_.Name -eq $policyName }
 
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
 
         # Remove-BI
         if($instance -ne $null){
@@ -56,14 +56,18 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         # backup
         $backupnstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId -BackupInstance $backupInstanceClientObject
 
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
 
+        $startTime = Get-Date
         while($instance.Property.CurrentProtectionState -ne "ProtectionConfigured"){
+            if ((Get-Date) - $startTime -gt (New-TimeSpan -Minutes 10)) {
+                throw "Timeout waiting for ProtectionConfigured state for backup instance $($instance.Name)."
+            }
             Start-TestSleep -Seconds 10
-            $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
+            $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
         }
 
-        $instance[0].Name -match $storageAcountName | Should be $true
+        $instance[0].Name -match $storageAccountName | Should be $true
 
         # Trigger Backup
         $backupJob = Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -BackupRuleOptionRuleName $pol[0].Property.PolicyRule[-1].Name -TriggerOptionRetentionTagOverride $pol[0].Property.PolicyRule[-1].Trigger.TaggingCriterion[0].TagInfoTagName
@@ -111,8 +115,13 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
             $backedUpContainers[1]= @("c")
         }
 
+        $renameTo = @{
+            $backedUpContainers[0] = "con1renamed"
+            $backedUpContainers[1]= "con2renamed"
+        }
+
         # Initialize Restore
-        $restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccId -ContainersList $backedUpContainers[0,1] -PrefixMatch $prefMatch
+        $restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccId -ContainersList $backedUpContainers[0,1] -PrefixMatch $prefMatch -RenameTo $renameTo
         $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -RestoreRequest $restoreReq
         $validateRestore.ObjectType | Should be "OperationJobExtendedInfo"
 
@@ -132,8 +141,7 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         $elapsed = 0
         while($jobstatus -eq "InProgress" -and $elapsed -lt $timeout)
         {
-            #Start-TestSleep -Seconds 30 uncomment for PR
-            Start-Sleep -Seconds 30
+            Start-TestSleep -Seconds 30
             $elapsed += 30
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
             $jobstatus = $currentjob.Status
@@ -143,6 +151,72 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         # Validate job completed successfully
         $jobstatus | Should be "Completed"
 
+        # Validate renamed ILR containers exist in target storage account
+        Write-Host "Validating restored containers..."
+        $targetStorageAccount = Get-AzStorageAccount -ResourceGroupName $targetStorageAccountRGName -Name $targetStorageAccountName
+        $restoredContainers = Get-AzStorageContainer -Context $targetStorageAccount.Context
+
+        $expectedRenamedContainers = $renameTo.Values | Sort-Object
+
+        Write-Host "Expected renamed containers: $($expectedRenamedContainers -join ', ')"
+        Write-Host "Actual restored containers: $($restoredContainers.Name -join ', ')"
+
+        # Check each expected container exists
+        foreach($expectedName in $expectedRenamedContainers) {
+            $restoredContainers.Name | Should -Contain $expectedName
+        }
+        Write-Host "Container validation completed successfully."
+
+        # Validate prefix match worked as expected within renamed containers
+        # Validate prefix matching in renamed containers
+        Write-Host "Validating prefix matching in renamed containers..."
+        foreach($originalContainerName in $prefMatch.Keys) {
+            # Get the renamed container name (string value, not array)
+            $renamedContainerName = $renameTo[$originalContainerName]
+
+            if(-not $renamedContainerName) {
+	            throw "No rename mapping found for container '$originalContainerName'"
+            }
+
+            Write-Host "Checking blobs in renamed container: $renamedContainerName (original: $originalContainerName)"
+
+            # Get all blobs in the renamed container
+            $blobsInContainer = Get-AzStorageBlob -Container $renamedContainerName -Context $targetStorageAccount.Context
+
+            $blobsInContainer.Count | Should -BeGreaterThan 0
+
+            # Get the expected prefixes for this container
+            $expectedPrefixes = $prefMatch[$originalContainerName]
+
+            Write-Host "Expected prefixes for container: $($expectedPrefixes -join ', ')"
+            Write-Host "Found $($blobsInContainer.Count) blobs in container"
+
+            # Validate EVERY blob matches at least one of the expected prefixes
+            $invalidBlobs = @()
+            foreach($blob in $blobsInContainer) {
+	            $blobName = $blob.Name
+	            $matchesPrefix = $false
+
+	            foreach($prefix in $expectedPrefixes) {
+		            if($blobName.StartsWith($prefix)) {
+			            $matchesPrefix = $true
+			            break
+		            }
+	            }
+
+	            if(-not $matchesPrefix) {
+		            $invalidBlobs += $blobName
+	            }
+            }
+
+            # Fail if any blobs don't match the prefix filter
+            if($invalidBlobs.Count -gt 0) {
+	            throw "Found $($invalidBlobs.Count) blob(s) that don't match any expected prefix in container '$renamedContainerName': $($invalidBlobs -join ', '). Expected prefixes: $($expectedPrefixes -join ', ')"
+            }
+
+            Write-Host "All $($blobsInContainer.Count) blobs in container '$renamedContainerName' match expected prefixes"
+        }
+        
         Write-Host "BlobVaultedILR test completed successfully - all validations passed!"
     }
 
@@ -166,7 +240,7 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         $targetCrossSubStorageAccountRGName = $env.TestBlobHardeningScenario.TargetCrossSubStorageAccountRGName
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
        
         $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
 

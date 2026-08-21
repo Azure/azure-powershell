@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 
         /// <summary>The downloaded sized of the image in MB</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public long? DownloadStatusDownloadSizeInMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).DownloadStatusDownloadSizeInMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).DownloadStatusDownloadSizeInMb = value ?? default(long); }
+        public long? DownloadStatusDownloadSizeInMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).DownloadStatusDownloadSizeInMb; }
 
         /// <summary>Backing field for <see cref="HyperVGeneration" /> property.</summary>
         private string _hyperVGeneration;
@@ -61,35 +61,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
         public string IdentifierSku { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageIdentifierInternal)Identifier).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageIdentifierInternal)Identifier).Sku = value ?? null; }
 
+        /// <summary>Internal Acessors for DownloadStatusDownloadSizeInMb</summary>
+        long? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.DownloadStatusDownloadSizeInMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).DownloadStatusDownloadSizeInMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).DownloadStatusDownloadSizeInMb = value ?? default(long); }
+
         /// <summary>Internal Acessors for Identifier</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageIdentifier Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.Identifier { get => (this._identifier = this._identifier ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.GalleryImageIdentifier()); set { {_identifier = value;} } }
 
         /// <summary>Internal Acessors for OSDiskImageSizeInMb</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.OSDiskImageSizeInMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).OSDiskImageSizeInMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).OSDiskImageSizeInMb = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.OSDiskImageSizeInMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).OSDiskImageSizeInMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).OSDiskImageSizeInMb = value ?? default(long); }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
+        /// <summary>Internal Acessors for ProvisioningStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.ProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProvisioningStatusStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProvisioningStatusStatus = value ?? null; }
+
+        /// <summary>Internal Acessors for ProvisioningStatusOperationId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.ProvisioningStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProvisioningStatusOperationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProvisioningStatusOperationId = value ?? null; }
 
         /// <summary>Internal Acessors for Status</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.Status { get => (this._status = this._status ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.MarketplaceGalleryImageStatus()); set { {_status = value;} } }
 
         /// <summary>Internal Acessors for StatusDownloadStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusDownloadStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.StatusDownloadStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).DownloadStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).DownloadStatus = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusDownloadStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.StatusDownloadStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).DownloadStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).DownloadStatus = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for StatusErrorCode</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ErrorCode = value ?? null; }
+
+        /// <summary>Internal Acessors for StatusErrorMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ErrorMessage = value ?? null; }
+
+        /// <summary>Internal Acessors for StatusProgressPercentage</summary>
+        long? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.StatusProgressPercentage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProgressPercentage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProgressPercentage = value ?? default(long); }
 
         /// <summary>Internal Acessors for StatusProvisioningStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusProvisioningStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.StatusProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProvisioningStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProvisioningStatus = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusProvisioningStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.StatusProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProvisioningStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProvisioningStatus = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StorageProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfile Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.StorageProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).StorageProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).StorageProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfile Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.StorageProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).StorageProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).StorageProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StorageProfileOSDiskImage</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryOSDiskImage Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.StorageProfileOSDiskImage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).StorageProfileOSDiskImage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).StorageProfileOSDiskImage = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryOSDiskImage Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.StorageProfileOSDiskImage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).StorageProfileOSDiskImage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).StorageProfileOSDiskImage = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Version</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersion Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.Version { get => (this._version = this._version ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.GalleryImageVersion()); set { {_version = value;} } }
 
         /// <summary>Internal Acessors for VersionProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionProperties Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.VersionProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).Property = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionProperties Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagePropertiesInternal.VersionProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionInternal)Version).Property = value ?? null /* model class */; }
 
         /// <summary>This property indicates the size of the VHD to be created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
@@ -113,11 +131,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         /// The status of the operation performed on the gallery image [Succeeded, Failed, InProgress]
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string ProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProvisioningStatusStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProvisioningStatusStatus = value ?? null; }
+        public string ProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProvisioningStatusStatus; }
 
         /// <summary>The ID of the operation performed on the gallery image</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string ProvisioningStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProvisioningStatusOperationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProvisioningStatusOperationId = value ?? null; }
+        public string ProvisioningStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProvisioningStatusOperationId; }
 
         /// <summary>Backing field for <see cref="Status" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatus _status;
@@ -128,15 +146,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 
         /// <summary>MarketplaceGalleryImage provisioning error code</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ErrorCode = value ?? null; }
+        public string StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ErrorCode; }
 
         /// <summary>Descriptive error message</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ErrorMessage = value ?? null; }
+        public string StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ErrorMessage; }
 
         /// <summary>The progress of the operation in percentage</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public long? StatusProgressPercentage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProgressPercentage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProgressPercentage = value ?? default(long); }
+        public long? StatusProgressPercentage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImageStatusInternal)Status).ProgressPercentage; }
 
         /// <summary>Backing field for <see cref="Version" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersion _version;

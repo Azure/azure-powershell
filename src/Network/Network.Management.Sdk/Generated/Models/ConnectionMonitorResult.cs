@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Information about the connection monitor.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ConnectionMonitorResult : Microsoft.Rest.Azure.IResource
+    public partial class ConnectionMonitorResult : TrackedResourceWithEtag
     {
         /// <summary>
         /// Initializes a new instance of the ConnectionMonitorResult class.
@@ -25,16 +25,16 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ConnectionMonitorResult class.
         /// </summary>
 
-        /// <param name="name">Name of the connection monitor.
-        /// </param>
-
         /// <param name="id">ID of the connection monitor.
         /// </param>
 
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
+        /// <param name="name">Name of the connection monitor.
         /// </param>
 
         /// <param name="type">Connection monitor type.
+        /// </param>
+
+        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
         /// <param name="location">Connection monitor location.
@@ -82,15 +82,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="connectionMonitorType">Type of connection monitor.
         /// Possible values include: &#39;MultiEndpoint&#39;, &#39;SingleSourceDestination&#39;</param>
-        public ConnectionMonitorResult(string name = default(string), string id = default(string), string etag = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string provisioningState = default(string), ConnectionMonitorSource source = default(ConnectionMonitorSource), ConnectionMonitorDestination destination = default(ConnectionMonitorDestination), bool? autoStart = default(bool?), int? monitoringIntervalInSeconds = default(int?), System.Collections.Generic.IList<ConnectionMonitorEndpoint> endpoints = default(System.Collections.Generic.IList<ConnectionMonitorEndpoint>), System.Collections.Generic.IList<ConnectionMonitorTestConfiguration> testConfigurations = default(System.Collections.Generic.IList<ConnectionMonitorTestConfiguration>), System.Collections.Generic.IList<ConnectionMonitorTestGroup> testGroups = default(System.Collections.Generic.IList<ConnectionMonitorTestGroup>), System.Collections.Generic.IList<ConnectionMonitorOutput> outputs = default(System.Collections.Generic.IList<ConnectionMonitorOutput>), string notes = default(string), System.DateTime? startTime = default(System.DateTime?), string monitoringStatus = default(string), string connectionMonitorType = default(string))
+        public ConnectionMonitorResult(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string provisioningState = default(string), ConnectionMonitorSource source = default(ConnectionMonitorSource), ConnectionMonitorDestination destination = default(ConnectionMonitorDestination), bool? autoStart = default(bool?), int? monitoringIntervalInSeconds = default(int?), System.Collections.Generic.IList<ConnectionMonitorEndpoint> endpoints = default(System.Collections.Generic.IList<ConnectionMonitorEndpoint>), System.Collections.Generic.IList<ConnectionMonitorTestConfiguration> testConfigurations = default(System.Collections.Generic.IList<ConnectionMonitorTestConfiguration>), System.Collections.Generic.IList<ConnectionMonitorTestGroup> testGroups = default(System.Collections.Generic.IList<ConnectionMonitorTestGroup>), System.Collections.Generic.IList<ConnectionMonitorOutput> outputs = default(System.Collections.Generic.IList<ConnectionMonitorOutput>), string notes = default(string), System.DateTime? startTime = default(System.DateTime?), string monitoringStatus = default(string), string connectionMonitorType = default(string))
 
+        : base(id, name, type, etag, location, tags)
         {
-            this.Name = name;
-            this.Id = id;
-            this.Etag = etag;
-            this.Type = type;
-            this.Location = location;
-            this.Tags = tags;
             this.ProvisioningState = provisioningState;
             this.Source = source;
             this.Destination = destination;
@@ -112,43 +107,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets name of the connection monitor.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets iD of the connection monitor.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource is
-        /// updated.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
-        public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets connection monitor type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
-
-        /// <summary>
-        /// Gets or sets connection monitor location.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
-        public string Location {get; set; }
-
-        /// <summary>
-        /// Gets or sets connection monitor tags.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
-        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the connection monitor. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
@@ -236,12 +194,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
-
-
-
-
-
-
 
             if (this.Source != null)
             {

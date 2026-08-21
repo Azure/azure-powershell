@@ -88,6 +88,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
 
             switch ( json.StringProperty("type") )
             {
+                case "AzureKeyVaultS3WithHMAC":
+                {
+                    return new AzureKeyVaultS3WithHmacCredentials(json);
+                }
                 case "AzureKeyVaultSmb":
                 {
                     return new AzureKeyVaultSmbCredentials(json);

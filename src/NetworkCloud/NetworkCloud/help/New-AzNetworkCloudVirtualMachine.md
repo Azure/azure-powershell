@@ -22,14 +22,15 @@ New-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> [-Su
  -VMImage <String> [-BootMethod <String>] [-CloudServiceNetworkAttachmentDefaultGateway <String>]
  [-CloudServiceNetworkAttachmentIpv4Address <String>] [-CloudServiceNetworkAttachmentIpv6Address <String>]
  [-CloudServiceNetworkAttachmentName <String>] [-ConsoleExtendedLocationName <String>]
- [-ConsoleExtendedLocationType <String>] [-IsolateEmulatorThread <String>]
- [-NetworkAttachment <INetworkAttachment[]>] [-NetworkData <String>] [-OSDiskCreateOption <String>]
- [-OSDiskDeleteOption <String>] [-PlacementHint <IVirtualMachinePlacementHint[]>]
- [-SshPublicKey <ISshPublicKey[]>] [-StorageProfileVolumeAttachment <String[]>] [-Tag <Hashtable>]
- [-UserData <String>] [-VMDeviceModel <String>] [-VMImageRepositoryCredentialsPassword <SecureString>]
- [-VMImageRepositoryCredentialsRegistryUrl <String>] [-VMImageRepositoryCredentialsUsername <String>]
- [-VirtioInterface <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ConsoleExtendedLocationType <String>] [-EnableSystemAssignedIdentity] [-IsolateEmulatorThread <String>]
+ [-NetworkAttachment <INetworkAttachment[]>] [-NetworkData <String>] [-NetworkDataContent <String>]
+ [-OSDiskCreateOption <String>] [-OSDiskDeleteOption <String>]
+ [-PlacementHint <IVirtualMachinePlacementHint[]>] [-SshPublicKey <ISshPublicKey[]>]
+ [-StorageProfileVolumeAttachment <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-UserData <String>] [-UserDataContent <String>] [-VMDeviceModel <String>]
+ [-VMImageRepositoryCredentialsPassword <SecureString>] [-VMImageRepositoryCredentialsRegistryUrl <String>]
+ [-VMImageRepositoryCredentialsUsername <String>] [-VirtioInterface <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -130,7 +131,8 @@ Accept wildcard characters: False
 ```
 
 ### -CloudServiceNetworkAttachmentAttachedNetworkId
-The resource ID of the associated network attached to the virtual machine.It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
+The resource ID of the associated network attached to the virtual machine.
+It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
 
 ```yaml
 Type: System.String
@@ -145,7 +147,8 @@ Accept wildcard characters: False
 ```
 
 ### -CloudServiceNetworkAttachmentDefaultGateway
-The indicator of whether this is the default gateway.Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.
+The indicator of whether this is the default gateway.
+Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.
 
 ```yaml
 Type: System.String
@@ -160,7 +163,9 @@ Accept wildcard characters: False
 ```
 
 ### -CloudServiceNetworkAttachmentIPAllocationMethod
-The IP allocation mechanism for the virtual machine.Dynamic and Static are only valid for l3Network which may also specify Disabled.Otherwise, Disabled is the only permitted value.
+The IP allocation mechanism for the virtual machine.
+Dynamic and Static are only valid for l3Network which may also specify Disabled.
+Otherwise, Disabled is the only permitted value.
 
 ```yaml
 Type: System.String
@@ -175,7 +180,11 @@ Accept wildcard characters: False
 ```
 
 ### -CloudServiceNetworkAttachmentIpv4Address
-The IPv4 address of the virtual machine.This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.If IPAllocationMethod is:Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network.Disabled - this field will be empty.
+The IPv4 address of the virtual machine.
+This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.
+If IPAllocationMethod is: Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.
+Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network.
+Disabled - this field will be empty.
 
 ```yaml
 Type: System.String
@@ -190,7 +199,11 @@ Accept wildcard characters: False
 ```
 
 ### -CloudServiceNetworkAttachmentIpv6Address
-The IPv6 address of the virtual machine.This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.If IPAllocationMethod is:Static - this field must contain an IPv6 address range from within the range specified in the attached network.Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network.Disabled - this field will be empty.
+The IPv6 address of the virtual machine.
+This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.
+If IPAllocationMethod is: Static - this field must contain an IPv6 address range from within the range specified in the attached network.
+Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network.
+Disabled - this field will be empty.
 
 ```yaml
 Type: System.String
@@ -205,7 +218,10 @@ Accept wildcard characters: False
 ```
 
 ### -CloudServiceNetworkAttachmentName
-The associated network's interface name.If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.If the user doesn't specify this value, the default interface name of the network resource will be used.For a CloudServicesNetwork resource, this name will be ignored.
+The associated network's interface name.
+If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.
+If the user doesn't specify this value, the default interface name of the network resource will be used.
+For a CloudServicesNetwork resource, this name will be ignored.
 
 ```yaml
 Type: System.String
@@ -272,6 +288,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -451,6 +482,22 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkData
+Field Deprecated: The Base64 encoded cloud-init network data.
+The networkDataContent property will be used in preference to this property.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkDataContent
 The Base64 encoded cloud-init network data.
 
 ```yaml
@@ -620,7 +667,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UserData
+Field Deprecated: The Base64 encoded cloud-init user data.
+The userDataContent property will be used in preference to this property.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserDataContent
 The Base64 encoded cloud-init user data.
 
 ```yaml

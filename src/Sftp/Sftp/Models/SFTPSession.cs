@@ -17,13 +17,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
 {
     /// <summary>
     /// Holds SFTP session information and connection details.
     /// </summary>
-    public class SFTPSession
+    internal class SFTPSession
     {
         private ConnectionInfo _connection;
         private AuthenticationFiles _authFiles;
@@ -42,12 +43,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
             string sshClientFolder = null,
             string sshProxyFolder = null,
             string credentialsFolder = null,
-            bool yesWithoutPrompt = false)
+            bool yesWithoutPrompt = false,
+            int bufferSizeBytes = SftpConstants.DefaultBufferSizeBytes)
         {
             _connection = new ConnectionInfo(storageAccount, username, host, port);
             _authFiles = new AuthenticationFiles(publicKeyFile, privateKeyFile, certFile);
             _config = new SessionConfiguration(sftpArgs, sshClientFolder, sshProxyFolder, credentialsFolder, yesWithoutPrompt);
             _runtime = new RuntimeState();
+            BufferSizeBytes = bufferSizeBytes;
         }
 
         // Connection properties
@@ -139,6 +142,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
         }
 
         /// <summary>
+        /// Buffer size in bytes for SFTP file transfers.
+        /// </summary>
+        public int BufferSizeBytes { get; set; } = SftpConstants.DefaultBufferSizeBytes;
+
+        /// <summary>
         /// Resolve connection information like hostname and username.
         /// Username format: {storage-account}.{principal-name}
         /// </summary>
@@ -173,8 +181,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
         /// <summary>
         /// Build arguments for SFTP command.
         /// </summary>
-        public List<string> BuildArgs()
+        internal List<string> BuildArgs()
         {
+            // Validate values that will become process arguments (defense-in-depth)
+            SftpUtils.ValidateCommandLineArgument(CertFile, nameof(CertFile));
+            SftpUtils.ValidateCommandLineArgument(PrivateKeyFile, nameof(PrivateKeyFile));
+            SftpUtils.ValidateCommandLineArgument(PublicKeyFile, nameof(PublicKeyFile));
+
             var args = new List<string>();
 
             // Certificate authentication with explicit certificate file option
@@ -215,24 +228,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
                 args.AddRange(new[] { "-P", Port.ToString() });
             }
 
+            // Buffer size option (sftp -B flag)
+            if (BufferSizeBytes != SftpConstants.DefaultBufferSizeBytes)
+            {
+                args.AddRange(new[] { "-B", BufferSizeBytes.ToString() });
+            }
+
             return args;
         }
 
-        public string GetHost()
+        internal string GetHost()
         {
             if (string.IsNullOrEmpty(Host))
             {
                 throw new AzPSArgumentException("Host not set. Call ResolveConnectionInfo() first.", nameof(Host));
             }
+            SftpUtils.ValidateCommandLineArgument(Host, nameof(Host));
             return Host;
         }
 
-        public string GetDestination()
+        internal string GetDestination()
         {
+            SftpUtils.ValidateCommandLineArgument(Username, nameof(Username));
             return $"{Username}@{GetHost()}";
         }
 
-        public void ValidateSession()
+        internal void ValidateSession()
         {
             if (string.IsNullOrEmpty(StorageAccount))
             {

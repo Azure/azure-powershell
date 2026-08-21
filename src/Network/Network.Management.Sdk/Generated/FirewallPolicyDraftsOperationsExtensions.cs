@@ -13,13 +13,52 @@ namespace Microsoft.Azure.Management.Network
     public static partial class FirewallPolicyDraftsOperationsExtensions
     {
         /// <summary>
+        /// Get a draft Firewall Policy.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='firewallPolicyName'>
+        /// The name of the Firewall Policy.
+        /// </param>
+        public static FirewallPolicyDraft Get(this IFirewallPolicyDraftsOperations operations, string resourceGroupName, string firewallPolicyName)
+        {
+                return ((IFirewallPolicyDraftsOperations)operations).GetAsync(resourceGroupName, firewallPolicyName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get a draft Firewall Policy.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='firewallPolicyName'>
+        /// The name of the Firewall Policy.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<FirewallPolicyDraft> GetAsync(this IFirewallPolicyDraftsOperations operations, string resourceGroupName, string firewallPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Create or update a draft Firewall Policy.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
@@ -36,7 +75,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
@@ -58,7 +97,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
@@ -75,7 +114,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
@@ -86,45 +125,6 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task DeleteAsync(this IFirewallPolicyDraftsOperations operations, string resourceGroupName, string firewallPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Get a draft Firewall Policy.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='firewallPolicyName'>
-        /// The name of the Firewall Policy.
-        /// </param>
-        public static FirewallPolicyDraft Get(this IFirewallPolicyDraftsOperations operations, string resourceGroupName, string firewallPolicyName)
-        {
-                return ((IFirewallPolicyDraftsOperations)operations).GetAsync(resourceGroupName, firewallPolicyName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Get a draft Firewall Policy.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='firewallPolicyName'>
-        /// The name of the Firewall Policy.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<FirewallPolicyDraft> GetAsync(this IFirewallPolicyDraftsOperations operations, string resourceGroupName, string firewallPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
         }
     }
 }

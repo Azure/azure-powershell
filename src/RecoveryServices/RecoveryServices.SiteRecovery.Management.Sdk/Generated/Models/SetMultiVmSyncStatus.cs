@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class SetMultiVmSyncStatus
     {
+        /// <summary>
+        /// Enable
+        /// </summary>
         public const string Enable = "Enable";
+        /// <summary>
+        /// Disable
+        /// </summary>
         public const string Disable = "Disable";
     }
 }

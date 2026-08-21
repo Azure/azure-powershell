@@ -77,6 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 return;
             }
+            {_dynamicSizing = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject>("dynamicSizing"), out var __jsonDynamicSizing) ? Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.DynamicSizing.FromJson(__jsonDynamicSizing) : _dynamicSizing;}
             {_maxReadyCapacity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber>("maxReadyCapacity"), out var __jsonMaxReadyCapacity) ? (long)__jsonMaxReadyCapacity : _maxReadyCapacity;}
             {_refillPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString>("refillPolicy"), out var __jsonRefillPolicy) ? (string)__jsonRefillPolicy : (string)_refillPolicy;}
             AfterFromJson(json);
@@ -103,6 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 return container;
             }
+            AddIf( null != this._dynamicSizing ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) this._dynamicSizing.ToJson(null,serializationMode) : null, "dynamicSizing" ,container.Add );
             AddIf( (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber(this._maxReadyCapacity), "maxReadyCapacity" ,container.Add );
             AddIf( null != (((object)this._refillPolicy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString(this._refillPolicy.ToString()) : null, "refillPolicy" ,container.Add );
             AfterToJson(ref container);

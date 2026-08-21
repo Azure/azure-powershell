@@ -1,49 +1,29 @@
-."$PSScriptRoot\testDataGenerator.ps1"
-."$PSScriptRoot\virtualNetworkClient.ps1"
-."$PSScriptRoot\outboundEndpointAssertions.ps1"
-."$PSScriptRoot\Constants.ps1"
-
-Add-AssertionOperator -Name 'BeSuccessfullyCreatedOutboundEndpoint' -Test $Function:BeSuccessfullyCreatedOutboundEndpoint
-
-$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-if (-Not (Test-Path -Path $loadEnvPath)) {
-    $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-}
-. ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzDnsResolverOutboundEndpoint.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
-    $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-    $currentPath = Split-Path -Path $currentPath -Parent
-}
+while(-not $mockingPath) { $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File; $currentPath = Split-Path -Path $currentPath -Parent }
 . ($mockingPath | Select-Object -First 1).FullName
-
 Describe 'Update-AzDnsResolverOutboundEndpoint' {
-    It 'Update outbound endpoint by adding tag, expect outbound endpoint updated' {
-        # ARRANGE
-        $dnsResolverName = "psdnsresolvername50";
-        $outboundEndpointName =  "psinboundendpointname50";
-        $virtualNetworkName = "psvirtualnetworkname50";
-        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
-        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
-        
-        if ($TestMode -eq "Record")
-        {
-            $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
-            $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
+    BeforeAll {
+        $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'; $location = 'westus2'
+        $rgName = "ps-oe-upd-47180"
+        if ($TestMode -ne 'playback') {
+            Select-AzSubscription -SubscriptionId $subscriptionId
+            New-AzResourceGroup -Name $rgName -Location $location
+            $vnet = New-AzVirtualNetwork -Name "vnet-oe-u" -ResourceGroupName $rgName -Location $location -AddressPrefix "10.0.0.0/16"
+            Add-AzVirtualNetworkSubnetConfig -Name "snet-oe-u" -VirtualNetwork $vnet -AddressPrefix "10.0.2.0/24" -Delegation @((New-AzDelegation -Name "dnsResolvers" -ServiceName "Microsoft.Network/dnsResolvers")) | Out-Null
+            $vnet | Set-AzVirtualNetwork | Out-Null
+            $vnetId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/virtualNetworks/vnet-oe-u"
+            New-AzDnsResolver -Name "resolver-oe-u" -ResourceGroupName $rgName -VirtualNetworkId $vnetId -Location $location
+            $subnetId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/virtualNetworks/vnet-oe-u/subnets/snet-oe-u"
+            New-AzDnsResolverOutboundEndpoint -DnsResolverName "resolver-oe-u" -Name "oe-upd-1" -ResourceGroupName $rgName -Location $location -SubnetId $subnetId
         }
-
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
-        
-        New-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME -SubnetId $subnetId -Location $LOCATION
-
-        $tag  = GetRandomHashtable -size 5
-
-        # ACT
-        $updatedOutboundEndpoint = Update-AzDnsResolverOutboundEndpoint -Name $outboundEndpointName -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -Tag $tag
-
-        # ASSERT
-        $updatedOutboundEndpoint | Should -BeSuccessfullyCreatedOutboundEndpoint
-        $updatedOutboundEndpoint.Tag.Count | Should -Be $tag.Count
+    }
+    AfterAll { if ($TestMode -ne 'playback') { Remove-AzResourceGroup -Name $rgName -ErrorAction SilentlyContinue -AsJob | Out-Null } }
+    It 'Update outbound endpoint tags' {
+        $tag = @{ "updated" = "true" }
+        $ep = Update-AzDnsResolverOutboundEndpoint -DnsResolverName "resolver-oe-u" -Name "oe-upd-1" -ResourceGroupName $rgName -Tag $tag
+        $ep.ProvisioningState | Should -Be "Succeeded"
+        $ep.Tag.Count | Should -Be 1
     }
 }
+

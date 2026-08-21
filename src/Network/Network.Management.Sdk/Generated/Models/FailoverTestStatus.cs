@@ -13,14 +13,41 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class FailoverTestStatus
     {
+        /// <summary>
+        /// NotStarted
+        /// </summary>
         public const string NotStarted = "NotStarted";
+        /// <summary>
+        /// Starting
+        /// </summary>
         public const string Starting = "Starting";
+        /// <summary>
+        /// Running
+        /// </summary>
         public const string Running = "Running";
+        /// <summary>
+        /// StartFailed
+        /// </summary>
         public const string StartFailed = "StartFailed";
+        /// <summary>
+        /// Stopping
+        /// </summary>
         public const string Stopping = "Stopping";
+        /// <summary>
+        /// Completed
+        /// </summary>
         public const string Completed = "Completed";
+        /// <summary>
+        /// StopFailed
+        /// </summary>
         public const string StopFailed = "StopFailed";
+        /// <summary>
+        /// Invalid
+        /// </summary>
         public const string Invalid = "Invalid";
+        /// <summary>
+        /// Expired
+        /// </summary>
         public const string Expired = "Expired";
     }
 }

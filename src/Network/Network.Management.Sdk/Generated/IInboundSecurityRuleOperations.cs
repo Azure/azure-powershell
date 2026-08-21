@@ -14,41 +14,6 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IInboundSecurityRuleOperations
     {
         /// <summary>
-        /// Creates or updates the specified Network Virtual Appliance Inbound Security
-        /// Rules.
-        /// </summary>
-        /// <remarks>
-        /// Creates or updates the specified Network Virtual Appliance Inbound Security
-        /// Rules.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
-        /// </param>
-        /// <param name='ruleCollectionName'>
-        /// The name of security rule collection.
-        /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the create or update Network Virtual Appliance
-        /// Inbound Security Rules operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InboundSecurityRule>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, string ruleCollectionName, InboundSecurityRule parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Retrieves the available specified Network Virtual Appliance Inbound
         /// Security Rules Collection.
         /// </summary>
@@ -57,13 +22,14 @@ namespace Microsoft.Azure.Management.Network
         /// Security Rules Collection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='ruleCollectionName'>
-        /// The name of security rule collection.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -88,13 +54,50 @@ namespace Microsoft.Azure.Management.Network
         /// Rules.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='ruleCollectionName'>
-        /// The name of security rule collection.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the create or update Network Virtual Appliance
+        /// Inbound Security Rules operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InboundSecurityRule>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, string ruleCollectionName, InboundSecurityRule parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates or updates the specified Network Virtual Appliance Inbound Security
+        /// Rules.
+        /// </summary>
+        /// <remarks>
+        /// Creates or updates the specified Network Virtual Appliance Inbound Security
+        /// Rules.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='ruleCollectionName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update Network Virtual Appliance

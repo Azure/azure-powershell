@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Extensions;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     public partial class Any
     {
 

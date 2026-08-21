@@ -25,6 +25,18 @@ Remove-AzWebAppSlotContinuousWebJob -InputObject <IWebsitesIdentity> [-DefaultPr
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityContinuouswebjob
+```
+Remove-AzWebAppSlotContinuousWebJob -ContinuouswebjobInputObject <IWebsitesIdentity> -SlotName <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentitySite
+```
+Remove-AzWebAppSlotContinuousWebJob -Name <String> -SiteInputObject <IWebsitesIdentity> -SlotName <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Delete a continuous web job for a deployment slot.
 
@@ -63,6 +75,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ContinuouswebjobInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: DeleteViaIdentityContinuouswebjob
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -81,7 +108,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
@@ -100,7 +126,7 @@ Name of Web Job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentitySite
 Aliases:
 
 Required: True
@@ -140,13 +166,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SiteInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: DeleteViaIdentitySite
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SlotName
 Name of the deployment slot.
 If a slot is not specified, the API deletes a deployment for the production slot.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityContinuouswebjob, DeleteViaIdentitySite
 Aliases:
 
 Required: True

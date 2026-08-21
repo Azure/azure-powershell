@@ -219,5 +219,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SupportedSecurityOption");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskAvailabilityPolicy()
+        {
+            TestRunner.RunTestScript("Test-DiskAvailabilityPolicy");
+        }
     }
 }

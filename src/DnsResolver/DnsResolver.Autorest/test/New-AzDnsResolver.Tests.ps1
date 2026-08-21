@@ -1,14 +1,6 @@
-."$PSScriptRoot\testDataGenerator.ps1"
-."$PSScriptRoot\virtualNetworkClient.ps1"
-."$PSScriptRoot\dnsResolverAssertions.ps1"
+﻿# Self-contained test for New-AzDnsResolver
+# Each test creates and cleans up its own resources
 
-Add-AssertionOperator -Name 'BeSuccessfullyCreated' -Test $Function:BeSuccessfullyCreated
-
-$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-if (-Not (Test-Path -Path $loadEnvPath)) {
-    $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-}
-. ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzDnsResolver.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
@@ -18,42 +10,55 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDnsResolver' {
-    It 'Create DNS resolver with new virtual network' {
-        # ARRANGE
-        $dnsResolverName = "psdnsresolvername0j0cdzg";
-        $resourceGroupName = "powershell-test-rg-debug";
-        $virtualNetworkId = "/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname0879evh";
-        $location = "westus2";
+    BeforeAll {
+        $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'
+        $location = 'westus2'
+        $rgName = "ps-dnsresolver-new-24348"
 
-        # ACT
-        $resolver = New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $virtualNetworkId -Location $location
-
-        # ASSERT
-        $resolver | Should -BeSuccessfullyCreated
-        $resolver.VirtualNetworkId | Should -Be $virtualNetworkId 
+        if ($TestMode -ne 'playback') {
+            Select-AzSubscription -SubscriptionId $subscriptionId
+            New-AzResourceGroup -Name $rgName -Location $location
+        }
     }
 
-    It 'Create DNS resolver with a malformed virtual network ARM ID' {
-        # ARRANGE
-        $dnsResolverName = "psdnsresolvername1uerapj";
-        $resourceGroupName = "powershell-test-rg-debug";
-        $malformedVirtualNetworkArmId = "/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/powershelldnsresolvertestrglocaltest/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname1dkijv7";
-        $location = "westus2";
-        
-        # ACT,ASSERT
-        {New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $malformedVirtualNetworkArmId -Location $location }| Should -Throw
+    AfterAll {
+        if ($TestMode -ne 'playback') {
+            Remove-AzResourceGroup -Name $rgName -ErrorAction SilentlyContinue -AsJob | Out-Null
+        }
     }
 
     It 'Create DNS resolver with a new virtual network' {
         # ARRANGE
-        $dnsResolverName = "psdnsresolvername2zpuk2x";
-        $resourceGroupName = "powershell-test-rg-debug";
-        $virtualNetworkId = "/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname28oq6tl";
-        $location = "westus2";
-        $tag = GetRandomHashtable -size 2
+        $resolverName = "resolver-new-1"
+        $vnetName = "vnet-new-1"
+
+        if ($TestMode -ne 'playback') {
+            New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix "10.0.0.0/16"
+        }
+        $virtualNetworkId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/virtualNetworks/$vnetName"
 
         # ACT
-         $resolver = New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $virtualNetworkId -Location $location -Tag $tag
+        $resolver = New-AzDnsResolver -Name $resolverName -ResourceGroupName $rgName -VirtualNetworkId $virtualNetworkId -Location $location
+
+        # ASSERT
+        $resolver.ProvisioningState | Should -Be "Succeeded"
+        $resolver.Name | Should -Be $resolverName
+        $resolver.VirtualNetworkId | Should -Be $virtualNetworkId
+    }
+
+    It 'Create DNS resolver with tags' {
+        # ARRANGE
+        $resolverName = "resolver-new-2"
+        $vnetName = "vnet-new-2"
+        $tag = @{ "env" = "test"; "component" = "dnsresolver" }
+
+        if ($TestMode -ne 'playback') {
+            New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix "10.1.0.0/16"
+        }
+        $virtualNetworkId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/virtualNetworks/$vnetName"
+
+        # ACT
+        $resolver = New-AzDnsResolver -Name $resolverName -ResourceGroupName $rgName -VirtualNetworkId $virtualNetworkId -Location $location -Tag $tag
 
         # ASSERT
         $resolver.ProvisioningState | Should -Be "Succeeded"
@@ -61,33 +66,43 @@ Describe 'New-AzDnsResolver' {
         $resolver.Tag.Count | Should -Be $tag.Count
     }
 
-    It 'Create DNS resolver with a non-existent virtual network' {
+    It 'Create DNS resolver with a malformed virtual network ARM ID should throw' {
         # ARRANGE
-        $dnsResolverName = "psdnsresolvername3142sgr";
-        $resourceGroupName = "powershell-test-rg-debug";
-        $virtualNetworkId = "/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname28oq6tl";
-        $location = "westus2";
-        $nonExistentVirtualNetwork = "/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/powershelldnsresolvertestrglocaltest/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname9aywbo511111"
+        $resolverName = "resolver-new-3"
+        $malformedId = "/subscriptions/$subscriptionId/INVALID/providers/Microsoft.Network/virtualNetworks/fakevnet"
 
         # ACT, ASSERT
-        {New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $nonExistentVirtualNetwork -Location $location }| Should -Throw
+        { New-AzDnsResolver -Name $resolverName -ResourceGroupName $rgName -VirtualNetworkId $malformedId -Location $location } | Should -Throw
     }
 
-    It 'Update DNS Resolver with new tags.' {
+    It 'Create DNS resolver with a non-existent virtual network should throw' {
         # ARRANGE
-        $dnsResolverName = "psdnsresolvername4c7glpm";
-        $resourceGroupName = "powershell-test-rg-debug";
-        $virtualNetworkId = "/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname4mox6wf";
-        $location = "westus2";
+        $resolverName = "resolver-new-4"
+        $nonExistentVnetId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/virtualNetworks/vnet-does-not-exist"
 
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $virtualNetworkId -Location $location
-        $tag = GetRandomHashtable -size 2
+        # ACT, ASSERT
+        { New-AzDnsResolver -Name $resolverName -ResourceGroupName $rgName -VirtualNetworkId $nonExistentVnetId -Location $location } | Should -Throw
+    }
 
-        # ACT
-        $resolver = New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $virtualNetworkId -Location $location -Tag $tag
+    It 'Update DNS resolver with new tags via create (upsert)' {
+        # ARRANGE
+        $resolverName = "resolver-new-5"
+        $vnetName = "vnet-new-5"
+
+        if ($TestMode -ne 'playback') {
+            New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix "10.2.0.0/16"
+        }
+        $virtualNetworkId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/virtualNetworks/$vnetName"
+
+        # Create initial resolver
+        New-AzDnsResolver -Name $resolverName -ResourceGroupName $rgName -VirtualNetworkId $virtualNetworkId -Location $location
+
+        # ACT - upsert with tags
+        $tag = @{ "updated" = "true" }
+        $resolver = New-AzDnsResolver -Name $resolverName -ResourceGroupName $rgName -VirtualNetworkId $virtualNetworkId -Location $location -Tag $tag
 
         # ASSERT
-        $resolver.ProvisioningState  | Should -Be "Succeeded"
+        $resolver.ProvisioningState | Should -Be "Succeeded"
         $resolver.Tag.Count | Should -Be $tag.Count
     }
 }

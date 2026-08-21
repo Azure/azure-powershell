@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdApplication
 
 ## SYNOPSIS
-create an application.
+Create an application.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ New-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <Stri
 ```
 
 ## DESCRIPTION
-create an application.
+Create an application.
 
 ## EXAMPLES
 

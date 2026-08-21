@@ -21,12 +21,13 @@ Create an in-memory object for EligibleApprover.
 Create an in-memory object for EligibleApprover.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleApprover
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.EligibleApprover
 .Link
-https://learn.microsoft.com/powershell/module/Az.ManagedServices/new-AzManagedServicesEligibleApproverObject
+https://learn.microsoft.com/powershell/module/Az.ManagedServices/new-azmanagedserviceseligibleapproverobject
 #>
 function New-AzManagedServicesEligibleApproverObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleApprover')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.EligibleApprover')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +40,7 @@ function New-AzManagedServicesEligibleApproverObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleApprover]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.EligibleApprover]::New()
 
         if ($PSBoundParameters.ContainsKey('PrincipalId')) {
             $Object.PrincipalId = $PrincipalId

@@ -123,6 +123,9 @@
   <data name="BreakFileLockOnVolumeMessage" xml:space="preserve">
     <value>Breaking File Locks on volume {0}</value>
   </data>
+  <data name="ClearRansomwareSuspectsMessage" xml:space="preserve">
+    <value>Clearing ransomware suspects on report {0}</value>
+  </data>
   <data name="CreateResourceMessage" xml:space="preserve">
     <value>Create the new {0}</value>
   </data>

@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public PSLocation[] LocationObject { get; set; }
         
         // As of 03082022, using this list only for Mongo Accounts >= 3.6
-        [Parameter(Mandatory = false, HelpMessage = Constants.LocationHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.CapabilitiesHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string[] Capabilities { get; set; }
 
@@ -165,6 +165,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.EnableAutomaticFailover = EnableAutomaticFailover;
             databaseAccountCreateUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
             databaseAccountCreateUpdateParameters.DisableKeyBasedMetadataWriteAccess = DisableKeyBasedMetadataWriteAccess;
+            databaseAccountCreateUpdateParameters.DisableLocalAuth = DisableLocalAuth;
             databaseAccountCreateUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
             databaseAccountCreateUpdateParameters.EnableFreeTier = EnableFreeTier;
             databaseAccountCreateUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
@@ -330,13 +331,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public new object GetDynamicParameters()
         {
+            var parameters = base.GetDynamicParameters() as RuntimeDefinedParameterDictionary;
+
             if (FromPointInTimeBackup)
             {
                 restoreContext = new RestoreRequestDynamicParameters();
                 return restoreContext;
             }
 
-            return null;
+            return parameters;
         }
 
         private RestoreRequestDynamicParameters restoreContext;

@@ -44,6 +44,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Internal Acessors for Subject</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomerCertificateParametersInternal.Subject { get => this._subject; set { {_subject = value;} } }
 
+        /// <summary>Internal Acessors for SubjectAlternativeName</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomerCertificateParametersInternal.SubjectAlternativeName { get => this._subjectAlternativeName; set { {_subjectAlternativeName = value;} } }
+
         /// <summary>Internal Acessors for Thumbprint</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomerCertificateParametersInternal.Thumbprint { get => this._thumbprint; set { {_thumbprint = value;} } }
 
@@ -79,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         /// <summary>The list of SANs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<string> SubjectAlternativeName { get => this._subjectAlternativeName; set => this._subjectAlternativeName = value; }
+        public System.Collections.Generic.List<string> SubjectAlternativeName { get => this._subjectAlternativeName; }
 
         /// <summary>Backing field for <see cref="Thumbprint" /> property.</summary>
         private string _thumbprint;
@@ -181,14 +184,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>The list of SANs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
+        Create = false,
+        Update = false,
         Description = @"The list of SANs.",
         SerializedName = @"subjectAlternativeNames",
         PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> SubjectAlternativeName { get; set; }
+        System.Collections.Generic.List<string> SubjectAlternativeName { get;  }
         /// <summary>Certificate thumbprint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,

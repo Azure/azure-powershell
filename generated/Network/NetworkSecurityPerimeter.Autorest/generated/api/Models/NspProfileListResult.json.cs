@@ -7,9 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list NSP profiles. Contains a list of NSP profiles and a URL link to get the next set of results.
-    /// </summary>
+    /// <summary>The response of a NspProfile list operation.</summary>
     public partial class NspProfileListResult
     {
 

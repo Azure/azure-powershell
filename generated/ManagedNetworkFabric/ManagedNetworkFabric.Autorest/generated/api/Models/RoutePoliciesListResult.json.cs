@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
-    /// <summary>List of RoutePolicies.</summary>
+    /// <summary>Paged collection of RoutePolicy items</summary>
     public partial class RoutePoliciesListResult
     {
 

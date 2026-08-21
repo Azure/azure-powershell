@@ -234,6 +234,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>Internal Acessors for ScanStatus</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunPropertiesInternal.ScanStatus { get => this._scanStatus; set { {_scanStatus = value;} } }
 
+        /// <summary>Internal Acessors for ScheduledExecutionTime</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunPropertiesInternal.ScheduledExecutionTime { get => this._scheduledExecutionTime; set { {_scheduledExecutionTime = value;} } }
+
         /// <summary>Internal Acessors for SourceName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunPropertiesInternal.SourceName { get => this._sourceName; set { {_sourceName = value;} } }
 
@@ -258,6 +261,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>Internal Acessors for TargetResourceId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunPropertiesInternal.TargetResourceId { get => this._targetResourceId; set { {_targetResourceId = value;} } }
 
+        /// <summary>Internal Acessors for TriggerType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunPropertiesInternal.TriggerType { get => this._triggerType; set { {_triggerType = value;} } }
+
+        /// <summary>Internal Acessors for Warning</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunWarning> Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunPropertiesInternal.Warning { get => this._warning; set { {_warning = value;} } }
+
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
 
@@ -271,6 +280,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>The status of Agent's scanning of source.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
         public string ScanStatus { get => this._scanStatus; }
+
+        /// <summary>Backing field for <see cref="ScheduledExecutionTime" /> property.</summary>
+        private global::System.DateTime? _scheduledExecutionTime;
+
+        /// <summary>Scheduled execution time. Null if Trigger type is manual.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public global::System.DateTime? ScheduledExecutionTime { get => this._scheduledExecutionTime; }
 
         /// <summary>Backing field for <see cref="SourceName" /> property.</summary>
         private string _sourceName;
@@ -324,6 +340,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>Fully qualified resource id of of Endpoint. This id may no longer exist.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
         public string TargetResourceId { get => this._targetResourceId; }
+
+        /// <summary>Backing field for <see cref="TriggerType" /> property.</summary>
+        private string _triggerType;
+
+        /// <summary>Trigger type for the job run. Default is manual.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public string TriggerType { get => this._triggerType; }
+
+        /// <summary>Backing field for <see cref="Warning" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunWarning> _warning;
+
+        /// <summary>Warning details.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunWarning> Warning { get => this._warning; }
 
         /// <summary>Creates an new <see cref="JobRunProperties" /> instance.</summary>
         public JobRunProperties()
@@ -589,6 +619,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NotStarted", "Scanning", "Completed")]
         string ScanStatus { get;  }
+        /// <summary>Scheduled execution time. Null if Trigger type is manual.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Scheduled execution time. Null if Trigger type is manual.",
+        SerializedName = @"scheduledExecutionTime",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? ScheduledExecutionTime { get;  }
         /// <summary>Name of source Endpoint resource. This resource may no longer exist.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
@@ -678,6 +719,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         SerializedName = @"targetResourceId",
         PossibleTypes = new [] { typeof(string) })]
         string TargetResourceId { get;  }
+        /// <summary>Trigger type for the job run. Default is manual.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Trigger type for the job run. Default is manual.",
+        SerializedName = @"triggerType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Manual", "Scheduled")]
+        string TriggerType { get;  }
+        /// <summary>Warning details.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Warning details.",
+        SerializedName = @"warnings",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunWarning) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunWarning> Warning { get;  }
 
     }
     /// Job run properties.
@@ -742,6 +806,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>The status of Agent's scanning of source.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NotStarted", "Scanning", "Completed")]
         string ScanStatus { get; set; }
+        /// <summary>Scheduled execution time. Null if Trigger type is manual.</summary>
+        global::System.DateTime? ScheduledExecutionTime { get; set; }
         /// <summary>Name of source Endpoint resource. This resource may no longer exist.</summary>
         string SourceName { get; set; }
         /// <summary>Copy of source Endpoint resource's properties at time of Job Run creation.</summary>
@@ -759,6 +825,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAny TargetProperty { get; set; }
         /// <summary>Fully qualified resource id of of Endpoint. This id may no longer exist.</summary>
         string TargetResourceId { get; set; }
+        /// <summary>Trigger type for the job run. Default is manual.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Manual", "Scheduled")]
+        string TriggerType { get; set; }
+        /// <summary>Warning details.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunWarning> Warning { get; set; }
 
     }
 }

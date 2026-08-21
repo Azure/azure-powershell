@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Storage.Models
     /// The properties of a storage account’s Blob service.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BlobServiceProperties : Resource
+    public partial class BlobServiceProperties : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the BlobServiceProperties class.
@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the BlobServiceProperties class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
@@ -36,7 +36,14 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
         /// <param name="sku">Sku name and tier.
+        /// </param>
+
+        /// <param name="staticWebsite">The static website properties for blob storage.
         /// </param>
 
         /// <param name="changeFeed">The blob service properties for change feed events.
@@ -71,11 +78,12 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="lastAccessTimeTrackingPolicy">The blob service property to configure last access time based tracking
         /// policy.
         /// </param>
-        public BlobServiceProperties(string id = default(string), string name = default(string), string type = default(string), Sku sku = default(Sku), ChangeFeed changeFeed = default(ChangeFeed), CorsRules cors = default(CorsRules), string defaultServiceVersion = default(string), DeleteRetentionPolicy deleteRetentionPolicy = default(DeleteRetentionPolicy), bool? isVersioningEnabled = default(bool?), bool? automaticSnapshotPolicyEnabled = default(bool?), RestorePolicyProperties restorePolicy = default(RestorePolicyProperties), DeleteRetentionPolicy containerDeleteRetentionPolicy = default(DeleteRetentionPolicy), LastAccessTimeTrackingPolicy lastAccessTimeTrackingPolicy = default(LastAccessTimeTrackingPolicy))
+        public BlobServiceProperties(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), Sku sku = default(Sku), StaticWebsite staticWebsite = default(StaticWebsite), ChangeFeed changeFeed = default(ChangeFeed), CorsRules cors = default(CorsRules), string defaultServiceVersion = default(string), DeleteRetentionPolicy deleteRetentionPolicy = default(DeleteRetentionPolicy), bool? isVersioningEnabled = default(bool?), bool? automaticSnapshotPolicyEnabled = default(bool?), RestorePolicyProperties restorePolicy = default(RestorePolicyProperties), DeleteRetentionPolicy containerDeleteRetentionPolicy = default(DeleteRetentionPolicy), LastAccessTimeTrackingPolicy lastAccessTimeTrackingPolicy = default(LastAccessTimeTrackingPolicy))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.Sku = sku;
+            this.StaticWebsite = staticWebsite;
             this.ChangeFeed = changeFeed;
             this.Cors = cors;
             this.DefaultServiceVersion = defaultServiceVersion;
@@ -99,6 +107,12 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
         public Sku Sku {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the static website properties for blob storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.staticWebsite")]
+        public StaticWebsite StaticWebsite {get; set; }
 
         /// <summary>
         /// Gets or sets the blob service properties for change feed events.
@@ -171,6 +185,10 @@ namespace Microsoft.Azure.Management.Storage.Models
             if (this.Sku != null)
             {
                 this.Sku.Validate();
+            }
+            if (this.StaticWebsite != null)
+            {
+                this.StaticWebsite.Validate();
             }
             if (this.ChangeFeed != null)
             {

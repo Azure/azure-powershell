@@ -7,6 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.PowerShell;
 
+    /// <summary>Labels are used to group key-values.</summary>
     [System.ComponentModel.TypeConverter(typeof(LabelTypeConverter))]
     public partial class Label
     {
@@ -153,6 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             return ToJsonString();
         }
     }
+    /// Labels are used to group key-values.
     [System.ComponentModel.TypeConverter(typeof(LabelTypeConverter))]
     public partial interface ILabel
 

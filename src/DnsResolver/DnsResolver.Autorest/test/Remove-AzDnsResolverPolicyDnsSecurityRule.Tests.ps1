@@ -1,53 +1,26 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDnsResolverPolicyDnsSecurityRule'))
-{
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-  if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-  }
-  . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzDnsResolverPolicyDnsSecurityRule.Recording.json'
-  $currentPath = $PSScriptRoot
-  while(-not $mockingPath) {
-      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-      $currentPath = Split-Path -Path $currentPath -Parent
-  }
-  . ($mockingPath | Select-Object -First 1).FullName
-}
+$TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzDnsResolverPolicyDnsSecurityRule.Recording.json'
+$currentPath = $PSScriptRoot
+while(-not $mockingPath) { $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File; $currentPath = Split-Path -Path $currentPath -Parent }
+. ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDnsResolverPolicyDnsSecurityRule' {
-    It 'Delete a DNS security rule by name, expected DNS security rule deleted' {
-        # ARRANGE
-        $dnsResolverPolicyName = "psdnsresolverpolicyforrulename8y8cdzg";
-        $dnsSecurityRuleName = "psdnssecurityrulename8y8cdzg";
-        $dnsResolverDomainListName = "psdnsresolverdomainlistforrulename8y8cdzg";
-        $resourceGroupName = "powershell-test-rg-debug-remove";
-        $location = "westus2";
-        $resolverPolicy = New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
-        $domainList = New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.")
-        $securityRule = New-AzDnsResolverPolicyDnsSecurityRule -Name $dnsSecurityRuleName -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location -DnsResolverDomainList @{id = $domainList.Id;} -DnsSecurityRuleState "Enabled" -ActionType "Block" -ActionBlockResponseCode "SERVFAIL" -Priority 100
-
-        # ACT
-        Remove-AzDnsResolverPolicyDnsSecurityRule -Name $dnsSecurityRuleName -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $resourceGroupName
-
-        # ASSERT
-        {Get-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName $dnsResolverPolicyName -DnsSecurityRuleName $dnsSecurityRuleName -ResourceGroupName $resourceGroupName } | Should -Throw
+    BeforeAll {
+        $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'; $location = 'westus2'
+        $rgName = "ps-secrule-rm-25662"
+        if ($TestMode -ne 'playback') {
+            Select-AzSubscription -SubscriptionId $subscriptionId
+            New-AzResourceGroup -Name $rgName -Location $location
+            New-AzDnsResolverPolicy -Name "policy-secrule-r" -ResourceGroupName $rgName -Location $location
+            New-AzDnsResolverDomainList -Name "domainlist-secrule-r" -ResourceGroupName $rgName -Location $location -Domain @("contoso.com.")
+            $dlId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/dnsResolverDomainLists/domainlist-secrule-r"
+            New-AzDnsResolverPolicyDnsSecurityRule -Name "secrule-rm-1" -DnsResolverPolicyName "policy-secrule-r" -ResourceGroupName $rgName -Location $location -DnsSecurityRuleState "Enabled" -ActionType "Block" -Priority 100 -DnsResolverDomainList @(@{id = $dlId})
+        }
     }
-
-   It 'Delete a DNS security rule via identity, expected DNS security rule deleted' {
-        # ARRANGE
-        $dnsResolverPolicyName = "psdnsresolverpolicyforrulename0j9ujzg";
-        $dnsSecurityRuleName = "psdnssecurityrulename0j9ujzg";
-        $dnsResolverDomainListName = "psdnsresolverdomainlistforrulename0j9ujzg";
-        $resourceGroupName = "powershell-test-rg-debug-remove";
-        $location = "westus2";
-        $resolverPolicy = New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
-        $domainList = New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.")
-        $securityRule = New-AzDnsResolverPolicyDnsSecurityRule -Name $dnsSecurityRuleName -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location -DnsResolverDomainList @{id = $domainList.Id;} -DnsSecurityRuleState "Enabled" -ActionType "Block" -ActionBlockResponseCode "SERVFAIL" -Priority 100
-
-        # ACT
-        Get-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName $dnsResolverPolicyName -DnsSecurityRuleName $dnsSecurityRuleName -ResourceGroupName $resourceGroupName | Remove-AzDnsResolverPolicyDnsSecurityRule
-
-        # ASSERT
-        {Get-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName $dnsResolverPolicyName -DnsSecurityRuleName $dnsSecurityRuleName -ResourceGroupName $resourceGroupName } | Should -Throw
+    AfterAll {
+        if ($TestMode -ne 'playback') { Remove-AzResourceGroup -Name $rgName -ErrorAction SilentlyContinue -AsJob | Out-Null }
+    }
+    It 'Delete a security rule' {
+        Remove-AzDnsResolverPolicyDnsSecurityRule -Name "secrule-rm-1" -DnsResolverPolicyName "policy-secrule-r" -ResourceGroupName $rgName
+        { Get-AzDnsResolverPolicyDnsSecurityRule -Name "secrule-rm-1" -DnsResolverPolicyName "policy-secrule-r" -ResourceGroupName $rgName } | Should -Throw
     }
 }

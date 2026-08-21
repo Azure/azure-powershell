@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class DdosSettingsProtectionMode
     {
+        /// <summary>
+        /// VirtualNetworkInherited
+        /// </summary>
         public const string VirtualNetworkInherited = "VirtualNetworkInherited";
+        /// <summary>
+        /// Enabled
+        /// </summary>
         public const string Enabled = "Enabled";
+        /// <summary>
+        /// Disabled
+        /// </summary>
         public const string Disabled = "Disabled";
     }
 }

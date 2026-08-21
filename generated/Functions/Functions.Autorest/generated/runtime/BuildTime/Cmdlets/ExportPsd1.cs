@@ -137,8 +137,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PowerShell
                 }
                 else
                 {
-                    var cmdletsList = functionInfos.Select(fi => fi.Name).Distinct().Append("*").ToPsList();
-                    
+                    var cmdletsList = functionInfos.Select(fi => fi.Name).Distinct().ToPsList();
+                    sb.AppendLine($@"{Indent}FunctionsToExport = {cmdletsList}");
                 }
 
                 // AliasesToExport
@@ -148,8 +148,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PowerShell
                 }
                 else
                 {
-                    var aliasesList = functionInfos.SelectMany(fi => fi.ScriptBlock.Attributes).ToAliasNames().Append("*").ToPsList();
-                    
+                    var aliasesList = functionInfos.SelectMany(fi => fi.ScriptBlock.Attributes).ToAliasNames().ToPsList();
+                    if (!String.IsNullOrEmpty(aliasesList)) {
+                        sb.AppendLine($@"{Indent}AliasesToExport = {aliasesList}");
+                    }
                 }
 
                 // CmdletsToExport

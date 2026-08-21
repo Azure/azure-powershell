@@ -15,7 +15,7 @@ Get Online Endpoint.
 ### List (Default)
 ```
 Get-AzMLWorkspaceOnlineEndpoint -ResourceGroupName <String> -WorkspaceName <String> [-Name <String>]
- [-SubscriptionId <String[]>] [-ComputeType <EndpointComputeType>] [-Count <Int32>] [-OrderBy <OrderString>]
+ [-SubscriptionId <String[]>] [-ComputeType <String>] [-Count <Int32>] [-OrderBy <String>]
  [-Property <String>] [-Skip <String>] [-Tag <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,12 +31,18 @@ Get-AzMLWorkspaceOnlineEndpoint -InputObject <IMachineLearningServicesIdentity> 
  [<CommonParameters>]
 ```
 
+### GetViaIdentityWorkspace
+```
+Get-AzMLWorkspaceOnlineEndpoint -Name <String> -WorkspaceInputObject <IMachineLearningServicesIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get Online Endpoint.
 
 ## EXAMPLES
 
-### Example 1: Lists all online enpoints under a workspace
+### Example 1: Lists all online endpoints under a workspace
 ```powershell
 Get-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01
 ```
@@ -49,9 +55,9 @@ eastus   online-cli01  5/19/2022 2:47:34 AM UserName (Example)                  
 eastus   online-pwsh01 5/18/2022 9:44:06 AM UserName (Example)                  5/18/2022 9:44:48 AM                                                                                   Managed ml-rg-test
 ```
 
-Lists all online enpoints under a workspace
+Lists all online endpoints under a workspace
 
-### Example 2: Get a online enpoint by name
+### Example 2: Get a online endpoint by name
 ```powershell
 Get-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-cli01
 ```
@@ -62,7 +68,7 @@ Location Name         SystemDataCreatedAt  SystemDataCreatedBy                 S
 eastus   online-cli01 5/19/2022 2:47:34 AM UserName (Example)                  5/19/2022 2:48:26 AM                                                                                   Managed ml-rg-test
 ```
 
-Get a online enpoint by name
+Get a online endpoint by name
 
 ## PARAMETERS
 
@@ -70,7 +76,7 @@ Get a online enpoint by name
 EndpointComputeType to be filtered by.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EndpointComputeType
+Type: System.String
 Parameter Sets: List
 Aliases:
 
@@ -114,7 +120,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
@@ -133,7 +138,7 @@ Online Endpoint name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityWorkspace, List
 Aliases:
 
 Required: True
@@ -147,7 +152,7 @@ Accept wildcard characters: False
 The option to order the response.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OrderString
+Type: System.String
 Parameter Sets: List
 Aliases:
 
@@ -237,6 +242,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 Name of Azure Machine Learning workspace.
 
@@ -261,7 +281,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IOnlineEndpoint
 
 ## NOTES
 

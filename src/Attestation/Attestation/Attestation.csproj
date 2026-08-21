@@ -20,11 +20,6 @@
     <ProjectReference Include="..\Attestation.Management.Sdk\Attestation.Management.Sdk.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Attestation">
-    </Reference>
-  </ItemGroup>
-
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

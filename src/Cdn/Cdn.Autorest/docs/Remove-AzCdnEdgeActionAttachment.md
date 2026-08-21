@@ -57,12 +57,12 @@ A long-running operation for deleting an EdgeAction attachment that returns no c
 
 ## EXAMPLES
 
-### Example 1: Remove an Edge Action Attachment
+### Example 1: Remove an EdgeAction attachment
 ```powershell
-Remove-AzCdnEdgeActionAttachment -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -AttachedResourceId "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/testps-rg-da16jm/providers/Microsoft.Cdn/profiles/testprofile/endpoints/endpoint001"
+Remove-AzCdnEdgeActionAttachment -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -AttachedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testps-rg-da16jm/providers/Microsoft.Cdn/profiles/fdp001/ruleSets/ruleset001/rules/rule001"
 ```
 
-Remove an Edge Action Attachment to unlink an edge action from a CDN resource
+Removes the specified attachment from the EdgeAction resource.
 
 ## PARAMETERS
 

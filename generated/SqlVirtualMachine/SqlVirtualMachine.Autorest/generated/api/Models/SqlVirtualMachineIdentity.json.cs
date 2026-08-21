@@ -76,12 +76,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
             {
                 return;
             }
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_sqlVirtualMachineGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString>("sqlVirtualMachineGroupName"), out var __jsonSqlVirtualMachineGroupName) ? (string)__jsonSqlVirtualMachineGroupName : (string)SqlVirtualMachineGroupName;}
-            {_availabilityGroupListenerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString>("availabilityGroupListenerName"), out var __jsonAvailabilityGroupListenerName) ? (string)__jsonAvailabilityGroupListenerName : (string)AvailabilityGroupListenerName;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_sqlVirtualMachineName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString>("sqlVirtualMachineName"), out var __jsonSqlVirtualMachineName) ? (string)__jsonSqlVirtualMachineName : (string)SqlVirtualMachineName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_sqlVirtualMachineGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString>("sqlVirtualMachineGroupName"), out var __jsonSqlVirtualMachineGroupName) ? (string)__jsonSqlVirtualMachineGroupName : (string)_sqlVirtualMachineGroupName;}
+            {_availabilityGroupListenerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString>("availabilityGroupListenerName"), out var __jsonAvailabilityGroupListenerName) ? (string)__jsonAvailabilityGroupListenerName : (string)_availabilityGroupListenerName;}
+            {_sqlVirtualMachineName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString>("sqlVirtualMachineName"), out var __jsonSqlVirtualMachineName) ? (string)__jsonSqlVirtualMachineName : (string)_sqlVirtualMachineName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 
@@ -104,10 +104,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
             {
                 return container;
             }
+            AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._sqlVirtualMachineGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString(this._sqlVirtualMachineGroupName.ToString()) : null, "sqlVirtualMachineGroupName" ,container.Add );
             AddIf( null != (((object)this._availabilityGroupListenerName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString(this._availabilityGroupListenerName.ToString()) : null, "availabilityGroupListenerName" ,container.Add );
-            AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._sqlVirtualMachineName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString(this._sqlVirtualMachineName.ToString()) : null, "sqlVirtualMachineName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);

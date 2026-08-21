@@ -40,10 +40,10 @@
   Write-Information "Loaded Module '$($accountsModule.Name)'"
 
   # Load the private module dll
-  $null = Import-Module -Name (Join-Path $PSScriptRoot './bin/Az.Confluent.private.dll')
+  $null = Import-Module -Name (Join-Path $PSScriptRoot './bin/Az.confluent.private.dll')
 
   # Get the private module's instance
-  $instance = [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Module]::Instance
+  $instance = [Microsoft.Azure.PowerShell.Cmdlets.confluent.Module]::Instance
 
   # Ask for the shared functionality table
   $VTable = Register-AzModule
@@ -77,7 +77,7 @@
   $instance.ProfileName = $VTable.ProfileName
 
   # Load the custom module
-  $customModulePath = Join-Path $PSScriptRoot './custom/Az.Confluent.custom.psm1'
+  $customModulePath = Join-Path $PSScriptRoot './custom/Az.confluent.custom.psm1'
   if(Test-Path $customModulePath) {
     $null = Import-Module -Name $customModulePath
   }

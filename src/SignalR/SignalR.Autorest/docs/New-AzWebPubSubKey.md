@@ -15,14 +15,14 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 
 ### RegenerateExpanded (Default)
 ```
-New-AzWebPubSubKey -ResourceGroupName <String> -ResourceName <String> -KeyType <KeyType>
+New-AzWebPubSubKey -ResourceGroupName <String> -ResourceName <String> -KeyType <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### RegenerateViaIdentityExpanded
 ```
-New-AzWebPubSubKey -InputObject <IWebPubSubIdentity> -KeyType <KeyType> [-DefaultProfile <PSObject>] [-AsJob]
+New-AzWebPubSubKey -InputObject <IWebPubSubIdentity> -KeyType <String> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -110,11 +110,13 @@ Accept wildcard characters: False
 ```
 
 ### -KeyType
+[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType])]
+[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType]
 The keyType to regenerate.
 Must be either 'primary', 'secondary' or 'salt'(case-insensitive).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -242,7 +244,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubKeys
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubKeys
 
 ## NOTES
 

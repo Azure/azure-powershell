@@ -1,0 +1,8 @@
+# Temporary test files created during test execution
+test-*.json
+
+# Test output files
+*-Params.json
+
+# Local helper scripts (not part of standard test framework)
+run-tests.ps1

@@ -14,13 +14,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
     {
 
         /// <summary>Internal Acessors for OSDiskImageSizeInMb</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal.OSDiskImageSizeInMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfileInternal)StorageProfile).OSDiskImageSizeInMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfileInternal)StorageProfile).OSDiskImageSizeInMb = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal.OSDiskImageSizeInMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfileInternal)StorageProfile).OSDiskImageSizeInMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfileInternal)StorageProfile).OSDiskImageSizeInMb = value ?? default(long); }
 
         /// <summary>Internal Acessors for StorageProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfile Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal.StorageProfile { get => (this._storageProfile = this._storageProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.GalleryImageVersionStorageProfile()); set { {_storageProfile = value;} } }
 
         /// <summary>Internal Acessors for StorageProfileOSDiskImage</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryOSDiskImage Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal.StorageProfileOSDiskImage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfileInternal)StorageProfile).OSDiskImage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfileInternal)StorageProfile).OSDiskImage = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryOSDiskImage Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionPropertiesInternal.StorageProfileOSDiskImage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfileInternal)StorageProfile).OSDiskImage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfileInternal)StorageProfile).OSDiskImage = value ?? null /* model class */; }
 
         /// <summary>This property indicates the size of the VHD to be created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]

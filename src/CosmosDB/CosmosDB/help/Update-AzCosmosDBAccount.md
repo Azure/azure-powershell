@@ -15,17 +15,18 @@ Update a Cosmos DB Account attributes.
 ### ByNameParameterSet (Default)
 ```
 Update-AzCosmosDBAccount [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWriteLocations <Boolean>]
- [-EnableVirtualNetwork <Boolean>] [-DisableKeyBasedMetadataWriteAccess <Boolean>] -ResourceGroupName <String>
- -Name <String> [-DefaultConsistencyLevel <String>] [-IpRule <String[]>]
+ [-EnableVirtualNetwork <Boolean>] [-DisableKeyBasedMetadataWriteAccess <Boolean>] [-Capabilities <String[]>]
+ -ResourceGroupName <String> -Name <String> [-DefaultConsistencyLevel <String>] [-IpRule <String[]>]
  [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
- [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
- [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>]
- [-DefaultPriorityLevel <String>] [-AsJob] [-NetworkAclBypass <String>]
- [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>] [-BackupIntervalInMinutes <Int32>]
- [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>]
- [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
- [-EnablePerRegionPerPartitionAutoscale <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-DisableLocalAuth <Boolean>]
+ [-EnableAnalyticalStorage <Boolean>] [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>]
+ [-AsJob] [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
+ [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-ContinuousTier <String>]
+ [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
+ [-EnablePerRegionPerPartitionAutoscale <Boolean>] [-EnablePriorityBasedExecution <Boolean>]
+ [-DefaultPriorityLevel <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,16 +34,17 @@ Update-AzCosmosDBAccount [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWr
 ```
 Update-AzCosmosDBAccount -ResourceId <String> [-EnableAutomaticFailover <Boolean>]
  [-EnableMultipleWriteLocations <Boolean>] [-EnableVirtualNetwork <Boolean>]
- [-DisableKeyBasedMetadataWriteAccess <Boolean>] [-DefaultConsistencyLevel <String>] [-IpRule <String[]>]
- [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
+ [-DisableKeyBasedMetadataWriteAccess <Boolean>] [-Capabilities <String[]>] [-DefaultConsistencyLevel <String>]
+ [-IpRule <String[]>] [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
- [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
- [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>]
- [-DefaultPriorityLevel <String>] [-AsJob] [-NetworkAclBypass <String>]
- [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>] [-BackupIntervalInMinutes <Int32>]
- [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>]
- [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
- [-EnablePerRegionPerPartitionAutoscale <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-DisableLocalAuth <Boolean>]
+ [-EnableAnalyticalStorage <Boolean>] [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>]
+ [-AsJob] [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
+ [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-ContinuousTier <String>]
+ [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
+ [-EnablePerRegionPerPartitionAutoscale <Boolean>] [-EnablePriorityBasedExecution <Boolean>]
+ [-DefaultPriorityLevel <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,16 +52,17 @@ Update-AzCosmosDBAccount -ResourceId <String> [-EnableAutomaticFailover <Boolean
 ```
 Update-AzCosmosDBAccount -InputObject <PSDatabaseAccountGetResults> [-EnableAutomaticFailover <Boolean>]
  [-EnableMultipleWriteLocations <Boolean>] [-EnableVirtualNetwork <Boolean>]
- [-DisableKeyBasedMetadataWriteAccess <Boolean>] [-DefaultConsistencyLevel <String>] [-IpRule <String[]>]
- [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
+ [-DisableKeyBasedMetadataWriteAccess <Boolean>] [-Capabilities <String[]>] [-DefaultConsistencyLevel <String>]
+ [-IpRule <String[]>] [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
- [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
- [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>]
- [-DefaultPriorityLevel <String>] [-AsJob] [-NetworkAclBypass <String>]
- [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>] [-BackupIntervalInMinutes <Int32>]
- [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>]
- [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
- [-EnablePerRegionPerPartitionAutoscale <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-DisableLocalAuth <Boolean>]
+ [-EnableAnalyticalStorage <Boolean>] [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>]
+ [-AsJob] [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
+ [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-ContinuousTier <String>]
+ [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
+ [-EnablePerRegionPerPartitionAutoscale <Boolean>] [-EnablePriorityBasedExecution <Boolean>]
+ [-DefaultPriorityLevel <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -191,6 +194,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Capabilities
+List of Cosmos DB capabilities for the account. e.g. EnableMongo, EnablePerPartitionFailoverPreview, DisableRateLimitingResponses.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ContinuousTier
 The tier of continuous backups mode on the Cosmos DB account. Accepted values: Continuous7Days, Continuous30Days
 
@@ -222,6 +240,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultPriorityLevel
+Default priority level of requests for Cosmos DB database account.
+Accepted values: High, Low
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -239,6 +273,21 @@ Accept wildcard characters: False
 
 ### -DisableKeyBasedMetadataWriteAccess
 Disable write operations on metadata resources (databases, containers, throughput) via account keys
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableLocalAuth
+Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -299,37 +348,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnablePriorityBasedExecution
-Bool to indicate if Priority Based Execution is enabled on the account.
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultPriorityLevel
-Default priority level of requests for Cosmos DB database account.
-Accepted values: High, Low
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EnableMultipleWriteLocations
 Enable Multiple Write Locations.
 Accepted values: false, true
@@ -364,6 +382,21 @@ Accept wildcard characters: False
 
 ### -EnablePerRegionPerPartitionAutoscale
 Bool to indicate if Dynamic Scaling (Per Region Per Partition Autoscale) is enabled on the account.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePriorityBasedExecution
+Bool to indicate if Priority Based Execution is enabled on the account.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

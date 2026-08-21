@@ -15,15 +15,15 @@ Update a Scheduler
 ### UpdateExpanded (Default)
 ```
 Update-AzDurableTaskScheduler -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IPAllowlist <String[]>] [-SkuCapacity <Int32>] [-SkuName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IPAllowlist <String[]>] [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>] [-SkuName <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDurableTaskScheduler -InputObject <IDurableTaskIdentity> [-IPAllowlist <String[]>]
- [-SkuCapacity <Int32>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -253,6 +253,21 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Allow or disallow public network access to durable task scheduler
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

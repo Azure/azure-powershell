@@ -1,0 +1,283 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/PostgreSqlFlexibleServer/PostgreSqlFlexibleServer.Autorest"
+    clear-output-folder: true
+    debug: true
+    azure: true
+    module-version: 1.0.0
+    prefix: "Az"
+    subject-prefix: "PostgreSqlFlexibleServer"
+    service-name: PostgreSqlFlexibleServer
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      - where:
+          subject: Operation
+        hide: true
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      - where:
+          variant: ^(Create|Update|Export)(?!.*?Expanded|ViaJsonString|ViaJsonFilePath)
+        remove: true
+      - where:
+          subject: MapConnection
+          variant: ^(Get)(?!.*?Expanded|ViaJsonString|ViaJsonFilePath)
+        remove: true
+      - where:
+          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+        remove: true
+      - where:
+          verb: Set
+        remove: true
+      - where:
+          model-name: ^Server$
+        set:
+          format-table:
+            properties:
+              - Name
+              - ResourceGroupName
+              - Location
+              - SkuName
+              - SkuTier
+              - AdministratorLogin
+              - StorageSizeGB
+            width:
+              Name: 40
+              ResourceGroupName: 40
+              Location: 20
+              SkuName: 20
+              SkuTier: 15
+              AdministratorLogin: 25
+              StorageSizeGB: 15
+      - where:
+          model-name: ^Configuration$
+        set:
+          format-table:
+            properties:
+              - Name
+              - DataType
+              - Value
+              - AllowedValue
+              - DefaultValue
+              - Source
+              - Description
+            width:
+              Name: 35
+              DataType: 15
+              Value: 20
+              AllowedValue: 20
+              DefaultValue: 20
+              Source: 15
+              Description: 50
+      - where:
+          model-name: ^Database$
+        set:
+          format-table:
+            properties:
+              - Name
+              - Charset
+              - Collation
+            width:
+              Name: 35
+              Charset: 15
+              Collation: 20
+      - where:
+          model-name: ^FirewallRule$
+        set:
+          format-table:
+            properties:
+              - Name
+              - StartIpAddress
+              - EndIpAddress
+            width:
+              Name: 40
+              StartIpAddress: 20
+              EndIpAddress: 20
+      - where:
+          model-name: ^CapturedLog$
+        set:
+          format-table:
+            properties:
+              - Name
+              - PropertiesType
+              - SizeInKb
+              - Url
+            width:
+              Name: 40
+              PropertiesType: 15
+              SizeInKb: 10
+              Url: 60
+      - where:
+          model-name: ^BackupAutomaticAndOnDemand$
+        set:
+          format-table:
+            properties:
+              - Name
+              - BackupType
+              - CompletedTime
+              - Source
+            width:
+              Name: 30
+              BackupType: 20
+              CompletedTime: 25
+              Source: 20
+      - where:
+          model-name: ^TuningOptions$
+        set:
+          format-table:
+            properties:
+              - Name
+              - State
+            width:
+              Name: 30
+              State: 20
+      - where:
+          model-name: ^ObjectRecommendation$
+        set:
+          format-table:
+            properties:
+              - Name
+              - DetailDatabaseName
+              - DetailSchema
+              - DetailTable
+              - ImplementationDetailScript
+              - RecommendationReason
+            width:
+              Name: 40
+              DetailDatabaseName: 20
+              DetailSchema: 20
+              DetailTable: 20
+              ImplementationDetailScript: 60
+              RecommendationReason: 60
+      - where:
+          model-name: ^QuotaUsage$
+        set:
+          format-table:
+            properties:
+              - NameValue
+              - NameLocalizedValue
+              - Unit
+              - Limit
+              - CurrentValue
+            width:
+              NameValue: 40
+              NameLocalizedValue: 40
+              Unit: 10
+              Limit: 10
+              CurrentValue: 12
+      - where:
+          model-name: ^VirtualEndpoint$
+        set:
+          format-table:
+            properties:
+              - Name
+              - EndpointType
+              - Member
+              - PropertiesVirtualEndpoints
+            width:
+              Name: 30
+              EndpointType: 12
+              Member: 60
+              PropertiesVirtualEndpoints: 100
+      - where:
+          model-name: ^AdministratorMicrosoftEntra$
+        set:
+          format-table:
+            properties:
+              - Name
+              - ObjectId
+              - PrincipalName
+              - PrincipalType
+              - TenantId
+            width:
+              Name: 40
+              ObjectId: 40
+              PrincipalName: 40
+              PrincipalType: 13
+              TenantId: 40
+      - where:
+          model-name: ^AdvancedThreatProtectionSettingsModel$
+        set:
+          format-table:
+            properties:
+              - Name
+              - State
+              - CreationTime
+            width:
+              Name: 10
+              State: 10
+              CreationTime: 25
+      - where:
+          model-name: ^Migration$
+        set:
+          format-table:
+            properties:
+              - Name
+              - CurrentStatusState
+              - CurrentStatusError
+              - Option
+              - MigrateRole
+              - SourceType
+              - TriggerCutover
+              - SourceDbServerResourceId
+              - DbsToMigrate
+              - OverwriteDbsInTarget
+              - Mode
+            width:
+              Name: 20
+              CurrentStatusState: 18
+              CurrentStatusError: 20
+              Option: 20
+              MigrateRole: 11
+              SourceType: 10
+              TriggerCutover: 14
+              SourceDbServerResourceId: 25
+              DbsToMigrate: 25
+              OverwriteDbsInTarget: 25
+              Mode: 10
+      - where:
+          model-name: ^Capability$
+        set:
+          format-table:
+            properties:
+              - Name
+              - ZoneRedundantHaSupported
+              - ZoneRedundantHaAndGeoBackupSupported
+              - StorageAutoGrowthSupported
+              - OnlineResizeSupported
+              - GeoBackupSupported
+            width:
+              Name: 27
+              ZoneRedundantHaSupported: 25
+              ZoneRedundantHaAndGeoBackupSupported: 37
+              StorageAutoGrowthSupported: 27
+              OnlineResizeSupported: 23
+              GeoBackupSupported: 20
+      - where:
+          parameter-name: Type
+          subject: ^MigrationNameAvailability.*
+        hide: true
+        set:
+          default:
+            script: '"Microsoft.DBforPostgreSQL/flexibleServers/migrations"'
+      - where:
+          parameter-name: Type
+          subject: ^NameAvailability.*
+        hide: true
+        set:
+          default:
+            script: '"Microsoft.DBforPostgreSQL/flexibleServers"'
+      - where:
+          subject: ^BackupsLongTermRetention.*
+        remove: true
+      - where:
+          verb: Update
+          subject: ^Migration.*
+        remove: true

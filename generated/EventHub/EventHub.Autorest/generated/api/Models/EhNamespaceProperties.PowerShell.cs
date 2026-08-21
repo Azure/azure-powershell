@@ -178,6 +178,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)this).AlternateName = (string) content.GetValueForProperty("AlternateName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)this).AlternateName, global::System.Convert.ToString);
             }
+            if (content.Contains("IPAddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)this).IPAddressType = (string) content.GetValueForProperty("IPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)this).IPAddressType, global::System.Convert.ToString);
+            }
             if (content.Contains("EncryptionKeySource"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)this).EncryptionKeySource = (string) content.GetValueForProperty("EncryptionKeySource",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)this).EncryptionKeySource, global::System.Convert.ToString);
@@ -298,6 +302,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             if (content.Contains("AlternateName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)this).AlternateName = (string) content.GetValueForProperty("AlternateName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)this).AlternateName, global::System.Convert.ToString);
+            }
+            if (content.Contains("IPAddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)this).IPAddressType = (string) content.GetValueForProperty("IPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)this).IPAddressType, global::System.Convert.ToString);
             }
             if (content.Contains("EncryptionKeySource"))
             {

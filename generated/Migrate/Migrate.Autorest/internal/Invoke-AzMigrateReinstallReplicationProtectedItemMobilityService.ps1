@@ -25,11 +25,11 @@ The operation to reinstall the installed mobility service software on a replicat
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IReinstallMobilityServiceRequest
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReinstallMobilityServiceRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IReplicationProtectedItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectedItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -87,17 +87,177 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [VcenterName <String>]: VCenter ARM name.
   [VirtualMachineName <String>]: Virtual Machine name.
 
+REPLICATIONFABRICINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+
+REPLICATIONPROTECTIONCONTAINERINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+
 UPDATEMOBILITYSERVICEREQUEST <IReinstallMobilityServiceRequest>: Request to Reinstall the mobility service on a protected item.
   [RunAsAccountId <String>]: The CS run as account Id.
+
+VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/invoke-azmigratereinstallreplicationprotecteditemmobilityservice
 #>
 function Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IReplicationProtectedItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectedItem])]
 [CmdletBinding(DefaultParameterSetName='ReinstallExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Reinstall', Mandatory)]
     [Parameter(ParameterSetName='ReinstallExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityVault', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityVaultExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # The name of the fabric containing the protected item.
@@ -105,6 +265,12 @@ param(
 
     [Parameter(ParameterSetName='Reinstall', Mandatory)]
     [Parameter(ParameterSetName='ReinstallExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityReplicationFabric', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityReplicationFabricExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityVault', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityVaultExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # The name of the container containing the protected item.
@@ -112,6 +278,14 @@ param(
 
     [Parameter(ParameterSetName='Reinstall', Mandatory)]
     [Parameter(ParameterSetName='ReinstallExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityReplicationFabric', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityReplicationFabricExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityReplicationProtectionContainer', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityReplicationProtectionContainerExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityVault', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityVaultExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # The name of the protected item on which the agent is to be updated.
@@ -119,6 +293,8 @@ param(
 
     [Parameter(ParameterSetName='Reinstall', Mandatory)]
     [Parameter(ParameterSetName='ReinstallExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # The name of the resource group where the recovery services vault is present.
@@ -126,6 +302,8 @@ param(
 
     [Parameter(ParameterSetName='Reinstall', Mandatory)]
     [Parameter(ParameterSetName='ReinstallExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # The name of the recovery services vault.
@@ -133,6 +311,8 @@ param(
 
     [Parameter(ParameterSetName='Reinstall')]
     [Parameter(ParameterSetName='ReinstallExpanded')]
+    [Parameter(ParameterSetName='ReinstallViaJsonFilePath')]
+    [Parameter(ParameterSetName='ReinstallViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -144,23 +324,60 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='ReinstallViaIdentityReplicationFabric', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityReplicationFabricExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${ReplicationFabricInputObject},
+
+    [Parameter(ParameterSetName='ReinstallViaIdentityReplicationProtectionContainer', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityReplicationProtectionContainerExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${ReplicationProtectionContainerInputObject},
+
+    [Parameter(ParameterSetName='ReinstallViaIdentityVault', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityVaultExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${VaultInputObject},
 
     [Parameter(ParameterSetName='Reinstall', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ReinstallViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityReplicationFabric', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityReplicationProtectionContainer', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityVault', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IReinstallMobilityServiceRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReinstallMobilityServiceRequest]
     # Request to Reinstall the mobility service on a protected item.
-    # To construct, see NOTES section for UPDATEMOBILITYSERVICEREQUEST properties and create a hash table.
     ${UpdateMobilityServiceRequest},
 
     [Parameter(ParameterSetName='ReinstallExpanded')]
     [Parameter(ParameterSetName='ReinstallViaIdentityExpanded')]
+    [Parameter(ParameterSetName='ReinstallViaIdentityReplicationFabricExpanded')]
+    [Parameter(ParameterSetName='ReinstallViaIdentityReplicationProtectionContainerExpanded')]
+    [Parameter(ParameterSetName='ReinstallViaIdentityVaultExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
     [System.String]
     # The CS run as account Id.
     ${RunAsAccountId},
+
+    [Parameter(ParameterSetName='ReinstallViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Reinstall operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ReinstallViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [System.String]
+    # Json string supplied to the Reinstall operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -230,16 +447,25 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Reinstall = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_Reinstall';
             ReinstallExpanded = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_ReinstallExpanded';
             ReinstallViaIdentity = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_ReinstallViaIdentity';
             ReinstallViaIdentityExpanded = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_ReinstallViaIdentityExpanded';
+            ReinstallViaIdentityReplicationFabric = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_ReinstallViaIdentityReplicationFabric';
+            ReinstallViaIdentityReplicationFabricExpanded = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_ReinstallViaIdentityReplicationFabricExpanded';
+            ReinstallViaIdentityReplicationProtectionContainer = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_ReinstallViaIdentityReplicationProtectionContainer';
+            ReinstallViaIdentityReplicationProtectionContainerExpanded = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_ReinstallViaIdentityReplicationProtectionContainerExpanded';
+            ReinstallViaIdentityVault = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_ReinstallViaIdentityVault';
+            ReinstallViaIdentityVaultExpanded = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_ReinstallViaIdentityVaultExpanded';
+            ReinstallViaJsonFilePath = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_ReinstallViaJsonFilePath';
+            ReinstallViaJsonString = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_ReinstallViaJsonString';
         }
-        if (('Reinstall', 'ReinstallExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Reinstall', 'ReinstallExpanded', 'ReinstallViaJsonFilePath', 'ReinstallViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -248,6 +474,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

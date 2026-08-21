@@ -13,23 +13,77 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VirtualNetworkGatewaySkuName
     {
+        /// <summary>
+        /// Basic
+        /// </summary>
         public const string Basic = "Basic";
+        /// <summary>
+        /// HighPerformance
+        /// </summary>
         public const string HighPerformance = "HighPerformance";
+        /// <summary>
+        /// Standard
+        /// </summary>
         public const string Standard = "Standard";
+        /// <summary>
+        /// UltraPerformance
+        /// </summary>
         public const string UltraPerformance = "UltraPerformance";
+        /// <summary>
+        /// VpnGw1
+        /// </summary>
         public const string VpnGw1 = "VpnGw1";
+        /// <summary>
+        /// VpnGw2
+        /// </summary>
         public const string VpnGw2 = "VpnGw2";
+        /// <summary>
+        /// VpnGw3
+        /// </summary>
         public const string VpnGw3 = "VpnGw3";
+        /// <summary>
+        /// VpnGw4
+        /// </summary>
         public const string VpnGw4 = "VpnGw4";
+        /// <summary>
+        /// VpnGw5
+        /// </summary>
         public const string VpnGw5 = "VpnGw5";
+        /// <summary>
+        /// VpnGw1AZ
+        /// </summary>
         public const string VpnGw1AZ = "VpnGw1AZ";
+        /// <summary>
+        /// VpnGw2AZ
+        /// </summary>
         public const string VpnGw2AZ = "VpnGw2AZ";
+        /// <summary>
+        /// VpnGw3AZ
+        /// </summary>
         public const string VpnGw3AZ = "VpnGw3AZ";
+        /// <summary>
+        /// VpnGw4AZ
+        /// </summary>
         public const string VpnGw4AZ = "VpnGw4AZ";
+        /// <summary>
+        /// VpnGw5AZ
+        /// </summary>
         public const string VpnGw5AZ = "VpnGw5AZ";
+        /// <summary>
+        /// ErGw1AZ
+        /// </summary>
         public const string ErGw1AZ = "ErGw1AZ";
+        /// <summary>
+        /// ErGw2AZ
+        /// </summary>
         public const string ErGw2AZ = "ErGw2AZ";
+        /// <summary>
+        /// ErGw3AZ
+        /// </summary>
         public const string ErGw3AZ = "ErGw3AZ";
+        /// <summary>
+        /// ErGwScale
+        /// </summary>
         public const string ErGwScale = "ErGwScale";
     }
 }

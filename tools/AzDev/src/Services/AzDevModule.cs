@@ -16,6 +16,7 @@ using System;
 using System.IO.Abstractions;
 using System.Runtime.CompilerServices;
 using AzDev.Services.Assembly;
+using AzDev.Services.Dep;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Tests")]
@@ -36,6 +37,7 @@ namespace AzDev.Services
             services.AddSingleton<ICodebaseProvider, DefaultCodebaseProvider>();
             services.AddSingleton<IAssemblyService, DefaultAssemblyService>();
             services.AddSingleton<INugetService, DefaultNugetService>();
+            services.AddSingleton<IDepComparisonService, DefaultDepComparisonService>();
             services.AddSingleton<ILogger, PSCmdletLogger>();
             services.AddSingleton<IAssemblyMetadataService, AssemblyMetadataService>();
 

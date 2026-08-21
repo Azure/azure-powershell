@@ -66,6 +66,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// <summary>Internal Acessors for ProfileName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.ProfileName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).Name = value ?? null; }
 
+        /// <summary>Internal Acessors for ProvisioningIssue</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssue> Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.ProvisioningIssue { get => this._provisioningIssue; set { {_provisioningIssue = value;} } }
+
         /// <summary>Internal Acessors for ResourceAssociation</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesResourceAssociation Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.ResourceAssociation { get => (this._resourceAssociation = this._resourceAssociation ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation()); set { {_resourceAssociation = value;} } }
 
@@ -128,7 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 
         /// <summary>List of Provisioning Issues if any</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssue> ProvisioningIssue { get => this._provisioningIssue; set => this._provisioningIssue = value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssue> ProvisioningIssue { get => this._provisioningIssue; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
@@ -278,14 +281,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// <summary>List of Provisioning Issues if any</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
+        Create = false,
+        Update = false,
         Description = @"List of Provisioning Issues if any",
         SerializedName = @"provisioningIssues",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssue) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssue> ProvisioningIssue { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssue> ProvisioningIssue { get;  }
         /// <summary>Provisioning state of NetworkSecurityPerimeter configuration propagation</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,

@@ -99,6 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {_nsxPublicIPQuotaRaised = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("nsxPublicIpQuotaRaised"), out var __jsonNsxPublicIPQuotaRaised) ? (string)__jsonNsxPublicIPQuotaRaised : (string)_nsxPublicIPQuotaRaised;}
             {_virtualNetworkId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("virtualNetworkId"), out var __jsonVirtualNetworkId) ? (string)__jsonVirtualNetworkId : (string)_virtualNetworkId;}
             {_dnsZoneType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("dnsZoneType"), out var __jsonDnsZoneType) ? (string)__jsonDnsZoneType : (string)_dnsZoneType;}
+            {_vcfLicense = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject>("vcfLicense"), out var __jsonVcfLicense) ? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VcfLicense.FromJson(__jsonVcfLicense) : _vcfLicense;}
             AfterFromJson(json);
         }
 
@@ -200,6 +201,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 AddIf( null != (((object)this._virtualNetworkId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._virtualNetworkId.ToString()) : null, "virtualNetworkId" ,container.Add );
             }
             AddIf( null != (((object)this._dnsZoneType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._dnsZoneType.ToString()) : null, "dnsZoneType" ,container.Add );
+            AddIf( null != this._vcfLicense ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) this._vcfLicense.ToJson(null,serializationMode) : null, "vcfLicense" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

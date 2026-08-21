@@ -504,9 +504,6 @@
             <Label>HyperVGeneration</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ImagePath</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>OSType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -524,9 +521,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>HyperVGeneration</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ImagePath</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>OSType</PropertyName>
@@ -4153,9 +4147,6 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AdminPassword</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>AdminUsername</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -4165,9 +4156,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AdminPassword</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>AdminUsername</PropertyName>
               </TableColumnItem>

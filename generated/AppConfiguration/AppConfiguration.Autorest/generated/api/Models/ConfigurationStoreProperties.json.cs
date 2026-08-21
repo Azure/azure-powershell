@@ -66,6 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
                 return;
             }
             {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonObject>("encryption"), out var __jsonEncryption) ? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.EncryptionProperties.FromJson(__jsonEncryption) : _encryption;}
+            {_dataPlaneProxy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonObject>("dataPlaneProxy"), out var __jsonDataPlaneProxy) ? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.DataPlaneProxyProperties.FromJson(__jsonDataPlaneProxy) : _dataPlaneProxy;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_creationDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonString>("creationDate"), out var __jsonCreationDate) ? global::System.DateTime.TryParse((string)__jsonCreationDate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreationDateValue) ? __jsonCreationDateValue : _creationDate : _creationDate;}
             {_endpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonString>("endpoint"), out var __jsonEndpoint) ? (string)__jsonEndpoint : (string)_endpoint;}
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
             {_publicNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonString>("publicNetworkAccess"), out var __jsonPublicNetworkAccess) ? (string)__jsonPublicNetworkAccess : (string)_publicNetworkAccess;}
             {_disableLocalAuth = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonBoolean>("disableLocalAuth"), out var __jsonDisableLocalAuth) ? (bool?)__jsonDisableLocalAuth : _disableLocalAuth;}
             {_softDeleteRetentionInDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNumber>("softDeleteRetentionInDays"), out var __jsonSoftDeleteRetentionInDays) ? (int?)__jsonSoftDeleteRetentionInDays : _softDeleteRetentionInDay;}
+            {_defaultKeyValueRevisionRetentionPeriodInSecond = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNumber>("defaultKeyValueRevisionRetentionPeriodInSeconds"), out var __jsonDefaultKeyValueRevisionRetentionPeriodInSeconds) ? (long?)__jsonDefaultKeyValueRevisionRetentionPeriodInSeconds : _defaultKeyValueRevisionRetentionPeriodInSecond;}
             {_enablePurgeProtection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonBoolean>("enablePurgeProtection"), out var __jsonEnablePurgeProtection) ? (bool?)__jsonEnablePurgeProtection : _enablePurgeProtection;}
             AfterFromJson(json);
         }
@@ -109,6 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
                 return container;
             }
             AddIf( null != this._encryption ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode) this._encryption.ToJson(null,serializationMode) : null, "encryption" ,container.Add );
+            AddIf( null != this._dataPlaneProxy ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode) this._dataPlaneProxy.ToJson(null,serializationMode) : null, "dataPlaneProxy" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
@@ -136,6 +139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
             AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
             AddIf( null != this._disableLocalAuth ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonBoolean((bool)this._disableLocalAuth) : null, "disableLocalAuth" ,container.Add );
             AddIf( null != this._softDeleteRetentionInDay ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNumber((int)this._softDeleteRetentionInDay) : null, "softDeleteRetentionInDays" ,container.Add );
+            AddIf( null != this._defaultKeyValueRevisionRetentionPeriodInSecond ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNumber((long)this._defaultKeyValueRevisionRetentionPeriodInSecond) : null, "defaultKeyValueRevisionRetentionPeriodInSeconds" ,container.Add );
             AddIf( null != this._enablePurgeProtection ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonBoolean((bool)this._enablePurgeProtection) : null, "enablePurgeProtection" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.SerializationMode.IncludeCreate))
             {

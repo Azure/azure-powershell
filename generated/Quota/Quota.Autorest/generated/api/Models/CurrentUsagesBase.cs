@@ -11,8 +11,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
     public partial class CurrentUsagesBase :
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBase,
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IValidates,
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IHeaderSerializable
     {
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IProxyResource" />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ProxyResource();
 
         /// <summary>Additional properties for the specific resource provider.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Inlined)]
@@ -26,56 +31,73 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.FormatTable(Index = 4)]
         public string ETag { get => this._eTag; set => this._eTag = value; }
 
-        /// <summary>Backing field for <see cref="Id" /> property.</summary>
-        private string _id;
-
-        /// <summary>The resource ID.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
+        /// <summary>
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.DoNotFormat]
-        public string Id { get => this._id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>States if quota can be requested for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.DoNotFormat]
         public bool? IsQuotaApplicable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).IsQuotaApplicable; }
 
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Id { get => this._id; set { {_id = value;} } }
-
         /// <summary>Internal Acessors for IsQuotaApplicable</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.IsQuotaApplicable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).IsQuotaApplicable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).IsQuotaApplicable = value; }
-
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Name { get => this._name; set { {_name = value;} } }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.IsQuotaApplicable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).IsQuotaApplicable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).IsQuotaApplicable = value ?? default(bool); }
 
         /// <summary>Internal Acessors for NameLocalizedValue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).NameLocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).NameLocalizedValue = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).NameLocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).NameLocalizedValue = value ?? null; }
 
         /// <summary>Internal Acessors for PropertiesName</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceName Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.PropertiesName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Name = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceName Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.PropertiesName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Name = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesProperties Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.UsagesProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for QuotaPeriod</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.QuotaPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).QuotaPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).QuotaPeriod = value; }
-
-        /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Type { get => this._type; set { {_type = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.QuotaPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).QuotaPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).QuotaPeriod = value ?? null; }
 
         /// <summary>Internal Acessors for Unit</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Unit { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Unit; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Unit = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Unit { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Unit; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Unit = value ?? null; }
 
         /// <summary>Internal Acessors for Usage</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesObject Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Usage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Usage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Usage = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesObject Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Usage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Usage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Usage = value ?? null /* model class */; }
 
-        /// <summary>Backing field for <see cref="Name" /> property.</summary>
-        private string _name;
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
-        /// <summary>The resource name.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for Type</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
+
+        /// <summary>The name of the resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.FormatTable(Index = 0)]
-        public string Name { get => this._name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).Name; }
 
         /// <summary>Resource display name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Inlined)]
@@ -116,13 +138,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.DoNotFormat]
         public string ResourceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).ResourceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).ResourceType = value ?? null; }
 
-        /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private string _type;
-
-        /// <summary>The resource type.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.DoNotFormat]
-        public string Type { get => this._type; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.DoNotFormat]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.DoNotFormat]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.DoNotFormat]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.DoNotFormat]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.DoNotFormat]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.DoNotFormat]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
+
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.DoNotFormat]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)__proxyResource).Type; }
 
         /// <summary>
         /// The units for the quota usage, such as Count and Bytes. When requesting quota, use the **unit** value returned in the
@@ -156,10 +214,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
                 ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).ETag = System.Linq.Enumerable.FirstOrDefault(__eTagHeader0) is string __headerETagHeader0 ? __headerETagHeader0 : (string)null;
             }
         }
+
+        /// <summary>Validates that this object meets the validation criteria.</summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener" /> instance that will receive validation
+        /// events.</param>
+        /// <returns>
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener eventListener)
+        {
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
+        }
     }
     /// Resource usage.
     public partial interface ICurrentUsagesBase :
-        Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IJsonSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IProxyResource
     {
         /// <summary>Additional properties for the specific resource provider.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
@@ -183,17 +254,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         SerializedName = @"ETag",
         PossibleTypes = new [] { typeof(string) })]
         string ETag { get; set; }
-        /// <summary>The resource ID.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The resource ID.",
-        SerializedName = @"id",
-        PossibleTypes = new [] { typeof(string) })]
-        string Id { get;  }
         /// <summary>States if quota can be requested for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = false,
@@ -205,17 +265,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         SerializedName = @"isQuotaApplicable",
         PossibleTypes = new [] { typeof(bool) })]
         bool? IsQuotaApplicable { get;  }
-        /// <summary>The resource name.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The resource name.",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        string Name { get;  }
         /// <summary>Resource display name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = false,
@@ -270,17 +319,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         SerializedName = @"resourceType",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceType { get; set; }
-        /// <summary>The resource type.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The resource type.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        string Type { get;  }
         /// <summary>
         /// The units for the quota usage, such as Count and Bytes. When requesting quota, use the **unit** value returned in the
         /// GET response in the request body of your PUT operation.
@@ -291,7 +329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @" The units for the quota usage, such as Count and Bytes. When requesting quota, use the **unit** value returned in the GET response in the request body of your PUT operation.",
+        Description = @"The units for the quota usage, such as Count and Bytes. When requesting quota, use the **unit** value returned in the GET response in the request body of your PUT operation.",
         SerializedName = @"unit",
         PossibleTypes = new [] { typeof(string) })]
         string Unit { get;  }
@@ -321,19 +359,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
 
     }
     /// Resource usage.
-    internal partial interface ICurrentUsagesBaseInternal
-
+    internal partial interface ICurrentUsagesBaseInternal :
+        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IProxyResourceInternal
     {
         /// <summary>Additional properties for the specific resource provider.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IAny AnyProperty { get; set; }
 
         string ETag { get; set; }
-        /// <summary>The resource ID.</summary>
-        string Id { get; set; }
         /// <summary>States if quota can be requested for this resource.</summary>
         bool? IsQuotaApplicable { get; set; }
-        /// <summary>The resource name.</summary>
-        string Name { get; set; }
         /// <summary>Resource display name.</summary>
         string NameLocalizedValue { get; set; }
         /// <summary>Resource name.</summary>
@@ -354,8 +388,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         string QuotaPeriod { get; set; }
         /// <summary>The name of the resource type. Optional field.</summary>
         string ResourceType { get; set; }
-        /// <summary>The resource type.</summary>
-        string Type { get; set; }
         /// <summary>
         /// The units for the quota usage, such as Count and Bytes. When requesting quota, use the **unit** value returned in the
         /// GET response in the request body of your PUT operation.

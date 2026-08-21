@@ -1866,6 +1866,28 @@ namespace Microsoft.Azure.Commands.Network.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to The connection policy resource could not be found.
+        /// </summary>
+        internal static string ConnectionPolicyNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("ConnectionPolicyNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to InputObject.Id cannot be null or empty.
+        /// </summary>
+        internal static string ConnectionPolicyInputObjectIdEmpty
+        {
+            get
+            {
+                return ResourceManager.GetString("ConnectionPolicyInputObjectIdEmpty", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Only one child allowed. A resource with name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead..
         /// </summary>
         internal static string SameTypeChildResourceAlreadyPresentInResourceGroup

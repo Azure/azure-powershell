@@ -12,7 +12,7 @@ Retrieves details of this Network Packet Broker.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzNetworkFabricNpb [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -29,7 +29,7 @@ Get-AzNetworkFabricNpb -InputObject <IManagedNetworkFabricIdentity> [-DefaultPro
  [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzNetworkFabricNpb -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -136,7 +136,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True

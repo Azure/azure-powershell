@@ -1,8 +1,8 @@
 {
-  "Get-AzNetworkCloudKubernetesCluster+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/kubernetesClusters?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudKubernetesCluster+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/kubernetesClusters?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/kubernetesClusters?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/kubernetesClusters?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -43,10 +43,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudKubernetesCluster+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg58qzsx/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-pstest?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudKubernetesCluster+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg58qzsx/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-pstest?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg58qzsx/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-pstest?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg58qzsx/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-pstest?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -88,10 +88,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudKubernetesCluster+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg58qzsx/providers/Microsoft.NetworkCloud/kubernetesClusters?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudKubernetesCluster+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg58qzsx/providers/Microsoft.NetworkCloud/kubernetesClusters?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg58qzsx/providers/Microsoft.NetworkCloud/kubernetesClusters?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg58qzsx/providers/Microsoft.NetworkCloud/kubernetesClusters?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

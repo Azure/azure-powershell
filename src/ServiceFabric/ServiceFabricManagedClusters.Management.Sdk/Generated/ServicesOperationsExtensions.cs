@@ -276,6 +276,59 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
+        /// A long-running resource action.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='serviceName'>
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
+        /// </param>
+        public static ServicesRestartReplicaHeaders RestartReplica(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName, string serviceName, RestartReplicaRequest parameters)
+        {
+                return ((IServicesOperations)operations).RestartReplicaAsync(resourceGroupName, clusterName, applicationName, serviceName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// A long-running resource action.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='serviceName'>
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ServicesRestartReplicaHeaders> RestartReplicaAsync(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName, string serviceName, RestartReplicaRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.RestartReplicaWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, serviceName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Create or update a Service Fabric managed service resource with the
         /// specified name.
         /// </summary>
@@ -379,6 +432,59 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         public static async System.Threading.Tasks.Task<ServicesDeleteHeaders> BeginDeleteAsync(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName, string serviceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, serviceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// A long-running resource action.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='serviceName'>
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
+        /// </param>
+        public static ServicesRestartReplicaHeaders BeginRestartReplica(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName, string serviceName, RestartReplicaRequest parameters)
+        {
+                return ((IServicesOperations)operations).BeginRestartReplicaAsync(resourceGroupName, clusterName, applicationName, serviceName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// A long-running resource action.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='serviceName'>
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ServicesRestartReplicaHeaders> BeginRestartReplicaAsync(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName, string serviceName, RestartReplicaRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginRestartReplicaWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, serviceName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }

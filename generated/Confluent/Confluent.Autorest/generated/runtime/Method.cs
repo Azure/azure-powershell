@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime
 {
     internal static class Method
     {

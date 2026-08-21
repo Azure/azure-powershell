@@ -16,15 +16,16 @@
 
 <#
 .Synopsis
-update a StandbyContainerGroupPoolResource
+Update a StandbyContainerGroupPoolResource
 .Description
-update a StandbyContainerGroupPoolResource
+Update a StandbyContainerGroupPoolResource
 .Example
 Update-AzStandbyContainerGroupPool `
 -Name testPool `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
 -ResourceGroupName test-standbypool `
--MaxReadyCapacity 5
+-MaxReadyCapacity 5 `
+-DynamicSizingEnabled
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity
@@ -93,6 +94,13 @@ param(
     [System.String]
     # Specifies container group profile id of standby container groups.
     ${ContainerProfileId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicates whether dynamic sizing is enabled for the standby pool.
+    ${DynamicSizingEnabled},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -214,8 +222,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

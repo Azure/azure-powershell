@@ -54,7 +54,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $functionApp.AppServicePlan | Should -Be $planName
 
             Write-Verbose "Update function app -> enable a SystemAssigned managed identity" -Verbose
-            $updateFunctionAppJob = Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -IdentityType SystemAssigned -Force -AsJob
+            $updateFunctionAppJob = Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -EnableSystemAssignedIdentity $true -Force -AsJob
             $result = WaitForJobToComplete -JobId $updateFunctionAppJob.Id
             $result.State | Should -Be "Completed"
             $result | Remove-Job -ErrorAction SilentlyContinue
@@ -122,8 +122,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             Write-Verbose "Identity id: $($identityInfo.Id)" -Verbose
             Update-AzFunctionApp -Name $appName `
                                  -ResourceGroupName $resourceGroupName `
-                                 -IdentityType UserAssigned `
-                                 -IdentityID $identityInfo.Id `
+                                 -UserAssignedIdentity $identityInfo.Id `
                                  -Force
 
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
@@ -199,7 +198,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
                               -Runtime PowerShell `
                               -RuntimeVersion 7.4 `
                               -FunctionsVersion 4 `
-                              -IdentityType SystemAssigned `
+                              -EnableSystemAssignedIdentity `
                               -Tag $tags
 
             Write-Verbose "Run: Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName" -Verbose
@@ -240,11 +239,11 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $functionApp.AppServicePlan | Should -Be $newPlanName
 
             # Update test to use -InputObject when https://github.com/Azure/azure-powershell/issues/23266 is fixed
-            # Update-AzFunctionApp -InputObject $functionApp -IdentityType None -Force
-            # Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -IdentityType None -Force
+            # Update-AzFunctionApp -InputObject $functionApp -EnableSystemAssignedIdentity $false -Force
+            # Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -EnableSystemAssignedIdentity $false -Force
 
             Write-Verbose "Update function -> remove SystemAssigned managed identity" -Verbose
-            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -IdentityType None -Force
+            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -EnableSystemAssignedIdentity $false -Force
 
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             Write-Verbose "FunctionApp after identity removal. Validate IdentityType" -Verbose
@@ -280,5 +279,87 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
                 Remove-AzFunctionAppPlan -Name $newPlanName -ResourceGroupName $resourceGroupName -Force
             }
         }
+    }
+
+    It "Update a function app to enable both SystemAssigned and UserAssigned managed identities" {
+
+        try
+        {
+            Write-Verbose "Creating function app" -Verbose
+            $appName = $env.functionNamePowerShellNew7
+            Write-Verbose "App name: $appName" -Verbose
+
+            $resourceGroupName = $env.resourceGroupNameWindowsPremium
+            Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+
+            $planName = $env.planNameWorkerTypeWindows
+            Write-Verbose "Plan name: $planName" -Verbose
+
+            $storageAccountName = $env.storageAccountWindows
+            Write-Verbose "Storage account name: $storageAccountName" -Verbose
+
+            New-AzFunctionApp -Name $appName `
+                              -ResourceGroupName $resourceGroupName `
+                              -PlanName $planName `
+                              -StorageAccount $storageAccountName `
+                              -OSType Windows `
+                              -Runtime PowerShell `
+                              -RuntimeVersion 7.4 `
+                              -FunctionsVersion 4
+
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
+            $functionApp.OSType | Should -Be "Windows"
+            $functionApp.Runtime | Should -Be "PowerShell"
+
+            Write-Verbose "Update function app -> enable both SystemAssigned and UserAssigned managed identities" -Verbose
+            $identityInfo = $env.identityInfo
+            Write-Verbose "Identity id: $($identityInfo.Id)" -Verbose
+            Update-AzFunctionApp -Name $appName `
+                                 -ResourceGroupName $resourceGroupName `
+                                 -EnableSystemAssignedIdentity $true `
+                                 -UserAssignedIdentity $identityInfo.Id `
+                                 -Force
+
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
+            $functionApp.IdentityType | Should -Match "SystemAssigned"
+            $functionApp.IdentityType | Should -Match "UserAssigned"
+
+            $userAssignedIdentity = $functionApp.IdentityUserAssignedIdentity.AdditionalProperties
+            $userAssignedIdentity.ContainsKey($identityInfo.Id) | Should -Be $true
+
+            Write-Verbose "Remove function app" -Verbose
+            Remove-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -Force
+
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
+            $functionApp | Should -Be $null
+        }
+        finally
+        {
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
+            if ($functionApp)
+            {
+                Remove-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -Force -ErrorAction SilentlyContinue
+            }
+        }
+    }
+
+    It "Update-AzFunctionApp should error for Flex Consumption apps" {
+
+        $expectedErrorId = "FlexConsumptionNotSupported"
+
+        $flexAppName = $env.flexFunctionAppName
+        $flexResourceGroupName = $env.flexResourceGroupName
+
+        Write-Verbose "Flex app name: $flexAppName" -Verbose
+        Write-Verbose "Flex resource group name: $flexResourceGroupName" -Verbose
+
+        $scriptblock = {
+            Write-Verbose "Attempting Update-AzFunctionApp on a Flex Consumption app" -Verbose
+            Update-AzFunctionApp -Name $flexAppName `
+                                 -ResourceGroupName $flexResourceGroupName `
+                                 -Force
+        }
+        Write-Verbose "Validate that the expected ErrorId is thrown" -Verbose
+        $scriptblock | Should -Throw -ErrorId $expectedErrorId
     }
 }

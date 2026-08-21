@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
     /// <summary>
     /// Encapsulates authentication file paths.
     /// </summary>
-    public class AuthenticationFiles
+    internal class AuthenticationFiles
     {
         public string PublicKeyFile { get; set; }
         public string PrivateKeyFile { get; set; }

@@ -63,7 +63,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="vmDisks">The list of disk update properties.
         /// </param>
-        public HyperVReplicaAzureUpdateReplicationProtectedItemInput(string recoveryAzureV1ResourceGroupId = default(string), string recoveryAzureV2ResourceGroupId = default(string), string useManagedDisks = default(string), System.Collections.Generic.IDictionary<string, string> diskIdToDiskEncryptionMap = default(System.Collections.Generic.IDictionary<string, string>), string targetProximityPlacementGroupId = default(string), string targetAvailabilityZone = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetManagedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), string userSelectedOSName = default(string), System.Collections.Generic.IList<UpdateDiskInput> vmDisks = default(System.Collections.Generic.IList<UpdateDiskInput>))
+
+        /// <param name="targetCapacityReservationGroupId">The target capacity reservation group ARM Id.
+        /// </param>
+        public HyperVReplicaAzureUpdateReplicationProtectedItemInput(string recoveryAzureV1ResourceGroupId = default(string), string recoveryAzureV2ResourceGroupId = default(string), string useManagedDisks = default(string), System.Collections.Generic.IDictionary<string, string> diskIdToDiskEncryptionMap = default(System.Collections.Generic.IDictionary<string, string>), string targetProximityPlacementGroupId = default(string), string targetAvailabilityZone = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetManagedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), string userSelectedOSName = default(string), System.Collections.Generic.IList<UpdateDiskInput> vmDisks = default(System.Collections.Generic.IList<UpdateDiskInput>), string targetCapacityReservationGroupId = default(string))
 
         {
             this.RecoveryAzureV1ResourceGroupId = recoveryAzureV1ResourceGroupId;
@@ -79,6 +82,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.LinuxLicenseType = linuxLicenseType;
             this.UserSelectedOSName = userSelectedOSName;
             this.VMDisks = vmDisks;
+            this.TargetCapacityReservationGroupId = targetCapacityReservationGroupId;
             CustomInit();
         }
 
@@ -168,5 +172,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmDisks")]
         public System.Collections.Generic.IList<UpdateDiskInput> VMDisks {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target capacity reservation group ARM Id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetCapacityReservationGroupId")]
+        public string TargetCapacityReservationGroupId {get; set; }
     }
 }

@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ApiKindHelpMessage = "The type of Cosmos DB database account to create. Accepted values: Sql, MongoDB, Gremlin, Table, Cassandra. Default value: Sql ";
         public const string AccountKeyTypeHelpMessage = "Value from: {ConnectionStrings, Keys, ReadOnlyKeys}. Default is Keys.";
         public const string DisableKeyBasedMetadataWriteAccessHelpMessage = "Disable write operations on metadata resources (databases, containers, throughput) via account keys";
+        public const string DisableLocalAuthHelpMessage = "Opt out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.";
         public const string PublicNetworkAccessHelpMessage = "Whether or not public endpoint access is allowed for this server. Possible values include: 'Enabled', 'Disabled'";
         public const string DisableTtlHelpMessage = "Bool to indicate if restored account is going to have Time-To-Live disabled.";
         public const string KeyVaultUriHelpMessage = "URI of the KeyVault";
@@ -69,6 +70,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string EnablePartitionMergeHelpMessage = "Enables partition merge feature on the Cosmos DB database account. Accepted values: false, true";
         public const string MinimalTlsVersionHelpMessage = "Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2. Possible values include: 'Tls', 'Tls11', 'Tls12'.";
         public const string EnablePerRegionPerPartitionAutoscaleHelpMessage = "Bool to indicate if Dynamic Scaling (Per Region Per Partition Autoscale) is enabled on the account.";
+        public const string CapabilitiesHelpMessage = "List of Cosmos DB capabilities for the account. e.g. EnableMongo, EnablePerPartitionFailoverPreview, DisableRateLimitingResponses.";
 
         //Restore specific help messages
         public const string IsRestoreRequestHelpMessage = "Indicates that the new Cosmos DB account request is a restore request.";

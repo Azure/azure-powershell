@@ -2,6 +2,58 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ActionState</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ActionState#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ActionType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CorrelationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ActionType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CorrelationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.AdministrativeCredentials</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.AdministrativeCredentials#Multiple</TypeName>
@@ -740,6 +792,9 @@
             <Label>PrivilegeLevel</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>PrivilegeLevelName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -766,6 +821,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PrivilegeLevel</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrivilegeLevelName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
@@ -1034,7 +1092,13 @@
             <Label>MachineName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>SafeguardMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SerialNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StoragePolicy</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1050,7 +1114,13 @@
                 <PropertyName>MachineName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>SafeguardMode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SerialNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StoragePolicy</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1374,6 +1444,34 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CertificateInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CertificateInfo#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Hash</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Value</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Hash</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Value</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetwork</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetwork#Multiple</TypeName>
@@ -1561,6 +1659,120 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkStorageOptions</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkStorageOptions#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Mode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SizeMiB</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageApplianceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Mode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SizeMiB</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StorageApplianceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkStorageOptionsPatch</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkStorageOptionsPatch#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Mode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SizeMiB</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageApplianceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Mode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SizeMiB</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StorageApplianceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkStorageStatus1</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkStorageStatus1#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Mode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SizeMiB</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StatusMessage</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VolumeId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Mode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SizeMiB</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StatusMessage</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VolumeId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2435,6 +2647,34 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>TargetClusterVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CommandOutputOverride</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CommandOutputOverride#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CommandOutputType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ContainerUrl</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CommandOutputType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ContainerUrl</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -5378,6 +5618,9 @@
             <Label>KeyVaultId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>KeyVaultUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SecretName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -5389,6 +5632,9 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>KeyVaultId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyVaultUri</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SecretName</PropertyName>
@@ -5596,6 +5842,52 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.StepState</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.StepState#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StepName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StepName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.StorageAppliance</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.StorageAppliance#Multiple</TypeName>
@@ -5665,6 +5957,28 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.StorageApplianceCommandSpecification</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.StorageApplianceCommandSpecification#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Command</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Command</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -5877,6 +6191,28 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.StorageApplianceRunReadCommandsParameters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.StorageApplianceRunReadCommandsParameters#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>LimitTimeSecond</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>LimitTimeSecond</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -6454,6 +6790,34 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachineAssignRelayParameters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachineAssignRelayParameters#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MachineId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RelayType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MachineId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RelayType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachineList</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachineList#Multiple</TypeName>
@@ -6600,6 +6964,9 @@
             <Label>NetworkData</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>NetworkDataContent</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>PowerState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -6607,6 +6974,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>UserData</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UserDataContent</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>VMDeviceModel</Label>
@@ -6655,6 +7025,9 @@
                 <PropertyName>NetworkData</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>NetworkDataContent</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>PowerState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -6662,6 +7035,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>UserData</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UserDataContent</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>VMDeviceModel</PropertyName>
@@ -6805,6 +7181,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>AllocatedSizeMiB</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DetailedStatus</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -6819,10 +7198,16 @@
           <TableColumnHeader>
             <Label>SizeMiB</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageApplianceId</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AllocatedSizeMiB</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DetailedStatus</PropertyName>
               </TableColumnItem>
@@ -6837,6 +7222,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SizeMiB</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StorageApplianceId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

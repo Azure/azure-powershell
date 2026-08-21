@@ -153,6 +153,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.Item.excludeAllDataDisks)]
         public SwitchParameter ExcludeAllDataDisks { get; set; }
 
+        /// <summary>
+        /// VM's subscription id, when the VM is in a different subscription than the vault (CSB).
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.containerSubscriptionId)]
+        [ValidateNotNullOrEmpty]
+        [ValidatePattern(@"^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$")]
+        public string ContainerSubscriptionId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -267,6 +276,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { ItemParams.ExclusionDisksList, ExclusionDisksList },
                                 { ItemParams.ResetExclusionSettings, ResetExclusionSettings },
                                 { ItemParams.ExcludeAllDataDisks, ExcludeAllDataDisks.IsPresent },
+                                { ItemParams.ContainerSubscriptionId, ContainerSubscriptionId },
                                 { ResourceGuardParams.Token, plainToken },
                                 { ResourceGuardParams.IsMUAOperation, isMUAOperation },
                             }, ServiceClientAdapter);

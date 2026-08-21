@@ -62,6 +62,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
         /// <summary>Internal Acessors for TransactionId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageDownloadResultInternal.TransactionId { get => this._transactionId; set { {_transactionId = value;} } }
 
+        /// <summary>Internal Acessors for UpdateProperty</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageDownloadResultInternal.UpdateProperty { get => (this._updateProperty = this._updateProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.ImageUpdateProperties()); set { {_updateProperty = value;} } }
+
+        /// <summary>Internal Acessors for UpdatePropertyAgentVersion</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageDownloadResultInternal.UpdatePropertyAgentVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdatePropertiesInternal)UpdateProperty).AgentVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdatePropertiesInternal)UpdateProperty).AgentVersion = value ?? null; }
+
+        /// <summary>Internal Acessors for UpdatePropertyFeatureUpdate</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageDownloadResultInternal.UpdatePropertyFeatureUpdate { get => ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdatePropertiesInternal)UpdateProperty).FeatureUpdate; set => ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdatePropertiesInternal)UpdateProperty).FeatureUpdate = value ?? null; }
+
+        /// <summary>Internal Acessors for UpdatePropertyOSVersion</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageDownloadResultInternal.UpdatePropertyOSVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdatePropertiesInternal)UpdateProperty).OSVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdatePropertiesInternal)UpdateProperty).OSVersion = value ?? null; }
+
+        /// <summary>Internal Acessors for UpdatePropertySecurityUpdate</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageDownloadResultInternal.UpdatePropertySecurityUpdate { get => ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdatePropertiesInternal)UpdateProperty).SecurityUpdate; set => ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdatePropertiesInternal)UpdateProperty).SecurityUpdate = value ?? null; }
+
+        /// <summary>Internal Acessors for UpdatePropertySystemReboot</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageDownloadResultInternal.UpdatePropertySystemReboot { get => ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdatePropertiesInternal)UpdateProperty).SystemReboot; set => ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdatePropertiesInternal)UpdateProperty).SystemReboot = value ?? null; }
+
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
 
@@ -110,6 +128,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
         /// <summary>The unique identifier of the download</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Origin(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PropertyOrigin.Owned)]
         public string TransactionId { get => this._transactionId; }
+
+        /// <summary>Backing field for <see cref="UpdateProperty" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdateProperties _updateProperty;
+
+        /// <summary>Image update properties for update release type image.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Origin(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdateProperties UpdateProperty { get => (this._updateProperty = this._updateProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.ImageUpdateProperties()); }
+
+        /// <summary>The version(s) of the agent software included in this image update.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Origin(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PropertyOrigin.Inlined)]
+        public string UpdatePropertyAgentVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdatePropertiesInternal)UpdateProperty).AgentVersion; }
+
+        /// <summary>Details of feature updates included in this image release.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Origin(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PropertyOrigin.Inlined)]
+        public string UpdatePropertyFeatureUpdate { get => ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdatePropertiesInternal)UpdateProperty).FeatureUpdate; }
+
+        /// <summary>The operating system version provided by this image update.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Origin(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PropertyOrigin.Inlined)]
+        public string UpdatePropertyOSVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdatePropertiesInternal)UpdateProperty).OSVersion; }
+
+        /// <summary>Details of security updates included in this image release.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Origin(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PropertyOrigin.Inlined)]
+        public string UpdatePropertySecurityUpdate { get => ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdatePropertiesInternal)UpdateProperty).SecurityUpdate; }
+
+        /// <summary>Indicates if a system reboot is required after applying the update.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Origin(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PropertyOrigin.Inlined)]
+        public string UpdatePropertySystemReboot { get => ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdatePropertiesInternal)UpdateProperty).SystemReboot; }
 
         /// <summary>Creates an new <see cref="ImageDownloadResult" /> instance.</summary>
         public ImageDownloadResult()
@@ -233,6 +278,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
         SerializedName = @"transactionId",
         PossibleTypes = new [] { typeof(string) })]
         string TransactionId { get;  }
+        /// <summary>The version(s) of the agent software included in this image update.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The version(s) of the agent software included in this image update.",
+        SerializedName = @"agentVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string UpdatePropertyAgentVersion { get;  }
+        /// <summary>Details of feature updates included in this image release.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Details of feature updates included in this image release.",
+        SerializedName = @"featureUpdates",
+        PossibleTypes = new [] { typeof(string) })]
+        string UpdatePropertyFeatureUpdate { get;  }
+        /// <summary>The operating system version provided by this image update.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The operating system version provided by this image update.",
+        SerializedName = @"osVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string UpdatePropertyOSVersion { get;  }
+        /// <summary>Details of security updates included in this image release.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Details of security updates included in this image release.",
+        SerializedName = @"securityUpdates",
+        PossibleTypes = new [] { typeof(string) })]
+        string UpdatePropertySecurityUpdate { get;  }
+        /// <summary>Indicates if a system reboot is required after applying the update.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Indicates if a system reboot is required after applying the update.",
+        SerializedName = @"systemReboot",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Required", "NotRequired")]
+        string UpdatePropertySystemReboot { get;  }
 
     }
     /// The image download properties
@@ -261,6 +362,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
         string ReleaseVersion { get; set; }
         /// <summary>The unique identifier of the download</summary>
         string TransactionId { get; set; }
+        /// <summary>Image update properties for update release type image.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IImageUpdateProperties UpdateProperty { get; set; }
+        /// <summary>The version(s) of the agent software included in this image update.</summary>
+        string UpdatePropertyAgentVersion { get; set; }
+        /// <summary>Details of feature updates included in this image release.</summary>
+        string UpdatePropertyFeatureUpdate { get; set; }
+        /// <summary>The operating system version provided by this image update.</summary>
+        string UpdatePropertyOSVersion { get; set; }
+        /// <summary>Details of security updates included in this image release.</summary>
+        string UpdatePropertySecurityUpdate { get; set; }
+        /// <summary>Indicates if a system reboot is required after applying the update.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Required", "NotRequired")]
+        string UpdatePropertySystemReboot { get; set; }
 
     }
 }

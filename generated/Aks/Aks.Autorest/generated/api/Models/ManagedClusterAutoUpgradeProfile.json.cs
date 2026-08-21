@@ -78,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
                 return;
             }
             {_upgradeChannel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("upgradeChannel"), out var __jsonUpgradeChannel) ? (string)__jsonUpgradeChannel : (string)_upgradeChannel;}
+            {_nodeOSUpgradeChannel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("nodeOSUpgradeChannel"), out var __jsonNodeOSUpgradeChannel) ? (string)__jsonNodeOSUpgradeChannel : (string)_nodeOSUpgradeChannel;}
             AfterFromJson(json);
         }
 
@@ -101,6 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
                 return container;
             }
             AddIf( null != (((object)this._upgradeChannel)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._upgradeChannel.ToString()) : null, "upgradeChannel" ,container.Add );
+            AddIf( null != (((object)this._nodeOSUpgradeChannel)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._nodeOSUpgradeChannel.ToString()) : null, "nodeOSUpgradeChannel" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

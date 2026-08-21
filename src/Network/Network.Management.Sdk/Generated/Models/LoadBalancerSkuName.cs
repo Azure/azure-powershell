@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class LoadBalancerSkuName
     {
+        /// <summary>
+        /// Basic
+        /// </summary>
         public const string Basic = "Basic";
+        /// <summary>
+        /// Standard
+        /// </summary>
         public const string Standard = "Standard";
+        /// <summary>
+        /// Gateway
+        /// </summary>
         public const string Gateway = "Gateway";
     }
 }

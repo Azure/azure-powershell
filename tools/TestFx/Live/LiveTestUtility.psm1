@@ -49,14 +49,7 @@ function InitializeLiveTestModule {
     }
 
     if (!(Test-Path -Path $script:LiveTestRawCsvFile -PathType Leaf)) {
-        $crtMtx = [System.Threading.Mutex]::new($false, "CreationLock")
-        try {
-            $crtMtx.WaitOne()
-            ({} | Select-Object "PSVersion", "Module", "Name", "Description", "StartDateTime", "EndDateTime", "IsSuccess", "Errors" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -FilePath $script:LiveTestRawCsvFile -Encoding utf8 -Force
-        }
-        finally {
-            $crtMtx.ReleaseMutex()
-        }
+        ({} | Select-Object "PSVersion", "Module", "Name", "Description", "StartDateTime", "EndDateTime", "IsSuccess", "Errors" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -FilePath $script:LiveTestRawCsvFile -Encoding utf8 -Force
     }
 }
 
@@ -141,11 +134,26 @@ function New-LiveTestResourceGroup {
 
         [Parameter(Position = 1)]
         [ValidateNotNullOrEmpty()]
-        [string] $Location = "westus"
+        [string] $Location = "westus",
+
+        [Parameter()]
+        [ref] $Result
     )
 
-    $rg = Invoke-LiveTestCommand -Command { New-AzResourceGroup -Name $Name -Location $Location -Force }
-    $rg
+    $cmd = { New-AzResourceGroup -Name $Name -Location $Location -Force }
+    $displayCmd = $ExecutionContext.InvokeCommand.ExpandString($cmd.ToString())
+
+    $allOutput = @(Invoke-LiveTestCommand -Command $cmd -DisplayCommand $displayCmd)
+    $allOutput | Where-Object { $_ -is [string] } | ForEach-Object { Write-Output $_ }
+
+    $rg = $allOutput | Where-Object { $_ -isnot [string] } | Select-Object -First 1
+
+    if ($PSBoundParameters.ContainsKey('Result')) {
+        $Result.Value = $rg
+    }
+    else {
+        $rg
+    }
 }
 
 function New-LiveTestResourceName {
@@ -210,42 +218,66 @@ function New-LiveTestPassword {
     return -join $password
 }
 
+filter Write-LiveTestMessage {
+    param(
+        [Parameter(Mandatory, ValueFromPipeline)]
+        [string] $Message,
+
+        [Parameter(Mandatory)]
+        [ValidateSet("command", "debug", "error", "section", "warning", IgnoreCase = $false)]
+        [string] $Level
+    )
+
+    $Message -split "`r?`n" | ForEach-Object { Write-Output "##[$Level]$_" }
+}
+
 function Invoke-LiveTestCommand {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory, ValueFromPipeline)]
         [ValidateNotNullOrEmpty()]
-        [scriptblock] $Command
+        [scriptblock] $Command,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string] $DisplayCommand
     )
 
     $cmdRetryCount = 0
 
     do {
         try {
-            $displayCommand = $Command.ToString()
-            Write-Host "##[section]Start executing the command `"$displayCommand`"."
-            Write-Host "##[command]The command `"$displayCommand`" is running."
+            $displayCommand = if ($PSBoundParameters.ContainsKey('DisplayCommand')) {
+                $DisplayCommand
+            }
+            else {
+                $Command.ToString().Trim()
+            }
+            Write-Output "##[section]Start executing the command `"$displayCommand`"."
+            Write-Output "##[command]The command `"$displayCommand`" is running."
 
             $cmdResult = $Command.InvokeWithContext($null, [psvariable]::new("ErrorActionPreference", "Stop"))
 
-            Write-Host "##[section]Finish executing the command `"$displayCommand`"."
+            Write-Output "##[section]Finish executing the command `"$displayCommand`"."
 
             $cmdResult
+
             break
         }
         catch {
             $cmdErrorMessage = $_.Exception.InnerException.Message
             if ($cmdRetryCount -lt $script:CommandMaxRetryCount) {
-                Write-Host "##[warning]Error occurred when executing the command `"$Command`" with error message `"$cmdErrorMessage`"."
-                Write-Host "##[warning]Live test will retry automatically in $script:CommandDelay seconds."
+                $cmdRetryMessage = "Error occurred when executing the command `"$Command`" with error message `"$cmdErrorMessage`"."
+                $cmdRetryMessage | Write-LiveTestMessage -Level warning
+                Write-Output "##[warning]Live test will retry automatically in $script:CommandDelay seconds."
 
                 Start-Sleep -Seconds $script:CommandDelay
                 $cmdRetryCount++
-                Write-Host "##[warning]Retry #$cmdRetryCount to execute the command `"$Command`"."
+                Write-Output "##[warning]Retry #$cmdRetryCount to execute the command `"$Command`"."
             }
             else {
                 $cmdFinalErrorMessage = "Failed to execute the command `"$Command`" after retrying for $script:CommandMaxRetryCount time(s) with error message `"$cmdErrorMessage`"."
-                Write-Host "##[error]$cmdFinalErrorMessage"
+                $cmdFinalErrorMessage | Write-LiveTestMessage -Level error
                 throw $cmdFinalErrorMessage
             }
         }
@@ -272,7 +304,7 @@ function Invoke-LiveTestScenario {
         [ValidateSet("5.1", "Latest", IgnoreCase = $false)]
         [string[]] $PowerShellVersion,
 
-        [Parameter(ParameterSetName = "HasDefaulResourceGroup")]
+        [Parameter(ParameterSetName = "HasDefaultResourceGroup")]
         [ValidateNotNullOrEmpty()]
         [string] $ResourceGroupLocation,
 
@@ -332,7 +364,8 @@ function Invoke-LiveTestScenario {
             Write-Output "##[section]Resource group name: $snrResourceGroupName"
             Write-Output "##[section]Resource group location: $snrResourceGroupLocation"
 
-            $snrResourceGroup = New-LiveTestResourceGroup -Name $snrResourceGroupName -Location $snrResourceGroupLocation
+            $snrResourceGroup = $null
+            New-LiveTestResourceGroup -Name $snrResourceGroupName -Location $snrResourceGroupLocation -Result ([ref]$snrResourceGroup)
         }
 
         $snrRetryCount = 0
@@ -364,7 +397,7 @@ function Invoke-LiveTestScenario {
                     $snrScriptName = Split-Path -Path $snrInvocationInfo.ScriptName -Leaf -ErrorAction SilentlyContinue
                     if ($snrScriptName -eq "Assert.ps1") {
                         Write-Output "##[error]Exception was thrown from the Assert.ps1. The stack trace is:"
-                        Write-Output "##[error]$($snrErrorRecord.ScriptStackTrace)"
+                        $snrErrorRecord.ScriptStackTrace | Write-LiveTestMessage -Level error
                     }
                     else {
                         $snrErrorDetails += " thrown at line:$($snrInvocationInfo.ScriptLineNumber) char:$($snrInvocationInfo.OffsetInLine) by cmdlet '$($snrInvocationInfo.MyCommand)' on '$($snrInvocationInfo.Line.ToString().Trim())'"
@@ -376,14 +409,16 @@ function Invoke-LiveTestScenario {
                 if ($snrRetryCount -lt $script:ScenarioMaxRetryCount) {
                     $snrRetryCount++
                     $exponentialDelay = [Math]::Min((1 -shl ($snrRetryCount - 1)) * [int](Get-Random -Minimum ($script:ScenarioDelay * 0.8) -Maximum ($script:ScenarioDelay * 1.2)), $script:ScenarioMaxDelay)
-                    Write-Output "##[warning]Error occurred when executing the live scenario `"$Name`" with error details `"$snrErrorDetails`"."
+                    $snrRetryMessage = "Error occurred when executing the live scenario `"$Name`" with error details `"$snrErrorDetails`"."
+                    $snrRetryMessage | Write-LiveTestMessage -Level warning
                     Write-Output "##[warning]Live test will retry automatically in $exponentialDelay seconds."
 
                     Start-Sleep -Seconds $exponentialDelay
                     Write-Output "##[warning]Retry #$snrRetryCount to execute the live scenario `"$Name`"."
                 }
                 else {
-                    Write-Error "##[error]Failed to execute the live scenario `"$Name`" with error details `"$snrErrorDetails`"." -ErrorAction Continue
+                    $snrFinalMessage = "Failed to execute the live scenario `"$Name`" with error details `"$snrErrorDetails`"."
+                    $snrFinalMessage | Write-LiveTestMessage -Level error
                     $snrCsvData.IsSuccess = $false
                     $snrCsvData.Errors = ConvertToLiveTestJsonErrors -Errors $snrRetryErrors
                     break
@@ -394,21 +429,15 @@ function Invoke-LiveTestScenario {
     }
     catch {
         $snrErrorMessage = $_.Exception.Message
-        Write-Error "##[error]Error occurred when executing the live scenario `"$Name`" with error details `"$snrErrorMessage`"." -ErrorAction Continue
+        $snrFailureMessage = "Failed to execute the live scenario `"$Name`" with error details `"$snrErrorMessage`"."
+        $snrFailureMessage | Write-LiveTestMessage -Level error
         $snrCsvData.IsSuccess = $false
         $snrCsvData.Errors = ConvertToLiveTestJsonErrors -Errors $snrErrorMessage
     }
     finally {
         $snrCsvData.EndDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss")
 
-        $updMtx = [System.Threading.Mutex]::new($false, "UpdateLock")
-        try {
-            $updMtx.WaitOne()
-            $snrCsvData | Export-Csv -Path $script:LiveTestRawCsvFile -Encoding utf8 -NoTypeInformation -Append
-        }
-        finally {
-            $updMtx.ReleaseMutex()
-        }
+        $snrCsvData | Export-Csv -Path $script:LiveTestRawCsvFile -Encoding utf8 -NoTypeInformation -Append
 
         if (!$NoResourceGroup.IsPresent -and $null -ne $snrResourceGroup) {
             try {
@@ -433,7 +462,9 @@ function Clear-LiveTestResources {
         [string] $Name
     )
 
-    Invoke-LiveTestCommand -Command { Remove-AzResourceGroup -Name $Name -Force -AsJob | Out-Null }
+    $cmd = { Remove-AzResourceGroup -Name $Name -Force -AsJob | Out-Null }
+    $displayCmd = $ExecutionContext.InvokeCommand.ExpandString($cmd.ToString())
+    Invoke-LiveTestCommand -Command $cmd -DisplayCommand $displayCmd
 }
 
 function ConvertToLiveTestJsonErrors {

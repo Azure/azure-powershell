@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VirtualNetworkPeeringState
     {
+        /// <summary>
+        /// Initiated
+        /// </summary>
         public const string Initiated = "Initiated";
+        /// <summary>
+        /// Connected
+        /// </summary>
         public const string Connected = "Connected";
+        /// <summary>
+        /// Disconnected
+        /// </summary>
         public const string Disconnected = "Disconnected";
     }
 }

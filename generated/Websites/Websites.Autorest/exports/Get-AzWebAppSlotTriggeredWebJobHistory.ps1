@@ -30,13 +30,61 @@ $jobs[0].Id | Get-AzWebAppSlotTriggeredWebJobHistory
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.ITriggeredJobHistory
+Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.ITriggeredJobHistory
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+HISTORYINPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+  [Authprovider <String>]: The auth provider for the users.
+  [DomainName <String>]: The custom domain name.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [Id <String>]: Resource identity path
+  [JobHistoryId <String>]: History ID.
+  [Location <String>]: Location where you plan to create the static site.
+  [Name <String>]: Name of the static site.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [Slot <String>]: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [WebJobName <String>]: Name of Web Job.
+
 INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+  [Authprovider <String>]: The auth provider for the users.
+  [DomainName <String>]: The custom domain name.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [Id <String>]: Resource identity path
+  [JobHistoryId <String>]: History ID.
+  [Location <String>]: Location where you plan to create the static site.
+  [Name <String>]: Name of the static site.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [Slot <String>]: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [WebJobName <String>]: Name of Web Job.
+
+SITEINPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+  [Authprovider <String>]: The auth provider for the users.
+  [DomainName <String>]: The custom domain name.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [Id <String>]: Resource identity path
+  [JobHistoryId <String>]: History ID.
+  [Location <String>]: Location where you plan to create the static site.
+  [Name <String>]: Name of the static site.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [Slot <String>]: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [WebJobName <String>]: Name of Web Job.
+
+TRIGGEREDWEBJOBINPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [DomainName <String>]: The custom domain name.
   [EnvironmentName <String>]: The stage site identifier.
@@ -55,7 +103,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.websites/get-azwebappslottriggeredwebjobhistory
 #>
 function Get-AzWebAppSlotTriggeredWebJobHistory {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.ITriggeredJobHistory])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.ITriggeredJobHistory])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -66,12 +114,15 @@ param(
     ${AppName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityTriggeredwebjob', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [System.String]
     # History ID.
     ${Id},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [System.String]
@@ -86,6 +137,9 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityHistory', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityTriggeredwebjob', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [System.String]
@@ -107,8 +161,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityHistory', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity]
+    # Identity Parameter
+    ${HistoryInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity]
+    # Identity Parameter
+    ${SiteInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityTriggeredwebjob', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity]
+    # Identity Parameter
+    ${TriggeredwebjobInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -139,12 +210,6 @@ param(
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Runtime')]
     [System.Uri]
@@ -172,6 +237,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -193,11 +266,12 @@ begin {
         $mapping = @{
             Get = 'Az.Websites.private\Get-AzWebAppSlotTriggeredWebJobHistory_Get';
             GetViaIdentity = 'Az.Websites.private\Get-AzWebAppSlotTriggeredWebJobHistory_GetViaIdentity';
+            GetViaIdentityHistory = 'Az.Websites.private\Get-AzWebAppSlotTriggeredWebJobHistory_GetViaIdentityHistory';
+            GetViaIdentitySite = 'Az.Websites.private\Get-AzWebAppSlotTriggeredWebJobHistory_GetViaIdentitySite';
+            GetViaIdentityTriggeredwebjob = 'Az.Websites.private\Get-AzWebAppSlotTriggeredWebJobHistory_GetViaIdentityTriggeredwebjob';
             List = 'Az.Websites.private\Get-AzWebAppSlotTriggeredWebJobHistory_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -211,6 +285,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -20,15 +20,15 @@ Describe 'Remove-AzKustoClusterCalloutPolicy' {
         $clusterName = $env.kustoClusterName
         $subscriptionId = $env.subscriptionId
         $apiVersion = $env.kustoApiVersion
-        $sandboxCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy]@{
+        $sandboxCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICalloutPolicy]@{
             calloutType = "sandbox_artifacts"
             outboundAccess = "Allow"
-            calloutUriRegex = "*"
+            calloutUriRegex = ".*"
         }
-        $genevametricsCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy]@{
+        $genevametricsCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICalloutPolicy]@{
             calloutType = "genevametrics"
             outboundAccess = "Deny"
-            calloutUriRegex = "*"
+            calloutUriRegex = ".*"
         }
         $policies = @($sandboxCalloutPolicy, $genevametricsCalloutPolicy)
         Add-AzKustoClusterCalloutPolicy -ResourceGroupName $resourceGroupName -ClusterName $clusterName -SubscriptionId $subscriptionId -Value $policies

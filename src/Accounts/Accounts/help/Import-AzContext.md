@@ -59,7 +59,7 @@ This example selects a context from a JSON file that is passed through to the cm
 ## PARAMETERS
 
 ### -AzureContext
-{{Fill AzureContext Description}}
+Specifies the Azure context to import.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile

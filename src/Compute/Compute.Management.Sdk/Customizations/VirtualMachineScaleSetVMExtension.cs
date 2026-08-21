@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             Type = type;
             ForceUpdateTag = forceUpdateTag;
             Publisher = publisher;
-            VirtualMachineExtensionPropertiesType = virtualMachineExtensionPropertiesType;
+            VirtualMachineExtensionType = virtualMachineExtensionPropertiesType;
             TypeHandlerVersion = typeHandlerVersion;
             AutoUpgradeMinorVersion = autoUpgradeMinorVersion;
             EnableAutomaticUpgrade = enableAutomaticUpgrade;
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             Location = location;
             ForceUpdateTag = forceUpdateTag;
             Publisher = publisher;
-            VirtualMachineExtensionPropertiesType = virtualMachineExtensionPropertiesType;
+            VirtualMachineExtensionType = virtualMachineExtensionPropertiesType;
             TypeHandlerVersion = typeHandlerVersion;
             AutoUpgradeMinorVersion = autoUpgradeMinorVersion;
             EnableAutomaticUpgrade = enableAutomaticUpgrade;
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             Type = type;
             ForceUpdateTag = forceUpdateTag;
             Publisher = publisher;
-            VirtualMachineExtensionPropertiesType = virtualMachineExtensionPropertiesType;
+            VirtualMachineExtensionType = virtualMachineExtensionPropertiesType;
             TypeHandlerVersion = typeHandlerVersion;
             AutoUpgradeMinorVersion = autoUpgradeMinorVersion;
             EnableAutomaticUpgrade = enableAutomaticUpgrade;

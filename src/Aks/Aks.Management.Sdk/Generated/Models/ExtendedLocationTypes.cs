@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
     public static class ExtendedLocationTypes
     {
+        /// <summary>
+        /// Azure Edge Zone extended location type.
+        /// </summary>
         public const string EdgeZone = "EdgeZone";
     }
 }

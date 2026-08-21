@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningError Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterPodIdentityProvisioningError()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for ManagedClusterPodIdentityProvisioningErrorBodyError</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningErrorBody Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal.ManagedClusterPodIdentityProvisioningErrorBodyError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningErrorInternal)Error).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningErrorInternal)Error).Error = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningErrorBody Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal.ManagedClusterPodIdentityProvisioningErrorBodyError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningErrorInternal)Error).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningErrorInternal)Error).Error = value ?? null /* model class */; }
 
         /// <summary>
         /// The target of the particular error. For example, the name of the property in error.

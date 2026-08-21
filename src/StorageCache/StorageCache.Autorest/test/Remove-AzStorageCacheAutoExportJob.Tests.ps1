@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStorageCacheAutoExpo
 Describe 'Remove-AzStorageCacheAutoExportJob' {
     It 'Delete' {
         {
-            New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleDelete' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoExportPrefix @('/path1')
+            New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleDelete' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoExportPrefix @('/')
             Start-Sleep 30
             Remove-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleDelete' -ResourceGroupName 'acctest43511' -Confirm:$false
         } | Should -Not -Throw
@@ -25,9 +25,9 @@ Describe 'Remove-AzStorageCacheAutoExportJob' {
 
     It 'DeleteViaIdentityAmlFilesystem' {
         {
-            New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleDeleteAmlId' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoExportPrefix @('/path1')
+            New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleDeleteAmlId' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoExportPrefix @('/')
             Start-Sleep 30
-            
+
             $identity = [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.StorageCacheIdentity]::new()
             $identity.AmlFilesystemName = "acctest43511"
             $identity.ResourceGroupName = "acctest43511"
@@ -39,9 +39,9 @@ Describe 'Remove-AzStorageCacheAutoExportJob' {
 
     It 'DeleteViaIdentity' {
         {
-            New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleDeleteId' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoExportPrefix @('/path1')
+            New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleDeleteId' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoExportPrefix @('/')
             Start-Sleep 30
-            
+
             $identity = [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.StorageCacheIdentity]::new()
             $identity.AmlFilesystemName = "acctest43511"
             $identity.ResourceGroupName = "acctest43511"

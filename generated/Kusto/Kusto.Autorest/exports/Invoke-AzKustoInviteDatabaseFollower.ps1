@@ -23,15 +23,32 @@ Generates an invitation token that allows attaching a follower database to this 
 Invoke-AzKustoInviteDatabaseFollower -ClusterName "myCluster" -DatabaseName "myDatabase" -ResourceGroupName "myResourceGroup" -InviteeEmail "user@contoso.com"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerRequest
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CLUSTERINPUTOBJECT <IKustoIdentity>: Identity Parameter
+  [AttachedDatabaseConfigurationName <String>]: The name of the attached database configuration.
+  [ClusterName <String>]: The name of the Kusto cluster.
+  [DataConnectionName <String>]: The name of the data connection.
+  [DatabaseName <String>]: The name of the database in the Kusto cluster.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of Azure region.
+  [ManagedPrivateEndpointName <String>]: The name of the managed private endpoint.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [PrincipalAssignmentName <String>]: The name of the Kusto principalAssignment.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SandboxCustomImageName <String>]: The name of the sandbox custom image.
+  [ScriptName <String>]: The name of the Kusto database script.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [AttachedDatabaseConfigurationName <String>]: The name of the attached database configuration.
@@ -52,23 +69,25 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 
 PARAMETER <IDatabaseInviteFollowerRequest>: The request to invite a follower to a database.
   InviteeEmail <String>: The email of the invited user for which the follower invitation is generated.
-  [TableLevelSharingPropertyExternalTablesToExclude <String[]>]: List of external tables to exclude from the follower database
-  [TableLevelSharingPropertyExternalTablesToInclude <String[]>]: List of external tables to include in the follower database
-  [TableLevelSharingPropertyFunctionsToExclude <String[]>]: List of functions to exclude from the follower database
-  [TableLevelSharingPropertyFunctionsToInclude <String[]>]: List of functions to include in the follower database
-  [TableLevelSharingPropertyMaterializedViewsToExclude <String[]>]: List of materialized views to exclude from the follower database
-  [TableLevelSharingPropertyMaterializedViewsToInclude <String[]>]: List of materialized views to include in the follower database
-  [TableLevelSharingPropertyTablesToExclude <String[]>]: List of tables to exclude from the follower database
-  [TableLevelSharingPropertyTablesToInclude <String[]>]: List of tables to include in the follower database
+  [TableLevelSharingPropertyExternalTablesToExclude <List<String>>]: List of external tables to exclude from the follower database
+  [TableLevelSharingPropertyExternalTablesToInclude <List<String>>]: List of external tables to include in the follower database
+  [TableLevelSharingPropertyFunctionsToExclude <List<String>>]: List of functions to exclude from the follower database
+  [TableLevelSharingPropertyFunctionsToInclude <List<String>>]: List of functions to include in the follower database
+  [TableLevelSharingPropertyMaterializedViewsToExclude <List<String>>]: List of materialized views to exclude from the follower database
+  [TableLevelSharingPropertyMaterializedViewsToInclude <List<String>>]: List of materialized views to include in the follower database
+  [TableLevelSharingPropertyTablesToExclude <List<String>>]: List of tables to exclude from the follower database
+  [TableLevelSharingPropertyTablesToInclude <List<String>>]: List of tables to include in the follower database
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/invoke-azkustoinvitedatabasefollower
 #>
 function Invoke-AzKustoInviteDatabaseFollower {
-[OutputType([System.String])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerResult])]
 [CmdletBinding(DefaultParameterSetName='InviteExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Invite', Mandatory)]
     [Parameter(ParameterSetName='InviteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the Kusto cluster.
@@ -76,6 +95,10 @@ param(
 
     [Parameter(ParameterSetName='Invite', Mandatory)]
     [Parameter(ParameterSetName='InviteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaIdentityCluster', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaIdentityClusterExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the database in the Kusto cluster.
@@ -83,6 +106,8 @@ param(
 
     [Parameter(ParameterSetName='Invite', Mandatory)]
     [Parameter(ParameterSetName='InviteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -91,6 +116,8 @@ param(
 
     [Parameter(ParameterSetName='Invite')]
     [Parameter(ParameterSetName='InviteExpanded')]
+    [Parameter(ParameterSetName='InviteViaJsonFilePath')]
+    [Parameter(ParameterSetName='InviteViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -102,18 +129,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='InviteViaIdentityCluster', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='InviteViaIdentityClusterExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity]
+    # Identity Parameter
+    ${ClusterInputObject},
 
     [Parameter(ParameterSetName='Invite', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='InviteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='InviteViaIdentityCluster', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerRequest]
     # The request to invite a follower to a database.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='InviteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaIdentityClusterExpanded', Mandatory)]
     [Parameter(ParameterSetName='InviteViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
@@ -121,6 +155,7 @@ param(
     ${InviteeEmail},
 
     [Parameter(ParameterSetName='InviteExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityClusterExpanded')]
     [Parameter(ParameterSetName='InviteViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -129,6 +164,7 @@ param(
     ${TableLevelSharingPropertyExternalTablesToExclude},
 
     [Parameter(ParameterSetName='InviteExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityClusterExpanded')]
     [Parameter(ParameterSetName='InviteViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -137,6 +173,7 @@ param(
     ${TableLevelSharingPropertyExternalTablesToInclude},
 
     [Parameter(ParameterSetName='InviteExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityClusterExpanded')]
     [Parameter(ParameterSetName='InviteViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -145,6 +182,7 @@ param(
     ${TableLevelSharingPropertyFunctionsToExclude},
 
     [Parameter(ParameterSetName='InviteExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityClusterExpanded')]
     [Parameter(ParameterSetName='InviteViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -153,6 +191,7 @@ param(
     ${TableLevelSharingPropertyFunctionsToInclude},
 
     [Parameter(ParameterSetName='InviteExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityClusterExpanded')]
     [Parameter(ParameterSetName='InviteViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -161,6 +200,7 @@ param(
     ${TableLevelSharingPropertyMaterializedViewsToExclude},
 
     [Parameter(ParameterSetName='InviteExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityClusterExpanded')]
     [Parameter(ParameterSetName='InviteViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -169,6 +209,7 @@ param(
     ${TableLevelSharingPropertyMaterializedViewsToInclude},
 
     [Parameter(ParameterSetName='InviteExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityClusterExpanded')]
     [Parameter(ParameterSetName='InviteViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -177,12 +218,25 @@ param(
     ${TableLevelSharingPropertyTablesToExclude},
 
     [Parameter(ParameterSetName='InviteExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityClusterExpanded')]
     [Parameter(ParameterSetName='InviteViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String[]]
     # List of tables to include in the follower database
     ${TableLevelSharingPropertyTablesToInclude},
+
+    [Parameter(ParameterSetName='InviteViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Invite operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='InviteViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Json string supplied to the Invite operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -240,6 +294,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -262,11 +324,13 @@ begin {
             Invite = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_Invite';
             InviteExpanded = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_InviteExpanded';
             InviteViaIdentity = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_InviteViaIdentity';
+            InviteViaIdentityCluster = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_InviteViaIdentityCluster';
+            InviteViaIdentityClusterExpanded = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_InviteViaIdentityClusterExpanded';
             InviteViaIdentityExpanded = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_InviteViaIdentityExpanded';
+            InviteViaJsonFilePath = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_InviteViaJsonFilePath';
+            InviteViaJsonString = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_InviteViaJsonString';
         }
-        if (('Invite', 'InviteExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Invite', 'InviteExpanded', 'InviteViaJsonFilePath', 'InviteViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -280,6 +344,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

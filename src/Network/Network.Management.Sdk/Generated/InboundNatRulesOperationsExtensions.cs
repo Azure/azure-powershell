@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -52,55 +52,13 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Deletes the specified load balancer inbound NAT rule.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='loadBalancerName'>
-        /// The name of the load balancer.
-        /// </param>
-        /// <param name='inboundNatRuleName'>
-        /// The name of the inbound NAT rule.
-        /// </param>
-        public static void Delete(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName)
-        {
-                ((IInboundNatRulesOperations)operations).DeleteAsync(resourceGroupName, loadBalancerName, inboundNatRuleName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified load balancer inbound NAT rule.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='loadBalancerName'>
-        /// The name of the load balancer.
-        /// </param>
-        /// <param name='inboundNatRuleName'>
-        /// The name of the inbound NAT rule.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Gets the specified load balancer inbound NAT rule.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -123,7 +81,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -151,7 +109,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -171,7 +129,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -196,7 +154,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -204,9 +162,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='inboundNatRuleName'>
         /// The name of the inbound NAT rule.
         /// </param>
-        public static void BeginDelete(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName)
+        public static void Delete(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName)
         {
-                ((IInboundNatRulesOperations)operations).BeginDeleteAsync(resourceGroupName, loadBalancerName, inboundNatRuleName).GetAwaiter().GetResult();
+                ((IInboundNatRulesOperations)operations).DeleteAsync(resourceGroupName, loadBalancerName, inboundNatRuleName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -216,7 +174,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -227,9 +185,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a load balancer inbound NAT rule.
@@ -238,7 +196,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -258,7 +216,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -275,6 +233,48 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Deletes the specified load balancer inbound NAT rule.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='inboundNatRuleName'>
+        /// The name of the inbound NAT rule.
+        /// </param>
+        public static void BeginDelete(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName)
+        {
+                ((IInboundNatRulesOperations)operations).BeginDeleteAsync(resourceGroupName, loadBalancerName, inboundNatRuleName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified load balancer inbound NAT rule.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='inboundNatRuleName'>
+        /// The name of the inbound NAT rule.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the inbound NAT rules in a load balancer.

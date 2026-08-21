@@ -14,35 +14,6 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IExpressRouteLinksOperations
     {
         /// <summary>
-        /// Retrieves the specified ExpressRouteLink resource.
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the specified ExpressRouteLink resource.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='expressRoutePortName'>
-        /// The name of the ExpressRoutePort resource.
-        /// </param>
-        /// <param name='linkName'>
-        /// The name of the ExpressRouteLink resource.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteLink>> GetWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string linkName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Retrieve the ExpressRouteLink sub-resources of the specified
         /// ExpressRoutePort resource.
         /// </summary>
@@ -51,10 +22,10 @@ namespace Microsoft.Azure.Management.Network
         /// ExpressRoutePort resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
-        /// The name of the ExpressRoutePort resource.
+        /// The name of ExpressRoutePort.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -69,6 +40,35 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ExpressRouteLink>>> ListWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the specified ExpressRouteLink resource.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the specified ExpressRouteLink resource.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRoutePortName'>
+        /// The name of the express route port.
+        /// </param>
+        /// <param name='linkName'>
+        /// The name of the express route link.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteLink>> GetWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string linkName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieve the ExpressRouteLink sub-resources of the specified

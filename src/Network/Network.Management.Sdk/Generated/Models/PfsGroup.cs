@@ -13,14 +13,41 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class PfsGroup
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// PFS1
+        /// </summary>
         public const string PFS1 = "PFS1";
+        /// <summary>
+        /// PFS2
+        /// </summary>
         public const string PFS2 = "PFS2";
+        /// <summary>
+        /// PFS2048
+        /// </summary>
         public const string PFS2048 = "PFS2048";
+        /// <summary>
+        /// ECP256
+        /// </summary>
         public const string ECP256 = "ECP256";
+        /// <summary>
+        /// ECP384
+        /// </summary>
         public const string ECP384 = "ECP384";
+        /// <summary>
+        /// PFS24
+        /// </summary>
         public const string PFS24 = "PFS24";
+        /// <summary>
+        /// PFS14
+        /// </summary>
         public const string PFS14 = "PFS14";
+        /// <summary>
+        /// PFSMM
+        /// </summary>
         public const string Pfsmm = "PFSMM";
     }
 }

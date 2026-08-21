@@ -134,10 +134,26 @@ param(
 
     [Parameter(ParameterSetName='ReplaceExpanded')]
     [Parameter(ParameterSetName='ReplaceViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("All", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # The safeguard mode to use for the replace action, where None indicates to bypass safeguards and All indicates to utilize all safeguards.
+    ${SafeguardMode},
+
+    [Parameter(ParameterSetName='ReplaceExpanded')]
+    [Parameter(ParameterSetName='ReplaceViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The serial number of the bare metal machine.
     ${SerialNumber},
+
+    [Parameter(ParameterSetName='ReplaceExpanded')]
+    [Parameter(ParameterSetName='ReplaceViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Preserve", "DiscardAll")]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # The indicator of whether to bypass clearing storage while replacing a bare metal machine.
+    ${StoragePolicy},
 
     [Parameter(ParameterSetName='ReplaceViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
@@ -231,8 +247,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

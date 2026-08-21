@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Storage.Models
     /// name, resource type, Etag.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ImmutabilityPolicy : AzureEntityResource
+    public partial class ImmutabilityPolicy : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ImmutabilityPolicy class.
@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the ImmutabilityPolicy class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
@@ -35,6 +35,10 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
         /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="etag">Resource Etag.
@@ -63,10 +67,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// &#39;allowProtectedAppendWrites&#39; and &#39;allowProtectedAppendWritesAll&#39; properties
         /// are mutually exclusive.
         /// </param>
-        public ImmutabilityPolicy(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), int? immutabilityPeriodSinceCreationInDays = default(int?), string state = default(string), bool? allowProtectedAppendWrites = default(bool?), bool? allowProtectedAppendWritesAll = default(bool?))
+        public ImmutabilityPolicy(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string etag = default(string), int? immutabilityPeriodSinceCreationInDays = default(int?), string state = default(string), bool? allowProtectedAppendWrites = default(bool?), bool? allowProtectedAppendWritesAll = default(bool?))
 
-        : base(id, name, type, etag)
+        : base(id, name, type, systemData)
         {
+            this.Etag = etag;
             this.ImmutabilityPeriodSinceCreationInDays = immutabilityPeriodSinceCreationInDays;
             this.State = state;
             this.AllowProtectedAppendWrites = allowProtectedAppendWrites;
@@ -79,6 +84,12 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets resource Etag.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
+        public string Etag {get; private set; }
 
         /// <summary>
         /// Gets or sets the immutability period for the blobs in the container since

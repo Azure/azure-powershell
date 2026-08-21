@@ -21,8 +21,8 @@ Update-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> [-Subscri
  [-KeyVaultPropertyKeyVersion <String>] [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>]
  [-ManagementClusterVsanDatastoreName <String>] [-NetworkBlock <String>] [-NsxtPassword <SecureString>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-VcenterPassword <SecureString>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-VcenterPassword <SecureString>] [-VcfLicense <IVcfLicense>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -34,8 +34,8 @@ Update-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-DnsZoneType <String
  [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>]
  [-ManagementClusterVsanDatastoreName <String>] [-NetworkBlock <String>] [-NsxtPassword <SecureString>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-VcenterPassword <SecureString>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-VcenterPassword <SecureString>] [-VcfLicense <IVcfLicense>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -492,6 +492,21 @@ Optionally, set the vCenter admin password when the private cloud is created
 
 ```yaml
 Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VcfLicense
+The private cloud license
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense
 Parameter Sets: (All)
 Aliases:
 

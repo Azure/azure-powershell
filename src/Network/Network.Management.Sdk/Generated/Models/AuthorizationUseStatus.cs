@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AuthorizationUseStatus
     {
+        /// <summary>
+        /// Available
+        /// </summary>
         public const string Available = "Available";
+        /// <summary>
+        /// InUse
+        /// </summary>
         public const string InUse = "InUse";
     }
 }

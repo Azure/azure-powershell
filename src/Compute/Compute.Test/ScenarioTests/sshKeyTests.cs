@@ -30,5 +30,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SshKey");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSshKeyWithTagsAndLocation()
+        {
+            TestRunner.RunTestScript("Test-SshKeyWithTagsAndLocation");
+        }
     }
 }

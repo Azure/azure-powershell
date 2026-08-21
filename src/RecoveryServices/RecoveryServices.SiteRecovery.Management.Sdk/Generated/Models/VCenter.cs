@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     /// vCenter definition.
     /// </summary>
-    public partial class VCenter : Resource
+    public partial class VCenter : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the VCenter class.
@@ -24,25 +24,32 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// Initializes a new instance of the VCenter class.
         /// </summary>
 
-        /// <param name="id">Resource Id
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource Type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource Location
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="properties">VCenter related data.
         /// </param>
-        public VCenter(string id = default(string), string name = default(string), string type = default(string), string location = default(string), VCenterProperties properties = default(VCenterProperties))
 
-        : base(id, name, type, location)
+        /// <param name="location">Resource Location
+        /// </param>
+        public VCenter(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), VCenterProperties properties = default(VCenterProperties), string location = default(string))
+
+        : base(id, name, type, systemData)
         {
             this.Properties = properties;
+            this.Location = location;
             CustomInit();
         }
 
@@ -57,5 +64,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
         public VCenterProperties Properties {get; set; }
+
+        /// <summary>
+        /// Gets or sets resource Location
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
     }
 }

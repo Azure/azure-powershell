@@ -47,7 +47,9 @@ namespace Microsoft.Azure.Commands.Network.Models
                     Name = connection.Name,
                     PeerIp = connection.PeerIp,
                     PeerAsn = connection.PeerAsn,
-                    ProvisioningState = connection.ProvisioningState
+                    ProvisioningState = connection.ProvisioningState,
+                    RoutingConfiguration = connection.RoutingConfiguration,
+                    HubVirtualNetworkConnection = connection.HubVirtualNetworkConnection
                 };
                 this.Peerings.Add(peering);
             }

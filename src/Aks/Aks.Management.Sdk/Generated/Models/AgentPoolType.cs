@@ -21,5 +21,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Use of this is strongly discouraged.
         /// </summary>
         public const string AvailabilitySet = "AvailabilitySet";
+        /// <summary>
+        /// Create an Agent Pool backed by a Single Instance VM orchestration mode.
+        /// </summary>
+        public const string VirtualMachines = "VirtualMachines";
     }
 }

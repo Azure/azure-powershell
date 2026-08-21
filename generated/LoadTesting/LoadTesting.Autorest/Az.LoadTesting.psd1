@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.LoadTesting.private.dll'
   FormatsToProcess = './Az.LoadTesting.format.ps1xml'
-  FunctionsToExport = 'Get-AzLoad', 'New-AzLoad', 'Remove-AzLoad', 'Update-AzLoad', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzLoad', 'New-AzLoad', 'Remove-AzLoad', 'Update-AzLoad'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'LoadTesting'

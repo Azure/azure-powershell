@@ -33,19 +33,24 @@ Get-AzPolicyDefinition | Where-Object {$_.Properties.metadata.category -eq 'Tags
 
 This command gets all policy definitions in the category **Tags**.
 
-### Example 6: Get the display name, description, policy type, and metadata of all policy definitions formatted as a list
+### Example 6: Get a specific policy definition version by id
+```powershell
+Get-AzPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/36fd7371-8eb7-4321-9c30-a7100022d048' -Version "1.1.1"
+```
+
+This command gets version 1.1.1 of policy definition with id /providers/Microsoft.Authorization/policyDefinitions/36fd7371-8eb7-4321-9c30-a7100022d048.
+
+### Example 7: Get all policy definition versions of a policy definition by name
+```powershell
+Get-AzPolicyDefinition -Name 'VMPolicyDefinition' -ListVersion
+```
+
+This command gets all policy definition versions of the policy definition named VMPolicyDefinition from the current default subscription.
+
+### Example 8: Get the display name, description, policy type, and metadata of all policy definitions formatted as a list
 
 ```powershell
 Get-AzPolicyDefinition | Select-Object -Property DisplayName, Description, PolicyType, Metadata | Format-List
-```
-
-This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
-Policy definition. You can parse the **Metadata** property to discover the policy definition's version number and category assignment.
-
-### Example 7: [Backcompat] Get the display name, description, policy type, and metadata of all policy definitions formatted as a list
-
-```powershell
-Get-AzPolicyDefinition -BackwardCompatible | Select-Object -ExpandProperty properties | Select-Object -Property DisplayName, Description, PolicyType, Metadata | Format-List
 ```
 
 This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure

@@ -24,13 +24,74 @@ Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName azure-rg-test 
 .Example
 Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName azure-rg-test -Name staticweb-pwsh02 -FunctionAppName functionapp-portal02 -FunctionAppResourceId '/subscriptions/xxxxxxxxx/resourcegroups/azure-rg-test/providers/Microsoft.Web/sites/functionapp-portal02' -FunctionAppRegion 'Central US' -EnvironmentName 5
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteUserProvidedFunctionAppArmResource
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserProvidedFunctionAppArmResource
+Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteUserProvidedFunctionAppArmResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BUILDINPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+  [Authprovider <String>]: The auth provider for the users.
+  [DomainName <String>]: The custom domain name.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [Id <String>]: Resource identity path
+  [JobHistoryId <String>]: History ID.
+  [Location <String>]: Location where you plan to create the static site.
+  [Name <String>]: Name of the static site.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [Slot <String>]: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [WebJobName <String>]: Name of Web Job.
+
+STATICSITE1INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+  [Authprovider <String>]: The auth provider for the users.
+  [DomainName <String>]: The custom domain name.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [Id <String>]: Resource identity path
+  [JobHistoryId <String>]: History ID.
+  [Location <String>]: Location where you plan to create the static site.
+  [Name <String>]: Name of the static site.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [Slot <String>]: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [WebJobName <String>]: Name of Web Job.
+
+STATICSITEINPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+  [Authprovider <String>]: The auth provider for the users.
+  [DomainName <String>]: The custom domain name.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [Id <String>]: Resource identity path
+  [JobHistoryId <String>]: History ID.
+  [Location <String>]: Location where you plan to create the static site.
+  [Name <String>]: Name of the static site.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [Slot <String>]: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [WebJobName <String>]: Name of Web Job.
+
+STATICSITEUSERPROVIDEDFUNCTIONENVELOPE <IStaticSiteUserProvidedFunctionAppArmResource>: Static Site User Provided Function App ARM resource.
+  [Kind <String>]: Kind of resource.
+  [FunctionAppRegion <String>]: The region of the function app registered with the static site
+  [FunctionAppResourceId <String>]: The resource id of the function app registered with the static site
 .Link
 https://learn.microsoft.com/powershell/module/az.websites/register-azstaticwebappuserprovidedfunctionapp
 #>
 function Register-AzStaticWebAppUserProvidedFunctionApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserProvidedFunctionAppArmResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteUserProvidedFunctionAppArmResource])]
 [CmdletBinding(DefaultParameterSetName='RegisterExpanded1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -39,25 +100,44 @@ param(
     # Name of the function app to register with the static site build.
     ${FunctionAppName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
-    [System.String]
-    # Name of the static site.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
-    [System.String]
-    # Name of the resource group to which the resource belongs.
-    ${ResourceGroupName},
-
     [Parameter(ParameterSetName='RegisterExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegisterViaIdentityStaticSite', Mandatory)]
+    [Parameter(ParameterSetName='RegisterViaIdentityStaticSiteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegisterViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegisterViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [System.String]
     # The stage site identifier.
     ${EnvironmentName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='RegisterExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegisterExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='RegisterViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegisterViaJsonFilePath1', Mandatory)]
+    [Parameter(ParameterSetName='RegisterViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='RegisterViaJsonString1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
+    [System.String]
+    # Name of the static site.
+    ${Name},
+
+    [Parameter(ParameterSetName='RegisterExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegisterExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='RegisterViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegisterViaJsonFilePath1', Mandatory)]
+    [Parameter(ParameterSetName='RegisterViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='RegisterViaJsonString1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
+    [System.String]
+    # Name of the resource group to which the resource belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='RegisterExpanded')]
+    [Parameter(ParameterSetName='RegisterExpanded1')]
+    [Parameter(ParameterSetName='RegisterViaJsonFilePath')]
+    [Parameter(ParameterSetName='RegisterViaJsonFilePath1')]
+    [Parameter(ParameterSetName='RegisterViaJsonString')]
+    [Parameter(ParameterSetName='RegisterViaJsonString1')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -66,6 +146,27 @@ param(
     # 00000000-0000-0000-0000-000000000000).
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='RegisterViaIdentityBuild', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RegisterViaIdentityBuildExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity]
+    # Identity Parameter
+    ${BuildInputObject},
+
+    [Parameter(ParameterSetName='RegisterViaIdentityStaticSite', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RegisterViaIdentityStaticSiteExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RegisterViaIdentityStaticSiteExpanded1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity]
+    # Identity Parameter
+    ${StaticSiteInputObject},
+
+    [Parameter(ParameterSetName='RegisterViaIdentityStaticSite1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity]
+    # Identity Parameter
+    ${StaticSite1InputObject},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Query')]
     [System.Management.Automation.SwitchParameter]
@@ -73,23 +174,57 @@ param(
     # The default is <code>false</code>.
     ${Forced},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='RegisterExpanded')]
+    [Parameter(ParameterSetName='RegisterExpanded1')]
+    [Parameter(ParameterSetName='RegisterViaIdentityBuildExpanded')]
+    [Parameter(ParameterSetName='RegisterViaIdentityStaticSiteExpanded')]
+    [Parameter(ParameterSetName='RegisterViaIdentityStaticSiteExpanded1')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # The region of the function app registered with the static site
     ${FunctionAppRegion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='RegisterExpanded')]
+    [Parameter(ParameterSetName='RegisterExpanded1')]
+    [Parameter(ParameterSetName='RegisterViaIdentityBuildExpanded')]
+    [Parameter(ParameterSetName='RegisterViaIdentityStaticSiteExpanded')]
+    [Parameter(ParameterSetName='RegisterViaIdentityStaticSiteExpanded1')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # The resource id of the function app registered with the static site
     ${FunctionAppResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='RegisterExpanded')]
+    [Parameter(ParameterSetName='RegisterExpanded1')]
+    [Parameter(ParameterSetName='RegisterViaIdentityBuildExpanded')]
+    [Parameter(ParameterSetName='RegisterViaIdentityStaticSiteExpanded')]
+    [Parameter(ParameterSetName='RegisterViaIdentityStaticSiteExpanded1')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # Kind of resource.
     ${Kind},
+
+    [Parameter(ParameterSetName='RegisterViaIdentityBuild', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RegisterViaIdentityStaticSite', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RegisterViaIdentityStaticSite1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteUserProvidedFunctionAppArmResource]
+    # Static Site User Provided Function App ARM resource.
+    ${StaticSiteUserProvidedFunctionEnvelope},
+
+    [Parameter(ParameterSetName='RegisterViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegisterViaJsonFilePath1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Register operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RegisterViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='RegisterViaJsonString1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Json string supplied to the Register operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -159,6 +294,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -180,10 +323,18 @@ begin {
         $mapping = @{
             RegisterExpanded = 'Az.Websites.private\Register-AzStaticWebAppUserProvidedFunctionApp_RegisterExpanded';
             RegisterExpanded1 = 'Az.Websites.private\Register-AzStaticWebAppUserProvidedFunctionApp_RegisterExpanded1';
+            RegisterViaIdentityBuild = 'Az.Websites.private\Register-AzStaticWebAppUserProvidedFunctionApp_RegisterViaIdentityBuild';
+            RegisterViaIdentityBuildExpanded = 'Az.Websites.private\Register-AzStaticWebAppUserProvidedFunctionApp_RegisterViaIdentityBuildExpanded';
+            RegisterViaIdentityStaticSite = 'Az.Websites.private\Register-AzStaticWebAppUserProvidedFunctionApp_RegisterViaIdentityStaticSite';
+            RegisterViaIdentityStaticSite1 = 'Az.Websites.private\Register-AzStaticWebAppUserProvidedFunctionApp_RegisterViaIdentityStaticSite1';
+            RegisterViaIdentityStaticSiteExpanded = 'Az.Websites.private\Register-AzStaticWebAppUserProvidedFunctionApp_RegisterViaIdentityStaticSiteExpanded';
+            RegisterViaIdentityStaticSiteExpanded1 = 'Az.Websites.private\Register-AzStaticWebAppUserProvidedFunctionApp_RegisterViaIdentityStaticSiteExpanded1';
+            RegisterViaJsonFilePath = 'Az.Websites.private\Register-AzStaticWebAppUserProvidedFunctionApp_RegisterViaJsonFilePath';
+            RegisterViaJsonFilePath1 = 'Az.Websites.private\Register-AzStaticWebAppUserProvidedFunctionApp_RegisterViaJsonFilePath1';
+            RegisterViaJsonString = 'Az.Websites.private\Register-AzStaticWebAppUserProvidedFunctionApp_RegisterViaJsonString';
+            RegisterViaJsonString1 = 'Az.Websites.private\Register-AzStaticWebAppUserProvidedFunctionApp_RegisterViaJsonString1';
         }
-        if (('RegisterExpanded', 'RegisterExpanded1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('RegisterExpanded', 'RegisterExpanded1', 'RegisterViaJsonFilePath', 'RegisterViaJsonFilePath1', 'RegisterViaJsonString', 'RegisterViaJsonString1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -197,6 +348,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

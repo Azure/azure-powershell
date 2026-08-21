@@ -16,7 +16,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnEndpointRes
 
 Describe 'Get-AzFrontDoorCdnEndpointResourceUsage'  {
     It 'List' {
-        $endpointUsage = Get-AzFrontDoorCdnEndpointResourceUsage -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $env.FrontDoorEndpointName
-        $endpointUsage | Should -not -BeNullOrEmpty 
+        # Create endpoint for resource usage testing
+        $endpointName = 'end-resusage01'
+        Write-Host -ForegroundColor Green "Create FrontDoor endpoint for resource usage test: $endpointName"
+        New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
+
+        $endpointUsage = Get-AzFrontDoorCdnEndpointResourceUsage -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $endpointName
+        $endpointUsage | Should -not -BeNullOrEmpty
+
+        # Cleanup
+        Remove-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
     }
 }

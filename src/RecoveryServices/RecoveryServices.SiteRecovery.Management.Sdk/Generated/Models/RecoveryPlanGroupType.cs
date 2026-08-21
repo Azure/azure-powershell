@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class RecoveryPlanGroupType
     {
+        /// <summary>
+        /// Shutdown
+        /// </summary>
         public const string Shutdown = "Shutdown";
+        /// <summary>
+        /// Boot
+        /// </summary>
         public const string Boot = "Boot";
+        /// <summary>
+        /// Failover
+        /// </summary>
         public const string Failover = "Failover";
     }
 }

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class EffectiveRouteState
     {
+        /// <summary>
+        /// Active
+        /// </summary>
         public const string Active = "Active";
+        /// <summary>
+        /// Invalid
+        /// </summary>
         public const string Invalid = "Invalid";
     }
 }

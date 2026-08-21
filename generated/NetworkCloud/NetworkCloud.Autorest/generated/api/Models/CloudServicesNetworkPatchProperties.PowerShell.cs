@@ -79,6 +79,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("StorageOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOption = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageOptionsPatch) content.GetValueForProperty("StorageOption",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOption, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkStorageOptionsPatchTypeConverter.ConvertFrom);
+            }
             if (content.Contains("AdditionalEgressEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).AdditionalEgressEndpoint = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IEgressEndpoint>) content.GetValueForProperty("AdditionalEgressEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).AdditionalEgressEndpoint, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IEgressEndpoint>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.EgressEndpointTypeConverter.ConvertFrom));
@@ -86,6 +90,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("EnableDefaultEgressEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).EnableDefaultEgressEndpoint = (string) content.GetValueForProperty("EnableDefaultEgressEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).EnableDefaultEgressEndpoint, global::System.Convert.ToString);
+            }
+            if (content.Contains("StorageOptionMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOptionMode = (string) content.GetValueForProperty("StorageOptionMode",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOptionMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("StorageOptionSizeMiB"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOptionSizeMiB = (long?) content.GetValueForProperty("StorageOptionSizeMiB",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOptionSizeMiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("StorageOptionStorageApplianceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOptionStorageApplianceId = (string) content.GetValueForProperty("StorageOptionStorageApplianceId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOptionStorageApplianceId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -104,6 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("StorageOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOption = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageOptionsPatch) content.GetValueForProperty("StorageOption",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOption, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkStorageOptionsPatchTypeConverter.ConvertFrom);
+            }
             if (content.Contains("AdditionalEgressEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).AdditionalEgressEndpoint = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IEgressEndpoint>) content.GetValueForProperty("AdditionalEgressEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).AdditionalEgressEndpoint, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IEgressEndpoint>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.EgressEndpointTypeConverter.ConvertFrom));
@@ -111,6 +131,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("EnableDefaultEgressEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).EnableDefaultEgressEndpoint = (string) content.GetValueForProperty("EnableDefaultEgressEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).EnableDefaultEgressEndpoint, global::System.Convert.ToString);
+            }
+            if (content.Contains("StorageOptionMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOptionMode = (string) content.GetValueForProperty("StorageOptionMode",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOptionMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("StorageOptionSizeMiB"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOptionSizeMiB = (long?) content.GetValueForProperty("StorageOptionSizeMiB",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOptionSizeMiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("StorageOptionStorageApplianceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOptionStorageApplianceId = (string) content.GetValueForProperty("StorageOptionStorageApplianceId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)this).StorageOptionStorageApplianceId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzConfluentOrganization' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded'{
       Update-AzConfluentOrganization -ResourceGroupName $env.resourceGroup -Name $env.confluentOrgName00 -Tag @{"key01" = "value01"; "key02" = "value02"; "key03" = "value03"}
       $confluentOrg =  Get-AzConfluentOrganization -ResourceGroupName $env.resourceGroup -Name $env.confluentOrgName00
       $confluentOrg.Tag.Count | Should -Be 3

@@ -16,18 +16,18 @@ Describe 'Expand-AzWvdMsixImage' {
     It 'Expand' {
         try{
             
-            $package = Expand-AzWvdMsixImage -HostPoolName $env.HostPoolPersistent2 `
+            $package = Expand-AzWvdMsixImage -HostPoolName $env.HostPoolPersistent `
                 -ResourceGroupName $env.ResourceGroupPersistent `
                 -SubscriptionId $env.SubscriptionId `
                 -Uri $env.MSIXImagePath
              
-            $package.PackageFamilyName | Should -Be  'Mozilla.MozillaFirefox_gmpnhwe7bv608'
-            $package.ImagePath | Should -Be 'C:\AppAttach\Firefox20110.0.1.vhdx'
-            $package.PackageName | Should -Be 'Mozilla.MozillaFirefox'
-            $package.PackageAlias | Should -Be 'mozillamozillafirefox'
-            $package.IsActive | Should -Be $False
-            $package.IsRegularRegistration | Should -Be $False
-            $package.PackageRelativePath | Should -Be '\apps\Mozilla.MozillaFirefox_110.0.1.0_x64__gmpnhwe7bv608'
+            $package[0].PackageFamilyName | Should -Be  $env.MSIXImageFamilyName
+            $package[0].ImagePath | Should -Be $env.MSIXImagePath
+            $package[0].PackageName | Should -Be $env.MSIXImagePackageName
+            $package[0].PackageAlias | Should -Be $env.MSIXImagePackageAlias
+            $package[0].IsActive | Should -Be $False
+            $package[0].IsRegularRegistration | Should -Be $False
+            $package[0].PackageRelativePath | Should -Be $env.MSIXImagePackageRelativePath
         }
         finally{
         }

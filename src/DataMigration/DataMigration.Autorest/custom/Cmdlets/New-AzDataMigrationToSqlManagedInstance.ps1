@@ -21,6 +21,12 @@ function New-AzDataMigrationToSqlManagedInstance
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDatabaseMigrationSqlMi')]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess = $true)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description('Create a new database migration to a given SQL Managed Instance.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.PreviewMessage(
+      "**********************************************************************************************`n
+      * This cmdlet will undergo a breaking change in Az v17.0.0, to be released on November 2026. *`n
+      * At least one change applies to this cmdlet.                                                     *`n
+      * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+      ***************************************************************************************************")]
 
     param(
         [Parameter(Mandatory, HelpMessage = "Name of the target SQL Managed Instance.")]

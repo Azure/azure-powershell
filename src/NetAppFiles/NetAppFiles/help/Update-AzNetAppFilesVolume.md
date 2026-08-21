@@ -21,8 +21,9 @@ Update-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -Accou
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
  [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
- [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-DesiredRansomwareProtectionState <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -33,9 +34,9 @@ Update-AzNetAppFilesVolume -Name <String> [-UsageThreshold <Int64>] [-ServiceLev
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
  [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
- [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] -PoolObject <PSNetAppFilesPool>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-DesiredRansomwareProtectionState <String>]
+ -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -46,9 +47,9 @@ Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
  [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
- [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-DesiredRansomwareProtectionState <String>]
+ -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -59,9 +60,9 @@ Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
  [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
- [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] -InputObject <PSNetAppFilesVolume>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-DesiredRansomwareProtectionState <String>]
+ -InputObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -222,6 +223,21 @@ Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the mini
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DesiredRansomwareProtectionState
+The desired state of the Advanced Ransomware Protection (ARP) feature. Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -19,6 +19,12 @@ Start-AzWebAppTriggeredWebJob -AppName <String> -Name <String> -ResourceGroupNam
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### RunViaIdentitySite
+```
+Start-AzWebAppTriggeredWebJob -Name <String> -SiteInputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### RunViaIdentity
 ```
 Start-AzWebAppTriggeredWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
@@ -79,7 +85,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
@@ -98,7 +103,7 @@ Name of Web Job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run
+Parameter Sets: Run, RunViaIdentitySite
 Aliases:
 
 Required: True
@@ -135,6 +140,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SiteInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: RunViaIdentitySite
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

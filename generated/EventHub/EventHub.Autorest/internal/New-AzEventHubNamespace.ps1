@@ -60,9 +60,9 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [ResourceAssociationName <String>]: The ResourceAssociation Name
-  [ResourceGroupName <String>]: Name of the resource group within the azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaGroupName <String>]: The Schema Group name 
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 KEYVAULTPROPERTY <IKeyVaultProperties[]>: Properties of KeyVault
   [KeyName <String>]: Name of the Key from KeyVault
@@ -71,9 +71,6 @@ KEYVAULTPROPERTY <IKeyVaultProperties[]>: Properties of KeyVault
   [UserAssignedIdentity <String>]: ARM ID of user Identity selected for encryption
 
 PARAMETER <IEhNamespace>: Single Namespace item in List or Get Operation
-  [Location <String>]: Resource location.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
   [AlternateName <String>]: Alternate name specified when alias and namespace names are same.
   [ClusterArmId <String>]: Cluster ARM ID of the Namespace.
   [ConfidentialComputeMode <String>]: Setting to Enable or Disable Confidential Compute
@@ -84,6 +81,7 @@ PARAMETER <IEhNamespace>: Single Namespace item in List or Get Operation
     [LocationName <String>]: Azure regions where a replica of the namespace is maintained
     [RoleType <String>]: GeoDR Role Types
   [GeoDataReplicationMaxReplicationLagDurationInSecond <Int32?>]: The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.  When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.
+  [IPAddressType <String>]: The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
   [IdentityType <String>]: Type of managed service identity.
   [KafkaEnabled <Boolean?>]: Value that indicates whether Kafka is enabled for eventhub namespace.
   [KeySource <String>]: Enumerates the possible value of keySource for Encryption
@@ -92,6 +90,7 @@ PARAMETER <IEhNamespace>: Single Namespace item in List or Get Operation
     [KeyVaultUri <String>]: Uri of KeyVault
     [KeyVersion <String>]: Key Version
     [UserAssignedIdentity <String>]: ARM ID of user Identity selected for encryption
+  [Location <String>]: Resource location.
   [MaximumThroughputUnit <Int32?>]: Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)
   [MinimumTlsVersion <String>]: The minimum TLS version for the cluster to support, e.g. '1.2'
   [PrivateEndpointConnection <List<IPrivateEndpointConnection>>]: List of private endpoint connections.
@@ -104,6 +103,8 @@ PARAMETER <IEhNamespace>: Single Namespace item in List or Get Operation
   [SkuCapacity <Int32?>]: The Event Hubs throughput units for Basic or Standard tiers, where value should be 0 to 20 throughput units. The Event Hubs premium units for Premium tier, where value should be 0 to 10 premium units.
   [SkuName <String>]: Name of this SKU.
   [SkuTier <String>]: The billing tier of this particular SKU.
+  [Tag <IEhNamespaceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
   [UserAssignedIdentity <IIdentityUserAssignedIdentities>]: Properties for User Assigned Identities
     [(Any) <IUserAssignedIdentity>]: This indicates any property can be added to this object.
   [ZoneRedundant <Boolean?>]: Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
@@ -130,15 +131,15 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
-    # Name of the resource group within the azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -192,6 +193,14 @@ param(
     # When the lag exceeds the configured amount, operations on the primary replica will be failed.
     # The allowed values are 0 and 5 minutes to 1 day.
     ${GeoDataReplicationMaxReplicationLagDurationInSecond},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("IPv4", "DualStack")]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # The IP address type for the namespace.
+    # Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
+    ${IPAddressType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None")]
@@ -285,7 +294,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

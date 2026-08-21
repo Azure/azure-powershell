@@ -86,7 +86,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 The server for the connection string.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity

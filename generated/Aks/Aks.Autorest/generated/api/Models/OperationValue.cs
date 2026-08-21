@@ -40,16 +40,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplay Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueInternal.Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.OperationValueDisplay()); set { {_display = value;} } }
 
         /// <summary>Internal Acessors for DisplayDescription</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Description = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayOperation</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Operation = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Operation = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayProvider</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Provider = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Provider = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayResource</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Resource = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueDisplayInternal)Display).Resource = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOperationValueInternal.Name { get => this._name; set { {_name = value;} } }

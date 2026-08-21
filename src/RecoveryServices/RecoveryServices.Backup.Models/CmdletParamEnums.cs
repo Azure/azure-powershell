@@ -168,7 +168,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         InclusionDisksList,
         ExclusionDisksList,
         ResetExclusionSettings,
-        ExcludeAllDataDisks
+        ExcludeAllDataDisks,
+        ContainerSubscriptionId
     }
 
     public enum ProtectionCheckParams

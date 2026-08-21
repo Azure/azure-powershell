@@ -15,8 +15,8 @@ Reimage the provided bare metal machine.
 ### Reimage (Default)
 ```
 Invoke-AzNetworkCloudBareMetalMachineReimage -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ReimageViaIdentity

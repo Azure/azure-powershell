@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
 using System.Runtime.Versioning;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -63,6 +65,60 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             SoftDeleteRetentionPeriodInDays = protectedItem.SoftDeleteRetentionPeriodInDays;
             IsScheduledForDeferredDelete = protectedItem.IsScheduledForDeferredDelete;
             DeferredDeleteTimeInUtc = protectedItem.DeferredDeleteTimeInUtc;
+
+            DateOfPurge = null;
+            DeleteState = EnumUtils.GetEnum<ItemDeleteState>("NotDeleted");
+            if (protectedItem.IsScheduledForDeferredDelete.HasValue && protectedItem.IsScheduledForDeferredDelete.Value)
+            {
+                // Compute DateOfPurge from the service-returned remaining deferred-delete window
+                // (DeferredDeleteTimeRemaining).
+                // avoids relying on SoftDeleteRetentionPeriodInDays, which the service returns under the
+                // differently-named "softDeleteRetentionPeriod" field and the SDK therefore never binds.
+                if (TimeSpan.TryParse(protectedItem.DeferredDeleteTimeRemaining, CultureInfo.InvariantCulture, out TimeSpan remaining))
+                {
+                    DateOfPurge = DateTime.UtcNow.Add(remaining);
+                }
+                DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
+            }
+
+            if (protectedItem.ExtendedInfo != null && protectedItem.ExtendedInfo.ResourceState != null)
+            {
+                ResourceState = protectedItem.ExtendedInfo.ResourceState;
+            }
+        }
+
+        /// <summary>
+        /// Constructor for secondary region (CRR) items.
+        /// </summary>
+        public AzureFileShareItem(CrrModel.ProtectedItemResource protectedItemResource,
+            string containerName, ContainerType containerType, string policyName)
+            : base(protectedItemResource, containerName, containerType, policyName)
+        {
+            CrrModel.AzureFileshareProtectedItem protectedItem =
+                (CrrModel.AzureFileshareProtectedItem)protectedItemResource.Properties;
+            LastBackupStatus = protectedItem.LastBackupStatus;
+            LastBackupTime = protectedItem.LastBackupTime;
+            ProtectionState =
+                EnumUtils.GetEnum<ItemProtectionState>(protectedItem.ProtectionState.ToString());
+            ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
+            FriendlyName = protectedItem.FriendlyName;
+            ResourceState = "";
+
+            IsScheduledForDeferredDelete = protectedItem.IsScheduledForDeferredDelete;
+            DeferredDeleteTimeInUtc = protectedItem.DeferredDeleteTimeInUtc;
+
+            DateOfPurge = null;
+            DeleteState = EnumUtils.GetEnum<ItemDeleteState>("NotDeleted");
+            if (protectedItem.IsScheduledForDeferredDelete.HasValue && protectedItem.IsScheduledForDeferredDelete.Value)
+            {
+                // Compute DateOfPurge from the service-returned remaining deferred-delete window
+                // (DeferredDeleteTimeRemaining), avoiding the SoftDeleteRetentionPeriodInDays property
+                if (TimeSpan.TryParse(protectedItem.DeferredDeleteTimeRemaining, CultureInfo.InvariantCulture, out TimeSpan remaining))
+                {
+                    DateOfPurge = DateTime.UtcNow.Add(remaining);
+                }
+                DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
+            }
 
             if (protectedItem.ExtendedInfo != null && protectedItem.ExtendedInfo.ResourceState != null)
             {

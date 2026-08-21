@@ -35,14 +35,14 @@ function New-AzFrontDoorWafMatchConditionObject {
         [string[]]
         $MatchValue,
         [Parameter(Mandatory, HelpMessage="Request variable to compare with.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("RemoteAddr", "RequestMethod", "QueryString", "PostArgs", "RequestUri", "RequestHeader", "RequestBody", "Cookies", "SocketAddr")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("RemoteAddr", "RequestMethod", "QueryString", "PostArgs", "RequestUri", "RequestHeader", "RequestBody", "Cookies", "SocketAddr", "JA4")]
         [string]
         $MatchVariable,
         [Parameter(HelpMessage="Describes if the result of this condition should be negated.")]
         [bool]
         $NegateCondition,
         [Parameter(Mandatory, HelpMessage="Comparison type to use for matching with the variable value.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx", "ServiceTagMatch")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx", "ServiceTagMatch", "AsnMatch", "ClientFingerprint")]
         [string]
         $OperatorProperty,
         [Parameter(HelpMessage="Match against a specific key from the QueryString, PostArgs, RequestHeader or Cookies variables. Default is null.")]

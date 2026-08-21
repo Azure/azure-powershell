@@ -67,6 +67,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -75,6 +78,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Load Test name.",
         SerializedName = @"loadTestName",
         PossibleTypes = new [] { typeof(string) })]
@@ -83,6 +89,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -91,6 +100,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Quota Bucket name.",
         SerializedName = @"quotaBucketName",
         PossibleTypes = new [] { typeof(string) })]
@@ -99,6 +111,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -107,6 +122,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

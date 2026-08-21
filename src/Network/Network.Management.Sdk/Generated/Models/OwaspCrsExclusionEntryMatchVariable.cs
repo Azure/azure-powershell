@@ -13,14 +13,41 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class OwaspCrsExclusionEntryMatchVariable
     {
+        /// <summary>
+        /// RequestHeaderNames
+        /// </summary>
         public const string RequestHeaderNames = "RequestHeaderNames";
+        /// <summary>
+        /// RequestCookieNames
+        /// </summary>
         public const string RequestCookieNames = "RequestCookieNames";
+        /// <summary>
+        /// RequestArgNames
+        /// </summary>
         public const string RequestArgNames = "RequestArgNames";
+        /// <summary>
+        /// RequestHeaderKeys
+        /// </summary>
         public const string RequestHeaderKeys = "RequestHeaderKeys";
+        /// <summary>
+        /// RequestHeaderValues
+        /// </summary>
         public const string RequestHeaderValues = "RequestHeaderValues";
+        /// <summary>
+        /// RequestCookieKeys
+        /// </summary>
         public const string RequestCookieKeys = "RequestCookieKeys";
+        /// <summary>
+        /// RequestCookieValues
+        /// </summary>
         public const string RequestCookieValues = "RequestCookieValues";
+        /// <summary>
+        /// RequestArgKeys
+        /// </summary>
         public const string RequestArgKeys = "RequestArgKeys";
+        /// <summary>
+        /// RequestArgValues
+        /// </summary>
         public const string RequestArgValues = "RequestArgValues";
     }
 }

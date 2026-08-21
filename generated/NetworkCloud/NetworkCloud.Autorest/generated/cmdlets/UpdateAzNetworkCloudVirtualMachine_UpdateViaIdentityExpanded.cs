@@ -11,17 +11,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     using System;
 
     /// <summary>
-    /// Patch the properties of the provided virtual machine, or update the tags associated with the virtual machine. Properties
-    /// and tag update can be done independently.
+    /// update a new virtual machine or update the properties of the existing virtual machine.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzNetworkCloudVirtualMachine_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Patch the properties of the provided virtual machine, or update the tags associated with the virtual machine. Properties and tag update can be done independently.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"update a new virtual machine or update the properties of the existing virtual machine.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}", ApiVersion = "2025-02-01")]
     public partial class UpdateAzNetworkCloudVirtualMachine_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IContext
@@ -43,10 +42,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>
-        /// VirtualMachinePatchParameters represents the body of the request to patch the virtual machine.
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParameters _virtualMachineUpdateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachinePatchParameters();
+        /// <summary>VirtualMachine represents the on-premises Network Cloud virtual machine.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine _virtualMachineParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachine();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -73,6 +70,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public System.Boolean? EnableSystemAssignedIdentity { get; set; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -171,17 +172,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>The Azure resource tags that will replace the existing ones.</summary>
+        /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Azure resource tags that will replace the existing ones.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The Azure resource tags that will replace the existing ones.",
+        Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersTags Tag { get => _virtualMachineUpdateParametersBody.Tag ?? null /* object */; set => _virtualMachineUpdateParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags Tag { get => _virtualMachineParametersBody.Tag ?? null /* object */; set => _virtualMachineParametersBody.Tag = value; }
+
+        /// <summary>
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>The password or token used to access an image in the target repository.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The password or token used to access an image in the target repository.")]
@@ -192,7 +201,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The password or token used to access an image in the target repository.",
         SerializedName = @"password",
         PossibleTypes = new [] { typeof(System.Security.SecureString) })]
-        public System.Security.SecureString VMImageRepositoryCredentialsPassword { get => _virtualMachineUpdateParametersBody.VMImageRepositoryCredentialsPassword ?? null; set => _virtualMachineUpdateParametersBody.VMImageRepositoryCredentialsPassword = value; }
+        public System.Security.SecureString VMImageRepositoryCredentialsPassword { get => _virtualMachineParametersBody.VMImageRepositoryCredentialsPassword ?? null; set => _virtualMachineParametersBody.VMImageRepositoryCredentialsPassword = value; }
 
         /// <summary>
         /// The URL of the authentication server used to validate the repository credentials.
@@ -205,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The URL of the authentication server used to validate the repository credentials.",
         SerializedName = @"registryUrl",
         PossibleTypes = new [] { typeof(string) })]
-        public string VMImageRepositoryCredentialsRegistryUrl { get => _virtualMachineUpdateParametersBody.VMImageRepositoryCredentialsRegistryUrl ?? null; set => _virtualMachineUpdateParametersBody.VMImageRepositoryCredentialsRegistryUrl = value; }
+        public string VMImageRepositoryCredentialsRegistryUrl { get => _virtualMachineParametersBody.VMImageRepositoryCredentialsRegistryUrl ?? null; set => _virtualMachineParametersBody.VMImageRepositoryCredentialsRegistryUrl = value; }
 
         /// <summary>The username used to access an image in the target repository.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The username used to access an image in the target repository.")]
@@ -216,7 +225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The username used to access an image in the target repository.",
         SerializedName = @"username",
         PossibleTypes = new [] { typeof(string) })]
-        public string VMImageRepositoryCredentialsUsername { get => _virtualMachineUpdateParametersBody.VMImageRepositoryCredentialsUsername ?? null; set => _virtualMachineUpdateParametersBody.VMImageRepositoryCredentialsUsername = value; }
+        public string VMImageRepositoryCredentialsUsername { get => _virtualMachineParametersBody.VMImageRepositoryCredentialsUsername ?? null; set => _virtualMachineParametersBody.VMImageRepositoryCredentialsUsername = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -279,7 +288,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone._virtualMachineUpdateParametersBody = this._virtualMachineUpdateParametersBody;
+            clone._virtualMachineParametersBody = this._virtualMachineParametersBody;
             clone.IfMatch = this.IfMatch;
             clone.IfNoneMatch = this.IfNoneMatch;
             return clone;
@@ -421,6 +430,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
             }
         }
 
+        private void PreProcessManagedIdentityParametersWithGetResult()
+        {
+            bool supportsSystemAssignedIdentity = (true == this.EnableSystemAssignedIdentity || null == this.EnableSystemAssignedIdentity && true == _virtualMachineParametersBody?.IdentityType?.Contains("SystemAssigned"));
+            bool supportsUserAssignedIdentity = false;
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _virtualMachineParametersBody.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _virtualMachineParametersBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.UserAssignedIdentity());
+                }
+            }
+            supportsUserAssignedIdentity = true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && this.UserAssignedIdentity?.Length > 0 ||
+                    true != this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && true == _virtualMachineParametersBody.IdentityType?.Contains("UserAssigned");
+            if (!supportsUserAssignedIdentity)
+            {
+                _virtualMachineParametersBody.IdentityUserAssignedIdentity = null;
+            }
+            // calculate IdentityType
+            if ((supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _virtualMachineParametersBody.IdentityType = "SystemAssigned,UserAssigned";
+            }
+            else if ((supportsUserAssignedIdentity && !supportsSystemAssignedIdentity))
+            {
+                _virtualMachineParametersBody.IdentityType = "UserAssigned";
+            }
+            else if ((!supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _virtualMachineParametersBody.IdentityType = "SystemAssigned";
+            }
+            else
+            {
+                _virtualMachineParametersBody.IdentityType = "None";
+            }
+        }
+
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
@@ -429,7 +476,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'VirtualMachinesUpdate' operation"))
+                if (ShouldProcess($"Call remote 'VirtualMachinesCreateOrUpdate' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -495,7 +542,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.VirtualMachinesUpdateViaIdentity(InputObject.Id, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _virtualMachineUpdateParametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeUpdate);
+                        _virtualMachineParametersBody = await this.Client.VirtualMachinesGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_virtualMachineParametersBody();
+                        await this.Client.VirtualMachinesCreateOrUpdateViaIdentity(InputObject.Id, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _virtualMachineParametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -512,7 +562,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.VirtualMachineName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.VirtualMachinesUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.VirtualMachineName ?? null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _virtualMachineUpdateParametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeUpdate);
+                        _virtualMachineParametersBody = await this.Client.VirtualMachinesGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.VirtualMachineName ?? null, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_virtualMachineParametersBody();
+                        await this.Client.VirtualMachinesCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.VirtualMachineName ?? null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _virtualMachineParametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -543,6 +596,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         public UpdateAzNetworkCloudVirtualMachine_UpdateViaIdentityExpanded()
         {
 
+        }
+
+        private void Update_virtualMachineParametersBody()
+        {
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
+            {
+                this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("VMImageRepositoryCredentialsPassword")))
+            {
+                this.VMImageRepositoryCredentialsPassword = (System.Security.SecureString)(this.MyInvocation?.BoundParameters["VMImageRepositoryCredentialsPassword"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("VMImageRepositoryCredentialsRegistryUrl")))
+            {
+                this.VMImageRepositoryCredentialsRegistryUrl = (string)(this.MyInvocation?.BoundParameters["VMImageRepositoryCredentialsRegistryUrl"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("VMImageRepositoryCredentialsUsername")))
+            {
+                this.VMImageRepositoryCredentialsUsername = (string)(this.MyInvocation?.BoundParameters["VMImageRepositoryCredentialsUsername"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>

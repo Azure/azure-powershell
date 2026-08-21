@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>List of IP Extended Communities.</summary>
+    /// <summary>The response of a IpExtendedCommunity list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(IPExtendedCommunityListResultTypeConverter))]
     public partial class IPExtendedCommunityListResult
     {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// List of IP Extended Communities.
+    /// The response of a IpExtendedCommunity list operation.
     [System.ComponentModel.TypeConverter(typeof(IPExtendedCommunityListResultTypeConverter))]
     public partial interface IIPExtendedCommunityListResult
 

@@ -963,5 +963,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
                 return ResourceManager.GetString("x86InProgramFiles", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account type &apos;{0}&apos; is not supported for SSH certificate generation. Supported types are: User, ServicePrincipal..
+        /// </summary>
+        public static string UnsupportedAccountTypeForSshCertificate {
+            get {
+                return ResourceManager.GetString("UnsupportedAccountTypeForSshCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No credential (client secret or certificate) found for the Service Principal. Please re-authenticate using Connect-AzAccount with -CertificateThumbprint, -CertificatePath, or a client secret..
+        /// </summary>
+        public static string ServicePrincipalCredentialNotFound {
+            get {
+                return ResourceManager.GetString("ServicePrincipalCredentialNotFound", resourceCulture);
+            }
+        }
     }
 }

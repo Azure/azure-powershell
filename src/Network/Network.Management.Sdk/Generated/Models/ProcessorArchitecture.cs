@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ProcessorArchitecture
     {
+        /// <summary>
+        /// Amd64
+        /// </summary>
         public const string Amd64 = "Amd64";
+        /// <summary>
+        /// X86
+        /// </summary>
         public const string X86 = "X86";
     }
 }

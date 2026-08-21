@@ -55,12 +55,16 @@ function Invoke-AzKustoDetachClusterFollowerDatabase {
 [CmdletBinding(DefaultParameterSetName='DetachExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='DetachExpanded', Mandatory)]
+    [Parameter(ParameterSetName='DetachViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='DetachViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the Kusto cluster.
     ${ClusterName},
 
     [Parameter(ParameterSetName='DetachExpanded', Mandatory)]
+    [Parameter(ParameterSetName='DetachViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='DetachViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -68,6 +72,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='DetachExpanded')]
+    [Parameter(ParameterSetName='DetachViaJsonFilePath')]
+    [Parameter(ParameterSetName='DetachViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -78,20 +84,33 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='DetachExpanded', Mandatory)]
+    [Parameter(ParameterSetName='DetachViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
     # Resource name of the attached database configuration in the follower cluster.
     ${AttachedDatabaseConfigurationName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='DetachExpanded', Mandatory)]
+    [Parameter(ParameterSetName='DetachViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
     # Resource id of the cluster that follows a database owned by this cluster.
     ${ClusterResourceId},
+
+    [Parameter(ParameterSetName='DetachViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Detach operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='DetachViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Json string supplied to the Detach operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -167,6 +186,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -188,10 +215,10 @@ begin {
         $mapping = @{
             DetachExpanded = 'Az.Kusto.private\Invoke-AzKustoDetachClusterFollowerDatabase_DetachExpanded';
             DetachViaIdentityExpanded = 'Az.Kusto.private\Invoke-AzKustoDetachClusterFollowerDatabase_DetachViaIdentityExpanded';
+            DetachViaJsonFilePath = 'Az.Kusto.private\Invoke-AzKustoDetachClusterFollowerDatabase_DetachViaJsonFilePath';
+            DetachViaJsonString = 'Az.Kusto.private\Invoke-AzKustoDetachClusterFollowerDatabase_DetachViaJsonString';
         }
-        if (('DetachExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('DetachExpanded', 'DetachViaJsonFilePath', 'DetachViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -205,6 +232,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

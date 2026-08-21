@@ -179,6 +179,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).AttachedVirtualMachineScaleSetId = (string) content.GetValueForProperty("AttachedVirtualMachineScaleSetId",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).AttachedVirtualMachineScaleSetId, global::System.Convert.ToString);
             }
+            if (content.Contains("ElasticityProfileDynamicSizing"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfileDynamicSizing = (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IDynamicSizing) content.GetValueForProperty("ElasticityProfileDynamicSizing",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfileDynamicSizing, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.DynamicSizingTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ElasticityProfileMaxReadyCapacity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfileMaxReadyCapacity = (long?) content.GetValueForProperty("ElasticityProfileMaxReadyCapacity",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfileMaxReadyCapacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
@@ -186,6 +190,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             if (content.Contains("ElasticityProfileMinReadyCapacity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfileMinReadyCapacity = (long?) content.GetValueForProperty("ElasticityProfileMinReadyCapacity",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfileMinReadyCapacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ElasticityProfilePostProvisioningDelay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfilePostProvisioningDelay = (string) content.GetValueForProperty("ElasticityProfilePostProvisioningDelay",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfilePostProvisioningDelay, global::System.Convert.ToString);
+            }
+            if (content.Contains("DynamicSizingEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).DynamicSizingEnabled = (bool?) content.GetValueForProperty("DynamicSizingEnabled",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).DynamicSizingEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -272,6 +284,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).AttachedVirtualMachineScaleSetId = (string) content.GetValueForProperty("AttachedVirtualMachineScaleSetId",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).AttachedVirtualMachineScaleSetId, global::System.Convert.ToString);
             }
+            if (content.Contains("ElasticityProfileDynamicSizing"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfileDynamicSizing = (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IDynamicSizing) content.GetValueForProperty("ElasticityProfileDynamicSizing",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfileDynamicSizing, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.DynamicSizingTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ElasticityProfileMaxReadyCapacity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfileMaxReadyCapacity = (long?) content.GetValueForProperty("ElasticityProfileMaxReadyCapacity",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfileMaxReadyCapacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
@@ -279,6 +295,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             if (content.Contains("ElasticityProfileMinReadyCapacity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfileMinReadyCapacity = (long?) content.GetValueForProperty("ElasticityProfileMinReadyCapacity",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfileMinReadyCapacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ElasticityProfilePostProvisioningDelay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfilePostProvisioningDelay = (string) content.GetValueForProperty("ElasticityProfilePostProvisioningDelay",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).ElasticityProfilePostProvisioningDelay, global::System.Convert.ToString);
+            }
+            if (content.Contains("DynamicSizingEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).DynamicSizingEnabled = (bool?) content.GetValueForProperty("DynamicSizingEnabled",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceInternal)this).DynamicSizingEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

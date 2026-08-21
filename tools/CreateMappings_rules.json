@@ -561,10 +561,6 @@
     "alias": "Portal"
   },
   {
-    "regex": "PostgreSql",
-    "alias": "Database for PostgreSQL"
-  },
-  {
     "module": "SqlVirtualMachine",
     "alias": "Sql VM"
   },
@@ -705,6 +701,10 @@
     "module": "DiskPool"
   },
   {
+    "alias": "Discovery",
+    "module": "Discovery"
+  },
+  {
     "alias": "Datadog",
     "regex": "Datadog"
   },
@@ -787,10 +787,6 @@
   {
     "module": "LoadTesting",
     "alias": "LoadTesting"
-  },
-  {
-    "alias": "MobileNetwork",
-    "module": "MobileNetwork"
   },
   {
     "module": "ArcResourceBridge",
@@ -893,10 +889,6 @@
     "alias": "Oracle"
   },
   {
-    "alias": "Astro",
-    "module": "Astro"
-  },
-  {
     "module": "Fabric",
     "alias": "Fabric"
   },
@@ -941,24 +933,12 @@
     "alias": "IoTOperationsService"
   },
   {
-    "module": "TrustedSigning",
-    "alias": "TrustedSigning"
-  },
-  {
     "module": "ScVmm",
     "alias": "ScVmm"
   },
   {
     "alias": "ArizeAI",
     "module": "ArizeAI"
-  },
-  {
-    "module": "WeightsAndBiases",
-    "alias": "WeightsAndBiases"
-  },
-  {
-    "module": "Pinecone",
-    "alias": "Pinecone"
   },
   {
     "alias": "LambdaTest",
@@ -1007,5 +987,53 @@
   {
     "alias": "DisconnectedOperations",
     "module": "DisconnectedOperations"
+  },
+  {
+    "alias": "EdgeAction",
+    "module": "EdgeAction"
+  },
+  {
+    "module": "ChangeSafety",
+    "alias": "ChangeSafety"
+  },
+  {
+    "alias": "ArtifactSigning",
+    "module": "ArtifactSigning"
+  },
+  {
+    "module": "FileShare",
+    "alias": "FileShare"
+  },
+  {
+    "module": "ComputeLimit",
+    "alias": "ComputeLimit"
+  },
+  {
+    "module": "ServiceGroups",
+    "alias": "ServiceGroups"
+  },
+  {
+    "module": "PlanetaryComputer",
+    "alias": "PlanetaryComputer"
+  },
+  {
+    "module": "Relationships",
+    "alias": "Relationships"
+  },
+  {
+    "module": "PostgreSqlFlexibleServer",
+    "alias": "PostgreSqlFlexibleServer"
+  },
+  {
+    "module": "Napster",
+    "alias": "Napster"
+  },
+  {
+    "alias": "Dell",
+    "module": "Dell"
+  },
+  {
+    "alias": "Mission",
+    "module": "Mission"
   }
 ]

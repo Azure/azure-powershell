@@ -30,6 +30,12 @@ Get-AzStackHciDeploymentSetting -InputObject <IStackHciIdentity> [-DefaultProfil
  [<CommonParameters>]
 ```
 
+### GetViaIdentityCluster
+```
+Get-AzStackHciDeploymentSetting -ClusterInputObject <IStackHciIdentity> -SName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a DeploymentSetting
 
@@ -49,6 +55,21 @@ default   test-rg
 Gets the deployment setting in the cluster
 
 ## PARAMETERS
+
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
+Parameter Sets: GetViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -ClusterName
 The name of the cluster.
@@ -83,7 +104,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
@@ -118,7 +138,7 @@ Name of Deployment Setting
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityCluster
 Aliases: DeploymentSettingsName
 
 Required: True
@@ -153,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IDeploymentSetting
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IDeploymentSetting
 
 ## NOTES
 

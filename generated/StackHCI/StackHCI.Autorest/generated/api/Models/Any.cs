@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Extensions;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     public partial class Any :
         Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAnyInternal
@@ -19,13 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
 
         }
     }
-    /// Any object
+    /// Anything
     public partial interface IAny :
         Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IJsonSerializable
     {
 
     }
-    /// Any object
+    /// Anything
     internal partial interface IAnyInternal
 
     {

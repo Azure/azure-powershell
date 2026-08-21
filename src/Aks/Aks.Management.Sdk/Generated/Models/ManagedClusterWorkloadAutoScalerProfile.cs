@@ -27,10 +27,15 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="keda">KEDA (Kubernetes Event-driven Autoscaling) settings for the workload
         /// auto-scaler profile.
         /// </param>
-        public ManagedClusterWorkloadAutoScalerProfile(ManagedClusterWorkloadAutoScalerProfileKeda keda = default(ManagedClusterWorkloadAutoScalerProfileKeda))
+
+        /// <param name="verticalPodAutoscaler">VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler
+        /// profile.
+        /// </param>
+        public ManagedClusterWorkloadAutoScalerProfile(ManagedClusterWorkloadAutoScalerProfileKeda keda = default(ManagedClusterWorkloadAutoScalerProfileKeda), ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler verticalPodAutoscaler = default(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler))
 
         {
             this.Keda = keda;
+            this.VerticalPodAutoscaler = verticalPodAutoscaler;
             CustomInit();
         }
 
@@ -46,6 +51,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "keda")]
         public ManagedClusterWorkloadAutoScalerProfileKeda Keda {get; set; }
+
+        /// <summary>
+        /// Gets or sets vPA (Vertical Pod Autoscaler) settings for the workload
+        /// auto-scaler profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "verticalPodAutoscaler")]
+        public ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler VerticalPodAutoscaler {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -57,6 +69,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             if (this.Keda != null)
             {
                 this.Keda.Validate();
+            }
+            if (this.VerticalPodAutoscaler != null)
+            {
+                this.VerticalPodAutoscaler.Validate();
             }
         }
     }

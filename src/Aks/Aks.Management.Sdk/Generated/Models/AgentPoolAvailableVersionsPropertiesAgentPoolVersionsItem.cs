@@ -7,6 +7,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
     using System.Linq;
 
+    /// <summary>
+    /// Available version information for an agent pool.
+    /// </summary>
     public partial class AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem
     {
         /// <summary>

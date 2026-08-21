@@ -59,6 +59,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             internal const string Hot = "Hot";
             internal const string Cool = "Cool";
             internal const string Cold = "Cold";
+            internal const string Smart = "Smart";
         }
         protected struct AzureBlobType
         {

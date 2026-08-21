@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStorageCacheImportJob')
 Describe 'New-AzStorageCacheImportJob' {
     It 'CreateExpanded' {
         {
-            $job = New-AzStorageCacheImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -ImportPrefix @('/path1', '/path2')
+            $job = New-AzStorageCacheImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -ImportPrefix @('/')
             Start-Sleep 30
             Remove-AzStorageCacheImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511' -Confirm:$false
         } | Should -Not -Throw
@@ -28,7 +28,7 @@ Describe 'New-AzStorageCacheImportJob' {
             $json = @{
                 location = "Canada Central"
                 properties = @{
-                    importPrefixes = @("/path1", "/path2")
+                    importPrefixes = @("/")
                 }
             } | ConvertTo-Json -Depth 3
             
@@ -43,7 +43,7 @@ Describe 'New-AzStorageCacheImportJob' {
             $json = @{
                 location = "Canada Central"
                 properties = @{
-                    importPrefixes = @("/path1", "/path2")
+                    importPrefixes = @("/")
                 }
             } | ConvertTo-Json -Depth 3
             
@@ -67,7 +67,7 @@ Describe 'New-AzStorageCacheImportJob' {
             $identity.ResourceGroupName = "acctest43511"
             $identity.SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
 
-            $job = New-AzStorageCacheImportJob -AmlFilesystemInputObject $identity -Name 'sampleCreateAmlId' -Location 'Canada Central' -ImportPrefix @('/path1', '/path2')
+            $job = New-AzStorageCacheImportJob -AmlFilesystemInputObject $identity -Name 'sampleCreateAmlId' -Location 'Canada Central' -ImportPrefix @('/')
             Start-Sleep 30
             Remove-AzStorageCacheImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateAmlId' -ResourceGroupName 'acctest43511' -Confirm:$false
         } | Should -Not -Throw
@@ -81,7 +81,7 @@ Describe 'New-AzStorageCacheImportJob' {
             $identity.SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
             $identity.ImportJobName = "sampleCreateIdentity"
 
-            $job = New-AzStorageCacheImportJob -InputObject $identity -Location 'Canada Central' -ImportPrefix @('/path1', '/path2')
+            $job = New-AzStorageCacheImportJob -InputObject $identity -Location 'Canada Central' -ImportPrefix @('/')
             Start-Sleep 30
             Remove-AzStorageCacheImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateIdentity' -ResourceGroupName 'acctest43511' -Confirm:$false
         } | Should -Not -Throw

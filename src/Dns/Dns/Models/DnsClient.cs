@@ -171,9 +171,10 @@ namespace Microsoft.Azure.Commands.Dns
             Hashtable tags,
             bool overwrite,
             DnsRecordBase[] resourceRecords,
-            string targetResourceId)
+            string targetResourceId,
+            string trafficManagerProfileId)
         {
-            var recordSet = ConstructRecordSetPropeties(relativeRecordSetName, recordType, ttl, tags, resourceRecords, targetResourceId);
+            var recordSet = ConstructRecordSetPropeties(relativeRecordSetName, recordType, ttl, tags, resourceRecords, targetResourceId, trafficManagerProfileId);
 
             var response = this.DnsManagementClient.RecordSets.CreateOrUpdate(
                 resourceGroupName,
@@ -193,7 +194,8 @@ namespace Microsoft.Azure.Commands.Dns
             uint? ttl,
             Hashtable tags,
             DnsRecordBase[] resourceRecords,
-            string targetResourceId)
+            string targetResourceId,
+            string trafficManagerProfileId)
         {
 
             var properties = new RecordSet
@@ -202,8 +204,21 @@ namespace Microsoft.Azure.Commands.Dns
                 Ttl = ttl
             };
 
+            bool hasTargetResource = !string.IsNullOrEmpty(targetResourceId);
+            bool hasTrafficManagerProfile = !string.IsNullOrEmpty(trafficManagerProfileId);
+
+            if (hasTargetResource && hasTrafficManagerProfile)
+            {
+                throw new ArgumentException(ProjectResources.Error_RecordSetTargetResourceAndTrafficManagerProfile);
+            }
+
             if (resourceRecords != null && resourceRecords.Length != 0)
             {
+                if (hasTargetResource || hasTrafficManagerProfile)
+                {
+                    throw new ArgumentException(ProjectResources.Error_RecordSetRecordsWithLink);
+                }
+
                 var expectedTypeOfRecords = this.recordTypeValidationEntries[recordType];
                 var mismatchedRecord = resourceRecords.FirstOrDefault(x => x.GetType() != expectedTypeOfRecords);
                 if (mismatchedRecord != null)
@@ -217,9 +232,14 @@ namespace Microsoft.Azure.Commands.Dns
             {
                 FillEmptyRecordsForType(properties, recordType);
 
-                if (!string.IsNullOrEmpty(targetResourceId))
+                if (hasTargetResource)
                 {
                     properties.TargetResource = new Sdk.SubResource(targetResourceId);
+                }
+
+                if (hasTrafficManagerProfile)
+                {
+                    properties.TrafficManagementProfile = new Sdk.SubResource(trafficManagerProfileId);
                 }
             }
 
@@ -296,6 +316,11 @@ namespace Microsoft.Azure.Commands.Dns
 
         public DnsRecordSet UpdateDnsRecordSet(DnsRecordSet recordSet, bool overwrite)
         {
+            if (!string.IsNullOrWhiteSpace(recordSet.TargetResourceId) && !string.IsNullOrWhiteSpace(recordSet.TrafficManagerProfileId))
+            {
+                throw new ArgumentException(ProjectResources.Error_RecordSetTargetResourceAndTrafficManagerProfile);
+            }
+
             var response = this.DnsManagementClient.RecordSets.CreateOrUpdate(
                 recordSet.ResourceGroupName,
                 recordSet.ZoneName,
@@ -305,6 +330,7 @@ namespace Microsoft.Azure.Commands.Dns
                 {
                     Ttl = recordSet.Ttl,
                     TargetResource = string.IsNullOrWhiteSpace(recordSet.TargetResourceId) ? null : new Sdk.SubResource(recordSet.TargetResourceId),
+                    TrafficManagementProfile = string.IsNullOrWhiteSpace(recordSet.TrafficManagerProfileId) ? null : new Sdk.SubResource(recordSet.TrafficManagerProfileId),
                     Metadata = TagsConversionHelper.CreateTagDictionary(recordSet.Metadata, validate: true),
                     AaaaRecords =
                         recordSet.RecordType == RecordType.Aaaa
@@ -470,6 +496,7 @@ namespace Microsoft.Azure.Commands.Dns
                 Ttl = (uint)mamlRecordSet.Ttl.GetValueOrDefault(),
                 ZoneName = zoneName,
                 TargetResourceId = mamlRecordSet.TargetResource != null ? mamlRecordSet.TargetResource.Id : string.Empty,
+                TrafficManagerProfileId = mamlRecordSet.TrafficManagementProfile != null ? mamlRecordSet.TrafficManagementProfile.Id : string.Empty,
                 ProvisioningState = mamlRecordSet.ProvisioningState,
             };
         }

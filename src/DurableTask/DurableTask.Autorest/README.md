@@ -29,7 +29,7 @@ For information on how to develop for `Az.DurableTask`, see [how-to.md](how-to.m
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 38ff6d42ea00d97b4bbc7e109f66b3b7b8171517
+commit: b4430e90bbd9c27f2dd7931a7623a16a5ecc7be0
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -41,7 +41,7 @@ try-require:
   - $(repo)/specification/durabletask/resource-manager/readme.powershell.md
 
 # For new RP, the version is 0.1.0
-module-version: 0.1.0
+module-version: 0.2.0
 # Normally, title is the service name
 title: DurableTask
 subject-prefix: $(service-name)
@@ -81,5 +81,13 @@ directive:
   # Retention policy operations are not supported
   - where:
       subject: RetentionPolicy
+    remove: true
+
+  # Private Endpoint Connections and Private Links are handled via the Network Cmdlets
+  - where:
+      subject: SchedulerPrivateEndpointConnection
+    remove: true
+  - where:
+      subject: SchedulerPrivateLink
     remove: true
 ```

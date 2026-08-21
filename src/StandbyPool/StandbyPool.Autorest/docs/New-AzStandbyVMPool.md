@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StandbyPool-help.xml
 Module Name: Az.StandbyPool
 online version: https://learn.microsoft.com/powershell/module/az.standbypool/new-azstandbyvmpool
 schema: 2.0.0
@@ -8,15 +8,16 @@ schema: 2.0.0
 # New-AzStandbyVMPool
 
 ## SYNOPSIS
-create a StandbyVirtualMachinePoolResource
+Create a StandbyVirtualMachinePoolResource
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzStandbyVMPool -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-MaxReadyCapacity <Int64>] [-MinReadyCapacity <Int64>] [-Tag <Hashtable>] [-VMSSId <String>]
- [-VMState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DynamicSizingEnabled] [-MaxReadyCapacity <Int64>] [-MinReadyCapacity <Int64>]
+ [-PostProvisioningDelay <String>] [-Tag <Hashtable>] [-VMSSId <String>] [-VMState <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -33,7 +34,7 @@ New-AzStandbyVMPool -Name <String> -ResourceGroupName <String> -JsonString <Stri
 ```
 
 ## DESCRIPTION
-create a StandbyVirtualMachinePoolResource
+Create a StandbyVirtualMachinePoolResource
 
 ## EXAMPLES
 
@@ -47,13 +48,17 @@ New-AzStandbyVMPool `
 -VMSSId /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss `
 -MaxReadyCapacity 1 `
 -MinReadyCapacity 1 `
--VMState Running
+-VMState Running `
+-DynamicSizingEnabled `
+-PostProvisioningDelay "PT2S"
 ```
 
 ```output
 AttachedVirtualMachineScaleSetId  : /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss
+DynamicSizingEnabled              : True
 ElasticityProfileMaxReadyCapacity : 1
 ElasticityProfileMinReadyCapacity : 1
+ElasticityProfilePostProvisioningDelay : PT2S
 Id                                : /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool
 Location                          : eastus
 Name                              : testPool
@@ -98,6 +103,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DynamicSizingEnabled
+Indicates whether dynamic sizing is enabled for the standby pool.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -203,6 +223,22 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PostProvisioningDelay
+Specifies the duration to wait after virtual machine provisioning before the virtual machine becomes available for use.
+The duration should be specified in ISO 8601 format (e.g., PT2S for 2 seconds).
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False

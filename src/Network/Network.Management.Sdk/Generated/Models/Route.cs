@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Route resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class Route : SubResource
+    public partial class Route : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the Route class.
@@ -28,14 +28,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
+        /// <param name="name">Name of the resource.
+        /// </param>
+
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
-
-        /// <param name="type">The type of the resource.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the route resource.
@@ -47,26 +46,29 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="nextHopType">The type of Azure hop the packet should be sent to.
         /// Possible values include: &#39;VirtualNetworkGateway&#39;, &#39;VnetLocal&#39;, &#39;Internet&#39;,
-        /// &#39;VirtualAppliance&#39;, &#39;None&#39;</param>
+        /// &#39;VirtualAppliance&#39;, &#39;VirtualApplianceEcmp&#39;, &#39;None&#39;</param>
 
         /// <param name="nextHopIPAddress">The IP address packets should be forwarded to. Next hop values are only
         /// allowed in routes where the next hop type is VirtualAppliance.
         /// </param>
 
+        /// <param name="nextHop">The next hop definition containing ECMP next hop IP addresses. Only allowed
+        /// when nextHopType is VirtualApplianceEcmp.
+        /// </param>
+
         /// <param name="hasBgpOverride">A value indicating whether this route overrides overlapping BGP routes
         /// regardless of LPM.
         /// </param>
-        public Route(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string addressPrefix = default(string), string nextHopType = default(string), string nextHopIPAddress = default(string), bool? hasBgpOverride = default(bool?))
+        public Route(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), string addressPrefix = default(string), string nextHopType = default(string), string nextHopIPAddress = default(string), RouteNextHopEcmp nextHop = default(RouteNextHopEcmp), bool? hasBgpOverride = default(bool?))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
             this.AddressPrefix = addressPrefix;
             this.NextHopType = nextHopType;
             this.NextHopIPAddress = nextHopIPAddress;
+            this.NextHop = nextHop;
             this.HasBgpOverride = hasBgpOverride;
             CustomInit();
         }
@@ -78,24 +80,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets or sets the type of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the route resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
@@ -110,7 +99,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string AddressPrefix {get; set; }
 
         /// <summary>
-        /// Gets or sets the type of Azure hop the packet should be sent to. Possible values include: &#39;VirtualNetworkGateway&#39;, &#39;VnetLocal&#39;, &#39;Internet&#39;, &#39;VirtualAppliance&#39;, &#39;None&#39;
+        /// Gets or sets the type of Azure hop the packet should be sent to. Possible values include: &#39;VirtualNetworkGateway&#39;, &#39;VnetLocal&#39;, &#39;Internet&#39;, &#39;VirtualAppliance&#39;, &#39;VirtualApplianceEcmp&#39;, &#39;None&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nextHopType")]
         public string NextHopType {get; set; }
@@ -123,10 +112,35 @@ namespace Microsoft.Azure.Management.Network.Models
         public string NextHopIPAddress {get; set; }
 
         /// <summary>
+        /// Gets or sets the next hop definition containing ECMP next hop IP addresses.
+        /// Only allowed when nextHopType is VirtualApplianceEcmp.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nextHop")]
+        public RouteNextHopEcmp NextHop {get; set; }
+
+        /// <summary>
         /// Gets a value indicating whether this route overrides overlapping BGP routes
         /// regardless of LPM.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hasBgpOverride")]
         public bool? HasBgpOverride {get; private set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+
+
+            if (this.NextHop != null)
+            {
+                this.NextHop.Validate();
+            }
+        }
     }
 }

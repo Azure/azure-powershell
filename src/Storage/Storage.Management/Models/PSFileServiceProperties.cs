@@ -64,10 +64,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     public class PSProtocolSettings
     {
         public PSSmbSetting Smb { get; set; }
+        public PSNfsSetting Nfs { get; set; }
 
         public PSProtocolSettings(ProtocolSettings protocolSettings)
         {
             this.Smb = protocolSettings.Smb is null ? null : new PSSmbSetting(protocolSettings.Smb);
+            this.Nfs = protocolSettings.Nfs is null ? null : new PSNfsSetting(protocolSettings.Nfs);
         }
     }
 
@@ -78,6 +80,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string[] KerberosTicketEncryption { get; set; }
         public string[] ChannelEncryption { get; set; }
         public PSMultichannel Multichannel { get; set; }
+        public PSEncryptionInTransit EncryptionInTransit { get; set; }
 
         public PSSmbSetting(SmbSetting smbSetting)
         {
@@ -86,6 +89,26 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.KerberosTicketEncryption = smbSetting.KerberosTicketEncryption is null ? null : smbSetting.KerberosTicketEncryption.Split(new char[] { ';' });
             this.ChannelEncryption = smbSetting.ChannelEncryption is null ? null : smbSetting.ChannelEncryption.Split(new char[] { ';' });
             this.Multichannel = smbSetting.Multichannel is null ? null : new PSMultichannel(smbSetting.Multichannel);
+            this.EncryptionInTransit = smbSetting.EncryptionInTransit is null ? null : new PSEncryptionInTransit(smbSetting.EncryptionInTransit);
+        }
+    }
+
+    public class PSNfsSetting
+    {
+        public PSEncryptionInTransit EncryptionInTransit { get; set; }
+        public PSNfsSetting(NfsSetting nfsSetting)
+        {
+            this.EncryptionInTransit = nfsSetting.EncryptionInTransit is null ? null : new PSEncryptionInTransit(nfsSetting.EncryptionInTransit);
+        }
+    }
+
+    public class PSEncryptionInTransit 
+    { 
+        public bool? Required { get; set; }
+
+        public PSEncryptionInTransit(EncryptionInTransit encryptionInTransit)
+        {
+            this.Required = encryptionInTransit.Required is null ? null : encryptionInTransit.Required;
         }
     }
 

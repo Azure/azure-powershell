@@ -295,6 +295,24 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid value for Permissions.
+        /// </summary>
+        internal static string InvalidPermissions {
+            get {
+                return ResourceManager.GetString("InvalidPermissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Azure RBAC service does not currently accept role definitions with more than one permission entry. Provide a single entry in &apos;Permissions&apos; when calling New-AzRoleDefinition or Set-AzRoleDefinition.
+        /// </summary>
+        internal static string RoleDefinitionMultiplePermissionsNotAllowed {
+            get {
+                return ResourceManager.GetString("RoleDefinitionMultiplePermissionsNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid format of the resource group identifier. Expected &apos;subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}&apos;..
         /// </summary>
         internal static string InvalidFormatOfResourceGroupId {
@@ -669,6 +687,24 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string RemoveRoleDefinitionWithName {
             get {
                 return ResourceManager.GetString("RemoveRoleDefinitionWithName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing role definition by id.
+        /// </summary>
+        internal static string RemovingRoleDefinitionById {
+            get {
+                return ResourceManager.GetString("RemovingRoleDefinitionById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing role definition by name.
+        /// </summary>
+        internal static string RemovingRoleDefinitionByName {
+            get {
+                return ResourceManager.GetString("RemovingRoleDefinitionByName", resourceCulture);
             }
         }
         

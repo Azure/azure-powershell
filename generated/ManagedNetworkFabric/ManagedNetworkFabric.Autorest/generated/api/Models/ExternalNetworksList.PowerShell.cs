@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>List of External Networks.</summary>
+    /// <summary>Paged collection of ExternalNetwork items</summary>
     [System.ComponentModel.TypeConverter(typeof(ExternalNetworksListTypeConverter))]
     public partial class ExternalNetworksList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// List of External Networks.
+    /// Paged collection of ExternalNetwork items
     [System.ComponentModel.TypeConverter(typeof(ExternalNetworksListTypeConverter))]
     public partial interface IExternalNetworksList
 

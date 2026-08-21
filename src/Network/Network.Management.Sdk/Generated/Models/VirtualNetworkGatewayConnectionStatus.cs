@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VirtualNetworkGatewayConnectionStatus
     {
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
+        /// <summary>
+        /// Connecting
+        /// </summary>
         public const string Connecting = "Connecting";
+        /// <summary>
+        /// Connected
+        /// </summary>
         public const string Connected = "Connected";
+        /// <summary>
+        /// NotConnected
+        /// </summary>
         public const string NotConnected = "NotConnected";
     }
 }

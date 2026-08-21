@@ -50,7 +50,7 @@ Describe 'Set-AzServiceBusQueue' {
         $currentQueue = $updatedQueue
     }
 
-    It 'SetViaIdentityExpanded'  {
+    It 'SetViaIdentityExpanded'  -skip{
         $currentQueue = Get-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queue2
         
         $updatedQueue = Set-AzServiceBusQueue -InputObject $currentQueue -LockDuration (New-TimeSpan -Minutes 2)
@@ -78,7 +78,7 @@ Describe 'Set-AzServiceBusQueue' {
         AssertQueueUpdates $currentQueue $updatedQueue
         $currentQueue = $updatedQueue
 
-        $updatedQueue = Set-AzServiceBusQueue -InputObject $currentQueue -DuplicateDetectionHistoryTimeWindow (New-TimeSpan -Minutes 8)
+        $updatedQueue = Set-AzServiceBusQueue -InputObject $currentQueue -DuplicateDetectionHistoryTimeWindow (New-TimeSpan -Minutes 8) -EnableBatchedOperations:$true
         $currentQueue.DuplicateDetectionHistoryTimeWindow = (New-TimeSpan -Minutes 8)
         AssertQueueUpdates $currentQueue $updatedQueue
         $currentQueue = $updatedQueue

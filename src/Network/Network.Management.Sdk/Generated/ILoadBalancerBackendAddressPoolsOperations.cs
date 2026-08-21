@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets all the load balancer backed address pools.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets load balancer backend address pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates a load balancer backend address pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes the specified load balancer backend address pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates a load balancer backend address pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes the specified load balancer backend address pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.

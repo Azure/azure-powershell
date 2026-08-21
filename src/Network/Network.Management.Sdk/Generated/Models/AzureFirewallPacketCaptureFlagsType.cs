@@ -13,11 +13,29 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AzureFirewallPacketCaptureFlagsType
     {
+        /// <summary>
+        /// fin
+        /// </summary>
         public const string Fin = "fin";
+        /// <summary>
+        /// syn
+        /// </summary>
         public const string Syn = "syn";
+        /// <summary>
+        /// rst
+        /// </summary>
         public const string Rst = "rst";
+        /// <summary>
+        /// push
+        /// </summary>
         public const string Push = "push";
+        /// <summary>
+        /// ack
+        /// </summary>
         public const string Ack = "ack";
+        /// <summary>
+        /// urg
+        /// </summary>
         public const string Urg = "urg";
     }
 }

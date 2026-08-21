@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{ Fill ResourceId Description }}
+The resource ID for the gallery in VM access control profile.
 
 ```yaml
 Type: System.String

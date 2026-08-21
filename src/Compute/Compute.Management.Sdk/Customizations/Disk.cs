@@ -5,7 +5,7 @@
     /// <summary>
     /// Disk resource.
     /// </summary>
-    public partial class Disk : Resource
+    public partial class Disk : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the Disk class.

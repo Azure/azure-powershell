@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, int> createTime)
-            where TModel : Resource
+            where TModel : TrackedResource
             => ResourceStrategy.Create(
                 type: new ResourceType(Namespace, provider),
                 getOperations: getOperations,

@@ -65,6 +65,10 @@ function setupEnv(
     $namespaceV7 = "namespaceV7" + (RandomString -allChars $false -len 6)
     $namespaceV8 = "namespaceV8" + (RandomString -allChars $false -len 6)
     $namespaceV9 = "namespaceV9" + (RandomString -allChars $false -len 6)
+    $namespaceV10 = "namespaceV10" + (RandomString -allChars $false -len 6)
+    $namespaceV11 = "namespaceV11" + (RandomString -allChars $false -len 6)
+    $namespaceV12 = "namespaceV12" + (RandomString -allChars $false -len 6)
+    $namespaceV13 = "namespaceV13" + (RandomString -allChars $false -len 6)
     $standardNamespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
     $systemAssignedNamespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
     $dependentResourcesPrefix = "sb-ps-" + (RandomString -allChars $false -len 6)
@@ -88,7 +92,7 @@ function setupEnv(
     $msi2ResourceId = "$resourceGroupArmId/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$dependentResourcesPrefix-msi2"
     $peName1 = "pe1" + (RandomString -allChars $false -len 6)
     $peName2 = "pe2" + (RandomString -allChars $false -len 6)
-    $alias = "alias" + (RandomString -allChars $false -len 6)
+    $alias = "alias32" + (RandomString -allChars $false -len 6)
     $postMigrationName = "postMigration" + (RandomString -allChars $false -len 6)
 
     $namespacePrimaryKey = GenerateSASKey
@@ -112,6 +116,10 @@ function setupEnv(
     $env.Add("namespaceV7", $namespaceV7)
     $env.Add("namespaceV8", $namespaceV8)
     $env.Add("namespaceV9", $namespaceV9)
+    $env.Add("namespaceV10", $namespaceV10)
+    $env.Add("namespaceV11", $namespaceV11)
+    $env.Add("namespaceV12", $namespaceV12)
+    $env.Add("namespaceV13", $namespaceV13)
     $env.Add('standardNamespace', $standardNamespaceName)
     $env.Add("systemAssignedNamespaceName", $systemAssignedNamespaceName)
     $env.Add("keyVaultUri", $keyVaultUri)

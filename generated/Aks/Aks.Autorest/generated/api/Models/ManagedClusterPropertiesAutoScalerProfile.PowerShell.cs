@@ -116,6 +116,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).BalanceSimilarNodeGroup = (string) content.GetValueForProperty("BalanceSimilarNodeGroup",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).BalanceSimilarNodeGroup, global::System.Convert.ToString);
             }
+            if (content.Contains("DaemonsetEvictionForEmptyNode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).DaemonsetEvictionForEmptyNode = (bool?) content.GetValueForProperty("DaemonsetEvictionForEmptyNode",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).DaemonsetEvictionForEmptyNode, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DaemonsetEvictionForOccupiedNode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).DaemonsetEvictionForOccupiedNode = (bool?) content.GetValueForProperty("DaemonsetEvictionForOccupiedNode",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).DaemonsetEvictionForOccupiedNode, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IgnoreDaemonsetsUtilization"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).IgnoreDaemonsetsUtilization = (bool?) content.GetValueForProperty("IgnoreDaemonsetsUtilization",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).IgnoreDaemonsetsUtilization, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("Expander"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).Expander = (string) content.GetValueForProperty("Expander",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).Expander, global::System.Convert.ToString);
@@ -200,6 +212,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("BalanceSimilarNodeGroup"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).BalanceSimilarNodeGroup = (string) content.GetValueForProperty("BalanceSimilarNodeGroup",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).BalanceSimilarNodeGroup, global::System.Convert.ToString);
+            }
+            if (content.Contains("DaemonsetEvictionForEmptyNode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).DaemonsetEvictionForEmptyNode = (bool?) content.GetValueForProperty("DaemonsetEvictionForEmptyNode",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).DaemonsetEvictionForEmptyNode, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DaemonsetEvictionForOccupiedNode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).DaemonsetEvictionForOccupiedNode = (bool?) content.GetValueForProperty("DaemonsetEvictionForOccupiedNode",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).DaemonsetEvictionForOccupiedNode, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IgnoreDaemonsetsUtilization"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).IgnoreDaemonsetsUtilization = (bool?) content.GetValueForProperty("IgnoreDaemonsetsUtilization",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)this).IgnoreDaemonsetsUtilization, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("Expander"))
             {

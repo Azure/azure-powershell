@@ -14,17 +14,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     {
 
         /// <summary>Internal Acessors for SshPassword</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserRegeneratePasswordResultInternal.SshPassword { get => this._sshPassword; set { {_sshPassword = value;} } }
+        System.Security.SecureString Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserRegeneratePasswordResultInternal.SshPassword { get => this._sshPassword; set { {_sshPassword = value;} } }
 
         /// <summary>Backing field for <see cref="SshPassword" /> property.</summary>
-        private string _sshPassword;
+        private System.Security.SecureString _sshPassword;
 
         /// <summary>
         /// Auto generated password by the server for SSH authentication if hasSshPassword is set to true on the creation of local
         /// user.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string SshPassword { get => this._sshPassword; }
+        public System.Security.SecureString SshPassword { get => this._sshPassword; }
 
         /// <summary>Creates an new <see cref="LocalUserRegeneratePasswordResult" /> instance.</summary>
         public LocalUserRegeneratePasswordResult()
@@ -48,8 +48,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Update = false,
         Description = @"Auto generated password by the server for SSH authentication if hasSshPassword is set to true on the creation of local user.",
         SerializedName = @"sshPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string SshPassword { get;  }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString SshPassword { get;  }
 
     }
     /// The secrets of Storage Account Local User.
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// Auto generated password by the server for SSH authentication if hasSshPassword is set to true on the creation of local
         /// user.
         /// </summary>
-        string SshPassword { get; set; }
+        System.Security.SecureString SshPassword { get; set; }
 
     }
 }

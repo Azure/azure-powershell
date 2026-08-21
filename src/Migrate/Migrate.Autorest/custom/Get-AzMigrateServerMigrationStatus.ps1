@@ -369,7 +369,7 @@ function Get-AzMigrateServerMigrationStatus {
         $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration")
         $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
 
-        $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
+        $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
         if ($solution -and ($solution.Count -ge 1)) {
             $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
         }
@@ -395,12 +395,29 @@ function Get-AzMigrateServerMigrationStatus {
         {
             throw "No appliance found with name $ApplianceName"
         }
-
-        if ($parameterSet -eq "GetByMachineName" -or $parameterSet -eq "GetHealthByMachineName" -or $parameterSet -eq "GetByPrioritiseServer") {
-            $ReplicationMigrationItems = Get-AzMigrateServerReplication -ProjectName $ProjectName -ResourceGroupName $ResourceGroupName -MachineName $MachineName
+        if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+            if ($null -eq $PSBoundParameters['SubscriptionId'] -or `
+            ($PSBoundParameters['SubscriptionId'] -is [System.Array] -and $PSBoundParameters['SubscriptionId'].Count -eq 0) -or `
+            [string]::IsNullOrEmpty($PSBoundParameters['SubscriptionId'])) {
+                $currentContext = Get-AzContext
+                if ($null -eq $currentContext -or [string]::IsNullOrEmpty($currentContext.Subscription.Id)) {
+                    throw "No Azure context is set. Please login using Connect-AzAccount."
+                }
+                $PSBoundParameters['SubscriptionId'] = $currentContext.Subscription.Id
+            }
         }
         else {
-            $ReplicationMigrationItems = Get-AzMigrateServerReplication -ProjectName $ProjectName -ResourceGroupName $ResourceGroupName
+            $currentContext = Get-AzContext
+            if ($null -eq $currentContext -or [string]::IsNullOrEmpty($currentContext.Subscription.Id)) {
+                throw "No Azure context is set. Please login using Connect-AzAccount."
+            }
+            $PSBoundParameters['SubscriptionId'] = $currentContext.Subscription.Id
+        }
+        if ($parameterSet -eq "GetByMachineName" -or $parameterSet -eq "GetHealthByMachineName" -or $parameterSet -eq "GetByPrioritiseServer") {
+            $ReplicationMigrationItems = Get-AzMigrateServerReplication -ProjectName $ProjectName -ResourceGroupName $ResourceGroupName -MachineName $MachineName -SubscriptionId $PSBoundParameters['SubscriptionId']
+        }
+        else {
+            $ReplicationMigrationItems = Get-AzMigrateServerReplication -ProjectName $ProjectName -ResourceGroupName $ResourceGroupName -SubscriptionId $PSBoundParameters['SubscriptionId']
         }
 
         if ($ReplicationMigrationItems -eq $null) {
@@ -576,8 +593,8 @@ function Get-AzMigrateServerMigrationStatus {
                 else {
                     $op = $output.Add("List of warning or critical errors for this server with their resolutions: `n")
                     $healthError = $ReplicationMigrationItem.HealthError
-                    foreach ($error in $healthError) {
-                        $op = $output.Add("Error Message: $($error.ErrorMessage)`nPossible Causes: $($error.PossibleCaus)`nRecommended Actions: $($error.RecommendedAction)`n`n")
+                    foreach ($err in $healthError) {
+                        $op = $output.Add("Error Message: $($err.ErrorMessage)`nPossible Causes: $($err.PossibleCaus)`nRecommended Actions: $($err.RecommendedAction)`n`n")
                     }
                 }
             }

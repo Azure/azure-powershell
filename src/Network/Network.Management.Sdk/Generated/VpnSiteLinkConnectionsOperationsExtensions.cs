@@ -19,16 +19,16 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
         /// The name of the vpn connection.
         /// </param>
         /// <param name='linkConnectionName'>
-        /// The name of the vpn connection.
+        /// The name of the vpn link connection.
         /// </param>
         public static VpnSiteLinkConnection Get(this IVpnSiteLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName)
         {
@@ -42,16 +42,16 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
         /// The name of the vpn connection.
         /// </param>
         /// <param name='linkConnectionName'>
-        /// The name of the vpn connection.
+        /// The name of the vpn link connection.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

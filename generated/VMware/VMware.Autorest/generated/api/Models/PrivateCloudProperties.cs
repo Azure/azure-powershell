@@ -386,6 +386,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public System.Security.SecureString VcenterPassword { get => this._vcenterPassword; set => this._vcenterPassword = value; }
 
+        /// <summary>Backing field for <see cref="VcfLicense" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense _vcfLicense;
+
+        /// <summary>The private cloud license</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense VcfLicense { get => (this._vcfLicense = this._vcfLicense ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VcfLicense()); set => this._vcfLicense = value; }
+
         /// <summary>Backing field for <see cref="VirtualNetworkId" /> property.</summary>
         private string _virtualNetworkId;
 
@@ -910,6 +917,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"vcenterPassword",
         PossibleTypes = new [] { typeof(System.Security.SecureString) })]
         System.Security.SecureString VcenterPassword { get; set; }
+        /// <summary>The private cloud license</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The private cloud license",
+        SerializedName = @"vcfLicense",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense) })]
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense VcfLicense { get; set; }
         /// <summary>Azure resource ID of the virtual network</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -1062,6 +1080,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string VcenterCertificateThumbprint { get; set; }
         /// <summary>Optionally, set the vCenter admin password when the private cloud is created</summary>
         System.Security.SecureString VcenterPassword { get; set; }
+        /// <summary>The private cloud license</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense VcfLicense { get; set; }
         /// <summary>Azure resource ID of the virtual network</summary>
         string VirtualNetworkId { get; set; }
         /// <summary>Used for live migration of virtual machines</summary>

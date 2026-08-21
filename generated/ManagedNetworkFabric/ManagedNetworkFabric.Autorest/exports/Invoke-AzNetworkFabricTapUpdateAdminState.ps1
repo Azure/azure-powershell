@@ -26,7 +26,7 @@ Invoke-AzNetworkFabricTapUpdateAdminState -NetworkTapName $name -ResourceGroupNa
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonPostActionResponseForDeviceUpdate
+Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUpdateAdministrativeStateResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,12 +45,15 @@ INPUTOBJECT <IManagedNetworkFabricIdentity>: Identity Parameter
   [L2IsolationDomainName <String>]: Name of the L2 Isolation Domain.
   [L3IsolationDomainName <String>]: Name of the L3 Isolation Domain.
   [NeighborGroupName <String>]: Name of the Neighbor Group.
+  [NetworkBootstrapDeviceName <String>]: Name of the Network Bootstrap Device.
+  [NetworkBootstrapInterfaceName <String>]: Name of the Network Bootstrap Interface.
   [NetworkDeviceName <String>]: Name of the Network Device.
   [NetworkDeviceSkuName <String>]: Name of the Network Device SKU.
   [NetworkFabricControllerName <String>]: Name of the Network Fabric Controller.
   [NetworkFabricName <String>]: Name of the Network Fabric.
   [NetworkFabricSkuName <String>]: Name of the Network Fabric SKU.
   [NetworkInterfaceName <String>]: Name of the Network Interface.
+  [NetworkMonitorName <String>]: Name of the Network Monitor.
   [NetworkPacketBrokerName <String>]: Name of the Network Packet Broker.
   [NetworkRackName <String>]: Name of the Network Rack.
   [NetworkTapName <String>]: Name of the Network Tap.
@@ -63,7 +66,7 @@ INPUTOBJECT <IManagedNetworkFabricIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabrictapupdateadminstate
 #>
 function Invoke-AzNetworkFabricTapUpdateAdminState {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonPostActionResponseForDeviceUpdate])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUpdateAdministrativeStateResponse])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -109,7 +112,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enable", "Disable")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enable", "Disable", "UnderMaintenance")]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [System.String]
     # Administrative state.
@@ -195,6 +198,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -220,8 +231,6 @@ begin {
             UpdateViaJsonString = 'Az.ManagedNetworkFabric.private\Invoke-AzNetworkFabricTapUpdateAdminState_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -235,6 +244,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

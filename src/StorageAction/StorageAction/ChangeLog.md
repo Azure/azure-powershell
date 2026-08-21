@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* Internal code generation updated.
+
+## Version 1.0.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
 ## Version 1.0.0
 * General availability for module Az.StorageAction
 

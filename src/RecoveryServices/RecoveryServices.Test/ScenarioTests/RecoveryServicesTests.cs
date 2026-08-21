@@ -48,5 +48,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RecoveryServicesSoftDeletedVaultOperations");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecoveryServicesCostManagementSettings()
+        {
+            TestRunner.RunTestScript("Test-RecoveryServicesCostManagementSettings");
+        }
     }
 }

@@ -14,8 +14,14 @@ namespace Microsoft.Azure.Management.Network.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PacketCaptureTargetType
     {
+        /// <summary>
+        /// AzureVM
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "AzureVM")]
         AzureVM,
+        /// <summary>
+        /// AzureVMSS
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "AzureVMSS")]
         AzureVmss
     }

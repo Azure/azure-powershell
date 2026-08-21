@@ -127,6 +127,27 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RDNewPermissionsFormatCreate()
+        {
+            TestRunner.RunTestScript("Test-RDNewPermissionsFormatCreate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RDNewPermissionsFormatUpdate()
+        {
+            TestRunner.RunTestScript("Test-RDNewPermissionsFormatUpdate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RDNewPermissionsFormatDelete()
+        {
+            TestRunner.RunTestScript("Test-RDNewPermissionsFormatDelete");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdValidateInputParameters()
         {
             TestRunner.RunTestScript("Test-RdValidateInputParameters Get-AzureRmRoleDefinition");

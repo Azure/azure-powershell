@@ -1,7 +1,7 @@
 ---
 external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://learn.microsoft.com/powershell/module/Az.SqlVirtualMachine/new-AzSqlVirtualMachineMultiSubnetIPConfigurationObject
+online version: https://learn.microsoft.com/powershell/module/Az.SqlVirtualMachine/new-azsqlvirtualmachinemultisubnetipconfigurationobject
 schema: 2.0.0
 ---
 
@@ -93,7 +93,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.MultiSubnetIPConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.MultiSubnetIPConfiguration
 
 ## NOTES
 

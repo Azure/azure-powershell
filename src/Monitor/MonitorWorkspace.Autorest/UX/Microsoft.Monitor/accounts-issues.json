@@ -1,0 +1,138 @@
+{
+  "resourceType": "accounts/issues",
+  "apiVersion": "2025-10-03",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.monitor"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMonitorWorkspaceIssue",
+      "description": "Get issue properties",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.monitor/get-azmonitorworkspaceissue"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AzureMonitorWorkspaceName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get issue properties",
+          "parameters": [
+            {
+              "name": "-AzureMonitorWorkspaceName",
+              "value": "[Path.azureMonitorWorkspaceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.issueName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzMonitorWorkspaceFetchIssueBackgroundVisualization",
+      "description": "Fetch the background visualization of the issue",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}/fetchBackgroundVisualization",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.monitor/invoke-azmonitorworkspacefetchissuebackgroundvisualization"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AzureMonitorWorkspaceName <String>",
+              "-IssueName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Fetch the background visualization of the issue",
+          "parameters": [
+            {
+              "name": "-AzureMonitorWorkspaceName",
+              "value": "[Path.azureMonitorWorkspaceName]"
+            },
+            {
+              "name": "-IssueName",
+              "value": "[Path.issueName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMonitorWorkspaceIssue",
+      "description": "Delete an issue",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.monitor/remove-azmonitorworkspaceissue"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AzureMonitorWorkspaceName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete an issue",
+          "parameters": [
+            {
+              "name": "-AzureMonitorWorkspaceName",
+              "value": "[Path.azureMonitorWorkspaceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.issueName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

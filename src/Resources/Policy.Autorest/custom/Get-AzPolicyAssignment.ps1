@@ -49,7 +49,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The scope of the policy assignment.
-    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
     ${Scope},
 
     [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
@@ -75,12 +75,6 @@ param(
     # Causes the list of returned policy assignments to include all assignments related to the given scope, including those from ancestor scopes and those from descendent scopes. If not provided, only assignments at and above the given scope are included.
     ${IncludeDescendent},
 
-    [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.String]
@@ -91,6 +85,13 @@ param(
     # If $filter=atExactScope() is provided, the returned list only includes all policy assignments that at the given scope.
     # If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value}.
     ${Filter},
+
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.String]
+    # Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+    ${Expand},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -152,9 +153,6 @@ begin {
     # make mapping table
     $mapping = @{
         Get = 'Az.Policy.private\Get-AzPolicyAssignment_Get';
-        Get1 = 'Az.Policy.private\Get-AzPolicyAssignment_Get1';
-        GetViaIdentity = 'Az.Policy.private\Get-AzPolicyAssignment_GetViaIdentity';
-        GetViaIdentity1 = 'Az.Policy.private\Get-AzPolicyAssignment_GetViaIdentity1';
         List = 'Az.Policy.private\Get-AzPolicyAssignment_List';
         List1 = 'Az.Policy.private\Get-AzPolicyAssignment_List1';
         List2 = 'Az.Policy.private\Get-AzPolicyAssignment_List2';
@@ -180,8 +178,10 @@ process {
         $calledParameters.Scope = $Scope
     }
     elseif ($Id) {
-        $calledParameterSet = 'Get1'
-        $calledParameters.Id = $Id
+        $calledParameterSet = 'Get'
+        $parsed = ParsePolicyAssignmentId $Id
+        $calledParameters.Name = $parsed.Name
+        $calledParameters.Scope = $parsed.Scope
     }
     else {
         # set up filter values for list case
@@ -236,9 +236,9 @@ process {
         $null = $calledParameters.Remove('Scope')
     }
 
+    $null = $calledParameters.Remove('Id')
     $null = $calledParameters.Remove('PolicyDefinitionId')
     $null = $calledParameters.Remove('IncludeDescendent')
-    $null = $calledParameters.Remove('BackwardCompatible')
 
     if ($writeln) {
         Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $calledParameters ')'
@@ -251,35 +251,6 @@ process {
     $object = Invoke-Command -ScriptBlock $scriptCmd
 
     foreach ($item in $object) {
-        # add property bag for backward compatibility with previous SDK cmdlets
-        if ($BackwardCompatible) {
-            $propertyBag = @{
-                Description = $item.Description;
-                DisplayName = $item.DisplayName;
-                EnforcementMode = $item.EnforcementMode;
-                Metadata = (ConvertObjectToPSObject $item.Metadata);
-                NonComplianceMessages = (ConvertObjectToPSObject $item.NonComplianceMessage);
-                NotScopes = (ConvertObjectToPSObject $item.NotScope);
-                Parameters = (ConvertObjectToPSObject $item.Parameter);
-                PolicyDefinitionId = $item.PolicyDefinitionId;
-                Scope = $item.Scope
-            }
-
-            $identity = @{
-                IdentityType = $item.IdentityType;
-                PrincipalId = $item.IdentityPrincipalId;
-                TenantId = $item.IdentityTenantId;
-                UserAssignedIdentities = [PSCustomObject]$item.IdentityUserAssignedIdentity
-            }
-
-            $item | Add-Member -MemberType NoteProperty -Name 'Identity' -Value ([PSCustomObject]($identity))
-            $item | Add-Member -MemberType NoteProperty -Name 'Properties' -Value ([PSCustomObject]($propertyBag))
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceId' -Value $item.Id
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceName' -Value $item.Name
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceType' -Value $item.Type
-            $item | Add-Member -MemberType NoteProperty -Name 'PolicyAssignmentId' -Value $item.Id
-        }
-
         $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
         $item | Add-Member -MemberType NoteProperty -Name 'NonComplianceMessage' -Value (ConvertObjectToPSObject $item.NonComplianceMessage) -Force
         $item | Add-Member -MemberType NoteProperty -Name 'NotScope' -Value (ConvertObjectToPSObject $item.NotScope) -Force

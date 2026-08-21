@@ -26,7 +26,9 @@ New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig [-ManagedDisk] -LogSt
  -RecoveryTargetDiskAccountType <String> [-RecoveryDiskEncryptionSetId <String>]
  [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
  [-KeyEncryptionVaultId <String>] [-FailoverDiskName <String>] [-TfoDiskName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RecoveryNetworkAccessPolicy <String>] [-RecoveryDiskAccessId <String>]
+ [-RecoveryPublicNetworkAccess <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +67,15 @@ New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStor
 ```
 
 Create a managed disk mapping object with target disk encryption set Id, for Azure virtual machine disks to be replicated.Used during Azure to Azure EnableDr and re-protect operation.
+
+### Example 5
+```powershell
+New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStorageAccountId -DiskId $diskId -RecoveryResourceGroupId $RecoveryResourceGroupId `
+-RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType `
+-RecoveryNetworkAccessPolicy AllowPrivate -RecoveryDiskAccessId $diskAccessId -RecoveryPublicNetworkAccess Disabled
+```
+
+Create a managed disk mapping object that restricts the recovery disk to private network access using the specified disk access resource.Used during Azure to Azure EnableDr and re-protect operation.
 
 ## PARAMETERS
 
@@ -218,6 +229,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RecoveryDiskAccessId
+Specifies the disk access ARM Id used when RecoveryNetworkAccessPolicy is AllowPrivate.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RecoveryDiskEncryptionSetId
 Specifies the ID of the Azure disk encryption set to be used for recovery disks.
 
@@ -225,6 +251,38 @@ Specifies the ID of the Azure disk encryption set to be used for recovery disks.
 Type: System.String
 Parameter Sets: AzureToAzureManagedDisk
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryNetworkAccessPolicy
+Specifies the network access policy of the recovery disk. Allowed values: AllowAll, AllowPrivate, DenyAll.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+Accepted values: AllowAll, AllowPrivate, DenyAll
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryPublicNetworkAccess
+Specifies the public network access setting of the recovery disk. Allowed values: Enabled, Disabled.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named

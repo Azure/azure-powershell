@@ -24,17 +24,22 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the MaintenanceConfigurationProperties class.
         /// </summary>
 
-        /// <param name="timeInWeek">If two array entries specify the same day of the week, the applied
+        /// <param name="timeInWeek">Time slots during the week when planned maintenance is allowed to proceed.
+        /// If two array entries specify the same day of the week, the applied
         /// configuration is the union of times in both entries.
         /// </param>
 
         /// <param name="notAllowedTime">Time slots on which upgrade is not allowed.
         /// </param>
-        public MaintenanceConfigurationProperties(System.Collections.Generic.IList<TimeInWeek> timeInWeek = default(System.Collections.Generic.IList<TimeInWeek>), System.Collections.Generic.IList<TimeSpan> notAllowedTime = default(System.Collections.Generic.IList<TimeSpan>))
+
+        /// <param name="maintenanceWindow">Maintenance window for the maintenance configuration.
+        /// </param>
+        public MaintenanceConfigurationProperties(System.Collections.Generic.IList<TimeInWeek> timeInWeek = default(System.Collections.Generic.IList<TimeInWeek>), System.Collections.Generic.IList<TimeSpan> notAllowedTime = default(System.Collections.Generic.IList<TimeSpan>), MaintenanceWindow maintenanceWindow = default(MaintenanceWindow))
 
         {
             this.TimeInWeek = timeInWeek;
             this.NotAllowedTime = notAllowedTime;
+            this.MaintenanceWindow = maintenanceWindow;
             CustomInit();
         }
 
@@ -45,7 +50,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
 
         /// <summary>
-        /// Gets or sets if two array entries specify the same day of the week, the
+        /// Gets or sets time slots during the week when planned maintenance is allowed
+        /// to proceed. If two array entries specify the same day of the week, the
         /// applied configuration is the union of times in both entries.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "timeInWeek")]
@@ -56,5 +62,26 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "notAllowedTime")]
         public System.Collections.Generic.IList<TimeSpan> NotAllowedTime {get; set; }
+
+        /// <summary>
+        /// Gets or sets maintenance window for the maintenance configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maintenanceWindow")]
+        public MaintenanceWindow MaintenanceWindow {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+            if (this.MaintenanceWindow != null)
+            {
+                this.MaintenanceWindow.Validate();
+            }
+        }
     }
 }

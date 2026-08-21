@@ -13,19 +13,59 @@ namespace Microsoft.Azure.Management.Network
     public static partial class NatRulesOperationsExtensions
     {
         /// <summary>
+        /// Retrieves all nat rules for a particular virtual wan vpn gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<VpnGatewayNatRule> ListByVpnGateway(this INatRulesOperations operations, string resourceGroupName, string gatewayName)
+        {
+                return ((INatRulesOperations)operations).ListByVpnGatewayAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves all nat rules for a particular virtual wan vpn gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VpnGatewayNatRule>> ListByVpnGatewayAsync(this INatRulesOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByVpnGatewayWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Retrieves the details of a nat ruleGet.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static VpnGatewayNatRule Get(this INatRulesOperations operations, string resourceGroupName, string gatewayName, string natRuleName)
         {
@@ -39,13 +79,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -65,13 +106,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static VpnGatewayNatRule CreateOrUpdate(this INatRulesOperations operations, string resourceGroupName, string gatewayName, string natRuleName, VpnGatewayNatRule natRuleParameters)
         {
@@ -86,13 +128,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -111,13 +154,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static void Delete(this INatRulesOperations operations, string resourceGroupName, string gatewayName, string natRuleName)
         {
@@ -131,13 +175,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -147,45 +192,6 @@ namespace Microsoft.Azure.Management.Network
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, natRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Retrieves all nat rules for a particular virtual wan vpn gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<VpnGatewayNatRule> ListByVpnGateway(this INatRulesOperations operations, string resourceGroupName, string gatewayName)
-        {
-                return ((INatRulesOperations)operations).ListByVpnGatewayAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves all nat rules for a particular virtual wan vpn gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VpnGatewayNatRule>> ListByVpnGatewayAsync(this INatRulesOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByVpnGatewayWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Creates a nat rule to a scalable vpn gateway if it doesn&#39;t exist else
         /// updates the existing nat rules.
         /// </summary>
@@ -193,13 +199,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static VpnGatewayNatRule BeginCreateOrUpdate(this INatRulesOperations operations, string resourceGroupName, string gatewayName, string natRuleName, VpnGatewayNatRule natRuleParameters)
         {
@@ -214,13 +221,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -239,13 +247,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static void BeginDelete(this INatRulesOperations operations, string resourceGroupName, string gatewayName, string natRuleName)
         {
@@ -259,13 +268,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

@@ -35,10 +35,12 @@ To create the parameters described below, construct a hash table containing the 
 
 PROPERTY <IEndpointBaseProperties>: The resource specific properties for the Storage Mover resource.
   [Description <String>]: A description for the Endpoint.
+  [EndpointKind <String>]: The Endpoint resource kind source or target.
   [EndpointType <String>]: The Endpoint resource type.
 
 STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.

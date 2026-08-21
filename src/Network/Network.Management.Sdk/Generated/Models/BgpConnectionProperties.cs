@@ -40,7 +40,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="connectionState">The current state of the VirtualHub to Peer.
         /// Possible values include: &#39;Unknown&#39;, &#39;Connecting&#39;, &#39;Connected&#39;,
         /// &#39;NotConnected&#39;</param>
-        public BgpConnectionProperties(long? peerAsn = default(long?), string peerIP = default(string), SubResource hubVirtualNetworkConnection = default(SubResource), string provisioningState = default(string), string connectionState = default(string))
+
+        /// <param name="routingConfiguration">The routing configuration indicating the associated and propagated route
+        /// tables for this connection.
+        /// </param>
+        public BgpConnectionProperties(long? peerAsn = default(long?), string peerIP = default(string), SubResource hubVirtualNetworkConnection = default(SubResource), string provisioningState = default(string), string connectionState = default(string), RoutingConfiguration routingConfiguration = default(RoutingConfiguration))
 
         {
             this.PeerAsn = peerAsn;
@@ -48,6 +52,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.HubVirtualNetworkConnection = hubVirtualNetworkConnection;
             this.ProvisioningState = provisioningState;
             this.ConnectionState = connectionState;
+            this.RoutingConfiguration = routingConfiguration;
             CustomInit();
         }
 
@@ -86,6 +91,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "connectionState")]
         public string ConnectionState {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the routing configuration indicating the associated and
+        /// propagated route tables for this connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "routingConfiguration")]
+        public RoutingConfiguration RoutingConfiguration {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -105,6 +117,7 @@ namespace Microsoft.Azure.Management.Network.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "PeerAsn", 0);
                 }
             }
+
 
 
 

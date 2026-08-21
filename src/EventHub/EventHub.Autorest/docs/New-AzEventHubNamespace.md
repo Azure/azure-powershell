@@ -17,10 +17,10 @@ New-AzEventHubNamespace -Name <String> -ResourceGroupName <String> -Location <St
  [-SubscriptionId <String>] [-AlternateName <String>] [-ClusterArmId <String>] [-DisableLocalAuth]
  [-EnableAutoInflate] [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>]
  [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>] [-IdentityType <String>]
- [-KeyVaultProperty <IKeyVaultProperties[]>] [-MaximumThroughputUnit <Int64>] [-MinimumTlsVersion <String>]
- [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int64>] [-SkuName <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>] [-ZoneRedundant] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IPAddressType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>] [-MaximumThroughputUnit <Int64>]
+ [-MinimumTlsVersion <String>] [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption]
+ [-SkuCapacity <Int64>] [-SkuName <String>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>]
+ [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -274,7 +274,7 @@ Accept wildcard characters: False
 ```
 
 ### -GeoDataReplicationLocation
-Properties for User Assigned Identities
+Replica locations for geo data replication.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]
@@ -307,6 +307,22 @@ Accept wildcard characters: False
 
 ### -IdentityType
 Type of managed service identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IPAddressType
+The IP address type for the namespace.
+Determines whether the namespace supports IPv4 only or both IPv4 and IPv6.
 
 ```yaml
 Type: System.String

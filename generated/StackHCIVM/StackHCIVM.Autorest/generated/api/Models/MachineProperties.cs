@@ -236,43 +236,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfiguration Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfiguration { get => (this._agentConfiguration = this._agentConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.AgentConfiguration()); set { {_agentConfiguration = value;} } }
 
         /// <summary>Internal Acessors for AgentConfigurationConfigMode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationConfigMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ConfigMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ConfigMode = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationConfigMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ConfigMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ConfigMode = value ?? null; }
 
         /// <summary>Internal Acessors for AgentConfigurationExtensionsAllowList</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IConfigurationExtension> Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationExtensionsAllowList { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsAllowList; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsAllowList = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IConfigurationExtension> Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationExtensionsAllowList { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsAllowList; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsAllowList = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for AgentConfigurationExtensionsBlockList</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IConfigurationExtension> Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationExtensionsBlockList { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsBlockList; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsBlockList = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IConfigurationExtension> Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationExtensionsBlockList { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsBlockList; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsBlockList = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for AgentConfigurationExtensionsEnabled</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationExtensionsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsEnabled = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationExtensionsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsEnabled = value ?? null; }
 
         /// <summary>Internal Acessors for AgentConfigurationGuestConfigurationEnabled</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationGuestConfigurationEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).GuestConfigurationEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).GuestConfigurationEnabled = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationGuestConfigurationEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).GuestConfigurationEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).GuestConfigurationEnabled = value ?? null; }
 
         /// <summary>Internal Acessors for AgentConfigurationIncomingConnectionsPort</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationIncomingConnectionsPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).IncomingConnectionsPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).IncomingConnectionsPort = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationIncomingConnectionsPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).IncomingConnectionsPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).IncomingConnectionsPort = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for AgentConfigurationProxyBypass</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationProxyBypass { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyBypass; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyBypass = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationProxyBypass { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyBypass; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyBypass = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for AgentConfigurationProxyUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationProxyUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentConfigurationProxyUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyUrl = value ?? null; }
 
         /// <summary>Internal Acessors for AgentUpgrade</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgrade Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentUpgrade { get => (this._agentUpgrade = this._agentUpgrade ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.AgentUpgrade()); set { {_agentUpgrade = value;} } }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptDesiredVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptDesiredVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptDesiredVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion = value ?? null; }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage = value ?? null; }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus = value ?? null; }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptTimestamp</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp = value ?? null; }
 
         /// <summary>Internal Acessors for AgentVersion</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.AgentVersion { get => this._agentVersion; set { {_agentVersion = value;} } }
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ICloudMetadata Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.CloudMetadata { get => (this._cloudMetadata = this._cloudMetadata ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.CloudMetadata()); set { {_cloudMetadata = value;} } }
 
         /// <summary>Internal Acessors for CloudMetadataProvider</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.CloudMetadataProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ICloudMetadataInternal)CloudMetadata).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ICloudMetadataInternal)CloudMetadata).Provider = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.CloudMetadataProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ICloudMetadataInternal)CloudMetadata).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ICloudMetadataInternal)CloudMetadata).Provider = value ?? null; }
 
         /// <summary>Internal Acessors for DetectedProperty</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IDetectedProperties Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.DetectedProperty { get => (this._detectedProperty = this._detectedProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.DetectedProperties()); set { {_detectedProperty = value;} } }
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.LastStatusChange { get => this._lastStatusChange; set { {_lastStatusChange = value;} } }
 
         /// <summary>Internal Acessors for LinuxConfigurationPatchSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IPatchSettings Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.LinuxConfigurationPatchSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).LinuxConfigurationPatchSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).LinuxConfigurationPatchSetting = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IPatchSettings Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.LinuxConfigurationPatchSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).LinuxConfigurationPatchSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).LinuxConfigurationPatchSetting = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for LocationData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILocationData Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.LocationData { get => (this._locationData = this._locationData ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.LocationData()); set { {_locationData = value;} } }
@@ -313,6 +313,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         /// <summary>Internal Acessors for NetworkProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkProfile Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.NetworkProfile { get => (this._networkProfile = this._networkProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.NetworkProfile()); set { {_networkProfile = value;} } }
 
+        /// <summary>Internal Acessors for NetworkProfileNetworkInterface</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterface> Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.NetworkProfileNetworkInterface { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkProfileInternal)NetworkProfile).NetworkInterface; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkProfileInternal)NetworkProfile).NetworkInterface = value ?? null /* arrayOf */; }
+
         /// <summary>Internal Acessors for OSName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.OSName { get => this._oSName; set { {_oSName = value;} } }
 
@@ -320,13 +323,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfile Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.OSProfile { get => (this._oSProfile = this._oSProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.OSProfile()); set { {_oSProfile = value;} } }
 
         /// <summary>Internal Acessors for OSProfileComputerName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.OSProfileComputerName { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).ComputerName; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).ComputerName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.OSProfileComputerName { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).ComputerName; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).ComputerName = value ?? null; }
 
         /// <summary>Internal Acessors for OSProfileLinuxConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileLinuxConfiguration Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.OSProfileLinuxConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).LinuxConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).LinuxConfiguration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileLinuxConfiguration Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.OSProfileLinuxConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).LinuxConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).LinuxConfiguration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for OSProfileWindowsConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileWindowsConfiguration Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.OSProfileWindowsConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).WindowsConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).WindowsConfiguration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileWindowsConfiguration Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.OSProfileWindowsConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).WindowsConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).WindowsConfiguration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for OSSku</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.OSSku { get => this._oSSku; set { {_oSSku = value;} } }
@@ -341,10 +344,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IServiceStatuses Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.ServiceStatuses { get => (this._serviceStatuses = this._serviceStatuses ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ServiceStatuses()); set { {_serviceStatuses = value;} } }
 
         /// <summary>Internal Acessors for ServiceStatusesExtensionService</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IServiceStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.ServiceStatusesExtensionService { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IServiceStatusesInternal)ServiceStatuses).ExtensionService; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IServiceStatusesInternal)ServiceStatuses).ExtensionService = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IServiceStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.ServiceStatusesExtensionService { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IServiceStatusesInternal)ServiceStatuses).ExtensionService; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IServiceStatusesInternal)ServiceStatuses).ExtensionService = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ServiceStatusesGuestConfigurationService</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IServiceStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.ServiceStatusesGuestConfigurationService { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IServiceStatusesInternal)ServiceStatuses).GuestConfigurationService; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IServiceStatusesInternal)ServiceStatuses).GuestConfigurationService = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IServiceStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.ServiceStatusesGuestConfigurationService { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IServiceStatusesInternal)ServiceStatuses).GuestConfigurationService; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IServiceStatusesInternal)ServiceStatuses).GuestConfigurationService = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Status</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.Status { get => this._status; set { {_status = value;} } }
@@ -353,7 +356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.VMUuid { get => this._vMUuid; set { {_vMUuid = value;} } }
 
         /// <summary>Internal Acessors for WindowConfigurationPatchSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IPatchSettings Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.WindowConfigurationPatchSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).WindowConfigurationPatchSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).WindowConfigurationPatchSetting = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IPatchSettings Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachinePropertiesInternal.WindowConfigurationPatchSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).WindowConfigurationPatchSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOSProfileInternal)OSProfile).WindowConfigurationPatchSetting = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="MssqlDiscovered" /> property.</summary>
         private string _mssqlDiscovered;
@@ -371,7 +374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 
         /// <summary>The list of network interfaces.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterface> NetworkProfileNetworkInterface { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkProfileInternal)NetworkProfile).NetworkInterface; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkProfileInternal)NetworkProfile).NetworkInterface = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterface> NetworkProfileNetworkInterface { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkProfileInternal)NetworkProfile).NetworkInterface; }
 
         /// <summary>Backing field for <see cref="OSName" /> property.</summary>
         private string _oSName;

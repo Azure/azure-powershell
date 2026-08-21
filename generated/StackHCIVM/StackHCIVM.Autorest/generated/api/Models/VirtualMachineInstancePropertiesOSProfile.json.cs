@@ -92,7 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
             AddIf( null != this._windowsConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonNode) this._windowsConfiguration.ToJson(null,serializationMode) : null, "windowsConfiguration" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate))
             {
-                AddIf( null != (((object)this._adminPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonString(this._adminPassword.ToString()) : null, "adminPassword" ,container.Add );
+                AddIf( null != (((object)this._adminPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._adminPassword))) : null, "adminPassword" ,container.Add );
             }
             AddIf( null != (((object)this._adminUsername)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonString(this._adminUsername.ToString()) : null, "adminUsername" ,container.Add );
             AddIf( null != (((object)this._computerName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonString(this._computerName.ToString()) : null, "computerName" ,container.Add );

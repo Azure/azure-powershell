@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewaySkuFamily
     {
+        /// <summary>
+        /// Generation_1
+        /// </summary>
         public const string Generation1 = "Generation_1";
+        /// <summary>
+        /// Generation_2
+        /// </summary>
         public const string Generation2 = "Generation_2";
     }
 }

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates or updates a registration definition.
+Create a registration definition.
 .Description
-Creates or updates a registration definition.
+Create a registration definition.
 .Example
 $permantAuth = New-AzManagedServicesAuthorizationObject -PrincipalId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -RoleDefinitionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -PrincipalIdDisplayName "Test user" -DelegatedRoleDefinitionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
@@ -31,7 +31,7 @@ $eligibleAuth = New-AzManagedServicesEligibleAuthorizationObject -PrincipalId "x
 New-AzManagedServicesDefinition -Name "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -RegistrationDefinitionName "Test definition" -ManagedByTenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Authorization $permantAuth -EligibleAuthorization $eligibleAuth -Description "Test definition desc" -Scope "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IRegistrationDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,23 +40,23 @@ To create the parameters described below, construct a hash table containing the 
 AUTHORIZATION <IAuthorization[]>: The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
   PrincipalId <String>: The identifier of the Azure Active Directory principal.
   RoleDefinitionId <String>: The identifier of the Azure built-in role that defines the permissions that the Azure Active Directory principal will have on the projected scope.
-  [DelegatedRoleDefinitionId <String[]>]: The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other principals.
+  [DelegatedRoleDefinitionId <List<String>>]: The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other principals.
   [PrincipalIdDisplayName <String>]: The display name of the Azure Active Directory principal.
 
 ELIGIBLEAUTHORIZATION <IEligibleAuthorization[]>: The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
   PrincipalId <String>: The identifier of the Azure Active Directory principal.
   RoleDefinitionId <String>: The identifier of the Azure built-in role that defines the permissions that the Azure Active Directory principal will have on the projected scope.
-  [JustInTimeAccessPolicyManagedByTenantApprover <IEligibleApprover[]>]: The list of managedByTenant approvers for the eligible authorization.
+  [JustInTimeAccessPolicyManagedByTenantApprover <List<IEligibleApprover>>]: The list of managedByTenant approvers for the eligible authorization.
     PrincipalId <String>: The identifier of the Azure Active Directory principal.
     [PrincipalIdDisplayName <String>]: The display name of the Azure Active Directory principal.
   [JustInTimeAccessPolicyMaximumActivationDuration <TimeSpan?>]: The maximum access duration in ISO 8601 format for just-in-time access requests.
-  [JustInTimeAccessPolicyMultiFactorAuthProvider <MultiFactorAuthProvider?>]: The multi-factor authorization provider to be used for just-in-time access requests.
+  [JustInTimeAccessPolicyMultiFactorAuthProvider <String>]: The multi-factor authorization provider to be used for just-in-time access requests.
   [PrincipalIdDisplayName <String>]: The display name of the Azure Active Directory principal.
 .Link
 https://learn.microsoft.com/powershell/module/az.managedservices/new-azmanagedservicesdefinition
 #>
 function New-AzManagedServicesDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IRegistrationDefinition])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -73,63 +73,73 @@ param(
     # The scope of the resource.
     ${Scope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IAuthorization[]]
     # The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
-    # To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
     ${Authorization},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Category('Body')]
     [System.String]
     # The description of the registration definition.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IEligibleAuthorization[]]
     # The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
-    # To construct, see NOTES section for ELIGIBLEAUTHORIZATION properties and create a hash table.
     ${EligibleAuthorization},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Category('Body')]
     [System.String]
     # The identifier of the managedBy tenant.
     ${ManagedByTenantId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Category('Body')]
     [System.String]
     # Azure Marketplace plan name.
     ${PlanName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Category('Body')]
     [System.String]
     # Azure Marketplace product code.
     ${PlanProduct},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Category('Body')]
     [System.String]
     # Azure Marketplace publisher ID.
     ${PlanPublisher},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Category('Body')]
     [System.String]
     # Azure Marketplace plan's version.
     ${PlanVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Category('Body')]
     [System.String]
     # The name of the registration definition.
     ${RegistrationDefinitionName},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -199,6 +209,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -219,8 +237,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ManagedServices.private\New-AzManagedServicesDefinition_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.ManagedServices.private\New-AzManagedServicesDefinition_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ManagedServices.private\New-AzManagedServicesDefinition_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Scope')) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Scope') ) {
             $PSBoundParameters['Scope'] = "subscriptions/" + (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -230,6 +250,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

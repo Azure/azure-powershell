@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class UsageUnit
     {
+        /// <summary>
+        /// Count
+        /// </summary>
         public const string Count = "Count";
     }
 }

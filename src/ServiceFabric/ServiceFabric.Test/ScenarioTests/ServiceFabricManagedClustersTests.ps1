@@ -329,3 +329,145 @@ function Test-AddNetworkSecurityRule
 
 	Assert-AreEqual 3 $clusterFromGet.NetworkSecurityRules.Count
 }
+
+function Test-MaintenanceWindowStatus
+{
+	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
+	$clusterName = "sfmcps-" + (getAssetname)
+	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
+	$location = "southcentralus"
+	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
+	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "testName"="Test-MaintenanceWindowStatus"}
+	$mcName = "mc1"
+	$mcAssignmentName = "mc1Assignment"
+
+	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
+
+	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
+		-AdminPassword $pass -Sku Basic -ClientCertThumbprint $testClientTp -Tag $tags -Verbose
+	Assert-AreEqual "Succeeded" $cluster.ProvisioningState
+
+	$pnt = New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 5 -DiskType Standard_LRS -Primary
+	Assert-AreEqual 5 $pnt.VmInstanceCount
+
+	$clusterFromGet = Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+	Assert-AreEqual "Ready" $clusterFromGet.ClusterState
+
+	# get status before maintenance configuration - window should not be enabled
+	$status = Get-AzServiceFabricManagedClusterMaintenanceWindowStatus -ResourceGroupName $resourceGroupName -Name $clusterName
+	Assert-NotNull $status
+	Assert-False { $status.IsWindowEnabled }
+
+	# deploy maintenance configuration and assign it to the cluster
+	$subId = (Get-AzContext).Subscription.Id
+
+	$mcBody = @{
+		location = $location
+		properties = @{
+			maintenanceScope = "Resource"
+			extensionProperties = @{
+				maintenanceSubScope = "SFMC"
+			}
+			maintenanceWindow = @{
+				startDateTime = "2026-05-01 22:00"
+				duration = "05:00"
+				timeZone = "Pacific Standard Time"
+				expirationDateTime = $null
+				recurEvery = "1Day"
+			}
+		}
+	} | ConvertTo-Json -Depth 5
+
+	$mcPath = "/subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.Maintenance/maintenanceConfigurations/$($mcName)?api-version=2023-10-01-preview"
+	Invoke-AzRestMethod -Method PUT -Path $mcPath -Payload $mcBody
+
+	$mcAssignmentBody = @{
+		location = $location
+		properties = @{
+			maintenanceConfigurationId = "/subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.Maintenance/maintenanceConfigurations/$mcName"
+		}
+	} | ConvertTo-Json -Depth 5
+
+	$mcAssignmentPath = "/subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.ServiceFabric/managedClusters/$clusterName/providers/Microsoft.Maintenance/configurationAssignments/$($mcAssignmentName)?api-version=2023-10-01-preview"
+	Invoke-AzRestMethod -Method PUT -Path $mcAssignmentPath -Payload $mcAssignmentBody
+
+	Start-TestSleep -Seconds 30
+
+	# get status after maintenance configuration - window should be enabled
+	$status = Get-AzServiceFabricManagedClusterMaintenanceWindowStatus -ResourceGroupName $resourceGroupName -Name $clusterName
+	Assert-NotNull $status
+	Assert-True { $status.IsWindowEnabled }
+
+	$removeResponse = $cluster | Remove-AzServiceFabricManagedCluster -PassThru
+	Assert-True { $removeResponse }
+
+	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
+}
+
+function Test-ApplyMaintenanceWindow
+{
+	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
+	$clusterName = "sfmcps-" + (getAssetname)
+	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
+	$location = "southcentralus"
+	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
+	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "testName"="Test-ApplyMaintenanceWindow"}
+	$mcName = "mc1"
+	$mcAssignmentName = "mc1Assignment"
+
+	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
+
+	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
+		-AdminPassword $pass -Sku Basic -ClientCertThumbprint $testClientTp -Tag $tags -Verbose
+	Assert-AreEqual "Succeeded" $cluster.ProvisioningState
+
+	$pnt = New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 5 -DiskType Standard_LRS -Primary
+	Assert-AreEqual 5 $pnt.VmInstanceCount
+
+	$clusterFromGet = Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+	Assert-AreEqual "Ready" $clusterFromGet.ClusterState
+
+	# deploy maintenance configuration and assign it to the cluster
+	$subId = (Get-AzContext).Subscription.Id
+
+	$mcBody = @{
+		location = $location
+		properties = @{
+			maintenanceScope = "Resource"
+			extensionProperties = @{
+				maintenanceSubScope = "SFMC"
+			}
+			maintenanceWindow = @{
+				startDateTime = "2026-05-01 22:00"
+				duration = "05:00"
+				timeZone = "Pacific Standard Time"
+				expirationDateTime = $null
+				recurEvery = "1Day"
+			}
+		}
+	} | ConvertTo-Json -Depth 5
+
+	$mcPath = "/subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.Maintenance/maintenanceConfigurations/$($mcName)?api-version=2023-10-01-preview"
+	Invoke-AzRestMethod -Method PUT -Path $mcPath -Payload $mcBody
+
+	$mcAssignmentBody = @{
+		location = $location
+		properties = @{
+			maintenanceConfigurationId = "/subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.Maintenance/maintenanceConfigurations/$mcName"
+		}
+	} | ConvertTo-Json -Depth 5
+
+	$mcAssignmentPath = "/subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.ServiceFabric/managedClusters/$clusterName/providers/Microsoft.Maintenance/configurationAssignments/$($mcAssignmentName)?api-version=2023-10-01-preview"
+	Invoke-AzRestMethod -Method PUT -Path $mcAssignmentPath -Payload $mcAssignmentBody
+
+	Start-TestSleep -Seconds 30
+
+	# apply maintenance window
+	$result = Enable-AzServiceFabricManagedClusterMaintenanceWindow -ResourceGroupName $resourceGroupName -Name $clusterName -PassThru
+	Assert-True { $result }
+
+	$removeResponse = $cluster | Remove-AzServiceFabricManagedCluster -PassThru
+	Assert-True { $removeResponse }
+
+	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
+}

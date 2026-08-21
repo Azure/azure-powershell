@@ -64,7 +64,8 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the managed cluster resource.
         /// </param>
         /// <param name='configName'>
-        /// The name of the maintenance configuration.
+        /// The name of the maintenance configuration. Supported values are &#39;default&#39;,
+        /// &#39;aksManagedAutoUpgradeSchedule&#39;, or &#39;aksManagedNodeOSUpgradeSchedule&#39;.
         /// </param>
         public static MaintenanceConfiguration Get(this IMaintenanceConfigurationsOperations operations, string resourceGroupName, string resourceName, string configName)
         {
@@ -84,7 +85,8 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the managed cluster resource.
         /// </param>
         /// <param name='configName'>
-        /// The name of the maintenance configuration.
+        /// The name of the maintenance configuration. Supported values are &#39;default&#39;,
+        /// &#39;aksManagedAutoUpgradeSchedule&#39;, or &#39;aksManagedNodeOSUpgradeSchedule&#39;.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -110,7 +112,8 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the managed cluster resource.
         /// </param>
         /// <param name='configName'>
-        /// The name of the maintenance configuration.
+        /// The name of the maintenance configuration. Supported values are &#39;default&#39;,
+        /// &#39;aksManagedAutoUpgradeSchedule&#39;, or &#39;aksManagedNodeOSUpgradeSchedule&#39;.
         /// </param>
         public static MaintenanceConfiguration CreateOrUpdate(this IMaintenanceConfigurationsOperations operations, string resourceGroupName, string resourceName, string configName, MaintenanceConfiguration parameters)
         {
@@ -131,7 +134,8 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the managed cluster resource.
         /// </param>
         /// <param name='configName'>
-        /// The name of the maintenance configuration.
+        /// The name of the maintenance configuration. Supported values are &#39;default&#39;,
+        /// &#39;aksManagedAutoUpgradeSchedule&#39;, or &#39;aksManagedNodeOSUpgradeSchedule&#39;.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -156,7 +160,8 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the managed cluster resource.
         /// </param>
         /// <param name='configName'>
-        /// The name of the maintenance configuration.
+        /// The name of the maintenance configuration. Supported values are &#39;default&#39;,
+        /// &#39;aksManagedAutoUpgradeSchedule&#39;, or &#39;aksManagedNodeOSUpgradeSchedule&#39;.
         /// </param>
         public static void Delete(this IMaintenanceConfigurationsOperations operations, string resourceGroupName, string resourceName, string configName)
         {
@@ -176,7 +181,8 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the managed cluster resource.
         /// </param>
         /// <param name='configName'>
-        /// The name of the maintenance configuration.
+        /// The name of the maintenance configuration. Supported values are &#39;default&#39;,
+        /// &#39;aksManagedAutoUpgradeSchedule&#39;, or &#39;aksManagedNodeOSUpgradeSchedule&#39;.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

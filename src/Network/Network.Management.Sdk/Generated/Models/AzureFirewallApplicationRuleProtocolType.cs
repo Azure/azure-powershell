@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AzureFirewallApplicationRuleProtocolType
     {
+        /// <summary>
+        /// Http
+        /// </summary>
         public const string Http = "Http";
+        /// <summary>
+        /// Https
+        /// </summary>
         public const string Https = "Https";
+        /// <summary>
+        /// Mssql
+        /// </summary>
         public const string Mssql = "Mssql";
     }
 }

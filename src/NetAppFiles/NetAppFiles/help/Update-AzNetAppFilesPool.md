@@ -30,18 +30,16 @@ Update-AzNetAppFilesPool -Name <String> [-PoolSize <Int64>] [-QosType <String>] 
 
 ### ByResourceIdParameterSet
 ```
-Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess]
- [-CustomThroughput <Double>] [-Tag <Hashtable>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess] [-CustomThroughput <Double>]
+ [-Tag <Hashtable>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess]
- [-CustomThroughput <Double>] [-Tag <Hashtable>] -InputObject <PSNetAppFilesPool>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess] [-CustomThroughput <Double>]
+ [-Tag <Hashtable>] -InputObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ComputeFleet.private.dll'
   FormatsToProcess = './Az.ComputeFleet.format.ps1xml'
-  FunctionsToExport = 'Get-AzComputeFleet', 'Get-AzComputeFleetVMSS', 'New-AzComputeFleet', 'Remove-AzComputeFleet', 'Update-AzComputeFleet'
+  FunctionsToExport = 'Get-AzComputeFleet', 'Get-AzComputeFleetVirtualMachine', 'Get-AzComputeFleetVirtualMachineScaleSet', 'New-AzComputeFleet', 'Remove-AzComputeFleet', 'Set-AzComputeFleet', 'Update-AzComputeFleet'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ComputeFleet'
