@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
         public string[] DenySettingsExcludedAction { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Apply to child scopes.")]
-        public SwitchParameter DenySettingsApplyToChildScope { get; set; }
+        public SwitchParameter DenySettingsApplyToChildScopes { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Validation level. Possible values: Template, Provider, ProviderNoRbac.")]
         public string ValidationLevel { get; set; }
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
                 DenySettingsMode = DenySettingsMode.ToString(),
                 DenySettingsExcludedPrincipals = DenySettingsExcludedPrincipal,
                 DenySettingsExcludedActions = DenySettingsExcludedAction,
-                DenySettingsApplyToChildScopes = DenySettingsApplyToChildScope.IsPresent,
+                DenySettingsApplyToChildScopes = DenySettingsApplyToChildScopes.IsPresent,
                 ValidationLevel = ValidationLevel,
                 DebugSettingDetailLevel = DebugSettingDetailLevel,
                 BypassStackOutOfSyncError = BypassStackOutOfSyncError.IsPresent
