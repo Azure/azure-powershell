@@ -14,8 +14,14 @@ namespace Microsoft.Azure.Management.Automation.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TagOperators
     {
+        /// <summary>
+        /// All
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "All")]
         All,
+        /// <summary>
+        /// Any
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Any")]
         Any
     }

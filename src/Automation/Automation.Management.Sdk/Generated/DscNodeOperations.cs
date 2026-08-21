@@ -39,16 +39,25 @@ namespace Microsoft.Azure.Management.Automation
         public AutomationClient Client { get; private set; }
 
         /// <summary>
-        /// Delete the dsc node identified by node id.
+        /// Retrieve a list of dsc nodes.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        /// <param name='nodeId'>
-        /// The node id.
+        /// <param name='filter'>
+        /// The filter to apply on the operation.
+        /// </param>
+        /// <param name='skip'>
+        /// The number of rows to skip.
+        /// </param>
+        /// <param name='top'>
+        /// The number of rows to take.
+        /// </param>
+        /// <param name='inlinecount'>
+        /// Return total rows.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -59,6 +68,9 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -68,12 +80,18 @@ namespace Microsoft.Azure.Management.Automation
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string nodeId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DscNode>>> ListByAutomationAccountWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string filter = default(string), int? skip = default(int?), int? top = default(int?), string inlinecount = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -88,27 +106,16 @@ namespace Microsoft.Azure.Management.Automation
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._]+$");
-                }
             }
             if (automationAccountName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "automationAccountName");
             }
 
-            if (nodeId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "nodeId");
-            }
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
 
-            string apiVersion = "2020-01-13-preview";
+
+
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -118,26 +125,43 @@ namespace Microsoft.Azure.Management.Automation
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("automationAccountName", automationAccountName);
-                tracingParameters.Add("nodeId", nodeId);
-                tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("filter", filter);
+                tracingParameters.Add("skip", skip);
+                tracingParameters.Add("top", top);
+                tracingParameters.Add("inlinecount", inlinecount);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListByAutomationAccount", tracingParameters);
             }
             // Construct URL
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{automationAccountName}", System.Uri.EscapeDataString(automationAccountName));
-            _url = _url.Replace("{nodeId}", System.Uri.EscapeDataString(nodeId));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (apiVersion != null)
+            if (this.Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (filter != null)
+            {
+                _queryParameters.Add(string.Format("$filter={0}", System.Uri.EscapeDataString(filter)));
+            }
+            if (skip != null)
+            {
+                _queryParameters.Add(string.Format("$skip={0}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(skip, this.Client.SerializationSettings).Trim('"'))));
+            }
+            if (top != null)
+            {
+                _queryParameters.Add(string.Format("$top={0}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(top, this.Client.SerializationSettings).Trim('"'))));
+            }
+            if (inlinecount != null)
+            {
+                _queryParameters.Add(string.Format("$inlinecount={0}", System.Uri.EscapeDataString(inlinecount)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -146,7 +170,7 @@ namespace Microsoft.Azure.Management.Automation
             // Create HTTP transport objects
             var _httpRequest = new System.Net.Http.HttpRequestMessage();
             System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("DELETE");
+            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
@@ -227,13 +251,31 @@ namespace Microsoft.Azure.Management.Automation
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DscNode>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DscNode>>(_responseContent, this.Client.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
             }
             if (_shouldTrace)
             {
@@ -250,7 +292,7 @@ namespace Microsoft.Azure.Management.Automation
         /// Retrieve the dsc node identified by node id.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -285,6 +327,12 @@ namespace Microsoft.Azure.Management.Automation
 
 
  
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -299,10 +347,6 @@ namespace Microsoft.Azure.Management.Automation
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._]+$");
-                }
             }
             if (automationAccountName == null)
             {
@@ -314,12 +358,6 @@ namespace Microsoft.Azure.Management.Automation
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "nodeId");
             }
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            string apiVersion = "2020-01-13-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -330,7 +368,6 @@ namespace Microsoft.Azure.Management.Automation
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("automationAccountName", automationAccountName);
                 tracingParameters.Add("nodeId", nodeId);
-                tracingParameters.Add("apiVersion", apiVersion);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -340,15 +377,15 @@ namespace Microsoft.Azure.Management.Automation
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{automationAccountName}", System.Uri.EscapeDataString(automationAccountName));
             _url = _url.Replace("{nodeId}", System.Uri.EscapeDataString(nodeId));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (apiVersion != null)
+            if (this.Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -479,13 +516,13 @@ namespace Microsoft.Azure.Management.Automation
         /// Update the dsc node.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='nodeId'>
-        /// Parameters supplied to the update dsc node.
+        /// The node id.
         /// </param>
         /// <param name='dscNodeUpdateParameters'>
         /// Parameters supplied to the update dsc node.
@@ -521,6 +558,12 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "dscNodeUpdateParameters");
             }
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -535,10 +578,6 @@ namespace Microsoft.Azure.Management.Automation
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._]+$");
-                }
             }
             if (automationAccountName == null)
             {
@@ -550,12 +589,6 @@ namespace Microsoft.Azure.Management.Automation
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "nodeId");
             }
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            string apiVersion = "2020-01-13-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -566,7 +599,6 @@ namespace Microsoft.Azure.Management.Automation
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("automationAccountName", automationAccountName);
                 tracingParameters.Add("nodeId", nodeId);
-                tracingParameters.Add("apiVersion", apiVersion);
 
                 tracingParameters.Add("dscNodeUpdateParameters", dscNodeUpdateParameters);
 
@@ -577,15 +609,15 @@ namespace Microsoft.Azure.Management.Automation
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{automationAccountName}", System.Uri.EscapeDataString(automationAccountName));
             _url = _url.Replace("{nodeId}", System.Uri.EscapeDataString(nodeId));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (apiVersion != null)
+            if (this.Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -719,19 +751,16 @@ namespace Microsoft.Azure.Management.Automation
 
         }
         /// <summary>
-        /// Retrieve a list of dsc nodes.
+        /// Delete the dsc node identified by node id.
         /// </summary>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        /// <param name='inlinecount'>
-        /// Return total rows.
+        /// <param name='nodeId'>
+        /// The node id.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -742,9 +771,6 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -754,12 +780,17 @@ namespace Microsoft.Azure.Management.Automation
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DscNode>>> ListByAutomationAccountWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, Microsoft.Rest.Azure.OData.ODataQuery<DscNode> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<DscNode>), string inlinecount = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string nodeId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
 
             if (resourceGroupName == null)
             {
@@ -775,23 +806,17 @@ namespace Microsoft.Azure.Management.Automation
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._]+$");
-                }
             }
             if (automationAccountName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "automationAccountName");
             }
 
-
-            if (this.Client.SubscriptionId == null)
+            if (nodeId == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "nodeId");
             }
 
-            string apiVersion = "2020-01-13-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -799,40 +824,27 @@ namespace Microsoft.Azure.Management.Automation
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("odataQuery", odataQuery);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("automationAccountName", automationAccountName);
-                tracingParameters.Add("inlinecount", inlinecount);
-                tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("nodeId", nodeId);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListByAutomationAccount", tracingParameters);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
             }
             // Construct URL
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{automationAccountName}", System.Uri.EscapeDataString(automationAccountName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{nodeId}", System.Uri.EscapeDataString(nodeId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (odataQuery != null)
+            if (this.Client.ApiVersion != null)
             {
-                var _dscNode = odataQuery.ToString();
-                if (!string.IsNullOrEmpty(_dscNode))
-                {
-                    _queryParameters.Add(_dscNode);
-                }
-            }
-            if (inlinecount != null)
-            {
-                _queryParameters.Add(string.Format("$inlinecount={0}", System.Uri.EscapeDataString(inlinecount)));
-            }
-            if (apiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -841,7 +853,7 @@ namespace Microsoft.Azure.Management.Automation
             // Create HTTP transport objects
             var _httpRequest = new System.Net.Http.HttpRequestMessage();
             System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
+            _httpRequest.Method = new System.Net.Http.HttpMethod("DELETE");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
@@ -922,31 +934,13 @@ namespace Microsoft.Azure.Management.Automation
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DscNode>>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DscNode>>(_responseContent, this.Client.DeserializationSettings);
-                }
-                catch (Newtonsoft.Json.JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
             }
             if (_shouldTrace)
             {

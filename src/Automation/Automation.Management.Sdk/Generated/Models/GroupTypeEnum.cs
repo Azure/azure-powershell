@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class GroupTypeEnum
     {
+        /// <summary>
+        /// User
+        /// </summary>
         public const string User = "User";
+        /// <summary>
+        /// System
+        /// </summary>
         public const string System = "System";
     }
 }
