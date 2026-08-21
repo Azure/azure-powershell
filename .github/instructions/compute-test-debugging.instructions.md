@@ -218,3 +218,9 @@ Keep entries concise — 1–2 sentences per field. The goal is to give future d
 ## Known Issues
 
 <!-- Entries are added automatically by Step 8 after successful debugging sessions. Do not remove existing entries. -->
+
+### New-AzVM image validation uses an unavailable API version
+- **Symptom**: `New-AzVM` fails with `NoRegisteredProviderFound` for `locations/publishers` when the generated Compute SDK API version is newer than the version deployed in the test subscription.
+- **Root cause**: Trusted Launch defaulting queries marketplace image metadata before VM creation when the VM configuration does not specify a security type.
+- **Fix**: For scenarios that do not test Trusted Launch, set `-SecurityType Standard` with `Set-AzVMSecurityProfile` and use a concrete image version so `New-AzVM` can send the VM create request without image metadata discovery.
+- **Files involved**: `src/Compute/Compute/VirtualMachine/Operation/NewAzureVMCommand.cs`, `src/Compute/Compute.Test/ScenarioTests/*Tests.ps1`

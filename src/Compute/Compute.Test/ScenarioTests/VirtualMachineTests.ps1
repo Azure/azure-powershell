@@ -8101,35 +8101,76 @@ function Test-VirtualMachineAddProxyAgentExtension
 
 <#
 .SYNOPSIS
-Test-VirtualMachineProxyAgentUseLocalFileRules validates WireServer and IMDS local file rules settings on VM config.
+Test-VirtualMachineProxyAgentUseLocalFileRules validates WireServer and IMDS local file rules settings on a VM.
 #>
 function Test-VirtualMachineProxyAgentUseLocalFileRules
 {
-    # Step 1: Create base VM config and confirm endpoint settings are initially null.
+    $resourceGroupName = Get-ComputeTestResourceName
+    $adminUsername = Get-ComputeTestResourceName
+    $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+    $credential = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword)
     $vmName = Get-ComputeTestResourceName
-    $vm = New-AzVMConfig -VMName $vmName -VMSize "Standard_D2s_v3"
-    $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true
-    Assert-Null $vm.SecurityProfile.ProxyAgentSettings.WireServer
-    Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds
+    $location = "eastus2"
+    $virtualNetworkName = $vmName + "vnet"
+    $subnetName = $vmName + "subnet"
+    $networkInterfaceName = $vmName + "nic"
 
-    # Step 2: Set WireServer local file rules by itself.
-    $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerUseLocalFileRules $true
-    Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.WireServer
-    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $true
-    Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds
+    try
+    {
+        # Validate the parameter matrix on an in-memory VM configuration.
+        $vm = New-AzVMConfig -VMName $vmName -VMSize "Standard_D2s_v3"
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.WireServer
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds
 
-    # Step 3: Set IMDS local file rules by itself.
-    $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -ImdsUseLocalFileRules $false
-    Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.Imds
-    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $false
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerUseLocalFileRules $true
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.WireServer
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $true
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds
 
-    # Step 4: Set both local file rules together with endpoint modes.
-    $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerMode "Audit" -WireServerUseLocalFileRules $false -ImdsMode "Enforce" -ImdsUseLocalFileRules $true
-    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Enabled $true
-    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.Mode "Audit"
-    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $false
-    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.Mode "Enforce"
-    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $true
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -ImdsUseLocalFileRules $false
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.Imds
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $false
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerMode "Audit" -WireServerUseLocalFileRules $false -ImdsMode "Enforce" -ImdsUseLocalFileRules $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.Mode "Audit"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $false
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.Mode "Enforce"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $true
+
+        # Persist both settings and verify create and update behavior through the Compute resource provider.
+        New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24"
+        $virtualNetwork = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $subnet
+        $networkInterface = New-AzNetworkInterface -Name $networkInterfaceName -ResourceGroupName $resourceGroupName -Location $location -SubnetId $virtualNetwork.Subnets[0].Id
+
+        $vm = New-AzVMConfig -VMName $vmName -VMSize "Standard_D2s_v3"
+        $vm = Set-AzVMOperatingSystem -VM $vm -Linux -ComputerName $vmName -Credential $credential
+        $vm = Set-AzVMSourceImage -VM $vm -PublisherName "Canonical" -Offer "0001-com-ubuntu-server-jammy" -Skus "22_04-lts" -Version "22.04.202510230"
+        $vm = Set-AzVMBootDiagnostic -VM $vm -Disable
+        $vm = Add-AzVMNetworkInterface -VM $vm -Id $networkInterface.Id
+        $vm = Set-AzVMSecurityProfile -VM $vm -SecurityType "Standard"
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -AddProxyAgentExtension $true -WireServerMode "Audit" -WireServerUseLocalFileRules $true -ImdsMode "Enforce" -ImdsUseLocalFileRules $false
+        New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm
+
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $false
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerMode "Audit" -WireServerUseLocalFileRules $false -ImdsMode "Enforce" -ImdsUseLocalFileRules $true
+        Update-AzVM -ResourceGroupName $resourceGroupName -VM $vm
+
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.Mode "Audit"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $false
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.Mode "Enforce"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $true
+    }
+    finally
+    {
+        Clean-ResourceGroup $resourceGroupName
+    }
 }
 
 <#
