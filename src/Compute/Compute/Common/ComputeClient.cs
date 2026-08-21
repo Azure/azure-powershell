@@ -37,6 +37,14 @@ namespace Microsoft.Azure.Commands.Compute
         public ComputeClient(IComputeManagementClient computeManagementClient)
         {
             ComputeManagementClient = computeManagementClient;
+
+            // Prevent Json.NET from parsing string values (e.g. tags) that look like dates
+            // into DateTime objects during deserialization, which would then be re-serialized
+            // using a different format and lose information (see issue #30036).
+            if (ComputeManagementClient?.DeserializationSettings != null)
+            {
+                ComputeManagementClient.DeserializationSettings.DateParseHandling = Newtonsoft.Json.DateParseHandling.None;
+            }
         }
     }
 }
