@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added WAF (Web Application Firewall) managed rule set display name and managed rule paranoia level to Application Gateway WAF cmdlet output.
+    - Added the `ParanoiaLevel` property to the rules returned by `Get-AzApplicationGatewayAvailableWafRuleSet` and `Get-AzApplicationGatewayWafDynamicManifest`.
+    - Added the `DisplayName` property to the rule sets returned by the same cmdlets.
+    - Both properties are read-only and are populated from API version 2026-01-01 and later.
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
     - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
     - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
