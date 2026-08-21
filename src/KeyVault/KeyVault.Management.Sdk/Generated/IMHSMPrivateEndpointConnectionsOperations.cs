@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// associated with the managed HSM Pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// HSM Pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the managed hsm
@@ -82,10 +82,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// managed hsm pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the managed hsm
@@ -117,10 +117,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// managed hsm pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the managed hsm
@@ -149,10 +149,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// managed hsm pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the managed hsm
