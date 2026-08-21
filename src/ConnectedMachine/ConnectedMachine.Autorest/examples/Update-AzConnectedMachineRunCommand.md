@@ -1,7 +1,7 @@
 ### Example 1: Update a run command with tags
 ```powershell
 $tags = @{Tag1="tag1"; Tag2="tag2"}
-Update-AzConnectedMachineRunCommand -ResourceGroupName $env.ResourceGroupName -RunCommandName $env.RunCommandName -MachineName $env.MachineName -Subscription $env.SubscriptionId -Tag $tags
+Update-AzConnectedMachineRunCommand -ResourceGroupName "myResourceGroup" -RunCommandName "myRunCommand" -MachineName "myMachine" -Tag $tags
 ```
 
 ```output

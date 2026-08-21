@@ -33,7 +33,7 @@ Gets the network security perimeter configuration for a private link scope.
 
 ### Example 1: Get network security perimeter of a private link scope
 ```powershell
-Get-AzConnectedNetworkSecurityPerimeterConfiguration -ResourceGroupName $env.ResourceGroupNameNSP -ScopeName $env.PrivateLinkScopeNameNSP
+Get-AzConnectedNetworkSecurityPerimeterConfiguration -ResourceGroupName "myResourceGroup" -ScopeName "myPrivateLinkScope"
 ```
 
 ```output
@@ -132,6 +132,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
