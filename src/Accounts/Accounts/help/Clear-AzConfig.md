@@ -224,7 +224,7 @@ Accept wildcard characters: False
 
 ### -EnableLoginByWam
 \[Preview\] When enabled, Web Account Manager (WAM) will be the default interactive login experience.
-It will fall back to using the browser if the platform does not support WAM.
+It is supported on Windows only; on Linux (including WSL) and macOS the browser is always used.
 Note that this feature is under preview. Microsoft Account (MSA) is currently not supported.
 Feel free to reach out to Azure PowerShell team if you have any feedbacks: https://aka.ms/azpsissue
 

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -27,7 +28,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Definitions
     /// </summary>
     internal class EnableLoginByWamConfig : TypedConfig<bool>
     {
-        public override object DefaultValue => true;
+        // WAM depends on the OS broker, which is only reliably supported on Windows.
+        // Default to enabled on Windows and disabled elsewhere (Linux/WSL, macOS) so that
+        // non-Windows platforms don't fall into the unsupported broker path by default.
+        public override object DefaultValue => SharedUtilities.IsWindowsPlatform();
 
         public override string Key => ConfigKeys.EnableLoginByWam;
 
