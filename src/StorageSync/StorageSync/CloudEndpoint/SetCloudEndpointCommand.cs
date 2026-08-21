@@ -203,6 +203,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 // Create update parameters with the existing values and new ChangeEnumerationIntervalDay
                 var updateParameters = new CloudEndpointUpdateParameters()
                 {
+                    Properties = new CloudEndpointUpdateProperties()
                 };
 
                 // Apply the update if parameter is provided
