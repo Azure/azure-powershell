@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 readSqlRoleAssignmentGetResults = CosmosDBManagementClient.SqlResources.GetSqlRoleAssignment(Id, ResourceGroupName, AccountName);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode != HttpStatusCode.NotFound)
                 {

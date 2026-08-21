@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='endTime'>
         /// Restorable Sql containers event feed end time.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<RestorableSqlContainerGetResult> List(this IRestorableSqlContainersOperations operations, string location, string instanceId, string restorableSqlDatabaseRid = default(string), string startTime = default(string), string endTime = default(string))
+        public static Microsoft.Rest.Azure.IPage<RestorableSqlContainerGetResult> List(this IRestorableSqlContainersOperations operations, string location, string instanceId, string restorableSqlDatabaseRid = default(string), string startTime = default(string), string endTime = default(string))
         {
                 return ((IRestorableSqlContainersOperations)operations).ListAsync(location, instanceId, restorableSqlDatabaseRid, startTime, endTime).GetAwaiter().GetResult();
         }
@@ -70,9 +70,50 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<RestorableSqlContainerGetResult>> ListAsync(this IRestorableSqlContainersOperations operations, string location, string instanceId, string restorableSqlDatabaseRid = default(string), string startTime = default(string), string endTime = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RestorableSqlContainerGetResult>> ListAsync(this IRestorableSqlContainersOperations operations, string location, string instanceId, string restorableSqlDatabaseRid = default(string), string startTime = default(string), string endTime = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(location, instanceId, restorableSqlDatabaseRid, startTime, endTime, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Show the event feed of all mutations done on all the Azure Cosmos DB SQL
+        /// containers under a specific database.  This helps in scenario where
+        /// container was accidentally deleted.  This API requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39;
+        /// permission
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<RestorableSqlContainerGetResult> ListNext(this IRestorableSqlContainersOperations operations, string nextPageLink)
+        {
+                return ((IRestorableSqlContainersOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Show the event feed of all mutations done on all the Azure Cosmos DB SQL
+        /// containers under a specific database.  This helps in scenario where
+        /// container was accidentally deleted.  This API requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39;
+        /// permission
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RestorableSqlContainerGetResult>> ListNextAsync(this IRestorableSqlContainersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
