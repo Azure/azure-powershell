@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMdpPool
 
 ## SYNOPSIS
-create a Pool
+Create a Pool
 
 ## SYNTAX
 
@@ -17,9 +17,9 @@ create a Pool
 New-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity]
  [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <Int32>] [-OrganizationProfile <IOrganizationProfile>]
- [-ProvisioningState <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ProvisioningState <String>] [-RuntimeConfigurationWorkFolder <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -48,8 +48,9 @@ New-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <Strin
 New-AzMdpPool -InputObject <IMdpIdentity> -Location <String> [-AgentProfile <IAgentProfile>]
  [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity] [-FabricProfile <IFabricProfile>]
  [-MaximumConcurrency <Int32>] [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RuntimeConfigurationWorkFolder <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -59,7 +60,7 @@ New-AzMdpPool -InputObject <IMdpIdentity> -Resource <IPool> [-DefaultProfile <PS
 ```
 
 ## DESCRIPTION
-create a Pool
+Create a Pool
 
 ## EXAMPLES
 
@@ -333,6 +334,21 @@ Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Crea
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuntimeConfigurationWorkFolder
+The target work folder of the task agent on the machine.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
