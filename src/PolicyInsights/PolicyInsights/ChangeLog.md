@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+* Fixed 'Get-AzPolicyRemediation' at management-group scope in Az.PolicyInsights 2.0.0.
+    - Management-group remediation queries now use the management group resource ID instead of resolving Microsoft.Management with an unsupported API version.
+    - Fixed issue [#29850]
+
 ## Version 2.0.0
 * Changed output types: `PSAttestation`/`PSPolicyMetadata`/`PSRemediation` renamed; flattened `SystemData`
 * Renamed `ResourceTags`/`ManagementGroupIds` to singular forms
