@@ -19,5 +19,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string ProvisioningState { get; set; }
         public DateTime? ProvisioningTime { get; set; }
         public Sku Sku { get; set; }
+        public ScheduleProfile ScheduleProfile { get; set; }
     }
 }
