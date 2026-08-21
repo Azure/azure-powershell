@@ -1,0 +1,11 @@
+{
+  "Entries": [],
+  "Names": {
+    "Test-VirtualMachineProxyAgentUseLocalFileRules": [
+      "crptestps1234"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
+}
