@@ -17,8 +17,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.NewSdkExtensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Management.Resources.Models;
     using System;
     using System.Linq;
     using System.Management.Automation;
@@ -103,22 +104,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         private PSResourceProvider[] ListPSResourceProviders()
         {
-            var allProviders = this.ResourceManagerSdkClient.ListResourceProviders(
+            var allProviders = this.NewResourceManagerSdkClient.ListResourceProviders(
                 providerName: null,
                 listAvailable: true);
 
             var providers = allProviders;
             if (this.IsParameterBound(c => c.ProviderNamespace))
             {
-                providers = new System.Collections.Generic.List<Management.ResourceManager.Models.Provider>();
+                providers = new System.Collections.Generic.List<Provider>();
                 foreach (var providerNamespace in this.ProviderNamespace)
                 {
-                    providers.AddRange(this.ResourceManagerSdkClient.ListResourceProviders(providerName: providerNamespace));
+                    providers.AddRange(this.NewResourceManagerSdkClient.ListResourceProviders(providerName: providerNamespace));
                 }
             }
             else if (this.ListAvailable == false)
             {
-                providers = this.ResourceManagerSdkClient.GetRegisteredProviders(providers);
+                providers = this.NewResourceManagerSdkClient.GetRegisteredProviders(providers);
             }
 
             if (string.IsNullOrEmpty(this.Location))
