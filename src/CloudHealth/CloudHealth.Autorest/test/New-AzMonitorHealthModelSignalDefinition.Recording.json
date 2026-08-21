@@ -1,0 +1,267 @@
+{
+  "New-AzMonitorHealthModelSignalDefinition+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/signaldefinitions/azps-sig-create-ms1q6l?api-version=2026-05-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/signaldefinitions/azps-sig-create-ms1q6l?api-version=2026-05-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"displayName\": \"Create signal\",\n    \"signalKind\": \"AzureResourceMetric\",\n    \"refreshInterval\": \"PT5M\",\n    \"dataUnit\": \"Percent\",\n    \"evaluationRules\": {\n      \"degradedRule\": {\n        \"operator\": \"GreaterThan\",\n        \"threshold\": 70\n      },\n      \"unhealthyRule\": {\n        \"operator\": \"GreaterThan\",\n        \"threshold\": 90\n      }\n    },\n    \"metricNamespace\": \"Microsoft.Compute/virtualMachines\",\n    \"metricName\": \"Percentage CPU\",\n    \"timeGrain\": \"PT5M\",\n    \"aggregationType\": \"Average\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "530"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/centralus/4563b6d1-09a0-4378-8637-8aebe38523ae"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "2a92fd63-9ea5-437a-a056-adda4699698e"
+        ],
+        "x-ms-correlation-request-id": [
+          "60b51303-f8e8-403a-8854-aff61c48c2e6"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "199"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "2999"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20260818T110055Z:60b51303-f8e8-403a-8854-aff61c48c2e6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B01F267F782E474EACD8057B31B8A65F Ref B: AMS231020615029 Ref C: 2026-08-18T11:00:55Z"
+        ],
+        "Date": [
+          "Tue, 18 Aug 2026 11:00:54 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "947"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/signaldefinitions/azps-sig-create-ms1q6l\",\"name\":\"azps-sig-create-ms1q6l\",\"type\":\"microsoft.cloudhealth/healthmodels/signaldefinitions\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-18T11:00:55.3540659Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-08-18T11:00:55.3540659Z\"},\"properties\":{\"signalKind\":\"AzureResourceMetric\",\"metricNamespace\":\"Microsoft.Compute/virtualMachines\",\"metricName\":\"Percentage CPU\",\"timeGrain\":\"PT5M\",\"aggregationType\":\"Average\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Create signal\",\"refreshInterval\":\"PT5M\",\"dataUnit\":\"Percent\",\"evaluationRules\":{\"degradedRule\":{\"operator\":\"GreaterThan\",\"threshold\":70.0},\"unhealthyRule\":{\"operator\":\"GreaterThan\",\"threshold\":90.0}}}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMonitorHealthModelSignalDefinition+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/signaldefinitions/azps-sig-create-ms1q6l?api-version=2026-05-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/signaldefinitions/azps-sig-create-ms1q6l?api-version=2026-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "72"
+        ],
+        "x-ms-client-request-id": [
+          "caa0f7b8-c46d-4335-a332-eb7b805e3e87"
+        ],
+        "CommandName": [
+          "New-AzMonitorHealthModelSignalDefinition"
+        ],
+        "FullCommandName": [
+          "New-AzMonitorHealthModelSignalDefinition_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v7.1.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/centralus/e4f48bcd-2ee5-42c8-8689-cdc0e421bca9"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "c52336f5-4fd0-487e-b403-5b3cd8a83814"
+        ],
+        "x-ms-correlation-request-id": [
+          "de087491-e6b3-4003-ae09-a8e4fb110db7"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20260818T110126Z:de087491-e6b3-4003-ae09-a8e4fb110db7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: E18ACA28FE194BF99191EE0648DF4DB1 Ref B: AMS231020615029 Ref C: 2026-08-18T11:01:26Z"
+        ],
+        "Date": [
+          "Tue, 18 Aug 2026 11:01:25 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "947"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/azps-ch-rg-ms1q6l/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-ms1q6l/signaldefinitions/azps-sig-create-ms1q6l\",\"name\":\"azps-sig-create-ms1q6l\",\"type\":\"Microsoft.CloudHealth/healthmodels/signaldefinitions\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-18T11:00:55.3540659Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-08-18T11:00:55.7083461Z\"},\"properties\":{\"signalKind\":\"AzureResourceMetric\",\"metricNamespace\":\"Microsoft.Compute/virtualMachines\",\"metricName\":\"Percentage CPU\",\"timeGrain\":\"PT5M\",\"aggregationType\":\"Average\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Create signal\",\"refreshInterval\":\"PT5M\",\"dataUnit\":\"Percent\",\"evaluationRules\":{\"degradedRule\":{\"operator\":\"GreaterThan\",\"threshold\":70.0},\"unhealthyRule\":{\"operator\":\"GreaterThan\",\"threshold\":90.0}}}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMonitorHealthModelSignalDefinition+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/signaldefinitions/azps-sig-create-ms1q6l?api-version=2026-05-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/signaldefinitions/azps-sig-create-ms1q6l?api-version=2026-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "73"
+        ],
+        "x-ms-client-request-id": [
+          "caa0f7b8-c46d-4335-a332-eb7b805e3e87"
+        ],
+        "CommandName": [
+          "New-AzMonitorHealthModelSignalDefinition"
+        ],
+        "FullCommandName": [
+          "New-AzMonitorHealthModelSignalDefinition_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v7.1.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/centralus/25e5907d-bd2e-4802-b272-594720ed15cb"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "8d9dddb7-1f6f-4547-8b97-83bac49cbed1"
+        ],
+        "x-ms-correlation-request-id": [
+          "3663fe4d-47f9-4085-9135-dfb41b0565a9"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20260818T110126Z:3663fe4d-47f9-4085-9135-dfb41b0565a9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B9D56E2498AC4CC5888F5D9016E44523 Ref B: AMS231020615029 Ref C: 2026-08-18T11:01:26Z"
+        ],
+        "Date": [
+          "Tue, 18 Aug 2026 11:01:26 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "947"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/azps-ch-rg-ms1q6l/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-ms1q6l/signaldefinitions/azps-sig-create-ms1q6l\",\"name\":\"azps-sig-create-ms1q6l\",\"type\":\"Microsoft.CloudHealth/healthmodels/signaldefinitions\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-18T11:00:55.3540659Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-08-18T11:00:55.7083461Z\"},\"properties\":{\"signalKind\":\"AzureResourceMetric\",\"metricNamespace\":\"Microsoft.Compute/virtualMachines\",\"metricName\":\"Percentage CPU\",\"timeGrain\":\"PT5M\",\"aggregationType\":\"Average\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Create signal\",\"refreshInterval\":\"PT5M\",\"dataUnit\":\"Percent\",\"evaluationRules\":{\"degradedRule\":{\"operator\":\"GreaterThan\",\"threshold\":70.0},\"unhealthyRule\":{\"operator\":\"GreaterThan\",\"threshold\":90.0}}}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "Invoke-AzMonitorHealthModelIngestEntityHealthReport+[NoContext]+IngestExpanded+$POST+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/entities/azps-ent-shared-ms1q6l/ingestHealthReport?api-version=2026-05-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/entities/azps-ent-shared-ms1q6l/ingestHealthReport?api-version=2026-05-01-preview",
+      "Content": "{\n  \"signalName\": \"azps-sig-shared-ms1q6l\",\n  \"healthState\": \"Healthy\",\n  \"value\": 88.8,\n  \"expiresInMinutes\": 60\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "115"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "3d3cfd1d-3355-4bd8-92ad-f5eb1b548d20"
+        ],
+        "x-ms-correlation-request-id": [
+          "0a46a5d9-6f0e-4c23-8499-ee664ef513ab"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/centralus/1827efab-39ff-4473-abdd-23936041666f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "198"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "2998"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20260818T105732Z:0a46a5d9-6f0e-4c23-8499-ee664ef513ab"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B7E05E6409E549CEAE8DE1B69654B239 Ref B: AMS231020615029 Ref C: 2026-08-18T10:57:31Z"
+        ],
+        "Date": [
+          "Tue, 18 Aug 2026 10:57:31 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

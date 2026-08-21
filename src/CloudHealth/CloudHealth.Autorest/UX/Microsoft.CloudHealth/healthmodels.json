@@ -1,0 +1,85 @@
+{
+  "resourceType": "healthmodels",
+  "apiVersion": "2026-05-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMonitorHealthModel",
+      "description": "Get a HealthModel",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth/get-azmonitorhealthmodel"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a HealthModel",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.healthModelName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMonitorHealthModel",
+      "description": "Delete a HealthModel",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth/remove-azmonitorhealthmodel"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a HealthModel",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.healthModelName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
