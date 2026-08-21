@@ -15,15 +15,14 @@ Creates or updates a Schedule.
 ### CreateExpanded (Default)
 ```
 New-AzDevCenterAdminSchedule -PoolName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Time <String> -TimeZone <String> [-State <ScheduleEnableStatus>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -Time <String> -TimeZone <String> [-State <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterAdminSchedule -InputObject <IDevCenterIdentity> -Time <String> -TimeZone <String>
- [-State <ScheduleEnableStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-State <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -161,7 +160,7 @@ Accept wildcard characters: False
 Indicates whether or not this scheduled task is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduleEnableStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -258,7 +257,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ISchedule
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ISchedule
 
 ## NOTES
 

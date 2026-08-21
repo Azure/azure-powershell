@@ -15,36 +15,32 @@ Creates or updates a machine pool
 ### CreateExpanded (Default)
 ```
 New-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName <String>
- -LocalAdministrator <LocalAdminStatus> -Location <String> [-SubscriptionId <String>]
- [-ActiveHourConfigurationAutoStartEnableStatus <AutoStartEnableStatus>]
- [-ActiveHourConfigurationDefaultEndTimeHour <Int32>] [-ActiveHourConfigurationDefaultStartTimeHour <Int32>]
- [-ActiveHourConfigurationDefaultTimeZone <String>]
- [-ActiveHourConfigurationKeepAwakeEnableStatus <KeepAwakeEnableStatus>] [-DevBoxDefinitionName <String>]
- [-DevBoxDefinitionType <PoolDevBoxDefinitionType>] [-DevBoxTunnelEnableStatus <DevBoxTunnelEnableStatus>]
- [-DisplayName <String>] [-ImageReferenceId <String>] [-ManagedVirtualNetworkRegion <String[]>]
- [-NetworkConnectionName <String>] [-SingleSignOnStatus <SingleSignOnStatus>] [-SkuCapacity <Int32>]
- [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
- [-StopOnDisconnectGracePeriodMinute <Int32>] [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>]
- [-StopOnNoConnectGracePeriodMinute <Int32>] [-StopOnNoConnectStatus <StopOnNoConnectEnableStatus>]
- [-Tag <Hashtable>] [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -LocalAdministrator <String> -Location <String> [-SubscriptionId <String>]
+ [-ActiveHourConfigurationAutoStartEnableStatus <String>] [-ActiveHourConfigurationDefaultEndTimeHour <Int32>]
+ [-ActiveHourConfigurationDefaultStartTimeHour <Int32>] [-ActiveHourConfigurationDefaultTimeZone <String>]
+ [-ActiveHourConfigurationKeepAwakeEnableStatus <String>] [-DevBoxDefinitionName <String>]
+ [-DevBoxDefinitionType <String>] [-DevBoxTunnelEnableStatus <String>] [-DisplayName <String>]
+ [-ImageReferenceId <String>] [-ManagedVirtualNetworkRegion <String[]>] [-NetworkConnectionName <String>]
+ [-SingleSignOnStatus <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
+ [-SkuSize <String>] [-SkuTier <String>] [-StopOnDisconnectGracePeriodMinute <Int32>]
+ [-StopOnDisconnectStatus <String>] [-StopOnNoConnectGracePeriodMinute <Int32>]
+ [-StopOnNoConnectStatus <String>] [-Tag <Hashtable>] [-VirtualNetworkType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDevCenterAdminPool -InputObject <IDevCenterIdentity> -LocalAdministrator <LocalAdminStatus>
- -Location <String> [-ActiveHourConfigurationAutoStartEnableStatus <AutoStartEnableStatus>]
- [-ActiveHourConfigurationDefaultEndTimeHour <Int32>] [-ActiveHourConfigurationDefaultStartTimeHour <Int32>]
- [-ActiveHourConfigurationDefaultTimeZone <String>]
- [-ActiveHourConfigurationKeepAwakeEnableStatus <KeepAwakeEnableStatus>] [-DevBoxDefinitionName <String>]
- [-DevBoxDefinitionType <PoolDevBoxDefinitionType>] [-DevBoxTunnelEnableStatus <DevBoxTunnelEnableStatus>]
- [-DisplayName <String>] [-ImageReferenceId <String>] [-ManagedVirtualNetworkRegion <String[]>]
- [-NetworkConnectionName <String>] [-SingleSignOnStatus <SingleSignOnStatus>] [-SkuCapacity <Int32>]
- [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
- [-StopOnDisconnectGracePeriodMinute <Int32>] [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>]
- [-StopOnNoConnectGracePeriodMinute <Int32>] [-StopOnNoConnectStatus <StopOnNoConnectEnableStatus>]
- [-Tag <Hashtable>] [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDevCenterAdminPool -InputObject <IDevCenterIdentity> -LocalAdministrator <String> -Location <String>
+ [-ActiveHourConfigurationAutoStartEnableStatus <String>] [-ActiveHourConfigurationDefaultEndTimeHour <Int32>]
+ [-ActiveHourConfigurationDefaultStartTimeHour <Int32>] [-ActiveHourConfigurationDefaultTimeZone <String>]
+ [-ActiveHourConfigurationKeepAwakeEnableStatus <String>] [-DevBoxDefinitionName <String>]
+ [-DevBoxDefinitionType <String>] [-DevBoxTunnelEnableStatus <String>] [-DisplayName <String>]
+ [-ImageReferenceId <String>] [-ManagedVirtualNetworkRegion <String[]>] [-NetworkConnectionName <String>]
+ [-SingleSignOnStatus <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
+ [-SkuSize <String>] [-SkuTier <String>] [-StopOnDisconnectGracePeriodMinute <Int32>]
+ [-StopOnDisconnectStatus <String>] [-StopOnNoConnectGracePeriodMinute <Int32>]
+ [-StopOnNoConnectStatus <String>] [-Tag <Hashtable>] [-VirtualNetworkType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +69,7 @@ This command creates a pool named "DevPool" in the project "DevProject".
 Enables or disables whether the Dev Box should be automatically started at commencement of active hours.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.AutoStartEnableStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +129,7 @@ Accept wildcard characters: False
 Enables or disables whether the Dev Box should be kept awake during active hours.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.KeepAwakeEnableStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -195,7 +191,7 @@ Accept wildcard characters: False
 Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.PoolDevBoxDefinitionType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -210,7 +206,7 @@ Accept wildcard characters: False
 Indicates whether Dev Box Tunnel is enabled for a the pool.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DevBoxTunnelEnableStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -272,7 +268,7 @@ Accept wildcard characters: False
 Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -394,7 +390,7 @@ Indicates whether Dev Boxes in this pool are created with single sign on enabled
 The also requires that single sign on be enabled on the tenant.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SingleSignOnStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -474,7 +470,7 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -504,7 +500,7 @@ Accept wildcard characters: False
 Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -534,7 +530,7 @@ Accept wildcard characters: False
 Enables the feature to stop a started Dev Box when it has not been connected to, once the grace period has lapsed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnNoConnectEnableStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -579,7 +575,7 @@ Accept wildcard characters: False
 Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.VirtualNetworkType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -630,7 +626,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IPool
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IPool
 
 ## NOTES
 
