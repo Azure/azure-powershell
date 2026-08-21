@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.ExpressRouteCircuitSkuTier.Premium,
             MNM.ExpressRouteCircuitSkuTier.Basic,
             MNM.ExpressRouteCircuitSkuTier.Local,
+            MNM.ExpressRouteCircuitSkuTier.MultiCloud,
             IgnoreCase = true)]
         public string SkuTier { get; set; }
 
@@ -108,6 +109,20 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true)]
         public string AuthorizationKey { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Account ID of the customer on the partner provider")]
+        [ValidateNotNullOrEmpty]
+        public string PartnerAccountId { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Activation key from partner provider")]
+        [ValidateNotNullOrEmpty]
+        public string ActivationKey { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -162,11 +177,30 @@ namespace Microsoft.Azure.Commands.Network
         private PSExpressRouteCircuit CreateExpressRouteCircuit()
         {
             base.Execute();
+
+            if (string.Equals(this.SkuTier, "MultiCloud", StringComparison.OrdinalIgnoreCase))
+            {
+                if (string.IsNullOrEmpty(this.PartnerAccountId) && string.IsNullOrEmpty(this.ActivationKey))
+                {
+                    throw new ArgumentException("For MultiCloud circuits, either PartnerAccountId or ActivationKey must be specified.");
+                }
+                if (!string.IsNullOrEmpty(this.PartnerAccountId) && !string.IsNullOrEmpty(this.ActivationKey))
+                {
+                    throw new ArgumentException("For MultiCloud circuits, only one of PartnerAccountId or ActivationKey can be specified, not both.");
+                }
+                if (!string.Equals(this.SkuFamily, "MeteredData", StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new ArgumentException("For MultiCloud circuits, SkuFamily must be 'MeteredData'.");
+                }
+            }
+
             var circuit = new PSExpressRouteCircuit();
             circuit.Name = this.Name;
             circuit.ResourceGroupName = this.ResourceGroupName;
             circuit.Location = this.Location;
             circuit.AuthorizationKey = this.AuthorizationKey;
+            circuit.PartnerAccountId = this.PartnerAccountId;
+            circuit.ActivationKey = this.ActivationKey;
             // Construct sku
             if (!string.IsNullOrEmpty(this.SkuTier))
             {

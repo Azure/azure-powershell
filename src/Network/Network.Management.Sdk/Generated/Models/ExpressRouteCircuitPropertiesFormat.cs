@@ -78,7 +78,16 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="enableDirectPortRateLimit">Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
         /// </param>
-        public ExpressRouteCircuitPropertiesFormat(bool? allowClassicOperations = default(bool?), string circuitProvisioningState = default(string), string serviceProviderProvisioningState = default(string), System.Collections.Generic.IList<ExpressRouteCircuitAuthorization> authorizations = default(System.Collections.Generic.IList<ExpressRouteCircuitAuthorization>), System.Collections.Generic.IList<ExpressRouteCircuitPeering> peerings = default(System.Collections.Generic.IList<ExpressRouteCircuitPeering>), string serviceKey = default(string), string serviceProviderNotes = default(string), ExpressRouteCircuitServiceProviderProperties serviceProviderProperties = default(ExpressRouteCircuitServiceProviderProperties), SubResource expressRoutePort = default(SubResource), double? bandwidthInGbps = default(double?), int? stag = default(int?), string provisioningState = default(string), string gatewayManagerEtag = default(string), bool? globalReachEnabled = default(bool?), string authorizationKey = default(string), string authorizationStatus = default(string), bool? enableDirectPortRateLimit = default(bool?))
+
+        /// <param name="partnerAccountId">Account ID of the customer on the partner cloud provider (for MultiCloud circuits).
+        /// </param>
+
+        /// <param name="activationKey">Activation key from partner cloud provider (for MultiCloud circuits).
+        /// </param>
+
+        /// <param name="resiliencyLevel">Resiliency level of the circuit.
+        /// </param>
+        public ExpressRouteCircuitPropertiesFormat(bool? allowClassicOperations = default(bool?), string circuitProvisioningState = default(string), string serviceProviderProvisioningState = default(string), System.Collections.Generic.IList<ExpressRouteCircuitAuthorization> authorizations = default(System.Collections.Generic.IList<ExpressRouteCircuitAuthorization>), System.Collections.Generic.IList<ExpressRouteCircuitPeering> peerings = default(System.Collections.Generic.IList<ExpressRouteCircuitPeering>), string serviceKey = default(string), string serviceProviderNotes = default(string), ExpressRouteCircuitServiceProviderProperties serviceProviderProperties = default(ExpressRouteCircuitServiceProviderProperties), SubResource expressRoutePort = default(SubResource), double? bandwidthInGbps = default(double?), int? stag = default(int?), string provisioningState = default(string), string gatewayManagerEtag = default(string), bool? globalReachEnabled = default(bool?), string authorizationKey = default(string), string authorizationStatus = default(string), bool? enableDirectPortRateLimit = default(bool?), string partnerAccountId = default(string), string activationKey = default(string), string resiliencyLevel = default(string))
 
         {
             this.AllowClassicOperations = allowClassicOperations;
@@ -98,6 +107,9 @@ namespace Microsoft.Azure.Management.Network.Models
             this.AuthorizationKey = authorizationKey;
             this.AuthorizationStatus = authorizationStatus;
             this.EnableDirectPortRateLimit = enableDirectPortRateLimit;
+            this.PartnerAccountId = partnerAccountId;
+            this.ActivationKey = activationKey;
+            this.ResiliencyLevel = resiliencyLevel;
             CustomInit();
         }
 
@@ -212,5 +224,23 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enableDirectPortRateLimit")]
         public bool? EnableDirectPortRateLimit {get; set; }
+
+        /// <summary>
+        /// Gets or sets account ID of the customer on the partner cloud provider (for MultiCloud circuits).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "partnerAccountId")]
+        public string PartnerAccountId {get; set; }
+
+        /// <summary>
+        /// Gets or sets activation key from partner cloud provider (for MultiCloud circuits).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "activationKey")]
+        public string ActivationKey {get; set; }
+
+        /// <summary>
+        /// Gets or sets resiliency level of the circuit.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resiliencyLevel")]
+        public string ResiliencyLevel {get; set; }
     }
 }
