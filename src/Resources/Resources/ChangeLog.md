@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Added a notice to template deployment what-if output pointing users to Deployment Stacks What-If, which is now generally available and removes noise from results.
+
+## Version 10.1.0
 * Added deployment stack WhatIfResult cmdlets for resource group, subscription, and management group scopes.
     - Added help content and aligned new parameter names with Azure PowerShell naming conventions.
     - Exported all deployment stack WhatIfResult cmdlets from the module manifest.

@@ -314,6 +314,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineStopForceDeallocate()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineStopForceDeallocate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineStopForceDeallocateExecution()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineStopForceDeallocateExecution");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineRemoteDesktop()
         {
             TestRunner.RunTestScript("Test-VirtualMachineRemoteDesktop");

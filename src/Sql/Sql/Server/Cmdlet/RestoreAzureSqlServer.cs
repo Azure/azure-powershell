@@ -165,7 +165,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             }
 
             // Validate that the user-provided ResourceGroupName matches the deleted server's ResourceGroupName
-            if (!string.Equals(this.ResourceGroupName, deletedServerModel.ResourceGroupName, StringComparison.OrdinalIgnoreCase))
+            // Only validate if the model has a ResourceGroupName (some API responses may not include it)
+            if (!string.IsNullOrEmpty(deletedServerModel.ResourceGroupName) && 
+                !string.Equals(this.ResourceGroupName, deletedServerModel.ResourceGroupName, StringComparison.OrdinalIgnoreCase))
             {
                 throw new PSArgumentException(
                     string.Format(Properties.Resources.ResourceGroupMismatchForRestore,

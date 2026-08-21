@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class RoleChangeType
     {
+        /// <summary>
+        /// Forced
+        /// </summary>
         public const string Forced = "Forced";
+        /// <summary>
+        /// Planned
+        /// </summary>
         public const string Planned = "Planned";
     }
 }

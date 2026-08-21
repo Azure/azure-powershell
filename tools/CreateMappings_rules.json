@@ -889,10 +889,6 @@
     "alias": "Oracle"
   },
   {
-    "alias": "Astro",
-    "module": "Astro"
-  },
-  {
     "module": "Fabric",
     "alias": "Fabric"
   },
@@ -943,10 +939,6 @@
   {
     "alias": "ArizeAI",
     "module": "ArizeAI"
-  },
-  {
-    "module": "Pinecone",
-    "alias": "Pinecone"
   },
   {
     "alias": "LambdaTest",

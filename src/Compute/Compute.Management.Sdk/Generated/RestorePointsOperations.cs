@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Compute
             }
 
 
-            string apiVersion = "2026-03-01";
+            string apiVersion = "2026-04-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "restorePointName");
             }
 
-            string apiVersion = "2026-03-01";
+            string apiVersion = "2026-04-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -696,7 +696,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "restorePointName");
             }
 
-            string apiVersion = "2026-03-01";
+            string apiVersion = "2026-04-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
