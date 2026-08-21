@@ -20,7 +20,7 @@ Get-AzPolicySetDefinition [-Name <String>] [-ListVersion] [-Expand <String>] [-V
 
 ### ManagementGroupName
 ```
-Get-AzPolicySetDefinition [-Name <String>] -ManagementGroupName <String> [-ListVersion] [-Expand <String>]
+Get-AzPolicySetDefinition [-Name <String>] -ManagementGroupId <String> [-ListVersion] [-Expand <String>]
  [-Version <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -32,13 +32,13 @@ Get-AzPolicySetDefinition [-Name <String>] -SubscriptionId <String> [-ListVersio
 
 ### Builtin
 ```
-Get-AzPolicySetDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Builtin]
+Get-AzPolicySetDefinition [-SubscriptionId <String>] [-ManagementGroupId <String>] [-Builtin]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Custom
 ```
-Get-AzPolicySetDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Custom]
+Get-AzPolicySetDefinition [-SubscriptionId <String>] [-ManagementGroupId <String>] [-Custom]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -196,13 +196,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ManagementGroupName
+### -ManagementGroupId
 The name of the management group.
 
 ```yaml
 Type: System.String
 Parameter Sets: ManagementGroupName
-Aliases:
+Aliases: ManagementGroupName
 
 Required: True
 Position: Named
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.String
 Parameter Sets: Builtin, Custom
-Aliases:
+Aliases: ManagementGroupName
 
 Required: False
 Position: Named
