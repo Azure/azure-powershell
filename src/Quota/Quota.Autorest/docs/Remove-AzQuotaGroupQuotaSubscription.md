@@ -26,17 +26,10 @@ Remove-AzQuotaGroupQuotaSubscription -InputObject <IQuotaIdentity> [-DefaultProf
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityGroupQuota
-```
-Remove-AzQuotaGroupQuotaSubscription -GroupQuotaInputObject <IQuotaIdentity> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### DeleteViaIdentityManagementGroup
 ```
 Remove-AzQuotaGroupQuotaSubscription -GroupQuotaName <String> -ManagementGroupInputObject <IQuotaIdentity>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,21 +76,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GroupQuotaInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-Parameter Sets: DeleteViaIdentityGroupQuota
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -198,7 +176,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityGroupQuota, DeleteViaIdentityManagementGroup
+Parameter Sets: Delete
 Aliases:
 
 Required: False
