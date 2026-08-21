@@ -127,8 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConfigurationName
-The configuration name.
-Only 'default' value is supported.
+A sequence of textual characters.
 
 ```yaml
 Type: System.String
@@ -234,7 +233,7 @@ Accept wildcard characters: False
 ```
 
 ### -MonitorName
-Monitor resource name
+A sequence of textual characters.
 
 ```yaml
 Type: System.String

@@ -1,0 +1,105 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/Elastic/Elastic.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.3.0
+    prefix: "Az"
+    subject-prefix: "Elastic"
+    service-name: "Elastic"
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    api-version: "2025-06-01"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      - where:
+          subject: Operation
+        hide: true
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      - where:
+          verb: Set
+        remove: true
+      - where:
+          verb: Remove
+          subject: TagRule
+        remove: true
+      - where:
+          verb: Get
+          subject: TagRule
+          variant: List
+        remove: true
+      - where:
+          verb: Get|New
+          subject: TagRule
+          parameter-name: RuleSetName
+        hide: true
+        set:
+          default:
+            script: '"default"'
+      - where:
+          subject: ResubscribeOrganization
+          variant: ResubscribeExpanded
+          parameter-name: SubscriptionId1
+        set:
+          parameter-name: TargetSubscriptionId
+      - where:
+          subject: ResubscribeOrganization
+          variant: ResubscribeViaIdentityExpanded
+          parameter-name: SubscriptionId
+        set:
+          parameter-name: TargetSubscriptionId
+      - where:
+          verb: Get|New|Update|Remove|Invoke
+          subject: DeploymentInfo|MonitoredResource|VMHost|DetailVMIngestion|VMCollection
+          parameter-name: MonitorName
+        set:
+          parameter-name: Name
+      - where:
+          parameter-name: SkuName
+        set:
+          parameter-name: Sku
+      - where:
+          subject: Monitor|VMCollection|TagRule|OpenAi|ExternalUser
+          variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+        remove: true
+      - where:
+          subject: Monitor|VMCollection|TagRule
+          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^UpgradeViaIdentityExpanded$|^UpgradeViaJsonFilePath$|^UpgradeViaJsonString$
+        remove: true
+      - where:
+          subject: OrganizationApiKey
+          variant: ^Get$
+        remove: true
+      - where:
+          verb: Invoke
+        set:
+          verb: Get
+      - where:
+          model-name: ElasticMonitorResource
+        set:
+          format-table:
+            properties:
+              - Name
+              - SkuName
+              - MonitoringStatus
+              - Location
+      - where:
+          model-name: MonitoringTagRules
+        set:
+          format-table:
+            properties:
+              - Name
+              - ProvisioningState
+      - model-cmdlet:
+          - model-name: FilteringTag
+            cmdlet-name: New-AzElasticFilteringTagObject
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"
