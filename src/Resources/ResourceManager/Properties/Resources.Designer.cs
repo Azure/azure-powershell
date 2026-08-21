@@ -1260,7 +1260,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Note: The result may contain false positive predictions (noise).
-        ///NOTICE! - Want to get What-if without noise? Move to Deployment Stacks What-If https://aka.ms/stackswhatifGA.
+        ///NOTICE! - Want to get What-if with reduced noise? Move to Deployment Stacks What-if https://aka.ms/stackswhatifGA.
         /// </summary>
         internal static string WhatIfNoiseNotice {
             get {

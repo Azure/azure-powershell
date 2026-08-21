@@ -495,7 +495,7 @@
   </data>
   <data name="WhatIfNoiseNotice" xml:space="preserve">
     <value>Note: The result may contain false positive predictions (noise).
-NOTICE! - Want to get What-if without noise? Move to Deployment Stacks What-If https://aka.ms/stackswhatifGA</value>
+NOTICE! - Want to get What-if with reduced noise? Move to Deployment Stacks What-if https://aka.ms/stackswhatifGA</value>
   </data>
   <data name="ConfirmDeploymentMessage" xml:space="preserve">
     <value>Are you sure you want to execute the deployment?</value>
