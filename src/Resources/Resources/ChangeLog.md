@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 10.1.1
 * Added a notice to template deployment what-if output pointing users to Deployment Stacks What-If, which is now generally available and removes noise from results.
 
 ## Version 10.1.0
