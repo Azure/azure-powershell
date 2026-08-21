@@ -1,0 +1,95 @@
+{
+  "resourceType": "appLinks/appLinkMembers",
+  "apiVersion": "2025-08-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.appnetwork"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAppNetworkAppLinkMember",
+      "description": "Get a member of an Azure Kubernetes Application Network resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/appLinks/{appLinkName}/appLinkMembers/{appLinkMemberName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.appnetwork/get-azappnetworkapplinkmember"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AppLinkName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a member of an Azure Kubernetes Application Network resource.",
+          "parameters": [
+            {
+              "name": "-AppLinkName",
+              "value": "[Path.appLinkName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.appLinkMemberName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzAppNetworkAppLinkMember",
+      "description": "Remove a member from an Azure Kubernetes Application Network resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/appLinks/{appLinkName}/appLinkMembers/{appLinkMemberName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.appnetwork/remove-azappnetworkapplinkmember"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AppLinkName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Remove a member from an Azure Kubernetes Application Network resource.",
+          "parameters": [
+            {
+              "name": "-AppLinkName",
+              "value": "[Path.appLinkName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.appLinkMemberName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
