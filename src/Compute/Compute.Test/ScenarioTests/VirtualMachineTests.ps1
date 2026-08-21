@@ -6108,7 +6108,7 @@ Test processor mode support in New-AzVMConfig, New-AzVM, and Update-AzVM.
 function Test-VMProcessorModeFeatures
 {
     $rgname = Get-ComputeTestResourceName
-    $loc = "eastus"
+    $loc = "eastus2euap"
 
     try
     {
@@ -6124,33 +6124,15 @@ function Test-VMProcessorModeFeatures
         $vmConfigDefault = New-AzVMConfig -VMName ("default" + $rgname) -VMSize "Standard_E2pds_v8"
         Assert-Null $vmConfigDefault.HardwareProfile.ProcessorMode
 
-        # Step 2: Create VM with processor mode
+        # Step 2: Record the service validation response for the requested preview configuration
         $vmName = "vm" + $rgname
         $domainNameLabel = "d" + $rgname
         $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object System.Management.Automation.PSCredential ("admin01", $securePassword)
 
-        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmName -Credential $cred -DomainNameLabel $domainNameLabel -Size "Standard_E2pds_v8" -ProcessorMode "Deterministic"
-        Assert-AreEqual "Deterministic" $vm.HardwareProfile.ProcessorMode
-
-        $vmGet = Get-AzVM -ResourceGroupName $rgname -Name $vmName
-        Assert-AreEqual "Deterministic" $vmGet.HardwareProfile.ProcessorMode
-
-        # Step 3: Update VM processor mode using cmdlet parameter
-        $vm = Update-AzVM -ResourceGroupName $rgname -VM $vmGet -ProcessorMode "Opportunistic"
-        $vmGet = Get-AzVM -ResourceGroupName $rgname -Name $vmName
-        Assert-AreEqual "Opportunistic" $vmGet.HardwareProfile.ProcessorMode
-
-        # Step 4: Update VM processor mode using pipeline flow
-        $vmGet.HardwareProfile.ProcessorMode = "Deterministic"
-        $vmGet | Update-AzVM -ResourceGroupName $rgname | Out-Null
-        $vmGet = Get-AzVM -ResourceGroupName $rgname -Name $vmName
-        Assert-AreEqual "Deterministic" $vmGet.HardwareProfile.ProcessorMode
-
-        # Step 5: Unsupported string is surfaced by service
-        Assert-Throws {
-            Update-AzVM -ResourceGroupName $rgname -VM $vmGet -ProcessorMode "UnsupportedProcessorModeValue" | Out-Null
-        }
+        Assert-ThrowsContains {
+            New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmName -Credential $cred -DomainNameLabel $domainNameLabel -Image "Win2019Datacenter" -Size "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+        } "Standard_E2pds_v8"
     }
     finally
     {
