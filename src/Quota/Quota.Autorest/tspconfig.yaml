@@ -92,6 +92,7 @@ options:
       - model-cmdlet:
           - model-name: LimitObject
             cmdlet-name: New-AzQuotaLimitObject
+            
 linter:
   extends:
     - "@azure-tools/typespec-azure-rulesets/resource-manager"
