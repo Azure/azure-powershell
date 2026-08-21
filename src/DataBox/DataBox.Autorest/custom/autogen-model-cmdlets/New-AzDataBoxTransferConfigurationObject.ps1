@@ -21,35 +21,92 @@ Create an in-memory object for TransferConfiguration.
 Create an in-memory object for TransferConfiguration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.TransferConfiguration
 .Link
-https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxTransferConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxtransferconfigurationobject
 #>
 function New-AzDataBoxTransferConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.TransferConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferAllDetails]
-        $TransferAllDetail,
-        [Parameter(HelpMessage="Map of filter type and the details to filter. This field is required only if the TransferConfigurationType is given as TransferUsingFilter.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferFilterDetails]
-        $TransferFilterDetail,
+        [Parameter(HelpMessage="List of full path of the files to be transferred.")]
+        [string[]]
+        $AzureFileFilterDetailFilePathList,
+        [Parameter(HelpMessage="Prefix list of the Azure files to be transferred.")]
+        [string[]]
+        $AzureFileFilterDetailFilePrefixList,
+        [Parameter(HelpMessage="List of file shares to be transferred.")]
+        [string[]]
+        $AzureFileFilterDetailFileShareList,
+        [Parameter(HelpMessage="List of full path of the blobs to be transferred.")]
+        [string[]]
+        $BlobFilterDetailBlobPathList,
+        [Parameter(HelpMessage="Prefix list of the Azure blobs to be transferred.")]
+        [string[]]
+        $BlobFilterDetailBlobPrefixList,
+        [Parameter(HelpMessage="List of blob containers to be transferred.")]
+        [string[]]
+        $BlobFilterDetailContainerList,
+        [Parameter(HelpMessage="Details of the filter files to be used for data transfer.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IFilterFileDetails[]]
+        $IncludeFilterFileDetail,
+        [Parameter(HelpMessage="To indicate if all Azure blobs have to be transferred.")]
+        [bool]
+        $IncludeTransferAllBlob,
+        [Parameter(HelpMessage="To indicate if all Azure Files have to be transferred.")]
+        [bool]
+        $IncludeTransferAllFile,
+        [Parameter(HelpMessage="Type of the account of data.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.PSArgumentCompleterAttribute("StorageAccount", "ManagedDisk")]
+        [string]
+        $TransferAllDetailsIncludeDataAccountType,
+        [Parameter(HelpMessage="Type of the account of data.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.PSArgumentCompleterAttribute("StorageAccount", "ManagedDisk")]
+        [string]
+        $TransferFilterDetailsIncludeDataAccountType,
         [Parameter(Mandatory, HelpMessage="Type of the configuration for transfer.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.PSArgumentCompleterAttribute("TransferAll", "TransferUsingFilter")]
+        [string]
         $Type
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.TransferConfiguration]::New()
 
-        if ($PSBoundParameters.ContainsKey('TransferAllDetail')) {
-            $Object.TransferAllDetail = $TransferAllDetail
+        if ($PSBoundParameters.ContainsKey('AzureFileFilterDetailFilePathList')) {
+            $Object.AzureFileFilterDetailFilePathList = $AzureFileFilterDetailFilePathList
         }
-        if ($PSBoundParameters.ContainsKey('TransferFilterDetail')) {
-            $Object.TransferFilterDetail = $TransferFilterDetail
+        if ($PSBoundParameters.ContainsKey('AzureFileFilterDetailFilePrefixList')) {
+            $Object.AzureFileFilterDetailFilePrefixList = $AzureFileFilterDetailFilePrefixList
+        }
+        if ($PSBoundParameters.ContainsKey('AzureFileFilterDetailFileShareList')) {
+            $Object.AzureFileFilterDetailFileShareList = $AzureFileFilterDetailFileShareList
+        }
+        if ($PSBoundParameters.ContainsKey('BlobFilterDetailBlobPathList')) {
+            $Object.BlobFilterDetailBlobPathList = $BlobFilterDetailBlobPathList
+        }
+        if ($PSBoundParameters.ContainsKey('BlobFilterDetailBlobPrefixList')) {
+            $Object.BlobFilterDetailBlobPrefixList = $BlobFilterDetailBlobPrefixList
+        }
+        if ($PSBoundParameters.ContainsKey('BlobFilterDetailContainerList')) {
+            $Object.BlobFilterDetailContainerList = $BlobFilterDetailContainerList
+        }
+        if ($PSBoundParameters.ContainsKey('IncludeFilterFileDetail')) {
+            $Object.IncludeFilterFileDetail = $IncludeFilterFileDetail
+        }
+        if ($PSBoundParameters.ContainsKey('IncludeTransferAllBlob')) {
+            $Object.IncludeTransferAllBlob = $IncludeTransferAllBlob
+        }
+        if ($PSBoundParameters.ContainsKey('IncludeTransferAllFile')) {
+            $Object.IncludeTransferAllFile = $IncludeTransferAllFile
+        }
+        if ($PSBoundParameters.ContainsKey('TransferAllDetailsIncludeDataAccountType')) {
+            $Object.TransferAllDetailsIncludeDataAccountType = $TransferAllDetailsIncludeDataAccountType
+        }
+        if ($PSBoundParameters.ContainsKey('TransferFilterDetailsIncludeDataAccountType')) {
+            $Object.TransferFilterDetailsIncludeDataAccountType = $TransferFilterDetailsIncludeDataAccountType
         }
         if ($PSBoundParameters.ContainsKey('Type')) {
             $Object.Type = $Type
