@@ -14,28 +14,24 @@
 
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using System;
 
 namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
 {
     class PSCloningInfo : CloningInfo
     {
         public PSCloningInfo(CloningInfo other)
-            : base(
-                  sourceWebAppId: other.SourceWebAppId,
-                  sourceWebAppLocation: other.SourceWebAppLocation,
-                  correlationId: other.CorrelationId,
-                  overwrite: other.Overwrite,
-                  cloneCustomHostNames: other.CloneCustomHostNames,
-                  cloneSourceControl: other.CloneSourceControl,
-                  hostingEnvironment: other.HostingEnvironment,
-                  appSettingsOverrides: other.AppSettingsOverrides,
-                  configureLoadBalancing: other.ConfigureLoadBalancing,
-                  trafficManagerProfileId: other.TrafficManagerProfileId,
-                  trafficManagerProfileName: other.TrafficManagerProfileName
-                  )
         {
-
+            SourceWebAppId = other.SourceWebAppId;
+            SourceWebAppLocation = other.SourceWebAppLocation;
+            CorrelationId = other.CorrelationId;
+            Overwrite = other.Overwrite;
+            CloneCustomHostNames = other.CloneCustomHostNames;
+            CloneSourceControl = other.CloneSourceControl;
+            HostingEnvironment = other.HostingEnvironment;
+            AppSettingsOverrides = other.AppSettingsOverrides;
+            ConfigureLoadBalancing = other.ConfigureLoadBalancing;
+            TrafficManagerProfileId = other.TrafficManagerProfileId;
+            TrafficManagerProfileName = other.TrafficManagerProfileName;
         }
     }
 }

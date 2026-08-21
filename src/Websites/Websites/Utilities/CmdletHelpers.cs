@@ -185,10 +185,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             var rg = string.IsNullOrEmpty(aseResourceGroupName) ? resourceGroupName : aseResourceGroupName;
             var aseResourceId = CmdletHelpers.GetAppServiceEnvironmentResourceId(subscriptionId, rg, aseName);
-            return new HostingEnvironmentProfile(
-                aseResourceId,
-                CmdletHelpers.AppServiceEnvironmentResourcesName,
-                aseName);
+            return new HostingEnvironmentProfile(aseResourceId);
         }
 
         internal static string BuildMetricFilter(DateTime? startTime, DateTime? endTime, string timeGrain, IReadOnlyList<string> metricNames)
@@ -534,122 +531,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 }
             }
             return string.Empty;
-        }
-
-        internal static SiteConfigResource ConvertToSiteConfigResource(this SiteConfig config)
-        {
-            return new SiteConfigResource
-            {
-                AlwaysOn = config.AlwaysOn,
-                ApiDefinition = config.ApiDefinition,
-                AppCommandLine = config.AppCommandLine,
-                AppSettings = config.AppSettings,
-                AutoHealEnabled = config.AutoHealEnabled,
-                AutoHealRules = config.AutoHealRules,
-                AutoSwapSlotName = config.AutoSwapSlotName,
-                ConnectionStrings = config.ConnectionStrings,
-                Cors = config.Cors,
-                DefaultDocuments = config.DefaultDocuments,
-                DetailedErrorLoggingEnabled = config.DetailedErrorLoggingEnabled,
-                DocumentRoot = config.DocumentRoot,
-                Experiments = config.Experiments,
-                HandlerMappings = config.HandlerMappings,
-                HttpLoggingEnabled = config.HttpLoggingEnabled,
-                IpSecurityRestrictions = config.IpSecurityRestrictions,
-                ScmIpSecurityRestrictions = config.ScmIpSecurityRestrictions,
-                ScmIpSecurityRestrictionsUseMain = config.ScmIpSecurityRestrictionsUseMain,
-                Http20Enabled = config.Http20Enabled,
-                JavaContainer = config.JavaContainer,
-                JavaContainerVersion = config.JavaContainerVersion,
-                JavaVersion = config.JavaVersion,
-                Limits = config.Limits,
-                LinuxFxVersion = config.LinuxFxVersion,
-                LoadBalancing = config.LoadBalancing,
-                LocalMySqlEnabled = config.LocalMySqlEnabled,
-                LogsDirectorySizeLimit = config.LogsDirectorySizeLimit,
-                ManagedPipelineMode = config.ManagedPipelineMode,
-                NetFrameworkVersion = config.NetFrameworkVersion,
-                NodeVersion = config.NodeVersion,
-                NumberOfWorkers = config.NumberOfWorkers,
-                PhpVersion = config.PhpVersion,
-                PublishingUsername = config.PublishingUsername,
-                Push = config.Push,
-                PythonVersion = config.PythonVersion,
-                RemoteDebuggingEnabled = config.RemoteDebuggingEnabled,
-                RemoteDebuggingVersion = config.RemoteDebuggingVersion,
-                RequestTracingEnabled = config.RequestTracingEnabled,
-                RequestTracingExpirationTime = config.RequestTracingExpirationTime,
-                ScmType = config.ScmType,
-                TracingOptions = config.TracingOptions,
-                Use32BitWorkerProcess = config.Use32BitWorkerProcess,
-                VirtualApplications = config.VirtualApplications,
-                VnetName = config.VnetName,
-                WebSocketsEnabled = config.WebSocketsEnabled,
-                WindowsFxVersion = config.WindowsFxVersion,
-                ManagedServiceIdentityId = config.ManagedServiceIdentityId,
-                MinTlsVersion = config.MinTlsVersion,
-                FtpsState = config.FtpsState,
-                VnetRouteAllEnabled = config.VnetRouteAllEnabled,
-                HealthCheckPath=config.HealthCheckPath
-            };
-        }
-
-        internal static SiteConfig ConvertToSiteConfig(this SiteConfigResource config)
-        {
-            return new SiteConfig
-            {
-                AlwaysOn = config.AlwaysOn,
-                ApiDefinition = config.ApiDefinition,
-                AppCommandLine = config.AppCommandLine,
-                AppSettings = config.AppSettings,
-                AutoHealEnabled = config.AutoHealEnabled,
-                AutoHealRules = config.AutoHealRules,
-                AutoSwapSlotName = config.AutoSwapSlotName,
-                ConnectionStrings = config.ConnectionStrings,
-                Cors = config.Cors,
-                DefaultDocuments = config.DefaultDocuments,
-                DetailedErrorLoggingEnabled = config.DetailedErrorLoggingEnabled,
-                DocumentRoot = config.DocumentRoot,
-                Experiments = config.Experiments,
-                HandlerMappings = config.HandlerMappings,
-                HttpLoggingEnabled = config.HttpLoggingEnabled,
-                IpSecurityRestrictions = config.IpSecurityRestrictions,
-                JavaContainer = config.JavaContainer,
-                JavaContainerVersion = config.JavaContainerVersion,
-                JavaVersion = config.JavaVersion,
-                Limits = config.Limits,
-                LinuxFxVersion = config.LinuxFxVersion,
-                LoadBalancing = config.LoadBalancing,
-                LocalMySqlEnabled = config.LocalMySqlEnabled,
-                LogsDirectorySizeLimit = config.LogsDirectorySizeLimit,
-                ManagedPipelineMode = config.ManagedPipelineMode,
-                NetFrameworkVersion = config.NetFrameworkVersion,
-                NodeVersion = config.NodeVersion,
-                NumberOfWorkers = config.NumberOfWorkers,
-                PhpVersion = config.PhpVersion,
-                PublishingUsername = config.PublishingUsername,
-                Push = config.Push,
-                PythonVersion = config.PythonVersion,
-                RemoteDebuggingEnabled = config.RemoteDebuggingEnabled,
-                RemoteDebuggingVersion = config.RemoteDebuggingVersion,
-                RequestTracingEnabled = config.RequestTracingEnabled,
-                RequestTracingExpirationTime = config.RequestTracingExpirationTime,
-                ScmType = config.ScmType,
-                TracingOptions = config.TracingOptions,
-                Use32BitWorkerProcess = config.Use32BitWorkerProcess,
-                VirtualApplications = config.VirtualApplications,
-                VnetName = config.VnetName,
-                WebSocketsEnabled = config.WebSocketsEnabled,
-                WindowsFxVersion = config.WindowsFxVersion,
-                ManagedServiceIdentityId = config.ManagedServiceIdentityId,
-                MinTlsVersion = config.MinTlsVersion,
-                FtpsState = config.FtpsState,
-                ScmIpSecurityRestrictions = config.ScmIpSecurityRestrictions,
-                ScmIpSecurityRestrictionsUseMain = config.ScmIpSecurityRestrictionsUseMain,
-                Http20Enabled = config.Http20Enabled,
-                VnetRouteAllEnabled = config.VnetRouteAllEnabled,
-                HealthCheckPath = config.HealthCheckPath
-            };
         }
 
         //To set a Value to Property of a Generic Type object

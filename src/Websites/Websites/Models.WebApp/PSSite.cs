@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.WebApps.Models
@@ -24,63 +23,18 @@ namespace Microsoft.Azure.Commands.WebApps.Models
     public class PSSite : Site
     {
         public PSSite(Site other)
-            : base(
-                  location: other.Location,
-                  id: other.Id,
-                  name: other.Name,
-                  type: other.Type,
-                  kind: other.Kind,
-                  tags: other.Tags,
-                  state: other.State,
-                  hostNames: other.HostNames,
-                  repositorySiteName: other.RepositorySiteName,
-                  usageState: other.UsageState,
-                  enabled: other.Enabled,
-                  enabledHostNames: other.EnabledHostNames,
-                  availabilityState: other.AvailabilityState,
-                  hostNameSslStates: other.HostNameSslStates,
-                  serverFarmId: other.ServerFarmId,
-                  lastModifiedTimeUtc: other.LastModifiedTimeUtc,
-                  siteConfig: other.SiteConfig,
-                  trafficManagerHostNames: other.TrafficManagerHostNames,
-                  scmSiteAlsoStopped: other.ScmSiteAlsoStopped,
-                  targetSwapSlot: other.TargetSwapSlot,
-                  hostingEnvironmentProfile: other.HostingEnvironmentProfile,
-                  clientAffinityEnabled: other.ClientAffinityEnabled,
-                  clientCertEnabled: other.ClientCertEnabled,
-                  hostNamesDisabled: other.HostNamesDisabled,
-                  outboundIpAddresses: other.OutboundIpAddresses,
-                  containerSize: other.ContainerSize,
-                  maxNumberOfWorkers: other.MaxNumberOfWorkers,
-                  cloningInfo: other.CloningInfo,
-                  resourceGroup: other.ResourceGroup,
-                  isDefaultContainer: other.IsDefaultContainer,
-                  defaultHostName: other.DefaultHostName,
-                  reserved: other.Reserved,
-                  isXenon: other.IsXenon,
-                  possibleOutboundIpAddresses: other.PossibleOutboundIpAddresses,
-                  dailyMemoryTimeQuota: other.DailyMemoryTimeQuota,
-                  suspendedTill: other.SuspendedTill,
-                  slotSwapStatus: other.SlotSwapStatus,
-                  httpsOnly: other.HttpsOnly,
-                  identity: other.Identity,
-                  customDomainVerificationId: other.CustomDomainVerificationId,
-                  virtualNetworkSubnetId: other.VirtualNetworkSubnetId
-                  )
+            : base(other)
         {
-            PropertyInfo AzureStoragePathProp = other.GetType().GetProperty("AzureStoragePath");
-            if (AzureStoragePathProp != null)
+            if (other is PSSite site)
             {
-                object val = AzureStoragePathProp.GetValue(other, null);
-                AzureStoragePath = (WebAppAzureStoragePath[])val;
-            }
-
-            PropertyInfo VnetPropInfo = other.GetType().GetProperty("VnetInfo");
-            if (VnetPropInfo != null)
-            {
-                object val = VnetPropInfo.GetValue(other, null);
-                VnetInfo = (IList<VnetInfo>)val;
+                AzureStorageAccounts = site.AzureStorageAccounts;
+                AzureStoragePath = site.AzureStoragePath;
+                VnetInfo = site.VnetInfo;
                 VnetInfo = VnetInfo?.Count <= 0 ? null : VnetInfo;
+                GitRemoteName = site.GitRemoteName;
+                GitRemoteUri = site.GitRemoteUri;
+                GitRemoteUsername = site.GitRemoteUsername;
+                GitRemotePassword = site.GitRemotePassword;
             }
         }
 

@@ -7,14 +7,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.WebApps.Utilities;
+using Azure;
+using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.WebApps.Utilities;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using Microsoft.Azure.Commands.WebApps.Properties;
-using Microsoft.Azure.Commands.WebApps.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -62,12 +62,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                                 {
                                     WebsitesClient.RemoveCertificate(certificateResourceGroup, certificates[0].Name);
                                 }
-                                catch (DefaultErrorResponseException e)
+                                catch (RequestFailedException e)
                                 {
                                     // This exception is thrown when there are other Ssl bindings using this certificate. Let's swallow it and continue.
-                                    if (e.Response.StatusCode != HttpStatusCode.Conflict)
+                                    if (e.Status != (int)HttpStatusCode.Conflict)
                                     {
-                                        throw e;
+                                        throw;
                                     }
                                 }
                             }

@@ -181,6 +181,12 @@ function Test-GetWebAppCertificate
 
 		$certificate = Get-AzWebAppCertificate -ResourceGroupName $rgname -Thumbprint $thumbprint
 		Assert-AreEqual $thumbprint $certificate.Thumbprint
+
+		$certificateType = $certificate.GetType().GetElementType()
+		Assert-AreEqual "Microsoft.Azure.Management.WebSites.Models.Certificate" $certificateType.FullName
+		Assert-AreEqual "Microsoft.Azure.Management.WebSites.Models.Resource" $certificateType.BaseType.FullName
+		Assert-AreEqual "Microsoft.Azure.PowerShell.Cmdlets.Websites" $certificateType.Assembly.GetName().Name
+		Assert-True { [Microsoft.Rest.Azure.IResource].IsAssignableFrom($certificateType) }
 	}
     finally
     {

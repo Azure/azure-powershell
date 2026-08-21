@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated App Service management calls to use the current Azure Resource Manager client libraries while preserving existing cmdlet behavior and output properties.
 * Added support for creating and updating App Service Environment plans with Isolated v4 and memory-optimized Isolated v4 SKUs.
 
 ## Version 4.0.0

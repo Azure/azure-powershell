@@ -430,15 +430,23 @@ function Test-CreateNewWebApp
 		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
 		
 		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -Tag $tag -AsJob
+		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $serverFarm.Id -Tag $tag -AsJob
 		$job | Wait-Job
 		$actual = $job | Receive-Job
 		
 		# Assert
 		Assert-AreEqual $wname $actual.Name
 		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
+		Assert-AreEqual $location $actual.Location
 		Assert-AreEqual $tag.Keys $actual.Tags.Keys
-                Assert-AreEqual $tag.Values $actual.Tags.Values
+		Assert-AreEqual $tag.Values $actual.Tags.Values
+
+		$siteType = $actual.GetType().BaseType
+		Assert-AreEqual "Microsoft.Azure.Management.WebSites.Models.Site" $siteType.FullName
+		Assert-AreEqual "Microsoft.Azure.Management.WebSites.Models.Resource" $siteType.BaseType.FullName
+		Assert-AreEqual "Microsoft.Azure.PowerShell.Cmdlets.Websites" $siteType.Assembly.GetName().Name
+		Assert-True { [Microsoft.Rest.Azure.IResource].IsAssignableFrom($siteType) }
+		Assert-AreEqual "System.Object" $siteType.BaseType.BaseType.FullName
 
 		# Get new web app
 		$result = Get-AzWebApp -ResourceGroupName $rgname -Name $wname
@@ -981,7 +989,7 @@ function Test-SetWebApp
         Assert-NotNull  $webApp.Identity
         # AssignIdentity adds an appsetting to handle enabling / disabling AssignIdentity
         Assert-AreEqual ($appSettings.Keys.Count) $webApp.SiteConfig.AppSettings.Count
-        Assert-NotNull  $webApp.Identity
+        Assert-AreEqual "SystemAssigned" $webApp.Identity.Type.ToString()
 		Assert-AreEqual "1.2" $webApp.SiteConfig.MinTlsVersion
 
         # set app settings and connection strings

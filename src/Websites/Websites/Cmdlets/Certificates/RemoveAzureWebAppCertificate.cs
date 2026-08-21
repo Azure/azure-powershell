@@ -13,10 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Utilities;
-using Microsoft.Azure.Management.WebSites.Models;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
@@ -52,14 +51,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
                 if (this.ShouldProcess(this.ThumbPrint, string.Format($"Removing an App service certificate with thumbprint '{ThumbPrint}'")))
                 {
                     //var certName = !string.IsNullOrEmpty(HostName) ? HostName : certificates[0].Name;
-                    try
-                    {
-                        WebsitesClient.RemoveCertificate(ResourceGroupName, certificates[0].Name);
-                    }
-                    catch (DefaultErrorResponseException e)
-                    {
-                        throw e;
-                    }
+                    WebsitesClient.RemoveCertificate(
+                        ResourceGroupName,
+                        certificates[0].Name);
                 }
             }
 
