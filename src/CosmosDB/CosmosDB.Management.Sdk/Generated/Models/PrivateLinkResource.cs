@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// A private link resource
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateLinkResource : ARMProxyResource
+    public partial class PrivateLinkResource : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the PrivateLinkResource class.
@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Initializes a new instance of the PrivateLinkResource class.
         /// </summary>
 
-        /// <param name="id">The unique resource identifier of the database account.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the database account.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of Azure resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="groupId">The private link resource group id.
@@ -42,9 +48,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="requiredZoneNames">The private link resource required zone names.
         /// </param>
-        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
+        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.GroupId = groupId;
             this.RequiredMembers = requiredMembers;
