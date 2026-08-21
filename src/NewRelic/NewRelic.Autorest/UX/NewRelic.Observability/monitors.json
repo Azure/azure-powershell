@@ -7,7 +7,7 @@
   "commands": [
     {
       "name": "Get-AzNewRelicBillingInfo",
-      "description": "Retrieves marketplace and organization information mapped to the given New Relic monitor resource",
+      "description": "A synchronous resource action.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/getBillingInfo",
       "help": {
         "learnMore": {
@@ -25,7 +25,7 @@
       },
       "examples": [
         {
-          "description": "Retrieves marketplace and organization information mapped to the given New Relic monitor resource",
+          "description": "A synchronous resource action.",
           "parameters": [
             {
               "name": "-MonitorName",

@@ -166,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -MetricRuleUserEmail
-User Email.
+Reusable representation of an email address.
 
 ```yaml
 Type: System.String

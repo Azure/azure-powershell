@@ -1,31 +1,22 @@
-### Example 1: Update the subscriptions that are being monitored by the NewRelic monitor resource
+### Example 1: {{ Add title here }}
 ```powershell
-$includeFT = New-AzNewRelicFilteringTagObject -Action Include -Name testLogRule1 -Value filteringTag1
-$sub1 = New-AzNewRelicMonitoredSubscriptionObject -LogRuleFilteringTag $includeFT -LogRuleSendAadLog Enabled -LogRuleSendActivityLog Enabled -LogRuleSendSubscriptionLog Enabled -MetricRuleFilteringTag $includeFT -MetricRuleUserEmail user1@outlook.com -Status Active -SubscriptionId 11111111-2222-3333-4444-12345678910122
-Update-AzNewRelicMonitoredSubscription -MonitorName test-01 -ResourceGroupName group-test -PatchOperation AddComplete -MonitoredSubscriptionList $sub1
+{{ Add code here }}
 ```
 
 ```output
-Id                        : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/group_test/providers/NewRelic.Observability/monitors/test-01/monitoredSubscriptions/default
-MonitoredSubscriptionList : {{
-                              "tagRules": {
-                                "provisioningState": "Accepted"
-                              },
-                              "subscriptionId": "00000000-0000-0000-0000-000000000000",
-                              "status": "Active"
-                            }, {
-                              "tagRules": {
-                                "provisioningState": "Accepted"
-                              },
-                              "subscriptionId": "11111111-2222-3333-4444-123456789101",
-                              "status": "Active"
-                            }}
-Name                      : default
-PatchOperation            : 
-ProvisioningState         : 
-ResourceGroupName         : group_test
-Type                      : NewRelic.Observability/monitors/monitoredSubscriptions
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command updates the subscriptions that are being monitored by the NewRelic monitor resource.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 

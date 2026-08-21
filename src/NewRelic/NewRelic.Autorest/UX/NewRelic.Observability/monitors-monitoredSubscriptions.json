@@ -7,7 +7,7 @@
   "commands": [
     {
       "name": "Get-AzNewRelicMonitoredSubscription",
-      "description": "Lists all the subscriptions currently being monitored by the NewRelic monitor resource.",
+      "description": "Get a MonitoredSubscriptionProperties",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
       "help": {
         "learnMore": {
@@ -25,7 +25,7 @@
       },
       "examples": [
         {
-          "description": "Lists all the subscriptions currently being monitored by the NewRelic monitor resource.",
+          "description": "Get a MonitoredSubscriptionProperties",
           "parameters": [
             {
               "name": "-MonitorName",
