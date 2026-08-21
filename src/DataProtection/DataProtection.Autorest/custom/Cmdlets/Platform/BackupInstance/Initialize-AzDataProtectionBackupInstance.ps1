@@ -41,7 +41,7 @@ function Initialize-AzDataProtectionBackupInstance {
         [System.String]
         ${FriendlyName},
                 
-        [Parameter(Mandatory=$false, HelpMessage='Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService, AzureBlob, AzureDataLakeStorage.')]
+        [Parameter(Mandatory=$false, HelpMessage='Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService, AzureBlob, AzureDataLakeStorage, AzureElasticSAN.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupDatasourceParameters]
         ${BackupConfiguration},
 

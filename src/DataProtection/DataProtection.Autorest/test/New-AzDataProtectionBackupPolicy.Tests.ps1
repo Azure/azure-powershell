@@ -180,6 +180,24 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         # $pol | Should be $null
     }
 
+    It 'AzureElasticSanPolicy' {
+        # get default policy template (client-side, sourced from the AzureElasticSAN manifest)
+        $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureElasticSAN
+
+        # eSAN backs up to the operational store with daily incremental snapshots
+        $defaultPol.ObjectType | Should be "BackupPolicy"
+        $defaultPol.DatasourceType[0].ToLower().Equals("microsoft.elasticsan/elasticsans/volumegroups") | Should be $true
+
+        $backupRule = $defaultPol.PolicyRule | Where-Object { $_.Name -eq "BackupDaily" -and $_.ObjectType -eq "AzureBackupRule" }
+        ($backupRule -eq $null) | Should be $false
+        $backupRule.DataStoreType | Should be "OperationalStore"
+
+        $retentionRule = $defaultPol.PolicyRule | Where-Object { $_.Name -eq "Default" -and $_.ObjectType -eq "AzureRetentionRule" }
+        ($retentionRule -eq $null) | Should be $false
+        $retentionRule.Lifecycle[0].SourceDataStoreType | Should be "OperationalStore"
+        $retentionRule.Lifecycle[0].DeleteAfterDuration | Should be "P7D"
+    }
+
     It '__AllParameterSets' -skip {
         $sub = $env.TestOssBackupScenario.SubscriptionId
         $rgName = $env.TestOssBackupScenario.ResourceGroupName

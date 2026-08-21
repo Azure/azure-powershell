@@ -8,7 +8,7 @@ function New-AzDataProtectionBackupConfigurationClientObject{
     param(
         [Parameter(Mandatory, HelpMessage='Datasource Type')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
-        [ValidateSet('AzureKubernetesService', 'AzureBlob', 'AzureDataLakeStorage')]
+        [ValidateSet('AzureKubernetesService', 'AzureBlob', 'AzureDataLakeStorage', 'AzureElasticSAN')]
         ${DatasourceType},
         
         [Parameter(Mandatory=$false, HelpMessage='List of resource types to be excluded from backup')]
@@ -65,7 +65,11 @@ function New-AzDataProtectionBackupConfigurationClientObject{
 
         [Parameter(Mandatory=$false, HelpMessage='List of auto-protection exclusion rules. Each rule is a BlobBackupAutoProtectionRule object specifying container name prefix patterns to exclude. Use this parameter along with -AutoProtection.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBlobBackupAutoProtectionRule[]]
-        ${AutoProtectionExclusionRule}
+        ${AutoProtectionExclusionRule},
+
+        [Parameter(Mandatory=$false, HelpMessage='List of resource selectors (volume names) to be backed up. Use this parameter for DatasourceType AzureElasticSAN. The service currently supports exactly one volume per backup instance.')]
+        [System.String[]]
+        ${ResourceSelector}
     )
 
     process {        
@@ -179,6 +183,31 @@ function New-AzDataProtectionBackupConfigurationClientObject{
                      throw $message
                 }
             }
+        }
+
+        if($DatasourceType.ToString() -eq "AzureElasticSAN"){
+
+            # reject parameters that belong to other datasource types
+            if($ExcludedResourceType -ne $null -or $IncludedResourceType -ne $null -or $ExcludedNamespace -ne $null -or $IncludedNamespace -ne $null -or $LabelSelector -ne $null -or $SnapshotVolume -ne $null -or $IncludeClusterScopeResource -ne $null -or $BackupHookReference -ne $null -or $VaultedBackupContainer -ne $null -or $IncludeAllContainer -or $AutoProtection -or $AutoProtectionExclusionRule -ne $null){
+                $message = "Invalid parameters for DatasourceType AzureElasticSAN. Only ResourceSelector is supported."
+                throw $message
+            }
+
+            if($ResourceSelector -eq $null -or $ResourceSelector.Count -eq 0){
+                $message = "Please input parameter ResourceSelector for DatasourceType AzureElasticSAN."
+                throw $message
+            }
+
+            # Current eSAN service supports protecting exactly one volume per backup instance.
+            # The payload remains a list for forward compatibility when multi-volume support ships.
+            if($ResourceSelector.Count -ne 1){
+                $message = "DatasourceType AzureElasticSAN currently supports exactly one volume per backup instance. Please provide a single entry in ResourceSelector."
+                throw $message
+            }
+
+            $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.GenericBackupDatasourceParameters]::new()
+            $dataSourceParam.ObjectType = "GenericBackupDatasourceParameters"
+            $dataSourceParam.ResourceSelector = $ResourceSelector
         }
 
         $dataSourceParam
