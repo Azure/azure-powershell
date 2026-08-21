@@ -34,6 +34,7 @@
     - `-SoftDeleteRetentionPeriodInMinutes`: Set the retention period for soft-deleted resources
     - `-MinMinutesBeforePermanentDeletionAllowed`: Set minimum wait time before permanent deletion
 * Upgraded `Azure.Security.KeyVault.Keys` to `4.10.0` to align with other modules.
+* Added Garnet cache cluster management cmdlets: `New-AzCosmosDBGarnetCluster`, `Get-AzCosmosDBGarnetCluster`, `Update-AzCosmosDBGarnetCluster`, `Remove-AzCosmosDBGarnetCluster`.
 
 ## Version 1.21.0
 * Added ChangeSafety Support

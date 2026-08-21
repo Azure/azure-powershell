@@ -273,7 +273,9 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Restore-AzCosmosDBSqlSoftDeletedDatabase',
                'Get-AzCosmosDBSqlSoftDeletedContainer',
                'Remove-AzCosmosDBSqlSoftDeletedContainer',
-               'Restore-AzCosmosDBSqlSoftDeletedContainer'
+               'Restore-AzCosmosDBSqlSoftDeletedContainer',
+               'New-AzCosmosDBGarnetCluster', 'Get-AzCosmosDBGarnetCluster',
+               'Update-AzCosmosDBGarnetCluster', 'Remove-AzCosmosDBGarnetCluster'
 
 # Variables to export from this module
 # VariablesToExport = @()
