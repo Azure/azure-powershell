@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* Added `-ReservationType` to `New-AzCapacityReservationGroup` and `Update-AzCapacityReservationGroup` to support creating `Open` capacity reservation groups, and surfaced `ReservationType` on the capacity reservation group output.
+* Added `-DisableCapacityReservationAssignment` to `New-AzVM`, `New-AzVMConfig`, and `Update-AzVM` to opt a VM (Virtual Machine) out of any capacity reservation.
+* Added `CapacityReservationType` to the VM (Virtual Machine) instance view returned by `Get-AzVM -Status`.
 * Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
 * Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM (Virtual Machine) during stop operations.
     - The switch cannot be used together with `-Hibernate`, `-StayProvisioned`, or `-SkipShutdown`.

@@ -88,7 +88,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? enableProxyAgent = null,
             bool? addProxyAgentExtension = null,
             string scheduledEventsApiVersion = null,
-            bool? enableAllInstancesDown = null
+            bool? enableAllInstancesDown = null,
+            bool? disableCapacityReservationAssignment = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -168,9 +169,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             SecurityType = securityType,
                             ProxyAgentSettings = (enableProxyAgent != null || addProxyAgentExtension != null) ? new ProxyAgentSettings(enabled: enableProxyAgent, addProxyAgentExtension: addProxyAgentExtension): null,
                         },
-                        CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
+                        CapacityReservation = (string.IsNullOrEmpty(capacityReservationGroupId) && disableCapacityReservationAssignment == null) ? null : new CapacityReservationProfile
                         {
-                            CapacityReservationGroup = new SubResource(capacityReservationGroupId)
+                            CapacityReservationGroup = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new SubResource(capacityReservationGroupId),
+                            DisableCapacityReservationAssignment = disableCapacityReservationAssignment
                         },
                         UserData = userData,
                         PlatformFaultDomain = platformFaultDomain,
@@ -240,7 +242,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null,
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
-            string securityType = null
+            string securityType = null,
+            bool? disableCapacityReservationAssignment = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -293,9 +296,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
                         SecurityType = securityType,
                     } : null,
-                    CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
+                    CapacityReservation = (string.IsNullOrEmpty(capacityReservationGroupId) && disableCapacityReservationAssignment == null) ? null : new CapacityReservationProfile
                     {
-                        CapacityReservationGroup = new SubResource(capacityReservationGroupId)
+                        CapacityReservationGroup = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new SubResource(capacityReservationGroupId),
+                        DisableCapacityReservationAssignment = disableCapacityReservationAssignment
                     },
                     UserData = userData,
                     PlatformFaultDomain = platformFaultDomain,

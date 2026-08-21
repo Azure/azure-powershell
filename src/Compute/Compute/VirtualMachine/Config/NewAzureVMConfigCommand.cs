@@ -144,6 +144,11 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead. Minimum api-version: 2026-04-01.")]
+        public SwitchParameter DisableCapacityReservationAssignment { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Specified the gallery image unique id for vm deployment. This can be fetched from gallery image GET call.")]
         [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
         public string ImageReferenceId { get; set; }
@@ -380,10 +385,24 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost.IsPresent;
             }
 
+            if (this.IsParameterBound(c => c.CapacityReservationGroupId) && this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+            {
+                throw new ArgumentException("Parameters '-CapacityReservationGroupId' and '-DisableCapacityReservationAssignment' cannot be used together. '-DisableCapacityReservationAssignment' opts the virtual machine out of any capacity reservation.");
+            }
+
             if (this.IsParameterBound(c => c.CapacityReservationGroupId))
             {
                 vm.CapacityReservation = new CapacityReservationProfile();
                 vm.CapacityReservation.CapacityReservationGroup = new SubResource(this.CapacityReservationGroupId);
+            }
+
+            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+            {
+                if (vm.CapacityReservation == null)
+                {
+                    vm.CapacityReservation = new CapacityReservationProfile();
+                }
+                vm.CapacityReservation.DisableCapacityReservationAssignment = this.DisableCapacityReservationAssignment.IsPresent;
             }
 	    
 	        if (this.IsParameterBound(c => c.UserData))
