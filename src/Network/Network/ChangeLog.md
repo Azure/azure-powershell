@@ -19,6 +19,12 @@
 --->
 
 ## Upcoming Release
+* Added cmdlets to manage `ExpressRouteLag` resources (Microsoft.Network 2025-09-01 API).
+    - `Get-AzExpressRouteLag`, `New-AzExpressRouteLag`, `Set-AzExpressRouteLag`, `Remove-AzExpressRouteLag` for core CRUD operations.
+    - `New-AzExpressRouteLagLOA` to generate a letter of authorization for an ExpressRouteLag.
+    - `Get-AzExpressRouteLagLink` to retrieve the links of an ExpressRouteLag.
+    - `Get-AzExpressRouteLagMember` to retrieve the members of an ExpressRouteLag link.
+    - `New-AzExpressRouteLagIdentity`, `Get-AzExpressRouteLagIdentity`, `Set-AzExpressRouteLagIdentity`, `Remove-AzExpressRouteLagIdentity` to manage the user-assigned managed identity of an ExpressRouteLag.
 * Added address prefix set management for application security groups
     - Added `Get-AzAddressPrefixSet`, `New-AzAddressPrefixSet`, `Set-AzAddressPrefixSet`, and `Remove-AzAddressPrefixSet`
     - Supports IPv4 and IPv6 prefixes in Classless Inter-Domain Routing (CIDR) notation
