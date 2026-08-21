@@ -73,5 +73,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentS
 
         /// <summary>Flag to bypass stack out-of-sync error.</summary>
         public bool BypassStackOutOfSyncError { get; set; }
+
+        /// <summary>The action to take on resources that do not support deletion.</summary>
+        public string ResourcesWithoutDeleteSupport { get; set; }
     }
 }

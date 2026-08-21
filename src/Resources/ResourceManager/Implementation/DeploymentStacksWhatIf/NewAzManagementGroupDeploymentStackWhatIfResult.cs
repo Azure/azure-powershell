@@ -88,6 +88,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
         [Parameter(Mandatory = false, HelpMessage = "Flag to bypass stack out-of-sync error.")]
         public SwitchParameter BypassStackOutOfSyncError { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The action to take on resources that do not support deletion when they are removed from the deployment stack. " +
+            "Possible values include: 'Fail' (default) and 'Detach'.")]
+        public PSResourcesWithoutDeleteSupport ResourcesWithoutDeleteSupport { get; set; }
+
         #endregion
 
         #region Cmdlet Implementation
@@ -122,7 +126,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
                 DenySettingsApplyToChildScopes = DenySettingsApplyToChildScopes.IsPresent,
                 ValidationLevel = ValidationLevel,
                 DebugSettingDetailLevel = DebugSettingDetailLevel,
-                BypassStackOutOfSyncError = BypassStackOutOfSyncError.IsPresent
+                BypassStackOutOfSyncError = BypassStackOutOfSyncError.IsPresent,
+                ResourcesWithoutDeleteSupport = ResourcesWithoutDeleteSupport.ToString().ToLowerInvariant()
             };
         }
 

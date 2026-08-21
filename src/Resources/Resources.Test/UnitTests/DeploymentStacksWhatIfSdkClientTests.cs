@@ -34,10 +34,27 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
         [InlineData(typeof(SetAzManagementGroupDeploymentStackWhatIfResult))]
         [InlineData(typeof(SetAzResourceGroupDeploymentStackWhatIfResult))]
         [InlineData(typeof(SetAzSubscriptionDeploymentStackWhatIfResult))]
-        public void DeploymentStackWhatIfCmdlet_UsesPluralApplyToChildScopesParameter(Type cmdletType)
+        public void DeploymentStackWhatIfCmdlet_UsesConsistentDeploymentStackParameters(Type cmdletType)
         {
             Assert.NotNull(cmdletType.GetProperty("DenySettingsApplyToChildScopes"));
             Assert.Null(cmdletType.GetProperty("DenySettingsApplyToChildScope"));
+            Assert.NotNull(cmdletType.GetProperty("ResourcesWithoutDeleteSupport"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateDeploymentStacksWhatIfResult_SetsResourcesWithoutDeleteSupport()
+        {
+            var client = new DeploymentStacksWhatIfSdkClient(deploymentStacksClient: null);
+
+            DeploymentStacksWhatIfResult result = Assert.IsType<DeploymentStacksWhatIfResult>(InvokeCreateDeploymentStacksWhatIfResult(
+                client,
+                deploymentStackName: "stackName",
+                resourceGroupName: null,
+                managementGroupId: null,
+                stackResourceId: "/subscriptions/subscriptionId/providers/Microsoft.Resources/deploymentStacks/stackName"));
+
+            Assert.Equal("fail", result.Properties.ActionOnUnmanage.ResourcesWithoutDeleteSupport);
         }
 
         // Verify a running What-If result is polled once and uses the injectable delay hook.
@@ -147,6 +164,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
                 "detach",
                 "detach",
                 "detach",
+                "fail",
                 null,
                 "none",
                 null,
