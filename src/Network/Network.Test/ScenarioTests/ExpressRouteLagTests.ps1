@@ -166,7 +166,9 @@ function Test-ExpressRouteLagGenerateLOA
     $lacpTimer = "slow"
     $minimumActivePortsRequired = 2
     $customerName = "someCustomer"
-    $destination = "$env:TEMP\ExpressRouteLagLOA.pdf"
+    # Use a rooted, cross-platform temp path. $env:TEMP and '\' are Windows-only; on Linux/macOS they
+    # would produce an unrooted path that the cmdlet and Test-Path resolve differently, failing playback.
+    $destination = Join-Path ([System.IO.Path]::GetTempPath()) "ExpressRouteLagLOA.pdf"
 
     try
     {
