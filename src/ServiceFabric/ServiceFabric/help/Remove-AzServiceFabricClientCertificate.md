@@ -15,28 +15,30 @@ Remove a client certificate(s) or certificate subject(s) name(s) from being used
 ### SingleUpdateWithCommonName
 ```
 Remove-AzServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String> -CommonName <String>
- -IssuerThumbprint <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -IssuerThumbprint <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SingleUpdateWithThumbprint
 ```
 Remove-AzServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String> -Thumbprint <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### MultipleUpdatesWithCommonName
 ```
 Remove-AzServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
  -ClientCertificateCommonName <PSClientCertificateCommonName[]> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MultipleUpdatesWithThumbprint
 ```
 Remove-AzServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
  [-AdminClientThumbprint <String[]>] [-ReadonlyClientThumbprint <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +59,7 @@ This command will remove client certificate with thumbprint '5F3660C715EBBDA31DB
 Specify client certificate thumbprint which only has admin permission
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: MultipleUpdatesWithThumbprint
 Aliases:
 
@@ -72,7 +74,7 @@ Accept wildcard characters: False
 Specify client common name , issuer thumbprint and authentication type
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[]
+Type: PSClientCertificateCommonName[]
 Parameter Sets: MultipleUpdatesWithCommonName
 Aliases: CertCommonName
 
@@ -87,7 +89,7 @@ Accept wildcard characters: False
 Specify client certificate common name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SingleUpdateWithCommonName
 Aliases:
 
@@ -102,7 +104,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -117,7 +119,7 @@ Accept wildcard characters: False
 Specify thumbprint of client certificate's issuer
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SingleUpdateWithCommonName
 Aliases:
 
@@ -132,7 +134,7 @@ Accept wildcard characters: False
 Specify the name of the cluster
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ClusterName
 
@@ -143,11 +145,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReadonlyClientThumbprint
 Specify client certificate thumbprint which only has read only permission
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: MultipleUpdatesWithThumbprint
 Aliases:
 
@@ -162,7 +179,7 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +194,7 @@ Accept wildcard characters: False
 Specify client certificate thumbprint
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SingleUpdateWithThumbprint
 Aliases: ClientCertificateThumbprint
 
@@ -192,7 +209,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -208,7 +225,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

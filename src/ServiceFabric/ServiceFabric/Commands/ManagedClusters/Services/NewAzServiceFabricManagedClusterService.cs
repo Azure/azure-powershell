@@ -313,6 +313,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty]
         public ServicePackageActivationModeEnum ServicePackageActivationMode { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = StatelessSingleton,
+            HelpMessage = "Specify the DNS name for the service. This enables service discovery via DNS.")]
+        [Parameter(Mandatory = false, ParameterSetName = StatelessUniformInt64,
+            HelpMessage = "Specify the DNS name for the service. This enables service discovery via DNS.")]
+        [Parameter(Mandatory = false, ParameterSetName = StatelessNamed,
+            HelpMessage = "Specify the DNS name for the service. This enables service discovery via DNS.")]
+        [Parameter(Mandatory = false, ParameterSetName = StatefulSingleton,
+            HelpMessage = "Specify the DNS name for the service. This enables service discovery via DNS.")]
+        [Parameter(Mandatory = false, ParameterSetName = StatefulUniformInt64,
+            HelpMessage = "Specify the DNS name for the service. This enables service discovery via DNS.")]
+        [Parameter(Mandatory = false, ParameterSetName = StatefulNamed,
+            HelpMessage = "Specify the DNS name for the service. This enables service discovery via DNS.")]
+        [ValidateNotNullOrEmpty]
+        public string ServiceDnsName { get; set; }
+
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Specify the tags as key/value pairs.")]
         public Hashtable Tag { get; set; }
 
@@ -526,6 +541,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (this.IsParameterBound(c => c.ServicePackageActivationMode))
             {
                 properties.ServicePackageActivationMode = this.ServicePackageActivationMode.ToString();
+            }
+            if (this.IsParameterBound(c => c.ServiceDnsName))
+            {
+                properties.ServiceDnsName = this.ServiceDnsName;
             }
             if (this.IsParameterBound(c => c.DefaultMoveCost))
             {
