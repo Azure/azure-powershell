@@ -98,7 +98,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </exception>
         public virtual void Validate()
         {
-
+            if (this.Properties != null)
+            {
+                this.Properties.Validate();
+            }
             if (this.Sku != null)
             {
                 this.Sku.Validate();

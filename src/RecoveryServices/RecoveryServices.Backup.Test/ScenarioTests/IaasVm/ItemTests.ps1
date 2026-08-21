@@ -134,6 +134,136 @@ function Test-AzureVaultPublicNetworkAccess
 	}
 }
 
+function Test-AzureVaultSourceScan
+{
+	$resourceGroupName = "hiagaCZR-rg"
+	$vaultName = "hiagaSourceScanVault"
+	$location = "eastus2euap"
+	$tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="01-2099"}
+
+	try
+	{
+		# new vault
+		$vault = New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $location -Tag $tag
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
+
+		# Enable Source Scan. The service manages the operation identity.
+		$vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName -SourceScanState Enabled
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
+
+		Assert-True { $vault.Properties.SourceScanConfiguration.State -eq "Enabled" }
+
+		# Disable Source Scan
+		$vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName -SourceScanState Disabled
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
+
+		Assert-True { $vault.Properties.SourceScanConfiguration.State -eq "Disabled" }
+	}
+	finally
+	{
+		# remove vault
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		Remove-AzRecoveryServicesVault -Vault $vault
+	}
+}
+
+function Test-AzureVMSourceScan
+{
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiaga-adhoc-vault"
+
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+	Assert-True { $item.Count -gt 0 }
+	$targetItem = $item[0]
+
+	# Enable Source Scan. The service manages the operation identity.
+	$vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName -SourceScanState Enabled
+	$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
+
+	Assert-True { $vault.Properties.SourceScanConfiguration.State -eq "Enabled" }
+
+	# If source scan is already configured on the selected item, disable first so the test can
+	# validate both disable and enable transitions deterministically.
+	if ($targetItem.SourceSideScanStatus -eq "Configured")
+	{
+		$job = Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $targetItem -State Disabled -VaultId $vault.ID -Force
+		if ($null -ne $job)
+		{
+			Assert-True { $job.Status -eq "Completed" }
+		}
+
+		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+		$targetItem = $item | Where-Object { $_.Name -eq $targetItem.Name } | Select-Object -First 1
+		Assert-NotNull $targetItem
+		Assert-True { $targetItem.SourceSideScanStatus -eq "NotConfigured" }
+	}
+
+	# Enable Source Scan for the item
+	$job = Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $targetItem -State Enabled -VaultId $vault.ID -Force
+	if ($null -ne $job)
+	{
+		Assert-True { $job.Status -eq "Completed" }
+	}
+
+	$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+	$targetItem = $item | Where-Object { $_.Name -eq $targetItem.Name } | Select-Object -First 1
+	Assert-NotNull $targetItem
+	Assert-NotNull $targetItem.PSObject.Properties["SourceSideScanStatus"]
+	Assert-NotNull $targetItem.PSObject.Properties["SourceSideScanSummary"]
+	Assert-True { $targetItem.SourceSideScanStatus -eq "Configured" }
+	Assert-NotNull $targetItem.SourceSideScanSummary
+
+	# Disable Source Scan for the item
+	$job = Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $targetItem -State Disabled -VaultId $vault.ID -Force
+	if ($null -ne $job)
+	{
+		Assert-True { $job.Status -eq "Completed" }
+	}
+
+	$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+	$targetItem = $item | Where-Object { $_.Name -eq $targetItem.Name } | Select-Object -First 1
+	Assert-NotNull $targetItem
+	Assert-NotNull $targetItem.PSObject.Properties["SourceSideScanStatus"]
+	Assert-NotNull $targetItem.PSObject.Properties["SourceSideScanSummary"]
+	Assert-True { $targetItem.SourceSideScanStatus -eq "NotConfigured" }
+
+	# Disable Source Scan
+	$vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName -SourceScanState Disabled
+	$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
+
+	Assert-True { $vault.Properties.SourceScanConfiguration.State -eq "Disabled" }
+}
+
+function Test-AzureVMSourceScanRecoveryPoints
+{
+	$resourceGroupName = "swbela-ransom-rg"
+	$vaultName = "swbela-mdc-vault-1"
+	$targetVmFriendlyName = "Sample-VM"
+
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+	# Vault is expected to have Source Scan already enabled in the test environment.
+	Assert-True { $vault.Properties.SourceScanConfiguration.State -eq "Enabled" }
+
+	$namedContainer = Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -FriendlyName $targetVmFriendlyName -VaultId $vault.ID
+	$namedContainer = @($namedContainer) | Select-Object -First 1
+	Assert-NotNull $namedContainer
+	Write-Host ("namedContainer Name: {0}; FriendlyName: {1}; ContainerType: {2}" -f $namedContainer.Name, $namedContainer.FriendlyName, $namedContainer.ContainerType)
+
+	$targetItem = Get-AzRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -VaultId $vault.ID
+	$targetItem = @($targetItem) | Select-Object -First 1
+	Assert-NotNull $targetItem
+	Write-Host ("targetItem Name: {0}; FriendlyName: {1}; WorkloadType: {2}; SourceSideScanStatus: {3}" -f $targetItem.Name, $targetItem.FriendlyName, $targetItem.WorkloadType, $targetItem.SourceSideScanStatus)
+
+	Assert-True { $targetItem.SourceSideScanStatus -eq "Configured" }
+	$recoveryPoints = @(Get-AzRecoveryServicesBackupRecoveryPoint -Item $targetItem -VaultId $vault.ID)
+	Assert-True { $recoveryPoints.Count -gt 0 }
+	Assert-NotNull $recoveryPoints[0].PSObject.Properties["ThreatStatus"]
+	Assert-NotNull $recoveryPoints[0].PSObject.Properties["ThreatInfo"]
+	Assert-NotNull $recoveryPoints[0].ThreatStatus
+}
+
 function Test-AzureVaultImmutability
 {	
 	$resourceGroupName = "hiagaCZR-rg"
@@ -1603,5 +1733,3 @@ function Test-AzureVMCSBRestoreOLR
 		}
 	}
 }
-
-

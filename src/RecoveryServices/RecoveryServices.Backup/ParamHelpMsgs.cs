@@ -123,6 +123,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string excludeAllDataDisks = "Option to specify to backup OS disks only";
             public const string ReprotectItem = "Specifies the backup item for which this cmdlet reverts the deletion."; 
             public const string containerSubscriptionId = "Subscription ID of the Azure Virtual Machine to be protected. Use this parameter to configure backup for a VM that resides in a different subscription than the Recovery Services vault (Cross Subscription Backup).";
+            public const string SourceScanItem = "Specifies the backup item for which Source Scan (Microsoft Defender for Cloud) is to be configured.";
+            public const string SourceScanState = "Specifies the Source Scan state to set for the item. Allowed values are Enabled, Disabled.";
+            public const string SourceScanForceOption = "Forces the Source Scan configuration change (prevents confirmation dialog). This parameter is optional.";
         }
 
         internal static class ProtectableItem

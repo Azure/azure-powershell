@@ -20,7 +20,8 @@ Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> [-
  [-DisableAzureMonitorAlertsForAllReplicationIssue <Boolean>]
  [-DisableAzureMonitorAlertsForAllFailoverIssue <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-ImmutabilityState <ImmutabilityState>] [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>]
- [-CostManagementGranularity <CostManagementGranularity>] [-DefaultProfile <IAzureContextContainer>] [-Token <String>] 
+ [-CostManagementGranularity <CostManagementGranularity>] [-SourceScanState <SourceScanState>]
+ [-DefaultProfile <IAzureContextContainer>] [-Token <String>] 
  [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,12 +33,13 @@ Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> -I
  [-DisableAzureMonitorAlertsForAllReplicationIssue <Boolean>]
  [-DisableAzureMonitorAlertsForAllFailoverIssue <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-ImmutabilityState <ImmutabilityState>] [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>]
- [-CostManagementGranularity <CostManagementGranularity>] [-DefaultProfile <IAzureContextContainer>] [-Token <String>] 
+ [-CostManagementGranularity <CostManagementGranularity>] [-SourceScanState <SourceScanState>]
+ [-DefaultProfile <IAzureContextContainer>] [-Token <String>] 
  [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet is used to add or remove the MSI from the recovery services vault. Use -IdentityType param to add a SystemAssigned/UserAssigned identity to the RSVault. Use RemoveSystemAssigned/RemoveUserAssigned switch to remove the MSI from the vault. Additionally, this cmdlet can be used to configure vault settings such as cost management granularity, public network access, immutability state, and cross-subscription restore state.
+This cmdlet is used to add or remove the MSI from the recovery services vault. Use -IdentityType param to add a SystemAssigned/UserAssigned identity to the RSVault. Use RemoveSystemAssigned/RemoveUserAssigned switch to remove the MSI from the vault. Additionally, this cmdlet can be used to configure vault settings such as cost management granularity, public network access, immutability state, cross-subscription restore state, and Source Scan (Microsoft Defender for Cloud) configuration.
 
 ## EXAMPLES
 
@@ -140,6 +142,36 @@ VaultLevel
 The first cmdlet fetches the recovery services vault.
 The second cmdlet updates the CostManagementGranularity to "VaultLevel". Allowed values are "VaultLevel", "ProtectedItemLevel", and "ProtectedItemWithParentTag".
 The third command gets the cost management granularity level of the vault.
+
+### Example 7: Enable Source Scan for a recovery services vault
+```powershell
+$vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
+$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -SourceScanState Enabled
+$updatedVault.Properties.SecuritySettings.SourceScanConfiguration.State
+```
+
+```output
+Enabled
+```
+
+The first cmdlet fetches the recovery services vault.
+The second cmdlet enables Source Scan (Microsoft Defender for Cloud) for the vault. The service manages the operation identity.
+The third command shows the Source Scan state of the vault.
+
+### Example 8: Disable Source Scan for a recovery services vault
+```powershell
+$vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
+$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -SourceScanState Disabled
+$updatedVault.Properties.SecuritySettings.SourceScanConfiguration.State
+```
+
+```output
+Disabled
+```
+
+The first cmdlet fetches the recovery services vault.
+The second cmdlet disables Source Scan for the vault.
+The third command gets the Source Scan state of the vault.
 
 ## PARAMETERS
 
@@ -398,6 +430,22 @@ Parameter to authorize operations protected by cross tenant resource guard. Use 
 Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceScanState
+Source Scan (Microsoft Defender for Cloud) state of the vault. Allowed values are "Enabled", "Disabled".
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.SourceScanState]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
