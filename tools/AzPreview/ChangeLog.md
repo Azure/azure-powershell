@@ -1,3 +1,62 @@
+## 16.3.0 - September 2026
+#### Az.Compute 11.9.0
+* Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
+* Added '-ForceDeallocate' to 'Stop-AzVM' to force deallocate a VM (Virtual Machine) during stop operations.
+    - The switch cannot be used together with '-Hibernate', '-StayProvisioned', or '-SkipShutdown'.
+
+#### Az.Dell 0.1.0
+* First preview release for module Az.Dell
+
+#### Az.IotHub 2.9.2
+* Fixed 'New-AzIotHubKey' to generate cryptographically secure shared access keys when rotating primary or secondary keys.
+
+#### Az.KeyVault 6.6.1
+* Upgraded the Key Vault control plane API version to '2026-02-01'.
+    - All Key Vault control plane API versions before '2026-02-01' are being retired on 27 February 2027. Upgrading to a release that includes this change keeps 'Az.KeyVault' working past that date.
+    - No action is required and no cmdlet behavior changes. 'New-AzKeyVault' has created vaults with RBAC (Role-Based Access Control) enabled by default since Az.KeyVault 6.0.0, and it continues to send that setting explicitly, so the new service-side default has no effect on vaults created through this module. Use 'DisableRbacAuthorization' to create a vault that uses access policies instead.
+
+#### Az.Network 8.2.0
+* Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
+    - Added the '-DdosCustomPolicyId' parameter to 'Set-AzPublicIpAddress'.
+    - Added the '-RemoveDdosCustomPolicy' switch to remove an existing association.
+    - DDoS custom policy association does not require a specific DDoS protection mode.
+* Added 'RoutingConfiguration', 'VirtualHubVnetConnection', and 'VirtualHubVnetConnectionId' parameters to 'Add-AzRouteServerPeer' and 'Update-AzRouteServerPeer'.
+    - Enabled configuring inbound and outbound route maps for Route Server BGP peer connections.
+    - Enabled specifying a hub virtual network connection for the peer (by object or resource id).
+* Added 'RoutingConfiguration' parameter to 'New-AzVirtualNetworkGatewayConnection' and 'Set-AzVirtualNetworkGatewayConnection'.
+    - Enabled configuring inbound and outbound route maps for Virtual Network Gateway connections.
+
+#### Az.RecoveryServices 7.14.1
+* Added Cross Region Restore support for Azure File Share backup items ('Get-AzRecoveryServicesBackupItem -UseSecondaryRegion', 'Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion', 'Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion')
+* Refined soft delete behavior for Azure File share backup items
+    - 'Undo-AzRecoveryServicesBackupItemDeletion' now throws a clear error when the target Azure File share item is not in the soft-deleted ('ToBeDeleted') state instead of issuing an undelete request that cannot succeed.
+    - Corrected the 'DateOfPurge' computation for soft-deleted Azure File share items; it is now derived from the service-returned remaining deferred-delete window, fixing the previous value that always fell back to a fixed 14-day period.
+
+#### Az.Resources 10.1.1
+* Added a notice to template deployment what-if output pointing users to Deployment Stacks What-If, which is now generally available and removes noise from results.
+
+#### Az.Security 1.10.0
+* Added new cmdlets to support SQL Vulnerability Assessment (2026-04-01-preview) API:
+    - 'Get-AzSecuritySqlVulnerabilityAssessmentSetting', 'New-AzSecuritySqlVulnerabilityAssessmentSetting', 'Update-AzSecuritySqlVulnerabilityAssessmentSetting', 'Remove-AzSecuritySqlVulnerabilityAssessmentSetting'
+    - 'Get-AzSecuritySqlVulnerabilityAssessmentBaselineRule', 'New-AzSecuritySqlVulnerabilityAssessmentBaselineRule', 'Add-AzSecuritySqlVulnerabilityAssessmentBaselineRule', 'Remove-AzSecuritySqlVulnerabilityAssessmentBaselineRule'
+    - 'Get-AzSecuritySqlVulnerabilityAssessmentScan', 'Get-AzSecuritySqlVulnerabilityAssessmentScanRuleResult', 'Invoke-AzSecurityInitiateSqlVulnerabilityAssessmentScan'
+    - 'Get-AzSecuritySqlVulnerabilityAssessmentScanRuleResult' is named to reflect that it returns per-rule scan results (similar to 'Get-AzSecuritySqlVulnerabilityAssessmentBaselineRule'), avoiding a name collision with the existing legacy 'Get-AzSecuritySqlVulnerabilityAssessmentScanResult' cmdlet
+
+#### Az.Sql 7.1.0
+* Added multi-database Managed Instance link support
+    - Added 'LinkMode' support to 'New-AzSqlInstanceLink'
+    - Added database membership updates to 'Update-AzSqlInstanceLink'
+* Enhanced 'Get-AzSqlDeletedServer' cmdlet to support subscription-level queries
+    - Made location input parameter optional to enable listing deleted servers across all locations at subscription level
+    - Added 'ScheduledPurgeTime' and 'Location' to output properties for deleted server information
+
+#### Az.VMware 0.10.0
+* Fixed 'New-AzVMwareVcf5LicenseObject' and the '-VcfLicense' parameter on 'New-AzVMwarePrivateCloud' not being available in the '0.9.1' package
+    - The cmdlet and parameter are now correctly generated and exported by the module
+
+#### Az.Websites 4.1.0
+* Added support for creating and updating App Service Environment plans with Isolated v4 and memory-optimized Isolated v4 SKUs.
+
 ## 16.2.0 - August 2026
 #### Az.Accounts 5.5.2
 * Upgraded 'Azure.Core' dependency from 1.56.0 to 1.57.0.
