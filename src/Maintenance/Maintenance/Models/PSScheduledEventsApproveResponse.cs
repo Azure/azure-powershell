@@ -13,11 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Microsoft.Azure.Management.Maintenance.Models;
 
 namespace Microsoft.Azure.Commands.Maintenance.Models
 {
-    public partial class PSScheduledEventsApproveResponse
+    public class PSScheduledEventsApproveResponse
     {
-        public string Value { get; set; }
+        public IList<ScheduledEventsAcknowledgeErrorDetails> Details { get; set; }
+
+        public PSScheduledEventsListApproveStatus Response { get; set; }
+    }
+
+    public class PSScheduledEventsListApproveStatus
+    {
+        public string Code { get; set; }
+
+        public string Message { get; set; }
     }
 }

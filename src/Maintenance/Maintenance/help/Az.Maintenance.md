@@ -41,11 +41,11 @@ Unregister configuration for resource.
 ### [Remove-AzMaintenanceConfiguration](Remove-AzMaintenanceConfiguration.md)
 Delete Configuration record
 
-### [Set-AzScheduledEvents](Set-AzScheduledEvents.md)
-Acknowledge ScheduledEvents Id
+### [Approve-AzScheduledEvent](Approve-AzScheduledEvent.md)
+Approve a scheduled event for a resource.
 
-### [Set-AzScheduledEventsList](Set-AzScheduledEventsList.md)
-Acknowledge list of ScheduledEvents Id
+### [Approve-AzScheduledEventList](Approve-AzScheduledEventList.md)
+Approve a list of scheduled events for a resource.
 
 ### [Update-AzMaintenanceConfiguration](Update-AzMaintenanceConfiguration.md)
 Patch configuration record

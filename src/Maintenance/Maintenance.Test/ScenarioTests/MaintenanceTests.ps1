@@ -75,7 +75,9 @@ function Test-GetAzMaintenanceConfiguration
         }
 
         # Retrieve Maintenance Configurations without ResourceGroupName and validate it returns a list
-        $retrievedConfigurations = Get-AzMaintenanceConfiguration -Name $maintenanceConfigurationName
+        $retrievedConfigurations = Get-AzMaintenanceConfiguration -Name $maintenanceConfigurationName |
+            Group-Object -Property Id |
+            ForEach-Object { $_.Group[0] }
 
         # Validate that the returned object is a list containing two objects
         if ($retrievedConfigurations.Count -ne $numConfigsToTest) {
@@ -271,9 +273,11 @@ function Test-AzMaintenanceConfigurationInGuestPatch
         Assert-MaintenanceConfiguration $maintenanceConfigurationCreated1 $retrievedMaintenanceConfigurationByName
 
         $allMaintenanceConfigInSubscription = Get-AzMaintenanceConfiguration
-        $maintenanceConfigurationNameInstance = $allMaintenanceConfigInSubscription | ?{ $_.Name -eq $maintenanceConfigurationName}
+        $maintenanceConfigurationNameInstance = $allMaintenanceConfigInSubscription |
+            Where-Object { $_.Name -eq $maintenanceConfigurationName } |
+            Select-Object -First 1
 
-        $maintenanceConfigurationNameInstance.LinuxParameterPackageNameMaskToInclude.Add("package3")
+        $maintenanceConfigurationNameInstance.LinuxParameterPackageNameMaskToInclude = @($maintenanceConfigurationNameInstance.LinuxParameterPackageNameMaskToInclude) + "package3"
         $maintenanceConfigurationNameInstance.InstallPatchRebootSetting = "AlwaysReboot"
 
         # Act
@@ -842,70 +846,25 @@ function Test-GetAzApplyUpdateWithoutParentResource
 
 <#
 .SYNOPSIS
-Asserts that a script throws InvalidScheduledEventId.
+Asserts that a response contains InvalidScheduledEventId.
 
 .PARAMETER cmd
-Script block expected to throw InvalidScheduledEventId.
+Script block expected to return InvalidScheduledEventId.
 #>
 function Assert-InvalidScheduledEventId
 {
     param([scriptblock] $cmd)
 
-    try
-    {
-        & $cmd
-        throw "Expected InvalidScheduledEventId exception was not thrown."
-    }
-    catch
-    {
-        Assert-AreEqual "Microsoft.Azure.Management.Maintenance.Models.MaintenanceErrorException" $_.Exception.GetType().FullName
-        Assert-AreEqual "NotFound" $_.Exception.Response.StatusCode.ToString()
-        Assert-AreEqual "InvalidScheduledEventId" $_.Exception.Body.Error.Code
-    }
+    $response = & $cmd
+    Assert-AreEqual "InvalidScheduledEventId" $response.Error.Code
+    Assert-AreEqual "Scheduled event not found" $response.Error.Message
 }
 
 <#
 .SYNOPSIS
-Asserts that a list of invalid Scheduled Event IDs returns a MultiStatus response.
-
-.PARAMETER cmd
-Script block expected to throw ScheduledEventsListAcknowledgeErrorException.
-
-.PARAMETER expectedErrorCount
-Expected number of per-event NotFound details.
+Test Approve-AzScheduledEvent and Approve-AzScheduledEventList
 #>
-function Assert-InvalidScheduledEventIdList
-{
-    param(
-        [scriptblock] $cmd,
-        [int] $expectedErrorCount)
-
-    try
-    {
-        & $cmd
-        throw "Expected ScheduledEventsListAcknowledgeErrorException was not thrown."
-    }
-    catch
-    {
-        Assert-AreEqual "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsListAcknowledgeErrorException" $_.Exception.GetType().FullName
-        Assert-AreEqual "MultiStatus" $_.Exception.Response.StatusCode.ToString()
-
-        $responseBody = $_.Exception.Response.Content | ConvertFrom-Json
-        Assert-AreEqual "MultiStatusResponse" $responseBody.Response.Code
-        Assert-AreEqual $expectedErrorCount $responseBody.Details.Count
-        foreach ($detail in $responseBody.Details)
-        {
-            Assert-AreEqual "NotFound" $detail.Code
-            Assert-AreEqual "Scheduled event not found" $detail.Message
-        }
-    }
-}
-
-<#
-.SYNOPSIS
-Test Set-AzScheduledEvents and Set-AzScheduledEventsList
-#>
-function Test-SetAzScheduledEvents
+function Test-ApproveAzScheduledEvents
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $resourceType = "virtualmachinescalesets"
@@ -942,69 +901,110 @@ function Test-SetAzScheduledEvents
             throw
         }
 
-        # Allow scheduled events to begin indexing in ARG before the first query.
-        Start-TestSleep -Seconds 60
-
-        # ARG query to get the scheduledEventIds
+        # Poll ARG for the scheduled events because indexing latency is not deterministic.
+        # In playback mode, TestFx replays the recorded ARG responses.
+        $escapedSubscriptionId = $subscriptionId.Replace("'", "''")
+        $scheduledEventIdPrefix = "$virtualMachineScaleSetId/providers/Microsoft.Maintenance/scheduledevents/"
+        $escapedScheduledEventIdPrefix = $scheduledEventIdPrefix.Replace("'", "''")
         $kql = "maintenanceresources " +
-                        "| where type == 'microsoft.maintenance/scheduledevents' " +
-                        "| where subscriptionId contains '$subscriptionId' " +
-                        "| where properties.Resources contains '$virtualMachineScaleSetName' " +
-                        "| where properties.EventStatus contains 'scheduled' " +
-                        "| project EventId = tostring(properties.EventId)"
+                "| where type == 'microsoft.maintenance/scheduledevents' " +
+                "| where subscriptionId == '$escapedSubscriptionId' " +
+                "| where id startswith '$escapedScheduledEventIdPrefix' " +
+                "| where tostring(properties.EventStatus) =~ 'Scheduled' " +
+                "| project EventId = tostring(properties.EventId)"
 
-        try
+        $kqlResults = @()
+        $maximumQueryAttempts = 20
+        for ($queryAttempt = 1; $queryAttempt -le $maximumQueryAttempts; $queryAttempt++)
         {
-            $kqlResponse = Search-AzGraph -Subscription $subscriptionId -Query $kql
-            if ($null -ne $kqlResponse.PSObject.Properties["Data"])
+            try
             {
-                $kqlResults = @($kqlResponse.Data)
+                $kqlResponse = Search-AzGraph -Subscription $subscriptionId -Query $kql
+                if ($null -ne $kqlResponse.PSObject.Properties["Data"])
+                {
+                    $kqlResults = @($kqlResponse.Data)
+                }
+                else
+                {
+                    $kqlResults = @($kqlResponse)
+                }
+
+                Write-Warning "KQL attempt $queryAttempt returned: $($kqlResults | ConvertTo-Json -Depth 5 -Compress)"
             }
-            else
+            catch
             {
-                $kqlResults = @($kqlResponse)
+                Write-Warning "[ERROR] KQL query failed: $($_.Exception.Message)"
+                Write-Warning "[ERROR] Full error: $($_ | Out-String)"
+                throw
             }
 
-            Write-Warning "KQL Results: $($kqlResults | ConvertTo-Json -Depth 5 -Compress)"
-        }
-        catch
-        {
-            Write-Warning "[ERROR] KQL query failed: $($_.Exception.Message)"
-            Write-Warning "[ERROR] Full error: $($_ | Out-String)"
-            throw
+            if ($kqlResults.Count -ge 2)
+            {
+                break
+            }
+
+            if ($queryAttempt -lt $maximumQueryAttempts)
+            {
+                Start-TestSleep -Seconds 30
+            }
         }
 
-        $scheduledEventsIds = @($kqlResults | ForEach-Object {
+        $discoveredScheduledEventIds = @($kqlResults | ForEach-Object {
             $_.EventId
-        })
+        } | Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
+        Assert-True { $discoveredScheduledEventIds.Count -ge 2 } "Expected at least two scheduled event IDs for VMSS '$virtualMachineScaleSetId' after $maximumQueryAttempts ARG queries, but found $($discoveredScheduledEventIds.Count)."
+
+        $scheduledEventsIds = @()
+        for ($eventIndex = 0; $eventIndex -lt $discoveredScheduledEventIds.Count; $eventIndex++)
+        {
+            $scheduledEventsIds += [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable(
+                "scheduledEventId$($eventIndex + 1)",
+                $discoveredScheduledEventIds[$eventIndex])
+        }
+
+        Assert-True { $scheduledEventsIds.Count -ge 2 } "Expected at least two scheduled event IDs for VMSS '$virtualMachineScaleSetId', but found $($scheduledEventsIds.Count)."
 
         # Approving 1st event using standalone api
-        $success_response = Set-AzScheduledEvents -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $virtualMachineScaleSetName -ScheduledEventsId $scheduledEventsIds[0]
+        $success_response = Approve-AzScheduledEvent -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $virtualMachineScaleSetName -ScheduledEventId $scheduledEventsIds[0] -Confirm:$false
         Assert-AreEqual "Successfully approved scheduled event" $success_response.Value
 
         # Approving all remaining events using list api
         $remainingScheduledEventsIds = @($scheduledEventsIds | Select-Object -Skip 1)
         Assert-True { $remainingScheduledEventsIds.Count -gt 0 }
-        $success_response = Set-AzScheduledEventsList -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $virtualMachineScaleSetName -ScheduledEventsIdList $remainingScheduledEventsIds
+        $success_response = Approve-AzScheduledEventList -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $virtualMachineScaleSetName -ScheduledEventIdList $remainingScheduledEventsIds -Confirm:$false
         Assert-NotNull $success_response
         Assert-AreEqual "Successfully approved all Scheduled Events in the list" $success_response.Value
 
-        # Approving a random guid to test InvalidScheduledEventId exception
-        $scheduledEventsId = [guid]::NewGuid().ToString()
+        # Approving a random guid to test InvalidScheduledEventId response
+        $actualScheduledEventsId = [guid]::NewGuid().ToString()
+        $scheduledEventsId = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("scheduledEventsId", $actualScheduledEventsId)
         Assert-InvalidScheduledEventId {
-            Write-Warning "Calling Set-AzScheduledEvents"
-            $result = Set-AzScheduledEvents -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $virtualMachineScaleSetName -ScheduledEventsId $scheduledEventsId
-            Write-Warning "Set-AzScheduledEvents returned: $($result | ConvertTo-Json -Depth 5 -Compress)"
+            Write-Warning "Calling Approve-AzScheduledEvent"
+            $result = Approve-AzScheduledEvent -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $virtualMachineScaleSetName -ScheduledEventId $scheduledEventsId -Confirm:$false
+            Write-Warning "Approve-AzScheduledEvent returned: $($result | ConvertTo-Json -Depth 5 -Compress)"
             return $result
         }
 
-        # Approving a random list of guids to test InvalidScheduledEventId exception
-        $invalidScheduledEventsIds = @($scheduledEventsId, [guid]::NewGuid().ToString())
-        Assert-InvalidScheduledEventIdList -ExpectedErrorCount $invalidScheduledEventsIds.Count -Cmd {
-            Write-Warning "Calling Set-AzScheduledEventsList"
-            $result = Set-AzScheduledEventsList -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $virtualMachineScaleSetName -ScheduledEventsIdList $invalidScheduledEventsIds
-            Write-Warning "Set-AzScheduledEventsList returned: $($result | ConvertTo-Json -Depth 5 -Compress)"
-            return $result
+        # A list request can partially succeed. HTTP 207 is returned as a result
+        # without writing to the PowerShell error stream.
+        $actualSecondScheduledEventsId = [guid]::NewGuid().ToString()
+        $secondScheduledEventsId = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("secondScheduledEventsId", $actualSecondScheduledEventsId)
+        $invalidScheduledEventsIds = @($scheduledEventsId, $secondScheduledEventsId)
+        $multiStatusResponse = Approve-AzScheduledEventList `
+            -ResourceGroupName $resourceGroupName `
+            -ResourceType $resourceType `
+            -ResourceName $virtualMachineScaleSetName `
+            -ScheduledEventIdList $invalidScheduledEventsIds `
+            -Confirm:$false
+
+        Assert-AreEqual "MultiStatusResponse" $multiStatusResponse.Response.Code
+        Assert-AreEqual $invalidScheduledEventsIds.Count $multiStatusResponse.Details.Count
+        for ($resultIndex = 0; $resultIndex -lt $multiStatusResponse.Details.Count; $resultIndex++)
+        {
+            $result = $multiStatusResponse.Details[$resultIndex]
+            Assert-AreEqual $invalidScheduledEventsIds[$resultIndex] $result.Target
+            Assert-AreEqual "NotFound" $result.Code
+            Assert-AreEqual "Scheduled event not found" $result.Message
         }
     }
     finally

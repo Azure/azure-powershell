@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Maintenance.Models;
 using Microsoft.Azure.Management.Maintenance;
 using Microsoft.Azure.Management.Maintenance.Models;
+using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -22,30 +22,28 @@ using Moq;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Maintenance.Test.UnitTests
 {
-    public class SetAzureRmScheduledEventsListTests : RMTestBase
+    public class ApproveAzureRmScheduledEventTests : RMTestBase
     {
         private const string ResourceGroupName = "test-resource-group";
         private const string ResourceType = "virtualmachinescalesets";
         private const string ResourceName = "test-vmss";
-
-        private static readonly string[] ScheduledEventsIdList =
-        {
-            "00000000-0000-0000-0000-000000000001",
-            "00000000-0000-0000-0000-000000000002"
-        };
+        private const string ScheduledEventId = "00000000-0000-0000-0000-000000000001";
+        private const string ShouldProcessTarget = "resourceGroups/test-resource-group/providers/Microsoft.Compute/virtualmachinescalesets/test-vmss/providers/Microsoft.Maintenance/scheduledEvents/00000000-0000-0000-0000-000000000001";
 
         private readonly Mock<ICommandRuntime> commandRuntimeMock;
         private readonly Mock<IMaintenanceManagementClient> maintenanceManagementClientMock;
         private readonly Mock<IScheduledEventsOperations> scheduledEventsOperationsMock;
-        private readonly SetAzureRmScheduledEventsList cmdlet;
+        private readonly ApproveAzureRmScheduledEvent cmdlet;
 
-        public SetAzureRmScheduledEventsListTests()
+        public ApproveAzureRmScheduledEventTests()
         {
             commandRuntimeMock = new Mock<ICommandRuntime>(MockBehavior.Strict);
             maintenanceManagementClientMock = new Mock<IMaintenanceManagementClient>(MockBehavior.Strict);
@@ -55,36 +53,40 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.UnitTests
                 .SetupGet(client => client.ScheduledEvents)
                 .Returns(scheduledEventsOperationsMock.Object);
 
-            cmdlet = new SetAzureRmScheduledEventsList
+            cmdlet = new ApproveAzureRmScheduledEvent
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 MaintenanceClient = new MaintenanceClient(maintenanceManagementClientMock.Object),
                 ResourceGroupName = ResourceGroupName,
                 ResourceType = ResourceType,
                 ResourceName = ResourceName,
-                ScheduledEventsIdList = ScheduledEventsIdList
+                ScheduledEventId = ScheduledEventId
             };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void AcknowledgeListUsesExactArgumentsAndMapsSuccessfulResponse()
+        public void AcknowledgeUsesExactArgumentsAndMapsSuccessfulResponse()
         {
-            const string responseValue = "Successfully approved all Scheduled Events in the list";
+            const string responseValue = "Successfully approved scheduled event";
             object writtenObject = null;
+            cmdlet.ResourceGroupName = $" {ResourceGroupName} ";
+            cmdlet.ResourceType = $" {ResourceType} ";
+            cmdlet.ResourceName = $" {ResourceName} ";
+            cmdlet.ScheduledEventId = $" {ScheduledEventId} ";
 
             commandRuntimeMock
-                .Setup(runtime => runtime.ShouldProcess(ResourceName, VerbsCommon.Set))
+                .Setup(runtime => runtime.ShouldProcess(ShouldProcessTarget, VerbsLifecycle.Approve))
                 .Returns(true);
             commandRuntimeMock
                 .Setup(runtime => runtime.WriteObject(It.IsAny<object>()))
                 .Callback<object>(value => writtenObject = value);
             scheduledEventsOperationsMock
-                .Setup(operations => operations.AcknowledgeListWithHttpMessagesAsync(
+                .Setup(operations => operations.AcknowledgeWithHttpMessagesAsync(
                     ResourceGroupName,
                     ResourceType,
                     ResourceName,
-                    It.Is<IList<string>>(ids => ReferenceEquals(ids, ScheduledEventsIdList)),
+                    ScheduledEventId,
                     null,
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new AzureOperationResponse<ScheduledEventsApproveResponse>
@@ -94,14 +96,14 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.UnitTests
 
             cmdlet.ExecuteCmdlet();
 
-            scheduledEventsOperationsMock.Verify(operations => operations.AcknowledgeListWithHttpMessagesAsync(
+            scheduledEventsOperationsMock.Verify(operations => operations.AcknowledgeWithHttpMessagesAsync(
                 ResourceGroupName,
                 ResourceType,
                 ResourceName,
-                It.Is<IList<string>>(ids => ReferenceEquals(ids, ScheduledEventsIdList)),
+                ScheduledEventId,
                 null,
                 It.IsAny<CancellationToken>()), Times.Once);
-            var response = Assert.IsType<PSScheduledEventsApproveResponse>(writtenObject);
+            var response = Assert.IsType<ScheduledEventsApproveResponse>(writtenObject);
             Assert.Equal(responseValue, response.Value);
             commandRuntimeMock.Verify(runtime => runtime.WriteObject(It.IsAny<object>()), Times.Once);
         }
@@ -111,16 +113,16 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.UnitTests
         public void ShouldProcessFalseDoesNotCallClient()
         {
             commandRuntimeMock
-                .Setup(runtime => runtime.ShouldProcess(ResourceName, VerbsCommon.Set))
+                .Setup(runtime => runtime.ShouldProcess(ShouldProcessTarget, VerbsLifecycle.Approve))
                 .Returns(false);
 
             cmdlet.ExecuteCmdlet();
 
-            scheduledEventsOperationsMock.Verify(operations => operations.AcknowledgeListWithHttpMessagesAsync(
+            scheduledEventsOperationsMock.Verify(operations => operations.AcknowledgeWithHttpMessagesAsync(
                 It.IsAny<string>(),
                 It.IsAny<string>(),
                 It.IsAny<string>(),
-                It.IsAny<IList<string>>(),
+                It.IsAny<string>(),
                 It.IsAny<Dictionary<string, List<string>>>(),
                 It.IsAny<CancellationToken>()), Times.Never);
             commandRuntimeMock.Verify(runtime => runtime.WriteObject(It.IsAny<object>()), Times.Never);
@@ -128,19 +130,76 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ClientExceptionIsPropagated()
+        public void InvalidScheduledEventIdIsRejectedBeforeCallingClient()
         {
-            var expectedException = new InvalidOperationException("Acknowledge list failed.");
+            cmdlet.ScheduledEventId = "not-a-guid";
 
+            PSArgumentException exception = Assert.Throws<PSArgumentException>(() => cmdlet.ExecuteCmdlet());
+
+            Assert.Contains(nameof(cmdlet.ScheduledEventId), exception.Message);
+            scheduledEventsOperationsMock.Verify(operations => operations.AcknowledgeWithHttpMessagesAsync(
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<Dictionary<string, List<string>>>(),
+                It.IsAny<CancellationToken>()), Times.Never);
+        }
+
+        [Theory]
+        [InlineData(HttpStatusCode.NotFound, "InvalidScheduledEventId", "Scheduled event not found")]
+        [InlineData(HttpStatusCode.InternalServerError, "InternalServerError", "An internal server error occurred.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SingleNonSuccessResponseReturnsCodeAndMessage(
+            HttpStatusCode statusCode,
+            string code,
+            string message)
+        {
+            object writtenObject = null;
+            var expectedException = new MaintenanceErrorException("Acknowledge failed.")
+            {
+                Body = new MaintenanceError(new Microsoft.Azure.Management.Maintenance.Models.ErrorDetails(code, message)),
+                Response = new HttpResponseMessageWrapper(new HttpResponseMessage(statusCode), null)
+            };
             commandRuntimeMock
-                .Setup(runtime => runtime.ShouldProcess(ResourceName, VerbsCommon.Set))
+                .Setup(runtime => runtime.ShouldProcess(ShouldProcessTarget, VerbsLifecycle.Approve))
                 .Returns(true);
+            commandRuntimeMock
+                .Setup(runtime => runtime.WriteObject(It.IsAny<object>()))
+                .Callback<object>(value => writtenObject = value);
             scheduledEventsOperationsMock
-                .Setup(operations => operations.AcknowledgeListWithHttpMessagesAsync(
+                .Setup(operations => operations.AcknowledgeWithHttpMessagesAsync(
                     ResourceGroupName,
                     ResourceType,
                     ResourceName,
-                    It.Is<IList<string>>(ids => ReferenceEquals(ids, ScheduledEventsIdList)),
+                    ScheduledEventId,
+                    null,
+                    It.IsAny<CancellationToken>()))
+                .Returns(Task.FromException<AzureOperationResponse<ScheduledEventsApproveResponse>>(expectedException));
+
+            cmdlet.ExecuteCmdlet();
+
+            var response = Assert.IsType<MaintenanceError>(writtenObject);
+            Assert.Equal(code, response.Error.Code);
+            Assert.Equal(message, response.Error.Message);
+            commandRuntimeMock.Verify(runtime => runtime.WriteObject(It.IsAny<object>()), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ClientExceptionIsPropagated()
+        {
+            var expectedException = new InvalidOperationException("Acknowledge failed.");
+
+            commandRuntimeMock
+                .Setup(runtime => runtime.ShouldProcess(ShouldProcessTarget, VerbsLifecycle.Approve))
+                .Returns(true);
+            scheduledEventsOperationsMock
+                .Setup(operations => operations.AcknowledgeWithHttpMessagesAsync(
+                    ResourceGroupName,
+                    ResourceType,
+                    ResourceName,
+                    ScheduledEventId,
                     null,
                     It.IsAny<CancellationToken>()))
                 .Returns(Task.FromException<AzureOperationResponse<ScheduledEventsApproveResponse>>(expectedException));

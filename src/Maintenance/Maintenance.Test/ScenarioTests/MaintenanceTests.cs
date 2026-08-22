@@ -102,9 +102,9 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetAzScheduledEvents()
+        public void TestApproveAzScheduledEvents()
         {
-            TestRunner.RunTestScript("Test-SetAzScheduledEvents");
+            TestRunner.RunTestScript("Test-ApproveAzScheduledEvents");
         }
     }
 }
