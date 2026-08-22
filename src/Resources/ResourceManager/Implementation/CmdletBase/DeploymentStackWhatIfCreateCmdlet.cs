@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase
 {
     using System;
+    using System.Collections;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
@@ -66,6 +67,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
             {
                 // Any other error during existence check is non-fatal.
                 existing = null;
+            }
+
+            if (parameters.Tags == null && existing?.Tags != null)
+            {
+                parameters.Tags = new Hashtable();
+                foreach (var tag in existing.Tags)
+                {
+                    parameters.Tags[tag.Key] = tag.Value;
+                }
             }
 
             Action executeAction = () =>

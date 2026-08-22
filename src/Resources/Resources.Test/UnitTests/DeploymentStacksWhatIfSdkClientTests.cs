@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.DeploymentStacks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Management.Resources.DeploymentStacks.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -25,6 +26,39 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
 
     public class DeploymentStacksWhatIfSdkClientTests
     {
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData(typeof(NewAzManagementGroupDeploymentStackWhatIfResult))]
+        [InlineData(typeof(NewAzResourceGroupDeploymentStackWhatIfResult))]
+        [InlineData(typeof(NewAzSubscriptionDeploymentStackWhatIfResult))]
+        [InlineData(typeof(SetAzManagementGroupDeploymentStackWhatIfResult))]
+        [InlineData(typeof(SetAzResourceGroupDeploymentStackWhatIfResult))]
+        [InlineData(typeof(SetAzSubscriptionDeploymentStackWhatIfResult))]
+        public void DeploymentStackWhatIfCmdlet_UsesConsistentDeploymentStackParameters(Type cmdletType)
+        {
+            Assert.NotNull(cmdletType.GetProperty("DenySettingsApplyToChildScopes"));
+            Assert.Null(cmdletType.GetProperty("DenySettingsApplyToChildScope"));
+            Assert.NotNull(cmdletType.GetProperty("ResourcesWithoutDeleteSupport"));
+            Assert.NotNull(cmdletType.GetProperty("Tag"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateDeploymentStacksWhatIfResult_SetsActionAndTags()
+        {
+            var client = new DeploymentStacksWhatIfSdkClient(deploymentStacksClient: null);
+
+            DeploymentStacksWhatIfResult result = Assert.IsType<DeploymentStacksWhatIfResult>(InvokeCreateDeploymentStacksWhatIfResult(
+                client,
+                deploymentStackName: "stackName",
+                resourceGroupName: null,
+                managementGroupId: null,
+                stackResourceId: "/subscriptions/subscriptionId/providers/Microsoft.Resources/deploymentStacks/stackName"));
+
+            Assert.Equal("fail", result.Properties.ActionOnUnmanage.ResourcesWithoutDeleteSupport);
+            Assert.Equal("value", result.Tags["key"]);
+        }
+
         // Verify a running What-If result is polled once and uses the injectable delay hook.
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -132,6 +166,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
                 "detach",
                 "detach",
                 "detach",
+                "fail",
+                new Hashtable { { "key", "value" } },
                 null,
                 "none",
                 null,

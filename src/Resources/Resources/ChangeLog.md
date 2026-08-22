@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 * Added a notice to template deployment what-if output pointing users to Deployment Stacks What-If, which is now generally available and removes noise from results.
+* Renamed `DenySettingsApplyToChildScope` to `DenySettingsApplyToChildScopes` for deployment stack WhatIfResult cmdlets.
+* Added `ResourcesWithoutDeleteSupport` to deployment stack WhatIfResult cmdlets.
+* Added tag support to deployment stack WhatIfResult cmdlets and output.
 
 ## Version 10.1.0
 * Added deployment stack WhatIfResult cmdlets for resource group, subscription, and management group scopes.
