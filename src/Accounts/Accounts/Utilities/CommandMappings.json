@@ -559,12 +559,6 @@
       "Test-AzArtifactSigningAccountNameAvailability": {},
       "Update-AzArtifactSigningAccount": {}
     },
-    "Az.Astro": {
-      "Get-AzAstroOrganization": {},
-      "New-AzAstroOrganization": {},
-      "Remove-AzAstroOrganization": {},
-      "Update-AzAstroOrganization": {}
-    },
     "Az.Attestation": {
       "Add-AzAttestationPolicySigner": {},
       "Get-AzAttestationPolicy": {},
@@ -1437,6 +1431,7 @@
       "Set-AzVmssUefi": {},
       "Set-AzVmssVM": {},
       "Set-AzVMUefi": {},
+      "Set-AzVMZoneMovement": {},
       "Start-AzVM": {},
       "Start-AzVmss": {},
       "Start-AzVmssRollingExtensionUpgrade": {},
@@ -2578,6 +2573,11 @@
       "New-AzDedicatedHsm": {},
       "Remove-AzDedicatedHsm": {},
       "Update-AzDedicatedHsm": {}
+    },
+    "Az.Dell": {
+      "Get-AzDellFileSystem": {},
+      "New-AzDellFileSystem": {},
+      "Remove-AzDellFileSystem": {}
     },
     "Az.DependencyMap": {
       "Get-AzDependencyMap": {},
@@ -6542,9 +6542,6 @@
       "Update-AzPeeringRegisteredPrefix": {},
       "Update-AzPeeringService": {}
     },
-    "Az.Pinecone": {
-      "Get-AzPineconeOrganization": {}
-    },
     "Az.PlanetaryComputer": {
       "Get-AzPlanetaryComputerGeoCatalog": {},
       "New-AzPlanetaryComputerGeoCatalog": {},
@@ -7615,6 +7612,7 @@
       "Set-AzSqlInformationProtectionPolicy": {},
       "Start-AzJitNetworkAccessPolicy": {},
       "Update-AzIotSecuritySolution": {},
+      "Add-AzSecuritySqlVulnerabilityAssessmentBaselineRule": {},
       "Get-AzSecurityApiCollection": {},
       "Get-AzSecurityConnector": {},
       "Get-AzSecurityConnectorAzureDevOpsOrg": {},
@@ -7630,8 +7628,13 @@
       "Get-AzSecurityConnectorGitLabProject": {},
       "Get-AzSecurityConnectorGitLabSubgroup": {},
       "Get-AzSecurityDefenderForStorage": {},
+      "Get-AzSecuritySqlVulnerabilityAssessmentBaselineRule": {},
+      "Get-AzSecuritySqlVulnerabilityAssessmentScan": {},
+      "Get-AzSecuritySqlVulnerabilityAssessmentScanRuleResult": {},
+      "Get-AzSecuritySqlVulnerabilityAssessmentSetting": {},
       "Invoke-AzSecurityApiCollectionApimOffboard": {},
       "Invoke-AzSecurityApiCollectionApimOnboard": {},
+      "Invoke-AzSecurityInitiateSqlVulnerabilityAssessmentScan": {},
       "New-AzSecurityAwsEnvironmentObject": {},
       "New-AzSecurityAwsOrganizationalDataMasterObject": {},
       "New-AzSecurityAwsOrganizationalDataMemberObject": {},
@@ -7658,14 +7661,19 @@
       "New-AzSecurityGitHubScopeEnvironmentObject": {},
       "New-AzSecurityGitLabScopeEnvironmentObject": {},
       "New-AzSecurityInformationProtectionAwsOfferingObject": {},
+      "New-AzSecuritySqlVulnerabilityAssessmentBaselineRule": {},
+      "New-AzSecuritySqlVulnerabilityAssessmentSetting": {},
       "Remove-AzSecurityConnector": {},
       "Remove-AzSecurityConnectorDevOpsConfiguration": {},
+      "Remove-AzSecuritySqlVulnerabilityAssessmentBaselineRule": {},
+      "Remove-AzSecuritySqlVulnerabilityAssessmentSetting": {},
       "Update-AzSecurityConnector": {},
       "Update-AzSecurityConnectorAzureDevOpsOrg": {},
       "Update-AzSecurityConnectorAzureDevOpsProject": {},
       "Update-AzSecurityConnectorAzureDevOpsRepo": {},
       "Update-AzSecurityConnectorDevOpsConfiguration": {},
       "Update-AzSecurityDefenderForStorage": {},
+      "Update-AzSecuritySqlVulnerabilityAssessmentSetting": {},
       "Get-AzRegulatoryComplainceAssessment": {},
       "Set-AzSecurityAutomation": {}
     },
@@ -9252,6 +9260,7 @@
       "New-AzVMwarePureStoragePolicy": {},
       "New-AzVMwareScriptSecureStringExecutionParameterObject": {},
       "New-AzVMwareScriptStringExecutionParameterObject": {},
+      "New-AzVMwareVcf5LicenseObject": {},
       "New-AzVMwareVmHostPlacementPolicyPropertyObject": {},
       "New-AzVMwareVMPlacementPolicyPropertyObject": {},
       "Remove-AzVMwareAddon": {},
