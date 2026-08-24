@@ -27,10 +27,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class CmdletPriorityTests
     {
-        public CmdletPriorityTests(Xunit.Abstractions.ITestOutputHelper output)
-        {
-        }
-
         [Theory]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [InlineData(typeof(NewAzureVMCommand))]
