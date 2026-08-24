@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity. Minimum api-version: 2026-04-01. This parameter is only supported when updating a Virtual Machine Scale Set via the -VirtualMachineScaleSet object parameter (e.g. piping the output of Get-AzVmss).")]
+            HelpMessage = "Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity. This parameter is only supported when updating a Virtual Machine Scale Set via the -VirtualMachineScaleSet object parameter (e.g. piping the output of Get-AzVmss).")]
         public SwitchParameter DisableCapacityReservationAssignment { get; set; }
 
         [Parameter(

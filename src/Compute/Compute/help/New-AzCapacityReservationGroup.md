@@ -105,7 +105,6 @@ Specifies the type of the capacity reservation group.
 'Block' reservations are consumed only from the capacity block.
 'Open' reservations are implicitly consumed by eligible virtual machines with a matching VM size and zone without associating the group.
 The reservation type cannot be changed after the group is created.
-Minimum api-version for 'Open': 2026-04-01.
 
 ```yaml
 Type: System.String

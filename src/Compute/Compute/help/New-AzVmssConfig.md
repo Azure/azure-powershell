@@ -370,7 +370,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableCapacityReservationAssignment
-Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity. Minimum api-version: 2026-04-01.
+Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

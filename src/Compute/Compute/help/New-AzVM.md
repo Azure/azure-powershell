@@ -584,7 +584,6 @@ Accept wildcard characters: False
 ### -DisableCapacityReservationAssignment
 Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment.
 When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.
-Minimum api-version: 2026-04-01.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
