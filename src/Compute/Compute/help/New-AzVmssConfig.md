@@ -234,10 +234,20 @@ New-AzVmssConfig -Location "westus" -SkuName "Standard_E2pds_v8" -SkuCapacity 2 
 
 ### Example 6: Create a SpotPlus VMSS config
 ```powershell
-New-AzVmssConfig -Location "eastus" -SkuName "Standard_D2s_v5" -SkuCapacity 2 -Priority "SpotPlus" -EvictionPolicy "Deallocate" -MaxPrice -1
+New-AzVmssConfig -Location "eastus2" -SkuName "Standard_D2s_v5" -SkuCapacity 2 -UpgradePolicyMode "Automatic" -Priority "SpotPlus" -EvictionPolicy "Deallocate" -MaxPrice -1
 ```
 
-This command creates a SpotPlus VMSS configuration object.
+This command creates a scale set configuration object whose instances use the Spot Plus priority, the next generation of Azure Spot that provides higher reliability and longer running time than 'Spot' at a discounted price.
+'-EvictionPolicy' and '-MaxPrice' behave the same way as they do for 'Spot'.
+Using 'SpotPlus' requires the 'Microsoft.Compute/SpotPlus' subscription feature to be registered and a region where the feature is enabled.
+
+### Example 7: Create a SpotPlus VMSS config with a priority mix
+```powershell
+New-AzVmssConfig -Location "eastus2" -SkuName "Standard_D2s_v5" -SkuCapacity 10 -OrchestrationMode "Flexible" -PlatformFaultDomainCount 1 -Priority "SpotPlus" -EvictionPolicy "Delete" -BaseRegularPriorityCount 5 -RegularPriorityPercentage 50
+```
+
+This command creates a Flexible orchestration mode scale set configuration object that mixes regular priority instances with Spot Plus instances.
+The first 5 instances are regular priority, and 50 percent of the instances above that base are also regular priority. The remaining instances use the Spot Plus priority.
 
 ## PARAMETERS
 
@@ -963,10 +973,10 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machine in the scale set.  Only supported values are 'Regular', 'SpotPlus', 'Spot' and 'Low'.
+The priority for the virtual machine in the scale set.  Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'.
 'Regular' is for regular virtual machine.
-'SpotPlus' is for SpotPlus virtual machine.
 'Spot' is for spot virtual machine.
+'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'.
 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
 
 ```yaml

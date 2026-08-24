@@ -157,8 +157,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string HostGroupId { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
-            HelpMessage = "The priority for the virtual machine in the scale set. Only supported values are 'Regular', 'SpotPlus', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'SpotPlus' is for SpotPlus virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
-        [PSArgumentCompleter("Regular", "SpotPlus", "Spot")]
+            HelpMessage = "The priority for the virtual machine in the scale set. Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
+        [PSArgumentCompleter("Regular", "Spot", "SpotPlus")]
         public string Priority { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,

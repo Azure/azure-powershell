@@ -389,10 +389,12 @@ This command creates a VM and sets processor frequency behavior to deterministic
 
 ### Example 15: Create a SpotPlus VM
 ```powershell
-New-AzVM -ResourceGroupName "MyResourceGroup" -Name "MySpotPlusVM" -Location "eastus" -Credential (Get-Credential) -Priority "SpotPlus" -EvictionPolicy "Delete" -MaxPrice -1
+New-AzVM -ResourceGroupName "MyResourceGroup" -Name "MySpotPlusVM" -Location "eastus2" -Credential (Get-Credential) -Size "Standard_D2s_v5" -Image "Win2022AzureEdition" -Priority "SpotPlus" -EvictionPolicy "Delete" -MaxPrice -1
 ```
 
-This command creates a SpotPlus VM.
+This command creates a Spot Plus VM, the next generation of Azure Spot that provides higher reliability and longer running time than 'Spot' at a discounted price.
+Eviction and billing behave the same as 'Spot', so '-EvictionPolicy' and '-MaxPrice' are used the same way.
+Using 'SpotPlus' requires the 'Microsoft.Compute/SpotPlus' subscription feature to be registered and a region where the feature is enabled.
 
 ## PARAMETERS
 
@@ -1060,10 +1062,10 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machine.  Only supported values are 'Regular', 'SpotPlus', 'Spot' and 'Low'.
+The priority for the virtual machine.  Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'.
 'Regular' is for regular virtual machine.
-'SpotPlus' is for SpotPlus virtual machine.
 'Spot' is for spot virtual machine.
+'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'.
 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
 
 ```yaml

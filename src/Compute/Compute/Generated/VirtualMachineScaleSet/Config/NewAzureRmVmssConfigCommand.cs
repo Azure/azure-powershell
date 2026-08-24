@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        [PSArgumentCompleter("Regular", "SpotPlus", "Spot")]
+        [PSArgumentCompleter("Regular", "Spot", "SpotPlus")]
         public string Priority { get; set; }
 
         [Parameter(

@@ -218,3 +218,16 @@ Keep entries concise — 1–2 sentences per field. The goal is to give future d
 ## Known Issues
 
 <!-- Entries are added automatically by Step 8 after successful debugging sessions. Do not remove existing entries. -->
+
+### Scenario tests fail with "AuthenticationTelemetry is not registered"
+- **Symptom**: Every Compute scenario test fails immediately with `CmdletInvocationException: AuthenticationTelemetry is not registered`; further down, the error stream shows `The specified module '<repo>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1' was not loaded because no valid module file was found`.
+- **Root cause**: `dotnet build` on `Compute.Test.csproj` compiles the assemblies but does not stage the PowerShell module manifests into `artifacts/Debug`. `ComputeTestRunner` loads Az.Accounts, Az.Compute, Az.Network, Az.KeyVault and Az.ManagedServiceIdentity from that folder, and the missing `.psd1` files surface as a misleading telemetry error rather than a module-load error.
+- **Fix**: Before running tests, stage each required module with `pwsh -c "./tools/BuildScripts/BuildModules.ps1 -RepoRoot <repo> -Configuration Debug -TargetModule <Module>"` for Accounts, Compute, Network, KeyVault and ManagedServiceIdentity. Verify with `Test-Path artifacts/Debug/Az.<Module>/Az.<Module>.psd1`. Note the modules are loaded one at a time, so a first fix that only builds Accounts will simply move the error to the next missing module.
+- **Files involved**: src/Compute/Compute.Test/ScenarioTests/ComputeTestRunner.cs, tools/BuildScripts/BuildModules.ps1, artifacts/Debug/Az.*/
+
+### NuGet restore fails with NU1301 even when passing --no-restore
+- **Symptom**: `dotnet build` and `dotnet build --no-restore` both fail in under a second with repeated `error NU1301: Unable to load the service index for source https://api.nuget.org/v3/index.json`.
+- **Root cause**: A previous failed restore is cached in `obj/project.assets.json` under its `logs` array, and the `ResolvePackageAssets` target replays those logged errors at build time, so `--no-restore` cannot bypass them.
+- **Fix**: Fix the restore itself rather than trying to skip it. If `api.nuget.org` is unreachable but `pkgs.dev.azure.com` is, restore against the sanctioned mirrors with a temporary config: `dotnet restore --configfile <temp.config>` listing `local-feed`, `azure-powershell`, and `https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/index.json`. Pass the same file to `BuildModules.ps1` runs via the `RestoreConfigFile` environment variable. Never edit the repo's `NuGet.Config`.
+- **Files involved**: NuGet.Config, tools/Common.Netcore.Dependencies.targets, src/Compute/Compute.Test/obj/project.assets.json
+

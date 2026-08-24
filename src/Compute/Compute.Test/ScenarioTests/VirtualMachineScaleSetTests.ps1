@@ -1595,6 +1595,51 @@ function Test-VirtualMachineScaleSetPriority
 
 <#
 .SYNOPSIS
+Test SpotPlus priority support in New-AzVmssConfig.
+
+.DESCRIPTION
+SpotPlus is the next generation of Azure Spot. It is accepted wherever 'Spot' is accepted on the
+-Priority parameter, and -EvictionPolicy / -MaxPrice keep their Spot semantics. Deploying a SpotPlus
+scale set additionally requires the 'Microsoft.Compute/SpotPlus' subscription feature, so this test
+only covers the client side mapping onto the scale set virtual machine profile.
+#>
+function Test-VirtualMachineScaleSetSpotPlusPriority
+{
+    $loc = 'eastus2';
+    $skuName = 'Standard_D2s_v5';
+    $maxPrice = -1;
+
+    # SpotPlus maps onto the scale set virtual machine profile the same way 'Spot' does.
+    $spotPlusVmss = New-AzVmssConfig -Location $loc -SkuName $skuName -SkuCapacity 2 -UpgradePolicyMode 'Automatic' `
+        -Priority 'SpotPlus' -EvictionPolicy 'Deallocate' -MaxPrice $maxPrice;
+    Assert-AreEqual 'SpotPlus' $spotPlusVmss.VirtualMachineProfile.Priority;
+    Assert-AreEqual 'Deallocate' $spotPlusVmss.VirtualMachineProfile.EvictionPolicy;
+    Assert-AreEqual $maxPrice $spotPlusVmss.VirtualMachineProfile.BillingProfile.MaxPrice;
+
+    # SpotPlus composes with the priority mix policy on a Flexible orchestration mode scale set.
+    $spotPlusFlexVmss = New-AzVmssConfig -Location $loc -SkuName $skuName -SkuCapacity 10 `
+        -OrchestrationMode 'Flexible' -PlatformFaultDomainCount 1 `
+        -Priority 'SpotPlus' -EvictionPolicy 'Delete' `
+        -BaseRegularPriorityCount 5 -RegularPriorityPercentage 50;
+    Assert-AreEqual 'SpotPlus' $spotPlusFlexVmss.VirtualMachineProfile.Priority;
+    Assert-AreEqual 'Delete' $spotPlusFlexVmss.VirtualMachineProfile.EvictionPolicy;
+    Assert-AreEqual 5 $spotPlusFlexVmss.PriorityMixPolicy.BaseRegularPriorityCount;
+    Assert-AreEqual 50 $spotPlusFlexVmss.PriorityMixPolicy.RegularPriorityPercentageAboveBase;
+
+    # Existing priority values are unaffected.
+    $spotVmss = New-AzVmssConfig -Location $loc -SkuName $skuName -SkuCapacity 2 -Priority 'Spot';
+    Assert-AreEqual 'Spot' $spotVmss.VirtualMachineProfile.Priority;
+
+    $regularVmss = New-AzVmssConfig -Location $loc -SkuName $skuName -SkuCapacity 2 -Priority 'Regular';
+    Assert-AreEqual 'Regular' $regularVmss.VirtualMachineProfile.Priority;
+
+    # Omitting -Priority leaves the property unset so the service applies its own default.
+    $defaultVmss = New-AzVmssConfig -Location $loc -SkuName $skuName -SkuCapacity 2;
+    Assert-Null $defaultVmss.VirtualMachineProfile.Priority;
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machine Scale Set Write Accelerator Update
 #>
 function Test-VirtualMachineScaleSetWriteAcceleratorUpdate

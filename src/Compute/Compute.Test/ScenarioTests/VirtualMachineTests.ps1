@@ -6142,6 +6142,45 @@ function Test-VMProcessorModeFeatures
 
 <#
 .SYNOPSIS
+Test SpotPlus priority support in New-AzVMConfig.
+
+.DESCRIPTION
+SpotPlus is the next generation of Azure Spot. It is accepted wherever 'Spot' is accepted on the
+-Priority parameter, and -EvictionPolicy / -MaxPrice keep their Spot semantics. Deploying a SpotPlus
+VM additionally requires the 'Microsoft.Compute/SpotPlus' subscription feature, so this test only
+covers the client side mapping onto the virtual machine model.
+#>
+function Test-VirtualMachineSpotPlusPriority
+{
+    $vmsize = 'Standard_D2s_v5';
+    $maxPrice = -1;
+
+    # SpotPlus maps onto the virtual machine model the same way 'Spot' does.
+    $spotPlusConfig = New-AzVMConfig -VMName 'spotplusvm' -VMSize $vmsize -Priority 'SpotPlus' -EvictionPolicy 'Deallocate' -MaxPrice $maxPrice;
+    Assert-AreEqual 'SpotPlus' $spotPlusConfig.Priority;
+    Assert-AreEqual 'Deallocate' $spotPlusConfig.EvictionPolicy;
+    Assert-AreEqual $maxPrice $spotPlusConfig.BillingProfile.MaxPrice;
+
+    # The 'Delete' eviction policy is supported for SpotPlus as well.
+    $spotPlusDeleteConfig = New-AzVMConfig -VMName 'spotplusvm2' -VMSize $vmsize -Priority 'SpotPlus' -EvictionPolicy 'Delete';
+    Assert-AreEqual 'SpotPlus' $spotPlusDeleteConfig.Priority;
+    Assert-AreEqual 'Delete' $spotPlusDeleteConfig.EvictionPolicy;
+    Assert-Null $spotPlusDeleteConfig.BillingProfile;
+
+    # Existing priority values are unaffected.
+    $spotConfig = New-AzVMConfig -VMName 'spotvm' -VMSize $vmsize -Priority 'Spot';
+    Assert-AreEqual 'Spot' $spotConfig.Priority;
+
+    $regularConfig = New-AzVMConfig -VMName 'regularvm' -VMSize $vmsize -Priority 'Regular';
+    Assert-AreEqual 'Regular' $regularConfig.Priority;
+
+    # Omitting -Priority leaves the property unset so the service applies its own default.
+    $defaultConfig = New-AzVMConfig -VMName 'defaultvm' -VMSize $vmsize;
+    Assert-Null $defaultConfig.Priority;
+}
+
+<#
+.SYNOPSIS
 Test Test GetVirtualMachineById Parameter Set
 #>
 function Test-GetVirtualMachineById
