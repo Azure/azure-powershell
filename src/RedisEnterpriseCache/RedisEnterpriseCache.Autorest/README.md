@@ -37,7 +37,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/preview/2026-05-01-preview/redisenterprise.json
+  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/preview/2026-06-01-preview/redisenterprise.json
 
 module-version: 3.0.0
 title: RedisEnterpriseCache
@@ -259,17 +259,20 @@ directive:
       subject: AccessPolicyAssignment
       variant: ^(Create)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
-  # Remove generated variants for Test-Migration except ViaJsonString (which the custom wrapper calls internally).
-  # The generated Expanded variant doesn't nest properties under ARM "properties" envelope.
+  # Test-Migration (validate) ships as generated. Keep only the standard
+  # Expanded/JsonFilePath/JsonString variants (module convention).
   - where:
       verb: Test
       subject: Migration
-      variant: ^Validate$|^ValidateExpanded$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$|^ValidateViaJsonFilePath$
+      variant: ^Validate$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
     remove: true
+  # Hide ForceMigrate on Test-Migration: the Validate endpoint does not wire
+  # forceMigrate through yet (planned for removal in the next API version).
+  # hide: true hides the parameter, removing it from the exported cmdlet and its docs/help.
   - where:
       verb: Test
       subject: Migration
-      variant: ^ValidateViaJsonString$
+      parameter-name: ForceMigrate
     hide: true
   # Remove generated variants for Start-Migration except ViaJsonString (which the custom wrapper calls internally).
   # The generated Expanded variant doesn't nest the discriminated union body under "properties" envelope.

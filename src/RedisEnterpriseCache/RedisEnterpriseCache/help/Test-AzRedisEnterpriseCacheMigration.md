@@ -12,16 +12,29 @@ Validates if a source Azure Cache for Redis resource can be migrated to a target
 
 ## SYNTAX
 
+### ValidateExpanded (Default)
 ```
 Test-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -SourceResourceId <String> [-ForceMigrate] [-SkipDataMigration]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -SourceResourceId <String> [-SkipDataMigration] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ValidateViaJsonFilePath
+```
+Test-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ValidateViaJsonString
+```
+Test-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Validates if a source Azure Cache for Redis resource can be migrated to a target Azure Managed Redis resource.
-This custom wrapper fixes a serialization issue where the request body must nest properties under a
-"properties" envelope for the ARM API, but the generated Expanded variant serializes them flat.
 
 ## EXAMPLES
 
@@ -51,6 +64,9 @@ Validates whether a migration from the source Azure Cache for Redis to the targe
 
 ### -ClusterName
 The name of the Redis Enterprise cluster.
+Name must be 1-60 characters long.
+Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
@@ -65,7 +81,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -79,15 +96,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ForceMigrate
-Sets whether to ignore warnings when validating if the source cache can be migrated to the target cache.
+### -JsonFilePath
+Path of Json file supplied to the Validate operation
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ValidateViaJsonFilePath
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Validate operation
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -112,10 +144,11 @@ Accept wildcard characters: False
 
 ### -SkipDataMigration
 Sets whether the data is migrated from source to target or not.
+The default value is true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: False
@@ -131,7 +164,7 @@ This is the resource ID of the Azure Cache for Redis.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: True
@@ -143,6 +176,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

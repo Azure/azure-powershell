@@ -418,13 +418,21 @@ Describe 'Update-AzRedisEnterpriseCacheDatabase' {
 Describe 'Test-AzRedisEnterpriseCacheMigration' {
     It 'ValidateExpanded' {
         $sourceResourceId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.Cache/redis/$($env.OssCacheName)"
-        $result = Test-AzRedisEnterpriseCacheMigration -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroupName -SourceResourceId $sourceResourceId -SkipDataMigration -ForceMigrate -Confirm:$false
+        $result = Test-AzRedisEnterpriseCacheMigration -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroupName -SourceResourceId $sourceResourceId -SkipDataMigration -Confirm:$false
+        # Emulates the RedisEnterpriseMigrationValidate swagger example: the response
+        # reports IsValid=false with an error-level disparity (TLS) and warning-level
+        # disparities (Managed Identity, Persistence).
         $result | Should -Not -Be $null
-        # Validate endpoint does not wire forceMigrate through,
-        # so IsValid=false when warnings exist (clustering mode mismatch).
-        # Assert no hard errors — only warnings are expected.
-        $result.Error.Disparities.Count | Should -Be 0
-        $result.Warning | Should -Not -Be $null
+        $result.IsValid | Should -Be $false
+
+        $result.Error.Count | Should -Be 1
+        $result.Error[0].Disparity.Category | Should -Be "TLS"
+        $result.Error[0].Disparity.Message | Should -Be "The source resource only accepts TLS connections, but the target resource only accepts non-TLS connections."
+
+        $result.Warning.Count | Should -Be 1
+        $warningCategories = $result.Warning[0].Disparity.Category
+        $warningCategories | Should -Contain "Managed Identity"
+        $warningCategories | Should -Contain "Persistence"
     }
 }
 
