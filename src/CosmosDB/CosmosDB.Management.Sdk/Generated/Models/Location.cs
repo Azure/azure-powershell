@@ -35,14 +35,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// https://&amp;lt;accountName&amp;gt;-&amp;lt;locationName&amp;gt;.documents.azure.com:443/
         /// </param>
 
-        /// <param name="provisioningState">The status of the Cosmos DB account at the time the operation was called.
-        /// The status can be one of following. &#39;Creating&#39; – the Cosmos DB account is
-        /// being created. When an account is in Creating state, only properties that
-        /// are specified as input for the Create Cosmos DB account operation are
-        /// returned. &#39;Succeeded&#39; – the Cosmos DB account is active for use. &#39;Updating&#39;
-        /// – the Cosmos DB account is being updated. &#39;Deleting&#39; – the Cosmos DB
-        /// account is being deleted. &#39;Failed&#39; – the Cosmos DB account failed creation.
-        /// &#39;DeletionFailed&#39; – the Cosmos DB account deletion failed.
+        /// <param name="provisioningState">The provisioning state of the resource.
         /// </param>
 
         /// <param name="failoverPriority">The failover priority of the region. A failover priority of 0 indicates a
@@ -92,14 +85,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string DocumentEndpoint {get; private set; }
 
         /// <summary>
-        /// Gets the status of the Cosmos DB account at the time the operation was
-        /// called. The status can be one of following. &#39;Creating&#39; – the Cosmos DB
-        /// account is being created. When an account is in Creating state, only
-        /// properties that are specified as input for the Create Cosmos DB account
-        /// operation are returned. &#39;Succeeded&#39; – the Cosmos DB account is active for
-        /// use. &#39;Updating&#39; – the Cosmos DB account is being updated. &#39;Deleting&#39; – the
-        /// Cosmos DB account is being deleted. &#39;Failed&#39; – the Cosmos DB account failed
-        /// creation. &#39;DeletionFailed&#39; – the Cosmos DB account deletion failed.
+        /// Gets the provisioning state of the resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

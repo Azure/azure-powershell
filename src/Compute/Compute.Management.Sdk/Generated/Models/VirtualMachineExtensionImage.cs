@@ -42,6 +42,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="location">The geo-location where the resource lives
         /// </param>
 
+        /// <param name="releaseCategory">Categorizes the type of change introduced (e.g., BugFix, SecurityFix,
+        /// CompatibilityUpdate, NewFeature, Other).
+        /// Possible values include: &#39;Other&#39;, &#39;BugFix&#39;, &#39;SecurityFix&#39;,
+        /// &#39;CompatibilityUpdate&#39;, &#39;NewFeature&#39;</param>
+
+        /// <param name="urgencyLevel">Indicates the urgency level for applying this extension update.
+        /// Possible values include: &#39;Regular&#39;, &#39;Expedited&#39;, &#39;Emergency&#39;</param>
+
+        /// <param name="runProfile">Specifies when and how the extension should be executed.
+        /// Possible values include: &#39;Other&#39;, &#39;RunOnce&#39;, &#39;LongRunning&#39;, &#39;Hybrid&#39;</param>
+
         /// <param name="operatingSystem">The operating system this extension supports.
         /// </param>
 
@@ -60,15 +71,27 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="supportsMultipleExtensions">Whether the handler can support multiple extensions.
         /// </param>
-        public VirtualMachineExtensionImage(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string operatingSystem = default(string), string computeRole = default(string), string handlerSchema = default(string), bool? vmScaleSetEnabled = default(bool?), bool? supportsMultipleExtensions = default(bool?))
+
+        /// <param name="releaseNotes">Summary of changes or updates in this extension version.
+        /// </param>
+
+        /// <param name="extensionFeatureMetadata">Additional metadata about extension features, including compliance and
+        /// capability tags.
+        /// </param>
+        public VirtualMachineExtensionImage(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string releaseCategory = default(string), string urgencyLevel = default(string), string runProfile = default(string), string operatingSystem = default(string), string computeRole = default(string), string handlerSchema = default(string), bool? vmScaleSetEnabled = default(bool?), bool? supportsMultipleExtensions = default(bool?), string releaseNotes = default(string), ExtensionFeatureMetadata extensionFeatureMetadata = default(ExtensionFeatureMetadata))
 
         : base(location, id, name, type, tags)
         {
+            this.ReleaseCategory = releaseCategory;
+            this.UrgencyLevel = urgencyLevel;
+            this.RunProfile = runProfile;
             this.OperatingSystem = operatingSystem;
             this.ComputeRole = computeRole;
             this.HandlerSchema = handlerSchema;
             this.VmScaleSetEnabled = vmScaleSetEnabled;
             this.SupportsMultipleExtensions = supportsMultipleExtensions;
+            this.ReleaseNotes = releaseNotes;
+            this.ExtensionFeatureMetadata = extensionFeatureMetadata;
             CustomInit();
         }
 
@@ -77,6 +100,25 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets categorizes the type of change introduced (e.g., BugFix, SecurityFix,
+        /// CompatibilityUpdate, NewFeature, Other). Possible values include: &#39;Other&#39;, &#39;BugFix&#39;, &#39;SecurityFix&#39;, &#39;CompatibilityUpdate&#39;, &#39;NewFeature&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.releaseCategory")]
+        public string ReleaseCategory {get; private set; }
+
+        /// <summary>
+        /// Gets indicates the urgency level for applying this extension update. Possible values include: &#39;Regular&#39;, &#39;Expedited&#39;, &#39;Emergency&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.urgencyLevel")]
+        public string UrgencyLevel {get; private set; }
+
+        /// <summary>
+        /// Gets specifies when and how the extension should be executed. Possible values include: &#39;Other&#39;, &#39;RunOnce&#39;, &#39;LongRunning&#39;, &#39;Hybrid&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.runProfile")]
+        public string RunProfile {get; private set; }
 
         /// <summary>
         /// Gets or sets the operating system this extension supports.
@@ -111,6 +153,19 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.supportsMultipleExtensions")]
         public bool? SupportsMultipleExtensions {get; set; }
+
+        /// <summary>
+        /// Gets summary of changes or updates in this extension version.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.releaseNotes")]
+        public string ReleaseNotes {get; private set; }
+
+        /// <summary>
+        /// Gets additional metadata about extension features, including compliance and
+        /// capability tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.extensionFeatureMetadata")]
+        public ExtensionFeatureMetadata ExtensionFeatureMetadata {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -120,6 +175,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         public override void Validate()
         {
             base.Validate();
+
+
+
+
+
 
 
 

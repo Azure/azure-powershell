@@ -89,7 +89,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
                     PartnerAvailabilityGroupName = model.PartnerAvailabilityGroupName,
                     PartnerEndpoint = model.PartnerEndpoint,
                     ReplicationMode = model.ReplicationMode,
-                    SeedingMode = model.SeedingMode
+                    SeedingMode = model.SeedingMode,
+                    LinkMode = model.LinkMode
                 });
 
                 return CreateManagedInstanceLinkModelFromResponse(model.ResourceGroupName, model.InstanceName, resp);
@@ -132,6 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
             var resp = Communicator.Update(model.ResourceGroupName, model.InstanceName, model.Name, new Management.Sql.Models.DistributedAvailabilityGroup
             {
                 ReplicationMode = model.ReplicationMode,
+                Databases = model.Databases,
             });
 
             return CreateManagedInstanceLinkModelFromResponse(model.ResourceGroupName, model.InstanceName, resp);
@@ -204,7 +206,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
                 ReplicationMode = managedInstanceLink.ReplicationMode,
                 FailoverMode = managedInstanceLink.FailoverMode,
                 SeedingMode = managedInstanceLink.SeedingMode,
-                
+                LinkMode = managedInstanceLink.LinkMode,
             };
             return managedInstanceLinkModel;
         }

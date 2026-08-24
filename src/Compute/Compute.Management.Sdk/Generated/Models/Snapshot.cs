@@ -74,6 +74,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// managed keys or platform managed keys.
         /// </param>
 
+        /// <param name="immutabilityPolicy">The immutability policy currently applied to this snapshot. Present only
+        /// when an immutability policy has been configured.
+        /// </param>
+
         /// <param name="timeCreated">The time when the snapshot was created.
         /// </param>
 
@@ -144,7 +148,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// snapshot.
         /// Possible values include: &#39;Unknown&#39;, &#39;Pending&#39;, &#39;Available&#39;,
         /// &#39;InstantAccess&#39;, &#39;AvailableWithInstantAccess&#39;</param>
-        public Snapshot(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string managedBy = default(string), SnapshotSku sku = default(SnapshotSku), ExtendedLocation extendedLocation = default(ExtendedLocation), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), CreationData creationData = default(CreationData), string diskState = default(string), Encryption encryption = default(Encryption), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), int? diskSizeGb = default(int?), long? diskSizeBytes = default(long?), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), bool? incremental = default(bool?), string incrementalSnapshotFamilyId = default(string), string networkAccessPolicy = default(string), string diskAccessId = default(string), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), double? completionPercent = default(double?), CopyCompletionError copyCompletionError = default(CopyCompletionError), string dataAccessAuthMode = default(string), string snapshotAccessState = default(string))
+        public Snapshot(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string managedBy = default(string), SnapshotSku sku = default(SnapshotSku), ExtendedLocation extendedLocation = default(ExtendedLocation), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), CreationData creationData = default(CreationData), string diskState = default(string), Encryption encryption = default(Encryption), ImmutabilityPolicy immutabilityPolicy = default(ImmutabilityPolicy), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), int? diskSizeGb = default(int?), long? diskSizeBytes = default(long?), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), bool? incremental = default(bool?), string incrementalSnapshotFamilyId = default(string), string networkAccessPolicy = default(string), string diskAccessId = default(string), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), double? completionPercent = default(double?), CopyCompletionError copyCompletionError = default(CopyCompletionError), string dataAccessAuthMode = default(string), string snapshotAccessState = default(string))
 
         : base(location, id, name, type, tags)
         {
@@ -156,6 +160,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.CreationData = creationData;
             this.DiskState = diskState;
             this.Encryption = encryption;
+            this.ImmutabilityPolicy = immutabilityPolicy;
             this.TimeCreated = timeCreated;
             this.OsType = osType;
             this.HyperVGeneration = hyperVGeneration;
@@ -239,6 +244,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.encryption")]
         public Encryption Encryption {get; set; }
+
+        /// <summary>
+        /// Gets the immutability policy currently applied to this snapshot. Present
+        /// only when an immutability policy has been configured.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.immutabilityPolicy")]
+        public ImmutabilityPolicy ImmutabilityPolicy {get; private set; }
 
         /// <summary>
         /// Gets the time when the snapshot was created.
@@ -388,6 +400,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.CreationData.Validate();
             }
+
 
 
 

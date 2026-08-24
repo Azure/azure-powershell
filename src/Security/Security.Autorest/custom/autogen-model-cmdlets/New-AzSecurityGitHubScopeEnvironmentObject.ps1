@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Security.Models.GitHubScopeEnvironment
 https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritygithubscopeenvironmentobject
 #>
 function New-AzSecurityGitHubScopeEnvironmentObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Security.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Security.Models.GitHubScopeEnvironment')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

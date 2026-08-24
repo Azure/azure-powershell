@@ -334,6 +334,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string OSImageScheduledEventNotBeforeTimeoutInMinutes { get; set; }
 
         [Parameter(
+           HelpMessage = "Specifies processor frequency behavior for VM instances in the scale set model.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [PSArgumentCompleter("Deterministic", "Opportunistic")]
+        public string ProcessorMode { get; set; }
+
+        [Parameter(
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. Default: UefiSettings will not be enabled unless this property is set.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
@@ -792,6 +799,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
                 }
+            }
+
+            if (this.IsParameterBound(c => c.ProcessorMode))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.HardwareProfile == null)
+                {
+                    vVirtualMachineProfile.HardwareProfile = new VirtualMachineScaleSetHardwareProfile();
+                }
+                vVirtualMachineProfile.HardwareProfile.ProcessorMode = this.ProcessorMode;
             }
 
             if (this.IsParameterBound(c => c.EnableVtpm))

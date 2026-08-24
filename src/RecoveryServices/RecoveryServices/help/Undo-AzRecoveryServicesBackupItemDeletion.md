@@ -51,7 +51,7 @@ Undo-AzRecoveryServicesBackupItemDeletion -Item $PI[0] -VaultId $vault.ID
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -FriendlyName "StorageAccount1" -VaultId $vault.ID
-$softDeletedItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -DeleteState SoftDeleted
+$softDeletedItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -DeleteState ToBeDeleted
 Undo-AzRecoveryServicesBackupItemDeletion -Item $softDeletedItem -VaultId $vault.ID
 ```
 
