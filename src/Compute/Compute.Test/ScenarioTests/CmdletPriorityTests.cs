@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
@@ -42,9 +41,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             IReadOnlyList<string> priorityValues = GetArgumentCompleterValues(cmdletType, "Priority");
 
-            Assert.Contains(VirtualMachinePriorityTypes.Regular, priorityValues);
+            Assert.Contains("Regular", priorityValues);
             Assert.Contains("SpotPlus", priorityValues);
-            Assert.Contains(VirtualMachinePriorityTypes.Spot, priorityValues);
+            Assert.Contains("Spot", priorityValues);
         }
 
         private static IReadOnlyList<string> GetArgumentCompleterValues(Type cmdletType, string propertyName)
