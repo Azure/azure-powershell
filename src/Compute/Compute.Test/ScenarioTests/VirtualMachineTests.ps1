@@ -5519,6 +5519,73 @@ function Test-CapacityReservation
     }
 }
 
+<#
+.SYNOPSIS
+Tests the creation of Future capacity reservations using the ScheduleProfileStart and
+MinimumCommitmentDays parameters of New-AzCapacityReservation, and verifies the read-only
+ScheduleProfile and instance view ReservationStateInfo returned by Get-AzCapacityReservation.
+#>
+function Test-CapacityReservationFutureReservation
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = 'eastus2euap';
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Step 1: create a capacity reservation group
+        $CRGName = 'CRG' + $rgname;
+        New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -Location $loc;
+
+        $sku = "Standard_DS1_v2";
+        $start = (Get-Date).AddDays(60).ToString("yyyy-MM-dd");
+
+        # Step 2: create a future reservation with only ScheduleProfileStart. The service
+        # populates MinimumCommitmentDays with a default value.
+        $CRName1 = "cr1" + $rgname;
+        $cr1 = New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName1 -Sku $sku -CapacityToReserve 4 -Location $loc -Zone "1" -ScheduleProfileStart $start;
+        Assert-NotNull $cr1.ScheduleProfile;
+        Assert-AreEqual $start $cr1.ScheduleProfile.Start;
+        Assert-NotNull $cr1.ScheduleProfile.MinimumCommitmentDays;
+
+        # Step 3: create a future reservation with both ScheduleProfileStart and MinimumCommitmentDays
+        $CRName2 = "cr2" + $rgname;
+        $cr2 = New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2 -Sku $sku -CapacityToReserve 4 -Location $loc -Zone "1" -ScheduleProfileStart $start -MinimumCommitmentDays 30;
+        Assert-AreEqual $start $cr2.ScheduleProfile.Start;
+        Assert-AreEqual 30 $cr2.ScheduleProfile.MinimumCommitmentDays;
+
+        # Step 4: verify the schedule profile persisted server-side, including the read-only ModifiableUntil
+        $cr2 = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2;
+        Assert-AreEqual $start $cr2.ScheduleProfile.Start;
+        Assert-AreEqual 30 $cr2.ScheduleProfile.MinimumCommitmentDays;
+        Assert-NotNull $cr2.ScheduleProfile.ModifiableUntil;
+
+        # Step 5: the instance view of a future reservation contains the reservation state
+        $cr2InstanceView = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2 -InstanceView;
+        Assert-NotNull $cr2InstanceView.InstanceView.ReservationStateInfo;
+        Assert-NotNull $cr2InstanceView.InstanceView.ReservationStateInfo.ReservationState;
+
+        # Step 6: a regular capacity reservation has no schedule profile nor reservation state
+        $CRName3 = "cr3" + $rgname;
+        $cr3 = New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName3 -Sku $sku -CapacityToReserve 4 -Location $loc;
+        Assert-Null $cr3.ScheduleProfile;
+        $cr3 = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName3 -InstanceView;
+        Assert-Null $cr3.ScheduleProfile;
+        Assert-Null $cr3.InstanceView.ReservationStateInfo;
+
+        # Step 7: MinimumCommitmentDays cannot be used without ScheduleProfileStart
+        $CRName4 = "cr4" + $rgname;
+        Assert-ThrowsContains { New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName4 -Sku $sku -CapacityToReserve 4 -Location $loc -MinimumCommitmentDays 30; } "can only be used together with the ScheduleProfileStart parameter";
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
+    }
+}
+
 function Test-VMwithSSHKey
 {
     # Setup
