@@ -58,16 +58,18 @@ function Start-AzRedisEnterpriseCacheMigration {
         # The resource ID of the source Azure Cache for Redis to migrate from.
         ${SourceResourceId},
 
-        [Parameter()]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Sets whether to switch DNS to point to the target cache after migration completes.
+        # This property is required by the service and must be true during the public preview.
         ${SwitchDns},
 
-        [Parameter()]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Sets whether to skip data migration and only migrate the endpoint.
+        # This property is required by the service and must be true during the public preview.
         ${SkipDataMigration},
 
         [Parameter()]
@@ -144,12 +146,10 @@ function Start-AzRedisEnterpriseCacheMigration {
             sourceResourceId = $SourceResourceId
             sourceType = "AzureCacheForRedis"
         }
-        if ($PSBoundParameters.ContainsKey('SwitchDns')) {
-            $properties['switchDns'] = $SwitchDns.IsPresent
-        }
-        if ($PSBoundParameters.ContainsKey('SkipDataMigration')) {
-            $properties['skipDataMigration'] = $SkipDataMigration.IsPresent
-        }
+        # switchDns and skipDataMigration are required by the service and must be true during the
+        # public preview. They are mandatory parameters, so they are always sent.
+        $properties['switchDns'] = $SwitchDns.IsPresent
+        $properties['skipDataMigration'] = $SkipDataMigration.IsPresent
         if ($PSBoundParameters.ContainsKey('ForceMigrate')) {
             $properties['forceMigrate'] = $ForceMigrate.IsPresent
         }

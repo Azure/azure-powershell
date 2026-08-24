@@ -14,7 +14,7 @@ Starts a migration from a source Azure Cache for Redis to a target Azure Managed
 
 ```
 Start-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -SourceResourceId <String> [-SwitchDns] [-SkipDataMigration] [-ForceMigrate]
+ [-SubscriptionId <String>] -SourceResourceId <String> -SwitchDns -SkipDataMigration [-ForceMigrate]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -159,13 +159,14 @@ Accept wildcard characters: False
 
 ### -SkipDataMigration
 Sets whether to skip data migration and only migrate the endpoint.
+This property is required by the service and must be true during the public preview.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -204,13 +205,14 @@ Accept wildcard characters: False
 
 ### -SwitchDns
 Sets whether to switch DNS to point to the target cache after migration completes.
+This property is required by the service and must be true during the public preview.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
