@@ -28,7 +28,7 @@ The **Set-AzExpressRouteLagIdentity** cmdlet updates a local Azure ExpressRouteL
 $rgName = "MyResourceGroup"
 $lagName = "MyExpressRouteLag"
 $identityName = "MyUserAssignedIdentity"
-$location = "eastus"
+$location = "eastus2euap"
 $exrLag = Get-AzExpressRouteLag -Name $lagName -ResourceGroupName $rgName
 $identity = New-AzUserAssignedIdentity -Name $identityName -ResourceGroupName $rgName -Location $location
 $exrLagIdentity = Set-AzExpressRouteLagIdentity -UserAssignedIdentity $identity.Id -ExpressRouteLag $exrLag
