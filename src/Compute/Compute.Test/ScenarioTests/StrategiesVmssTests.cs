@@ -161,6 +161,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmssProcessorMode()
+        {
+            TestRunner.RunTestScript("Test-SimpleNewVmssProcessorMode");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetVmssLifecycleHooksProfile()
         {
             TestRunner.RunTestScript("Test-SetVmssLifecycleHooksProfile");

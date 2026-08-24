@@ -37,7 +37,7 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-SkipExtensionsOnOverprovisionedVMs] [-EncryptionAtHost] [-PlatformFaultDomainCount <Int32>]
  [-OrchestrationMode <String>] [-CapacityReservationGroupId <String>]
  [-DisableCapacityReservationAssignment] [-ImageReferenceId <String>]
- [-DiskControllerType <String>] [-SharedGalleryImageId <String>] [-SecurityType <String>]
+ [-DiskControllerType <String>] [-SharedGalleryImageId <String>] [-ProcessorMode <String>] [-SecurityType <String>]
  [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>]
  [-SecurityPostureExcludeExtension <String[]>] [-SkuProfileVmSize <String[]>]
  [-SkuProfileAllocationStrategy <String>] [-EnableProxyAgent] [-AddProxyAgentExtension]
@@ -292,6 +292,11 @@ $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 ```
 
 The virtual machine scale set above has Trusted Launch enabled by default. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
+
+### Example 7: Create a VMSS with processor mode
+```powershell
+New-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -Credential (Get-Credential) -Location "westus" -VmSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+```
 
 ## PARAMETERS
 
@@ -897,6 +902,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProcessorMode
+Specifies processor frequency behavior for VM instances in the scale set model. Typical values are `Deterministic` and `Opportunistic`.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

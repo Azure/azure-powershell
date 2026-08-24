@@ -6103,6 +6103,45 @@ function Test-VMvCPUFeatures
 
 <#
 .SYNOPSIS
+Test processor mode support in New-AzVMConfig, New-AzVM, and Update-AzVM.
+#>
+function Test-VMProcessorModeFeatures
+{
+    $rgname = Get-ComputeTestResourceName
+    $loc = "eastus2euap"
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force
+
+        # Step 1: Verify New-AzVMConfig processor mode values and omission behavior
+        $vmConfigDeterministic = New-AzVMConfig -VMName ("det" + $rgname) -VMSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+        Assert-AreEqual "Deterministic" $vmConfigDeterministic.HardwareProfile.ProcessorMode
+
+        $vmConfigOpportunistic = New-AzVMConfig -VMName ("opp" + $rgname) -VMSize "Standard_E2pds_v8" -ProcessorMode "Opportunistic"
+        Assert-AreEqual "Opportunistic" $vmConfigOpportunistic.HardwareProfile.ProcessorMode
+
+        $vmConfigDefault = New-AzVMConfig -VMName ("default" + $rgname) -VMSize "Standard_E2pds_v8"
+        Assert-Null $vmConfigDefault.HardwareProfile.ProcessorMode
+
+        # Step 2: Record the service validation response for the requested preview configuration
+        $vmName = "vm" + $rgname
+        $domainNameLabel = "d" + $rgname
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object System.Management.Automation.PSCredential ("admin01", $securePassword)
+
+        Assert-ThrowsContains {
+            New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmName -Credential $cred -DomainNameLabel $domainNameLabel -Image "Win2019Datacenter" -Size "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+        } "Standard_E2pds_v8"
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Test GetVirtualMachineById Parameter Set
 #>
 function Test-GetVirtualMachineById
@@ -7651,8 +7690,7 @@ function Test-CapacityReservationGroupResourceIdsOnly
 
 <#
 .SYNOPSIS
-Test Open Capacity Reservation Group parameter mapping and record the service validation
-response while the preview feature is unavailable in the test subscription.
+Test Open Capacity Reservation Group create, read, update, and reservation type immutability.
 #>
 function Test-OpenCapacityReservationGroup
 {
@@ -7664,11 +7702,33 @@ function Test-OpenCapacityReservationGroup
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        # Record the service validation response for the requested preview configuration.
+        # Step 1: create an Open capacity reservation group
         $openCRGName = 'openCRG' + $rgname;
+        $openCRG = New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $openCRGName -Location $loc -Zone "1" -ReservationType "Open";
+        Assert-AreEqual "Open" $openCRG.ReservationType;
+
+        # Step 2: re-read the group and verify the reservation type persisted
+        $openCRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $openCRGName;
+        Assert-AreEqual "Open" $openCRG.ReservationType;
+
+        # Step 3: update another property and verify the reservation type is preserved
+        $updatedCRG = Update-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $openCRGName -Tag @{ CreatedBy = "OCRTest" };
+        Assert-AreEqual "Open" $updatedCRG.ReservationType;
+        Assert-AreEqual "OCRTest" $updatedCRG.Tags["CreatedBy"];
+
+        $updatedCRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $openCRGName;
+        Assert-AreEqual "Open" $updatedCRG.ReservationType;
+        Assert-AreEqual "OCRTest" $updatedCRG.Tags["CreatedBy"];
+
+        # Step 4: reservation type is immutable
+        $targetedCRGName = 'targetedCRG' + $rgname;
+        $targetedCRG = New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $targetedCRGName -Location $loc -ReservationType "Targeted";
+        Assert-AreEqual "Targeted" $targetedCRG.ReservationType;
+
         Assert-ThrowsContains {
-            New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $openCRGName -Location $loc -Zone "1" -ReservationType "Open";
-        } "OpenCapacityReservation";
+            Update-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $targetedCRGName -ReservationType "Open";
+        } "reservationType";
+
     }
     finally
     {
@@ -7680,8 +7740,8 @@ function Test-OpenCapacityReservationGroup
 <#
 .SYNOPSIS
 Test the -DisableCapacityReservationAssignment parameter on New-AzVMConfig, New-AzVM and Update-AzVM.
-Verifies local parameter mapping and validation, and records the service validation response while
-the preview feature is unavailable in the test subscription.
+Verifies the virtual machine opt-out state and instance view, update merge semantics, and mutually
+exclusive capacity reservation parameters.
 #>
 function Test-VMDisableCapacityReservationAssignment
 {
@@ -7705,36 +7765,36 @@ function Test-VMDisableCapacityReservationAssignment
         Assert-AreEqual $true $vmConfig.CapacityReservation.DisableCapacityReservationAssignment;
         Assert-Null $vmConfig.CapacityReservation.CapacityReservationGroup;
 
-        # Opting out and explicitly associating a capacity reservation group are opposing intents.
+        # Step 2: create a virtual machine which opts out of capacity reservation
+        $vmname1 = '1' + $rgname;
+        $domainNameLabel1 = "d1" + $rgname;
+        New-AzVM -ResourceGroupName $rgname -Name $vmname1 -Credential $cred -DomainNameLabel $domainNameLabel1 -Size $vmsize -Location $loc -SecurityType $stnd -DisableCapacityReservationAssignment;
+
+        $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
+        Assert-NotNull $vm1.CapacityReservation;
+        Assert-AreEqual $true $vm1.CapacityReservation.DisableCapacityReservationAssignment;
+
+        # Step 3: the instance view reports the resulting capacity reservation type
+        $vm1Status = Get-AzVM -ResourceGroupName $rgname -Name $vmname1 -Status;
+        Assert-AreEqual "Disabled" $vm1Status.CapacityReservationType;
+
+        # Step 4: Update-AzVM preserves the setting and the existing VM state
+        Update-AzVM -ResourceGroupName $rgname -VM $vm1 -DisableCapacityReservationAssignment;
+        $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
+        Assert-AreEqual $true $vm1.CapacityReservation.DisableCapacityReservationAssignment;
+        Assert-AreEqual $vmsize $vm1.HardwareProfile.VmSize;
+
+        $vm1Status = Get-AzVM -ResourceGroupName $rgname -Name $vmname1 -Status;
+        Assert-AreEqual "Disabled" $vm1Status.CapacityReservationType;
+
+        # Step 5: opting out and explicitly associating a group are opposing intents
         $crgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/$rgname/providers/Microsoft.Compute/capacityReservationGroups/crg";
+        Assert-ThrowsContains {
+            Update-AzVM -ResourceGroupName $rgname -VM $vm1 -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment;
+        } "cannot be used together";
         Assert-ThrowsContains {
             New-AzVMConfig -VMName ('cfg2' + $rgname) -VMSize $vmsize -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment;
         } "cannot be used together";
-
-        # Record the service validation response when creating an opted-out virtual machine.
-        $vmname1 = '1' + $rgname;
-        $domainNameLabel1 = "d1" + $rgname;
-        Assert-ThrowsContains {
-            New-AzVM -ResourceGroupName $rgname -Name $vmname1 -Credential $cred -DomainNameLabel $domainNameLabel1 -Size $vmsize -Location $loc -SecurityType $stnd -DisableCapacityReservationAssignment;
-        } "OpenCapacityReservation";
-
-        # Create a regular VM, then record the same service validation response for Update-AzVM.
-        $vmname2 = '2' + $rgname;
-        $domainNameLabel2 = "d2" + $rgname;
-        $vm2 = New-AzVM -ResourceGroupName $rgname -Name $vmname2 -Credential $cred -DomainNameLabel $domainNameLabel2 -Size $vmsize -Location $loc -SecurityType $stnd;
-
-        $vm2 = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
-        Assert-Null $vm2.CapacityReservation;
-
-        Assert-ThrowsContains {
-            Update-AzVM -ResourceGroupName $rgname -VM $vm2 -DisableCapacityReservationAssignment;
-        } "OpenCapacityReservation";
-
-        Assert-ThrowsContains {
-            Update-AzVM -ResourceGroupName $rgname -VM $vm2 -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment;
-        } "cannot be used together";
-
-        Remove-AzVm -ResourceGroupName $rgname -Name $vmname2 -Force;
     }
     finally
     {

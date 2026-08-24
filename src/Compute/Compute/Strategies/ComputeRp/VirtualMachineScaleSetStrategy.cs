@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             Dictionary<string, List<string>> auxAuthHeader,
             string diskControllerType,
             string sharedImageGalleryId,
+            string processorMode = null,
             string securityType = null,
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
@@ -154,6 +155,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 DataDisks = DataDiskStrategy.CreateVmssDataDisks(
                                     imageAndOsType?.DataDiskLuns, dataDisks),
                                 DiskControllerType = diskControllerType
+                            },
+                            HardwareProfile = string.IsNullOrEmpty(processorMode) ? null : new VirtualMachineScaleSetHardwareProfile
+                            {
+                                ProcessorMode = processorMode
                             },
                             NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                             {
@@ -273,6 +278,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string capacityReservationId,
             bool? disableCapacityReservationAssignment,
             Dictionary<string, List<string>> auxAuthHeader,
+            string processorMode = null,
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
             string securityType = null,
@@ -339,6 +345,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 ImageReference = imageAndOsType?.Image,
                                 DataDisks = DataDiskStrategy.CreateVmssDataDisks(
                                     imageAndOsType?.DataDiskLuns, dataDisks)
+                            },
+                            HardwareProfile = string.IsNullOrEmpty(processorMode) ? null : new VirtualMachineScaleSetHardwareProfile
+                            {
+                                ProcessorMode = processorMode
                             },
                             NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                             {

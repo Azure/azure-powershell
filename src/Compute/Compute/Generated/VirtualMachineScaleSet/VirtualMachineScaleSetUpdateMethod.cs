@@ -394,6 +394,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string OSImageScheduledEventNotBeforeTimeoutInMinutes { get; set; }
 
         [Parameter(
+           HelpMessage = "Specifies processor frequency behavior for VM instances in the scale set model.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [PSArgumentCompleter("Deterministic", "Opportunistic")]
+        public string ProcessorMode { get; set; }
+
+        [Parameter(
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. UefiSettings will not be enabled unless this property is set.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
@@ -1369,6 +1376,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.UserData = this.UserData;
             }
 
+            if (this.IsParameterBound(c => c.ProcessorMode))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.HardwareProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.HardwareProfile = new VirtualMachineScaleSetHardwareProfile();
+                }
+                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.HardwareProfile.ProcessorMode = this.ProcessorMode;
+            }
+
             if (this.IsParameterBound(c => c.OSImageScheduledEventEnabled))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -2327,6 +2351,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.UserData = this.UserData;
+            }
+
+            if (this.IsParameterBound(c => c.ProcessorMode))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.HardwareProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.HardwareProfile = new VirtualMachineScaleSetHardwareProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.HardwareProfile.ProcessorMode = this.ProcessorMode;
             }
 
             if (this.IsParameterBound(c => c.BaseRegularPriorityCount))

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Regenerated the Cosmos DB management SDK against the stable 2026-03-15 API version.
 
 ## Version 1.21.1
 * Upgraded `Azure.Security.KeyVault.Keys` to `4.10.0` to align with other modules.

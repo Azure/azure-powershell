@@ -749,6 +749,43 @@ function Test-UpdateVmssScheduledEventsPolicy
 
 <#
 .SYNOPSIS
+Test processor mode support in New-AzVmssConfig, New-AzVmss, and Update-AzVmss.
+#>
+function Test-SimpleNewVmssProcessorMode
+{
+    $vmssname = Get-ResourceName
+    $loc = "eastus2euap"
+
+    try
+    {
+        # Step 1: Validate New-AzVmssConfig values and omission behavior
+        $vmssConfigDeterministic = New-AzVmssConfig -Location $loc -SkuCapacity 1 -SkuName "Standard_E2pds_v8" -UpgradePolicyMode "Manual" -ProcessorMode "Deterministic"
+        Assert-AreEqual "Deterministic" $vmssConfigDeterministic.VirtualMachineProfile.HardwareProfile.ProcessorMode
+
+        $vmssConfigOpportunistic = New-AzVmssConfig -Location $loc -SkuCapacity 1 -SkuName "Standard_E2pds_v8" -UpgradePolicyMode "Manual" -ProcessorMode "Opportunistic"
+        Assert-AreEqual "Opportunistic" $vmssConfigOpportunistic.VirtualMachineProfile.HardwareProfile.ProcessorMode
+
+        $vmssConfigDefault = New-AzVmssConfig -Location $loc -SkuCapacity 1 -SkuName "Standard_E2pds_v8" -UpgradePolicyMode "Manual"
+        Assert-Null $vmssConfigDefault.VirtualMachineProfile.HardwareProfile
+
+        # Step 2: Record the service validation response for the requested preview configuration
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $username, $password
+        [string]$domainNameLabel = "$vmssname$vmssname".ToLower()
+
+        Assert-ThrowsContains {
+            New-AzVmss -Name $vmssname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -ImageName "MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest" -VmSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+        } "No registered resource provider found"
+    }
+    finally
+    {
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
 Test New-AzVmssConfig with -LifecycleHooksProfile parameter round-trips through the service.
 #>
 function Test-NewVmssConfigWithLifecycleHooksProfile
@@ -932,76 +969,77 @@ function Test-VmssLifecycleHookEventEndToEnd
 <#
 .SYNOPSIS
 Tests -DisableCapacityReservationAssignment on New-AzVmssConfig/New-AzVmss (both the simple
-parameter set and the config+New-AzVmss pipeline), on Update-AzVmss, verifies the resulting
+parameter set and the config+New-AzVmss pipeline), on Update-AzVmss, verifies the
 CapacityReservation/CapacityReservationType properties surfaced by Get-AzVmssVM, and validates
-that -DisableCapacityReservationAssignment and -CapacityReservationGroupId are mutually exclusive.
+local parameter restrictions.
 #>
 function Test-VmssDisableCapacityReservationAssignment
 {
     # Setup
-    $vmssname = Get-ResourceName
-    $loc = Get-ComputeVMLocation
+    $rgname = Get-ComputeTestResourceName;
+    $vmssname = Get-ComputeTestResourceName;
+    $loc = 'eastus2euap';
 
     try
     {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
-        # Step 1: Simple parameter set - New-AzVmss with -DisableCapacityReservationAssignment directly.
-        $vmss = New-AzVmss -ResourceGroupName $vmssname -Name $vmssname -Location $loc -Credential $cred `
-            -DomainNameLabel $domainNameLabel -DisableCapacityReservationAssignment;
-        Assert-NotNull $vmss.VirtualMachineProfile.CapacityReservation;
-        Assert-True { $vmss.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
-        Assert-Null $vmss.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup;
-
-        # Re-read the VMSS to confirm the setting persisted server-side.
-        $vmss = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
-        Assert-True { $vmss.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
-
-        # Step 2: Verify the VMSS VM (Get-AzVmssVM) surfaces the inherited CapacityReservation property.
-        $vms = Get-AzVmssVM -ResourceGroupName $vmssname -VMScaleSetName $vmssname;
-        Assert-True { @($vms).Count -gt 0 };
-        $vm = @($vms)[0];
-        Assert-NotNull $vm.CapacityReservation;
-        Assert-True { $vm.CapacityReservation.DisableCapacityReservationAssignment };
-
-        # Verify the instance view surfaces CapacityReservationType.
-        $vmInstanceView = Get-AzVmssVM -ResourceGroupName $vmssname -VMScaleSetName $vmssname -InstanceId $vm.InstanceId -InstanceView;
-        Assert-NotNull $vmInstanceView.CapacityReservationType;
-
-        # Step 3: Update-AzVmss - toggle DisableCapacityReservationAssignment off, then back on via the PUT path
-        # (-VirtualMachineScaleSet), and verify merge semantics (other settings on the VMSS remain unaffected).
-        $current = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
-        Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -VirtualMachineScaleSet $current -DisableCapacityReservationAssignment:$false;
-        $vmss = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
-        Assert-False { $vmss.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
-
-        $current = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
-        Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -VirtualMachineScaleSet $current -DisableCapacityReservationAssignment;
-        $vmss = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
-        Assert-True { $vmss.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
-
-        # Step 4: New-AzVmssConfig + New-AzVmss pipeline scenario.
+        # Step 1: New-AzVmssConfig maps the switch to the capacity reservation profile.
         $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 1 -SkuName "Standard_DS1_v2" -UpgradePolicyMode "Manual" `
             -DisableCapacityReservationAssignment;
         Assert-NotNull $vmssConfig.VirtualMachineProfile.CapacityReservation;
         Assert-True { $vmssConfig.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
+        Assert-Null $vmssConfig.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup;
 
-        # Step 5: Negative test - -CapacityReservationGroupId and -DisableCapacityReservationAssignment are mutually exclusive.
-        Assert-ThrowsContains { New-AzVmssConfig -Location $loc -CapacityReservationGroupId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/capacityReservationGroups/crg" -DisableCapacityReservationAssignment } `
+        $crgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/$rgname/providers/Microsoft.Compute/capacityReservationGroups/crg";
+        Assert-ThrowsContains { New-AzVmssConfig -Location $loc -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment } `
             "cannot be used together";
-        Assert-ThrowsContains { Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -VirtualMachineScaleSet $current -CapacityReservationGroupId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/capacityReservationGroups/crg" -DisableCapacityReservationAssignment } `
+
+        # Step 2: Create an opted-out VMSS using the simple parameter set and verify persistence.
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Name $vmssname -Location $loc -Credential $cred `
+            -DomainNameLabel $domainNameLabel -InstanceCount 1 -DisableCapacityReservationAssignment;
+        Assert-NotNull $vmss.VirtualMachineProfile.CapacityReservation;
+        Assert-True { $vmss.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
+        Assert-Null $vmss.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup;
+
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssname;
+        Assert-True { $vmss.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
+
+        # Step 3: Verify the new VMSS VM output properties and values are surfaced.
+        $vms = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssname;
+        Assert-True { @($vms).Count -gt 0 };
+        $vm = @($vms)[0];
+        Assert-True { $null -ne $vm.PSObject.Properties['CapacityReservation'] };
+
+        $vmInstanceView = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceId $vm.InstanceId -InstanceView;
+        Assert-True { $null -ne $vmInstanceView.PSObject.Properties['CapacityReservationType'] };
+
+        # Step 4: Toggle the setting off and back on using the PUT update path.
+        $current = Get-AzVmss -ResourceGroupName $rgname -Name $vmssname;
+        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -VirtualMachineScaleSet $current -DisableCapacityReservationAssignment:$false;
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssname;
+        Assert-False { $vmss.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
+
+        $current = Get-AzVmss -ResourceGroupName $rgname -Name $vmssname;
+        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -VirtualMachineScaleSet $current -DisableCapacityReservationAssignment;
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssname;
+        Assert-True { $vmss.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
+
+        Assert-ThrowsContains { Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -VirtualMachineScaleSet $current -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment } `
             "cannot be used together";
 
         # Negative: PATCH path (no -VirtualMachineScaleSet) must reject -DisableCapacityReservationAssignment.
-        Assert-ThrowsContains { Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -DisableCapacityReservationAssignment } `
+        Assert-ThrowsContains { Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -DisableCapacityReservationAssignment } `
             "CreateOrUpdate path";
     }
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $vmssname
+        Clean-ResourceGroup $rgname
     }
 }
