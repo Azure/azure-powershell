@@ -1,43 +1,36 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://learn.microsoft.com/powershell/module/az.compute/new-azvmssiptagconfig
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azvmipconfig
 schema: 2.0.0
 ---
 
-# New-AzVmssIpTagConfig
+# New-AzVMIpConfig
 
 ## SYNOPSIS
-Creates an IP Tag object for a network interface of a VMSS.
+Creates an IP configuration for an implicit virtual machine network interface.
 
 ## SYNTAX
 
 ```
-New-AzVmssIpTagConfig [-IpTagType] <String> [-Tag <String>] [-FirstPartyServiceTagId <String>]
+New-AzVMIpConfig [[-Name] <String>] [[-SubnetId] <String>] [-Primary]
+ [-PublicIPAddressConfigurationName <String>] [-IpTag <VirtualMachineIpTag[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzVmssIpTagConfig** cmdlet creates an IP Tag configuration object for a network interface of a Virtual Machine Scale Set (VMSS).
-Specify the configuration from this cmdlet as the *IPTag* parameter of the New-AzVmssIpConfig cmdlet.
+The **New-AzVMIpConfig** cmdlet creates an IP configuration for an implicit virtual machine (VM) network interface.
+When IP tags are supplied, the cmdlet adds them to the nested public IP address configuration.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create an IP configuration with a first-party service IP tag
 ```powershell
-$iptag = New-AzVmssIpTagConfig -IpTagType 'FirstPartyUsage' -Tag 'Sql'
-$ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId -IpTag $ipTag;
+$ipTag = New-AzVMIpTagConfig -IpTagType 'FirstPartyUsage' -FirstPartyServiceTagId $serviceTagResourceId
+$ipConfig = New-AzVMIpConfig -Name 'ipConfig' -SubnetId $subnetId -PublicIPAddressConfigurationName 'publicIpConfig' -IpTag $ipTag
 ```
 
-This command creates an IP Tag local object with 'FirstPartyUsage' type and 'Sql' tag, and then creates an IP configuration with this IP tag.
-
-### Example 2: Create an IP tag with a first-party service tag resource ID
-```powershell
-$ipTag = New-AzVmssIpTagConfig -IpTagType 'FirstPartyUsage' -FirstPartyServiceTagId $serviceTagResourceId
-$ipCfg = New-AzVmssIpConfig -Name 'ipConfig' -IpTag $ipTag
-```
-
-This command creates an IP tag for a VMSS implicit public IP address and associates it with a first-party service tag resource.
+This example creates an implicit network interface IP configuration with a nested public IP configuration and first-party service IP tag.
 
 ## PARAMETERS
 
@@ -56,11 +49,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FirstPartyServiceTagId
-Specifies the resource ID of the first-party service tag associated with the implicit public IP address.
+### -IpTag
+Specifies IP tags to associate with the implicit public IP address.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineIpTag[]
 Parameter Sets: (All)
 Aliases:
 
@@ -71,23 +64,53 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IpTagType
-Specifies an IP Tag Type.
+### -Name
+Specifies the IP configuration name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tag
-Specifies an IP Tag Value.
+### -Primary
+Indicates that this is the primary IP configuration.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicIPAddressConfigurationName
+Specifies the name of the nested implicit public IP address configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: PublicIPAddressName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SubnetId
+Specifies the resource ID of the subnet for the IP configuration.
 
 ```yaml
 Type: System.String
@@ -95,7 +118,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -138,10 +161,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineIpTag
+
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIpTag
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineNetworkInterfaceIPConfiguration
 
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzVMNetworkInterfaceConfiguration](./Add-AzVMNetworkInterfaceConfiguration.md)
+
+[New-AzVMIpTagConfig](./New-AzVMIpTagConfig.md)
