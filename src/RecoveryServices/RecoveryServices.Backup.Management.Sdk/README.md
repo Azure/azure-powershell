@@ -23,9 +23,11 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-commit: 4a748a953cb8408283e3b5e9fd8773e012ca74ae
+commit: 26c5d39ce59d33f9f08ebfc8205db653d6ac4bd9
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2025-02-01/bms.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/RecoveryServicesBackup/stable/2026-07-01/bms.json
+
+title: RecoveryServicesBackupClient
 
 directive:
   - from: swagger-document
