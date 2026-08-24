@@ -14,6 +14,75 @@
 
 <#
 .SYNOPSIS
+Tests VM and VMSS implicit public IP first-party service tag configuration objects without Azure resources.
+#>
+function Test-FirstPartyServiceTagConfigurations
+{
+    # Step 1: Verify existing VMSS type and tag behavior and service tag omission.
+    $vmssTagWithoutServiceId = New-AzVmssIpTagConfig -IpTagType 'FirstPartyUsage' -Tag 'Sql'
+    Assert-AreEqual 'Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIpTag' ($vmssTagWithoutServiceId.GetType().FullName)
+    Assert-AreEqual 'FirstPartyUsage' $vmssTagWithoutServiceId.IpTagType
+    Assert-AreEqual 'Sql' $vmssTagWithoutServiceId.Tag
+    Assert-Null $vmssTagWithoutServiceId.FirstPartyServiceTagId
+
+    # Step 2: Verify VMSS service tag binding and nesting.
+    $vmssServiceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/serviceTags/vmss'
+    $vmssTagWithServiceId = New-AzVmssIpTagConfig -IpTagType 'FirstPartyUsage' -Tag 'Storage' -FirstPartyServiceTagId $vmssServiceId
+    $vmssIpConfiguration = New-AzVmssIpConfig -Name 'vmssIpConfig' -IpTag $vmssTagWithServiceId
+    Assert-AreEqual $vmssServiceId $vmssTagWithServiceId.FirstPartyServiceTagId
+    Assert-AreEqual 1 $vmssIpConfiguration.PublicIPAddressConfiguration.IpTags.Count
+    Assert-AreEqual $vmssServiceId $vmssIpConfiguration.PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId
+
+    # Step 3: Verify VM type and tag behavior with supplied and omitted service tag identifiers.
+    $vmTagWithoutServiceId = New-AzVMIpTagConfig -IpTagType 'FirstPartyUsage' -Tag 'Sql'
+    Assert-AreEqual 'Microsoft.Azure.Management.Compute.Models.VirtualMachineIpTag' ($vmTagWithoutServiceId.GetType().FullName)
+    Assert-AreEqual 'FirstPartyUsage' $vmTagWithoutServiceId.IpTagType
+    Assert-AreEqual 'Sql' $vmTagWithoutServiceId.Tag
+    Assert-Null $vmTagWithoutServiceId.FirstPartyServiceTagId
+
+    $vmServiceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/serviceTags/vm'
+    $vmTagWithServiceId = New-AzVMIpTagConfig -IpTagType 'FirstPartyUsage' -FirstPartyServiceTagId $vmServiceId
+    Assert-AreEqual 'FirstPartyUsage' $vmTagWithServiceId.IpTagType
+    Assert-Null $vmTagWithServiceId.Tag
+    Assert-AreEqual $vmServiceId $vmTagWithServiceId.FirstPartyServiceTagId
+
+    # Step 4: Verify VM IP tag nesting and preservation of each supplied tag.
+    $vmIpConfiguration = New-AzVMIpConfig -Name 'vmIpConfig' -SubnetId '/subnets/test' `
+        -PublicIPAddressConfigurationName 'vmPublicIp' -IpTag $vmTagWithoutServiceId,$vmTagWithServiceId
+    Assert-AreEqual 'Microsoft.Azure.Management.Compute.Models.VirtualMachineNetworkInterfaceIPConfiguration' ($vmIpConfiguration.GetType().FullName)
+    Assert-AreEqual 'vmIpConfig' $vmIpConfiguration.Name
+    Assert-AreEqual '/subnets/test' $vmIpConfiguration.Subnet.Id
+    Assert-AreEqual 'vmPublicIp' $vmIpConfiguration.PublicIPAddressConfiguration.Name
+    Assert-AreEqual 2 $vmIpConfiguration.PublicIPAddressConfiguration.IpTags.Count
+    Assert-AreEqual 'Sql' $vmIpConfiguration.PublicIPAddressConfiguration.IpTags[0].Tag
+    Assert-AreEqual $vmServiceId $vmIpConfiguration.PublicIPAddressConfiguration.IpTags[1].FirstPartyServiceTagId
+
+    $vmIpConfigurationWithoutTag = New-AzVMIpConfig -Name 'vmIpConfigWithoutTag'
+    Assert-Null $vmIpConfigurationWithoutTag.PublicIPAddressConfiguration
+
+    # Step 5: Verify network profile initialization.
+    $vm = New-AzVMConfig -VMName 'serviceTagVm' -VMSize 'Standard_A1'
+    $vm.NetworkProfile = $null
+    $vm = $vm | Add-AzVMNetworkInterfaceConfiguration -Name 'nicConfig1' -Primary $true `
+        -IpConfiguration $vmIpConfiguration -NetworkApiVersion '2022-11-01'
+    Assert-NotNull $vm.NetworkProfile
+    Assert-AreEqual '2022-11-01' $vm.NetworkProfile.NetworkApiVersion
+    Assert-AreEqual 1 $vm.NetworkProfile.NetworkInterfaceConfigurations.Count
+    Assert-AreEqual 1 $vm.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations.Count
+    Assert-AreEqual $vmServiceId $vm.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[1].FirstPartyServiceTagId
+
+    # Step 6: Verify existing configurations and NetworkApiVersion are preserved when the parameter is omitted.
+    $secondIpConfiguration = New-AzVMIpConfig -Name 'vmIpConfig2' -IpTag $vmTagWithoutServiceId
+    $vm = $vm | Add-AzVMNetworkInterfaceConfiguration -Name 'nicConfig2' -IpConfiguration $secondIpConfiguration
+    Assert-AreEqual '2022-11-01' $vm.NetworkProfile.NetworkApiVersion
+    Assert-AreEqual 2 $vm.NetworkProfile.NetworkInterfaceConfigurations.Count
+    Assert-AreEqual 'nicConfig1' $vm.NetworkProfile.NetworkInterfaceConfigurations[0].Name
+    Assert-AreEqual 'nicConfig2' $vm.NetworkProfile.NetworkInterfaceConfigurations[1].Name
+    Assert-AreEqual 'Sql' $vm.NetworkProfile.NetworkInterfaceConfigurations[1].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].Tag
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machine Scale Set Profile
 #>
 function Test-VirtualMachineScaleSetProfile

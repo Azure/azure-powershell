@@ -47,6 +47,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string Tag { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string FirstPartyServiceTagId { get; set; }
+
         protected override void ProcessRecord()
         {
             Run();
@@ -58,6 +63,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             vIpTags.IpTagType = this.IsParameterBound(c => c.IpTagType) ? this.IpTagType : null;
             vIpTags.Tag = this.IsParameterBound(c => c.Tag) ? this.Tag : null;
+            if (this.IsParameterBound(c => c.FirstPartyServiceTagId))
+            {
+                vIpTags.FirstPartyServiceTagId = this.FirstPartyServiceTagId;
+            }
 
             WriteObject(vIpTags);
         }
