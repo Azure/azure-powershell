@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 * Added a notice to template deployment what-if output pointing users to Deployment Stacks What-If, which is now generally available and removes noise from results.
-* Renamed `DenySettingsApplyToChildScope` to `DenySettingsApplyToChildScopes` for deployment stack WhatIfResult cmdlets.
+* Renamed `DenySettingsApplyToChildScope` to `DenySettingsApplyToChildScopes` for deployment stack WhatIfResult cmdlets while retaining the old name as an alias.
 * Added `ResourcesWithoutDeleteSupport` to deployment stack WhatIfResult cmdlets.
 * Added tag support to deployment stack WhatIfResult cmdlets and output.
 

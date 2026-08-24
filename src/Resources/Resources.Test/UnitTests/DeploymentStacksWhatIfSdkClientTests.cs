@@ -36,8 +36,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
         [InlineData(typeof(SetAzSubscriptionDeploymentStackWhatIfResult))]
         public void DeploymentStackWhatIfCmdlet_UsesConsistentDeploymentStackParameters(Type cmdletType)
         {
-            Assert.NotNull(cmdletType.GetProperty("DenySettingsApplyToChildScopes"));
+            PropertyInfo applyToChildScopesProperty = cmdletType.GetProperty("DenySettingsApplyToChildScopes");
+            Assert.NotNull(applyToChildScopesProperty);
             Assert.Null(cmdletType.GetProperty("DenySettingsApplyToChildScope"));
+            AliasAttribute aliasAttribute = applyToChildScopesProperty.GetCustomAttribute<AliasAttribute>();
+            Assert.Contains("DenySettingsApplyToChildScope", aliasAttribute.AliasNames);
             Assert.NotNull(cmdletType.GetProperty("ResourcesWithoutDeleteSupport"));
             Assert.NotNull(cmdletType.GetProperty("Tag"));
         }

@@ -295,7 +295,7 @@ Apply to child scopes.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: DenySettingsApplyToChildScope
 
 Required: False
 Position: Named

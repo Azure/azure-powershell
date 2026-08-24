@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
         public string[] DenySettingsExcludedAction { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Apply to child scopes.")]
+        [Alias("DenySettingsApplyToChildScope")]
         public SwitchParameter DenySettingsApplyToChildScopes { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Validation level. Possible values: Template, Provider, ProviderNoRbac.")]
