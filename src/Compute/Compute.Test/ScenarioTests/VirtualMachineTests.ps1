@@ -8132,6 +8132,12 @@ function Test-VirtualMachineProxyAgentUseLocalFileRules
         Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.Imds
         Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $false
 
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerUseLocalFileRules $null -ImdsUseLocalFileRules $null
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.WireServer
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.Imds
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules
+
         $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerMode "Audit" -WireServerUseLocalFileRules $false -ImdsMode "Enforce" -ImdsUseLocalFileRules $true
         Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Enabled $true
         Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.Mode "Audit"
@@ -8155,6 +8161,8 @@ function Test-VirtualMachineProxyAgentUseLocalFileRules
         New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm
 
         $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $true
         Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $true
         Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $false
 
@@ -8162,6 +8170,8 @@ function Test-VirtualMachineProxyAgentUseLocalFileRules
         Update-AzVM -ResourceGroupName $resourceGroupName -VM $vm
 
         $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Enabled $true
+    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $true
         Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.Mode "Audit"
         Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $false
         Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.Mode "Enforce"
