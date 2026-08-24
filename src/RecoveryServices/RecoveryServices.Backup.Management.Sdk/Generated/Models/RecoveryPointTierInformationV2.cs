@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="extendedInfo">Recovery point tier status.
         /// </param>
-        public RecoveryPointTierInformationV2(RecoveryPointTierType? type = default(RecoveryPointTierType?), RecoveryPointTierStatus? status = default(RecoveryPointTierStatus?), System.Collections.Generic.IDictionary<string, string> extendedInfo = default(System.Collections.Generic.IDictionary<string, string>))
+        public RecoveryPointTierInformationV2(RecoveryPointTierType? type = default(RecoveryPointTierType?), string status = default(string), System.Collections.Generic.IDictionary<string, string> extendedInfo = default(System.Collections.Generic.IDictionary<string, string>))
 
         : base(type, status, extendedInfo)
         {
