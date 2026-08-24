@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             IReadOnlyList<string> priorityValues = GetArgumentCompleterValues(cmdletType, "Priority");
 
             Assert.Contains(VirtualMachinePriorityTypes.Regular, priorityValues);
-            Assert.Contains(VirtualMachinePriorityTypes.SpotPlus, priorityValues);
+            Assert.Contains("SpotPlus", priorityValues);
             Assert.Contains(VirtualMachinePriorityTypes.Spot, priorityValues);
         }
 
