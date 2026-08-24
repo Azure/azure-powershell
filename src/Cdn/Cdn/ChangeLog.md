@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added ChangeSafety Support
 
 ## Version 6.1.0
 * Upgraded API version to 2026-04-01-preview.
