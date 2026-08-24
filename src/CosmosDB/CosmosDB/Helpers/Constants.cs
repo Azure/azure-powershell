@@ -345,5 +345,19 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string SoftDeletedDatabaseNameHelpMessage = "Name of the soft-deleted SQL database.";
         public const string SoftDeletedContainerNameHelpMessage = "Name of the soft-deleted SQL container.";
         public const string SoftDeletedLocationHelpMessage = "Location of the soft-deleted Cosmos DB database account.";
+
+        // Garnet Cluster constants
+        public const string GarnetClusterNameHelpMessage = "Name of the Garnet Cluster.";
+        public const string GarnetClusterObjectHelpMessage = "Garnet Cluster Object.";
+        public const string GarnetClusterLocationHelpMessage = "Azure Location of the Garnet Cluster.";
+        public const string GarnetClusterSubnetIdHelpMessage = "Resource ID of a subnet that this cluster's management service should have its network interface attached to.";
+        public const string GarnetClusterReplicationFactorHelpMessage = "Number of copies of data maintained by the cluster.";
+        public const string GarnetClusterShardCountHelpMessage = "Number of shards in the cluster.";
+        public const string GarnetClusterNodeSkuHelpMessage = "Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2.";
+        public const string GarnetClusterAvailabilityZoneHelpMessage = "If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that hosts the garnet cluster virtual machines.";
+        public const string GarnetClusterAuthenticationMethodHelpMessage = "The authentication method used for the Garnet cluster. Acceptable values: 'Entra'.";
+        public const string GarnetClusterPersistenceModeHelpMessage = "The persistence mode for the Garnet cluster. Acceptable values: 'None', 'AofAndRdb'.";
+        public const string GarnetClusterClusterTypeHelpMessage = "Type of the cluster. If set to Production, some operations might not be permitted on cluster. Acceptable values: 'Production', 'NonProduction'.";
+        public const string GarnetClusterExtensionsHelpMessage = "Extensions to be added or updated on the cluster.";
     }
 }
