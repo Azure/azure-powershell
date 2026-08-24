@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                 existing = null;
             }
 
+            // Preserve existing tags when -Tag is omitted; explicitly supplied tags replace the existing set rather than being merged.
             if (parameters.Tags == null && existing?.Tags != null)
             {
                 parameters.Tags = new Hashtable();
