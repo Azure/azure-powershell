@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `SpotPlus` as a supported VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) priority value in `New-AzVM`, `New-AzVMConfig`, `New-AzVmss`, and `New-AzVmssConfig`.
 * Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
 * Added `-ProcessorMode` support to VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) create and update flows in `New-AzVMConfig`, `New-AzVM`, `Update-AzVM`, `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss`. [#30012]
 * Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM (Virtual Machine) during stop operations.
