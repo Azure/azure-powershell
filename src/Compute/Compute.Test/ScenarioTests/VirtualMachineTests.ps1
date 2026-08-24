@@ -6103,6 +6103,45 @@ function Test-VMvCPUFeatures
 
 <#
 .SYNOPSIS
+Test processor mode support in New-AzVMConfig, New-AzVM, and Update-AzVM.
+#>
+function Test-VMProcessorModeFeatures
+{
+    $rgname = Get-ComputeTestResourceName
+    $loc = "eastus2euap"
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force
+
+        # Step 1: Verify New-AzVMConfig processor mode values and omission behavior
+        $vmConfigDeterministic = New-AzVMConfig -VMName ("det" + $rgname) -VMSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+        Assert-AreEqual "Deterministic" $vmConfigDeterministic.HardwareProfile.ProcessorMode
+
+        $vmConfigOpportunistic = New-AzVMConfig -VMName ("opp" + $rgname) -VMSize "Standard_E2pds_v8" -ProcessorMode "Opportunistic"
+        Assert-AreEqual "Opportunistic" $vmConfigOpportunistic.HardwareProfile.ProcessorMode
+
+        $vmConfigDefault = New-AzVMConfig -VMName ("default" + $rgname) -VMSize "Standard_E2pds_v8"
+        Assert-Null $vmConfigDefault.HardwareProfile.ProcessorMode
+
+        # Step 2: Record the service validation response for the requested preview configuration
+        $vmName = "vm" + $rgname
+        $domainNameLabel = "d" + $rgname
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object System.Management.Automation.PSCredential ("admin01", $securePassword)
+
+        Assert-ThrowsContains {
+            New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmName -Credential $cred -DomainNameLabel $domainNameLabel -Image "Win2019Datacenter" -Size "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+        } "Standard_E2pds_v8"
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Test GetVirtualMachineById Parameter Set
 #>
 function Test-GetVirtualMachineById

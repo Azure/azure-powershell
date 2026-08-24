@@ -517,6 +517,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMProcessorModeFeatures()
+        {
+            TestRunner.RunTestScript("Test-VMProcessorModeFeatures");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVirtualMachineById()
         {
             TestRunner.RunTestScript("Test-GetVirtualMachineById");
