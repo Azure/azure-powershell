@@ -52,8 +52,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             PropertyInfo property = cmdletType.GetProperty(propertyName);
             Assert.NotNull(property);
 
-            CustomAttributeData argumentCompleterAttribute = property.GetCustomAttributesData()
-                .Single(attribute => attribute.AttributeType.Name == "PSArgumentCompleterAttribute");
+            IEnumerable<CustomAttributeData> matchingAttributes = property.GetCustomAttributesData()
+                .Where(attribute => attribute.AttributeType.Name == "PSArgumentCompleterAttribute");
+            CustomAttributeData argumentCompleterAttribute = Assert.Single(matchingAttributes);
 
             CustomAttributeTypedArgument argumentList = Assert.Single(argumentCompleterAttribute.ConstructorArguments);
             IEnumerable<CustomAttributeTypedArgument> argumentValues = Assert.IsAssignableFrom<IEnumerable<CustomAttributeTypedArgument>>(argumentList.Value);
