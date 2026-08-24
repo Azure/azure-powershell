@@ -24,7 +24,9 @@ The **Get-AzExpressRouteLagIdentity** cmdlet gets identity assigned to a local A
 
 ### Example 1
 ```powershell
-$exrLag = Get-AzExpressRouteLag -Name $exrLagName -ResourceGroupName $resgpName
+$rgName = "MyResourceGroup"
+$exrLagName = "MyExpressRouteLag"
+$exrLag = Get-AzExpressRouteLag -Name $exrLagName -ResourceGroupName $rgName
 $identity = Get-AzExpressRouteLagIdentity -ExpressRouteLag $exrLag
 ```
 

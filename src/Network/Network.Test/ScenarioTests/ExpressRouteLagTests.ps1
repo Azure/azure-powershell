@@ -124,7 +124,7 @@ function Test-ExpressRouteLagCRUD
 
         # Update link and member AdminState
         Assert-NotNull $vExpressRouteLag.Links
-        Assert-True { $vExpressRouteLag.Links.Count -ge 1 }
+        Assert-True { $vExpressRouteLag.Links.Count -ge 2 }
         $vExpressRouteLag.Links[0].AdminState = "Enabled"
         Assert-NotNull $vExpressRouteLag.Links[0].Members
         Assert-True { $vExpressRouteLag.Links[0].Members.Count -ge 1 }
@@ -133,6 +133,8 @@ function Test-ExpressRouteLagCRUD
         Assert-NotNull $vExpressRouteLag
         Assert-AreEqual "Enabled" $vExpressRouteLag.Links[0].AdminState
         Assert-AreEqual "Disabled" $vExpressRouteLag.Links[0].Members[0].AdminState
+        Assert-NotNull $vExpressRouteLag.Links[1].Members
+        Assert-True { $vExpressRouteLag.Links[1].Members.Count -ge 1 }
         Assert-AreEqual "Disabled" $vExpressRouteLag.Links[1].AdminState
         Assert-AreEqual "Enabled" $vExpressRouteLag.Links[1].Members[0].AdminState
 

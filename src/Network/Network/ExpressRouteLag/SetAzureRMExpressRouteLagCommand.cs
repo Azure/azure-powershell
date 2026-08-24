@@ -77,25 +77,33 @@ namespace Microsoft.Azure.Commands.Network
             // body -- so NRP rejects the PUT with "item.Name is null". Swap in a resolver that re-includes
             // name/type for just these two child types for the duration of this call, then restore the
             // original resolver.
-            var client = this.NetworkClient.NetworkManagementClient;
-            var originalResolver = client.SerializationSettings.ContractResolver;
-            try
-            {
-                client.SerializationSettings.ContractResolver = new ExpressRouteLagChildNameContractResolver();
+            ConfirmAction(
+                true,
+                string.Format(Properties.Resources.OverwritingResource, this.ExpressRouteLag.Name),
+                Properties.Resources.SettingResourceMessage,
+                this.ExpressRouteLag.Name,
+                () =>
+                {
+                    var client = this.NetworkClient.NetworkManagementClient;
+                    var originalResolver = client.SerializationSettings.ContractResolver;
+                    try
+                    {
+                        client.SerializationSettings.ContractResolver = new ExpressRouteLagChildNameContractResolver();
 
-                // Execute the PUT ExpressRouteLag call
-                client.ExpressRouteLags.CreateOrUpdate(this.ExpressRouteLag.ResourceGroupName, this.ExpressRouteLag.Name, vExpressRouteLagModel);
-            }
-            finally
-            {
-                client.SerializationSettings.ContractResolver = originalResolver;
-            }
+                        // Execute the PUT ExpressRouteLag call
+                        client.ExpressRouteLags.CreateOrUpdate(this.ExpressRouteLag.ResourceGroupName, this.ExpressRouteLag.Name, vExpressRouteLagModel);
+                    }
+                    finally
+                    {
+                        client.SerializationSettings.ContractResolver = originalResolver;
+                    }
 
-            var getExpressRouteLag = this.NetworkClient.NetworkManagementClient.ExpressRouteLags.Get(this.ExpressRouteLag.ResourceGroupName, this.ExpressRouteLag.Name);
-            var psExpressRouteLag = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteLag>(getExpressRouteLag);
-            psExpressRouteLag.ResourceGroupName = this.ExpressRouteLag.ResourceGroupName;
-            psExpressRouteLag.Tag = TagsConversionHelper.CreateTagHashtable(getExpressRouteLag.Tags);
-            WriteObject(psExpressRouteLag, true);
+                    var getExpressRouteLag = this.NetworkClient.NetworkManagementClient.ExpressRouteLags.Get(this.ExpressRouteLag.ResourceGroupName, this.ExpressRouteLag.Name);
+                    var psExpressRouteLag = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteLag>(getExpressRouteLag);
+                    psExpressRouteLag.ResourceGroupName = this.ExpressRouteLag.ResourceGroupName;
+                    psExpressRouteLag.Tag = TagsConversionHelper.CreateTagHashtable(getExpressRouteLag.Tags);
+                    WriteObject(psExpressRouteLag, true);
+                });
         }
 
         /// <summary>

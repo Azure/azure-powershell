@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             if (this.ResourceGroupName == null || this.LagName == null)
             {
-                Console.WriteLine("Empty resource group or LAG name.");
+                WriteWarning("Empty resource group or LAG name.");
                 return;
             }
             GenerateExpressRouteLagsLOARequest generateExpressRouteLagsLOARequest = new GenerateExpressRouteLagsLOARequest(CustomerName, this.Members);
@@ -121,10 +121,10 @@ namespace Microsoft.Azure.Commands.Network
             }
             if (!(Path.IsPathRooted(Destination)))
             {
-                Destination = Directory.GetCurrentDirectory() + "\\" + Destination;
+                Destination = Path.Combine(Directory.GetCurrentDirectory(), Destination);
             }
             File.WriteAllBytes(Destination, decodedDocument);
-            Console.WriteLine("Written Letter of Authorization To: " + Destination);
+            WriteVerbose("Written Letter of Authorization To: " + Destination);
             if (PassThru)
             {
                 WriteObject(true);
