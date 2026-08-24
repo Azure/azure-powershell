@@ -54,7 +54,7 @@ function New-AzFleetUpdateStageObject {
         Examples:
             • `"3`"     --> up to 3 clusters from this stage upgrade at once (across all groups).
             • `"100%`"  --> `"all at once`"; up to all clusters in this stage upgrade at the same time.
-            • `"25%`"   --> up to 25% of the stage’s total clusters upgrade at the same time.")]
+            • `"25%`"   --> up to 25% of the stage's total clusters upgrade at the same time.")]
         [string]
         $MaxConcurrency,
         [Parameter(Mandatory, HelpMessage="The name of the stage. Must be unique within the UpdateRun.")]

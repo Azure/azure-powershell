@@ -7,7 +7,7 @@ options:
     emitter-output-dir: "{output-dir}/{service-dir}/Fleet/Fleet.Autorest"
     clear-output-folder: true
     azure: true
-    module-version: 0.1.0
+    module-version: 0.2.2
     prefix: "Az"
     subject-prefix: "Fleet"
     service-name: Fleet
