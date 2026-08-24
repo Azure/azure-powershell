@@ -16,7 +16,7 @@ Updates an existing Azure Cosmos DB Garnet cache cluster.
 ```
 Update-AzCosmosDBGarnetCluster -ResourceGroupName <String> -ClusterName <String>
  [-AuthenticationMethod <String>] [-Extension <String[]>]
- [-Persistence <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-PersistenceMode <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzCosmosDBGarnetCluster -ResourceGroupName <String> -ClusterName <String>
 ```
 Update-AzCosmosDBGarnetCluster -ResourceId <String>
  [-AuthenticationMethod <String>] [-Extension <String[]>]
- [-Persistence <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-PersistenceMode <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,12 +32,12 @@ Update-AzCosmosDBGarnetCluster -ResourceId <String>
 ```
 Update-AzCosmosDBGarnetCluster -InputObject <PSGarnetClusterResource>
  [-AuthenticationMethod <String>] [-Extension <String[]>]
- [-Persistence <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-PersistenceMode <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzCosmosDBGarnetCluster** cmdlet updates properties of an existing Garnet cache cluster, including extensions, authentication method, and persistence.
+The **Update-AzCosmosDBGarnetCluster** cmdlet updates properties of an existing Garnet cache cluster, including extensions, authentication method, and persistence mode.
 
 ## EXAMPLES
 
@@ -47,7 +47,7 @@ Update-AzCosmosDBGarnetCluster `
  -ResourceGroupName "resourceGroupName" `
  -ClusterName "clusterName" `
  -AuthenticationMethod "Entra" `
- -Persistence $true
+ -PersistenceMode "AofAndRdb"
 ```
 
 ### Example 2
@@ -59,7 +59,7 @@ Update-AzCosmosDBGarnetCluster `
 
 ### Example 3
 ```powershell
-$cluster | Update-AzCosmosDBGarnetCluster -Persistence $false
+$cluster | Update-AzCosmosDBGarnetCluster -PersistenceMode "None"
 ```
 
 ## PARAMETERS
@@ -139,11 +139,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Persistence
-Indicates whether persistence is enabled for the Garnet cluster.
+### -PersistenceMode
+The persistence mode for the Garnet cluster. Acceptable values: `None`, `AofAndRdb`.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

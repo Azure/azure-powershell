@@ -63,8 +63,7 @@ function Test-GarnetClusterCreateUpdateGetCmdlets
             -NodeSku $NodeSku `
             -ReplicationFactor 4 `
             -ShardCount 1 `
-            -AuthenticationMethod "Entra" `
-            -Persistence $false
+            -AuthenticationMethod "Entra"
         Assert-NotNull $cluster
         Assert-AreEqual $ClusterName $cluster.Name
 
@@ -91,9 +90,10 @@ function Test-GarnetClusterCreateUpdateGetCmdlets
         $updatedCluster = Update-AzCosmosDBGarnetCluster `
             -ResourceGroupName $RgName `
             -ClusterName $ClusterName `
-            -Persistence $true
+            -PersistenceMode "AofAndRdb"
         Assert-NotNull $updatedCluster
         Assert-AreEqual $clusterId $updatedCluster.Id
+        Assert-AreEqual "AofAndRdb" $updatedCluster.Properties.PersistenceMode
 
         # Delete cluster
         $removed = Remove-AzCosmosDBGarnetCluster -ResourceGroupName $RgName -ClusterName $ClusterName -PassThru -Confirm:$false

@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="authenticationMethod">The authentication method used for the Garnet cluster.
         /// Possible values include: &#39;Entra&#39;</param>
 
-        /// <param name="persistence">Flag to indicate if persistence is enabled for the Garnet cluster.
-        /// </param>
+        /// <param name="persistenceMode">The persistence mode for the Garnet cluster.
+        /// Possible values include: &#39;None&#39;, &#39;AofAndRdb&#39;</param>
 
         /// <param name="allocationState">Allocation state of the cluster and data center resources. Active implies
         /// the virtual machines of the cluster are allocated, deallocated implies
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="extensions">Extensions to be added or updated on cluster.
         /// </param>
-        public GarnetClusterResourceProperties(string provisioningState = default(string), string subnetId = default(string), System.Collections.Generic.IList<GarnetClusterResourcePropertiesEndPointsItem> endPoints = default(System.Collections.Generic.IList<GarnetClusterResourcePropertiesEndPointsItem>), int? replicationFactor = default(int?), int? shardCount = default(int?), string nodeSku = default(string), bool? availabilityZone = default(bool?), string authenticationMethod = default(string), bool? persistence = default(bool?), string allocationState = default(string), string clusterType = default(string), ErrorDetail provisionError = default(ErrorDetail), System.Collections.Generic.IList<string> extensions = default(System.Collections.Generic.IList<string>))
+        public GarnetClusterResourceProperties(string provisioningState = default(string), string subnetId = default(string), System.Collections.Generic.IList<GarnetClusterResourcePropertiesEndPointsItem> endPoints = default(System.Collections.Generic.IList<GarnetClusterResourcePropertiesEndPointsItem>), int? replicationFactor = default(int?), int? shardCount = default(int?), string nodeSku = default(string), bool? availabilityZone = default(bool?), string authenticationMethod = default(string), string persistenceMode = default(string), string allocationState = default(string), string clusterType = default(string), ErrorDetail provisionError = default(ErrorDetail), System.Collections.Generic.IList<string> extensions = default(System.Collections.Generic.IList<string>))
 
         {
             this.ProvisioningState = provisioningState;
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.NodeSku = nodeSku;
             this.AvailabilityZone = availabilityZone;
             this.AuthenticationMethod = authenticationMethod;
-            this.Persistence = persistence;
+            this.PersistenceMode = persistenceMode;
             this.AllocationState = allocationState;
             this.ClusterType = clusterType;
             this.ProvisionError = provisionError;
@@ -153,11 +153,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string AuthenticationMethod {get; set; }
 
         /// <summary>
-        /// Gets or sets flag to indicate if persistence is enabled for the Garnet
-        /// cluster.
+        /// Gets or sets the persistence mode for the Garnet cluster. Possible values include: &#39;None&#39;, &#39;AofAndRdb&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "persistence")]
-        public bool? Persistence {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "persistenceMode")]
+        public string PersistenceMode {get; set; }
 
         /// <summary>
         /// Gets or sets allocation state of the cluster and data center resources.

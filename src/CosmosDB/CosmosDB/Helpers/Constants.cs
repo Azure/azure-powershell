@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string GarnetClusterNodeSkuHelpMessage = "Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2.";
         public const string GarnetClusterAvailabilityZoneHelpMessage = "If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that hosts the garnet cluster virtual machines.";
         public const string GarnetClusterAuthenticationMethodHelpMessage = "The authentication method used for the Garnet cluster. Acceptable values: 'Entra'.";
-        public const string GarnetClusterPersistenceHelpMessage = "Flag to indicate if persistence is enabled for the Garnet cluster.";
+        public const string GarnetClusterPersistenceModeHelpMessage = "The persistence mode for the Garnet cluster. Acceptable values: 'None', 'AofAndRdb'.";
         public const string GarnetClusterClusterTypeHelpMessage = "Type of the cluster. If set to Production, some operations might not be permitted on cluster. Acceptable values: 'Production', 'NonProduction'.";
         public const string GarnetClusterExtensionsHelpMessage = "Extensions to be added or updated on the cluster.";
     }

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             NodeSku = properties.NodeSku;
             AvailabilityZone = properties.AvailabilityZone;
             AuthenticationMethod = properties.AuthenticationMethod;
-            Persistence = properties.Persistence;
+            PersistenceMode = properties.PersistenceMode;
             AllocationState = properties.AllocationState;
             ClusterType = properties.ClusterType;
             Extensions = properties.Extensions;
@@ -78,9 +78,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         public string AuthenticationMethod { get; set; }
 
         /// <summary>
-        /// Gets or sets whether persistence is enabled for the Garnet cluster.
+        /// Gets or sets the persistence mode for the Garnet cluster.
         /// </summary>
-        public bool? Persistence { get; set; }
+        public string PersistenceMode { get; set; }
 
         /// <summary>
         /// Gets or sets the allocation state of the cluster.

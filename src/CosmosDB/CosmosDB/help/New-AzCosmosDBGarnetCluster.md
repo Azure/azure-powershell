@@ -15,7 +15,7 @@ Creates a new Azure Cosmos DB Garnet cache cluster.
 ```
 New-AzCosmosDBGarnetCluster -ResourceGroupName <String> -ClusterName <String> -Location <String>
  [-SubnetId <String>] [-ReplicationFactor <Int32>] [-ShardCount <Int32>] [-NodeSku <String>]
- [-AvailabilityZone <Boolean>] [-AuthenticationMethod <String>] [-Persistence <Boolean>]
+ [-AvailabilityZone <Boolean>] [-AuthenticationMethod <String>] [-PersistenceMode <String>]
  [-Extension <String[]>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -52,7 +52,7 @@ New-AzCosmosDBGarnetCluster `
  -NodeSku "Standard_DS14_v2" `
  -AvailabilityZone $true `
  -AuthenticationMethod "Entra" `
- -Persistence $true `
+ -PersistenceMode "AofAndRdb" `
  -Extension "extensionA","extensionB" `
  -Tag $tags
 ```
@@ -164,11 +164,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Persistence
-Indicates whether persistence is enabled for the Garnet cluster.
+### -PersistenceMode
+The persistence mode for the Garnet cluster. Acceptable values: `None`, `AofAndRdb`.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

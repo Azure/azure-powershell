@@ -36,7 +36,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.GarnetClusterExtensionsHelpMessage)]
         public string[] Extension { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.GarnetClusterPersistenceHelpMessage)]
-        public bool? Persistence { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = Constants.GarnetClusterPersistenceModeHelpMessage)]
+        [ValidateSet("None", "AofAndRdb", IgnoreCase = true)]
+        public string PersistenceMode { get; set; }
     }
 }
