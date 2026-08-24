@@ -123,18 +123,19 @@ function Test-ExpressRouteLagCRUD
         Assert-NotNull $vExpressRouteLag
 
         # Update link and member AdminState
+        # Links are always 2 (fixed by hardware topology); NumberOfPorts controls members per link.
         Assert-NotNull $vExpressRouteLag.Links
         Assert-AreEqual 2 $vExpressRouteLag.Links.Count
         $vExpressRouteLag.Links[0].AdminState = "Enabled"
         Assert-NotNull $vExpressRouteLag.Links[0].Members
-        Assert-True { $vExpressRouteLag.Links[0].Members.Count -ge 1 }
+        Assert-AreEqual $numberOfPorts $vExpressRouteLag.Links[0].Members.Count
         $vExpressRouteLag.Links[0].Members[0].AdminState = "Disabled"
         $vExpressRouteLag = Set-AzExpressRouteLag -ExpressRouteLag $vExpressRouteLag
         Assert-NotNull $vExpressRouteLag
         Assert-AreEqual "Enabled" $vExpressRouteLag.Links[0].AdminState
         Assert-AreEqual "Disabled" $vExpressRouteLag.Links[0].Members[0].AdminState
         Assert-NotNull $vExpressRouteLag.Links[1].Members
-        Assert-True { $vExpressRouteLag.Links[1].Members.Count -ge 1 }
+        Assert-AreEqual $numberOfPorts $vExpressRouteLag.Links[1].Members.Count
         Assert-AreEqual "Disabled" $vExpressRouteLag.Links[1].AdminState
         Assert-AreEqual "Enabled" $vExpressRouteLag.Links[1].Members[0].AdminState
 
