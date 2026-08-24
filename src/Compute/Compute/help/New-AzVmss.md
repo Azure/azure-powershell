@@ -297,6 +297,13 @@ The virtual machine scale set above has Trusted Launch enabled by default. Pleas
 New-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -Credential (Get-Credential) -Location "westus" -VmSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
 ```
 
+### Example 8: Create a SpotPlus VMSS
+```powershell
+New-AzVmss -ResourceGroupName "MyResourceGroup" -VMScaleSetName "MySpotPlusVmss" -Location "eastus" -Credential (Get-Credential) -Priority "SpotPlus" -EvictionPolicy "Delete" -MaxPrice -1
+```
+
+This command creates a SpotPlus VMSS.
+
 ## PARAMETERS
 
 ### -AddProxyAgentExtension
@@ -872,8 +879,9 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machine in the scale set.  Only supported values are 'Regular', 'Spot' and 'Low'.
+The priority for the virtual machine in the scale set.  Only supported values are 'Regular', 'SpotPlus', 'Spot' and 'Low'.
 'Regular' is for regular virtual machine.
+'SpotPlus' is for SpotPlus virtual machine.
 'Spot' is for spot virtual machine.
 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
 

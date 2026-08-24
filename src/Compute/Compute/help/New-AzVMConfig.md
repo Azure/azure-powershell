@@ -215,6 +215,13 @@ This example creates a VM using a VMConfig object for the TrustedLaunch Security
 $vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
 ```
 
+### Example 5: Create a SpotPlus VM config
+```powershell
+New-AzVMConfig -VMName "MySpotPlusVM" -VMSize "Standard_D2s_v5" -Priority "SpotPlus" -EvictionPolicy "Deallocate" -MaxPrice -1
+```
+
+This command creates a SpotPlus VM configuration object.
+
 ## PARAMETERS
 
 ### -AlignRegionalDisksToVMZone
@@ -553,8 +560,9 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machine.  Only supported values are 'Regular', 'Spot' and 'Low'.
+The priority for the virtual machine.  Only supported values are 'Regular', 'SpotPlus', 'Spot' and 'Low'.
 'Regular' is for regular virtual machine.
+'SpotPlus' is for SpotPlus virtual machine.
 'Spot' is for spot virtual machine.
 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
 

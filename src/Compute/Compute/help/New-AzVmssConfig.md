@@ -232,6 +232,13 @@ This example Creates a new VMSS using VMSSConfig object for the Trusted Launch S
 New-AzVmssConfig -Location "westus" -SkuName "Standard_E2pds_v8" -SkuCapacity 2 -ProcessorMode "Deterministic"
 ```
 
+### Example 6: Create a SpotPlus VMSS config
+```powershell
+New-AzVmssConfig -Location "eastus" -SkuName "Standard_D2s_v5" -SkuCapacity 2 -Priority "SpotPlus" -EvictionPolicy "Deallocate" -MaxPrice -1
+```
+
+This command creates a SpotPlus VMSS configuration object.
+
 ## PARAMETERS
 
 ### -AutomaticRepairAction
@@ -956,8 +963,9 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machien in the scale set.  Only supported values are 'Regular', 'Spot' and 'Low'.
+The priority for the virtual machine in the scale set.  Only supported values are 'Regular', 'SpotPlus', 'Spot' and 'Low'.
 'Regular' is for regular virtual machine.
+'SpotPlus' is for SpotPlus virtual machine.
 'Spot' is for spot virtual machine.
 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
 

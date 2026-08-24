@@ -387,6 +387,13 @@ New-AzVM -ResourceGroupName "myResourceGroup" -Location "westus" -Name "myVM" -C
 
 This command creates a VM and sets processor frequency behavior to deterministic mode.
 
+### Example 15: Create a SpotPlus VM
+```powershell
+New-AzVM -ResourceGroupName "MyResourceGroup" -Name "MySpotPlusVM" -Location "eastus" -Credential (Get-Credential) -Priority "SpotPlus" -EvictionPolicy "Delete" -MaxPrice -1
+```
+
+This command creates a SpotPlus VM.
+
 ## PARAMETERS
 
 ### -AddProxyAgentExtension
@@ -1053,8 +1060,9 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machine.  Only supported values are 'Regular', 'Spot' and 'Low'.
+The priority for the virtual machine.  Only supported values are 'Regular', 'SpotPlus', 'Spot' and 'Low'.
 'Regular' is for regular virtual machine.
+'SpotPlus' is for SpotPlus virtual machine.
 'Spot' is for spot virtual machine.
 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
 
