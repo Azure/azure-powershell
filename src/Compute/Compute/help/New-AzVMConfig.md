@@ -20,7 +20,7 @@ New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <Stri
  [-MaxPrice <Double>] [-EvictionPolicy <String>] [-Priority <String>] [-Tags <Hashtable>] [-EnableUltraSSD]
  [-EncryptionAtHost] [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>]
  [-DiskControllerType <String>] [-UserData <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-SharedGalleryImageId <String>]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-ProcessorMode <String>] [-SharedGalleryImageId <String>]
  [-SecurityType <String>] [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-ZonePlacementPolicy <String>]
  [-IncludeZone <String[]>] [-ExcludeZone <String[]>] [-AlignRegionalDisksToVMZone]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -34,7 +34,7 @@ New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <Stri
  [-MaxPrice <Double>] [-EvictionPolicy <String>] [-Priority <String>] [-Tags <Hashtable>] [-EnableUltraSSD]
  [-EncryptionAtHost] [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>]
  [-DiskControllerType <String>] [-UserData <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-SharedGalleryImageId <String>]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-ProcessorMode <String>] [-SharedGalleryImageId <String>]
  [-SecurityType <String>] [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-ZonePlacementPolicy <String>]
  [-IncludeZone <String[]>] [-ExcludeZone <String[]>] [-AlignRegionalDisksToVMZone]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -209,6 +209,11 @@ $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
 ```
 
 This example creates a VM using a VMConfig object for the TrustedLaunch Security Type and validates flags VtpmEnabled and SecureBootEnabled are true by default.
+
+### Example 4: Create a VM config with processor mode
+```powershell
+$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+```
 
 ## PARAMETERS
 
@@ -552,6 +557,21 @@ The priority for the virtual machine.  Only supported values are 'Regular', 'Spo
 'Regular' is for regular virtual machine.
 'Spot' is for spot virtual machine.
 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProcessorMode
+Specifies processor frequency behavior. Typical values are `Deterministic` and `Opportunistic`.
 
 ```yaml
 Type: System.String

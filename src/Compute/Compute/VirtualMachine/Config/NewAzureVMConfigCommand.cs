@@ -197,6 +197,13 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies processor frequency behavior.")]
+        [PSArgumentCompleter("Deterministic", "Opportunistic")]
+        public string ProcessorMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
         public string SharedGalleryImageId { get; set; }
 	
@@ -332,6 +339,15 @@ namespace Microsoft.Azure.Commands.Compute
                     vm.HardwareProfile.VmSizeProperties = new VMSizeProperties();
                 }
                 vm.HardwareProfile.VmSizeProperties.VCPUsPerCore = this.vCPUCountPerCore;
+            }
+
+            if (this.IsParameterBound(c => c.ProcessorMode))
+            {
+                if (vm.HardwareProfile == null)
+                {
+                    vm.HardwareProfile = new HardwareProfile();
+                }
+                vm.HardwareProfile.ProcessorMode = this.ProcessorMode;
             }
 
             if (this.EnableUltraSSD.IsPresent)

@@ -68,6 +68,11 @@
     - Added `-PartnerAccountId` parameter to `New-AzExpressRouteCircuit`.
     - Added `-ActivationKey` parameter to `New-AzExpressRouteCircuit`.
     - Exposed `PartnerAccountId`, `ActivationKey`, and `ResiliencyLevel` on `PSExpressRouteCircuit`.
+* Added `RoutingConfiguration`, `VirtualHubVnetConnection`, and `VirtualHubVnetConnectionId` parameters to `Add-AzRouteServerPeer` and `Update-AzRouteServerPeer`.
+    - Enabled configuring inbound and outbound route maps for Route Server BGP peer connections.
+    - Enabled specifying a hub virtual network connection for the peer (by object or resource id).
+* Added `RoutingConfiguration` parameter to `New-AzVirtualNetworkGatewayConnection` and `Set-AzVirtualNetworkGatewayConnection`.
+    - Enabled configuring inbound and outbound route maps for Virtual Network Gateway connections.
 
 ## Version 8.1.0
 * Added new cmdlets for ConnectionPolicy management under VirtualHub

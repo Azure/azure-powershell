@@ -160,6 +160,13 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
         public int vCPUCountPerCore { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies processor frequency behavior.")]
+        [PSArgumentCompleter("Deterministic", "Opportunistic")]
+        public string ProcessorMode { get; set; }
         
         [Parameter(
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. By default, UefiSettings will not be enabled unless this property is set.",
@@ -272,7 +279,8 @@ namespace Microsoft.Azure.Commands.Compute
                         UserData = this.IsParameterBound(c => c.UserData)
                             ? this.UserData
                             : this.VM.UserData,
-                        ScheduledEventsPolicy = this.VM.ScheduledEventsPolicy
+                        ScheduledEventsPolicy = this.VM.ScheduledEventsPolicy,
+                        ResiliencyProfile = this.VM.ResiliencyProfile
                     };
 
                     if (parameters.Host != null && string.IsNullOrWhiteSpace(parameters.Host.Id))
@@ -450,6 +458,15 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.HardwareProfile.VmSizeProperties.VCPUsAvailable = this.vCPUCountAvailable;
                     }
 
+                    if (this.IsParameterBound(c => c.ProcessorMode))
+                    {
+                        if (parameters.HardwareProfile == null)
+                        {
+                            parameters.HardwareProfile = new HardwareProfile();
+                        }
+                        parameters.HardwareProfile.ProcessorMode = this.ProcessorMode;
+                    }
+
                     if (this.IsParameterBound(c => c.AlignRegionalDisksToVMZone))
                     {
                         if (parameters.StorageProfile == null)
@@ -516,4 +533,3 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
-

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// <summary>
     /// A managed Cassandra data center.
     /// </summary>
-    public partial class DataCenterResource : ARMProxyResource
+    public partial class DataCenterResource : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the DataCenterResource class.
@@ -24,20 +24,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Initializes a new instance of the DataCenterResource class.
         /// </summary>
 
-        /// <param name="id">The unique resource identifier of the database account.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the database account.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of Azure resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="properties">Properties of a managed Cassandra data center.
         /// </param>
-        public DataCenterResource(string id = default(string), string name = default(string), string type = default(string), DataCenterResourceProperties properties = default(DataCenterResourceProperties))
+        public DataCenterResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), DataCenterResourceProperties properties = default(DataCenterResourceProperties))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.Properties = properties;
             CustomInit();

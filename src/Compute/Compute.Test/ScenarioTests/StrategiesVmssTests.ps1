@@ -749,6 +749,43 @@ function Test-UpdateVmssScheduledEventsPolicy
 
 <#
 .SYNOPSIS
+Test processor mode support in New-AzVmssConfig, New-AzVmss, and Update-AzVmss.
+#>
+function Test-SimpleNewVmssProcessorMode
+{
+    $vmssname = Get-ResourceName
+    $loc = "eastus2euap"
+
+    try
+    {
+        # Step 1: Validate New-AzVmssConfig values and omission behavior
+        $vmssConfigDeterministic = New-AzVmssConfig -Location $loc -SkuCapacity 1 -SkuName "Standard_E2pds_v8" -UpgradePolicyMode "Manual" -ProcessorMode "Deterministic"
+        Assert-AreEqual "Deterministic" $vmssConfigDeterministic.VirtualMachineProfile.HardwareProfile.ProcessorMode
+
+        $vmssConfigOpportunistic = New-AzVmssConfig -Location $loc -SkuCapacity 1 -SkuName "Standard_E2pds_v8" -UpgradePolicyMode "Manual" -ProcessorMode "Opportunistic"
+        Assert-AreEqual "Opportunistic" $vmssConfigOpportunistic.VirtualMachineProfile.HardwareProfile.ProcessorMode
+
+        $vmssConfigDefault = New-AzVmssConfig -Location $loc -SkuCapacity 1 -SkuName "Standard_E2pds_v8" -UpgradePolicyMode "Manual"
+        Assert-Null $vmssConfigDefault.VirtualMachineProfile.HardwareProfile
+
+        # Step 2: Record the service validation response for the requested preview configuration
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $username, $password
+        [string]$domainNameLabel = "$vmssname$vmssname".ToLower()
+
+        Assert-ThrowsContains {
+            New-AzVmss -Name $vmssname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -ImageName "MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest" -VmSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+        } "No registered resource provider found"
+    }
+    finally
+    {
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
 Test New-AzVmssConfig with -LifecycleHooksProfile parameter round-trips through the service.
 #>
 function Test-NewVmssConfigWithLifecycleHooksProfile

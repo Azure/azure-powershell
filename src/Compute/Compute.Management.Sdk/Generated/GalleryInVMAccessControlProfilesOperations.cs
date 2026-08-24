@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Compute
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "galleryName", "^[^_\\W][\\w-._]{0,79}(?<![-.])$");
                 }
             }
-            string apiVersion = "2025-03-03";
+            string apiVersion = "2025-12-03";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "inVMAccessControlProfileName");
             }
 
-            string apiVersion = "2025-03-03";
+            string apiVersion = "2025-12-03";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "inVMAccessControlProfileName");
             }
 
-            string apiVersion = "2025-03-03";
+            string apiVersion = "2025-12-03";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -976,7 +976,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "inVMAccessControlProfileName");
             }
 
-            string apiVersion = "2025-03-03";
+            string apiVersion = "2025-12-03";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1235,7 +1235,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "inVMAccessControlProfileName");
             }
 
-            string apiVersion = "2025-03-03";
+            string apiVersion = "2025-12-03";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

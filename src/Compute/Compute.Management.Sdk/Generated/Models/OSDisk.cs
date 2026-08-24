@@ -239,7 +239,10 @@ namespace Microsoft.Azure.Management.Compute.Models
 
 
 
-
+            if (this.ManagedDisk != null)
+            {
+                this.ManagedDisk.Validate();
+            }
 
         }
     }

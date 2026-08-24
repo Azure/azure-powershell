@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Added Cross Region Restore support for Azure File Share backup items (`Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`)
+* Refined soft delete behavior for Azure File share backup items
+    - `Undo-AzRecoveryServicesBackupItemDeletion` now throws a clear error when the target Azure File share item is not in the soft-deleted (`ToBeDeleted`) state instead of issuing an undelete request that cannot succeed.
+    - Corrected the `DateOfPurge` computation for soft-deleted Azure File share items; it is now derived from the service-returned remaining deferred-delete window, fixing the previous value that always fell back to a fixed 14-day period.
 
 ## Version 7.14.0
 * Added Cross Subscription Backup (CSB) support for Azure VM:
@@ -41,7 +45,7 @@
 
 ## Version 7.12.0
 * Added ChangeSafety Support
-* Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` `Get-AzRecoveryServicesBackupItem -DeleteState SoftDeleted`)
+* Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` `Get-AzRecoveryServicesBackupItem -DeleteState ToBeDeleted`)
 
 ## Version 7.11.2
 * Added Cross region restore support for upcoming regions Southeast Asia 3
