@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed `Update-AzServiceFabricDurability` to accept durability values stored with lowercase casing.
+* Fixed `Update-AzServiceFabricDurability` to accept lowercase durability values.
     - Fixed issue [#30014]
 * Fixed `Update-AzServiceFabricDurability` and related cmdlets to reject numeric strings (e.g., `'1'`, `'999'`) as durability level values and report a clear error instead.
 
