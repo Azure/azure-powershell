@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.1.0
 * Added multi-database Managed Instance link support
     - Added `LinkMode` support to `New-AzSqlInstanceLink`
     - Added database membership updates to `Update-AzSqlInstanceLink`

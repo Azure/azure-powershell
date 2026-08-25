@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.RedisEnterpriseCache",
-  "ModuleVersion": "2.0.0",
+  "ModuleVersion": "2.0.1",
   "Cmdlets": [
     {
       "VerbName": "Export",
