@@ -54,6 +54,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [ValidateNotNullOrEmpty]
         public uint? RetentionInDays { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = AuditingHelpMessages.RequiredFieldsHelpMessage)]
+        [ValidateNotNull]
+        public string[] RequiredFields { get; set; }
+
         protected override ServerAuditModel ApplyUserInputToModel(ServerAuditModel model)
         {
             base.ApplyUserInputToModel(model);
@@ -76,6 +82,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             if (RetentionInDays != null)
             {
                 model.RetentionInDays = RetentionInDays;
+            }
+
+            if (RequiredFields != null)
+            {
+                model.RequiredFields = RequiredFields;
             }
 
             return model;

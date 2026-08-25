@@ -16,7 +16,8 @@ Changes the auditing settings of an Azure SQL server.
 ### ServerParameterSet (Default)
 ```
 Set-AzSqlServerAudit [-AuditActionGroup <AuditActionGroups[]>] [-PredicateExpression <String>]
- [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-BlobStorageTargetState <String>]
+ [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-RequiredFields <String[]>]
+ [-BlobStorageTargetState <String>]
  [-StorageAccountResourceId <String>] [-EventHubTargetState <String>] [-EventHubName <String>]
  [-EventHubAuthorizationRuleResourceId <String>] [-LogAnalyticsTargetState <String>]
  [-WorkspaceResourceId <String>] [-PassThru] [-UseIdentity <String>] [-ResourceGroupName] <String>
@@ -27,7 +28,8 @@ Set-AzSqlServerAudit [-AuditActionGroup <AuditActionGroups[]>] [-PredicateExpres
 ### ServerObjectParameterSet
 ```
 Set-AzSqlServerAudit [-AuditActionGroup <AuditActionGroups[]>] [-PredicateExpression <String>]
- [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-BlobStorageTargetState <String>]
+ [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-RequiredFields <String[]>]
+ [-BlobStorageTargetState <String>]
  [-StorageAccountResourceId <String>] [-EventHubTargetState <String>] [-EventHubName <String>]
  [-EventHubAuthorizationRuleResourceId <String>] [-LogAnalyticsTargetState <String>]
  [-WorkspaceResourceId <String>] [-PassThru] [-UseIdentity <String>] -ServerObject <AzureSqlServerModel>
@@ -95,6 +97,13 @@ Set-AzSqlServerAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```powershell
 Set-AzSqlServerAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -BlobStorageTargetState Enabled -StorageAccountResourceId "/subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage" -EventHubTargetState Enabled -EventHubName "EventHubName" -EventHubAuthorizationRuleResourceId "EventHubAuthorizationRuleResourceId" -LogAnalyticsTargetState Enabled  -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
 ```
+
+### Example 12: Select the fields included in Azure Monitor audit records
+```powershell
+Set-AzSqlServerAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -LogAnalyticsTargetState Enabled -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2" -RequiredFields "event_time", "action_id", "statement"
+```
+
+The command enables auditing to Azure Monitor through Log Analytics and limits each audit record to the specified fields.
 
 ## PARAMETERS
 
@@ -273,6 +282,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RequiredFields
+The audit event fields that must be included in each audit record.
+Each item must be a valid `audit_event` field name.
+This parameter can only be used when Azure Monitor is enabled as an audit target.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RetentionInDays
 The number of retention days for the audit logs. Only applies to Storage account as destination.
 
@@ -419,6 +445,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
 
 ### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]
+
+### System.String[]
 
 ### System.Guid
 

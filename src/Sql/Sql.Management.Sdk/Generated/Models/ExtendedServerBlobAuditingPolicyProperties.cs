@@ -332,6 +332,14 @@ namespace Microsoft.Azure.Management.Sql.Models
         public bool? IsManagedIdentityInUse {get; set; }
 
         /// <summary>
+        /// Gets or sets the required fields to include in audit events. Each item
+        /// must be a valid audit_event field name. This can only be specified when
+        /// isAzureMonitorTargetEnabled is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requiredFields")]
+        public System.Collections.Generic.IList<string> RequiredFields {get; set; }
+
+        /// <summary>
         /// Gets or sets specifies the state of the audit. If state is Enabled,
         /// storageEndpoint or isAzureMonitorTargetEnabled are required. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
         /// </summary>
