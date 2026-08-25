@@ -99,7 +99,7 @@ Use the format '{scope}/providers/Microsoft.Authorization/policyEnrollments/{pol
 ```yaml
 Type: System.String
 Parameter Sets: DeleteById
-Aliases: ResourceId, PolicyEnrollmentId
+Aliases: PolicyEnrollmentId, ResourceId
 
 Required: True
 Position: Named

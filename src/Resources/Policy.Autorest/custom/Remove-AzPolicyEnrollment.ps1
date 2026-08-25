@@ -46,8 +46,7 @@ param(
     ${Scope},
 
     [Parameter(ParameterSetName='DeleteById', Mandatory, ValueFromPipelineByPropertyName)]
-    [Alias('PolicyEnrollmentId')]
-    [Alias('ResourceId')]
+    [Alias('PolicyEnrollmentId', 'ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The ID of the policy enrollment to delete.
