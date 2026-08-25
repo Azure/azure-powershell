@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Rest;
 using Newtonsoft.Json;
 using Xunit;
@@ -28,7 +27,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             // tag values formatted like ISO 8601 dates were being parsed into DateTime
             // objects and reformatted during deserialization instead of being preserved
             // as raw strings.
-            var computeManagementClient = new ComputeManagementClient(new TokenCredentials("fakeToken"));
+            var computeManagementClient = new Microsoft.Azure.Management.Compute.ComputeManagementClient(new TokenCredentials("fakeToken"));
             _ = new Microsoft.Azure.Commands.Compute.ComputeClient(computeManagementClient);
             Assert.Equal(DateParseHandling.None, computeManagementClient.DeserializationSettings.DateParseHandling);
         }
