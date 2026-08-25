@@ -339,7 +339,8 @@ namespace Microsoft.Azure.Commands.Tags.Client
                 return parameters ?? new Dictionary<string, string>();
             }
 
-            var result = new Dictionary<string, string>(StringComparer.Ordinal);
+            // Tag names are case insensitive in Azure, tag values are not.
+            var result = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             if (existingTags != null)
             {
                 foreach (var tag in existingTags)
