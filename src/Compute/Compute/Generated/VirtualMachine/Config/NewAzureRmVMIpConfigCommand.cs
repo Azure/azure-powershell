@@ -43,6 +43,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         protected override void ProcessRecord()
         {
+            if (!ShouldProcess("VirtualMachine", "New"))
+            {
+                return;
+            }
+
             var ipConfiguration = new VirtualMachineNetworkInterfaceIPConfiguration();
 
             if (this.IsParameterBound(c => c.Name))

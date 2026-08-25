@@ -26,7 +26,7 @@ function Test-FirstPartyServiceTagConfigurations
     Assert-Null $vmssTagWithoutServiceId.FirstPartyServiceTagId
 
     # Step 2: Verify VMSS service tag binding and nesting.
-    $vmssServiceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/serviceTags/vmss'
+    $vmssServiceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/firstPartyServiceTags/vmss'
     $vmssTagWithServiceId = New-AzVmssIpTagConfig -IpTagType 'FirstPartyUsage' -Tag 'Storage' -FirstPartyServiceTagId $vmssServiceId
     $vmssIpConfiguration = New-AzVmssIpConfig -Name 'vmssIpConfig' -IpTag $vmssTagWithServiceId
     Assert-AreEqual $vmssServiceId $vmssTagWithServiceId.FirstPartyServiceTagId
@@ -40,7 +40,7 @@ function Test-FirstPartyServiceTagConfigurations
     Assert-AreEqual 'Sql' $vmTagWithoutServiceId.Tag
     Assert-Null $vmTagWithoutServiceId.FirstPartyServiceTagId
 
-    $vmServiceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/serviceTags/vm'
+    $vmServiceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/firstPartyServiceTags/vm'
     $vmTagWithServiceId = New-AzVMIpTagConfig -IpTagType 'FirstPartyUsage' -FirstPartyServiceTagId $vmServiceId
     Assert-AreEqual 'FirstPartyUsage' $vmTagWithServiceId.IpTagType
     Assert-Null $vmTagWithServiceId.Tag

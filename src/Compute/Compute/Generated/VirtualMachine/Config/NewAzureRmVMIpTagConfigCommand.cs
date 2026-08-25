@@ -33,6 +33,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         protected override void ProcessRecord()
         {
+            if (!ShouldProcess("VirtualMachine", "New"))
+            {
+                return;
+            }
+
             var ipTag = new VirtualMachineIpTag();
 
             if (this.IsParameterBound(c => c.IpTagType))
