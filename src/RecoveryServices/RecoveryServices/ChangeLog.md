@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 7.14.1
 * Added Cross Region Restore for Azure File Share backup items through `Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, and `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`.
 * Refined soft delete behavior for Azure File Share backup items
     - `Undo-AzRecoveryServicesBackupItemDeletion` now throws a clear error unless the item is in the soft-deleted (`ToBeDeleted`) state instead of sending an undelete request that cannot succeed.

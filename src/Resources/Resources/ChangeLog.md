@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 10.2.0
 * Updated Policy cmdlets to use `2026-01-01` API
 * Added `Get-AzPolicyEnrollment`, `New-AzPolicyEnrollment`, `Remove-AzPolicyEnrollment`, and `Update-AzPolicyEnrollment` for Policy Enrollment resources.
 * Added a template deployment what-if notice for the generally available Deployment Stacks What-If, which removes noise from results.

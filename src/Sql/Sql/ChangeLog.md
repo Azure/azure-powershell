@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.1.0
 * Added multi-database Managed Instance link support through `LinkMode` on `New-AzSqlInstanceLink` and database membership updates on `Update-AzSqlInstanceLink`.
 * Enhanced `Get-AzSqlDeletedServer` for subscription-level queries across all locations by making location optional and adding `ScheduledPurgeTime` and `Location` output properties.
 

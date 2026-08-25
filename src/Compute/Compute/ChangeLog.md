@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 11.9.0
 * Added `-WireServerUseLocalFileRules` and `-ImdsUseLocalFileRules` to `Set-AzVMProxyAgentSetting` and `Set-AzVmssProxyAgentSetting` to configure local file rules for Virtual Machine (VM) and Virtual Machine Scale Set (VMSS) host endpoints. [#30055]
 * Updated ComputeRP cmdlets to API version 2026-04-01, DiskRP cmdlets to 2026-03-02, and GalleryRP cmdlets to 2025-12-03.
 * Added `-ProcessorMode` to VM and VMSS create and update flows in `New-AzVMConfig`, `New-AzVM`, `Update-AzVM`, `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss`. [#30012]
