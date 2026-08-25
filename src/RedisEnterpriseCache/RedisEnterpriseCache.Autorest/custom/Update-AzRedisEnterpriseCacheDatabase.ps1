@@ -244,15 +244,15 @@ function Update-AzRedisEnterpriseCacheDatabase {
         }
 
         if ($PSCmdlet.ParameterSetName -eq 'UpdateViaIdentityExpanded') {
-            $getParameters['RedisEnterpriseInputObject'] = $InputObject
+            $getParameters['InputObject'] = $InputObject
             $putParameters['InputObject'] = $InputObject
         } else {
             $getParameters['ClusterName'] = $ClusterName
             $getParameters['ResourceGroupName'] = $ResourceGroupName
-            $getParameters['Name'] = 'default'
+            $getParameters['DatabaseName'] = 'default'
             $putParameters['ClusterName'] = $ClusterName
             $putParameters['ResourceGroupName'] = $ResourceGroupName
-            $putParameters['Name'] = 'default'
+            $putParameters['DatabaseName'] = 'default'
             if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
                 $getParameters['SubscriptionId'] = $SubscriptionId
                 $putParameters['SubscriptionId'] = $SubscriptionId
