@@ -127,6 +127,28 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [Ps1Xml(Target = ViewControl.Table)]
+        public bool? DisableDefaultServerHeaderInResponse
+        {
+            get
+            {
+                return this.GlobalConfiguration?.DisableDefaultServerHeaderInResponse;
+            }
+
+            set
+            {
+                if (this.GlobalConfiguration == null && !string.Equals(this.Sku.Tier, "Standard", StringComparison.OrdinalIgnoreCase) && !string.Equals(this.Sku.Tier, "WAF", StringComparison.OrdinalIgnoreCase))
+                {
+                    this.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
+                }
+
+                if (this.GlobalConfiguration != null)
+                {
+                    this.GlobalConfiguration.DisableDefaultServerHeaderInResponse = value;
+                }
+            }
+        }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? ForceFirewallPolicyAssociation { get; set; }
         
         public List<string> Zones { get; set; }
