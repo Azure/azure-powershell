@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
             Assert.NotNull(applyToChildScopesProperty);
             Assert.Null(cmdletType.GetProperty("DenySettingsApplyToChildScope"));
             AliasAttribute aliasAttribute = applyToChildScopesProperty.GetCustomAttribute<AliasAttribute>();
+            Assert.NotNull(aliasAttribute);
             Assert.Contains("DenySettingsApplyToChildScope", aliasAttribute.AliasNames);
             Assert.NotNull(cmdletType.GetProperty("ResourcesWithoutDeleteSupport"));
             Assert.NotNull(cmdletType.GetProperty("Tag"));
