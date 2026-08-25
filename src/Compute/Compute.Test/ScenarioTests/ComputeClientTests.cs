@@ -29,9 +29,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             // objects and reformatted during deserialization instead of being preserved
             // as raw strings.
             var computeManagementClient = new ComputeManagementClient(new TokenCredentials("fakeToken"));
-
-            var computeClient = new Microsoft.Azure.Commands.Compute.ComputeClient(computeManagementClient);
-
+            _ = new Microsoft.Azure.Commands.Compute.ComputeClient(computeManagementClient);
             Assert.Equal(DateParseHandling.None, computeManagementClient.DeserializationSettings.DateParseHandling);
         }
     }
