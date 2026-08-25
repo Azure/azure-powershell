@@ -6196,11 +6196,10 @@ function Test-VirtualMachineSpotPlusPriority
         # which does not support the 2026-04-01 api-version that SpotPlus requires.
         $p = Set-AzVMSourceImage -VM $p -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2019-Datacenter' -Version 'latest';
 
-        # Create a SpotPlus Virtual Machine.
-        # -DisableBginfoExtension keeps the recording free of New-AzVM's best-effort BGInfo step.
-        # That step no longer queries the image catalogue and no longer fails the cmdlet, so the
-        # switch is not required for correctness; it keeps this recording focused on SpotPlus.
-        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p -DisableBginfoExtension;
+        # Create a SpotPlus Virtual Machine. This mirrors the documented New-AzVMConfig example:
+        # a config object piped into New-AzVM, which uses the default parameter set and therefore
+        # exercises the best-effort BGInfo extension step on the way through.
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # The service round-trips SpotPlus and never downgrades it to Spot.
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname -DisplayHint Expand;
