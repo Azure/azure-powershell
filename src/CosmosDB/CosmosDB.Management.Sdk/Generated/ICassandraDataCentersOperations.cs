@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<DataCenterResource>>> ListWithHttpMessagesAsync(string resourceGroupName, string clusterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DataCenterResource>>> ListWithHttpMessagesAsync(string resourceGroupName, string clusterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get the properties of a managed Cassandra data center.
@@ -69,6 +69,72 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataCenterResource>> GetWithHttpMessagesAsync(string resourceGroupName, string clusterName, string dataCenterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Create or update a managed Cassandra data center. When updating, overwrite
+        /// all properties. To update only some properties, use PATCH.
+        /// </summary>
+        /// <remarks>
+        /// Create or update a managed Cassandra data center. When updating, overwrite
+        /// all properties. To update only some properties, use PATCH.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='dataCenterName'>
+        /// Data center name in a managed Cassandra cluster.
+        /// </param>
+        /// <param name='body'>
+        /// Parameters specifying the managed Cassandra data center.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataCenterResource,CassandraDataCentersCreateUpdateHeaders>> CreateUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string dataCenterName, DataCenterResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Update some of the properties of a managed Cassandra data center.
+        /// </summary>
+        /// <remarks>
+        /// Update some of the properties of a managed Cassandra data center.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='dataCenterName'>
+        /// Data center name in a managed Cassandra cluster.
+        /// </param>
+        /// <param name='body'>
+        /// Parameters to provide for specifying the managed Cassandra data center.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataCenterResource,CassandraDataCentersUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string dataCenterName, DataCenterResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Delete a managed Cassandra data center.
         /// </summary>
         /// <remarks>
@@ -92,7 +158,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string dataCenterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CassandraDataCentersDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string dataCenterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create or update a managed Cassandra data center. When updating, overwrite
@@ -126,7 +192,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataCenterResource>> CreateUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string dataCenterName, DataCenterResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataCenterResource,CassandraDataCentersCreateUpdateHeaders>> BeginCreateUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string dataCenterName, DataCenterResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update some of the properties of a managed Cassandra data center.
@@ -158,7 +224,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataCenterResource>> UpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string dataCenterName, DataCenterResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataCenterResource,CassandraDataCentersUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string dataCenterName, DataCenterResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete a managed Cassandra data center.
@@ -184,27 +250,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string dataCenterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CassandraDataCentersDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string dataCenterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a managed Cassandra data center. When updating, overwrite
-        /// all properties. To update only some properties, use PATCH.
+        /// List all data centers in a particular managed Cassandra cluster.
         /// </summary>
         /// <remarks>
-        /// Create or update a managed Cassandra data center. When updating, overwrite
-        /// all properties. To update only some properties, use PATCH.
+        /// List all data centers in a particular managed Cassandra cluster.
         /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// Managed Cassandra cluster name.
-        /// </param>
-        /// <param name='dataCenterName'>
-        /// Data center name in a managed Cassandra cluster.
-        /// </param>
-        /// <param name='body'>
-        /// Parameters specifying the managed Cassandra data center.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -218,39 +273,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataCenterResource>> BeginCreateUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string dataCenterName, DataCenterResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Update some of the properties of a managed Cassandra data center.
-        /// </summary>
-        /// <remarks>
-        /// Update some of the properties of a managed Cassandra data center.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// Managed Cassandra cluster name.
-        /// </param>
-        /// <param name='dataCenterName'>
-        /// Data center name in a managed Cassandra cluster.
-        /// </param>
-        /// <param name='body'>
-        /// Parameters to provide for specifying the managed Cassandra data center.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataCenterResource>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string dataCenterName, DataCenterResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DataCenterResource>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }
