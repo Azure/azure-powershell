@@ -314,6 +314,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineStopForceDeallocate()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineStopForceDeallocate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineStopForceDeallocateExecution()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineStopForceDeallocateExecution");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineRemoteDesktop()
         {
             TestRunner.RunTestScript("Test-VirtualMachineRemoteDesktop");
@@ -499,6 +513,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVMvCPUFeatures()
         {
             TestRunner.RunTestScript("Test-VMvCPUFeatures");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMProcessorModeFeatures()
+        {
+            TestRunner.RunTestScript("Test-VMProcessorModeFeatures");
         }
 
         [Fact]
@@ -695,6 +716,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineAddProxyAgentExtension()
         {
             TestRunner.RunTestScript("Test-VirtualMachineAddProxyAgentExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineProxyAgentUseLocalFileRules()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineProxyAgentUseLocalFileRules");
         }
 
         [Fact]

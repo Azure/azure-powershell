@@ -20,10 +20,12 @@
 
 ## Upcoming Release
 * Fixed an issue where importing a module on PowerShell 7.6 or later could fail with a `Method not found` error for `System.ClientModel.Primitives.IJsonModel`. `System.Text.Json` and `System.Text.Encodings.Web` are no longer loaded into the shared assembly load context on runtimes that already provide them.
+* Fixed `Get-AzSubscription` to throw a clear error instead of silently returning nothing when `-TenantId` does not match the current context under Managed Service Identity (MSI) authentication. [#25710]
 
 ## Version 5.5.2
 * Upgraded `Azure.Core` dependency from 1.56.0 to 1.57.0.
 * Upgraded `System.ClientModel` dependency from 1.12.0 to 1.13.0.
+* Upgraded common library to `1.3.114-preview`.
 
 ## Version 5.5.1
 * Upgraded `Azure.Core` dependency from 1.50.0 to 1.56.0.

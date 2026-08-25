@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ProvisioningState { get; set; }
 
+        public bool? UpgradedToV2 { get; set; }
+
         public ushort PrefixLength { get; set; }
 
         public string IPPrefix { get; set; }

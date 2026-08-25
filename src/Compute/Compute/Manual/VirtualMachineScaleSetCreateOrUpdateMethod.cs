@@ -234,6 +234,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string SharedGalleryImageId { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies processor frequency behavior for VM instances in the scale set model.")]
+        [PSArgumentCompleter("Deterministic", "Opportunistic")]
+        public string ProcessorMode { get; set; }
+
+        [Parameter(
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. UefiSettings will not be enabled unless this property is set.",
            ParameterSetName = SimpleParameterSet,
            ValueFromPipelineByPropertyName = true,
@@ -602,6 +610,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     auxAuthHeader: auxAuthHeader,
                     diskControllerType: _cmdlet.DiskControllerType,
                     sharedImageGalleryId: _cmdlet.IsParameterBound(c => c.SharedGalleryImageId) ? _cmdlet.SharedGalleryImageId : null,
+                    processorMode: _cmdlet.IsParameterBound(c => c.ProcessorMode) ? _cmdlet.ProcessorMode : null,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
                     enableSecureBoot: _cmdlet.EnableSecureBoot,
@@ -748,6 +757,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: OrchestrationModes.Flexible,
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
+                    processorMode: _cmdlet.IsParameterBound(c => c.ProcessorMode) ? _cmdlet.ProcessorMode : null,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
                     enableSecureBoot: _cmdlet.EnableSecureBoot,

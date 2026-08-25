@@ -283,6 +283,18 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSNatGatewaySku, MNM.NatGatewaySku>();
                 cfg.CreateMap<MNM.NatGatewaySku, CNM.PSNatGatewaySku>();
 
+                // Interconnect Group
+                cfg.CreateMap<CNM.PSInterconnectGroup, MNM.InterconnectGroup>();
+                cfg.CreateMap<MNM.InterconnectGroup, CNM.PSInterconnectGroup>();
+                cfg.CreateMap<CNM.PSSubgroupProfile, MNM.SubgroupProfile>();
+                cfg.CreateMap<MNM.SubgroupProfile, CNM.PSSubgroupProfile>();
+                cfg.CreateMap<CNM.PSSubgroup, MNM.Subgroup>();
+                cfg.CreateMap<MNM.Subgroup, CNM.PSSubgroup>();
+                cfg.CreateMap<CNM.PSInterconnectGroupNodeAvailability, MNM.InterconnectGroupNodeAvailability>();
+                cfg.CreateMap<MNM.InterconnectGroupNodeAvailability, CNM.PSInterconnectGroupNodeAvailability>();
+                cfg.CreateMap<CNM.PSSubgroupNodeAvailabilityEntry, MNM.SubgroupNodeAvailabilityEntry>();
+                cfg.CreateMap<MNM.SubgroupNodeAvailabilityEntry, CNM.PSSubgroupNodeAvailabilityEntry>();
+
                 // Bgp Service Community
                 cfg.CreateMap<CNM.PSBgpServiceCommunity, MNM.BgpServiceCommunity>();
                 cfg.CreateMap<CNM.PSBgpCommunity, MNM.BGPCommunity>();
@@ -1159,6 +1171,31 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ExpressRouteLink, CNM.PSExpressRouteLink>();
                 cfg.CreateMap<MNM.ExpressRoutePortAuthorization, CNM.PSExpressRoutePortAuthorization>();
 
+                // ExpressRouteLag
+                // The SDK model is nested (Properties of type ExpressRouteLagPropertiesFormat) while the
+                // PowerShell model is flat, so bridge the flat PS members to/from the nested SDK Properties.
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteLag, MNM.ExpressRouteLag>()
+                    .ForMember(dest => dest.Properties, opt => opt.MapFrom(src => src));
+                cfg.CreateMap<CNM.PSExpressRouteLag, MNM.ExpressRouteLagPropertiesFormat>();
+                cfg.CreateMap<CNM.PSExpressRouteLagLink, MNM.ExpressRouteLagLink>()
+                    .ForMember(dest => dest.Properties, opt => opt.MapFrom(src => src));
+                cfg.CreateMap<CNM.PSExpressRouteLagLink, MNM.ExpressRouteLagLinkPropertiesFormat>();
+                cfg.CreateMap<CNM.PSExpressRouteLagMember, MNM.ExpressRouteLagMember>()
+                    .ForMember(dest => dest.Properties, opt => opt.MapFrom(src => src));
+                cfg.CreateMap<CNM.PSExpressRouteLagMember, MNM.ExpressRouteLagMemberPropertiesFormat>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteLag, CNM.PSExpressRouteLag>()
+                    .AfterMap((src, dest, ctx) => { if (src.Properties != null) { ctx.Mapper.Map(src.Properties, dest); } });
+                cfg.CreateMap<MNM.ExpressRouteLagPropertiesFormat, CNM.PSExpressRouteLag>();
+                cfg.CreateMap<MNM.ExpressRouteLagLink, CNM.PSExpressRouteLagLink>()
+                    .AfterMap((src, dest, ctx) => { if (src.Properties != null) { ctx.Mapper.Map(src.Properties, dest); } });
+                cfg.CreateMap<MNM.ExpressRouteLagLinkPropertiesFormat, CNM.PSExpressRouteLagLink>();
+                cfg.CreateMap<MNM.ExpressRouteLagMember, CNM.PSExpressRouteLagMember>()
+                    .AfterMap((src, dest, ctx) => { if (src.Properties != null) { ctx.Mapper.Map(src.Properties, dest); } });
+                cfg.CreateMap<MNM.ExpressRouteLagMemberPropertiesFormat, CNM.PSExpressRouteLagMember>();
+
                 // ExpressRouteCircuit
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSExpressRouteCircuit, MNM.ExpressRouteCircuit>();
@@ -1349,6 +1386,7 @@ namespace Microsoft.Azure.Commands.Network
                     });
                 cfg.CreateMap<CNM.PSBGPPeerStatus, MNM.BgpPeerStatus>();
                 cfg.CreateMap<CNM.PSGatewayRoute, MNM.GatewayRoute>();
+                cfg.CreateMap<CNM.PSGatewayEffectiveRoute, MNM.GatewayEffectiveRoute>();
                 cfg.CreateMap<CNM.PSVpnClientConnectionHealthDetail, MNM.VpnClientConnectionHealthDetail>()
                     .ForMember(
                         dest => dest.PublicIPAddress,
@@ -1442,6 +1480,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.BgpSettings, CNM.PSBgpSettings>();
                 cfg.CreateMap<MNM.BgpPeerStatus, CNM.PSBGPPeerStatus>();
                 cfg.CreateMap<MNM.GatewayRoute, CNM.PSGatewayRoute>();
+                cfg.CreateMap<MNM.GatewayEffectiveRoute, CNM.PSGatewayEffectiveRoute>();
                 cfg.CreateMap<MNM.VpnClientConnectionHealthDetail, CNM.PSVpnClientConnectionHealthDetail>()
                     .ForMember(
                         dest => dest.PublicIpAddress,
@@ -1817,7 +1856,11 @@ namespace Microsoft.Azure.Commands.Network
                         dest => dest.PropertiesType,
                         opt => opt.MapFrom(src => src.VirtualWANType)
                     );
-                cfg.CreateMap<CNM.PSHubVirtualNetworkConnection, MNM.HubVirtualNetworkConnection>();
+                cfg.CreateMap<CNM.PSHubVirtualNetworkConnection, MNM.HubVirtualNetworkConnection>()
+                    .ForMember(
+                        dest => dest.EnableOnlyIpv6Peering,
+                        opt => opt.MapFrom(src => string.IsNullOrWhiteSpace(src.EnableOnlyIpv6Peering) ? default(bool?) : src.EnableOnlyIpv6Peering.Equals("Enabled", System.StringComparison.OrdinalIgnoreCase))
+                    );
                 cfg.CreateMap<CNM.PSVirtualHubRouteTable, MNM.VirtualHubRouteTable>();
                 cfg.CreateMap<CNM.PSVirtualHubRoute, MNM.VirtualHubRoute>()
                     .ForMember(
@@ -1899,7 +1942,11 @@ namespace Microsoft.Azure.Commands.Network
                         MapRouteTableV2sToRouteTables<MNM.VirtualHub, CNM.PSVirtualHub>(src, dest);
                     });
                 cfg.CreateMap<MNM.VirtualHubId, CNM.PSVirtualHubId>();
-                cfg.CreateMap<MNM.HubVirtualNetworkConnection, CNM.PSHubVirtualNetworkConnection>();
+                cfg.CreateMap<MNM.HubVirtualNetworkConnection, CNM.PSHubVirtualNetworkConnection>()
+                    .ForMember(
+                        dest => dest.EnableOnlyIpv6Peering,
+                        opt => opt.MapFrom(src => !src.EnableOnlyIpv6Peering.HasValue ? null : (src.EnableOnlyIpv6Peering.Value ? "Enabled" : "Disabled"))
+                    );
                 cfg.CreateMap<MNM.VirtualHubRouteTable, CNM.PSVirtualHubRouteTable>();
                 cfg.CreateMap<MNM.VirtualHubRoute, CNM.PSVirtualHubRoute>()
                     .ForMember(
@@ -2103,6 +2150,11 @@ namespace Microsoft.Azure.Commands.Network
                         dest => dest.ManagementIPConfiguration,
                         opt => opt.MapFrom(src => src.ManagementIpConfiguration)
                     )
+                    // AFC configuration is service-managed and read-only
+                    .ForMember(
+                        dest => dest.AfcConfiguration,
+                        opt => opt.Ignore()
+                    )
                     .AfterMap((src, dest) =>
                     {
                         dest.AdditionalProperties = new Dictionary<string, string>()
@@ -2157,6 +2209,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureParameters, MNM.FirewallPacketCaptureParameters>();
                 cfg.CreateMap<CNM.PSAzureFirewallAutoscaleConfiguration, MNM.AzureFirewallAutoscaleConfiguration>();
                 cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureResponse, MNM.AzureFirewallPacketCaptureResponse>();
+                cfg.CreateMap<MNM.AfcConfiguration, CNM.PSAzureFirewallAfcConfiguration>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>()
@@ -2263,6 +2316,9 @@ namespace Microsoft.Azure.Commands.Network
                 });
                 cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroupDraft, MNM.FirewallPolicyRuleCollectionGroupDraft>();
+                cfg.CreateMap<CNM.PSKubeLabelSelector, MNM.KubeLabelSelector>();
+                cfg.CreateMap<CNM.PSLabelSelectorExpression, MNM.LabelSelectorExpression>()
+                    .ForMember(dest => dest.OperatorProperty, opt => opt.MapFrom(src => src.Operator));
                 cfg.CreateMap<CNM.PSAzureFirewallPolicyDraft, MNM.FirewallPolicyDraft>().ForCtorParam("dnsSettings", opt =>
                 {
                     opt.MapFrom(src => src.DnsSettings == null ? null : new MNM.DnsSettings(src.DnsSettings.Servers, src.DnsSettings.EnableProxy, null));
@@ -2273,6 +2329,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>().ForCtorParam("dnsSettings", opt =>
                 {
                     opt.MapFrom(src => src.DnsSettings == null ? null : new MNM.DnsSettings(src.DnsSettings.Servers, src.DnsSettings.EnableProxy, null));
+                }).ForCtorParam("afcManaged", opt =>
+                {
+                    opt.MapFrom(src => (bool?)null);
                 }).AfterMap((src, dst) =>
                 {
                     dst.Sql = src.SqlSetting == null ? null : new MNM.FirewallPolicySQL(src.SqlSetting.AllowSqlRedirect);
@@ -2286,6 +2345,13 @@ namespace Microsoft.Azure.Commands.Network
                 });
                 cfg.CreateMap<MNM.FirewallPolicyRuleCollectionGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<MNM.FirewallPolicyRuleCollectionGroupDraft, CNM.PSAzureFirewallPolicyRuleCollectionGroupDraft>();
+                cfg.CreateMap<MNM.KubeLabelSelector, CNM.PSKubeLabelSelector>();
+                cfg.CreateMap<MNM.LabelSelectorExpression, CNM.PSLabelSelectorExpression>()
+                    .ForMember(dest => dest.Operator, opt => opt.MapFrom(src => src.OperatorProperty));
+                cfg.CreateMap<MNM.FirewallPolicyKubeSelectorGroup, CNM.PSAzureFirewallPolicyKubeSelectorGroup>()
+                    .ForMember(dest => dest.PodSelector, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.PodSelector : null))
+                    .ForMember(dest => dest.NamespaceSelector, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.NamespaceSelector : null))
+                    .ForMember(dest => dest.ProvisioningState, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.ProvisioningState : null));
                 cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>().AfterMap((src, dst) =>
                 {
                     dst.SqlSetting = src.Sql == null ? null : new CNM.PSAzureFirewallPolicySqlSetting { AllowSqlRedirect = src.Sql.AllowSqlRedirect };

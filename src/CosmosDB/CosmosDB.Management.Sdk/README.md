@@ -26,21 +26,11 @@ title: CosmosDBManagementClient
 
 ### 
 ``` yaml 
-commit: b99dfe6606f232f454660bf361bc32c0dfade9fb
-apiversion: "2025-10-15"
-previewapiversion: "2024-12-01-preview"
+commit: 4d1741c4c55f304a60681522a9453597a435c547
+apiversion: "2026-03-15"
+previewapiversion: "2026-04-01-preview"
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/cosmos-db.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/managedCassandra.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/mongorbac.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/notebook.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/privateEndpointConnection.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/privateLinkResources.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/rbac.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/restorable.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/services.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/fleet.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/$(previewapiversion)/tablerbac.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/openapi.json
 
 output-folder: Generated
 

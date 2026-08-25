@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             AdditionalCapabilities additionalCapabilities = null,
             int? vCPUsAvailable = null,
             int? vCPUsPerCore = null,
+            string processorMode = null,
             string imageReferenceId = null,
             Dictionary<string, List<string>> auxAuthHeader = null,
             string diskControllerType = null,
@@ -118,6 +119,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         HardwareProfile = new HardwareProfile
                         {
                             VmSize = size,
+                            ProcessorMode = processorMode,
                             VmSizeProperties = (vCPUsPerCore == null && vCPUsAvailable == null) ? null : new VMSizeProperties
                             {
                                 VCPUsPerCore = vCPUsPerCore,
@@ -237,6 +239,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             AdditionalCapabilities additionalCapabilities = null,
             int? vCPUsAvailable = null,
             int? vCPUsPerCore = null,
+            string processorMode = null,
             Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null,
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
@@ -257,6 +260,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     HardwareProfile = new HardwareProfile
                     {
                         VmSize = size,
+                        ProcessorMode = processorMode,
                         VmSizeProperties = (vCPUsPerCore == null && vCPUsAvailable == null) ? null : new VMSizeProperties
                         {
                             VCPUsPerCore = vCPUsPerCore,

@@ -13,233 +13,28 @@ namespace Microsoft.Azure.Management.KeyVault
     public static partial class ManagedHsmsOperationsExtensions
     {
         /// <summary>
-        /// Create or update a managed HSM Pool in the specified subscription.
+        /// Checks that the managed hsm name is valid and is not already in use.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the managed HSM Pool
-        /// </param>
-        public static ManagedHsm CreateOrUpdate(this IManagedHsmsOperations operations, string resourceGroupName, string name, ManagedHsm parameters)
+        public static CheckMhsmNameAvailabilityResult CheckMhsmNameAvailability(this IManagedHsmsOperations operations, CheckMhsmNameAvailabilityParameters mhsmName)
         {
-                return ((IManagedHsmsOperations)operations).CreateOrUpdateAsync(resourceGroupName, name, parameters).GetAwaiter().GetResult();
+                return ((IManagedHsmsOperations)operations).CheckMhsmNameAvailabilityAsync(mhsmName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Create or update a managed HSM Pool in the specified subscription.
+        /// Checks that the managed hsm name is valid and is not already in use.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the managed HSM Pool
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ManagedHsm> CreateOrUpdateAsync(this IManagedHsmsOperations operations, string resourceGroupName, string name, ManagedHsm parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CheckMhsmNameAvailabilityResult> CheckMhsmNameAvailabilityAsync(this IManagedHsmsOperations operations, CheckMhsmNameAvailabilityParameters mhsmName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, name, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Update a managed HSM Pool in the specified subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the managed HSM Pool
-        /// </param>
-        public static ManagedHsm Update(this IManagedHsmsOperations operations, string resourceGroupName, string name, ManagedHsm parameters)
-        {
-                return ((IManagedHsmsOperations)operations).UpdateAsync(resourceGroupName, name, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Update a managed HSM Pool in the specified subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the managed HSM Pool
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ManagedHsm> UpdateAsync(this IManagedHsmsOperations operations, string resourceGroupName, string name, ManagedHsm parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, name, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes the specified managed HSM Pool.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the managed HSM Pool to delete
-        /// </param>
-        public static ManagedHsmsDeleteHeaders Delete(this IManagedHsmsOperations operations, string resourceGroupName, string name)
-        {
-                return ((IManagedHsmsOperations)operations).DeleteAsync(resourceGroupName, name).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified managed HSM Pool.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the managed HSM Pool to delete
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ManagedHsmsDeleteHeaders> DeleteAsync(this IManagedHsmsOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// Gets the specified managed HSM Pool.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the managed HSM Pool.
-        /// </param>
-        public static ManagedHsm Get(this IManagedHsmsOperations operations, string resourceGroupName, string name)
-        {
-                return ((IManagedHsmsOperations)operations).GetAsync(resourceGroupName, name).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified managed HSM Pool.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the managed HSM Pool.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ManagedHsm> GetAsync(this IManagedHsmsOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated
-        /// with the subscription and within the specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
-        /// </param>
-        /// <param name='top'>
-        /// Maximum number of results to return.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<ManagedHsm> ListByResourceGroup(this IManagedHsmsOperations operations, string resourceGroupName, int? top = default(int?))
-        {
-                return ((IManagedHsmsOperations)operations).ListByResourceGroupAsync(resourceGroupName, top).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated
-        /// with the subscription and within the specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
-        /// </param>
-        /// <param name='top'>
-        /// Maximum number of results to return.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ManagedHsm>> ListByResourceGroupAsync(this IManagedHsmsOperations operations, string resourceGroupName, int? top = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, top, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated
-        /// with the subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='top'>
-        /// Maximum number of results to return.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<ManagedHsm> ListBySubscription(this IManagedHsmsOperations operations, int? top = default(int?))
-        {
-                return ((IManagedHsmsOperations)operations).ListBySubscriptionAsync(top).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated
-        /// with the subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='top'>
-        /// Maximum number of results to return.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ManagedHsm>> ListBySubscriptionAsync(this IManagedHsmsOperations operations, int? top = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(top, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CheckMhsmNameAvailabilityWithHttpMessagesAsync(mhsmName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -283,7 +78,7 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The name of the deleted managed HSM.
         /// </param>
         /// <param name='location'>
-        /// The location of the deleted managed HSM.
+        /// The name of the Azure region.
         /// </param>
         public static DeletedManagedHsm GetDeleted(this IManagedHsmsOperations operations, string name, string location)
         {
@@ -300,7 +95,7 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The name of the deleted managed HSM.
         /// </param>
         /// <param name='location'>
-        /// The location of the deleted managed HSM.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -319,10 +114,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='name'>
-        /// The name of the soft-deleted managed HSM.
+        /// The name of the deleted managed HSM.
         /// </param>
         /// <param name='location'>
-        /// The location of the soft-deleted managed HSM.
+        /// The name of the Azure region.
         /// </param>
         public static ManagedHsmsPurgeDeletedHeaders PurgeDeleted(this IManagedHsmsOperations operations, string name, string location)
         {
@@ -336,10 +131,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='name'>
-        /// The name of the soft-deleted managed HSM.
+        /// The name of the deleted managed HSM.
         /// </param>
         /// <param name='location'>
-        /// The location of the soft-deleted managed HSM.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -352,28 +147,116 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// Checks that the managed hsm name is valid and is not already in use.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static CheckMhsmNameAvailabilityResult CheckMhsmNameAvailability(this IManagedHsmsOperations operations, CheckMhsmNameAvailabilityParameters mhsmName)
+        /// <param name='top'>
+        /// Maximum number of results to return.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ManagedHsm> ListBySubscription(this IManagedHsmsOperations operations, int? top = default(int?))
         {
-                return ((IManagedHsmsOperations)operations).CheckMhsmNameAvailabilityAsync(mhsmName).GetAwaiter().GetResult();
+                return ((IManagedHsmsOperations)operations).ListBySubscriptionAsync(top).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Checks that the managed hsm name is valid and is not already in use.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='top'>
+        /// Maximum number of results to return.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CheckMhsmNameAvailabilityResult> CheckMhsmNameAvailabilityAsync(this IManagedHsmsOperations operations, CheckMhsmNameAvailabilityParameters mhsmName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ManagedHsm>> ListBySubscriptionAsync(this IManagedHsmsOperations operations, int? top = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CheckMhsmNameAvailabilityWithHttpMessagesAsync(mhsmName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(top, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription and within the specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='top'>
+        /// Maximum number of results to return.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ManagedHsm> ListByResourceGroup(this IManagedHsmsOperations operations, string resourceGroupName, int? top = default(int?))
+        {
+                return ((IManagedHsmsOperations)operations).ListByResourceGroupAsync(resourceGroupName, top).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription and within the specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='top'>
+        /// Maximum number of results to return.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ManagedHsm>> ListByResourceGroupAsync(this IManagedHsmsOperations operations, string resourceGroupName, int? top = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, top, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the specified managed HSM Pool.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the managed HSM Pool.
+        /// </param>
+        public static ManagedHsm Get(this IManagedHsmsOperations operations, string resourceGroupName, string name)
+        {
+                return ((IManagedHsmsOperations)operations).GetAsync(resourceGroupName, name).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified managed HSM Pool.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the managed HSM Pool.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedHsm> GetAsync(this IManagedHsmsOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -385,10 +268,166 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
+        /// </param>
+        public static ManagedHsm CreateOrUpdate(this IManagedHsmsOperations operations, string resourceGroupName, string name, ManagedHsm parameters)
+        {
+                return ((IManagedHsmsOperations)operations).CreateOrUpdateAsync(resourceGroupName, name, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Create or update a managed HSM Pool in the specified subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the managed HSM Pool.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedHsm> CreateOrUpdateAsync(this IManagedHsmsOperations operations, string resourceGroupName, string name, ManagedHsm parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, name, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Update a managed HSM Pool in the specified subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the managed HSM Pool.
+        /// </param>
+        public static ManagedHsm Update(this IManagedHsmsOperations operations, string resourceGroupName, string name, ManagedHsm parameters)
+        {
+                return ((IManagedHsmsOperations)operations).UpdateAsync(resourceGroupName, name, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Update a managed HSM Pool in the specified subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the managed HSM Pool.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedHsm> UpdateAsync(this IManagedHsmsOperations operations, string resourceGroupName, string name, ManagedHsm parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, name, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified managed HSM Pool.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the managed HSM Pool.
+        /// </param>
+        public static ManagedHsmsDeleteHeaders Delete(this IManagedHsmsOperations operations, string resourceGroupName, string name)
+        {
+                return ((IManagedHsmsOperations)operations).DeleteAsync(resourceGroupName, name).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified managed HSM Pool.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the managed HSM Pool.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedHsmsDeleteHeaders> DeleteAsync(this IManagedHsmsOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Permanently deletes the specified managed HSM.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the deleted managed HSM.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        public static ManagedHsmsPurgeDeletedHeaders BeginPurgeDeleted(this IManagedHsmsOperations operations, string name, string location)
+        {
+                return ((IManagedHsmsOperations)operations).BeginPurgeDeletedAsync(name, location).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Permanently deletes the specified managed HSM.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the deleted managed HSM.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedHsmsPurgeDeletedHeaders> BeginPurgeDeletedAsync(this IManagedHsmsOperations operations, string name, string location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginPurgeDeletedWithHttpMessagesAsync(name, location, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Create or update a managed HSM Pool in the specified subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the managed HSM Pool.
         /// </param>
         public static ManagedHsm BeginCreateOrUpdate(this IManagedHsmsOperations operations, string resourceGroupName, string name, ManagedHsm parameters)
         {
@@ -402,10 +441,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -424,10 +463,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         public static ManagedHsm BeginUpdate(this IManagedHsmsOperations operations, string resourceGroupName, string name, ManagedHsm parameters)
         {
@@ -441,10 +480,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -463,10 +502,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the managed HSM Pool to delete
+        /// The name of the managed HSM Pool.
         /// </param>
         public static ManagedHsmsDeleteHeaders BeginDelete(this IManagedHsmsOperations operations, string resourceGroupName, string name)
         {
@@ -480,10 +519,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the managed HSM Pool to delete
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -496,47 +535,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// Permanently deletes the specified managed HSM.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the soft-deleted managed HSM.
-        /// </param>
-        /// <param name='location'>
-        /// The location of the soft-deleted managed HSM.
-        /// </param>
-        public static ManagedHsmsPurgeDeletedHeaders BeginPurgeDeleted(this IManagedHsmsOperations operations, string name, string location)
-        {
-                return ((IManagedHsmsOperations)operations).BeginPurgeDeletedAsync(name, location).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Permanently deletes the specified managed HSM.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the soft-deleted managed HSM.
-        /// </param>
-        /// <param name='location'>
-        /// The location of the soft-deleted managed HSM.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ManagedHsmsPurgeDeletedHeaders> BeginPurgeDeletedAsync(this IManagedHsmsOperations operations, string name, string location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginPurgeDeletedWithHttpMessagesAsync(name, location, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated
-        /// with the subscription and within the specified resource group.
+        /// The List operation gets information about the deleted managed HSMs
+        /// associated with the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -544,14 +544,14 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ManagedHsm> ListByResourceGroupNext(this IManagedHsmsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<DeletedManagedHsm> ListDeletedNext(this IManagedHsmsOperations operations, string nextPageLink)
         {
-                return ((IManagedHsmsOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return ((IManagedHsmsOperations)operations).ListDeletedNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated
-        /// with the subscription and within the specified resource group.
+        /// The List operation gets information about the deleted managed HSMs
+        /// associated with the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -562,9 +562,9 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ManagedHsm>> ListByResourceGroupNextAsync(this IManagedHsmsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DeletedManagedHsm>> ListDeletedNextAsync(this IManagedHsmsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListDeletedNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -605,8 +605,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the deleted managed HSMs
-        /// associated with the subscription.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription and within the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -614,14 +614,14 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<DeletedManagedHsm> ListDeletedNext(this IManagedHsmsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<ManagedHsm> ListByResourceGroupNext(this IManagedHsmsOperations operations, string nextPageLink)
         {
-                return ((IManagedHsmsOperations)operations).ListDeletedNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return ((IManagedHsmsOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// The List operation gets information about the deleted managed HSMs
-        /// associated with the subscription.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription and within the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -632,9 +632,9 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DeletedManagedHsm>> ListDeletedNextAsync(this IManagedHsmsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ManagedHsm>> ListByResourceGroupNextAsync(this IManagedHsmsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListDeletedNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

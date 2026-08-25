@@ -84,7 +84,7 @@ $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 Set-AzPublicIpAddress -PublicIpAddress $publicIp -DdosCustomPolicyId $ddosCustomPolicyId
 ```
 
-The first command gets a Standard public IP address with DDoS protection mode set to `Enabled`.
+The first command gets a Standard public IP address.
 The second command associates the DDoS custom policy with the public IP address. The service
 validates that the public IP address has a supported attachment, such as a network interface.
 
@@ -147,7 +147,6 @@ Accept wildcard characters: False
 
 ### -DdosCustomPolicyId
 The DDoS custom policy ID to associate with a supported public IP address.
-The public IP address must have its DDoS protection mode set to `Enabled`.
 The service validates whether the public IP address attachment supports a DDoS custom policy.
 This parameter cannot be used with `-RemoveDdosCustomPolicy`.
 

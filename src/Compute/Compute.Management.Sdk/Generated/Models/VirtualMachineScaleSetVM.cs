@@ -161,7 +161,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="interconnectBlockProfile">Specifies the Interconnect Block related details of a Scale Set VM
         /// instance. Minimum api-version: 2026-03-01.
         /// </param>
-        public VirtualMachineScaleSetVM(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string instanceId = default(string), Sku sku = default(Sku), Plan plan = default(Plan), System.Collections.Generic.IList<VirtualMachineExtension> resources = default(System.Collections.Generic.IList<VirtualMachineExtension>), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), string etag = default(string), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), SecurityProfile securityProfile = default(SecurityProfile), NetworkProfile networkProfile = default(NetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceView instanceView = default(VirtualMachineScaleSetVMInstanceView), string resilientVMDeletionStatus = default(string), VirtualMachineScaleSetVMNetworkProfileConfiguration networkProfileConfiguration = default(VirtualMachineScaleSetVMNetworkProfileConfiguration), SubResource availabilitySet = default(SubResource), string provisioningState = default(string), string licenseType = default(string), string modelDefinitionApplied = default(string), VirtualMachineScaleSetVMProtectionPolicy protectionPolicy = default(VirtualMachineScaleSetVMProtectionPolicy), string userData = default(string), System.DateTime? timeCreated = default(System.DateTime?), string virtualMachineResourceId = default(string), InterconnectBlockProfile interconnectBlockProfile = default(InterconnectBlockProfile))
+
+        /// <param name="capacityReservation">Specifies information about the capacity reservation that is used to
+        /// allocate the virtual machine scale set VM instance. The capacity
+        /// reservation group is inherited from the parent virtual machine scale set
+        /// and cannot be changed on the individual scale set VM instance. Minimum
+        /// api-version: 2026-04-01.
+        /// </param>
+        public VirtualMachineScaleSetVM(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string instanceId = default(string), Sku sku = default(Sku), Plan plan = default(Plan), System.Collections.Generic.IList<VirtualMachineExtension> resources = default(System.Collections.Generic.IList<VirtualMachineExtension>), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), string etag = default(string), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), SecurityProfile securityProfile = default(SecurityProfile), NetworkProfile networkProfile = default(NetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceView instanceView = default(VirtualMachineScaleSetVMInstanceView), string resilientVMDeletionStatus = default(string), VirtualMachineScaleSetVMNetworkProfileConfiguration networkProfileConfiguration = default(VirtualMachineScaleSetVMNetworkProfileConfiguration), SubResource availabilitySet = default(SubResource), string provisioningState = default(string), string licenseType = default(string), string modelDefinitionApplied = default(string), VirtualMachineScaleSetVMProtectionPolicy protectionPolicy = default(VirtualMachineScaleSetVMProtectionPolicy), string userData = default(string), System.DateTime? timeCreated = default(System.DateTime?), string virtualMachineResourceId = default(string), InterconnectBlockProfile interconnectBlockProfile = default(InterconnectBlockProfile), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile))
 
         : base(location, id, name, type, tags)
         {
@@ -193,6 +200,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.TimeCreated = timeCreated;
             this.VirtualMachineResourceId = virtualMachineResourceId;
             this.InterconnectBlockProfile = interconnectBlockProfile;
+            this.CapacityReservation = capacityReservation;
             CustomInit();
         }
 
@@ -412,6 +420,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.interconnectBlockProfile")]
         public InterconnectBlockProfile InterconnectBlockProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies information about the capacity reservation that is
+        /// used to allocate the virtual machine scale set VM instance. The capacity
+        /// reservation group is inherited from the parent virtual machine scale set
+        /// and cannot be changed on the individual scale set VM instance. Minimum
+        /// api-version: 2026-04-01.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.capacityReservation")]
+        public CapacityReservationProfile CapacityReservation {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -442,6 +460,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.StorageProfile.Validate();
             }
+
 
 
 

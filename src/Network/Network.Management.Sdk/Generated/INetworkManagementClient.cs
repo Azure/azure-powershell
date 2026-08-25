@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network
     using Models;
 
     /// <summary>
-    /// APIs to manage web application firewall rules.
+    /// APIs to manage Microsoft Azure network resources.
     /// </summary>
     public partial interface INetworkManagementClient :  System.IDisposable
     {
@@ -123,6 +123,11 @@ namespace Microsoft.Azure.Management.Network
         IExpressRouteCrossConnectionsOperations ExpressRouteCrossConnections { get; }
 
         /// <summary>
+        /// Gets the IExpressRouteLagsOperations
+        /// </summary>
+        IExpressRouteLagsOperations ExpressRouteLags { get; }
+
+        /// <summary>
         /// Gets the IExpressRouteProviderPortsLocationOperations
         /// </summary>
         IExpressRouteProviderPortsLocationOperations ExpressRouteProviderPortsLocation { get; }
@@ -213,6 +218,11 @@ namespace Microsoft.Azure.Management.Network
         IFirewallPolicyDraftsOperations FirewallPolicyDrafts { get; }
 
         /// <summary>
+        /// Gets the IFirewallPolicyKubeSelectorGroupsOperations
+        /// </summary>
+        IFirewallPolicyKubeSelectorGroupsOperations FirewallPolicyKubeSelectorGroups { get; }
+
+        /// <summary>
         /// Gets the IFirewallPolicyIdpsSignaturesFilterValuesOperations
         /// </summary>
         IFirewallPolicyIdpsSignaturesFilterValuesOperations FirewallPolicyIdpsSignaturesFilterValues { get; }
@@ -236,6 +246,11 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IFirewallPolicyIdpsSignaturesOverridesOperations
         /// </summary>
         IFirewallPolicyIdpsSignaturesOverridesOperations FirewallPolicyIdpsSignaturesOverrides { get; }
+
+        /// <summary>
+        /// Gets the IFirstPartyServiceTagsOperations
+        /// </summary>
+        IFirstPartyServiceTagsOperations FirstPartyServiceTags { get; }
 
         /// <summary>
         /// Gets the IInterconnectGroupsOperations
@@ -631,6 +646,11 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IVirtualRoutersOperations
         /// </summary>
         IVirtualRoutersOperations VirtualRouters { get; }
+
+        /// <summary>
+        /// Gets the IAddressPrefixSetsOperations
+        /// </summary>
+        IAddressPrefixSetsOperations AddressPrefixSets { get; }
 
         /// <summary>
         /// Gets the IAvailableResourceGroupDelegationsOperations

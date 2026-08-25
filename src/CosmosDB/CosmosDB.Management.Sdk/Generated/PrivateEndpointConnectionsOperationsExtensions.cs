@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<PrivateEndpointConnection> ListByDatabaseAccount(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<PrivateEndpointConnection> ListByDatabaseAccount(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName)
         {
                 return ((IPrivateEndpointConnectionsOperations)operations).ListByDatabaseAccountAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<PrivateEndpointConnection>> ListByDatabaseAccountAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpointConnection>> ListByDatabaseAccountAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByDatabaseAccountWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -156,9 +156,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
         /// </param>
-        public static void Delete(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName)
+        public static PrivateEndpointConnectionsDeleteHeaders Delete(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName)
         {
-                ((IPrivateEndpointConnectionsOperations)operations).DeleteAsync(resourceGroupName, accountName, privateEndpointConnectionName).GetAwaiter().GetResult();
+                return ((IPrivateEndpointConnectionsOperations)operations).DeleteAsync(resourceGroupName, accountName, privateEndpointConnectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -179,9 +179,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateEndpointConnectionsDeleteHeaders> DeleteAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Approve or reject a private endpoint connection with a given name.
@@ -243,9 +246,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
         /// </param>
-        public static void BeginDelete(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName)
+        public static PrivateEndpointConnectionsDeleteHeaders BeginDelete(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName)
         {
-                ((IPrivateEndpointConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, privateEndpointConnectionName).GetAwaiter().GetResult();
+                return ((IPrivateEndpointConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, privateEndpointConnectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -266,9 +269,45 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateEndpointConnectionsDeleteHeaders> BeginDeleteAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// List all private endpoint connections on a Cosmos DB account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<PrivateEndpointConnection> ListByDatabaseAccountNext(this IPrivateEndpointConnectionsOperations operations, string nextPageLink)
+        {
+                return ((IPrivateEndpointConnectionsOperations)operations).ListByDatabaseAccountNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List all private endpoint connections on a Cosmos DB account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpointConnection>> ListByDatabaseAccountNextAsync(this IPrivateEndpointConnectionsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByDatabaseAccountNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
     }
 }
