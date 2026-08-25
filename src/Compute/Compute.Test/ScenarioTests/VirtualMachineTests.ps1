@@ -6142,41 +6142,83 @@ function Test-VMProcessorModeFeatures
 
 <#
 .SYNOPSIS
-Test SpotPlus priority support in New-AzVMConfig.
+Test SpotPlus priority on a virtual machine.
 
 .DESCRIPTION
 SpotPlus is the next generation of Azure Spot. It is accepted wherever 'Spot' is accepted on the
--Priority parameter, and -EvictionPolicy / -MaxPrice keep their Spot semantics. Deploying a SpotPlus
-VM additionally requires the 'Microsoft.Compute/SpotPlus' subscription feature, so this test only
-covers the client side mapping onto the virtual machine model.
+-Priority parameter, and -EvictionPolicy / -MaxPrice keep their Spot semantics. Priority is
+create-time only and cannot be changed afterwards.
+Requires the 'Microsoft.Compute/SpotPlus' subscription feature and a region where it is enabled.
 #>
 function Test-VirtualMachineSpotPlusPriority
 {
-    $vmsize = 'Standard_D2s_v5';
-    $maxPrice = -1;
+    # Setup
+    $rgname = Get-ComputeTestResourceName
 
-    # SpotPlus maps onto the virtual machine model the same way 'Spot' does.
-    $spotPlusConfig = New-AzVMConfig -VMName 'spotplusvm' -VMSize $vmsize -Priority 'SpotPlus' -EvictionPolicy 'Deallocate' -MaxPrice $maxPrice;
-    Assert-AreEqual 'SpotPlus' $spotPlusConfig.Priority;
-    Assert-AreEqual 'Deallocate' $spotPlusConfig.EvictionPolicy;
-    Assert-AreEqual $maxPrice $spotPlusConfig.BillingProfile.MaxPrice;
+    try
+    {
+        $loc = 'eastus2';
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-    # The 'Delete' eviction policy is supported for SpotPlus as well.
-    $spotPlusDeleteConfig = New-AzVMConfig -VMName 'spotplusvm2' -VMSize $vmsize -Priority 'SpotPlus' -EvictionPolicy 'Delete';
-    Assert-AreEqual 'SpotPlus' $spotPlusDeleteConfig.Priority;
-    Assert-AreEqual 'Delete' $spotPlusDeleteConfig.EvictionPolicy;
-    Assert-Null $spotPlusDeleteConfig.BillingProfile;
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D2s_v5';
+        $vmname = 'vm' + $rgname;
+        $stnd = "Standard";
 
-    # Existing priority values are unaffected.
-    $spotConfig = New-AzVMConfig -VMName 'spotvm' -VMSize $vmsize -Priority 'Spot';
-    Assert-AreEqual 'Spot' $spotConfig.Priority;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Priority 'SpotPlus' -EvictionPolicy 'Deallocate' -MaxPrice -1 -SecurityType $stnd;
 
-    $regularConfig = New-AzVMConfig -VMName 'regularvm' -VMSize $vmsize -Priority 'Regular';
-    Assert-AreEqual 'Regular' $regularConfig.Priority;
+        # SpotPlus maps onto the virtual machine model before the request is sent.
+        Assert-AreEqual 'SpotPlus' $p.Priority;
+        Assert-AreEqual 'Deallocate' $p.EvictionPolicy;
+        Assert-AreEqual -1 $p.BillingProfile.MaxPrice;
 
-    # Omitting -Priority leaves the property unset so the service applies its own default.
-    $defaultConfig = New-AzVMConfig -VMName 'defaultvm' -VMSize $vmsize;
-    Assert-Null $defaultConfig.Priority;
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+
+        # OS & Image
+        $user = "Foo2";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+
+        # Use an explicit image reference. Get-DefaultCRPImage queries 'locations/publishers',
+        # which does not support the 2026-04-01 api-version that SpotPlus requires.
+        $p = Set-AzVMSourceImage -VM $p -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2019-Datacenter' -Version 'latest';
+
+        # Create a SpotPlus Virtual Machine.
+        # -DisableBginfoExtension avoids New-AzVM's GetBginfoExtension call, which lists image
+        # publishers at the 2026-04-01 api-version that 'locations/publishers' does not support.
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p -DisableBginfoExtension;
+
+        # The service round-trips SpotPlus and never downgrades it to Spot.
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname -DisplayHint Expand;
+        Assert-AreEqual "SpotPlus" $vm.Priority;
+        Assert-AreEqual "Deallocate" $vm.EvictionPolicy;
+        Assert-AreEqual -1 $vm.BillingProfile.MaxPrice;
+
+        $vmstate = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
+        Assert-AreEqual "PowerState/running" $vmstate.Statuses[1].Code;
+
+        # Priority is create-time only, so the max price cannot be changed afterwards.
+        Assert-ThrowsContains { Update-AzVM -ResourceGroupName $rgname -VM $vm -MaxPrice 0.2; } `
+            "Max price change is not allowed.";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
 }
 
 <#

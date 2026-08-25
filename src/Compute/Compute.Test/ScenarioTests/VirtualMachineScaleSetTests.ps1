@@ -1595,47 +1595,76 @@ function Test-VirtualMachineScaleSetPriority
 
 <#
 .SYNOPSIS
-Test SpotPlus priority support in New-AzVmssConfig.
+Test SpotPlus priority on a virtual machine scale set.
 
 .DESCRIPTION
 SpotPlus is the next generation of Azure Spot. It is accepted wherever 'Spot' is accepted on the
--Priority parameter, and -EvictionPolicy / -MaxPrice keep their Spot semantics. Deploying a SpotPlus
-scale set additionally requires the 'Microsoft.Compute/SpotPlus' subscription feature, so this test
-only covers the client side mapping onto the scale set virtual machine profile.
+-Priority parameter, and -EvictionPolicy / -MaxPrice keep their Spot semantics. Priority is
+create-time only and cannot be changed afterwards.
+Requires the 'Microsoft.Compute/SpotPlus' subscription feature and a region where it is enabled.
 #>
 function Test-VirtualMachineScaleSetSpotPlusPriority
 {
-    $loc = 'eastus2';
-    $skuName = 'Standard_D2s_v5';
-    $maxPrice = -1;
+    # Setup
+    $rgname = Get-ComputeTestResourceName
 
-    # SpotPlus maps onto the scale set virtual machine profile the same way 'Spot' does.
-    $spotPlusVmss = New-AzVmssConfig -Location $loc -SkuName $skuName -SkuCapacity 2 -UpgradePolicyMode 'Automatic' `
-        -Priority 'SpotPlus' -EvictionPolicy 'Deallocate' -MaxPrice $maxPrice;
-    Assert-AreEqual 'SpotPlus' $spotPlusVmss.VirtualMachineProfile.Priority;
-    Assert-AreEqual 'Deallocate' $spotPlusVmss.VirtualMachineProfile.EvictionPolicy;
-    Assert-AreEqual $maxPrice $spotPlusVmss.VirtualMachineProfile.BillingProfile.MaxPrice;
+    try
+    {
+        # Common
+        $loc = 'eastus2';
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $stnd = "Standard";
 
-    # SpotPlus composes with the priority mix policy on a Flexible orchestration mode scale set.
-    $spotPlusFlexVmss = New-AzVmssConfig -Location $loc -SkuName $skuName -SkuCapacity 10 `
-        -OrchestrationMode 'Flexible' -PlatformFaultDomainCount 1 `
-        -Priority 'SpotPlus' -EvictionPolicy 'Delete' `
-        -BaseRegularPriorityCount 5 -RegularPriorityPercentage 50;
-    Assert-AreEqual 'SpotPlus' $spotPlusFlexVmss.VirtualMachineProfile.Priority;
-    Assert-AreEqual 'Delete' $spotPlusFlexVmss.VirtualMachineProfile.EvictionPolicy;
-    Assert-AreEqual 5 $spotPlusFlexVmss.PriorityMixPolicy.BaseRegularPriorityCount;
-    Assert-AreEqual 50 $spotPlusFlexVmss.PriorityMixPolicy.RegularPriorityPercentageAboveBase;
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
 
-    # Existing priority values are unaffected.
-    $spotVmss = New-AzVmssConfig -Location $loc -SkuName $skuName -SkuCapacity 2 -Priority 'Spot';
-    Assert-AreEqual 'Spot' $spotVmss.VirtualMachineProfile.Priority;
+        # New VMSS Parameters
+        $vmssName = 'vmss' + $rgname;
+        $adminUsername = 'Foo12';
+        $adminPassword = $PLACEHOLDER;
 
-    $regularVmss = New-AzVmssConfig -Location $loc -SkuName $skuName -SkuCapacity 2 -Priority 'Regular';
-    Assert-AreEqual 'Regular' $regularVmss.VirtualMachineProfile.Priority;
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_D2s_v5' -UpgradePolicyMode 'Manual' -Priority 'SpotPlus' -EvictionPolicy 'Delete' -SecurityType $stnd `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer 'WindowsServer' -ImageReferenceSku '2019-Datacenter' -ImageReferenceVersion 'latest' `
+            -ImageReferencePublisher 'MicrosoftWindowsServer';
 
-    # Omitting -Priority leaves the property unset so the service applies its own default.
-    $defaultVmss = New-AzVmssConfig -Location $loc -SkuName $skuName -SkuCapacity 2;
-    Assert-Null $defaultVmss.VirtualMachineProfile.Priority;
+        # SpotPlus maps onto the scale set virtual machine profile before the request is sent.
+        Assert-AreEqual 'SpotPlus' $vmss.VirtualMachineProfile.Priority;
+        Assert-AreEqual 'Delete' $vmss.VirtualMachineProfile.EvictionPolicy;
+
+        # Create a SpotPlus scale set
+        $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+
+        # The service round-trips SpotPlus and never downgrades it to Spot.
+        $vmssResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-AreEqual "SpotPlus" $vmssResult.VirtualMachineProfile.Priority;
+        Assert-AreEqual "Delete" $vmssResult.VirtualMachineProfile.EvictionPolicy;
+        $output = $vmssResult | Out-String;
+        Assert-True {$output.Contains("Priority")};
+        Assert-True {$output.Contains("EvictionPolicy")};
+
+        # SpotPlus survives an update that does not touch priority.
+        Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssResult;
+        $vmssResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-AreEqual "SpotPlus" $vmssResult.VirtualMachineProfile.Priority;
+        Assert-AreEqual "Delete" $vmssResult.VirtualMachineProfile.EvictionPolicy;
+
+        # Priority is create-time only and cannot be changed afterwards.
+        $vmssResult.VirtualMachineProfile.Priority = "Regular";
+        Assert-ThrowsContains { Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssResult; } `
+            "Changing property 'priority' is not allowed";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
 }
 
 <#
