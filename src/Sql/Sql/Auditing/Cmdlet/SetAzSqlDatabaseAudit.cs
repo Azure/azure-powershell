@@ -74,6 +74,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = AuditingHelpMessages.RequiredFieldsHelpMessage)]
+        [ValidateNotNull]
+        public string[] RequiredFields { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = AuditingHelpMessages.EventHubTargetState)]
         [ValidateSet(SecurityConstants.Enabled, SecurityConstants.Disabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
@@ -156,6 +162,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             if (RetentionInDays != null)
             {
                 model.RetentionInDays = RetentionInDays;
+            }
+
+            if (RequiredFields != null)
+            {
+                model.RequiredFields = RequiredFields;
             }
 
             if (EventHubTargetState != null)
