@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Fixed `New-AzTag`, `Update-AzTag` and `Remove-AzTag` failing on resources whose resource provider rejects the resource payload that ARM (Azure Resource Manager) replays when applying tags, such as a Service Bus namespace with a minimum TLS (Transport Layer Security) version of 1.3.
+    - The tags are now applied by patching the resource with the tags alone when the tags endpoint returns a provider error.
+    - Fixed issue [#30066]
 * Updated Policy cmdlets to use `2026-01-01` API
 * Added `Get-AzPolicyEnrollment`, `New-AzPolicyEnrollment`, `Remove-AzPolicyEnrollment`, and `Update-AzPolicyEnrollment` cmdlets to interact with new Policy Enrollments resources.
 * Added a notice to template deployment what-if output pointing users to Deployment Stacks What-If, which is now generally available and removes noise from results.
