@@ -489,6 +489,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetProxyAgentUseLocalFileRules()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetProxyAgentUseLocalFileRules");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetAddProxyAgentExtension()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetAddProxyAgentExtension");
