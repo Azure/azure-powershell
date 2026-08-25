@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Management.Automation;
 using Xunit;
 using NewAzureRmVmss = Microsoft.Azure.Commands.Compute.Automation.NewAzureRmVmss;
 using NewAzureRmVmssConfigCommand = Microsoft.Azure.Commands.Compute.Automation.NewAzureRmVmssConfigCommand;
@@ -42,8 +43,42 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             Assert.Contains("Spot", priorityValues);
         }
 
-        private static IReadOnlyList<string> GetArgumentCompleterValues(Type cmdletType, string propertyName)
+        /// <summary>
+        /// New-AzVM only calls GetBginfoExtension, and therefore only queries the image
+        /// catalogue, on the default parameter set. -Priority is not available there, so a
+        /// SpotPlus create can never reach that call and can never accept
+        /// -DisableBginfoExtension. This guards the documented SpotPlus examples against a
+        /// well-meaning "fix" that would make them fail to bind.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void PriorityAndDisableBginfoExtensionAreInDisjointParameterSets()
         {
+            IReadOnlyList<string> priorityParameterSets =
+                GetParameterSetNames(typeof(NewAzureVMCommand), "Priority");
+            IReadOnlyList<string> bginfoParameterSets =
+                GetParameterSetNames(typeof(NewAzureVMCommand), "DisableBginfoExtension");
+
+            Assert.Contains(NewAzureVMCommand.SimpleParameterSet, priorityParameterSets);
+            Assert.Contains(NewAzureVMCommand.DefaultParameterSet, bginfoParameterSets);
+            Assert.Empty(priorityParameterSets.Intersect(bginfoParameterSets));
+        }
+
+        private static IReadOnlyList<string> GetParameterSetNames(Type cmdletType, string propertyName)
+        {
+            PropertyInfo property = cmdletType.GetProperty(propertyName);
+            Assert.NotNull(property);
+
+            IReadOnlyList<string> parameterSetNames = property
+                .GetCustomAttributes<ParameterAttribute>(inherit: true)
+                .Select(attribute => attribute.ParameterSetName)
+                .ToList();
+
+            Assert.NotEmpty(parameterSetNames);
+            return parameterSetNames;
+        }
+
+        private static IReadOnlyList<string> GetArgumentCompleterValues(Type cmdletType, string propertyName)        {
             PropertyInfo property = cmdletType.GetProperty(propertyName);
             Assert.NotNull(property);
 
