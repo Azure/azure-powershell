@@ -1,0 +1,714 @@
+{
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "448" ],
+        "x-ms-client-request-id": [ "2e0d92d6-b537-46d1-b76e-b1ed5ac97bd0" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Get-AzPolicyDefinitionBuilt_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-request-id": [ "192a0399-af4d-44dd-bfb4-04f6a15c8d48" ],
+        "x-ms-correlation-request-id": [ "192a0399-af4d-44dd-bfb4-04f6a15c8d48" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232746Z:192a0399-af4d-44dd-bfb4-04f6a15c8d48" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F6F18571013F427A8217971330512C46 Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:46Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "892" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Audit resource location matches resource group location\",\"policyType\":\"BuiltIn\",\"mode\":\"Indexed\",\"description\":\"Audit that the resource location matches its resource group location\",\"metadata\":{\"version\":\"2.1.0\",\"category\":\"General\"},\"version\":\"2.1.0\",\"parameters\":{\"effect\":{\"type\":\"String\",\"metadata\":{\"displayName\":\"Effect\",\"description\":\"Enable or disable the execution of the policy\"},\"allowedValues\":[\"Audit\",\"Deny\",\"Disabled\"],\"defaultValue\":\"Audit\"}},\"policyRule\":{\"if\":{\"allOf\":[{\"field\":\"location\",\"notEquals\":\"[resourcegroup().location]\"},{\"field\":\"location\",\"notEquals\":\"global\"}]},\"then\":{\"effect\":\"[parameters(\u0027effect\u0027)]\"}},\"versions\":[\"2.1.0\",\"2.0.0\"]},\"id\":\"/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"0a914e76-4921-4c19-b460-a2d36003525a\"}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/psPolicyEnrollmentCRUDOnPolicySet03?api-version=2026-01-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/psPolicyEnrollmentCRUDOnPolicySet03?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "282" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/d144865a-9f76-42b0-855a-89ab57f14ef5" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "2896fcb3-db8a-4110-b748-6b33c134e74a" ],
+        "x-ms-correlation-request-id": [ "2896fcb3-db8a-4110-b748-6b33c134e74a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232747Z:2896fcb3-db8a-4110-b748-6b33c134e74a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A6151D17CC524C37AFFFAED845FDD7F4 Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:46Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "990" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\",\"policyType\":\"Custom\",\"metadata\":{\"createdBy\":\"aaa98dcf-7592-4632-a750-6f61c2d0d1d7\",\"createdOn\":\"2026-07-27T23:27:46.788998Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"policyDefinitions\":[{\"policyDefinitionReferenceId\":\"2719031940633985590\",\"policyDefinitionId\":\"/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a\",\"definitionVersion\":\"2.*.*\"}],\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/psPolicyEnrollmentCRUDOnPolicySet03\",\"type\":\"Microsoft.Authorization/policySetDefinitions\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet03\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:46.7499389Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:46.7499389Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+[NoScenario]+$PUT+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04?api-version=2026-01-01-preview+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"policyDefinitionId\": \"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/psPolicyEnrollmentCRUDOnPolicySet03\",\r\n    \"enforcementMode\": \"Enroll\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "312" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/3450741e-0b6e-48cb-ada6-90daaa552441" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "546af8da-7bf3-4f4d-a09d-de58d21f8b87" ],
+        "x-ms-correlation-request-id": [ "546af8da-7bf3-4f4d-a09d-de58d21f8b87" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232747Z:546af8da-7bf3-4f4d-a09d-de58d21f8b87" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E8F1D458AD1A4190AA4887D7D4AE114D Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:47Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1041" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\",\"policyDefinitionId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/psPolicyEnrollmentCRUDOnPolicySet03\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935\",\"metadata\":{\"createdBy\":\"aaa98dcf-7592-4632-a750-6f61c2d0d1d7\",\"createdOn\":\"2026-07-27T23:27:47.286519Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Enroll\",\"instanceId\":\"571da646-c2b0-44b8-8249-91f332118689\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet04\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:47.2641527Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:47.2641527Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+[NoScenario]+$PUT+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview+4": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\r\n    \"displayName\": \"Unit test junk: sorry for littering. Please delete me!\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "275" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/c1300cdd-9617-4b51-ab28-4e8c51dcdeb7" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "97fd87a3-83c4-4c07-a8d0-a1b2d4c99c1f" ],
+        "x-ms-correlation-request-id": [ "97fd87a3-83c4-4c07-a8d0-a1b2d4c99c1f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232748Z:97fd87a3-83c4-4c07-a8d0-a1b2d4c99c1f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3FB39EBBCDE74C6D86A78C018C7F3340 Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:47Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "847" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyAssignmentId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"policyAssignmentInstanceId\":\"571da646-c2b0-44b8-8249-91f332118689\",\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet01\",\"etag\":\"\\\"5a00de5d-0000-0800-0000-6a67e9730000\\\"\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:47.7298627Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:47.7298627Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+Update policy enrollment by pipeline input+$GET+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "452" ],
+        "x-ms-client-request-id": [ "df43ed3f-ab1e-4bce-9944-d319de6b43d1" ],
+        "CommandName": [ "Az.Policy.internal\\Get-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Get-AzPolicyEnrollment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/f298bf37-11f3-4283-b87b-7f2bcaea7c7e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "e777868f-ba59-430e-973b-261d1a79f88a" ],
+        "x-ms-correlation-request-id": [ "e777868f-ba59-430e-973b-261d1a79f88a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232748Z:e777868f-ba59-430e-973b-261d1a79f88a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5ACEFDAD7554479ABEBC003686FF276B Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:48Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "847" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyAssignmentId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"policyAssignmentInstanceId\":\"571da646-c2b0-44b8-8249-91f332118689\",\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet01\",\"etag\":\"\\\"5a00de5d-0000-0800-0000-6a67e9730000\\\"\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:47.7298627Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:47.7298627Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+Update policy enrollment by pipeline input+$PUT+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\r\n    \"policyDefinitionReferenceIds\": [ \"2719031940633985590\" ],\r\n    \"displayName\": \"testDisplay\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "296" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/35531f43-312c-4ae0-a08b-b716379bd1e0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "70a92bde-a46c-4080-a15b-616443420942" ],
+        "x-ms-correlation-request-id": [ "70a92bde-a46c-4080-a15b-616443420942" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232748Z:70a92bde-a46c-4080-a15b-616443420942" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DCAAF8F540664C81A5B9F6DD28B025CE Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:48Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "859" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyAssignmentId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"policyAssignmentInstanceId\":\"571da646-c2b0-44b8-8249-91f332118689\",\"policyDefinitionReferenceIds\":[\"2719031940633985590\"],\"displayName\":\"testDisplay\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet01\",\"etag\":\"\\\"5a00e05d-0000-0800-0000-6a67e9740000\\\"\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:47.7298627Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:48.5545466Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+Update policy enrollment by parameters+$GET+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "454" ],
+        "x-ms-client-request-id": [ "5d8da8de-eb1e-4bda-b5a8-76f5abe643ec" ],
+        "CommandName": [ "Az.Policy.internal\\Get-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Get-AzPolicyEnrollment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/0561b882-9f60-4089-8ede-b35c9128c982" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "89f43c06-d4a4-4423-89f5-c362f9554984" ],
+        "x-ms-correlation-request-id": [ "89f43c06-d4a4-4423-89f5-c362f9554984" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232749Z:89f43c06-d4a4-4423-89f5-c362f9554984" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1D5AA4E600F64F7AA66EC5D177E07A03 Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:48Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "859" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyAssignmentId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"policyAssignmentInstanceId\":\"571da646-c2b0-44b8-8249-91f332118689\",\"policyDefinitionReferenceIds\":[\"2719031940633985590\"],\"displayName\":\"testDisplay\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet01\",\"etag\":\"\\\"5a00e05d-0000-0800-0000-6a67e9740000\\\"\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:47.7298627Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:48.5545466Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+Update policy enrollment by parameters+$PUT+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\r\n    \"policyDefinitionReferenceIds\": [ \"2719031940633985590\" ],\r\n    \"displayName\": \"testDisplay2\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "297" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/64259825-5e1b-4467-ac33-84a8d2d928ed" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "3bff4969-1e22-4d1b-9f6d-0cd1d49bbbe0" ],
+        "x-ms-correlation-request-id": [ "3bff4969-1e22-4d1b-9f6d-0cd1d49bbbe0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232749Z:3bff4969-1e22-4d1b-9f6d-0cd1d49bbbe0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1467919D5FA647769A468A14E5DEEDC2 Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:49Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "860" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyAssignmentId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"policyAssignmentInstanceId\":\"571da646-c2b0-44b8-8249-91f332118689\",\"policyDefinitionReferenceIds\":[\"2719031940633985590\"],\"displayName\":\"testDisplay2\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet01\",\"etag\":\"\\\"5a00f05d-0000-0800-0000-6a67e9750000\\\"\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:47.7298627Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:49.1993313Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+Update policy enrollment to clear the policy definition reference+$GET+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "456" ],
+        "x-ms-client-request-id": [ "0fd32906-a48e-46d9-a24c-5ba21afb2794" ],
+        "CommandName": [ "Az.Policy.internal\\Get-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Get-AzPolicyEnrollment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/a1a2278b-ea1f-4168-92a5-8882ba8ff832" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "2874f9ae-8046-42ed-8d81-e1d64b15b510" ],
+        "x-ms-correlation-request-id": [ "2874f9ae-8046-42ed-8d81-e1d64b15b510" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232750Z:2874f9ae-8046-42ed-8d81-e1d64b15b510" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 52C009C6D904485AB3D8D76A98B3A796 Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:50Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "860" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyAssignmentId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"policyAssignmentInstanceId\":\"571da646-c2b0-44b8-8249-91f332118689\",\"policyDefinitionReferenceIds\":[\"2719031940633985590\"],\"displayName\":\"testDisplay2\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet01\",\"etag\":\"\\\"5a00f05d-0000-0800-0000-6a67e9750000\\\"\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:47.7298627Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:49.1993313Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+Update policy enrollment to clear the policy definition reference+$PUT+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\r\n    \"policyDefinitionReferenceIds\": [ ],\r\n    \"displayName\": \"testDisplay\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "274" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/cff685d5-0c53-43b3-ace2-59969ca7dea1" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "0d758349-c96e-487b-8ec7-9e8d241ced3a" ],
+        "x-ms-correlation-request-id": [ "0d758349-c96e-487b-8ec7-9e8d241ced3a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232750Z:0d758349-c96e-487b-8ec7-9e8d241ced3a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5C033F89A1374A73B40346A24F7C6FB9 Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:50Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "838" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyAssignmentId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"policyAssignmentInstanceId\":\"571da646-c2b0-44b8-8249-91f332118689\",\"policyDefinitionReferenceIds\":[],\"displayName\":\"testDisplay\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet01\",\"etag\":\"\\\"5a00f55d-0000-0800-0000-6a67e9760000\\\"\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:47.7298627Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:50.3020151Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+List policy enrollments+$PUT+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet02?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet02?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\r\n    \"displayName\": \"Unit test junk: sorry for littering. Please delete me!\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "275" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/f86aa573-c584-477c-a308-051257709a6d" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "e9560c3b-1783-48a8-b727-97ec4a0e1da5" ],
+        "x-ms-correlation-request-id": [ "e9560c3b-1783-48a8-b727-97ec4a0e1da5" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232751Z:e9560c3b-1783-48a8-b727-97ec4a0e1da5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 121CA8065C1C4AB1AEA646C0B12A62D8 Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:50Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "847" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyAssignmentId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"policyAssignmentInstanceId\":\"571da646-c2b0-44b8-8249-91f332118689\",\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet02\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet02\",\"etag\":\"\\\"5a00fc5d-0000-0800-0000-6a67e9770000\\\"\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:51.0400048Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:51.0400048Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+List policy enrollments+$GET+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments?api-version=2026-01-01-preview\u0026$filter=atScope%28%29+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments?api-version=2026-01-01-preview\u0026$filter=atScope%28%29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "459" ],
+        "x-ms-client-request-id": [ "44127e47-5ff7-4229-a8a6-ac5e0bbbdbfb" ],
+        "CommandName": [ "Az.Policy.internal\\Get-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Get-AzPolicyEnrollment_List2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/68d1f6a3-2b10-48e2-9bd2-ab9cf4fa0215" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "942b0ae5-df96-458f-bece-591592c8bd7f" ],
+        "x-ms-correlation-request-id": [ "942b0ae5-df96-458f-bece-591592c8bd7f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232751Z:942b0ae5-df96-458f-bece-591592c8bd7f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CEA7E5428CDB43238531FC9EDE1E25EC Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:51Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2974" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/72f988bf-86f1-41af-91ab-2d7cd011db47/providers/microsoft.authorization/policyassignments/aca-vnetinjection-v1\",\"policyAssignmentInstanceId\":\"b09e82a5-7331-4a87-997e-30ce5885deb5\",\"description\":\"This enrollment was created by the Azure Policy team because this subscription was deemed safe based on the criteria defined in a sev 2.5 IcM incident filed on the service team. For more details, see aka.ms/O3Spec.\",\"resourceSelectors\":[{\"name\":\"SDPRegions\",\"selectors\":[{\"kind\":\"resourceLocation\",\"in\":[\"centraluseuap\",\"eastus2euap\"]}]}],\"metadata\":{\"createdBy\":\"O3\",\"updateTime\":\"2026-07-27T18:28:51.9318481Z\"}},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/GenericSecurityPolicyEnroll-wqbxikpepfohc\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"GenericSecurityPolicyEnroll-wqbxikpepfohc\",\"etag\":\"\\\"13012d51-0000-0100-0000-6a67a3660000\\\"\",\"systemData\":{\"createdBy\":\"5b306cba-9c71-49db-96c3-d17ca2379c4d\",\"createdByType\":\"Application\",\"createdAt\":\"2026-07-27T18:28:54.211584Z\",\"lastModifiedBy\":\"5b306cba-9c71-49db-96c3-d17ca2379c4d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-27T18:28:54.211584Z\"}},{\"properties\":{\"policyAssignmentId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"policyAssignmentInstanceId\":\"571da646-c2b0-44b8-8249-91f332118689\",\"policyDefinitionReferenceIds\":[],\"displayName\":\"testDisplay\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet01\",\"etag\":\"\\\"5a00f55d-0000-0800-0000-6a67e9760000\\\"\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:47.7298627Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:50.3020151Z\"}},{\"properties\":{\"policyAssignmentId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"policyAssignmentInstanceId\":\"571da646-c2b0-44b8-8249-91f332118689\",\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet02\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet02\",\"etag\":\"\\\"5a00fc5d-0000-0800-0000-6a67e9770000\\\"\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:51.0400048Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:51.0400048Z\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments?api-version=2026-01-01-preview\u0026$filter=atScope%28%29+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments?api-version=2026-01-01-preview\u0026$filter=atScope%28%29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "460" ],
+        "x-ms-client-request-id": [ "07457cc4-334f-46f2-b957-ba41ff28041e" ],
+        "CommandName": [ "Az.Policy.internal\\Get-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Get-AzPolicyEnrollment_List2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/8d194c1a-57c3-414b-abd0-ab6e0841a4ec" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "7a38b4d2-5518-49c1-a368-d5a286bd8a9d" ],
+        "x-ms-correlation-request-id": [ "7a38b4d2-5518-49c1-a368-d5a286bd8a9d" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232751Z:7a38b4d2-5518-49c1-a368-d5a286bd8a9d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9A889FF7E66C43C0AE200D3B6D5EE91B Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:51Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2974" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/72f988bf-86f1-41af-91ab-2d7cd011db47/providers/microsoft.authorization/policyassignments/aca-vnetinjection-v1\",\"policyAssignmentInstanceId\":\"b09e82a5-7331-4a87-997e-30ce5885deb5\",\"description\":\"This enrollment was created by the Azure Policy team because this subscription was deemed safe based on the criteria defined in a sev 2.5 IcM incident filed on the service team. For more details, see aka.ms/O3Spec.\",\"resourceSelectors\":[{\"name\":\"SDPRegions\",\"selectors\":[{\"kind\":\"resourceLocation\",\"in\":[\"centraluseuap\",\"eastus2euap\"]}]}],\"metadata\":{\"createdBy\":\"O3\",\"updateTime\":\"2026-07-27T18:28:51.9318481Z\"}},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/GenericSecurityPolicyEnroll-wqbxikpepfohc\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"GenericSecurityPolicyEnroll-wqbxikpepfohc\",\"etag\":\"\\\"13012d51-0000-0100-0000-6a67a3660000\\\"\",\"systemData\":{\"createdBy\":\"5b306cba-9c71-49db-96c3-d17ca2379c4d\",\"createdByType\":\"Application\",\"createdAt\":\"2026-07-27T18:28:54.211584Z\",\"lastModifiedBy\":\"5b306cba-9c71-49db-96c3-d17ca2379c4d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-27T18:28:54.211584Z\"}},{\"properties\":{\"policyAssignmentId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"policyAssignmentInstanceId\":\"571da646-c2b0-44b8-8249-91f332118689\",\"policyDefinitionReferenceIds\":[],\"displayName\":\"testDisplay\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet01\",\"etag\":\"\\\"5a00f55d-0000-0800-0000-6a67e9760000\\\"\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:47.7298627Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:50.3020151Z\"}},{\"properties\":{\"policyAssignmentId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"policyAssignmentInstanceId\":\"571da646-c2b0-44b8-8249-91f332118689\",\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet02\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet02\",\"etag\":\"\\\"5a00fc5d-0000-0800-0000-6a67e9770000\\\"\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:51.0400048Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:51.0400048Z\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "461" ],
+        "x-ms-client-request-id": [ "f2633607-a816-43b3-b90a-78eda9c49bea" ],
+        "CommandName": [ "Az.Policy.internal\\Remove-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Remove-AzPolicyEnrollment_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/4131df17-ce9c-4b4a-8e11-0949f6a88537" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "81dd2e2c-accb-4136-9959-ef4184ea9a00" ],
+        "x-ms-correlation-request-id": [ "81dd2e2c-accb-4136-9959-ef4184ea9a00" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232752Z:81dd2e2c-accb-4136-9959-ef4184ea9a00" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 634066BA100B493C8ADBFD2DA2E0E0B9 Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:51Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "838" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyAssignmentId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"policyAssignmentInstanceId\":\"571da646-c2b0-44b8-8249-91f332118689\",\"policyDefinitionReferenceIds\":[],\"displayName\":\"testDisplay\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet01\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet01\",\"etag\":\"\\\"5a00f55d-0000-0800-0000-6a67e9760000\\\"\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:47.7298627Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:50.3020151Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet02?api-version=2026-01-01-preview+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet02?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "462" ],
+        "x-ms-client-request-id": [ "c5d9d0f4-f7cf-4cf4-86eb-b6b5099c3e58" ],
+        "CommandName": [ "Az.Policy.internal\\Remove-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Remove-AzPolicyEnrollment_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/1a2bc6cd-864f-4657-91f0-e9fe9d1db97f" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "b82030bb-eb22-4323-8705-5a5b199b2163" ],
+        "x-ms-correlation-request-id": [ "b82030bb-eb22-4323-8705-5a5b199b2163" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232752Z:b82030bb-eb22-4323-8705-5a5b199b2163" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2015310196254328A275C46FE6A6E4B9 Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:52Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "847" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyAssignmentId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"policyAssignmentInstanceId\":\"571da646-c2b0-44b8-8249-91f332118689\",\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/psPolicyEnrollmentCRUDOnPolicySet02\",\"type\":\"Microsoft.Authorization/policyEnrollments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet02\",\"etag\":\"\\\"5a00fc5d-0000-0800-0000-6a67e9770000\\\"\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:51.0400048Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:51.0400048Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04?api-version=2026-01-01-preview+6": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "463" ],
+        "x-ms-client-request-id": [ "a550b70e-2339-46d9-b898-138ae87df89b" ],
+        "CommandName": [ "Az.Policy.internal\\Remove-AzPolicyAssignment" ],
+        "FullCommandName": [ "Remove-AzPolicyAssignment_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/b09e3dec-d66a-472f-8b33-e5c07a63ed8a" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "7ed1ea1a-9279-4d2f-b217-e906889f59a9" ],
+        "x-ms-correlation-request-id": [ "7ed1ea1a-9279-4d2f-b217-e906889f59a9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232752Z:7ed1ea1a-9279-4d2f-b217-e906889f59a9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A14DAC8367BF458AAFCB3B9CDD50CD60 Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:52Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1041" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\",\"policyDefinitionId\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/psPolicyEnrollmentCRUDOnPolicySet03\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935\",\"metadata\":{\"createdBy\":\"aaa98dcf-7592-4632-a750-6f61c2d0d1d7\",\"createdOn\":\"2026-07-27T23:27:47.286519Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Enroll\",\"instanceId\":\"571da646-c2b0-44b8-8249-91f332118689\"},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyAssignments/psPolicyEnrollmentCRUDOnPolicySet04\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet04\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:47.2641527Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:47.2641527Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyEnrollmentCRUDOnPolicySet+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/psPolicyEnrollmentCRUDOnPolicySet03?api-version=2026-01-01-preview+7": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/psPolicyEnrollmentCRUDOnPolicySet03?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "464" ],
+        "x-ms-client-request-id": [ "2e200fa6-7d00-4ee2-af6e-8c7c84477a78" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Remove-AzPolicySetDefinition_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/d634e6ed-4341-470d-9465-5c21e41b3247" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "2dfc58a5-5d1d-4c89-bed0-3b71d76e8433" ],
+        "x-ms-correlation-request-id": [ "2dfc58a5-5d1d-4c89-bed0-3b71d76e8433" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T232753Z:2dfc58a5-5d1d-4c89-bed0-3b71d76e8433" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2F4E5F5E17A743E9B1D2A45137D7F4DE Ref B: MWH011020808023 Ref C: 2026-07-27T23:27:52Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:27:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "990" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\",\"policyType\":\"Custom\",\"metadata\":{\"createdBy\":\"aaa98dcf-7592-4632-a750-6f61c2d0d1d7\",\"createdOn\":\"2026-07-27T23:27:46.788998Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"policyDefinitions\":[{\"policyDefinitionReferenceId\":\"2719031940633985590\",\"policyDefinitionId\":\"/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a\",\"definitionVersion\":\"2.*.*\"}],\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/psPolicyEnrollmentCRUDOnPolicySet03\",\"type\":\"Microsoft.Authorization/policySetDefinitions\",\"name\":\"psPolicyEnrollmentCRUDOnPolicySet03\",\"systemData\":{\"createdBy\":\"dunnryan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-27T23:27:46.7499389Z\",\"lastModifiedBy\":\"dunnryan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-27T23:27:46.7499389Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

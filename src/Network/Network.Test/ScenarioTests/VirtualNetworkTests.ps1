@@ -14,6 +14,60 @@
 
 <#
 .SYNOPSIS
+Tests creating an IP configuration move item.
+#>
+function Test-NewMoveIpConfigurationItem
+{
+    $sourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/networkInterfaces/source/ipConfigurations/ipconfig1"
+    $targetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/networkInterfaces/target/ipConfigurations/ipconfig2"
+
+    $item = New-AzMoveIpConfigurationItem -SourceIpConfigurationId $sourceId -TargetIpConfigurationId $targetId
+
+    Assert-NotNull $item
+    Assert-AreEqual $sourceId $item.SourceIpConfigurationId
+    Assert-AreEqual $targetId $item.TargetIpConfigurationId
+}
+
+<#
+.SYNOPSIS
+Tests moving virtual network IP configurations.
+#>
+function Test-MoveVirtualNetworkIpConfiguration
+{
+    $subscriptionId = "00000000-0000-0000-0000-000000000000"
+    $resourceGroupName = "move-ip-configurations-rg"
+    $virtualNetworkName = "move-ip-configurations-vnet"
+
+    $moveItems = @(
+        New-AzMoveIpConfigurationItem `
+            -SourceIpConfigurationId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Network/networkInterfaces/source-nic-1/ipConfigurations/ipconfig1" `
+            -TargetIpConfigurationId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Network/networkInterfaces/target-nic-1/ipConfigurations/ipconfig1"
+        New-AzMoveIpConfigurationItem `
+            -SourceIpConfigurationId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Network/networkInterfaces/source-nic-2/ipConfigurations/ipconfig2" `
+            -TargetIpConfigurationId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Network/networkInterfaces/target-nic-2/ipConfigurations/ipconfig2"
+    )
+
+    $result = Move-AzVirtualNetworkIpConfiguration `
+        -ResourceGroupName $resourceGroupName `
+        -VirtualNetworkName $virtualNetworkName `
+        -MoveIpConfigurationItem $moveItems `
+        -PassThru `
+        -WhatIf
+
+    Assert-Null $result
+
+    $moveItemsWithNull = @($moveItems[0], $null)
+    Assert-ThrowsLike {
+        Move-AzVirtualNetworkIpConfiguration `
+            -ResourceGroupName $resourceGroupName `
+            -VirtualNetworkName $virtualNetworkName `
+            -MoveIpConfigurationItem $moveItemsWithNull `
+            -WhatIf
+    } "*element of the argument collection contains a null value*"
+}
+
+<#
+.SYNOPSIS
 Tests creating new simple virtualNetwork.
 .DESCRIPTION
 SmokeTest
