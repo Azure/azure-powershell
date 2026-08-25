@@ -4,14 +4,17 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 }
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzRedisEnterpriseCacheDatabase.Recording.json'
-$currentPath = $PSScriptRoot
-while(-not $mockingPath) {
-    $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-    $currentPath = Split-Path -Path $currentPath -Parent
-}
-. ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzRedisEnterpriseCacheDatabase' {
+    It 'Uses read-modify-write via PUT for database updates' {
+        $customCmdletPath = Join-Path $PSScriptRoot '..\custom\Update-AzRedisEnterpriseCacheDatabase.ps1'
+        $customCmdlet = Get-Content -Path $customCmdletPath -Raw
+
+        $customCmdlet | Should -Match 'Get-AzRedisEnterpriseCacheDatabase'
+        $customCmdlet | Should -Match 'New-AzRedisEnterpriseCacheDatabase'
+        $customCmdlet | Should -Not -Match 'internal\\Update-AzRedisEnterpriseCacheDatabase'
+    }
+
     It 'UpdateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
