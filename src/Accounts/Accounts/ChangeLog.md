@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.5.3
 * Fixed `Get-AzSubscription` to throw a clear error instead of silently returning nothing when `-TenantId` does not match the current context under Managed Service Identity (MSI) authentication. [#25710]
 
 ## Version 5.5.2
