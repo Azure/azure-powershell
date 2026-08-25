@@ -241,7 +241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         Description = @"Gets the provisioning state of the API collection.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Security.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "InProgress")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Security.PSArgumentCompleterAttribute("Succeeded", "Creating", "Updating", "Deleting", "Failed", "Canceled", "InProgress")]
         string ProvisioningState { get;  }
         /// <summary>
         /// The highest priority sensitivity label from Microsoft Purview in this API collection.
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         /// <summary>The number of API endpoints in this API collection that are unauthenticated.</summary>
         long? NumberOfUnauthenticatedApiEndpoint { get; set; }
         /// <summary>Gets the provisioning state of the API collection.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Security.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "InProgress")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Security.PSArgumentCompleterAttribute("Succeeded", "Creating", "Updating", "Deleting", "Failed", "Canceled", "InProgress")]
         string ProvisioningState { get; set; }
         /// <summary>
         /// The highest priority sensitivity label from Microsoft Purview in this API collection.

@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Common
     using GetTelemetryIdDelegate = Func<string>;
     using ModuleLoadPipelineDelegate = Action<string, string, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>>;
     using NewRequestPipelineDelegate = Action<System.Management.Automation.InvocationInfo, string, string, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>>;
+    using ChangeSafetyPolicyTokenDelegate = Action<System.Management.Automation.InvocationInfo, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>>;
     using ArgumentCompleterDelegate = Func<string, System.Management.Automation.InvocationInfo, string, string[], string[], string[]>;
     using AuthorizeRequestDelegate = global::System.Action<System.Management.Automation.InvocationInfo,
                                         string,
@@ -104,6 +105,12 @@ namespace Microsoft.Azure.Commands.Common
         public NewRequestPipelineDelegate AddPatchRequestUriHandler;
 
         public AuthorizeRequestDelegate AddAuthorizeRequestHandler;
+
+        /// <summary>
+        /// Called by the generated module after OnNewRequest to conditionally add the change safety
+        /// policy-token step, based on the -AcquirePolicyToken / -ChangeReference bound parameters.
+        /// </summary>
+        public ChangeSafetyPolicyTokenDelegate AddChangeSafetyPolicyTokenHandler;
 
         public SanitizerDelegate SanitizerHandler;
 

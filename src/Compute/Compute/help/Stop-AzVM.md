@@ -16,7 +16,7 @@ Stops an Azure virtual machine.
 ### ResourceGroupNameParameterSetName (Default)
 ```
 Stop-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Force] [-StayProvisioned] [-NoWait] [-SkipShutdown]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-ForceDeallocate] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ Stop-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Force] [-NoWait] [-Hi
 
 ### IdParameterSetName
 ```
-Stop-AzVM [-Force] [-StayProvisioned] [-NoWait] [-SkipShutdown] [-Id] <String> [-AsJob]
+Stop-AzVM [-Force] [-StayProvisioned] [-NoWait] [-SkipShutdown] [-Id] <String> [-ForceDeallocate] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -51,6 +51,13 @@ Stop-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command stops the virtual machine named VirtualMachine07 in ResourceGroup11.
+
+### Example 2: Force deallocate a virtual machine during stop
+```powershell
+Stop-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -ForceDeallocate
+```
+
+This command force deallocates the virtual machine named VirtualMachine07 in ResourceGroup11 during the stop operation.
 
 ## PARAMETERS
 
@@ -90,6 +97,21 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForceDeallocate
+Optional parameter to force deallocate a virtual machine during stop operations. Cannot be used with -StayProvisioned, -SkipShutdown, or -Hibernate.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ResourceGroupNameParameterSetName, IdParameterSetName
 Aliases:
 
 Required: False

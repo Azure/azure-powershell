@@ -1,0 +1,13 @@
+{
+  "Entries": [],
+  "Names": {
+    "Test-VirtualMachineZoneMovementProfile": [
+      "onesdk1234"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "UserId": "user@microsoft.com",
+    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+  }
+}

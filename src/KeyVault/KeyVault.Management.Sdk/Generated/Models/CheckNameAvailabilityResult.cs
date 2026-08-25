@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <param name="message">An error message explaining the Reason value in more detail.
         /// </param>
-        public CheckNameAvailabilityResult(bool? nameAvailable = default(bool?), Reason? reason = default(Reason?), string message = default(string))
+        public CheckNameAvailabilityResult(bool? nameAvailable = default(bool?), string reason = default(string), string message = default(string))
 
         {
             this.NameAvailable = nameAvailable;
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// only returned if NameAvailable is false. Possible values include: &#39;AccountNameInvalid&#39;, &#39;AlreadyExists&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "reason")]
-        public Reason? Reason {get; private set; }
+        public string Reason {get; private set; }
 
         /// <summary>
         /// Gets an error message explaining the Reason value in more detail.

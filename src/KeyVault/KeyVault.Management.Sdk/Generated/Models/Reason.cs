@@ -11,41 +11,9 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     /// </summary>
 
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum Reason
+    public static class Reason
     {
-        [System.Runtime.Serialization.EnumMember(Value = "AccountNameInvalid")]
-        AccountNameInvalid,
-        [System.Runtime.Serialization.EnumMember(Value = "AlreadyExists")]
-        AlreadyExists
-    }
-    internal static class ReasonEnumExtension
-    {
-        internal static string ToSerializedValue(this Reason? value)
-        {
-            return value == null ? null : ((Reason)value).ToSerializedValue();
-        }
-        internal static string ToSerializedValue(this Reason value)
-        {
-            switch( value )
-            {
-                case Reason.AccountNameInvalid:
-                    return "AccountNameInvalid";
-                case Reason.AlreadyExists:
-                    return "AlreadyExists";
-            }
-            return null;
-        }
-        internal static Reason? ParseReason(this string value)
-        {
-            switch( value )
-            {
-                case "AccountNameInvalid":
-                    return Reason.AccountNameInvalid;
-                case "AlreadyExists":
-                    return Reason.AlreadyExists;
-            }
-            return null;
-        }
+        public const string AccountNameInvalid = "AccountNameInvalid";
+        public const string AlreadyExists = "AlreadyExists";
     }
 }

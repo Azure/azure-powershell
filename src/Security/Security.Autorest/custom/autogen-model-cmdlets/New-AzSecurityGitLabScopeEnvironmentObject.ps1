@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Security.Models.GitLabScopeEnvironment
 https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritygitlabscopeenvironmentobject
 #>
 function New-AzSecurityGitLabScopeEnvironmentObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Security.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Security.Models.GitLabScopeEnvironment')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
