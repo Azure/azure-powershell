@@ -401,6 +401,15 @@ Gets a route table summary of an ExpressRoute cross connection.
 ### [Get-AzExpressRouteGateway](Get-AzExpressRouteGateway.md)
 Gets a ExpressRouteGateway resource using ResourceGroupName and GatewayName OR lists all gateways by ResourceGroupName or SubscriptionId.
 
+### [Get-AzExpressRouteLag](Get-AzExpressRouteLag.md)
+Gets an Azure ExpressRouteLag resource.
+
+### [Get-AzExpressRouteLagLink](Get-AzExpressRouteLagLink.md)
+Gets the links of an Azure ExpressRouteLag.
+
+### [Get-AzExpressRouteLagMember](Get-AzExpressRouteLagMember.md)
+Gets the members of an Azure ExpressRouteLag link.
+
 ### [Get-AzExpressRoutePort](Get-AzExpressRoutePort.md)
 Gets an Azure ExpressRoutePort resource.
 
@@ -434,11 +443,23 @@ Gets a Azure Firewall Policy
 ### [Get-AzFirewallPolicyDraft](Get-AzFirewallPolicyDraft.md)
 Gets an Azure Firewall Policy Draft.
 
+### [Get-AzFirewallPolicyKubeSelectorGroup](Get-AzFirewallPolicyKubeSelectorGroup.md)
+Gets a Kube Selector Group from an Azure Firewall Policy.
+
 ### [Get-AzFirewallPolicyRuleCollectionGroup](Get-AzFirewallPolicyRuleCollectionGroup.md)
 Gets a Azure Firewall Policy Rule Collection Group
 
 ### [Get-AzFirewallPolicyRuleCollectionGroupDraft](Get-AzFirewallPolicyRuleCollectionGroupDraft.md)
 Gets an Azure Firewall Policy Rule Collection Group Draft.
+
+### [Get-AzInterconnectGroup](Get-AzInterconnectGroup.md)
+Gets an interconnect group.
+
+### [Get-AzInterconnectGroupNodeAvailability](Get-AzInterconnectGroupNodeAvailability.md)
+Gets the node availability of an interconnect group.
+
+### [Get-AzInterconnectGroupSubgroup](Get-AzInterconnectGroupSubgroup.md)
+Gets a subgroup of an interconnect group.
 
 ### [Get-AzIpAllocation](Get-AzIpAllocation.md)
 Gets a Azure IpAllocation.
@@ -1150,6 +1171,12 @@ Creates an ExpressRoute connection that connects an ExpressRoute gateway to an o
 ### [New-AzExpressRouteGateway](New-AzExpressRouteGateway.md)
 Creates a Scalable ExpressRoute Gateway.
 
+### [New-AzExpressRouteLag](New-AzExpressRouteLag.md)
+Creates an Azure ExpressRouteLag resource.
+
+### [New-AzExpressRouteLagLOA](New-AzExpressRouteLagLOA.md)
+Generates and downloads a letter of authorization (LOA) for an Azure ExpressRouteLag.
+
 ### [New-AzExpressRoutePort](New-AzExpressRoutePort.md)
 Creates an Azure ExpressRoutePort.
 
@@ -1231,6 +1258,15 @@ Create a new Azure Firewall Policy Nat Rule Collection
 ### [New-AzFirewallPolicyNetworkRule](New-AzFirewallPolicyNetworkRule.md)
 Create a new Azure Firewall Policy Network Rule
 
+### [New-AzFirewallPolicyKubeLabelSelector](New-AzFirewallPolicyKubeLabelSelector.md)
+Creates an in-memory Kubernetes label selector for use in a Kube Selector Group.
+
+### [New-AzFirewallPolicyKubeSelectorGroup](New-AzFirewallPolicyKubeSelectorGroup.md)
+Creates a Kube Selector Group on an Azure Firewall Policy.
+
+### [New-AzFirewallPolicyLabelSelectorExpression](New-AzFirewallPolicyLabelSelectorExpression.md)
+Creates an in-memory label selector requirement (match expression).
+
 ### [New-AzFirewallPolicyRuleCollectionGroup](New-AzFirewallPolicyRuleCollectionGroup.md)
 Create a new Azure Firewall Policy Rule Collection Group
 
@@ -1254,6 +1290,9 @@ Create a new threat intelligence allowlist for Azure Firewall
 
 ### [New-AzGatewayCustomBgpIpConfigurationObject](New-AzGatewayCustomBgpIpConfigurationObject.md)
 creates a new GatewayCustomBgpIpConfigurationObject.
+
+### [New-AzInterconnectGroup](New-AzInterconnectGroup.md)
+Creates an interconnect group.
 
 ### [New-AzIpAllocation](New-AzIpAllocation.md)
 Creates an Azure IpAllocation.
@@ -1863,6 +1902,9 @@ Removes an ExpressRoute cross connection peering configuration.
 ### [Remove-AzExpressRouteGateway](Remove-AzExpressRouteGateway.md)
 The Remove-AzExpressRouteGateway cmdlet removes an Azure ExpressRoute gateway. This is a gateway specific to Azure Virtual WAN's software defined connectivity.
 
+### [Remove-AzExpressRouteLag](Remove-AzExpressRouteLag.md)
+Removes an Azure ExpressRouteLag resource.
+
 ### [Remove-AzExpressRoutePort](Remove-AzExpressRoutePort.md)
 Removes an ExpressRoutePort.
 
@@ -1881,11 +1923,17 @@ Removes an Azure Firewall Policy
 ### [Remove-AzFirewallPolicyDraft](Remove-AzFirewallPolicyDraft.md)
 Removes an Azure Firewall Policy
 
+### [Remove-AzFirewallPolicyKubeSelectorGroup](Remove-AzFirewallPolicyKubeSelectorGroup.md)
+Removes a Kube Selector Group from an Azure Firewall Policy.
+
 ### [Remove-AzFirewallPolicyRuleCollectionGroup](Remove-AzFirewallPolicyRuleCollectionGroup.md)
 Removes a Azure Firewall Policy Rule Collection Group in a Azure firewall policy
 
 ### [Remove-AzFirewallPolicyRuleCollectionGroupDraft](Remove-AzFirewallPolicyRuleCollectionGroupDraft.md)
 Removes an Azure Firewall Policy Rule Collection Group draft in an Azure firewall policy.
+
+### [Remove-AzInterconnectGroup](Remove-AzInterconnectGroup.md)
+Removes an interconnect group.
 
 ### [Remove-AzIpAllocation](Remove-AzIpAllocation.md)
 Deletes an Azure IpAllocation.
@@ -2334,6 +2382,9 @@ Modifies an ExpressRoute cross connection.
 ### [Set-AzExpressRouteGateway](Set-AzExpressRouteGateway.md)
 Updates a Scalable ExpressRoute Gateway.
 
+### [Set-AzExpressRouteLag](Set-AzExpressRouteLag.md)
+Updates an Azure ExpressRouteLag resource.
+
 ### [Set-AzExpressRoutePort](Set-AzExpressRoutePort.md)
 Modifies an ExpressRoutePort.
 
@@ -2349,11 +2400,17 @@ Saves a modified azure firewall policy
 ### [Set-AzFirewallPolicyDraft](Set-AzFirewallPolicyDraft.md)
 Saves a modified azure firewall policy draft
 
+### [Set-AzFirewallPolicyKubeSelectorGroup](Set-AzFirewallPolicyKubeSelectorGroup.md)
+Updates a Kube Selector Group on an Azure Firewall Policy.
+
 ### [Set-AzFirewallPolicyRuleCollectionGroup](Set-AzFirewallPolicyRuleCollectionGroup.md)
 saves a modified azure firewall policy rule collection group
 
 ### [Set-AzFirewallPolicyRuleCollectionGroupDraft](Set-AzFirewallPolicyRuleCollectionGroupDraft.md)
 Sets a modified Azure Firewall Policy Rule Collection Group draft.
+
+### [Set-AzInterconnectGroup](Set-AzInterconnectGroup.md)
+Updates an interconnect group.
 
 ### [Set-AzIpAllocation](Set-AzIpAllocation.md)
 Saves a modified IpAllocation.

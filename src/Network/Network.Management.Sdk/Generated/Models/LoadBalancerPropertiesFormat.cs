@@ -68,7 +68,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="scope">Indicates the scope of the load balancer: external (Public) or internal
         /// (Private).
         /// Possible values include: &#39;Public&#39;, &#39;Private&#39;</param>
-        public LoadBalancerPropertiesFormat(System.Collections.Generic.IList<FrontendIPConfiguration> frontendIPConfigurations = default(System.Collections.Generic.IList<FrontendIPConfiguration>), System.Collections.Generic.IList<BackendAddressPool> backendAddressPools = default(System.Collections.Generic.IList<BackendAddressPool>), System.Collections.Generic.IList<LoadBalancingRule> loadBalancingRules = default(System.Collections.Generic.IList<LoadBalancingRule>), System.Collections.Generic.IList<Probe> probes = default(System.Collections.Generic.IList<Probe>), System.Collections.Generic.IList<InboundNatRule> inboundNatRules = default(System.Collections.Generic.IList<InboundNatRule>), System.Collections.Generic.IList<InboundNatPool> inboundNatPools = default(System.Collections.Generic.IList<InboundNatPool>), System.Collections.Generic.IList<OutboundRule> outboundRules = default(System.Collections.Generic.IList<OutboundRule>), string resourceGuid = default(string), string provisioningState = default(string), string scope = default(string))
+
+        /// <param name="mode">The load balancer mode. Set to `Advanced` to enable additional capabilities
+        /// on a Standard SKU load balancer. Advanced mode must be specified at
+        /// creation and cannot be changed afterward.
+        /// Possible values include: &#39;Advanced&#39;</param>
+        public LoadBalancerPropertiesFormat(System.Collections.Generic.IList<FrontendIPConfiguration> frontendIPConfigurations = default(System.Collections.Generic.IList<FrontendIPConfiguration>), System.Collections.Generic.IList<BackendAddressPool> backendAddressPools = default(System.Collections.Generic.IList<BackendAddressPool>), System.Collections.Generic.IList<LoadBalancingRule> loadBalancingRules = default(System.Collections.Generic.IList<LoadBalancingRule>), System.Collections.Generic.IList<Probe> probes = default(System.Collections.Generic.IList<Probe>), System.Collections.Generic.IList<InboundNatRule> inboundNatRules = default(System.Collections.Generic.IList<InboundNatRule>), System.Collections.Generic.IList<InboundNatPool> inboundNatPools = default(System.Collections.Generic.IList<InboundNatPool>), System.Collections.Generic.IList<OutboundRule> outboundRules = default(System.Collections.Generic.IList<OutboundRule>), string resourceGuid = default(string), string provisioningState = default(string), string scope = default(string), string mode = default(string))
 
         {
             this.FrontendIPConfigurations = frontendIPConfigurations;
@@ -81,6 +86,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ResourceGuid = resourceGuid;
             this.ProvisioningState = provisioningState;
             this.Scope = scope;
+            this.Mode = mode;
             CustomInit();
         }
 
@@ -164,5 +170,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scope")]
         public string Scope {get; set; }
+
+        /// <summary>
+        /// Gets or sets the load balancer mode. Set to `Advanced` to enable additional
+        /// capabilities on a Standard SKU load balancer. Advanced mode must be
+        /// specified at creation and cannot be changed afterward. Possible values include: &#39;Advanced&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "mode")]
+        public string Mode {get; set; }
     }
 }

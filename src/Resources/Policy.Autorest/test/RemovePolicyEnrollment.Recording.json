@@ -1,0 +1,170 @@
+{
+  "RemovePolicyEnrollment+[NoContext]+Remove-AzPolicyEnrollment -Name -Scope -Force+$DELETE+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "724" ],
+        "x-ms-client-request-id": [ "3e949040-eefe-404e-840e-7dc2a4500117" ],
+        "CommandName": [ "Az.Policy.internal\\Remove-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Remove-AzPolicyEnrollment_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/12e5e203-0887-445d-bf5e-cc6a61a8ba02" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "f6aefb2c-1d07-4731-8739-5b07e2328270" ],
+        "x-ms-correlation-request-id": [ "f6aefb2c-1d07-4731-8739-5b07e2328270" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T233102Z:f6aefb2c-1d07-4731-8739-5b07e2328270" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E869E8A758AC4544A5B24A9D96980ABF Ref B: MWH011020808023 Ref C: 2026-07-27T23:31:02Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:31:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "RemovePolicyEnrollment+[NoContext]+Remove-AzPolicyEnrollment -Name -Scope -Force -PassThru+$DELETE+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "725" ],
+        "x-ms-client-request-id": [ "53d4f05f-86c1-40bb-b7e3-dd75d6dd56e8" ],
+        "CommandName": [ "Az.Policy.internal\\Remove-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Remove-AzPolicyEnrollment_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/855dc53d-0479-4bcc-a834-e1cfe2274fcd" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "2152a2e6-bba2-4902-a7b9-9cecfff377f0" ],
+        "x-ms-correlation-request-id": [ "2152a2e6-bba2-4902-a7b9-9cecfff377f0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T233102Z:2152a2e6-bba2-4902-a7b9-9cecfff377f0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FF48B08A33C84126B9D0586D26932B5A Ref B: MWH011020808023 Ref C: 2026-07-27T23:31:02Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:31:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "RemovePolicyEnrollment+[NoContext]+Remove-AzPolicyEnrollment -Id -Force+$DELETE+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "726" ],
+        "x-ms-client-request-id": [ "9939e644-e174-4087-ba86-faef6688aa39" ],
+        "CommandName": [ "Az.Policy.internal\\Remove-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Remove-AzPolicyEnrollment_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/f4d6b78c-c3d6-4f67-8d81-6ccd70722003" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "d3ed59a0-37c0-43d9-a2a4-7b0a05df7398" ],
+        "x-ms-correlation-request-id": [ "d3ed59a0-37c0-43d9-a2a4-7b0a05df7398" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T233103Z:d3ed59a0-37c0-43d9-a2a4-7b0a05df7398" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6DC5D697C54142528E2996BA1AC8E787 Ref B: MWH011020808023 Ref C: 2026-07-27T23:31:03Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:31:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "RemovePolicyEnrollment+[NoContext]+Remove-AzPolicyEnrollment -Id -Force -PassThru+$DELETE+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "727" ],
+        "x-ms-client-request-id": [ "9a0a7f36-b483-47fe-8b58-e01782259cde" ],
+        "CommandName": [ "Az.Policy.internal\\Remove-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Remove-AzPolicyEnrollment_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/9f69dfcc-2ec7-44c4-82fe-8d9cf76cfd19" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "e44e7aaf-3054-490f-89df-bf486b81310a" ],
+        "x-ms-correlation-request-id": [ "e44e7aaf-3054-490f-89df-bf486b81310a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T233103Z:e44e7aaf-3054-490f-89df-bf486b81310a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6A295F8CDC414787B4AA3A1376B38A5C Ref B: MWH011020808023 Ref C: 2026-07-27T23:31:03Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:31:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

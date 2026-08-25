@@ -136,12 +136,6 @@ begin {
     if ($writeln) {
         Write-Host -ForegroundColor Cyan "begin:Remove-AzPolicyAssignment(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
-
-    # make mapping table
-    $mapping = @{
-        Delete = 'Az.Policy.private\Remove-AzPolicyAssignment_Delete';
-        Delete1 = 'Az.Policy.private\Remove-AzPolicyAssignment_Delete1';
-    }
 }
 
 process {
@@ -177,25 +171,14 @@ process {
 
     # remove the assignment if inputs resolve and user confirms
     if ($resolved.Scope -and $PSCmdlet.ShouldProcess($target)) {
-        if ($Name) {
-            $PSBoundParameters['Name'] = $Name
-            $PSBoundParameters['Scope'] = $resolved.Scope
-            $calledParameterSet = 'Delete'
-        }
-        elseif ($Id) {
-            $PSBoundParameters['Id'] = $Id
-            $calledParameterSet = 'Delete1'
-        }
 
-        if ($writeln) {
-            Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $PSBoundParameters ')'
-        }
+        $PSBoundParameters['Name'] = $resolved.Name
+        $PSBoundParameters['Scope'] = $resolved.Scope
+        
+        $null = $PSBoundParameters.Remove('Id')
 
-        $cmdInfo = Get-Command -Name $mapping[$calledParameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $calledParameterSet, $PSCmdlet)
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$calledParameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $result = Invoke-Command -ScriptBlock $scriptCmd
+        # call the internal cmdlet with the parsed parameters
+        $result = Az.Policy.internal\Remove-AzPolicyAssignment @PSBoundParameters
     }
     
     if ($PassThru) {
