@@ -1283,13 +1283,19 @@ namespace Microsoft.Azure.Commands.Compute
                 if (bginfoVersions != null
                     && bginfoVersions.Count > 0)
                 {
-                    return bginfoVersions.Max(ver =>
+                    Version latestVersion = bginfoVersions
+                        .Select(ver =>
+                        {
+                            Version parsed;
+                            return Version.TryParse(ver.Name, out parsed) ? parsed : null;
+                        })
+                        .Where(parsed => parsed != null)
+                        .Max();
+
+                    if (latestVersion != null)
                     {
-                        Version result;
-                        return (Version.TryParse(ver.Name, out result))
-                            ? string.Format("{0}.{1}", result.Major, result.Minor)
-                            : VirtualMachineBGInfoExtensionContext.ExtensionDefaultVersion;
-                    });
+                        return string.Format("{0}.{1}", latestVersion.Major, latestVersion.Minor);
+                    }
                 }
             }
             catch (Exception ex)
