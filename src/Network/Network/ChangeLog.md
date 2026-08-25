@@ -64,7 +64,7 @@
     - Added `New-AzFirstPartyServiceTag`, `Get-AzFirstPartyServiceTag`, `Set-AzFirstPartyServiceTag`, and `Remove-AzFirstPartyServiceTag`.
     - Added first party service tag association support to `New-AzPublicIpTag`.
 * Added new cmdlet to retrieve effective routes for a Virtual Network Gateway
-    - `Get-AzVirtualNetworkGatewayEffectiveRoute` : Get effective routes for a Virtual Network Gateway
+    - `Get-AzVirtualNetworkGatewayEffectiveRoute`: Get effective routes for a Virtual Network Gateway
 * Added the `-Mode` and `-Scope` parameters to `New-AzLoadBalancer`.
     - Set `-Mode Advanced` together with `-Scope Public` or `-Scope Private` to create an advanced (Banksy-based) Standard SKU load balancer. Advanced mode must be specified at creation and cannot be changed afterward.
 * Added the `-EnableConnectionTracking` switch to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
