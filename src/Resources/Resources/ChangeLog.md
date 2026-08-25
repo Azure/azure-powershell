@@ -23,7 +23,7 @@
 * Added `Get-AzPolicyEnrollment`, `New-AzPolicyEnrollment`, `Remove-AzPolicyEnrollment`, and `Update-AzPolicyEnrollment` for Policy Enrollment resources.
 * Added a template deployment what-if notice for the generally available Deployment Stacks What-If, which removes noise from results.
 * Renamed `DenySettingsApplyToChildScope` to `DenySettingsApplyToChildScopes` for deployment stack WhatIfResult cmdlets, retaining the old name as an alias.
-* Added `ResourcesWithoutDeleteSupport` and tag support to deployment stack WhatIfResult cmdlets and output.
+* Added `ResourcesWithoutDeleteSupport` to deployment stack WhatIfResult cmdlets, and tag support to the cmdlets and output.
 
 ## Version 10.1.0
 * Added deployment stack WhatIfResult cmdlets for resource group, subscription, and management group scopes.
