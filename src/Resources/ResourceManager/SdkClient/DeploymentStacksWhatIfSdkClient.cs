@@ -200,6 +200,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string resourcesCleanupAction,
             string resourceGroupsCleanupAction,
             string managementGroupsCleanupAction,
+            string resourcesWithoutDeleteSupport,
+            Hashtable tags,
             string deploymentScope,
             string denySettingsMode,
             string[] denySettingsExcludedPrincipals,
@@ -218,7 +220,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var actionOnUnmanage = new AzSdkModels.ActionOnUnmanage(
                 resources: resourcesCleanupAction,
                 resourceGroups: resourceGroupsCleanupAction,
-                managementGroups: managementGroupsCleanupAction);
+                managementGroups: managementGroupsCleanupAction,
+                resourcesWithoutDeleteSupport: resourcesWithoutDeleteSupport);
 
             var denySettings = new AzSdkModels.DenySettings(
                 mode: denySettingsMode,
@@ -310,6 +313,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var whatIfResult = new DeploymentStacksWhatIfResult
             {
                 Location = location,
+                Tags = TagsHelper.ConvertToTagsDictionary(tags),
                 Properties = properties
             };
 
@@ -596,6 +600,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     parameters.ResourcesCleanupAction,
                     parameters.ResourceGroupsCleanupAction,
                     parameters.ManagementGroupsCleanupAction,
+                    parameters.ResourcesWithoutDeleteSupport,
+                    parameters.Tags,
                     parameters.DenySettingsMode,
                     parameters.DenySettingsExcludedPrincipals,
                     parameters.DenySettingsExcludedActions,
@@ -622,6 +628,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     parameters.ResourcesCleanupAction,
                     parameters.ResourceGroupsCleanupAction,
                     parameters.ManagementGroupsCleanupAction,
+                    parameters.ResourcesWithoutDeleteSupport,
+                    parameters.Tags,
                     parameters.DeploymentScope,
                     parameters.DenySettingsMode,
                     parameters.DenySettingsExcludedPrincipals,
@@ -648,6 +656,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     parameters.ResourcesCleanupAction,
                     parameters.ResourceGroupsCleanupAction,
                     parameters.ManagementGroupsCleanupAction,
+                    parameters.ResourcesWithoutDeleteSupport,
+                    parameters.Tags,
                     parameters.DeploymentScope,
                     parameters.DenySettingsMode,
                     parameters.DenySettingsExcludedPrincipals,
@@ -678,6 +688,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string resourcesCleanupAction,
             string resourceGroupsCleanupAction,
             string managementGroupsCleanupAction,
+            string resourcesWithoutDeleteSupport,
+            Hashtable tags,
             string denySettingsMode,
             string[] denySettingsExcludedPrincipals,
             string[] denySettingsExcludedActions,
@@ -707,6 +719,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     resourcesCleanupAction,
                     resourceGroupsCleanupAction,
                     managementGroupsCleanupAction,
+                    resourcesWithoutDeleteSupport,
+                    tags,
                     deploymentScope: null,
                     denySettingsMode,
                     denySettingsExcludedPrincipals,
@@ -821,6 +835,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string resourcesCleanupAction,
             string resourceGroupsCleanupAction,
             string managementGroupsCleanupAction,
+            string resourcesWithoutDeleteSupport,
+            Hashtable tags,
             string deploymentScope,
             string denySettingsMode,
             string[] denySettingsExcludedPrincipals,
@@ -851,6 +867,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     resourcesCleanupAction,
                     resourceGroupsCleanupAction,
                     managementGroupsCleanupAction,
+                    resourcesWithoutDeleteSupport,
+                    tags,
                     deploymentScope,
                     denySettingsMode,
                     denySettingsExcludedPrincipals,
@@ -960,6 +978,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string resourcesCleanupAction,
             string resourceGroupsCleanupAction,
             string managementGroupsCleanupAction,
+            string resourcesWithoutDeleteSupport,
+            Hashtable tags,
             string deploymentScope,
             string denySettingsMode,
             string[] denySettingsExcludedPrincipals,
@@ -990,6 +1010,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     resourcesCleanupAction,
                     resourceGroupsCleanupAction,
                     managementGroupsCleanupAction,
+                    resourcesWithoutDeleteSupport,
+                    tags,
                     deploymentScope,
                     denySettingsMode,
                     denySettingsExcludedPrincipals,
