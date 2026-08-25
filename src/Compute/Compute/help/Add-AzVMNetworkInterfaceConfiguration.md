@@ -27,6 +27,8 @@ It initializes the network profile when needed and preserves existing network in
 
 ### Example 1: Add an implicit network interface with a first-party service IP tag
 ```powershell
+$serviceTagResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/firstPartyServiceTags/myServiceTag'
+$subnetId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVNet/subnets/mySubnet'
 $ipTag = New-AzVMIpTagConfig -IpTagType 'FirstPartyUsage' -FirstPartyServiceTagId $serviceTagResourceId
 $ipConfig = New-AzVMIpConfig -Name 'ipConfig' -SubnetId $subnetId -PublicIPAddressConfigurationName 'publicIpConfig' -IpTag $ipTag
 $vmConfig = New-AzVMConfig -VMName 'myVM' -VMSize 'Standard_D2s_v5'

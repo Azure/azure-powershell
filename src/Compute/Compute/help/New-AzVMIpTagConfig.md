@@ -25,6 +25,7 @@ Pass the object to the *IpTag* parameter of **New-AzVMIpConfig**.
 
 ### Example 1: Create a first-party service IP tag
 ```powershell
+$serviceTagResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/firstPartyServiceTags/myServiceTag'
 $ipTag = New-AzVMIpTagConfig -IpTagType 'FirstPartyUsage' -Tag 'Sql' -FirstPartyServiceTagId $serviceTagResourceId
 $ipConfig = New-AzVMIpConfig -Name 'ipConfig' -PublicIPAddressConfigurationName 'publicIpConfig' -IpTag $ipTag
 ```
