@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ServiceFabric.Commands;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
@@ -62,6 +63,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         [InlineData("bronze", DurabilityLevel.Bronze)]
         [InlineData("silver", DurabilityLevel.Silver)]
         [InlineData("gold", DurabilityLevel.Gold)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDurabilityLevelAcceptsLowercaseValues(string durabilityLevel, DurabilityLevel expectedDurabilityLevel)
         {
             var cmdlet = new TestServiceFabricClusterCmdlet();
@@ -71,6 +73,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDurabilityLevelReportsInvalidValue()
         {
             var cmdlet = new TestServiceFabricClusterCmdlet();
@@ -78,13 +81,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             var exception = Assert.Throws<System.Management.Automation.PSInvalidOperationException>(
                 () => cmdlet.GetNodeTypeDurabilityLevel("invalid"));
 
-            Assert.Contains("Valid values are Bronze, Silver, and Gold.", exception.Message);
+            Assert.Equal(
+                string.Format("Cannot parse durability level {0}. Valid values are Bronze, Silver, and Gold.", "invalid"),
+                exception.Message);
         }
 
         [Theory]
         [InlineData("1")]
         [InlineData("999")]
         [InlineData("0")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDurabilityLevelRejectsNumericStrings(string numericValue)
         {
             var cmdlet = new TestServiceFabricClusterCmdlet();
