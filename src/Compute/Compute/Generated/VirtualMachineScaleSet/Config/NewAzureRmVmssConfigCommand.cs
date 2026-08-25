@@ -715,7 +715,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
             {
-                if (this.IsParameterBound(c => c.CapacityReservationGroupId))
+                if (this.IsParameterBound(c => c.CapacityReservationGroupId) && this.DisableCapacityReservationAssignment.IsPresent)
                 {
                     throw new PSArgumentException(
                         "The -CapacityReservationGroupId and -DisableCapacityReservationAssignment parameters cannot be used together.");

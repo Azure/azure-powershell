@@ -792,7 +792,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
         {
-            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment) && this.IsParameterBound(c => c.CapacityReservationGroupId))
+            if (this.DisableCapacityReservationAssignment.IsPresent && this.IsParameterBound(c => c.CapacityReservationGroupId))
             {
                 throw new PSArgumentException(
                     "The -CapacityReservationGroupId and -DisableCapacityReservationAssignment parameters cannot be used together.");

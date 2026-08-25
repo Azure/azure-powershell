@@ -423,9 +423,9 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
                     }
 
-                    if (this.IsParameterBound(c => c.CapacityReservationGroupId) && this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+                    if (this.IsParameterBound(c => c.CapacityReservationGroupId) && this.DisableCapacityReservationAssignment.IsPresent)
                     {
-                        throw new ArgumentException("Parameters '-CapacityReservationGroupId' and '-DisableCapacityReservationAssignment' cannot be used together. '-DisableCapacityReservationAssignment' opts the virtual machine out of any capacity reservation.");
+                        throw new PSArgumentException("Parameters '-CapacityReservationGroupId' and '-DisableCapacityReservationAssignment' cannot be used together. '-DisableCapacityReservationAssignment' opts the virtual machine out of any capacity reservation.");
                     }
 
                     if (this.IsParameterBound(c => c.CapacityReservationGroupId))
@@ -435,6 +435,7 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.CapacityReservation = new CapacityReservationProfile();
                         }
                         parameters.CapacityReservation.CapacityReservationGroup = new SubResource(CapacityReservationGroupId);
+                        parameters.CapacityReservation.DisableCapacityReservationAssignment = null;
                     }
 
                     if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
@@ -444,6 +445,10 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.CapacityReservation = new CapacityReservationProfile();
                         }
                         parameters.CapacityReservation.DisableCapacityReservationAssignment = this.DisableCapacityReservationAssignment.IsPresent;
+                        if (this.DisableCapacityReservationAssignment.IsPresent)
+                        {
+                            parameters.CapacityReservation.CapacityReservationGroup = null;
+                        }
                     }
 
                     if (parameters.StorageProfile != null && parameters.StorageProfile.ImageReference != null && parameters.StorageProfile.ImageReference.Id != null)
