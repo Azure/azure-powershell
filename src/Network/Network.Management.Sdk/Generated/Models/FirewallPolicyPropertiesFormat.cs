@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="ruleCollectionGroups">List of references to FirewallPolicyRuleCollectionGroups.
         /// </param>
 
+        /// <param name="kubeSelectorGroups">List of references to FirewallPolicyKubeSelectorGroups.
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the firewall policy resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
@@ -74,11 +77,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="sku">The Firewall Policy SKU.
         /// </param>
-        public FirewallPolicyPropertiesFormat(string size = default(string), System.Collections.Generic.IList<SubResource> ruleCollectionGroups = default(System.Collections.Generic.IList<SubResource>), string provisioningState = default(string), SubResource basePolicy = default(SubResource), System.Collections.Generic.IList<SubResource> firewalls = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> childPolicies = default(System.Collections.Generic.IList<SubResource>), string threatIntelMode = default(string), FirewallPolicyThreatIntelWhitelist threatIntelWhitelist = default(FirewallPolicyThreatIntelWhitelist), FirewallPolicyInsights insights = default(FirewallPolicyInsights), FirewallPolicySnat snat = default(FirewallPolicySnat), FirewallPolicySQL sql = default(FirewallPolicySQL), DnsSettings dnsSettings = default(DnsSettings), ExplicitProxy explicitProxy = default(ExplicitProxy), FirewallPolicyIntrusionDetection intrusionDetection = default(FirewallPolicyIntrusionDetection), FirewallPolicyTransportSecurity transportSecurity = default(FirewallPolicyTransportSecurity), FirewallPolicySku sku = default(FirewallPolicySku))
+
+        /// <param name="afcManaged">Indicates that the Firewall Policy is managed by AFC (Azure Firewall for
+        /// Containers). When set, the policy is treated as read-only for callers that
+        /// do not supply the AFC-managed sync marker on write operations.
+        /// </param>
+        public FirewallPolicyPropertiesFormat(string size = default(string), System.Collections.Generic.IList<SubResource> ruleCollectionGroups = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> kubeSelectorGroups = default(System.Collections.Generic.IList<SubResource>), string provisioningState = default(string), SubResource basePolicy = default(SubResource), System.Collections.Generic.IList<SubResource> firewalls = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> childPolicies = default(System.Collections.Generic.IList<SubResource>), string threatIntelMode = default(string), FirewallPolicyThreatIntelWhitelist threatIntelWhitelist = default(FirewallPolicyThreatIntelWhitelist), FirewallPolicyInsights insights = default(FirewallPolicyInsights), FirewallPolicySnat snat = default(FirewallPolicySnat), FirewallPolicySQL sql = default(FirewallPolicySQL), DnsSettings dnsSettings = default(DnsSettings), ExplicitProxy explicitProxy = default(ExplicitProxy), FirewallPolicyIntrusionDetection intrusionDetection = default(FirewallPolicyIntrusionDetection), FirewallPolicyTransportSecurity transportSecurity = default(FirewallPolicyTransportSecurity), FirewallPolicySku sku = default(FirewallPolicySku), bool? afcManaged = default(bool?))
 
         {
             this.Size = size;
             this.RuleCollectionGroups = ruleCollectionGroups;
+            this.KubeSelectorGroups = kubeSelectorGroups;
             this.ProvisioningState = provisioningState;
             this.BasePolicy = basePolicy;
             this.Firewalls = firewalls;
@@ -93,6 +102,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.IntrusionDetection = intrusionDetection;
             this.TransportSecurity = transportSecurity;
             this.Sku = sku;
+            this.AfcManaged = afcManaged;
             CustomInit();
         }
 
@@ -114,6 +124,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ruleCollectionGroups")]
         public System.Collections.Generic.IList<SubResource> RuleCollectionGroups {get; private set; }
+
+        /// <summary>
+        /// Gets list of references to FirewallPolicyKubeSelectorGroups.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kubeSelectorGroups")]
+        public System.Collections.Generic.IList<SubResource> KubeSelectorGroups {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the firewall policy resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
@@ -200,6 +216,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
         public FirewallPolicySku Sku {get; set; }
+
+        /// <summary>
+        /// Gets indicates that the Firewall Policy is managed by AFC (Azure Firewall
+        /// for Containers). When set, the policy is treated as read-only for callers
+        /// that do not supply the AFC-managed sync marker on write operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "afcManaged")]
+        public bool? AfcManaged {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -208,6 +232,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
 
 

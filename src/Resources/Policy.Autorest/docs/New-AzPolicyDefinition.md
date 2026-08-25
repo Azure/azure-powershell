@@ -25,7 +25,7 @@ New-AzPolicyDefinition -Name <String> -Policy <String> [-Description <String>] [
 
 ### ManagementGroupName
 ```
-New-AzPolicyDefinition -ManagementGroupName <String> -Name <String> -Policy <String> [-Description <String>]
+New-AzPolicyDefinition -ManagementGroupId <String> -Name <String> -Policy <String> [-Description <String>]
  [-DisplayName <String>] [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
@@ -261,13 +261,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ManagementGroupName
+### -ManagementGroupId
 The ID of the management group.
 
 ```yaml
 Type: System.String
 Parameter Sets: ManagementGroupName
-Aliases:
+Aliases: ManagementGroupName
 
 Required: True
 Position: Named
