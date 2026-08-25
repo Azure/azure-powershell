@@ -24,6 +24,7 @@
     - `SpotPlus` is the next generation of Azure Spot for VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) deployments, and offers higher reliability and longer running time than `Spot`.
     - `-EvictionPolicy` and `-MaxPrice` behave the same way as they do for `Spot`.
     - Requires the `Microsoft.Compute/SpotPlus` subscription feature to be registered, and a region where the feature is enabled.
+* Added `-WireServerUseLocalFileRules` and `-ImdsUseLocalFileRules` parameters to `Set-AzVMProxyAgentSetting` so users can configure local file rules for Virtual Machine (VM) host endpoints.
 * Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
 * Added `-ProcessorMode` support to VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) create and update flows in `New-AzVMConfig`, `New-AzVM`, `Update-AzVM`, `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss`. [#30012]
 * Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM (Virtual Machine) during stop operations.
