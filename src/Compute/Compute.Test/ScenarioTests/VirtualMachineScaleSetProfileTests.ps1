@@ -33,6 +33,9 @@ function Test-FirstPartyServiceTagConfigurations
     Assert-AreEqual 1 $vmssIpConfiguration.PublicIPAddressConfiguration.IpTags.Count
     Assert-AreEqual $vmssServiceId $vmssIpConfiguration.PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId
 
+    $vmssIpConfigurationWithNullTag = New-AzVmssIpConfig -Name 'vmssIpConfigWithNullTag' -IpTag $null
+    Assert-Null $vmssIpConfigurationWithNullTag.PublicIPAddressConfiguration
+
     # Step 3: Verify VM type and tag behavior with supplied and omitted service tag identifiers.
     $vmTagWithoutServiceId = New-AzVMIpTagConfig -IpTagType 'FirstPartyUsage' -Tag 'Sql'
     Assert-AreEqual 'Microsoft.Azure.Management.Compute.Models.VirtualMachineIpTag' ($vmTagWithoutServiceId.GetType().FullName)
@@ -59,6 +62,9 @@ function Test-FirstPartyServiceTagConfigurations
 
     $vmIpConfigurationWithoutTag = New-AzVMIpConfig -Name 'vmIpConfigWithoutTag'
     Assert-Null $vmIpConfigurationWithoutTag.PublicIPAddressConfiguration
+
+    $vmIpConfigurationWithNullTag = New-AzVMIpConfig -Name 'vmIpConfigWithNullTag' -IpTag $null
+    Assert-Null $vmIpConfigurationWithNullTag.PublicIPAddressConfiguration
 
     # Step 5: Verify network profile initialization.
     $vm = New-AzVMConfig -VMName 'serviceTagVm' -VMSize 'Standard_A1'

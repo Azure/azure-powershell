@@ -72,12 +72,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ipConfiguration.PublicIPAddressConfiguration.Name = this.PublicIPAddressConfigurationName;
             }
 
-            if (this.IsParameterBound(c => c.IpTag))
+            if (this.IpTag != null)
             {
                 ipConfiguration.PublicIPAddressConfiguration =
                     ipConfiguration.PublicIPAddressConfiguration ?? new VirtualMachinePublicIPAddressConfiguration();
                 ipConfiguration.PublicIPAddressConfiguration.IpTags =
-                    this.IpTag == null ? null : new List<VirtualMachineIpTag>(this.IpTag);
+                    new List<VirtualMachineIpTag>(this.IpTag);
             }
 
             WriteObject(ipConfiguration);
