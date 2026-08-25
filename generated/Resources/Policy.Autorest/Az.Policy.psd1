@@ -1,7 +1,7 @@
 @{
   GUID = '54d436a4-6f2e-4977-b339-2b40665fd8c4'
   RootModule = './Az.Policy.psm1'
-  ModuleVersion = '0.1.1'
+  ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -12,7 +12,7 @@
   RequiredAssemblies = './bin/Az.Policy.private.dll'
   FormatsToProcess = './Az.Policy.format.ps1xml'
   ScriptsToProcess = @('./custom/Helpers.ps1')
-  FunctionsToExport = 'Get-AzPolicyAssignment', 'Get-AzPolicyDefinition', 'Get-AzPolicyExemption', 'Get-AzPolicySetDefinition', 'New-AzPolicyAssignment', 'New-AzPolicyDefinition', 'New-AzPolicyExemption', 'New-AzPolicySetDefinition', 'Remove-AzPolicyAssignment', 'Remove-AzPolicyDefinition', 'Remove-AzPolicyExemption', 'Remove-AzPolicySetDefinition', 'Update-AzPolicyAssignment', 'Update-AzPolicyDefinition', 'Update-AzPolicyExemption', 'Update-AzPolicySetDefinition'
+  FunctionsToExport = 'Get-AzPolicyAssignment', 'Get-AzPolicyDefinition', 'Get-AzPolicyEnrollment', 'Get-AzPolicyExemption', 'Get-AzPolicySetDefinition', 'New-AzPolicyAssignment', 'New-AzPolicyDefinition', 'New-AzPolicyEnrollment', 'New-AzPolicyExemption', 'New-AzPolicySetDefinition', 'Remove-AzPolicyAssignment', 'Remove-AzPolicyDefinition', 'Remove-AzPolicyEnrollment', 'Remove-AzPolicyExemption', 'Remove-AzPolicySetDefinition', 'Update-AzPolicyAssignment', 'Update-AzPolicyDefinition', 'Update-AzPolicyEnrollment', 'Update-AzPolicyExemption', 'Update-AzPolicySetDefinition'
   AliasesToExport = 'Set-AzPolicyAssignment', 'Set-AzPolicyDefinition', 'Set-AzPolicyExemption', 'Set-AzPolicySetDefinition'
   PrivateData = @{
     PSData = @{
