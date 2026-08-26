@@ -106,12 +106,22 @@ function Test-FirstPartyServiceTagConfigurations
     $imageSku = '2022-datacenter-g2'
     $imageVersion = 'latest'
     $adminUsername = 'Foo12'
+    $standaloneVmName = 'vm' + $rgname
+    $uniformVmssName = 'uniform' + $rgname
+    $flexVmssName = 'flex' + $rgname
+    $flexVmName = 'flexvm' + $rgname
+    $resourceGroupCreated = $false
+    $standaloneVmCreated = $false
+    $uniformVmssCreated = $false
+    $flexVmssCreated = $false
+    $flexVmCreated = $false
     $securePassword = $PLACEHOLDER | ConvertTo-SecureString -AsPlainText -Force
     $credential = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword)
 
     try
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force
+        $resourceGroupCreated = $true
 
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix '10.0.0.0/24'
         $vnet = New-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc `
@@ -127,7 +137,6 @@ function Test-FirstPartyServiceTagConfigurations
             -FirstPartyServiceTagId $serviceTag.Id
 
         # Standalone VM.
-        $standaloneVmName = 'vm' + $rgname
         $standaloneIpConfig = New-AzVMIpConfig -Name 'ipconfig' -SubnetId $subnetId `
             -PublicIPAddressConfigurationName ('pip' + $rgname) -IpTag $liveVmIpTag
         $standaloneVmConfig = New-AzVMConfig -VMName $standaloneVmName -VMSize $vmSize -SecurityType 'Standard'
@@ -139,11 +148,11 @@ function Test-FirstPartyServiceTagConfigurations
         $standaloneVmConfig = $standaloneVmConfig | Add-AzVMNetworkInterfaceConfiguration -Name 'nicconfig' `
             -Primary -IpConfiguration $standaloneIpConfig -NetworkApiVersion '2022-11-01'
         $null = New-AzVM -ResourceGroupName $rgname -Location $loc -VM $standaloneVmConfig -DisableBginfoExtension
+        $standaloneVmCreated = $true
 
         # Uniform VM scale set.
         $liveVmssIpTag = New-AzVmssIpTagConfig -IpTagType 'FirstPartyUsage' -Tag '/RnmRunners' `
             -FirstPartyServiceTagId $serviceTag.Id
-        $uniformVmssName = 'uniform' + $rgname
         $uniformIpConfig = New-AzVmssIpConfig -Name 'ipconfig' -SubnetId $subnetId `
             -PublicIPAddressConfigurationName ('upip' + $rgname) -IpTag $liveVmssIpTag
         $uniformVmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 0 -SkuName $vmSize `
@@ -154,6 +163,7 @@ function Test-FirstPartyServiceTagConfigurations
                 -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku `
                 -ImageReferenceVersion $imageVersion -ImageReferencePublisher $imagePublisher
         $null = New-AzVmss -ResourceGroupName $rgname -Name $uniformVmssName -VirtualMachineScaleSet $uniformVmssConfig
+        $uniformVmssCreated = $true
 
         $uniformVmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $uniformVmssName
         $uniformIpTag = $uniformVmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0]
@@ -170,12 +180,11 @@ function Test-FirstPartyServiceTagConfigurations
         Assert-AreEqual $serviceTag.Id $uniformVmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId
 
         # Flexible VM scale set instance.
-        $flexVmssName = 'flex' + $rgname
         $flexVmssConfig = New-AzVmssConfig -Location $loc -OrchestrationMode 'Flexible' `
             -PlatformFaultDomainCount 1 -SinglePlacementGroup $false
         $null = New-AzVmss -ResourceGroupName $rgname -Name $flexVmssName -VirtualMachineScaleSet $flexVmssConfig
+        $flexVmssCreated = $true
         $flexVmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $flexVmssName
-        $flexVmName = 'flexvm' + $rgname
         $flexIpConfig = New-AzVMIpConfig -Name 'ipconfig' -SubnetId $subnetId `
             -PublicIPAddressConfigurationName ('fpip' + $rgname) -IpTag $liveVmIpTag
         $flexVmConfig = New-AzVMConfig -VMName $flexVmName -VMSize $vmSize -VmssId $flexVmss.Id `
@@ -188,11 +197,78 @@ function Test-FirstPartyServiceTagConfigurations
         $flexVmConfig = $flexVmConfig | Add-AzVMNetworkInterfaceConfiguration -Name 'nicconfig' `
             -Primary -IpConfiguration $flexIpConfig -NetworkApiVersion '2022-11-01'
         $null = New-AzVM -ResourceGroupName $rgname -Location $loc -VM $flexVmConfig -DisableBginfoExtension
+        $flexVmCreated = $true
 
     }
     finally
     {
-        Clean-ResourceGroup $rgname
+        $cleanupErrors = @()
+
+        if ($flexVmCreated)
+        {
+            try
+            {
+                $null = Remove-AzVM -ResourceGroupName $rgname -Name $flexVmName -Force
+            }
+            catch
+            {
+                $cleanupErrors += $_
+            }
+        }
+
+        if ($standaloneVmCreated)
+        {
+            try
+            {
+                $null = Remove-AzVM -ResourceGroupName $rgname -Name $standaloneVmName -Force
+            }
+            catch
+            {
+                $cleanupErrors += $_
+            }
+        }
+
+        if ($flexVmssCreated)
+        {
+            try
+            {
+                $null = Remove-AzVmss -ResourceGroupName $rgname -VMScaleSetName $flexVmssName -Force
+            }
+            catch
+            {
+                $cleanupErrors += $_
+            }
+        }
+
+        if ($uniformVmssCreated)
+        {
+            try
+            {
+                $null = Remove-AzVmss -ResourceGroupName $rgname -VMScaleSetName $uniformVmssName -Force
+            }
+            catch
+            {
+                $cleanupErrors += $_
+            }
+        }
+
+        if ($resourceGroupCreated)
+        {
+            try
+            {
+                Clean-ResourceGroup $rgname
+            }
+            catch
+            {
+                $cleanupErrors += $_
+            }
+        }
+
+        if ($cleanupErrors.Count -gt 0)
+        {
+            $cleanupMessages = $cleanupErrors | ForEach-Object { $_.Exception.Message }
+            throw "Resource cleanup failed: $($cleanupMessages -join '; ')"
+        }
     }
 }
 
