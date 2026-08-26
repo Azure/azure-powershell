@@ -101,6 +101,10 @@ function Test-FirstPartyServiceTagConfigurations
     $rgname = Get-ComputeTestResourceName
     $loc = 'eastus2euap'
     $vmSize = 'Standard_D2s_v5'
+    $imagePublisher = 'MicrosoftWindowsServer'
+    $imageOffer = 'WindowsServer'
+    $imageSku = '2022-datacenter-g2'
+    $imageVersion = 'latest'
     $adminUsername = 'Foo12'
     $securePassword = $PLACEHOLDER | ConvertTo-SecureString -AsPlainText -Force
     $credential = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword)
@@ -129,8 +133,8 @@ function Test-FirstPartyServiceTagConfigurations
         $standaloneVmConfig = New-AzVMConfig -VMName $standaloneVmName -VMSize $vmSize -SecurityType 'Standard'
         $standaloneVmConfig = Set-AzVMOperatingSystem -VM $standaloneVmConfig -Windows `
             -ComputerName 'serviceTagVm' -Credential $credential
-        $standaloneVmConfig = Set-AzVMSourceImage -VM $standaloneVmConfig -PublisherName 'MicrosoftWindowsServer' `
-            -Offer 'WindowsServer' -Skus '2022-datacenter-g2' -Version '20348.4648.260108'
+        $standaloneVmConfig = Set-AzVMSourceImage -VM $standaloneVmConfig -PublisherName $imagePublisher `
+            -Offer $imageOffer -Skus $imageSku -Version $imageVersion
         $standaloneVmConfig = Set-AzVMBootDiagnostic -VM $standaloneVmConfig -Disable
         $standaloneVmConfig = $standaloneVmConfig | Add-AzVMNetworkInterfaceConfiguration -Name 'nicconfig' `
             -Primary -IpConfiguration $standaloneIpConfig -NetworkApiVersion '2022-11-01'
@@ -147,8 +151,8 @@ function Test-FirstPartyServiceTagConfigurations
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'nicconfig' -Primary $true -IPConfiguration $uniformIpConfig `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'uniform' -AdminUsername $adminUsername -AdminPassword $PLACEHOLDER `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
-                -ImageReferenceOffer 'WindowsServer' -ImageReferenceSku '2022-datacenter-g2' `
-                -ImageReferenceVersion '20348.4648.260108' -ImageReferencePublisher 'MicrosoftWindowsServer'
+                -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku `
+                -ImageReferenceVersion $imageVersion -ImageReferencePublisher $imagePublisher
         $null = New-AzVmss -ResourceGroupName $rgname -Name $uniformVmssName -VirtualMachineScaleSet $uniformVmssConfig
 
         $uniformVmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $uniformVmssName
@@ -178,8 +182,8 @@ function Test-FirstPartyServiceTagConfigurations
             -SecurityType 'Standard'
         $flexVmConfig = Set-AzVMOperatingSystem -VM $flexVmConfig -Windows -ComputerName 'flexServiceTag' `
             -Credential $credential
-        $flexVmConfig = Set-AzVMSourceImage -VM $flexVmConfig -PublisherName 'MicrosoftWindowsServer' `
-            -Offer 'WindowsServer' -Skus '2022-datacenter-g2' -Version '20348.4648.260108'
+        $flexVmConfig = Set-AzVMSourceImage -VM $flexVmConfig -PublisherName $imagePublisher `
+            -Offer $imageOffer -Skus $imageSku -Version $imageVersion
         $flexVmConfig = Set-AzVMBootDiagnostic -VM $flexVmConfig -Disable
         $flexVmConfig = $flexVmConfig | Add-AzVMNetworkInterfaceConfiguration -Name 'nicconfig' `
             -Primary -IpConfiguration $flexIpConfig -NetworkApiVersion '2022-11-01'
