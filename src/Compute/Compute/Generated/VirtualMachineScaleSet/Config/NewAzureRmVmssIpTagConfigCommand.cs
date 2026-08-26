@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         [Parameter(
             Mandatory = true,
+            Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("FirstPartyUsage", "NetworkDomain")]
         public string IpTagType { get; set; }
