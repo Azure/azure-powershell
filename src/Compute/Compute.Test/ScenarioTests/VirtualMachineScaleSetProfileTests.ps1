@@ -172,7 +172,6 @@ function Test-FirstPartyServiceTagConfigurations
         $null = New-AzVmss -ResourceGroupName $rgname -Name $flexVmssName -VirtualMachineScaleSet $flexVmssConfig
         $flexVmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $flexVmssName
         $flexVmName = 'flexvm' + $rgname
-        $flexVmName = 'flexvm' + $rgname
         $flexIpConfig = New-AzVMIpConfig -Name 'ipconfig' -SubnetId $subnetId `
             -PublicIPAddressConfigurationName ('fpip' + $rgname) -IpTag $liveVmIpTag
         $flexVmConfig = New-AzVMConfig -VMName $flexVmName -VMSize $vmSize -VmssId $flexVmss.Id `
