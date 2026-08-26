@@ -337,5 +337,15 @@ namespace Microsoft.Azure.Management.Compute
         /// </summary>
         IResourceSkusOperations ResourceSkus { get; }
 
+        /// <summary>
+        /// Gets the ISharedVMExtensionOperations
+        /// </summary>
+        ISharedVMExtensionOperations SharedVMExtension { get; }
+
+        /// <summary>
+        /// Gets the ISharedVMExtensionVersionOperations
+        /// </summary>
+        ISharedVMExtensionVersionOperations SharedVMExtensionVersion { get; }
+
     }
 }

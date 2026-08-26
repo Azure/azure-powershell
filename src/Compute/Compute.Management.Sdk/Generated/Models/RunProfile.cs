@@ -13,21 +13,9 @@ namespace Microsoft.Azure.Management.Compute.Models
 
     public static class RunProfile
     {
-        /// <summary>
-        /// Other execution profile.
-        /// </summary>
         public const string Other = "Other";
-        /// <summary>
-        /// Run once execution profile.
-        /// </summary>
         public const string RunOnce = "RunOnce";
-        /// <summary>
-        /// Long running execution profile.
-        /// </summary>
         public const string LongRunning = "LongRunning";
-        /// <summary>
-        /// Hybrid execution profile.
-        /// </summary>
         public const string Hybrid = "Hybrid";
     }
 }
