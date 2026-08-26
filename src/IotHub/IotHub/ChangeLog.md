@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.9.2
 * Fixed `New-AzIotHubKey` to generate secure shared access keys during primary or secondary key rotation.
 
 ## Version 2.9.1

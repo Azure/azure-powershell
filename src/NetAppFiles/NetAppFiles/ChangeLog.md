@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.1
 * Added deprecation notices to Azure NetApp Files subvolume cmdlets
 * Added breaking change notices for removing `EnableSubvolume` and the `EnableSubvolumes` volume output property
 * Fixed the output type of `Get-AzNetAppFilesVolumeQuotaRule` from `PSNetAppFilesVolume` to `PSNetAppFilesVolumeQuotaRule`

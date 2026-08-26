@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.10.0
 * Fixed missing `New-AzVMwareVcf5LicenseObject` and `-VcfLicense` on `New-AzVMwarePrivateCloud` in package `0.9.1`; both are now generated and exported.
 
 ## Version 0.9.1

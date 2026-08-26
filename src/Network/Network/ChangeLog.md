@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 8.2.0
 * Added `Get-AzExpressRouteLag`, `New-AzExpressRouteLag`, `Set-AzExpressRouteLag`, `Remove-AzExpressRouteLag`, `New-AzExpressRouteLagLOA`, `Get-AzExpressRouteLagLink`, and `Get-AzExpressRouteLagMember` for `ExpressRouteLag` resources (Microsoft.Network 2025-09-01 API).
     - The cmdlets support CRUD operations, letter of authorization generation, and link and member retrieval.
     - Added `New-AzExpressRouteLagIdentity`, `Get-AzExpressRouteLagIdentity`, `Set-AzExpressRouteLagIdentity`, and `Remove-AzExpressRouteLagIdentity` for the user-assigned managed identity on an `ExpressRouteLag`.

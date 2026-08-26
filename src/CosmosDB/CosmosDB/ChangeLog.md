@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.22.0
 * Regenerated the Cosmos DB management SDK with stable API version 2026-03-15.
 
 ## Version 1.21.1
