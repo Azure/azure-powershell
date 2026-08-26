@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed `New-AzIotHubKey` to generate cryptographically secure shared access keys when rotating primary or secondary keys.
+* Fixed `New-AzIotHubKey` to generate secure shared access keys during primary or secondary key rotation.
 
 ## Version 2.9.1
 * Updated `Microsoft.Extensions.DependencyInjection.Abstractions` dependency from `8.0.2` to `10.0.3`.
