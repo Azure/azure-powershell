@@ -20,9 +20,9 @@
 
 -->
 ## Upcoming Release
-* Added `-WireServerUseLocalFileRules` and `-ImdsUseLocalFileRules` parameters to `Set-AzVMProxyAgentSetting` and `Set-AzVmssProxyAgentSetting` so users can configure local file rules for Virtual Machine (VM) and Virtual Machine Scale Set (VMSS) host endpoints. [#30055]
+* Added `-WireServerUseLocalFileRules` and `-ImdsUseLocalFileRules` parameters to `Set-AzVMProxyAgentSetting` and `Set-AzVmssProxyAgentSetting` so users can configure local file rules for Virtual Machine (VM) and Virtual Machine Scale Set (VMSS) host endpoints.
 * Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
-* Added `-ProcessorMode` support to VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) create and update flows in `New-AzVMConfig`, `New-AzVM`, `Update-AzVM`, `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss`. [#30012]
+* Added `-ProcessorMode` support to VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) create and update flows in `New-AzVMConfig`, `New-AzVM`, `Update-AzVM`, `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss`.
 * Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM (Virtual Machine) during stop operations.
     - The switch cannot be used together with `-Hibernate`, `-StayProvisioned`, or `-SkipShutdown`.
 
@@ -30,7 +30,7 @@
 * Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.
 * Added `New-AzInterconnectBlock`, `Get-AzInterconnectBlock`, `Update-AzInterconnectBlock`, and `Remove-AzInterconnectBlock` cmdlets to manage Microsoft.Compute/interconnectBlocks resources for high-performance artificial intelligence (AI) and machine learning (ML) workloads.
 * Marked the `-EnableWAD`, `-SkipStorage`, and `-InstallNewExtension` parameters of `Set-AzVMAEMExtension` as deprecated using breaking-change attributes. They will be removed in a future major release.
-* Preserved CMD-special characters in `Invoke-AzVMRunCommand` and `Invoke-AzVmssVMRunCommand` parameter values for Windows PowerShell RunCommand execution. [#29880]
+* Preserved CMD-special characters in `Invoke-AzVMRunCommand` and `Invoke-AzVmssVMRunCommand` parameter values for Windows PowerShell RunCommand execution.
 * Added `Set-AzVMZoneMovement` to set ZoneMovement configuration on a VM (Virtual Machine) model and persist it with `Update-AzVM`.
     - Added `ResiliencyProfile` support in VM create and update flows so ZoneMovement is sent to the Compute API.
 
