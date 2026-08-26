@@ -55,7 +55,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         protected override void ProcessRecord()
         {
-            Run();
+            if (ShouldProcess("VirtualMachineScaleSet", "New"))
+            {
+                Run();
+            }
         }
 
         private void Run()
