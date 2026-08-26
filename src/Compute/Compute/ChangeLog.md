@@ -23,14 +23,12 @@
 * Added `-ReservationType` to `New-AzCapacityReservationGroup` and `Update-AzCapacityReservationGroup` to support creating `Open` capacity reservation groups, and surfaced `ReservationType` on the capacity reservation group output.
 * Added `-DisableCapacityReservationAssignment` to `New-AzVM`, `New-AzVMConfig`, and `Update-AzVM` to opt a VM (Virtual Machine) out of any capacity reservation.
 * Added `CapacityReservationType` to the VM (Virtual Machine) instance view returned by `Get-AzVM -Status`.
-* Added `-WireServerUseLocalFileRules` and `-ImdsUseLocalFileRules` parameters to `Set-AzVMProxyAgentSetting` so users can configure local file rules for Virtual Machine (VM) host endpoints.
-* Added `-WireServerUseLocalFileRules` and `-ImdsUseLocalFileRules` parameters to `Set-AzVMProxyAgentSetting` and `Set-AzVmssProxyAgentSetting` so users can configure local file rules for Virtual Machine (VM) and Virtual Machine Scale Set (VMSS) host endpoints. [#30055]
-* Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
-* Added `-ProcessorMode` support to VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) create and update flows in `New-AzVMConfig`, `New-AzVM`, `Update-AzVM`, `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss`. [#30012]
-* Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM (Virtual Machine) during stop operations.
-    - The switch cannot be used together with `-Hibernate`, `-StayProvisioned`, or `-SkipShutdown`.
 * Added `-DisableCapacityReservationAssignment` parameter to `New-AzVmss`, `New-AzVmssConfig`, and `Update-AzVmss` to opt VMSS instances out of capacity reservation assignment.
 * Added `CapacityReservation` property to `Get-AzVmssVM` output and `CapacityReservationType` property to its `-InstanceView` output.
+* Added `-WireServerUseLocalFileRules` and `-ImdsUseLocalFileRules` to `Set-AzVMProxyAgentSetting` and `Set-AzVmssProxyAgentSetting` to configure local file rules for Virtual Machine (VM) and Virtual Machine Scale Set (VMSS) host endpoints. [#30055]
+* Updated ComputeRP cmdlets to API version 2026-04-01, DiskRP cmdlets to 2026-03-02, and GalleryRP cmdlets to 2025-12-03.
+* Added `-ProcessorMode` to VM and VMSS create and update flows in `New-AzVMConfig`, `New-AzVM`, `Update-AzVM`, `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss`. [#30012]
+* Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM during stop; it cannot be used with `-Hibernate`, `-StayProvisioned`, or `-SkipShutdown`.
 
 ## Version 11.8.0
 * Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.
