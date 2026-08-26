@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed `Update-AzRedisEnterpriseCacheDatabase` to update databases using a read-modify-write request.
+    - Fixed `InputObject` updates that could append the default database path twice.
     - Fixed issue [#30045]
 
 ## Version 2.0.0

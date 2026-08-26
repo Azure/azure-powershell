@@ -58,6 +58,90 @@ MODULE <IModule[]>: Optional set of redis modules to enable in this database - m
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecachedatabase
 #>
+function Resolve-AzRedisEnterpriseCacheDatabaseIdentity {
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.DoNotExportAttribute()]
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [System.Object]
+        ${InputObject}
+    )
+
+    $identityValues = @{}
+    foreach ($propertyName in @('SubscriptionId', 'ResourceGroupName', 'ClusterName', 'DatabaseName', 'Id')) {
+        $propertyValue = $null
+        if ($InputObject -is [System.Collections.IDictionary]) {
+            foreach ($key in $InputObject.Keys) {
+                if ([System.String]::Equals([System.String]$key, $propertyName, [System.StringComparison]::OrdinalIgnoreCase)) {
+                    $propertyValue = $InputObject[$key]
+                    break
+                }
+            }
+        } else {
+            $property = $InputObject.PSObject.Properties[$propertyName]
+            if ($null -ne $property) {
+                $propertyValue = $property.Value
+            }
+        }
+
+        if (-not [System.String]::IsNullOrWhiteSpace([System.String]$propertyValue)) {
+            $identityValues[$propertyName] = [System.String]$propertyValue
+        }
+    }
+
+    $requiredFields = @('SubscriptionId', 'ResourceGroupName', 'ClusterName')
+    $hasMissingField = $false
+    foreach ($fieldName in $requiredFields) {
+        if (-not $identityValues.ContainsKey($fieldName)) {
+            $hasMissingField = $true
+            break
+        }
+    }
+
+    if (($hasMissingField -or -not $identityValues.ContainsKey('DatabaseName')) -and $identityValues.ContainsKey('Id')) {
+        $resourceIdPattern = '^/subscriptions/(?<SubscriptionId>[^/]+)/resourceGroups/(?<ResourceGroupName>[^/]+)/providers/Microsoft[.]Cache/redisEnterprise/(?<ClusterName>[^/]+)(?:/databases/(?<DatabaseName>[^/]+))?$'
+        $resourceIdMatch = [System.Text.RegularExpressions.Regex]::Match(
+            $identityValues['Id'],
+            $resourceIdPattern,
+            [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
+
+        if (-not $resourceIdMatch.Success) {
+            throw [System.Management.Automation.PSArgumentException]::new(
+                "InputObject.Id must be a Redis Enterprise cluster or database resource ID in the form '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}[/databases/default]'.")
+        }
+
+        foreach ($fieldName in $requiredFields) {
+            if (-not $identityValues.ContainsKey($fieldName)) {
+                $identityValues[$fieldName] = $resourceIdMatch.Groups[$fieldName].Value
+            }
+        }
+        if (-not $identityValues.ContainsKey('DatabaseName') -and $resourceIdMatch.Groups['DatabaseName'].Success) {
+            $identityValues['DatabaseName'] = $resourceIdMatch.Groups['DatabaseName'].Value
+        }
+    }
+
+    foreach ($fieldName in $requiredFields) {
+        if (-not $identityValues.ContainsKey($fieldName)) {
+            throw [System.Management.Automation.PSArgumentException]::new(
+                "InputObject must specify $fieldName directly or through a valid Redis Enterprise resource Id.")
+        }
+    }
+
+    if (-not $identityValues.ContainsKey('DatabaseName')) {
+        $identityValues['DatabaseName'] = 'default'
+    } elseif (-not [System.String]::Equals($identityValues['DatabaseName'], 'default', [System.StringComparison]::OrdinalIgnoreCase)) {
+        throw [System.Management.Automation.PSArgumentException]::new(
+            "InputObject must identify the Redis Enterprise database named 'default'.")
+    }
+
+    return @{
+        SubscriptionId = $identityValues['SubscriptionId']
+        ResourceGroupName = $identityValues['ResourceGroupName']
+        ClusterName = $identityValues['ClusterName']
+        DatabaseName = 'default'
+    }
+}
+
 function Update-AzRedisEnterpriseCacheDatabase {
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.PreviewMessage("**********************************************************************************************`n
     * This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026. *`n
@@ -244,8 +328,11 @@ function Update-AzRedisEnterpriseCacheDatabase {
         }
 
         if ($PSCmdlet.ParameterSetName -eq 'UpdateViaIdentityExpanded') {
-            $getParameters['InputObject'] = $InputObject
-            $putParameters['InputObject'] = $InputObject
+            $identityParameters = Resolve-AzRedisEnterpriseCacheDatabaseIdentity -InputObject $InputObject
+            foreach ($parameterName in @('SubscriptionId', 'ResourceGroupName', 'ClusterName', 'DatabaseName')) {
+                $getParameters[$parameterName] = $identityParameters[$parameterName]
+                $putParameters[$parameterName] = $identityParameters[$parameterName]
+            }
         } else {
             $getParameters['ClusterName'] = $ClusterName
             $getParameters['ResourceGroupName'] = $ResourceGroupName
