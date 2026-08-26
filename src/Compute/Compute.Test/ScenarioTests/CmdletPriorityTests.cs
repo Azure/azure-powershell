@@ -78,7 +78,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             return parameterSetNames;
         }
 
-        private static IReadOnlyList<string> GetArgumentCompleterValues(Type cmdletType, string propertyName)        {
+        private static IReadOnlyList<string> GetArgumentCompleterValues(Type cmdletType, string propertyName)
+        {
             PropertyInfo property = cmdletType.GetProperty(propertyName);
             Assert.NotNull(property);
 

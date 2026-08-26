@@ -218,6 +218,7 @@ $vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_E2pds_v8" -Processor
 ### Example 5: Create a SpotPlus VM config and deploy it
 ```powershell
 $cred = Get-Credential
+$nic = Get-AzNetworkInterface -ResourceGroupName "MyResourceGroup" -Name "MyNic"
 $vmConfig = New-AzVMConfig -VMName "MySpotPlusVM" -VMSize "Standard_D2s_v5" -Priority "SpotPlus" -EvictionPolicy "Deallocate" -MaxPrice -1
 $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName "MySpotPlusVM" -Credential $cred
 $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2022-Datacenter" -Version "latest"

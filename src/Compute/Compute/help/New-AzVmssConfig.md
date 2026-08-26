@@ -227,12 +227,12 @@ $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
 
 This example Creates a new VMSS using VMSSConfig object for the Trusted Launch Security Type and validates flags SecureBoot and Vtpm as True by default.
 
-### Example 5: Create a VMSS config with processor mode
+### Example 6: Create a VMSS config with processor mode
 ```powershell
 New-AzVmssConfig -Location "westus" -SkuName "Standard_E2pds_v8" -SkuCapacity 2 -ProcessorMode "Deterministic"
 ```
 
-### Example 6: Create a SpotPlus VMSS config
+### Example 7: Create a SpotPlus VMSS config
 ```powershell
 New-AzVmssConfig -Location "eastus2" -SkuName "Standard_D2s_v5" -SkuCapacity 2 -UpgradePolicyMode "Automatic" -Priority "SpotPlus" -EvictionPolicy "Deallocate" -MaxPrice -1
 ```
@@ -241,7 +241,7 @@ This command creates a scale set configuration object whose instances use the Sp
 '-EvictionPolicy' and '-MaxPrice' behave the same way as they do for 'Spot'.
 Using 'SpotPlus' requires the 'Microsoft.Compute/SpotPlus' subscription feature to be registered and a region where the feature is enabled.
 
-### Example 7: Create a SpotPlus VMSS config with a priority mix
+### Example 8: Create a SpotPlus VMSS config with a priority mix
 ```powershell
 New-AzVmssConfig -Location "eastus2" -SkuName "Standard_D2s_v5" -SkuCapacity 10 -OrchestrationMode "Flexible" -PlatformFaultDomainCount 1 -Priority "SpotPlus" -EvictionPolicy "Delete" -BaseRegularPriorityCount 5 -RegularPriorityPercentage 50
 ```
