@@ -7,16 +7,14 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for ReleaseCategory.
+    /// Defines values for ExtensionState.
     /// </summary>
 
 
-    public static class ReleaseCategory
+    public static class ExtensionState
     {
-        public const string Other = "Other";
-        public const string BugFix = "BugFix";
-        public const string SecurityFix = "SecurityFix";
-        public const string CompatibilityUpdate = "CompatibilityUpdate";
-        public const string NewFeature = "NewFeature";
+        public const string Active = "Active";
+        public const string ScheduledForDeprecation = "ScheduledForDeprecation";
+        public const string Deprecated = "Deprecated";
     }
 }
