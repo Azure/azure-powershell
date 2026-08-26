@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Tests VM and VMSS implicit public IP first-party service tag configuration objects without Azure resources.
+Tests implicit public IP first-party service tags for VMs and VM scale sets.
 #>
 function Test-FirstPartyServiceTagConfigurations
 {
@@ -66,10 +66,21 @@ function Test-FirstPartyServiceTagConfigurations
     $vmIpConfigurationWithNullTag = New-AzVMIpConfig -Name 'vmIpConfigWithNullTag' -IpTag $null
     Assert-Null $vmIpConfigurationWithNullTag.PublicIPAddressConfiguration
 
-    # Step 5: Verify network profile initialization.
+    $fullVmIpConfiguration = New-AzVMIpConfig -Name 'fullVmIpConfig' -PrivateIPAddressVersion 'IPv4' `
+        -PublicIPAddressConfigurationIdleTimeoutInMinutes 10 -DnsSetting 'service-tag-test' `
+        -PublicIPPrefix '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/publicIPPrefixes/prefix' `
+        -PublicIPAddressVersion 'IPv4' -PublicIPAllocationMethod 'Static'
+    Assert-AreEqual 'IPv4' $fullVmIpConfiguration.PrivateIPAddressVersion
+    Assert-AreEqual 10 $fullVmIpConfiguration.PublicIPAddressConfiguration.IdleTimeoutInMinutes
+    Assert-AreEqual 'service-tag-test' $fullVmIpConfiguration.PublicIPAddressConfiguration.DnsSettings.DomainNameLabel
+    Assert-AreEqual '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/publicIPPrefixes/prefix' $fullVmIpConfiguration.PublicIPAddressConfiguration.PublicIPPrefix.Id
+    Assert-AreEqual 'IPv4' $fullVmIpConfiguration.PublicIPAddressConfiguration.PublicIPAddressVersion
+    Assert-AreEqual 'Static' $fullVmIpConfiguration.PublicIPAddressConfiguration.PublicIPAllocationMethod
+
+    # Step 5: Verify network profile initialization and approved parameter syntax.
     $vm = New-AzVMConfig -VMName 'serviceTagVm' -VMSize 'Standard_A1'
     $vm.NetworkProfile = $null
-    $vm = $vm | Add-AzVMNetworkInterfaceConfiguration -Name 'nicConfig1' -Primary $true `
+    $vm = Add-AzVMNetworkInterfaceConfiguration -VM $vm -Name 'nicConfig1' -Primary `
         -IpConfiguration $vmIpConfiguration -NetworkApiVersion '2022-11-01'
     Assert-NotNull $vm.NetworkProfile
     Assert-AreEqual '2022-11-01' $vm.NetworkProfile.NetworkApiVersion
@@ -85,6 +96,143 @@ function Test-FirstPartyServiceTagConfigurations
     Assert-AreEqual 'nicConfig1' $vm.NetworkProfile.NetworkInterfaceConfigurations[0].Name
     Assert-AreEqual 'nicConfig2' $vm.NetworkProfile.NetworkInterfaceConfigurations[1].Name
     Assert-AreEqual 'Sql' $vm.NetworkProfile.NetworkInterfaceConfigurations[1].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].Tag
+
+    # Step 7: Verify create, get, update, removal, and invalid update behavior against Azure.
+    # Record and playback validation is pending rollout of the Compute RP 2026-04-01 manifest to eastus2euap.
+    $rgname = Get-ComputeTestResourceName
+    $loc = 'eastus2euap'
+    $vmSize = 'Standard_D2s_v5'
+    $adminUsername = 'Foo12'
+    $securePassword = $PLACEHOLDER | ConvertTo-SecureString -AsPlainText -Force
+    $credential = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword)
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force
+
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix '10.0.0.0/24'
+        $vnet = New-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc `
+            -AddressPrefix '10.0.0.0/16' -Subnet $subnet -Force
+        $subnetId = $vnet.Subnets[0].Id
+
+        $serviceTag = New-AzFirstPartyServiceTag -ResourceGroupName $rgname -Name ('tag' + $rgname) `
+            -Location $loc -Value '/RnmRunners' -Tag @{ environment = 'test' }
+        $serviceTag = Get-AzFirstPartyServiceTag -ResourceGroupName $rgname -Name $serviceTag.Name
+        Assert-NotNull $serviceTag.Id
+
+        $liveVmIpTag = New-AzVMIpTagConfig -IpTagType 'FirstPartyUsage' -Tag '/RnmRunners' `
+            -FirstPartyServiceTagId $serviceTag.Id
+
+        # Standalone VM.
+        $standaloneVmName = 'vm' + $rgname
+        $standaloneIpConfig = New-AzVMIpConfig -Name 'ipconfig' -SubnetId $subnetId `
+            -PublicIPAddressConfigurationName ('pip' + $rgname) -IpTag $liveVmIpTag
+        $standaloneVmConfig = New-AzVMConfig -VMName $standaloneVmName -VMSize $vmSize
+        $standaloneVmConfig = Set-AzVMOperatingSystem -VM $standaloneVmConfig -Windows `
+            -ComputerName 'serviceTagVm' -Credential $credential
+        $standaloneVmConfig = Set-AzVMSourceImage -VM $standaloneVmConfig -PublisherName 'MicrosoftWindowsServer' `
+            -Offer 'WindowsServer' -Skus '2022-datacenter-g2' -Version '20348.4648.260108'
+        $standaloneVmConfig = Set-AzVMBootDiagnostic -VM $standaloneVmConfig -Disable
+        $standaloneVmConfig = $standaloneVmConfig | Add-AzVMNetworkInterfaceConfiguration -Name 'nicconfig' `
+            -Primary -IpConfiguration $standaloneIpConfig -NetworkApiVersion '2022-11-01'
+        $null = New-AzVM -ResourceGroupName $rgname -Location $loc -VM $standaloneVmConfig
+
+        $standaloneVm = Get-AzVM -ResourceGroupName $rgname -Name $standaloneVmName
+        $standaloneIpTag = $standaloneVm.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0]
+        Assert-AreEqual $serviceTag.Id $standaloneIpTag.FirstPartyServiceTagId
+
+        $standaloneIpTag.FirstPartyServiceTagId = $null
+        $null = Update-AzVM -ResourceGroupName $rgname -VM $standaloneVm
+        $standaloneVm = Get-AzVM -ResourceGroupName $rgname -Name $standaloneVmName
+        Assert-Null $standaloneVm.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId
+
+        $standaloneVm.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId = $serviceTag.Id
+        $null = Update-AzVM -ResourceGroupName $rgname -VM $standaloneVm
+        $standaloneVm = Get-AzVM -ResourceGroupName $rgname -Name $standaloneVmName
+        Assert-AreEqual $serviceTag.Id $standaloneVm.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId
+
+        $standaloneVm.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId = $vnet.Id
+        Assert-Throws { Update-AzVM -ResourceGroupName $rgname -VM $standaloneVm }
+        $standaloneVm = Get-AzVM -ResourceGroupName $rgname -Name $standaloneVmName
+        Assert-AreEqual $serviceTag.Id $standaloneVm.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId
+
+        # Uniform VM scale set.
+        $liveVmssIpTag = New-AzVmssIpTagConfig -IpTagType 'FirstPartyUsage' -Tag '/RnmRunners' `
+            -FirstPartyServiceTagId $serviceTag.Id
+        $uniformVmssName = 'uniform' + $rgname
+        $uniformIpConfig = New-AzVmssIpConfig -Name 'ipconfig' -SubnetId $subnetId `
+            -PublicIPAddressConfigurationName ('upip' + $rgname) -IpTag $liveVmssIpTag
+        $uniformVmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 0 -SkuName $vmSize `
+            -UpgradePolicyMode 'Manual' `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'nicconfig' -Primary $true -IPConfiguration $uniformIpConfig `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'uniform' -AdminUsername $adminUsername -AdminPassword $PLACEHOLDER `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+                -ImageReferenceOffer 'WindowsServer' -ImageReferenceSku '2022-datacenter-g2' `
+                -ImageReferenceVersion '20348.4648.260108' -ImageReferencePublisher 'MicrosoftWindowsServer'
+        $null = New-AzVmss -ResourceGroupName $rgname -Name $uniformVmssName -VirtualMachineScaleSet $uniformVmssConfig
+
+        $uniformVmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $uniformVmssName
+        $uniformIpTag = $uniformVmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0]
+        Assert-AreEqual $serviceTag.Id $uniformIpTag.FirstPartyServiceTagId
+
+        $uniformIpTag.FirstPartyServiceTagId = $null
+        $null = Update-AzVmss -ResourceGroupName $rgname -Name $uniformVmssName -VirtualMachineScaleSet $uniformVmss
+        $uniformVmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $uniformVmssName
+        Assert-Null $uniformVmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId
+
+        $uniformVmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId = $serviceTag.Id
+        $null = Update-AzVmss -ResourceGroupName $rgname -Name $uniformVmssName -VirtualMachineScaleSet $uniformVmss
+        $uniformVmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $uniformVmssName
+        Assert-AreEqual $serviceTag.Id $uniformVmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId
+
+        $uniformVmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId = $vnet.Id
+        Assert-Throws { Update-AzVmss -ResourceGroupName $rgname -Name $uniformVmssName -VirtualMachineScaleSet $uniformVmss }
+        $uniformVmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $uniformVmssName
+        Assert-AreEqual $serviceTag.Id $uniformVmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId
+
+        # Flexible VM scale set instance.
+        $flexVmssName = 'flex' + $rgname
+        $flexVmssConfig = New-AzVmssConfig -Location $loc -OrchestrationMode 'Flexible' `
+            -PlatformFaultDomainCount 1 -SinglePlacementGroup $false
+        $null = New-AzVmss -ResourceGroupName $rgname -Name $flexVmssName -VirtualMachineScaleSet $flexVmssConfig
+        $flexVmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $flexVmssName
+
+        $flexVmName = 'flexvm' + $rgname
+        $flexIpConfig = New-AzVMIpConfig -Name 'ipconfig' -SubnetId $subnetId `
+            -PublicIPAddressConfigurationName ('fpip' + $rgname) -IpTag $liveVmIpTag
+        $flexVmConfig = New-AzVMConfig -VMName $flexVmName -VMSize $vmSize -VmssId $flexVmss.Id
+        $flexVmConfig = Set-AzVMOperatingSystem -VM $flexVmConfig -Windows -ComputerName 'flexServiceTag' `
+            -Credential $credential
+        $flexVmConfig = Set-AzVMSourceImage -VM $flexVmConfig -PublisherName 'MicrosoftWindowsServer' `
+            -Offer 'WindowsServer' -Skus '2022-datacenter-g2' -Version '20348.4648.260108'
+        $flexVmConfig = Set-AzVMBootDiagnostic -VM $flexVmConfig -Disable
+        $flexVmConfig = $flexVmConfig | Add-AzVMNetworkInterfaceConfiguration -Name 'nicconfig' `
+            -Primary -IpConfiguration $flexIpConfig -NetworkApiVersion '2022-11-01'
+        $null = New-AzVM -ResourceGroupName $rgname -Location $loc -VM $flexVmConfig
+
+        $flexVm = Get-AzVM -ResourceGroupName $rgname -Name $flexVmName
+        $flexIpTag = $flexVm.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0]
+        Assert-AreEqual $serviceTag.Id $flexIpTag.FirstPartyServiceTagId
+
+        $flexIpTag.FirstPartyServiceTagId = $null
+        $null = Update-AzVM -ResourceGroupName $rgname -VM $flexVm
+        $flexVm = Get-AzVM -ResourceGroupName $rgname -Name $flexVmName
+        Assert-Null $flexVm.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId
+
+        $flexVm.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId = $serviceTag.Id
+        $null = Update-AzVM -ResourceGroupName $rgname -VM $flexVm
+        $flexVm = Get-AzVM -ResourceGroupName $rgname -Name $flexVmName
+        Assert-AreEqual $serviceTag.Id $flexVm.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId
+
+        $flexVm.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId = $vnet.Id
+        Assert-Throws { Update-AzVM -ResourceGroupName $rgname -VM $flexVm }
+        $flexVm = Get-AzVM -ResourceGroupName $rgname -Name $flexVmName
+        Assert-AreEqual $serviceTag.Id $flexVm.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.IpTags[0].FirstPartyServiceTagId
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
 }
 
 <#

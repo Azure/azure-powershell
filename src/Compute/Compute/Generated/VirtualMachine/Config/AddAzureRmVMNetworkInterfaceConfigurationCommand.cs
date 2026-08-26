@@ -18,26 +18,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         [Parameter(
             Mandatory = true,
-            Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public PSVirtualMachine VirtualMachine { get; set; }
+        [Alias("VirtualMachine")]
+        public PSVirtualMachine VM { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 1,
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true)]
-        public bool? Primary { get; set; }
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Primary { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 3,
             ValueFromPipelineByPropertyName = true)]
         public VirtualMachineNetworkInterfaceIPConfiguration[] IpConfiguration { get; set; }
 
@@ -53,19 +48,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 return;
             }
 
-            if (this.VirtualMachine.NetworkProfile == null)
+            if (this.VM.NetworkProfile == null)
             {
-                this.VirtualMachine.NetworkProfile = new NetworkProfile();
+                this.VM.NetworkProfile = new NetworkProfile();
             }
 
             if (this.IsParameterBound(c => c.NetworkApiVersion))
             {
-                this.VirtualMachine.NetworkProfile.NetworkApiVersion = this.NetworkApiVersion;
+                this.VM.NetworkProfile.NetworkApiVersion = this.NetworkApiVersion;
             }
 
-            if (this.VirtualMachine.NetworkProfile.NetworkInterfaceConfigurations == null)
+            if (this.VM.NetworkProfile.NetworkInterfaceConfigurations == null)
             {
-                this.VirtualMachine.NetworkProfile.NetworkInterfaceConfigurations =
+                this.VM.NetworkProfile.NetworkInterfaceConfigurations =
                     new List<VirtualMachineNetworkInterfaceConfiguration>();
             }
 
@@ -78,7 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.IsParameterBound(c => c.Primary))
             {
-                networkInterfaceConfiguration.Primary = this.Primary;
+                networkInterfaceConfiguration.Primary = this.Primary.IsPresent;
             }
 
             if (this.IsParameterBound(c => c.IpConfiguration))
@@ -89,8 +84,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         : new List<VirtualMachineNetworkInterfaceIPConfiguration>(this.IpConfiguration);
             }
 
-            this.VirtualMachine.NetworkProfile.NetworkInterfaceConfigurations.Add(networkInterfaceConfiguration);
-            WriteObject(this.VirtualMachine);
+            this.VM.NetworkProfile.NetworkInterfaceConfigurations.Add(networkInterfaceConfiguration);
+            WriteObject(this.VM);
         }
     }
 }

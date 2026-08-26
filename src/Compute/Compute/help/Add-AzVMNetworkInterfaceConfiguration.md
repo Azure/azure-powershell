@@ -13,8 +13,8 @@ Adds an implicit network interface configuration to a virtual machine.
 ## SYNTAX
 
 ```
-Add-AzVMNetworkInterfaceConfiguration [-VirtualMachine] <PSVirtualMachine> [[-Name] <String>]
- [[-Primary] <Boolean>] [[-IpConfiguration] <VirtualMachineNetworkInterfaceIPConfiguration[]>]
+Add-AzVMNetworkInterfaceConfiguration [-VM] <PSVirtualMachine> [-Name <String>] [-Primary]
+ [-IpConfiguration <VirtualMachineNetworkInterfaceIPConfiguration[]>]
  [-NetworkApiVersion <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -32,7 +32,7 @@ $subnetId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
 $ipTag = New-AzVMIpTagConfig -IpTagType 'FirstPartyUsage' -FirstPartyServiceTagId $serviceTagResourceId
 $ipConfig = New-AzVMIpConfig -Name 'ipConfig' -SubnetId $subnetId -PublicIPAddressConfigurationName 'publicIpConfig' -IpTag $ipTag
 $vmConfig = New-AzVMConfig -VMName 'myVM' -VMSize 'Standard_D2s_v5'
-$vmConfig | Add-AzVMNetworkInterfaceConfiguration -Name 'nicConfig' -Primary $true -IpConfiguration $ipConfig -NetworkApiVersion '2022-11-01'
+$vmConfig = Add-AzVMNetworkInterfaceConfiguration -VM $vmConfig -Name 'nicConfig' -Primary -IpConfiguration $ipConfig -NetworkApiVersion '2022-11-01'
 ```
 
 This example adds an implicit network interface and nested public IP configuration to a VM configuration object.
@@ -63,7 +63,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -78,7 +78,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -103,28 +103,28 @@ Accept wildcard characters: False
 Specifies whether this is the primary network interface configuration.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualMachine
+### -VM
 Specifies the configurable VM object to update.
 Create the object with **New-AzVMConfig**.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: (All)
-Aliases:
+Aliases: VirtualMachine
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
