@@ -22,8 +22,8 @@ New-AzVMIpConfig [-Name <String>] [-SubnetId <String>] [-Primary] [-PrivateIPAdd
 
 ## DESCRIPTION
 The **New-AzVMIpConfig** cmdlet creates an IP configuration for an implicit virtual machine (VM) network interface.
-When public IP parameters are supplied, the cmdlet initializes a nested public IP address configuration.
-IP tag objects are copied into that public IP configuration.
+When public IP parameters or **IpTag** objects are supplied, the cmdlet initializes a nested public IP address configuration.
+Any supplied IP tag objects are copied into that public IP configuration.
 
 ## EXAMPLES
 
