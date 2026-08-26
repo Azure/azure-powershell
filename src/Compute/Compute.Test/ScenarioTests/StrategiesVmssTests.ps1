@@ -970,8 +970,10 @@ function Test-VmssLifecycleHookEventEndToEnd
 .SYNOPSIS
 Tests -DisableCapacityReservationAssignment on New-AzVmssConfig/New-AzVmss (both the simple
 parameter set and the config+New-AzVmss pipeline), on Update-AzVmss, verifies the
-CapacityReservation/CapacityReservationType properties surfaced by Get-AzVmssVM, and validates
-local parameter restrictions.
+CapacityReservation/CapacityReservationType properties surfaced by Get-AzVmssVM, validates
+local parameter restrictions, and confirms Update-AzVmss clears the opposing capacity
+reservation setting when transitioning between -CapacityReservationGroupId and
+-DisableCapacityReservationAssignment.
 #>
 function Test-VmssDisableCapacityReservationAssignment
 {
@@ -1036,6 +1038,25 @@ function Test-VmssDisableCapacityReservationAssignment
         # Negative: PATCH path (no -VirtualMachineScaleSet) must reject -DisableCapacityReservationAssignment.
         Assert-ThrowsContains { Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -DisableCapacityReservationAssignment } `
             "CreateOrUpdate path";
+
+        # Step 5: assigning a group must clear a previously set opt-out flag on the VMSS object.
+        $realCRGName = 'crg' + $rgname;
+        $realCRG = New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $realCRGName -Location $loc;
+
+        $current = Get-AzVmss -ResourceGroupName $rgname -Name $vmssname;
+        Assert-True { $current.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
+        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -VirtualMachineScaleSet $current -CapacityReservationGroupId $realCRG.Id;
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssname;
+        Assert-AreEqual $realCRG.Id $vmss.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup.Id;
+        Assert-Null $vmss.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment;
+
+        # Step 6: opting out must clear a previously assigned capacity reservation group.
+        $current = Get-AzVmss -ResourceGroupName $rgname -Name $vmssname;
+        Assert-NotNull $current.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup;
+        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -VirtualMachineScaleSet $current -DisableCapacityReservationAssignment;
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssname;
+        Assert-True { $vmss.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
+        Assert-Null $vmss.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup;
     }
     finally
     {

@@ -1715,6 +1715,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup = new SubResource();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup.Id = this.CapacityReservationGroupId;
+                this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment = null;
             }
 
             if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
@@ -1733,6 +1734,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation = new CapacityReservationProfile();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment = this.DisableCapacityReservationAssignment.IsPresent;
+                if (this.DisableCapacityReservationAssignment.IsPresent)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup = null;
+                }
             }
 
             if (this.IsParameterBound(c => c.CustomData))
