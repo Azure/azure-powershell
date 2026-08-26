@@ -124,7 +124,8 @@ function Test-AzureFSUnregisterContainer
 		-VaultId $vault.ID `
 		-ContainerType AzureStorage `
 		-FriendlyName $saName
-	Assert-Null $container	
+	Assert-NotNull $container
+	Assert-AreEqual $container.Status "SoftDeleted"
 
 	$item = Enable-Protection $vault $fileShareFriendlyName $saName
 	Assert-True {$item.FriendlyName -eq $fileShareFriendlyName}

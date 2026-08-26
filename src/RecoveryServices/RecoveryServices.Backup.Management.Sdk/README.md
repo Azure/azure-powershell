@@ -5,7 +5,7 @@ This directory contains management plane service clients of Az.RecoveryServices 
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@autorest/powershell@4.x --override-client-name=RecoveryServicesBackupClient
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
@@ -13,6 +13,7 @@ autorest --use:@autorest/powershell@4.x --override-client-name=RecoveryServicesB
 ``` yaml
 isSdkGenerator: true
 powershell: true
+override-client-name: RecoveryServicesBackupClient
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
@@ -24,7 +25,7 @@ payload-flattening-threshold: 2
 ###
 ``` yaml
 # Lock to the merged Swagger PR commit so SDK generation remains reproducible.
-commit: 26c5d39ce59d33f9f08ebfc8205db653d6ac4bd9
+commit: 53fc184a55bd2214e3bec2f1d9098501072e7d1e
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/RecoveryServicesBackup/stable/2026-07-01/bms.json
 

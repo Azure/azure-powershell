@@ -27,11 +27,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// Returns the Azure Async Operation header from the headers collection.
         /// </summary>
         /// <param name="headers">Headers collection.</param>
-        /// <returns>Azure Async Operation header.</returns>
+        /// <returns>Azure Async Operation header, or null if not present.</returns>
         public static Uri GetAzureAsyncOperationHeader(this HttpResponseHeaders headers)
         {
-            var asyncHeader = headers.GetValues("Azure-AsyncOperation").FirstOrDefault();
-            return new Uri(asyncHeader);
+            if (headers.TryGetValues("Azure-AsyncOperation", out var values))
+            {
+                var asyncHeader = values.FirstOrDefault();
+                if (!string.IsNullOrEmpty(asyncHeader))
+                {
+                    return new Uri(asyncHeader);
+                }
+            }
+            return null;
         }
 
         /// <summary>
@@ -39,22 +46,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// the Azure Async Operation header - from the headers collection.
         /// </summary>
         /// <param name="headers">Headers collection.</param>
-        /// <returns>Azure Async Operation ID.</returns>
+        /// <returns>Azure Async Operation ID, or null if header not present.</returns>
         public static string GetAzureAsyncOperationId(this HttpResponseHeaders headers)
         {
             var asyncHeader = headers.GetAzureAsyncOperationHeader();
-            return asyncHeader.Segments.Last();
+            return asyncHeader?.Segments.Last();
         }
 
         /// <summary>
         /// Returns the location header from the headers collection.
         /// </summary>
         /// <param name="headers">Headers collection.</param>
-        /// <returns>Location header.</returns>
+        /// <returns>Location header, or null if not present.</returns>
         public static Uri GetLocationHeader(this HttpResponseHeaders headers)
         {
-            var asyncHeader = headers.GetValues("Location").FirstOrDefault();
-            return new Uri(asyncHeader);
+            if (headers.TryGetValues("Location", out var values))
+            {
+                var asyncHeader = values.FirstOrDefault();
+                if (!string.IsNullOrEmpty(asyncHeader))
+                {
+                    return new Uri(asyncHeader);
+                }
+            }
+            return null;
         }
 
         /// <summary>
@@ -62,11 +76,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// the location header - from the headers collection.
         /// </summary>
         /// <param name="headers">Headers collection.</param>
-        /// <returns>Operation result ID.</returns>
+        /// <returns>Operation result ID, or null if header not present.</returns>
         public static string GetOperationResultId(this HttpResponseHeaders headers)
         {
             var asyncHeader = headers.GetLocationHeader();
-            return asyncHeader.Segments.Last();
+            return asyncHeader?.Segments.Last();
         }
     }
 }
