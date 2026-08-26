@@ -1,0 +1,55 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/DocumentDB/DocumentDB.Autorest"
+    clear-output-folder: true
+    debug: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: "DocumentDB"
+    service-name: DocumentDB
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      - where:
+          subject: Operation
+        hide: true
+      - where:
+          verb: Invoke
+          subject: PromoteMongoCluster
+        hide: true
+      - where:
+          verb: New
+          subject: User
+        hide: true
+      - where:
+          subject: PrivateLink
+        remove: true
+      - where:
+          verb: Update
+          subject: User
+        remove: true
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      - where:
+          variant: ^(Create|Update)(?!.*?Expanded|ViaJsonString|ViaJsonFilePath)
+        remove: true
+      - where:
+          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+        remove: true
+      - where:
+          verb: Set
+        remove: true
+      - where:
+          subject-prefix: DocumentDb(.*)
+        set:
+          subject-prefix: DocumentDB$1
+linter:
+  extends: []

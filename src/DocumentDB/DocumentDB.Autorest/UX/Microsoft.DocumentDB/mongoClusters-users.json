@@ -1,0 +1,95 @@
+{
+  "resourceType": "mongoClusters/users",
+  "apiVersion": "2026-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.documentdb"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDocumentDBUser",
+      "description": "Gets the defintion of a Mongo cluster user.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.documentdb/get-azdocumentdbuser"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MongoClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the defintion of a Mongo cluster user.",
+          "parameters": [
+            {
+              "name": "-MongoClusterName",
+              "value": "[Path.mongoClusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.userName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDocumentDBUser",
+      "description": "Deletes a mongo cluster user.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.documentdb/remove-azdocumentdbuser"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MongoClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a mongo cluster user.",
+          "parameters": [
+            {
+              "name": "-MongoClusterName",
+              "value": "[Path.mongoClusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.userName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
