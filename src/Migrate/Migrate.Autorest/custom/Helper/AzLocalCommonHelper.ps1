@@ -42,7 +42,7 @@ function CheckConnectedMachineModuleDependency {
     param()
 
     process {
-        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.ConnectedMachine" }
+        $module = Get-Module -ListAvailable -Name Az.ConnectedMachine
         if ($null -eq $module) {
             $message = "Az.ConnectedMachine Module must be installed to use -MigrateAsArcVM 'true'. Please run 'Install-Module -Name Az.ConnectedMachine' to install and continue."
             throw $message
