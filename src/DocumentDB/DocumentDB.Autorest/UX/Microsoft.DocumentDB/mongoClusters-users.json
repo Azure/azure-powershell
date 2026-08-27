@@ -7,7 +7,7 @@
   "commands": [
     {
       "name": "Get-AzDocumentDBUser",
-      "description": "Gets the defintion of a Mongo cluster user.",
+      "description": "Gets the definition of a Mongo cluster user.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
       "help": {
         "learnMore": {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Gets the defintion of a Mongo cluster user.",
+          "description": "Gets the definition of a Mongo cluster user.",
           "parameters": [
             {
               "name": "-MongoClusterName",

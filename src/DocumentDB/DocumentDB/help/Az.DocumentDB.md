@@ -1,14 +1,14 @@
 ---
 Module Name: Az.DocumentDB
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid: fa4ea508-9c84-439c-92ed-fed5d547fa18
+Download Help Link: https://learn.microsoft.com/powershell/module/az.documentdb
+Help Version: 1.0.0.0
+Locale: en-US
 ---
 
 # Az.DocumentDB Module
 ## Description
-{{ Fill in the Description }}
+Microsoft Azure PowerShell: DocumentDB cmdlets
 
 ## Az.DocumentDB Cmdlets
 ### [Add-AzDocumentDBMongoClusterIdentity](Add-AzDocumentDBMongoClusterIdentity.md)
@@ -31,7 +31,7 @@ Get the managed identities assigned to a mongo cluster.
 List all the replicas for the mongo cluster.
 
 ### [Get-AzDocumentDBUser](Get-AzDocumentDBUser.md)
-Gets the defintion of a Mongo cluster user.
+Gets the definition of a Mongo cluster user.
 
 ### [Invoke-AzDocumentDBPromoteMongoCluster](Invoke-AzDocumentDBPromoteMongoCluster.md)
 Promote a replica mongo cluster to a primary role.

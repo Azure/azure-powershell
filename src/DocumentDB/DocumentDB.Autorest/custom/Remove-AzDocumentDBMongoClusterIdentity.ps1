@@ -124,7 +124,10 @@ param(
             if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) { $getParams['HttpPipelinePrepend'] = $HttpPipelinePrepend }
             $cluster = Az.DocumentDB\Get-AzDocumentDBMongoCluster @getParams -ErrorAction Stop
 
-            $existing = @($cluster.IdentityUserAssignedIdentity.Keys)
+            $existing = @()
+            if ($null -ne $cluster.IdentityUserAssignedIdentity) {
+                $existing = @($cluster.IdentityUserAssignedIdentity.Keys)
+            }
             $remaining = @($existing | Where-Object { $_ -notin $UserAssignedIdentity })
 
             $null = $PSBoundParameters.Remove('UserAssignedIdentity')
