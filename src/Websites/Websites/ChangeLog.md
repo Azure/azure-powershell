@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Migrated the module to a self-owned SDK (Software Development Kit) generated in this repository, replacing the deprecated 'Microsoft.Azure.Management.Websites' NuGet package.
+    - The API (Application Programming Interface) version remains 2021-01-15, so cmdlet behavior, parameters, and output types are unchanged.
 * Added support for creating and updating App Service Environment plans with Isolated v4 and memory-optimized Isolated v4 SKUs.
 
 ## Version 4.0.0
