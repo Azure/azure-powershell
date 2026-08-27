@@ -46,10 +46,12 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.EventGrid/partnerNamespaces", "2021-06-01-preview", true, true);
             RegisterConfiguration("Microsoft.EventGrid/namespaces", "2023-06-01-preview", true, true);
             RegisterConfiguration("Microsoft.EventHub/namespaces", "2018-01-01-preview", true, false);
-            RegisterConfiguration("Microsoft.HardwareSecurityModules/cloudHsmClusters", "2022-08-31-preview", true, true);
+            RegisterConfiguration("Microsoft.HardwareSecurityModules/cloudHsmClusters", "2025-03-31", true, true);
+            RegisterConfiguration("Microsoft.HardwareSecurityModules/paymentHsmClusters", "2025-12-01-preview", true, true);
             RegisterConfiguration("Microsoft.HealthcareApis/services", "2020-03-30", false, true);
             RegisterConfiguration("Microsoft.HealthDataAIServices/deidServices", "2024-09-20", true, false);
             RegisterConfiguration("Microsoft.HDInsight/clusters", "2018-06-01-preview", true, true);
+            RegisterConfiguration("Microsoft.HorizonDB/clusters", "2026-01-20-preview", true, true);
             RegisterConfiguration("Microsoft.HybridCompute/privateLinkScopes", "2021-05-20", true, true);
             RegisterConfiguration("Microsoft.KubernetesConfiguration/privateLinkScopes", "2024-11-01-preview", true, true);
             RegisterConfiguration("Microsoft.Insights/privateLinkScopes", "2019-10-17-preview", true, true);

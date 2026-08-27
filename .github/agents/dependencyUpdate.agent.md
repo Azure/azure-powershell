@@ -93,7 +93,19 @@ This single command coordinates versions across the repo:
 - Regenerates the `#region Generated` block in `ConditionalAssemblyProvider.cs` with correct assembly versions
 - Updates `cgmanifest.json` with package metadata
 
-### 3c. Update compile-time references (if applicable)
+### 3c. Verify manifest.json platform scoping flags
+
+**Before** running `Update-DevAssembly`, verify the `WindowsPowerShell` and `PowerShell7Plus` flags for each new or changed manifest.json entry are correct:
+
+- **Both `true`**: Assembly is loaded in both PS 7+ and Windows PowerShell (default for most packages).
+- **`WindowsPowerShell: true`, `PowerShell7Plus: false`**: Assembly is loaded **only in Windows PowerShell** because PS 7+ already provides it via the .NET NETCore.App shared framework (e.g., `System.Memory`, `System.Buffers`, `System.Threading.Tasks.Extensions`).
+- **`Microsoft.Extensions.*` packages**: Must always have `PowerShell7Plus: true` — these are **not** in NETCore.App (they're in AspNetCore.App, which PS7 doesn't use).
+
+Check the PS 7 installation directory (e.g., `/usr/local/microsoft/powershell/7/` on Linux or `$PSHOME` on the target machine) to confirm whether an assembly is already bundled with PS7. When in doubt, use `PowerShell7Plus: true` so the assembly is shipped for both editions.
+
+After running `Update-DevAssembly`, the tool will regenerate `ConditionalAssemblyProvider.cs` with the correct `.WithWindowsPowerShell()` modifiers based on these flags. **Do not manually edit the generated C# file.**
+
+### 3d. Update compile-time references (if applicable)
 
 Some packages also appear in compile-time reference files — update versions there too:
 
@@ -102,7 +114,7 @@ Some packages also appear in compile-time reference files — update versions th
 
 Not all shared packages appear in these files — only update what exists. Search the files to confirm.
 
-### 3d. Update ChangeLog
+### 3e. Update ChangeLog
 
 Add an entry under `## Upcoming Release` in `src/Accounts/Accounts/ChangeLog.md`:
 
@@ -113,22 +125,69 @@ Add an entry under `## Upcoming Release` in `src/Accounts/Accounts/ChangeLog.md`
 
 Use past tense, reference GitHub issues if applicable, avoid special characters (`@`, `$`, unescaped quotes).
 
+### 3f. Update module-level ChangeLogs (if modules were modified)
+
+If the upgrade required code changes in any modules (e.g., resolving ambiguous type conflicts, updating csproj dependencies, or handling API breaking changes), add a ChangeLog entry to each affected module's `ChangeLog.md`:
+
+- For **type disambiguation changes**: `* Updated <ModuleName> identity handling to explicitly use the <SDK> SDK 'Identity' model in create/update flows.`
+- For **dependency version bumps**: `* Updated 'PackageName' dependency from X.Y.Z to A.B.C.`
+- For **API migration changes**: `* Updated <Type> instantiation to use new <NewAPI> constructor.`
+
+This ensures module users see a change notification even when the change was triggered by a shared dependency upgrade.
+
+## Step 4: Fix Build Errors Caused by the Upgrade
+
+After making the manifest and compile-time reference changes, build both production code and test projects to surface all compilation errors:
+
+```powershell
+# Build all production code and test projects:
+./tools/BuildScripts/BuildModules.ps1 -Configuration Debug
+
+# Or build just the affected module and its tests:
+./tools/BuildScripts/BuildModules.ps1 -Configuration Debug -TargetModule Accounts
+```
+
+### 4a. Constructor or API signature changes (breaking API changes)
+
+SDK packages occasionally remove or change constructor overloads between versions. Symptoms are **CS1503** (wrong argument type) or **CS7036** (required argument missing) build errors.
+
+### 4b. Ambiguous type name conflicts
+
+A new package version may introduce a type whose unqualified name conflicts with an existing type already in scope from a different SDK (e.g., a type called `Identity` appearing in both the updated package and the module's Azure Management SDK). This produces **CS0104** (ambiguous reference) build errors.
+
+For each affected file:
+- Replace the ambiguous unqualified type name with the alias-qualified name (e.g., `new Identity(...)` → `new StorageModels.Identity(...)`), or use the fully qualified name inline.
+- Search across all modules — this type of conflict commonly affects multiple modules simultaneously when an Azure.Identity or Azure.Core version introduces new model types.
+
+## Step 5: Resolve Module-Level csproj Version Conflicts
+
+When a package that was previously a module-local dependency is promoted to a shared dependency (or its shared version is bumped), individual module `.csproj` files that pin the older version will produce version-conflict warnings or errors.
+
+- Search all `.csproj` files in `src/` for `<PackageReference Include="<PackageName>"` for each newly shared or version-bumped package.
+- Update the `Version` attribute in each module `.csproj` to match (or be compatible with) the version now in `manifest.json`.
+- This commonly affects modules that independently pinned a transitive dependency (e.g., `Microsoft.Extensions.*`, `System.Security.Cryptography.*`) before it was promoted to the shared manifest.
+
+
 ## Verification
 
-After making all changes, verify the build and module loading:
+After completing all steps above, do a final end-to-end verification:
 
-1. **Build all projects**:
+1. **Build the project** — do not use `dotnet build` directly; use the build script instead:
    ```powershell
+   # Complete build (all modules):
    ./tools/BuildScripts/BuildModules.ps1 -Configuration Debug
+
+   # Quick build (Az.Accounts module only — sufficient for most shared dependency changes):
+   ./tools/BuildScripts/BuildModules.ps1 -Configuration Debug -TargetModule Accounts
    ```
 
-2. **Import Az.Accounts on PowerShell 7+** and verify no errors in verbose output:
+2. **Import the Az.Accounts module on PowerShell 7+** and verify no errors in verbose output:
    ```powershell
    $VerbosePreference = "Continue"
    Import-Module ./artifacts/Debug/Az.Accounts/Az.Accounts.psd1
    ```
 
-3. **Import Az.Accounts on Windows PowerShell 5.1** (requires Windows) and verify no errors:
+3. **Import the Az.Accounts module on Windows PowerShell 5.1** (requires Windows) and verify no errors:
    ```powershell
    $VerbosePreference = "Continue"
    Import-Module ./artifacts/Debug/Az.Accounts/Az.Accounts.psd1
@@ -144,7 +203,11 @@ Both PowerShell editions must be tested because shared assemblies use different 
 | `tools/Common.Netcore.Dependencies.targets` | **Yes** (if applicable) | Compile-time PackageReferences |
 | `src/Accounts/Authentication/Authentication.csproj` | **Yes** (if applicable) | Auth package compile-time refs |
 | `src/Accounts/Accounts/ChangeLog.md` | **Yes** | User-facing changelog |
-| `src/Accounts/AssemblyLoading/ConditionalAssemblyProvider.cs` | **No — auto-generated** | Regenerated by `Update-DevAssembly` |
+| Various module `src/<ModuleName>/<ModuleName>/ChangeLog.md` files | **Yes** (if module code changed) | Module-specific changelog entries for code changes triggered by the upgrade |
+| `tools/StaticAnalysis/DependencyAnalyzer/DependencyAnalyzer.cs` | **Yes** (if false-positive SA errors) | Add framework-provided assemblies to the `FrameworkAssemblies` allowlist |
+| Various `src/**/*.cs` callsite files | **Yes** (if breaking API change) | Update constructor/method callsites to match new SDK API |
+| Various `src/**/*.csproj` module files | **Yes** (if version conflict) | Align module-local dependency versions with the new shared versions |
+| `src/Accounts/AssemblyLoading/ConditionalAssemblyProvider.cs` | **No — auto-generated** | Regenerated by `Update-DevAssembly`; **never edit manually** — fix platform scoping in `manifest.json` instead |
 | `src/lib/cgmanifest.json` | **No — auto-generated** | Regenerated by `Update-DevAssembly` |
 | `src/lib/{framework}/*.dll` | **No — auto-generated** | Downloaded/placed by `Update-DevAssembly` |
 
@@ -161,8 +224,11 @@ Both PowerShell editions must be tested because shared assemblies use different 
 | Skip `Compare-DevPackageDep` when the user pre-edited manifest.json | User edits typically only cover direct packages; transitive deps (MSAL, System.Text.Json, etc.) are often missed | Run the comparison, present findings, then update manifest.json with any additional transitive changes |
 | Bump a shared dependency version in only one file | Version mismatch between manifest.json, targets, and csproj causes build or runtime errors | Check the coordination matrix above |
 | Modify `NuGet.Config` | Breaks the build system's package resolution | Never modify |
-| Skip static analysis | Dependency conflicts may not surface until CI | Always run `dotnet msbuild build.proj /t:StaticAnalysis` |
+| Skip static analysis | Dependency conflicts and false-positive assembly errors may not surface until CI | Always run `dotnet msbuild build.proj /t:StaticAnalysis` |
 | Cancel build commands | Builds can take 15-45 minutes with periods of no visible progress | Wait for completion — never cancel |
+| Only test module import on PS7 | PS5 uses a different assembly resolver that can fail on version requests PS7 handles silently | Test import on both PS7 and PS5 |
+| Build only production code, skipping test projects | Test compilation errors from API breaking changes won't surface until CI | Build both production and test projects during the upgrade to catch constructor/API mismatches, obsolete warnings, and type conflicts early |
+| Add all new assemblies to `LowerVersionRedirectionAllowList` | This list is for a narrow edge case only (reference version never shipped by NuGet) | Only add when confirmed that no NuGet package has shipped the requested version |
 
 # Quality Checklist (enforce before finalizing)
 
@@ -171,7 +237,11 @@ Both PowerShell editions must be tested because shared assemblies use different 
 - [ ] TargetFramework values verified for all updated packages (newer versions may drop older TFMs)
 - [ ] `Update-DevAssembly` ran successfully — ConditionalAssemblyProvider.cs, cgmanifest.json, and DLLs are updated
 - [ ] Compile-time references updated where applicable (targets file, csproj)
+- [ ] Module-level `.csproj` files checked for version conflicts with newly shared or upgraded packages
+- [ ] Build compiles cleanly — no CS0104 (ambiguous type), CS1503/CS7036 (constructor mismatch), or CS0618 (obsolete) errors
+- [ ] Static analysis passes — no false-positive dependency errors; `DependencyAnalyzer` allowlist updated if needed
 - [ ] ChangeLog.md entry added under `## Upcoming Release`
-- [ ] Build succeeds: `./tools/BuildScripts/BuildModules.ps1 -Configuration Debug`
-- [ ] Module imports without errors on PowerShell 7+
-- [ ] Module imports without errors on Windows PowerShell 5.1 (requires Windows)
+- [ ] Module-level ChangeLog.md entries added for any modules with code changes (type disambiguation, API migration, csproj version bumps)
+- [ ] Build succeeds: `./tools/BuildScripts/BuildModules.ps1 -Configuration Debug` (or `-TargetModule Accounts` for quick verification)
+- [ ] Module imports without errors on PowerShell 7+ (test Az.Accounts at minimum; test affected modules if code changed)
+- [ ] Module imports without errors on Windows PowerShell 5.1 (requires Windows; test Az.Accounts at minimum)

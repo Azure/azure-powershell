@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     /// <summary>
     /// Deleted vault information with extended details.
     /// </summary>
-    public partial class DeletedVault
+    public partial class DeletedVault : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the DeletedVault class.
@@ -24,23 +24,27 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// Initializes a new instance of the DeletedVault class.
         /// </summary>
 
-        /// <param name="id">The resource ID for the deleted key vault.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the key vault.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The resource type of the key vault.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="properties">Properties of the vault
         /// </param>
-        public DeletedVault(string id = default(string), string name = default(string), string type = default(string), DeletedVaultProperties properties = default(DeletedVaultProperties))
+        public DeletedVault(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), DeletedVaultProperties properties = default(DeletedVaultProperties))
 
+        : base(id, name, type, systemData)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.Properties = properties;
             CustomInit();
         }
@@ -50,24 +54,6 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets the resource ID for the deleted key vault.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets the name of the key vault.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets the resource type of the key vault.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets properties of the vault

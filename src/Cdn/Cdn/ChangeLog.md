@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Added ChangeSafety Support
+
+## Version 6.1.0
+* Upgraded API version to 2026-04-01-preview.
+* Fixed CDN long-running operations that returned completed resource responses without a Location header.
 
 ## Version 6.0.2
 * Announced upcoming breaking changes for all `Az*CdnEdgeAction*` cmdlets and the `SubjectAlternativeName` parameter of `New-AzCdnSecretCustomerCertificateParametersObject`, which will be removed in a future release.

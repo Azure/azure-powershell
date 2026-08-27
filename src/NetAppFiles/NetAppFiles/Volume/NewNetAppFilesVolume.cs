@@ -12,20 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Rest.Azure;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
+    [CmdletOutputBreakingChangeWithVersion(typeof(NewAzureRmNetAppFilesVolume), "12.0.0", "7.0.0", DeprecatedOutputProperties = new String[] { "EnableSubvolumes" })]
     [Cmdlet(
         "New",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolume",
@@ -291,10 +294,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [ValidateNotNullOrEmpty]
         public IList<PSKeyValuePairs> PlacementRule { get; set; }
 
+        private const String ChangeDesc = "EnableSubvolume is being deprecated and removed in a future release; there is no replacement.";
+        [CmdletParameterBreakingChangeWithVersion("EnableSubvolume", "12.0.0", "7.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag indicating whether subvolume operations are enabled on the volume (Enabled, Disabled)")]        
         public SwitchParameter EnableSubvolume { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether the volume operates in Breakthrough Mode. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string BreakthroughMode { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -436,6 +447,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                     VolumeSpecName = VolumeSpecName,
                     PlacementRules = PlacementRule?.ToPlacementKeyValuePairs(),
                     EnableSubvolumes = EnableSubvolume.IsPresent ? EnableSubvolumes.Enabled : EnableSubvolumes.Disabled,
+                    BreakthroughMode = BreakthroughMode,
                     EncryptionKeySource = EncryptionKeySource,
                     KeyVaultPrivateEndpointResourceId = KeyVaultPrivateEndpointResourceId,
                     DeleteBaseSnapshot = DeleteBaseSnapshot,
@@ -519,6 +531,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 SmbNonBrowsable = SmbNonBrowsable,
                 CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy
             };
+
+            var breakthroughModeProperty = volumeBody.GetType().GetProperty("BreakthroughMode");
+            if (breakthroughModeProperty != null)
+            {
+                breakthroughModeProperty.SetValue(volumeBody, BreakthroughMode);
+            }
+
             if (IsLargeVolume.IsPresent)
             {
                 volumeBody.IsLargeVolume = IsLargeVolume;

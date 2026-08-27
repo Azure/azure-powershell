@@ -65,8 +65,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return;
             }
-            __afdOriginUpdatePropertiesParameters = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdOriginUpdatePropertiesParameters(json);
-            __afdStateProperties = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdStateProperties(json);
+            {_azureOrigin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("azureOrigin"), out var __jsonAzureOrigin) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference.FromJson(__jsonAzureOrigin) : _azureOrigin;}
+            {_sharedPrivateLinkResource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("sharedPrivateLinkResource"), out var __jsonSharedPrivateLinkResource) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SharedPrivateLinkResourceProperties.FromJson(__jsonSharedPrivateLinkResource) : _sharedPrivateLinkResource;}
+            {_originGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("originGroupName"), out var __jsonOriginGroupName) ? (string)__jsonOriginGroupName : (string)_originGroupName;}
+            {_hostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("hostName"), out var __jsonHostName) ? (string)__jsonHostName : (string)_hostName;}
+            {_httpPort = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber>("httpPort"), out var __jsonHttpPort) ? (int?)__jsonHttpPort : _httpPort;}
+            {_httpsPort = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber>("httpsPort"), out var __jsonHttpsPort) ? (int?)__jsonHttpsPort : _httpsPort;}
+            {_originHostHeader = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("originHostHeader"), out var __jsonOriginHostHeader) ? (string)__jsonOriginHostHeader : (string)_originHostHeader;}
+            {_priority = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber>("priority"), out var __jsonPriority) ? (int?)__jsonPriority : _priority;}
+            {_weight = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber>("weight"), out var __jsonWeight) ? (int?)__jsonWeight : _weight;}
+            {_enabledState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("enabledState"), out var __jsonEnabledState) ? (string)__jsonEnabledState : (string)_enabledState;}
+            {_enforceCertificateNameCheck = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonBoolean>("enforceCertificateNameCheck"), out var __jsonEnforceCertificateNameCheck) ? (bool?)__jsonEnforceCertificateNameCheck : _enforceCertificateNameCheck;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
+            {_deploymentStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("deploymentStatus"), out var __jsonDeploymentStatus) ? (string)__jsonDeploymentStatus : (string)_deploymentStatus;}
             AfterFromJson(json);
         }
 
@@ -101,8 +112,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return container;
             }
-            __afdOriginUpdatePropertiesParameters?.ToJson(container, serializationMode);
-            __afdStateProperties?.ToJson(container, serializationMode);
+            AddIf( null != this._azureOrigin ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._azureOrigin.ToJson(null,serializationMode) : null, "azureOrigin" ,container.Add );
+            AddIf( null != this._sharedPrivateLinkResource ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._sharedPrivateLinkResource.ToJson(null,serializationMode) : null, "sharedPrivateLinkResource" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._originGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._originGroupName.ToString()) : null, "originGroupName" ,container.Add );
+            }
+            AddIf( null != (((object)this._hostName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._hostName.ToString()) : null, "hostName" ,container.Add );
+            AddIf( null != this._httpPort ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber((int)this._httpPort) : null, "httpPort" ,container.Add );
+            AddIf( null != this._httpsPort ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber((int)this._httpsPort) : null, "httpsPort" ,container.Add );
+            AddIf( null != (((object)this._originHostHeader)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._originHostHeader.ToString()) : null, "originHostHeader" ,container.Add );
+            AddIf( null != this._priority ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber((int)this._priority) : null, "priority" ,container.Add );
+            AddIf( null != this._weight ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber((int)this._weight) : null, "weight" ,container.Add );
+            AddIf( null != (((object)this._enabledState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._enabledState.ToString()) : null, "enabledState" ,container.Add );
+            AddIf( null != this._enforceCertificateNameCheck ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonBoolean((bool)this._enforceCertificateNameCheck) : null, "enforceCertificateNameCheck" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._deploymentStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._deploymentStatus.ToString()) : null, "deploymentStatus" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

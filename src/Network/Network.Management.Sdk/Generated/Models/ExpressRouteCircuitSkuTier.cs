@@ -13,9 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ExpressRouteCircuitSkuTier
     {
+        /// <summary>
+        /// Standard
+        /// </summary>
         public const string Standard = "Standard";
+        /// <summary>
+        /// Premium
+        /// </summary>
         public const string Premium = "Premium";
+        /// <summary>
+        /// Basic
+        /// </summary>
         public const string Basic = "Basic";
+        /// <summary>
+        /// Local
+        /// </summary>
         public const string Local = "Local";
+        /// <summary>
+        /// MultiCloud tier for cross-cloud connectivity.
+        /// </summary>
+        public const string MultiCloud = "MultiCloud";
     }
 }

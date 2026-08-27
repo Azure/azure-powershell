@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VpnLinkConnectionMode
     {
+        /// <summary>
+        /// Default
+        /// </summary>
         public const string Default = "Default";
+        /// <summary>
+        /// ResponderOnly
+        /// </summary>
         public const string ResponderOnly = "ResponderOnly";
+        /// <summary>
+        /// InitiatorOnly
+        /// </summary>
         public const string InitiatorOnly = "InitiatorOnly";
     }
 }

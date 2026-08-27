@@ -82,6 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {_userAssignedIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("userAssignedIdentity"), out var __jsonUserAssignedIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference.FromJson(__jsonUserAssignedIdentity) : _userAssignedIdentity;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
             {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)_scope;}
+            {_tokenDestinationHeader = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("tokenDestinationHeader"), out var __jsonTokenDestinationHeader) ? (string)__jsonTokenDestinationHeader : (string)_tokenDestinationHeader;}
             AfterFromJson(json);
         }
 
@@ -107,6 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             AddIf( null != this._userAssignedIdentity ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._userAssignedIdentity.ToJson(null,serializationMode) : null, "userAssignedIdentity" ,container.Add );
             AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
             AddIf( null != (((object)this._scope)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._scope.ToString()) : null, "scope" ,container.Add );
+            AddIf( null != (((object)this._tokenDestinationHeader)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._tokenDestinationHeader.ToString()) : null, "tokenDestinationHeader" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

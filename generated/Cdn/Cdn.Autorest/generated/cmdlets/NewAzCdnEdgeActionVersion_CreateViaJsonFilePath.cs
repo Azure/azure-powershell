@@ -15,7 +15,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzCdnEdgeActionVersion_CreateViaJsonFilePath", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.GenericBreakingChange("", "14.5.0", "5.4.0", "2026/05/15", ChangeDescription = "All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"create EdgeActionVersion version")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
@@ -23,7 +22,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.NotSuggestDefaultParameterSet]
     public partial class NewAzCdnEdgeActionVersion_CreateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext,
+        System.Management.Automation.IDynamicParameters
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -287,6 +287,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns the Change Safety dynamic parameters (-AcquirePolicyToken / -ChangeReference) for this write cmdlet.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.Management.Automation.RuntimeDefinedParameterDictionary" /> containing the Change Safety parameters.
+        /// </returns>
+        public object GetDynamicParameters()
+        {
+            var parameters = new global::System.Management.Automation.RuntimeDefinedParameterDictionary();
+            parameters.Add("AcquirePolicyToken", new global::System.Management.Automation.RuntimeDefinedParameter("AcquirePolicyToken", typeof(global::System.Management.Automation.SwitchParameter), new global::System.Collections.ObjectModel.Collection<global::System.Attribute> { new global::System.Management.Automation.ParameterAttribute { HelpMessage = "Acquire an Azure Policy token automatically for this resource operation.", ParameterSetName = global::System.Management.Automation.ParameterAttribute.AllParameterSets } }));
+            parameters.Add("ChangeReference", new global::System.Management.Automation.RuntimeDefinedParameter("ChangeReference", typeof(string), new global::System.Collections.ObjectModel.Collection<global::System.Attribute> { new global::System.Management.Automation.ParameterAttribute { HelpMessage = "The change reference resource ID for this resource operation.", ParameterSetName = global::System.Management.Automation.ParameterAttribute.AllParameterSets } }));
+            return parameters;
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>

@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded the Key Vault control plane API version to '2026-02-01'.
+    - All Key Vault control plane API versions before '2026-02-01' are being retired on 27 February 2027. Upgrading to a release that includes this change keeps 'Az.KeyVault' working past that date.
+    - No action is required and no cmdlet behavior changes. 'New-AzKeyVault' has created vaults with RBAC (Role-Based Access Control) enabled by default since Az.KeyVault 6.0.0, and it continues to send that setting explicitly, so the new service-side default has no effect on vaults created through this module. Use 'DisableRbacAuthorization' to create a vault that uses access policies instead.
+
+## Version 6.6.0
+* Populated 'KeySize' in 'Get-AzKeyVaultKey' output for additional key types when available; previously only RSA keys had a size populated.
+* Upgraded `Azure.Security.KeyVault.Keys` dependency from `4.6.0-beta.1` to `4.10.0`.
+
+## Version 6.5.1
+* Updated `System.Security.Cryptography.Cng` dependency from `4.5.0` to `5.0.0`.
 
 ## Version 6.5.0
 * Added ChangeSafety Support

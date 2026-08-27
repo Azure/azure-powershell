@@ -32,11 +32,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="allocationStrategy">Specifies the allocation strategy for the virtual machine scale set based
         /// on which the VMs will be allocated.
         /// Possible values include: &#39;LowestPrice&#39;, &#39;CapacityOptimized&#39;, &#39;Prioritized&#39;</param>
-        public SkuProfile(System.Collections.Generic.IList<SkuProfileVMSize> vmSizes = default(System.Collections.Generic.IList<SkuProfileVMSize>), string allocationStrategy = default(string))
+
+        /// <param name="automaticSkuMigrationPolicy">Specifies the policy that controls whether the platform may automatically
+        /// migrate scale set instances to a different VM size from the SKU profile
+        /// depending on platform demands. When omitted, automatic SKU migration is
+        /// disabled.
+        /// </param>
+        public SkuProfile(System.Collections.Generic.IList<SkuProfileVMSize> vmSizes = default(System.Collections.Generic.IList<SkuProfileVMSize>), string allocationStrategy = default(string), AutomaticSkuMigrationPolicy automaticSkuMigrationPolicy = default(AutomaticSkuMigrationPolicy))
 
         {
             this.VmSizes = vmSizes;
             this.AllocationStrategy = allocationStrategy;
+            this.AutomaticSkuMigrationPolicy = automaticSkuMigrationPolicy;
             CustomInit();
         }
 
@@ -58,5 +65,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "allocationStrategy")]
         public string AllocationStrategy {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the policy that controls whether the platform may
+        /// automatically migrate scale set instances to a different VM size from the
+        /// SKU profile depending on platform demands. When omitted, automatic SKU
+        /// migration is disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "automaticSkuMigrationPolicy")]
+        public AutomaticSkuMigrationPolicy AutomaticSkuMigrationPolicy {get; set; }
     }
 }

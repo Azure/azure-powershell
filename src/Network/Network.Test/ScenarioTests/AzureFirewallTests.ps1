@@ -2221,10 +2221,10 @@ function Test-InvokeAzureFirewallPacketCapture {
         # Create the firewall packet capture parameters
         $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 30 -NumberOfPackets 500 -SASUrl $sasurl -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2 -Operation "Start"
 
-        # Invoke a firewall packet capture
-        $response = Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
-        Assert-NotNull $response
-        Assert-AreEqual "Microsoft.Azure.Management.Network.Models.AzureFirewallsPacketCaptureHeaders" $response.GetType().fullname
+        # Invoke a firewall packet capture.
+        # The cmdlet is deprecated and no longer returns a response object (the PUT PacketCapture
+        # call is fire-and-forget), so simply assert that the invocation completes without error.
+        Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
     }
     finally {
         # Cleanup
@@ -2633,6 +2633,39 @@ function Test-AzureFirewallEdgeZoneZonesValidation {
     catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
     {
         Assert-True { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+function Test-AzureFirewallAfcConfiguration {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = "centraluseuap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+
+    try {
+        New-AzResourceGroup -Name $rgname -Location $location
+
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet | Out-Null
+
+        # IpTag required by the subscription's AddIpTagsToPublicIpAddresses policy
+        $ipTag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/NonProd"
+        New-AzPublicIpAddress -ResourceGroupName $rgname -Name $publicIpName -Location $location -AllocationMethod Static -Sku Standard -IpTag $ipTag | Out-Null
+
+        New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName
+
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+
+        # AfcConfiguration (incl. ServiceEndpoint) is a read-only property surfaced from the RP; a standard firewall is not AFC-managed
+        Assert-Null $getAzureFirewall.AfcConfiguration
     }
     finally {
         # Cleanup

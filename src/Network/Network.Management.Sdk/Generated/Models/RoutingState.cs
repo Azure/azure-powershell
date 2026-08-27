@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class RoutingState
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// Provisioned
+        /// </summary>
         public const string Provisioned = "Provisioned";
+        /// <summary>
+        /// Provisioning
+        /// </summary>
         public const string Provisioning = "Provisioning";
+        /// <summary>
+        /// Failed
+        /// </summary>
         public const string Failed = "Failed";
     }
 }

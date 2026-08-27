@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="serviceProviderProvisioningState">The provisioning state of the circuit in the connectivity provider system.
         /// Possible values include: &#39;NotProvisioned&#39;, &#39;Provisioning&#39;, &#39;Provisioned&#39;,
-        /// &#39;Deprovisioning&#39;</param>
+        /// &#39;Deprovisioning&#39;, &#39;DeProvisioned&#39;</param>
 
         /// <param name="serviceProviderNotes">Additional read only notes set by the connectivity provider.
         /// </param>
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets the provisioning state of the circuit in the connectivity
-        /// provider system. Possible values include: &#39;NotProvisioned&#39;, &#39;Provisioning&#39;, &#39;Provisioned&#39;, &#39;Deprovisioning&#39;
+        /// provider system. Possible values include: &#39;NotProvisioned&#39;, &#39;Provisioning&#39;, &#39;Provisioned&#39;, &#39;Deprovisioning&#39;, &#39;DeProvisioned&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serviceProviderProvisioningState")]
         public string ServiceProviderProvisioningState {get; set; }

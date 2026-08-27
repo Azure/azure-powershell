@@ -19,6 +19,20 @@
 -->
 
 ## Upcoming Release
+* Updated Policy cmdlets to use `2026-01-01` API
+* Added `Get-AzPolicyEnrollment`, `New-AzPolicyEnrollment`, `Remove-AzPolicyEnrollment`, and `Update-AzPolicyEnrollment` cmdlets to interact with new Policy Enrollments resources.
+* Added a notice to template deployment what-if output pointing users to Deployment Stacks What-If, which is now generally available and removes noise from results.
+* Renamed `DenySettingsApplyToChildScope` to `DenySettingsApplyToChildScopes` for deployment stack WhatIfResult cmdlets while retaining the old name as an alias.
+* Added `ResourcesWithoutDeleteSupport` to deployment stack WhatIfResult cmdlets.
+* Added tag support to deployment stack WhatIfResult cmdlets and output.
+
+## Version 10.1.0
+* Added deployment stack WhatIfResult cmdlets for resource group, subscription, and management group scopes.
+    - Added help content and aligned new parameter names with Azure PowerShell naming conventions.
+    - Exported all deployment stack WhatIfResult cmdlets from the module manifest.
+
+## Version 10.0.1
+* Updated `Microsoft.Extensions.DependencyInjection.Abstractions` dependency from `8.0.2` to `10.0.3`.
 
 ## Version 10.0.0
 * Added ChangeSafety Support

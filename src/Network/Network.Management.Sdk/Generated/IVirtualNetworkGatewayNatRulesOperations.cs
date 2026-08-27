@@ -14,19 +14,46 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IVirtualNetworkGatewayNatRulesOperations
     {
         /// <summary>
+        /// Retrieves all nat rules for a particular virtual network gateway.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves all nat rules for a particular virtual network gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VirtualNetworkGatewayNatRule>>> ListByVirtualNetworkGatewayWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Retrieves the details of a nat rule.
         /// </summary>
         /// <remarks>
         /// Retrieves the details of a nat rule.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the Virtual Network Gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
+        /// The name of the virtual network gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -51,13 +78,14 @@ namespace Microsoft.Azure.Management.Network
         /// exist else updates the existing nat rules.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the Virtual Network Gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
+        /// The name of the virtual network gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='natRuleParameters'>
         /// Parameters supplied to create or Update a Nat Rule.
@@ -83,13 +111,14 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes a nat rule.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the Virtual Network Gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
+        /// The name of the virtual network gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -103,32 +132,6 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, string natRuleName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieves all nat rules for a particular virtual network gateway.
-        /// </summary>
-        /// <remarks>
-        /// Retrieves all nat rules for a particular virtual network gateway.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the virtual network gateway.
-        /// </param>
-        /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VirtualNetworkGatewayNatRule>>> ListByVirtualNetworkGatewayWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Creates a nat rule to a scalable virtual network gateway if it doesn&#39;t
         /// exist else updates the existing nat rules.
         /// </summary>
@@ -137,13 +140,14 @@ namespace Microsoft.Azure.Management.Network
         /// exist else updates the existing nat rules.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the Virtual Network Gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
+        /// The name of the virtual network gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='natRuleParameters'>
         /// Parameters supplied to create or Update a Nat Rule.
@@ -169,13 +173,14 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes a nat rule.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the Virtual Network Gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
+        /// The name of the virtual network gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

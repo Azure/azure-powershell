@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Security.Models.GcpProjectEnvironment
 https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritygcpprojectenvironmentobject
 #>
 function New-AzSecurityGcpProjectEnvironmentObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Security.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Security.Models.GcpProjectEnvironment')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

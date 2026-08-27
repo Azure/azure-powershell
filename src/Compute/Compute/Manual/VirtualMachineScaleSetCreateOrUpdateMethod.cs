@@ -234,6 +234,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string SharedGalleryImageId { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies processor frequency behavior for VM instances in the scale set model.")]
+        [PSArgumentCompleter("Deterministic", "Opportunistic")]
+        public string ProcessorMode { get; set; }
+
+        [Parameter(
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. UefiSettings will not be enabled unless this property is set.",
            ParameterSetName = SimpleParameterSet,
            ValueFromPipelineByPropertyName = true,
@@ -327,6 +335,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Specifies the high speed interconnect placement for the virtual machine scale set.")]
         [PSArgumentCompleter("None", "Trunk")]
         public string HighSpeedInterconnectPlacement { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events.")]
+        [ValidateNotNullOrEmpty]
+        [ValidatePattern(@"^\d{4}-\d{2}-\d{2}$")]
+        public string ScheduledEventsApiVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies if Scheduled Events should be auto-approved when all instances are down.")]
+        public bool? EnableAllInstancesDown { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -586,6 +610,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     auxAuthHeader: auxAuthHeader,
                     diskControllerType: _cmdlet.DiskControllerType,
                     sharedImageGalleryId: _cmdlet.IsParameterBound(c => c.SharedGalleryImageId) ? _cmdlet.SharedGalleryImageId : null,
+                    processorMode: _cmdlet.IsParameterBound(c => c.ProcessorMode) ? _cmdlet.ProcessorMode : null,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
                     enableSecureBoot: _cmdlet.EnableSecureBoot,
@@ -601,7 +626,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     zonePlacementPolicy: _cmdlet.ZonePlacementPolicy,
                     includeZone: _cmdlet.IncludeZone,
                     excludeZone: _cmdlet.ExcludeZone,
-                    highSpeedInterconnectPlacement: _cmdlet.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? _cmdlet.HighSpeedInterconnectPlacement : null
+                    highSpeedInterconnectPlacement: _cmdlet.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? _cmdlet.HighSpeedInterconnectPlacement : null,
+                    scheduledEventsApiVersion: _cmdlet.ScheduledEventsApiVersion,
+                    enableAllInstancesDown: _cmdlet.EnableAllInstancesDown
                     );
             }
 
@@ -730,6 +757,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: OrchestrationModes.Flexible,
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
+                    processorMode: _cmdlet.IsParameterBound(c => c.ProcessorMode) ? _cmdlet.ProcessorMode : null,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
                     enableSecureBoot: _cmdlet.EnableSecureBoot,
@@ -747,6 +775,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     includeZone: _cmdlet.IncludeZone,
                     excludeZone: _cmdlet.ExcludeZone,
                     highSpeedInterconnectPlacement: _cmdlet.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? _cmdlet.HighSpeedInterconnectPlacement : null,
+                    scheduledEventsApiVersion: _cmdlet.ScheduledEventsApiVersion,
+                    enableAllInstancesDown: _cmdlet.EnableAllInstancesDown,
                     zonalPlatformFaultDomainAlignMode: _cmdlet.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode) ? _cmdlet.ZonalPlatformFaultDomainAlignMode : null
                 );
             }

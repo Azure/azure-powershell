@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             Dictionary<string, List<string>> auxAuthHeader,
             string diskControllerType,
             string sharedImageGalleryId,
+            string processorMode = null,
             string securityType = null,
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
@@ -88,7 +89,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string zonePlacementPolicy = null,
             string[] includeZone = null,
             string[] excludeZone = null,
-            string highSpeedInterconnectPlacement = null
+            string highSpeedInterconnectPlacement = null,
+            string scheduledEventsApiVersion = null,
+            bool? enableAllInstancesDown = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -152,6 +155,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                     imageAndOsType?.DataDiskLuns, dataDisks),
                                 DiskControllerType = diskControllerType
                             },
+                            HardwareProfile = string.IsNullOrEmpty(processorMode) ? null : new VirtualMachineScaleSetHardwareProfile
+                            {
+                                ProcessorMode = processorMode
+                            },
                             NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                             {
                                 NetworkInterfaceConfigurations = new[]
@@ -212,7 +219,21 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             IncludeZones = includeZone,
                             ExcludeZones = excludeZone
                         } : null,
-                        HighSpeedInterconnectPlacement = highSpeedInterconnectPlacement
+                        HighSpeedInterconnectPlacement = highSpeedInterconnectPlacement,
+                        ScheduledEventsPolicy = (string.IsNullOrEmpty(scheduledEventsApiVersion) && enableAllInstancesDown == null) ? null : new ScheduledEventsPolicy
+                        {
+                            ScheduledEventsAdditionalPublishingTargets = string.IsNullOrEmpty(scheduledEventsApiVersion) ? null : new ScheduledEventsAdditionalPublishingTargets
+                            {
+                                EventGridAndResourceGraph = new EventGridAndResourceGraph
+                                {
+                                    ScheduledEventsApiVersion = scheduledEventsApiVersion
+                                }
+                            },
+                            AllInstancesDown = enableAllInstancesDown == null ? null : new AllInstancesDown
+                            {
+                                AutomaticallyApprove = enableAllInstancesDown
+                            }
+                        }
                     };
                     if (auxAuthHeader != null)
                     {
@@ -254,6 +275,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string orchestrationMode,
             string capacityReservationId,
             Dictionary<string, List<string>> auxAuthHeader,
+            string processorMode = null,
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
             string securityType = null,
@@ -270,6 +292,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string[] includeZone = null,
             string[] excludeZone = null,
             string highSpeedInterconnectPlacement = null,
+            string scheduledEventsApiVersion = null,
+            bool? enableAllInstancesDown = null,
             string zonalPlatformFaultDomainAlignMode = null
             )
             => Strategy.CreateResourceConfig(
@@ -318,6 +342,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 ImageReference = imageAndOsType?.Image,
                                 DataDisks = DataDiskStrategy.CreateVmssDataDisks(
                                     imageAndOsType?.DataDiskLuns, dataDisks)
+                            },
+                            HardwareProfile = string.IsNullOrEmpty(processorMode) ? null : new VirtualMachineScaleSetHardwareProfile
+                            {
+                                ProcessorMode = processorMode
                             },
                             NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                             {
@@ -377,6 +405,20 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             ExcludeZones = excludeZone
                         } : null,
                         HighSpeedInterconnectPlacement = highSpeedInterconnectPlacement,
+                        ScheduledEventsPolicy = (string.IsNullOrEmpty(scheduledEventsApiVersion) && enableAllInstancesDown == null) ? null : new ScheduledEventsPolicy
+                        {
+                            ScheduledEventsAdditionalPublishingTargets = string.IsNullOrEmpty(scheduledEventsApiVersion) ? null : new ScheduledEventsAdditionalPublishingTargets
+                            {
+                                EventGridAndResourceGraph = new EventGridAndResourceGraph
+                                {
+                                    ScheduledEventsApiVersion = scheduledEventsApiVersion
+                                }
+                            },
+                            AllInstancesDown = enableAllInstancesDown == null ? null : new AllInstancesDown
+                            {
+                                AutomaticallyApprove = enableAllInstancesDown
+                            }
+                        },
                         ZonalPlatformFaultDomainAlignMode = zonalPlatformFaultDomainAlignMode
                     };
                     if (auxAuthHeader != null)

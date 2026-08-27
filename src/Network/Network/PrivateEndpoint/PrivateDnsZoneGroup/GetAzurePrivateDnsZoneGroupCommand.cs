@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
                 WriteObject(obj);
             } else
             {
-                IPage<PrivateDnsZoneGroup> page = this.PrivateDnsZoneGroupClient.List(this.PrivateEndpointName, this.ResourceGroupName);
+                IPage<PrivateDnsZoneGroup> page = this.PrivateDnsZoneGroupClient.List(this.ResourceGroupName, this.PrivateEndpointName);
 
                 var groups = ListNextLink<PrivateDnsZoneGroup>.GetAllResourcesByPollingNextLink(page, this.PrivateDnsZoneGroupClient.ListNext);
                 var ret = new List<PSPrivateDnsZoneGroup>();

@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VpnAuthenticationType
     {
+        /// <summary>
+        /// Certificate
+        /// </summary>
         public const string Certificate = "Certificate";
+        /// <summary>
+        /// Radius
+        /// </summary>
         public const string Radius = "Radius";
+        /// <summary>
+        /// AAD
+        /// </summary>
         public const string AAD = "AAD";
     }
 }

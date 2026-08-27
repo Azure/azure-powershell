@@ -121,13 +121,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).AuthorizationRuleName = (string) content.GetValueForProperty("AuthorizationRuleName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).AuthorizationRuleName, global::System.Convert.ToString);
             }
-            if (content.Contains("PrivateEndpointConnectionName"))
+            if (content.Contains("ApplicationGroupName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceAssociationName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ResourceAssociationName = (string) content.GetValueForProperty("ResourceAssociationName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ResourceAssociationName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ApplicationGroupName = (string) content.GetValueForProperty("ApplicationGroupName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ApplicationGroupName, global::System.Convert.ToString);
             }
             if (content.Contains("Alias"))
             {
@@ -141,13 +137,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ConsumerGroupName = (string) content.GetValueForProperty("ConsumerGroupName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ConsumerGroupName, global::System.Convert.ToString);
             }
+            if (content.Contains("ResourceAssociationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ResourceAssociationName = (string) content.GetValueForProperty("ResourceAssociationName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ResourceAssociationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
             if (content.Contains("SchemaGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).SchemaGroupName = (string) content.GetValueForProperty("SchemaGroupName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).SchemaGroupName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ApplicationGroupName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ApplicationGroupName = (string) content.GetValueForProperty("ApplicationGroupName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ApplicationGroupName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -190,13 +190,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).AuthorizationRuleName = (string) content.GetValueForProperty("AuthorizationRuleName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).AuthorizationRuleName, global::System.Convert.ToString);
             }
-            if (content.Contains("PrivateEndpointConnectionName"))
+            if (content.Contains("ApplicationGroupName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceAssociationName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ResourceAssociationName = (string) content.GetValueForProperty("ResourceAssociationName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ResourceAssociationName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ApplicationGroupName = (string) content.GetValueForProperty("ApplicationGroupName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ApplicationGroupName, global::System.Convert.ToString);
             }
             if (content.Contains("Alias"))
             {
@@ -210,13 +206,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ConsumerGroupName = (string) content.GetValueForProperty("ConsumerGroupName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ConsumerGroupName, global::System.Convert.ToString);
             }
+            if (content.Contains("ResourceAssociationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ResourceAssociationName = (string) content.GetValueForProperty("ResourceAssociationName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ResourceAssociationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
             if (content.Contains("SchemaGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).SchemaGroupName = (string) content.GetValueForProperty("SchemaGroupName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).SchemaGroupName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ApplicationGroupName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ApplicationGroupName = (string) content.GetValueForProperty("ApplicationGroupName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ApplicationGroupName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

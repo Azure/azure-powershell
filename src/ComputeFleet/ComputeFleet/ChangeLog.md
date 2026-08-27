@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+
 * Added support for 'Launch' mode in ComputeFleet.
     - New parameter, 'Mode' to specify 'Managed'/'Launch'.
     - New parameter, 'VMNamePrefix' to specify prefix for the virtual machines in Launch mode.

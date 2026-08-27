@@ -334,6 +334,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string OSImageScheduledEventNotBeforeTimeoutInMinutes { get; set; }
 
         [Parameter(
+           HelpMessage = "Specifies processor frequency behavior for VM instances in the scale set model.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [PSArgumentCompleter("Deterministic", "Opportunistic")]
+        public string ProcessorMode { get; set; }
+
+        [Parameter(
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. Default: UefiSettings will not be enabled unless this property is set.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
@@ -456,7 +463,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Specifies the align mode between Virtual Machine Scale Set (VMSS) compute and storage Fault Domain count. Valid values are 'Aligned', 'Unaligned', and 'BestEffortAligned'. Applicable to VMSS Flex only.")]
         [PSArgumentCompleter("Aligned", "Unaligned", "BestEffortAligned")]
         public string ZonalPlatformFaultDomainAlignMode { get; set; }
-
+        
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the lifecycle hooks profile for the virtual machine scale set. Use Set-AzVmssLifecycleHooksProfile or create a LifecycleHooksProfile object directly.")]
+        public LifecycleHooksProfile LifecycleHooksProfile { get; set; }
+        
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -786,6 +799,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
                 }
+            }
+
+            if (this.IsParameterBound(c => c.ProcessorMode))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.HardwareProfile == null)
+                {
+                    vVirtualMachineProfile.HardwareProfile = new VirtualMachineScaleSetHardwareProfile();
+                }
+                vVirtualMachineProfile.HardwareProfile.ProcessorMode = this.ProcessorMode;
             }
 
             if (this.IsParameterBound(c => c.EnableVtpm))
@@ -1264,7 +1290,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ResiliencyPolicy = vResiliencyPolicy,
                 Placement = vPlacement,
                 HighSpeedInterconnectPlacement = this.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? this.HighSpeedInterconnectPlacement : null,
-                ZonalPlatformFaultDomainAlignMode = this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode) ? this.ZonalPlatformFaultDomainAlignMode : null
+                ZonalPlatformFaultDomainAlignMode = this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode) ? this.ZonalPlatformFaultDomainAlignMode : null,
+                LifecycleHooksProfile = this.IsParameterBound(c => c.LifecycleHooksProfile) ? this.LifecycleHooksProfile : null
             };
 
             WriteObject(vVirtualMachineScaleSet);

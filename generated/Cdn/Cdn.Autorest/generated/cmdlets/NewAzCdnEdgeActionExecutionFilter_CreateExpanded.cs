@@ -15,14 +15,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzCdnEdgeActionExecutionFilter_CreateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.GenericBreakingChange("", "14.5.0", "5.4.0", "2026/05/15", ChangeDescription = "All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilter))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"create EdgeActionExecutionFilter resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}", ApiVersion = "2024-07-22-preview")]
     public partial class NewAzCdnEdgeActionExecutionFilter_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext,
+        System.Management.Automation.IDynamicParameters
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -171,6 +171,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>The provisioning state</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The provisioning state")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The provisioning state",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
+        public string ProvisioningState { get => _resourceBody.ProvisioningState ?? null; set => _resourceBody.ProvisioningState = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -332,6 +344,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns the Change Safety dynamic parameters (-AcquirePolicyToken / -ChangeReference) for this write cmdlet.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.Management.Automation.RuntimeDefinedParameterDictionary" /> containing the Change Safety parameters.
+        /// </returns>
+        public object GetDynamicParameters()
+        {
+            var parameters = new global::System.Management.Automation.RuntimeDefinedParameterDictionary();
+            parameters.Add("AcquirePolicyToken", new global::System.Management.Automation.RuntimeDefinedParameter("AcquirePolicyToken", typeof(global::System.Management.Automation.SwitchParameter), new global::System.Collections.ObjectModel.Collection<global::System.Attribute> { new global::System.Management.Automation.ParameterAttribute { HelpMessage = "Acquire an Azure Policy token automatically for this resource operation.", ParameterSetName = global::System.Management.Automation.ParameterAttribute.AllParameterSets } }));
+            parameters.Add("ChangeReference", new global::System.Management.Automation.RuntimeDefinedParameter("ChangeReference", typeof(string), new global::System.Collections.ObjectModel.Collection<global::System.Attribute> { new global::System.Management.Automation.ParameterAttribute { HelpMessage = "The change reference resource ID for this resource operation.", ParameterSetName = global::System.Management.Automation.ParameterAttribute.AllParameterSets } }));
+            return parameters;
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
