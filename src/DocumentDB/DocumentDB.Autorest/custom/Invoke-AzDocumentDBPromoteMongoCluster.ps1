@@ -11,7 +11,7 @@ Promote a replica mongo cluster to a primary role. As a safety check, the expect
 (primary) cluster must be provided and is validated against the replica's actual source
 cluster; promotion only proceeds when they match.
 .Example
-Invoke-AzDocumentDBPromoteMongoCluster -Name MyReplica -ResourceGroupName MyResourceGroup -SourceCluster MySourceCluster -Mode Switchover
+Invoke-AzDocumentDBPromoteMongoCluster -Name MyReplica -ResourceGroupName MyResourceGroup -SourceCluster MySourceCluster -Mode Switchover -PromoteOption Forced
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.Models.IMongoCluster
 .Link
@@ -56,6 +56,13 @@ param(
     # The mode to apply to the promote operation.
     # Value is optional and default value is 'Switchover'.
     ${Mode},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.PSArgumentCompleterAttribute("Forced")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.Category('Body')]
+    [System.String]
+    # The promote option to apply to the operation.
+    ${PromoteOption},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -149,6 +156,10 @@ param(
                 throw "The replica's actual source cluster '$actualSource' does not match the provided -SourceCluster '$expectedSource'. Promotion aborted."
             }
 
+            # 'PromoteOption' has a single service-defined value ('Forced') that the request
+            # always applies; it is exposed for command-surface parity with the Azure CLI and
+            # is not forwarded to the internal operation.
+            $null = $PSBoundParameters.Remove('PromoteOption')
             $null = $PSBoundParameters.Remove('SourceCluster')
             foreach ($commonParam in 'WhatIf', 'Confirm') { $null = $PSBoundParameters.Remove($commonParam) }
             $PSBoundParameters['SubscriptionId'] = $SubscriptionId

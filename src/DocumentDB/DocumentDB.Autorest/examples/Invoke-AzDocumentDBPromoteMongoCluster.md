@@ -1,6 +1,6 @@
 ### Example 1: Promote a read replica to a primary mongo cluster
 ```powershell
-Invoke-AzDocumentDBPromoteMongoCluster -Name myReplica -ResourceGroupName myResourceGroup -SourceCluster myCluster -Mode Switchover
+Invoke-AzDocumentDBPromoteMongoCluster -Name myReplica -ResourceGroupName myResourceGroup -SourceCluster myCluster -Mode Switchover -PromoteOption Forced
 ```
 
 ```output

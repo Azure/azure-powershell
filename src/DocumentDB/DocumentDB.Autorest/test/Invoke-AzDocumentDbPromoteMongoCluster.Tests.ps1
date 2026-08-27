@@ -33,13 +33,13 @@ Describe 'Invoke-AzDocumentDBPromoteMongoCluster' {
     It 'rejects a source cluster that does not match the replica source' {
         # The guard rejects a mismatched -SourceCluster before any switchover is attempted.
         { Invoke-AzDocumentDBPromoteMongoCluster -Name $replica -ResourceGroupName $rg `
-            -SourceCluster 'wrong-source-cluster' -Mode Switchover } | Should -Throw
+            -SourceCluster 'wrong-source-cluster' -Mode Switchover -PromoteOption Forced } | Should -Throw
     }
 
     It 'promotes a replica to primary with a forced switchover' {
         # Promote the replica to primary. The former replica settles into the primary role.
         { Invoke-AzDocumentDBPromoteMongoCluster -Name $replica -ResourceGroupName $rg `
-            -SourceCluster $cluster -Mode Switchover } | Should -Not -Throw
+            -SourceCluster $cluster -Mode Switchover -PromoteOption Forced } | Should -Not -Throw
 
         $promoted = Get-AzDocumentDBMongoCluster -Name $replica -ResourceGroupName $rg
         $promoted.ProvisioningState | Should -Be 'Succeeded'

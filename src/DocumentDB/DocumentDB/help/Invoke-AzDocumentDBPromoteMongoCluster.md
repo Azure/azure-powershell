@@ -14,8 +14,9 @@ Promote a replica mongo cluster to a primary role.
 
 ```
 Invoke-AzDocumentDBPromoteMongoCluster -MongoClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -SourceCluster <String> [-Mode <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -SourceCluster <String> -PromoteOption <String> [-Mode <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +29,7 @@ cluster; promotion only proceeds when they match.
 
 ### Example 1: Promote a read replica to a primary mongo cluster
 ```powershell
-Invoke-AzDocumentDBPromoteMongoCluster -Name myReplica -ResourceGroupName myResourceGroup -SourceCluster myCluster -Mode Switchover
+Invoke-AzDocumentDBPromoteMongoCluster -Name myReplica -ResourceGroupName myResourceGroup -SourceCluster myCluster -Mode Switchover -PromoteOption Forced
 ```
 
 ```output
@@ -132,6 +133,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PromoteOption
+The promote option to apply to the operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
