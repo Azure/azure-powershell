@@ -23,18 +23,42 @@ Approve-AzScheduledEventList [-ResourceGroupName] <String> [-ResourceType] <Stri
 ## DESCRIPTION
 
 Approves a list of scheduled events for a virtual machine, virtual machine scale set, or availability set.
-When a request is partially successful, the cmdlet returns per-event outcomes and writes a non-terminating error for each failed event.
-Use `-ErrorVariable` to capture those errors while retaining successful results.
+On success, the cmdlet returns a scheduled-event approval response.
+When events in the same request have different outcomes, the service can return HTTP 207 Multi-Status.
+For that response, the cmdlet returns a structured object containing an overall `Response` and a `Details` collection with the outcome for each event.
+The default console view renders the multi-status response as JSON, but the pipeline receives a structured object that can be inspected or filtered.
+For other non-success responses, the cmdlet returns a structured error response containing the service-defined code and message.
 
 ## EXAMPLES
 
 ### Example 1
 
 ```powershell
-Approve-AzScheduledEventList -ResourceGroupName testrg -ResourceType virtualMachineScaleSets -ResourceName testvmss -ScheduledEventIdList F1574F0D-2CFC-4F5A-8C0E-F84FF8776F93,CCB334AE-7404-4DE9-A7A8-54B7DB69B566 -ErrorVariable eventErrors
+Approve-AzScheduledEventList -ResourceGroupName $ResourceGroupName -ResourceType virtualMachineScaleSets -ResourceName $ResourceName -ScheduledEventIdList $ScheduledEventIds -Confirm:$false
 ```
 
-Approves multiple scheduled events and captures any per-event failures in `$eventErrors`.
+Approves the specified scheduled events and returns the service response.
+
+### Example 2: Inspect an HTTP 207 Multi-Status response
+
+```powershell
+$response = Approve-AzScheduledEventList -ResourceGroupName $ResourceGroupName -ResourceType virtualMachineScaleSets -ResourceName $ResourceName -ScheduledEventIdList $ScheduledEventIds -Confirm:$false
+$response.Response
+$response.Details
+```
+
+Approves multiple scheduled events and examines the overall response and each event's result.
+When written directly to the console, a multi-status response is displayed as JSON.
+
+### Example 3: Inspect a non-success response
+
+```powershell
+$response = Approve-AzScheduledEventList -ResourceGroupName $ResourceGroupName -ResourceType $ResourceType -ResourceName $ResourceName -ScheduledEventIdList $ScheduledEventIds -Confirm:$false
+$response.Error.Code
+$response.Error.Message
+```
+
+Attempts to approve multiple scheduled events and accesses the service-defined code and message if the request is rejected.
 
 ## PARAMETERS
 
@@ -136,14 +160,13 @@ Accept wildcard characters: False
 
 ### -ResourceType
 
-The Microsoft.Compute resource type.
+The Microsoft.Compute resource type that owns the scheduled events.
 Supported values are `virtualMachines`, `virtualMachineScaleSets`, and `availabilitySets`.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: virtualMachines, virtualMachineScaleSets, availabilitySets
 
 Required: True
 Position: 1

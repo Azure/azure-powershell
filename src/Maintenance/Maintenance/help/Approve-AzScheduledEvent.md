@@ -22,16 +22,30 @@ Approve-AzScheduledEvent [-ResourceGroupName] <String> [-ResourceType] <String> 
 ## DESCRIPTION
 
 Approves a scheduled event for a virtual machine, virtual machine scale set, or availability set.
+On success, the cmdlet returns a scheduled-event approval response.
+If the service rejects the request, the cmdlet returns a structured error response containing the service-defined code and message.
+The default console view renders the error response as JSON, but the pipeline receives a structured object whose values are available through the `Error.Code` and `Error.Message` properties.
 
 ## EXAMPLES
 
 ### Example 1
 
 ```powershell
-Approve-AzScheduledEvent -ResourceGroupName testrg -ResourceType virtualMachines -ResourceName testvm -ScheduledEventId F1574F0D-2CFC-4F5A-8C0E-F84FF8776F93
+Approve-AzScheduledEvent -ResourceGroupName $ResourceGroupName -ResourceType virtualMachines -ResourceName $ResourceName -ScheduledEventId $ScheduledEventId -Confirm:$false
 ```
 
-Approves a scheduled event for a virtual machine.
+Approves the specified scheduled event for a virtual machine and returns the service response.
+
+### Example 2: Inspect a non-success response
+
+```powershell
+$response = Approve-AzScheduledEvent -ResourceGroupName $ResourceGroupName -ResourceType virtualMachineScaleSets -ResourceName $ResourceName -ScheduledEventId $ScheduledEventId -Confirm:$false
+$response.Error.Code
+$response.Error.Message
+```
+
+Attempts to approve a scheduled event and accesses the code and message if the service returns a non-success response.
+When written directly to the console, this response is displayed as JSON.
 
 ## PARAMETERS
 
@@ -133,14 +147,13 @@ Accept wildcard characters: False
 
 ### -ResourceType
 
-The Microsoft.Compute resource type.
+The Microsoft.Compute resource type that owns the scheduled event.
 Supported values are `virtualMachines`, `virtualMachineScaleSets`, and `availabilitySets`.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: virtualMachines, virtualMachineScaleSets, availabilitySets
 
 Required: True
 Position: 1

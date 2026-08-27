@@ -142,7 +142,6 @@ namespace Microsoft.Azure.Commands.Maintenance
             HelpMessage = "The Microsoft.Compute resource type. Supported values are virtualMachines, virtualMachineScaleSets, and availabilitySets.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("virtualMachines", "virtualMachineScaleSets", "availabilitySets", IgnoreCase = true)]
         public string ResourceType { get; set; }
 
         [Parameter(
