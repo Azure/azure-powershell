@@ -692,10 +692,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 var runbook = this.CreateRunbookByName(resourceGroupName, automationAccountName, runbookName, description, tags, type, logProgress, logVerbose, overwrite);
 
-                using (FileStream SourceStream = File.Open(runbookPath, FileMode.Open))
-                {
-                    this.automationManagementClient.RunbookDraft.ReplaceContent(resourceGroupName, automationAccountName, runbookName, SourceStream);
-                }
+                this.automationManagementClient.RunbookDraft.ReplaceContent(
+                    resourceGroupName,
+                    automationAccountName,
+                    runbookName,
+                    File.ReadAllText(runbookPath));
 
                 if (published)
                 {
@@ -1286,7 +1287,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var createOrUpdateDescription = description ?? certificateModel.Description;
             var createOrUpdateIsExportable = (exportable.HasValue)
                 ? exportable.Value
-                : certificateModel.IsExportable;
+                : certificateModel.IsExportable ?? false;
 
             if (path != null)
             {
@@ -1615,11 +1616,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             AutomationManagement.Models.HybridRunbookWorker response;
 
-            var hybridWorkerCreationParams = new HybridRunbookWorkerCreateParameters()
-            {
-                Name = hybridRunbookWorkerGroupName,
-                VMResourceId = vmResourceId,
-            };
+            var hybridWorkerCreationParams = new HybridRunbookWorkerCreateParameters(
+                name: hybridRunbookWorkerGroupName,
+                vmResourceId: vmResourceId);
 
             response = this.automationManagementClient.HybridRunbookWorkers.Create(resourceGroupName, automationAccountName, hybridRunbookWorkerGroupName, workerName, hybridWorkerCreationParams);
 
@@ -1973,11 +1972,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (string.IsNullOrEmpty(nextLink))
             {
-                response = this.automationManagementClient.RuntimeEnvironment.ListByAutomationAccount(resourceGroupName, automationAccountName);
+                response = this.automationManagementClient.RuntimeEnvironments.ListByAutomationAccount(resourceGroupName, automationAccountName);
             }
             else
             {
-                response = this.automationManagementClient.RuntimeEnvironment.ListByAutomationAccountNext(nextLink);
+                response = this.automationManagementClient.RuntimeEnvironments.ListByAutomationAccountNext(nextLink);
             }
 
             nextLink = response.NextPageLink;
@@ -1989,7 +1988,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             // First verify the runtime environment exists
             try
             {
-                this.automationManagementClient.RuntimeEnvironment.Get(resourceGroupName, automationAccountName, name);
+                this.automationManagementClient.RuntimeEnvironments.Get(resourceGroupName, automationAccountName, name);
             }
             catch (ErrorResponseException cloudException)
             {
@@ -2002,7 +2001,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
 
             // Resource exists, proceed with deletion
-            this.automationManagementClient.RuntimeEnvironment.Delete(resourceGroupName, automationAccountName, name);
+            this.automationManagementClient.RuntimeEnvironments.Delete(resourceGroupName, automationAccountName, name);
         }
 
         public Model.RuntimeEnvironment GetRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name)
@@ -2010,7 +2009,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             try
             {
                 var runtimeEnvironment =
-                    this.automationManagementClient.RuntimeEnvironment.Get(resourceGroupName, automationAccountName, name);
+                    this.automationManagementClient.RuntimeEnvironments.Get(resourceGroupName, automationAccountName, name);
                 return new Model.RuntimeEnvironment(resourceGroupName, automationAccountName, runtimeEnvironment);
             }
             catch (ErrorResponseException cloudException)
@@ -2031,7 +2030,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             // Check if runtime environment already exists
             try
             {
-                this.automationManagementClient.RuntimeEnvironment.Get(resourceGroupName, automationAccountName, name);
+                this.automationManagementClient.RuntimeEnvironments.Get(resourceGroupName, automationAccountName, name);
                 // If we get here, the runtime environment exists - throw error
                 throw new ResourceCommonException(typeof(Model.RuntimeEnvironment),
                     string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentAlreadyExists, name));
@@ -2045,15 +2044,16 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 }
             }
 
-            var parameters = new AutomationManagement.Models.RuntimeEnvironmentCreateOrUpdateParameters(
+            var parameters = new AutomationManagement.Models.RuntimeEnvironment(
                 location: location,
-                runtime: new AutomationManagement.Models.RuntimeEnvironmentRuntime(language: language, version: version),
                 tags: tags,
                 defaultPackages: defaultPackages,
-                description: description
+                description: description,
+                language: language,
+                version: version
             );
 
-            var createdRuntimeEnvironment = this.automationManagementClient.RuntimeEnvironment.CreateOrUpdate(
+            var createdRuntimeEnvironment = this.automationManagementClient.RuntimeEnvironments.Create(
                 resourceGroupName,
                 automationAccountName,
                 name,
@@ -2067,13 +2067,21 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             try
             {
-                var parameters = new AutomationManagement.Models.RuntimeEnvironmentUpdateParameters(
-                    tags: tags,
-                    defaultPackages: defaultPackages,
-                    description: description
+                var existingRuntimeEnvironment = this.automationManagementClient.RuntimeEnvironments.Get(
+                    resourceGroupName,
+                    automationAccountName,
+                    name);
+
+                var parameters = new AutomationManagement.Models.RuntimeEnvironment(
+                    location: existingRuntimeEnvironment.Location,
+                    tags: tags ?? existingRuntimeEnvironment.Tags,
+                    defaultPackages: defaultPackages ?? existingRuntimeEnvironment.DefaultPackages,
+                    description: description ?? existingRuntimeEnvironment.Description,
+                    language: existingRuntimeEnvironment.Language,
+                    version: existingRuntimeEnvironment.Version
                 );
 
-                var updatedRuntimeEnvironment = this.automationManagementClient.RuntimeEnvironment.Update(
+                var updatedRuntimeEnvironment = this.automationManagementClient.RuntimeEnvironments.Create(
                     resourceGroupName,
                     automationAccountName,
                     name,

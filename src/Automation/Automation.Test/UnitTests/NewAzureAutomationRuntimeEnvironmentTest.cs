@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             // Setup
             string resourceGroupName = "resourceGroup";
             string accountName = "automation";
-            string runtimeEnvironmentName = "PowerShell-7.4";
+            string runtimeEnvironmentName = "PowerShell-74";
             string location = "East US 2";
             string language = "PowerShell";
             string version = "7.4";
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             // Setup
             string resourceGroupName = "resourceGroup";
             string accountName = "automation";
-            string runtimeEnvironmentName = "Python-3.10";
+            string runtimeEnvironmentName = "Python-310";
             string location = "West US";
             string language = "Python";
             string version = "3.10";

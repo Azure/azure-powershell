@@ -36,12 +36,6 @@ namespace Microsoft.Azure.Management.Automation
 
 
         /// <summary>
-        /// The API version to use for this operation.
-        /// </summary>
-        string ApiVersion { get;}
-
-
-        /// <summary>
         /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
         System.Guid SubscriptionId { get; set;}
@@ -297,6 +291,16 @@ namespace Microsoft.Azure.Management.Automation
         /// Gets the IWebhookOperations
         /// </summary>
         IWebhookOperations Webhook { get; }
+
+        /// <summary>
+        /// Gets the IDscCompilationJobOperations
+        /// </summary>
+        IDscCompilationJobOperations DscCompilationJob { get; }
+
+        /// <summary>
+        /// Gets the IDscCompilationJobStreamOperations
+        /// </summary>
+        IDscCompilationJobStreamOperations DscCompilationJobStream { get; }
 
         /// <summary>
         /// Post operation to serialize or deserialize GraphRunbookContent

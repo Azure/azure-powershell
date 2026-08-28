@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Version = package.Version;
             this.SizeInBytes = package.SizeInBytes;
             this.ProvisioningState = package.ProvisioningState;
-            this.CreationTime = package.CreationTime;
-            this.LastModifiedTime = package.LastModifiedTime;
+            this.CreationTime = package.SystemData?.CreatedAt ?? package.AllOf?.CreatedAt;
+            this.LastModifiedTime = package.SystemData?.LastModifiedAt ?? package.AllOf?.LastModifiedAt;
 
             if (package.ContentLink != null)
             {

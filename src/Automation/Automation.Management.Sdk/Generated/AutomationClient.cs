@@ -33,11 +33,6 @@ namespace Microsoft.Azure.Management.Automation
         public Microsoft.Rest.ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// The API version to use for this operation.
-        /// </summary>
-        public string ApiVersion { get; private set; }
-
-        /// <summary>
         /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
         public System.Guid SubscriptionId { get; set;}
@@ -244,6 +239,14 @@ namespace Microsoft.Azure.Management.Automation
         /// Gets the IWebhookOperations
         /// </summary>
         public virtual IWebhookOperations Webhook { get; private set; }
+        /// <summary>
+        /// Gets the IDscCompilationJobOperations
+        /// </summary>
+        public virtual IDscCompilationJobOperations DscCompilationJob { get; private set; }
+        /// <summary>
+        /// Gets the IDscCompilationJobStreamOperations
+        /// </summary>
+        public virtual IDscCompilationJobStreamOperations DscCompilationJobStream { get; private set; }
         /// <summary>
         /// Initializes a new instance of the AutomationClient class.
         /// </summary>
@@ -528,8 +531,9 @@ namespace Microsoft.Azure.Management.Automation
             this.Variable = new VariableOperations(this);
             this.Watcher = new WatcherOperations(this);
             this.Webhook = new WebhookOperations(this);
+            this.DscCompilationJob = new DscCompilationJobOperations(this);
+            this.DscCompilationJobStream = new DscCompilationJobStreamOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-10-23";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -607,11 +611,6 @@ namespace Microsoft.Azure.Management.Automation
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
             }
 
-            if (this.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.ApiVersion");
-            }
-
 
             if (resourceGroupName == null)
             {
@@ -633,6 +632,7 @@ namespace Microsoft.Azure.Management.Automation
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "automationAccountName");
             }
 
+            string apiVersion = "2024-10-23";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -640,6 +640,7 @@ namespace Microsoft.Azure.Management.Automation
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("automationAccountName", automationAccountName);
 
@@ -657,9 +658,9 @@ namespace Microsoft.Azure.Management.Automation
             _url = _url.Replace("{automationAccountName}", System.Uri.EscapeDataString(automationAccountName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {

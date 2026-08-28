@@ -47,11 +47,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Location = runtimeEnvironment.Location;
             this.Description = runtimeEnvironment.Description;
 
-            if (runtimeEnvironment.Runtime != null)
-            {
-                this.Language = runtimeEnvironment.Runtime.Language;
-                this.Version = runtimeEnvironment.Runtime.Version;
-            }
+            this.Language = runtimeEnvironment.Language;
+            this.Version = runtimeEnvironment.Version;
 
             if (runtimeEnvironment.DefaultPackages != null)
             {

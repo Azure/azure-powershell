@@ -5,8 +5,10 @@ This directory contains the service clients of Az.Automation module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@autorest/powershell@4.x
+autorest --version=3.10.9 --use:@autorest/powershell@4.0.754
 ```
+
+The `LegacyGenerated` directory preserves the PowerShell 7.2 module operation group, which is not exposed by the 2024-10-23 specification. AutoRest only clears and regenerates `Generated`.
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
@@ -27,9 +29,10 @@ title: AutomationClient
 
 ### 
 ``` yaml 
-commit: main
+commit: 4e219f2315c4e4ebdd2e5bf1d3c13164db4ec804
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2024-10-23/openapi.json
+  - https://github.com/kaarthik2103/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2024-10-23/openapi.json
+  - https://github.com/kaarthik2103/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/dscCompilationJob.json
 
 output-folder: Generated
 

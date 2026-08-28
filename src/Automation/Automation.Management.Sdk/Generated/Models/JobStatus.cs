@@ -13,57 +13,18 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class JobStatus
     {
-        /// <summary>
-        /// New
-        /// </summary>
         public const string New = "New";
-        /// <summary>
-        /// Activating
-        /// </summary>
         public const string Activating = "Activating";
-        /// <summary>
-        /// Running
-        /// </summary>
         public const string Running = "Running";
-        /// <summary>
-        /// Completed
-        /// </summary>
         public const string Completed = "Completed";
-        /// <summary>
-        /// Failed
-        /// </summary>
         public const string Failed = "Failed";
-        /// <summary>
-        /// Stopped
-        /// </summary>
         public const string Stopped = "Stopped";
-        /// <summary>
-        /// Blocked
-        /// </summary>
         public const string Blocked = "Blocked";
-        /// <summary>
-        /// Suspended
-        /// </summary>
         public const string Suspended = "Suspended";
-        /// <summary>
-        /// Disconnected
-        /// </summary>
         public const string Disconnected = "Disconnected";
-        /// <summary>
-        /// Suspending
-        /// </summary>
         public const string Suspending = "Suspending";
-        /// <summary>
-        /// Stopping
-        /// </summary>
         public const string Stopping = "Stopping";
-        /// <summary>
-        /// Resuming
-        /// </summary>
         public const string Resuming = "Resuming";
-        /// <summary>
-        /// Removing
-        /// </summary>
         public const string Removing = "Removing";
     }
 }

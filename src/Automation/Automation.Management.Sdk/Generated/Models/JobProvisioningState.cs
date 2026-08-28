@@ -13,21 +13,9 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class JobProvisioningState
     {
-        /// <summary>
-        /// Failed
-        /// </summary>
         public const string Failed = "Failed";
-        /// <summary>
-        /// Succeeded
-        /// </summary>
         public const string Succeeded = "Succeeded";
-        /// <summary>
-        /// Suspended
-        /// </summary>
         public const string Suspended = "Suspended";
-        /// <summary>
-        /// Processing
-        /// </summary>
         public const string Processing = "Processing";
     }
 }
