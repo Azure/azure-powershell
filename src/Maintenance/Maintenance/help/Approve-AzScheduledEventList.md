@@ -34,7 +34,7 @@ For other non-success responses, the cmdlet returns a structured error response 
 ### Example 1
 
 ```powershell
-Approve-AzScheduledEventList -ResourceGroupName $ResourceGroupName -ResourceType virtualMachineScaleSets -ResourceName $ResourceName -ScheduledEventIdList $ScheduledEventIds -Confirm:$false
+Approve-AzScheduledEventList -ResourceGroupName 'example-rg' -ResourceType 'virtualMachineScaleSets' -ResourceName 'example-vmss' -ScheduledEventIdList @('11111111-1111-1111-1111-111111111111', '22222222-2222-2222-2222-222222222222') -Confirm:$false
 ```
 
 Approves the specified ScheduledEvents entries and returns the service response.
@@ -42,7 +42,7 @@ Approves the specified ScheduledEvents entries and returns the service response.
 ### Example 2: Inspect an HTTP 207 Multi-Status response
 
 ```powershell
-$response = Approve-AzScheduledEventList -ResourceGroupName $ResourceGroupName -ResourceType virtualMachineScaleSets -ResourceName $ResourceName -ScheduledEventIdList $ScheduledEventIds -Confirm:$false
+$response = Approve-AzScheduledEventList -ResourceGroupName 'example-rg' -ResourceType 'virtualMachineScaleSets' -ResourceName 'example-vmss' -ScheduledEventIdList @('11111111-1111-1111-1111-111111111111', '33333333-3333-3333-3333-333333333333') -Confirm:$false
 $response.Response
 $response.Details
 ```
@@ -53,7 +53,7 @@ When written directly to the console, a multi-status response is displayed as JS
 ### Example 3: Inspect a non-success response
 
 ```powershell
-$response = Approve-AzScheduledEventList -ResourceGroupName $ResourceGroupName -ResourceType $ResourceType -ResourceName $ResourceName -ScheduledEventIdList $ScheduledEventIds -Confirm:$false
+$response = Approve-AzScheduledEventList -ResourceGroupName 'example-rg' -ResourceType 'availabilitySets' -ResourceName 'example-availability-set' -ScheduledEventIdList @('44444444-4444-4444-4444-444444444444', '55555555-5555-5555-5555-555555555555') -Confirm:$false
 $response.Error.Code
 $response.Error.Message
 ```

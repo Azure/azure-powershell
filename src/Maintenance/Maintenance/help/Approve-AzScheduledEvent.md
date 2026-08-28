@@ -31,7 +31,7 @@ The default console view renders the error response as JSON, but the pipeline re
 ### Example 1
 
 ```powershell
-Approve-AzScheduledEvent -ResourceGroupName $ResourceGroupName -ResourceType virtualMachines -ResourceName $ResourceName -ScheduledEventId $ScheduledEventId -Confirm:$false
+Approve-AzScheduledEvent -ResourceGroupName 'example-rg' -ResourceType 'virtualMachines' -ResourceName 'example-vm' -ScheduledEventId '11111111-1111-1111-1111-111111111111' -Confirm:$false
 ```
 
 Approves the specified ScheduledEvents entry for a virtual machine and returns the service response.
@@ -39,7 +39,7 @@ Approves the specified ScheduledEvents entry for a virtual machine and returns t
 ### Example 2: Inspect a non-success response
 
 ```powershell
-$response = Approve-AzScheduledEvent -ResourceGroupName $ResourceGroupName -ResourceType virtualMachineScaleSets -ResourceName $ResourceName -ScheduledEventId $ScheduledEventId -Confirm:$false
+$response = Approve-AzScheduledEvent -ResourceGroupName 'example-rg' -ResourceType 'virtualMachineScaleSets' -ResourceName 'example-vmss' -ScheduledEventId '22222222-2222-2222-2222-222222222222' -Confirm:$false
 $response.Error.Code
 $response.Error.Message
 ```
