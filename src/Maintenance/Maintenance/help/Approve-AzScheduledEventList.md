@@ -37,28 +37,64 @@ For other non-success responses, the cmdlet returns a structured error response 
 Approve-AzScheduledEventList -ResourceGroupName 'example-rg' -ResourceType 'virtualMachineScaleSets' -ResourceName 'example-vmss' -ScheduledEventIdList @('11111111-1111-1111-1111-111111111111', '22222222-2222-2222-2222-222222222222') -Confirm:$false
 ```
 
+```output
+Value
+-----
+Successfully approved all Scheduled Events in the list
+```
+
 Approves the specified ScheduledEvents entries and returns the service response.
 
 ### Example 2: Inspect an HTTP 207 Multi-Status response
 
 ```powershell
 $response = Approve-AzScheduledEventList -ResourceGroupName 'example-rg' -ResourceType 'virtualMachineScaleSets' -ResourceName 'example-vmss' -ScheduledEventIdList @('11111111-1111-1111-1111-111111111111', '33333333-3333-3333-3333-333333333333') -Confirm:$false
-$response.Response
-$response.Details
+$response
 ```
 
-Approves multiple ScheduledEvents entries and examines the overall response and each entry's result.
-When written directly to the console, a multi-status response is displayed as JSON.
+```output
+{
+	"Details": [
+		{
+			"Target": "11111111-1111-1111-1111-111111111111",
+			"Code": "OK",
+			"Message": "Successfully approved scheduled event"
+		},
+		{
+			"Target": "33333333-3333-3333-3333-333333333333",
+			"Code": "NotFound",
+			"Message": "Scheduled event not found"
+		}
+	],
+	"Response": {
+		"Code": "MultiStatusResponse",
+		"Message": "The operation returned different statuses for the Scheduled Events. Review each event's result for details."
+	}
+}
+```
+
+Approves multiple ScheduledEvents entries and displays the HTTP 207 Multi-Status response as JSON.
+The pipeline value remains a structured object whose overall status and per-entry results are available through `$response.Response` and `$response.Details`.
 
 ### Example 3: Inspect a non-success response
 
 ```powershell
 $response = Approve-AzScheduledEventList -ResourceGroupName 'example-rg' -ResourceType 'availabilitySets' -ResourceName 'example-availability-set' -ScheduledEventIdList @('44444444-4444-4444-4444-444444444444', '55555555-5555-5555-5555-555555555555') -Confirm:$false
-$response.Error.Code
-$response.Error.Message
+$response
 ```
 
-Attempts to approve multiple ScheduledEvents entries and accesses the service-defined code and message if the request is rejected.
+```output
+{
+	"Error": {
+		"Code": "InvalidScheduledEventId",
+		"Message": "Scheduled event not found",
+		"Details": null
+	}
+}
+```
+
+Attempts to approve multiple ScheduledEvents entries and displays the non-success response as JSON.
+The pipeline value remains a structured object whose code and message are available through `$response.Error.Code` and `$response.Error.Message`.
 
 ## PARAMETERS
 

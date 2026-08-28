@@ -34,18 +34,32 @@ The default console view renders the error response as JSON, but the pipeline re
 Approve-AzScheduledEvent -ResourceGroupName 'example-rg' -ResourceType 'virtualMachines' -ResourceName 'example-vm' -ScheduledEventId '11111111-1111-1111-1111-111111111111' -Confirm:$false
 ```
 
+```output
+Value
+-----
+Successfully approved scheduled event
+```
+
 Approves the specified ScheduledEvents entry for a virtual machine and returns the service response.
 
 ### Example 2: Inspect a non-success response
 
 ```powershell
 $response = Approve-AzScheduledEvent -ResourceGroupName 'example-rg' -ResourceType 'virtualMachineScaleSets' -ResourceName 'example-vmss' -ScheduledEventId '22222222-2222-2222-2222-222222222222' -Confirm:$false
-$response.Error.Code
-$response.Error.Message
+$response
 ```
 
-Attempts to approve a ScheduledEvents entry and accesses the code and message if the service returns a non-success response.
-When written directly to the console, this response is displayed as JSON.
+```output
+{
+	"Error": {
+		"Code": "InvalidScheduledEventId",
+		"Message": "Scheduled event not found"
+	}
+}
+```
+
+Attempts to approve a ScheduledEvents entry and displays the non-success response as JSON.
+The pipeline value remains a structured object whose code and message are available through `$response.Error.Code` and `$response.Error.Message`.
 
 ## PARAMETERS
 
