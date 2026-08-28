@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMissionCommunity'))
 }
 
 Describe 'New-AzMissionCommunity' {
-    # NOTE: Skipped until a Recording.json is captured against a live Microsoft.Mission preview subscription.
+    # NOTE: Skipped until a Recording.json is captured against a live Microsoft.Mission subscription.
     It 'CreateExpanded' -skip {
         {
             $community = New-AzMissionCommunity -Name $env.communityName -ResourceGroupName $env.resourceGroup -Location $env.location -AddressSpace '10.0.0.0/16'

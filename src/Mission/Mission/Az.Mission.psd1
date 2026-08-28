@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -139,7 +139,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial preview release of the Az.Mission module for the Microsoft.Mission (Azure Virtual Enclaves) resource provider.'
+        ReleaseNotes = 'General availability release of the Az.Mission module for the Microsoft.Mission (Azure Virtual Enclaves) resource provider, targeting the stable API version 2026-04-01.'
 
         # Prerelease string of this module
         # Prerelease = ''
