@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the content URI.
         /// </summary>
-        [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The URI to the package content (e.g., a blob storage URL or PyPI/PowerShell Gallery URL).")]
         [ValidateNotNullOrEmpty]
         public string ContentUri { get; set; }

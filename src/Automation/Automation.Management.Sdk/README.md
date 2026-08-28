@@ -29,7 +29,7 @@ title: AutomationClient
 
 ### 
 ``` yaml 
-commit: 4e219f2315c4e4ebdd2e5bf1d3c13164db4ec804
+commit: 3d8953d4bf6eaf4e8d85d2d90226a6f9752bb79d
 input-file:
   - https://github.com/kaarthik2103/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2024-10-23/openapi.json
   - https://github.com/kaarthik2103/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/dscCompilationJob.json

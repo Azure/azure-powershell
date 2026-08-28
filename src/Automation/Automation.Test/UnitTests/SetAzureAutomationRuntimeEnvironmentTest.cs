@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.AutomationAccountName = accountName;
             this.cmdlet.Name = runtimeEnvironmentName;
-            this.cmdlet.DefaultPackages = packages;
+            this.cmdlet.DefaultPackage = packages;
             this.cmdlet.SetParameterSet("ByName");
             this.cmdlet.ExecuteCmdlet();
 

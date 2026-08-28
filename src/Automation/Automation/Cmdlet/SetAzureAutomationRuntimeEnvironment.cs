@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The default packages for the runtime environment as a hashtable of package name to version (e.g., @{'Az'='12.3.0'}).")]
-        public Hashtable DefaultPackages { get; set; }
+        [Alias("DefaultPackages")]
+        public Hashtable DefaultPackage { get; set; }
 
         /// <summary>
         /// Gets or sets the description.
@@ -65,9 +66,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationProcessRecord()
         {
             IDictionary<string, string> defaultPackagesDict = null;
-            if (this.DefaultPackages != null)
+            if (this.DefaultPackage != null)
             {
-                defaultPackagesDict = this.DefaultPackages.Cast<DictionaryEntry>()
+                defaultPackagesDict = this.DefaultPackage.Cast<DictionaryEntry>()
                     .ToDictionary(d => d.Key.ToString(), d => d.Value?.ToString());
             }
 

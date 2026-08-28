@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the Force parameter.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 4, HelpMessage = "Confirm the removal of the package.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, HelpMessage = "Confirm the removal of the package.")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>

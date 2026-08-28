@@ -14,7 +14,7 @@ Creates a new Runtime Environment in Azure Automation.
 
 ```
 New-AzAutomationRuntimeEnvironment [-Name] <String> [-Language] <String> [-Version] <String>
- [-Location <String>] [-DefaultPackages <Hashtable>] [-Description <String>] [-Tag <Hashtable>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-Location <String>] [-DefaultPackage <Hashtable>] [-Description <String>] [-Tag <Hashtable>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ This command creates a new PowerShell 7.4 runtime environment named "PowerShell-
 ### Example 2: Create a Python runtime environment with default packages
 ```powershell
 $packages = @{"azure-storage-blob"="12.14.0"; "requests"="2.28.1"}
-New-AzAutomationRuntimeEnvironment -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Name "Python-3.10-DataOps" -Language "Python" -Version "3.10" -DefaultPackages $packages -Description "Python environment for data operations"
+New-AzAutomationRuntimeEnvironment -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Name "Python-3.10-DataOps" -Language "Python" -Version "3.10" -DefaultPackage $packages -Description "Python environment for data operations"
 ```
 
 This command creates a Python 3.10 runtime environment with pre-installed packages for data operations.
@@ -41,7 +41,7 @@ This command creates a Python 3.10 runtime environment with pre-installed packag
 ### Example 3: Create a PowerShell 5.1 runtime environment with Az module
 ```powershell
 $packages = @{"Az"="12.3.0"}
-New-AzAutomationRuntimeEnvironment -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Name "PowerShell-5.1-Legacy" -Language "PowerShell" -Version "5.1" -DefaultPackages $packages
+New-AzAutomationRuntimeEnvironment -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Name "PowerShell-5.1-Legacy" -Language "PowerShell" -Version "5.1" -DefaultPackage $packages
 ```
 
 This command creates a PowerShell 5.1 runtime environment with the Az module pre-installed.
@@ -63,7 +63,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DefaultPackages
+### -DefaultPackage
 The default packages for the runtime environment as a hashtable of package name to version.
 
 ```yaml

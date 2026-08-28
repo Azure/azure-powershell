@@ -14,7 +14,7 @@ Updates a Runtime Environment in Azure Automation.
 
 ### ByName (Default)
 ```
-Set-AzAutomationRuntimeEnvironment [-Name] <String> [-DefaultPackages <Hashtable>] [-Description <String>] [-Tag <Hashtable>]
+Set-AzAutomationRuntimeEnvironment [-Name] <String> [-DefaultPackage <Hashtable>] [-Description <String>] [-Tag <Hashtable>]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -27,7 +27,7 @@ The **Set-AzAutomationRuntimeEnvironment** cmdlet updates an existing Runtime En
 ### Example 1: Update the default packages of a runtime environment
 ```powershell
 $packages = @{"Az"="12.4.0"; "Az.Accounts"="3.0.0"}
-Set-AzAutomationRuntimeEnvironment -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Name "PowerShell-7.4-Prod" -DefaultPackages $packages
+Set-AzAutomationRuntimeEnvironment -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Name "PowerShell-7.4-Prod" -DefaultPackage $packages
 ```
 
 This command updates the default packages of the runtime environment named "PowerShell-7.4-Prod".
@@ -42,7 +42,7 @@ This command updates the description of the runtime environment named "Python-3.
 ### Example 3: Update both packages and description
 ```powershell
 $packages = @{"requests"="2.31.0"; "pandas"="2.0.0"}
-Set-AzAutomationRuntimeEnvironment -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Name "Python-3.10-DataOps" -DefaultPackages $packages -Description "Analytics runtime with updated packages"
+Set-AzAutomationRuntimeEnvironment -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Name "Python-3.10-DataOps" -DefaultPackage $packages -Description "Analytics runtime with updated packages"
 ```
 
 This command updates both the default packages and description of the runtime environment.
@@ -64,7 +64,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DefaultPackages
+### -DefaultPackage
 The default packages for the runtime environment as a hashtable of package name to version.
 
 ```yaml

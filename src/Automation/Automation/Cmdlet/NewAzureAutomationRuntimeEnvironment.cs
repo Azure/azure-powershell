@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the language.
         /// </summary>
-        [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The language of the runtime environment. Valid values are 'PowerShell' or 'Python'.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("PowerShell", "Python")]
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the version.
         /// </summary>
-        [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The version of the language. For PowerShell: '7.6', '7.4', '7.2', '5.1'. For Python: '3.10', '3.8'.")]
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
@@ -66,7 +66,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The default packages for the runtime environment as a hashtable of package name to version (e.g., @{'Az'='12.3.0'}).")]
-        public Hashtable DefaultPackages { get; set; }
+        [Alias("DefaultPackages")]
+        public Hashtable DefaultPackage { get; set; }
 
         /// <summary>
         /// Gets or sets the description.
@@ -97,9 +98,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             }
 
             IDictionary<string, string> defaultPackagesDict = null;
-            if (this.DefaultPackages != null)
+            if (this.DefaultPackage != null)
             {
-                defaultPackagesDict = this.DefaultPackages.Cast<DictionaryEntry>()
+                defaultPackagesDict = this.DefaultPackage.Cast<DictionaryEntry>()
                     .ToDictionary(d => d.Key.ToString(), d => d.Value?.ToString());
             }
 

@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.Location = location;
             this.cmdlet.Language = language;
             this.cmdlet.Version = version;
-            this.cmdlet.DefaultPackages = packages;
+            this.cmdlet.DefaultPackage = packages;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert

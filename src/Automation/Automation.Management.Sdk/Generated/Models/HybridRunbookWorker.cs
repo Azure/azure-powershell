@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="workerName">Name of the HybridWorker.
         /// </param>
-        public HybridRunbookWorker(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string workerType = default(string), string ip = default(string), System.DateTimeOffset? registeredDateTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastSeenDateTime = default(System.DateTimeOffset?), string vmResourceId = default(string), string workerName = default(string))
+        public HybridRunbookWorker(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string workerType = default(string), string ip = default(string), System.DateTimeOffset registeredDateTime = default(System.DateTimeOffset), System.DateTimeOffset lastSeenDateTime = default(System.DateTimeOffset), string vmResourceId = default(string), string workerName = default(string))
 
         : base(location, id, name, type, systemData, tags)
         {
@@ -98,13 +98,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the registration time of the worker machine.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.registeredDateTime")]
-        public System.DateTimeOffset? RegisteredDateTime {get; set; }
+        public System.DateTimeOffset RegisteredDateTime {get; set; }
 
         /// <summary>
         /// Gets or sets last Heartbeat from the Worker
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastSeenDateTime")]
-        public System.DateTimeOffset? LastSeenDateTime {get; set; }
+        public System.DateTimeOffset LastSeenDateTime {get; set; }
 
         /// <summary>
         /// Gets or sets azure Resource Manager Id for a virtual machine.
