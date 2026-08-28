@@ -4170,12 +4170,6 @@
       "Update-AzLabServicesUser": {},
       "Update-AzLabServicesVMReimage": {}
     },
-    "Az.LambdaTest": {
-      "Get-AzLambdaTestOrganization": {},
-      "New-AzLambdaTestOrganization": {},
-      "Remove-AzLambdaTestOrganization": {},
-      "Update-AzLambdaTestOrganization": {}
-    },
     "Az.LoadTesting": {
       "Get-AzLoad": {},
       "New-AzLoad": {},
