@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Maintenance
             ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
-            HelpMessage = "The Microsoft.Compute resource type. Supported values are virtualMachines, virtualMachineScaleSets, and availabilitySets.",
+            HelpMessage = "The Microsoft.Compute resource type that owns the ScheduledEvents. Supported values are virtualMachines, virtualMachineScaleSets, and availabilitySets.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceType { get; set; }
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Maintenance
             ParameterSetName = "DefaultParameter",
             Position = 3,
             Mandatory = true,
-            HelpMessage = "ScheduledEvents Id.",
+            HelpMessage = "The ScheduledEvents ID.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ScheduledEventId { get; set; }

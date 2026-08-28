@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Approves a list of scheduled events for a resource.
+Approves events in the ScheduledEvents collection for a resource.
 
 ## SYNTAX
 
@@ -22,10 +22,10 @@ Approve-AzScheduledEventList [-ResourceGroupName] <String> [-ResourceType] <Stri
 
 ## DESCRIPTION
 
-Approves a list of scheduled events for a virtual machine, virtual machine scale set, or availability set.
-On success, the cmdlet returns a scheduled-event approval response.
-When events in the same request have different outcomes, the service can return HTTP 207 Multi-Status.
-For that response, the cmdlet returns a structured object containing an overall `Response` and a `Details` collection with the outcome for each event.
+Approves events in the ScheduledEvents for a virtual machine, virtual machine scale set, or availability set.
+On success, the cmdlet returns a ScheduledEvents approval response.
+When ScheduledEvents entries in the same request have different outcomes, the service can return HTTP 207 Multi-Status.
+For that response, the cmdlet returns a structured object containing an overall `Response` and a `Details` with the outcome for each ScheduledEvents entry.
 The default console view renders the multi-status response as JSON, but the pipeline receives a structured object that can be inspected or filtered.
 For other non-success responses, the cmdlet returns a structured error response containing the service-defined code and message.
 
@@ -37,7 +37,7 @@ For other non-success responses, the cmdlet returns a structured error response 
 Approve-AzScheduledEventList -ResourceGroupName $ResourceGroupName -ResourceType virtualMachineScaleSets -ResourceName $ResourceName -ScheduledEventIdList $ScheduledEventIds -Confirm:$false
 ```
 
-Approves the specified scheduled events and returns the service response.
+Approves the specified ScheduledEvents entries and returns the service response.
 
 ### Example 2: Inspect an HTTP 207 Multi-Status response
 
@@ -47,7 +47,7 @@ $response.Response
 $response.Details
 ```
 
-Approves multiple scheduled events and examines the overall response and each event's result.
+Approves multiple ScheduledEvents entries and examines the overall response and each entry's result.
 When written directly to the console, a multi-status response is displayed as JSON.
 
 ### Example 3: Inspect a non-success response
@@ -58,7 +58,7 @@ $response.Error.Code
 $response.Error.Message
 ```
 
-Attempts to approve multiple scheduled events and accesses the service-defined code and message if the request is rejected.
+Attempts to approve multiple ScheduledEvents entries and accesses the service-defined code and message if the request is rejected.
 
 ## PARAMETERS
 
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 
 ### -ResourceType
 
-The Microsoft.Compute resource type that owns the scheduled events.
+The Microsoft.Compute resource type that owns the ScheduledEvents.
 Supported values are `virtualMachines`, `virtualMachineScaleSets`, and `availabilitySets`.
 
 ```yaml
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 
 ### -ScheduledEventIdList
 
-List of ScheduledEvents Ids.
+The list of ScheduledEvents IDs.
 
 ```yaml
 Type: System.String[]

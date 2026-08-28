@@ -17,8 +17,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Maintenance;
 using Microsoft.Azure.Management.Maintenance.Models;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -37,14 +35,15 @@ namespace Microsoft.Azure.Commands.Maintenance
                 string resourceGroupName = NormalizeRequiredValue(this.ResourceGroupName, nameof(ResourceGroupName));
                 string resourceType = NormalizeRequiredValue(this.ResourceType, nameof(ResourceType));
                 string resourceName = NormalizeRequiredValue(this.ResourceName, nameof(ResourceName));
-                string[] scheduledEventIds = NormalizeScheduledEventIds(this.ScheduledEventIdList);
-                string target = $"resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/scheduledEvents [{string.Join(", ", scheduledEventIds)}]";
-
-                if (MaintenanceClient.MaintenanceManagementClient is MaintenanceManagementClient client
-                    && !client.DeserializationSettings.Converters.Any(converter => converter is ScheduledEventsListAcknowledgeErrorConverter))
+                if (this.ScheduledEventIdList == null || this.ScheduledEventIdList.Length == 0)
                 {
-                    client.DeserializationSettings.Converters.Add(new ScheduledEventsListAcknowledgeErrorConverter());
+                    throw new PSArgumentException("The ScheduledEventIdList parameter must contain at least one ScheduledEvents ID.", nameof(ScheduledEventIdList));
                 }
+
+                string[] scheduledEventIds = this.ScheduledEventIdList
+                    .Select((value, index) => NormalizeScheduledEventId(value, nameof(ScheduledEventIdList), index))
+                    .ToArray();
+                string target = $"resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/scheduledEvents [{string.Join(", ", scheduledEventIds)}]";
 
                 if (ShouldProcess(target, VerbsLifecycle.Approve))
                 {
@@ -74,37 +73,36 @@ namespace Microsoft.Azure.Commands.Maintenance
             });
         }
 
-        private static string[] NormalizeScheduledEventIds(IEnumerable<string> values)
-        {
-            if (values == null)
-            {
-                throw new PSArgumentException("The ScheduledEventIdList parameter cannot be null.", nameof(ScheduledEventIdList));
-            }
-
-            string[] normalizedValues = values
-                .Select((value, index) => NormalizeScheduledEventId(value, nameof(ScheduledEventIdList), index))
-                .ToArray();
-
-            if (normalizedValues.Length == 0)
-            {
-                throw new PSArgumentException("The ScheduledEventIdList parameter must contain at least one scheduled event ID.", nameof(ScheduledEventIdList));
-            }
-
-            return normalizedValues;
-        }
-
+        /// <summary>
+        /// Maps the service's HTTP 207 payload to the PowerShell response model. The service returns
+        /// { "response": { "code", "message" }, "details": [...] }, while the existing AutoRest default
+        /// response model expects { "error": { "code", "message", "details" } }. The SDK model is retained
+        /// as a fallback for responses that follow the published specification.
+        /// </summary>
         private static PSScheduledEventsApproveResponse GetMultiStatusResponse(ScheduledEventsListAcknowledgeErrorException exception)
         {
-            ScheduledEventsListAcknowledgeErrorDetails response = exception.Body?.Error;
-            return new PSScheduledEventsApproveResponse
+            PSScheduledEventsApproveResponse result = null;
+            if (!string.IsNullOrWhiteSpace(exception.Response?.Content))
             {
-                Response = new PSScheduledEventsListApproveStatus
+                try
                 {
-                    Code = response?.Code ?? exception.Response.StatusCode.ToString(),
-                    Message = response?.Message ?? exception.Message
-                },
-                Details = response?.Details ?? new List<ScheduledEventsAcknowledgeErrorDetails>()
-            };
+                    result = JsonConvert.DeserializeObject<PSScheduledEventsApproveResponse>(exception.Response.Content);
+                }
+                catch (JsonException)
+                {
+                    // Fall back to the generated SDK body and transport-level status below.
+                }
+            }
+
+            result = result ?? new PSScheduledEventsApproveResponse();
+            result.Response = result.Response ?? new PSScheduledEventsListApproveStatus();
+
+            ScheduledEventsListAcknowledgeErrorDetails sdkError = exception.Body?.Error;
+            result.Response.Code = result.Response.Code ?? sdkError?.Code ?? exception.Response.StatusCode.ToString();
+            result.Response.Message = result.Response.Message ?? sdkError?.Message ?? exception.Message;
+            result.Details = result.Details ?? sdkError?.Details ?? new List<ScheduledEventsAcknowledgeErrorDetails>();
+
+            return result;
         }
 
         private static void PopulateMissingTargets(
@@ -139,7 +137,7 @@ namespace Microsoft.Azure.Commands.Maintenance
             ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
-            HelpMessage = "The Microsoft.Compute resource type. Supported values are virtualMachines, virtualMachineScaleSets, and availabilitySets.",
+            HelpMessage = "The Microsoft.Compute resource type that owns the ScheduledEvents. Supported values are virtualMachines, virtualMachineScaleSets, and availabilitySets.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceType { get; set; }
@@ -157,41 +155,9 @@ namespace Microsoft.Azure.Commands.Maintenance
             ParameterSetName = "DefaultParameter",
             Position = 3,
             Mandatory = true,
-            HelpMessage = "List of ScheduledEvents Ids.",
+            HelpMessage = "The list of ScheduledEvents IDs.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string[] ScheduledEventIdList { get; set; }
-    }
-
-    internal sealed class ScheduledEventsListAcknowledgeErrorConverter : JsonConverter
-    {
-        public override bool CanWrite => false;
-
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(ScheduledEventsListAcknowledgeError);
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            JObject responseBody = JObject.Load(reader);
-            JToken errorToken = responseBody.GetValue("error", StringComparison.OrdinalIgnoreCase);
-            JToken responseToken = responseBody.GetValue("response", StringComparison.OrdinalIgnoreCase);
-            ScheduledEventsListAcknowledgeErrorDetails error =
-                (errorToken ?? responseToken)?.ToObject<ScheduledEventsListAcknowledgeErrorDetails>(serializer);
-
-            if (errorToken == null && error != null)
-            {
-                error.Details = responseBody.GetValue("details", StringComparison.OrdinalIgnoreCase)
-                    ?.ToObject<IList<ScheduledEventsAcknowledgeErrorDetails>>(serializer);
-            }
-
-            return new ScheduledEventsListAcknowledgeError(error);
-        }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            throw new NotSupportedException();
-        }
     }
 }

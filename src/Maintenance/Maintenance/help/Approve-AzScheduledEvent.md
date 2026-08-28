@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Approves a scheduled event for a resource.
+Approves an event in the ScheduledEvents for a resource.
 
 ## SYNTAX
 
@@ -21,8 +21,8 @@ Approve-AzScheduledEvent [-ResourceGroupName] <String> [-ResourceType] <String> 
 
 ## DESCRIPTION
 
-Approves a scheduled event for a virtual machine, virtual machine scale set, or availability set.
-On success, the cmdlet returns a scheduled-event approval response.
+Approves an event in the ScheduledEvents for a virtual machine, virtual machine scale set, or availability set.
+On success, the cmdlet returns a ScheduledEvents approval response.
 If the service rejects the request, the cmdlet returns a structured error response containing the service-defined code and message.
 The default console view renders the error response as JSON, but the pipeline receives a structured object whose values are available through the `Error.Code` and `Error.Message` properties.
 
@@ -34,7 +34,7 @@ The default console view renders the error response as JSON, but the pipeline re
 Approve-AzScheduledEvent -ResourceGroupName $ResourceGroupName -ResourceType virtualMachines -ResourceName $ResourceName -ScheduledEventId $ScheduledEventId -Confirm:$false
 ```
 
-Approves the specified scheduled event for a virtual machine and returns the service response.
+Approves the specified ScheduledEvents entry for a virtual machine and returns the service response.
 
 ### Example 2: Inspect a non-success response
 
@@ -44,7 +44,7 @@ $response.Error.Code
 $response.Error.Message
 ```
 
-Attempts to approve a scheduled event and accesses the code and message if the service returns a non-success response.
+Attempts to approve a ScheduledEvents entry and accesses the code and message if the service returns a non-success response.
 When written directly to the console, this response is displayed as JSON.
 
 ## PARAMETERS
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 
 ### -ResourceType
 
-The Microsoft.Compute resource type that owns the scheduled event.
+The Microsoft.Compute resource type that owns the ScheduledEvents.
 Supported values are `virtualMachines`, `virtualMachineScaleSets`, and `availabilitySets`.
 
 ```yaml
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 
 ### -ScheduledEventId
 
-ScheduledEvents Id.
+The ScheduledEvents ID.
 
 ```yaml
 Type: System.String

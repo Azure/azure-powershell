@@ -74,7 +74,8 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.UnitTests
 
         private static ScheduledEventsListAcknowledgeErrorException CreateMultiStatusException(
             ScheduledEventsListAcknowledgeErrorDetails response = null,
-            IList<ScheduledEventsAcknowledgeErrorDetails> details = null)
+            IList<ScheduledEventsAcknowledgeErrorDetails> details = null,
+            string responseContent = null)
         {
             return new ScheduledEventsListAcknowledgeErrorException("Operation returned an invalid status code 'MultiStatus'.")
             {
@@ -87,14 +88,15 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.UnitTests
                             details)),
                 Response = new HttpResponseMessageWrapper(
                     new HttpResponseMessage((HttpStatusCode)207),
-                    null)
+                    responseContent)
             };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void MultiStatusWireResponseDeserializesIntoSdkBody()
+        public void MultiStatusWireResponseMapsToPowerShellResponse()
         {
+            object writtenObject = null;
             string responseBody = JsonConvert.SerializeObject(new
             {
                 Response = new
@@ -112,27 +114,30 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.UnitTests
                 }
             });
 
-            var client = new MaintenanceManagementClient(new TokenCredentials("token"));
-            var runtime = new Mock<ICommandRuntime>(MockBehavior.Strict);
-            runtime.Setup(commandRuntime => commandRuntime.ShouldProcess(ShouldProcessTarget, VerbsLifecycle.Approve))
-                .Returns(false);
-            var command = new ApproveAzureRmScheduledEventList
-            {
-                CommandRuntime = runtime.Object,
-                MaintenanceClient = new MaintenanceClient(client),
-                ResourceGroupName = ResourceGroupName,
-                ResourceType = ResourceType,
-                ResourceName = ResourceName,
-                ScheduledEventIdList = ScheduledEventIds
-            };
+            commandRuntimeMock
+                .Setup(runtime => runtime.ShouldProcess(ShouldProcessTarget, VerbsLifecycle.Approve))
+                .Returns(true);
+            commandRuntimeMock
+                .Setup(runtime => runtime.WriteObject(It.IsAny<object>()))
+                .Callback<object>(value => writtenObject = value);
+            scheduledEventsOperationsMock
+                .Setup(operations => operations.AcknowledgeListWithHttpMessagesAsync(
+                    ResourceGroupName,
+                    ResourceType,
+                    ResourceName,
+                    It.Is<IList<string>>(ids => ids.SequenceEqual(ScheduledEventIds)),
+                    null,
+                    It.IsAny<CancellationToken>()))
+                .Returns(Task.FromException<AzureOperationResponse<ScheduledEventsApproveResponse>>(
+                    CreateMultiStatusException(responseContent: responseBody)));
 
-            command.ExecuteCmdlet();
-            ScheduledEventsListAcknowledgeError body = Microsoft.Rest.Serialization.SafeJsonConvert
-                .DeserializeObject<ScheduledEventsListAcknowledgeError>(responseBody, client.DeserializationSettings);
+            cmdlet.ExecuteCmdlet();
 
-            Assert.Equal("MultiStatusResponse", body.Error.Code);
-            Assert.Equal("Review each event result.", body.Error.Message);
-            ScheduledEventsAcknowledgeErrorDetails detail = Assert.Single(body.Error.Details);
+            var response = Assert.IsType<PSScheduledEventsApproveResponse>(writtenObject);
+            Assert.Equal("MultiStatusResponse", response.Response.Code);
+            Assert.Equal("Review each event result.", response.Response.Message);
+            ScheduledEventsAcknowledgeErrorDetails detail = Assert.Single(response.Details);
+            Assert.Equal(ScheduledEventIds[0], detail.Target);
             Assert.Equal("NotFound", detail.Code);
             Assert.Equal("Scheduled event not found", detail.Message);
         }
