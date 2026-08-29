@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -281,8 +281,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
         private string ResolveFileNameConflict(string baseFileName)
         {
-            // TODO - MaxFileNameLength could be <= 0.
             int maxFileNameLength = this.getMaxFileNameLength();
+            if (maxFileNameLength <= 0)
+            {
+                throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture, "Max file name length must be greater than zero. Actual value: {0}.", maxFileNameLength));
+            }
 
             Func<string, bool> conflict = delegate (string fileName)
             {
@@ -295,12 +298,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 string postfixString = string.Format(" ({0})", count);
 
-                // TODO - trimLength could be be larger than pathAndFilename.Length, what do we do in this case?
+                // If the postfix and extension alone exceed the limit, we cannot
+                // safely construct a unique conflict-resolved file name without
+                // truncating away the counter value. Failing fast avoids generating the same
+                // candidate filename for multiple count values and prevents the
+                // conflict-resolution loop from failing to converge.
+                if (postfixString.Length + extension.Length >= maxFileNameLength)
+                {
+                    throw new InvalidOperationException(
+                        string.Format(
+                            CultureInfo.InvariantCulture,
+                            "Max file name length '{0}' is too small to generate a unique conflict-resolved file name for extension '{1}'.",
+                            maxFileNameLength,
+                            extension));
+                }
+
                 int trimLength = (fileName.Length + postfixString.Length + extension.Length) - maxFileNameLength;
 
                 if (trimLength > 0)
                 {
-                    fileName = fileName.Remove(fileName.Length - trimLength);
+                    fileName = fileName.Remove(Math.Max(0, fileName.Length - trimLength));
                 }
 
                 return string.Format("{0}{1}{2}", fileName, postfixString, extension);
