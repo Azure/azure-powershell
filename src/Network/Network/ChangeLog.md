@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 8.2.0
 * Added cmdlets to manage `ExpressRouteLag` resources (Microsoft.Network 2025-09-01 API).
     - `Get-AzExpressRouteLag`, `New-AzExpressRouteLag`, `Set-AzExpressRouteLag`, `Remove-AzExpressRouteLag` for core CRUD operations.
     - `New-AzExpressRouteLagLOA` to generate a letter of authorization for an ExpressRouteLag.
