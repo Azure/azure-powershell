@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
             var apiManagement = new PsApiManagement(new ApiManagementServiceResource
             {
                 Location = "eastus",
-                PublisherEmail = "[REDACTED:email_address]",
+                PublisherEmail = "admin@contoso.com",
                 PublisherName = "Contoso",
                 VirtualNetworkType = VirtualNetworkType.None,
                 Sku = new ApiManagementServiceSkuProperties(SkuType.Developer, 1)
