@@ -16,7 +16,7 @@ Creates an address prefix set under an application security group.
 ```
 New-AzAddressPrefixSet -ResourceGroupName <String> -ApplicationSecurityGroupName <String> -Name <String>
  -AddressPrefix <String[]> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ New-AzAddressPrefixSet -ResourceGroupName <String> -ApplicationSecurityGroupName
 ```
 New-AzAddressPrefixSet -ApplicationSecurityGroup <PSApplicationSecurityGroup> -Name <String>
  -AddressPrefix <String[]> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
 ### ByApplicationSecurityGroupResourceId
 ```
 New-AzAddressPrefixSet -ApplicationSecurityGroupResourceId <String> -Name <String> -AddressPrefix <String[]>
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -193,21 +193,6 @@ Parameter Sets: (All)
 Aliases: ResourceName, AddressPrefixSetName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

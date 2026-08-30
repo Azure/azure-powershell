@@ -16,21 +16,21 @@ Updates the prefixes in an address prefix set.
 ```
 Set-AzAddressPrefixSet -ResourceGroupName <String> -ApplicationSecurityGroupName <String> -Name <String>
  -AddressPrefix <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
 ### ByAddressPrefixSetObject
 ```
 Set-AzAddressPrefixSet -InputObject <PSAddressPrefixSet> -AddressPrefix <String[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByAddressPrefixSetResourceId
 ```
 Set-AzAddressPrefixSet -ResourceId <String> -AddressPrefix <String[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -163,21 +163,6 @@ Parameter Sets: ByApplicationSecurityGroupName
 Aliases: ResourceName, AddressPrefixSetName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
