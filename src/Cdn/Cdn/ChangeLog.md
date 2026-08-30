@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.2.0
 * Added ChangeSafety Support
 
 ## Version 6.1.0
