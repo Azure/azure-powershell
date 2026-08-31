@@ -67,8 +67,8 @@
                         "StatusCode":  201
                     },
                     {
-                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35?api-version=2026-01-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzU/YXBpLXZlcnNpb249MjAyNi0wMS0wMQ==",
+                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35?api-version=2026-07-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzU/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
                         "RequestMethod":  "PUT",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -139,8 +139,8 @@
                         "StatusCode":  201
                     },
                     {
-                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35?api-version=2026-01-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzU/YXBpLXZlcnNpb249MjAyNi0wMS0wMQ==",
+                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35?api-version=2026-07-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzU/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -205,8 +205,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/extendedInformation/vaultExtendedInfo?api-version=2026-01-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDI2LTAxLTAx",
+                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/extendedInformation/vaultExtendedInfo?api-version=2026-07-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -274,8 +274,8 @@
                         "StatusCode":  404
                     },
                     {
-                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/extendedInformation/vaultExtendedInfo?api-version=2026-01-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDI2LTAxLTAx",
+                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/extendedInformation/vaultExtendedInfo?api-version=2026-07-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
                         "RequestMethod":  "PUT",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -349,8 +349,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults?api-version=2026-01-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMjYtMDEtMDE=",
+                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults?api-version=2026-07-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMjYtMDctMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
