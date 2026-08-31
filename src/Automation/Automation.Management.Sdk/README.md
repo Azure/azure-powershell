@@ -29,10 +29,10 @@ title: AutomationClient
 
 ### 
 ``` yaml 
-commit: 3d8953d4bf6eaf4e8d85d2d90226a6f9752bb79d
+commit: 8933ceed3ed4dbd4d3835ee6e303348e9be7c068
 input-file:
-  - https://github.com/kaarthik2103/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2024-10-23/openapi.json
-  - https://github.com/kaarthik2103/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/dscCompilationJob.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2024-10-23/openapi.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/dscCompilationJob.json
 
 output-folder: Generated
 
@@ -42,4 +42,27 @@ directive:
       model-name: UserAssignedIdentitiesProperties
     set:
       model-name: IdentityUserAssignedIdentitiesValue
+  - from: openapi.json
+    where: $
+    transform: |
+      for (const path of Object.values($.paths ?? {})) {
+        for (const operation of Object.values(path)) {
+          if (operation?.operationId !== "RunbookDraft_ReplaceContent") continue;
+
+          const acceptedResponse = operation.responses?.["202"];
+          if (acceptedResponse) {
+            delete acceptedResponse.headers;
+          }
+        }
+      }
+
+      const workerProperties =
+        $.definitions?.HybridRunbookWorkerProperties?.properties;
+      if (workerProperties?.registeredDateTime) {
+        workerProperties.registeredDateTime["x-nullable"] = false;
+      }
+      if (workerProperties?.lastSeenDateTime) {
+        workerProperties.lastSeenDateTime["x-nullable"] = false;
+      }
+      return $;
 ```
