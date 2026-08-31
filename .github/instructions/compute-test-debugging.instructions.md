@@ -218,29 +218,3 @@ Keep entries concise — 1–2 sentences per field. The goal is to give future d
 ## Known Issues
 
 <!-- Entries are added automatically by Step 8 after successful debugging sessions. Do not remove existing entries. -->
-
-### Recording a VM/VMSS test fails on 'locations/publishers' with api-version 2026-04-01
-- **Symptom**: A test that passes in Playback fails in Record with `No registered resource provider found for location '<region>' and API version '2026-04-01' for type 'locations/publishers'. The supported api-versions are '... 2026-03-01'`. The listed supported locations include every region, so it is not a regional gap.
-- **Root cause**: `locations/publishers` and everything routed beneath it have not shipped the `2026-04-01` api-version that the Compute SDK now targets, so image-catalogue lookups fail live. The remaining caller is the `Get-DefaultCRPImage` test helper. `New-AzVM`'s `GetBginfoExtension()` also routes through this path (via `VirtualMachineExtensionImages.ListVersions`), but it no longer fails the cmdlet: the lookup is best-effort and falls back to `VirtualMachineBGInfoExtensionContext.ExtensionDefaultVersion`, so the extension is still installed.
-- **Fix**: Replace `Get-DefaultCRPImage` with an explicit image reference (`Set-AzVMSourceImage -PublisherName ... -Offer ... -Skus ... -Version latest`, or the literal `-ImageReference*` parameters on `Set-AzVmssStorageProfile`). Note `-DisableBginfoExtension` is no longer needed to work around this, and it cannot be combined with `-Priority` anyway because the two live in disjoint parameter sets. Playback-only tests are unaffected because their recordings predate the SDK bump.
-- **Files involved**: src/Compute/Compute.Test/ScenarioTests/ComputeTestCommon.ps1, src/Compute/Compute/VirtualMachine/Operation/NewAzureVMCommand.cs
-
-### A test that makes no HTTP calls never produces a session recording
-- **Symptom**: A scenario test passes in Record mode but no `.json` appears under `SessionRecords/<Class>/`, and Playback then fails with `Unable to find recorded mock file`.
-- **Root cause**: `HttpMockServer.Flush()` only writes a file when `Mode == Record && _records.Count > 0`. A test that only exercises client-side config cmdlets (`New-AzVMConfig`, `New-AzVmssConfig`, `Set-AzVmss*Profile`) issues no requests, so nothing is persisted.
-- **Fix**: If a real recording is required, extend the test to actually call the service (create the resource and assert on the `Get-` result). Hand-writing an empty `Entries: []` file makes Playback pass but records nothing and proves nothing about service behaviour.
-- **Files involved**: tools/TestFx/DelegatingHandlers/HttpMockServer.cs, tools/TestFx/Mocks/MockContext.cs
-
-### Scenario tests fail with "AuthenticationTelemetry is not registered"
-- **Symptom**: Every Compute scenario test fails immediately with `CmdletInvocationException: AuthenticationTelemetry is not registered`; further down, the error stream shows `The specified module '<repo>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1' was not loaded because no valid module file was found`.
-- **Root cause**: `dotnet build` on `Compute.Test.csproj` compiles the assemblies but does not stage the PowerShell module manifests into `artifacts/Debug`. `ComputeTestRunner` loads Az.Accounts, Az.Compute, Az.Network, Az.KeyVault and Az.ManagedServiceIdentity from that folder, and the missing `.psd1` files surface as a misleading telemetry error rather than a module-load error.
-- **Fix**: Before running tests, stage each required module with `pwsh -c "./tools/BuildScripts/BuildModules.ps1 -RepoRoot <repo> -Configuration Debug -TargetModule <Module>"` for Accounts, Compute, Network, KeyVault and ManagedServiceIdentity. Verify with `Test-Path artifacts/Debug/Az.<Module>/Az.<Module>.psd1`. Note the modules are loaded one at a time, so a first fix that only builds Accounts will simply move the error to the next missing module.
-- **Files involved**: src/Compute/Compute.Test/ScenarioTests/ComputeTestRunner.cs, tools/BuildScripts/BuildModules.ps1, artifacts/Debug/Az.*/
-
-### NuGet restore fails with NU1301 even when passing --no-restore
-- **Symptom**: `dotnet build` and `dotnet build --no-restore` both fail in under a second with repeated `error NU1301: Unable to load the service index for source https://api.nuget.org/v3/index.json`.
-- **Root cause**: A previous failed restore is cached in `obj/project.assets.json` under its `logs` array, and the `ResolvePackageAssets` target replays those logged errors at build time, so `--no-restore` cannot bypass them.
-- **Fix**: Fix the restore itself rather than trying to skip it. If `api.nuget.org` is unreachable but `pkgs.dev.azure.com` is, restore against the sanctioned mirrors with a temporary config: `dotnet restore --configfile <temp.config>` listing `local-feed`, `azure-powershell`, and `https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/index.json`. Pass the same file to `BuildModules.ps1` runs via the `RestoreConfigFile` environment variable. Never edit the repo's `NuGet.Config`.
-- **Files involved**: NuGet.Config, tools/Common.Netcore.Dependencies.targets, src/Compute/Compute.Test/obj/project.assets.json
-
-
