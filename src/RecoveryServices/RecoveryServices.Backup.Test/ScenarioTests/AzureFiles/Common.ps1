@@ -71,7 +71,7 @@ $policyName = "afspolicy1"
 			-FriendlyName $saName;
 	}
 
-	$item = Get-AzRecoveryServicesBackupItem `
+		$item = Get-AzRecoveryServicesBackupItem `
 		-VaultId $vault.ID `
 		-Container $container `
 		-WorkloadType AzureFiles `
@@ -90,6 +90,23 @@ $policyName = "afspolicy1"
 			-storageAccountName $saName | Out-Null
 
  		$item = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType AzureFiles `
+			-Name $fileShareFriendlyName
+	}
+	elseif ($item.ProtectionState -eq "ProtectionStopped")
+	{
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName;
+
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Item $item | Out-Null
+
+		$item = Get-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureFiles `

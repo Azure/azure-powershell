@@ -371,7 +371,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         {
                             throw new ArgumentException(Resources.ImmutabilityCantBeLocked);
                         }
-                        else patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = ImmutabilityState.ToString();                                               
+                        else patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = ImmutabilityState.ToString();
+
+                        if (ImmutabilityState != cmdletModel.ImmutabilityState.Disabled)
+                        {
+                            patchVault.Properties.SecuritySettings.ImmutabilitySettings.Configuration =
+                                vault.Properties?.SecuritySettings?.ImmutabilitySettings?.Configuration ??
+                                new ServiceClientModel.ImmutabilityConfiguration
+                                {
+                                    Type = ServiceClientModel.ImmutabilityType.AsPerPolicy
+                                };
+                        }
                     }
 
                     // update cross subscription restore state of the vault

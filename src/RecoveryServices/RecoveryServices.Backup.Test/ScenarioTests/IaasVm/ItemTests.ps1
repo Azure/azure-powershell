@@ -455,7 +455,12 @@ function Test-AzureMonitorAlerts
 		Assert-True { $vault2.Properties.AlertSettings.AzureMonitorAlertsForAllJobFailure -eq "Enabled" }
 		Assert-True { $vault2.Properties.AlertSettings.ClassicAlertsForCriticalOperations -eq "Disabled" }
 
-		$vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName  -Name $vaultName1 -DisableClassicAlerts $false
+		$vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName  -Name $vaultName1 `
+			-DisableAzureMonitorAlertsForJobFailure $false `
+			-DisableAzureMonitorAlertsForAllReplicationIssue $false `
+			-DisableAzureMonitorAlertsForAllFailoverIssue $false `
+			-DisableEmailNotificationsForSiteRecovery $false `
+			-DisableClassicAlerts $false
 
 		# update alert settings 
 		$vault1 = Update-AzRecoveryServicesVault -Name $vaultName1 -ResourceGroupName $resourceGroupName `

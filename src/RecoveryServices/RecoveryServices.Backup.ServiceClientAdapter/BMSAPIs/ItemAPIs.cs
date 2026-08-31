@@ -98,8 +98,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 }
             }
 
-            Logger.Instance.WriteDebug("Executing CreateOrUpdateWithHttpMessagesAsync");
-            var response = BmsAdapter.Client.ProtectedItems.CreateOrUpdateWithHttpMessagesAsync(
+            Logger.Instance.WriteDebug("Executing BeginCreateOrUpdateWithHttpMessagesAsync");
+            var response = BmsAdapter.Client.ProtectedItems.BeginCreateOrUpdateWithHttpMessagesAsync(
                  resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                  vaultName ?? BmsAdapter.GetResourceName(),
                  AzureFabricName,

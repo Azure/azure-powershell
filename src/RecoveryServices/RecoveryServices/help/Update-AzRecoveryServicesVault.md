@@ -331,6 +331,7 @@ Accept wildcard characters: False
 ### -ImmutabilityState
 Immutability State of the vault. Allowed values are "Disabled", "Unlocked", "Locked". 
 Unlocked means Enabled and can be changed, Locked means Enabled and can't be changed.
+When enabling immutability without an existing configuration, the cmdlet defaults to AsPerPolicy and inherits the immutable duration from the backup policy.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.ImmutabilityState]
