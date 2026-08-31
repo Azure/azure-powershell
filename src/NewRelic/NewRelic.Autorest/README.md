@@ -162,7 +162,7 @@ directive:
       verb: Invoke
       subject: ResubscribeMonitor
     set:
-      command-description: Resubscribes the New Relic organization of the underlying monitor resource to be billed by Azure Marketplace
+      command-description: Resubscribes the New Relic organization of the underlying monitor resource to be billed by Azure Marketplace.
   # customize the body property and parameter name
   # - from: source-file-csharp
   #   where: $
