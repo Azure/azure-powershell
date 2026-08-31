@@ -276,12 +276,12 @@ directive:
       verb: Update$
       subject: Project$
     remove: true
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where:
       verb: Remove
       subject: VCenterVcenter
     remove: true
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where:
       verb: Update
       subject: ReplicationRecoveryServicesProvider|VCenter
