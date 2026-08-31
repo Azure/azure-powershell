@@ -96,5 +96,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             // Assert
             this.mockAutomationClient.Verify(f => f.CreateRuntimeEnvironmentPackage(resourceGroupName, accountName, runtimeEnvironmentName, packageName, contentUri, null), Times.Once());
         }
+
+        [TestMethod]
+        public void NewAzureAutomationRuntimeEnvironmentPackageWithDottedNameSuccessful()
+        {
+            string resourceGroupName = "resourceGroup";
+            string accountName = "automation";
+            string runtimeEnvironmentName = "PowerShell-7.4";
+            string packageName = "Az.Accounts";
+            string contentUri = "https://www.powershellgallery.com/api/v2/package/Az.Accounts";
+
+            this.mockAutomationClient.Setup(
+                f => f.CreateRuntimeEnvironmentPackage(resourceGroupName, accountName, runtimeEnvironmentName, packageName, contentUri, null))
+                .Returns(new RuntimeEnvironmentPackage());
+
+            this.cmdlet.ResourceGroupName = resourceGroupName;
+            this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.RuntimeEnvironmentName = runtimeEnvironmentName;
+            this.cmdlet.Name = packageName;
+            this.cmdlet.ContentUri = contentUri;
+            this.cmdlet.ExecuteCmdlet();
+
+            this.mockAutomationClient.Verify(
+                f => f.CreateRuntimeEnvironmentPackage(resourceGroupName, accountName, runtimeEnvironmentName, packageName, contentUri, null),
+                Times.Once());
+        }
     }
 }

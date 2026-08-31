@@ -113,11 +113,15 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 
             if (ShouldProcess(this.Name, "Create Runtime Environment"))
             {
+                var location = string.IsNullOrEmpty(this.Location)
+                    ? this.AutomationClient.GetAutomationAccount(this.ResourceGroupName, this.AutomationAccountName).Location
+                    : this.Location;
+
                 var createdRuntimeEnvironment = this.AutomationClient.CreateRuntimeEnvironment(
                     this.ResourceGroupName,
                     this.AutomationAccountName,
                     this.Name,
-                    this.Location,
+                    location,
                     this.Language,
                     this.Version,
                     defaultPackagesDict,

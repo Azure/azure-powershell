@@ -118,5 +118,45 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
                 resourceGroupName, accountName, runtimeEnvironmentName, location, language, version, 
                 It.IsAny<IDictionary<string, string>>(), null, null), Times.Once());
         }
+
+        [TestMethod]
+        public void NewAzureAutomationRuntimeEnvironmentUsesAutomationAccountLocation()
+        {
+            string resourceGroupName = "resourceGroup";
+            string accountName = "automation";
+            string runtimeEnvironmentName = "PowerShell-74";
+            string accountLocation = "East US 2";
+            string language = "PowerShell";
+            string version = "7.4";
+
+            this.mockAutomationClient.Setup(f => f.GetAutomationAccount(resourceGroupName, accountName))
+                .Returns(new AutomationAccount
+                {
+                    Location = accountLocation
+                });
+            this.mockAutomationClient.Setup(f => f.CreateRuntimeEnvironment(
+                resourceGroupName, accountName, runtimeEnvironmentName, accountLocation, language, version, null, null, null))
+                .Returns(new RuntimeEnvironment
+                {
+                    Name = runtimeEnvironmentName,
+                    Location = accountLocation,
+                    Language = language,
+                    Version = version
+                });
+
+            this.cmdlet.ResourceGroupName = resourceGroupName;
+            this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.Name = runtimeEnvironmentName;
+            this.cmdlet.Language = language;
+            this.cmdlet.Version = version;
+            this.cmdlet.ExecuteCmdlet();
+
+            this.mockAutomationClient.Verify(
+                f => f.GetAutomationAccount(resourceGroupName, accountName),
+                Times.Once());
+            this.mockAutomationClient.Verify(f => f.CreateRuntimeEnvironment(
+                resourceGroupName, accountName, runtimeEnvironmentName, accountLocation, language, version, null, null, null),
+                Times.Once());
+        }
     }
 }
