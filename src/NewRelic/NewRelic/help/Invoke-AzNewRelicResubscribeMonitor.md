@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzNewRelicResubscribeMonitor
 
 ## SYNOPSIS
-Resubscribes the New Relic Organization of the underline Monitor Resource to be billed by Azure Marketplace
+Resubscribes the New Relic organization of the underlying monitor resource to be billed by Azure Marketplace.
 
 ## SYNTAX
 
@@ -58,7 +58,7 @@ Invoke-AzNewRelicResubscribeMonitor -InputObject <INewRelicIdentity> -Body <IRes
 ```
 
 ## DESCRIPTION
-Resubscribes the New Relic Organization of the underline Monitor Resource to be billed by Azure Marketplace
+Resubscribes the New Relic organization of the underlying monitor resource to be billed by Azure Marketplace.
 
 ## EXAMPLES
 

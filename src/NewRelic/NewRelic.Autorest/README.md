@@ -157,6 +157,12 @@ directive:
       parameter-name: -SubscriptionId1
     set:
       parameter-name: -NewSubscriptionId
+  # Correct the service description typo in generated cmdlet help
+  - where:
+      verb: Invoke
+      subject: ResubscribeMonitor
+    set:
+      command-description: Resubscribes the New Relic organization of the underlying monitor resource to be billed by Azure Marketplace
   # customize the body property and parameter name
   # - from: source-file-csharp
   #   where: $
