@@ -21,7 +21,7 @@ Describe 'Undo-AzDataProtectionVaultDeletion' {
             $deletedVaults = Get-AzDataProtectionSoftDeletedBackupVault -Location $env.TestDPPVaultSoftDelete.Location -SubscriptionId $env.TestDPPVaultSoftDelete.SubscriptionId
             $targetVault = $deletedVaults | Where-Object { $_.OriginalBackupVaultName -eq $env.TestDPPVaultSoftDelete.DeletedVaultName }
 
-            if ($TestMode -ne 'playback' -and $null -eq $targetVault) {
+            if ($null -eq $targetVault) {
                 $activeVault = Get-AzDataProtectionBackupVault -SubscriptionId $env.TestDPPVaultSoftDelete.SubscriptionId -ResourceGroupName $env.TestDPPVaultSoftDelete.ResourceGroupName | Where-Object { $_.Name -eq $env.TestDPPVaultSoftDelete.DeletedVaultName }
                 if ($null -eq $activeVault) {
                     $storageSetting = New-AzDataProtectionBackupVaultStorageSettingObject -Type LocallyRedundant -DataStoreType VaultStore
