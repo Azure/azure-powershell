@@ -31,7 +31,7 @@ Refreshes the ingestion key for all monitors linked to the same account associat
 
 ### Example 1: Refresh ingestion key for a NewRelic monitor
 ```powershell
-Update-AzNewRelicMonitorIngestionKey -MonitorName clientParity-Test-1014 -ResourceGroupName vanshjoshi-clientparity-test
+Update-AzNewRelicMonitorIngestionKey -MonitorName clientParity-Test-1014 -ResourceGroupName newrelictest-clientparity-test
 ```
 
 ```output
@@ -42,7 +42,7 @@ Refreshes the ingestion key for all monitors linked to the same account associat
 
 ### Example 2: Refresh ingestion key using pipeline input
 ```powershell
-Get-AzNewRelicMonitor -Name clientParity-Test-1014 -ResourceGroupName vanshjoshi-clientparity-test | Update-AzNewRelicMonitorIngestionKey
+Get-AzNewRelicMonitor -Name clientParity-Test-1014 -ResourceGroupName newrelictest-clientparity-test | Update-AzNewRelicMonitorIngestionKey
 ```
 
 ```output

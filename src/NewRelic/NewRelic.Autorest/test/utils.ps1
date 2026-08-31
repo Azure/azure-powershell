@@ -48,31 +48,30 @@ function setupEnv() {
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
-    $resourceGroup = 'vanshjoshi-clientparity-test'
+    $resourceGroup = 'nr-cloudtests-portal'
     $env.Add('resourceGroup', $resourceGroup)
 
     $region = 'eastus'
     $env.Add('region', $region)
 
-    $testerEmail = 'vanshjoshi@microsoft.com'
-    $testerFirstName = 'Vansh'
-    $testerLastName = 'Joshi'
+    $testerEmail = (Get-AzContext).Account.Id
+    $testerFirstName = 'Test'
+    $testerLastName = 'User'
 
     $env.Add('testerEmail', $testerEmail)
     $env.Add('testerFirstName', $testerFirstName)
     $env.Add('testerLastName', $testerLastName)
 
-    $testMonitorName = 'clientParity-Test-1014'
+    $testMonitorName = 'azps-newrelic-parity-0831'
     $env.Add('testMonitorName', $testMonitorName)
 
     $NewMonitorName = 'test-01' + (RandomString -allChars $false -len 6)
     $env.Add('NewMonitorName', $NewMonitorName)
 
-    $testAppPlanName = 'vansh-newrelic-plan'
-    $testAppName = 'vansh-newrelic-app'
-    $testVMName = 'joyertestmachine01'
+    $testAppPlanName = 'newrelic-test-plan'
+    $testAppName = 'newrelic-test-app'
+    $testVMName = 'newrelic-test-vm'
     $env.Add('testVMName', $testVMName)
-    #Plan Data $env.SubscriptionId = 272c26cb-7026-4b37-b190-7cb7b2abecb0
     # Step 1: Create test group
     Write-Host 'Start to create test resource group' $resourceGroup
     try {
@@ -84,7 +83,7 @@ function setupEnv() {
         throw
     }
     # Step 2: Create monitor
-    $planDetails = "newrelic-pay-as-you-go-free-live@TIDgmz7xq9ge3py@PUBIDnewrelicinc1635200720692.newrelic_liftr_payg"
+    $planDetails = "newrelic-pay-as-you-go-free-live@TIDgmz7xq9ge3py@PUBIDnewrelicinc1635200720692.newrelic_liftr_payg_2025"
     $env.Add('planDetails', $planDetails)
     $billingCycle = "MONTHLY"
     $env.Add('billingCycle', $billingCycle)
@@ -120,4 +119,3 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
 }
-
