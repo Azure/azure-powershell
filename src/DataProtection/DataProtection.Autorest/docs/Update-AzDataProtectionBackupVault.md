@@ -16,9 +16,10 @@ Update a BackupVault resource belonging to a resource group.
 ```
 Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> [-Token <String>] [-AsJob]
  [-AzureMonitorAlertsForAllJobFailure <String>] [-CmkEncryptionKeyUri <String>] [-CmkEncryptionState <String>]
- [-CmkIdentityType <String>] [-CmkUserAssignedIdentityId <String>] [-CrossRegionRestoreState <String>]
- [-CrossSubscriptionRestoreState <String>] [-DefaultProfile <PSObject>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-ImmutabilityState <String>] [-NoWait]
+ [-CmkIdentityType <String>] [-CmkUserAssignedIdentityId <String>] [-CostManagementGranularity <String>]
+ [-CrossRegionRestoreState <String>] [-CrossSubscriptionRestoreState <String>] [-DefaultProfile <PSObject>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-ImmutabilityDurationInDay <Double>]
+ [-ImmutabilityState <String>] [-ImmutabilityType <String>] [-NoWait]
  [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>]
  [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <String>] [-SubscriptionId <String>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -28,7 +29,8 @@ Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <Strin
 ```
 Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-Token <String>]
  [-XmsDeletedVaultId <String>] [-AsJob] [-AzureMonitorAlertsForAllJobFailure <String>]
- [-CrossRegionRestoreState <String>] [-CrossSubscriptionRestoreState <String>] [-DefaultProfile <PSObject>]
+ [-CostManagementSettingGranularityLevel <String>] [-CrossRegionRestoreState <String>]
+ [-CrossSubscriptionRestoreState <String>] [-DefaultProfile <PSObject>]
  [-EnableSystemAssignedIdentity <Boolean?>] [-EncryptionSetting <IEncryptionSettings>] [-ETag <String>]
  [-ImmutabilityState <String>] [-NoWait] [-ReplicatedRegion <String[]>]
  [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionDurationInDay <Double>]
@@ -229,6 +231,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CostManagementGranularity
+Cost Management Granularity of the vault.
+Allowed values are VaultLevel, ProtectedItemLevel, ProtectedItemWithParentTag.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CostManagementSettingGranularityLevel
+Settings for granularity level
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CrossRegionRestoreState
 Cross region restore state of the vault.
 Allowed values are Disabled, Enabled.
@@ -322,6 +355,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ImmutabilityDurationInDay
+Immutability duration in days.
+Required when ImmutabilityType is TimeBased.
+
+```yaml
+Type: System.Double
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ImmutabilityState
 Immutability state of the vault.
 Allowed values are Disabled, Unlocked, Locked.
@@ -329,6 +378,22 @@ Allowed values are Disabled, Unlocked, Locked.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImmutabilityType
+Immutability type of the vault.
+Allowed values are AsPerPolicy and TimeBased.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False

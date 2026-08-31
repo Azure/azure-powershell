@@ -1,0 +1,590 @@
+{
+  "Update-AzDataProtectionBackupVault+[NoContext]+CostManagementGranularity+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "305" ],
+        "x-ms-client-request-id": [ "fe39f8f4-b1e8-4c84-96e4-68463deb76bf" ],
+        "CommandName": [ "Az.DataProtection.Internal\\Update-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Update-AzDataProtectionBackupVault_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.5", "Az.DataProtection/3.0.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "5b5e9192-459d-47f1-bf8f-b042cb4c5a82" ],
+        "x-ms-correlation-request-id": [ "5b5e9192-459d-47f1-bf8f-b042cb4c5a82" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260830T181229Z:5b5e9192-459d-47f1-bf8f-b042cb4c5a82" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9D74E7B60F01440C963B09F94C54228E Ref B: SG2AA1040515054 Ref C: 2026-08-30T18:12:29Z" ],
+        "Date": [ "Sun, 30 Aug 2026 18:12:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1112" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"SystemAssigned,UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/cmk.system/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2\":{\"clientId\":\"c105dcb0-b19f-4d55-adba-749e0037c42e\",\"principalId\":\"ab44c749-c400-4689-bcd1-128d7ecefd94\"}},\"principalId\":\"5353ccc2-11b9-4416-82de-e87c87c01469\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"ON\",\"retentionDurationInDays\":14.0}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[],\"regionOfChoiceSettings\":{\"status\":\"NotApplicable\"},\"costManagementSettings\":{\"granularityLevel\":\"ProtectedItemWithParentTag\"}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/adkayeth/providers/Microsoft.DataProtection/BackupVaults/sadsasad\",\"name\":\"sadsasad\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupVault+[NoContext]+CostManagementGranularity+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01",
+      "Content": "{\r\n  \"location\": \"eastasia\",\r\n  \"properties\": {\r\n    \"costManagementSettings\": {\r\n      \"granularityLevel\": \"VaultLevel\"\r\n    },\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"state\": \"ON\",\r\n        \"retentionDurationInDays\": 14\r\n      }\r\n    },\r\n    \"storageSettings\": [\r\n      {\r\n        \"datastoreType\": \"VaultStore\",\r\n        \"type\": \"LocallyRedundant\"\r\n      }\r\n    ],\r\n    \"replicatedRegions\": [ ]\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned,UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/cmk.system/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2\": {\r\n      }\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "707" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/westus2/aa5a786b-7dc1-467f-8859-399af69e5ea6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/operationStatus/ZjUwNDhlZTUtMmQxZS00ZDk0LTkwMDYtYjdmY2U3ZTQyZjQ1OzgwMjI5YmJkLWJhMGUtNGU4NS05MWYzLWY1NWIzYTdjZGQ1NQ==?api-version=2026-06-01\u0026t=639237103521150629\u0026c=MIIIJjCCBw6gAwIBAgIQQsgxla0M-7x6wLiaXV8gNzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXQ1VTIENBIDAxMB4XDTI2MDgxMjE5NTYzN1oXDTI3MDIwODAxNTYzN1owQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCjyQHyKRQ8UpdzxWWmCxMDjs6UMG9UbX9c9OJQKRD6Vai9vjx5MJuD6y4Uxn_YQqnEDALPbdoRwyZAdcXPY31TFD_XnfajmM-ZAQlS9ZBdI-60cOBzeuSODBevgfQ0gq_hMbZEC0Gr1XAAgQqCPsDLKjYiVH3oIGsLWkoCqvZR4ia1rQCx7vc3lMlGGfppWILnw6mAlIEM_SgbK4PavIUii4QNGXK2NR4CMgJ-Zp_gP6e8XW6ImAcOaDhsUJoyJmxR-GCBPhxrDngK1ixA-r7uNDfXWC7ksmzehqGfAupArw6Zdbh21RA3hjU104hl9GSgZ2FREhNYHcvCVol3oY9RAgMBAAGjggUkMIIFIDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBTDKruM3AEmoKnjmjE6ukKa0VlRvTAfBgNVHSMEGDAWgBQU0jfg9tZ9ft2NurplqwSUJeCWHTCCAfsGA1UdHwSCAfIwggHuMHugeaB3hnVodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwfaB7oHmGd2h0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3RjZW50cmFsdXMvY3Jscy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxLzMyL2N1cnJlbnQuY3JsMGygaqBohmZodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwgYGgf6B9hntodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwggIABggrBgEFBQcBAQSCAfIwggHuMH4GCCsGAQUFBzAChnJodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jYWNlcnRzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvY2VydC5jZXIwgYAGCCsGAQUFBzAChnRodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0Y2VudHJhbHVzL2NhY2VydHMvY2NtZXdlc3RjZW50cmFsdXNwa2kvY2NtZXdlc3RjZW50cmFsdXNpY2EwMS9jZXJ0LmNlcjBvBggrBgEFBQcwAoZjaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3RjZW50cmFsdXMvY2FjZXJ0cy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxL2NlcnQuY2VyMHgGCCsGAQUFBzAChmxodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEwDQYJKoZIhvcNAQELBQADggEBAHlzTkQ03xhxyAyJLFgMbgclkkaQSsTdGfKPvuLkqxHhbwnnnQj0qIblVcex8MFLZvU3I4zzPrs3huVLUyBtiVr2Y78czcDCslyFYf_yD7yDQmCDeFn-Dh3_NNn9SxCCh7Moi0fLyv3UL6gFl2WyfNkvWwxj6hdhpIup-yc0PzkaeZJLOrPxWWgfHFH7UqxWxDdkBrV72ZkyuZF3SBC9yXBvvWUpO4Lk4CnfX6Ne4e0TrUrhxQ8sAk04P8J9qzMFa_9nBHpIKyFVHLuwKrjo5GIbhIakXmn1NckxGDEMHDRg5_Nj4ZHsdrSm8aMM6wj5pMXv4cza_0NwReDfvipkjEw\u0026s=IWUYoE7rg6ewsLSaEW-xHA-kFmJ88-2ozENE3Uyv292j1jD08K4v3hcDunqpAKd1sdKgziStU9nLI1aSpt0v50OMLwT1AVbOteXhsUM7orClvigpkadCTUMQY7TON7QzoJs_9uBQb6ut3X1Kbp_K0rXCBCTw5psHgaxl1NxTE2FLE5LOtrtYllyfElEkrTf1ZLO2bJhRFVnbxM8jxCQbBokcmAn71mf5gccsN8af8cyOcO4pMk2y1khxD8akQVUBIL5TKJZ_At1NX4ZXX13RSFuhmxGQUlqnx2Ln6LYgMXet1_3XiLA8kG_gBaUmNnOiL2e_NDx4EnEzHryOBTh1Gw\u0026h=PmMlJKSo-4HslJIlAA6LUpILd4dCN6uVCCElmnVmXE4" ],
+        "x-ms-arm-resource-system-data": [ "{\"lastModifiedBy\":\"vijami@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-08-30T18:12:30.2713397Z\"}" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "ef67b581-b873-4603-a155-96692227e660" ],
+        "x-ms-correlation-request-id": [ "ef67b581-b873-4603-a155-96692227e660" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260830T181232Z:ef67b581-b873-4603-a155-96692227e660" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2C5B78E509884CCF845321EB02AC3D1B Ref B: SG2AA1040515054 Ref C: 2026-08-30T18:12:29Z" ],
+        "Date": [ "Sun, 30 Aug 2026 18:12:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1095" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"SystemAssigned,UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/cmk.system/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2\":{\"clientId\":\"c105dcb0-b19f-4d55-adba-749e0037c42e\",\"principalId\":\"ab44c749-c400-4689-bcd1-128d7ecefd94\"}},\"principalId\":\"5353ccc2-11b9-4416-82de-e87c87c01469\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Updating\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"ON\",\"retentionDurationInDays\":14.0}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[],\"regionOfChoiceSettings\":{\"status\":\"NotApplicable\"},\"costManagementSettings\":{\"granularityLevel\":\"VaultLevel\"}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/adkayeth/providers/Microsoft.DataProtection/BackupVaults/sadsasad\",\"name\":\"sadsasad\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupVault+[NoContext]+CostManagementGranularity+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/operationStatus/ZjUwNDhlZTUtMmQxZS00ZDk0LTkwMDYtYjdmY2U3ZTQyZjQ1OzgwMjI5YmJkLWJhMGUtNGU4NS05MWYzLWY1NWIzYTdjZGQ1NQ==?api-version=2026-06-01\u0026t=639237103521150629\u0026c=MIIIJjCCBw6gAwIBAgIQQsgxla0M-7x6wLiaXV8gNzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXQ1VTIENBIDAxMB4XDTI2MDgxMjE5NTYzN1oXDTI3MDIwODAxNTYzN1owQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCjyQHyKRQ8UpdzxWWmCxMDjs6UMG9UbX9c9OJQKRD6Vai9vjx5MJuD6y4Uxn_YQqnEDALPbdoRwyZAdcXPY31TFD_XnfajmM-ZAQlS9ZBdI-60cOBzeuSODBevgfQ0gq_hMbZEC0Gr1XAAgQqCPsDLKjYiVH3oIGsLWkoCqvZR4ia1rQCx7vc3lMlGGfppWILnw6mAlIEM_SgbK4PavIUii4QNGXK2NR4CMgJ-Zp_gP6e8XW6ImAcOaDhsUJoyJmxR-GCBPhxrDngK1ixA-r7uNDfXWC7ksmzehqGfAupArw6Zdbh21RA3hjU104hl9GSgZ2FREhNYHcvCVol3oY9RAgMBAAGjggUkMIIFIDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBTDKruM3AEmoKnjmjE6ukKa0VlRvTAfBgNVHSMEGDAWgBQU0jfg9tZ9ft2NurplqwSUJeCWHTCCAfsGA1UdHwSCAfIwggHuMHugeaB3hnVodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwfaB7oHmGd2h0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3RjZW50cmFsdXMvY3Jscy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxLzMyL2N1cnJlbnQuY3JsMGygaqBohmZodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwgYGgf6B9hntodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwggIABggrBgEFBQcBAQSCAfIwggHuMH4GCCsGAQUFBzAChnJodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jYWNlcnRzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvY2VydC5jZXIwgYAGCCsGAQUFBzAChnRodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0Y2VudHJhbHVzL2NhY2VydHMvY2NtZXdlc3RjZW50cmFsdXNwa2kvY2NtZXdlc3RjZW50cmFsdXNpY2EwMS9jZXJ0LmNlcjBvBggrBgEFBQcwAoZjaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3RjZW50cmFsdXMvY2FjZXJ0cy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxL2NlcnQuY2VyMHgGCCsGAQUFBzAChmxodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEwDQYJKoZIhvcNAQELBQADggEBAHlzTkQ03xhxyAyJLFgMbgclkkaQSsTdGfKPvuLkqxHhbwnnnQj0qIblVcex8MFLZvU3I4zzPrs3huVLUyBtiVr2Y78czcDCslyFYf_yD7yDQmCDeFn-Dh3_NNn9SxCCh7Moi0fLyv3UL6gFl2WyfNkvWwxj6hdhpIup-yc0PzkaeZJLOrPxWWgfHFH7UqxWxDdkBrV72ZkyuZF3SBC9yXBvvWUpO4Lk4CnfX6Ne4e0TrUrhxQ8sAk04P8J9qzMFa_9nBHpIKyFVHLuwKrjo5GIbhIakXmn1NckxGDEMHDRg5_Nj4ZHsdrSm8aMM6wj5pMXv4cza_0NwReDfvipkjEw\u0026s=IWUYoE7rg6ewsLSaEW-xHA-kFmJ88-2ozENE3Uyv292j1jD08K4v3hcDunqpAKd1sdKgziStU9nLI1aSpt0v50OMLwT1AVbOteXhsUM7orClvigpkadCTUMQY7TON7QzoJs_9uBQb6ut3X1Kbp_K0rXCBCTw5psHgaxl1NxTE2FLE5LOtrtYllyfElEkrTf1ZLO2bJhRFVnbxM8jxCQbBokcmAn71mf5gccsN8af8cyOcO4pMk2y1khxD8akQVUBIL5TKJZ_At1NX4ZXX13RSFuhmxGQUlqnx2Ln6LYgMXet1_3XiLA8kG_gBaUmNnOiL2e_NDx4EnEzHryOBTh1Gw\u0026h=PmMlJKSo-4HslJIlAA6LUpILd4dCN6uVCCElmnVmXE4+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/operationStatus/ZjUwNDhlZTUtMmQxZS00ZDk0LTkwMDYtYjdmY2U3ZTQyZjQ1OzgwMjI5YmJkLWJhMGUtNGU4NS05MWYzLWY1NWIzYTdjZGQ1NQ==?api-version=2026-06-01\u0026t=639237103521150629\u0026c=MIIIJjCCBw6gAwIBAgIQQsgxla0M-7x6wLiaXV8gNzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXQ1VTIENBIDAxMB4XDTI2MDgxMjE5NTYzN1oXDTI3MDIwODAxNTYzN1owQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCjyQHyKRQ8UpdzxWWmCxMDjs6UMG9UbX9c9OJQKRD6Vai9vjx5MJuD6y4Uxn_YQqnEDALPbdoRwyZAdcXPY31TFD_XnfajmM-ZAQlS9ZBdI-60cOBzeuSODBevgfQ0gq_hMbZEC0Gr1XAAgQqCPsDLKjYiVH3oIGsLWkoCqvZR4ia1rQCx7vc3lMlGGfppWILnw6mAlIEM_SgbK4PavIUii4QNGXK2NR4CMgJ-Zp_gP6e8XW6ImAcOaDhsUJoyJmxR-GCBPhxrDngK1ixA-r7uNDfXWC7ksmzehqGfAupArw6Zdbh21RA3hjU104hl9GSgZ2FREhNYHcvCVol3oY9RAgMBAAGjggUkMIIFIDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBTDKruM3AEmoKnjmjE6ukKa0VlRvTAfBgNVHSMEGDAWgBQU0jfg9tZ9ft2NurplqwSUJeCWHTCCAfsGA1UdHwSCAfIwggHuMHugeaB3hnVodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwfaB7oHmGd2h0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3RjZW50cmFsdXMvY3Jscy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxLzMyL2N1cnJlbnQuY3JsMGygaqBohmZodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwgYGgf6B9hntodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwggIABggrBgEFBQcBAQSCAfIwggHuMH4GCCsGAQUFBzAChnJodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jYWNlcnRzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvY2VydC5jZXIwgYAGCCsGAQUFBzAChnRodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0Y2VudHJhbHVzL2NhY2VydHMvY2NtZXdlc3RjZW50cmFsdXNwa2kvY2NtZXdlc3RjZW50cmFsdXNpY2EwMS9jZXJ0LmNlcjBvBggrBgEFBQcwAoZjaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3RjZW50cmFsdXMvY2FjZXJ0cy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxL2NlcnQuY2VyMHgGCCsGAQUFBzAChmxodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEwDQYJKoZIhvcNAQELBQADggEBAHlzTkQ03xhxyAyJLFgMbgclkkaQSsTdGfKPvuLkqxHhbwnnnQj0qIblVcex8MFLZvU3I4zzPrs3huVLUyBtiVr2Y78czcDCslyFYf_yD7yDQmCDeFn-Dh3_NNn9SxCCh7Moi0fLyv3UL6gFl2WyfNkvWwxj6hdhpIup-yc0PzkaeZJLOrPxWWgfHFH7UqxWxDdkBrV72ZkyuZF3SBC9yXBvvWUpO4Lk4CnfX6Ne4e0TrUrhxQ8sAk04P8J9qzMFa_9nBHpIKyFVHLuwKrjo5GIbhIakXmn1NckxGDEMHDRg5_Nj4ZHsdrSm8aMM6wj5pMXv4cza_0NwReDfvipkjEw\u0026s=IWUYoE7rg6ewsLSaEW-xHA-kFmJ88-2ozENE3Uyv292j1jD08K4v3hcDunqpAKd1sdKgziStU9nLI1aSpt0v50OMLwT1AVbOteXhsUM7orClvigpkadCTUMQY7TON7QzoJs_9uBQb6ut3X1Kbp_K0rXCBCTw5psHgaxl1NxTE2FLE5LOtrtYllyfElEkrTf1ZLO2bJhRFVnbxM8jxCQbBokcmAn71mf5gccsN8af8cyOcO4pMk2y1khxD8akQVUBIL5TKJZ_At1NX4ZXX13RSFuhmxGQUlqnx2Ln6LYgMXet1_3XiLA8kG_gBaUmNnOiL2e_NDx4EnEzHryOBTh1Gw\u0026h=PmMlJKSo-4HslJIlAA6LUpILd4dCN6uVCCElmnVmXE4",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "307" ],
+        "x-ms-client-request-id": [ "fe39f8f4-b1e8-4c84-96e4-68463deb76bf" ],
+        "CommandName": [ "Az.DataProtection.Internal\\Update-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Update-AzDataProtectionBackupVault_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.5", "Az.DataProtection/3.0.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/westus2/627b390e-7544-4b34-87e0-cfe60e0a8f24" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-request-id": [ "c72c1df2-ed2b-44fe-a379-01ebd93647d7" ],
+        "x-ms-correlation-request-id": [ "c72c1df2-ed2b-44fe-a379-01ebd93647d7" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260830T181242Z:c72c1df2-ed2b-44fe-a379-01ebd93647d7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E697A2C3F1F242308D65D7F9046ECC3F Ref B: SG2AA1040515054 Ref C: 2026-08-30T18:12:42Z" ],
+        "Date": [ "Sun, 30 Aug 2026 18:12:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "465" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/operationStatus/ZjUwNDhlZTUtMmQxZS00ZDk0LTkwMDYtYjdmY2U3ZTQyZjQ1OzgwMjI5YmJkLWJhMGUtNGU4NS05MWYzLWY1NWIzYTdjZGQ1NQ==\",\"name\":\"ZjUwNDhlZTUtMmQxZS00ZDk0LTkwMDYtYjdmY2U3ZTQyZjQ1OzgwMjI5YmJkLWJhMGUtNGU4NS05MWYzLWY1NWIzYTdjZGQ1NQ==\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-30T18:12:31.8385241Z\",\"endTime\":\"2026-08-30T18:12:33Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupVault+[NoContext]+CostManagementGranularity+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "308" ],
+        "x-ms-client-request-id": [ "fe39f8f4-b1e8-4c84-96e4-68463deb76bf" ],
+        "CommandName": [ "Az.DataProtection.Internal\\Update-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Update-AzDataProtectionBackupVault_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.5", "Az.DataProtection/3.0.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "f5214236-f912-458f-875f-6e2504c68baf" ],
+        "x-ms-correlation-request-id": [ "f5214236-f912-458f-875f-6e2504c68baf" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260830T181244Z:f5214236-f912-458f-875f-6e2504c68baf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E902B349385442869BE4115D654F0AD5 Ref B: SG2AA1040515054 Ref C: 2026-08-30T18:12:43Z" ],
+        "Date": [ "Sun, 30 Aug 2026 18:12:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1096" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"SystemAssigned,UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/cmk.system/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2\":{\"clientId\":\"c105dcb0-b19f-4d55-adba-749e0037c42e\",\"principalId\":\"ab44c749-c400-4689-bcd1-128d7ecefd94\"}},\"principalId\":\"5353ccc2-11b9-4416-82de-e87c87c01469\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"ON\",\"retentionDurationInDays\":14.0}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[],\"regionOfChoiceSettings\":{\"status\":\"NotApplicable\"},\"costManagementSettings\":{\"granularityLevel\":\"VaultLevel\"}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/adkayeth/providers/Microsoft.DataProtection/BackupVaults/sadsasad\",\"name\":\"sadsasad\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupVault+[NoContext]+CostManagementGranularity+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "309" ],
+        "x-ms-client-request-id": [ "22e2fb2d-4853-4b38-8ed1-9a525b0b7f75" ],
+        "CommandName": [ "Az.DataProtection.Internal\\Update-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Update-AzDataProtectionBackupVault_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.5", "Az.DataProtection/3.0.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "3150fa42-6b70-4dad-aa0e-edf6bad60923" ],
+        "x-ms-correlation-request-id": [ "3150fa42-6b70-4dad-aa0e-edf6bad60923" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260830T181244Z:3150fa42-6b70-4dad-aa0e-edf6bad60923" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 095865F5AE2D4021A9F5A7FEEBBE7946 Ref B: SG2AA1040515054 Ref C: 2026-08-30T18:12:44Z" ],
+        "Date": [ "Sun, 30 Aug 2026 18:12:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1096" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"SystemAssigned,UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/cmk.system/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2\":{\"clientId\":\"c105dcb0-b19f-4d55-adba-749e0037c42e\",\"principalId\":\"ab44c749-c400-4689-bcd1-128d7ecefd94\"}},\"principalId\":\"5353ccc2-11b9-4416-82de-e87c87c01469\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"ON\",\"retentionDurationInDays\":14.0}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[],\"regionOfChoiceSettings\":{\"status\":\"NotApplicable\"},\"costManagementSettings\":{\"granularityLevel\":\"VaultLevel\"}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/adkayeth/providers/Microsoft.DataProtection/BackupVaults/sadsasad\",\"name\":\"sadsasad\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupVault+[NoContext]+CostManagementGranularity+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01+6": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01",
+      "Content": "{\r\n  \"location\": \"eastasia\",\r\n  \"properties\": {\r\n    \"costManagementSettings\": {\r\n      \"granularityLevel\": \"ProtectedItemLevel\"\r\n    },\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"state\": \"ON\",\r\n        \"retentionDurationInDays\": 14\r\n      }\r\n    },\r\n    \"storageSettings\": [\r\n      {\r\n        \"datastoreType\": \"VaultStore\",\r\n        \"type\": \"LocallyRedundant\"\r\n      }\r\n    ],\r\n    \"replicatedRegions\": [ ]\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned,UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/cmk.system/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2\": {\r\n      }\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "715" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/westus2/67b13c64-1d75-40ca-b76b-2e723561c2e0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/operationStatus/ZjUwNDhlZTUtMmQxZS00ZDk0LTkwMDYtYjdmY2U3ZTQyZjQ1O2VkNTc4MWE5LWM2N2ItNDJiOC04YTkwLWY4NzcxNzI3MWIwMg==?api-version=2026-06-01\u0026t=639237103662131319\u0026c=MIIIJjCCBw6gAwIBAgIQQsgxla0M-7x6wLiaXV8gNzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXQ1VTIENBIDAxMB4XDTI2MDgxMjE5NTYzN1oXDTI3MDIwODAxNTYzN1owQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCjyQHyKRQ8UpdzxWWmCxMDjs6UMG9UbX9c9OJQKRD6Vai9vjx5MJuD6y4Uxn_YQqnEDALPbdoRwyZAdcXPY31TFD_XnfajmM-ZAQlS9ZBdI-60cOBzeuSODBevgfQ0gq_hMbZEC0Gr1XAAgQqCPsDLKjYiVH3oIGsLWkoCqvZR4ia1rQCx7vc3lMlGGfppWILnw6mAlIEM_SgbK4PavIUii4QNGXK2NR4CMgJ-Zp_gP6e8XW6ImAcOaDhsUJoyJmxR-GCBPhxrDngK1ixA-r7uNDfXWC7ksmzehqGfAupArw6Zdbh21RA3hjU104hl9GSgZ2FREhNYHcvCVol3oY9RAgMBAAGjggUkMIIFIDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBTDKruM3AEmoKnjmjE6ukKa0VlRvTAfBgNVHSMEGDAWgBQU0jfg9tZ9ft2NurplqwSUJeCWHTCCAfsGA1UdHwSCAfIwggHuMHugeaB3hnVodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwfaB7oHmGd2h0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3RjZW50cmFsdXMvY3Jscy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxLzMyL2N1cnJlbnQuY3JsMGygaqBohmZodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwgYGgf6B9hntodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwggIABggrBgEFBQcBAQSCAfIwggHuMH4GCCsGAQUFBzAChnJodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jYWNlcnRzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvY2VydC5jZXIwgYAGCCsGAQUFBzAChnRodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0Y2VudHJhbHVzL2NhY2VydHMvY2NtZXdlc3RjZW50cmFsdXNwa2kvY2NtZXdlc3RjZW50cmFsdXNpY2EwMS9jZXJ0LmNlcjBvBggrBgEFBQcwAoZjaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3RjZW50cmFsdXMvY2FjZXJ0cy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxL2NlcnQuY2VyMHgGCCsGAQUFBzAChmxodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEwDQYJKoZIhvcNAQELBQADggEBAHlzTkQ03xhxyAyJLFgMbgclkkaQSsTdGfKPvuLkqxHhbwnnnQj0qIblVcex8MFLZvU3I4zzPrs3huVLUyBtiVr2Y78czcDCslyFYf_yD7yDQmCDeFn-Dh3_NNn9SxCCh7Moi0fLyv3UL6gFl2WyfNkvWwxj6hdhpIup-yc0PzkaeZJLOrPxWWgfHFH7UqxWxDdkBrV72ZkyuZF3SBC9yXBvvWUpO4Lk4CnfX6Ne4e0TrUrhxQ8sAk04P8J9qzMFa_9nBHpIKyFVHLuwKrjo5GIbhIakXmn1NckxGDEMHDRg5_Nj4ZHsdrSm8aMM6wj5pMXv4cza_0NwReDfvipkjEw\u0026s=JuZCeXpRTRNPPyDeWePScjYLEJ3FLl-hhAKqQ9wQfp2PzzBdN2uvCAEReYzVpGcF86LcmOz8qcvy43MQQF4AJ4LK2BNm0kcilbp9s4mIaHwbVsU00rmf0OC0FN4kbkhSTUWVp53aGrMaYqMCDUrKrQHYKuLbVa7j5ZiNrMM5nnzES38iPQ-4Nb0rPuV-2vsqHDOP0EH63Kv6DBL73di-uPK_jDCwHzqW-PVQ68HjPbW0EaGMD_0u4_B9ktKsqalXQ9X3vunsLmrcYWNvxfxxhKljmEOpqt5m-Nrt1zvGYki07IJJsM6M_9a_a151y2q8p55SYyJu_6ZmV3Y6aDfjyw\u0026h=IBrfgkBlltOCt9FWvXFp0M3DrSmmZ8HzsaLz4vSh8wM" ],
+        "x-ms-arm-resource-system-data": [ "{\"lastModifiedBy\":\"vijami@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-08-30T18:12:45.1037623Z\"}" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "2e244d85-9df4-410d-9080-8df9ceef0b18" ],
+        "x-ms-correlation-request-id": [ "2e244d85-9df4-410d-9080-8df9ceef0b18" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260830T181246Z:2e244d85-9df4-410d-9080-8df9ceef0b18" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6AFF240C5A3945BAA73F818031ECB078 Ref B: SG2AA1040515054 Ref C: 2026-08-30T18:12:44Z" ],
+        "Date": [ "Sun, 30 Aug 2026 18:12:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1103" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"SystemAssigned,UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/cmk.system/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2\":{\"clientId\":\"c105dcb0-b19f-4d55-adba-749e0037c42e\",\"principalId\":\"ab44c749-c400-4689-bcd1-128d7ecefd94\"}},\"principalId\":\"5353ccc2-11b9-4416-82de-e87c87c01469\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Updating\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"ON\",\"retentionDurationInDays\":14.0}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[],\"regionOfChoiceSettings\":{\"status\":\"NotApplicable\"},\"costManagementSettings\":{\"granularityLevel\":\"ProtectedItemLevel\"}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/adkayeth/providers/Microsoft.DataProtection/BackupVaults/sadsasad\",\"name\":\"sadsasad\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupVault+[NoContext]+CostManagementGranularity+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/operationStatus/ZjUwNDhlZTUtMmQxZS00ZDk0LTkwMDYtYjdmY2U3ZTQyZjQ1O2VkNTc4MWE5LWM2N2ItNDJiOC04YTkwLWY4NzcxNzI3MWIwMg==?api-version=2026-06-01\u0026t=639237103662131319\u0026c=MIIIJjCCBw6gAwIBAgIQQsgxla0M-7x6wLiaXV8gNzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXQ1VTIENBIDAxMB4XDTI2MDgxMjE5NTYzN1oXDTI3MDIwODAxNTYzN1owQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCjyQHyKRQ8UpdzxWWmCxMDjs6UMG9UbX9c9OJQKRD6Vai9vjx5MJuD6y4Uxn_YQqnEDALPbdoRwyZAdcXPY31TFD_XnfajmM-ZAQlS9ZBdI-60cOBzeuSODBevgfQ0gq_hMbZEC0Gr1XAAgQqCPsDLKjYiVH3oIGsLWkoCqvZR4ia1rQCx7vc3lMlGGfppWILnw6mAlIEM_SgbK4PavIUii4QNGXK2NR4CMgJ-Zp_gP6e8XW6ImAcOaDhsUJoyJmxR-GCBPhxrDngK1ixA-r7uNDfXWC7ksmzehqGfAupArw6Zdbh21RA3hjU104hl9GSgZ2FREhNYHcvCVol3oY9RAgMBAAGjggUkMIIFIDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBTDKruM3AEmoKnjmjE6ukKa0VlRvTAfBgNVHSMEGDAWgBQU0jfg9tZ9ft2NurplqwSUJeCWHTCCAfsGA1UdHwSCAfIwggHuMHugeaB3hnVodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwfaB7oHmGd2h0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3RjZW50cmFsdXMvY3Jscy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxLzMyL2N1cnJlbnQuY3JsMGygaqBohmZodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwgYGgf6B9hntodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwggIABggrBgEFBQcBAQSCAfIwggHuMH4GCCsGAQUFBzAChnJodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jYWNlcnRzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvY2VydC5jZXIwgYAGCCsGAQUFBzAChnRodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0Y2VudHJhbHVzL2NhY2VydHMvY2NtZXdlc3RjZW50cmFsdXNwa2kvY2NtZXdlc3RjZW50cmFsdXNpY2EwMS9jZXJ0LmNlcjBvBggrBgEFBQcwAoZjaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3RjZW50cmFsdXMvY2FjZXJ0cy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxL2NlcnQuY2VyMHgGCCsGAQUFBzAChmxodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEwDQYJKoZIhvcNAQELBQADggEBAHlzTkQ03xhxyAyJLFgMbgclkkaQSsTdGfKPvuLkqxHhbwnnnQj0qIblVcex8MFLZvU3I4zzPrs3huVLUyBtiVr2Y78czcDCslyFYf_yD7yDQmCDeFn-Dh3_NNn9SxCCh7Moi0fLyv3UL6gFl2WyfNkvWwxj6hdhpIup-yc0PzkaeZJLOrPxWWgfHFH7UqxWxDdkBrV72ZkyuZF3SBC9yXBvvWUpO4Lk4CnfX6Ne4e0TrUrhxQ8sAk04P8J9qzMFa_9nBHpIKyFVHLuwKrjo5GIbhIakXmn1NckxGDEMHDRg5_Nj4ZHsdrSm8aMM6wj5pMXv4cza_0NwReDfvipkjEw\u0026s=JuZCeXpRTRNPPyDeWePScjYLEJ3FLl-hhAKqQ9wQfp2PzzBdN2uvCAEReYzVpGcF86LcmOz8qcvy43MQQF4AJ4LK2BNm0kcilbp9s4mIaHwbVsU00rmf0OC0FN4kbkhSTUWVp53aGrMaYqMCDUrKrQHYKuLbVa7j5ZiNrMM5nnzES38iPQ-4Nb0rPuV-2vsqHDOP0EH63Kv6DBL73di-uPK_jDCwHzqW-PVQ68HjPbW0EaGMD_0u4_B9ktKsqalXQ9X3vunsLmrcYWNvxfxxhKljmEOpqt5m-Nrt1zvGYki07IJJsM6M_9a_a151y2q8p55SYyJu_6ZmV3Y6aDfjyw\u0026h=IBrfgkBlltOCt9FWvXFp0M3DrSmmZ8HzsaLz4vSh8wM+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/operationStatus/ZjUwNDhlZTUtMmQxZS00ZDk0LTkwMDYtYjdmY2U3ZTQyZjQ1O2VkNTc4MWE5LWM2N2ItNDJiOC04YTkwLWY4NzcxNzI3MWIwMg==?api-version=2026-06-01\u0026t=639237103662131319\u0026c=MIIIJjCCBw6gAwIBAgIQQsgxla0M-7x6wLiaXV8gNzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXQ1VTIENBIDAxMB4XDTI2MDgxMjE5NTYzN1oXDTI3MDIwODAxNTYzN1owQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCjyQHyKRQ8UpdzxWWmCxMDjs6UMG9UbX9c9OJQKRD6Vai9vjx5MJuD6y4Uxn_YQqnEDALPbdoRwyZAdcXPY31TFD_XnfajmM-ZAQlS9ZBdI-60cOBzeuSODBevgfQ0gq_hMbZEC0Gr1XAAgQqCPsDLKjYiVH3oIGsLWkoCqvZR4ia1rQCx7vc3lMlGGfppWILnw6mAlIEM_SgbK4PavIUii4QNGXK2NR4CMgJ-Zp_gP6e8XW6ImAcOaDhsUJoyJmxR-GCBPhxrDngK1ixA-r7uNDfXWC7ksmzehqGfAupArw6Zdbh21RA3hjU104hl9GSgZ2FREhNYHcvCVol3oY9RAgMBAAGjggUkMIIFIDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBTDKruM3AEmoKnjmjE6ukKa0VlRvTAfBgNVHSMEGDAWgBQU0jfg9tZ9ft2NurplqwSUJeCWHTCCAfsGA1UdHwSCAfIwggHuMHugeaB3hnVodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwfaB7oHmGd2h0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3RjZW50cmFsdXMvY3Jscy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxLzMyL2N1cnJlbnQuY3JsMGygaqBohmZodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwgYGgf6B9hntodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwggIABggrBgEFBQcBAQSCAfIwggHuMH4GCCsGAQUFBzAChnJodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jYWNlcnRzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvY2VydC5jZXIwgYAGCCsGAQUFBzAChnRodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0Y2VudHJhbHVzL2NhY2VydHMvY2NtZXdlc3RjZW50cmFsdXNwa2kvY2NtZXdlc3RjZW50cmFsdXNpY2EwMS9jZXJ0LmNlcjBvBggrBgEFBQcwAoZjaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3RjZW50cmFsdXMvY2FjZXJ0cy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxL2NlcnQuY2VyMHgGCCsGAQUFBzAChmxodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEwDQYJKoZIhvcNAQELBQADggEBAHlzTkQ03xhxyAyJLFgMbgclkkaQSsTdGfKPvuLkqxHhbwnnnQj0qIblVcex8MFLZvU3I4zzPrs3huVLUyBtiVr2Y78czcDCslyFYf_yD7yDQmCDeFn-Dh3_NNn9SxCCh7Moi0fLyv3UL6gFl2WyfNkvWwxj6hdhpIup-yc0PzkaeZJLOrPxWWgfHFH7UqxWxDdkBrV72ZkyuZF3SBC9yXBvvWUpO4Lk4CnfX6Ne4e0TrUrhxQ8sAk04P8J9qzMFa_9nBHpIKyFVHLuwKrjo5GIbhIakXmn1NckxGDEMHDRg5_Nj4ZHsdrSm8aMM6wj5pMXv4cza_0NwReDfvipkjEw\u0026s=JuZCeXpRTRNPPyDeWePScjYLEJ3FLl-hhAKqQ9wQfp2PzzBdN2uvCAEReYzVpGcF86LcmOz8qcvy43MQQF4AJ4LK2BNm0kcilbp9s4mIaHwbVsU00rmf0OC0FN4kbkhSTUWVp53aGrMaYqMCDUrKrQHYKuLbVa7j5ZiNrMM5nnzES38iPQ-4Nb0rPuV-2vsqHDOP0EH63Kv6DBL73di-uPK_jDCwHzqW-PVQ68HjPbW0EaGMD_0u4_B9ktKsqalXQ9X3vunsLmrcYWNvxfxxhKljmEOpqt5m-Nrt1zvGYki07IJJsM6M_9a_a151y2q8p55SYyJu_6ZmV3Y6aDfjyw\u0026h=IBrfgkBlltOCt9FWvXFp0M3DrSmmZ8HzsaLz4vSh8wM",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "311" ],
+        "x-ms-client-request-id": [ "22e2fb2d-4853-4b38-8ed1-9a525b0b7f75" ],
+        "CommandName": [ "Az.DataProtection.Internal\\Update-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Update-AzDataProtectionBackupVault_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.5", "Az.DataProtection/3.0.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/westus2/e6c0d17f-1399-46e8-b5f5-636e13122820" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-request-id": [ "c9bf588f-02be-4ad8-9c71-2ab2ddf1e32c" ],
+        "x-ms-correlation-request-id": [ "c9bf588f-02be-4ad8-9c71-2ab2ddf1e32c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260830T181257Z:c9bf588f-02be-4ad8-9c71-2ab2ddf1e32c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D8B97BB958344074AEB702B8C8A869DF Ref B: SG2AA1040515054 Ref C: 2026-08-30T18:12:56Z" ],
+        "Date": [ "Sun, 30 Aug 2026 18:12:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "465" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/operationStatus/ZjUwNDhlZTUtMmQxZS00ZDk0LTkwMDYtYjdmY2U3ZTQyZjQ1O2VkNTc4MWE5LWM2N2ItNDJiOC04YTkwLWY4NzcxNzI3MWIwMg==\",\"name\":\"ZjUwNDhlZTUtMmQxZS00ZDk0LTkwMDYtYjdmY2U3ZTQyZjQ1O2VkNTc4MWE5LWM2N2ItNDJiOC04YTkwLWY4NzcxNzI3MWIwMg==\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-30T18:12:46.0253249Z\",\"endTime\":\"2026-08-30T18:12:47Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupVault+[NoContext]+CostManagementGranularity+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "312" ],
+        "x-ms-client-request-id": [ "22e2fb2d-4853-4b38-8ed1-9a525b0b7f75" ],
+        "CommandName": [ "Az.DataProtection.Internal\\Update-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Update-AzDataProtectionBackupVault_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.5", "Az.DataProtection/3.0.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "4cd89a44-ce95-4b40-9b4d-69de34be275b" ],
+        "x-ms-correlation-request-id": [ "4cd89a44-ce95-4b40-9b4d-69de34be275b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260830T181257Z:4cd89a44-ce95-4b40-9b4d-69de34be275b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2C62C6DA123B483EBBD8B05B05B2A969 Ref B: SG2AA1040515054 Ref C: 2026-08-30T18:12:57Z" ],
+        "Date": [ "Sun, 30 Aug 2026 18:12:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1104" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"SystemAssigned,UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/cmk.system/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2\":{\"clientId\":\"c105dcb0-b19f-4d55-adba-749e0037c42e\",\"principalId\":\"ab44c749-c400-4689-bcd1-128d7ecefd94\"}},\"principalId\":\"5353ccc2-11b9-4416-82de-e87c87c01469\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"ON\",\"retentionDurationInDays\":14.0}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[],\"regionOfChoiceSettings\":{\"status\":\"NotApplicable\"},\"costManagementSettings\":{\"granularityLevel\":\"ProtectedItemLevel\"}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/adkayeth/providers/Microsoft.DataProtection/BackupVaults/sadsasad\",\"name\":\"sadsasad\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupVault+[NoContext]+CostManagementGranularity+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "313" ],
+        "x-ms-client-request-id": [ "6fbec8e8-5452-4e54-aa05-0a22aeb0fa9b" ],
+        "CommandName": [ "Get-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.5", "Az.DataProtection/3.0.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "92dd0fc2-a28c-44d3-9833-34a1b4f25114" ],
+        "x-ms-correlation-request-id": [ "92dd0fc2-a28c-44d3-9833-34a1b4f25114" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260830T181258Z:92dd0fc2-a28c-44d3-9833-34a1b4f25114" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CACF1D174117464CB1D2C91142F0F362 Ref B: SG2AA1040515054 Ref C: 2026-08-30T18:12:58Z" ],
+        "Date": [ "Sun, 30 Aug 2026 18:12:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1104" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"SystemAssigned,UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/cmk.system/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2\":{\"clientId\":\"c105dcb0-b19f-4d55-adba-749e0037c42e\",\"principalId\":\"ab44c749-c400-4689-bcd1-128d7ecefd94\"}},\"principalId\":\"5353ccc2-11b9-4416-82de-e87c87c01469\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"ON\",\"retentionDurationInDays\":14.0}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[],\"regionOfChoiceSettings\":{\"status\":\"NotApplicable\"},\"costManagementSettings\":{\"granularityLevel\":\"ProtectedItemLevel\"}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/adkayeth/providers/Microsoft.DataProtection/BackupVaults/sadsasad\",\"name\":\"sadsasad\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupVault+[NoContext]+CostManagementGranularity+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "314" ],
+        "x-ms-client-request-id": [ "8b775d51-7c16-48d0-9163-27b1ff2f9e52" ],
+        "CommandName": [ "Az.DataProtection.Internal\\Update-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Update-AzDataProtectionBackupVault_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.5", "Az.DataProtection/3.0.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "c7d50590-1dc9-4651-8d72-b38dba21f6ec" ],
+        "x-ms-correlation-request-id": [ "c7d50590-1dc9-4651-8d72-b38dba21f6ec" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260830T181259Z:c7d50590-1dc9-4651-8d72-b38dba21f6ec" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 70333223982441639AD5C9F9140C0D08 Ref B: SG2AA1040515054 Ref C: 2026-08-30T18:12:58Z" ],
+        "Date": [ "Sun, 30 Aug 2026 18:12:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1104" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"SystemAssigned,UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/cmk.system/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2\":{\"clientId\":\"c105dcb0-b19f-4d55-adba-749e0037c42e\",\"principalId\":\"ab44c749-c400-4689-bcd1-128d7ecefd94\"}},\"principalId\":\"5353ccc2-11b9-4416-82de-e87c87c01469\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"ON\",\"retentionDurationInDays\":14.0}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[],\"regionOfChoiceSettings\":{\"status\":\"NotApplicable\"},\"costManagementSettings\":{\"granularityLevel\":\"ProtectedItemLevel\"}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/adkayeth/providers/Microsoft.DataProtection/BackupVaults/sadsasad\",\"name\":\"sadsasad\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupVault+[NoContext]+CostManagementGranularity+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01+11": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01",
+      "Content": "{\r\n  \"location\": \"eastasia\",\r\n  \"properties\": {\r\n    \"costManagementSettings\": {\r\n      \"granularityLevel\": \"ProtectedItemWithParentTag\"\r\n    },\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"state\": \"ON\",\r\n        \"retentionDurationInDays\": 14\r\n      }\r\n    },\r\n    \"storageSettings\": [\r\n      {\r\n        \"datastoreType\": \"VaultStore\",\r\n        \"type\": \"LocallyRedundant\"\r\n      }\r\n    ],\r\n    \"replicatedRegions\": [ ]\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned,UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/cmk.system/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2\": {\r\n      }\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "723" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/westus2/b50c3db7-8e48-4dfb-84a2-5a900b067835" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/operationStatus/ZjUwNDhlZTUtMmQxZS00ZDk0LTkwMDYtYjdmY2U3ZTQyZjQ1Ozc3M2YzNjkzLWNhNTItNGM1My1iMjA2LTVkY2I2N2JjN2Q4Mg==?api-version=2026-06-01\u0026t=639237103811684889\u0026c=MIIIJjCCBw6gAwIBAgIQQsgxla0M-7x6wLiaXV8gNzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXQ1VTIENBIDAxMB4XDTI2MDgxMjE5NTYzN1oXDTI3MDIwODAxNTYzN1owQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCjyQHyKRQ8UpdzxWWmCxMDjs6UMG9UbX9c9OJQKRD6Vai9vjx5MJuD6y4Uxn_YQqnEDALPbdoRwyZAdcXPY31TFD_XnfajmM-ZAQlS9ZBdI-60cOBzeuSODBevgfQ0gq_hMbZEC0Gr1XAAgQqCPsDLKjYiVH3oIGsLWkoCqvZR4ia1rQCx7vc3lMlGGfppWILnw6mAlIEM_SgbK4PavIUii4QNGXK2NR4CMgJ-Zp_gP6e8XW6ImAcOaDhsUJoyJmxR-GCBPhxrDngK1ixA-r7uNDfXWC7ksmzehqGfAupArw6Zdbh21RA3hjU104hl9GSgZ2FREhNYHcvCVol3oY9RAgMBAAGjggUkMIIFIDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBTDKruM3AEmoKnjmjE6ukKa0VlRvTAfBgNVHSMEGDAWgBQU0jfg9tZ9ft2NurplqwSUJeCWHTCCAfsGA1UdHwSCAfIwggHuMHugeaB3hnVodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwfaB7oHmGd2h0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3RjZW50cmFsdXMvY3Jscy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxLzMyL2N1cnJlbnQuY3JsMGygaqBohmZodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwgYGgf6B9hntodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwggIABggrBgEFBQcBAQSCAfIwggHuMH4GCCsGAQUFBzAChnJodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jYWNlcnRzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvY2VydC5jZXIwgYAGCCsGAQUFBzAChnRodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0Y2VudHJhbHVzL2NhY2VydHMvY2NtZXdlc3RjZW50cmFsdXNwa2kvY2NtZXdlc3RjZW50cmFsdXNpY2EwMS9jZXJ0LmNlcjBvBggrBgEFBQcwAoZjaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3RjZW50cmFsdXMvY2FjZXJ0cy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxL2NlcnQuY2VyMHgGCCsGAQUFBzAChmxodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEwDQYJKoZIhvcNAQELBQADggEBAHlzTkQ03xhxyAyJLFgMbgclkkaQSsTdGfKPvuLkqxHhbwnnnQj0qIblVcex8MFLZvU3I4zzPrs3huVLUyBtiVr2Y78czcDCslyFYf_yD7yDQmCDeFn-Dh3_NNn9SxCCh7Moi0fLyv3UL6gFl2WyfNkvWwxj6hdhpIup-yc0PzkaeZJLOrPxWWgfHFH7UqxWxDdkBrV72ZkyuZF3SBC9yXBvvWUpO4Lk4CnfX6Ne4e0TrUrhxQ8sAk04P8J9qzMFa_9nBHpIKyFVHLuwKrjo5GIbhIakXmn1NckxGDEMHDRg5_Nj4ZHsdrSm8aMM6wj5pMXv4cza_0NwReDfvipkjEw\u0026s=Jn2IUAuitBUvUjR0RyYbrJ8C9vYWzPuqg3Tu7aZvc-JsaCUDDjFDkd6v6AvpRvIQl_pjn2iPxnOaxf3qRjLIO7OnH61cbf7I-DXGeiL7lHWs1I5Lp1oQEvyUHFEzqJm8CNTPyJO7iOoPDTo-JS8x5KhDhEN35VCq332e9dXjErwjNOcS71goYZ7tCjmaK19bsxd6AI6JkMOGPUM1_xhcdk1CyRXE0sXjYJQEfj7GX2av7ChnxsQ-CeKAlR4_4yFw_GcT58B2eiFE-plrIUoN6meIHSfxUvTOowUBCM5HC0cKfXedm0HPiyiuO79p9z81pYxL7IoOsGxm3AWrfXsN-Q\u0026h=uWd6vMK_sAiyH8acMGGD_TnFzpSuoR1zZgW0L2xLPhk" ],
+        "x-ms-arm-resource-system-data": [ "{\"lastModifiedBy\":\"vijami@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-08-30T18:12:59.6528676Z\"}" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "5ccb99bb-a0c6-4721-b015-6655e368ccb3" ],
+        "x-ms-correlation-request-id": [ "5ccb99bb-a0c6-4721-b015-6655e368ccb3" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260830T181301Z:5ccb99bb-a0c6-4721-b015-6655e368ccb3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8B10A84AA4844FA3BD50D859075EEE77 Ref B: SG2AA1040515054 Ref C: 2026-08-30T18:12:59Z" ],
+        "Date": [ "Sun, 30 Aug 2026 18:13:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1111" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"SystemAssigned,UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/cmk.system/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2\":{\"clientId\":\"c105dcb0-b19f-4d55-adba-749e0037c42e\",\"principalId\":\"ab44c749-c400-4689-bcd1-128d7ecefd94\"}},\"principalId\":\"5353ccc2-11b9-4416-82de-e87c87c01469\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Updating\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"ON\",\"retentionDurationInDays\":14.0}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[],\"regionOfChoiceSettings\":{\"status\":\"NotApplicable\"},\"costManagementSettings\":{\"granularityLevel\":\"ProtectedItemWithParentTag\"}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/adkayeth/providers/Microsoft.DataProtection/BackupVaults/sadsasad\",\"name\":\"sadsasad\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupVault+[NoContext]+CostManagementGranularity+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/operationStatus/ZjUwNDhlZTUtMmQxZS00ZDk0LTkwMDYtYjdmY2U3ZTQyZjQ1Ozc3M2YzNjkzLWNhNTItNGM1My1iMjA2LTVkY2I2N2JjN2Q4Mg==?api-version=2026-06-01\u0026t=639237103811684889\u0026c=MIIIJjCCBw6gAwIBAgIQQsgxla0M-7x6wLiaXV8gNzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXQ1VTIENBIDAxMB4XDTI2MDgxMjE5NTYzN1oXDTI3MDIwODAxNTYzN1owQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCjyQHyKRQ8UpdzxWWmCxMDjs6UMG9UbX9c9OJQKRD6Vai9vjx5MJuD6y4Uxn_YQqnEDALPbdoRwyZAdcXPY31TFD_XnfajmM-ZAQlS9ZBdI-60cOBzeuSODBevgfQ0gq_hMbZEC0Gr1XAAgQqCPsDLKjYiVH3oIGsLWkoCqvZR4ia1rQCx7vc3lMlGGfppWILnw6mAlIEM_SgbK4PavIUii4QNGXK2NR4CMgJ-Zp_gP6e8XW6ImAcOaDhsUJoyJmxR-GCBPhxrDngK1ixA-r7uNDfXWC7ksmzehqGfAupArw6Zdbh21RA3hjU104hl9GSgZ2FREhNYHcvCVol3oY9RAgMBAAGjggUkMIIFIDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBTDKruM3AEmoKnjmjE6ukKa0VlRvTAfBgNVHSMEGDAWgBQU0jfg9tZ9ft2NurplqwSUJeCWHTCCAfsGA1UdHwSCAfIwggHuMHugeaB3hnVodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwfaB7oHmGd2h0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3RjZW50cmFsdXMvY3Jscy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxLzMyL2N1cnJlbnQuY3JsMGygaqBohmZodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwgYGgf6B9hntodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwggIABggrBgEFBQcBAQSCAfIwggHuMH4GCCsGAQUFBzAChnJodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jYWNlcnRzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvY2VydC5jZXIwgYAGCCsGAQUFBzAChnRodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0Y2VudHJhbHVzL2NhY2VydHMvY2NtZXdlc3RjZW50cmFsdXNwa2kvY2NtZXdlc3RjZW50cmFsdXNpY2EwMS9jZXJ0LmNlcjBvBggrBgEFBQcwAoZjaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3RjZW50cmFsdXMvY2FjZXJ0cy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxL2NlcnQuY2VyMHgGCCsGAQUFBzAChmxodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEwDQYJKoZIhvcNAQELBQADggEBAHlzTkQ03xhxyAyJLFgMbgclkkaQSsTdGfKPvuLkqxHhbwnnnQj0qIblVcex8MFLZvU3I4zzPrs3huVLUyBtiVr2Y78czcDCslyFYf_yD7yDQmCDeFn-Dh3_NNn9SxCCh7Moi0fLyv3UL6gFl2WyfNkvWwxj6hdhpIup-yc0PzkaeZJLOrPxWWgfHFH7UqxWxDdkBrV72ZkyuZF3SBC9yXBvvWUpO4Lk4CnfX6Ne4e0TrUrhxQ8sAk04P8J9qzMFa_9nBHpIKyFVHLuwKrjo5GIbhIakXmn1NckxGDEMHDRg5_Nj4ZHsdrSm8aMM6wj5pMXv4cza_0NwReDfvipkjEw\u0026s=Jn2IUAuitBUvUjR0RyYbrJ8C9vYWzPuqg3Tu7aZvc-JsaCUDDjFDkd6v6AvpRvIQl_pjn2iPxnOaxf3qRjLIO7OnH61cbf7I-DXGeiL7lHWs1I5Lp1oQEvyUHFEzqJm8CNTPyJO7iOoPDTo-JS8x5KhDhEN35VCq332e9dXjErwjNOcS71goYZ7tCjmaK19bsxd6AI6JkMOGPUM1_xhcdk1CyRXE0sXjYJQEfj7GX2av7ChnxsQ-CeKAlR4_4yFw_GcT58B2eiFE-plrIUoN6meIHSfxUvTOowUBCM5HC0cKfXedm0HPiyiuO79p9z81pYxL7IoOsGxm3AWrfXsN-Q\u0026h=uWd6vMK_sAiyH8acMGGD_TnFzpSuoR1zZgW0L2xLPhk+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/operationStatus/ZjUwNDhlZTUtMmQxZS00ZDk0LTkwMDYtYjdmY2U3ZTQyZjQ1Ozc3M2YzNjkzLWNhNTItNGM1My1iMjA2LTVkY2I2N2JjN2Q4Mg==?api-version=2026-06-01\u0026t=639237103811684889\u0026c=MIIIJjCCBw6gAwIBAgIQQsgxla0M-7x6wLiaXV8gNzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXQ1VTIENBIDAxMB4XDTI2MDgxMjE5NTYzN1oXDTI3MDIwODAxNTYzN1owQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCjyQHyKRQ8UpdzxWWmCxMDjs6UMG9UbX9c9OJQKRD6Vai9vjx5MJuD6y4Uxn_YQqnEDALPbdoRwyZAdcXPY31TFD_XnfajmM-ZAQlS9ZBdI-60cOBzeuSODBevgfQ0gq_hMbZEC0Gr1XAAgQqCPsDLKjYiVH3oIGsLWkoCqvZR4ia1rQCx7vc3lMlGGfppWILnw6mAlIEM_SgbK4PavIUii4QNGXK2NR4CMgJ-Zp_gP6e8XW6ImAcOaDhsUJoyJmxR-GCBPhxrDngK1ixA-r7uNDfXWC7ksmzehqGfAupArw6Zdbh21RA3hjU104hl9GSgZ2FREhNYHcvCVol3oY9RAgMBAAGjggUkMIIFIDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBTDKruM3AEmoKnjmjE6ukKa0VlRvTAfBgNVHSMEGDAWgBQU0jfg9tZ9ft2NurplqwSUJeCWHTCCAfsGA1UdHwSCAfIwggHuMHugeaB3hnVodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwfaB7oHmGd2h0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3RjZW50cmFsdXMvY3Jscy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxLzMyL2N1cnJlbnQuY3JsMGygaqBohmZodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdGNlbnRyYWx1cy9jcmxzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwgYGgf6B9hntodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvMzIvY3VycmVudC5jcmwwggIABggrBgEFBQcBAQSCAfIwggHuMH4GCCsGAQUFBzAChnJodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdGNlbnRyYWx1cy9jYWNlcnRzL2NjbWV3ZXN0Y2VudHJhbHVzcGtpL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEvY2VydC5jZXIwgYAGCCsGAQUFBzAChnRodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0Y2VudHJhbHVzL2NhY2VydHMvY2NtZXdlc3RjZW50cmFsdXNwa2kvY2NtZXdlc3RjZW50cmFsdXNpY2EwMS9jZXJ0LmNlcjBvBggrBgEFBQcwAoZjaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3RjZW50cmFsdXMvY2FjZXJ0cy9jY21ld2VzdGNlbnRyYWx1c3BraS9jY21ld2VzdGNlbnRyYWx1c2ljYTAxL2NlcnQuY2VyMHgGCCsGAQUFBzAChmxodHRwOi8vY2NtZXdlc3RjZW50cmFsdXNwa2kud2VzdGNlbnRyYWx1cy5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0Y2VudHJhbHVzaWNhMDEwDQYJKoZIhvcNAQELBQADggEBAHlzTkQ03xhxyAyJLFgMbgclkkaQSsTdGfKPvuLkqxHhbwnnnQj0qIblVcex8MFLZvU3I4zzPrs3huVLUyBtiVr2Y78czcDCslyFYf_yD7yDQmCDeFn-Dh3_NNn9SxCCh7Moi0fLyv3UL6gFl2WyfNkvWwxj6hdhpIup-yc0PzkaeZJLOrPxWWgfHFH7UqxWxDdkBrV72ZkyuZF3SBC9yXBvvWUpO4Lk4CnfX6Ne4e0TrUrhxQ8sAk04P8J9qzMFa_9nBHpIKyFVHLuwKrjo5GIbhIakXmn1NckxGDEMHDRg5_Nj4ZHsdrSm8aMM6wj5pMXv4cza_0NwReDfvipkjEw\u0026s=Jn2IUAuitBUvUjR0RyYbrJ8C9vYWzPuqg3Tu7aZvc-JsaCUDDjFDkd6v6AvpRvIQl_pjn2iPxnOaxf3qRjLIO7OnH61cbf7I-DXGeiL7lHWs1I5Lp1oQEvyUHFEzqJm8CNTPyJO7iOoPDTo-JS8x5KhDhEN35VCq332e9dXjErwjNOcS71goYZ7tCjmaK19bsxd6AI6JkMOGPUM1_xhcdk1CyRXE0sXjYJQEfj7GX2av7ChnxsQ-CeKAlR4_4yFw_GcT58B2eiFE-plrIUoN6meIHSfxUvTOowUBCM5HC0cKfXedm0HPiyiuO79p9z81pYxL7IoOsGxm3AWrfXsN-Q\u0026h=uWd6vMK_sAiyH8acMGGD_TnFzpSuoR1zZgW0L2xLPhk",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "316" ],
+        "x-ms-client-request-id": [ "8b775d51-7c16-48d0-9163-27b1ff2f9e52" ],
+        "CommandName": [ "Az.DataProtection.Internal\\Update-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Update-AzDataProtectionBackupVault_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.5", "Az.DataProtection/3.0.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/westus2/255bbf36-81df-4f0f-a1d0-32651b36430c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-request-id": [ "80175333-0626-4d90-9e0e-b39c96595f01" ],
+        "x-ms-correlation-request-id": [ "80175333-0626-4d90-9e0e-b39c96595f01" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260830T181311Z:80175333-0626-4d90-9e0e-b39c96595f01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6FF6BC57B0054DF896D2AF7C6239732A Ref B: SG2AA1040515054 Ref C: 2026-08-30T18:13:11Z" ],
+        "Date": [ "Sun, 30 Aug 2026 18:13:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "465" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/operationStatus/ZjUwNDhlZTUtMmQxZS00ZDk0LTkwMDYtYjdmY2U3ZTQyZjQ1Ozc3M2YzNjkzLWNhNTItNGM1My1iMjA2LTVkY2I2N2JjN2Q4Mg==\",\"name\":\"ZjUwNDhlZTUtMmQxZS00ZDk0LTkwMDYtYjdmY2U3ZTQyZjQ1Ozc3M2YzNjkzLWNhNTItNGM1My1iMjA2LTVkY2I2N2JjN2Q4Mg==\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-30T18:13:01.0298131Z\",\"endTime\":\"2026-08-30T18:13:02Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupVault+[NoContext]+CostManagementGranularity+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "317" ],
+        "x-ms-client-request-id": [ "8b775d51-7c16-48d0-9163-27b1ff2f9e52" ],
+        "CommandName": [ "Az.DataProtection.Internal\\Update-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Update-AzDataProtectionBackupVault_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.5", "Az.DataProtection/3.0.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "5debacd7-23d1-42e8-b31a-b9888963844c" ],
+        "x-ms-correlation-request-id": [ "5debacd7-23d1-42e8-b31a-b9888963844c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260830T181312Z:5debacd7-23d1-42e8-b31a-b9888963844c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3AA1E2FE13B04146815FF84D85FC1EC6 Ref B: SG2AA1040515054 Ref C: 2026-08-30T18:13:11Z" ],
+        "Date": [ "Sun, 30 Aug 2026 18:13:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1112" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"SystemAssigned,UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/cmk.system/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2\":{\"clientId\":\"c105dcb0-b19f-4d55-adba-749e0037c42e\",\"principalId\":\"ab44c749-c400-4689-bcd1-128d7ecefd94\"}},\"principalId\":\"5353ccc2-11b9-4416-82de-e87c87c01469\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"ON\",\"retentionDurationInDays\":14.0}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[],\"regionOfChoiceSettings\":{\"status\":\"NotApplicable\"},\"costManagementSettings\":{\"granularityLevel\":\"ProtectedItemWithParentTag\"}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/adkayeth/providers/Microsoft.DataProtection/BackupVaults/sadsasad\",\"name\":\"sadsasad\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupVault+[NoContext]+CostManagementGranularity+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01+14": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "318" ],
+        "x-ms-client-request-id": [ "004d3af5-e0df-483e-aa47-033667f5280f" ],
+        "CommandName": [ "Get-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.5", "Az.DataProtection/3.0.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "fd5513d7-df51-49fd-b89c-838364b5cb3c" ],
+        "x-ms-correlation-request-id": [ "fd5513d7-df51-49fd-b89c-838364b5cb3c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260830T181312Z:fd5513d7-df51-49fd-b89c-838364b5cb3c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2EB787CFB73544DDAB5D2856BA36E70F Ref B: SG2AA1040515054 Ref C: 2026-08-30T18:13:12Z" ],
+        "Date": [ "Sun, 30 Aug 2026 18:13:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1112" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"SystemAssigned,UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/cmk.system/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2\":{\"clientId\":\"c105dcb0-b19f-4d55-adba-749e0037c42e\",\"principalId\":\"ab44c749-c400-4689-bcd1-128d7ecefd94\"}},\"principalId\":\"5353ccc2-11b9-4416-82de-e87c87c01469\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"ON\",\"retentionDurationInDays\":14.0}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[],\"regionOfChoiceSettings\":{\"status\":\"NotApplicable\"},\"costManagementSettings\":{\"granularityLevel\":\"ProtectedItemWithParentTag\"}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/adkayeth/providers/Microsoft.DataProtection/BackupVaults/sadsasad\",\"name\":\"sadsasad\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  }
+}

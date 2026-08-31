@@ -16,6 +16,7 @@ Creates or updates a BackupVault resource belonging to a resource group.
 New-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> -Location <String>
  -StorageSetting <IStorageSetting[]> [-SubscriptionId <String>] [-ETag <String>]
  [-EnableSystemAssignedIdentity] [-AzureMonitorAlertsForAllJobFailure <String>] [-ImmutabilityState <String>]
+ [-ImmutabilityType <String>] [-ImmutabilityDurationInDay <Double>] [-CostManagementGranularity <String>]
  [-CrossRegionRestoreState <String>] [-CrossSubscriptionRestoreState <String>]
  [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <String>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <String[]>] [-CmkEncryptionState <String>] [-CmkInfrastructureEncryption <String>]
@@ -189,6 +190,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CostManagementGranularity
+Cost Management Granularity of the vault.
+Allowed values are VaultLevel, ProtectedItemLevel, ProtectedItemWithParentTag.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CrossRegionRestoreState
 Cross region restore state of the vault.
 Allowed values are Disabled, Enabled.
@@ -265,9 +282,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ImmutabilityDurationInDay
+Immutability duration in days.
+Required when ImmutabilityType is TimeBased.
+
+```yaml
+Type: System.Double
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ImmutabilityState
 Immutability state of the vault.
 Allowed values are Disabled, Unlocked, Locked.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImmutabilityType
+Immutability type of the vault.
+Allowed values are AsPerPolicy and TimeBased.
 
 ```yaml
 Type: System.String
