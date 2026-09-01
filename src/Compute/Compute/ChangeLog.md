@@ -25,6 +25,7 @@
 * Added `-ProcessorMode` support to VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) create and update flows in `New-AzVMConfig`, `New-AzVM`, `Update-AzVM`, `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss`. [#30012]
 * Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM (Virtual Machine) during stop operations.
     - The switch cannot be used together with `-Hibernate`, `-StayProvisioned`, or `-SkipShutdown`.
+* Fixed an issue where tag values formatted like ISO 8601 dates were incorrectly parsed and reformatted as `DateTime` strings instead of being returned as the raw string value that was set.
 
 ## Version 11.8.0
 * Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.
