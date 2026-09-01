@@ -455,11 +455,11 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <comment>{0} = exception</comment>
   </data>
   <data name="ErrorDuringInstallingBginfoExtension" xml:space="preserve">
-    <value>Error occurred when installing the BGInfo extension.  The virtual machine was created successfully without it.  : {0}</value>
+    <value>An error occurred while installing the BGInfo extension. The virtual machine was created successfully without it: {0}</value>
     <comment>{0} = exception</comment>
   </data>
   <data name="BginfoExtensionVersionLookupFailed" xml:space="preserve">
-    <value>Could not determine the latest available BGInfo extension version.  Using the default version, {0}.  : {1}</value>
+    <value>Could not determine the latest available BGInfo extension version. Using the default version {0}: {1}</value>
     <comment>{0} = default extension version, {1} = exception</comment>
   </data>
   <data name="UsingExistingStorageAccountForBootDiagnostics" xml:space="preserve">

@@ -24,12 +24,7 @@
     - `SpotPlus` is the next generation of Azure Spot for VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) deployments, and offers higher reliability and longer running time than `Spot`.
     - `-EvictionPolicy` and `-MaxPrice` behave the same way as they do for `Spot`.
     - Requires the `Microsoft.Compute/SpotPlus` subscription feature to be registered, and a region where the feature is enabled.
-* For `New-AzVM`: If the extension-version catalogue lookup fails, the cmdlet uses the default BGInfo version, and installation failures now emit a warning rather than terminating the cmdlet.
-* Added `-WireServerUseLocalFileRules` and `-ImdsUseLocalFileRules` parameters to `Set-AzVMProxyAgentSetting` and `Set-AzVmssProxyAgentSetting` so users can configure local file rules for Virtual Machine (VM) and Virtual Machine Scale Set (VMSS) host endpoints. [#30055]
-* Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
-* Added `-ProcessorMode` support to VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) create and update flows in `New-AzVMConfig`, `New-AzVM`, `Update-AzVM`, `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss`. [#30012]
-* Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM (Virtual Machine) during stop operations.
-    - The switch cannot be used together with `-Hibernate`, `-StayProvisioned`, or `-SkipShutdown`.
+* For `New-AzVM`: If the extension-version catalogue lookup fails, the cmdlet uses the default BGInfo (Background Information) extension version, and installation failures now emit a warning rather than terminating the cmdlet.
 
 ## Version 11.9.0
 * Added `-WireServerUseLocalFileRules` and `-ImdsUseLocalFileRules` to `Set-AzVMProxyAgentSetting` and `Set-AzVmssProxyAgentSetting` to configure local file rules for Virtual Machine (VM) and Virtual Machine Scale Set (VMSS) host endpoints. [#30055]
