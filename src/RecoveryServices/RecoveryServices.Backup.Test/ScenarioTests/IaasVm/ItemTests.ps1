@@ -240,6 +240,7 @@ function Test-AzureVMSourceScanRecoveryPoints
 	$resourceGroupName = "swbela-ransom-rg"
 	$vaultName = "swbela-mdc-vault-1"
 	$targetVmFriendlyName = "Sample-VM"
+	$recoveryPointId = "1131169477306229"
 
 	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 
@@ -257,7 +258,10 @@ function Test-AzureVMSourceScanRecoveryPoints
 	Write-Host ("targetItem Name: {0}; FriendlyName: {1}; WorkloadType: {2}; SourceSideScanStatus: {3}" -f $targetItem.Name, $targetItem.FriendlyName, $targetItem.WorkloadType, $targetItem.SourceSideScanStatus)
 
 	Assert-True { $targetItem.SourceSideScanStatus -eq "Configured" }
-	$recoveryPoints = @(Get-AzRecoveryServicesBackupRecoveryPoint -Item $targetItem -VaultId $vault.ID)
+	$recoveryPoints = @(Get-AzRecoveryServicesBackupRecoveryPoint `
+		-Item $targetItem `
+		-VaultId $vault.ID `
+		-RecoveryPointId $recoveryPointId)
 	Assert-True { $recoveryPoints.Count -gt 0 }
 	Assert-NotNull $recoveryPoints[0].PSObject.Properties["ThreatStatus"]
 	Assert-NotNull $recoveryPoints[0].PSObject.Properties["ThreatInfo"]
