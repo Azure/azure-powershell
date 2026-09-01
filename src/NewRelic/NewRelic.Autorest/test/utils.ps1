@@ -72,7 +72,6 @@ function setupEnv() {
     $testAppName = 'azps-newrelic-app'
     $testVMName = 'azps-testmachine01'
     $env.Add('testVMName', $testVMName)
-    #Plan Data $env.SubscriptionId = 272c26cb-7026-4b37-b190-7cb7b2abecb0
     # Step 1: Create test group
     Write-Host 'Start to create test resource group' $resourceGroup
     try {
