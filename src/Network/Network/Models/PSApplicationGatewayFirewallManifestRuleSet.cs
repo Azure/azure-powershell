@@ -24,6 +24,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string RuleSetVersion { get; set; }
 
+        public string DisplayName { get; set; }
+
         public IList<string> Tiers { get; set; }
 
         public IList<PSApplicationGatewayFirewallRuleGroup> RuleGroups { get; set; }
