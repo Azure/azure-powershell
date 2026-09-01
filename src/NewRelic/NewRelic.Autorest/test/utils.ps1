@@ -48,15 +48,15 @@ function setupEnv() {
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
-    $resourceGroup = 'vanshjoshi-clientparity-test'
+    $resourceGroup = 'azps-newrelic-clientparity-test'
     $env.Add('resourceGroup', $resourceGroup)
 
     $region = 'eastus'
     $env.Add('region', $region)
 
     $testerEmail = 'user@example.com'
-    $testerFirstName = 'Vansh'
-    $testerLastName = 'Joshi'
+    $testerFirstName = 'Test'
+    $testerLastName = 'User'
 
     $env.Add('testerEmail', $testerEmail)
     $env.Add('testerFirstName', $testerFirstName)
@@ -68,9 +68,9 @@ function setupEnv() {
     $NewMonitorName = 'test-01' + (RandomString -allChars $false -len 6)
     $env.Add('NewMonitorName', $NewMonitorName)
 
-    $testAppPlanName = 'vansh-newrelic-plan'
-    $testAppName = 'vansh-newrelic-app'
-    $testVMName = 'joyertestmachine01'
+    $testAppPlanName = 'azps-newrelic-plan'
+    $testAppName = 'azps-newrelic-app'
+    $testVMName = 'azps-testmachine01'
     $env.Add('testVMName', $testVMName)
     #Plan Data $env.SubscriptionId = 272c26cb-7026-4b37-b190-7cb7b2abecb0
     # Step 1: Create test group

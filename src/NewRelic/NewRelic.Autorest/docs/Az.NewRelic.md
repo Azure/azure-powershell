@@ -1,6 +1,6 @@
 ---
 Module Name: Az.NewRelic
-Module Guid: 264d7468-3de0-47db-9f05-c9470fe5b0a2
+Module Guid: fcb6df7e-4a86-4278-88de-1e16f349572c
 Download Help Link: https://learn.microsoft.com/powershell/module/az.newrelic
 Help Version: 1.0.0.0
 Locale: en-US
