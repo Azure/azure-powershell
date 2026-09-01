@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added WAF (Web Application Firewall) managed rule set display name and managed rule paranoia level to Application Gateway WAF cmdlet output.
+    - Added the `ParanoiaLevel` property to the rules returned by `Get-AzApplicationGatewayAvailableWafRuleSet` and `Get-AzApplicationGatewayWafDynamicManifest`.
+    - Added the `DisplayName` property to the rule sets returned by the same cmdlets.
+    - Both properties are read-only and are populated from API version 2026-01-01 and later.
 
 ## Version 8.2.0
 * Added `Get-AzExpressRouteLag`, `New-AzExpressRouteLag`, `Set-AzExpressRouteLag`, `Remove-AzExpressRouteLag`, `New-AzExpressRouteLagLOA`, `Get-AzExpressRouteLagLink`, and `Get-AzExpressRouteLagMember` for `ExpressRouteLag` resources (Microsoft.Network 2025-09-01 API).
