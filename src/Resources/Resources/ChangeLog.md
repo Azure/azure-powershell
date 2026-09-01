@@ -21,7 +21,7 @@
 ## Upcoming Release
 * Updated Policy cmdlets to use `2026-01-01` API
 * Added `Get-AzPolicyEnrollment`, `New-AzPolicyEnrollment`, `Remove-AzPolicyEnrollment`, and `Update-AzPolicyEnrollment` cmdlets to interact with new Policy Enrollments resources.
-* Added a notice to template deployment what-if output pointing users to Deployment Stacks What-If, which is now generally available and removes noise from results.
+* Amended the template deployment what-if noise notice to point users to Deployment Stacks what-if for noise reduction, replacing the previous issue-filing line.
 * Renamed `DenySettingsApplyToChildScope` to `DenySettingsApplyToChildScopes` for deployment stack WhatIfResult cmdlets while retaining the old name as an alias.
 * Added `ResourcesWithoutDeleteSupport` to deployment stack WhatIfResult cmdlets.
 * Added tag support to deployment stack WhatIfResult cmdlets and output.
