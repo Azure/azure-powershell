@@ -54,6 +54,35 @@ output-folder: Generated
 namespace: Microsoft.Azure.Management.Network
 
 directive:
+# Add the IPAM allocation bounds introduced by azure-rest-api-specs commit
+# cd2c909bbb9c0c59ab219bb68222f9d6c6a64100 without upgrading unrelated
+# virtual network operations from the module's 2025-09-01 API baseline.
+  - from: swagger-document
+    where: $
+    transform: >
+      if ($.definitions?.IpamPoolProperties &&
+          $.definitions?.IpamPoolUpdateProperties) {
+        $.definitions.IpamPoolProperties.properties.minAllocationSize = {
+          type: "string",
+          description: "Minimum number of IP addresses required for allocations from this IpamPool to be compliant. Must be less than or equal to the maximum allocation size. If not specified or empty, no minimum is enforced."
+        };
+        $.definitions.IpamPoolProperties.properties.maxAllocationSize = {
+          type: "string",
+          description: "Maximum number of IP addresses allowed for allocations from this IpamPool to be compliant. Must be greater than or equal to the minimum allocation size. If not specified or empty, no maximum is enforced."
+        };
+        $.definitions.IpamPoolUpdateProperties.properties.minAllocationSize = {
+          type: "string",
+          description: "Minimum number of IP addresses required for allocations from this IpamPool to be compliant. Must be less than or equal to the maximum allocation size. Omit to leave the current value unchanged; set to an empty string to clear it."
+        };
+        $.definitions.IpamPoolUpdateProperties.properties.maxAllocationSize = {
+          type: "string",
+          description: "Maximum number of IP addresses allowed for allocations from this IpamPool to be compliant. Must be greater than or equal to the minimum allocation size. Omit to leave the current value unchanged; set to an empty string to clear it."
+        };
+      }
+# Use the API version that implements allocation bounds for IPAM pool requests.
+  - from: IpamPoolsOperations.cs
+    where: $
+    transform: $ = $.replace(/string apiVersion = "2025-09-01";/g, 'string apiVersion = "2026-01-01";');
 # The 2025-09-01 service response returns resourceGuid at the resource root, while the
 # published swagger places it under properties. Move the schema property during generation
 # until the current and next API specifications are corrected.
