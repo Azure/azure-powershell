@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Rest.Azure;
 using SDKTagsObject = Microsoft.Azure.Management.Resources.Models.Tags;
 
 namespace Microsoft.Azure.Commands.Tags.Client
@@ -30,6 +31,18 @@ namespace Microsoft.Azure.Commands.Tags.Client
     public class TagsClient
     {
         public const string ExecludedTagPrefix = "hidden-related:/";
+
+        private const string ProviderErrorCode = "ProviderError";
+
+        private const string ProvidersSegment = "providers";
+
+        private const string PreviewApiVersionSuffix = "preview";
+
+        private const string TagsResourceName = "default";
+
+        private const string TagsResourceType = "Microsoft.Resources/tags";
+
+        private const string TagsResourceIdSuffix = "/providers/Microsoft.Resources/tags/default";
 
         public IResourceManagementClient ResourceManagementClient { get; set; }
 
@@ -148,7 +161,14 @@ namespace Microsoft.Azure.Commands.Tags.Client
         public PSTagResource CreateOrUpdateTagAtScope(string scope, IDictionary<string, string> parameters)
         {
             var tagResource = new TagsResource(properties: new SDKTagsObject(parameters));
-            return ResourceManagementClient.Tags.CreateOrUpdateAtScope(scope: scope, parameters: tagResource)?.ToPSTagResource();
+            try
+            {
+                return ResourceManagementClient.Tags.CreateOrUpdateAtScope(scope: scope, parameters: tagResource)?.ToPSTagResource();
+            }
+            catch (CloudException ex) when (IsResourceProviderTagError(ex, scope))
+            {
+                return SetTagsOnResource(scope, parameters, ex);
+            }
         }
 
         /// <summary>
@@ -170,7 +190,14 @@ namespace Microsoft.Azure.Commands.Tags.Client
         public PSTagResource UpdateTagAtScope(string scope, TagPatchOperation operation, IDictionary<string, string> parameters)
         {
             var tagPatchResource = new TagsPatchResource(operation: operation.ToString(), properties: new SDKTagsObject(parameters));
-            return ResourceManagementClient.Tags.UpdateAtScope(scope: scope, parameters: tagPatchResource)?.ToPSTagResource();
+            try
+            {
+                return ResourceManagementClient.Tags.UpdateAtScope(scope: scope, parameters: tagPatchResource)?.ToPSTagResource();
+            }
+            catch (CloudException ex) when (IsResourceProviderTagError(ex, scope))
+            {
+                return SetTagsOnResource(scope, ApplyTagPatchOperation(GetTagsOnScope(scope), operation, parameters), ex);
+            }
         }
 
         /// <summary>
@@ -216,9 +243,193 @@ namespace Microsoft.Azure.Commands.Tags.Client
         public PSTagResource DeleteTagAtScope(string scope)
         {
             var tags = GetTagAtScope(scope);
-            ResourceManagementClient.Tags.DeleteAtScope(scope);
+            try
+            {
+                ResourceManagementClient.Tags.DeleteAtScope(scope);
+            }
+            catch (CloudException ex) when (IsResourceProviderTagError(ex, scope))
+            {
+                SetTagsOnResource(scope, new Dictionary<string, string>(), ex);
+            }
 
             return tags;
+        }
+
+        /// <summary>
+        /// Determines whether a failure of the tags endpoint was caused by the resource provider rejecting
+        /// the resource payload that Azure Resource Manager replays while applying the tags.
+        /// </summary>
+        /// <remarks>
+        /// When tags are applied through the Microsoft.Resources/tags/default endpoint, Azure Resource Manager
+        /// reads the target resource and writes it back to the resource provider with the new tags. Resources
+        /// holding a value that their resource provider no longer accepts on write (for example a Service Bus
+        /// namespace with a minimumTlsVersion of 1.3) therefore fail with a ProviderError even though only the
+        /// tags were meant to be changed. In that case the tags can still be applied by patching the resource
+        /// with the tags alone.
+        /// </remarks>
+        /// <param name="exception">The exception thrown by the tags endpoint</param>
+        /// <param name="scope">scope could be a resource, a resource group or a subscription</param>
+        /// <returns>True when the tag operation can be retried as a tags only patch of the resource</returns>
+        private static bool IsResourceProviderTagError(CloudException exception, string scope)
+        {
+            return ProviderErrorCode.Equals(exception?.Body?.Code, StringComparison.OrdinalIgnoreCase)
+                && TryGetResourceType(scope, out _, out _);
+        }
+
+        /// <summary>
+        /// Applies the given set of tags to a resource by patching the resource with the tags only.
+        /// </summary>
+        /// <param name="scope">The resource identifier of the resource to tag</param>
+        /// <param name="tags">The complete set of tags the resource should end up with</param>
+        /// <param name="originalException">The exception originally thrown by the tags endpoint</param>
+        /// <returns>PS object PSTagResource</returns>
+        private PSTagResource SetTagsOnResource(string scope, IDictionary<string, string> tags, CloudException originalException)
+        {
+            try
+            {
+                var apiVersion = GetApiVersionForResource(scope);
+                if (string.IsNullOrWhiteSpace(apiVersion))
+                {
+                    throw originalException;
+                }
+
+                var resource = ResourceManagementClient.Resources.UpdateById(
+                    resourceId: scope,
+                    apiVersion: apiVersion,
+                    parameters: new GenericResource { Tags = tags });
+
+                return new PSTagResource
+                {
+                    Id = scope + TagsResourceIdSuffix,
+                    Name = TagsResourceName,
+                    Type = TagsResourceType,
+                    Properties = new PSTagsObject(resource?.Tags),
+                    PropertiesTable = global::Microsoft.Azure.Management.Internal.Resources.Utilities.ResourcesExtensions.ConstructTagsTable(TagsConversionHelper.CreateTagHashtable(resource?.Tags))
+                };
+            }
+            catch (Exception)
+            {
+                // The resource could not be patched either, surface the error the tags endpoint returned.
+                throw originalException;
+            }
+        }
+
+        /// <summary>
+        /// Gets the tags currently set on the given scope.
+        /// </summary>
+        /// <param name="scope">scope could be a resource, a resource group or a subscription</param>
+        /// <returns>The current set of tags, never null</returns>
+        private IDictionary<string, string> GetTagsOnScope(string scope)
+        {
+            return ResourceManagementClient.Tags.GetAtScope(scope)?.Properties?.TagsProperty
+                ?? new Dictionary<string, string>();
+        }
+
+        /// <summary>
+        /// Computes the set of tags resulting from applying a patch operation to the existing set of tags.
+        /// </summary>
+        /// <param name="existingTags">The tags currently set on the scope</param>
+        /// <param name="operation">The patch operation to apply</param>
+        /// <param name="parameters">The tags given to the patch operation</param>
+        /// <returns>The resulting set of tags</returns>
+        private static IDictionary<string, string> ApplyTagPatchOperation(IDictionary<string, string> existingTags, TagPatchOperation operation, IDictionary<string, string> parameters)
+        {
+            if (operation == TagPatchOperation.Replace)
+            {
+                return parameters ?? new Dictionary<string, string>();
+            }
+
+            // Tag names are case insensitive in Azure, tag values are not.
+            var result = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            if (existingTags != null)
+            {
+                foreach (var tag in existingTags)
+                {
+                    result[tag.Key] = tag.Value;
+                }
+            }
+
+            if (parameters != null)
+            {
+                foreach (var tag in parameters)
+                {
+                    if (operation == TagPatchOperation.Delete)
+                    {
+                        // A tag is only removed when its value matches the one given to the delete operation.
+                        if (result.TryGetValue(tag.Key, out var existingValue) && string.Equals(existingValue, tag.Value, StringComparison.Ordinal))
+                        {
+                            result.Remove(tag.Key);
+                        }
+                    }
+                    else
+                    {
+                        result[tag.Key] = tag.Value;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Determines the API version to use when patching the given resource.
+        /// </summary>
+        /// <param name="resourceId">The resource identifier of the resource</param>
+        /// <returns>The default API version of the resource type, otherwise its latest API version, null when it cannot be determined</returns>
+        private string GetApiVersionForResource(string resourceId)
+        {
+            if (!TryGetResourceType(resourceId, out var providerNamespace, out var resourceType))
+            {
+                return null;
+            }
+
+            var providerResourceType = ResourceManagementClient.Providers.Get(providerNamespace)?.ResourceTypes?
+                .FirstOrDefault(rt => string.Equals(rt.ResourceType, resourceType, StringComparison.OrdinalIgnoreCase));
+
+            if (!string.IsNullOrWhiteSpace(providerResourceType?.DefaultApiVersion))
+            {
+                return providerResourceType.DefaultApiVersion;
+            }
+
+            var apiVersions = providerResourceType?.ApiVersions?.Where(v => !string.IsNullOrWhiteSpace(v)).ToList()
+                ?? new List<string>();
+
+            return apiVersions.Where(v => v.IndexOf(PreviewApiVersionSuffix, StringComparison.OrdinalIgnoreCase) < 0)
+                    .OrderByDescending(v => v, StringComparer.OrdinalIgnoreCase)
+                    .FirstOrDefault()
+                ?? apiVersions.OrderByDescending(v => v, StringComparer.OrdinalIgnoreCase).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Extracts the provider namespace and the resource type from a resource identifier.
+        /// </summary>
+        /// <param name="resourceId">The resource identifier</param>
+        /// <param name="providerNamespace">The provider namespace of the resource</param>
+        /// <param name="resourceType">The fully qualified resource type of the resource, without the provider namespace</param>
+        /// <returns>True when the identifier points at a resource, false for subscription and resource group scopes</returns>
+        private static bool TryGetResourceType(string resourceId, out string providerNamespace, out string resourceType)
+        {
+            providerNamespace = null;
+            resourceType = null;
+
+            if (string.IsNullOrWhiteSpace(resourceId))
+            {
+                return false;
+            }
+
+            var segments = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            var providersIndex = Array.FindLastIndex(segments, s => string.Equals(s, ProvidersSegment, StringComparison.OrdinalIgnoreCase));
+
+            // The provider namespace, the resource type and the resource name have to follow the providers segment.
+            if (providersIndex < 0 || segments.Length - providersIndex < 4)
+            {
+                return false;
+            }
+
+            providerNamespace = segments[providersIndex + 1];
+            resourceType = string.Join("/", segments.Skip(providersIndex + 2).Where((s, i) => i % 2 == 0));
+
+            return true;
         }
     }
 }
