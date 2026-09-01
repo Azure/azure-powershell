@@ -58,7 +58,7 @@ ScheduledUpdateDate       :
 UpdateDelayOffset         : 
 LocalTimeZoneOffset       : 
 AutoUpdate                : Off
-ServiceUrls               : {wu.frontend.int.clouddatahub-int.net, *.servicebus.windows.net}
+ServiceUrls               : {*.servicebus.windows.net}
 State                     : Online
 Id                        : /subscriptions/41fcbc45-c594-4152-a8f1-fcbcd6452aea/resourceGroups/rg-test-dfv2/providers/Microsoft.DataFactory/factories/test-df-eu2/integrationruntimes/test-selfhost-ir
 Type                      : SelfHosted

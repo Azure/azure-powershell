@@ -354,6 +354,16 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DiskFileParameterSet,
+            HelpMessage = "Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.")]
+        public SwitchParameter DisableCapacityReservationAssignment { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
@@ -535,6 +545,10 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            if (this.IsParameterBound(c => c.CapacityReservationGroupId) && this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+            {
+                throw new ArgumentException("Parameters '-CapacityReservationGroupId' and '-DisableCapacityReservationAssignment' cannot be used together. '-DisableCapacityReservationAssignment' opts the virtual machine out of any capacity reservation.");
+            }
 
             switch (ParameterSetName)
             {
@@ -789,7 +803,8 @@ namespace Microsoft.Azure.Commands.Compute
                         enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null,
                         addProxyAgentExtension: _cmdlet.AddProxyAgentExtension ? true : (bool?)null,
                         scheduledEventsApiVersion: _cmdlet.ScheduledEventsApiVersion,
-                        enableAllInstancesDown: _cmdlet.EnableAllInstancesDown
+                        enableAllInstancesDown: _cmdlet.EnableAllInstancesDown,
+                        disableCapacityReservationAssignment: _cmdlet.DisableCapacityReservationAssignment.IsPresent ? true : (bool?)null
                     );
                 }
                 else  // does not get used. DiskFile parameter set is not supported.
@@ -830,7 +845,8 @@ namespace Microsoft.Azure.Commands.Compute
                         extendedLocation: extLoc,
                         securityType: _cmdlet.SecurityType,
                         enableVtpm: _cmdlet.EnableVtpm,
-                        enableSecureBoot: _cmdlet.EnableSecureBoot
+                        enableSecureBoot: _cmdlet.EnableSecureBoot,
+                        disableCapacityReservationAssignment: _cmdlet.DisableCapacityReservationAssignment.IsPresent ? true : (bool?)null
                     );
                 }
             }

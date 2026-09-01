@@ -23,7 +23,7 @@ New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <Stri
  [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-ProcessorMode <String>] [-SharedGalleryImageId <String>]
  [-SecurityType <String>] [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-ZonePlacementPolicy <String>]
  [-IncludeZone <String[]>] [-ExcludeZone <String[]>] [-AlignRegionalDisksToVMZone]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DisableCapacityReservationAssignment] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
@@ -37,7 +37,7 @@ New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <Stri
  [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-ProcessorMode <String>] [-SharedGalleryImageId <String>]
  [-SecurityType <String>] [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-ZonePlacementPolicy <String>]
  [-IncludeZone <String[]>] [-ExcludeZone <String[]>] [-AlignRegionalDisksToVMZone]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DisableCapacityReservationAssignment] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -232,6 +232,14 @@ This example creates a Spot Plus VM configuration object and deploys it. Spot Pl
 '-EvictionPolicy' and '-MaxPrice' behave the same way as they do for 'Spot'.
 Using 'SpotPlus' requires the 'Microsoft.Compute/SpotPlus' subscription feature to be registered and a region where the feature is enabled.
 
+### Example 6: Create a virtual machine configuration object that opts out of capacity reservation
+```powershell
+$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_D2s_v3" -DisableCapacityReservationAssignment;
+New-AzVM -ResourceGroupName "myRG" -Location "eastus" -VM $vmConfig;
+```
+
+This example creates a virtual machine configuration object which is explicitly opted out from any capacity reservation assignment, so the virtual machine consumes publicly available capacity instead of implicitly or explicitly consuming a capacity reservation.
+
 ## PARAMETERS
 
 ### -AlignRegionalDisksToVMZone
@@ -293,6 +301,22 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableCapacityReservationAssignment
+Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment.
+When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
