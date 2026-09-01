@@ -715,7 +715,16 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 dynamicPolicy.RetentionDays, dynamicPolicy.IsManagedIdentityInUse);
 
             model.PredicateExpression = dynamicPolicy.PredicateExpression;
-            model.AuditActionGroup = ExtractAuditActionGroups(dynamicPolicy.AuditActionsAndGroups);            
+            model.AuditActionGroup = ExtractAuditActionGroups(dynamicPolicy.AuditActionsAndGroups);
+            model.RequiredFields = ((IEnumerable<string>)dynamicPolicy.RequiredFields)?.ToArray();
+        }
+
+        protected override void PolicizeAuditModel(AuditModelType model, ProxyResource policy)
+        {
+            base.PolicizeAuditModel(model, policy);
+
+            dynamic dynamicPolicy = (dynamic)policy;
+            dynamicPolicy.RequiredFields = model.RequiredFields;
         }
 
         internal override void ModelizeStorageKeyType(AuditModelType model, bool? isSecondary) 

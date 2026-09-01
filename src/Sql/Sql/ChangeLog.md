@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added selective-fields support to Azure SQL auditing
+    - Added the optional `RequiredFields` parameter to `Set-AzSqlServerAudit` and `Set-AzSqlDatabaseAudit`
+    - Added `RequiredFields` to the output of `Get-AzSqlServerAudit` and `Get-AzSqlDatabaseAudit`
+    - Updated blob auditing operations to API version `2026-08-01-preview`
 * Added multi-database Managed Instance link support
     - Added `LinkMode` support to `New-AzSqlInstanceLink`
     - Added database membership updates to `Update-AzSqlInstanceLink`
