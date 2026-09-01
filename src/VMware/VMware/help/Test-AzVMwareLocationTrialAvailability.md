@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The name of the Azure region.
+A location in a subscription
 
 ```yaml
 Type: System.String
@@ -102,8 +102,7 @@ Accept wildcard characters: False
 
 ### -Name
 The name of the SKU.
-E.g.
-P3.
+Ex - P3.
 It is typically a letter+number code
 
 ```yaml
