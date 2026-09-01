@@ -492,7 +492,7 @@ function Test-AzureVMMUA
 {
 	$location = "centraluseuap"
 	$resourceGroupName = "hiagarg"
-	$vaultName = "mua-pstest-vault"
+	$vaultName = "mua-pstest-vault2"
 	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiaganevm4"
 	$vmFriendlyName = "hiaganevm4"
 	# $resGuardId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/iaasvm-pstest-rg/providers/Microsoft.DataProtection/resourceGuards/mua-pstest-rguard"
@@ -504,6 +504,10 @@ function Test-AzureVMMUA
 	{	
 		# Setup
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		if ($vault.Properties.ImmutabilitySettings.ImmutabilityState -ne "Disabled")
+		{
+			$vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName -ImmutabilityState Disabled
+		}
 
 		# Enable protection on hiaganewVM2 with default policy 
 		$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name "DefaultPolicy"
@@ -515,9 +519,17 @@ function Test-AzureVMMUA
 		}
 		else
 		{
-			Undo-AzRecoveryServicesBackupItemDeletion -Item $item -VaultId $vault.ID -Force
-			$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM | Where-Object { $_.Name -match $vmFriendlyName }
-			$enable = Enable-AzRecoveryServicesBackupProtection -Item $item -Policy $pol -VaultId $vault.ID
+			if ($item.ProtectionState -eq "ProtectionStopped")
+			{
+				Undo-AzRecoveryServicesBackupItemDeletion -Item $item -VaultId $vault.ID -Force
+				$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM | Where-Object { $_.Name -match $vmFriendlyName }
+			}
+
+			if ($item.ProtectionState -ne "Protected" -and $item.ProtectionState -ne "IRPending")
+			{
+				$enable = Enable-AzRecoveryServicesBackupProtection -Item $item -Policy $pol -VaultId $vault.ID
+			}
+
 			$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM | Where-Object { $_.Name -match $vmFriendlyName }
 			Assert-True { $item.ProtectionState -eq "Protected" -or $item.ProtectionState -eq "IRPending"}
 		}
@@ -530,14 +542,14 @@ function Test-AzureVMMUA
 
 		# modify policy
 		# modify policy with reduce retention count 
-		$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -WorkloadType AzureVM -BackupManagementType AzureVM
-		$pol[1].RetentionPolicy.DailySchedule.DurationCountInDays = $pol[1].RetentionPolicy.DailySchedule.DurationCountInDays - 1
-		Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol[1] -RetentionPolicy $pol[1].RetentionPolicy
+		$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $lowerRetentionPolicy
+		$pol.RetentionPolicy.DailySchedule.DurationCountInDays = $pol.RetentionPolicy.DailySchedule.DurationCountInDays - 1
+		Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol -RetentionPolicy $pol.RetentionPolicy
 
 		# modify policy with increase retention count 
-		$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -WorkloadType AzureVM -BackupManagementType AzureVM
-		$pol[1].RetentionPolicy.DailySchedule.DurationCountInDays = $pol[1].RetentionPolicy.DailySchedule.DurationCountInDays + 2
-		Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol[1] -RetentionPolicy $pol[1].RetentionPolicy
+		$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $lowerRetentionPolicy
+		$pol.RetentionPolicy.DailySchedule.DurationCountInDays = $pol.RetentionPolicy.DailySchedule.DurationCountInDays + 2
+		Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol -RetentionPolicy $pol.RetentionPolicy
 
 		# modify protection 
 		$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $lowerRetentionPolicy
@@ -1499,7 +1511,7 @@ function Test-AzureRestoreWithCVMOsDiskEncryptionSetId()
 	$targetSubnetName = "default"
 	$owner = "sgholap"
 	$subscriptionId = "5288acd1-ba79-4377-9205-9f220331a44a"
-	$recoveryPointId = "808254335380202" #"807152782396876"
+	$recoveryPointId = "805440465632125"
 	$cVMOSDiskEncryptionSetId = "/subscriptions/5288acd1-ba79-4377-9205-9f220331a44a/resourceGroups/sgholap-rg/providers/Microsoft.Compute/diskEncryptionSets/CVMPSRestoreDES"
 	try
 	{	
