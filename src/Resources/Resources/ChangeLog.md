@@ -25,6 +25,7 @@
 * Renamed `DenySettingsApplyToChildScope` to `DenySettingsApplyToChildScopes` for deployment stack WhatIfResult cmdlets while retaining the old name as an alias.
 * Added `ResourcesWithoutDeleteSupport` to deployment stack WhatIfResult cmdlets.
 * Added tag support to deployment stack WhatIfResult cmdlets and output.
+* Aligned deployment stack WhatIfResult tag preservation with deployment stack cmdlets when `-Tag` is omitted or explicitly set to `$null`.
 
 ## Version 10.1.0
 * Added deployment stack WhatIfResult cmdlets for resource group, subscription, and management group scopes.
