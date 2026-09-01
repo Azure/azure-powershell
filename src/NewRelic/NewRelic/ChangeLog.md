@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 * Corrected the `Invoke-AzNewRelicResubscribeMonitor` command description wording (`underline` corrected to `underlying`).
-* Updated the required `Az.Accounts` version to `5.5.2`.
 
 ## Version 0.3.0
 * Added AutoRest-generated NewRelic PowerShell module using API version 2025-05-01-preview
