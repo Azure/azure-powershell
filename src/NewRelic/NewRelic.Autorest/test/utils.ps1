@@ -54,7 +54,7 @@ function setupEnv() {
     $region = 'eastus'
     $env.Add('region', $region)
 
-    $testerEmail = 'vanshjoshi@microsoft.com'
+    $testerEmail = 'user@example.com'
     $testerFirstName = 'Vansh'
     $testerLastName = 'Joshi'
 
