@@ -1,63 +1,46 @@
 ---
-external help file: Az.RedisEnterpriseCache-help.xml
+external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheforcedatabaseunlink
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/undo-azredisenterprisecachemigration
 schema: 2.0.0
 ---
 
-# Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink
+# Undo-AzRedisEnterpriseCacheMigration
 
 ## SYNOPSIS
-Forcibly removes the link to the specified database resource.
+Cancel or rollback the migration operation in a Redis Enterprise cluster.
 
 ## SYNTAX
 
-### ForceExpanded (Default)
+### Cancel (Default)
 ```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Id <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ForceViaJsonString
-```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Undo-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### ForceViaJsonFilePath
+### CancelViaIdentity
 ```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ForceViaIdentityExpanded
-```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -InputObject <IRedisEnterpriseCacheIdentity> -Id <String[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### ForceViaIdentityRedisEnterpriseExpanded
-```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -RedisEnterpriseInputObject <IRedisEnterpriseCacheIdentity>
- -Id <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Undo-AzRedisEnterpriseCacheMigration -InputObject <IRedisEnterpriseCacheIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Forcibly removes the link to the specified database resource.
+Cancel or rollback the migration operation in a Redis Enterprise cluster.
 
 ## EXAMPLES
 
-### Example 1: Unlink database
+### Example 1: Cancel an in-progress migration
 ```powershell
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ResourceGroupName "MyGroup" -ClusterName "MyCache3" -Id @("databaseId")
+Undo-AzRedisEnterpriseCacheMigration -ClusterName "cache1" -ResourceGroupName "rg1"
 ```
 
-Forcibly removes the link to the database resource whose id is given, from the georeplication group the specified cache belongs to
+```output
+True
+
+```
+
+Cancels an in-progress migration to the specified Redis Enterprise cache cluster.
 
 ## PARAMETERS
 
@@ -84,7 +67,7 @@ There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
-Parameter Sets: ForceExpanded, ForceViaJsonString, ForceViaJsonFilePath
+Parameter Sets: Cancel
 Aliases:
 
 Required: True
@@ -110,63 +93,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-The resource IDs of the database resources to be unlinked.
-
-```yaml
-Type: System.String[]
-Parameter Sets: ForceExpanded, ForceViaIdentityExpanded, ForceViaIdentityRedisEnterpriseExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: ForceViaIdentityExpanded
+Parameter Sets: CancelViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Force operation
-
-```yaml
-Type: System.String
-Parameter Sets: ForceViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Force operation
-
-```yaml
-Type: System.String
-Parameter Sets: ForceViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -200,28 +138,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RedisEnterpriseInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: ForceViaIdentityRedisEnterpriseExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ForceExpanded, ForceViaJsonString, ForceViaJsonFilePath
+Parameter Sets: Cancel
 Aliases:
 
 Required: True
@@ -237,7 +160,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ForceExpanded, ForceViaJsonString, ForceViaJsonFilePath
+Parameter Sets: Cancel
 Aliases:
 
 Required: False
@@ -292,3 +215,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

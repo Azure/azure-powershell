@@ -25,3 +25,40 @@ default Microsoft.Cache/redisEnterprise/databases
 ```
 
 This command creates a georeplicated database named default for a Redis Enterprise cache named MyCache2. This database is supposed to be linked with a database default of a preexisting cache MyCache1
+
+### Example 3: Create a database with keyspace notifications enabled
+```powershell
+New-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -NotifyKeyspaceEvents "AKE"
+```
+
+```output
+AccessKeysAuthentication     : Disabled
+ClientProtocol               : Encrypted
+ClusteringPolicy             : OSSCluster
+DeferUpgrade                 : NotDeferred
+EvictionPolicy               : NoEviction
+GeoReplicationGroupNickname  :
+GeoReplicationLinkedDatabase :
+Id                           : /subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default
+Module                       :
+Name                         : default
+NotifyKeyspaceEvent          : AKE
+PersistenceAofEnabled        :
+PersistenceAofFrequency      :
+PersistenceRdbEnabled        :
+PersistenceRdbFrequency      :
+Port                         : 10000
+ProvisioningState            : Succeeded
+RedisVersion                 : 7.4
+ResourceGroupName            : MyGroup
+ResourceState                : Running
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Cache/redisEnterprise/databases
+```
+
+This command creates a database named default with all keyspace notifications enabled (AKE) for a Redis Enterprise cache named MyCache.

@@ -21,7 +21,8 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
  [-AccessKeysAuthentication <String>] [-CustomerManagedKeyEncryptionKeyUrl <String>]
  [-HighAvailability <String>] [-PublicNetworkAccess <String>] [-EnableSystemAssignedIdentity]
  [-UserAssignedIdentity <String[]>] [-KeyEncryptionKeyIdentityType <String>]
- [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-AofPersistenceEnabled]
+ [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
+ [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>] [-AofPersistenceEnabled]
  [-AofPersistenceFrequency <String>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -34,8 +35,8 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
  [-Tag <Hashtable>] [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <String>]
  [-PublicNetworkAccess <String>] [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
  [-KeyEncryptionKeyIdentityType <String>] [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-NoDatabase] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-NoDatabase] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,6 +95,84 @@ West US  MyCache   Microsoft.Cache/redisEnterprise      {default}
 ```
 
 This command creates a cache name MyCache with a georeplicated database named default
+
+### Example 5: Create a Redis Enterprise cache with a maintenance window
+```powershell
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Balanced_B10" -PublicNetworkAccess "Enabled" -MaintenanceConfigurationMaintenanceWindow @(@{Type="Weekly"; ScheduleDayOfWeek="Saturday"; StartHourUtc=0; Duration="PT10H"}, @{Type="Weekly"; ScheduleDayOfWeek="Wednesday"; StartHourUtc=0; Duration="PT10H"})
+```
+
+```output
+CustomerManagedKeyEncryptionKeyUrl                     :
+HighAvailability                                       : Enabled
+HostName                                               : MyCache.eastus.redis.azure.net
+Id                                                     : /subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache
+IdentityPrincipalId                                    :
+IdentityTenantId                                       :
+IdentityType                                           : None
+IdentityUserAssignedIdentity                           : {
+                                                         }
+KeyEncryptionKeyIdentityType                           :
+KeyEncryptionKeyIdentityUserAssignedIdentityResourceId :
+Kind                                                   : v2
+Location                                               : East US
+MaintenanceConfigurationMaintenanceWindow              : {{
+                                                           "schedule": {
+                                                             "dayOfWeek": "Saturday"
+                                                           },
+                                                           "type": "Weekly",
+                                                           "duration": "PT10H",
+                                                           "startHourUtc": 0
+                                                         }, {
+                                                           "schedule": {
+                                                             "dayOfWeek": "Wednesday"
+                                                           },
+                                                           "type": "Weekly",
+                                                           "duration": "PT10H",
+                                                           "startHourUtc": 0
+                                                         }}
+MigratedEndpoint                                       :
+MinimumTlsVersion                                      : 1.2
+Name                                                   : MyCache
+PrivateEndpointConnection                              : {}
+ProvisioningState                                      : Succeeded
+PublicNetworkAccess                                    : Enabled
+RedisVersion                                           :
+RedundancyMode                                         : ZR
+ResourceGroupName                                      : MyGroup
+ResourceState                                          : Running
+SkuCapacity                                            :
+SkuName                                                : Balanced_B10
+SystemDataCreatedAt                                    :
+SystemDataCreatedBy                                    :
+SystemDataCreatedByType                                :
+SystemDataLastModifiedAt                               :
+SystemDataLastModifiedBy                               :
+SystemDataLastModifiedByType                           :
+Tag                                                    : {
+                                                         }
+Type                                                   : Microsoft.Cache/redisEnterprise
+Zone                                                   :
+Database                                               : {[default, {
+                                                           "id": "/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default",
+                                                           "name": "default",
+                                                           "type": "Microsoft.Cache/redisEnterprise/databases",
+                                                           "properties": {
+                                                             "clientProtocol": "Encrypted",
+                                                             "port": 10000,
+                                                             "provisioningState": "Succeeded",
+                                                             "resourceState": "Running",
+                                                             "clusteringPolicy": "OSSCluster",
+                                                             "evictionPolicy": "VolatileLRU",
+                                                             "redisVersion": "7.4",
+                                                             "deferUpgrade": "NotDeferred",
+                                                             "accessKeysAuthentication": "Disabled",
+                                                             "notifyKeyspaceEvents": ""
+                                                           }
+                                                         }]}
+```
+
+This command creates a Redis Enterprise cache named MyCache with custom maintenance windows on Saturdays and Wednesdays starting at midnight UTC for 10 hours.
+At least 2 maintenance windows are required.
 
 ## PARAMETERS
 
@@ -377,6 +456,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaintenanceConfigurationMaintenanceWindow
+Custom maintenance windows that apply to the cluster.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

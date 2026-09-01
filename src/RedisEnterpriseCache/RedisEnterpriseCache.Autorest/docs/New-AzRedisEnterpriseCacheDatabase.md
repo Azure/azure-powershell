@@ -17,8 +17,9 @@ New-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <Str
  [-SubscriptionId <String>] [-AccessKeysAuthentication <String>] [-AofPersistenceEnabled]
  [-AofPersistenceFrequency <String>] [-ClientProtocol <String>] [-ClusteringPolicy <String>]
  [-EvictionPolicy <String>] [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>]
- [-Module <IModule[]>] [-Port <Int32>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Module <IModule[]>] [-NotifyKeyspaceEvents <String>] [-Port <Int32>] [-RdbPersistenceEnabled]
+ [-RdbPersistenceFrequency <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +55,43 @@ default Microsoft.Cache/redisEnterprise/databases
 
 This command creates a georeplicated database named default for a Redis Enterprise cache named MyCache2.
 This database is supposed to be linked with a database default of a preexisting cache MyCache1
+
+### Example 3: Create a database with keyspace notifications enabled
+```powershell
+New-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -NotifyKeyspaceEvents "AKE"
+```
+
+```output
+AccessKeysAuthentication     : Disabled
+ClientProtocol               : Encrypted
+ClusteringPolicy             : OSSCluster
+DeferUpgrade                 : NotDeferred
+EvictionPolicy               : NoEviction
+GeoReplicationGroupNickname  :
+GeoReplicationLinkedDatabase :
+Id                           : /subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default
+Module                       :
+Name                         : default
+NotifyKeyspaceEvent          : AKE
+PersistenceAofEnabled        :
+PersistenceAofFrequency      :
+PersistenceRdbEnabled        :
+PersistenceRdbFrequency      :
+Port                         : 10000
+ProvisioningState            : Succeeded
+RedisVersion                 : 7.4
+ResourceGroupName            : MyGroup
+ResourceState                : Running
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Cache/redisEnterprise/databases
+```
+
+This command creates a database named default with all keyspace notifications enabled (AKE) for a Redis Enterprise cache named MyCache.
 
 ## PARAMETERS
 
@@ -237,6 +275,25 @@ To construct, see NOTES section for MODULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IModule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotifyKeyspaceEvents
+Specifies which keyspace events should trigger notifications.
+Default is an empty string, meaning this feature is disabled.
+When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present.
+For example, 'AKE' enables all standard events.
+See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
