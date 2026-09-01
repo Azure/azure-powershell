@@ -20,11 +20,17 @@
 
 -->
 ## Upcoming Release
-* Added `-WireServerUseLocalFileRules` and `-ImdsUseLocalFileRules` parameters to `Set-AzVMProxyAgentSetting` and `Set-AzVmssProxyAgentSetting` so users can configure local file rules for Virtual Machine (VM) and Virtual Machine Scale Set (VMSS) host endpoints. [#30055]
-* Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
-* Added `-ProcessorMode` support to VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) create and update flows in `New-AzVMConfig`, `New-AzVM`, `Update-AzVM`, `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss`. [#30012]
-* Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM (Virtual Machine) during stop operations.
-    - The switch cannot be used together with `-Hibernate`, `-StayProvisioned`, or `-SkipShutdown`.
+
+## Version 11.9.0
+* Added `-WireServerUseLocalFileRules` and `-ImdsUseLocalFileRules` to `Set-AzVMProxyAgentSetting` and `Set-AzVmssProxyAgentSetting` to configure local file rules for Virtual Machine (VM) and Virtual Machine Scale Set (VMSS) host endpoints. [#30055]
+* Updated ComputeRP, DiskRP, and GalleryRP cmdlets to API versions 2026-04-01, 2026-03-02, and 2025-12-03, respectively.
+* Added `-ProcessorMode` to VM and VMSS create and update cmdlets: `New-AzVMConfig`, `New-AzVM`, `Update-AzVM`, `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss`. [#30012]
+* Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM during stop; it cannot be used with `-Hibernate`, `-StayProvisioned`, or `-SkipShutdown`.
+* Added `-ReservationType` to `New-AzCapacityReservationGroup` and `Update-AzCapacityReservationGroup` for `Open` capacity reservation groups, and exposed `ReservationType` in output.
+* Added `-DisableCapacityReservationAssignment` to `New-AzVM`, `New-AzVMConfig`, and `Update-AzVM` to opt a VM out of capacity reservation.
+* Added `CapacityReservationType` to `Get-AzVM -Status` instance views.
+* Added `-DisableCapacityReservationAssignment` to `New-AzVmss`, `New-AzVmssConfig`, and `Update-AzVmss` to opt VMSS instances out of capacity reservation.
+* Added `CapacityReservation` property to `Get-AzVmssVM` output and `CapacityReservationType` property to its `-InstanceView` output.
 
 ## Version 11.8.0
 * Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.
