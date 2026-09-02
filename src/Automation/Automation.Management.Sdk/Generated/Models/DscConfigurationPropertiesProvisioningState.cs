@@ -7,37 +7,37 @@ namespace Microsoft.Azure.Management.Automation.Models
 {
 
     /// <summary>
-    /// Defines values for DscConfigurationProvisioningState.
+    /// Defines values for DscConfigurationPropertiesProvisioningState.
     /// </summary>
 
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DscConfigurationProvisioningState
+    public enum DscConfigurationPropertiesProvisioningState
     {
         [System.Runtime.Serialization.EnumMember(Value = "Succeeded")]
         Succeeded
     }
-    internal static class DscConfigurationProvisioningStateEnumExtension
+    internal static class DscConfigurationPropertiesProvisioningStateEnumExtension
     {
-        internal static string ToSerializedValue(this DscConfigurationProvisioningState? value)
+        internal static string ToSerializedValue(this DscConfigurationPropertiesProvisioningState? value)
         {
-            return value == null ? null : ((DscConfigurationProvisioningState)value).ToSerializedValue();
+            return value == null ? null : ((DscConfigurationPropertiesProvisioningState)value).ToSerializedValue();
         }
-        internal static string ToSerializedValue(this DscConfigurationProvisioningState value)
+        internal static string ToSerializedValue(this DscConfigurationPropertiesProvisioningState value)
         {
             switch( value )
             {
-                case DscConfigurationProvisioningState.Succeeded:
+                case DscConfigurationPropertiesProvisioningState.Succeeded:
                     return "Succeeded";
             }
             return null;
         }
-        internal static DscConfigurationProvisioningState? ParseDscConfigurationProvisioningState(this string value)
+        internal static DscConfigurationPropertiesProvisioningState? ParseDscConfigurationPropertiesProvisioningState(this string value)
         {
             switch( value )
             {
                 case "Succeeded":
-                    return DscConfigurationProvisioningState.Succeeded;
+                    return DscConfigurationPropertiesProvisioningState.Succeeded;
             }
             return null;
         }

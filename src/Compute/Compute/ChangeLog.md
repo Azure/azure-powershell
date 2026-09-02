@@ -25,6 +25,7 @@
     - `-EvictionPolicy` and `-MaxPrice` behave the same way as they do for `Spot`.
     - Requires the `Microsoft.Compute/SpotPlus` subscription feature to be registered, and a region where the feature is enabled.
 * For `New-AzVM`: If the extension-version catalogue lookup fails, the cmdlet uses the default BGInfo (Background Information) extension version, and installation failures now emit a warning rather than terminating the cmdlet.
+* Added cmdlets and parameters to configure first-party service tags for implicit public IP addresses on VMs (Virtual Machines) and VMSS (Virtual Machine Scale Sets).
 
 ## Version 11.9.0
 * Added `-WireServerUseLocalFileRules` and `-ImdsUseLocalFileRules` to `Set-AzVMProxyAgentSetting` and `Set-AzVmssProxyAgentSetting` to configure local file rules for Virtual Machine (VM) and Virtual Machine Scale Set (VMSS) host endpoints. [#30055]

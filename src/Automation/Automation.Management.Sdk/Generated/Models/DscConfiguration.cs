@@ -25,19 +25,25 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the DscConfiguration class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource Id for the resource
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
         /// </param>
 
-        /// <param name="location">The Azure Region where the resource lives
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="etag">Gets or sets the etag of the resource.
@@ -72,9 +78,9 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="description">Gets or sets the description.
         /// </param>
-        public DscConfiguration(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), string etag = default(string), DscConfigurationProvisioningState? provisioningState = default(DscConfigurationProvisioningState?), int? jobCount = default(int?), System.Collections.Generic.IDictionary<string, DscConfigurationParameter> parameters = default(System.Collections.Generic.IDictionary<string, DscConfigurationParameter>), ContentSource source = default(ContentSource), string state = default(string), bool? logVerbose = default(bool?), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), int nodeConfigurationCount = default(int), string description = default(string))
+        public DscConfiguration(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), DscConfigurationPropertiesProvisioningState? provisioningState = default(DscConfigurationPropertiesProvisioningState?), int? jobCount = default(int?), System.Collections.Generic.IDictionary<string, DscConfigurationParameter> parameters = default(System.Collections.Generic.IDictionary<string, DscConfigurationParameter>), ContentSource source = default(ContentSource), string state = default(string), bool? logVerbose = default(bool?), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), int? nodeConfigurationCount = default(int?), string description = default(string))
 
-        : base(id, name, type, tags, location)
+        : base(location, id, name, type, systemData, tags)
         {
             this.Etag = etag;
             this.ProvisioningState = provisioningState;
@@ -106,7 +112,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the provisioning state of the configuration. Possible values include: &#39;Succeeded&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
-        public DscConfigurationProvisioningState? ProvisioningState {get; set; }
+        public DscConfigurationPropertiesProvisioningState? ProvisioningState {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the job count of the configuration.
@@ -142,19 +148,19 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.creationTime")]
-        public System.DateTimeOffset CreationTime {get; set; }
+        public System.DateTimeOffset? CreationTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; set; }
+        public System.DateTimeOffset? LastModifiedTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets the number of compiled node configurations.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nodeConfigurationCount")]
-        public int NodeConfigurationCount {get; set; }
+        public int? NodeConfigurationCount {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the description.
@@ -167,8 +173,9 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
 
 
 

@@ -7,37 +7,37 @@ namespace Microsoft.Azure.Management.Automation.Models
 {
 
     /// <summary>
-    /// Defines values for RunbookProvisioningState.
+    /// Defines values for RunbookPropertiesProvisioningState.
     /// </summary>
 
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RunbookProvisioningState
+    public enum RunbookPropertiesProvisioningState
     {
         [System.Runtime.Serialization.EnumMember(Value = "Succeeded")]
         Succeeded
     }
-    internal static class RunbookProvisioningStateEnumExtension
+    internal static class RunbookPropertiesProvisioningStateEnumExtension
     {
-        internal static string ToSerializedValue(this RunbookProvisioningState? value)
+        internal static string ToSerializedValue(this RunbookPropertiesProvisioningState? value)
         {
-            return value == null ? null : ((RunbookProvisioningState)value).ToSerializedValue();
+            return value == null ? null : ((RunbookPropertiesProvisioningState)value).ToSerializedValue();
         }
-        internal static string ToSerializedValue(this RunbookProvisioningState value)
+        internal static string ToSerializedValue(this RunbookPropertiesProvisioningState value)
         {
             switch( value )
             {
-                case RunbookProvisioningState.Succeeded:
+                case RunbookPropertiesProvisioningState.Succeeded:
                     return "Succeeded";
             }
             return null;
         }
-        internal static RunbookProvisioningState? ParseRunbookProvisioningState(this string value)
+        internal static RunbookPropertiesProvisioningState? ParseRunbookPropertiesProvisioningState(this string value)
         {
             switch( value )
             {
                 case "Succeeded":
-                    return RunbookProvisioningState.Succeeded;
+                    return RunbookPropertiesProvisioningState.Succeeded;
             }
             return null;
         }
