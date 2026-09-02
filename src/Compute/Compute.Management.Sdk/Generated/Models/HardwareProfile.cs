@@ -86,11 +86,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// is not supported for VirtualMachineScaleSet. Please follow the instructions
         /// in [VM Customization](https://aka.ms/vmcustomization) for more details.
         /// </param>
-        public HardwareProfile(string vmSize = default(string), VMSizeProperties vmSizeProperties = default(VMSizeProperties))
+
+        /// <param name="processorMode">Specifies the processor mode for the virtual machine or virtual machine
+        /// scale set. Optional; if omitted, the platform default applies (currently
+        /// Deterministic). This property can be updated on a running VM or VMSS
+        /// without deallocation or reboot. Minimum api-version: 2026-04-01.
+        /// Possible values include: &#39;Deterministic&#39;, &#39;Opportunistic&#39;</param>
+        public HardwareProfile(string vmSize = default(string), VMSizeProperties vmSizeProperties = default(VMSizeProperties), string processorMode = default(string))
 
         {
             this.VmSize = vmSize;
             this.VmSizeProperties = vmSizeProperties;
+            this.ProcessorMode = processorMode;
             CustomInit();
         }
 
@@ -126,5 +133,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmSizeProperties")]
         public VMSizeProperties VmSizeProperties {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the processor mode for the virtual machine or
+        /// virtual machine scale set. Optional; if omitted, the platform default
+        /// applies (currently Deterministic). This property can be updated on a
+        /// running VM or VMSS without deallocation or reboot. Minimum api-version:
+        /// 2026-04-01. Possible values include: &#39;Deterministic&#39;, &#39;Opportunistic&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "processorMode")]
+        public string ProcessorMode {get; set; }
     }
 }

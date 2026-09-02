@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     /// A private link resource
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateLinkResource : Resource
+    public partial class PrivateLinkResource : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the PrivateLinkResource class.
@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// Initializes a new instance of the PrivateLinkResource class.
         /// </summary>
 
-        /// <param name="id">Fully qualified identifier of the key vault resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Name of the key vault resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type of the key vault resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="location">Azure location of the key vault resource.
@@ -48,10 +54,12 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <param name="requiredZoneNames">Required DNS zone names of the the private link resource.
         /// </param>
-        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
+        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
 
-        : base(id, name, type, location, tags)
+        : base(id, name, type, systemData)
         {
+            this.Location = location;
+            this.Tags = tags;
             this.GroupId = groupId;
             this.RequiredMembers = requiredMembers;
             this.RequiredZoneNames = requiredZoneNames;
@@ -63,6 +71,18 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets azure location of the key vault resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; private set; }
+
+        /// <summary>
+        /// Gets tags assigned to the key vault resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; private set; }
 
         /// <summary>
         /// Gets group identifier of private link resource.

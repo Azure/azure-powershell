@@ -75,7 +75,7 @@ function Test-BucketCrud
     $bucketName1     = Get-ResourceName
     $bucketName2     = Get-ResourceName
 
-    $resourceLocation = "eastus"
+    $resourceLocation = "westus"
     $gibibyte         = 1024 * 1024 * 1024
     $usageThreshold   = 100 * $gibibyte
     $poolSize         = 4398046511104
@@ -227,7 +227,7 @@ function Test-BucketPipeline
     $volName       = Get-ResourceName
     $bucketName    = Get-ResourceName
 
-    $resourceLocation = "eastus"
+    $resourceLocation = "westus"
     $gibibyte         = 1024 * 1024 * 1024
     $usageThreshold   = 100 * $gibibyte
     $poolSize         = 4398046511104
@@ -303,7 +303,7 @@ function Test-BucketCreateWithAkv
     $volName       = Get-ResourceName
     $bucketName    = Get-ResourceName
 
-    $resourceLocation = "eastus"
+    $resourceLocation = "westus"
     $certKeyVaultUri        = "https://anf-bucket-certs.vault.azure.net/"
     $certName               = "anf-bucket-cert"
     $credentialsKeyVaultUri = "https://anf-bucket-creds.vault.azure.net/"

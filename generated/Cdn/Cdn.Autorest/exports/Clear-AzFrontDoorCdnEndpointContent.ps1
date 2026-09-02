@@ -246,6 +246,38 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Purge = 'Az.Cdn.private\Clear-AzFrontDoorCdnEndpointContent_Purge';
+        PurgeExpanded = 'Az.Cdn.private\Clear-AzFrontDoorCdnEndpointContent_PurgeExpanded';
+        PurgeViaIdentity = 'Az.Cdn.private\Clear-AzFrontDoorCdnEndpointContent_PurgeViaIdentity';
+        PurgeViaIdentityExpanded = 'Az.Cdn.private\Clear-AzFrontDoorCdnEndpointContent_PurgeViaIdentityExpanded';
+        PurgeViaIdentityProfile = 'Az.Cdn.private\Clear-AzFrontDoorCdnEndpointContent_PurgeViaIdentityProfile';
+        PurgeViaIdentityProfileExpanded = 'Az.Cdn.private\Clear-AzFrontDoorCdnEndpointContent_PurgeViaIdentityProfileExpanded';
+        PurgeViaJsonFilePath = 'Az.Cdn.private\Clear-AzFrontDoorCdnEndpointContent_PurgeViaJsonFilePath';
+        PurgeViaJsonString = 'Az.Cdn.private\Clear-AzFrontDoorCdnEndpointContent_PurgeViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null

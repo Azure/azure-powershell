@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='clusterName'>
         /// Managed Cassandra cluster name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<DataCenterResource> List(this ICassandraDataCentersOperations operations, string resourceGroupName, string clusterName)
+        public static Microsoft.Rest.Azure.IPage<DataCenterResource> List(this ICassandraDataCentersOperations operations, string resourceGroupName, string clusterName)
         {
                 return ((ICassandraDataCentersOperations)operations).ListAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<DataCenterResource>> ListAsync(this ICassandraDataCentersOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DataCenterResource>> ListAsync(this ICassandraDataCentersOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -95,48 +95,6 @@ namespace Microsoft.Azure.Management.CosmosDB
             {
                 return _result.Body;
             }
-        }
-        /// <summary>
-        /// Delete a managed Cassandra data center.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// Managed Cassandra cluster name.
-        /// </param>
-        /// <param name='dataCenterName'>
-        /// Data center name in a managed Cassandra cluster.
-        /// </param>
-        public static void Delete(this ICassandraDataCentersOperations operations, string resourceGroupName, string clusterName, string dataCenterName)
-        {
-                ((ICassandraDataCentersOperations)operations).DeleteAsync(resourceGroupName, clusterName, dataCenterName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Delete a managed Cassandra data center.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// Managed Cassandra cluster name.
-        /// </param>
-        /// <param name='dataCenterName'>
-        /// Data center name in a managed Cassandra cluster.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this ICassandraDataCentersOperations operations, string resourceGroupName, string clusterName, string dataCenterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, dataCenterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Create or update a managed Cassandra data center. When updating, overwrite
@@ -245,9 +203,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='dataCenterName'>
         /// Data center name in a managed Cassandra cluster.
         /// </param>
-        public static void BeginDelete(this ICassandraDataCentersOperations operations, string resourceGroupName, string clusterName, string dataCenterName)
+        public static CassandraDataCentersDeleteHeaders Delete(this ICassandraDataCentersOperations operations, string resourceGroupName, string clusterName, string dataCenterName)
         {
-                ((ICassandraDataCentersOperations)operations).BeginDeleteAsync(resourceGroupName, clusterName, dataCenterName).GetAwaiter().GetResult();
+                return ((ICassandraDataCentersOperations)operations).DeleteAsync(resourceGroupName, clusterName, dataCenterName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -268,9 +226,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ICassandraDataCentersOperations operations, string resourceGroupName, string clusterName, string dataCenterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CassandraDataCentersDeleteHeaders> DeleteAsync(this ICassandraDataCentersOperations operations, string resourceGroupName, string clusterName, string dataCenterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, dataCenterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, dataCenterName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Create or update a managed Cassandra data center. When updating, overwrite
@@ -360,6 +321,84 @@ namespace Microsoft.Azure.Management.CosmosDB
         public static async System.Threading.Tasks.Task<DataCenterResource> BeginUpdateAsync(this ICassandraDataCentersOperations operations, string resourceGroupName, string clusterName, string dataCenterName, DataCenterResource body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, dataCenterName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Delete a managed Cassandra data center.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='dataCenterName'>
+        /// Data center name in a managed Cassandra cluster.
+        /// </param>
+        public static CassandraDataCentersDeleteHeaders BeginDelete(this ICassandraDataCentersOperations operations, string resourceGroupName, string clusterName, string dataCenterName)
+        {
+                return ((ICassandraDataCentersOperations)operations).BeginDeleteAsync(resourceGroupName, clusterName, dataCenterName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete a managed Cassandra data center.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='dataCenterName'>
+        /// Data center name in a managed Cassandra cluster.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CassandraDataCentersDeleteHeaders> BeginDeleteAsync(this ICassandraDataCentersOperations operations, string resourceGroupName, string clusterName, string dataCenterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, dataCenterName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// List all data centers in a particular managed Cassandra cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DataCenterResource> ListNext(this ICassandraDataCentersOperations operations, string nextPageLink)
+        {
+                return ((ICassandraDataCentersOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List all data centers in a particular managed Cassandra cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DataCenterResource>> ListNextAsync(this ICassandraDataCentersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

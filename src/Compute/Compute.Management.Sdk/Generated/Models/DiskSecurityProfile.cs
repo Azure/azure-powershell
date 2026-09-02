@@ -34,11 +34,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="secureVMDiskEncryptionSetId">ResourceId of the disk encryption set associated to Confidential VM
         /// supported disk encrypted with customer managed key
         /// </param>
-        public DiskSecurityProfile(string securityType = default(string), string secureVMDiskEncryptionSetId = default(string))
+
+        /// <param name="confidentialVMVersion">Indicates the version of Confidential VM for the resource.
+        /// Possible values include: &#39;V1&#39;, &#39;V2&#39;</param>
+        public DiskSecurityProfile(string securityType = default(string), string secureVMDiskEncryptionSetId = default(string), string confidentialVMVersion = default(string))
 
         {
             this.SecurityType = securityType;
             this.SecureVMDiskEncryptionSetId = secureVMDiskEncryptionSetId;
+            this.ConfidentialVMVersion = confidentialVMVersion;
             CustomInit();
         }
 
@@ -61,5 +65,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "secureVMDiskEncryptionSetId")]
         public string SecureVMDiskEncryptionSetId {get; set; }
+
+        /// <summary>
+        /// Gets indicates the version of Confidential VM for the resource. Possible values include: &#39;V1&#39;, &#39;V2&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "confidentialVMVersion")]
+        public string ConfidentialVMVersion {get; private set; }
     }
 }

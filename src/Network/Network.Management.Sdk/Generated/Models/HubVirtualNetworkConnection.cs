@@ -58,7 +58,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="enableInternetSecurity">Enable internet security.
         /// </param>
-        public HubVirtualNetworkConnection(string id = default(string), string name = default(string), string etag = default(string), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string provisioningState = default(string), SubResource remoteVirtualNetwork = default(SubResource), bool? allowHubToRemoteVnetTransit = default(bool?), bool? allowRemoteVnetToUseHubVnetGateways = default(bool?), SubResource connectionPolicy = default(SubResource), bool? enableInternetSecurity = default(bool?))
+
+        /// <param name="enableOnlyIpv6Peering">Enable Only IPv6 Peering for this connection.
+        /// </param>
+        public HubVirtualNetworkConnection(string id = default(string), string name = default(string), string etag = default(string), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string provisioningState = default(string), SubResource remoteVirtualNetwork = default(SubResource), bool? allowHubToRemoteVnetTransit = default(bool?), bool? allowRemoteVnetToUseHubVnetGateways = default(bool?), SubResource connectionPolicy = default(SubResource), bool? enableInternetSecurity = default(bool?), bool? enableOnlyIpv6Peering = default(bool?))
 
         : base(id)
         {
@@ -71,6 +74,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.AllowRemoteVnetToUseHubVnetGateways = allowRemoteVnetToUseHubVnetGateways;
             this.ConnectionPolicy = connectionPolicy;
             this.EnableInternetSecurity = enableInternetSecurity;
+            this.EnableOnlyIpv6Peering = enableOnlyIpv6Peering;
             CustomInit();
         }
 
@@ -138,5 +142,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableInternetSecurity")]
         public bool? EnableInternetSecurity {get; set; }
+
+        /// <summary>
+        /// Gets or sets enable Only IPv6 Peering for this connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableOnlyIpv6Peering")]
+        public bool? EnableOnlyIpv6Peering {get; set; }
     }
 }

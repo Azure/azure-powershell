@@ -24,5 +24,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableResponseBuffering { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? DisableDefaultServerHeaderInResponse { get; set; }
     }
 }

@@ -28,13 +28,13 @@ Get-AzSecurityApiCollection -ApiId <String> -ResourceGroupName <String> -Service
 
 ### List2
 ```
-Get-AzSecurityApiCollection -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String[]>]
+Get-AzSecurityApiCollection -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzSecurityApiCollection -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzSecurityApiCollection -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -169,7 +169,7 @@ The name of the API Management service.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List2
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True

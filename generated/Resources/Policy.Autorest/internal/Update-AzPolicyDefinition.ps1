@@ -40,21 +40,24 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IPolicyIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ManagementGroupId <String>]: The ID of the management group.
+  [ManagementGroupId <String>]: The management group ID.
   [ManagementGroupName <String>]: The name of the management group. The name is case insensitive.
   [ParentResourcePath <String>]: The parent resource path. Use empty string if there is none.
-  [PolicyAssignmentId <String>]: The ID of the policy assignment to delete. Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
-  [PolicyAssignmentName <String>]: The name of the policy assignment to delete.
-  [PolicyDefinitionName <String>]: The name of the policy definition to create.
+  [PolicyAssignmentName <String>]: The name of the policy assignment to get.
+  [PolicyDefinitionName <String>]: The name of the policy definition to get.
   [PolicyDefinitionVersion <String>]: The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
-  [PolicyExemptionName <String>]: The name of the policy exemption to delete.
-  [PolicySetDefinitionName <String>]: The name of the policy set definition to create.
-  [ResourceGroupName <String>]: The name of the resource group that contains policy assignments.
+  [PolicyEnrollmentName <String>]: The name of the policy enrollment.
+  [PolicyExemptionName <String>]: The name of the policy exemption to get.
+  [PolicyMode <String>]: The policy mode of the data policy manifest to get.
+  [PolicySetDefinitionName <String>]: The name of the policy set definition to get.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the resource.
   [ResourceProviderNamespace <String>]: The namespace of the resource provider. For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
   [ResourceType <String>]: The resource type name. For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
-  [Scope <String>]: The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+  [Scope <String>]: The fully qualified Azure Resource manager identifier of the resource.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VariableName <String>]: The name of the variable to operate on.
+  [VariableValueName <String>]: The name of the variable value to operate on.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/update-azpolicydefinition
 #>
@@ -63,10 +66,16 @@ function Update-AzPolicyDefinition {
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
+    [System.String]
+    # The ID of the management group.
+    ${ManagementGroupId},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Alias('PolicyDefinitionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The name of the policy definition to create.
+    # The name of the policy definition to get.
     ${Name},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -89,8 +98,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails]))]
-    [System.Collections.Hashtable]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny]
     # The details of the endpoint.
     ${EndpointSettingDetail},
 
@@ -123,6 +131,13 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny]
+    # The policy definition metadata.
+    # Metadata is an open ended object and is typically a collection of key value pairs.
+    ${Metadata},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy definition mode.
     # Some examples are All, Indexed, Microsoft.KeyVault.Data.
@@ -130,8 +145,15 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesPolicyRule]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesParameters]))]
     [System.Collections.Hashtable]
+    # The parameter definitions for parameters used in the policy rule.
+    # The keys are the parameter names.
+    ${ParameterTable},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny]
     # The policy rule.
     ${PolicyRule},
 
@@ -142,6 +164,19 @@ param(
     # The type of policy definition.
     # Possible values are NotSpecified, BuiltIn, Custom, and Static.
     ${PolicyType},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String[]]
+    # A list of available versions for this policy definition.
+    ${PropertiesVersions},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The policy definition version in #.#.# format.
+    ${Version},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -206,9 +241,6 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Policy.private\Update-AzPolicyDefinition_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Policy.private\Update-AzPolicyDefinition_UpdateViaIdentityExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ManagementGroupId') ) {
-            $PSBoundParameters['ManagementGroupId'] = { "" }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

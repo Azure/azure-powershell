@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Updated the `-AzureKeyVaultDnsSuffix` help text of `Add-AzEnvironment` and `Set-AzEnvironment` to describe the expected format instead of a specific host name.
+
+## Version 5.5.3
+* Fixed `Get-AzSubscription` to throw a clear error instead of returning nothing when `-TenantId` does not match the current Managed Service Identity (MSI) context. [#25710]
 
 ## Version 5.5.2
 * Upgraded `Azure.Core` dependency from 1.56.0 to 1.57.0.
