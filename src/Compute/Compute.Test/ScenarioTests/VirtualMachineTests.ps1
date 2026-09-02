@@ -4272,6 +4272,129 @@ function Test-VirtualMachineStop
 
 <#
 .SYNOPSIS
+Test Stop-AzVM ForceDeallocate parameter metadata and parameter set behavior.
+#>
+function Test-VirtualMachineStopForceDeallocate
+{
+    # Step 1: Verify the new parameter is exposed on the cmdlet as an optional switch.
+    $stopVmCommand = Get-Command Stop-AzVM -ErrorAction Stop;
+    $forceDeallocateParameter = $stopVmCommand.Parameters["ForceDeallocate"];
+
+    Assert-NotNull $forceDeallocateParameter;
+    Assert-AreEqual ([System.Management.Automation.SwitchParameter].FullName) $forceDeallocateParameter.ParameterType.FullName;
+
+    # ForceDeallocate is offered on the non-hibernate stop sets (like -StayProvisioned / -SkipShutdown),
+    # so it binds with the plain resource-group and id stop scenarios but not with -Hibernate.
+    Assert-True { $forceDeallocateParameter.ParameterSets.Keys -contains "ResourceGroupNameParameterSetName" };
+    Assert-True { $forceDeallocateParameter.ParameterSets.Keys -contains "IdParameterSetName" };
+    Assert-True { -not ($forceDeallocateParameter.ParameterSets.Keys -contains "ResourceGroupHibernateParameterSet") };
+    Assert-True { -not ($forceDeallocateParameter.ParameterSets.Keys -contains "IdHibernateParameterSet") };
+
+    # Step 2: Verify supported combinations bind successfully without issuing live requests.
+    $vmId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/virtualMachines/vm";
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -Force -WhatIf;
+    Stop-AzVM -Id $vmId -ForceDeallocate -Force -WhatIf;
+
+    # Step 3: Verify existing stop combinations still bind successfully.
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -Force -WhatIf;
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -StayProvisioned -SkipShutdown -Force -WhatIf;
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -Hibernate -Force -WhatIf;
+
+    # Step 4: Verify ForceDeallocate cannot be combined with Hibernate, StayProvisioned, or
+    # SkipShutdown. Hibernate lives in a separate parameter set, so the combination fails at
+    # parameter binding; StayProvisioned / SkipShutdown share ForceDeallocate's sets and are
+    # rejected by the cmdlet's runtime validation.
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -Hibernate -Force -WhatIf -ErrorAction Stop; } "Parameter set cannot be resolved";
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -StayProvisioned -Force -WhatIf -ErrorAction Stop; } "cannot be used together";
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -SkipShutdown -Force -WhatIf -ErrorAction Stop; } "cannot be used together";
+}
+
+<#
+.SYNOPSIS
+Test Stop-AzVM -ForceDeallocate end to end against a live virtual machine.
+
+.DESCRIPTION
+This scenario creates a real VM and force deallocates it via Stop-AzVM -ForceDeallocate,
+then asserts the VM reaches the deallocated power state. It must be recorded in Record mode
+against a live subscription (see documentation/testing-docs/using-azure-test-framework.md).
+
+NOTE: -ForceDeallocate is intended for VMs with ZoneMovement enabled. The enablement cmdlet
+(Set-AzVMZoneMovement) is delivered in a separate change; when recording this test, target a
+subscription/VM where the ForceDeallocate operation is accepted by the service.
+#>
+function Test-VirtualMachineStopForceDeallocateExecution
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    # Zone movement (and therefore -ForceDeallocate) is available in the eastus2euap canary region.
+    $loc = "eastus2euap";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a zone-resilient VM pinned to a specific availability zone.
+        $vmname = 'vm' + $rgname;
+        $vmsize = "Standard_D2s_v4";
+        $domainNameLabel = "d1" + $rgname;
+        $zone = "3";
+        $vmconfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Zone $zone -SecurityType "Standard";
+
+        # Linux image (the subscription policy disallows non-compliant Windows VMs).
+        $publisherName = "Canonical";
+        $offer = "0001-com-ubuntu-server-jammy";
+        $sku = "22_04-lts-gen2";
+        $vmconfig = Set-AzVMSourceImage -VM $vmconfig -PublisherName $publisherName -Offer $offer -Skus $sku -Version 'latest';
+
+        # A zone-resilient VM requires a zone-redundant (ZRS) OS disk.
+        $vmconfig = Set-AzVMOSDisk -VM $vmconfig -Name ($vmname + '-osdisk') -StorageAccountType "StandardSSD_ZRS" -CreateOption FromImage -Caching ReadWrite;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -Sku Standard -AllocationMethod Static -Zone $zone -DomainNameLabel $domainNameLabel;
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $vmconfig = Add-AzVMNetworkInterface -VM $vmconfig -Id $nic.Id;
+
+        # OS & credentials
+        $user = "usertest";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Linux -ComputerName $computerName -Credential $cred;
+
+        # Enable zone movement so the VM qualifies for -ForceDeallocate.
+        $vmconfig = Set-AzVMZoneMovement -VM $vmconfig -IsEnabled $true;
+        Assert-AreEqual $true $vmconfig.ResiliencyProfile.ZoneMovement.IsEnabled;
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmconfig;
+
+        # Confirm zone movement is enabled on the created VM.
+        $createdVm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $true $createdVm.ResiliencyProfile.ZoneMovement.IsEnabled;
+
+        # Force deallocate the running VM.
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmname -ForceDeallocate -Force;
+
+        # Verify the VM reached the deallocated power state.
+        $vmStatus = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
+        $powerState = ($vmStatus.Statuses | Where-Object { $_.Code -like "PowerState/*" }).Code;
+        Assert-AreEqual "PowerState/deallocated" $powerState;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machine Managed Disk
 #>
 function Test-VirtualMachineRemoteDesktop
@@ -5980,6 +6103,45 @@ function Test-VMvCPUFeatures
 
 <#
 .SYNOPSIS
+Test processor mode support in New-AzVMConfig, New-AzVM, and Update-AzVM.
+#>
+function Test-VMProcessorModeFeatures
+{
+    $rgname = Get-ComputeTestResourceName
+    $loc = "eastus2euap"
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force
+
+        # Step 1: Verify New-AzVMConfig processor mode values and omission behavior
+        $vmConfigDeterministic = New-AzVMConfig -VMName ("det" + $rgname) -VMSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+        Assert-AreEqual "Deterministic" $vmConfigDeterministic.HardwareProfile.ProcessorMode
+
+        $vmConfigOpportunistic = New-AzVMConfig -VMName ("opp" + $rgname) -VMSize "Standard_E2pds_v8" -ProcessorMode "Opportunistic"
+        Assert-AreEqual "Opportunistic" $vmConfigOpportunistic.HardwareProfile.ProcessorMode
+
+        $vmConfigDefault = New-AzVMConfig -VMName ("default" + $rgname) -VMSize "Standard_E2pds_v8"
+        Assert-Null $vmConfigDefault.HardwareProfile.ProcessorMode
+
+        # Step 2: Record the service validation response for the requested preview configuration
+        $vmName = "vm" + $rgname
+        $domainNameLabel = "d" + $rgname
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object System.Management.Automation.PSCredential ("admin01", $securePassword)
+
+        Assert-ThrowsContains {
+            New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmName -Credential $cred -DomainNameLabel $domainNameLabel -Image "Win2019Datacenter" -Size "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+        } "Standard_E2pds_v8"
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Test GetVirtualMachineById Parameter Set
 #>
 function Test-GetVirtualMachineById
@@ -7528,6 +7690,100 @@ function Test-CapacityReservationGroupResourceIdsOnly
 
 <#
 .SYNOPSIS
+Test Open Capacity Reservation Group parameter mapping and record the service validation
+response while the preview feature is unavailable in the test subscription.
+#>
+function Test-OpenCapacityReservationGroup
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = 'eastus2euap';
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Record the service validation response for the requested preview configuration.
+        $openCRGName = 'openCRG' + $rgname;
+        Assert-ThrowsContains {
+            New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $openCRGName -Location $loc -Zone "1" -ReservationType "Open";
+        } "OpenCapacityReservation";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test the -DisableCapacityReservationAssignment parameter on New-AzVMConfig, New-AzVM and Update-AzVM.
+Verifies local parameter mapping and validation, and records the service validation response while
+the preview feature is unavailable in the test subscription.
+#>
+function Test-VMDisableCapacityReservationAssignment
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = 'eastus2euap';
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmsize = "Standard_DS1_v2";
+        $stnd = "Standard";
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Step 1: the switch sets the property on the virtual machine configuration object
+        $vmConfig = New-AzVMConfig -VMName ('cfg' + $rgname) -VMSize $vmsize -DisableCapacityReservationAssignment;
+        Assert-NotNull $vmConfig.CapacityReservation;
+        Assert-AreEqual $true $vmConfig.CapacityReservation.DisableCapacityReservationAssignment;
+        Assert-Null $vmConfig.CapacityReservation.CapacityReservationGroup;
+
+        # Opting out and explicitly associating a capacity reservation group are opposing intents.
+        $crgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/$rgname/providers/Microsoft.Compute/capacityReservationGroups/crg";
+        Assert-ThrowsContains {
+            New-AzVMConfig -VMName ('cfg2' + $rgname) -VMSize $vmsize -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment;
+        } "cannot be used together";
+
+        # Record the service validation response when creating an opted-out virtual machine.
+        $vmname1 = '1' + $rgname;
+        $domainNameLabel1 = "d1" + $rgname;
+        Assert-ThrowsContains {
+            New-AzVM -ResourceGroupName $rgname -Name $vmname1 -Credential $cred -DomainNameLabel $domainNameLabel1 -Size $vmsize -Location $loc -SecurityType $stnd -DisableCapacityReservationAssignment;
+        } "OpenCapacityReservation";
+
+        # Create a regular VM, then record the same service validation response for Update-AzVM.
+        $vmname2 = '2' + $rgname;
+        $domainNameLabel2 = "d2" + $rgname;
+        $vm2 = New-AzVM -ResourceGroupName $rgname -Name $vmname2 -Credential $cred -DomainNameLabel $domainNameLabel2 -Size $vmsize -Location $loc -SecurityType $stnd;
+
+        $vm2 = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
+        Assert-Null $vm2.CapacityReservation;
+
+        Assert-ThrowsContains {
+            Update-AzVM -ResourceGroupName $rgname -VM $vm2 -DisableCapacityReservationAssignment;
+        } "OpenCapacityReservation";
+
+        Assert-ThrowsContains {
+            Update-AzVM -ResourceGroupName $rgname -VM $vm2 -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment;
+        } "cannot be used together";
+
+        Remove-AzVm -ResourceGroupName $rgname -Name $vmname2 -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machines with explicit Standard securityType.
 Ensures the SecurityProfile is null, and with no other img info,
 defaults to Win2022AE image.
@@ -7973,6 +8229,90 @@ function Test-VirtualMachineAddProxyAgentExtension
     {
         # Cleanup
         Clean-ResourceGroup $resourceGroupName;
+    }
+}
+
+<#
+.SYNOPSIS
+Test-VirtualMachineProxyAgentUseLocalFileRules validates WireServer and IMDS local file rules settings on a VM.
+#>
+function Test-VirtualMachineProxyAgentUseLocalFileRules
+{
+    $resourceGroupName = Get-ComputeTestResourceName
+    $adminUsername = Get-ComputeTestResourceName
+    $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+    $credential = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword)
+    $vmName = Get-ComputeTestResourceName
+    $location = "eastus2"
+    $virtualNetworkName = $vmName + "vnet"
+    $subnetName = $vmName + "subnet"
+    $networkInterfaceName = $vmName + "nic"
+
+    try
+    {
+        # Validate the parameter matrix on an in-memory VM configuration.
+        $vm = New-AzVMConfig -VMName $vmName -VMSize "Standard_D2s_v3"
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.WireServer
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerUseLocalFileRules $true
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.WireServer
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $true
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -ImdsUseLocalFileRules $false
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.Imds
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $false
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerUseLocalFileRules $null -ImdsUseLocalFileRules $null
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.WireServer
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.Imds
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerMode "Audit" -WireServerUseLocalFileRules $false -ImdsMode "Enforce" -ImdsUseLocalFileRules $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.Mode "Audit"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $false
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.Mode "Enforce"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $true
+
+        # Persist both settings and verify create and update behavior through the Compute resource provider.
+        New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24"
+        $virtualNetwork = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $subnet
+        $networkInterface = New-AzNetworkInterface -Name $networkInterfaceName -ResourceGroupName $resourceGroupName -Location $location -SubnetId $virtualNetwork.Subnets[0].Id
+
+        $vm = New-AzVMConfig -VMName $vmName -VMSize "Standard_D2s_v3"
+        $vm = Set-AzVMOperatingSystem -VM $vm -Linux -ComputerName $vmName -Credential $credential
+        $vm = Set-AzVMSourceImage -VM $vm -PublisherName "Canonical" -Offer "0001-com-ubuntu-server-jammy" -Skus "22_04-lts" -Version "22.04.202510230"
+        $vm = Set-AzVMBootDiagnostic -VM $vm -Disable
+        $vm = Add-AzVMNetworkInterface -VM $vm -Id $networkInterface.Id
+        $vm = Set-AzVMSecurityProfile -VM $vm -SecurityType "Standard"
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -AddProxyAgentExtension $true -WireServerMode "Audit" -WireServerUseLocalFileRules $true -ImdsMode "Enforce" -ImdsUseLocalFileRules $false
+        New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm
+
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $false
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerMode "Audit" -WireServerUseLocalFileRules $false -ImdsMode "Enforce" -ImdsUseLocalFileRules $true
+        Update-AzVM -ResourceGroupName $resourceGroupName -VM $vm
+
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Enabled $true
+    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.Mode "Audit"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $false
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.Mode "Enforce"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $true
+    }
+    finally
+    {
+        Clean-ResourceGroup $resourceGroupName
     }
 }
 

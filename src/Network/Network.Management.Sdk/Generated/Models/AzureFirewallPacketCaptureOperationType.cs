@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AzureFirewallPacketCaptureOperationType
     {
+        /// <summary>
+        /// Start
+        /// </summary>
         public const string Start = "Start";
+        /// <summary>
+        /// Status
+        /// </summary>
         public const string Status = "Status";
+        /// <summary>
+        /// Stop
+        /// </summary>
         public const string Stop = "Stop";
     }
 }

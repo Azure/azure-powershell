@@ -542,11 +542,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     itemModel = GetAzureVmItemModelCrr(protectedItem);
                 }
 
-                /*if (protectedItem.Properties.GetType() ==
+                if (protectedItem.Properties.GetType() ==
                     typeof(CrrModel.AzureFileshareProtectedItem))
                 {
-                    itemModel = GetAzureFileShareItemModel(protectedItem);
-                }*/
+                    itemModel = GetAzureFileShareItemModelCrr(protectedItem);
+                }
 
                 if (protectedItem.Properties.GetType() ==
                     typeof(CrrModel.AzureVmWorkloadSQLDatabaseProtectedItem))
@@ -673,6 +673,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             ItemBase itemModel;
             string policyName = null;
             string policyId = ((ServiceClientModel.AzureFileshareProtectedItem)protectedItem.Properties).PolicyId;
+            if (!string.IsNullOrEmpty(policyId))
+            {
+                Dictionary<UriEnums, string> keyValueDict =
+                HelperUtils.ParseUri(policyId);
+                policyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, policyId);
+            }
+
+            string containerUri = HelperUtils.GetContainerUri(
+                HelperUtils.ParseUri(protectedItem.Id),
+                protectedItem.Id);
+
+            itemModel = new AzureFileShareItem(
+                protectedItem,
+                containerUri,
+                ContainerType.AzureStorage,
+                policyName);
+            return itemModel;
+        }
+
+        private static ItemBase GetAzureFileShareItemModelCrr(CrrModel.ProtectedItemResource protectedItem)
+        {
+            ItemBase itemModel;
+            string policyName = null;
+            string policyId = ((CrrModel.AzureFileshareProtectedItem)protectedItem.Properties).PolicyId;
             if (!string.IsNullOrEmpty(policyId))
             {
                 Dictionary<UriEnums, string> keyValueDict =

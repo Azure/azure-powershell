@@ -25,6 +25,21 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
+        public void TestNewMoveIpConfigurationItem()
+        {
+            TestRunner.RunTestScript("Test-NewMoveIpConfigurationItem");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
+        public void TestMoveVirtualNetworkIpConfiguration()
+        {
+            TestRunner.RunTestScript("Test-MoveVirtualNetworkIpConfiguration");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -240,6 +255,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestVirtualNetworkPrivateEndpointVNetPolicies()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkPrivateEndpointVNetPolicies");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
+        public void TestVirtualNetworkSummarizedGatewayPrefixes()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkSummarizedGatewayPrefixes");
         }
     }
 }

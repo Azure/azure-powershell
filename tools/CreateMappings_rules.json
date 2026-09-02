@@ -701,6 +701,10 @@
     "module": "DiskPool"
   },
   {
+    "alias": "Discovery",
+    "module": "Discovery"
+  },
+  {
     "alias": "Datadog",
     "regex": "Datadog"
   },
@@ -885,10 +889,6 @@
     "alias": "Oracle"
   },
   {
-    "alias": "Astro",
-    "module": "Astro"
-  },
-  {
     "module": "Fabric",
     "alias": "Fabric"
   },
@@ -939,14 +939,6 @@
   {
     "alias": "ArizeAI",
     "module": "ArizeAI"
-  },
-  {
-    "module": "WeightsAndBiases",
-    "alias": "WeightsAndBiases"
-  },
-  {
-    "module": "Pinecone",
-    "alias": "Pinecone"
   },
   {
     "alias": "LambdaTest",
@@ -1001,6 +993,10 @@
     "module": "EdgeAction"
   },
   {
+    "module": "ChangeSafety",
+    "alias": "ChangeSafety"
+  },
+  {
     "alias": "ArtifactSigning",
     "module": "ArtifactSigning"
   },
@@ -1031,5 +1027,13 @@
   {
     "module": "Napster",
     "alias": "Napster"
+  },
+  {
+    "alias": "Dell",
+    "module": "Dell"
+  },
+  {
+    "alias": "Mission",
+    "module": "Mission"
   }
 ]

@@ -41,6 +41,9 @@ Add a GalleryApplication object to the PSVirtualMachine object.
 ### [Add-AzVMNetworkInterface](Add-AzVMNetworkInterface.md)
 Adds a network interface to a virtual machine.
 
+### [Add-AzVMNetworkInterfaceConfiguration](Add-AzVMNetworkInterfaceConfiguration.md)
+Adds an implicit network interface configuration to a virtual machine.
+
 ### [Add-AzVMSecret](Add-AzVMSecret.md)
 Adds a secret to a virtual machine.
 
@@ -157,6 +160,9 @@ Get List of possible Host Sizes.
 
 ### [Get-AzImage](Get-AzImage.md)
 Gets the properties of an image.
+
+### [Get-AzInterconnectBlock](Get-AzInterconnectBlock.md)
+Gets the properties of an Interconnect Block or lists Interconnect Blocks in a resource group or subscription.
 
 ### [Get-AzProximityPlacementGroup](Get-AzProximityPlacementGroup.md)
 Get or list Proximity Placement Group resource(s).
@@ -362,6 +368,9 @@ Creates an image.
 ### [New-AzImageConfig](New-AzImageConfig.md)
 Creates a configurable image object.
 
+### [New-AzInterconnectBlock](New-AzInterconnectBlock.md)
+Creates an Interconnect Block resource.
+
 ### [New-AzProximityPlacementGroup](New-AzProximityPlacementGroup.md)
 Create Proximity Placement Group resource.
 
@@ -394,6 +403,12 @@ Creates a local data disk object for a virtual machine or a Vmss VM.
 
 ### [New-AzVmGalleryApplication](New-AzVmGalleryApplication.md)
 Create a local PSVMGalleryApplication object.
+
+### [New-AzVMIpConfig](New-AzVMIpConfig.md)
+Creates an IP configuration for an implicit virtual machine network interface.
+
+### [New-AzVMIpTagConfig](New-AzVMIpTagConfig.md)
+Creates an IP tag object for an implicit virtual machine public IP address.
 
 ### [New-AzVMSqlServerAutoBackupConfig](New-AzVMSqlServerAutoBackupConfig.md)
 Creates a configuration object for SQL Server automatic backup.
@@ -490,6 +505,9 @@ Removes an image.
 
 ### [Remove-AzImageDataDisk](Remove-AzImageDataDisk.md)
 Removes a data disk from an image object.
+
+### [Remove-AzInterconnectBlock](Remove-AzInterconnectBlock.md)
+Deletes an Interconnect Block.
 
 ### [Remove-AzProximityPlacementGroup](Remove-AzProximityPlacementGroup.md)
 Delete Proximity Placement Group resource.
@@ -755,6 +773,9 @@ The operation to update the VMSS VM run command.
 ### [Set-AzVMUefi](Set-AzVMUefi.md)
 Modifies UEFI properties of a gen 2 virtual machine
 
+### [Set-AzVMZoneMovement](Set-AzVMZoneMovement.md)
+Sets the ZoneMovement configuration on a PSVirtualMachine object.
+
 ### [Start-AzAvailabilitySetMigration](Start-AzAvailabilitySetMigration.md)
 Starts the migration operation on an Availability Set to a Flexible Virtual Machine Scale Set.
 
@@ -830,6 +851,9 @@ Updates the Dedicated Host.
 ### [Update-AzImage](Update-AzImage.md)
 Updates an image.
 
+### [Update-AzInterconnectBlock](Update-AzInterconnectBlock.md)
+Updates an Interconnect Block. Tags and SKU properties provided by parameters are sent in the update request (subject to service support).
+
 ### [Update-AzRestorePointCollection](Update-AzRestorePointCollection.md)
 Update Restore Point Collection.
 
@@ -853,4 +877,3 @@ Responds to a Virtual Machine Scale Set (VMSS) lifecycle hook event by approving
 
 ### [Update-AzVmssVM](Update-AzVmssVM.md)
 Updates the state of a Vmss VM.
-

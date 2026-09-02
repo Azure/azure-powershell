@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='instanceId'>
         /// The instanceId GUID of a restorable database account.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<RestorableGremlinDatabaseGetResult> List(this IRestorableGremlinDatabasesOperations operations, string location, string instanceId)
+        public static Microsoft.Rest.Azure.IPage<RestorableGremlinDatabaseGetResult> List(this IRestorableGremlinDatabasesOperations operations, string location, string instanceId)
         {
                 return ((IRestorableGremlinDatabasesOperations)operations).ListAsync(location, instanceId).GetAwaiter().GetResult();
         }
@@ -54,9 +54,52 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<RestorableGremlinDatabaseGetResult>> ListAsync(this IRestorableGremlinDatabasesOperations operations, string location, string instanceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RestorableGremlinDatabaseGetResult>> ListAsync(this IRestorableGremlinDatabasesOperations operations, string location, string instanceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(location, instanceId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Show the event feed of all mutations done on all the Azure Cosmos DB
+        /// Gremlin databases under the restorable account. This helps in scenario
+        /// where database was accidentally deleted to get the deletion time. This API
+        /// requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39;
+        /// permission
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<RestorableGremlinDatabaseGetResult> ListNext(this IRestorableGremlinDatabasesOperations operations, string nextPageLink)
+        {
+                return ((IRestorableGremlinDatabasesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Show the event feed of all mutations done on all the Azure Cosmos DB
+        /// Gremlin databases under the restorable account. This helps in scenario
+        /// where database was accidentally deleted to get the deletion time. This API
+        /// requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39;
+        /// permission
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RestorableGremlinDatabaseGetResult>> ListNextAsync(this IRestorableGremlinDatabasesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

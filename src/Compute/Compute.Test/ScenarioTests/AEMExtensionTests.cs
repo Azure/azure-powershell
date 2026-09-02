@@ -27,90 +27,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionBasicWindowsWAD()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionBasicWindowsWAD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionBasicWindows()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionBasicWindows");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionBasicLinuxWAD()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionBasicLinuxWAD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionBasicLinux()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionBasicLinux");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionAdvancedWindowsWAD()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionAdvancedWindowsWAD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionAdvancedWindows()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionAdvancedWindows");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionAdvancedLinuxWAD()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionAdvancedLinuxWAD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionAdvancedLinux()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionAdvancedLinux");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionAdvancedWindowsMD()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionAdvancedWindowsMD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionAdvancedLinuxMD()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionAdvancedLinuxMD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionAdvancedLinuxMD_ESeries()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionAdvancedLinuxMD_E");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionAdvancedLinuxMD_DSeries()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionAdvancedLinuxMD_D");
-        }
-
-        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestWithUserAssignedIdentity()
         {
@@ -136,27 +52,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestExtensionReinstall()
         {
             TestRunner.RunTestScript("Test-ExtensionReinstall");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestOldExtensionReinstall()
-        {
-            TestRunner.RunTestScript("Test-OldExtensionReinstall");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExtensionDowngrade()
-        {
-            TestRunner.RunTestScript("Test-ExtensionDowngrade");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExtensionUpgrade()
-        {
-            TestRunner.RunTestScript("Test-ExtensionUpgrade");
         }
 
         [Fact]

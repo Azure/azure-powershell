@@ -5969,6 +5969,88 @@ function Test-ProxyAgentSetting
 
 <#
 .SYNOPSIS
+Test-VirtualMachineScaleSetProxyAgentUseLocalFileRules validates WireServer and IMDS local file rules settings on a VMSS.
+#>
+function Test-VirtualMachineScaleSetProxyAgentUseLocalFileRules
+{
+    $resourceGroupName = Get-ComputeTestResourceName
+    $vmssName = "vmss" + $resourceGroupName
+    $location = "eastus2"
+    $adminUsername = Get-ComputeTestResourceName
+    $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+    $virtualNetworkName = $vmssName + "vnet"
+    $subnetName = $vmssName + "subnet"
+
+    try
+    {
+        # Validate the parameter matrix on an in-memory VMSS configuration.
+        $vmss = New-AzVmssConfig -Location $location -SkuCapacity 0 -SkuName "Standard_D2s_v3" -SecurityType "Standard"
+        $vmss = Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $vmss -EnableProxyAgent $true
+        Assert-Null $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.WireServer
+        Assert-Null $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Imds
+
+        $vmss = Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $vmss -EnableProxyAgent $true -WireServerUseLocalFileRules $true
+        Assert-NotNull $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.WireServer
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $true
+        Assert-Null $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Imds
+
+        $vmss = Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $vmss -EnableProxyAgent $true -ImdsUseLocalFileRules $false
+        Assert-NotNull $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Imds
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $false
+
+        $vmss = Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $vmss -EnableProxyAgent $true -WireServerUseLocalFileRules $null -ImdsUseLocalFileRules $null
+        Assert-NotNull $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.WireServer
+        Assert-Null $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules
+        Assert-NotNull $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Imds
+        Assert-Null $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules
+
+        $vmss = Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $vmss -EnableProxyAgent $true -WireServerMode "Audit" -WireServerUseLocalFileRules $false -ImdsMode "Enforce" -ImdsUseLocalFileRules $true
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.WireServer.Mode "Audit"
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $false
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Imds.Mode "Enforce"
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $true
+
+        # Persist both settings and verify create and update behavior through the Compute resource provider.
+        New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24"
+        $virtualNetwork = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $subnet
+        $ipConfig = New-AzVmssIPConfig -Name "ipconfig" -SubnetId $virtualNetwork.Subnets[0].Id
+
+        $vmss = New-AzVmssConfig -Location $location -SkuCapacity 0 -SkuName "Standard_D2s_v3" -UpgradePolicyMode "Manual" -SecurityType "Standard"
+        $vmss = Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmss -Name "network" -Primary $true -IPConfiguration $ipConfig
+        $vmss = Set-AzVmssOSProfile -VirtualMachineScaleSet $vmss -ComputerNamePrefix "vmss" -AdminUsername $adminUsername -AdminPassword $adminPassword
+        $vmss = Set-AzVmssStorageProfile -VirtualMachineScaleSet $vmss -OsDiskCreateOption "FromImage" -OsDiskCaching "ReadWrite" -ImageReferencePublisher "Canonical" -ImageReferenceOffer "0001-com-ubuntu-server-jammy" -ImageReferenceSku "22_04-lts" -ImageReferenceVersion "22.04.202510230"
+        $vmss = Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $vmss -EnableProxyAgent $true -AddProxyAgentExtension $true -WireServerMode "Audit" -WireServerUseLocalFileRules $true -ImdsMode "Enforce" -ImdsUseLocalFileRules $false
+        New-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss
+
+        $vmss = Get-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssName
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $true
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.WireServer.Mode "Audit"
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $true
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Imds.Mode "Enforce"
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $false
+
+        $vmss = Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $vmss -EnableProxyAgent $true -AddProxyAgentExtension $false -WireServerMode "Audit" -WireServerUseLocalFileRules $false -ImdsMode "Enforce" -ImdsUseLocalFileRules $true
+        Update-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachineScaleSet $vmss
+
+        $vmss = Get-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssName
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $false
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.WireServer.Mode "Audit"
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $false
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Imds.Mode "Enforce"
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $true
+    }
+    finally
+    {
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
 Test-VirtualMachineScaleSetAddProxyAgentExtension creates a VMSS with Enabled ProxyAgent and added ProxyAgentExtension
 #>
 function Test-VirtualMachineScaleSetAddProxyAgentExtension

@@ -323,6 +323,12 @@ Please contact Microsoft for further assistance.</value>
   <data name="InvalidAzureVMName" xml:space="preserve">
     <value>Azure VM name can not be null or empty</value>
   </data>
+  <data name="CSBVMNotFound" xml:space="preserve">
+    <value>The specified Azure Virtual Machine '{0}' was not found in resource group '{1}' under subscription '{2}'. Verify that the VM exists and that -Name, -ResourceGroupName and -ContainerSubscriptionId are correct.</value>
+  </data>
+  <data name="CSBVMNotInVaultLocation" xml:space="preserve">
+    <value>The specified Azure Virtual Machine '{0}' (location '{1}') is not in the same location as the Recovery Services vault (location '{2}'). For Cross Subscription Backup, the VM must reside in the same region as the vault.</value>
+  </data>
   <data name="BothCloudServiceNameAndResourceGroupNameShouldNotEmpty" xml:space="preserve">
     <value>For Azure VM, both cloud service name and resource group name can not be empty</value>
   </data>
@@ -379,6 +385,9 @@ Please contact Microsoft for further assistance.</value>
   </data>
   <data name="TriggerRestoreIncorrectRegion" xml:space="preserve">
     <value>Storage account location should be same as vault location</value>
+  </data>
+  <data name="CrossRegionRestoreIncorrectTargetRegion" xml:space="preserve">
+    <value>The target storage account location should be same as the secondary (paired) region when restoring to the secondary region.</value>
   </data>
   <data name="RestoreDiskMoreThanOneAccFound" xml:space="preserve">
     <value>Found more than one StorageAccount with same name. Some thing went wrong</value>
@@ -615,6 +624,18 @@ Please contact Microsoft for further assistance.</value>
   </data>
   <data name="InvalidTargetStorageAccount" xml:space="preserve">
     <value>Please provide a valid target storage account</value>
+  </data>
+  <data name="AzureFileShareCrossRegionRestoreAlrOnly" xml:space="preserve">
+    <value>Cross Region Restore for Azure File Share supports only Alternate Location Restore. Please provide -TargetStorageAccountName and -TargetFileShareName</value>
+  </data>
+  <data name="AzureFileShareCrossRegionRestoreItemLevelNotSupported" xml:space="preserve">
+    <value>Item-level restore is not supported for Cross Region Restore of Azure File Share. Please remove -SourceFilePath/-MultipleSourceFilePath and retry a full-share restore</value>
+  </data>
+  <data name="AzureFileShareCrossRegionRestoreRequestBuildFailed" xml:space="preserve">
+    <value>Failed to construct the cross-region restore request: the target or source details were not populated. This indicates an internal error. Please retry; if the issue persists, contact support</value>
+  </data>
+  <data name="AzureFileShareUndeleteItemNotInSoftDeletedState" xml:space="preserve">
+    <value>The Azure File Share item '{0}' is not in a soft-deleted state. Undo-AzRecoveryServicesBackupItemDeletion can only be run on an item whose DeleteState is 'ToBeDeleted'</value>
   </data>
   <data name="RecoveryPointVaultRecoveryTypeException" xml:space="preserve">
     <value>Please ensure that the given RP recovery type is either 'VaultStandard' or SnapshotAndVaultStandard, or remove TargetZone</value>
