@@ -14,10 +14,10 @@ namespace Microsoft.Azure.Management.WebSites
     public partial interface ITopLevelDomainsOperations
     {
         /// <summary>
-        /// Description for Get all top-level domains supported for registration.
+        /// Get all top-level domains supported for registration.
         /// </summary>
         /// <remarks>
-        /// Description for Get all top-level domains supported for registration.
+        /// Get all top-level domains supported for registration.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<TopLevelDomain>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get details of a top-level domain.
+        /// Get details of a top-level domain.
         /// </summary>
         /// <remarks>
-        /// Description for Get details of a top-level domain.
+        /// Get details of a top-level domain.
         /// </remarks>
         /// <param name='name'>
         /// Name of the top-level domain.
@@ -57,12 +57,12 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TopLevelDomain>> GetWithHttpMessagesAsync(string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Gets all legal agreements that user needs to accept before
-        /// purchasing a domain.
+        /// Gets all legal agreements that user needs to accept before purchasing a
+        /// domain.
         /// </summary>
         /// <remarks>
-        /// Description for Gets all legal agreements that user needs to accept before
-        /// purchasing a domain.
+        /// Gets all legal agreements that user needs to accept before purchasing a
+        /// domain.
         /// </remarks>
         /// <param name='name'>
         /// Name of the top-level domain.
@@ -85,10 +85,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<TldLegalAgreement>>> ListAgreementsWithHttpMessagesAsync(string name, TopLevelDomainAgreementOption agreementOption, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get all top-level domains supported for registration.
+        /// Get all top-level domains supported for registration.
         /// </summary>
         /// <remarks>
-        /// Description for Get all top-level domains supported for registration.
+        /// Get all top-level domains supported for registration.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -108,12 +108,12 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<TopLevelDomain>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Gets all legal agreements that user needs to accept before
-        /// purchasing a domain.
+        /// Gets all legal agreements that user needs to accept before purchasing a
+        /// domain.
         /// </summary>
         /// <remarks>
-        /// Description for Gets all legal agreements that user needs to accept before
-        /// purchasing a domain.
+        /// Gets all legal agreements that user needs to accept before purchasing a
+        /// domain.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

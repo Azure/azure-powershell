@@ -63,7 +63,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="appOffline">Sets the AppOffline rule while the MSDeploy operation executes.
         /// Setting is &lt;code&gt;false&lt;/code&gt; by default.
         /// </param>
-        public MSDeploy(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string packageUri = default(string), string connectionString = default(string), string dbType = default(string), string setParametersXmlFileUri = default(string), System.Collections.Generic.IDictionary<string, string> setParameters = default(System.Collections.Generic.IDictionary<string, string>), bool? skipAppData = default(bool?), bool? appOffline = default(bool?))
+
+        /// <param name="addOnPackages">List of Add-On packages. Add-On packages implicitly enable the Do Not
+        /// Delete MSDeploy rule.
+        /// </param>
+        public MSDeploy(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string packageUri = default(string), string connectionString = default(string), string dbType = default(string), string setParametersXmlFileUri = default(string), System.Collections.Generic.IDictionary<string, string> setParameters = default(System.Collections.Generic.IDictionary<string, string>), bool? skipAppData = default(bool?), bool? appOffline = default(bool?), System.Collections.Generic.IList<MSDeployCore> addOnPackages = default(System.Collections.Generic.IList<MSDeployCore>))
 
         : base(id, name, kind, type)
         {
@@ -74,6 +78,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.SetParameters = setParameters;
             this.SkipAppData = skipAppData;
             this.AppOffline = appOffline;
+            this.AddOnPackages = addOnPackages;
             CustomInit();
         }
 
@@ -134,5 +139,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.appOffline")]
         public bool? AppOffline {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of Add-On packages. Add-On packages implicitly enable the
+        /// Do Not Delete MSDeploy rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.addOnPackages")]
+        public System.Collections.Generic.IList<MSDeployCore> AddOnPackages {get; set; }
     }
 }

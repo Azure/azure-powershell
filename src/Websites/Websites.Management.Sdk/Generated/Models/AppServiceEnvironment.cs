@@ -71,9 +71,24 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="hasLinuxWorkers">Flag that displays whether an ASE has linux workers or not
         /// </param>
 
+        /// <param name="upgradePreference">Upgrade Preference
+        /// Possible values include: &#39;None&#39;, &#39;Early&#39;, &#39;Late&#39;, &#39;Manual&#39;</param>
+
         /// <param name="dedicatedHostCount">Dedicated Host Count
         /// </param>
-        public AppServiceEnvironment(VirtualNetworkProfile virtualNetwork, ProvisioningState? provisioningState = default(ProvisioningState?), HostingEnvironmentStatus? status = default(HostingEnvironmentStatus?), string internalLoadBalancingMode = default(string), string multiSize = default(string), int? multiRoleCount = default(int?), int? ipsslAddressCount = default(int?), string dnsSuffix = default(string), int? maximumNumberOfMachines = default(int?), int? frontEndScaleFactor = default(int?), bool? suspended = default(bool?), System.Collections.Generic.IList<NameValuePair> clusterSettings = default(System.Collections.Generic.IList<NameValuePair>), System.Collections.Generic.IList<string> userWhitelistedIPRanges = default(System.Collections.Generic.IList<string>), bool? hasLinuxWorkers = default(bool?), int? dedicatedHostCount = default(int?))
+
+        /// <param name="zoneRedundant">Whether or not this App Service Environment is zone-redundant.
+        /// </param>
+
+        /// <param name="customDnsSuffixConfiguration">Full view of the custom domain suffix configuration for ASEv3.
+        /// </param>
+
+        /// <param name="networkingConfiguration">Full view of networking configuration for an ASE.
+        /// </param>
+
+        /// <param name="upgradeAvailability">Whether an upgrade is available for this App Service Environment.
+        /// Possible values include: &#39;None&#39;, &#39;Ready&#39;</param>
+        public AppServiceEnvironment(VirtualNetworkProfile virtualNetwork, ProvisioningState? provisioningState = default(ProvisioningState?), HostingEnvironmentStatus? status = default(HostingEnvironmentStatus?), string internalLoadBalancingMode = default(string), string multiSize = default(string), int? multiRoleCount = default(int?), int? ipsslAddressCount = default(int?), string dnsSuffix = default(string), int? maximumNumberOfMachines = default(int?), int? frontEndScaleFactor = default(int?), bool? suspended = default(bool?), System.Collections.Generic.IList<NameValuePair> clusterSettings = default(System.Collections.Generic.IList<NameValuePair>), System.Collections.Generic.IList<string> userWhitelistedIPRanges = default(System.Collections.Generic.IList<string>), bool? hasLinuxWorkers = default(bool?), string upgradePreference = default(string), int? dedicatedHostCount = default(int?), bool? zoneRedundant = default(bool?), CustomDnsSuffixConfiguration customDnsSuffixConfiguration = default(CustomDnsSuffixConfiguration), AseV3NetworkingConfiguration networkingConfiguration = default(AseV3NetworkingConfiguration), string upgradeAvailability = default(string))
 
         {
             this.ProvisioningState = provisioningState;
@@ -90,7 +105,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.ClusterSettings = clusterSettings;
             this.UserWhitelistedIpRanges = userWhitelistedIPRanges;
             this.HasLinuxWorkers = hasLinuxWorkers;
+            this.UpgradePreference = upgradePreference;
             this.DedicatedHostCount = dedicatedHostCount;
+            this.ZoneRedundant = zoneRedundant;
+            this.CustomDnsSuffixConfiguration = customDnsSuffixConfiguration;
+            this.NetworkingConfiguration = networkingConfiguration;
+            this.UpgradeAvailability = upgradeAvailability;
             CustomInit();
         }
 
@@ -191,10 +211,40 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public bool? HasLinuxWorkers {get; private set; }
 
         /// <summary>
-        /// Gets dedicated Host Count
+        /// Gets or sets upgrade Preference Possible values include: &#39;None&#39;, &#39;Early&#39;, &#39;Late&#39;, &#39;Manual&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "upgradePreference")]
+        public string UpgradePreference {get; set; }
+
+        /// <summary>
+        /// Gets or sets dedicated Host Count
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "dedicatedHostCount")]
-        public int? DedicatedHostCount {get; private set; }
+        public int? DedicatedHostCount {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not this App Service Environment is zone-redundant.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "zoneRedundant")]
+        public bool? ZoneRedundant {get; set; }
+
+        /// <summary>
+        /// Gets or sets full view of the custom domain suffix configuration for ASEv3.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "customDnsSuffixConfiguration")]
+        public CustomDnsSuffixConfiguration CustomDnsSuffixConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets or sets full view of networking configuration for an ASE.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "networkingConfiguration")]
+        public AseV3NetworkingConfiguration NetworkingConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets whether an upgrade is available for this App Service Environment. Possible values include: &#39;None&#39;, &#39;Ready&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "upgradeAvailability")]
+        public string UpgradeAvailability {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -213,6 +263,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
             {
                 this.VirtualNetwork.Validate();
             }
+
+
+
+
 
 
 

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.WebSites
     public static partial class TopLevelDomainsOperationsExtensions
     {
         /// <summary>
-        /// Description for Get all top-level domains supported for registration.
+        /// Get all top-level domains supported for registration.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Get all top-level domains supported for registration.
+        /// Get all top-level domains supported for registration.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Get details of a top-level domain.
+        /// Get details of a top-level domain.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Get details of a top-level domain.
+        /// Get details of a top-level domain.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -73,8 +73,8 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Gets all legal agreements that user needs to accept before
-        /// purchasing a domain.
+        /// Gets all legal agreements that user needs to accept before purchasing a
+        /// domain.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -88,8 +88,8 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Gets all legal agreements that user needs to accept before
-        /// purchasing a domain.
+        /// Gets all legal agreements that user needs to accept before purchasing a
+        /// domain.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Get all top-level domains supported for registration.
+        /// Get all top-level domains supported for registration.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Get all top-level domains supported for registration.
+        /// Get all top-level domains supported for registration.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -141,8 +141,8 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Gets all legal agreements that user needs to accept before
-        /// purchasing a domain.
+        /// Gets all legal agreements that user needs to accept before purchasing a
+        /// domain.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -156,8 +156,8 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Gets all legal agreements that user needs to accept before
-        /// purchasing a domain.
+        /// Gets all legal agreements that user needs to accept before purchasing a
+        /// domain.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

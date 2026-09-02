@@ -53,9 +53,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </param>
 
         /// <param name="changeDecisionCallbackUrl">Custom decision algorithm can be provided in TiPCallback site extension
-        /// which URL can be specified. See TiPCallback site extension for the scaffold
-        /// and contracts.
-        /// https://www.siteextensions.net/packages/TiPCallback/
+        /// which URL can be specified.
         /// </param>
 
         /// <param name="name">Name of the routing rule. The recommended name would be to point to the
@@ -130,9 +128,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <summary>
         /// Gets or sets custom decision algorithm can be provided in TiPCallback site
-        /// extension which URL can be specified. See TiPCallback site extension for
-        /// the scaffold and contracts.
-        /// https://www.siteextensions.net/packages/TiPCallback/
+        /// extension which URL can be specified.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "changeDecisionCallbackUrl")]
         public string ChangeDecisionCallbackUrl {get; set; }

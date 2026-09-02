@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Remote Private Endpoint Connection ARM resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class RemotePrivateEndpointConnectionARMResource : ProxyOnlyResource
+    public partial class RemotePrivateEndpointConnectionARMResource : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the RemotePrivateEndpointConnectionARMResource class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the RemotePrivateEndpointConnectionARMResource class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="provisioningState">
@@ -48,10 +54,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="ipAddresses">Private IPAddresses mapped to the remote private endpoint
         /// </param>
-        public RemotePrivateEndpointConnectionARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string provisioningState = default(string), ArmIdWrapper privateEndpoint = default(ArmIdWrapper), PrivateLinkConnectionState privateLinkServiceConnectionState = default(PrivateLinkConnectionState), System.Collections.Generic.IList<string> ipAddresses = default(System.Collections.Generic.IList<string>))
+        public RemotePrivateEndpointConnectionARMResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), string provisioningState = default(string), ArmIdWrapper privateEndpoint = default(ArmIdWrapper), PrivateLinkConnectionState privateLinkServiceConnectionState = default(PrivateLinkConnectionState), System.Collections.Generic.IList<string> ipAddresses = default(System.Collections.Generic.IList<string>))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.ProvisioningState = provisioningState;
             this.PrivateEndpoint = privateEndpoint;
             this.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
@@ -64,6 +71,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets

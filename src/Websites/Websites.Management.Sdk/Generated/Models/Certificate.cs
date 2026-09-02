@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// SSL certificate for an app.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class Certificate : Resource
+    public partial class Certificate : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the Certificate class.
@@ -25,22 +25,30 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the Certificate class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="kind">Kind of resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource Location.
-        /// </param>
-
-        /// <param name="type">Resource type.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
+        /// </param>
+
+        /// <param name="kind">Kind of resource. If the resource is an app, you can refer to
+        /// https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference
+        /// for details supported values for kind.
         /// </param>
 
         /// <param name="password">Certificate password.
@@ -88,10 +96,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="hostingEnvironmentProfile">Specification for the App Service Environment to use for the certificate.
         /// </param>
 
-        /// <param name="keyVaultId">Key Vault Csm resource Id.
+        /// <param name="keyVaultId">Azure Key Vault Csm resource Id.
         /// </param>
 
-        /// <param name="keyVaultSecretName">Key Vault secret name.
+        /// <param name="keyVaultSecretName">Azure Key Vault secret name.
         /// </param>
 
         /// <param name="keyVaultSecretStatus">Status of the Key Vault secret.
@@ -101,8 +109,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// &#39;KeyVaultSecretDoesNotExist&#39;, &#39;UnknownError&#39;, &#39;ExternalPrivateKey&#39;,
         /// &#39;Unknown&#39;</param>
 
-        /// <param name="serverFarmId">Resource ID of the associated App Service plan, formatted as:
-        /// &#34;/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}&#34;.
+        /// <param name="serverFarmId">Resource ID of the associated App Service plan.
         /// </param>
 
         /// <param name="canonicalName">CNAME of the certificate to be issued via free certificate
@@ -110,10 +117,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="domainValidationMethod">Method of domain validation for free cert
         /// </param>
-        public Certificate(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string password = default(string), string friendlyName = default(string), string subjectName = default(string), System.Collections.Generic.IList<string> hostNames = default(System.Collections.Generic.IList<string>), byte[] pfxBlob = default(byte[]), string siteName = default(string), string selfLink = default(string), string issuer = default(string), System.DateTime? issueDate = default(System.DateTime?), System.DateTime? expirationDate = default(System.DateTime?), string thumbprint = default(string), bool? valid = default(bool?), byte[] cerBlob = default(byte[]), string publicKeyHash = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), string keyVaultId = default(string), string keyVaultSecretName = default(string), KeyVaultSecretStatus? keyVaultSecretStatus = default(KeyVaultSecretStatus?), string serverFarmId = default(string), string canonicalName = default(string), string domainValidationMethod = default(string))
+        public Certificate(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string kind = default(string), string password = default(string), string friendlyName = default(string), string subjectName = default(string), System.Collections.Generic.IList<string> hostNames = default(System.Collections.Generic.IList<string>), byte[] pfxBlob = default(byte[]), string siteName = default(string), string selfLink = default(string), string issuer = default(string), System.DateTime? issueDate = default(System.DateTime?), System.DateTime? expirationDate = default(System.DateTime?), string thumbprint = default(string), bool? valid = default(bool?), byte[] cerBlob = default(byte[]), string publicKeyHash = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), string keyVaultId = default(string), string keyVaultSecretName = default(string), KeyVaultSecretStatus? keyVaultSecretStatus = default(KeyVaultSecretStatus?), string serverFarmId = default(string), string canonicalName = default(string), string domainValidationMethod = default(string))
 
-        : base(location, id, name, kind, type, tags)
+        : base(location, id, name, type, systemData, tags)
         {
+            this.Kind = kind;
             this.Password = password;
             this.FriendlyName = friendlyName;
             this.SubjectName = subjectName;
@@ -143,6 +151,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource. If the resource is an app, you can refer to
+        /// https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference
+        /// for details supported values for kind.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets certificate password.
@@ -236,13 +252,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public HostingEnvironmentProfile HostingEnvironmentProfile {get; private set; }
 
         /// <summary>
-        /// Gets or sets key Vault Csm resource Id.
+        /// Gets or sets azure Key Vault Csm resource Id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.keyVaultId")]
         public string KeyVaultId {get; set; }
 
         /// <summary>
-        /// Gets or sets key Vault secret name.
+        /// Gets or sets azure Key Vault secret name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.keyVaultSecretName")]
         public string KeyVaultSecretName {get; set; }
@@ -254,8 +270,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public KeyVaultSecretStatus? KeyVaultSecretStatus {get; private set; }
 
         /// <summary>
-        /// Gets or sets resource ID of the associated App Service plan, formatted as:
-        /// &#34;/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}&#34;.
+        /// Gets or sets resource ID of the associated App Service plan.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serverFarmId")]
         public string ServerFarmId {get; set; }
@@ -280,6 +295,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public override void Validate()
         {
             base.Validate();
+
 
 
 

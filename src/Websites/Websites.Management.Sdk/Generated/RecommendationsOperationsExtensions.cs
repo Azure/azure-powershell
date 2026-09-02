@@ -60,32 +60,6 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Reset all recommendation opt-out settings for a
-        /// subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        public static void ResetAllFilters(this IRecommendationsOperations operations)
-        {
-                ((IRecommendationsOperations)operations).ResetAllFiltersAsync().GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Description for Reset all recommendation opt-out settings for a
-        /// subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task ResetAllFiltersAsync(this IRecommendationsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.ResetAllFiltersWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Description for Disables the specified rule so it will not apply to a
         /// subscription in the future.
         /// </summary>
@@ -118,6 +92,32 @@ namespace Microsoft.Azure.Management.WebSites
             (await operations.DisableRecommendationForSubscriptionWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Description for Reset all recommendation opt-out settings for a
+        /// subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        public static void ResetAllFilters(this IRecommendationsOperations operations)
+        {
+                ((IRecommendationsOperations)operations).ResetAllFiltersAsync().GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Reset all recommendation opt-out settings for a
+        /// subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task ResetAllFiltersAsync(this IRecommendationsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.ResetAllFiltersWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
         /// Description for Get past recommendations for an app, optionally specified
         /// by the time range.
         /// </summary>
@@ -125,10 +125,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='hostingEnvironmentName'>
-        /// Name of the hosting environment.
+        /// Name of the App Service Environment.
         /// </param>
         /// <param name='expiredOnly'>
         /// Specify &lt;code&gt;false&lt;/code&gt; to return all recommendations. The default is
@@ -153,10 +153,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='hostingEnvironmentName'>
-        /// Name of the hosting environment.
+        /// Name of the App Service Environment.
         /// </param>
         /// <param name='expiredOnly'>
         /// Specify &lt;code&gt;false&lt;/code&gt; to return all recommendations. The default is
@@ -185,10 +185,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='hostingEnvironmentName'>
-        /// Name of the app.
+        /// Name of the App Service Environment.
         /// </param>
         /// <param name='featured'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to return only the most critical recommendations.
@@ -211,10 +211,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='hostingEnvironmentName'>
-        /// Name of the app.
+        /// Name of the App Service Environment.
         /// </param>
         /// <param name='featured'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to return only the most critical recommendations.
@@ -236,97 +236,13 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Disable all recommendations for an app.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='environmentName'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='hostingEnvironmentName'>
-        /// 
-        /// </param>
-        public static void DisableAllForHostingEnvironment(this IRecommendationsOperations operations, string resourceGroupName, string environmentName, string hostingEnvironmentName)
-        {
-                ((IRecommendationsOperations)operations).DisableAllForHostingEnvironmentAsync(resourceGroupName, environmentName, hostingEnvironmentName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Description for Disable all recommendations for an app.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='environmentName'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='hostingEnvironmentName'>
-        /// 
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DisableAllForHostingEnvironmentAsync(this IRecommendationsOperations operations, string resourceGroupName, string environmentName, string hostingEnvironmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DisableAllForHostingEnvironmentWithHttpMessagesAsync(resourceGroupName, environmentName, hostingEnvironmentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Description for Reset all recommendation opt-out settings for an app.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='environmentName'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='hostingEnvironmentName'>
-        /// 
-        /// </param>
-        public static void ResetAllFiltersForHostingEnvironment(this IRecommendationsOperations operations, string resourceGroupName, string environmentName, string hostingEnvironmentName)
-        {
-                ((IRecommendationsOperations)operations).ResetAllFiltersForHostingEnvironmentAsync(resourceGroupName, environmentName, hostingEnvironmentName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Description for Reset all recommendation opt-out settings for an app.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='environmentName'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='hostingEnvironmentName'>
-        /// 
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task ResetAllFiltersForHostingEnvironmentAsync(this IRecommendationsOperations operations, string resourceGroupName, string environmentName, string hostingEnvironmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.ResetAllFiltersForHostingEnvironmentWithHttpMessagesAsync(resourceGroupName, environmentName, hostingEnvironmentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Description for Get a recommendation rule for an app.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='hostingEnvironmentName'>
         /// Name of the hosting environment.
@@ -354,7 +270,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='hostingEnvironmentName'>
         /// Name of the hosting environment.
@@ -387,20 +303,20 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='hostingEnvironmentName'>
+        /// Name of the hosting environment.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the recommendation.
         /// </param>
         /// <param name='environmentName'>
         /// Site name
         /// </param>
-        /// <param name='name'>
-        /// Rule name
-        /// </param>
-        /// <param name='hostingEnvironmentName'>
-        /// 
-        /// </param>
-        public static void DisableRecommendationForHostingEnvironment(this IRecommendationsOperations operations, string resourceGroupName, string environmentName, string name, string hostingEnvironmentName)
+        public static void DisableRecommendationForHostingEnvironment(this IRecommendationsOperations operations, string resourceGroupName, string hostingEnvironmentName, string name, string environmentName)
         {
-                ((IRecommendationsOperations)operations).DisableRecommendationForHostingEnvironmentAsync(resourceGroupName, environmentName, name, hostingEnvironmentName).GetAwaiter().GetResult();
+                ((IRecommendationsOperations)operations).DisableRecommendationForHostingEnvironmentAsync(resourceGroupName, hostingEnvironmentName, name, environmentName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -410,23 +326,107 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='hostingEnvironmentName'>
+        /// Name of the hosting environment.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the recommendation.
         /// </param>
         /// <param name='environmentName'>
         /// Site name
         /// </param>
-        /// <param name='name'>
-        /// Rule name
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DisableRecommendationForHostingEnvironmentAsync(this IRecommendationsOperations operations, string resourceGroupName, string hostingEnvironmentName, string name, string environmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DisableRecommendationForHostingEnvironmentWithHttpMessagesAsync(resourceGroupName, hostingEnvironmentName, name, environmentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Description for Disable all recommendations for an app.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='hostingEnvironmentName'>
-        /// 
+        /// Name of the App Service Environment.
+        /// </param>
+        /// <param name='environmentName'>
+        /// Name of the app.
+        /// </param>
+        public static void DisableAllForHostingEnvironment(this IRecommendationsOperations operations, string resourceGroupName, string hostingEnvironmentName, string environmentName)
+        {
+                ((IRecommendationsOperations)operations).DisableAllForHostingEnvironmentAsync(resourceGroupName, hostingEnvironmentName, environmentName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Disable all recommendations for an app.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='hostingEnvironmentName'>
+        /// Name of the App Service Environment.
+        /// </param>
+        /// <param name='environmentName'>
+        /// Name of the app.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DisableRecommendationForHostingEnvironmentAsync(this IRecommendationsOperations operations, string resourceGroupName, string environmentName, string name, string hostingEnvironmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DisableAllForHostingEnvironmentAsync(this IRecommendationsOperations operations, string resourceGroupName, string hostingEnvironmentName, string environmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DisableRecommendationForHostingEnvironmentWithHttpMessagesAsync(resourceGroupName, environmentName, name, hostingEnvironmentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DisableAllForHostingEnvironmentWithHttpMessagesAsync(resourceGroupName, hostingEnvironmentName, environmentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Description for Reset all recommendation opt-out settings for an app.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='hostingEnvironmentName'>
+        /// Name of the App Service Environment.
+        /// </param>
+        /// <param name='environmentName'>
+        /// Name of the app.
+        /// </param>
+        public static void ResetAllFiltersForHostingEnvironment(this IRecommendationsOperations operations, string resourceGroupName, string hostingEnvironmentName, string environmentName)
+        {
+                ((IRecommendationsOperations)operations).ResetAllFiltersForHostingEnvironmentAsync(resourceGroupName, hostingEnvironmentName, environmentName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Reset all recommendation opt-out settings for an app.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='hostingEnvironmentName'>
+        /// Name of the App Service Environment.
+        /// </param>
+        /// <param name='environmentName'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task ResetAllFiltersForHostingEnvironmentAsync(this IRecommendationsOperations operations, string resourceGroupName, string hostingEnvironmentName, string environmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.ResetAllFiltersForHostingEnvironmentWithHttpMessagesAsync(resourceGroupName, hostingEnvironmentName, environmentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Description for Get past recommendations for an app, optionally specified
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Name of the app.
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Name of the app.
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Name of the app.
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Name of the app.
@@ -547,85 +547,13 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Disable all recommendations for an app.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='siteName'>
-        /// Name of the app.
-        /// </param>
-        public static void DisableAllForWebApp(this IRecommendationsOperations operations, string resourceGroupName, string siteName)
-        {
-                ((IRecommendationsOperations)operations).DisableAllForWebAppAsync(resourceGroupName, siteName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Description for Disable all recommendations for an app.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='siteName'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DisableAllForWebAppAsync(this IRecommendationsOperations operations, string resourceGroupName, string siteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DisableAllForWebAppWithHttpMessagesAsync(resourceGroupName, siteName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Description for Reset all recommendation opt-out settings for an app.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='siteName'>
-        /// Name of the app.
-        /// </param>
-        public static void ResetAllFiltersForWebApp(this IRecommendationsOperations operations, string resourceGroupName, string siteName)
-        {
-                ((IRecommendationsOperations)operations).ResetAllFiltersForWebAppAsync(resourceGroupName, siteName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Description for Reset all recommendation opt-out settings for an app.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='siteName'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task ResetAllFiltersForWebAppAsync(this IRecommendationsOperations operations, string resourceGroupName, string siteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.ResetAllFiltersForWebAppWithHttpMessagesAsync(resourceGroupName, siteName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Description for Get a recommendation rule for an app.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Name of the app.
@@ -653,7 +581,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Name of the app.
@@ -686,13 +614,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
-        /// Site name
+        /// Name of the app.
         /// </param>
         /// <param name='name'>
-        /// Rule name
+        /// Name of the recommendation.
         /// </param>
         public static void DisableRecommendationForSite(this IRecommendationsOperations operations, string resourceGroupName, string siteName, string name)
         {
@@ -706,13 +634,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
-        /// Site name
+        /// Name of the app.
         /// </param>
         /// <param name='name'>
-        /// Rule name
+        /// Name of the recommendation.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -720,6 +648,78 @@ namespace Microsoft.Azure.Management.WebSites
         public static async System.Threading.Tasks.Task DisableRecommendationForSiteAsync(this IRecommendationsOperations operations, string resourceGroupName, string siteName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.DisableRecommendationForSiteWithHttpMessagesAsync(resourceGroupName, siteName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Description for Disable all recommendations for an app.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='siteName'>
+        /// Name of the app.
+        /// </param>
+        public static void DisableAllForWebApp(this IRecommendationsOperations operations, string resourceGroupName, string siteName)
+        {
+                ((IRecommendationsOperations)operations).DisableAllForWebAppAsync(resourceGroupName, siteName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Disable all recommendations for an app.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='siteName'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DisableAllForWebAppAsync(this IRecommendationsOperations operations, string resourceGroupName, string siteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DisableAllForWebAppWithHttpMessagesAsync(resourceGroupName, siteName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Description for Reset all recommendation opt-out settings for an app.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='siteName'>
+        /// Name of the app.
+        /// </param>
+        public static void ResetAllFiltersForWebApp(this IRecommendationsOperations operations, string resourceGroupName, string siteName)
+        {
+                ((IRecommendationsOperations)operations).ResetAllFiltersForWebAppAsync(resourceGroupName, siteName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Reset all recommendation opt-out settings for an app.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='siteName'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task ResetAllFiltersForWebAppAsync(this IRecommendationsOperations operations, string resourceGroupName, string siteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.ResetAllFiltersForWebAppWithHttpMessagesAsync(resourceGroupName, siteName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Description for List all recommendations for a subscription.

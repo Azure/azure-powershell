@@ -34,12 +34,18 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="isFqdn">Is fully qualified domain name.
         /// </param>
-        public ResourceNameAvailabilityRequest(string name, string type, bool? isFqdn = default(bool?))
+
+        /// <param name="environmentId">Azure Resource Manager ID of the customer&#39;s selected Container Apps
+        /// Environment on which to host the Function app. This must be of the form
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
+        /// </param>
+        public ResourceNameAvailabilityRequest(string name, string type, bool? isFqdn = default(bool?), string environmentId = default(string))
 
         {
             this.Name = name;
             this.Type = type;
             this.IsFqdn = isFqdn;
+            this.EnvironmentId = environmentId;
             CustomInit();
         }
 
@@ -66,6 +72,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "isFqdn")]
         public bool? IsFqdn {get; set; }
+
+        /// <summary>
+        /// Gets or sets azure Resource Manager ID of the customer&#39;s selected Container
+        /// Apps Environment on which to host the Function app. This must be of the
+        /// form
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "environmentId")]
+        public string EnvironmentId {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -82,6 +97,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Type");
             }
+
 
 
         }

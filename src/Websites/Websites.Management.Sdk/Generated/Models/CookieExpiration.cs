@@ -10,8 +10,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// <summary>
     /// The configuration settings of the session cookie&#39;s expiration.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class CookieExpiration : ProxyOnlyResource
+    public partial class CookieExpiration
     {
         /// <summary>
         /// Initializes a new instance of the CookieExpiration class.
@@ -25,26 +24,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the CookieExpiration class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="convention">The convention used when determining the session cookie&#39;s expiration.
         /// Possible values include: &#39;FixedTime&#39;, &#39;IdentityProviderDerived&#39;</param>
 
         /// <param name="timeToExpiration">The time after the request is made when the session cookie should expire.
         /// </param>
-        public CookieExpiration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), CookieExpirationConvention? convention = default(CookieExpirationConvention?), string timeToExpiration = default(string))
+        public CookieExpiration(CookieExpirationConvention? convention = default(CookieExpirationConvention?), string timeToExpiration = default(string))
 
-        : base(id, name, kind, type)
         {
             this.Convention = convention;
             this.TimeToExpiration = timeToExpiration;
@@ -61,14 +47,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Gets or sets the convention used when determining the session cookie&#39;s
         /// expiration. Possible values include: &#39;FixedTime&#39;, &#39;IdentityProviderDerived&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.convention")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "convention")]
         public CookieExpirationConvention? Convention {get; set; }
 
         /// <summary>
         /// Gets or sets the time after the request is made when the session cookie
         /// should expire.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.timeToExpiration")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "timeToExpiration")]
         public string TimeToExpiration {get; set; }
     }
 }

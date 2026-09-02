@@ -26,5 +26,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public const string PremiumContainer = "PremiumContainer";
         public const string ElasticPremium = "ElasticPremium";
         public const string ElasticIsolated = "ElasticIsolated";
+        public const string FlexConsumption = "FlexConsumption";
     }
 }

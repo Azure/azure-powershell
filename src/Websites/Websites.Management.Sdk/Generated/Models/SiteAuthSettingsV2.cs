@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Authorization V2 feature.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SiteAuthSettingsV2 : ProxyOnlyResource
+    public partial class SiteAuthSettingsV2 : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the SiteAuthSettingsV2 class.
@@ -26,16 +26,24 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the SiteAuthSettingsV2 class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="kind">Kind of resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
+        /// <param name="kind">Kind of resource. If the resource is an app, you can refer to
+        /// https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference
+        /// for details supported values for kind.
         /// </param>
 
         /// <param name="globalValidation">The configuration settings that determines the validation flow of users
@@ -58,10 +66,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="platform">The configuration settings of the platform of App Service
         /// Authentication/Authorization.
         /// </param>
-        public SiteAuthSettingsV2(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), GlobalValidation globalValidation = default(GlobalValidation), IdentityProviders identityProviders = default(IdentityProviders), Login login = default(Login), HttpSettings httpSettings = default(HttpSettings), AuthPlatform platform = default(AuthPlatform))
+        public SiteAuthSettingsV2(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), GlobalValidation globalValidation = default(GlobalValidation), IdentityProviders identityProviders = default(IdentityProviders), Login login = default(Login), HttpSettings httpSettings = default(HttpSettings), AuthPlatform platform = default(AuthPlatform))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.GlobalValidation = globalValidation;
             this.IdentityProviders = identityProviders;
             this.Login = login;
@@ -75,6 +84,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource. If the resource is an app, you can refer to
+        /// https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference
+        /// for details supported values for kind.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets the configuration settings that determines the validation flow
