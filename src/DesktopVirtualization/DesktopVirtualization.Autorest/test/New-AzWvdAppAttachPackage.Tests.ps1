@@ -12,6 +12,53 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzWvdAppAttachPackage' {
+    It 'CreateExpandedWithNewFields' {
+        # Covers the 2026-04-16 create fields: CustomData, PackageOwnerName,
+        # PackageLookbackUrl, ImageIsPackageTimestamped. Self-contained (only needs ResourceGroup).
+        try {
+            $enc = [system.Text.Encoding]::UTF8
+            $data1 = $enc.GetBytes("some image")
+
+            $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
+            $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })
+
+            $package_created = New-AzWvdAppAttachPackage -Name "TestPackageNewFields" `
+                -ImagePackageFullName 'AATest_FullName_NewFields' `
+                -ResourceGroupName $env.ResourceGroup `
+                -SubscriptionId $env.SubscriptionId `
+                -Location $env.Location `
+                -ImageDisplayName 'UnitTest-MSIXPackage-NewFields' `
+                -ImagePath 'C:\\msix\SingleMsix.vhd' `
+                -ImageIsActive `
+                -ImageIsRegularRegistration `
+                -ImageLastUpdated '0001-01-01T00:00:00' `
+                -ImagePackageApplication $apps `
+                -ImagePackageDependency $deps `
+                -ImagePackageFamilyName 'MsixUnitTest_FamilyName' `
+                -ImagePackageName 'MsixUnitTest_Name' `
+                -ImagePackageRelativePath 'MsixUnitTest_RelativePackageRoot' `
+                -ImageVersion '0.0.18838.722' `
+                -CustomData 'powershellCustomData' `
+                -PackageOwnerName 'AppAttach' `
+                -PackageLookbackUrl 'https://contoso.example/lookback' `
+                -ImageIsPackageTimestamped 'Timestamped'
+
+            $packages = Get-AzWvdAppAttachPackage -Name "TestPackageNewFields" `
+                -ResourceGroupName $env.ResourceGroup `
+                -SubscriptionId $env.SubscriptionId
+
+            $packages[0].CustomData | Should -Be 'powershellCustomData'
+            $packages[0].PackageOwnerName | Should -Be 'AppAttach'
+            $packages[0].PackageLookbackUrl | Should -Be 'https://contoso.example/lookback'
+            $packages[0].ImageIsPackageTimestamped | Should -Be 'Timestamped'
+        }
+        finally{
+            $package = Remove-AzWvdAppAttachPackage -Name 'TestPackageNewFields' `
+                -ResourceGroupName $env.ResourceGroup `
+                -SubscriptionId $env.SubscriptionId
+        }
+    }
+
     It 'CreateExpanded' {
         try {
             $enc = [system.Text.Encoding]::UTF8

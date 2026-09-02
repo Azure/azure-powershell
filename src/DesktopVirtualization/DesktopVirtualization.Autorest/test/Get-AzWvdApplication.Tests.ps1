@@ -56,7 +56,7 @@ Describe 'Get-AzWvdApplication' {
                                 -ResourceGroupName $env.ResourceGroup `
                                 -GroupName $env.RemoteApplicationGroup `
                                 -Name 'Paint'
-                $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint'
+                $application.Name | Should -Be "$($env.RemoteApplicationGroup)/Paint"
                 $application.FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
                 $application.FriendlyName | Should -Be 'fri'
                 $application.Description | Should -Be 'des'
@@ -119,7 +119,7 @@ Describe 'Get-AzWvdApplication' {
             $applications = Get-AzWvdApplication -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
                                 -GroupName $env.RemoteApplicationGroup
-                $applications[0].Name | Should -Be 'ApplicationGroupPowershell2/Paint'
+                $applications[0].Name | Should -Be "$($env.RemoteApplicationGroup)/Paint"
                 $applications[0].FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
                 $applications[0].FriendlyName | Should -Be 'fri'
                 $applications[0].Description | Should -Be 'des'
@@ -128,7 +128,7 @@ Describe 'Get-AzWvdApplication' {
                 $applications[0].CommandLineSetting | Should -Be 'Allow'
                 $applications[0].ShowInPortal | Should -Be $true
 
-                $applications[1].Name | Should -Be 'ApplicationGroupPowershell2/Paint2'
+                $applications[1].Name | Should -Be "$($env.RemoteApplicationGroup)/Paint2"
                 $applications[1].FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
                 $applications[1].FriendlyName | Should -Be 'fri'
                 $applications[1].Description | Should -Be 'des'
@@ -211,7 +211,7 @@ Describe 'Get-AzWvdApplication' {
                 -GroupName $env.RemoteApplicationGroup `
                 -Name 'UnitTest-MSIX-Application'
 
-            $application.Name | Should -Be 'ApplicationGroupPowershell2/UnitTest-MSIX-Application'
+            $application.Name | Should -Be "$($env.RemoteApplicationGroup)/UnitTest-MSIX-Application"
             $application.FriendlyName | Should -Be 'friendlyname'
             $application.Description | Should -Be 'Unit Test MSIX Application'
             $application.IconIndex | Should -Be 0
@@ -290,7 +290,7 @@ Describe 'Get-AzWvdApplication' {
                 -GroupName $env.DesktopApplicationGroup `
                 -Name 'UnitTest-MSIX-Application' 
 
-            $application.Name | Should -Be 'ApplicationGroupPowershell1/UnitTest-MSIX-Application'
+            $application.Name | Should -Be "$($env.DesktopApplicationGroup)/UnitTest-MSIX-Application"
             $application.FriendlyName | Should -Be 'friendlyname'
             $application.Description | Should -Be 'Unit Test MSIX Application'
             $application.IconIndex | Should -Be 0
