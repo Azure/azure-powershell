@@ -57,7 +57,7 @@ function New-AzNewRelicMonitoredSubscriptionObject {
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [string]
         $MetricRuleSendMetric,
-        [Parameter(HelpMessage="User Email.")]
+        [Parameter(HelpMessage="Reusable representation of an email address.")]
         [string]
         $MetricRuleUserEmail,
         [Parameter(HelpMessage="The state of monitoring.")]

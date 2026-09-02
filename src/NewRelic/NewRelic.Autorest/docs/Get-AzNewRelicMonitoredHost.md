@@ -124,6 +124,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -138,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -UserEmail
-User Email
+Reusable representation of an email address
 
 ```yaml
 Type: System.String

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNewRelicMonitoredSubscription
 
 ## SYNOPSIS
-Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
+Create a MonitoredSubscriptionProperties
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzNewRelicMonitoredSubscription -MonitorName <String> -ResourceGroupName <St
 ```
 
 ## DESCRIPTION
-Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
+Create a MonitoredSubscriptionProperties
 
 ## EXAMPLES
 
@@ -190,6 +190,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

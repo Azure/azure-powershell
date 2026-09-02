@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Internal code generation updated. No user-facing changes in this release.
 
 ## Version 0.3.0
 * Added AutoRest-generated NewRelic PowerShell module using API version 2025-05-01-preview
@@ -59,4 +60,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.NewRelic
-
