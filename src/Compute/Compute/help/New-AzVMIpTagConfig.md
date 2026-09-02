@@ -1,45 +1,36 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://learn.microsoft.com/powershell/module/az.compute/new-azvmssiptagconfig
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azvmiptagconfig
 schema: 2.0.0
 ---
 
-# New-AzVmssIpTagConfig
+# New-AzVMIpTagConfig
 
 ## SYNOPSIS
-Creates an IP Tag object for a network interface of a VMSS.
+Creates an IP tag object for an implicit virtual machine public IP address.
 
 ## SYNTAX
 
 ```
-New-AzVmssIpTagConfig [-IpTagType] <String> [-Tag <String>] [-FirstPartyServiceTagId <String>]
+New-AzVMIpTagConfig [-IpTagType] <String> [-Tag <String>] [-FirstPartyServiceTagId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzVmssIpTagConfig** cmdlet creates an IP Tag configuration object for a network interface of a Virtual Machine Scale Set (VMSS).
-Specify the configuration from this cmdlet as the *IPTag* parameter of the New-AzVmssIpConfig cmdlet.
+The **New-AzVMIpTagConfig** cmdlet creates an IP tag configuration object for an implicit public IP address on a virtual machine (VM).
+Pass the object to the *IpTag* parameter of **New-AzVMIpConfig**.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-$subnetId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVNet/subnets/mySubnet'
-$ipTag = New-AzVmssIpTagConfig -IpTagType 'FirstPartyUsage' -Tag 'Sql'
-$ipCfg = New-AzVmssIpConfig -Name 'test' -SubnetId $subnetId -IpTag $ipTag
-```
-
-This command creates an IP Tag local object with 'FirstPartyUsage' type and 'Sql' tag, and then creates an IP configuration with this IP tag.
-
-### Example 2: Create an IP tag with a first-party service tag resource ID
+### Example 1: Create a first-party service IP tag
 ```powershell
 $serviceTagResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/firstPartyServiceTags/myServiceTag'
-$ipTag = New-AzVmssIpTagConfig -IpTagType 'FirstPartyUsage' -FirstPartyServiceTagId $serviceTagResourceId
-$ipCfg = New-AzVmssIpConfig -Name 'ipConfig' -IpTag $ipTag
+$ipTag = New-AzVMIpTagConfig -IpTagType 'FirstPartyUsage' -Tag 'Sql' -FirstPartyServiceTagId $serviceTagResourceId
+$ipConfig = New-AzVMIpConfig -Name 'ipConfig' -PublicIPAddressConfigurationName 'publicIpConfig' -IpTag $ipTag
 ```
 
-This command creates an IP tag for a VMSS implicit public IP address and associates it with a first-party service tag resource.
+This example creates an IP tag with a first-party service tag resource ID and adds it to an implicit public IP configuration.
 
 ## PARAMETERS
 
@@ -74,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -IpTagType
-Specifies an IP Tag Type.
+Specifies the IP tag type.
 
 ```yaml
 Type: System.String
@@ -89,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies an IP Tag Value.
+Specifies the IP tag value.
 
 ```yaml
 Type: System.String
@@ -142,8 +133,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIpTag
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineIpTag
 
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzVMIpConfig](./New-AzVMIpConfig.md)
