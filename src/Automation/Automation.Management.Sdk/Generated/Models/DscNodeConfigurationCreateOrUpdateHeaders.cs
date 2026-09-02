@@ -7,26 +7,30 @@ namespace Microsoft.Azure.Management.Automation.Models
 {
     using System.Linq;
 
-    public partial class RunbookDraftReplaceContentHeaders
+    public partial class DscNodeConfigurationCreateOrUpdateHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the RunbookDraftReplaceContentHeaders class.
+        /// Initializes a new instance of the DscNodeConfigurationCreateOrUpdateHeaders class.
         /// </summary>
-        public RunbookDraftReplaceContentHeaders()
+        public DscNodeConfigurationCreateOrUpdateHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RunbookDraftReplaceContentHeaders class.
+        /// Initializes a new instance of the DscNodeConfigurationCreateOrUpdateHeaders class.
         /// </summary>
 
         /// <param name="location">
         /// </param>
-        public RunbookDraftReplaceContentHeaders(string location = default(string))
+
+        /// <param name="retryAfter">
+        /// </param>
+        public DscNodeConfigurationCreateOrUpdateHeaders(string location = default(string), int? retryAfter = default(int?))
 
         {
             this.Location = location;
+            this.RetryAfter = retryAfter;
             CustomInit();
         }
 
@@ -39,7 +43,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <summary>
         /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
         public string Location {get; set; }
+
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
+        public int? RetryAfter {get; set; }
     }
 }

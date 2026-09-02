@@ -8,32 +8,32 @@ namespace Microsoft.Azure.Management.Automation.Models
     using System.Linq;
 
     /// <summary>
-    /// The response model for the list job stream operation.
+    /// Gets the count of nodes by count type
     /// </summary>
-    public partial class JobStreamListResult
+    public partial class NodeCounts
     {
         /// <summary>
-        /// Initializes a new instance of the JobStreamListResult class.
+        /// Initializes a new instance of the NodeCounts class.
         /// </summary>
-        public JobStreamListResult()
+        public NodeCounts()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the JobStreamListResult class.
+        /// Initializes a new instance of the NodeCounts class.
         /// </summary>
 
-        /// <param name="value">A list of job streams.
+        /// <param name="value">Gets an array of counts
         /// </param>
 
-        /// <param name="nextLink">Gets or sets the next link.
+        /// <param name="totalCount">Gets the total number of records matching countType criteria.
         /// </param>
-        public JobStreamListResult(System.Collections.Generic.IList<JobStream> value = default(System.Collections.Generic.IList<JobStream>), string nextLink = default(string))
+        public NodeCounts(System.Collections.Generic.IList<NodeCount> value = default(System.Collections.Generic.IList<NodeCount>), int? totalCount = default(int?))
 
         {
             this.Value = value;
-            this.NextLink = nextLink;
+            this.TotalCount = totalCount;
             CustomInit();
         }
 
@@ -44,15 +44,15 @@ namespace Microsoft.Azure.Management.Automation.Models
 
 
         /// <summary>
-        /// Gets or sets a list of job streams.
+        /// Gets or sets gets an array of counts
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
-        public System.Collections.Generic.IList<JobStream> Value {get; set; }
+        public System.Collections.Generic.IList<NodeCount> Value {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the next link.
+        /// Gets or sets gets the total number of records matching countType criteria.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "nextLink")]
-        public string NextLink {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "totalCount")]
+        public int? TotalCount {get; set; }
     }
 }
