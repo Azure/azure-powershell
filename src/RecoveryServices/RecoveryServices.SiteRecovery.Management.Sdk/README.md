@@ -25,10 +25,10 @@ payload-flattening-threshold: 2
 ``` yaml
 commit: 7a8d3c583d7c9238eea971223c2ccadb18c14412
 input-file:
-  - D:/Work/azure-rest-api-specs-pr/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/SiteRecovery/stable/2026-09-30/service.json
+  - D:/Work/azure-rest-api-specs-pr/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/SiteRecovery/stable/2026-10-01/service.json
 # Local stable path used for local-only regen. Before pushing the PR, switch back to the
 # commit-pinned -pr blob URL once the stable swagger commit is published:
-#  - https://github.com/sisunkar/azure-rest-api-specs-pr/blob/$(commit)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/SiteRecovery/stable/2026-09-30/service.json
+#  - https://github.com/sisunkar/azure-rest-api-specs-pr/blob/$(commit)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/SiteRecovery/stable/2026-10-01/service.json
 
 output-folder: Generated
 
