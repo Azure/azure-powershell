@@ -95,13 +95,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The start date of the schedule for this capacity reservation. Providing this parameter creates a Future capacity reservation. Minimum API version: 2026-04-01.")]
+            HelpMessage = "The required start date for a Future Capacity Reservation. Must be at least 7 days in the future, and maximum 6 months in the future. In a Targeted or Open capacity reservation group, providing this parameter creates a Future Capacity Reservation.")]       
         public DateTime ScheduleProfileStart { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The minimum number of days that must pass after the start date before a Future capacity reservation can be updated or deleted once it has been committed. Can only be used together with ScheduleProfileStart. Minimum API version: 2026-04-01.")]
+            HelpMessage = "The minimum number of days that must pass after the start date before the reservation can be updated or deleted once it has been committed. Must be >= 30 if provided. Only valid for Future Capacity Reservations.")]
         public int MinimumCommitmentDays { get; set; }
 
         public override void ExecuteCmdlet()
@@ -126,19 +126,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         capacityReservation.Zones = this.Zone;
                     }
-                    if (this.IsParameterBound(c => c.MinimumCommitmentDays) && !this.IsParameterBound(c => c.ScheduleProfileStart))
-                    {
-                        throw new ArgumentException("The MinimumCommitmentDays parameter can only be used together with the ScheduleProfileStart parameter.");
-                    }
                     if (this.IsParameterBound(c => c.ScheduleProfileStart))
                     {
                         capacityReservation.ScheduleProfile = new ScheduleProfile();
-                        capacityReservation.ScheduleProfile.Start = this.ScheduleProfileStart.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
-
-                        if (this.IsParameterBound(c => c.MinimumCommitmentDays))
-                        {
-                            capacityReservation.ScheduleProfile.MinimumCommitmentDays = this.MinimumCommitmentDays;
-                        }
+                        capacityReservation.ScheduleProfile.Start = this.ScheduleProfileStart.ToString("o", CultureInfo.InvariantCulture);
+                    }
+                    if (this.IsParameterBound(c => c.MinimumCommitmentDays))
+                    {
+                        capacityReservation.ScheduleProfile = capacityReservation.ScheduleProfile == null ? new ScheduleProfile() : capacityReservation.ScheduleProfile;
+                        capacityReservation.ScheduleProfile.MinimumCommitmentDays = this.MinimumCommitmentDays;
                     }
 
                     var result = CapacityReservationClient.CreateOrUpdate(this.ResourceGroupName, this.ReservationGroupName,this.Name, capacityReservation);

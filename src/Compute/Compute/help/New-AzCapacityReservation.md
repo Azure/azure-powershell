@@ -37,7 +37,7 @@ This command will create a Capacity Reservation resource with the provided sku a
 New-AzCapacityReservation -ResourceGroupName "myRG" -Location "eastus" -ReservationGroupName "myCapacityReservationGroup" -Name "myCapacityReservation" -Sku "Standard_DS1_v2" -CapacityToReserve 10 -Zone "1" -ScheduleProfileStart "2026-12-25" -MinimumCommitmentDays 30
 ```
 
-This command will create a Future Capacity Reservation resource that reserves capacity starting on 2026-12-25, and that cannot be updated or deleted until 30 days have passed after the start date once the reservation has been committed.
+This command will create a Future Capacity Reservation resource that reserves capacity starting on 2026-12-25, and that cannot be updated or deleted until 30 days have passed after the start date if the reservation is fulfilled.
 
 ## PARAMETERS
 
@@ -102,8 +102,8 @@ Accept wildcard characters: False
 ```
 
 ### -MinimumCommitmentDays
-The minimum number of days that must pass after the start date before a Future capacity reservation can be updated or deleted once it has been committed.
-Can only be used together with ScheduleProfileStart.
+The minimum number of days that must pass after the start date before a Future Capacity Reservation can be updated or deleted once fulfilled.
+Only valid for Future Capacity Reservations.
 Minimum API version: 2026-04-01.
 
 ```yaml
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 
 ### -ScheduleProfileStart
 The start date of the schedule for this capacity reservation.
-Providing this parameter creates a Future capacity reservation.
+Providing this parameter creates a Future Capacity Reservation.
 Minimum API version: 2026-04-01.
 
 ```yaml
