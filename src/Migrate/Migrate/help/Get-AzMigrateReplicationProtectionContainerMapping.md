@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -MappingName
-Protection container mapping name.
+Protection Container mapping name.
 
 ```yaml
 Type: System.String
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-The name of the recovery services vault.
+The name of the Vault
 
 ```yaml
 Type: System.String
