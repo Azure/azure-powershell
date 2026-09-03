@@ -11,39 +11,39 @@ Locale: en-US
 Microsoft Azure PowerShell: AppNetwork cmdlets
 
 ## Az.AppNetwork Cmdlets
-### [Get-AzAppNetworkAppLink](Get-AzAppNetworkAppLink.md)
+### [Get-AzAppNetwork](Get-AzAppNetwork.md)
 Get an AppLink.
-
-### [Get-AzAppNetworkAppLinkMember](Get-AzAppNetworkAppLinkMember.md)
-Get an AppLinkMember.
 
 ### [Get-AzAppNetworkAvailableVersion](Get-AzAppNetworkAvailableVersion.md)
 List AvailableVersion resources by location.
 
+### [Get-AzAppNetworkMember](Get-AzAppNetworkMember.md)
+Get an AppLinkMember.
+
 ### [Get-AzAppNetworkUpgradeHistory](Get-AzAppNetworkUpgradeHistory.md)
 List UpgradeHistory resources by AppLinkMember.
 
-### [New-AzAppNetworkAppLink](New-AzAppNetworkAppLink.md)
+### [New-AzAppNetwork](New-AzAppNetwork.md)
 Create an AppLink.
 
-### [New-AzAppNetworkAppLinkMember](New-AzAppNetworkAppLinkMember.md)
+### [New-AzAppNetworkMember](New-AzAppNetworkMember.md)
 Create an AppLinkMember.
 
-### [Remove-AzAppNetworkAppLink](Remove-AzAppNetworkAppLink.md)
+### [Remove-AzAppNetwork](Remove-AzAppNetwork.md)
 Delete an AppLink.
 
-### [Remove-AzAppNetworkAppLinkMember](Remove-AzAppNetworkAppLinkMember.md)
+### [Remove-AzAppNetworkMember](Remove-AzAppNetworkMember.md)
 Delete an AppLinkMember.
 
-### [Set-AzAppNetworkAppLink](Set-AzAppNetworkAppLink.md)
+### [Set-AzAppNetwork](Set-AzAppNetwork.md)
 Update an AppLink.
 
-### [Set-AzAppNetworkAppLinkMember](Set-AzAppNetworkAppLinkMember.md)
+### [Set-AzAppNetworkMember](Set-AzAppNetworkMember.md)
 Update an AppLinkMember.
 
-### [Update-AzAppNetworkAppLink](Update-AzAppNetworkAppLink.md)
+### [Update-AzAppNetwork](Update-AzAppNetwork.md)
 Update an AppLink.
 
-### [Update-AzAppNetworkAppLinkMember](Update-AzAppNetworkAppLinkMember.md)
+### [Update-AzAppNetworkMember](Update-AzAppNetworkMember.md)
 Update an AppLinkMember.
 

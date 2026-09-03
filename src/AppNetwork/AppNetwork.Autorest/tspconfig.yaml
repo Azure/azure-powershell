@@ -7,7 +7,7 @@ options:
     azure: true
     module-version: 0.1.0
     prefix: "Az"
-    subject-prefix: "AppNetwork"
+    subject-prefix: ""
     service-name: AppNetwork
     module-name: "{prefix}.{service-name}"
     output-folder: "{output-dir}"
@@ -15,6 +15,23 @@ options:
       - Id
       - Type
     directive:
+      # Rename resource subjects so cmdlet nouns read AppNetwork* (empty subject-prefix)
+      - where:
+          subject: AppLinkMember
+        set:
+          subject: AppNetworkMember
+      - where:
+          subject: AppLink
+        set:
+          subject: AppNetwork
+      - where:
+          subject: AvailableVersion
+        set:
+          subject: AppNetworkAvailableVersion
+      - where:
+          subject: UpgradeHistory
+        set:
+          subject: AppNetworkUpgradeHistory
       # Hide the raw Operations listing cmdlet
       - where:
           subject: Operation

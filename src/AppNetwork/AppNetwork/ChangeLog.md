@@ -19,8 +19,8 @@
 -->
 ## Upcoming Release
 * Initial onboarding of the `Az.AppNetwork` module for the `Microsoft.AppLink` resource provider (API version `2025-08-01-preview`), generated from TypeSpec.
-    - Added AppLink cmdlets: `Get/New/Set/Update/Remove-AzAppNetworkAppLink`.
-    - Added AppLinkMember cmdlets: `Get/New/Set/Update/Remove-AzAppNetworkAppLinkMember`.
+    - Added Application Network cmdlets: `Get/New/Set/Update/Remove-AzAppNetwork`.
+    - Added Application Network member cmdlets: `Get/New/Set/Update/Remove-AzAppNetworkMember`.
     - Added `Get-AzAppNetworkAvailableVersion` and `Get-AzAppNetworkUpgradeHistory`.
 
 ## Version 0.1.0

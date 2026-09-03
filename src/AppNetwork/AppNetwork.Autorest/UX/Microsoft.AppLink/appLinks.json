@@ -6,12 +6,12 @@
   },
   "commands": [
     {
-      "name": "Get-AzAppNetworkAppLink",
+      "name": "Get-AzAppNetwork",
       "description": "Get an AppLink.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/appLinks/{appLinkName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.appnetwork/get-azappnetworkapplink"
+          "url": "https://learn.microsoft.com/powershell/module/az.appnetwork/get-azappnetwork"
         },
         "parameterSets": [
           {
@@ -44,12 +44,12 @@
       ]
     },
     {
-      "name": "Remove-AzAppNetworkAppLink",
+      "name": "Remove-AzAppNetwork",
       "description": "Delete an AppLink.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/appLinks/{appLinkName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.appnetwork/remove-azappnetworkapplink"
+          "url": "https://learn.microsoft.com/powershell/module/az.appnetwork/remove-azappnetwork"
         },
         "parameterSets": [
           {
