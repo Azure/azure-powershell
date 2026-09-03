@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.DeploymentStacks
 {
+    using System.Collections;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -72,7 +73,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
         public string[] DenySettingsExcludedAction { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Apply to child scopes.")]
-        public SwitchParameter DenySettingsApplyToChildScope { get; set; }
+        [Alias("DenySettingsApplyToChildScope")]
+        public SwitchParameter DenySettingsApplyToChildScopes { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Validation level. Possible values: Template, Provider, ProviderNoRbac.")]
         public string ValidationLevel { get; set; }
@@ -82,6 +84,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
 
         [Parameter(Mandatory = false, HelpMessage = "Flag to bypass stack out-of-sync error.")]
         public SwitchParameter BypassStackOutOfSyncError { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The action to take on resources that do not support deletion when they are removed from the deployment stack. " +
+            "Possible values include: 'Fail' (default) and 'Detach'.")]
+        public PSResourcesWithoutDeleteSupport ResourcesWithoutDeleteSupport { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The tags to put on the deployment stack WhatIf result.")]
+        public Hashtable Tag { get; set; }
 
         #endregion
 
@@ -113,10 +122,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
                 DenySettingsMode = DenySettingsMode.ToString(),
                 DenySettingsExcludedPrincipals = DenySettingsExcludedPrincipal,
                 DenySettingsExcludedActions = DenySettingsExcludedAction,
-                DenySettingsApplyToChildScopes = DenySettingsApplyToChildScope.IsPresent,
+                DenySettingsApplyToChildScopes = DenySettingsApplyToChildScopes.IsPresent,
                 ValidationLevel = ValidationLevel,
                 DebugSettingDetailLevel = DebugSettingDetailLevel,
-                BypassStackOutOfSyncError = BypassStackOutOfSyncError.IsPresent
+                BypassStackOutOfSyncError = BypassStackOutOfSyncError.IsPresent,
+                ResourcesWithoutDeleteSupport = ResourcesWithoutDeleteSupport.ToString().ToLowerInvariant(),
+                Tags = Tag
             };
         }
 

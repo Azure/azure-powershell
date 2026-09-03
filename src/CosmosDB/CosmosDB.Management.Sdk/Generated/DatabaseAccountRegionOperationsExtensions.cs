@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// have an or of multiple names), startTime, endTime, and timeGrain. The
         /// supported operator is eq.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<Metric> ListMetrics(this IDatabaseAccountRegionOperations operations, string resourceGroupName, string accountName, string region, string filter)
+        public static Microsoft.Rest.Azure.IPage<Metric> ListMetrics(this IDatabaseAccountRegionOperations operations, string resourceGroupName, string accountName, string region, string filter)
         {
                 return ((IDatabaseAccountRegionOperations)operations).ListMetricsAsync(resourceGroupName, accountName, region, filter).GetAwaiter().GetResult();
         }
@@ -64,9 +64,44 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Metric>> ListMetricsAsync(this IDatabaseAccountRegionOperations operations, string resourceGroupName, string accountName, string region, string filter, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Metric>> ListMetricsAsync(this IDatabaseAccountRegionOperations operations, string resourceGroupName, string accountName, string region, string filter, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroupName, accountName, region, filter, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account and region.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Metric> ListMetricsNext(this IDatabaseAccountRegionOperations operations, string nextPageLink)
+        {
+                return ((IDatabaseAccountRegionOperations)operations).ListMetricsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account and region.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Metric>> ListMetricsNextAsync(this IDatabaseAccountRegionOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListMetricsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

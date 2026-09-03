@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <summary>
         /// Gets or sets the location where the deleted server was located
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The Azure region where the deleted server was located.")]
@@ -57,22 +58,30 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <returns>A collection of deleted servers</returns>
         protected override IEnumerable<AzureSqlDeletedServerModel> GetEntity()
         {
-            IEnumerable<AzureSqlDeletedServerModel> results = null;
-
-            if (!string.IsNullOrEmpty(this.ServerName))
+            // Case: -Location -ServerName → server-side lookup for a specific deleted server
+            if (!string.IsNullOrEmpty(this.Location) && !string.IsNullOrEmpty(this.ServerName))
             {
-                // Get a specific deleted server
                 var deletedServer = ModelAdapter.GetDeletedServer(this.Location, this.ServerName);
-                results = new List<AzureSqlDeletedServerModel> { ModelAdapter.CreateDeletedServerModelFromResponse(deletedServer)};
+                return new[] { ModelAdapter.CreateDeletedServerModelFromResponse(deletedServer) };
+            }
+
+            // Case: -Location → list deleted servers in that region
+            // Case: (none) or -ServerName only → list all deleted servers in the subscription
+            IEnumerable<DeletedServer> deletedServers;
+            if (string.IsNullOrEmpty(this.Location))
+            {
+                deletedServers = ModelAdapter.ListDeletedServers();
             }
             else
             {
-                // List all deleted servers in the location
-                results = ModelAdapter.ListDeletedServers(this.Location)
-                    .Select(deletedServer => ModelAdapter.CreateDeletedServerModelFromResponse(deletedServer));
+                deletedServers = ModelAdapter.ListDeletedServersByLocation(this.Location);
             }
 
-            return results;
+            // -ServerName without -Location: filter subscription results client-side
+            return deletedServers
+                .Where(s => string.IsNullOrEmpty(this.ServerName) ||
+                    string.Equals(s.Name, this.ServerName, StringComparison.OrdinalIgnoreCase))
+                .Select(s => ModelAdapter.CreateDeletedServerModelFromResponse(s));
         }
 
         /// <summary>
