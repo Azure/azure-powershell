@@ -5458,11 +5458,23 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>RequestBodyEnforcement</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>RequestBodyInspectLimitInKB</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>RequestBodyCheck</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>MaxRequestBodySizeInKb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>FileUploadEnforcement</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
@@ -5475,6 +5487,18 @@
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>CustomBlockResponseStatusCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>LogScrubbing</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>JSChallengeCookieExpirationInMins</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>CaptchaExpirationInMins</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -5490,11 +5514,23 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>RequestBodyEnforcement</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>RequestBodyInspectLimitInKB</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>RequestBodyCheck</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>MaxRequestBodySizeInKb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>FileUploadEnforcement</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
@@ -5507,6 +5543,18 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>CustomBlockResponseStatusCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>LogScrubbing</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>JSChallengeCookieExpirationInMins</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>CaptchaExpirationInMins</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
