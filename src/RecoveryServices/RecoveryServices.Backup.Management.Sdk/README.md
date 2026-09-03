@@ -23,10 +23,10 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-# TODO: points at @hiaga's fork branch (users/hiaga/rsvbackup-2026-08-01-listmountscripts) for pre-merge validation. Before merging this PS change, repoint to github.com/Azure/azure-rest-api-specs and the merged SHA of PR #44639.
-commit: 79a24bc2005fe13ba98a618d9a8e1e52ed7f9d1f
+# Spec source: merged Azure/azure-rest-api-specs PR #44639 (RecoveryServicesBackup 2026-08-01, listMountScripts / MSRC-114273), merged 2026-08-29.
+commit: 4e6e13d398d4c2616237322a62394fc4f1dfeb81
 input-file:
-  - https://github.com/hiaga/azure-rest-api-specs/blob/$(commit)/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/RecoveryServicesBackup/stable/2026-08-01/bms.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/RecoveryServicesBackup/stable/2026-08-01/bms.json
 
 directive:
   - from: swagger-document
