@@ -22,11 +22,40 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             CustomInit();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the RecoveryPoint class.
+        /// </summary>
+
+        /// <param name="threatStatus">Threat status of the recovery point
+        /// Possible values include: &#39;Unknown&#39;, &#39;Healthy&#39;, &#39;UnHealthy&#39;, &#39;Warning&#39;,
+        /// &#39;NotAvailable&#39;</param>
+
+        /// <param name="threatInfo">Recovery point threat information.
+        /// </param>
+        public RecoveryPoint(string threatStatus = default(string), System.Collections.Generic.IList<ThreatInfo> threatInfo = default(System.Collections.Generic.IList<ThreatInfo>))
+
+        {
+            this.ThreatStatus = threatStatus;
+            this.ThreatInfo = threatInfo;
+            CustomInit();
+        }
 
         /// <summary>
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets threat status of the recovery point Possible values include: &#39;Unknown&#39;, &#39;Healthy&#39;, &#39;UnHealthy&#39;, &#39;Warning&#39;, &#39;NotAvailable&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "threatStatus")]
+        public string ThreatStatus {get; set; }
+
+        /// <summary>
+        /// Gets or sets recovery point threat information.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "threatInfo")]
+        public System.Collections.Generic.IList<ThreatInfo> ThreatInfo {get; set; }
     }
 }

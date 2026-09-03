@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Moved Instant Item Recovery (ILR) mount script retrieval to the dedicated `listMountScripts` action (api-version `2026-08-01`); `Get-AzRecoveryServicesBackupRPMountScript` no longer reads iSCSI CHAP connection details from the broad ILR operation-status response (MSRC-114273).
 * Added Cross Region Restore support for Azure File Share backup items (`Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`)
 * Refined soft delete behavior for Azure File share backup items
     - `Undo-AzRecoveryServicesBackupItemDeletion` now throws a clear error when the target Azure File share item is not in the soft-deleted (`ToBeDeleted`) state instead of issuing an undelete request that cannot succeed.

@@ -18,22 +18,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='jobName'>
-        /// Job name whose operation result has to be fetched.
+        /// The name of the JobResource
         /// </param>
         /// <param name='operationId'>
-        /// OperationID which represents the operation whose result has to be fetched.
+        /// The name of the JobResource
         /// </param>
-        public static void Get(this IJobOperationResultsOperations operations, string vaultName, string resourceGroupName, string jobName, string operationId)
+        public static void Get(this IJobOperationResultsOperations operations, string resourceGroupName, string vaultName, string jobName, string operationId)
         {
-                ((IJobOperationResultsOperations)operations).GetAsync(vaultName, resourceGroupName, jobName, operationId).GetAwaiter().GetResult();
+                ((IJobOperationResultsOperations)operations).GetAsync(resourceGroupName, vaultName, jobName, operationId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -42,25 +41,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='jobName'>
-        /// Job name whose operation result has to be fetched.
+        /// The name of the JobResource
         /// </param>
         /// <param name='operationId'>
-        /// OperationID which represents the operation whose result has to be fetched.
+        /// The name of the JobResource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task GetAsync(this IJobOperationResultsOperations operations, string vaultName, string resourceGroupName, string jobName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task GetAsync(this IJobOperationResultsOperations operations, string resourceGroupName, string vaultName, string jobName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, jobName, operationId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, jobName, operationId, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
     }
 }

@@ -865,45 +865,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
 
-            IEnumerable<string> ie =
-                    ilRResponse.Response.Headers.GetValues("Azure-AsyncOperation");
-            string asyncHeader = string.Empty;
-            foreach (string s in ie)
-            {
-                asyncHeader = s;
-            }
+            string operationId = ilRResponse.Response.Headers.GetAzureAsyncOperationId();
 
             AzureVmRPMountScriptDetails result = null;
-            var response = TrackingHelpers.GetOperationStatus(
+
+            // Wait for the provision LRO to reach a terminal state before fetching scripts.
+            TrackingHelpers.GetOperationStatus(
                 ilRResponse,
-                operationId => ServiceClientAdapter.GetProtectedItemOperationStatus(
-                    operationId,
+                opId => ServiceClientAdapter.GetProtectedItemOperationStatus(
+                    opId,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName));
 
-            if (response != null && response.Status != null &&
-                   response.Properties != null && ((OperationStatusProvisionILRExtendedInfo)
-                   response.Properties).RecoveryTarget != null)
-            {
-                InstantItemRecoveryTarget recoveryTarget =
-                    ((OperationStatusProvisionILRExtendedInfo)
-                    response.Properties).RecoveryTarget;
+            // Always source the mount scripts from the dedicated listInstantItemRecoveryOperationResult
+            // action using the provision operationId (MSRC 114273). Scripts are no longer read from the
+            // operationsStatus response regardless of whether the service currently redacts them; once all
+            // clients migrate off operationsStatus the service will begin redacting scriptContent there.
+            InstantItemRecoveryTarget recoveryTarget =
+                ServiceClientAdapter.GetInstantItemRecoveryOperationResult(
+                    containerUri,
+                    protectedItemName,
+                    rp.RecoveryPointId,
+                    operationId,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
 
-                if (recoveryTarget.ClientScripts.Count != 0)
+            if (recoveryTarget != null && recoveryTarget.ClientScripts != null &&
+                recoveryTarget.ClientScripts.Count != 0)
+            {
+                if (recoveryTarget.ClientScripts.Count == 2)
                 {
-                    if (recoveryTarget.ClientScripts.Count == 2)
-                    {
-                        // clientScriptForConnection.OsType == "Windows"
-                        result = this.GenerateILRResponseForWindowsVMs(
-                                recoveryTarget.ClientScripts[1], out content);
-                    }
-                    else
-                    {
-                        // clientScriptForConnection.OsType == "Linux"
-                        result = this.GenerateILRResponseForLinuxVMs(
-                                recoveryTarget.ClientScripts[0],
-                                protectedItemName, rp.RecoveryPointTime.ToString(), out content);
-                    }
+                    // clientScriptForConnection.OsType == "Windows"
+                    result = this.GenerateILRResponseForWindowsVMs(
+                            recoveryTarget.ClientScripts[1], out content);
+                }
+                else
+                {
+                    // clientScriptForConnection.OsType == "Linux"
+                    result = this.GenerateILRResponseForLinuxVMs(
+                            recoveryTarget.ClientScripts[0],
+                            protectedItemName, rp.RecoveryPointTime.ToString(), out content);
                 }
             }
 

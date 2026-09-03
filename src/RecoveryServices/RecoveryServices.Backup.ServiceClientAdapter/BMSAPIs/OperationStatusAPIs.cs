@@ -73,8 +73,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 string resourceGroupName = null)
         {
             return BmsAdapter.Client.ProtectionPolicyOperationStatuses.GetWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
                 policyName,
                 operationId).Result;
         }
@@ -120,8 +120,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 .Client
                 .ProtectionContainerOperationResults
                 .GetWithHttpMessagesAsync(
-                    vaultName ?? BmsAdapter.GetResourceName(),
                     resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    vaultName ?? BmsAdapter.GetResourceName(),
                     AzureFabricName,
                     containerName,
                     operationId).Result;
@@ -141,8 +141,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             return BmsAdapter.Client.GetOperationStatusWithHttpMessagesAsync(
-                                vaultName,
                                 resourceGroupName,
+                                vaultName,
                                 operationId).Result;
         }
 
@@ -160,8 +160,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             var prepareResponseBase = BmsAdapter.Client.BmsPrepareDataMoveOperationResult.GetWithHttpMessagesAsync(
-                                vaultName,
                                 resourceGroupName,
+                                vaultName,
                                 operationId).Result.Body;
 
             var prepareResponseSerialized = JsonConvert.SerializeObject(prepareResponseBase);
@@ -183,8 +183,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             return BmsAdapter.Client.JobOperationResults.GetWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
                 AzureFabricName,
                 operationId).Result;
         }

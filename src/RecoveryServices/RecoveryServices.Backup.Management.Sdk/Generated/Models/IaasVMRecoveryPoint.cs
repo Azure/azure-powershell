@@ -25,6 +25,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the IaasVMRecoveryPoint class.
         /// </summary>
 
+        /// <param name="threatStatus">Threat status of the recovery point
+        /// Possible values include: &#39;Unknown&#39;, &#39;Healthy&#39;, &#39;UnHealthy&#39;, &#39;Warning&#39;,
+        /// &#39;NotAvailable&#39;</param>
+
+        /// <param name="threatInfo">Recovery point threat information.
+        /// </param>
+
         /// <param name="recoveryPointType">Type of the backup copy.
         /// </param>
 
@@ -82,11 +89,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// network setting
         /// </param>
 
-        /// <param name="extendedLocation">Extended location of the VM recovery point, should be null if VM is in
-        /// public cloud
+        /// <param name="extendedLocation">Extended location of the VM recovery point,
+        /// should be null if VM is in public cloud
         /// </param>
-        public IaasVMRecoveryPoint(string recoveryPointType = default(string), System.DateTime? recoveryPointTime = default(System.DateTime?), string recoveryPointAdditionalInfo = default(string), string sourceVMStorageType = default(string), bool? isSourceVMEncrypted = default(bool?), KeyAndSecretDetails keyAndSecret = default(KeyAndSecretDetails), bool? isInstantIlrSessionActive = default(bool?), System.Collections.Generic.IList<RecoveryPointTierInformationV2> recoveryPointTierDetails = default(System.Collections.Generic.IList<RecoveryPointTierInformationV2>), bool? isManagedVirtualMachine = default(bool?), string virtualMachineSize = default(string), bool? originalStorageAccountOption = default(bool?), string osType = default(string), RecoveryPointDiskConfiguration recoveryPointDiskConfiguration = default(RecoveryPointDiskConfiguration), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IDictionary<string, RecoveryPointMoveReadinessInfo> recoveryPointMoveReadinessInfo = default(System.Collections.Generic.IDictionary<string, RecoveryPointMoveReadinessInfo>), string securityType = default(string), RecoveryPointProperties recoveryPointProperties = default(RecoveryPointProperties), bool? isPrivateAccessEnabledOnAnyDisk = default(bool?), ExtendedLocation extendedLocation = default(ExtendedLocation))
 
+        /// <param name="dataDiskMetadata">Data disk metadata for the VM recovery point
+        /// </param>
+        public IaasVMRecoveryPoint(string threatStatus = default(string), System.Collections.Generic.IList<ThreatInfo> threatInfo = default(System.Collections.Generic.IList<ThreatInfo>), string recoveryPointType = default(string), System.DateTime? recoveryPointTime = default(System.DateTime?), string recoveryPointAdditionalInfo = default(string), string sourceVMStorageType = default(string), bool? isSourceVMEncrypted = default(bool?), KeyAndSecretDetails keyAndSecret = default(KeyAndSecretDetails), bool? isInstantIlrSessionActive = default(bool?), System.Collections.Generic.IList<RecoveryPointTierInformationV2> recoveryPointTierDetails = default(System.Collections.Generic.IList<RecoveryPointTierInformationV2>), bool? isManagedVirtualMachine = default(bool?), string virtualMachineSize = default(string), bool? originalStorageAccountOption = default(bool?), string osType = default(string), RecoveryPointDiskConfiguration recoveryPointDiskConfiguration = default(RecoveryPointDiskConfiguration), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IDictionary<string, RecoveryPointMoveReadinessInfo> recoveryPointMoveReadinessInfo = default(System.Collections.Generic.IDictionary<string, RecoveryPointMoveReadinessInfo>), string securityType = default(string), RecoveryPointProperties recoveryPointProperties = default(RecoveryPointProperties), bool? isPrivateAccessEnabledOnAnyDisk = default(bool?), ExtendedLocation extendedLocation = default(ExtendedLocation), DataDiskDetails dataDiskMetadata = default(DataDiskDetails))
+
+        : base(threatStatus, threatInfo)
         {
             this.RecoveryPointType = recoveryPointType;
             this.RecoveryPointTime = recoveryPointTime;
@@ -107,6 +118,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.RecoveryPointProperties = recoveryPointProperties;
             this.IsPrivateAccessEnabledOnAnyDisk = isPrivateAccessEnabledOnAnyDisk;
             this.ExtendedLocation = extendedLocation;
+            this.DataDiskMetadata = dataDiskMetadata;
             CustomInit();
         }
 
@@ -230,10 +242,42 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public bool? IsPrivateAccessEnabledOnAnyDisk {get; set; }
 
         /// <summary>
-        /// Gets or sets extended location of the VM recovery point, should be null if
-        /// VM is in public cloud
+        /// Gets or sets extended location of the VM recovery point,
+        /// should be null if VM is in public cloud
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "extendedLocation")]
         public ExtendedLocation ExtendedLocation {get; set; }
+
+        /// <summary>
+        /// Gets or sets data disk metadata for the VM recovery point
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dataDiskMetadata")]
+        public DataDiskDetails DataDiskMetadata {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+
+
+
+
+
+
+
+
+            if (this.RecoveryPointProperties != null)
+            {
+                this.RecoveryPointProperties.Validate();
+            }
+
+
+        }
     }
 }

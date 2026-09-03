@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             var response = BmsAdapter.Client.RecoveryPoints.GetWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
                 AzureFabricName,
                 containerName,
                 protectedItemName,
@@ -71,12 +71,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         {
             Func<RestAzureNS.IPage<RecoveryPointResource>> listAsync =
                 () => BmsAdapter.Client.RecoveryPoints.ListWithHttpMessagesAsync(
-                    vaultName ?? BmsAdapter.GetResourceName(),
                     resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    vaultName ?? BmsAdapter.GetResourceName(),
                     AzureFabricName,
                     containerName,
                     protectedItemName,
-                    queryFilter,
+                    queryFilter?.Filter,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             Func<string, RestAzureNS.IPage<RecoveryPointResource>> listNextAsync =
@@ -169,8 +169,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         {
             Func<RestAzureNS.IPage<RecoveryPointResource>> listAsync =
                 () => BmsAdapter.Client.RecoveryPointsRecommendedForMove.ListWithHttpMessagesAsync(
-                vaultName,
                 resourceGroupName,
+                vaultName,
                 AzureFabricName,
                 containerName,
                 protectedItemName,
@@ -205,15 +205,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string vaultName = null,
             string resourceGroupName = null)
         {
-            return BmsAdapter.Client.BeginMoveRecoveryPointWithHttpMessagesAsync(
-                vaultName,
+            var response = BmsAdapter.Client.BeginMoveRecoveryPointWithHttpMessagesAsync(
                 resourceGroupName,
+                vaultName,
                 AzureFabricName,
                 containerName,
                 protectedItemName,
                 recoveryPointId,
                 moveRPAcrossTiersRequest
                 ).Result;
+            return new RestAzureNS.AzureOperationResponse
+            {
+                Request = response.Request,
+                Response = response.Response,
+                RequestId = response.RequestId
+            };
         }
 
         /// <summary>
@@ -238,8 +244,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             provisionRequest.Properties = registrationRequest;
 
             var response = BmsAdapter.Client.ItemLevelRecoveryConnections.ProvisionWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
                 AzureFabricName,
                 containerName,
                 protectedItemName,
@@ -248,6 +254,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
 
             return response;
+        }
+
+        /// <summary>
+        /// Fetches the ILR mount scripts for a completed provisionInstantItemRecovery operation.
+        /// Scripts are served by this dedicated action (not inlined in operationsStatus) post CHAP-redaction (MSRC 114273).
+        /// </summary>
+        /// <param name="containerName">Name of the container which the item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="recoveryPointId">ID of the recovery point</param>
+        /// <param name="provisionInstantItemRecoveryOperationId">Operation ID returned by the prior provisionInstantItemRecovery action</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <returns>Instant item recovery target containing the mount client scripts</returns>
+        public InstantItemRecoveryTarget GetInstantItemRecoveryOperationResult(
+            string containerName,
+            string protectedItemName,
+            string recoveryPointId,
+            string provisionInstantItemRecoveryOperationId,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            var response = BmsAdapter.Client.ItemLevelRecoveryConnections.ListInstantItemRecoveryOperationResultWithHttpMessagesAsync(
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
+                AzureFabricName,
+                containerName,
+                protectedItemName,
+                recoveryPointId,
+                provisionInstantItemRecoveryOperationId,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+
+            return response.Body;
         }
 
         /// <summary>
@@ -267,8 +305,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             var response = BmsAdapter.Client.ItemLevelRecoveryConnections.RevokeWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
                 AzureFabricName,
                 containerName,
                 protectedItemName,
