@@ -43,6 +43,7 @@ Describe 'Update-AzWvdAppAttachPackage' {
                 -SubscriptionId $env.SubscriptionId `
                 -CustomData 'updatedCustomData' `
                 -PackageLookbackUrl 'https://contoso.example/lookback-updated' `
+                -ImageIsPackageTimestamped 'NotTimestamped' `
                 -Tag @{ testtag = 'testvalue' }
 
             $packages = Get-AzWvdAppAttachPackage -Name "TestPackageNewFields" `
@@ -51,6 +52,7 @@ Describe 'Update-AzWvdAppAttachPackage' {
 
             $packages[0].CustomData | Should -Be 'updatedCustomData'
             $packages[0].PackageLookbackUrl | Should -Be 'https://contoso.example/lookback-updated'
+            $packages[0].ImageIsPackageTimestamped | Should -Be 'NotTimestamped'
             ($packages[0].Tag | ConvertTo-Json) | Should -Match 'testvalue'
         }
         finally {

@@ -41,7 +41,8 @@ Describe 'New-AzWvdAppAttachPackage' {
                 -CustomData 'powershellCustomData' `
                 -PackageOwnerName 'AppAttach' `
                 -PackageLookbackUrl 'https://contoso.example/lookback' `
-                -ImageIsPackageTimestamped 'Timestamped'
+                -ImageIsPackageTimestamped 'Timestamped' `
+                -FailHealthCheckOnStagingFailure 'DoNotFail'
 
             $packages = Get-AzWvdAppAttachPackage -Name "TestPackageNewFields" `
                 -ResourceGroupName $env.ResourceGroup `
@@ -51,6 +52,7 @@ Describe 'New-AzWvdAppAttachPackage' {
             $packages[0].PackageOwnerName | Should -Be 'AppAttach'
             $packages[0].PackageLookbackUrl | Should -Be 'https://contoso.example/lookback'
             $packages[0].ImageIsPackageTimestamped | Should -Be 'Timestamped'
+            $packages[0].FailHealthCheckOnStagingFailure | Should -Be 'DoNotFail'
         }
         finally{
             $package = Remove-AzWvdAppAttachPackage -Name 'TestPackageNewFields' `
