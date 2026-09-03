@@ -51,6 +51,8 @@ function setupEnv() {
     $env.srsResourceGroupId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)"
     $env.srsVaultName = "signoff2105app1452vault"
     $env.migVaultName = "ecygqlapp4055vault"
+    # Dedicated vault for New-AzMigrateReplicationPolicy so re-recording it cannot invalidate the migVaultName recordings.
+    $env.migPolicyVaultName = "CBT-GQLPROJ25692vault"
     $env.migFabricName = "ecygqlapp4048replicationfabric"
     $env.migPolicyName= "migrateecygqlapp4055sitepolicy"
     $env.migProtectionContainerName= "ecygqlapp2fd6replicationcontainer"
