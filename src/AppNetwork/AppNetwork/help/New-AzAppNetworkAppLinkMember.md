@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAppNetworkAppLinkMember
 
 ## SYNOPSIS
-Create a member of an Azure Kubernetes Application Network resource.
+Create an AppLinkMember.
 
 ## SYNTAX
 
@@ -47,7 +47,7 @@ New-AzAppNetworkAppLinkMember -Name <String> -AppLinkInputObject <IAppNetworkIde
 ```
 
 ## DESCRIPTION
-Create a member of an Azure Kubernetes Application Network resource.
+Create an AppLinkMember.
 
 ## EXAMPLES
 

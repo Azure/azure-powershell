@@ -12,38 +12,38 @@ Microsoft Azure PowerShell: AppNetwork cmdlets
 
 ## Az.AppNetwork Cmdlets
 ### [Get-AzAppNetworkAppLink](Get-AzAppNetworkAppLink.md)
-Get the details of an Azure Kubernetes Application Network.
+Get an AppLink.
 
 ### [Get-AzAppNetworkAppLinkMember](Get-AzAppNetworkAppLinkMember.md)
-Get a member of an Azure Kubernetes Application Network resource.
+Get an AppLinkMember.
 
 ### [Get-AzAppNetworkAvailableVersion](Get-AzAppNetworkAvailableVersion.md)
-List the Azure Kubernetes Application Network versions available in a location.
+List AvailableVersion resources by location.
 
 ### [Get-AzAppNetworkUpgradeHistory](Get-AzAppNetworkUpgradeHistory.md)
-List the upgrade history of an Azure Kubernetes Application Network member.
+List UpgradeHistory resources by AppLinkMember.
 
 ### [New-AzAppNetworkAppLink](New-AzAppNetworkAppLink.md)
-Create an Azure Kubernetes Application Network resource.
+Create an AppLink.
 
 ### [New-AzAppNetworkAppLinkMember](New-AzAppNetworkAppLinkMember.md)
-Create a member of an Azure Kubernetes Application Network resource.
+Create an AppLinkMember.
 
 ### [Remove-AzAppNetworkAppLink](Remove-AzAppNetworkAppLink.md)
-Delete an Azure Kubernetes Application Network resource.
+Delete an AppLink.
 
 ### [Remove-AzAppNetworkAppLinkMember](Remove-AzAppNetworkAppLinkMember.md)
-Remove a member from an Azure Kubernetes Application Network resource.
+Delete an AppLinkMember.
 
 ### [Set-AzAppNetworkAppLink](Set-AzAppNetworkAppLink.md)
-Replace an Azure Kubernetes Application Network resource.
+Update an AppLink.
 
 ### [Set-AzAppNetworkAppLinkMember](Set-AzAppNetworkAppLinkMember.md)
-Replace a member of an Azure Kubernetes Application Network resource.
+Update an AppLinkMember.
 
 ### [Update-AzAppNetworkAppLink](Update-AzAppNetworkAppLink.md)
-Replace an Azure Kubernetes Application Network resource.
+Update an AppLink.
 
 ### [Update-AzAppNetworkAppLinkMember](Update-AzAppNetworkAppLinkMember.md)
-Update a member of an Azure Kubernetes Application Network resource.
+Update an AppLinkMember.
 

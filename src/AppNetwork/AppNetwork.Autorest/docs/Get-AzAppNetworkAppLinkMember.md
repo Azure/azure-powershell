@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAppNetworkAppLinkMember
 
 ## SYNOPSIS
-Get a member of an Azure Kubernetes Application Network resource.
+Get an AppLinkMember.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Get-AzAppNetworkAppLinkMember -AppLinkInputObject <IAppNetworkIdentity> -Name <S
 ```
 
 ## DESCRIPTION
-Get a member of an Azure Kubernetes Application Network resource.
+Get an AppLinkMember.
 
 ## EXAMPLES
 

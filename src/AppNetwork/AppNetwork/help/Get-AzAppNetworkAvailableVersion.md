@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAppNetworkAvailableVersion
 
 ## SYNOPSIS
-List the Azure Kubernetes Application Network versions available in a location.
+List AvailableVersion resources by location.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzAppNetworkAvailableVersion -Location <String> [-SubscriptionId <String[]>]
 ```
 
 ## DESCRIPTION
-List the Azure Kubernetes Application Network versions available in a location.
+List AvailableVersion resources by location.
 
 ## EXAMPLES
 

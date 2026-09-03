@@ -8,11 +8,11 @@ schema: 2.0.0
 # Set-AzAppNetworkAppLink
 
 ## SYNOPSIS
-Replace an Azure Kubernetes Application Network resource.
+Update an AppLink.
 
 ## SYNTAX
 
-### ReplaceExpanded (Default)
+### UpdateExpanded (Default)
 ```
 Set-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-Tag <Hashtable>]
@@ -20,21 +20,14 @@ Set-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> -Location <St
  [<CommonParameters>]
 ```
 
-### Replace
-```
-Set-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> -Resource <IAppLink>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ReplaceViaJsonFilePath
+### UpdateViaJsonFilePath
 ```
 Set-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### ReplaceViaJsonString
+### UpdateViaJsonString
 ```
 Set-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -42,7 +35,7 @@ Set-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> -JsonString <
 ```
 
 ## DESCRIPTION
-Replace an Azure Kubernetes Application Network resource.
+Update an AppLink.
 
 ## EXAMPLES
 
@@ -97,7 +90,7 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: ReplaceExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -108,11 +101,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-Path of Json file supplied to the Replace operation
+Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceViaJsonFilePath
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -123,11 +116,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Replace operation
+Json string supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceViaJsonString
+Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -142,7 +135,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -179,21 +172,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Resource
-An Azure Kubernetes Application Network resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppNetwork.Models.IAppLink
-Parameter Sets: Replace
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -234,7 +212,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: ReplaceExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -250,7 +228,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ReplaceExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -295,8 +273,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.AppNetwork.Models.IAppLink
 
 ## OUTPUTS
 

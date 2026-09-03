@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAppNetworkAppLink
 
 ## SYNOPSIS
-Get the details of an Azure Kubernetes Application Network.
+Get an AppLink.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Get-AzAppNetworkAppLink -InputObject <IAppNetworkIdentity> [-DefaultProfile <PSO
 ```
 
 ## DESCRIPTION
-Get the details of an Azure Kubernetes Application Network.
+Get an AppLink.
 
 ## EXAMPLES
 
