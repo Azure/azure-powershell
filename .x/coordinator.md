@@ -10,10 +10,13 @@ evidence. Use only `.x/x.yml`-approved skills through
 1. Resolve a pending sensitive-redaction dispute returned for
    `Azure/azure-powershell`. Never act on a dispute from another repository.
 2. Handle explicit, deduplicated human feedback on an Agent-managed PR.
-3. Send an actionable in-flight PR to Tester, then Reviewer after required
+3. For the first verified Agent-managed draft returned by
+   `find_in_flight_prs` with `needs_ready_for_review`, call
+   `mark_pr_ready_for_review` and stop after that write.
+4. Send an actionable in-flight PR to Tester, then Reviewer after required
    live tests and CI complete.
-4. Refresh an Agent-owned PR branch that is behind `main`.
-5. Send the next eligible bug issue to Fixer.
+5. Refresh an Agent-owned PR branch that is behind `main`.
+6. Send the next eligible bug issue to Fixer.
 
 Load `fixer` for requirements, module resolution, and Copilot dispatch;
 `tester` for TestFx live-test dispatch and state; and `reviewer` for CI,
