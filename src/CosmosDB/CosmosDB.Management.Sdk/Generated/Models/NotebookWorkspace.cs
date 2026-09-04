@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// A notebook workspace resource
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class NotebookWorkspace : ARMProxyResource
+    public partial class NotebookWorkspace : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the NotebookWorkspace class.
@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Initializes a new instance of the NotebookWorkspace class.
         /// </summary>
 
-        /// <param name="id">The unique resource identifier of the database account.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the database account.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of Azure resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="notebookServerEndpoint">Specifies the endpoint of Notebook server.
@@ -40,9 +46,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="status">Status of the notebook workspace. Possible values are: Creating, Online,
         /// Deleting, Failed, Updating.
         /// </param>
-        public NotebookWorkspace(string id = default(string), string name = default(string), string type = default(string), string notebookServerEndpoint = default(string), string status = default(string))
+        public NotebookWorkspace(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string notebookServerEndpoint = default(string), string status = default(string))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.NotebookServerEndpoint = notebookServerEndpoint;
             this.Status = status;

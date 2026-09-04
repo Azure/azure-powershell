@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Automation.Models
     /// Definition of the job schedule.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class JobSchedule
+    public partial class JobSchedule : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the JobSchedule class.
@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the JobSchedule class.
         /// </summary>
 
-        /// <param name="id">Gets the id of the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Gets the name of the variable.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="jobScheduleId">Gets or sets the id of job schedule.
@@ -48,12 +54,10 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="parameters">Gets or sets the parameters of the job schedule.
         /// </param>
-        public JobSchedule(string id = default(string), string name = default(string), string type = default(string), string jobScheduleId = default(string), ScheduleAssociationProperty schedule = default(ScheduleAssociationProperty), RunbookAssociationProperty runbook = default(RunbookAssociationProperty), string runOn = default(string), System.Collections.Generic.IDictionary<string, string> parameters = default(System.Collections.Generic.IDictionary<string, string>))
+        public JobSchedule(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string jobScheduleId = default(string), ScheduleAssociationProperty schedule = default(ScheduleAssociationProperty), RunbookAssociationProperty runbook = default(RunbookAssociationProperty), string runOn = default(string), System.Collections.Generic.IDictionary<string, string> parameters = default(System.Collections.Generic.IDictionary<string, string>))
 
+        : base(id, name, type, systemData)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.JobScheduleId = jobScheduleId;
             this.Schedule = schedule;
             this.Runbook = runbook;
@@ -67,24 +71,6 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets gets the id of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets gets the name of the variable.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets resource type
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets gets or sets the id of job schedule.

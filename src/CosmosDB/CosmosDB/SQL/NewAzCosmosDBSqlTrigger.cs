@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 readSqlTriggerGetResults = CosmosDBManagementClient.SqlResources.GetSqlTrigger(ResourceGroupName, AccountName, DatabaseName, ContainerName, Name);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {

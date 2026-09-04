@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Commands.TestFx;
+﻿using System.Collections.Generic;
+using Microsoft.Azure.Commands.TestFx;
 using Xunit.Abstractions;
 
 namespace Commands.Automation.Test
@@ -21,6 +22,12 @@ namespace Commands.Automation.Test
                     helper.RMProfileModule,
                     helper.GetRMModulePath(@"AzureRM.Automation.psd1")
                 })
+                .WithNewRecordMatcherArguments(
+                    userAgentsToIgnore: new Dictionary<string, string>(),
+                    resourceProviders: new Dictionary<string, string>
+                    {
+                        {"Microsoft.Automation", null}
+                    })
                 .Build();
         }
     }

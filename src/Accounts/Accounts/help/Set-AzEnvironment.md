@@ -254,7 +254,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureKeyVaultDnsSuffix
-Dns suffix of Azure Key Vault service. Example is vault-int.azure-int.net
+Dns suffix of Azure Key Vault service.
 
 ```yaml
 Type: System.String

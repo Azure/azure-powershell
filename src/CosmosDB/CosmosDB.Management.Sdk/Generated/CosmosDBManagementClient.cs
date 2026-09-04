@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.CosmosDB
     using Models;
 
     /// <summary>
-    /// Azure Cosmos DB Database Service Resource Provider REST API
+    /// Azure Cosmos DB Throughput Pool REST API
     /// </summary>
     public partial class CosmosDBManagementClient : Microsoft.Rest.ServiceClient<CosmosDBManagementClient>, ICosmosDBManagementClient, IAzureClient
     {
@@ -33,9 +33,14 @@ namespace Microsoft.Azure.Management.CosmosDB
         public Microsoft.Rest.ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The API version to use for this operation.
         /// </summary>
-        public string SubscriptionId { get; set;}
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
+        /// The ID of the target subscription. The value must be an UUID.
+        /// </summary>
+        public System.Guid SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
@@ -64,85 +69,109 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </summary>
         public virtual IOperations Operations { get; private set; }
         /// <summary>
-        /// Gets the IDatabaseOperations
+        /// Gets the ICassandraClustersOperations
         /// </summary>
-        public virtual IDatabaseOperations Database { get; private set; }
+        public virtual ICassandraClustersOperations CassandraClusters { get; private set; }
         /// <summary>
-        /// Gets the ICollectionOperations
+        /// Gets the IFleetOperations
         /// </summary>
-        public virtual ICollectionOperations Collection { get; private set; }
-        /// <summary>
-        /// Gets the ICollectionRegionOperations
-        /// </summary>
-        public virtual ICollectionRegionOperations CollectionRegion { get; private set; }
-        /// <summary>
-        /// Gets the IDatabaseAccountRegionOperations
-        /// </summary>
-        public virtual IDatabaseAccountRegionOperations DatabaseAccountRegion { get; private set; }
-        /// <summary>
-        /// Gets the IPercentileSourceTargetOperations
-        /// </summary>
-        public virtual IPercentileSourceTargetOperations PercentileSourceTarget { get; private set; }
-        /// <summary>
-        /// Gets the IPercentileTargetOperations
-        /// </summary>
-        public virtual IPercentileTargetOperations PercentileTarget { get; private set; }
-        /// <summary>
-        /// Gets the IPercentileOperations
-        /// </summary>
-        public virtual IPercentileOperations Percentile { get; private set; }
-        /// <summary>
-        /// Gets the ICollectionPartitionRegionOperations
-        /// </summary>
-        public virtual ICollectionPartitionRegionOperations CollectionPartitionRegion { get; private set; }
-        /// <summary>
-        /// Gets the ICollectionPartitionOperations
-        /// </summary>
-        public virtual ICollectionPartitionOperations CollectionPartition { get; private set; }
-        /// <summary>
-        /// Gets the IPartitionKeyRangeIdOperations
-        /// </summary>
-        public virtual IPartitionKeyRangeIdOperations PartitionKeyRangeId { get; private set; }
-        /// <summary>
-        /// Gets the IPartitionKeyRangeIdRegionOperations
-        /// </summary>
-        public virtual IPartitionKeyRangeIdRegionOperations PartitionKeyRangeIdRegion { get; private set; }
-        /// <summary>
-        /// Gets the ISqlResourcesOperations
-        /// </summary>
-        public virtual ISqlResourcesOperations SqlResources { get; private set; }
-        /// <summary>
-        /// Gets the IMongoDbResourcesOperations
-        /// </summary>
-        public virtual IMongoDbResourcesOperations MongoDbResources { get; private set; }
-        /// <summary>
-        /// Gets the ITableResourcesOperations
-        /// </summary>
-        public virtual ITableResourcesOperations TableResources { get; private set; }
-        /// <summary>
-        /// Gets the ICassandraResourcesOperations
-        /// </summary>
-        public virtual ICassandraResourcesOperations CassandraResources { get; private set; }
-        /// <summary>
-        /// Gets the IGremlinResourcesOperations
-        /// </summary>
-        public virtual IGremlinResourcesOperations GremlinResources { get; private set; }
+        public virtual IFleetOperations Fleet { get; private set; }
         /// <summary>
         /// Gets the ILocationsOperations
         /// </summary>
         public virtual ILocationsOperations Locations { get; private set; }
         /// <summary>
-        /// Gets the ICassandraClustersOperations
+        /// Gets the IRestorableDatabaseAccountsOperations
         /// </summary>
-        public virtual ICassandraClustersOperations CassandraClusters { get; private set; }
+        public virtual IRestorableDatabaseAccountsOperations RestorableDatabaseAccounts { get; private set; }
+        /// <summary>
+        /// Gets the IRestorableGremlinGraphsOperations
+        /// </summary>
+        public virtual IRestorableGremlinGraphsOperations RestorableGremlinGraphs { get; private set; }
+        /// <summary>
+        /// Gets the IRestorableGremlinDatabasesOperations
+        /// </summary>
+        public virtual IRestorableGremlinDatabasesOperations RestorableGremlinDatabases { get; private set; }
+        /// <summary>
+        /// Gets the IRestorableGremlinResourcesOperations
+        /// </summary>
+        public virtual IRestorableGremlinResourcesOperations RestorableGremlinResources { get; private set; }
+        /// <summary>
+        /// Gets the IRestorableMongodbCollectionsOperations
+        /// </summary>
+        public virtual IRestorableMongodbCollectionsOperations RestorableMongodbCollections { get; private set; }
+        /// <summary>
+        /// Gets the IRestorableMongodbDatabasesOperations
+        /// </summary>
+        public virtual IRestorableMongodbDatabasesOperations RestorableMongodbDatabases { get; private set; }
+        /// <summary>
+        /// Gets the IRestorableMongodbResourcesOperations
+        /// </summary>
+        public virtual IRestorableMongodbResourcesOperations RestorableMongodbResources { get; private set; }
+        /// <summary>
+        /// Gets the IRestorableSqlContainersOperations
+        /// </summary>
+        public virtual IRestorableSqlContainersOperations RestorableSqlContainers { get; private set; }
+        /// <summary>
+        /// Gets the IRestorableSqlDatabasesOperations
+        /// </summary>
+        public virtual IRestorableSqlDatabasesOperations RestorableSqlDatabases { get; private set; }
+        /// <summary>
+        /// Gets the IRestorableSqlResourcesOperations
+        /// </summary>
+        public virtual IRestorableSqlResourcesOperations RestorableSqlResources { get; private set; }
+        /// <summary>
+        /// Gets the IRestorableTableResourcesOperations
+        /// </summary>
+        public virtual IRestorableTableResourcesOperations RestorableTableResources { get; private set; }
+        /// <summary>
+        /// Gets the IRestorableTablesOperations
+        /// </summary>
+        public virtual IRestorableTablesOperations RestorableTables { get; private set; }
         /// <summary>
         /// Gets the ICassandraDataCentersOperations
         /// </summary>
         public virtual ICassandraDataCentersOperations CassandraDataCenters { get; private set; }
         /// <summary>
+        /// Gets the ICassandraResourcesOperations
+        /// </summary>
+        public virtual ICassandraResourcesOperations CassandraResources { get; private set; }
+        /// <summary>
+        /// Gets the ICollectionOperations
+        /// </summary>
+        public virtual ICollectionOperations Collection { get; private set; }
+        /// <summary>
+        /// Gets the IPartitionKeyRangeIdOperations
+        /// </summary>
+        public virtual IPartitionKeyRangeIdOperations PartitionKeyRangeId { get; private set; }
+        /// <summary>
+        /// Gets the ICollectionPartitionOperations
+        /// </summary>
+        public virtual ICollectionPartitionOperations CollectionPartition { get; private set; }
+        /// <summary>
+        /// Gets the IDatabaseOperations
+        /// </summary>
+        public virtual IDatabaseOperations Database { get; private set; }
+        /// <summary>
+        /// Gets the IGremlinResourcesOperations
+        /// </summary>
+        public virtual IGremlinResourcesOperations GremlinResources { get; private set; }
+        /// <summary>
+        /// Gets the IMongoMiResourcesOperations
+        /// </summary>
+        public virtual IMongoMiResourcesOperations MongoMiResources { get; private set; }
+        /// <summary>
+        /// Gets the IMongoDbResourcesOperations
+        /// </summary>
+        public virtual IMongoDbResourcesOperations MongoDbResources { get; private set; }
+        /// <summary>
         /// Gets the INotebookWorkspacesOperations
         /// </summary>
         public virtual INotebookWorkspacesOperations NotebookWorkspaces { get; private set; }
+        /// <summary>
+        /// Gets the IPercentileOperations
+        /// </summary>
+        public virtual IPercentileOperations Percentile { get; private set; }
         /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations
         /// </summary>
@@ -152,61 +181,41 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </summary>
         public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
         /// <summary>
-        /// Gets the IRestorableDatabaseAccountsOperations
+        /// Gets the ICollectionRegionOperations
         /// </summary>
-        public virtual IRestorableDatabaseAccountsOperations RestorableDatabaseAccounts { get; private set; }
+        public virtual ICollectionRegionOperations CollectionRegion { get; private set; }
         /// <summary>
-        /// Gets the IRestorableSqlDatabasesOperations
+        /// Gets the IPartitionKeyRangeIdRegionOperations
         /// </summary>
-        public virtual IRestorableSqlDatabasesOperations RestorableSqlDatabases { get; private set; }
+        public virtual IPartitionKeyRangeIdRegionOperations PartitionKeyRangeIdRegion { get; private set; }
         /// <summary>
-        /// Gets the IRestorableSqlContainersOperations
+        /// Gets the ICollectionPartitionRegionOperations
         /// </summary>
-        public virtual IRestorableSqlContainersOperations RestorableSqlContainers { get; private set; }
+        public virtual ICollectionPartitionRegionOperations CollectionPartitionRegion { get; private set; }
         /// <summary>
-        /// Gets the IRestorableSqlResourcesOperations
+        /// Gets the IDatabaseAccountRegionOperations
         /// </summary>
-        public virtual IRestorableSqlResourcesOperations RestorableSqlResources { get; private set; }
-        /// <summary>
-        /// Gets the IRestorableMongodbDatabasesOperations
-        /// </summary>
-        public virtual IRestorableMongodbDatabasesOperations RestorableMongodbDatabases { get; private set; }
-        /// <summary>
-        /// Gets the IRestorableMongodbCollectionsOperations
-        /// </summary>
-        public virtual IRestorableMongodbCollectionsOperations RestorableMongodbCollections { get; private set; }
-        /// <summary>
-        /// Gets the IRestorableMongodbResourcesOperations
-        /// </summary>
-        public virtual IRestorableMongodbResourcesOperations RestorableMongodbResources { get; private set; }
-        /// <summary>
-        /// Gets the IRestorableGremlinDatabasesOperations
-        /// </summary>
-        public virtual IRestorableGremlinDatabasesOperations RestorableGremlinDatabases { get; private set; }
-        /// <summary>
-        /// Gets the IRestorableGremlinGraphsOperations
-        /// </summary>
-        public virtual IRestorableGremlinGraphsOperations RestorableGremlinGraphs { get; private set; }
-        /// <summary>
-        /// Gets the IRestorableGremlinResourcesOperations
-        /// </summary>
-        public virtual IRestorableGremlinResourcesOperations RestorableGremlinResources { get; private set; }
-        /// <summary>
-        /// Gets the IRestorableTablesOperations
-        /// </summary>
-        public virtual IRestorableTablesOperations RestorableTables { get; private set; }
-        /// <summary>
-        /// Gets the IRestorableTableResourcesOperations
-        /// </summary>
-        public virtual IRestorableTableResourcesOperations RestorableTableResources { get; private set; }
+        public virtual IDatabaseAccountRegionOperations DatabaseAccountRegion { get; private set; }
         /// <summary>
         /// Gets the IServiceOperations
         /// </summary>
         public virtual IServiceOperations Service { get; private set; }
         /// <summary>
-        /// Gets the IFleetOperations
+        /// Gets the IPercentileSourceTargetOperations
         /// </summary>
-        public virtual IFleetOperations Fleet { get; private set; }
+        public virtual IPercentileSourceTargetOperations PercentileSourceTarget { get; private set; }
+        /// <summary>
+        /// Gets the ISqlResourcesOperations
+        /// </summary>
+        public virtual ISqlResourcesOperations SqlResources { get; private set; }
+        /// <summary>
+        /// Gets the ITableResourcesOperations
+        /// </summary>
+        public virtual ITableResourcesOperations TableResources { get; private set; }
+        /// <summary>
+        /// Gets the IPercentileTargetOperations
+        /// </summary>
+        public virtual IPercentileTargetOperations PercentileTarget { get; private set; }
         /// <summary>
         /// Gets the IFleetspaceOperations
         /// </summary>
@@ -455,45 +464,47 @@ namespace Microsoft.Azure.Management.CosmosDB
         {
             this.DatabaseAccounts = new DatabaseAccountsOperations(this);
             this.Operations = new Operations(this);
-            this.Database = new DatabaseOperations(this);
-            this.Collection = new CollectionOperations(this);
-            this.CollectionRegion = new CollectionRegionOperations(this);
-            this.DatabaseAccountRegion = new DatabaseAccountRegionOperations(this);
-            this.PercentileSourceTarget = new PercentileSourceTargetOperations(this);
-            this.PercentileTarget = new PercentileTargetOperations(this);
-            this.Percentile = new PercentileOperations(this);
-            this.CollectionPartitionRegion = new CollectionPartitionRegionOperations(this);
-            this.CollectionPartition = new CollectionPartitionOperations(this);
-            this.PartitionKeyRangeId = new PartitionKeyRangeIdOperations(this);
-            this.PartitionKeyRangeIdRegion = new PartitionKeyRangeIdRegionOperations(this);
-            this.SqlResources = new SqlResourcesOperations(this);
-            this.MongoDbResources = new MongoDbResourcesOperations(this);
-            this.TableResources = new TableResourcesOperations(this);
-            this.CassandraResources = new CassandraResourcesOperations(this);
-            this.GremlinResources = new GremlinResourcesOperations(this);
-            this.Locations = new LocationsOperations(this);
             this.CassandraClusters = new CassandraClustersOperations(this);
+            this.Fleet = new FleetOperations(this);
+            this.Locations = new LocationsOperations(this);
+            this.RestorableDatabaseAccounts = new RestorableDatabaseAccountsOperations(this);
+            this.RestorableGremlinGraphs = new RestorableGremlinGraphsOperations(this);
+            this.RestorableGremlinDatabases = new RestorableGremlinDatabasesOperations(this);
+            this.RestorableGremlinResources = new RestorableGremlinResourcesOperations(this);
+            this.RestorableMongodbCollections = new RestorableMongodbCollectionsOperations(this);
+            this.RestorableMongodbDatabases = new RestorableMongodbDatabasesOperations(this);
+            this.RestorableMongodbResources = new RestorableMongodbResourcesOperations(this);
+            this.RestorableSqlContainers = new RestorableSqlContainersOperations(this);
+            this.RestorableSqlDatabases = new RestorableSqlDatabasesOperations(this);
+            this.RestorableSqlResources = new RestorableSqlResourcesOperations(this);
+            this.RestorableTableResources = new RestorableTableResourcesOperations(this);
+            this.RestorableTables = new RestorableTablesOperations(this);
             this.CassandraDataCenters = new CassandraDataCentersOperations(this);
+            this.CassandraResources = new CassandraResourcesOperations(this);
+            this.Collection = new CollectionOperations(this);
+            this.PartitionKeyRangeId = new PartitionKeyRangeIdOperations(this);
+            this.CollectionPartition = new CollectionPartitionOperations(this);
+            this.Database = new DatabaseOperations(this);
+            this.GremlinResources = new GremlinResourcesOperations(this);
+            this.MongoMiResources = new MongoMiResourcesOperations(this);
+            this.MongoDbResources = new MongoDbResourcesOperations(this);
             this.NotebookWorkspaces = new NotebookWorkspacesOperations(this);
+            this.Percentile = new PercentileOperations(this);
             this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
-            this.RestorableDatabaseAccounts = new RestorableDatabaseAccountsOperations(this);
-            this.RestorableSqlDatabases = new RestorableSqlDatabasesOperations(this);
-            this.RestorableSqlContainers = new RestorableSqlContainersOperations(this);
-            this.RestorableSqlResources = new RestorableSqlResourcesOperations(this);
-            this.RestorableMongodbDatabases = new RestorableMongodbDatabasesOperations(this);
-            this.RestorableMongodbCollections = new RestorableMongodbCollectionsOperations(this);
-            this.RestorableMongodbResources = new RestorableMongodbResourcesOperations(this);
-            this.RestorableGremlinDatabases = new RestorableGremlinDatabasesOperations(this);
-            this.RestorableGremlinGraphs = new RestorableGremlinGraphsOperations(this);
-            this.RestorableGremlinResources = new RestorableGremlinResourcesOperations(this);
-            this.RestorableTables = new RestorableTablesOperations(this);
-            this.RestorableTableResources = new RestorableTableResourcesOperations(this);
+            this.CollectionRegion = new CollectionRegionOperations(this);
+            this.PartitionKeyRangeIdRegion = new PartitionKeyRangeIdRegionOperations(this);
+            this.CollectionPartitionRegion = new CollectionPartitionRegionOperations(this);
+            this.DatabaseAccountRegion = new DatabaseAccountRegionOperations(this);
             this.Service = new ServiceOperations(this);
-            this.Fleet = new FleetOperations(this);
+            this.PercentileSourceTarget = new PercentileSourceTargetOperations(this);
+            this.SqlResources = new SqlResourcesOperations(this);
+            this.TableResources = new TableResourcesOperations(this);
+            this.PercentileTarget = new PercentileTargetOperations(this);
             this.Fleetspace = new FleetspaceOperations(this);
             this.FleetspaceAccount = new FleetspaceAccountOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
+            this.ApiVersion = "2026-03-15";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
