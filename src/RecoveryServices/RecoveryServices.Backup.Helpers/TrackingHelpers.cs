@@ -42,12 +42,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         {
             var operationId = response.Response.Headers.GetAzureAsyncOperationId();
 
-            // If no async operation header, the operation completed synchronously
-            if (string.IsNullOrEmpty(operationId))
-            {
-                return null;
-            }
-
             var opStatusResponse = getOpStatus(operationId);
 
             string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
@@ -81,12 +75,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             where T : ServiceClientModel.OperationStatus
         {
             var operationId = response.Response.Headers.GetAzureAsyncOperationId();
-
-            // If no async operation header, the operation completed synchronously
-            if (string.IsNullOrEmpty(operationId))
-            {
-                return null;
-            }
 
             var opStatusResponse = getOpStatus(operationId);
 
@@ -123,12 +111,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         {
             var operationId = response.Response.Headers.GetOperationResultId();
 
-            // If no location header, the operation completed synchronously
-            if (string.IsNullOrEmpty(operationId))
-            {
-                return response;
-            }
-
             var opStatusResponse = getOpStatus(operationId);
 
             string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
@@ -164,12 +146,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         {
             var operationId = response.Response.Headers.GetOperationResultId();
 
-            // If no location header, the operation completed synchronously
-            if (string.IsNullOrEmpty(operationId))
-            {
-                return null;
-            }
-
             var opStatusResponse = getOpStatus(operationId);
 
             string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
@@ -204,12 +180,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         {
             var operationId = response.Response.Headers.GetOperationResultId();
 
-            // If no location header, the operation completed synchronously
-            if (string.IsNullOrEmpty(operationId))
-            {
-                return null;
-            }
-
             var opStatusResponse = getOpStatus(operationId);
 
             string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
@@ -241,12 +211,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         {
             var operationId = response.Response.Headers.GetAzureAsyncOperationId();
 
-            // If no async operation header, the operation completed synchronously
-            if (string.IsNullOrEmpty(operationId))
-            {
-                return null;
-            }
-
             var opStatusResponse = getCorrelationId(operationId);
             return opStatusResponse;
         }
@@ -264,12 +228,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             where T : ServiceClientModel.ProtectionContainerResource
         {
             var operationId = response.Response.Headers.GetOperationResultId();
-
-            // If no location header, the operation completed synchronously
-            if (string.IsNullOrEmpty(operationId))
-            {
-                return response;
-            }
 
             var opStatusResponse = getOpStatus(operationId);
 
