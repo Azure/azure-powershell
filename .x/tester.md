@@ -9,7 +9,8 @@ Read `get_pr_file_changes` once. Pass the filenames to the repository-owned
 `changed_ps_test_files` custom skill and resolve the service with
 `infer_ps_target` using the PR title/body and those filenames. Then use
 `dispatch_live_test_workflow` with `pr_repo="Azure/azure-powershell"` and the
-resolved module and `target_kind="psmodule"`. The approved
+resolved module, `target_kind="psmodule"`, and `test_files` set to the paths
+returned by `changed_ps_test_files`. The approved
 `live-test-powershell.yml` workflow runs TestFx `Record` tests scoped to
 changed `<Service>.Test` files. Do not guess a different workflow or execute
 live tests in the worker.

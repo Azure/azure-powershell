@@ -20,7 +20,10 @@ evidence, a concrete correction, and focused verification. Require owner
 review for broad public cmdlet behavior, authentication, security, runtime,
 or generation changes.
 
-Use `repair_pr_title_check` only for a confirmed metadata failure.
-Combine CI, live-test, coverage, risk, and review-skill evidence into one
-review. Human-requested PRs receive a `COMMENT`; Copilot PR failures use
-`request_copilot_changes`, followed by a human handoff at the iteration cap.
+Use `repair_pr_title_check` only for a confirmed metadata failure. Resolve the
+component first with repository-owned `infer_ps_target` using the current PR
+title, body, and changed filenames, then pass its name as `component`; central
+title repair must not infer repository policy. Combine CI, live-test,
+coverage, risk, and review-skill evidence into one review. Human-requested PRs
+receive a `COMMENT`; Copilot PR failures use `request_copilot_changes`,
+followed by a human handoff at the iteration cap.
