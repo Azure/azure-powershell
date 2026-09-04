@@ -1,5 +1,5 @@
 ---
-external help file: Az.DocumentDB-help.xml
+external help file:
 Module Name: Az.DocumentDB
 online version: https://learn.microsoft.com/powershell/module/az.documentdb/update-azdocumentdbmongocluster
 schema: 2.0.0
@@ -19,12 +19,12 @@ To only modify some of the properties, use PATCH.
 Update-AzDocumentDBMongoCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AdministratorPassword <SecureString>] [-AdministratorUserName <String>] [-AuthConfigAllowedMode <String[]>]
  [-ComputeTier <String>] [-CustomerManagedKeyEncryptionKeyUrl <String>] [-DataApiMode <String>]
- [-EnableSystemAssignedIdentity <Boolean>] [-HighAvailabilityTargetMode <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-HighAvailabilityTargetMode <String>]
  [-KeyEncryptionKeyIdentityType <String>] [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
  [-NetworkBypassMode <String>] [-PreviewFeature <String[]>] [-PublicNetworkAccess <String>]
  [-ServerVersion <String>] [-ShardingShardCount <Int32>] [-StorageSizeGb <Int64>] [-StorageType <String>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -32,12 +32,12 @@ Update-AzDocumentDBMongoCluster -Name <String> -ResourceGroupName <String> [-Sub
 Update-AzDocumentDBMongoCluster -InputObject <IDocumentDbIdentity> [-AdministratorPassword <SecureString>]
  [-AdministratorUserName <String>] [-AuthConfigAllowedMode <String[]>] [-ComputeTier <String>]
  [-CustomerManagedKeyEncryptionKeyUrl <String>] [-DataApiMode <String>]
- [-EnableSystemAssignedIdentity <Boolean>] [-HighAvailabilityTargetMode <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-HighAvailabilityTargetMode <String>]
  [-KeyEncryptionKeyIdentityType <String>] [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
  [-NetworkBypassMode <String>] [-PreviewFeature <String[]>] [-PublicNetworkAccess <String>]
  [-ServerVersion <String>] [-ShardingShardCount <Int32>] [-StorageSizeGb <Int64>] [-StorageType <String>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -219,7 +219,7 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DocumentDB
-Module Guid: fa4ea508-9c84-439c-92ed-fed5d547fa18
+Module Guid: e483963c-af2a-4525-85ef-52f1f4a7a9e2
 Download Help Link: https://learn.microsoft.com/powershell/module/az.documentdb
 Help Version: 1.0.0.0
 Locale: en-US
@@ -69,4 +69,3 @@ Update a new firewall rule or update an existing firewall rule on a mongo cluste
 Update a mongo cluster.
 update overwrites all properties for the resource.
 To only modify some of the properties, use PATCH.
-

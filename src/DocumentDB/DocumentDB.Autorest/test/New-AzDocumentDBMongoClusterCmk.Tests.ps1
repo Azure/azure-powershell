@@ -45,10 +45,9 @@ Describe 'New-AzDocumentDBMongoClusterCmk' {
         $created.KeyEncryptionKeyIdentityUserAssignedIdentityResourceId | Should -Be $script:miId
         $created.CustomerManagedKeyEncryptionKeyUrl | Should -Be $script:keyUrl
 
-        # CMK is the only scenario that uses a managed identity on the cluster today, so
-        # validate that the user-assigned identity is actually assigned.
-        $identity = Get-AzDocumentDBMongoClusterIdentity -Name $cluster -ResourceGroupName $rg
-        $identity.Type | Should -Be 'UserAssigned'
-        @($identity.UserAssignedIdentity.Keys) | Should -Contain $script:miId
+        # Validate that the user-assigned identity is actually assigned to the cluster.
+        $clusterObject = Get-AzDocumentDBMongoCluster -Name $cluster -ResourceGroupName $rg
+        $clusterObject.IdentityType | Should -Be 'UserAssigned'
+        @($clusterObject.IdentityUserAssignedIdentity.Keys) | Should -Contain $script:miId
     }
 }

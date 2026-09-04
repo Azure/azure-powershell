@@ -1,51 +1,67 @@
 ---
-external help file: Az.DocumentDB-help.xml
+external help file:
 Module Name: Az.DocumentDB
-online version: https://learn.microsoft.com/powershell/module/az.documentdb/remove-azdocumentdbmongoclusteridentity
+online version: https://learn.microsoft.com/powershell/module/az.documentdb/reset-azdocumentdbmongoclusterpassword
 schema: 2.0.0
 ---
 
-# Remove-AzDocumentDBMongoClusterIdentity
+# Reset-AzDocumentDBMongoClusterPassword
 
 ## SYNOPSIS
-Remove user-assigned managed identities from a mongo cluster.
+Reset the administrator password of a mongo cluster.
 
 ## SYNTAX
 
 ```
-Remove-AzDocumentDBMongoClusterIdentity -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -UserAssignedIdentity <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Reset-AzDocumentDBMongoClusterPassword -Name <String> -ResourceGroupName <String>
+ -AdministratorPassword <SecureString> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove one or more user-assigned managed identities from a mongo cluster.
-Only the
-supplied identities are removed; any other identities already assigned to the cluster
-are preserved.
-Only user-assigned managed identities are supported.
+Reset the administrator password of a mongo cluster.
+The update runs as an HTTP PATCH that
+only sends the properties provided.
+The service requires the administrator login to be
+included whenever the password is updated, so the cluster's existing administrator user name
+is resolved and included in the request automatically.
 
 ## EXAMPLES
 
-### Example 1: Remove a user-assigned managed identity from a mongo cluster
+### Example 1: Reset the administrator password of a mongo cluster
 ```powershell
-$identityId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity'
-Remove-AzDocumentDBMongoClusterIdentity -Name myCluster -ResourceGroupName myResourceGroup -UserAssignedIdentity $identityId
+$password = ConvertTo-SecureString 'CliReset2026!Pw' -AsPlainText -Force
+Reset-AzDocumentDBMongoClusterPassword -Name myCluster -ResourceGroupName myResourceGroup -AdministratorPassword $password
 ```
 
 ```output
-Type PrincipalId TenantId
----- ----------- --------
-None
+Name        Location ProvisioningState
+----        -------- -----------------
+myCluster   eastus2  Succeeded
 ```
 
-Remove a user-assigned managed identity from a mongo cluster.
-Only the supplied
-identity is removed; any other identities already assigned to the cluster are
-preserved.
-The `-UserAssigned` alias can be used in place of `-UserAssignedIdentity`.
+Reset the administrator password of a mongo cluster.
+The administrator user name is
+read from the existing cluster, so only the new password is supplied.
+The `-Password`
+alias can be used in place of `-AdministratorPassword`.
 
 ## PARAMETERS
+
+### -AdministratorPassword
+The new administrator password.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases: Password
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job.
@@ -84,7 +100,7 @@ The name of the mongo cluster.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ClusterName, MongoClusterName
+Aliases: MongoClusterName
 
 Required: True
 Position: Named
@@ -139,21 +155,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UserAssignedIdentity
-Resource ID(s) of the user-assigned managed identities to remove from the mongo cluster.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases: UserAssigned, MiUserAssigned
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -192,7 +193,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
+### Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.Models.IMongoCluster
 
 ## NOTES
 

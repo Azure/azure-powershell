@@ -1,49 +1,52 @@
 ---
-external help file: Az.DocumentDB-help.xml
+external help file:
 Module Name: Az.DocumentDB
-online version: https://learn.microsoft.com/powershell/module/az.documentdb/add-azdocumentdbmongoclusteridentity
+online version: https://learn.microsoft.com/powershell/module/az.documentdb/new-azdocumentdbuser
 schema: 2.0.0
 ---
 
-# Add-AzDocumentDBMongoClusterIdentity
+# New-AzDocumentDBUser
 
 ## SYNOPSIS
-Assign user-assigned managed identities to a mongo cluster.
+Create a Microsoft Entra ID user on a mongo cluster.
 
 ## SYNTAX
 
 ```
-Add-AzDocumentDBMongoClusterIdentity -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -UserAssignedIdentity <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDocumentDBUser -MongoClusterName <String> -Name <String> -ResourceGroupName <String> -Type <String>
+ [-SubscriptionId <String>] [-Role <Hashtable[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Assign one or more user-assigned managed identities to a mongo cluster.
-The supplied
-identities are merged with any identities already assigned to the cluster; existing
-identities are preserved.
-Only user-assigned managed identities are supported.
+Create (grant) a Microsoft Entra ID principal access to a mongo cluster by assigning it
+database roles.
+The '-Type' parameter surfaces the Entra principal type; the service models
+the identity provider as a discriminated union (identityProvider -\> microsoftEntraID -\>
+principalType) that the generated cmdlet does not flatten, so this wrapper exposes a simple
+'-Type' flag and builds the nested request body.
 
 ## EXAMPLES
 
-### Example 1: Assign a user-assigned managed identity to a mongo cluster
+### Example 1: Assign a Microsoft Entra ID user to a mongo cluster
 ```powershell
-$identityId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity'
-Add-AzDocumentDBMongoClusterIdentity -Name myCluster -ResourceGroupName myResourceGroup -UserAssignedIdentity $identityId
+New-AzDocumentDBUser -Name 71581c6f-df31-4790-bc49-26c6b38df8bd -MongoClusterName myCluster -ResourceGroupName myResourceGroup `
+    -Type User -Role @(@{ Db = 'admin'; Role = 'root' })
 ```
 
 ```output
-Type         PrincipalId TenantId
-----         ----------- --------
-UserAssigned
+Name                                  ProvisioningState
+----                                  -----------------
+71581c6f-df31-4790-bc49-26c6b38df8bd  Succeeded
 ```
 
-Assign a user-assigned managed identity to a mongo cluster.
-The supplied identity is
-merged with any identities already assigned to the cluster.
-The `-UserAssigned` alias
-can be used in place of `-UserAssignedIdentity`.
+Grant a Microsoft Entra ID principal data-plane access to a mongo cluster.
+`-Name` is
+the object id of the Entra principal, `-Type` is the principal type (`User` or
+`ServicePrincipal`), and `-Role` assigns one or more database roles.
+Microsoft Entra
+authentication must be enabled on the cluster (see `-AuthConfigAllowedMode` on
+`New-AzDocumentDBMongoCluster`).
 
 ## PARAMETERS
 
@@ -78,13 +81,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -MongoClusterName
 The name of the mongo cluster.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ClusterName, MongoClusterName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The Microsoft Entra object (client) ID of the user or service principal.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: UserName
 
 Required: True
 Position: Named
@@ -124,6 +142,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Role
+The database roles to assign, each as a hashtable with 'Db' and 'Role' keys.
+Example: -Role @(@{ Db = 'admin'; Role = 'root' })
+
+```yaml
+Type: System.Collections.Hashtable[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -139,13 +173,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UserAssignedIdentity
-Resource ID(s) of the user-assigned managed identities to assign to the mongo cluster.
+### -Type
+The Microsoft Entra principal type of the user.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: (All)
-Aliases: UserAssigned, MiUserAssigned
+Aliases:
 
 Required: True
 Position: Named
@@ -192,7 +226,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
+### Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.Models.IUser
 
 ## NOTES
 

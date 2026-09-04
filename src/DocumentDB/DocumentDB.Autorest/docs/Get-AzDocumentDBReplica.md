@@ -1,41 +1,39 @@
 ---
-external help file: Az.DocumentDB-help.xml
+external help file:
 Module Name: Az.DocumentDB
-online version: https://learn.microsoft.com/powershell/module/az.documentdb/get-azdocumentdbmongoclusteridentity
+online version: https://learn.microsoft.com/powershell/module/az.documentdb/get-azdocumentdbreplica
 schema: 2.0.0
 ---
 
-# Get-AzDocumentDBMongoClusterIdentity
+# Get-AzDocumentDBReplica
 
 ## SYNOPSIS
-Get the managed identities assigned to a mongo cluster.
+List all the replicas for the mongo cluster.
 
 ## SYNTAX
 
 ```
-Get-AzDocumentDBMongoClusterIdentity -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Get-AzDocumentDBReplica -MongoClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the managed identity configuration of a mongo cluster, including the identity type
-and the set of user-assigned managed identities currently assigned to it.
+List all the replicas for the mongo cluster.
 
 ## EXAMPLES
 
-### Example 1: Get the managed identities assigned to a mongo cluster
+### Example 1: List the replicas of a mongo cluster
 ```powershell
-Get-AzDocumentDBMongoClusterIdentity -Name myCluster -ResourceGroupName myResourceGroup
+Get-AzDocumentDBReplica -MongoClusterName myCluster -ResourceGroupName myResourceGroup
 ```
 
 ```output
-Type         PrincipalId TenantId
-----         ----------- --------
-UserAssigned
+Name        Location ProvisioningState
+----        -------- -----------------
+myReplica   westus2  Succeeded
 ```
 
-Get the managed identity configuration of a mongo cluster, including the identity type
-and the set of user-assigned managed identities currently assigned to it.
+List the read replicas of a source mongo cluster.
 
 ## PARAMETERS
 
@@ -55,13 +53,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -MongoClusterName
 The name of the mongo cluster.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ClusterName, MongoClusterName
+Aliases:
 
 Required: True
 Position: Named
@@ -88,9 +86,10 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +107,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
+### Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.Models.IReplica
 
 ## NOTES
 

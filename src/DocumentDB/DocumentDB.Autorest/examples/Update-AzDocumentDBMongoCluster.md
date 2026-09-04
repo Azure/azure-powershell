@@ -24,3 +24,19 @@ myCluster   eastus2  Succeeded
 
 Enable the Mongo data API. The data API can only be toggled once the cluster is
 provisioned and while public network access is enabled.
+
+### Example 3: Add a user-assigned managed identity
+```powershell
+$cluster = Get-AzDocumentDBMongoCluster -Name myCluster -ResourceGroupName myResourceGroup
+$identityIds = @($cluster.IdentityUserAssignedIdentity.Keys) + $identityId
+$cluster | Update-AzDocumentDBMongoCluster -UserAssignedIdentity $identityIds
+```
+
+```output
+Name        Location ProvisioningState
+----        -------- -----------------
+myCluster   eastus2  Succeeded
+```
+
+Get the existing identities, add another identity to the collection, and apply the
+updated collection to the cluster. This preserves identities that are already assigned.
