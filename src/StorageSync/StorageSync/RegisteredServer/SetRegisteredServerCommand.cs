@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     identity = Identity;
                 }
 
-                RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, resourceName);
+                RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, resourceServerGuid);
                 if (registeredServer == null)
                 {
                     throw new PSArgumentException($"Server {resourceName} not found.");
