@@ -4,14 +4,13 @@ agents:
   - tester
   - reviewer
 skills:
-  - changed_test_files
   - codegen_execution_guidance
   - compare_issue_similarity
   - copilot_iteration_cap_reached
   - copilot_iteration_state
   - daily_pr_cap_reached
+  - dispatch_copilot_with_analysis
   - dispatch_live_test_workflow
-  - dispatch_powershell_copilot
   - find_in_flight_prs
   - find_sensitive_redaction_dispute
   - find_stale_prs
@@ -25,17 +24,13 @@ skills:
   - get_pr_check_runs
   - get_pr_check_summary
   - get_pr_file_changes
-  - get_pr_regression_coverage_summary
   - get_pr_review_skill_summary
   - get_profile
   - get_workflow_run
   - handle_sensitive_redaction_dispute
   - has_agent_reviewed_head
-  - infer_ps_target
-  - infer_target_for_repo
-  - list_azure_powershell_modules
+  - list_repository_directories
   - mark_pr_ready_for_review
-  - post_bug_analysis
   - post_copilot_human_review_handoff
   - post_pr_review
   - pr_format_guidance
@@ -51,11 +46,14 @@ skills:
   - request_requirements
   - requirements_request_state
   - rerun_stale_pr_checks
-  - resolve_ps_target
   - safe_issue_view
   - select_triagable_issues_for_repo
   - similar_issue_candidates
   - synchronize_pull_request_feedback
   - synchronize_repository_feedback
   - update_pr_branch
-custom_skills: {}
+custom_skills:
+  changed_ps_test_files: changed_ps_test_files
+  dispatch_powershell_copilot: dispatch_powershell_copilot
+  get_pr_regression_coverage_summary: get_pr_regression_coverage_summary
+  infer_ps_target: infer_ps_target

@@ -5,8 +5,11 @@ Coordinator whose current head either has a completed Copilot task marker or
 is a verified human-requested review candidate, and has no completed live-test
 run for that head.
 
-Use `dispatch_live_test_workflow` with
-`pr_repo="Azure/azure-powershell"`. The approved
+Read `get_pr_file_changes` once. Pass the filenames to the repository-owned
+`changed_ps_test_files` custom skill and resolve the service with
+`infer_ps_target` using the PR title/body and those filenames. Then use
+`dispatch_live_test_workflow` with `pr_repo="Azure/azure-powershell"` and the
+resolved module and `target_kind="psmodule"`. The approved
 `live-test-powershell.yml` workflow runs TestFx `Record` tests scoped to
 changed `<Service>.Test` files. Do not guess a different workflow or execute
 live tests in the worker.
