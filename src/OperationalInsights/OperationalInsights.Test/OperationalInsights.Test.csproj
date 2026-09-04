@@ -11,6 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OperationalInsights\OperationalInsights.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.25.0-preview" />
     <PackageReference Include="Microsoft.Azure.OperationalInsights" Version="1.1.0" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="25.0.0" />
