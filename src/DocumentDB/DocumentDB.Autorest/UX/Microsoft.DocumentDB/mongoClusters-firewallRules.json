@@ -1,0 +1,95 @@
+{
+  "resourceType": "mongoClusters/firewallRules",
+  "apiVersion": "2026-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.documentdb"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDocumentDBFirewallRule",
+      "description": "Gets information about a mongo cluster firewall rule.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules/{firewallRuleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.documentdb/get-azdocumentdbfirewallrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MongoClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information about a mongo cluster firewall rule.",
+          "parameters": [
+            {
+              "name": "-MongoClusterName",
+              "value": "[Path.mongoClusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.firewallRuleName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDocumentDBFirewallRule",
+      "description": "Deletes a mongo cluster firewall rule.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules/{firewallRuleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.documentdb/remove-azdocumentdbfirewallrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MongoClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a mongo cluster firewall rule.",
+          "parameters": [
+            {
+              "name": "-MongoClusterName",
+              "value": "[Path.mongoClusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.firewallRuleName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

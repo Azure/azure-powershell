@@ -1,0 +1,65 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/DocumentDB/DocumentDB.Autorest"
+    clear-output-folder: true
+    debug: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: "DocumentDB"
+    service-name: DocumentDB
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      # Hide the raw generic 'Operation' cmdlet; it is not a customer-facing surface.
+      - where:
+          subject: Operation
+        hide: true
+      # Promote is exposed through the hand-written Invoke-AzDocumentDBPromoteMongoCluster custom cmdlet.
+      - where:
+          verb: Invoke
+          subject: PromoteMongoCluster
+        hide: true
+      # New-AzDocumentDBUser is hand-written (flattens the --type discriminated union), so hide the generated one.
+      - where:
+          verb: New
+          subject: User
+        hide: true
+      # Private Link is out of scope for this module.
+      - where:
+          subject: PrivateLink
+        remove: true
+      # There is no Update flow for users; the CLI does not expose entra-user update either.
+      - where:
+          verb: Update
+          subject: User
+        remove: true
+      # Default SubscriptionId to the current Az context so it is not a required parameter.
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      # Keep only the *Expanded / *ViaJson* Create/Update variants; drop the raw object-body variants.
+      - where:
+          variant: ^(Create|Update)(?!.*?Expanded|ViaJsonString|ViaJsonFilePath)
+        remove: true
+      # Remove the ViaIdentity Create variants (a cluster is always created by name, not by identity).
+      - where:
+          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+        remove: true
+      # Only New-/Update- verbs are provided for resources; suppress the generated Set-* cmdlets.
+      - where:
+          verb: Set
+        remove: true
+      # Normalize the auto-derived subject prefix casing 'DocumentDb' -> 'DocumentDB'.
+      - where:
+          subject-prefix: DocumentDb(.*)
+        set:
+          subject-prefix: DocumentDB$1
+linter:
+  extends: []
