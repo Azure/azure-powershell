@@ -1,0 +1,66 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/AlertsManagement/PrometheusRuleGroups.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: ""
+    service-name: "PrometheusRuleGroups"
+    module-name: "{prefix}.{service-name}"
+    root-module-name: "{prefix}.AlertsManagement"
+    output-folder: "{output-dir}"
+    inlining-threshold: 100
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      # Default SubscriptionId to the current Azure context.
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+
+      # Keep only expanded and JSON parameter sets for create and update operations.
+      - where:
+          variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+        remove: true
+
+      # Remove create-by-identity variants that were not previously exposed.
+      - where:
+          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+        remove: true
+
+      # Correct the generated singular subject name.
+      - where:
+          subject: PrometheuRuleGroup
+        set:
+          subject: PrometheusRuleGroup
+
+      # Hide Set variants in favor of the existing public cmdlets.
+      - where:
+          verb: Set
+        hide: true
+
+      # Preserve the existing model constructor cmdlets.
+      - model-cmdlet:
+          - model-name: PrometheusRule
+            cmdlet-name: New-AzPrometheusRuleObject
+          - model-name: PrometheusRuleGroupAction
+            cmdlet-name: New-AzPrometheusRuleGroupActionObject
+
+      # Preserve the existing Prometheus rule group table view.
+      - where:
+          model-name: PrometheusRuleGroupResource
+        set:
+          format-table:
+            properties:
+              - Name
+              - Location
+              - ClusterName
+              - Enabled
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"
