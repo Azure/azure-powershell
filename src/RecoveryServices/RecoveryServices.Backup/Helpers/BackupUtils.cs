@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// secondary region mapping
         /// </summary>
         public static Dictionary<string, string> regionMap = new Dictionary<string, string>(){
+            {"ussecwestcentral", "usseceast"},
             {"ussecwest", "usseceast"},
             {"usseceast", "ussecwest"},
             {"usnateast", "usnatwest"},
