@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Configuration.Internal;
 using System.Runtime.CompilerServices;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
