@@ -57,7 +57,6 @@ def infer_ps_target(text, pr_files):
             target = resolve(candidate)
             if target is not None:
                 return target
-        return {"kind": "none", "name": None, "repo": None}
 
     cleaned = "".join(
         character if character.isalnum() or character in "-./" else " "
@@ -77,4 +76,8 @@ def infer_ps_target(text, pr_files):
         target = resolve(candidate)
         if target is not None:
             return target
-    return {"kind": "unknown", "name": None, "repo": None}
+    return {
+        "kind": "none" if pr_files else "unknown",
+        "name": None,
+        "repo": None,
+    }

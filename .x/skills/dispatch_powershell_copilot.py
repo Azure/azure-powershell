@@ -9,7 +9,7 @@ def dispatch_powershell_copilot(
 ):
     """Post analysis and assign Copilot as one scope-bound operation."""
     return dispatch_copilot_with_analysis(
-        repository=None,
+        repository="Azure/azure-powershell",
         issue_number=issue_number,
         body=body,
         memory_usage_purposes=memory_usage_purposes,

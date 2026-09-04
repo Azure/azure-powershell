@@ -20,6 +20,9 @@ suggestion with `pr_title_for(style="powershell")` and include
 `Fixes #N`, focused tests, and the appropriate `ChangeLog.md` entry; there is
 no Azure CLI-style enforced title gate.
 
+If target inference returns `unknown` or `none`, request the affected module
+as missing information and stop. Do not dispatch with a guessed module.
+
 Include `codegen_execution_guidance` when generator-owned `*.Autorest` inputs
 or generated commands are involved. The coding agent must run the repository
 generator and provide its artifacts rather than hand-edit generated output.

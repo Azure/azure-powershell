@@ -15,6 +15,11 @@ returned by `changed_ps_test_files`. The approved
 changed `<Service>.Test` files. Do not guess a different workflow or execute
 live tests in the worker.
 
+If no test path is selected, call the dispatcher with the empty list so it
+records a neutral skip for the current revision. If tests are selected but
+target inference does not return a named `psmodule`, stop with a pending
+result and do not dispatch.
+
 Reuse a queued, in-progress, completed, or neutrally skipped result for the
 same head SHA. Read `get_workflow_run` once and return pending without waiting
 when incomplete. Never authenticate to Azure, provision infrastructure, SSH,

@@ -4,8 +4,8 @@
 def get_pr_regression_coverage_summary(pr_number):
     """Find changed service modules without focused TestFx changes."""
     changes = get_pr_file_changes(
-        owner=None,
-        repo=None,
+        owner="Azure",
+        repo="azure-powershell",
         pr_number=pr_number,
     )
     files = [
@@ -14,7 +14,7 @@ def get_pr_regression_coverage_summary(pr_number):
         if isinstance(item, dict) and item.get("filename")
     ]
     production_files = []
-    modules = set()
+    modules = {}
     for path in files:
         normalized = str(path).replace("\\", "/")
         parts = normalized.split("/")
@@ -26,7 +26,9 @@ def get_pr_regression_coverage_summary(pr_number):
             and not name.casefold().endswith(".md")
         ):
             production_files.append(normalized)
-            modules.add(parts[1].casefold())
+            module_key = parts[1].casefold()
+            if module_key not in modules:
+                modules[module_key] = parts[1]
 
     test_files = []
     covered = set()
@@ -46,12 +48,12 @@ def get_pr_regression_coverage_summary(pr_number):
             test_files.append(normalized)
             covered.add(parts[1].casefold())
 
-    uncovered = sorted(modules - covered)
+    uncovered = sorted(set(modules) - covered)
     return {
         "applicable": bool(production_files),
         "gap": bool(uncovered),
-        "modules": sorted(modules),
-        "uncovered_modules": uncovered,
+        "modules": [modules[key] for key in sorted(modules)],
+        "uncovered_modules": [modules[key] for key in uncovered],
         "production_files": production_files,
         "test_files": test_files,
         "recording_files": [],
