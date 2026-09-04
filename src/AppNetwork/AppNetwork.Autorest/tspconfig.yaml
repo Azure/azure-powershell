@@ -1,0 +1,54 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/AppNetwork/AppNetwork.Autorest"
+    clear-output-folder: true
+    debug: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: ""
+    service-name: AppNetwork
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      # Rename resource subjects so cmdlet nouns read AppNetwork* (empty subject-prefix)
+      - where:
+          subject: AppLinkMember
+        set:
+          subject: AppNetworkMember
+      - where:
+          subject: AppLink
+        set:
+          subject: AppNetwork
+      - where:
+          subject: AvailableVersion
+        set:
+          subject: AppNetworkAvailableVersion
+      - where:
+          subject: UpgradeHistory
+        set:
+          subject: AppNetworkMemberUpgradeHistory
+      # Hide the raw Operations listing cmdlet
+      - where:
+          subject: Operation
+        hide: true
+      # Default SubscriptionId from the current Az context
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            name: SubscriptionId Default
+            description: Gets the SubscriptionId from the current context.
+            script: "(Get-AzContext).Subscription.Id"
+      # Remove the non-Expanded / non-JSON parameter sets for Create/Update
+      - where:
+          variant: ^(Create|Update)(?!.*?Expanded|ViaJsonString|ViaJsonFilePath)
+        remove: true
+      # ViaIdentity is not required for New-* cmdlets
+      - where:
+          variant: ^CreateViaIdentity.*$
+        remove: true
