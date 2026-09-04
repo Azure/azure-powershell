@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Elastic
-Module Guid: ee6a2974-6069-4011-89e2-32e115786d7e
+Module Guid: 0a5443b0-03bd-477c-80c8-4e6d3132e57a
 Download Help Link: https://learn.microsoft.com/powershell/module/az.elastic
 Help Version: 1.0.0.0
 Locale: en-US
@@ -51,7 +51,7 @@ Get the status of OpenAI integration for a given Elastic monitor resource, ensur
 Fetch the User API Key from the internal database, if it was generated and stored during the creation of the Elasticsearch Organization.
 
 ### [Get-AzElasticOrganizationElasticToAzureSubscriptionMapping](Get-AzElasticOrganizationElasticToAzureSubscriptionMapping.md)
-Retrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
+\>;\n  /**\nRetrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
 
 ### [Get-AzElasticResubscribeOrganization](Get-AzElasticResubscribeOrganization.md)
 Resubscribe the Elasticsearch Organization.

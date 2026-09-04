@@ -51,7 +51,7 @@ Get the status of OpenAI integration for a given Elastic monitor resource, ensur
 Fetch the User API Key from the internal database, if it was generated and stored during the creation of the Elasticsearch Organization.
 
 ### [Get-AzElasticOrganizationElasticToAzureSubscriptionMapping](Get-AzElasticOrganizationElasticToAzureSubscriptionMapping.md)
-Retrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
+\>;\n  /**\nRetrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
 
 ### [Get-AzElasticResubscribeOrganization](Get-AzElasticResubscribeOrganization.md)
 Resubscribe the Elasticsearch Organization.

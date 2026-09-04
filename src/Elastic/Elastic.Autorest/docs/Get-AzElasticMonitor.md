@@ -12,7 +12,7 @@ Get detailed properties of a specific Elastic monitor resource, helping you mana
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
 Get-AzElasticMonitor [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Get-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId
 Get-AzElasticMonitor -InputObject <IElasticIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
 Get-AzElasticMonitor -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -152,7 +152,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
