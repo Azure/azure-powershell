@@ -1,0 +1,95 @@
+{
+  "resourceType": "healthmodels/signaldefinitions",
+  "apiVersion": "2026-05-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMonitorHealthModelSignalDefinition",
+      "description": "Get a SignalDefinition",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/signaldefinitions/{signalDefinitionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth/get-azmonitorhealthmodelsignaldefinition"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HealthModelName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a SignalDefinition",
+          "parameters": [
+            {
+              "name": "-HealthModelName",
+              "value": "[Path.healthModelName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.signalDefinitionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMonitorHealthModelSignalDefinition",
+      "description": "Delete a SignalDefinition",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/signaldefinitions/{signalDefinitionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth/remove-azmonitorhealthmodelsignaldefinition"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HealthModelName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a SignalDefinition",
+          "parameters": [
+            {
+              "name": "-HealthModelName",
+              "value": "[Path.healthModelName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.signalDefinitionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "Get-AzMonitorHealthModelRelationship+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/relationships?api-version=2026-05-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/relationships?api-version=2026-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "47"
+        ],
+        "x-ms-client-request-id": [
+          "a43da7ff-859b-4724-8c60-13f931bb24ef"
+        ],
+        "CommandName": [
+          "Get-AzMonitorHealthModelRelationship"
+        ],
+        "FullCommandName": [
+          "Get-AzMonitorHealthModelRelationship_List"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v7.1.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/centralus/a34d87a7-1ea7-4a63-a777-a4235d4af2db"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "23022e68-4acd-4c57-bb23-9e9a60a7948f"
+        ],
+        "x-ms-correlation-request-id": [
+          "a550c3e2-213d-4835-bcb0-f3b2966b8122"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20260818T105728Z:a550c3e2-213d-4835-bcb0-f3b2966b8122"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 3BE83D6BB4FD42A999FFEE05D7ABC0E6 Ref B: AMS231020615029 Ref C: 2026-08-18T10:57:28Z"
+        ],
+        "Date": [
+          "Tue, 18 Aug 2026 10:57:28 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "692"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/azps-ch-rg-ms1q6l/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-ms1q6l/relationships/azps-rel-shared-ms1q6l\",\"name\":\"azps-rel-shared-ms1q6l\",\"type\":\"Microsoft.CloudHealth/healthmodels/relationships\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-18T10:56:08.3205896Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-08-18T10:56:09.1402424Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Shared relationship\",\"parentEntityName\":\"azps-ent-shared-ms1q6l\",\"childEntityName\":\"azps-ent-child-ms1q6l\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMonitorHealthModelRelationship+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/relationships/azps-rel-shared-ms1q6l?api-version=2026-05-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-ms1q6l/relationships/azps-rel-shared-ms1q6l?api-version=2026-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "48"
+        ],
+        "x-ms-client-request-id": [
+          "bf063af7-e38f-4791-9841-4a9726b1c4c8"
+        ],
+        "CommandName": [
+          "Get-AzMonitorHealthModelRelationship"
+        ],
+        "FullCommandName": [
+          "Get-AzMonitorHealthModelRelationship_Get"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v7.1.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/centralus/1d1047a1-205c-47b6-9fea-88f2cfb697c2"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "b9fd27f3-e8dd-4e54-a202-366b487916f6"
+        ],
+        "x-ms-correlation-request-id": [
+          "448b7776-b937-4d44-a44d-48474e6d7bf5"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20260818T105729Z:448b7776-b937-4d44-a44d-48474e6d7bf5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 89F1284FC06C4FBC9030DB810E47F934 Ref B: AMS231020615029 Ref C: 2026-08-18T10:57:28Z"
+        ],
+        "Date": [
+          "Tue, 18 Aug 2026 10:57:28 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "680"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/azps-ch-rg-ms1q6l/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-ms1q6l/relationships/azps-rel-shared-ms1q6l\",\"name\":\"azps-rel-shared-ms1q6l\",\"type\":\"Microsoft.CloudHealth/healthmodels/relationships\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-18T10:56:08.3205896Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-08-18T10:56:09.1402424Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Shared relationship\",\"parentEntityName\":\"azps-ent-shared-ms1q6l\",\"childEntityName\":\"azps-ent-child-ms1q6l\"}}",
+      "isContentBase64": false
+    }
+  }
+}
