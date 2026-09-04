@@ -1,0 +1,119 @@
+{
+  "Test-AzPostgreSqlFlexibleServerNameAvailability+[NoContext]+CheckExpandedShouldReturnInvalidForWrongCharacters+$POST+https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"name\": \"wrong-~server\",\r\n  \"type\": \"Microsoft.DBforPostgreSQL/flexibleServers\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "87" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "e4b14517-f8e4-413f-8de0-cf6474b0373b" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/16ebe3be-10d6-4e99-95e4-8ce9a86ac824" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "ff7a5e66-62b4-4dd8-93f1-115a7922f778" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260713T130047Z:ff7a5e66-62b4-4dd8-93f1-115a7922f778" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E61D816A1CB440799D5458528AE81A42 Ref B: AMS231032609029 Ref C: 2026-07-13T13:00:47Z" ],
+        "Date": [ "Mon, 13 Jul 2026 13:00:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "379" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"wrong-~server\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers\",\"nameAvailable\":false,\"reason\":\"Invalid\",\"message\":\"Specified server name contains unsupported characters or is too long. Server name must be no longer than 63 characters long, contain only lower-case characters or digits, cannot contain \u0027.\u0027 or \u0027_\u0027 characters and can\u0027t start or end with \u0027-\u0027 character.\"}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzPostgreSqlFlexibleServerNameAvailability+[NoContext]+CheckExpandedShouldReturnAvailableForRandom63CharName+$POST+https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"name\": \"eke8c94226rp5ii4ozqxmve8fyb74rakd71w57ennw1fbqzopxsrlsacetadrxz\",\r\n  \"type\": \"Microsoft.DBforPostgreSQL/flexibleServers\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "137" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "02f4e454-3a18-4ad5-a1c4-e03e040ce3d7" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/1d3f760e-77b5-4b76-83ee-1dd1b0d31ef8" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "b075c881-0d57-4ead-ae2c-353462e83324" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260713T130048Z:b075c881-0d57-4ead-ae2c-353462e83324" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 14267B08821B438BBCF1E165720F4A45 Ref B: AMS231032609029 Ref C: 2026-07-13T13:00:47Z" ],
+        "Date": [ "Mon, 13 Jul 2026 13:00:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "159" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"eke8c94226rp5ii4ozqxmve8fyb74rakd71w57ennw1fbqzopxsrlsacetadrxz\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers\",\"nameAvailable\":true,\"message\":\"\"}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzPostgreSqlFlexibleServerNameAvailability+[NoContext]+CheckShouldReturnAlreadyExistsForExistingServerName+$POST+https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"name\": \"psqlflex-autorest-rfd8nup2\",\r\n  \"type\": \"Microsoft.DBforPostgreSQL/flexibleServers\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "100" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "8a71f175-8802-46a3-85e8-56f80b0e22e7" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/b3020a83-b2de-4ed3-8ccd-6eebf2d70133" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "192a3942-d03c-4fe0-b54b-8f5d91bac4d5" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260713T130049Z:192a3942-d03c-4fe0-b54b-8f5d91bac4d5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3B9D91F325D64F14BF8A8F62D77378B1 Ref B: AMS231032609029 Ref C: 2026-07-13T13:00:48Z" ],
+        "Date": [ "Mon, 13 Jul 2026 13:00:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "186" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"psqlflex-autorest-rfd8nup2\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"Specified server name is already used.\"}",
+      "isContentBase64": false
+    }
+  }
+}
