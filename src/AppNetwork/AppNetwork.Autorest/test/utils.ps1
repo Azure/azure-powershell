@@ -47,6 +47,7 @@ function setupEnv() {
     $env.location = 'eastus'
     $env.resourceGroup = 'appnetwork-test-' + (RandomString -allChars $false -len 6)
     $env.appLinkName = 'applink-' + (RandomString -allChars $false -len 6)
+    $env.appLinkNameForCreate = 'applink-' + (RandomString -allChars $false -len 6)
     $env.memberName = 'member-' + (RandomString -allChars $false -len 6)
     # AKS cluster used as the AppLinkMember target. It must be created with the
     # AppLink prerequisites enabled:
@@ -58,6 +59,9 @@ function setupEnv() {
     if ($TestMode -ne 'playback') {
         Write-Host "Creating resource group $($env.resourceGroup) in $($env.location)"
         New-AzResourceGroup -Name $env.resourceGroup -Location $env.location | Out-Null
+        # Create the AppNetwork resource that the Get/Update/Remove tests rely on.
+        Write-Host "Creating AppNetwork $($env.appLinkName) in $($env.resourceGroup)"
+        New-AzAppNetwork -Name $env.appLinkName -ResourceGroupName $env.resourceGroup -Location $env.location -EnableSystemAssignedIdentity | Out-Null
     }
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

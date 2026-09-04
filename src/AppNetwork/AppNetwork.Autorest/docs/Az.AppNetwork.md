@@ -20,7 +20,7 @@ List AvailableVersion resources by location.
 ### [Get-AzAppNetworkMember](Get-AzAppNetworkMember.md)
 Get an AppLinkMember.
 
-### [Get-AzAppNetworkUpgradeHistory](Get-AzAppNetworkUpgradeHistory.md)
+### [Get-AzAppNetworkMemberUpgradeHistory](Get-AzAppNetworkMemberUpgradeHistory.md)
 List UpgradeHistory resources by AppLinkMember.
 
 ### [New-AzAppNetwork](New-AzAppNetwork.md)

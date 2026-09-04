@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.AppNetwork
-online version: https://learn.microsoft.com/powershell/module/az.appnetwork/get-azappnetworkupgradehistory
+online version: https://learn.microsoft.com/powershell/module/az.appnetwork/get-azappnetworkmemberupgradehistory
 schema: 2.0.0
 ---
 
-# Get-AzAppNetworkUpgradeHistory
+# Get-AzAppNetworkMemberUpgradeHistory
 
 ## SYNOPSIS
 List UpgradeHistory resources by AppLinkMember.
@@ -13,8 +13,8 @@ List UpgradeHistory resources by AppLinkMember.
 ## SYNTAX
 
 ```
-Get-AzAppNetworkUpgradeHistory -AppLinkMemberName <String> -AppLinkName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAppNetworkMemberUpgradeHistory -AppLinkMemberName <String> -AppLinkName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,18 +22,27 @@ List UpgradeHistory resources by AppLinkMember.
 
 ## EXAMPLES
 
-### Example 1: List the upgrade history of an Application Network member
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzAppNetworkUpgradeHistory -AppLinkMemberName member-01 -AppLinkName appnet-test-01 -ResourceGroupName test_rg
+{{ Add code here }}
 ```
 
 ```output
-FromVersion ToVersion InitiatedBy StartTimestamp        EndTimestamp
------------ --------- ----------- --------------        ------------
-1.3         1.4       Admin       2025-09-24T10:30:00Z  2025-09-25T00:00:00Z
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Lists the upgrade history of the `member-01` member of the `appnet-test-01` Application Network resource.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

@@ -31,7 +31,7 @@ options:
       - where:
           subject: UpgradeHistory
         set:
-          subject: AppNetworkUpgradeHistory
+          subject: AppNetworkMemberUpgradeHistory
       # Hide the raw Operations listing cmdlet
       - where:
           subject: Operation
@@ -50,5 +50,5 @@ options:
         remove: true
       # ViaIdentity is not required for New-* cmdlets
       - where:
-          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+          variant: ^CreateViaIdentity.*$
         remove: true

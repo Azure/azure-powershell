@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAppNetworkAvailableVers
 }
 
 Describe 'Get-AzAppNetworkAvailableVersion' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        # List available versions for a location; should not throw.
+        { Get-AzAppNetworkAvailableVersion -Location $env.location } | Should -Not -Throw
     }
 }

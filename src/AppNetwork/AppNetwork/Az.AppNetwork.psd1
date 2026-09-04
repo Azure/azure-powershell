@@ -69,13 +69,13 @@ FormatsToProcess = 'AppNetwork.Autorest/Az.AppNetwork.format.ps1xml'
 NestedModules = @('AppNetwork.Autorest/Az.AppNetwork.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-AzAppNetworkAppLink', 'Get-AzAppNetworkAppLinkMember', 
-               'Get-AzAppNetworkAvailableVersion', 
-               'Get-AzAppNetworkUpgradeHistory', 'New-AzAppNetworkAppLink', 
-               'New-AzAppNetworkAppLinkMember', 'Remove-AzAppNetworkAppLink', 
-               'Remove-AzAppNetworkAppLinkMember', 'Set-AzAppNetworkAppLink', 
-               'Set-AzAppNetworkAppLinkMember', 'Update-AzAppNetworkAppLink', 
-               'Update-AzAppNetworkAppLinkMember'
+FunctionsToExport = 'Get-AzAppNetwork', 'Get-AzAppNetworkAvailableVersion',
+               'Get-AzAppNetworkMember',
+               'Get-AzAppNetworkMemberUpgradeHistory', 'New-AzAppNetwork',
+               'New-AzAppNetworkMember', 'Remove-AzAppNetwork',
+               'Remove-AzAppNetworkMember', 'Set-AzAppNetwork',
+               'Set-AzAppNetworkMember', 'Update-AzAppNetwork',
+               'Update-AzAppNetworkMember'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

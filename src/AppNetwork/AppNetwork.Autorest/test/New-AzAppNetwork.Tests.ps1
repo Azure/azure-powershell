@@ -17,8 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzAppNetwork'))
 Describe 'New-AzAppNetwork' {
     It 'CreateExpanded' {
         {
-            $appLink = New-AzAppNetwork -Name $env.appLinkName -ResourceGroupName $env.resourceGroup -Location $env.location -EnableSystemAssignedIdentity
-            $appLink.Name | Should -Be $env.appLinkName
+            $appLink = New-AzAppNetwork -Name $env.appLinkNameForCreate -ResourceGroupName $env.resourceGroup -Location $env.location -EnableSystemAssignedIdentity
+            $appLink.Name | Should -Be $env.appLinkNameForCreate
             $appLink.Location | Should -Be $env.location
             $appLink.IdentityType | Should -Be 'SystemAssigned'
             $appLink.ProvisioningState | Should -Be 'Succeeded'

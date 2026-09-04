@@ -1,11 +1,11 @@
 ---
 external help file: Az.AppNetwork-help.xml
 Module Name: Az.AppNetwork
-online version: https://learn.microsoft.com/powershell/module/az.appnetwork/get-azappnetworkupgradehistory
+online version: https://learn.microsoft.com/powershell/module/az.appnetwork/get-azappnetworkmemberupgradehistory
 schema: 2.0.0
 ---
 
-# Get-AzAppNetworkUpgradeHistory
+# Get-AzAppNetworkMemberUpgradeHistory
 
 ## SYNOPSIS
 List UpgradeHistory resources by AppLinkMember.
@@ -13,7 +13,7 @@ List UpgradeHistory resources by AppLinkMember.
 ## SYNTAX
 
 ```
-Get-AzAppNetworkUpgradeHistory -AppLinkMemberName <String> -AppLinkName <String> -ResourceGroupName <String>
+Get-AzAppNetworkMemberUpgradeHistory -AppLinkMemberName <String> -AppLinkName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ List UpgradeHistory resources by AppLinkMember.
 
 ### Example 1: List the upgrade history of an Application Network member
 ```powershell
-Get-AzAppNetworkUpgradeHistory -AppLinkMemberName member-01 -AppLinkName appnet-test-01 -ResourceGroupName test_rg
+Get-AzAppNetworkMemberUpgradeHistory -AppLinkMemberName member-01 -AppLinkName appnet-test-01 -ResourceGroupName test_rg
 ```
 
 ```output
