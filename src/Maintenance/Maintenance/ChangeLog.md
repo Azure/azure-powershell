@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.7.0
 * Added `Approve-AzScheduledEvent` and `Approve-AzScheduledEventList` to approve scheduled events.
 * Bumped API version to 2025-10-01-preview for all APIs.
 
