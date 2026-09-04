@@ -344,7 +344,12 @@ namespace Commands.StorageSync.Interop.Clients
         /// <returns>System.Int32.</returns>
         public int GetSyncServerId([MarshalAs(UnmanagedType.BStr), Out] out string serverId)
         {
-            serverId = HttpMockServer.GetVariable(StorageSyncConstants.SyncServerId, Guid.NewGuid().ToString());
+            // The SyncServerId recording variable is stored as a full ARM resource id
+            // (e.g. /subscriptions/.../registeredServers/{guid}) by MockStorageSyncResourceManager.
+            // The real GetSyncServerId contract returns a bare server GUID, so extract the
+            // trailing segment. For a bare GUID (no '/') the value is returned unchanged.
+            string storedValue = HttpMockServer.GetVariable(StorageSyncConstants.SyncServerId, Guid.NewGuid().ToString());
+            serverId = storedValue.Substring(storedValue.LastIndexOf('/') + 1);
             return 0;
         }
 
