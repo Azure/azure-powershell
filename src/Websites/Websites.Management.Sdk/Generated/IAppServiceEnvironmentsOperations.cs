@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get all App Service Environments in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get the properties of an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Create or update an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -109,34 +109,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServiceEnvironmentResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, AppServiceEnvironmentResource hostingEnvironmentEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Delete an App Service Environment.
-        /// </summary>
-        /// <remarks>
-        /// Description for Delete an App Service Environment.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the App Service Environment.
-        /// </param>
-        /// <param name='forceDelete'>
-        /// Specify &lt;code&gt;true&lt;/code&gt; to force the deletion even if the App Service
-        /// Environment contains resources. The default is &lt;code&gt;false&lt;/code&gt;.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, bool? forceDelete = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServiceEnvironmentResource,AppServiceEnvironmentsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, AppServiceEnvironmentResource hostingEnvironmentEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Create or update an App Service Environment.
@@ -145,7 +118,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Create or update an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -168,6 +141,33 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServiceEnvironmentResource>> UpdateWithHttpMessagesAsync(string resourceGroupName, string name, AppServiceEnvironmentPatchResource hostingEnvironmentEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Delete an App Service Environment.
+        /// </summary>
+        /// <remarks>
+        /// Description for Delete an App Service Environment.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service Environment.
+        /// </param>
+        /// <param name='forceDelete'>
+        /// Specify &lt;code&gt;true&lt;/code&gt; to force the deletion even if the App Service
+        /// Environment contains resources. The default is &lt;code&gt;false&lt;/code&gt;.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<AppServiceEnvironmentsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, bool? forceDelete = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Get the used, available, and total worker capacity an App
         /// Service Environment.
         /// </summary>
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get IP addresses assigned to an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Move an App Service Environment to a different VNET.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -251,13 +251,94 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Site>>> ChangeVnetWithHttpMessagesAsync(string resourceGroupName, string name, VirtualNetworkProfile vnetInfo, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Get Custom Dns Suffix configuration of an App Service Environment
+        /// </summary>
+        /// <remarks>
+        /// Get Custom Dns Suffix configuration of an App Service Environment
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service Environment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CustomDnsSuffixConfiguration>> GetAseCustomDnsSuffixConfigurationWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Update Custom Dns Suffix configuration of an App Service Environment
+        /// </summary>
+        /// <remarks>
+        /// Update Custom Dns Suffix configuration of an App Service Environment
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service Environment.
+        /// </param>
+        /// <param name='customDnsSuffixConfiguration'>
+        /// 
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CustomDnsSuffixConfiguration>> UpdateAseCustomDnsSuffixConfigurationWithHttpMessagesAsync(string resourceGroupName, string name, CustomDnsSuffixConfiguration customDnsSuffixConfiguration, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete Custom Dns Suffix configuration of an App Service Environment
+        /// </summary>
+        /// <remarks>
+        /// Delete Custom Dns Suffix configuration of an App Service Environment
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service Environment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> DeleteAseCustomDnsSuffixConfigurationWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Get networking configuration of an App Service Environment
         /// </summary>
         /// <remarks>
         /// Description for Get networking configuration of an App Service Environment
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -285,7 +366,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Environment
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -314,7 +395,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get diagnostic information for an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -340,13 +421,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get a diagnostics item for an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the App Service Environment.
+        /// Name of the app.
         /// </param>
         /// <param name='diagnosticsName'>
-        /// Name of the diagnostics item.
+        /// 
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -371,7 +452,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -397,7 +478,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get all multi-role pools.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -423,7 +504,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get properties of a multi-role pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -449,7 +530,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Create or update a multi-role pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -469,7 +550,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WorkerPoolResource>> CreateOrUpdateMultiRolePoolWithHttpMessagesAsync(string resourceGroupName, string name, WorkerPoolResource multiRolePoolEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WorkerPoolResource,AppServiceEnvironmentsCreateOrUpdateMultiRolePoolHeaders>> CreateOrUpdateMultiRolePoolWithHttpMessagesAsync(string resourceGroupName, string name, WorkerPoolResource multiRolePoolEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Create or update a multi-role pool.
@@ -478,7 +559,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Create or update a multi-role pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -509,7 +590,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// multi-role pool of an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -540,7 +621,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -566,7 +647,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get available SKUs for scaling a multi-role pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -594,7 +675,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -622,7 +703,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -650,7 +731,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -678,7 +759,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// hosting environment
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -704,7 +785,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -733,13 +814,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Approves or rejects a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// 
+        /// Name of the private endpoint connection.
         /// </param>
         /// <param name='privateEndpointWrapper'>
         /// 
@@ -756,7 +837,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource>> ApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource,AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionHeaders>> ApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, RemotePrivateEndpointConnectionARMResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a private endpoint connection
@@ -765,13 +846,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// 
+        /// Name of the private endpoint connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -785,7 +866,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> DeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,AppServiceEnvironmentsDeletePrivateEndpointConnectionHeaders>> DeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets the private link resources
@@ -794,7 +875,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the private link resources
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -820,7 +901,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Reboot all machines in an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -843,7 +924,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Resume an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -869,7 +950,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get all App Service plans in an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -895,7 +976,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get all apps in an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -924,7 +1005,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Suspend an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -944,13 +1025,63 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Site>>> SuspendWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Send a test notification that an upgrade is available for this App Service
+        /// Environment.
+        /// </summary>
+        /// <remarks>
+        /// Send a test notification that an upgrade is available for this App Service
+        /// Environment.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service Environment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> TestUpgradeAvailableNotificationWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Initiate an upgrade of an App Service Environment if one is
+        /// available.
+        /// </summary>
+        /// <remarks>
+        /// Description for Initiate an upgrade of an App Service Environment if one is
+        /// available.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service Environment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<AppServiceEnvironmentsUpgradeHeaders>> UpgradeWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Get global usage metrics of an App Service Environment.
         /// </summary>
         /// <remarks>
         /// Description for Get global usage metrics of an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -982,7 +1113,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get all worker pools of an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -1008,7 +1139,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get properties of a worker pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -1037,7 +1168,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Create or update a worker pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -1060,7 +1191,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WorkerPoolResource>> CreateOrUpdateWorkerPoolWithHttpMessagesAsync(string resourceGroupName, string name, string workerPoolName, WorkerPoolResource workerPoolEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WorkerPoolResource,AppServiceEnvironmentsCreateOrUpdateWorkerPoolHeaders>> CreateOrUpdateWorkerPoolWithHttpMessagesAsync(string resourceGroupName, string name, string workerPoolName, WorkerPoolResource workerPoolEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Create or update a worker pool.
@@ -1069,7 +1200,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Create or update a worker pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -1103,7 +1234,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// pool of an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -1137,7 +1268,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -1166,7 +1297,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get available SKUs for scaling a worker pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -1197,7 +1328,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -1226,7 +1357,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Create or update an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -1246,7 +1377,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServiceEnvironmentResource>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, AppServiceEnvironmentResource hostingEnvironmentEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServiceEnvironmentResource,AppServiceEnvironmentsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, AppServiceEnvironmentResource hostingEnvironmentEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Delete an App Service Environment.
@@ -1255,7 +1386,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Delete an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -1273,7 +1404,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string name, bool? forceDelete = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<AppServiceEnvironmentsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string name, bool? forceDelete = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Move an App Service Environment to a different VNET.
@@ -1282,7 +1413,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Move an App Service Environment to a different VNET.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -1311,7 +1442,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Create or update a multi-role pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -1331,7 +1462,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WorkerPoolResource>> BeginCreateOrUpdateMultiRolePoolWithHttpMessagesAsync(string resourceGroupName, string name, WorkerPoolResource multiRolePoolEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WorkerPoolResource,AppServiceEnvironmentsCreateOrUpdateMultiRolePoolHeaders>> BeginCreateOrUpdateMultiRolePoolWithHttpMessagesAsync(string resourceGroupName, string name, WorkerPoolResource multiRolePoolEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Approves or rejects a private endpoint connection
@@ -1340,13 +1471,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Approves or rejects a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// 
+        /// Name of the private endpoint connection.
         /// </param>
         /// <param name='privateEndpointWrapper'>
         /// 
@@ -1363,7 +1494,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource>> BeginApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource,AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionHeaders>> BeginApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, RemotePrivateEndpointConnectionARMResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a private endpoint connection
@@ -1372,13 +1503,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// 
+        /// Name of the private endpoint connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1392,7 +1523,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginDeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,AppServiceEnvironmentsDeletePrivateEndpointConnectionHeaders>> BeginDeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Resume an App Service Environment.
@@ -1401,7 +1532,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Resume an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -1427,7 +1558,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Suspend an App Service Environment.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -1447,13 +1578,38 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Site>>> BeginSuspendWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Initiate an upgrade of an App Service Environment if one is
+        /// available.
+        /// </summary>
+        /// <remarks>
+        /// Description for Initiate an upgrade of an App Service Environment if one is
+        /// available.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service Environment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<AppServiceEnvironmentsUpgradeHeaders>> BeginUpgradeWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Create or update a worker pool.
         /// </summary>
         /// <remarks>
         /// Description for Create or update a worker pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service Environment.
@@ -1476,7 +1632,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WorkerPoolResource>> BeginCreateOrUpdateWorkerPoolWithHttpMessagesAsync(string resourceGroupName, string name, string workerPoolName, WorkerPoolResource workerPoolEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WorkerPoolResource,AppServiceEnvironmentsCreateOrUpdateWorkerPoolHeaders>> BeginCreateOrUpdateWorkerPoolWithHttpMessagesAsync(string resourceGroupName, string name, string workerPoolName, WorkerPoolResource workerPoolEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get all App Service Environments for a subscription.

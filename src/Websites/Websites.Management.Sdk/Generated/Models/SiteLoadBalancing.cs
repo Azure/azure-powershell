@@ -25,7 +25,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         [System.Runtime.Serialization.EnumMember(Value = "RequestHash")]
         RequestHash,
         [System.Runtime.Serialization.EnumMember(Value = "PerSiteRoundRobin")]
-        PerSiteRoundRobin
+        PerSiteRoundRobin,
+        [System.Runtime.Serialization.EnumMember(Value = "LeastRequestsWithTieBreaker")]
+        LeastRequestsWithTieBreaker
     }
     internal static class SiteLoadBalancingEnumExtension
     {
@@ -49,6 +51,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return "RequestHash";
                 case SiteLoadBalancing.PerSiteRoundRobin:
                     return "PerSiteRoundRobin";
+                case SiteLoadBalancing.LeastRequestsWithTieBreaker:
+                    return "LeastRequestsWithTieBreaker";
             }
             return null;
         }
@@ -68,6 +72,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return SiteLoadBalancing.RequestHash;
                 case "PerSiteRoundRobin":
                     return SiteLoadBalancing.PerSiteRoundRobin;
+                case "LeastRequestsWithTieBreaker":
+                    return SiteLoadBalancing.LeastRequestsWithTieBreaker;
             }
             return null;
         }

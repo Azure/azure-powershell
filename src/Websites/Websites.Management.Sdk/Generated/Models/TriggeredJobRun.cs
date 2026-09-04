@@ -10,8 +10,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// <summary>
     /// Triggered Web Job Run Information.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class TriggeredJobRun : ProxyOnlyResource
+    public partial class TriggeredJobRun
     {
         /// <summary>
         /// Initializes a new instance of the TriggeredJobRun class.
@@ -25,18 +24,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the TriggeredJobRun class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="webJobId">Job ID.
         /// </param>
 
@@ -44,7 +31,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </param>
 
         /// <param name="status">Job status.
-        /// Possible values include: &#39;Success&#39;, &#39;Failed&#39;, &#39;Error&#39;</param>
+        /// Possible values include: &#39;Success&#39;, &#39;Failed&#39;, &#39;Error&#39;, &#39;Aborted&#39;, &#39;Running&#39;</param>
 
         /// <param name="startTime">Start time.
         /// </param>
@@ -69,9 +56,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="trigger">Job trigger.
         /// </param>
-        public TriggeredJobRun(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string webJobId = default(string), string webJobName = default(string), TriggeredWebJobStatus? status = default(TriggeredWebJobStatus?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string duration = default(string), string outputUrl = default(string), string errorUrl = default(string), string url = default(string), string jobName = default(string), string trigger = default(string))
+        public TriggeredJobRun(string webJobId = default(string), string webJobName = default(string), TriggeredWebJobStatus? status = default(TriggeredWebJobStatus?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string duration = default(string), string outputUrl = default(string), string errorUrl = default(string), string url = default(string), string jobName = default(string), string trigger = default(string))
 
-        : base(id, name, kind, type)
         {
             this.WebJobId = webJobId;
             this.WebJobName = webJobName;
@@ -96,67 +82,67 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Gets or sets job ID.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.web_job_id")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "web_job_id")]
         public string WebJobId {get; set; }
 
         /// <summary>
         /// Gets or sets job name.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.web_job_name")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "web_job_name")]
         public string WebJobName {get; set; }
 
         /// <summary>
-        /// Gets or sets job status. Possible values include: &#39;Success&#39;, &#39;Failed&#39;, &#39;Error&#39;
+        /// Gets or sets job status. Possible values include: &#39;Success&#39;, &#39;Failed&#39;, &#39;Error&#39;, &#39;Aborted&#39;, &#39;Running&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.status")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public TriggeredWebJobStatus? Status {get; set; }
 
         /// <summary>
         /// Gets or sets start time.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.start_time")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "start_time")]
         public System.DateTime? StartTime {get; set; }
 
         /// <summary>
         /// Gets or sets end time.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.end_time")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "end_time")]
         public System.DateTime? EndTime {get; set; }
 
         /// <summary>
         /// Gets or sets job duration.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.duration")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "duration")]
         public string Duration {get; set; }
 
         /// <summary>
         /// Gets or sets output URL.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.output_url")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "output_url")]
         public string OutputUrl {get; set; }
 
         /// <summary>
         /// Gets or sets error URL.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.error_url")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "error_url")]
         public string ErrorUrl {get; set; }
 
         /// <summary>
         /// Gets or sets job URL.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.url")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "url")]
         public string Url {get; set; }
 
         /// <summary>
         /// Gets or sets job name.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.job_name")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "job_name")]
         public string JobName {get; set; }
 
         /// <summary>
         /// Gets or sets job trigger.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.trigger")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "trigger")]
         public string Trigger {get; set; }
     }
 }

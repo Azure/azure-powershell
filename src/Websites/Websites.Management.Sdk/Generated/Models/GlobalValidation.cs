@@ -11,8 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// The configuration settings that determines the validation flow of users
     /// using App Service Authentication/Authorization.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class GlobalValidation : ProxyOnlyResource
+    public partial class GlobalValidation
     {
         /// <summary>
         /// Initializes a new instance of the GlobalValidation class.
@@ -25,18 +24,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the GlobalValidation class.
         /// </summary>
-
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
 
         /// <param name="requireAuthentication">&lt;code&gt;true&lt;/code&gt; if the authentication flow is required any request is
         /// made; otherwise, &lt;code&gt;false&lt;/code&gt;.
@@ -57,9 +44,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="excludedPaths">The paths for which unauthenticated flow would not be redirected to the
         /// login page.
         /// </param>
-        public GlobalValidation(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? requireAuthentication = default(bool?), UnauthenticatedClientActionV2? unauthenticatedClientAction = default(UnauthenticatedClientActionV2?), string redirectToProvider = default(string), System.Collections.Generic.IList<string> excludedPaths = default(System.Collections.Generic.IList<string>))
+        public GlobalValidation(bool? requireAuthentication = default(bool?), UnauthenticatedClientActionV2? unauthenticatedClientAction = default(UnauthenticatedClientActionV2?), string redirectToProvider = default(string), System.Collections.Generic.IList<string> excludedPaths = default(System.Collections.Generic.IList<string>))
 
-        : base(id, name, kind, type)
         {
             this.RequireAuthentication = requireAuthentication;
             this.UnauthenticatedClientAction = unauthenticatedClientAction;
@@ -78,14 +64,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Gets or sets &lt;code&gt;true&lt;/code&gt; if the authentication flow is required any
         /// request is made; otherwise, &lt;code&gt;false&lt;/code&gt;.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requireAuthentication")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requireAuthentication")]
         public bool? RequireAuthentication {get; set; }
 
         /// <summary>
         /// Gets or sets the action to take when an unauthenticated client attempts to
         /// access the app. Possible values include: &#39;RedirectToLoginPage&#39;, &#39;AllowAnonymous&#39;, &#39;Return401&#39;, &#39;Return403&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.unauthenticatedClientAction")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "unauthenticatedClientAction")]
         public UnauthenticatedClientActionV2? UnauthenticatedClientAction {get; set; }
 
         /// <summary>
@@ -95,14 +81,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// unauthenticated client
         /// action is set to &#34;RedirectToLoginPage&#34;.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.redirectToProvider")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "redirectToProvider")]
         public string RedirectToProvider {get; set; }
 
         /// <summary>
         /// Gets or sets the paths for which unauthenticated flow would not be
         /// redirected to the login page.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.excludedPaths")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "excludedPaths")]
         public System.Collections.Generic.IList<string> ExcludedPaths {get; set; }
     }
 }

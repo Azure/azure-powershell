@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Web app configuration ARM resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SiteConfigResource : ProxyOnlyResource
+    public partial class SiteConfigResource : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the SiteConfigResource class.
@@ -25,16 +25,24 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the SiteConfigResource class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="kind">Kind of resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
+        /// <param name="kind">Kind of resource. If the resource is an app, you can refer to
+        /// https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference
+        /// for details supported values for kind.
         /// </param>
 
         /// <param name="scmType">SCM type.
@@ -109,10 +117,16 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="publishingUsername">Publishing user name.
         /// </param>
 
-        /// <param name="appSettings">Application settings.
+        /// <param name="appSettings">Application settings. This property is not returned in response to normal
+        /// create and read requests since it may contain sensitive information.
         /// </param>
 
-        /// <param name="connectionStrings">Connection strings.
+        /// <param name="metadata">Application metadata. This property cannot be retrieved, since it may
+        /// contain secrets.
+        /// </param>
+
+        /// <param name="connectionStrings">Connection strings. This property is not returned in response to normal
+        /// create and read requests since it may contain sensitive information.
         /// </param>
 
         /// <param name="machineKey">Site MachineKey.
@@ -155,7 +169,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="loadBalancing">Site load balancing.
         /// Possible values include: &#39;WeightedRoundRobin&#39;, &#39;LeastRequests&#39;,
         /// &#39;LeastResponseTime&#39;, &#39;WeightedTotalTraffic&#39;, &#39;RequestHash&#39;,
-        /// &#39;PerSiteRoundRobin&#39;</param>
+        /// &#39;PerSiteRoundRobin&#39;, &#39;LeastRequestsWithTieBreaker&#39;</param>
 
         /// <param name="limits">Site limits.
         /// </param>
@@ -210,8 +224,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="ipSecurityRestrictions">IP security restrictions for main.
         /// </param>
 
+        /// <param name="ipSecurityRestrictionsDefaultAction">Default action for main access restriction if no rules are matched.
+        /// Possible values include: &#39;Allow&#39;, &#39;Deny&#39;</param>
+
         /// <param name="scmIPSecurityRestrictions">IP security restrictions for scm.
         /// </param>
+
+        /// <param name="scmIPSecurityRestrictionsDefaultAction">Default action for scm access restriction if no rules are matched.
+        /// Possible values include: &#39;Allow&#39;, &#39;Deny&#39;</param>
 
         /// <param name="scmIPSecurityRestrictionsUseMain">IP security restrictions for scm to use main.
         /// </param>
@@ -220,13 +240,32 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// http2.0
         /// </param>
 
+        /// <param name="http20ProxyFlag">Http20ProxyFlag: Configures a website to allow http2.0 to pass be proxied
+        /// all the way to the app. 0 = disabled, 1 = pass through all http2 traffic, 2
+        /// = pass through gRPC only.
+        /// </param>
+
         /// <param name="minTlsVersion">MinTlsVersion: configures the minimum version of TLS required for SSL
         /// requests
-        /// Possible values include: &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;</param>
+        /// Possible values include: &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;, &#39;1.3&#39;</param>
+
+        /// <param name="minTlsCipherSuite">The minimum strength TLS cipher suite allowed for an application
+        /// Possible values include: &#39;TLS_AES_256_GCM_SHA384&#39;,
+        /// &#39;TLS_AES_128_GCM_SHA256&#39;, &#39;TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384&#39;,
+        /// &#39;TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256&#39;,
+        /// &#39;TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256&#39;,
+        /// &#39;TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384&#39;,
+        /// &#39;TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256&#39;,
+        /// &#39;TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384&#39;,
+        /// &#39;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256&#39;,
+        /// &#39;TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA&#39;, &#39;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA&#39;,
+        /// &#39;TLS_RSA_WITH_AES_256_GCM_SHA384&#39;, &#39;TLS_RSA_WITH_AES_128_GCM_SHA256&#39;,
+        /// &#39;TLS_RSA_WITH_AES_256_CBC_SHA256&#39;, &#39;TLS_RSA_WITH_AES_128_CBC_SHA256&#39;,
+        /// &#39;TLS_RSA_WITH_AES_256_CBC_SHA&#39;, &#39;TLS_RSA_WITH_AES_128_CBC_SHA&#39;</param>
 
         /// <param name="scmMinTlsVersion">ScmMinTlsVersion: configures the minimum version of TLS required for SSL
         /// requests for SCM site
-        /// Possible values include: &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;</param>
+        /// Possible values include: &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;, &#39;1.3&#39;</param>
 
         /// <param name="preWarmedInstanceCount">Number of preWarmed instances.
         /// This setting only applies to the Consumption and Elastic Plans
@@ -234,6 +273,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="functionAppScaleLimit">Maximum number of workers that a site can scale out to.
         /// This setting only applies to the Consumption and Elastic Premium Plans
+        /// </param>
+
+        /// <param name="elasticWebAppScaleLimit">Maximum number of workers that a site can scale out to.
+        /// This setting only applies to apps in plans where ElasticScaleEnabled is
+        /// &lt;code&gt;true&lt;/code&gt;
         /// </param>
 
         /// <param name="healthCheckPath">Health check path
@@ -264,10 +308,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="publicNetworkAccess">Property to allow or block all public traffic.
         /// </param>
-        public SiteConfigResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string scmType = default(string), Experiments experiments = default(Experiments), string ftpsState = default(string), int? numberOfWorkers = default(int?), System.Collections.Generic.IList<string> defaultDocuments = default(System.Collections.Generic.IList<string>), string netFrameworkVersion = default(string), string phpVersion = default(string), string pythonVersion = default(string), string nodeVersion = default(string), string powerShellVersion = default(string), string linuxFxVersion = default(string), string windowsFxVersion = default(string), bool? requestTracingEnabled = default(bool?), System.DateTime? requestTracingExpirationTime = default(System.DateTime?), bool? remoteDebuggingEnabled = default(bool?), string remoteDebuggingVersion = default(string), bool? httpLoggingEnabled = default(bool?), bool? acrUseManagedIdentityCreds = default(bool?), string acrUserManagedIdentityId = default(string), int? logsDirectorySizeLimit = default(int?), bool? detailedErrorLoggingEnabled = default(bool?), string publishingUsername = default(string), System.Collections.Generic.IList<NameValuePair> appSettings = default(System.Collections.Generic.IList<NameValuePair>), System.Collections.Generic.IList<ConnStringInfo> connectionStrings = default(System.Collections.Generic.IList<ConnStringInfo>), SiteMachineKey machineKey = default(SiteMachineKey), System.Collections.Generic.IList<HandlerMapping> handlerMappings = default(System.Collections.Generic.IList<HandlerMapping>), string documentRoot = default(string), bool? use32BitWorkerProcess = default(bool?), bool? webSocketsEnabled = default(bool?), bool? alwaysOn = default(bool?), string javaVersion = default(string), string javaContainer = default(string), string javaContainerVersion = default(string), string appCommandLine = default(string), ManagedPipelineMode? managedPipelineMode = default(ManagedPipelineMode?), System.Collections.Generic.IList<VirtualApplication> virtualApplications = default(System.Collections.Generic.IList<VirtualApplication>), SiteLoadBalancing? loadBalancing = default(SiteLoadBalancing?), SiteLimits limits = default(SiteLimits), bool? autoHealEnabled = default(bool?), AutoHealRules autoHealRules = default(AutoHealRules), string tracingOptions = default(string), string vnetName = default(string), bool? vnetRouteAllEnabled = default(bool?), int? vnetPrivatePortsCount = default(int?), CorsSettings cors = default(CorsSettings), PushSettings push = default(PushSettings), ApiDefinitionInfo apiDefinition = default(ApiDefinitionInfo), ApiManagementConfig apiManagementConfig = default(ApiManagementConfig), string autoSwapSlotName = default(string), bool? localMySqlEnabled = default(bool?), int? managedServiceIdentityId = default(int?), int? xManagedServiceIdentityId = default(int?), string keyVaultReferenceIdentity = default(string), System.Collections.Generic.IList<IpSecurityRestriction> ipSecurityRestrictions = default(System.Collections.Generic.IList<IpSecurityRestriction>), System.Collections.Generic.IList<IpSecurityRestriction> scmIPSecurityRestrictions = default(System.Collections.Generic.IList<IpSecurityRestriction>), bool? scmIPSecurityRestrictionsUseMain = default(bool?), bool? http20Enabled = default(bool?), string minTlsVersion = default(string), string scmMinTlsVersion = default(string), int? preWarmedInstanceCount = default(int?), int? functionAppScaleLimit = default(int?), string healthCheckPath = default(string), bool? functionsRuntimeScaleMonitoringEnabled = default(bool?), string websiteTimeZone = default(string), int? minimumElasticInstanceCount = default(int?), System.Collections.Generic.IDictionary<string, AzureStorageInfoValue> azureStorageAccounts = default(System.Collections.Generic.IDictionary<string, AzureStorageInfoValue>), string publicNetworkAccess = default(string))
+        public SiteConfigResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), string scmType = default(string), Experiments experiments = default(Experiments), string ftpsState = default(string), int? numberOfWorkers = default(int?), System.Collections.Generic.IList<string> defaultDocuments = default(System.Collections.Generic.IList<string>), string netFrameworkVersion = default(string), string phpVersion = default(string), string pythonVersion = default(string), string nodeVersion = default(string), string powerShellVersion = default(string), string linuxFxVersion = default(string), string windowsFxVersion = default(string), bool? requestTracingEnabled = default(bool?), System.DateTime? requestTracingExpirationTime = default(System.DateTime?), bool? remoteDebuggingEnabled = default(bool?), string remoteDebuggingVersion = default(string), bool? httpLoggingEnabled = default(bool?), bool? acrUseManagedIdentityCreds = default(bool?), string acrUserManagedIdentityId = default(string), int? logsDirectorySizeLimit = default(int?), bool? detailedErrorLoggingEnabled = default(bool?), string publishingUsername = default(string), System.Collections.Generic.IList<NameValuePair> appSettings = default(System.Collections.Generic.IList<NameValuePair>), System.Collections.Generic.IList<NameValuePair> metadata = default(System.Collections.Generic.IList<NameValuePair>), System.Collections.Generic.IList<ConnStringInfo> connectionStrings = default(System.Collections.Generic.IList<ConnStringInfo>), SiteMachineKey machineKey = default(SiteMachineKey), System.Collections.Generic.IList<HandlerMapping> handlerMappings = default(System.Collections.Generic.IList<HandlerMapping>), string documentRoot = default(string), bool? use32BitWorkerProcess = default(bool?), bool? webSocketsEnabled = default(bool?), bool? alwaysOn = default(bool?), string javaVersion = default(string), string javaContainer = default(string), string javaContainerVersion = default(string), string appCommandLine = default(string), ManagedPipelineMode? managedPipelineMode = default(ManagedPipelineMode?), System.Collections.Generic.IList<VirtualApplication> virtualApplications = default(System.Collections.Generic.IList<VirtualApplication>), SiteLoadBalancing? loadBalancing = default(SiteLoadBalancing?), SiteLimits limits = default(SiteLimits), bool? autoHealEnabled = default(bool?), AutoHealRules autoHealRules = default(AutoHealRules), string tracingOptions = default(string), string vnetName = default(string), bool? vnetRouteAllEnabled = default(bool?), int? vnetPrivatePortsCount = default(int?), CorsSettings cors = default(CorsSettings), PushSettings push = default(PushSettings), ApiDefinitionInfo apiDefinition = default(ApiDefinitionInfo), ApiManagementConfig apiManagementConfig = default(ApiManagementConfig), string autoSwapSlotName = default(string), bool? localMySqlEnabled = default(bool?), int? managedServiceIdentityId = default(int?), int? xManagedServiceIdentityId = default(int?), string keyVaultReferenceIdentity = default(string), System.Collections.Generic.IList<IpSecurityRestriction> ipSecurityRestrictions = default(System.Collections.Generic.IList<IpSecurityRestriction>), string ipSecurityRestrictionsDefaultAction = default(string), System.Collections.Generic.IList<IpSecurityRestriction> scmIPSecurityRestrictions = default(System.Collections.Generic.IList<IpSecurityRestriction>), string scmIPSecurityRestrictionsDefaultAction = default(string), bool? scmIPSecurityRestrictionsUseMain = default(bool?), bool? http20Enabled = default(bool?), int? http20ProxyFlag = default(int?), string minTlsVersion = default(string), string minTlsCipherSuite = default(string), string scmMinTlsVersion = default(string), int? preWarmedInstanceCount = default(int?), int? functionAppScaleLimit = default(int?), int? elasticWebAppScaleLimit = default(int?), string healthCheckPath = default(string), bool? functionsRuntimeScaleMonitoringEnabled = default(bool?), string websiteTimeZone = default(string), int? minimumElasticInstanceCount = default(int?), System.Collections.Generic.IDictionary<string, AzureStorageInfoValue> azureStorageAccounts = default(System.Collections.Generic.IDictionary<string, AzureStorageInfoValue>), string publicNetworkAccess = default(string))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.ScmType = scmType;
             this.Experiments = experiments;
             this.FtpsState = ftpsState;
@@ -291,6 +336,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.DetailedErrorLoggingEnabled = detailedErrorLoggingEnabled;
             this.PublishingUsername = publishingUsername;
             this.AppSettings = appSettings;
+            this.Metadata = metadata;
             this.ConnectionStrings = connectionStrings;
             this.MachineKey = machineKey;
             this.HandlerMappings = handlerMappings;
@@ -322,13 +368,18 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.XManagedServiceIdentityId = xManagedServiceIdentityId;
             this.KeyVaultReferenceIdentity = keyVaultReferenceIdentity;
             this.IpSecurityRestrictions = ipSecurityRestrictions;
+            this.IPSecurityRestrictionsDefaultAction = ipSecurityRestrictionsDefaultAction;
             this.ScmIpSecurityRestrictions = scmIPSecurityRestrictions;
+            this.ScmIPSecurityRestrictionsDefaultAction = scmIPSecurityRestrictionsDefaultAction;
             this.ScmIpSecurityRestrictionsUseMain = scmIPSecurityRestrictionsUseMain;
             this.Http20Enabled = http20Enabled;
+            this.Http20ProxyFlag = http20ProxyFlag;
             this.MinTlsVersion = minTlsVersion;
+            this.MinTlsCipherSuite = minTlsCipherSuite;
             this.ScmMinTlsVersion = scmMinTlsVersion;
             this.PreWarmedInstanceCount = preWarmedInstanceCount;
             this.FunctionAppScaleLimit = functionAppScaleLimit;
+            this.ElasticWebAppScaleLimit = elasticWebAppScaleLimit;
             this.HealthCheckPath = healthCheckPath;
             this.FunctionsRuntimeScaleMonitoringEnabled = functionsRuntimeScaleMonitoringEnabled;
             this.WebsiteTimeZone = websiteTimeZone;
@@ -343,6 +394,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource. If the resource is an app, you can refer to
+        /// https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference
+        /// for details supported values for kind.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets sCM type. Possible values include: &#39;None&#39;, &#39;Dropbox&#39;, &#39;Tfs&#39;, &#39;LocalGit&#39;, &#39;GitHub&#39;, &#39;CodePlexGit&#39;, &#39;CodePlexHg&#39;, &#39;BitbucketGit&#39;, &#39;BitbucketHg&#39;, &#39;ExternalGit&#39;, &#39;ExternalHg&#39;, &#39;OneDrive&#39;, &#39;VSO&#39;, &#39;VSTSRM&#39;
@@ -482,13 +541,24 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public string PublishingUsername {get; set; }
 
         /// <summary>
-        /// Gets or sets application settings.
+        /// Gets or sets application settings. This property is not returned in
+        /// response to normal create and read requests since it may contain sensitive
+        /// information.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.appSettings")]
         public System.Collections.Generic.IList<NameValuePair> AppSettings {get; set; }
 
         /// <summary>
-        /// Gets or sets connection strings.
+        /// Gets or sets application metadata. This property cannot be retrieved, since
+        /// it may contain secrets.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.metadata")]
+        public System.Collections.Generic.IList<NameValuePair> Metadata {get; set; }
+
+        /// <summary>
+        /// Gets or sets connection strings. This property is not returned in response
+        /// to normal create and read requests since it may contain sensitive
+        /// information.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.connectionStrings")]
         public System.Collections.Generic.IList<ConnStringInfo> ConnectionStrings {get; set; }
@@ -569,7 +639,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public System.Collections.Generic.IList<VirtualApplication> VirtualApplications {get; set; }
 
         /// <summary>
-        /// Gets or sets site load balancing. Possible values include: &#39;WeightedRoundRobin&#39;, &#39;LeastRequests&#39;, &#39;LeastResponseTime&#39;, &#39;WeightedTotalTraffic&#39;, &#39;RequestHash&#39;, &#39;PerSiteRoundRobin&#39;
+        /// Gets or sets site load balancing. Possible values include: &#39;WeightedRoundRobin&#39;, &#39;LeastRequests&#39;, &#39;LeastResponseTime&#39;, &#39;WeightedTotalTraffic&#39;, &#39;RequestHash&#39;, &#39;PerSiteRoundRobin&#39;, &#39;LeastRequestsWithTieBreaker&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.loadBalancing")]
         public SiteLoadBalancing? LoadBalancing {get; set; }
@@ -682,10 +752,24 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public System.Collections.Generic.IList<IpSecurityRestriction> IpSecurityRestrictions {get; set; }
 
         /// <summary>
+        /// Gets or sets default action for main access restriction if no rules are
+        /// matched. Possible values include: &#39;Allow&#39;, &#39;Deny&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipSecurityRestrictionsDefaultAction")]
+        public string IPSecurityRestrictionsDefaultAction {get; set; }
+
+        /// <summary>
         /// Gets or sets iP security restrictions for scm.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.scmIpSecurityRestrictions")]
         public System.Collections.Generic.IList<IpSecurityRestriction> ScmIpSecurityRestrictions {get; set; }
+
+        /// <summary>
+        /// Gets or sets default action for scm access restriction if no rules are
+        /// matched. Possible values include: &#39;Allow&#39;, &#39;Deny&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.scmIpSecurityRestrictionsDefaultAction")]
+        public string ScmIPSecurityRestrictionsDefaultAction {get; set; }
 
         /// <summary>
         /// Gets or sets iP security restrictions for scm to use main.
@@ -701,15 +785,30 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public bool? Http20Enabled {get; set; }
 
         /// <summary>
+        /// Gets or sets http20ProxyFlag: Configures a website to allow http2.0 to pass
+        /// be proxied all the way to the app. 0 = disabled, 1 = pass through all http2
+        /// traffic, 2 = pass through gRPC only.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.http20ProxyFlag")]
+        public int? Http20ProxyFlag {get; set; }
+
+        /// <summary>
         /// Gets or sets minTlsVersion: configures the minimum version of TLS required
-        /// for SSL requests Possible values include: &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;
+        /// for SSL requests Possible values include: &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;, &#39;1.3&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.minTlsVersion")]
         public string MinTlsVersion {get; set; }
 
         /// <summary>
+        /// Gets or sets the minimum strength TLS cipher suite allowed for an
+        /// application Possible values include: &#39;TLS_AES_256_GCM_SHA384&#39;, &#39;TLS_AES_128_GCM_SHA256&#39;, &#39;TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384&#39;, &#39;TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256&#39;, &#39;TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256&#39;, &#39;TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384&#39;, &#39;TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256&#39;, &#39;TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384&#39;, &#39;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256&#39;, &#39;TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA&#39;, &#39;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA&#39;, &#39;TLS_RSA_WITH_AES_256_GCM_SHA384&#39;, &#39;TLS_RSA_WITH_AES_128_GCM_SHA256&#39;, &#39;TLS_RSA_WITH_AES_256_CBC_SHA256&#39;, &#39;TLS_RSA_WITH_AES_128_CBC_SHA256&#39;, &#39;TLS_RSA_WITH_AES_256_CBC_SHA&#39;, &#39;TLS_RSA_WITH_AES_128_CBC_SHA&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.minTlsCipherSuite")]
+        public string MinTlsCipherSuite {get; set; }
+
+        /// <summary>
         /// Gets or sets scmMinTlsVersion: configures the minimum version of TLS
-        /// required for SSL requests for SCM site Possible values include: &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;
+        /// required for SSL requests for SCM site Possible values include: &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;, &#39;1.3&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.scmMinTlsVersion")]
         public string ScmMinTlsVersion {get; set; }
@@ -727,6 +826,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.functionAppScaleLimit")]
         public int? FunctionAppScaleLimit {get; set; }
+
+        /// <summary>
+        /// Gets or sets maximum number of workers that a site can scale out to.
+        /// This setting only applies to apps in plans where ElasticScaleEnabled is
+        /// &lt;code&gt;true&lt;/code&gt;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.elasticWebAppScaleLimit")]
+        public int? ElasticWebAppScaleLimit {get; set; }
 
         /// <summary>
         /// Gets or sets health check path
@@ -823,6 +930,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
 
 
+
+
+
+
+
             if (this.PreWarmedInstanceCount != null)
             {
                 if (this.PreWarmedInstanceCount > 10)
@@ -839,6 +951,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
                 if (this.FunctionAppScaleLimit < 0)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "FunctionAppScaleLimit", 0);
+                }
+            }
+            if (this.ElasticWebAppScaleLimit != null)
+            {
+                if (this.ElasticWebAppScaleLimit < 0)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "ElasticWebAppScaleLimit", 0);
                 }
             }
 

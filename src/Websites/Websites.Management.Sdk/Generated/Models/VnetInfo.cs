@@ -10,8 +10,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// <summary>
     /// Virtual Network information contract.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VnetInfo : ProxyOnlyResource
+    public partial class VnetInfo
     {
         /// <summary>
         /// Initializes a new instance of the VnetInfo class.
@@ -25,18 +24,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the VnetInfo class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="vnetResourceId">The Virtual Network&#39;s resource ID.
         /// </param>
 
@@ -44,8 +31,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </param>
 
         /// <param name="certBlob">A certificate file (.cer) blob containing the public key of the private key
-        /// used to authenticate a
-        /// Point-To-Site VPN connection.
+        /// used to authenticate a \nPoint-To-Site VPN connection.
         /// </param>
 
         /// <param name="routes">The routes that this Virtual Network connection uses.
@@ -60,9 +46,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="isSwift">Flag that is used to denote if this is VNET injection
         /// </param>
-        public VnetInfo(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string vnetResourceId = default(string), string certThumbprint = default(string), string certBlob = default(string), System.Collections.Generic.IList<VnetRoute> routes = default(System.Collections.Generic.IList<VnetRoute>), bool? resyncRequired = default(bool?), string dnsServers = default(string), bool? isSwift = default(bool?))
+        public VnetInfo(string vnetResourceId = default(string), string certThumbprint = default(string), string certBlob = default(string), System.Collections.Generic.IList<VnetRoute> routes = default(System.Collections.Generic.IList<VnetRoute>), bool? resyncRequired = default(bool?), string dnsServers = default(string), bool? isSwift = default(bool?))
 
-        : base(id, name, kind, type)
         {
             this.VnetResourceId = vnetResourceId;
             this.CertThumbprint = certThumbprint;
@@ -83,47 +68,46 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Gets or sets the Virtual Network&#39;s resource ID.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.vnetResourceId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "vnetResourceId")]
         public string VnetResourceId {get; set; }
 
         /// <summary>
         /// Gets the client certificate thumbprint.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.certThumbprint")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "certThumbprint")]
         public string CertThumbprint {get; private set; }
 
         /// <summary>
         /// Gets or sets a certificate file (.cer) blob containing the public key of
-        /// the private key used to authenticate a
-        /// Point-To-Site VPN connection.
+        /// the private key used to authenticate a \nPoint-To-Site VPN connection.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.certBlob")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "certBlob")]
         public string CertBlob {get; set; }
 
         /// <summary>
         /// Gets the routes that this Virtual Network connection uses.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.routes")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "routes")]
         public System.Collections.Generic.IList<VnetRoute> Routes {get; private set; }
 
         /// <summary>
         /// Gets &lt;code&gt;true&lt;/code&gt; if a resync is required; otherwise,
         /// &lt;code&gt;false&lt;/code&gt;.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resyncRequired")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resyncRequired")]
         public bool? ResyncRequired {get; private set; }
 
         /// <summary>
         /// Gets or sets dNS servers to be used by this Virtual Network. This should be
         /// a comma-separated list of IP addresses.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dnsServers")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dnsServers")]
         public string DnsServers {get; set; }
 
         /// <summary>
         /// Gets or sets flag that is used to denote if this is VNET injection
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isSwift")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isSwift")]
         public bool? IsSwift {get; set; }
     }
 }

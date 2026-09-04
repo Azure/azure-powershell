@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Definition of Analysis
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AnalysisDefinition : ProxyOnlyResource
+    public partial class AnalysisDefinition : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the AnalysisDefinition class.
@@ -25,24 +25,31 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the AnalysisDefinition class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
         /// </param>
 
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="description">Description of the Analysis
         /// </param>
-        public AnalysisDefinition(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string description = default(string))
+        public AnalysisDefinition(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), string description = default(string))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.Description = description;
             CustomInit();
         }
@@ -52,6 +59,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets description of the Analysis

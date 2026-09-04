@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="ignoreConflictingHostNames">Changes a logic when restoring an app with custom domains.
         /// &lt;code&gt;true&lt;/code&gt; to remove custom domains automatically. If
-        /// &lt;code&gt;false&lt;/code&gt;, custom domains are added to
-        /// the app&#39;s object when it is being restored, but that might fail due to
-        /// conflicts during the operation.
+        /// &lt;code&gt;false&lt;/code&gt;, custom domains are added to \nthe app&#39;s object when it
+        /// is being restored, but that might fail due to conflicts during the
+        /// operation.
         /// </param>
 
         /// <param name="ignoreDatabases">Ignore the databases and only restore the site content
@@ -139,9 +139,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Gets or sets changes a logic when restoring an app with custom domains.
         /// &lt;code&gt;true&lt;/code&gt; to remove custom domains automatically. If
-        /// &lt;code&gt;false&lt;/code&gt;, custom domains are added to
-        /// the app&#39;s object when it is being restored, but that might fail due to
-        /// conflicts during the operation.
+        /// &lt;code&gt;false&lt;/code&gt;, custom domains are added to \nthe app&#39;s object when it
+        /// is being restored, but that might fail due to conflicts during the
+        /// operation.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ignoreConflictingHostNames")]
         public bool? IgnoreConflictingHostNames {get; set; }

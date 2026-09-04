@@ -11,8 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// The configuration settings of the login flow, including the scopes that
     /// should be requested.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class LoginScopes : ProxyOnlyResource
+    public partial class LoginScopes
     {
         /// <summary>
         /// Initializes a new instance of the LoginScopes class.
@@ -26,23 +25,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the LoginScopes class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="scopes">A list of the scopes that should be requested while authenticating.
         /// </param>
-        public LoginScopes(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.Collections.Generic.IList<string> scopes = default(System.Collections.Generic.IList<string>))
+        public LoginScopes(System.Collections.Generic.IList<string> scopes = default(System.Collections.Generic.IList<string>))
 
-        : base(id, name, kind, type)
         {
             this.Scopes = scopes;
             CustomInit();
@@ -58,7 +44,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Gets or sets a list of the scopes that should be requested while
         /// authenticating.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.scopes")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "scopes")]
         public System.Collections.Generic.IList<string> Scopes {get; set; }
     }
 }

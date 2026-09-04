@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             if (VnetPropInfo != null)
             {
                 object val = VnetPropInfo.GetValue(other, null);
-                VnetInfo = (IList<VnetInfo>)val;
+                VnetInfo = (IList<VnetInfoResource>)val;
                 VnetInfo = VnetInfo?.Count <= 0 ? null : VnetInfo;
             }
         }
@@ -90,6 +90,6 @@ namespace Microsoft.Azure.Commands.WebApps.Models
         public SecureString GitRemotePassword { get; set; }
         public AzureStoragePropertyDictionaryResource AzureStorageAccounts { get; set; }
         public WebAppAzureStoragePath[] AzureStoragePath { get; set; }
-        public IList<VnetInfo> VnetInfo { get; set; } = null;
+        public IList<VnetInfoResource> VnetInfo { get; set; } = null;
     }
 }

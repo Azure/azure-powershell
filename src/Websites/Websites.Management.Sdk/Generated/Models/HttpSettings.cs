@@ -12,8 +12,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// authorization requests made against App Service
     /// Authentication/Authorization.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class HttpSettings : ProxyOnlyResource
+    public partial class HttpSettings
     {
         /// <summary>
         /// Initializes a new instance of the HttpSettings class.
@@ -27,34 +26,21 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the HttpSettings class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
-        /// <param name="forwardProxy">The configuration settings of a forward proxy used to make the requests.
-        /// </param>
-
         /// <param name="requireHttps">&lt;code&gt;false&lt;/code&gt; if the authentication/authorization responses not having
         /// the HTTPS scheme are permissible; otherwise, &lt;code&gt;true&lt;/code&gt;.
         /// </param>
 
         /// <param name="routes">The configuration settings of the paths HTTP requests.
         /// </param>
-        public HttpSettings(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), ForwardProxy forwardProxy = default(ForwardProxy), bool? requireHttps = default(bool?), HttpSettingsRoutes routes = default(HttpSettingsRoutes))
 
-        : base(id, name, kind, type)
+        /// <param name="forwardProxy">The configuration settings of a forward proxy used to make the requests.
+        /// </param>
+        public HttpSettings(bool? requireHttps = default(bool?), HttpSettingsRoutes routes = default(HttpSettingsRoutes), ForwardProxy forwardProxy = default(ForwardProxy))
+
         {
-            this.ForwardProxy = forwardProxy;
             this.RequireHttps = requireHttps;
             this.Routes = routes;
+            this.ForwardProxy = forwardProxy;
             CustomInit();
         }
 
@@ -65,24 +51,24 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
 
         /// <summary>
-        /// Gets or sets the configuration settings of a forward proxy used to make the
-        /// requests.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.forwardProxy")]
-        public ForwardProxy ForwardProxy {get; set; }
-
-        /// <summary>
         /// Gets or sets &lt;code&gt;false&lt;/code&gt; if the authentication/authorization
         /// responses not having the HTTPS scheme are permissible; otherwise,
         /// &lt;code&gt;true&lt;/code&gt;.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requireHttps")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requireHttps")]
         public bool? RequireHttps {get; set; }
 
         /// <summary>
         /// Gets or sets the configuration settings of the paths HTTP requests.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.routes")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "routes")]
         public HttpSettingsRoutes Routes {get; set; }
+
+        /// <summary>
+        /// Gets or sets the configuration settings of a forward proxy used to make the
+        /// requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "forwardProxy")]
+        public ForwardProxy ForwardProxy {get; set; }
     }
 }

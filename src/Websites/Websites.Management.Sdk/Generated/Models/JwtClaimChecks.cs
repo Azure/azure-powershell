@@ -11,8 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// The configuration settings of the checks that should be made while
     /// validating the JWT Claims.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class JwtClaimChecks : ProxyOnlyResource
+    public partial class JwtClaimChecks
     {
         /// <summary>
         /// Initializes a new instance of the JwtClaimChecks class.
@@ -26,26 +25,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the JwtClaimChecks class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="allowedGroups">The list of the allowed groups.
         /// </param>
 
         /// <param name="allowedClientApplications">The list of the allowed client applications.
         /// </param>
-        public JwtClaimChecks(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.Collections.Generic.IList<string> allowedGroups = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> allowedClientApplications = default(System.Collections.Generic.IList<string>))
+        public JwtClaimChecks(System.Collections.Generic.IList<string> allowedGroups = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> allowedClientApplications = default(System.Collections.Generic.IList<string>))
 
-        : base(id, name, kind, type)
         {
             this.AllowedGroups = allowedGroups;
             this.AllowedClientApplications = allowedClientApplications;
@@ -61,13 +47,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Gets or sets the list of the allowed groups.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.allowedGroups")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "allowedGroups")]
         public System.Collections.Generic.IList<string> AllowedGroups {get; set; }
 
         /// <summary>
         /// Gets or sets the list of the allowed client applications.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.allowedClientApplications")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "allowedClientApplications")]
         public System.Collections.Generic.IList<string> AllowedClientApplications {get; set; }
     }
 }
