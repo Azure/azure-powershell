@@ -47,26 +47,30 @@ namespace Microsoft.Azure.Commands.Maintenance
                 {
                     var psObject = new List<PSMaintenanceConfiguration>();
                     var result = PublicMaintenanceConfigurationsClient.List();
-
-                    foreach (var maintenanceConfiguration in result)
+                    while (result != null)
                     {
-                        string[] mcInfo = maintenanceConfiguration.Id.Split(uriSplit, StringSplitOptions.RemoveEmptyEntries);
-                        if (null != mcInfo && mcInfo.Length == 8)
+                        foreach (var maintenanceConfiguration in result)
                         {
-                            if (!string.IsNullOrEmpty(resourceGroupName) && !mcInfo[3].Equals(resourceGroupName))
+                            string[] mcInfo = maintenanceConfiguration.Id.Split(uriSplit, StringSplitOptions.RemoveEmptyEntries);
+                            if (null != mcInfo && mcInfo.Length == 8)
                             {
-                                continue;
+                                if (!string.IsNullOrEmpty(resourceGroupName) && !mcInfo[3].Equals(resourceGroupName))
+                                {
+                                    continue;
+                                }
+
+                                if (!string.IsNullOrEmpty(name) && !maintenanceConfiguration.Name.Equals(name))
+                                {
+                                    continue;
+                                }
                             }
 
-                            if (!string.IsNullOrEmpty(name) && !maintenanceConfiguration.Name.Equals(name))
-                            {
-                                continue;
-                            }
+                            PSMaintenanceConfiguration psMaintenanceConfiguration = new PSMaintenanceConfiguration();
+                            MaintenanceAutomationAutoMapperProfile.Mapper.Map<MaintenanceConfiguration, PSMaintenanceConfiguration>(maintenanceConfiguration, psMaintenanceConfiguration);
+                            psObject.Add(psMaintenanceConfiguration);
                         }
 
-                        PSMaintenanceConfiguration psMaintenanceConfiguration = new PSMaintenanceConfiguration();
-                        MaintenanceAutomationAutoMapperProfile.Mapper.Map<MaintenanceConfiguration, PSMaintenanceConfiguration>(maintenanceConfiguration, psMaintenanceConfiguration);
-                        psObject.Add(psMaintenanceConfiguration);
+                        result = string.IsNullOrEmpty(result.NextPageLink) ? null : PublicMaintenanceConfigurationsClient.ListNext(result.NextPageLink);
                     }
 
                     WriteObject(psObject);

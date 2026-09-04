@@ -34,6 +34,30 @@ namespace Microsoft.Azure.Commands.Maintenance
             base.ExecuteCmdlet();
         }
 
+        protected static string NormalizeRequiredValue(string value, string parameterName, int? index = null)
+        {
+            string normalizedValue = value?.Trim();
+            if (string.IsNullOrEmpty(normalizedValue))
+            {
+                string valueLocation = index.HasValue ? $" value at index {index.Value}" : string.Empty;
+                throw new PSArgumentException($"The {parameterName} parameter{valueLocation} cannot be null, empty, or whitespace.", parameterName);
+            }
+
+            return normalizedValue;
+        }
+
+        protected static string NormalizeScheduledEventId(string value, string parameterName, int? index = null)
+        {
+            string normalizedValue = NormalizeRequiredValue(value, parameterName, index);
+            if (!Guid.TryParse(normalizedValue, out _))
+            {
+                string valueLocation = index.HasValue ? $" value at index {index.Value}" : string.Empty;
+                throw new PSArgumentException($"The {parameterName} parameter{valueLocation} must be a valid GUID.", parameterName);
+            }
+
+            return normalizedValue;
+        }
+
         protected static PSArgument[] ConvertFromObjectsToArguments(string[] names, object[] objects)
         {
             var arguments = new PSArgument[objects.Length];
@@ -128,6 +152,14 @@ namespace Microsoft.Azure.Commands.Maintenance
             get
             {
                 return MaintenanceClient.MaintenanceManagementClient.Updates;
+            }
+        }
+
+        public IScheduledEventsOperations ScheduledEventsClient
+        {
+            get
+            {
+                return MaintenanceClient.MaintenanceManagementClient.ScheduledEvents;
             }
         }
 
