@@ -1,8 +1,8 @@
 {
-  "Test-AzServiceBusName+[NoContext]+NamespaceAvailability+$POST+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/providers/Microsoft.ServiceBus/checkNameAvailability?api-version=2026-01-01+1": {
+  "Test-AzServiceBusName+[NoContext]+NamespaceAvailability+$POST+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/providers/Microsoft.ServiceBus/checkNameAvailability?api-version=2026-07-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/providers/Microsoft.ServiceBus/checkNameAvailability?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/providers/Microsoft.ServiceBus/checkNameAvailability?api-version=2026-07-01-preview",
       "Content": "{\n  \"name\": \"namespaceNameehd74z\"\n}",
       "isContentBase64": false,
       "Headers": {
@@ -41,10 +41,10 @@
       "isContentBase64": false
     }
   },
-  "Test-AzServiceBusName+[NoContext]+AliasAvailability+$POST+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/disasterRecoveryConfigs/CheckNameAvailability?api-version=2026-01-01+1": {
+  "Test-AzServiceBusName+[NoContext]+AliasAvailability+$POST+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/disasterRecoveryConfigs/CheckNameAvailability?api-version=2026-07-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/disasterRecoveryConfigs/CheckNameAvailability?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/disasterRecoveryConfigs/CheckNameAvailability?api-version=2026-07-01-preview",
       "Content": "{\n  \"name\": \"alias32b286np\"\n}",
       "isContentBase64": false,
       "Headers": {
