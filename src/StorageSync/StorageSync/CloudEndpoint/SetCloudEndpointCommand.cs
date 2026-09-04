@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,32 +14,27 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
-
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
-using Microsoft.Azure.Commands.StorageSync.InternalObjects;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
-namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
+namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 {
     /// <summary>
-    /// Class SetServerEndpointCommandPermission.
+    /// Class SetCloudEndpointCommand.
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
-    [Cmdlet(VerbsCommon.Set, StorageSyncNouns.NounAzureRmStorageSyncServerEndpointPermission,
-        DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServerEndpoint))]
-    public class SetServerEndpointCommandPermission : StorageSyncClientCmdletBase
+    [Cmdlet(VerbsCommon.Set, StorageSyncNouns.NounAzureRmStorageSyncCloudEndpoint,
+        DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSCloudEndpoint))]
+    public class SetCloudEndpointCommand : StorageSyncClientCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the resource group.
@@ -92,10 +87,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
            Mandatory = true,
            ValueFromPipelineByPropertyName = false,
-            HelpMessage = HelpMessages.ServerEndpointNameParameter)]
+            HelpMessage = HelpMessages.CloudEndpointNameParameter)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups/serverEndpoints", "ResourceGroupName", "StorageSyncServiceName", "SyncGroupName")]
-        [Alias(StorageSyncAliases.ServerEndpointNameAlias)]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups/cloudEndpoints", "ResourceGroupName", "StorageSyncServiceName", "SyncGroupName")]
+        [Alias(StorageSyncAliases.CloudEndpointNameAlias)]
         public string Name { get; set; }
 
         /// <summary>
@@ -106,8 +101,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.ResourceIdParameterSet,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = HelpMessages.ServerEndpointResourceIdParameter)]
-        [ResourceIdCompleter(StorageSyncConstants.ServerEndpointType)]
+           HelpMessage = HelpMessages.CloudEndpointResourceIdParameter)]
+        [ResourceIdCompleter(StorageSyncConstants.CloudEndpointType)]
         public string ResourceId { get; set; }
 
         /// <summary>
@@ -119,9 +114,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            ParameterSetName = StorageSyncParameterSets.ObjectParameterSet,
            Mandatory = true,
            ValueFromPipeline = true,
-           HelpMessage = HelpMessages.ServerEndpointObjectParameter)]
-        [Alias(StorageSyncAliases.ServerEndpointAlias)]
-        public PSServerEndpoint InputObject { get; set; }
+           HelpMessage = HelpMessages.CloudEndpointObjectParameter)]
+        [Alias(StorageSyncAliases.CloudEndpointAlias)]
+        public PSCloudEndpoint InputObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the change enumeration interval day.
+        /// </summary>
+        /// <value>The change enumeration interval day.</value>
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = false,
+          HelpMessage = HelpMessages.ChangeEnumerationIntervalDayParameter)]
+        [ValidateRange(1, 20)]
+        public int? ChangeEnumerationIntervalDay { get; set; }
 
         /// <summary>
         /// Gets or sets as job.
@@ -134,13 +140,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// Gets or sets the target.
         /// </summary>
         /// <value>The target.</value>
-        protected override string Target => Name ?? ResourceId ?? InputObject?.ServerEndpointName;
+        protected override string Target => Name ?? ResourceId ?? InputObject?.CloudEndpointName;
 
         /// <summary>
         /// Gets or sets the action message.
         /// </summary>
         /// <value>The action message.</value>
-        protected override string ActionMessage => $"{StorageSyncResources.SetServerEndpointActionMessage} {Name ?? ResourceId ?? InputObject?.ServerEndpointName}";
+        protected override string ActionMessage => $"Update CloudEndpoint: {Name ?? ResourceId ?? InputObject?.CloudEndpointName}";
 
         /// <summary>
         /// Executes the cmdlet.
@@ -158,7 +164,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                 if (this.IsParameterBound(c => c.InputObject))
                 {
-                    resourceName = InputObject.ServerEndpointName;
+                    resourceName = InputObject.CloudEndpointName;
                     resourceGroupName = InputObject.ResourceGroupName;
                     parentResourceName = InputObject.SyncGroupName;
                     storageSyncServiceName = InputObject.StorageSyncServiceName;
@@ -181,69 +187,45 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                         storageSyncServiceName = StorageSyncServiceName;
                     }
                 }
+
+                // Get the existing cloud endpoint
+                StorageSyncModels.CloudEndpoint existingCloudEndpoint = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.Get(
+                    resourceGroupName,
+                    storageSyncServiceName,
+                    parentResourceName,
+                    resourceName);
+
+                if (existingCloudEndpoint == null)
+                {
+                    throw new PSArgumentException($"Cloud endpoint '{resourceName}' not found.");
+                }
+
+                // Create update parameters with the existing values and new ChangeEnumerationIntervalDay
+                var updateParameters = new CloudEndpointUpdateParameters()
+                {
+                };
+
+                // Apply the update if parameter is provided
+                if (this.IsParameterBound(c => c.ChangeEnumerationIntervalDay))
+                {
+                    updateParameters.Properties.ChangeEnumerationIntervalDays = ChangeEnumerationIntervalDay;
+                }
+                else if (existingCloudEndpoint.ChangeEnumerationIntervalDays.HasValue)
+                {
+                    updateParameters.Properties.ChangeEnumerationIntervalDays = existingCloudEndpoint.ChangeEnumerationIntervalDays;
+                }
+
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);
                 if (ShouldProcess(Target, ActionMessage))
                 {
-                    ServerEndpoint serverEndpoint = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Get(
+                    StorageSyncModels.CloudEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.Update(
                         resourceGroupName,
                         storageSyncServiceName,
                         parentResourceName,
-                        resourceName);
+                        resourceName,
+                        updateParameters.Properties);
 
-                    if(serverEndpoint != null)
-                    {
-                        // Get Registered Server
-                        StorageSyncModels.RegisteredServer registeredServer = null;
-                        var serverResourceIdentifier = new ResourceIdentifier(serverEndpoint.ServerResourceId);
-                        if (Guid.TryParse(serverResourceIdentifier.ResourceName, out Guid parsedServerId) && parsedServerId != Guid.Empty)
-                        {
-                            registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, parsedServerId);
-                        }
-
-                        if (registeredServer == null)
-                        {
-                            throw new PSArgumentException(StorageSyncResources.MissingServerResourceIdErrorMessage);
-                        }
-
-                        // Handle cluster name server scenario where the rbac needs to be applied on all the nodes.
-                        StorageSyncClientWrapper.VerboseLogger.Invoke($"Registered Server Auth Type : {registeredServer.ActiveAuthType} with ServerRole {registeredServer.ServerRole}");
-
-                        IEnumerable<StorageSyncModels.RegisteredServer> impactedRegisteredServers;
-                        if (registeredServer.ServerRole == ServerRoleType.ClusterName.ToString())
-                        {
-                            impactedRegisteredServers = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers
-                            .ListByStorageSyncService(resourceGroupName, storageSyncServiceName)
-                            .Where(s => !string.IsNullOrEmpty(s.ClusterId) &&
-                                    s.ServerRole == ServerRoleType.ClusterNode.ToString() &&
-                                    s.ClusterId.Equals(registeredServer.ServerId, StringComparison.InvariantCultureIgnoreCase));
-                        }
-                        else
-                        {
-                            impactedRegisteredServers = new List<StorageSyncModels.RegisteredServer> { registeredServer };
-                        }
-
-                        foreach (var impactedRegisteredServer in impactedRegisteredServers)
-                        {
-                            if (impactedRegisteredServer.ActiveAuthType == StorageSyncModels.ServerAuthType.ManagedIdentity &&
-                                !String.IsNullOrEmpty(impactedRegisteredServer.ApplicationId) && Guid.TryParse(impactedRegisteredServer.ApplicationId, out Guid serverIdentityGuid)
-                                && serverIdentityGuid != Guid.Empty)
-                            {
-                                StorageSyncModels.CloudEndpoint cloudEndpoint = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, parentResourceName).FirstOrDefault();
-
-                                if (cloudEndpoint == null)
-                                {
-                                    throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
-                                }
-                                var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
-                                var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
-                                StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
-                                   serverIdentityGuid,
-                                   Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
-                                   scope);
-                            }
-                        }
-                    }
-
+                    WriteObject(resource);
                 }
             });
         }

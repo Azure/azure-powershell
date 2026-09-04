@@ -1,50 +1,57 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://learn.microsoft.com/powershell/module/Az.storagesync/new-Azstoragesynccloudendpoint
+online version: https://learn.microsoft.com/powershell/module/Az.storagesync/set-Azstoragesynccloudendpoint
 schema: 2.0.0
 ---
 
-# New-AzStorageSyncCloudEndpoint
+# Set-AzStorageSyncCloudEndpoint
 
 ## SYNOPSIS
-This command creates an Azure File Sync cloud endpoint in a sync group.
+This command allows for changes on the adjustable parameters of a cloud endpoint.
 
 ## SYNTAX
 
 ### StringParameterSet (Default)
 ```
-New-AzStorageSyncCloudEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-SyncGroupName] <String> -Name <String> -StorageAccountResourceId <String> -AzureFileShareName <String>
- [-StorageAccountTenantId <String>] [-ChangeEnumerationIntervalDay <Int32>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzStorageSyncCloudEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
+ [-SyncGroupName] <String> [-Name] <String> [-ChangeEnumerationIntervalDay <Int32>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Set-AzStorageSyncCloudEndpoint [-ResourceId] <String> [-ChangeEnumerationIntervalDay <Int32>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ObjectParameterSet
 ```
-New-AzStorageSyncCloudEndpoint [-ParentObject] <PSSyncGroup> -Name <String> -StorageAccountResourceId <String>
- -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-ChangeEnumerationIntervalDay <Int32>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ParentStringParameterSet
-```
-New-AzStorageSyncCloudEndpoint [-ParentResourceId] <String> -Name <String> -StorageAccountResourceId <String>
- -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-ChangeEnumerationIntervalDay <Int32>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzStorageSyncCloudEndpoint [-InputObject] <PSCloudEndpoint> [-ChangeEnumerationIntervalDay <Int32>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command creates an Azure File Sync cloud endpoint. A cloud endpoint is a reference to an existing Azure file share. It represents the file share and defines it participation in syncing all the files part of the sync group the cloud endpoint has been created in.
+This command allows for changes on the adjustable parameters of a cloud endpoint. Currently, it supports updating the ChangeEnumerationIntervalDay property, which controls the interval in days between change enumeration operations for the cloud endpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-New-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName" -StorageAccountResourceId $storageAccountResourceId -AzureFileShareName "myAzureFileShareName" -StorageAccountTenantId "myStorageAccountTenantId"
+Set-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName" -ChangeEnumerationIntervalDay 5
 ```
 
-A cloud endpoint is an integral member of a sync group, this is an example of creating one inside of an existing sync group called "mySyncGroupName".
+This example updates the change enumeration interval to 5 days for the specified cloud endpoint.
+
+### Example 2
+```powershell
+Get-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" | Set-AzStorageSyncCloudEndpoint -ChangeEnumerationIntervalDay 10
+```
+
+This example retrieves a cloud endpoint and updates its change enumeration interval to 10 days using the pipeline.
 
 ## PARAMETERS
 
@@ -57,21 +64,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureFileShareName
-Storage Account Share Name (Azure file share name)
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: StorageAccountShareName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -108,28 +100,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the cloud endpoint. When created through the Azure portal, Name is set to the name of the Azure file share it references.
+### -InputObject
+CloudEndpoint Object, normally passed through the pipeline.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: CloudEndpointName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentObject
-SyncGroup Object, normally passed through the parameter.
-
-```yaml
-Type: Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup
+Type: Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint
 Parameter Sets: ObjectParameterSet
-Aliases: SyncGroup
+Aliases: CloudEndpoint
 
 Required: True
 Position: 0
@@ -138,18 +115,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ParentResourceId
-SyncGroup Parent Resource Id
+### -Name
+Name of the CloudEndpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: ParentStringParameterSet
-Aliases: SyncGroupId
+Parameter Sets: StringParameterSet
+Aliases: CloudEndpointName
 
 Required: True
-Position: 0
+Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -168,33 +145,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageAccountResourceId
-Storage Account Resource Id
+### -ResourceId
+CloudEndpoint Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageAccountTenantId
-Storage Account Tenant Id (Company Directory Id)
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -263,7 +225,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup
+### Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint
 
 ### System.String
 
