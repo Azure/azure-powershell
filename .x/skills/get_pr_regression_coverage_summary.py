@@ -31,22 +31,35 @@ def get_pr_regression_coverage_summary(pr_number):
                 modules[module_key] = parts[1]
 
     test_files = []
+    recording_files = []
     covered = set()
     for path in files:
         normalized = str(path).replace("\\", "/")
+        lowered = normalized.casefold()
         parts = normalized.split("/")
+        module_key = parts[1].casefold() if len(parts) > 1 else None
         if (
             len(parts) >= 4
             and parts[0].casefold() == "src"
-            and parts[1].casefold() in modules
+            and module_key in modules
             and parts[2].casefold().endswith(".test")
             and (
-                normalized.casefold().endswith(".cs")
-                or normalized.casefold().endswith(".ps1")
+                lowered.endswith(".cs")
+                or lowered.endswith(".ps1")
             )
         ):
             test_files.append(normalized)
-            covered.add(parts[1].casefold())
+            covered.add(module_key)
+        if (
+            len(parts) >= 5
+            and parts[0].casefold() == "src"
+            and module_key in modules
+            and parts[2].casefold().endswith(".test")
+            and parts[3].casefold() == "sessionrecords"
+            and lowered.endswith(".json")
+        ):
+            recording_files.append(normalized)
+            covered.add(module_key)
 
     uncovered = sorted(set(modules) - covered)
     return {
@@ -56,5 +69,5 @@ def get_pr_regression_coverage_summary(pr_number):
         "uncovered_modules": [modules[key] for key in uncovered],
         "production_files": production_files,
         "test_files": test_files,
-        "recording_files": [],
+        "recording_files": recording_files,
     }
