@@ -102,4 +102,45 @@ Describe 'New-AzWvdHostPool' {
                                 -Name $env.HostPool
         }
     }
+
+    It 'CreateWithRdpShortpathUdp' {
+        # Covers the 2026-04-16 RDP Shortpath / UDP transport settings on HostPool.
+        # Enabling private-network shortpath (AllowRdpShortPathWithPrivateLink +
+        # ManagedPrivateUdp) requires the public UDP options (DirectUdp/PublicUdp/RelayUdp,
+        # i.e. STUN/TURN) to be Disabled, so use a private-consistent combination.
+        try{
+            $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.HostPool `
+                                -Location $env.Location `
+                                -HostPoolType 'Pooled' `
+                                -LoadBalancerType 'DepthFirst' `
+                                -PreferredAppGroupType 'Desktop' `
+                                -AllowRdpShortPathWithPrivateLink 'Enabled' `
+                                -ManagedPrivateUdp 'Enabled' `
+                                -DirectUdp 'Disabled' `
+                                -PublicUdp 'Disabled' `
+                                -RelayUdp 'Disabled'
+
+                $hostPool.AllowRdpShortPathWithPrivateLink | Should -Be 'Enabled'
+                $hostPool.ManagedPrivateUdp | Should -Be 'Enabled'
+                $hostPool.DirectUdp | Should -Be 'Disabled'
+                $hostPool.PublicUdp | Should -Be 'Disabled'
+                $hostPool.RelayUdp | Should -Be 'Disabled'
+
+            $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.HostPool
+                $hostPool.AllowRdpShortPathWithPrivateLink | Should -Be 'Enabled'
+                $hostPool.ManagedPrivateUdp | Should -Be 'Enabled'
+                $hostPool.DirectUdp | Should -Be 'Disabled'
+                $hostPool.PublicUdp | Should -Be 'Disabled'
+                $hostPool.RelayUdp | Should -Be 'Disabled'
+        }
+        finally{
+                $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.HostPool
+        }
+    }
 }

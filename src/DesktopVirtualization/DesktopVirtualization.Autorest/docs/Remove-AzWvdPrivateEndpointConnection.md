@@ -8,19 +8,19 @@ schema: 2.0.0
 # Remove-AzWvdPrivateEndpointConnection
 
 ## SYNOPSIS
-Remove a connection.
+Delete a PrivateEndpointConnectionWithSystemData
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+Remove-AzWvdPrivateEndpointConnection -HostPoolName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete1
 ```
-Remove-AzWvdPrivateEndpointConnection -HostPoolName <String> -Name <String> -ResourceGroupName <String>
+Remove-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -49,7 +49,7 @@ Remove-AzWvdPrivateEndpointConnection -Name <String> -WorkspaceInputObject <IDes
 ```
 
 ## DESCRIPTION
-Remove a connection.
+Delete a PrivateEndpointConnectionWithSystemData
 
 ## EXAMPLES
 
@@ -119,7 +119,7 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete1
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the private endpoint connection associated with the Azure resource.
+The name parameter for private endpoint
 
 ```yaml
 Type: System.String
@@ -226,7 +226,7 @@ The name of the workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete1
 Aliases:
 
 Required: True

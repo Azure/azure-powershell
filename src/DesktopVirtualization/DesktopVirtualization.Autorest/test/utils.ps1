@@ -5,44 +5,140 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
-function setupEnv() {
-    $env = @{}
-    # Preload subscriptionId and tenant from context, which will be used in test
-    # as default. You could change them if needed.
-    # The wvdtesttenant.onmicrosoft.com tenant is inactive, please update the parameters below to your own resource group to finish the test.
-    # By now, we are using w365runner250520sh01.onmicrosoft.com tenant to test it. TenantId: 715492f1-ef6e-4eea-9176-7c81e765c3c8
-    $env.SubscriptionId = (Get-AzContext).Subscription.Id
-    $env.Tenant = (Get-AzContext).Tenant.Id
-    # For any resources you created for test, you should add it to $env here.
 
-    #---------- Self Contained Resources ----------
-    # The following resources are created and removed within each test.
-    $envFile = 'env.json'
-    $null = $env.Add("ResourceGroup", "zhongjie-rg-wus")
-    $null = $env.Add("Location", "westus2")
-    $null = $env.Add("HostPool", "HostPoolPowershellContained1")
-    $null = $env.Add("HostPool2", "HostPoolPowershellContained2")
-    $null = $env.Add("Workspace", "WorkspacePowershellContained")
-    $null = $env.Add("PvtLinkWS", "PrivateLinkWorkspace")
-    $null = $env.Add("PvtLinkHP", "PrivateLinkHostPool")
-    $null = $env.Add("RemoteApplicationGroup", "ApplicationGroupPowershell2")
-    $null = $env.Add("DesktopApplicationGroup", "ApplicationGroupPowershell1")
-    # Using vhdx file in the storage account.
-    $null = $env.Add("MSIXImagePath", "\\liweiavdtestsa.file.core.windows.net\avdtestfs\Apps\VHDX\XmlNotepad\XmlNotepad.vhdx")
-    $null = $env.Add("MSIXImageFamilyName", "43906ChrisLovett.XmlNotepad_hndwmj480pefj")
-    $null = $env.Add("MSIXImagePackageName", "43906ChrisLovett.XmlNotepad")
-    $null = $env.Add("MSIXImagePackageAlias", "43906chrislovettxmlnotepad-1")
-    $null = $env.Add("MSIXImagePackageRelativePath", "\apps\43906ChrisLovett.XmlNotepad_2.9.0.16_neutral__hndwmj480pefj")
-    $null = $env.Add("PrivateEndpointConnectionNameWS", "pwshTestPECWS")
-    $null = $env.Add("PrivateEndpointConnectionNameWS1", "pwshTestPECWS1")
-    $null = $env.Add("PrivateEndpointConnectionNameHP", "pwshTestPECHP")
-    $null = $env.Add("PrivateEndpointConnectionNameHP1", "pwshTestPECHP1")
-    $null = $env.Add("PrivateEndpointNameWS", "pwshTestPrivateEndpointWS")
-    $null = $env.Add("PrivateEndpointNameWS1", "pwshTestPrivateEndpointWS1")
-    $null = $env.Add("PrivateEndpointNameHP", "pwshTestPrivateEndpointHP")
-    $null = $env.Add("PrivateEndpointNameHP1", "pwshTestPrivateEndpointHP1")
-    $null = $env.Add("PECGroupIdWorkspace", "feed")
-    $null = $env.Add("PECGroupIdHostPool", "connection")
+function Get-AvdProvisionState {
+    $statePath = Join-Path $PSScriptRoot 'provision-state.json'
+    if (-not (Test-Path -Path $statePath)) {
+        return $null
+    }
+    return Get-Content -Raw -Path $statePath | ConvertFrom-Json
+}
+
+function Get-AvdSelfContainedNames([string]$suffix) {
+    # Names for resources that setupEnv/the tests CREATE and DELETE within a run.
+    # Generated per-run from $suffix so they do not need to be maintained as inputs.
+    # PECGroupId* are fixed API group ids, not resource names.
+    return [ordered]@{
+        HostPool                         = "pshostpool1$suffix"
+        HostPool2                        = "pshostpool2$suffix"
+        Workspace                        = "psworkspace$suffix"
+        PvtLinkWS                        = "pspvtlinkws$suffix"
+        PvtLinkHP                        = "pspvtlinkhp$suffix"
+        RemoteApplicationGroup           = "psremoteag$suffix"
+        DesktopApplicationGroup          = "psdesktopag$suffix"
+        PrivateEndpointConnectionNameWS  = "pspecws$suffix"
+        PrivateEndpointConnectionNameWS1 = "pspecws1$suffix"
+        PrivateEndpointConnectionNameHP  = "pspechp$suffix"
+        PrivateEndpointConnectionNameHP1 = "pspechp1$suffix"
+        PrivateEndpointNameWS            = "pspews$suffix"
+        PrivateEndpointNameWS1           = "pspews1$suffix"
+        PrivateEndpointNameHP            = "pspehp$suffix"
+        PrivateEndpointNameHP1           = "pspehp1$suffix"
+        PECGroupIdWorkspace              = "feed"
+        PECGroupIdHostPool               = "connection"
+    }
+}
+
+function Get-AvdStableNameSuffix([string]$resourceGroup) {
+    $state = Get-AvdProvisionState
+    $subscriptionId = if ([string]::IsNullOrWhiteSpace($env:AVD_TEST_SUBSCRIPTION_ID)) {
+        if ($state -and -not [string]::IsNullOrWhiteSpace($state.SubscriptionId)) {
+            $state.SubscriptionId
+        } else {
+            (Get-AzContext).Subscription.Id
+        }
+    } else {
+        $env:AVD_TEST_SUBSCRIPTION_ID
+    }
+    $bytes = [System.Text.Encoding]::UTF8.GetBytes("$subscriptionId|$resourceGroup".ToLowerInvariant())
+    $sha = [System.Security.Cryptography.SHA256]::Create()
+    try {
+        $hash = $sha.ComputeHash($bytes)
+    } finally {
+        $sha.Dispose()
+    }
+    return -join ($hash[0..3] | ForEach-Object { $_.ToString('x2') })
+}
+
+function Get-AvdTestResourceConfig() {
+    # The one place that names persistent test dependencies. setupEnv and
+    # provision.ps1 use this function so the values cannot drift.
+    $state = Get-AvdProvisionState
+    $resourceGroup = if ([string]::IsNullOrWhiteSpace($env:AVD_TEST_RESOURCE_GROUP)) {
+        if ($state -and -not [string]::IsNullOrWhiteSpace($state.ResourceGroupName)) {
+            $state.ResourceGroupName
+        } else {
+            'zhongjie-rg-wus'
+        }
+    } else {
+        $env:AVD_TEST_RESOURCE_GROUP
+    }
+    $location = if ([string]::IsNullOrWhiteSpace($env:AVD_TEST_LOCATION)) {
+        if ($state -and -not [string]::IsNullOrWhiteSpace($state.Location)) {
+            $state.Location
+        } else {
+            'westus2'
+        }
+    } else {
+        $env:AVD_TEST_LOCATION
+    }
+    $suffix = Get-AvdStableNameSuffix $resourceGroup
+    $prefix = "azps-avd-$suffix"
+    $storageAccount = "azpsavd${suffix}sa"
+    $sessionHostPrefix = "azps-$suffix"
+    return [pscustomobject]@{
+        Location = $location
+        ResourceGroup = $resourceGroup
+        VnetName = "$prefix-vnet"
+        MSIXImagePath = "\\$storageAccount.file.core.windows.net\appattach\Apps\VHDX\XmlNotepad\XmlNotepad.vhdx"
+        MSIXImageFamilyName = '43906ChrisLovett.XmlNotepad_hndwmj480pefj'
+        MSIXImagePackageName = '43906ChrisLovett.XmlNotepad'
+        MSIXImagePackageAlias = '43906chrislovettxmlnotepad'
+        MSIXImagePackageRelativePath = '\apps\43906ChrisLovett.XmlNotepad_2.9.0.16_neutral__hndwmj480pefj'
+        ResourceGroupPersistent = $resourceGroup
+        HostPoolPersistent = "$prefix-hp"
+        AutomatedHostpoolPersistent = "$prefix-hp"
+        SessionHostNamePrefixOfAutomatedHostpoolPersistent = $sessionHostPrefix
+        SessionHostName = "$sessionHostPrefix-0"
+        PersistentDesktopAppGroup = "$prefix-dag"
+        PersistentRemoteAppGroup = "$prefix-rag"
+        SHMHostPoolPersistent = "$prefix-shm-hp"
+        SHMSessionHostReprovisioning = "$sessionHostPrefix-1"
+        SHMSessionHostNameRemove = "$sessionHostPrefix-2"
+        SHMSessionHostNamePrefix = $sessionHostPrefix
+        KeyVaultPersistentResourceName = "azpsavd${suffix}kv"
+        MarketplaceInfoPublisher = 'microsoftwindowsdesktop'
+        MarketplaceInfoSku = 'win11-24h2-avd'
+        MarketplaceInfoOffer = 'windows-11'
+    }
+}
+
+function Build-AvdTestEnv([object]$cfg, [string]$subscriptionId, [string]$tenant, [string]$suffix) {
+    # Builds the fully-derived runtime env hashtable from an input config object.
+    # Pure (no Azure calls), so it can be unit tested offline.
+    $env = @{}
+    $env.SubscriptionId = $subscriptionId
+    $env.Tenant = $tenant
+
+    # Copy persistent resource inputs. Identity is resolved from Get-AzContext.
+    foreach ($prop in $cfg.PSObject.Properties) {
+        if (-not $env.ContainsKey($prop.Name)) {
+            $env[$prop.Name] = $prop.Value
+        }
+    }
+
+    # Convenience default: many tests use ResourceGroupPersistent simply as "the
+    # resource group". When it is not supplied, fall back to ResourceGroup so a
+    # minimal config only needs ResourceGroup filled in.
+    if ([string]::IsNullOrWhiteSpace([string]$env['ResourceGroupPersistent'])) {
+        $env['ResourceGroupPersistent'] = $env['ResourceGroup']
+    }
+
+    # Self-contained resource names are generated per-run from $suffix (not
+    # maintained in config). setupEnv writes them to the runtime env file so tests
+    # and cleanupEnv use the same values.
+    $selfNames = Get-AvdSelfContainedNames $suffix
+    foreach ($k in $selfNames.Keys) { $env[$k] = $selfNames[$k] }
 
     #auto-set based on the values above, do not edit
     $null = $env.Add("HostPoolArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/hostpools/"+ $env.HostPool)
@@ -50,35 +146,54 @@ function setupEnv() {
     $null = $env.Add("DesktopApplicationGroupPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/applicationgroups/" + $env.DesktopApplicationGroup)
     $null = $env.Add("RemoteApplicationGroupPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/applicationgroups/" + $env.RemoteApplicationGroup)
     $null = $env.Add("ResourceGroupArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup)
-    
-    #---------- Persistent Resources ----------
-    # Todo: Remove and combine duplicated/useless parameters. And we should remove the presistent resources as much as we can. In most cases, we only need one automated hostpool with two active session hosts to finish all tests.
-    # The following resources are manually created and removed by the operator.
-    $null = $env.Add("ResourceGroupPersistent", $env.ResourceGroup)
-    # Using this HostPool to run test depending on the existed session host/user sessions, so you need to create a session host manually and connect to the VM manually.
-    $null = $env.Add("HostPoolPersistent", "zhongjie-automated")
-    $null = $env.Add("AutomatedHostpoolPersistent", "zhongjie-automated")
-    $null = $env.Add("SessionHostNamePrefixOfAutomatedHostpoolPersistent", "auto")
     $null = $env.Add("HostPoolPersistentArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroupPersistent + "/providers/Microsoft.DesktopVirtualization/hostpools/"+ $env.HostPoolPersistent)
-    $null = $env.Add("SessionHostName", "auto-0")
-    $null = $env.Add("PersistentDesktopAppGroup", "zhongjie-automated-DAG")
-    $null = $env.Add("PersistentRemoteAppGroup", "zhongjie-automated-RAG")
-    $null = $env.Add("VnetName", "zhongjievirtualnetworkwestus")
     $null = $env.Add("VnetSubnetId", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.Network/virtualNetworks/" + $env.VnetName + "/subnets/default" )
-    # Using this HostPool to run the test related to the SHC/SHM/Session Host repovisioning, this doesn't require connect to the VM, but you still might need to create a session host manually in it.
-    $null = $env.Add("SHMHostPoolPersistent", "zhongjie-automated2")
-    $null = $env.Add("SHMSessionHostReprovisioning", "auto2-0")
-    $null = $env.Add("SHMSessionHostNameRemove", "auto2-2")
-    $null = $env.Add("SHMSessionHostNamePrefix", "auto2")
-    # Key vault is used in the SHC creating: New-AzWvdSessionHostConfiguration. Todo: Create this Key vault in the SHC creating test process
-    $null = $env.Add("KeyVaultPersistentResourceName", "zhongjie-kv")
     $null = $env.Add("KeyVaultPersistentArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup)
     $null = $env.Add("VMAdminCredentialsPasswordKeyvaultSecretUri", "https://" +$env.KeyVaultPersistentResourceName + ".vault.azure.net/secrets/password")
     $null = $env.Add("VMAdminCredentialsUserNameKeyvaultSecretUri", "https://" +$env.KeyVaultPersistentResourceName + ".vault.azure.net/secrets/username")
-    # VM information for SHC
-    $null = $env.Add("MarketplaceInfoPublisher", "microsoftwindowsdesktop")
-    $null = $env.Add("MarketplaceInfoSku", "win11-24h2-avd")
-    $null = $env.Add("MarketplaceInfoOffer", "windows-11")
+
+    return $env
+}
+
+function setupEnv() {
+    $cfg = Get-AvdTestResourceConfig
+    $state = Get-AvdProvisionState
+    Write-Host -ForegroundColor Green 'Setting up the test environment.'
+    $subscriptionId = if ([string]::IsNullOrWhiteSpace($env:AVD_TEST_SUBSCRIPTION_ID)) {
+        if ($state -and -not [string]::IsNullOrWhiteSpace($state.SubscriptionId)) {
+            $state.SubscriptionId
+        } else {
+            (Get-AzContext).Subscription.Id
+        }
+    } else {
+        $env:AVD_TEST_SUBSCRIPTION_ID
+    }
+    $tenant = if ([string]::IsNullOrWhiteSpace($env:AVD_TEST_TENANT_ID)) {
+        if ($state -and -not [string]::IsNullOrWhiteSpace($state.TenantId)) {
+            $state.TenantId
+        } else {
+            (Get-AzContext).Tenant.Id
+        }
+    } else {
+        $env:AVD_TEST_TENANT_ID
+    }
+    $currentContext = Get-AzContext
+    if ($currentContext.Subscription.Id -ne $subscriptionId -or $currentContext.Tenant.Id -ne $tenant) {
+        Set-AzContext -SubscriptionId $subscriptionId -Tenant $tenant -ErrorAction Stop | Out-Null
+    }
+
+    # Generate a per-run suffix for the self-contained resource names.
+    $suffix = RandomString $false 10
+    $env = Build-AvdTestEnv -cfg $cfg -subscriptionId $subscriptionId -tenant $tenant -suffix $suffix
+
+    # Persist the generated names early so cleanupEnv can find them even if a later
+    # step (e.g. Private Link setup) fails. The final write below adds the image version.
+    $envFile = if ($TestMode -eq 'live') { 'localEnv.json' } else { 'env.json' }
+    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+    
+    #---------- Persistent Resources ----------
+    # Persistent resource names come from Get-AvdTestResourceConfig above; their
+    # derived ARM paths are computed in Build-AvdTestEnv.
     
     # The context in which the tests are run will change the tenant and subscription ID when -record is run. 
     # Currently the scaling tests need to be run in a context with @microsoft, while the other tests are run with a test account
@@ -180,40 +295,45 @@ function setupEnv() {
     $env.Add("MarketplaceImageVersion", $imageList[0].Version)
     Write-Host -ForegroundColor Green 'Marketplace image version: ' $env.MarketplaceImageVersion
     #Wrap up and create JSON file for tests to use
-    if ($TestMode -eq 'live') {
-        $envFile = 'localEnv.json'
-    }
+    $envFile = if ($TestMode -eq 'live') { 'localEnv.json' } else { 'env.json' }
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+    Write-Host -ForegroundColor Green "Wrote runtime env file '$envFile'."
 }
 function cleanupEnv() {
-    # Clean resources you create for testing
-    $ResourceGroup = "zhongjie-rg-wus"
-    $PvtLinkWS = "PrivateLinkWorkspace"
-    $PvtLinkHP = "PrivateLinkHostPool"
-    $PrivateEndpointNameWS = "pwshTestPrivateEndpointWS"
-    $PrivateEndpointNameWS1 = "pwshTestPrivateEndpointWS1"
-    $PrivateEndpointNameHP = "pwshTestPrivateEndpointHP"
-    $PrivateEndpointNameHP1 = "pwshTestPrivateEndpointHP1"
+    # Self-contained resource names are generated per-run by setupEnv and written to
+    # the runtime env file; read them back so cleanup targets the same resources.
+    $cfg = Get-AvdTestResourceConfig
+    $ResourceGroup = $cfg.ResourceGroup
+    $envFile = if ($TestMode -eq 'live') { 'localEnv.json' } else { 'env.json' }
+    $envPath = Join-Path $PSScriptRoot $envFile
+    if (-not (Test-Path -Path $envPath)) {
+        Write-Warning "cleanupEnv: runtime env file '$envFile' not found; nothing to clean."
+        return
+    }
+    $envData = Get-Content -Raw -Path $envPath | ConvertFrom-Json
+    $PvtLinkWS = $envData.PvtLinkWS
+    $PvtLinkHP = $envData.PvtLinkHP
+    $PrivateEndpointNameWS = $envData.PrivateEndpointNameWS
+    $PrivateEndpointNameWS1 = $envData.PrivateEndpointNameWS1
+    $PrivateEndpointNameHP = $envData.PrivateEndpointNameHP
+    $PrivateEndpointNameHP1 = $envData.PrivateEndpointNameHP1
 
-    Remove-AzWvdWorkspace -ResourceGroupName $ResourceGroup `
-                          -Name $PvtLinkWS
+    if (Get-AzWvdWorkspace -SubscriptionId $envData.SubscriptionId -ResourceGroupName $ResourceGroup -Name $PvtLinkWS -ErrorAction SilentlyContinue) {
+        Remove-AzWvdWorkspace -SubscriptionId $envData.SubscriptionId -ResourceGroupName $ResourceGroup -Name $PvtLinkWS
+    }
 
-    Remove-AzPrivateEndpoint -ResourceGroupName $ResourceGroup `
-                             -Name $PrivateEndpointNameWS `
-                             -Force
+    foreach ($privateEndpointName in @(
+        $PrivateEndpointNameWS,
+        $PrivateEndpointNameWS1,
+        $PrivateEndpointNameHP,
+        $PrivateEndpointNameHP1
+    )) {
+        if (Get-AzPrivateEndpoint -ResourceGroupName $ResourceGroup -Name $privateEndpointName -ErrorAction SilentlyContinue) {
+            Remove-AzPrivateEndpoint -ResourceGroupName $ResourceGroup -Name $privateEndpointName -Force
+        }
+    }
 
-    Remove-AzPrivateEndpoint -ResourceGroupName $ResourceGroup `
-                             -Name $PrivateEndpointNameWS1 `
-                             -Force
-
-    Remove-AzWvdHostPool -ResourceGroupName $ResourceGroup `
-                         -Name $PvtLinkHP
-    
-    Remove-AzPrivateEndpoint -ResourceGroupName $ResourceGroup `
-                             -Name $PrivateEndpointNameHP `
-                             -Force
-
-    Remove-AzPrivateEndpoint -ResourceGroupName $ResourceGroup `
-                             -Name $PrivateEndpointNameHP1 `
-                             -Force
+    if (Get-AzWvdHostPool -SubscriptionId $envData.SubscriptionId -ResourceGroupName $ResourceGroup -Name $PvtLinkHP -ErrorAction SilentlyContinue) {
+        Remove-AzWvdHostPool -SubscriptionId $envData.SubscriptionId -ResourceGroupName $ResourceGroup -Name $PvtLinkHP
+    }
 }

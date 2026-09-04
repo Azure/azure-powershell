@@ -12,7 +12,7 @@ Get a userSession.
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
 Get-AzWvdUserSession -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Filter <String>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
@@ -43,7 +43,7 @@ Get-AzWvdUserSession -Id <String> -SessionHostInputObject <IDesktopVirtualizatio
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
 Get-AzWvdUserSession -HostPoolName <String> -ResourceGroupName <String> -SessionHostName <String>
  [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
@@ -120,7 +120,7 @@ Valid properties for filtering are userprincipalname and sessionstate.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: List1
 Aliases:
 
 Required: False
@@ -271,7 +271,7 @@ The name of the session host within the specified host pool
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityHostPool, List1
+Parameter Sets: Get, GetViaIdentityHostPool, List
 Aliases:
 
 Required: True
