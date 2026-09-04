@@ -22,6 +22,7 @@
 
 ## Version 6.2.0
 * Added ChangeSafety Support
+* Added post-migration endpoint cutover guidance for Azure Front Door (classic) and Azure CDN from Microsoft (classic) migrations.
 
 ## Version 6.1.0
 * Upgraded API version to 2026-04-01-preview.
