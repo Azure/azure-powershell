@@ -16,6 +16,7 @@ function Get-VaultIdentity {
         Write-Host "Using Vault UAMI with ARMId: $UserAssignedIdentityARMId with Principal ID: $vaultIdentity"
     } else {
         $vaultIdentity = $vault.Identity.PrincipalId
+        if (-not $vaultIdentity) { $vaultIdentity = $vault.IdentityPrincipalId }
         Write-Host "Using system-assigned identity with Principal ID: $vaultIdentity"
     }
 
@@ -131,6 +132,13 @@ function Set-AzDataProtectionMSIPermission {
               }
 
               $manifest = LoadManifest -DatasourceType $DatasourceTypeInternal.ToString()              
+
+              # For proxy datasources whose RBAC parent is the datasourceSet (e.g. Elastic SAN volume groups -> parent elasticSans), datasource-level roles must be assigned on the parent resource.
+              $DatasourceRoleScope = $DataSourceId
+              if($manifest.dataSourceSetParentResource -eq $true -and $DataSourceId -ne $null){
+                  $splitDatasourceId = $DataSourceId.Split("/")
+                  $DatasourceRoleScope = [System.String]::Join('/', $splitDatasourceId[0..($splitDatasourceId.Count - 3)])
+              }
               
               $vault = Az.DataProtection\Get-AzDataProtectionBackupVault -VaultName $VaultName -ResourceGroupName $VaultResourceGroup -SubscriptionId $subscriptionIdInternal
               $vaultIdentity = Get-VaultIdentity -vault $vault -UserAssignedIdentityARMId $UserAssignedIdentityARMId
@@ -217,20 +225,20 @@ function Set-AzDataProtectionMSIPermission {
                   # set context to the subscription where ObjectId is present
                   $AllRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $vaultIdentity
 
-                  $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $DataSourceId -or $_.Scope -eq $ResourceRG -or  $_.Scope -eq $SubscriptionName) -and $_.RoleDefinitionName -eq $Permission}
+                  $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $DatasourceRoleScope -or $_.Scope -eq $ResourceRG -or  $_.Scope -eq $SubscriptionName) -and $_.RoleDefinitionName -eq $Permission}
 
                   if($CheckPermission -ne $null)
                   {   
-                      Write-Host "Required permission $($Permission) is already assigned to backup vault over DataSource with Id $($DataSourceId)"
+                      Write-Host "Required permission $($Permission) is already assigned to backup vault over DataSource with Id $($DatasourceRoleScope)"
                   }
 
                   else
                   {
                       $MissingRolesInitially = $true
                    
-                      AssignMissingRoles -ObjectId $vaultIdentity -Permission $Permission -PermissionsScope $PermissionsScope -Resource $DataSourceId -ResourceGroup $ResourceRG -Subscription $SubscriptionName
+                      AssignMissingRoles -ObjectId $vaultIdentity -Permission $Permission -PermissionsScope $PermissionsScope -Resource $DatasourceRoleScope -ResourceGroup $ResourceRG -Subscription $SubscriptionName
 
-                      Write-Host "Assigned $($Permission) permission to the backup vault over DataSource with Id $($DataSourceId)"
+                      Write-Host "Assigned $($Permission) permission to the backup vault over DataSource with Id $($DatasourceRoleScope)"
                   }
               }
 
@@ -287,6 +295,13 @@ function Set-AzDataProtectionMSIPermission {
               $DatasourceId = $BackupInstance.Property.DataSourceInfo.ResourceId
               $DatasourceType =  GetClientDatasourceType -ServiceDatasourceType $BackupInstance.Property.DataSourceInfo.Type 
               $manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
+
+              # For proxy datasources whose RBAC parent is the datasourceSet (e.g. Elastic SAN volume groups -> parent elasticSans), datasource-level roles must be assigned on the parent resource.
+              $DatasourceRoleScope = $DataSourceId
+              if($manifest.dataSourceSetParentResource -eq $true -and $DataSourceId -ne $null){
+                  $splitDatasourceId = $DataSourceId.Split("/")
+                  $DatasourceRoleScope = [System.String]::Join('/', $splitDatasourceId[0..($splitDatasourceId.Count - 3)])
+              }
 
               $ResourceArray = $DataSourceId.Split("/")
               $ResourceRG = GetResourceGroupIdFromArmId -Id $DataSourceId
@@ -496,20 +511,20 @@ function Set-AzDataProtectionMSIPermission {
               foreach($Permission in $manifest.datasourcePermissions)
               {
                   $AllRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $vaultIdentity
-                  $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $DataSourceId -or $_.Scope -eq $ResourceRG -or  $_.Scope -eq $SubscriptionName) -and $_.RoleDefinitionName -eq $Permission}
+                  $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $DatasourceRoleScope -or $_.Scope -eq $ResourceRG -or  $_.Scope -eq $SubscriptionName) -and $_.RoleDefinitionName -eq $Permission}
               
                   if($CheckPermission -ne $null)
                   {
-                      Write-Host "Required permission $($Permission) is already assigned to backup vault over DataSource with Id $($DataSourceId)"
+                      Write-Host "Required permission $($Permission) is already assigned to backup vault over DataSource with Id $($DatasourceRoleScope)"
                   }
 
                   else
                   {
                       $MissingRolesInitially = $true
                                             
-                      AssignMissingRoles -ObjectId $vaultIdentity -Permission $Permission -PermissionsScope $PermissionsScope -Resource $DataSourceId -ResourceGroup $ResourceRG -Subscription $SubscriptionName
+                      AssignMissingRoles -ObjectId $vaultIdentity -Permission $Permission -PermissionsScope $PermissionsScope -Resource $DatasourceRoleScope -ResourceGroup $ResourceRG -Subscription $SubscriptionName
 
-                      Write-Host "Assigned $($Permission) permission to the backup vault over DataSource with Id $($DataSourceId)"
+                      Write-Host "Assigned $($Permission) permission to the backup vault over DataSource with Id $($DatasourceRoleScope)"
                   }
               }
 
