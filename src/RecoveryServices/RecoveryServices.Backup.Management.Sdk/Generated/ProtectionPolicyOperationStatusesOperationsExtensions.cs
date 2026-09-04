@@ -14,63 +14,61 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Provides the status of the asynchronous operations like backup, restore.
-        /// The status can be in progress, completed or failed. You can refer to the
-        /// Operation Status enum for all the possible states of an operation. Some
-        /// operations create jobs. This method returns the list of jobs associated
-        /// with operation.
+        /// The status can be in progress, completed
+        /// or failed. You can refer to the Operation Status enum for all the possible
+        /// states of an operation. Some operations
+        /// create jobs. This method returns the list of jobs associated with
+        /// operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='policyName'>
-        /// Backup policy name whose operation&#39;s status needs to be fetched.
+        /// The name of the ProtectionPolicyResource
         /// </param>
         /// <param name='operationId'>
-        /// Operation ID which represents an operation whose status needs to be
-        /// fetched.
+        /// The name of the ProtectionPolicyResource
         /// </param>
-        public static OperationStatus Get(this IProtectionPolicyOperationStatusesOperations operations, string vaultName, string resourceGroupName, string policyName, string operationId)
+        public static OperationStatus Get(this IProtectionPolicyOperationStatusesOperations operations, string resourceGroupName, string vaultName, string policyName, string operationId)
         {
-                return ((IProtectionPolicyOperationStatusesOperations)operations).GetAsync(vaultName, resourceGroupName, policyName, operationId).GetAwaiter().GetResult();
+                return ((IProtectionPolicyOperationStatusesOperations)operations).GetAsync(resourceGroupName, vaultName, policyName, operationId).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Provides the status of the asynchronous operations like backup, restore.
-        /// The status can be in progress, completed or failed. You can refer to the
-        /// Operation Status enum for all the possible states of an operation. Some
-        /// operations create jobs. This method returns the list of jobs associated
-        /// with operation.
+        /// The status can be in progress, completed
+        /// or failed. You can refer to the Operation Status enum for all the possible
+        /// states of an operation. Some operations
+        /// create jobs. This method returns the list of jobs associated with
+        /// operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='policyName'>
-        /// Backup policy name whose operation&#39;s status needs to be fetched.
+        /// The name of the ProtectionPolicyResource
         /// </param>
         /// <param name='operationId'>
-        /// Operation ID which represents an operation whose status needs to be
-        /// fetched.
+        /// The name of the ProtectionPolicyResource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<OperationStatus> GetAsync(this IProtectionPolicyOperationStatusesOperations operations, string vaultName, string resourceGroupName, string policyName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<OperationStatus> GetAsync(this IProtectionPolicyOperationStatusesOperations operations, string resourceGroupName, string vaultName, string policyName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, policyName, operationId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, policyName, operationId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

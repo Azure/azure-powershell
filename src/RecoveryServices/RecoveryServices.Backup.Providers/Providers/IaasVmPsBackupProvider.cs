@@ -161,8 +161,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     {
                         RestAzureNS.CloudException cloudEx = ex as RestAzureNS.CloudException
                             ?? ex.InnerException as RestAzureNS.CloudException;
-                        if (cloudEx != null && cloudEx.Response != null &&
-                            cloudEx.Response.StatusCode == SystemNet.HttpStatusCode.NotFound)
+                        ErrorResponseException responseEx = ex as ErrorResponseException
+                            ?? ex.InnerException as ErrorResponseException;
+
+                        if ((cloudEx != null && cloudEx.Response != null &&
+                                cloudEx.Response.StatusCode == SystemNet.HttpStatusCode.NotFound)
+                            ||
+                            (responseEx != null && responseEx.Response != null &&
+                                responseEx.Response.StatusCode == SystemNet.HttpStatusCode.NotFound))
                         {
                             throw new ArgumentException(string.Format(
                                 Resources.CSBVMNotFound, azureVMName, azureVMRGName, containerSubscriptionId));

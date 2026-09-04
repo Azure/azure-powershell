@@ -121,11 +121,9 @@ function Test-AzureFSRestoreToAnotherRegion
 	try
 	{
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		Enable-Protection $vault $fileShareFriendlyName $saName
+		$item = Enable-Protection $vault $fileShareFriendlyName $saName
 
-		$items = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureStorage -WorkloadType AzureFiles
-
-		$backupJob = Backup-Item $vault $items[0]
+		$backupJob = Backup-Item $vault $item
 
 		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
 		$backupEndTime = $backupJob.EndTime.AddMinutes(1);
@@ -134,7 +132,7 @@ function Test-AzureFSRestoreToAnotherRegion
 			-VaultId $vault.ID `
 			-StartDate $backupStartTime `
 			-EndDate $backupEndTime `
-			-Item $items[0];
+			-Item $item;
 			
 		$restoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location -TargetStorageAccountName $targetSaName -TargetFileShareName $targetFileShareName
 		$restoreJob = $restoreJob | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
@@ -477,7 +475,7 @@ function Test-AzureFSFullRestore
 			-SourceFilePath $filePath `
 			-SourceFileType File 
 
-		$restoreJob3 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		$restoreJob3 = $restoreJob3 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJob3.Status -eq "Completed" }
 

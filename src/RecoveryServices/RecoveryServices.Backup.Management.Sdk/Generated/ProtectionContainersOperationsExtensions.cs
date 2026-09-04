@@ -19,22 +19,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Name of the fabric where the container belongs.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
         /// Name of the container whose details need to be fetched.
         /// </param>
-        public static ProtectionContainerResource Get(this IProtectionContainersOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName)
+        public static ProtectionContainerResource Get(this IProtectionContainersOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName)
         {
-                return ((IProtectionContainersOperations)operations).GetAsync(vaultName, resourceGroupName, fabricName, containerName).GetAwaiter().GetResult();
+                return ((IProtectionContainersOperations)operations).GetAsync(resourceGroupName, vaultName, fabricName, containerName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -44,15 +43,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Name of the fabric where the container belongs.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
         /// Name of the container whose details need to be fetched.
@@ -60,125 +58,123 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProtectionContainerResource> GetAsync(this IProtectionContainersOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProtectionContainerResource> GetAsync(this IProtectionContainersOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Registers the container with Recovery Services vault. This is an
-        /// asynchronous operation. To track the operation status, use location header
-        /// to call get latest status of the operation.
+        /// Registers the container with Recovery Services vault.
+        /// This is an asynchronous operation. To track the operation status, use
+        /// location header to call get latest status of
+        /// the operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the container.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Name of the container to be registered.
+        /// Name of the container whose details need to be fetched.
         /// </param>
-        public static ProtectionContainerResource Register(this IProtectionContainersOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, ProtectionContainerResource parameters)
+        public static ProtectionContainerResource Register(this IProtectionContainersOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, ProtectionContainerResource parameters)
         {
-                return ((IProtectionContainersOperations)operations).RegisterAsync(vaultName, resourceGroupName, fabricName, containerName, parameters).GetAwaiter().GetResult();
+                return ((IProtectionContainersOperations)operations).RegisterAsync(resourceGroupName, vaultName, fabricName, containerName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Registers the container with Recovery Services vault. This is an
-        /// asynchronous operation. To track the operation status, use location header
-        /// to call get latest status of the operation.
+        /// Registers the container with Recovery Services vault.
+        /// This is an asynchronous operation. To track the operation status, use
+        /// location header to call get latest status of
+        /// the operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the container.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Name of the container to be registered.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProtectionContainerResource> RegisterAsync(this IProtectionContainersOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, ProtectionContainerResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProtectionContainerResource> RegisterAsync(this IProtectionContainersOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, ProtectionContainerResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.RegisterWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.RegisterWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
         /// Unregisters the given container from your Recovery Services Vault. This is
-        /// an asynchronous operation. To determine whether the backend service has
-        /// finished processing the request, call Get Container Operation Result API.
+        /// an asynchronous operation. To determine
+        /// whether the backend service has finished processing the request, call Get
+        /// Container Operation Result API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Name of the fabric where the container belongs.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Name of the container which needs to be unregistered from the Recovery
-        /// Services Vault.
+        /// Name of the container whose details need to be fetched.
         /// </param>
-        public static void Unregister(this IProtectionContainersOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName)
+        public static void Unregister(this IProtectionContainersOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName)
         {
-                ((IProtectionContainersOperations)operations).UnregisterAsync(vaultName, resourceGroupName, fabricName, containerName).GetAwaiter().GetResult();
+                ((IProtectionContainersOperations)operations).UnregisterAsync(resourceGroupName, vaultName, fabricName, containerName).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Unregisters the given container from your Recovery Services Vault. This is
-        /// an asynchronous operation. To determine whether the backend service has
-        /// finished processing the request, call Get Container Operation Result API.
+        /// an asynchronous operation. To determine
+        /// whether the backend service has finished processing the request, call Get
+        /// Container Operation Result API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Name of the fabric where the container belongs.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Name of the container which needs to be unregistered from the Recovery
-        /// Services Vault.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task UnregisterAsync(this IProtectionContainersOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task UnregisterAsync(this IProtectionContainersOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.UnregisterWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.UnregisterWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// This is an async operation and the results should be tracked using location
@@ -187,25 +183,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric Name associated with the container.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Name of the container in which inquiry needs to be triggered.
+        /// Name of the container whose details need to be fetched.
         /// </param>
-        public static void Inquire(this IProtectionContainersOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, Microsoft.Rest.Azure.OData.ODataQuery<BMSContainersInquiryQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSContainersInquiryQueryObject>))
+        /// <param name='filter'>
+        /// OData filter options.
+        /// </param>
+        public static void Inquire(this IProtectionContainersOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string filter = default(string))
         {
-                ((IProtectionContainersOperations)operations).InquireAsync(vaultName, resourceGroupName, fabricName, containerName, odataQuery).GetAwaiter().GetResult();
+                ((IProtectionContainersOperations)operations).InquireAsync(resourceGroupName, vaultName, fabricName, containerName, filter).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -215,136 +210,135 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric Name associated with the container.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Name of the container in which inquiry needs to be triggered.
+        /// Name of the container whose details need to be fetched.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task InquireAsync(this IProtectionContainersOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, Microsoft.Rest.Azure.OData.ODataQuery<BMSContainersInquiryQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSContainersInquiryQueryObject>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task InquireAsync(this IProtectionContainersOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.InquireWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, odataQuery, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.InquireWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, filter, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Discovers all the containers in the subscription that can be backed up to
-        /// Recovery Services Vault. This is an asynchronous operation. To know the
-        /// status of the operation, call GetRefreshOperationResult API.
+        /// Recovery Services Vault. This is an
+        /// asynchronous operation. To know the status of the operation, call
+        /// GetRefreshOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='odataQuery'>
-        /// 
         /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated the container.
         /// </param>
-        public static void Refresh(this IProtectionContainersOperations operations, string vaultName, string resourceGroupName, string fabricName, Microsoft.Rest.Azure.OData.ODataQuery<BMSRefreshContainersQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSRefreshContainersQueryObject>))
+        /// <param name='filter'>
+        /// OData filter options.
+        /// </param>
+        public static void Refresh(this IProtectionContainersOperations operations, string vaultName, string resourceGroupName, string fabricName, string filter = default(string))
         {
-                ((IProtectionContainersOperations)operations).RefreshAsync(vaultName, resourceGroupName, fabricName, odataQuery).GetAwaiter().GetResult();
+                ((IProtectionContainersOperations)operations).RefreshAsync(vaultName, resourceGroupName, fabricName, filter).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Discovers all the containers in the subscription that can be backed up to
-        /// Recovery Services Vault. This is an asynchronous operation. To know the
-        /// status of the operation, call GetRefreshOperationResult API.
+        /// Recovery Services Vault. This is an
+        /// asynchronous operation. To know the status of the operation, call
+        /// GetRefreshOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='odataQuery'>
-        /// 
         /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated the container.
         /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task RefreshAsync(this IProtectionContainersOperations operations, string vaultName, string resourceGroupName, string fabricName, Microsoft.Rest.Azure.OData.ODataQuery<BMSRefreshContainersQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSRefreshContainersQueryObject>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task RefreshAsync(this IProtectionContainersOperations operations, string vaultName, string resourceGroupName, string fabricName, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.RefreshWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, odataQuery, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.RefreshWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, filter, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Registers the container with Recovery Services vault. This is an
-        /// asynchronous operation. To track the operation status, use location header
-        /// to call get latest status of the operation.
+        /// Registers the container with Recovery Services vault.
+        /// This is an asynchronous operation. To track the operation status, use
+        /// location header to call get latest status of
+        /// the operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the container.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Name of the container to be registered.
+        /// Name of the container whose details need to be fetched.
         /// </param>
-        public static ProtectionContainerResource BeginRegister(this IProtectionContainersOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, ProtectionContainerResource parameters)
+        public static ProtectionContainerResource BeginRegister(this IProtectionContainersOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, ProtectionContainerResource parameters)
         {
-                return ((IProtectionContainersOperations)operations).BeginRegisterAsync(vaultName, resourceGroupName, fabricName, containerName, parameters).GetAwaiter().GetResult();
+                return ((IProtectionContainersOperations)operations).BeginRegisterAsync(resourceGroupName, vaultName, fabricName, containerName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Registers the container with Recovery Services vault. This is an
-        /// asynchronous operation. To track the operation status, use location header
-        /// to call get latest status of the operation.
+        /// Registers the container with Recovery Services vault.
+        /// This is an asynchronous operation. To track the operation status, use
+        /// location header to call get latest status of
+        /// the operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the container.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Name of the container to be registered.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProtectionContainerResource> BeginRegisterAsync(this IProtectionContainersOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, ProtectionContainerResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProtectionContainerResource> BeginRegisterAsync(this IProtectionContainersOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, ProtectionContainerResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginRegisterWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginRegisterWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

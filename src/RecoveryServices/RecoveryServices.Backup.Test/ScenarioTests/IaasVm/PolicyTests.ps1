@@ -76,7 +76,7 @@ function Test-AzureVMCrashconsistentPolicy
 function Test-AzureVMNonUTCPolicy
 {
 	$resourceGroupName = "hiagarg"
-	$vaultName = "hiaga-zrs-vault"
+	$vaultName = "vijami-policy-test"
 	$newVMPolUTC = "vm-pstest-utc-policy"
 	$newVMPolnonUTC = "vm-pstest-local-policy"
 	

@@ -1,0 +1,305 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1?api-version=2026-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmQ4NzVlNzctZTQxMi00ZDdkLTlhZjQtODg5NTI3OGI0NDQzL3Jlc291cmNlR3JvdXBzL3N3YmVsYS1yYW5zb20tcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zd2JlbGEtbWRjLXZhdWx0LTE/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "8ebc57b9-21e0-4c0b-bfa7-5331396a0049"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3026.36720",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "79edc036-c430-43c0-9206-4e9930b2c15c"
+        ],
+        "x-ms-client-request-id": [
+          "8ebc57b9-21e0-4c0b-bfa7-5331396a0049"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "79edc036-c430-43c0-9206-4e9930b2c15c"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260901T114250Z:79edc036-c430-43c0-9206-4e9930b2c15c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 3D23E51467284603A82416383BD0C9DB Ref B: PNQ231110907023 Ref C: 2026-09-01T11:42:49Z"
+        ],
+        "Date": [
+          "Tue, 01 Sep 2026 11:42:50 GMT"
+        ],
+        "Content-Length": [
+          "1250"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"swbela-mdc-vault-1\",\r\n  \"etag\": \"W/\\\"datetime'2025-10-08T15%3A46%3A37.763222Z'\\\"\",\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"ba07525e-a8dd-4684-8461-df9c793265db\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V1\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": {\r\n        \"state\": \"Locked\"\r\n      },\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"AlwaysON\",\r\n        \"enhancedSecurityState\": \"AlwaysON\"\r\n      },\r\n      \"multiUserAuthorization\": \"Enabled\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Enabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"regionOfChoiceSettings\": {\r\n      \"status\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"Maximum\",\r\n    \"bcdrSecurityLevel\": \"Excellent\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupProtectionContainers?api-version=2026-07-01&$filter=friendlyName%20eq%20%27Sample-VM%27%20and%20backupManagementType%20eq%20%27AzureIaasVM%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmQ4NzVlNzctZTQxMi00ZDdkLTlhZjQtODg5NTI3OGI0NDQzL3Jlc291cmNlR3JvdXBzL3N3YmVsYS1yYW5zb20tcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zd2JlbGEtbWRjLXZhdWx0LTEvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAyNi0wNy0wMSYkZmlsdGVyPWZyaWVuZGx5TmFtZSUyMGVxJTIwJTI3U2FtcGxlLVZNJTI3JTIwYW5kJTIwYmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "4e4a5f5f-93eb-49bd-89e3-dc0f0c261b21"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3026.36720",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.14.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "f4e6dc5b-7a6d-41f0-b82f-02232a94e665"
+        ],
+        "x-ms-client-request-id": [
+          "4e4a5f5f-93eb-49bd-89e3-dc0f0c261b21"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus2euap/b3f57523-b400-4a9f-a456-6280dc65de78"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "f4e6dc5b-7a6d-41f0-b82f-02232a94e665"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260901T114250Z:f4e6dc5b-7a6d-41f0-b82f-02232a94e665"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 5D9AF02A83B44B5FAED0B69976F25954 Ref B: PNQ231110907052 Ref C: 2026-09-01T11:42:50Z"
+        ],
+        "Date": [
+          "Tue, 01 Sep 2026 11:42:50 GMT"
+        ],
+        "Content-Length": [
+          "867"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;sample-rg;sample-vm\",\r\n      \"name\": \"IaasVMContainer;iaasvmcontainerv2;sample-rg;sample-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"virtualMachineId\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/Sample-RG/providers/Microsoft.Compute/virtualMachines/Sample-VM\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"resourceGroup\": \"Sample-RG\",\r\n        \"friendlyName\": \"Sample-VM\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"protectableObjectType\": \"Microsoft.Compute/virtualMachines\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupProtectedItems?api-version=2026-07-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmQ4NzVlNzctZTQxMi00ZDdkLTlhZjQtODg5NTI3OGI0NDQzL3Jlc291cmNlR3JvdXBzL3N3YmVsYS1yYW5zb20tcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zd2JlbGEtbWRjLXZhdWx0LTEvYmFja3VwUHJvdGVjdGVkSXRlbXM/YXBpLXZlcnNpb249MjAyNi0wNy0wMSYkZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAlMjdBenVyZUlhYXNWTSUyNyUyMGFuZCUyMGl0ZW1UeXBlJTIwZXElMjAlMjdWTSUyNw==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "210694b7-1f5c-4d79-abf9-d1e0f889249f"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3026.36720",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.14.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "be288f4c-350f-4214-9e1b-a921cd09cb4f"
+        ],
+        "x-ms-client-request-id": [
+          "210694b7-1f5c-4d79-abf9-d1e0f889249f"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus2euap/b7b54068-66e4-4496-a565-9f67c54d386d"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "be288f4c-350f-4214-9e1b-a921cd09cb4f"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260901T114251Z:be288f4c-350f-4214-9e1b-a921cd09cb4f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 745EEC90F0A8486ABD25BEF871FBDE77 Ref B: PNQ231110908034 Ref C: 2026-09-01T11:42:51Z"
+        ],
+        "Date": [
+          "Tue, 01 Sep 2026 11:42:51 GMT"
+        ],
+        "Content-Length": [
+          "6274"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;sample-rg;Sample-VM/protectedItems/VM;iaasvmcontainerv2;sample-rg;Sample-VM\",\r\n      \"name\": \"VM;iaasvmcontainerv2;sample-rg;Sample-VM\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"Sample-VM\",\r\n        \"virtualMachineId\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/Sample-RG/providers/Microsoft.Compute/virtualMachines/Sample-VM\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2026-09-01T08:07:14.3690498Z\",\r\n        \"protectedItemDataId\": \"1178678470200372\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"V2\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;sample-rg;Sample-VM\",\r\n        \"sourceResourceId\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/Sample-RG/providers/Microsoft.Compute/virtualMachines/Sample-VM\",\r\n        \"policyId\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupPolicies/EnhancedPolicy\",\r\n        \"policyName\": \"EnhancedPolicy\",\r\n        \"lastRecoveryPoint\": \"2026-09-01T08:09:22.1181238Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0,\r\n        \"sourceLocation\": \"eastus2euap\",\r\n        \"sourceSideScanInfo\": {\r\n          \"sourceSideScanStatus\": \"Configured\",\r\n          \"sourceSideScanSummary\": \"Suspicious\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;swbela-ransom-rg;swbela-mdc-injected-2/protectedItems/VM;iaasvmcontainerv2;swbela-ransom-rg;swbela-mdc-injected-2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;swbela-ransom-rg;swbela-mdc-injected-2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"swbela-mdc-injected-2\",\r\n        \"virtualMachineId\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.Compute/virtualMachines/swbela-mdc-injected-2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-11-27T20:05:09.4065627Z\",\r\n        \"protectedItemDataId\": \"1178677983182858\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"V2\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;swbela-ransom-rg;swbela-mdc-injected-2\",\r\n        \"sourceResourceId\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.Compute/virtualMachines/swbela-mdc-injected-2\",\r\n        \"policyId\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupPolicies/EnhancedPolicy\",\r\n        \"policyName\": \"EnhancedPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-11-27T20:05:12.0936364Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0,\r\n        \"sourceLocation\": \"eastus2euap\",\r\n        \"sourceSideScanInfo\": {\r\n          \"sourceSideScanStatus\": \"Configured\",\r\n          \"sourceSideScanSummary\": \"Unknown\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;swbela-ransom-rg;swbela-mdc-injected/protectedItems/VM;iaasvmcontainerv2;swbela-ransom-rg;swbela-mdc-injected\",\r\n      \"name\": \"VM;iaasvmcontainerv2;swbela-ransom-rg;swbela-mdc-injected\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"swbela-mdc-injected\",\r\n        \"virtualMachineId\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.Compute/virtualMachines/swbela-mdc-injected\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2026-09-01T08:01:24.9642297Z\",\r\n        \"protectedItemDataId\": \"1178678499937652\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"V2\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;swbela-ransom-rg;swbela-mdc-injected\",\r\n        \"sourceResourceId\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.Compute/virtualMachines/swbela-mdc-injected\",\r\n        \"policyId\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupPolicies/EnhancedPolicy\",\r\n        \"policyName\": \"EnhancedPolicy\",\r\n        \"lastRecoveryPoint\": \"2026-09-01T08:03:31.0862278Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0,\r\n        \"sourceLocation\": \"eastus2euap\",\r\n        \"sourceSideScanInfo\": {\r\n          \"sourceSideScanStatus\": \"Configured\",\r\n          \"sourceSideScanSummary\": \"NoThreatsReported\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupFabrics/Azure/protectionContainers/IaasVMContainer%3Biaasvmcontainerv2%3Bsample-rg%3BSample-VM/protectedItems/VM%3Biaasvmcontainerv2%3Bsample-rg%3BSample-VM/recoveryPoints/1131169477306229?api-version=2026-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmQ4NzVlNzctZTQxMi00ZDdkLTlhZjQtODg5NTI3OGI0NDQzL3Jlc291cmNlR3JvdXBzL3N3YmVsYS1yYW5zb20tcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zd2JlbGEtbWRjLXZhdWx0LTEvYmFja3VwRmFicmljcy9BenVyZS9wcm90ZWN0aW9uQ29udGFpbmVycy9JYWFzVk1Db250YWluZXIlM0JpYWFzdm1jb250YWluZXJ2MiUzQnNhbXBsZS1yZyUzQlNhbXBsZS1WTS9wcm90ZWN0ZWRJdGVtcy9WTSUzQmlhYXN2bWNvbnRhaW5lcnYyJTNCc2FtcGxlLXJnJTNCU2FtcGxlLVZNL3JlY292ZXJ5UG9pbnRzLzExMzExNjk0NzczMDYyMjk/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "cc0dcbbc-b440-457a-a43e-14f54131791b"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3026.36720",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.14.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "3a25f503-4821-4ece-9df3-568727c21f73"
+        ],
+        "x-ms-client-request-id": [
+          "cc0dcbbc-b440-457a-a43e-14f54131791b"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus2euap/0bfd4272-d23c-469c-99e3-a15a46ede92d"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "3a25f503-4821-4ece-9df3-568727c21f73"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260901T114252Z:3a25f503-4821-4ece-9df3-568727c21f73"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 1CE938E864234DBA8D473812BA1F224B Ref B: PNQ231110908036 Ref C: 2026-09-01T11:42:51Z"
+        ],
+        "Date": [
+          "Tue, 01 Sep 2026 11:42:51 GMT"
+        ],
+        "Content-Length": [
+          "4531"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;sample-rg;Sample-VM/protectedItems/VM;iaasvmcontainerv2;sample-rg;Sample-VM/recoveryPoints/1131169477306229\",\r\n  \"name\": \"1131169477306229\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints\",\r\n  \"properties\": {\r\n    \"objectType\": \"IaasVMRecoveryPoint\",\r\n    \"recoveryPointType\": \"AppConsistent\",\r\n    \"recoveryPointTime\": \"2026-08-31T08:11:12.5650378Z\",\r\n    \"recoveryPointAdditionalInfo\": \"\",\r\n    \"sourceVMStorageType\": \"PremiumVMOnPartialPremiumStorage\",\r\n    \"isSourceVMEncrypted\": false,\r\n    \"isInstantIlrSessionActive\": false,\r\n    \"recoveryPointTierDetails\": [\r\n      {\r\n        \"type\": \"InstantRP\",\r\n        \"status\": \"Valid\"\r\n      }\r\n    ],\r\n    \"isManagedVirtualMachine\": true,\r\n    \"virtualMachineSize\": \"Standard_D2s_v3\",\r\n    \"originalStorageAccountOption\": false,\r\n    \"osType\": \"Windows\",\r\n    \"recoveryPointMoveReadinessInfo\": {\r\n      \"ArchivedRP\": {\r\n        \"isReadyForMove\": false,\r\n        \"additionalInfo\": \"We're still determining if this Recovery Point can be moved.. Please check again after some time.\"\r\n      }\r\n    },\r\n    \"securityType\": \"None\",\r\n    \"recoveryPointProperties\": {\r\n      \"expiryTime\": \"2026-09-02T08:11:12.5650378Z\",\r\n      \"ruleName\": \"Daily\",\r\n      \"isSoftDeleted\": false,\r\n      \"immutabilityProperties\": {\r\n        \"isImmutable\": true\r\n      }\r\n    },\r\n    \"isPrivateAccessEnabledOnAnyDisk\": false,\r\n    \"createdWithPolicyType\": \"V2\",\r\n    \"threatInfo\": [\r\n      {\r\n        \"threatTitle\": \"[SAMPLE ALERT] Digital currency mining related behavior detected\",\r\n        \"threatDescription\": \"[SAMPLE ALERT] Digital currency mining related behavior detected\",\r\n        \"lastUpdatedTime\": \"2026-08-13T07:47:15.860308\",\r\n        \"threatState\": \"Active\",\r\n        \"threatStartTime\": \"2026-08-13T07:47:15.860308\",\r\n        \"threatEndTime\": \"2026-08-13T07:47:15.860308\",\r\n        \"threatURI\": \"https://portal.azure.com/#blade/Microsoft_Azure_Security_AzureDefenderForData/AlertBlade/alertId/136b246a-ee42-f137-a707-2c1b7c535b5a/subscriptionId/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroup/Sample-RG/referencedFrom/alertDeepLink/location/centralus\",\r\n        \"threatSeverity\": \"High\"\r\n      },\r\n      {\r\n        \"threatTitle\": \"[SAMPLE ALERT]  Detected suspicious file cleanup commands\",\r\n        \"threatDescription\": \"[SAMPLE ALERT]  Detected suspicious file cleanup commands\",\r\n        \"lastUpdatedTime\": \"2026-08-13T07:47:11.860308\",\r\n        \"threatState\": \"Active\",\r\n        \"threatStartTime\": \"2026-08-13T07:47:11.860308\",\r\n        \"threatEndTime\": \"2026-08-13T07:47:11.860308\",\r\n        \"threatURI\": \"https://portal.azure.com/#blade/Microsoft_Azure_Security_AzureDefenderForData/AlertBlade/alertId/295c973d-33f2-b61d-f808-182de9cfa921/subscriptionId/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroup/Sample-RG/referencedFrom/alertDeepLink/location/centralus\",\r\n        \"threatSeverity\": \"High\"\r\n      },\r\n      {\r\n        \"threatTitle\": \"[SAMPLE ALERT] Executable found running from a suspicious location\",\r\n        \"threatDescription\": \"[SAMPLE ALERT] Executable found running from a suspicious location\",\r\n        \"lastUpdatedTime\": \"2026-08-13T07:47:17.860308\",\r\n        \"threatState\": \"Active\",\r\n        \"threatStartTime\": \"2026-08-13T07:47:17.860308\",\r\n        \"threatEndTime\": \"2026-08-13T07:47:17.860308\",\r\n        \"threatURI\": \"https://portal.azure.com/#blade/Microsoft_Azure_Security_AzureDefenderForData/AlertBlade/alertId/551cd47d-8503-b0ad-0e77-7016ab778e09/subscriptionId/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroup/Sample-RG/referencedFrom/alertDeepLink/location/centralus\",\r\n        \"threatSeverity\": \"Medium\"\r\n      },\r\n      {\r\n        \"threatTitle\": \"[SAMPLE ALERT]  Detected Petya ransomware indicators\",\r\n        \"threatDescription\": \"[SAMPLE ALERT]  Detected Petya ransomware indicators\",\r\n        \"lastUpdatedTime\": \"2026-08-13T07:47:09.860308\",\r\n        \"threatState\": \"Active\",\r\n        \"threatStartTime\": \"2026-08-13T07:47:09.860308\",\r\n        \"threatEndTime\": \"2026-08-13T07:47:09.860308\",\r\n        \"threatURI\": \"https://portal.azure.com/#blade/Microsoft_Azure_Security_AzureDefenderForData/AlertBlade/alertId/e06d37ef-68b6-7551-1299-e39103603cdf/subscriptionId/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroup/Sample-RG/referencedFrom/alertDeepLink/location/centralus\",\r\n        \"threatSeverity\": \"High\"\r\n      },\r\n      {\r\n        \"threatTitle\": \"[SAMPLE ALERT]  Suspicious PHP execution detected\",\r\n        \"threatDescription\": \"[SAMPLE ALERT]  Suspicious PHP execution detected\",\r\n        \"lastUpdatedTime\": \"2026-08-13T07:47:13.860308\",\r\n        \"threatState\": \"Active\",\r\n        \"threatStartTime\": \"2026-08-13T07:47:13.860308\",\r\n        \"threatEndTime\": \"2026-08-13T07:47:13.860308\",\r\n        \"threatURI\": \"https://portal.azure.com/#blade/Microsoft_Azure_Security_AzureDefenderForData/AlertBlade/alertId/fa981158-b99b-96ab-5fed-085e94e09b12/subscriptionId/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroup/Sample-RG/referencedFrom/alertDeepLink/location/centralus\",\r\n        \"threatSeverity\": \"Medium\"\r\n      }\r\n    ],\r\n    \"threatStatus\": \"UnHealthy\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "6d875e77-e412-4d7d-9af4-8895278b4443"
+  }
+}
