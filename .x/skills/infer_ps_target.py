@@ -16,6 +16,8 @@ def infer_ps_target(text, pr_files):
 
     def resolve(candidate):
         normalized_candidate = normalize(candidate)
+        if not normalized_candidate:
+            return None
         exact = None
         best = None
         for module in modules:
@@ -69,7 +71,8 @@ def infer_ps_target(text, pr_files):
                 scores[candidate] = scores.get(candidate, 0) + 5
         if "-az" in word:
             candidate = word.split("-az", 1)[1]
-            scores[candidate] = scores.get(candidate, 0) + 2
+            if candidate:
+                scores[candidate] = scores.get(candidate, 0) + 2
     for candidate in sorted(scores, key=lambda item: (-scores[item], item)):
         target = resolve(candidate)
         if target is not None:
