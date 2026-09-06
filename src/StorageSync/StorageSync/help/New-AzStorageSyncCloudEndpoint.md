@@ -41,6 +41,7 @@ This command creates an Azure File Sync cloud endpoint. A cloud endpoint is a re
 
 ### Example 1
 ```powershell
+$storageAccountResourceId = (Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -Name "myStorageAccountName").Id
 New-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName" -StorageAccountResourceId $storageAccountResourceId -AzureFileShareName "myAzureFileShareName" -StorageAccountTenantId "myStorageAccountTenantId"
 ```
 
