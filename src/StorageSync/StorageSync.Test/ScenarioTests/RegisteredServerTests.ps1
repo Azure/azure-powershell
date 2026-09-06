@@ -883,6 +883,10 @@ function Test-PatchRegisteredServerWithServerEndpoint
         $job | Wait-Job
         $expectedRegisteredServer = get-job -Id $job.Id | receive-job -Keep
 
+        # Waiting for the server to run UpdateServerManagementState avoids potential race conditions on followup operations that modify server state
+        Write-Verbose "Waiting for server management state to propagate after registration."
+        Start-TestSleep -Seconds 60
+
         Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
         $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 

@@ -21,7 +21,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 
-namespace Commands.StorageSync.Interop.Clients
+namespace Microsoft.Azure.Commands.StorageSync.Test.Common
 {
     /// <summary>
     /// Class MockEcsManagementInteropClient.
