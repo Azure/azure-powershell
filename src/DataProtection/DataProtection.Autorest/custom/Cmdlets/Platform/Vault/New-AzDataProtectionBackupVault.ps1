@@ -154,16 +154,6 @@ function New-AzDataProtectionBackupVault
 
     process
     {
-        if ($PSBoundParameters.ContainsKey("ImmutabilityState") -and $ImmutabilityState -ne 'Disabled') {
-            $immutabilityPipeline = Get-AzDataProtectionAsPerPolicyImmutabilityPipeline
-            if ($PSBoundParameters.ContainsKey("HttpPipelinePrepend")) {
-                $PSBoundParameters["HttpPipelinePrepend"] = $PSBoundParameters["HttpPipelinePrepend"] + @($immutabilityPipeline)
-            }
-            else {
-                $PSBoundParameters.Add("HttpPipelinePrepend", @($immutabilityPipeline))
-            }
-        }
-
         $hasCmkEncryptionState = $PSBoundParameters.Remove("CmkEncryptionState")
         $hasCmkIdentityType = $PSBoundParameters.Remove("CmkIdentityType")
         $hasCmkUserAssignedIdentityId = $PSBoundParameters.Remove("CmkUserAssignedIdentityId")

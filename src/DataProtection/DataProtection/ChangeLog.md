@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed backup vault creation and update to apply policy-based immutability configuration when immutability is enabled
 * Added cost management granularity support to backup vault creation and update cmdlets
     - Added `-CostManagementGranularity` parameter to `New-AzDataProtectionBackupVault` and `Update-AzDataProtectionBackupVault`
     - Allowed values are `VaultLevel`, `ProtectedItemLevel`, `ProtectedItemWithParentTag`

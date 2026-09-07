@@ -150,16 +150,6 @@ function Update-AzDataProtectionBackupVault
 
     process
     {
-        if ($PSBoundParameters.ContainsKey("ImmutabilityState") -and $ImmutabilityState -ne 'Disabled') {
-            $immutabilityPipeline = Get-AzDataProtectionAsPerPolicyImmutabilityPipeline
-            if ($PSBoundParameters.ContainsKey("HttpPipelinePrepend")) {
-                $PSBoundParameters["HttpPipelinePrepend"] = $PSBoundParameters["HttpPipelinePrepend"] + @($immutabilityPipeline)
-            }
-            else {
-                $PSBoundParameters.Add("HttpPipelinePrepend", @($immutabilityPipeline))
-            }
-        }
-
         $hasToken = $PSBoundParameters.Remove("Token")
         $hasSecureToken = $PSBoundParameters.Remove("SecureToken")
         if($hasToken -or $hasSecureToken)

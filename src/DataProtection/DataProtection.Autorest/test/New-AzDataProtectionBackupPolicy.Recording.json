@@ -17,17 +17,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/919e0891-ae7c-444e-a515-762c10fa238b" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/f390fa9f-7e88-46a5-98d2-558146fee48c" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "0b5f17a4-c636-4900-85df-af2265e9aa54" ],
-        "x-ms-correlation-request-id": [ "0b5f17a4-c636-4900-85df-af2265e9aa54" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260904T095547Z:0b5f17a4-c636-4900-85df-af2265e9aa54" ],
+        "x-ms-request-id": [ "169d4bb3-faa0-4465-a41b-8321deced4f4" ],
+        "x-ms-correlation-request-id": [ "169d4bb3-faa0-4465-a41b-8321deced4f4" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260907T121543Z:169d4bb3-faa0-4465-a41b-8321deced4f4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 468B7C9B2950439AA49357118C5FD362 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:46Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:46 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 67EBE7FA125044D0A5B6F851B2C9F41A Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:42Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1626" ],
@@ -45,8 +45,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "261" ],
-        "x-ms-client-request-id": [ "6d384bf4-6537-49f8-8a5f-fe13818c7bd8" ],
+        "x-ms-unique-id": [ "288" ],
+        "x-ms-client-request-id": [ "38b18416-ce92-4ded-b33f-be9ca7a80ded" ],
         "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -61,17 +61,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/1b6dd2ed-7692-4912-b56c-f3ced44117a7" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/6d8d11c7-06fc-40f6-be93-d1c5b03167c8" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "210ce44b-469d-4b98-8984-348e0b4d8659" ],
-        "x-ms-correlation-request-id": [ "210ce44b-469d-4b98-8984-348e0b4d8659" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260904T095547Z:210ce44b-469d-4b98-8984-348e0b4d8659" ],
+        "x-ms-request-id": [ "e70ad578-00ee-4ead-9daa-bf10d8e9188d" ],
+        "x-ms-correlation-request-id": [ "e70ad578-00ee-4ead-9daa-bf10d8e9188d" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260907T121543Z:e70ad578-00ee-4ead-9daa-bf10d8e9188d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 70A05D2736714C60A2BAA525150B7E39 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:47Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:47 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AF45C32ACC5A4B31ACE8493B4EC62AA0 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:43Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1626" ],
@@ -89,8 +89,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "262" ],
-        "x-ms-client-request-id": [ "df8527d8-3ba7-4f38-a0a8-c0a4bf435143" ],
+        "x-ms-unique-id": [ "289" ],
+        "x-ms-client-request-id": [ "d46bd066-defd-4447-852a-8fe5f10efcf7" ],
         "CommandName": [ "Remove-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Remove-AzDataProtectionBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -106,16 +106,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/9385bf84-c101-4d58-94e4-66409109a512" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/6dbc6c42-a09a-4b50-987c-4bf36b8808d9" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "6dfccaf3-bec9-4ada-a9d8-d3f7a6cc3196" ],
-        "x-ms-correlation-request-id": [ "6dfccaf3-bec9-4ada-a9d8-d3f7a6cc3196" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260904T095548Z:6dfccaf3-bec9-4ada-a9d8-d3f7a6cc3196" ],
+        "x-ms-request-id": [ "5db6ced9-2c15-48d2-8ffe-7e99e7105252" ],
+        "x-ms-correlation-request-id": [ "5db6ced9-2c15-48d2-8ffe-7e99e7105252" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260907T121545Z:5db6ced9-2c15-48d2-8ffe-7e99e7105252" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CCC7A481FF9E49378806E22B399ADFAB Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:48Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:48 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AB548998D88841DCAE01364214B0408C Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:44Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:45 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -143,17 +143,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/3f0169b0-76d3-4437-9e0a-1b1ae5d1c67f" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/6ee50a9a-7f9b-407f-b259-e875b535fb95" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "9f9399df-7663-4333-8ebd-85f912cb5046" ],
-        "x-ms-correlation-request-id": [ "9f9399df-7663-4333-8ebd-85f912cb5046" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260904T095549Z:9f9399df-7663-4333-8ebd-85f912cb5046" ],
+        "x-ms-request-id": [ "6392c322-4b83-4878-b3d5-6991a392e1cd" ],
+        "x-ms-correlation-request-id": [ "6392c322-4b83-4878-b3d5-6991a392e1cd" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260907T121546Z:6392c322-4b83-4878-b3d5-6991a392e1cd" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FF3C837286C3485EBF7F481057E45AB8 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:48Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:48 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 525D0A0667584F998F06146EF9C8AC97 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:45Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:46 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1619" ],
@@ -171,8 +171,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "264" ],
-        "x-ms-client-request-id": [ "d16541e8-5d05-4f73-ab35-cc7a473cbe2d" ],
+        "x-ms-unique-id": [ "291" ],
+        "x-ms-client-request-id": [ "92bca6c7-8ece-47b7-a899-c5eb2727f1f8" ],
         "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -187,17 +187,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/cae43b26-809c-4635-a4bc-ab6f30e62492" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/8b169393-c957-4383-b7f0-f7bc4ac76528" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "fec5d953-52a5-4edf-bf79-c756f11c0a49" ],
-        "x-ms-correlation-request-id": [ "fec5d953-52a5-4edf-bf79-c756f11c0a49" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260904T095549Z:fec5d953-52a5-4edf-bf79-c756f11c0a49" ],
+        "x-ms-request-id": [ "833b1d33-006d-4adf-b1ad-f0bebf7089f5" ],
+        "x-ms-correlation-request-id": [ "833b1d33-006d-4adf-b1ad-f0bebf7089f5" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260907T121546Z:833b1d33-006d-4adf-b1ad-f0bebf7089f5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9526E26506944DF68FC61DEB20592330 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:49Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:49 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4A13E730691246DB8133262DA726EF86 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:46Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:46 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1619" ],
@@ -215,8 +215,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "265" ],
-        "x-ms-client-request-id": [ "fb2cd83c-2822-42f4-90f9-d2349a769340" ],
+        "x-ms-unique-id": [ "292" ],
+        "x-ms-client-request-id": [ "ead0bd1b-a810-463a-b754-08e57933f2be" ],
         "CommandName": [ "Remove-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Remove-AzDataProtectionBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -232,16 +232,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/c7f20493-1234-447c-9d23-2bf4b5b35804" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/ef83fd29-c03a-4e15-93fc-8a571a8569fa" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "e15c8f7b-74fe-4cc9-889d-db3f4aee0435" ],
-        "x-ms-correlation-request-id": [ "e15c8f7b-74fe-4cc9-889d-db3f4aee0435" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260904T095550Z:e15c8f7b-74fe-4cc9-889d-db3f4aee0435" ],
+        "x-ms-request-id": [ "3e878848-63f1-4742-96ef-fb6e248741c8" ],
+        "x-ms-correlation-request-id": [ "3e878848-63f1-4742-96ef-fb6e248741c8" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260907T121547Z:3e878848-63f1-4742-96ef-fb6e248741c8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F7A8376B7443456F98A59DD223877F0C Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:50Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:50 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3E327BC63A1D404296E73299881165B0 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:46Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:47 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -269,17 +269,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus2euap/4e22a9a0-2fe4-4750-9f53-20097c7b180d" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/southeastasia/d18d12d0-aba4-4acd-a8dc-d3bbdc3b900f" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "15a4f08f-860e-455b-8ce1-954981195f0f" ],
-        "x-ms-correlation-request-id": [ "15a4f08f-860e-455b-8ce1-954981195f0f" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260904T095552Z:15a4f08f-860e-455b-8ce1-954981195f0f" ],
+        "x-ms-request-id": [ "5eabdc5a-7796-497c-8471-dfdd5ae7003c" ],
+        "x-ms-correlation-request-id": [ "5eabdc5a-7796-497c-8471-dfdd5ae7003c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260907T121549Z:5eabdc5a-7796-497c-8471-dfdd5ae7003c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E38F1403E4E6441B96254C6AD6AA88AD Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:50Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:51 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 96CCEF7B77B34804B6B0B2C316AF5B38 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:47Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:49 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2050" ],
@@ -297,8 +296,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "267" ],
-        "x-ms-client-request-id": [ "6edddd22-b4cb-4496-8a11-3131787c2f71" ],
+        "x-ms-unique-id": [ "294" ],
+        "x-ms-client-request-id": [ "92431eb3-0dbc-43c6-bdee-65d72cf1ae3e" ],
         "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -313,17 +312,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus2euap/29568d73-dac1-433e-9cc6-4ebc163281f5" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus2euap/b718d52e-d9c7-44d4-bd72-bc63544e5019" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "b907299a-13be-4d91-b842-91593ea4b6dd" ],
-        "x-ms-correlation-request-id": [ "b907299a-13be-4d91-b842-91593ea4b6dd" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260904T095553Z:b907299a-13be-4d91-b842-91593ea4b6dd" ],
+        "x-ms-request-id": [ "6afa2f85-a144-4c4c-b97a-4743243746ac" ],
+        "x-ms-correlation-request-id": [ "6afa2f85-a144-4c4c-b97a-4743243746ac" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260907T121550Z:6afa2f85-a144-4c4c-b97a-4743243746ac" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5FD0F2D3F1DB4A36809A35BF53966F6A Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:52Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:52 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F87BA273F59B41CAAB2D3811F19B4402 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:49Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:50 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2050" ],
@@ -341,8 +340,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "268" ],
-        "x-ms-client-request-id": [ "6a464120-f570-4e78-815c-63861c280664" ],
+        "x-ms-unique-id": [ "295" ],
+        "x-ms-client-request-id": [ "0bf0cb1e-48e2-46d7-98f5-3b05b9c480f1" ],
         "CommandName": [ "Remove-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Remove-AzDataProtectionBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -355,19 +354,22 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus2euap/9e6f6c6d-6077-4afd-bafb-7977d7c17150" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus2euap/af69c076-2c56-4389-a060-1e25ad4ed4b4" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "70e8ac73-b67f-4828-bb2e-11148f205ad0" ],
-        "x-ms-correlation-request-id": [ "70e8ac73-b67f-4828-bb2e-11148f205ad0" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260904T095554Z:70e8ac73-b67f-4828-bb2e-11148f205ad0" ],
+        "x-ms-request-id": [ "374baf67-dd06-4ffc-9799-f85a93c4d7e1" ],
+        "x-ms-correlation-request-id": [ "374baf67-dd06-4ffc-9799-f85a93c4d7e1" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260907T121551Z:374baf67-dd06-4ffc-9799-f85a93c4d7e1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5B42FF6EE2E04D1994775D18CB730F0D Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:53Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:54 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E735FA61FA024AD5BC33D320B08171C0 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:50Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:51 GMT" ]
       },
       "ContentHeaders": {
+        "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
       "Content": null,
@@ -392,17 +394,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/c6b64094-fdb3-4768-8f74-10bfc422f5c8" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/87b1c0db-776a-4e4e-bd54-d8a543fe2bfa" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "1e0dee0c-bc3b-460f-86ab-118af3c98f1f" ],
-        "x-ms-correlation-request-id": [ "1e0dee0c-bc3b-460f-86ab-118af3c98f1f" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260904T095555Z:1e0dee0c-bc3b-460f-86ab-118af3c98f1f" ],
+        "x-ms-request-id": [ "c6479524-f0fb-4561-b79c-8cbff887f01f" ],
+        "x-ms-correlation-request-id": [ "c6479524-f0fb-4561-b79c-8cbff887f01f" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260907T121552Z:c6479524-f0fb-4561-b79c-8cbff887f01f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A0CE87A422EC4CFEAEA0CA55D8A92B4F Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:55Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:55 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8BE37A3269E54C7E8458489EC9B81B94 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:51Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1971" ],
@@ -420,8 +422,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "270" ],
-        "x-ms-client-request-id": [ "017110c0-9501-4d88-ba73-a95a68bbb937" ],
+        "x-ms-unique-id": [ "297" ],
+        "x-ms-client-request-id": [ "21488ed5-85d5-43e2-9eaa-335dc31592a1" ],
         "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -436,24 +438,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/d6f35dc2-a286-4e84-8f14-b9b15418105b" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/22e4f527-3605-4515-a42b-f7a7534fe630" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "d694f421-1bb4-4d1e-bbe8-30c0212243b4" ],
-        "x-ms-correlation-request-id": [ "d694f421-1bb4-4d1e-bbe8-30c0212243b4" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260904T095556Z:d694f421-1bb4-4d1e-bbe8-30c0212243b4" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1098" ],
+        "x-ms-request-id": [ "392265d0-d88a-4d61-b80f-3f2fad30d752" ],
+        "x-ms-correlation-request-id": [ "392265d0-d88a-4d61-b80f-3f2fad30d752" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260907T121552Z:392265d0-d88a-4d61-b80f-3f2fad30d752" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5A2EA3C54E0444CE85F3BF796FB52EA0 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:55Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:55 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 321111F2F9FF4F2DB25EF10457EAF3D9 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:52Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "11995" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Incremental\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2023-03-18T16:00:00+05:30/P1D\"],\"timeZone\":\"Central Standard Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true},{\"tagInfo\":{\"tagName\":\"Daily\",\"id\":\"Daily_\"},\"taggingPriority\":25,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfDay\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]},{\"tagInfo\":{\"tagName\":\"Weekly\",\"id\":\"Weekly_\"},\"taggingPriority\":20,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfWeek\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupDaily\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P7D\"},\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P8D\"},\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Daily\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P9W\"},\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Weekly\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.ContainerService/managedClusters\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-aks-policy\",\"name\":\"pstest-aks-policy\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P7D\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"ImmediateCopyOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P84D\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Daily\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P8D\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"},{\"backupParameters\":{\"backupType\":\"Incremental\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2024-07-22T22:30:00+00:00/P1D\"],\"timeZone\":\"Coordinated Universal Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Daily\",\"id\":\"Daily_\"},\"taggingPriority\":25,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfDay\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]},{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupDaily\",\"objectType\":\"AzureBackupRule\"}],\"datasourceTypes\":[\"Microsoft.ContainerService/managedClusters\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/aksHybrid2\",\"name\":\"aksHybrid2\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P9W\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Weekly\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P8D\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Daily\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P7D\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"},{\"backupParameters\":{\"backupType\":\"Incremental\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2026-03-12T16:00:00+05:30/P1D\"],\"timeZone\":\"India Standard Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Weekly\",\"id\":\"Weekly_\"},\"taggingPriority\":20,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfWeek\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]},{\"tagInfo\":{\"tagName\":\"Daily\",\"id\":\"Daily_\"},\"taggingPriority\":25,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfDay\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]},{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupDaily\",\"objectType\":\"AzureBackupRule\"}],\"datasourceTypes\":[\"Microsoft.ContainerService/managedClusters\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstestPol\",\"name\":\"pstestPol\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Incremental\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2022-06-03T05:00:00+00:00/P1D\"],\"timeZone\":\"UTC\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupDaily\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P7D\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.Compute/disks\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/disk-pstest-policy\",\"name\":\"disk-pstest-policy\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Full\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2021-08-22T04:00:00+00:00/P1W\",\"R/2021-08-25T04:00:00+00:00/P1W\"],\"timeZone\":\"UTC\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Monthly\",\"id\":\"Monthly_\"},\"taggingPriority\":15,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfMonth\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]},{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupWeekly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P12M\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Monthly\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P3M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.DBforPostgreSQL/servers/databases\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/hiagaOss\",\"name\":\"hiagaOss\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P12W\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"ImmediateCopyOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P12W\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Weekly\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P7D\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"ImmediateCopyOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P84D\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Daily\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P7D\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"},{\"backupParameters\":{\"backupType\":\"Incremental\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2024-07-22T08:00:00+00:00/P1D\"],\"timeZone\":\"Coordinated Universal Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Weekly\",\"id\":\"Weekly_\"},\"taggingPriority\":20,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfWeek\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]},{\"tagInfo\":{\"tagName\":\"Daily\",\"id\":\"Daily_\"},\"taggingPriority\":25,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfDay\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]},{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupDaily\",\"objectType\":\"AzureBackupRule\"}],\"datasourceTypes\":[\"Microsoft.ContainerService/managedClusters\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/aksHybrid\",\"name\":\"aksHybrid\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"}]}",
+      "Content": "{\"value\":[{\"properties\":{\"policyRules\":[{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P7D\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"ImmediateCopyOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P84D\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Daily\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P8D\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"},{\"backupParameters\":{\"backupType\":\"Incremental\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2024-07-22T22:30:00+00:00/P1D\"],\"timeZone\":\"Coordinated Universal Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Daily\",\"id\":\"Daily_\"},\"taggingPriority\":25,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfDay\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]},{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupDaily\",\"objectType\":\"AzureBackupRule\"}],\"datasourceTypes\":[\"Microsoft.ContainerService/managedClusters\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/aksHybrid2\",\"name\":\"aksHybrid2\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Incremental\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2023-03-18T16:00:00+05:30/P1D\"],\"timeZone\":\"Central Standard Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true},{\"tagInfo\":{\"tagName\":\"Daily\",\"id\":\"Daily_\"},\"taggingPriority\":25,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfDay\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]},{\"tagInfo\":{\"tagName\":\"Weekly\",\"id\":\"Weekly_\"},\"taggingPriority\":20,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfWeek\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupDaily\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P7D\"},\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P8D\"},\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Daily\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P9W\"},\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Weekly\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.ContainerService/managedClusters\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-aks-policy\",\"name\":\"pstest-aks-policy\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P9W\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Weekly\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P8D\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Daily\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P7D\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"},{\"backupParameters\":{\"backupType\":\"Incremental\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2026-03-12T16:00:00+05:30/P1D\"],\"timeZone\":\"India Standard Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Weekly\",\"id\":\"Weekly_\"},\"taggingPriority\":20,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfWeek\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]},{\"tagInfo\":{\"tagName\":\"Daily\",\"id\":\"Daily_\"},\"taggingPriority\":25,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfDay\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]},{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupDaily\",\"objectType\":\"AzureBackupRule\"}],\"datasourceTypes\":[\"Microsoft.ContainerService/managedClusters\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstestPol\",\"name\":\"pstestPol\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Incremental\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2022-06-03T05:00:00+00:00/P1D\"],\"timeZone\":\"UTC\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupDaily\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P7D\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.Compute/disks\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/disk-pstest-policy\",\"name\":\"disk-pstest-policy\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Full\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2021-08-22T04:00:00+00:00/P1W\",\"R/2021-08-25T04:00:00+00:00/P1W\"],\"timeZone\":\"UTC\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Monthly\",\"id\":\"Monthly_\"},\"taggingPriority\":15,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfMonth\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]},{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupWeekly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P12M\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Monthly\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P3M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.DBforPostgreSQL/servers/databases\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/hiagaOss\",\"name\":\"hiagaOss\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P12W\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"ImmediateCopyOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P12W\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Weekly\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P7D\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"ImmediateCopyOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P84D\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Daily\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P7D\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"},{\"backupParameters\":{\"backupType\":\"Incremental\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2024-07-22T08:00:00+00:00/P1D\"],\"timeZone\":\"Coordinated Universal Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Weekly\",\"id\":\"Weekly_\"},\"taggingPriority\":20,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfWeek\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]},{\"tagInfo\":{\"tagName\":\"Daily\",\"id\":\"Daily_\"},\"taggingPriority\":25,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfDay\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]},{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupDaily\",\"objectType\":\"AzureBackupRule\"}],\"datasourceTypes\":[\"Microsoft.ContainerService/managedClusters\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/aksHybrid\",\"name\":\"aksHybrid\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"}]}",
       "isContentBase64": false
     }
   },
@@ -464,8 +466,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "271" ],
-        "x-ms-client-request-id": [ "cdf33ad1-a63a-4f17-80be-9537558b0533" ],
+        "x-ms-unique-id": [ "298" ],
+        "x-ms-client-request-id": [ "bfe2b898-4154-47e2-a504-770885a14413" ],
         "CommandName": [ "Remove-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Remove-AzDataProtectionBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -481,16 +483,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/c28845cd-ddb3-41d7-9286-512a4a4e84bb" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/63028136-083a-4ae7-82b7-5fb41d9c01a8" ],
         "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "49a08bfa-61dd-46db-8c53-e74a9cb209df" ],
-        "x-ms-correlation-request-id": [ "49a08bfa-61dd-46db-8c53-e74a9cb209df" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260904T095556Z:49a08bfa-61dd-46db-8c53-e74a9cb209df" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "798" ],
+        "x-ms-request-id": [ "7213b0f4-ec13-4969-b347-0a2eaff8f6b6" ],
+        "x-ms-correlation-request-id": [ "7213b0f4-ec13-4969-b347-0a2eaff8f6b6" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260907T121553Z:7213b0f4-ec13-4969-b347-0a2eaff8f6b6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 330E04153AF140848A5219336669C49B Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:56Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:56 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: ED48FBD42F394FDF93DD9EA664A23F74 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:52Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:53 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -507,8 +509,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "272" ],
-        "x-ms-client-request-id": [ "cec5331d-b784-4cc7-aad0-7c4e76104e9b" ],
+        "x-ms-unique-id": [ "299" ],
+        "x-ms-client-request-id": [ "aacc177d-f04c-4418-8870-63e02698ee08" ],
         "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -523,17 +525,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/ef93d8f8-7143-413e-90aa-3438e64c633f" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/4c909913-3dfe-41cd-af9a-3c7727a3c61b" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "184bd733-b759-4e27-bac6-4af58e74e27a" ],
-        "x-ms-correlation-request-id": [ "184bd733-b759-4e27-bac6-4af58e74e27a" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260904T095557Z:184bd733-b759-4e27-bac6-4af58e74e27a" ],
+        "x-ms-request-id": [ "c897d1c4-9679-4054-8ba1-97b16520bda7" ],
+        "x-ms-correlation-request-id": [ "c897d1c4-9679-4054-8ba1-97b16520bda7" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260907T121554Z:c897d1c4-9679-4054-8ba1-97b16520bda7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: DFE67C5D766B413593F5948FD7564FCA Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:56Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:56 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 27E9EF0FE56541CA9295CCDB01970291 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:53Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "10023" ],
@@ -562,17 +564,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/48fe7f65-6e59-4366-8a88-77993ca8ad26" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/eacec2c1-9cbf-4317-9b28-a90f5afd8f56" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "798" ],
-        "x-ms-request-id": [ "51efeeab-c3cc-4897-b329-9255f89295c9" ],
-        "x-ms-correlation-request-id": [ "51efeeab-c3cc-4897-b329-9255f89295c9" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260904T095557Z:51efeeab-c3cc-4897-b329-9255f89295c9" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "9797689f-50f2-4b9d-a545-cdbd07a8c9d0" ],
+        "x-ms-correlation-request-id": [ "9797689f-50f2-4b9d-a545-cdbd07a8c9d0" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260907T121554Z:9797689f-50f2-4b9d-a545-cdbd07a8c9d0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CFFAC2CA9E43410CA6DEB66B1AB1CCCC Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:57Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:57 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CCEE9D1921724080BC004F227EC06E31 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:54Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1858" ],
@@ -590,8 +592,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "274" ],
-        "x-ms-client-request-id": [ "d5868428-adfb-45ea-a67c-e56079755b70" ],
+        "x-ms-unique-id": [ "301" ],
+        "x-ms-client-request-id": [ "01fb3563-c056-4776-a860-7338290ffdf9" ],
         "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -606,17 +608,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/1c8384aa-7f46-430b-9eae-931ccc431d2c" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/62e987f2-04cf-41bc-a7b4-d6e1823686da" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1098" ],
-        "x-ms-request-id": [ "9ad393a6-c877-49af-a0b8-ff94bb858edb" ],
-        "x-ms-correlation-request-id": [ "9ad393a6-c877-49af-a0b8-ff94bb858edb" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260904T095558Z:9ad393a6-c877-49af-a0b8-ff94bb858edb" ],
+        "x-ms-request-id": [ "89ba94e9-8249-49e6-9e5e-50ec8d033de3" ],
+        "x-ms-correlation-request-id": [ "89ba94e9-8249-49e6-9e5e-50ec8d033de3" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260907T121555Z:89ba94e9-8249-49e6-9e5e-50ec8d033de3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7B4433C36EDD4A36A152E16E81BE0BB0 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:57Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:57 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E090D7AA7FC649FCB07839A71DAF705C Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:55Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:55 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1858" ],
@@ -634,8 +636,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "275" ],
-        "x-ms-client-request-id": [ "4ea743ce-a1be-4a52-9f0f-334debcf6405" ],
+        "x-ms-unique-id": [ "302" ],
+        "x-ms-client-request-id": [ "deb86e7f-4817-4200-81e1-989737988b81" ],
         "CommandName": [ "Remove-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Remove-AzDataProtectionBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -651,16 +653,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/551193ad-2820-4f4f-bd3c-1eed298a537b" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/c6112328-6e26-408f-9887-46d5a2d8defa" ],
         "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "798" ],
-        "x-ms-request-id": [ "7de524c0-9684-4d59-8474-6210e25abcad" ],
-        "x-ms-correlation-request-id": [ "7de524c0-9684-4d59-8474-6210e25abcad" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260904T095558Z:7de524c0-9684-4d59-8474-6210e25abcad" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "8a83d78b-25bf-485d-b325-6938ec2d4a1d" ],
+        "x-ms-correlation-request-id": [ "8a83d78b-25bf-485d-b325-6938ec2d4a1d" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260907T121556Z:8a83d78b-25bf-485d-b325-6938ec2d4a1d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 550E178AD5D74019A6DEF34D8B4411E5 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:58Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:58 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 30157FD103FC41B686198D762FF5C7DA Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:55Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:56 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -677,8 +679,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "276" ],
-        "x-ms-client-request-id": [ "3a6130b0-0d73-40e5-a712-c8bb5213b44c" ],
+        "x-ms-unique-id": [ "303" ],
+        "x-ms-client-request-id": [ "37b01223-86e6-4ff0-82ec-9d81b1acf49d" ],
         "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -693,17 +695,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/93ce0bcf-87ec-448b-aa87-7341f1809295" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/centraluseuap/131b74f2-be90-4c39-9463-7c121ba5dabf" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1098" ],
-        "x-ms-request-id": [ "61dd32e1-f30f-45ae-9feb-39c7113409f0" ],
-        "x-ms-correlation-request-id": [ "61dd32e1-f30f-45ae-9feb-39c7113409f0" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260904T095559Z:61dd32e1-f30f-45ae-9feb-39c7113409f0" ],
+        "x-ms-request-id": [ "fad11bca-ce04-4ad5-b9a5-2e34f3803499" ],
+        "x-ms-correlation-request-id": [ "fad11bca-ce04-4ad5-b9a5-2e34f3803499" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20260907T121556Z:fad11bca-ce04-4ad5-b9a5-2e34f3803499" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B977F7BF151E490E9C531F3FB6D28CA9 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:58Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:58 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2AA8D1FCE4394A5EBD5D9975797639D2 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:56Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:56 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "10023" ],
@@ -721,8 +723,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "277" ],
-        "x-ms-client-request-id": [ "4ff54a56-06e2-4e01-82a3-8feb329ac7fd" ],
+        "x-ms-unique-id": [ "304" ],
+        "x-ms-client-request-id": [ "67d4c1f0-07d4-4aac-8e96-8d818e6cd77a" ],
         "CommandName": [ "Remove-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Remove-AzDataProtectionBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -738,15 +740,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/4318f561-7711-4039-be09-a795fb5cb878" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/e9b0fd8f-f130-4646-a6c9-5ff65671c355" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "bdb46709-6dd1-44fe-95fd-6162cbb1a1fe" ],
-        "x-ms-correlation-request-id": [ "bdb46709-6dd1-44fe-95fd-6162cbb1a1fe" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260904T095559Z:bdb46709-6dd1-44fe-95fd-6162cbb1a1fe" ],
+        "x-ms-request-id": [ "53f2f0e5-cb8c-4166-8b6c-108e03f5092e" ],
+        "x-ms-correlation-request-id": [ "53f2f0e5-cb8c-4166-8b6c-108e03f5092e" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260907T121556Z:53f2f0e5-cb8c-4166-8b6c-108e03f5092e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2EBA555251804B6BB80C7A7FDB1882CD Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:59Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:55:59 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 03344ED7D5954F4EBA5F0EB216ACE05B Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:56Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:56 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
@@ -773,16 +775,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/881f0e45-2dbb-417e-bb06-0bf133f05ea3" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/303fa093-1004-47f8-8ae2-e09cfae9e0c7" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "d858964c-5ff8-4244-90da-aa677461a3b6" ],
-        "x-ms-correlation-request-id": [ "d858964c-5ff8-4244-90da-aa677461a3b6" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260904T095600Z:d858964c-5ff8-4244-90da-aa677461a3b6" ],
+        "x-ms-request-id": [ "446a0018-4403-43e0-806b-c8c294052287" ],
+        "x-ms-correlation-request-id": [ "446a0018-4403-43e0-806b-c8c294052287" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260907T121557Z:446a0018-4403-43e0-806b-c8c294052287" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 25F2626FA7E74B06B9ED67BC4408C633 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:55:59Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:56:00 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: BAECC54B076344EBB5ACE0DEBF8BBC08 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:57Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1528" ],
@@ -800,8 +802,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "279" ],
-        "x-ms-client-request-id": [ "8248b54d-2448-4851-ab4f-53270d751700" ],
+        "x-ms-unique-id": [ "306" ],
+        "x-ms-client-request-id": [ "9708fdd2-e919-4df5-989f-bec28434a90a" ],
         "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -816,16 +818,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/484fbd30-57d3-477e-b55d-3d5fa9cf17c8" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/bc26278d-0cd7-4f80-95ca-da81d5b21fd6" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "30a15a7e-785e-48d1-a554-4912b7c61ae7" ],
-        "x-ms-correlation-request-id": [ "30a15a7e-785e-48d1-a554-4912b7c61ae7" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260904T095601Z:30a15a7e-785e-48d1-a554-4912b7c61ae7" ],
+        "x-ms-request-id": [ "29d776b7-318b-4d02-9c30-8fa178477a31" ],
+        "x-ms-correlation-request-id": [ "29d776b7-318b-4d02-9c30-8fa178477a31" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260907T121558Z:29d776b7-318b-4d02-9c30-8fa178477a31" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6C692C4A17FE402F9D060D8547F074F1 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:56:00Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:56:00 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 51F924B574334AE7B14797C849AA39CF Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:57Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1528" ],
@@ -843,8 +845,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "280" ],
-        "x-ms-client-request-id": [ "d1a96532-d633-4cb5-8f88-cf35b5607557" ],
+        "x-ms-unique-id": [ "307" ],
+        "x-ms-client-request-id": [ "7dd110d0-86b0-460c-9694-98fab0afa563" ],
         "CommandName": [ "Remove-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Remove-AzDataProtectionBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -860,15 +862,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/805e1c3a-d1f2-4263-b3de-d924d994b498" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/f66224a2-e19b-49f3-8ffe-590d388791cb" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "08a5167e-88e1-41d5-b47e-6fcf94b46790" ],
-        "x-ms-correlation-request-id": [ "08a5167e-88e1-41d5-b47e-6fcf94b46790" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260904T095602Z:08a5167e-88e1-41d5-b47e-6fcf94b46790" ],
+        "x-ms-request-id": [ "4b512796-d03a-4dd1-abaf-9f4cc500f500" ],
+        "x-ms-correlation-request-id": [ "4b512796-d03a-4dd1-abaf-9f4cc500f500" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260907T121559Z:4b512796-d03a-4dd1-abaf-9f4cc500f500" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 80D4E3386E0B4EA498D78B8DEC095F84 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:56:01Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:56:01 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 054EC2FD80F4443F88A014F411C96DE8 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:58Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:59 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -885,8 +887,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "281" ],
-        "x-ms-client-request-id": [ "807c4790-2b13-4c59-ab38-0451a2a63782" ],
+        "x-ms-unique-id": [ "308" ],
+        "x-ms-client-request-id": [ "4d9ec7b7-3e93-4bd5-b006-5f00fff44e67" ],
         "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -901,16 +903,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/e34e4b55-249e-4133-9030-6ff0cea40780" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/a92a4886-f9cb-42ad-a745-5529c0515564" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "8df466ad-af3d-4deb-b903-c0bd9c6ffcad" ],
-        "x-ms-correlation-request-id": [ "8df466ad-af3d-4deb-b903-c0bd9c6ffcad" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260904T095602Z:8df466ad-af3d-4deb-b903-c0bd9c6ffcad" ],
+        "x-ms-request-id": [ "5eb925a7-4599-4928-8292-614a7fa69a02" ],
+        "x-ms-correlation-request-id": [ "5eb925a7-4599-4928-8292-614a7fa69a02" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260907T121559Z:5eb925a7-4599-4928-8292-614a7fa69a02" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E12C8690E6A645629BAD67E83E98A244 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:56:02Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:56:01 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D731AF54EB4945ECB6B5E8CD7436CCF0 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:59Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:15:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "23541" ],
@@ -928,8 +930,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "282" ],
-        "x-ms-client-request-id": [ "b547c844-86c2-4d2c-bcc3-8a8409b5e2b5" ],
+        "x-ms-unique-id": [ "309" ],
+        "x-ms-client-request-id": [ "2fee8eb3-ce9b-4220-a363-ed32569f9834" ],
         "CommandName": [ "Remove-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Remove-AzDataProtectionBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -945,15 +947,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/20142d04-d9b6-4b22-851b-aad5a02b0439" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/8cab45eb-39f0-4694-ab77-81c4b8c01743" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "18cf21c4-8459-4abd-95f4-12dde1a5c017" ],
-        "x-ms-correlation-request-id": [ "18cf21c4-8459-4abd-95f4-12dde1a5c017" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260904T095602Z:18cf21c4-8459-4abd-95f4-12dde1a5c017" ],
+        "x-ms-request-id": [ "66921250-7ec8-46e0-a6cc-790a730f579c" ],
+        "x-ms-correlation-request-id": [ "66921250-7ec8-46e0-a6cc-790a730f579c" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260907T121600Z:66921250-7ec8-46e0-a6cc-790a730f579c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FFE967AA171E4308B01D5825F9BC7737 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:56:02Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:56:02 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A8CCAAE0000B41BF860037D90EF566B2 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:15:59Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:16:00 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
@@ -980,16 +982,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/631dff72-2c33-460a-b94c-18e09b4a3aad" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/042580d0-90d3-46b5-aa93-af023073eb86" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "39b200e4-c280-429d-a2cd-8b4da5ea2e60" ],
-        "x-ms-correlation-request-id": [ "39b200e4-c280-429d-a2cd-8b4da5ea2e60" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260904T095603Z:39b200e4-c280-429d-a2cd-8b4da5ea2e60" ],
+        "x-ms-request-id": [ "5e3bd05f-1c38-4b2f-8991-bb67f4106da0" ],
+        "x-ms-correlation-request-id": [ "5e3bd05f-1c38-4b2f-8991-bb67f4106da0" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260907T121600Z:5e3bd05f-1c38-4b2f-8991-bb67f4106da0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1E60B31DF9414299BA28E20403C7E484 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:56:03Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:56:03 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D1A3332D893F4AECB1165D70CE33EBF6 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:16:00Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:16:00 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2656" ],
@@ -1007,8 +1009,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "284" ],
-        "x-ms-client-request-id": [ "efd53317-97a5-401a-8674-02bc7ef66d9d" ],
+        "x-ms-unique-id": [ "311" ],
+        "x-ms-client-request-id": [ "dc0208cb-38a6-4fb8-85e9-62a46e51f4e6" ],
         "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1023,16 +1025,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/688da2a7-ab71-417a-a719-ba9d3f0424a0" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/990bce6c-0e91-47fa-9232-78a2283697e4" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "0a5619b6-d767-48aa-b065-3aeb17d7ae6e" ],
-        "x-ms-correlation-request-id": [ "0a5619b6-d767-48aa-b065-3aeb17d7ae6e" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260904T095604Z:0a5619b6-d767-48aa-b065-3aeb17d7ae6e" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1098" ],
+        "x-ms-request-id": [ "b3065765-8c0c-4d5f-9559-a30b41bd9593" ],
+        "x-ms-correlation-request-id": [ "b3065765-8c0c-4d5f-9559-a30b41bd9593" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260907T121601Z:b3065765-8c0c-4d5f-9559-a30b41bd9593" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 39BA7B728D6749809E3960854DF7AB3A Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:56:03Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:56:03 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7F7DC4C21A624505BB36E50379F77D53 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:16:00Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:16:01 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2656" ],
@@ -1050,8 +1052,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "285" ],
-        "x-ms-client-request-id": [ "96f774d0-e6a9-4bcb-892d-3ff465178333" ],
+        "x-ms-unique-id": [ "312" ],
+        "x-ms-client-request-id": [ "26b9d4b1-f1d5-47f7-910b-93323cc74e40" ],
         "CommandName": [ "Remove-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Remove-AzDataProtectionBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1067,15 +1069,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/2c2db5d7-3ed4-467a-b6c1-3093627645e4" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/4a7d585b-a076-4374-b46e-842d49a2942e" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "798" ],
-        "x-ms-request-id": [ "518df5f3-5932-4d8a-9991-07b99eedb7f6" ],
-        "x-ms-correlation-request-id": [ "518df5f3-5932-4d8a-9991-07b99eedb7f6" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260904T095604Z:518df5f3-5932-4d8a-9991-07b99eedb7f6" ],
+        "x-ms-request-id": [ "99f5f0f1-8641-43ca-8a0f-d59d408d2bcf" ],
+        "x-ms-correlation-request-id": [ "99f5f0f1-8641-43ca-8a0f-d59d408d2bcf" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260907T121602Z:99f5f0f1-8641-43ca-8a0f-d59d408d2bcf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8FD81BE8281F491F9B8CB92EBE25BBA7 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:56:04Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:56:04 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D2386E82751A4B41973A83810F7783A5 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:16:01Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:16:02 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -1092,8 +1094,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "286" ],
-        "x-ms-client-request-id": [ "8aaeaf8d-2a6a-4596-a895-aabb0bc2e7d2" ],
+        "x-ms-unique-id": [ "313" ],
+        "x-ms-client-request-id": [ "368ac33f-cab9-4c8b-856f-2f2d9aa9a6f4" ],
         "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1108,16 +1110,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/3d314938-7e91-4115-b3e7-984020bdd355" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/976000a1-4644-4d3f-8222-387768c82098" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1098" ],
-        "x-ms-request-id": [ "3aea1db9-9c68-4b25-bf62-e6ddd1ad64a8" ],
-        "x-ms-correlation-request-id": [ "3aea1db9-9c68-4b25-bf62-e6ddd1ad64a8" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260904T095605Z:3aea1db9-9c68-4b25-bf62-e6ddd1ad64a8" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-request-id": [ "bbdd1aed-2c89-4e0f-8c70-ad6ddf3733e3" ],
+        "x-ms-correlation-request-id": [ "bbdd1aed-2c89-4e0f-8c70-ad6ddf3733e3" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260907T121602Z:bbdd1aed-2c89-4e0f-8c70-ad6ddf3733e3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6F877805FA32417B9DDB5B9E54CC92C6 Ref B: SG2AA1070305040 Ref C: 2026-09-04T09:56:05Z" ],
-        "Date": [ "Fri, 04 Sep 2026 09:56:04 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 032BBA477E7644E4991D7F8FAF28F7C7 Ref B: SG2AA1040518060 Ref C: 2026-09-07T12:16:02Z" ],
+        "Date": [ "Mon, 07 Sep 2026 12:16:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "23541" ],

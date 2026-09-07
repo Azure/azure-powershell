@@ -133,33 +133,3 @@ function UnprotectSecureString
 		return $plaintext
 	}
 }
-
-function Get-AzDataProtectionAsPerPolicyImmutabilityPipeline
-{
-	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
-	param()
-
-	$pipelineScript = {
-		param($request, $callback, $next)
-
-		if ($null -eq $request.Content) {
-			return $next.SendAsync($request, $callback)
-		}
-
-		$requestBody = $request.Content.ReadAsStringAsync().GetAwaiter().GetResult() | ConvertFrom-Json
-		if ($null -eq $requestBody.properties.securitySettings.immutabilitySettings.configuration) {
-			$requestBody.properties.securitySettings.immutabilitySettings |
-				Add-Member -MemberType NoteProperty -Name configuration -Value ([PSCustomObject]@{})
-		}
-
-		$requestBody.properties.securitySettings.immutabilitySettings.configuration |
-			Add-Member -MemberType NoteProperty -Name type -Value 'AsPerPolicy' -Force
-
-		$jsonBody = $requestBody | ConvertTo-Json -Depth 100 -Compress
-		$request.Content = [System.Net.Http.StringContent]::new($jsonBody, [System.Text.Encoding]::UTF8, 'application/json')
-
-		return $next.SendAsync($request, $callback)
-	}
-
-	return [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep]$pipelineScript
-}
