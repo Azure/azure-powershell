@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Full view of networking configuration for an ASE.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AseV3NetworkingConfiguration : ProxyOnlyResource
+    public partial class AseV3NetworkingConfiguration : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the AseV3NetworkingConfiguration class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the AseV3NetworkingConfiguration class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="windowsOutboundIPAddresses">
@@ -43,16 +49,37 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="linuxOutboundIPAddresses">
         /// </param>
 
+        /// <param name="externalInboundIPAddresses">
+        /// </param>
+
+        /// <param name="internalInboundIPAddresses">
+        /// </param>
+
         /// <param name="allowNewPrivateEndpointConnections">Property to enable and disable new private endpoint connection creation on
         /// ASE
         /// </param>
-        public AseV3NetworkingConfiguration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.Collections.Generic.IList<string> windowsOutboundIPAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> linuxOutboundIPAddresses = default(System.Collections.Generic.IList<string>), bool? allowNewPrivateEndpointConnections = default(bool?))
 
-        : base(id, name, kind, type)
+        /// <param name="ftpEnabled">Property to enable and disable FTP on ASEV3
+        /// </param>
+
+        /// <param name="remoteDebugEnabled">Property to enable and disable Remote Debug on ASEV3
+        /// </param>
+
+        /// <param name="inboundIPAddressOverride">Customer provided Inbound IP Address. Only able to be set on Ase create.
+        /// </param>
+        public AseV3NetworkingConfiguration(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), System.Collections.Generic.IList<string> windowsOutboundIPAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> linuxOutboundIPAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> externalInboundIPAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> internalInboundIPAddresses = default(System.Collections.Generic.IList<string>), bool? allowNewPrivateEndpointConnections = default(bool?), bool? ftpEnabled = default(bool?), bool? remoteDebugEnabled = default(bool?), string inboundIPAddressOverride = default(string))
+
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.WindowsOutboundIpAddresses = windowsOutboundIPAddresses;
             this.LinuxOutboundIpAddresses = linuxOutboundIPAddresses;
+            this.ExternalInboundIPAddresses = externalInboundIPAddresses;
+            this.InternalInboundIPAddresses = internalInboundIPAddresses;
             this.AllowNewPrivateEndpointConnections = allowNewPrivateEndpointConnections;
+            this.FtpEnabled = ftpEnabled;
+            this.RemoteDebugEnabled = remoteDebugEnabled;
+            this.InboundIPAddressOverride = inboundIPAddressOverride;
             CustomInit();
         }
 
@@ -61,6 +88,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets
@@ -75,10 +108,41 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public System.Collections.Generic.IList<string> LinuxOutboundIpAddresses {get; private set; }
 
         /// <summary>
+        /// Gets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.externalInboundIpAddresses")]
+        public System.Collections.Generic.IList<string> ExternalInboundIPAddresses {get; private set; }
+
+        /// <summary>
+        /// Gets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.internalInboundIpAddresses")]
+        public System.Collections.Generic.IList<string> InternalInboundIPAddresses {get; private set; }
+
+        /// <summary>
         /// Gets or sets property to enable and disable new private endpoint connection
         /// creation on ASE
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.allowNewPrivateEndpointConnections")]
         public bool? AllowNewPrivateEndpointConnections {get; set; }
+
+        /// <summary>
+        /// Gets or sets property to enable and disable FTP on ASEV3
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ftpEnabled")]
+        public bool? FtpEnabled {get; set; }
+
+        /// <summary>
+        /// Gets or sets property to enable and disable Remote Debug on ASEV3
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.remoteDebugEnabled")]
+        public bool? RemoteDebugEnabled {get; set; }
+
+        /// <summary>
+        /// Gets or sets customer provided Inbound IP Address. Only able to be set on
+        /// Ase create.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.inboundIpAddressOverride")]
+        public string InboundIPAddressOverride {get; set; }
     }
 }

@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List Hosting Environment Detector Responses
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Site Name
+        /// App Service Environment Name
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Hosting Environment Detector Response
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// App Service Environment Name
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List Site Detector Responses
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get site detector response
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Diagnostics Categories
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Diagnostics Category
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Site Analyses
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Site Analysis
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -264,16 +264,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Execute Analysis
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
         /// <param name='diagnosticCategory'>
-        /// Category Name
+        /// Diagnostic Category
         /// </param>
         /// <param name='analysisName'>
-        /// Analysis Resource Name
+        /// Analysis Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Detectors
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinition>>> ListSiteDetectorsWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>>> ListSiteDetectorsWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get Detector
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Detector
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DetectorDefinition>> GetSiteDetectorWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DetectorDefinitionResource>> GetSiteDetectorWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Execute Detector
@@ -366,16 +366,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Execute Detector
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='detectorName'>
-        /// Detector Resource Name
-        /// </param>
         /// <param name='diagnosticCategory'>
-        /// Category Name
+        /// Diagnostic Category
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticDetectorResponse>> ExecuteSiteDetectorWithHttpMessagesAsync(string resourceGroupName, string siteName, string detectorName, string diagnosticCategory, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticDetectorResponse>> ExecuteSiteDetectorWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List Site Detector Responses
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List Site Detector Responses
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -436,16 +436,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get site detector response
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='detectorName'>
-        /// Detector Resource Name
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Resource Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DetectorResponse>> GetSiteDetectorResponseSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string detectorName, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DetectorResponse>> GetSiteDetectorResponseSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get Diagnostics Categories
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Diagnostics Categories
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -506,16 +506,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Diagnostics Category
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='diagnosticCategory'>
-        /// Diagnostic Category
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
+        /// </param>
+        /// <param name='diagnosticCategory'>
+        /// Diagnostic Category
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -529,7 +529,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticCategory>> GetSiteDiagnosticCategorySlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticCategory>> GetSiteDiagnosticCategorySlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string diagnosticCategory, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get Site Analyses
@@ -538,16 +538,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Site Analyses
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
+        /// <param name='slot'>
+        /// Slot - optional
+        /// </param>
         /// <param name='diagnosticCategory'>
         /// Diagnostic Category
-        /// </param>
-        /// <param name='slot'>
-        /// Slot Name
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AnalysisDefinition>>> ListSiteAnalysesSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AnalysisDefinition>>> ListSiteAnalysesSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string diagnosticCategory, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get Site Analysis
@@ -570,10 +570,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Site Analysis
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
+        /// </param>
+        /// <param name='slot'>
+        /// Slot - optional
         /// </param>
         /// <param name='diagnosticCategory'>
         /// Diagnostic Category
@@ -581,9 +584,6 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='analysisName'>
         /// Analysis Name
         /// </param>
-        /// <param name='slot'>
-        /// Slot - optional
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -596,7 +596,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AnalysisDefinition>> GetSiteAnalysisSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AnalysisDefinition>> GetSiteAnalysisSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string diagnosticCategory, string analysisName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Execute Analysis
@@ -605,19 +605,19 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Execute Analysis
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
+        /// <param name='slot'>
+        /// Slot - optional
+        /// </param>
         /// <param name='diagnosticCategory'>
-        /// Category Name
+        /// Diagnostic Category
         /// </param>
         /// <param name='analysisName'>
-        /// Analysis Resource Name
-        /// </param>
-        /// <param name='slot'>
-        /// Slot Name
+        /// Analysis Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticAnalysis>> ExecuteSiteAnalysisSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticAnalysis>> ExecuteSiteAnalysisSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string diagnosticCategory, string analysisName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get Detectors
@@ -649,16 +649,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Detectors
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='diagnosticCategory'>
-        /// Diagnostic Category
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
+        /// </param>
+        /// <param name='diagnosticCategory'>
+        /// Diagnostic Category
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinition>>> ListSiteDetectorsSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>>> ListSiteDetectorsSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string diagnosticCategory, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get Detector
@@ -681,10 +681,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Detector
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
+        /// </param>
+        /// <param name='slot'>
+        /// Slot Name
         /// </param>
         /// <param name='diagnosticCategory'>
         /// Diagnostic Category
@@ -692,9 +695,6 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='detectorName'>
         /// Detector Name
         /// </param>
-        /// <param name='slot'>
-        /// Slot Name
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -707,7 +707,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DetectorDefinition>> GetSiteDetectorSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DetectorDefinitionResource>> GetSiteDetectorSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string diagnosticCategory, string detectorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Execute Detector
@@ -716,19 +716,19 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Execute Detector
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='detectorName'>
-        /// Detector Resource Name
-        /// </param>
-        /// <param name='diagnosticCategory'>
-        /// Category Name
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
+        /// </param>
+        /// <param name='diagnosticCategory'>
+        /// Diagnostic Category
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticDetectorResponse>> ExecuteSiteDetectorSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string detectorName, string diagnosticCategory, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticDetectorResponse>> ExecuteSiteDetectorSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string diagnosticCategory, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List Hosting Environment Detector Responses
@@ -866,7 +866,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinition>>> ListSiteDetectorsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>>> ListSiteDetectorsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List Site Detector Responses
@@ -958,7 +958,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinition>>> ListSiteDetectorsSlotNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>>> ListSiteDetectorsSlotNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

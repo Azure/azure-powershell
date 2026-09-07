@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Process Information.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ProcessInfo : ProxyOnlyResource
+    public partial class ProcessInfo : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ProcessInfo class.
@@ -25,16 +25,25 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the ProcessInfo class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="isWebjob">Is this a Web Job?
         /// </param>
 
         /// <param name="identifier">ARM Identifier for deployment.
@@ -139,15 +148,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="isScmSite">Is this the SCM site?
         /// </param>
 
-        /// <param name="isWebjob">Is this a Web Job?
-        /// </param>
-
         /// <param name="description">Description of process.
         /// </param>
-        public ProcessInfo(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? identifier = default(int?), string deploymentName = default(string), string href = default(string), string minidump = default(string), bool? isProfileRunning = default(bool?), bool? isIisProfileRunning = default(bool?), double? iisProfileTimeoutInSeconds = default(double?), string parent = default(string), System.Collections.Generic.IList<string> children = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ProcessThreadInfo> threads = default(System.Collections.Generic.IList<ProcessThreadInfo>), System.Collections.Generic.IList<string> openFileHandles = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ProcessModuleInfo> modules = default(System.Collections.Generic.IList<ProcessModuleInfo>), string fileName = default(string), string commandLine = default(string), string userName = default(string), int? handleCount = default(int?), int? moduleCount = default(int?), int? threadCount = default(int?), System.DateTime? startTime = default(System.DateTime?), string totalCpuTime = default(string), string userCpuTime = default(string), string privilegedCpuTime = default(string), long? workingSet = default(long?), long? peakWorkingSet = default(long?), long? privateMemory = default(long?), long? virtualMemory = default(long?), long? peakVirtualMemory = default(long?), long? pagedSystemMemory = default(long?), long? nonPagedSystemMemory = default(long?), long? pagedMemory = default(long?), long? peakPagedMemory = default(long?), System.DateTime? timeStamp = default(System.DateTime?), System.Collections.Generic.IDictionary<string, string> environmentVariables = default(System.Collections.Generic.IDictionary<string, string>), bool? isScmSite = default(bool?), bool? isWebjob = default(bool?), string description = default(string))
+        public ProcessInfo(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), bool? isWebjob = default(bool?), int? identifier = default(int?), string deploymentName = default(string), string href = default(string), string minidump = default(string), bool? isProfileRunning = default(bool?), bool? isIisProfileRunning = default(bool?), double? iisProfileTimeoutInSeconds = default(double?), string parent = default(string), System.Collections.Generic.IList<string> children = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ProcessThreadInfo> threads = default(System.Collections.Generic.IList<ProcessThreadInfo>), System.Collections.Generic.IList<string> openFileHandles = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ProcessModuleInfo> modules = default(System.Collections.Generic.IList<ProcessModuleInfo>), string fileName = default(string), string commandLine = default(string), string userName = default(string), int? handleCount = default(int?), int? moduleCount = default(int?), int? threadCount = default(int?), System.DateTime? startTime = default(System.DateTime?), string totalCpuTime = default(string), string userCpuTime = default(string), string privilegedCpuTime = default(string), long? workingSet = default(long?), long? peakWorkingSet = default(long?), long? privateMemory = default(long?), long? virtualMemory = default(long?), long? peakVirtualMemory = default(long?), long? pagedSystemMemory = default(long?), long? nonPagedSystemMemory = default(long?), long? pagedMemory = default(long?), long? peakPagedMemory = default(long?), System.DateTime? timeStamp = default(System.DateTime?), System.Collections.Generic.IDictionary<string, string> environmentVariables = default(System.Collections.Generic.IDictionary<string, string>), bool? isScmSite = default(bool?), string description = default(string))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
+            this.IsWebjob = isWebjob;
             this.Identifier = identifier;
             this.DeploymentName = deploymentName;
             this.Href = href;
@@ -182,7 +190,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.TimeStamp = timeStamp;
             this.EnvironmentVariables = environmentVariables;
             this.IsScmSite = isScmSite;
-            this.IsWebjob = isWebjob;
             this.Description = description;
             CustomInit();
         }
@@ -192,6 +199,18 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
+
+        /// <summary>
+        /// Gets or sets is this a Web Job?
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.is_webjob")]
+        public bool? IsWebjob {get; set; }
 
         /// <summary>
         /// Gets aRM Identifier for deployment.
@@ -396,12 +415,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.is_scm_site")]
         public bool? IsScmSite {get; set; }
-
-        /// <summary>
-        /// Gets or sets is this a Web Job?
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.is_webjob")]
-        public bool? IsWebjob {get; set; }
 
         /// <summary>
         /// Gets or sets description of process.

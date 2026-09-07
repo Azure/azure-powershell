@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// A Kubernetes cluster specialized for web workloads by Azure App Service
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class KubeEnvironment : Resource
+    public partial class KubeEnvironment : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the KubeEnvironment class.
@@ -25,25 +25,31 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the KubeEnvironment class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="kind">Kind of resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource Location.
-        /// </param>
-
-        /// <param name="type">Resource type.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
         /// </param>
 
+        /// <param name="location">The geo-location where the resource lives
+        /// </param>
+
         /// <param name="extendedLocation">Extended Location.
+        /// </param>
+
+        /// <param name="kind">Kind of resource.
         /// </param>
 
         /// <param name="arcConfiguration">Cluster configuration which determines the ARC cluster
@@ -69,25 +75,36 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="staticIP">Static IP of the KubeEnvironment
         /// </param>
 
+        /// <param name="environmentType">Type of Kubernetes Environment. Only supported for Container App
+        /// Environments with value as Managed
+        /// </param>
+
         /// <param name="appLogsConfiguration">Cluster configuration which enables the log daemon to export
         /// app logs to a destination. Currently only &#34;log-analytics&#34; is
         /// supported
         /// </param>
 
+        /// <param name="containerAppsConfiguration">Cluster configuration for Container Apps Environments to configure Dapr
+        /// Instrumentation Key and VNET Configuration
+        /// </param>
+
         /// <param name="aksResourceId">
         /// </param>
-        public KubeEnvironment(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), ArcConfiguration arcConfiguration = default(ArcConfiguration), KubeEnvironmentProvisioningState? provisioningState = default(KubeEnvironmentProvisioningState?), string deploymentErrors = default(string), bool? internalLoadBalancerEnabled = default(bool?), string defaultDomain = default(string), string staticIP = default(string), AppLogsConfiguration appLogsConfiguration = default(AppLogsConfiguration), string aksResourceId = default(string))
+        public KubeEnvironment(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string kind = default(string), ArcConfiguration arcConfiguration = default(ArcConfiguration), KubeEnvironmentProvisioningState? provisioningState = default(KubeEnvironmentProvisioningState?), string deploymentErrors = default(string), bool? internalLoadBalancerEnabled = default(bool?), string defaultDomain = default(string), string staticIP = default(string), string environmentType = default(string), AppLogsConfiguration appLogsConfiguration = default(AppLogsConfiguration), ContainerAppsConfiguration containerAppsConfiguration = default(ContainerAppsConfiguration), string aksResourceId = default(string))
 
-        : base(location, id, name, kind, type, tags)
+        : base(location, id, name, type, systemData, tags)
         {
             this.ExtendedLocation = extendedLocation;
+            this.Kind = kind;
             this.ArcConfiguration = arcConfiguration;
             this.ProvisioningState = provisioningState;
             this.DeploymentErrors = deploymentErrors;
             this.InternalLoadBalancerEnabled = internalLoadBalancerEnabled;
             this.DefaultDomain = defaultDomain;
             this.StaticIp = staticIP;
+            this.EnvironmentType = environmentType;
             this.AppLogsConfiguration = appLogsConfiguration;
+            this.ContainerAppsConfiguration = containerAppsConfiguration;
             this.AksResourceID = aksResourceId;
             CustomInit();
         }
@@ -103,6 +120,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "extendedLocation")]
         public ExtendedLocation ExtendedLocation {get; set; }
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets cluster configuration which determines the ARC cluster
@@ -143,12 +166,26 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public string StaticIp {get; set; }
 
         /// <summary>
+        /// Gets or sets type of Kubernetes Environment. Only supported for Container
+        /// App Environments with value as Managed
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.environmentType")]
+        public string EnvironmentType {get; set; }
+
+        /// <summary>
         /// Gets or sets cluster configuration which enables the log daemon to export
         /// app logs to a destination. Currently only &#34;log-analytics&#34; is
         /// supported
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.appLogsConfiguration")]
         public AppLogsConfiguration AppLogsConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets or sets cluster configuration for Container Apps Environments to
+        /// configure Dapr Instrumentation Key and VNET Configuration
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.containerAppsConfiguration")]
+        public ContainerAppsConfiguration ContainerAppsConfiguration {get; set; }
 
         /// <summary>
         /// Gets or sets
@@ -164,6 +201,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public override void Validate()
         {
             base.Validate();
+
+
+
 
 
 

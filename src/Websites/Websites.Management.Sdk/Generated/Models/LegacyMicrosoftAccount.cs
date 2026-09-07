@@ -10,8 +10,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// <summary>
     /// The configuration settings of the legacy Microsoft Account provider.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class LegacyMicrosoftAccount : ProxyOnlyResource
+    public partial class LegacyMicrosoftAccount
     {
         /// <summary>
         /// Initializes a new instance of the LegacyMicrosoftAccount class.
@@ -24,18 +23,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the LegacyMicrosoftAccount class.
         /// </summary>
-
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
 
         /// <param name="enabled">&lt;code&gt;false&lt;/code&gt; if the legacy Microsoft Account provider should not be
         /// enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.
@@ -51,9 +38,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="validation">The configuration settings of the legacy Microsoft Account provider token
         /// validation flow.
         /// </param>
-        public LegacyMicrosoftAccount(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? enabled = default(bool?), ClientRegistration registration = default(ClientRegistration), LoginScopes login = default(LoginScopes), AllowedAudiencesValidation validation = default(AllowedAudiencesValidation))
+        public LegacyMicrosoftAccount(bool? enabled = default(bool?), ClientRegistration registration = default(ClientRegistration), LoginScopes login = default(LoginScopes), AllowedAudiencesValidation validation = default(AllowedAudiencesValidation))
 
-        : base(id, name, kind, type)
         {
             this.Enabled = enabled;
             this.Registration = registration;
@@ -73,27 +59,27 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// should not be enabled despite the set registration; otherwise,
         /// &lt;code&gt;true&lt;/code&gt;.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enabled")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enabled")]
         public bool? Enabled {get; set; }
 
         /// <summary>
         /// Gets or sets the configuration settings of the app registration for the
         /// legacy Microsoft Account provider.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.registration")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "registration")]
         public ClientRegistration Registration {get; set; }
 
         /// <summary>
         /// Gets or sets the configuration settings of the login flow.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.login")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "login")]
         public LoginScopes Login {get; set; }
 
         /// <summary>
         /// Gets or sets the configuration settings of the legacy Microsoft Account
         /// provider token validation flow.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.validation")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "validation")]
         public AllowedAudiencesValidation Validation {get; set; }
     }
 }

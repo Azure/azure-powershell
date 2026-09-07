@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="type">Resource type.
         /// </param>
 
+        /// <param name="identity">Managed service identity.
+        /// </param>
+
         /// <param name="provisioningState">Provisioning state of the App Service Plan.
         /// Possible values include: &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;InProgress&#39;,
         /// &#39;Deleting&#39;</param>
@@ -55,6 +58,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </param>
 
         /// <param name="maximumNumberOfWorkers">Maximum number of instances that can be assigned to this App Service plan.
+        /// </param>
+
+        /// <param name="numberOfWorkers">The number of instances that are assigned to this App Service plan.
         /// </param>
 
         /// <param name="geoRegion">Geographical location for the App Service plan.
@@ -110,16 +116,24 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="kubeEnvironmentProfile">Specification for the Kubernetes Environment to use for the App Service
         /// plan.
         /// </param>
-        public AppServicePlanPatchResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), ProvisioningState? provisioningState = default(ProvisioningState?), string workerTierName = default(string), StatusOptions? status = default(StatusOptions?), string subscription = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), int? maximumNumberOfWorkers = default(int?), string geoRegion = default(string), bool? perSiteScaling = default(bool?), bool? elasticScaleEnabled = default(bool?), int? maximumElasticWorkerCount = default(int?), int? numberOfSites = default(int?), bool? isSpot = default(bool?), System.DateTime? spotExpirationTime = default(System.DateTime?), System.DateTime? freeOfferExpirationTime = default(System.DateTime?), string resourceGroup = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), int? targetWorkerCount = default(int?), int? targetWorkerSizeId = default(int?), KubeEnvironmentProfile kubeEnvironmentProfile = default(KubeEnvironmentProfile))
+
+        /// <param name="zoneRedundant">If &lt;code&gt;true&lt;/code&gt;, this App Service Plan will perform availability zone
+        /// balancing.
+        /// If &lt;code&gt;false&lt;/code&gt;, this App Service Plan will not perform availability
+        /// zone balancing.
+        /// </param>
+        public AppServicePlanPatchResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), ProvisioningState? provisioningState = default(ProvisioningState?), string workerTierName = default(string), StatusOptions? status = default(StatusOptions?), string subscription = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), int? maximumNumberOfWorkers = default(int?), int? numberOfWorkers = default(int?), string geoRegion = default(string), bool? perSiteScaling = default(bool?), bool? elasticScaleEnabled = default(bool?), int? maximumElasticWorkerCount = default(int?), int? numberOfSites = default(int?), bool? isSpot = default(bool?), System.DateTime? spotExpirationTime = default(System.DateTime?), System.DateTime? freeOfferExpirationTime = default(System.DateTime?), string resourceGroup = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), int? targetWorkerCount = default(int?), int? targetWorkerSizeId = default(int?), KubeEnvironmentProfile kubeEnvironmentProfile = default(KubeEnvironmentProfile), bool? zoneRedundant = default(bool?))
 
         : base(id, name, kind, type)
         {
+            this.Identity = identity;
             this.ProvisioningState = provisioningState;
             this.WorkerTierName = workerTierName;
             this.Status = status;
             this.Subscription = subscription;
             this.HostingEnvironmentProfile = hostingEnvironmentProfile;
             this.MaximumNumberOfWorkers = maximumNumberOfWorkers;
+            this.NumberOfWorkers = numberOfWorkers;
             this.GeoRegion = geoRegion;
             this.PerSiteScaling = perSiteScaling;
             this.ElasticScaleEnabled = elasticScaleEnabled;
@@ -135,6 +149,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.TargetWorkerCount = targetWorkerCount;
             this.TargetWorkerSizeId = targetWorkerSizeId;
             this.KubeEnvironmentProfile = kubeEnvironmentProfile;
+            this.ZoneRedundant = zoneRedundant;
             CustomInit();
         }
 
@@ -143,6 +158,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets managed service identity.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity {get; set; }
 
         /// <summary>
         /// Gets provisioning state of the App Service Plan. Possible values include: &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;InProgress&#39;, &#39;Deleting&#39;
@@ -181,6 +202,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maximumNumberOfWorkers")]
         public int? MaximumNumberOfWorkers {get; private set; }
+
+        /// <summary>
+        /// Gets the number of instances that are assigned to this App Service plan.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.numberOfWorkers")]
+        public int? NumberOfWorkers {get; private set; }
 
         /// <summary>
         /// Gets geographical location for the App Service plan.
@@ -282,5 +309,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.kubeEnvironmentProfile")]
         public KubeEnvironmentProfile KubeEnvironmentProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets if &lt;code&gt;true&lt;/code&gt;, this App Service Plan will perform
+        /// availability zone balancing.
+        /// If &lt;code&gt;false&lt;/code&gt;, this App Service Plan will not perform availability
+        /// zone balancing.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.zoneRedundant")]
+        public bool? ZoneRedundant {get; set; }
     }
 }

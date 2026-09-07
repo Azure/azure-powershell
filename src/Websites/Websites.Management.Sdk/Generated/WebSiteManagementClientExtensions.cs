@@ -13,33 +13,6 @@ namespace Microsoft.Azure.Management.WebSites
     public static partial class WebSiteManagementClientExtensions
     {
         /// <summary>
-        /// Description for Exchange code for GitHub access token for AppService CLI
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        public static AppserviceGithubToken GenerateGithubAccessTokenForAppserviceCLIAsync(this IWebSiteManagementClient operations, string code, string state)
-        {
-                return ((IWebSiteManagementClient)operations).GenerateGithubAccessTokenForAppserviceCLIAsyncAsync(code, state).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Description for Exchange code for GitHub access token for AppService CLI
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<AppserviceGithubToken> GenerateGithubAccessTokenForAppserviceCLIAsyncAsync(this IWebSiteManagementClient operations, string code, string state, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GenerateGithubAccessTokenForAppserviceCLIAsyncWithHttpMessagesAsync(code, state, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Description for Gets publishing user
         /// </summary>
         /// <param name='operations'>
@@ -187,6 +160,33 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
+        /// Description for get a list of available ASE regions and its supported Skus.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<AseRegion> ListAseRegions(this IWebSiteManagementClient operations)
+        {
+                return ((IWebSiteManagementClient)operations).ListAseRegionsAsync().GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for get a list of available ASE regions and its supported Skus.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<AseRegion>> ListAseRegionsAsync(this IWebSiteManagementClient operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListAseRegionsWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Description for Gets a list of meters for a given location.
         /// </summary>
         /// <param name='operations'>
@@ -231,9 +231,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static ResourceNameAvailability CheckNameAvailability(this IWebSiteManagementClient operations, string name, string type, bool? isFqdn = default(bool?))
+        public static ResourceNameAvailability CheckNameAvailability(this IWebSiteManagementClient operations, string name, string type, bool? isFqdn = default(bool?), string environmentId = default(string))
         {
-                return ((IWebSiteManagementClient)operations).CheckNameAvailabilityAsync(name, type, isFqdn).GetAwaiter().GetResult();
+                return ((IWebSiteManagementClient)operations).CheckNameAvailabilityAsync(name, type, isFqdn, environmentId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -245,9 +245,42 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ResourceNameAvailability> CheckNameAvailabilityAsync(this IWebSiteManagementClient operations, string name, string type, bool? isFqdn = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ResourceNameAvailability> CheckNameAvailabilityAsync(this IWebSiteManagementClient operations, string name, string type, bool? isFqdn = default(bool?), string environmentId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(name, type, isFqdn, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(name, type, isFqdn, environmentId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get custom hostnames under this subscription
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='hostname'>
+        /// Specific hostname
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<CustomHostnameSites> ListCustomHostNameSites(this IWebSiteManagementClient operations, string hostname = default(string))
+        {
+                return ((IWebSiteManagementClient)operations).ListCustomHostNameSitesAsync(hostname).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get custom hostnames under this subscription
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='hostname'>
+        /// Specific hostname
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CustomHostnameSites>> ListCustomHostNameSitesAsync(this IWebSiteManagementClient operations, string hostname = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListCustomHostNameSitesWithHttpMessagesAsync(hostname, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -300,9 +333,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Specify &lt;code&gt;true&lt;/code&gt; if you want to filter to only regions that
         /// support Linux Consumption Workers.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<GeoRegion> ListGeoRegions(this IWebSiteManagementClient operations, string sku = default(string), bool? linuxWorkersEnabled = default(bool?), bool? xenonWorkersEnabled = default(bool?), bool? linuxDynamicWorkersEnabled = default(bool?))
+        /// <param name='customModeWorkersEnabled'>
+        /// Specify &lt;code&gt;true&lt;/code&gt; if you want to filter to only regions that
+        /// support App Service Plans with &lt;code&gt;IsCustomMode&lt;/code&gt; set to
+        /// &lt;code&gt;true&lt;/code&gt;.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<GeoRegion> ListGeoRegions(this IWebSiteManagementClient operations, string sku = default(string), bool? linuxWorkersEnabled = default(bool?), bool? xenonWorkersEnabled = default(bool?), bool? linuxDynamicWorkersEnabled = default(bool?), bool? customModeWorkersEnabled = default(bool?))
         {
-                return ((IWebSiteManagementClient)operations).ListGeoRegionsAsync(sku, linuxWorkersEnabled, xenonWorkersEnabled, linuxDynamicWorkersEnabled).GetAwaiter().GetResult();
+                return ((IWebSiteManagementClient)operations).ListGeoRegionsAsync(sku, linuxWorkersEnabled, xenonWorkersEnabled, linuxDynamicWorkersEnabled, customModeWorkersEnabled).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -326,12 +364,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Specify &lt;code&gt;true&lt;/code&gt; if you want to filter to only regions that
         /// support Linux Consumption Workers.
         /// </param>
+        /// <param name='customModeWorkersEnabled'>
+        /// Specify &lt;code&gt;true&lt;/code&gt; if you want to filter to only regions that
+        /// support App Service Plans with &lt;code&gt;IsCustomMode&lt;/code&gt; set to
+        /// &lt;code&gt;true&lt;/code&gt;.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GeoRegion>> ListGeoRegionsAsync(this IWebSiteManagementClient operations, string sku = default(string), bool? linuxWorkersEnabled = default(bool?), bool? xenonWorkersEnabled = default(bool?), bool? linuxDynamicWorkersEnabled = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GeoRegion>> ListGeoRegionsAsync(this IWebSiteManagementClient operations, string sku = default(string), bool? linuxWorkersEnabled = default(bool?), bool? xenonWorkersEnabled = default(bool?), bool? linuxDynamicWorkersEnabled = default(bool?), bool? customModeWorkersEnabled = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListGeoRegionsWithHttpMessagesAsync(sku, linuxWorkersEnabled, xenonWorkersEnabled, linuxDynamicWorkersEnabled, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListGeoRegionsWithHttpMessagesAsync(sku, linuxWorkersEnabled, xenonWorkersEnabled, linuxDynamicWorkersEnabled, customModeWorkersEnabled, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -359,6 +402,39 @@ namespace Microsoft.Azure.Management.WebSites
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Identifier>> ListSiteIdentifiersAssignedToHostNameAsync(this IWebSiteManagementClient operations, NameIdentifier nameIdentifier, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListSiteIdentifiersAssignedToHostNameWithHttpMessagesAsync(nameIdentifier, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Check if a resource name is available for DNL sites.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        public static DnlResourceNameAvailability RegionalCheckNameAvailability(this IWebSiteManagementClient operations, string location, string name, string type, string resourceGroupName = default(string), string autoGeneratedDomainNameLabelScope = default(string))
+        {
+                return ((IWebSiteManagementClient)operations).RegionalCheckNameAvailabilityAsync(location, name, type, resourceGroupName, autoGeneratedDomainNameLabelScope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Check if a resource name is available for DNL sites.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DnlResourceNameAvailability> RegionalCheckNameAvailabilityAsync(this IWebSiteManagementClient operations, string location, string name, string type, string resourceGroupName = default(string), string autoGeneratedDomainNameLabelScope = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.RegionalCheckNameAvailabilityWithHttpMessagesAsync(location, name, type, resourceGroupName, autoGeneratedDomainNameLabelScope, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -453,7 +529,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static void Move(this IWebSiteManagementClient operations, string resourceGroupName, CsmMoveResourceEnvelope moveResourceEnvelope)
         {
@@ -467,7 +543,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -483,7 +559,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static ValidateResponse Validate(this IWebSiteManagementClient operations, string resourceGroupName, ValidateRequest validateRequest)
         {
@@ -497,7 +573,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -516,7 +592,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static void ValidateMove(this IWebSiteManagementClient operations, string resourceGroupName, CsmMoveResourceEnvelope moveResourceEnvelope)
         {
@@ -530,7 +606,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -573,6 +649,39 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
+        /// Description for get a list of available ASE regions and its supported Skus.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<AseRegion> ListAseRegionsNext(this IWebSiteManagementClient operations, string nextPageLink)
+        {
+                return ((IWebSiteManagementClient)operations).ListAseRegionsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for get a list of available ASE regions and its supported Skus.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<AseRegion>> ListAseRegionsNextAsync(this IWebSiteManagementClient operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListAseRegionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Description for Gets a list of meters for a given location.
         /// </summary>
         /// <param name='operations'>
@@ -601,6 +710,39 @@ namespace Microsoft.Azure.Management.WebSites
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BillingMeter>> ListBillingMetersNextAsync(this IWebSiteManagementClient operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListBillingMetersNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get custom hostnames under this subscription
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<CustomHostnameSites> ListCustomHostNameSitesNext(this IWebSiteManagementClient operations, string nextPageLink)
+        {
+                return ((IWebSiteManagementClient)operations).ListCustomHostNameSitesNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get custom hostnames under this subscription
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CustomHostnameSites>> ListCustomHostNameSitesNextAsync(this IWebSiteManagementClient operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListCustomHostNameSitesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

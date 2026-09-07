@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets an operation in a subscription and given region
         /// </remarks>
         /// <param name='location'>
-        /// Location name
+        /// The name of the Azure region.
         /// </param>
         /// <param name='operationId'>
         /// Operation Id

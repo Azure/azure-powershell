@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Security;
 
@@ -79,9 +80,17 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             if (VnetPropInfo != null)
             {
                 object val = VnetPropInfo.GetValue(other, null);
-                VnetInfo = (IList<VnetInfo>)val;
+                VnetInfo = (val as IEnumerable<VnetInfo>)?.ToList()
+                        ?? (val as IEnumerable<VnetInfoResource>)?.Select(ToVnetInfo).ToList();
                 VnetInfo = VnetInfo?.Count <= 0 ? null : VnetInfo;
             }
+        }
+
+        // The 2025-05-01 API returns virtual network connections as VnetInfoResource, but
+        // Az.Websites has always surfaced them as VnetInfo. The two carry the same values.
+        internal static VnetInfo ToVnetInfo(VnetInfoResource resource)
+        {
+            return resource == null ? null : new VnetInfo(resource);
         }
 
         public string GitRemoteName { get; set; }

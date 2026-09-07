@@ -36,14 +36,7 @@ namespace Microsoft.Azure.Management.WebSites
 
 
         /// <summary>
-        /// The API version to use for this operation.
-        /// </summary>
-        string ApiVersion { get;}
-
-
-        /// <summary>
-        /// Your Azure subscription ID. This is a GUID-formatted string (e.g.
-        /// 00000000-0000-0000-0000-000000000000).
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
         string SubscriptionId { get; set;}
 
@@ -68,6 +61,121 @@ namespace Microsoft.Azure.Management.WebSites
         /// </summary>
         bool? GenerateClientRequestId { get; set;}
 
+
+        /// <summary>
+        /// Gets the IProviderOperations
+        /// </summary>
+        IProviderOperations Provider { get; }
+
+        /// <summary>
+        /// Gets the ICertificatesOperations
+        /// </summary>
+        ICertificatesOperations Certificates { get; }
+
+        /// <summary>
+        /// Gets the IDeletedWebAppsOperations
+        /// </summary>
+        IDeletedWebAppsOperations DeletedWebApps { get; }
+
+        /// <summary>
+        /// Gets the IGlobalModelOperations
+        /// </summary>
+        IGlobalModelOperations GlobalModel { get; }
+
+        /// <summary>
+        /// Gets the IAppServiceEnvironmentsOperations
+        /// </summary>
+        IAppServiceEnvironmentsOperations AppServiceEnvironments { get; }
+
+        /// <summary>
+        /// Gets the IKubeEnvironmentsOperations
+        /// </summary>
+        IKubeEnvironmentsOperations KubeEnvironments { get; }
+
+        /// <summary>
+        /// Gets the IStaticSitesOperations
+        /// </summary>
+        IStaticSitesOperations StaticSites { get; }
+
+        /// <summary>
+        /// Gets the IGetUsagesInLocationOperations
+        /// </summary>
+        IGetUsagesInLocationOperations GetUsagesInLocation { get; }
+
+        /// <summary>
+        /// Gets the IRecommendationsOperations
+        /// </summary>
+        IRecommendationsOperations Recommendations { get; }
+
+        /// <summary>
+        /// Gets the IResourceHealthMetadataOperations
+        /// </summary>
+        IResourceHealthMetadataOperations ResourceHealthMetadata { get; }
+
+        /// <summary>
+        /// Gets the IAppServicePlansOperations
+        /// </summary>
+        IAppServicePlansOperations AppServicePlans { get; }
+
+        /// <summary>
+        /// Gets the IWebAppsOperations
+        /// </summary>
+        IWebAppsOperations WebApps { get; }
+
+        /// <summary>
+        /// Gets the IDiagnosticsOperations
+        /// </summary>
+        IDiagnosticsOperations Diagnostics { get; }
+
+        /// <summary>
+        /// Gets the ISiteCertificatesOperations
+        /// </summary>
+        ISiteCertificatesOperations SiteCertificates { get; }
+
+        /// <summary>
+        /// Gets the IWorkflowsOperations
+        /// </summary>
+        IWorkflowsOperations Workflows { get; }
+
+        /// <summary>
+        /// Gets the IWorkflowRunsOperations
+        /// </summary>
+        IWorkflowRunsOperations WorkflowRuns { get; }
+
+        /// <summary>
+        /// Gets the IWorkflowRunActionsOperations
+        /// </summary>
+        IWorkflowRunActionsOperations WorkflowRunActions { get; }
+
+        /// <summary>
+        /// Gets the IWorkflowRunActionRepetitionsOperations
+        /// </summary>
+        IWorkflowRunActionRepetitionsOperations WorkflowRunActionRepetitions { get; }
+
+        /// <summary>
+        /// Gets the IWorkflowRunActionRepetitionsRequestHistoriesOperations
+        /// </summary>
+        IWorkflowRunActionRepetitionsRequestHistoriesOperations WorkflowRunActionRepetitionsRequestHistories { get; }
+
+        /// <summary>
+        /// Gets the IWorkflowRunActionScopeRepetitionsOperations
+        /// </summary>
+        IWorkflowRunActionScopeRepetitionsOperations WorkflowRunActionScopeRepetitions { get; }
+
+        /// <summary>
+        /// Gets the IWorkflowTriggersOperations
+        /// </summary>
+        IWorkflowTriggersOperations WorkflowTriggers { get; }
+
+        /// <summary>
+        /// Gets the IWorkflowTriggerHistoriesOperations
+        /// </summary>
+        IWorkflowTriggerHistoriesOperations WorkflowTriggerHistories { get; }
+
+        /// <summary>
+        /// Gets the IWorkflowVersionsOperations
+        /// </summary>
+        IWorkflowVersionsOperations WorkflowVersions { get; }
 
         /// <summary>
         /// Gets the IAppServiceCertificateOrdersOperations
@@ -98,92 +206,6 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the IDomainRegistrationProviderOperations
         /// </summary>
         IDomainRegistrationProviderOperations DomainRegistrationProvider { get; }
-
-        /// <summary>
-        /// Gets the IAppServiceEnvironmentsOperations
-        /// </summary>
-        IAppServiceEnvironmentsOperations AppServiceEnvironments { get; }
-
-        /// <summary>
-        /// Gets the IAppServicePlansOperations
-        /// </summary>
-        IAppServicePlansOperations AppServicePlans { get; }
-
-        /// <summary>
-        /// Gets the ICertificatesOperations
-        /// </summary>
-        ICertificatesOperations Certificates { get; }
-
-        /// <summary>
-        /// Gets the IDeletedWebAppsOperations
-        /// </summary>
-        IDeletedWebAppsOperations DeletedWebApps { get; }
-
-        /// <summary>
-        /// Gets the IDiagnosticsOperations
-        /// </summary>
-        IDiagnosticsOperations Diagnostics { get; }
-
-        /// <summary>
-        /// Gets the IGlobalModelOperations
-        /// </summary>
-        IGlobalModelOperations GlobalModel { get; }
-
-        /// <summary>
-        /// Gets the IKubeEnvironmentsOperations
-        /// </summary>
-        IKubeEnvironmentsOperations KubeEnvironments { get; }
-
-        /// <summary>
-        /// Gets the IProviderOperations
-        /// </summary>
-        IProviderOperations Provider { get; }
-
-        /// <summary>
-        /// Gets the IRecommendationsOperations
-        /// </summary>
-        IRecommendationsOperations Recommendations { get; }
-
-        /// <summary>
-        /// Gets the IResourceHealthMetadataOperations
-        /// </summary>
-        IResourceHealthMetadataOperations ResourceHealthMetadata { get; }
-
-        /// <summary>
-        /// Gets the IStaticSitesOperations
-        /// </summary>
-        IStaticSitesOperations StaticSites { get; }
-
-        /// <summary>
-        /// Gets the IWebAppsOperations
-        /// </summary>
-        IWebAppsOperations WebApps { get; }
-
-        /// <summary>
-        /// Description for Exchange code for GitHub access token for AppService CLI
-        /// </summary>
-        /// <remarks>
-        /// Description for Exchange code for GitHub access token for AppService CLI
-        /// </remarks>
-        /// <param name='code'>
-        /// Code string to exchange for Github Access token
-        /// </param>
-        /// <param name='state'>
-        /// State string used for verification.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppserviceGithubToken>> GenerateGithubAccessTokenForAppserviceCLIAsyncWithHttpMessagesAsync(string code, string state, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets publishing user
@@ -298,6 +320,26 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SourceControl>> UpdateSourceControlWithHttpMessagesAsync(string sourceControlType, SourceControl requestMessage, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for get a list of available ASE regions and its supported Skus.
+        /// </summary>
+        /// <remarks>
+        /// Description for get a list of available ASE regions and its supported Skus.
+        /// </remarks>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AseRegion>>> ListAseRegionsWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets a list of meters for a given location.
         /// </summary>
         /// <remarks>
@@ -338,6 +380,11 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='isFqdn'>
         /// Is fully qualified domain name.
         /// </param>
+        /// <param name='environmentId'>
+        /// Azure Resource Manager ID of the customer&#39;s selected Container Apps
+        /// Environment on which to host the Function app. This must be of the form
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -350,7 +397,30 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ResourceNameAvailability>> CheckNameAvailabilityWithHttpMessagesAsync(string name, string type, bool? isFqdn = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ResourceNameAvailability>> CheckNameAvailabilityWithHttpMessagesAsync(string name, string type, bool? isFqdn = default(bool?), string environmentId = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get custom hostnames under this subscription
+        /// </summary>
+        /// <remarks>
+        /// Get custom hostnames under this subscription
+        /// </remarks>
+        /// <param name='hostname'>
+        /// Specific hostname
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CustomHostnameSites>>> ListCustomHostNameSitesWithHttpMessagesAsync(string hostname = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets list of available geo regions plus ministamps
@@ -393,6 +463,11 @@ namespace Microsoft.Azure.Management.WebSites
         /// Specify &lt;code&gt;true&lt;/code&gt; if you want to filter to only regions that
         /// support Linux Consumption Workers.
         /// </param>
+        /// <param name='customModeWorkersEnabled'>
+        /// Specify &lt;code&gt;true&lt;/code&gt; if you want to filter to only regions that
+        /// support App Service Plans with &lt;code&gt;IsCustomMode&lt;/code&gt; set to
+        /// &lt;code&gt;true&lt;/code&gt;.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -405,7 +480,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<GeoRegion>>> ListGeoRegionsWithHttpMessagesAsync(string sku = default(string), bool? linuxWorkersEnabled = default(bool?), bool? xenonWorkersEnabled = default(bool?), bool? linuxDynamicWorkersEnabled = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<GeoRegion>>> ListGeoRegionsWithHttpMessagesAsync(string sku = default(string), bool? linuxWorkersEnabled = default(bool?), bool? xenonWorkersEnabled = default(bool?), bool? linuxDynamicWorkersEnabled = default(bool?), bool? customModeWorkersEnabled = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List all apps that are assigned to a hostname.
@@ -414,7 +489,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List all apps that are assigned to a hostname.
         /// </remarks>
         /// <param name='nameIdentifier'>
-        /// Hostname information.
+        /// The request body
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -429,6 +504,43 @@ namespace Microsoft.Azure.Management.WebSites
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Identifier>>> ListSiteIdentifiersAssignedToHostNameWithHttpMessagesAsync(NameIdentifier nameIdentifier, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Check if a resource name is available for DNL sites.
+        /// </summary>
+        /// <remarks>
+        /// Check if a resource name is available for DNL sites.
+        /// </remarks>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// Resource group name
+        /// </param>
+        /// <param name='autoGeneratedDomainNameLabelScope'>
+        /// Indicates the endpoint name reuse scope.The default value is TenantReuse.
+        /// Supported values are TenantReuse, SubscriptionReuse, ResourceGroupReuse,
+        /// NoReuse
+        /// </param>
+        /// <param name='name'>
+        /// Resource name to verify.
+        /// </param>
+        /// <param name='type'>
+        /// Resource type used for verification.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DnlResourceNameAvailability>> RegionalCheckNameAvailabilityWithHttpMessagesAsync(string location, string name, string type, string resourceGroupName = default(string), string autoGeneratedDomainNameLabelScope = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List all premier add-on offers.
@@ -479,7 +591,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Environment by analyzing the Network Security Group rules.
         /// </remarks>
         /// <param name='parameters'>
-        /// VNET information
+        /// The request body
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -502,7 +614,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Move resources between resource groups.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='moveResourceEnvelope'>
         /// Object that represents the resource to move.
@@ -525,7 +637,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Validate if a resource can be created.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='validateRequest'>
         /// Request with the resources to validate.
@@ -551,7 +663,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Validate whether a resource can be moved.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='moveResourceEnvelope'>
         /// Object that represents the resource to move.
@@ -591,6 +703,29 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SourceControl>>> ListSourceControlsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for get a list of available ASE regions and its supported Skus.
+        /// </summary>
+        /// <remarks>
+        /// Description for get a list of available ASE regions and its supported Skus.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AseRegion>>> ListAseRegionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets a list of meters for a given location.
         /// </summary>
         /// <remarks>
@@ -612,6 +747,29 @@ namespace Microsoft.Azure.Management.WebSites
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BillingMeter>>> ListBillingMetersNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get custom hostnames under this subscription
+        /// </summary>
+        /// <remarks>
+        /// Get custom hostnames under this subscription
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CustomHostnameSites>>> ListCustomHostNameSitesNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get a list of available geographical regions.
