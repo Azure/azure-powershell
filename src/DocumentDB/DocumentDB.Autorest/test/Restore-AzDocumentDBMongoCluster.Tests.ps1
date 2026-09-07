@@ -42,7 +42,7 @@ Describe 'Restore-AzDocumentDBMongoCluster' {
         }
         $restoreTime | Should -Not -BeNullOrEmpty
 
-        $password = ConvertTo-SecureString 'CliTest2026!Pw' -AsPlainText -Force
+        $password = Get-DocumentDBTestPassword
         $result = Restore-AzDocumentDBMongoCluster -Name $restored -ResourceGroupName $rg -Location $loc `
             -SourceCluster $cluster -RestoreTime $restoreTime `
             -AdministratorUserName $env.adminUser -AdministratorPassword $password

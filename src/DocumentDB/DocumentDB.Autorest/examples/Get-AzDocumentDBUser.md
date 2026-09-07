@@ -1,12 +1,12 @@
 ### Example 1: Get a Microsoft Entra ID user of a mongo cluster
 ```powershell
-Get-AzDocumentDBUser -Name 71581c6f-df31-4790-bc49-26c6b38df8bd -MongoClusterName myCluster -ResourceGroupName myResourceGroup
+Get-AzDocumentDBUser -Name 00000000-0000-0000-0000-000000000000 -MongoClusterName myCluster -ResourceGroupName myResourceGroup
 ```
 
 ```output
 Name                                  ProvisioningState
 ----                                  -----------------
-71581c6f-df31-4790-bc49-26c6b38df8bd  Succeeded
+00000000-0000-0000-0000-000000000000  Succeeded
 ```
 
 Get a single Microsoft Entra ID user of a mongo cluster by object id.
@@ -19,7 +19,7 @@ Get-AzDocumentDBUser -MongoClusterName myCluster -ResourceGroupName myResourceGr
 ```output
 Name                                  ProvisioningState
 ----                                  -----------------
-71581c6f-df31-4790-bc49-26c6b38df8bd  Succeeded
+00000000-0000-0000-0000-000000000000  Succeeded
 ```
 
 List all Microsoft Entra ID users of a mongo cluster.

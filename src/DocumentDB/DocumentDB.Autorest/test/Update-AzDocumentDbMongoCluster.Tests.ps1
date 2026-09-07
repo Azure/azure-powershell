@@ -28,7 +28,7 @@ Describe 'Update-AzDocumentDBMongoCluster' {
     It 'MongoCluster additional properties create + update coverage' {
         # Create a cluster exercising additional create-time properties: server version,
         # public network access, tags, allowed authentication modes, and preview features.
-        $password = ConvertTo-SecureString 'CliTest2026!Pw' -AsPlainText -Force
+        $password = Get-DocumentDBTestPassword
         $created = New-AzDocumentDBMongoCluster -Name $cluster -ResourceGroupName $rg -Location $loc `
             -AdministratorUserName $env.adminUser -AdministratorPassword $password `
             -ComputeTier M30 -StorageSizeGb 128 -StorageType PremiumSSD `

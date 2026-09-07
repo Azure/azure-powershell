@@ -1,6 +1,6 @@
 ### Example 1: Reset the administrator password of a mongo cluster
 ```powershell
-$password = ConvertTo-SecureString 'CliReset2026!Pw' -AsPlainText -Force
+$password = Read-Host -Prompt 'Enter the new administrator password' -AsSecureString
 Reset-AzDocumentDBMongoClusterPassword -Name myCluster -ResourceGroupName myResourceGroup -AdministratorPassword $password
 ```
 

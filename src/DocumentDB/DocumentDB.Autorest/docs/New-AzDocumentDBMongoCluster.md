@@ -52,7 +52,7 @@ To only modify some of the properties, use PATCH.
 
 ### Example 1: Create a mongo cluster
 ```powershell
-$password = ConvertTo-SecureString 'CliTest2026!Pw' -AsPlainText -Force
+$password = Read-Host -Prompt 'Enter the administrator password' -AsSecureString
 New-AzDocumentDBMongoCluster -Name myCluster -ResourceGroupName myResourceGroup -Location eastus2 `
     -AdministratorUserName testadmin -AdministratorPassword $password `
     -ComputeTier M30 -StorageSizeGb 128 -StorageType PremiumSSD `
@@ -70,7 +70,7 @@ PremiumSSD storage, a single shard, and high availability disabled.
 
 ### Example 2: Create a mongo cluster with Microsoft Entra authentication and additional properties
 ```powershell
-$password = ConvertTo-SecureString 'CliTest2026!Pw' -AsPlainText -Force
+$password = Read-Host -Prompt 'Enter the administrator password' -AsSecureString
 New-AzDocumentDBMongoCluster -Name myCluster -ResourceGroupName myResourceGroup -Location eastus2 `
     -AdministratorUserName testadmin -AdministratorPassword $password `
     -ComputeTier M30 -StorageSizeGb 128 -StorageType PremiumSSD `

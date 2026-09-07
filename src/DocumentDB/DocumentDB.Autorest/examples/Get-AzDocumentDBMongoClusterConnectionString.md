@@ -9,6 +9,6 @@ Name                    ConnectionString
 Default connection s... mongodb+srv://<user>:<password>@myCluster.global.mongocluster.cosmos.azure.com/...
 ```
 
-List the connection strings for a provisioned mongo cluster. The credential
-placeholders in the returned strings must be replaced with the administrator
+List the connection strings for a provisioned mongo cluster. The literal `<user>` and
+`<password>` tokens are placeholders that must be replaced with the administrator
 credentials.

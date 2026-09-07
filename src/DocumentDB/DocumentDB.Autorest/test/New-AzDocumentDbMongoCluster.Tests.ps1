@@ -59,7 +59,7 @@ Describe 'New-AzDocumentDBMongoCluster' {
         (Wait-DocumentDBClusterSucceeded -ResourceGroupName $rg -Name $cluster).ProvisioningState | Should -Be 'Succeeded'
 
         # Reset the administrator password (custom wrapper).
-        $newPassword = ConvertTo-SecureString 'CliReset2026!Pw' -AsPlainText -Force
+        $newPassword = Get-DocumentDBTestPassword
         { Invoke-DocumentDBMutation { Reset-AzDocumentDBMongoClusterPassword -Name $cluster -ResourceGroupName $rg -AdministratorPassword $newPassword } } | Should -Not -Throw
         Wait-DocumentDBClusterSucceeded -ResourceGroupName $rg -Name $cluster | Out-Null
 

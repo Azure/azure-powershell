@@ -39,10 +39,13 @@ if ($UsePreviousConfigForRecord) {
 # example: $val = $env.AddWithCache('key', $val, $true)
 $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
+    $userObjectIdPlaceholder = '00000000-0000-0000-0000-000000000abc'
+
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    $env.SubscriptionId = (Get-AzContext).Subscription.Id
-    $env.Tenant = (Get-AzContext).Tenant.Id
+    $context = Get-AzContext
+    $env.SubscriptionId = $context.Subscription.Id
+    $env.Tenant = $context.Tenant.Id
 
     # Shared, scenario-independent settings. Each scenario uses its own resource
     # group and cluster name so a failure in one scenario does not affect the
@@ -61,7 +64,30 @@ function setupEnv() {
 
     $env.userRg = $env.AddWithCache('userRg', 'clitest-docdb-user-' + (RandomString $false 6), $UsePreviousConfigForRecord)
     $env.userCluster = $env.AddWithCache('userCluster', 'cli-mc-' + (RandomString $false 6), $UsePreviousConfigForRecord)
-    $env.userObjectId = '71581c6f-df31-4790-bc49-26c6b38df8bd'
+    if ($TestMode -eq 'playback') {
+        $env.userObjectId = $userObjectIdPlaceholder
+    } else {
+        $userObjectId = $env:DOCUMENTDB_TEST_USER_OBJECT_ID
+        if ([string]::IsNullOrWhiteSpace($userObjectId)) {
+            $homeAccountId = $null
+            if ($null -ne $context.Account.ExtendedProperties) {
+                $homeAccountId = $context.Account.ExtendedProperties['HomeAccountId']
+            }
+            if (-not [string]::IsNullOrWhiteSpace($homeAccountId)) {
+                $userObjectId = ($homeAccountId -split '\.')[0]
+            }
+        }
+        try {
+            $userObjectId = ([guid]$userObjectId).ToString()
+        } catch {
+            throw 'Set DOCUMENTDB_TEST_USER_OBJECT_ID to a valid Microsoft Entra principal object ID before recording DocumentDB user tests.'
+        }
+        if (($userObjectId -eq [guid]::Empty.ToString()) -or ($userObjectId -eq $userObjectIdPlaceholder)) {
+            throw 'DOCUMENTDB_TEST_USER_OBJECT_ID must identify a real Microsoft Entra principal when recording DocumentDB user tests.'
+        }
+        $env.userObjectId = $userObjectId
+        $env:DOCUMENTDB_TEST_RESOLVED_USER_OBJECT_ID = $userObjectId
+    }
 
     $env.identityRg = $env.AddWithCache('identityRg', 'clitest-docdb-identity-' + (RandomString $false 6), $UsePreviousConfigForRecord)
     $env.identityCluster = $env.AddWithCache('identityCluster', 'cli-mc-' + (RandomString $false 6), $UsePreviousConfigForRecord)
@@ -99,13 +125,19 @@ function setupEnv() {
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
-    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+    $persistedEnv = @{}
+    foreach ($key in $env.Keys) {
+        $persistedEnv[$key] = $env[$key]
+    }
+    $persistedEnv.userObjectId = $userObjectIdPlaceholder
+    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $persistedEnv)
 }
 
-# Throwaway administrator password used by the test clusters. Kept out of env.json
-# so it is never persisted to a recording.
+# Throwaway administrator password used by the test clusters. Recording cleanup
+# replaces request-body passwords because the framework only filters auth headers.
 function Get-DocumentDBTestPassword() {
-    return ConvertTo-SecureString 'CliTest2026!Pw' -AsPlainText -Force
+    $password = (RandomString $false 20) + 'A1!'
+    return ConvertTo-SecureString $password -AsPlainText -Force
 }
 
 # Create the shared base cluster used by the scenarios and block until it is
@@ -186,6 +218,23 @@ function Invoke-DocumentDBMutation {
     if ($lastError) { throw $lastError }
 }
 function cleanupEnv() {
-    # Clean resources you create for testing
-}
+    if ($TestMode -eq 'record') {
+        $userObjectIdPlaceholder = '00000000-0000-0000-0000-000000000abc'
+        $resolvedUserObjectId = $env:DOCUMENTDB_TEST_RESOLVED_USER_OBJECT_ID
+        $utf8WithoutBom = [System.Text.UTF8Encoding]::new($false)
 
+        foreach ($recording in Get-ChildItem -Path $PSScriptRoot -Filter '*.Recording.json' -File) {
+            $content = [System.IO.File]::ReadAllText($recording.FullName)
+            if (-not [string]::IsNullOrWhiteSpace($resolvedUserObjectId)) {
+                $content = $content.Replace($resolvedUserObjectId, $userObjectIdPlaceholder)
+            }
+            $content = [regex]::Replace(
+                $content,
+                '(?i)(\\"password\\"\s*:\s*\\")[^"]*(\\")',
+                '${1}[Filtered]${2}')
+            [System.IO.File]::WriteAllText($recording.FullName, $content, $utf8WithoutBom)
+        }
+    }
+
+    $env:DOCUMENTDB_TEST_RESOLVED_USER_OBJECT_ID = $null
+}

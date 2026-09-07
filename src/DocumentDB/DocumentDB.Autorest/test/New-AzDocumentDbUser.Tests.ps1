@@ -18,7 +18,11 @@ Describe 'New-AzDocumentDBUser' {
     BeforeAll {
         $rg = $env.userRg
         $cluster = $env.userCluster
-        $userOid = $env.userObjectId
+        $userOid = if ($TestMode -eq 'playback') {
+            $env.userObjectId
+        } else {
+            $env:DOCUMENTDB_TEST_RESOLVED_USER_OBJECT_ID
+        }
         $loc = $env.location
         if ($TestMode -ne 'playback') { New-AzResourceGroup -Name $rg -Location $loc | Out-Null }
         # Entra auth must be enabled at create time to add Entra users.

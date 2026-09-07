@@ -1,6 +1,6 @@
 ### Example 1: Restore a mongo cluster to a point in time
 ```powershell
-$password = ConvertTo-SecureString 'CliTest2026!Pw' -AsPlainText -Force
+$password = Read-Host -Prompt 'Enter the administrator password' -AsSecureString
 Restore-AzDocumentDBMongoCluster -Name myRestoredCluster -ResourceGroupName myResourceGroup -Location eastus2 `
     -SourceCluster myCluster -RestoreTime '2026-01-01T00:00:00Z' `
     -AdministratorUserName testadmin -AdministratorPassword $password

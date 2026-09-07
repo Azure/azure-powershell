@@ -27,8 +27,16 @@ provisioned and while public network access is enabled.
 
 ### Example 3: Add a user-assigned managed identity
 ```powershell
+$identityId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identity-name>'
 $cluster = Get-AzDocumentDBMongoCluster -Name myCluster -ResourceGroupName myResourceGroup
-$identityIds = @($cluster.IdentityUserAssignedIdentity.Keys) + $identityId
+$identityIds = @()
+$identityProperty = $cluster.PSObject.Properties['IdentityUserAssignedIdentity']
+if (($null -ne $identityProperty) -and ($null -ne $identityProperty.Value)) {
+    $identityIds += @($identityProperty.Value.Keys)
+}
+if ($identityId -notin $identityIds) {
+    $identityIds += $identityId
+}
 $cluster | Update-AzDocumentDBMongoCluster -UserAssignedIdentity $identityIds
 ```
 
@@ -38,5 +46,6 @@ Name        Location ProvisioningState
 myCluster   eastus2  Succeeded
 ```
 
-Get the existing identities, add another identity to the collection, and apply the
-updated collection to the cluster. This preserves identities that are already assigned.
+Get the existing identities, add the identity if it is not already assigned, and apply
+the updated collection to the cluster. This also works when the cluster has no existing
+user-assigned identities.

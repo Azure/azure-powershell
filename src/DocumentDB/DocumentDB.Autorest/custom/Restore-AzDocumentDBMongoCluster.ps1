@@ -57,7 +57,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.Category('Body')]
     [System.DateTime]
-    # UTC point in time to restore from.
+    # UTC point in time to restore from. Values without timezone information are treated as UTC.
     ${RestoreTime},
 
     [Parameter(Mandatory)]
@@ -153,7 +153,12 @@ param(
             $PSBoundParameters['SubscriptionId'] = $SubscriptionId
             $PSBoundParameters['CreateMode'] = 'PointInTimeRestore'
             $PSBoundParameters['RestoreParameterSourceResourceId'] = $sourceId
-            $PSBoundParameters['RestoreParameterPointInTimeUtc'] = $RestoreTime.ToUniversalTime()
+            if ($RestoreTime.Kind -eq [System.DateTimeKind]::Unspecified) {
+                $restorePointInTimeUtc = [System.DateTime]::SpecifyKind($RestoreTime, [System.DateTimeKind]::Utc)
+            } else {
+                $restorePointInTimeUtc = $RestoreTime.ToUniversalTime()
+            }
+            $PSBoundParameters['RestoreParameterPointInTimeUtc'] = $restorePointInTimeUtc
 
             if ($PSCmdlet.ShouldProcess($Name, "Restore a mongo cluster from source '$SourceCluster'")) {
                 Az.DocumentDB\New-AzDocumentDBMongoCluster @PSBoundParameters

@@ -30,7 +30,7 @@ Describe 'New-AzDocumentDBMongoClusterCmk' {
     }
 
     It 'creates a cluster with customer-managed key encryption at rest' {
-        $password = ConvertTo-SecureString 'CliTest2026!Pw' -AsPlainText -Force
+        $password = Get-DocumentDBTestPassword
         $created = New-AzDocumentDBMongoCluster -Name $cluster -ResourceGroupName $rg -Location $loc `
             -AdministratorUserName $env.adminUser -AdministratorPassword $password `
             -ComputeTier M30 -StorageSizeGb 128 -StorageType PremiumSSD `

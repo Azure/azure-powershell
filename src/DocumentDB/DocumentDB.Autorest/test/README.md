@@ -15,3 +15,9 @@ Custom cmdlets generally encompass additional functionality not described in the
 
 ## Usage
 To execute tests, run the `test-module.ps1`. To write tests, [this example](https://github.com/pester/Pester/blob/8b9cf4248315e44f1ac6673be149f7e0d7f10466/Examples/Planets/Get-Planet.Tests.ps1#L1) from the Pester repository is very useful for getting started.
+
+DocumentDB user tests require a real Microsoft Entra principal object ID when running
+in record or live mode. Set `DOCUMENTDB_TEST_USER_OBJECT_ID` before invoking
+`test-module.ps1`; when it is not set, the test setup attempts to use the current
+account's home object ID. Record cleanup replaces that ID with the playback placeholder
+and removes administrator passwords from request bodies before recordings are committed.
