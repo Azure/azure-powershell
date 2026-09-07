@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     ServiceClientModel.ProtectedItemConfigureSourceScanRequest request =
                         new ServiceClientModel.ProtectedItemConfigureSourceScanRequest
                         {
-                            SourceScanAction = State == "Enabled" ?
+                            SourceScanAction = string.Equals(State, "Enabled", StringComparison.OrdinalIgnoreCase) ?
                                 ServiceClientModel.SourceScanAction.Enable :
                                 ServiceClientModel.SourceScanAction.Disable
                         };
@@ -100,11 +100,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     WriteObject(jobObj);
                 };
 
-                if (State == "Disabled")
+                if (string.Equals(State, "Disabled", StringComparison.OrdinalIgnoreCase))
                 {
                     ConfirmAction(
                         Force.IsPresent,
-                        string.Format(Resources.ConfigureSourceScanWarning, Item.Name, State),
+                        string.Format(Resources.ConfigureSourceScanWarning, State, Item.Name),
                         Resources.ConfigureSourceScanMessage,
                         Item.Name,
                         configureSourceScan);
