@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 string resourceGroupName = null)
         {
             return BmsAdapter.Client.BackupOperationStatuses.GetWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
-                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                operationId).Result;
+                vaultName: vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                operationId: operationId).Result;
         }
 
         /// <summary>
@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 string operationId)
         {
             return CrrAdapter.Client.CrrOperationStatus.GetWithHttpMessagesAsync(
-                secondaryRegion,
-                operationId).Result;
+                azureRegion: secondaryRegion,
+                operationId: operationId).Result;
         }
 
         /// <summary>
@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 string resourceGroupName = null)
         {
             return BmsAdapter.Client.ProtectionPolicyOperationStatuses.GetWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
-                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                policyName,
-                operationId).Result;
+                vaultName: vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                policyName: policyName,
+                operationId: operationId).Result;
         }
 
         /// <summary>
@@ -95,10 +95,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 .Client
                 .ProtectionContainerRefreshOperationResults
                 .GetWithHttpMessagesAsync(
-                    vaultName ?? BmsAdapter.GetResourceName(),
-                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                    AzureFabricName,
-                    operationId).Result;
+                    vaultName: vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    fabricName: AzureFabricName,
+                    operationId: operationId).Result;
         }
 
         /// <summary>
@@ -120,11 +120,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 .Client
                 .ProtectionContainerOperationResults
                 .GetWithHttpMessagesAsync(
-                    vaultName ?? BmsAdapter.GetResourceName(),
-                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                    AzureFabricName,
-                    containerName,
-                    operationId).Result;
+                    vaultName: vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    fabricName: AzureFabricName,
+                    containerName: containerName,
+                    operationId: operationId).Result;
         }
 
         /// <summary>
@@ -141,9 +141,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             return BmsAdapter.Client.GetOperationStatusWithHttpMessagesAsync(
-                                vaultName,
-                                resourceGroupName,
-                                operationId).Result;
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName,
+                operationId: operationId).Result;
         }
 
         /// <summary>
@@ -160,9 +160,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             var prepareResponseBase = BmsAdapter.Client.BmsPrepareDataMoveOperationResult.GetWithHttpMessagesAsync(
-                                vaultName,
-                                resourceGroupName,
-                                operationId).Result.Body;
+                                vaultName: vaultName,
+                                resourceGroupName: resourceGroupName,
+                                operationId: operationId).Result.Body;
 
             var prepareResponseSerialized = JsonConvert.SerializeObject(prepareResponseBase);
             PrepareDataMoveResponse prepareResponseDerived = JsonConvert.DeserializeObject<PrepareDataMoveResponse>(prepareResponseSerialized);
@@ -183,10 +183,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             return BmsAdapter.Client.JobOperationResults.GetWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
-                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                AzureFabricName,
-                operationId).Result;
+                vaultName: vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                jobName: AzureFabricName,
+                operationId: operationId).Result;
         }
     }
 }
