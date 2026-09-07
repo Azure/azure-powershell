@@ -19,8 +19,7 @@ New-AzDataProtectionBackupVault -Location <String> -ResourceGroupName <String>
  [-CmkIdentityType <String>] [-CmkInfrastructureEncryption <String>] [-CmkUserAssignedIdentityId <String>]
  [-CostManagementGranularity <String>] [-CrossRegionRestoreState <String>]
  [-CrossSubscriptionRestoreState <String>] [-DefaultProfile <PSObject>] [-EnableSystemAssignedIdentity]
- [-ETag <String>] [-ImmutabilityDurationInDay <Double>] [-ImmutabilityState <String>]
- [-ImmutabilityType <String>] [-NoWait] [-SoftDeleteRetentionDurationInDay <Double>]
+ [-ETag <String>] [-ImmutabilityState <String>] [-NoWait] [-SoftDeleteRetentionDurationInDay <Double>]
  [-SoftDeleteState <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -284,41 +283,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ImmutabilityDurationInDay
-Immutability duration in days.
-Required when ImmutabilityType is TimeBased.
-
-```yaml
-Type: System.Double
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ImmutabilityState
 Immutability state of the vault.
 Allowed values are Disabled, Unlocked, Locked.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ImmutabilityType
-Immutability type of the vault.
-Allowed values are AsPerPolicy and TimeBased.
 
 ```yaml
 Type: System.String

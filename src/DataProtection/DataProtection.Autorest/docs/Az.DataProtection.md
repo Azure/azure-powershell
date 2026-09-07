@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DataProtection
-Module Guid: b99f7df0-98cb-4eb1-b38f-d6e871ac179d
+Module Guid: 643cb62b-b594-412d-9339-088b1464cee5
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dataprotection
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,7 +15,9 @@ Microsoft Azure PowerShell: DataProtection cmdlets
 Trigger adhoc backup
 
 ### [Edit-AzDataProtectionPolicyRetentionRuleClientObject](Edit-AzDataProtectionPolicyRetentionRuleClientObject.md)
-Adds or removes Retention Rule to existing Policy
+Adds or removes Retention Rule to an existing backup policy.
+For AzureBlob hybrid policies, OperationalStore lifecycles must use -Name Default_OperationalStore; -Name Default is reserved for VaultStore.
+Mixing these (or attaching an OperationalStore lifecycle to Weekly/Monthly/Yearly) will throw a validation error.
 
 ### [Edit-AzDataProtectionPolicyTagClientObject](Edit-AzDataProtectionPolicyTagClientObject.md)
 Adds or removes schedule tag in an existing backup policy.

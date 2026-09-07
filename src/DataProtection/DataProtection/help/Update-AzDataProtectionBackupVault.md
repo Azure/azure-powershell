@@ -20,10 +20,9 @@ Update-AzDataProtectionBackupVault [-Token <String>] [-AzureMonitorAlertsForAllJ
  [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionDurationInDay <Double>]
  [-SoftDeleteState <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String>]
- [-ImmutabilityType <String>] [-ImmutabilityDurationInDay <Double>] [-CostManagementGranularity <String>]
- [-CmkEncryptionState <String>] [-CmkIdentityType <String>] [-CmkUserAssignedIdentityId <String>]
- [-CmkEncryptionKeyUri <String>] [-SecureToken <SecureString>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-CostManagementGranularity <String>] [-CmkEncryptionState <String>] [-CmkIdentityType <String>]
+ [-CmkUserAssignedIdentityId <String>] [-CmkEncryptionKeyUri <String>] [-SecureToken <SecureString>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -356,22 +355,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ImmutabilityDurationInDay
-Immutability duration in days.
-Required when ImmutabilityType is TimeBased.
-
-```yaml
-Type: System.Double
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ImmutabilityState
 Immutability state of the vault.
 Allowed values are Disabled, Unlocked, Locked.
@@ -379,22 +362,6 @@ Allowed values are Disabled, Unlocked, Locked.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ImmutabilityType
-Immutability type of the vault.
-Allowed values are AsPerPolicy and TimeBased.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
