@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed unused System.Configuration.ConfigurationManager dependency from the Az.RecoveryServices module package.
 
 ## Version 7.14.1
 * Added Cross Region Restore for Azure File Share backups through `Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, and `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`.
