@@ -8,37 +8,40 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
     using System.Linq;
 
     /// <summary>
-    /// The error object.
+    /// An error response from the Container Instance service.
     /// </summary>
-    public partial class NewErrorResponseError
+    public partial class CloudErrorBody
     {
         /// <summary>
-        /// Initializes a new instance of the NewErrorResponseError class.
+        /// Initializes a new instance of the CloudErrorBody class.
         /// </summary>
-        public NewErrorResponseError()
+        public CloudErrorBody()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the NewErrorResponseError class.
+        /// Initializes a new instance of the CloudErrorBody class.
         /// </summary>
 
-        /// <param name="code">The error code.
+        /// <param name="code">An identifier for the error. Codes are invariant and are intended to be
+        /// consumed programmatically.
         /// </param>
 
-        /// <param name="message">The error message.
+        /// <param name="message">A message describing the error, intended to be suitable for display in a
+        /// user interface.
         /// </param>
 
-        /// <param name="target">The error target.
+        /// <param name="target">The target of the particular error. For example, the name of the property
+        /// in error.
         /// </param>
 
-        /// <param name="details">The error details.
+        /// <param name="details">A list of additional details about the error.
         /// </param>
 
         /// <param name="additionalInfo">The error additional info.
         /// </param>
-        public NewErrorResponseError(string code = default(string), string message = default(string), string target = default(string), System.Collections.Generic.IList<NewErrorResponse> details = default(System.Collections.Generic.IList<NewErrorResponse>), System.Collections.Generic.IList<ErrorAdditionalInfo> additionalInfo = default(System.Collections.Generic.IList<ErrorAdditionalInfo>))
+        public CloudErrorBody(string code = default(string), string message = default(string), string target = default(string), System.Collections.Generic.IList<CloudErrorBody> details = default(System.Collections.Generic.IList<CloudErrorBody>), System.Collections.Generic.IList<ErrorAdditionalInfo> additionalInfo = default(System.Collections.Generic.IList<ErrorAdditionalInfo>))
 
         {
             this.Code = code;
@@ -56,28 +59,31 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
 
         /// <summary>
-        /// Gets the error code.
+        /// Gets an identifier for the error. Codes are invariant and are intended to
+        /// be consumed programmatically.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "code")]
         public string Code {get; private set; }
 
         /// <summary>
-        /// Gets the error message.
+        /// Gets a message describing the error, intended to be suitable for display in
+        /// a user interface.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "message")]
         public string Message {get; private set; }
 
         /// <summary>
-        /// Gets the error target.
+        /// Gets the target of the particular error. For example, the name of the
+        /// property in error.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "target")]
         public string Target {get; private set; }
 
         /// <summary>
-        /// Gets the error details.
+        /// Gets a list of additional details about the error.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "details")]
-        public System.Collections.Generic.IList<NewErrorResponse> Details {get; private set; }
+        public System.Collections.Generic.IList<CloudErrorBody> Details {get; private set; }
 
         /// <summary>
         /// Gets the error additional info.

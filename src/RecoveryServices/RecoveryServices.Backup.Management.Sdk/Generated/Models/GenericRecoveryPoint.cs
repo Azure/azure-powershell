@@ -25,6 +25,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the GenericRecoveryPoint class.
         /// </summary>
 
+        /// <param name="threatStatus">Threat status of the recovery point
+        /// Possible values include: &#39;Unknown&#39;, &#39;Healthy&#39;, &#39;UnHealthy&#39;, &#39;Warning&#39;,
+        /// &#39;NotAvailable&#39;</param>
+
+        /// <param name="threatInfo">Recovery point threat information.
+        /// </param>
+
         /// <param name="friendlyName">Friendly name of the backup copy.
         /// </param>
 
@@ -39,8 +46,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="recoveryPointProperties">Properties of Recovery Point
         /// </param>
-        public GenericRecoveryPoint(string friendlyName = default(string), string recoveryPointType = default(string), System.DateTime? recoveryPointTime = default(System.DateTime?), string recoveryPointAdditionalInfo = default(string), RecoveryPointProperties recoveryPointProperties = default(RecoveryPointProperties))
+        public GenericRecoveryPoint(string threatStatus = default(string), System.Collections.Generic.IList<ThreatInfo> threatInfo = default(System.Collections.Generic.IList<ThreatInfo>), string friendlyName = default(string), string recoveryPointType = default(string), System.DateTime? recoveryPointTime = default(System.DateTime?), string recoveryPointAdditionalInfo = default(string), RecoveryPointProperties recoveryPointProperties = default(RecoveryPointProperties))
 
+        : base(threatStatus, threatInfo)
         {
             this.FriendlyName = friendlyName;
             this.RecoveryPointType = recoveryPointType;
@@ -85,5 +93,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryPointProperties")]
         public RecoveryPointProperties RecoveryPointProperties {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+            if (this.RecoveryPointProperties != null)
+            {
+                this.RecoveryPointProperties.Validate();
+            }
+        }
     }
 }

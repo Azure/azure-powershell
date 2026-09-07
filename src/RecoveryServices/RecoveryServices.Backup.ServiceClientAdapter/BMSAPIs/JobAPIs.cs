@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;    
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using Microsoft.Rest.Azure.OData;
 using RestAzureNS = Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.Common.Strategies;
@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             return BmsAdapter.Client.JobDetails.GetWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
-                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                jobId,
+                vaultName: vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                jobName: jobId,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
         }
 
@@ -56,7 +56,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             CrrModel.CrrJobRequest jobRequest
             )
         {
-            return CrrAdapter.Client.BackupCrrJobDetails.GetWithHttpMessagesAsync(secondaryRegion, jobRequest.ResourceId, jobRequest.JobName).Result.Body;
+            return CrrAdapter.Client.BackupCrrJobDetails.GetWithHttpMessagesAsync(
+                azureRegion: secondaryRegion,
+                resourceId: jobRequest.ResourceId,
+                jobName: jobRequest.JobName).Result.Body;
         }
 
         public List<CrrModel.JobResource> GetCrrJobs(string vaultId,
@@ -65,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string operation,
             DateTime startTime,
             DateTime endTime,
-            string backupManagementType, 
+            string backupManagementType,
             string azureRegion = null)
         {
             ODataQuery<CrrModel.JobQueryObject> queryFilter = GetQueryObjectCrr(
@@ -73,17 +76,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 startTime,
                 endTime,
                 jobId,
-                status, 
+                status,
                 operation);
-            
+
             CrrModel.CrrJobRequest crrJobRequest = new CrrModel.CrrJobRequest();
             crrJobRequest.ResourceId = vaultId;
             Func<RestAzureNS.IPage<CrrModel.JobResource>> listAsync =
-                () => CrrAdapter.Client.BackupCrrJobs.ListWithHttpMessagesAsync(azureRegion, crrJobRequest.ResourceId, crrJobRequest.JobName, queryFilter, cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body; 
+                () => CrrAdapter.Client.BackupCrrJobs.ListWithHttpMessagesAsync(
+                    azureRegion: azureRegion,
+                    resourceId: crrJobRequest.ResourceId,
+                    jobName: crrJobRequest.JobName,
+                    odataQuery: queryFilter,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             Func<string, RestAzureNS.IPage<CrrModel.JobResource>> listNextAsync =
                 nextLink => CrrAdapter.Client.BackupCrrJobs.ListNextWithHttpMessagesAsync(
-                    nextLink,
+                    nextPageLink: nextLink,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             return HelperUtils.GetPagedListCrr(listAsync, listNextAsync);
@@ -123,15 +131,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             Func<RestAzureNS.IPage<JobResource>> listAsync =
                 () => BmsAdapter.Client.BackupJobs.ListWithHttpMessagesAsync(
-                    vaultName ?? BmsAdapter.GetResourceName(),
-                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                    queryFilter,
-                    skipToken,
+                    vaultName: vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    filter: queryFilter?.Filter,
+                    skipToken: skipToken,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             Func<string, RestAzureNS.IPage<JobResource>> listNextAsync =
                 nextLink => BmsAdapter.Client.BackupJobs.ListNextWithHttpMessagesAsync(
-                    nextLink,
+                    nextPageLink: nextLink,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             return HelperUtils.GetPagedList(listAsync, listNextAsync);
@@ -150,9 +158,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             return BmsAdapter.Client.JobCancellations.TriggerWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
-                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                jobId,
+                vaultName: vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                jobName: jobId,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
 
@@ -171,10 +179,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             return BmsAdapter.Client.JobOperationResults.GetWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
-                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                jobId,
-                operationId,
+                vaultName: vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                jobName: jobId,
+                operationId: operationId,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
 
