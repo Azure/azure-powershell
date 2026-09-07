@@ -18,13 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed backup vault creation and update to apply policy-based immutability configuration when immutability is enabled
 * Added cost management granularity support to backup vault creation and update cmdlets
     - Added `-CostManagementGranularity` parameter to `New-AzDataProtectionBackupVault` and `Update-AzDataProtectionBackupVault`
     - Allowed values are `VaultLevel`, `ProtectedItemLevel`, `ProtectedItemWithParentTag`
-* Added immutability type and duration parameters to backup vault creation and update cmdlets
-    - Use `-ImmutabilityType AsPerPolicy` for policy-based immutability
-    - Use `-ImmutabilityType TimeBased` with `-ImmutabilityDurationInDay` for time-based immutability
-
 ## Version 3.0.1
 * Deprecated the `-OverwriteLifeCycle` parameter on `Edit-AzDataProtectionPolicyRetentionRuleClientObject`
     - The parameter will be removed in an upcoming release; existing retention rule lifecycles are replaced in place by default

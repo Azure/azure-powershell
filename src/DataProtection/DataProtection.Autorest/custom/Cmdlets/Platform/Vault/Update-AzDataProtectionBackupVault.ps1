@@ -36,16 +36,6 @@ function Update-AzDataProtectionBackupVault
         [ValidateSet('Disabled','Unlocked', 'Locked')]
         ${ImmutabilityState},
 
-        [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Immutability type of the vault. Allowed values are AsPerPolicy and TimeBased.')]
-        [System.String]
-        [ValidateSet('AsPerPolicy', 'TimeBased')]
-        ${ImmutabilityType},
-
-        [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Immutability duration in days. Required when ImmutabilityType is TimeBased.')]
-        [System.Double]
-        [ValidateRange(30, 36135)]
-        ${ImmutabilityDurationInDay},
-
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Cost Management Granularity of the vault. Allowed values are VaultLevel, ProtectedItemLevel, ProtectedItemWithParentTag.')]
         [System.String]
         [ValidateSet('VaultLevel', 'ProtectedItemLevel', 'ProtectedItemWithParentTag')]
@@ -160,24 +150,8 @@ function Update-AzDataProtectionBackupVault
 
     process
     {
-        $hasImmutabilityState = $PSBoundParameters.ContainsKey("ImmutabilityState")
-        $hasImmutabilityType = $PSBoundParameters.Remove("ImmutabilityType")
-        $hasImmutabilityDurationInDay = $PSBoundParameters.Remove("ImmutabilityDurationInDay")
-
-        Assert-AzDataProtectionImmutabilitySetting `
-            -ImmutabilityState $ImmutabilityState `
-            -ImmutabilityType $ImmutabilityType `
-            -HasImmutabilityState $hasImmutabilityState `
-            -HasImmutabilityType $hasImmutabilityType `
-            -HasImmutabilityDurationInDay $hasImmutabilityDurationInDay
-
-        if ($hasImmutabilityType -or $hasImmutabilityDurationInDay) {
-            $immutabilityPipeline = Get-AzDataProtectionImmutabilityRequestPipeline `
-                -ImmutabilityType $ImmutabilityType `
-                -ImmutabilityDurationInDay $ImmutabilityDurationInDay `
-                -HasImmutabilityType $hasImmutabilityType `
-                -HasImmutabilityDurationInDay $hasImmutabilityDurationInDay
-
+        if ($PSBoundParameters.ContainsKey("ImmutabilityState") -and $ImmutabilityState -ne 'Disabled') {
+            $immutabilityPipeline = Get-AzDataProtectionAsPerPolicyImmutabilityPipeline
             if ($PSBoundParameters.ContainsKey("HttpPipelinePrepend")) {
                 $PSBoundParameters["HttpPipelinePrepend"] = $PSBoundParameters["HttpPipelinePrepend"] + @($immutabilityPipeline)
             }
