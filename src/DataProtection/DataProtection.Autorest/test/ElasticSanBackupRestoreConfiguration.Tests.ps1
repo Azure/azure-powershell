@@ -65,4 +65,8 @@ Describe 'ElasticSanBackupRestoreConfiguration' {
     It 'RestoreConfigThrowsWhenOverrideTargetEmpty' {
         { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1") -ResourceNameOverride @{"source-vol1" = ""} } | Should -Throw "non-empty target volume name"
     }
+
+    It 'RestoreConfigThrowsWhenForeignParametersSupplied' {
+        { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1") -IncludedNamespace @("ns1") } | Should -Throw "Invalid parameters"
+    }
 }

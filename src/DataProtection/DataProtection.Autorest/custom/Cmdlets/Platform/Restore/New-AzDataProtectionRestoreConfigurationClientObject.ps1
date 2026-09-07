@@ -80,6 +80,11 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
 
         if($DatasourceType.ToString() -eq "AzureElasticSAN"){
 
+            # reject parameters that belong to other datasource types
+            if($ExcludedResourceType -ne $null -or $IncludedResourceType -ne $null -or $ExcludedNamespace -ne $null -or $IncludedNamespace -ne $null -or $LabelSelector -ne $null -or $IncludeClusterScopeResource -ne $null -or $ConflictPolicy -ne $null -or $NamespaceMapping -ne $null -or $PersistentVolumeRestoreMode -ne $null -or $RestoreHookReference -ne $null -or $ResourceModifierReference -ne $null -or $StagingResourceGroupId -ne $null -or $StagingStorageAccountId -ne $null){
+                throw "Invalid parameters for DatasourceType AzureElasticSAN. Only ResourceIdentifier and ResourceNameOverride are supported."
+            }
+
             if($ResourceIdentifier -eq $null -or $ResourceIdentifier.Count -eq 0){
                 throw "Please input parameter ResourceIdentifier for DatasourceType AzureElasticSAN."
             }
