@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Updated Recovery Services Backup commands to use management API version `2026-07-01`
+    - Preserved request filtering, continuation paging, operation tracking responses, and backup error details after SDK contract changes.
 * Added Cross Region Restore support for Azure File Share backup items (`Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`)
 * Refined soft delete behavior for Azure File share backup items
     - `Undo-AzRecoveryServicesBackupItemDeletion` now throws a clear error when the target Azure File share item is not in the soft-deleted (`ToBeDeleted`) state instead of issuing an undelete request that cannot succeed.

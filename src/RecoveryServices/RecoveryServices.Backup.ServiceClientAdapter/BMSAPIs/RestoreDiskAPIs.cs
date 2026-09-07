@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 }
             }
 
-            #region MUA 
+            #region MUA
             Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
             string operationRequest = null;
 
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 }
                 else if (!isMUAProtected)
                 {
-                    // resx                    
+                    // resx
                     throw new ArgumentException(String.Format("operation not critical. please try without the Token parameter"));
                 }
                 else
@@ -101,19 +101,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             }
             #endregion
 
-            var response = BmsAdapter.Client.Restores.TriggerWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
-                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                AzureFabricName,
-                containerUri,
-                protectedItemUri,
-                recoveryPointId,
-                triggerRestoreRequest,
-                null,
-                customHeaders,
+            var response = BmsAdapter.Client.Restores.BeginTriggerWithHttpMessagesAsync(
+                vaultName: vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                fabricName: AzureFabricName,
+                containerName: containerUri,
+                protectedItemName: protectedItemUri,
+                recoveryPointId: recoveryPointId,
+                parameters: triggerRestoreRequest,
+                xMsAuthorizationAuxiliary: null,
+                customHeaders: customHeaders,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
 
-            return response;
+            return new RestAzureNS.AzureOperationResponse
+            {
+                Request = response.Request,
+                Response = response.Response,
+                RequestId = response.RequestId
+            };
         }
 
 
@@ -145,15 +150,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 throw new Exception(Resources.AADPropertiesCouldNotBeFetchedException);
             }
 
-            var accessToken = CrrAdapter.Client.RecoveryPoints.GetAccessTokenWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                AzureFabricName, containerUri, protectedItemUri, recoveryPointId, userInfo).Result.Body; 
+            var accessToken = CrrAdapter.Client.RecoveryPoints.GetAccessTokenWithHttpMessagesAsync(
+                vaultName: vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                fabricName: AzureFabricName,
+                containerName: containerUri,
+                protectedItemName: protectedItemUri,
+                recoveryPointId: recoveryPointId,
+                parameters: userInfo).Result.Body;
 
             if(accessToken == null || accessToken.Properties == null)
             {
                 throw new Exception(Resources.CRRAccessTokenCouldNotBeFetchedException);
             }
 
-            return accessToken.Properties; 
+            return accessToken.Properties;
         }
 
         /// <summary>
@@ -169,7 +180,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             CrrModel.CrossRegionRestoreRequest triggerCRRRestoreRequest,
             string storageAccountLocation = null,
             string secondaryRegion = null)
-        {  
+        {
             //validation block
             if (!triggerCRRRestoreRequest.RestoreRequest.GetType().IsSubclassOf(typeof(CrrModel.AzureWorkloadRestoreRequest)))
             {
@@ -178,8 +189,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                     throw new Exception(Resources.CrossRegionRestoreIncorrectTargetRegion);
                 }
             }
-            
-            var response = CrrAdapter.Client.CrossRegionRestore.TriggerWithHttpMessagesAsync(secondaryRegion, triggerCRRRestoreRequest.CrossRegionRestoreAccessDetails , triggerCRRRestoreRequest.RestoreRequest).Result;
+
+            var response = CrrAdapter.Client.CrossRegionRestore.TriggerWithHttpMessagesAsync(
+                azureRegion: secondaryRegion,
+                crossRegionRestoreAccessDetails: triggerCRRRestoreRequest.CrossRegionRestoreAccessDetails,
+                restoreRequest: triggerCRRRestoreRequest.RestoreRequest).Result;
             return response;
         }
     }
