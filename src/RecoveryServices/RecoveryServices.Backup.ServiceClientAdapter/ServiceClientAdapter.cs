@@ -18,6 +18,7 @@ using RecoveryServicesBackupCRRNS = Microsoft.Azure.Management.RecoveryServices.
 using RecoveryServicesNS = Microsoft.Azure.Management.RecoveryServices;
 using ResourcesNS = Microsoft.Azure.Management.Internal.Resources;
 using ARGNS = Microsoft.Azure.Management.ResourceGraph;
+using RestAzureNS = Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -39,6 +40,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         ClientProxy<ResourcesNS.FeatureClient> FeatureAdapter;
 
         public string SubscriptionId;
+
+        private static RestAzureNS.AzureOperationResponse ToAzureOperationResponse<THeader>(
+            RestAzureNS.AzureOperationHeaderResponse<THeader> response)
+        {
+            return new RestAzureNS.AzureOperationResponse
+            {
+                Request = response.Request,
+                Response = response.Response,
+                RequestId = response.RequestId
+            };
+        }
+
+        private static RestAzureNS.AzureOperationResponse<TBody> ToAzureOperationResponse<TBody, THeader>(
+            RestAzureNS.AzureOperationResponse<TBody, THeader> response)
+        {
+            return new RestAzureNS.AzureOperationResponse<TBody>
+            {
+                Body = response.Body,
+                Request = response.Request,
+                Response = response.Response,
+                RequestId = response.RequestId
+            };
+        }
+
+        private static RestAzureNS.AzureOperationResponse ToAzureOperationResponseWithoutBody<TBody, THeader>(
+            RestAzureNS.AzureOperationResponse<TBody, THeader> response)
+        {
+            return new RestAzureNS.AzureOperationResponse
+            {
+                Request = response.Request,
+                Response = response.Response,
+                RequestId = response.RequestId
+            };
+        }
 
         /// <summary>
         /// Resource provider namespace that this adapter uses to 

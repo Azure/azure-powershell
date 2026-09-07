@@ -21,9 +21,6 @@ using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using RestAzureNS = Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
@@ -129,117 +126,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string vaultName = null,
             string resourceGroupName = null)
         {
-            return ConfigureProtectedItemSourceScanAsync(
-                containerName,
-                protectedItemName,
-                request,
-                vaultName,
-                resourceGroupName).GetAwaiter().GetResult();
-        }
-
-        private async Task<RestAzureNS.AzureOperationResponse> ConfigureProtectedItemSourceScanAsync(
-            string containerName,
-            string protectedItemName,
-            ProtectedItemConfigureSourceScanRequest request,
-            string vaultName,
-            string resourceGroupName)
-        {
             if (request == null)
             {
                 throw new ArgumentNullException(nameof(request));
             }
 
-            string resolvedVaultName = vaultName ?? BmsAdapter.GetResourceName();
-            string resolvedResourceGroupName = resourceGroupName ?? BmsAdapter.GetResourceGroupName();
-            var client = BmsAdapter.Client;
-            string baseUrl = client.BaseUri.AbsoluteUri;
-            string url = new Uri(
-                new Uri(baseUrl + (baseUrl.EndsWith("/") ? string.Empty : "/")),
-                "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/configureSourceScan")
-                .ToString()
-                .Replace("{subscriptionId}", Uri.EscapeDataString(client.SubscriptionId))
-                .Replace("{resourceGroupName}", Uri.EscapeDataString(resolvedResourceGroupName))
-                .Replace("{vaultName}", Uri.EscapeDataString(resolvedVaultName))
-                .Replace("{fabricName}", Uri.EscapeDataString(AzureFabricName))
-                .Replace("{containerName}", Uri.EscapeDataString(containerName))
-                .Replace("{protectedItemName}", Uri.EscapeDataString(protectedItemName));
+            var response = BmsAdapter.Client.ConfigureSourceScan.BeginExecuteWithHttpMessagesAsync(
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
+                AzureFabricName,
+                containerName,
+                protectedItemName,
+                request.SourceScanAction,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
 
-            url += "?api-version=" + Uri.EscapeDataString(client.ApiVersion);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, url);
-            string requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(
-                request,
-                client.SerializationSettings);
-            httpRequest.Content = new StringContent(requestContent, Encoding.UTF8, "application/json");
-
-            if (client.GenerateClientRequestId == true)
-            {
-                httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
-            }
-
-            if (!string.IsNullOrEmpty(client.AcceptLanguage))
-            {
-                httpRequest.Headers.TryAddWithoutValidation("accept-language", client.AcceptLanguage);
-            }
-
-            if (client.Credentials != null)
-            {
-                await client.Credentials.ProcessHttpRequestAsync(
-                    httpRequest,
-                    BmsAdapter.CmdletCancellationToken).ConfigureAwait(false);
-            }
-
-            HttpResponseMessage httpResponse = await client.HttpClient.SendAsync(
-                httpRequest,
-                BmsAdapter.CmdletCancellationToken).ConfigureAwait(false);
-
-            if (httpResponse.StatusCode != System.Net.HttpStatusCode.OK &&
-                httpResponse.StatusCode != System.Net.HttpStatusCode.Accepted)
-            {
-                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var exception = new RestAzureNS.CloudException(
-                    string.Format("Operation returned an invalid status code '{0}'", httpResponse.StatusCode));
-
-                try
-                {
-                    RestAzureNS.CloudError errorBody = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<RestAzureNS.CloudError>(
-                        responseContent,
-                        client.DeserializationSettings);
-                    if (errorBody != null)
-                    {
-                        exception = new RestAzureNS.CloudException(errorBody.Message)
-                        {
-                            Body = errorBody
-                        };
-                    }
-                }
-                catch (Newtonsoft.Json.JsonException)
-                {
-                    // Preserve the HTTP status when the service response is not a CloudError.
-                }
-
-                exception.Request = new Microsoft.Rest.HttpRequestMessageWrapper(httpRequest, requestContent);
-                exception.Response = new Microsoft.Rest.HttpResponseMessageWrapper(httpResponse, responseContent);
-                if (httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    exception.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-
-                throw exception;
-            }
-
-            var result = new RestAzureNS.AzureOperationResponse
-            {
-                Request = httpRequest,
-                Response = httpResponse
-            };
-
-            if (httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-
-            return result;
+            return ToAzureOperationResponseWithoutBody(response);
         }
 
         /// <summary>

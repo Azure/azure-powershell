@@ -75,14 +75,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             ServerName = protectedItem.ServerName;
             ParentName = protectedItem.ParentName;
             ParentType = protectedItem.ParentType;
-            if (protectedItem.LastBackupErrorDetail != null)
-            {
-                LastBackupErrorDetail = new ErrorDetail(
-                    protectedItem.LastBackupErrorDetail.Code,
-                    protectedItem.LastBackupErrorDetail.Message,
-                    protectedItem.LastBackupErrorDetail.Recommendations != null ? string.Join("; ", protectedItem.LastBackupErrorDetail.Recommendations) : null);
-            }
-
+            LastBackupErrorDetail = protectedItem.LastBackupErrorDetail;
             ProtectedItemDataSourceId = protectedItem.ProtectedItemDataSourceId;
             ProtectedItemHealthStatus = protectedItem.ProtectedItemHealthStatus;
             LastBackupStatus = protectedItem.LastBackupStatus;
@@ -125,10 +118,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
             if (protectedItem.LastBackupErrorDetail != null)
             {
-                LastBackupErrorDetail = new ErrorDetail(
-                    protectedItem.LastBackupErrorDetail.Code,
-                    protectedItem.LastBackupErrorDetail.Message,
-                    protectedItem.LastBackupErrorDetail.Recommendations != null ? string.Join("; ", protectedItem.LastBackupErrorDetail.Recommendations) : null);
+                LastBackupErrorDetail = new ErrorDetail(protectedItem.LastBackupErrorDetail.Code, protectedItem.LastBackupErrorDetail.Message, protectedItem.LastBackupErrorDetail.Recommendations);
             }
 
             ProtectedItemDataSourceId = protectedItem.ProtectedItemDataSourceId;

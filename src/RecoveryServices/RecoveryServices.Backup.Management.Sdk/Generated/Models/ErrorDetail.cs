@@ -10,18 +10,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
     /// <summary>
     /// The error detail.
     /// </summary>
-    public partial class ErrorDetail
+    public partial class ManagementErrorDetail
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorDetail class.
+        /// Initializes a new instance of the ManagementErrorDetail class.
         /// </summary>
-        public ErrorDetail()
+        public ManagementErrorDetail()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorDetail class.
+        /// Initializes a new instance of the ManagementErrorDetail class.
         /// </summary>
 
         /// <param name="code">The error code.
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="additionalInfo">The error additional info.
         /// </param>
-        public ErrorDetail(string code = default(string), string message = default(string), string target = default(string), System.Collections.Generic.IList<ErrorDetail> details = default(System.Collections.Generic.IList<ErrorDetail>), System.Collections.Generic.IList<ErrorAdditionalInfo> additionalInfo = default(System.Collections.Generic.IList<ErrorAdditionalInfo>))
+        public ManagementErrorDetail(string code = default(string), string message = default(string), string target = default(string), System.Collections.Generic.IList<ManagementErrorDetail> details = default(System.Collections.Generic.IList<ManagementErrorDetail>), System.Collections.Generic.IList<ErrorAdditionalInfo> additionalInfo = default(System.Collections.Generic.IList<ErrorAdditionalInfo>))
 
         {
             this.Code = code;
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Gets the error details.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "details")]
-        public System.Collections.Generic.IList<ErrorDetail> Details {get; private set; }
+        public System.Collections.Generic.IList<ManagementErrorDetail> Details {get; private set; }
 
         /// <summary>
         /// Gets the error additional info.

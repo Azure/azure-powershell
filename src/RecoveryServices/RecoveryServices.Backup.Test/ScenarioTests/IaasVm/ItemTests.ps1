@@ -240,7 +240,7 @@ function Test-AzureVMSourceScanRecoveryPoints
 	$resourceGroupName = "swbela-ransom-rg"
 	$vaultName = "swbela-mdc-vault-1"
 	$targetVmFriendlyName = "Sample-VM"
-	$recoveryPointId = "1131169477306229"
+	$recoveryPointId = "1128466362346786"
 
 	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 

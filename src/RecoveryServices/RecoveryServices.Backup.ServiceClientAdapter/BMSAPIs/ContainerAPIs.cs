@@ -23,29 +23,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 {
     public partial class ServiceClientAdapter
     {
-        private static RestAzureNS.AzureOperationResponse ToAzureOperationResponse<THeader>(
-            RestAzureNS.AzureOperationHeaderResponse<THeader> response)
-        {
-            return new RestAzureNS.AzureOperationResponse
-            {
-                Request = response.Request,
-                Response = response.Response,
-                RequestId = response.RequestId
-            };
-        }
-
-        private static RestAzureNS.AzureOperationResponse<TBody> ToAzureOperationResponse<TBody, THeader>(
-            RestAzureNS.AzureOperationResponse<TBody, THeader> response)
-        {
-            return new RestAzureNS.AzureOperationResponse<TBody>
-            {
-                Body = response.Body,
-                Request = response.Request,
-                Response = response.Response,
-                RequestId = response.RequestId
-            };
-        }
-
         /// <summary>
         /// Inquire protection containers in the vault according to the query params
         /// </summary>
