@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets the offer type for the Cosmos DB database account. Default value: Standard.
         //     Possible values include: 'Standard'
-        public DatabaseAccountOfferType? DatabaseAccountOfferType { get; }
+        public DatabaseAccountGetPropertiesDatabaseAccountOfferType? DatabaseAccountOfferType { get; }
         //
         // Summary:
         //     Gets the connection endpoint for the Cosmos DB database account.

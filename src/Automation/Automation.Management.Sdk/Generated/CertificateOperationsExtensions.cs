@@ -13,46 +13,43 @@ namespace Microsoft.Azure.Management.Automation
     public static partial class CertificateOperationsExtensions
     {
         /// <summary>
-        /// Delete the certificate.
+        /// Retrieve a list of certificates.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        /// <param name='certificateName'>
-        /// The name of certificate.
-        /// </param>
-        public static void Delete(this ICertificateOperations operations, string resourceGroupName, string automationAccountName, string certificateName)
+        public static Microsoft.Rest.Azure.IPage<Certificate> ListByAutomationAccount(this ICertificateOperations operations, string resourceGroupName, string automationAccountName)
         {
-                ((ICertificateOperations)operations).DeleteAsync(resourceGroupName, automationAccountName, certificateName).GetAwaiter().GetResult();
+                return ((ICertificateOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Delete the certificate.
+        /// Retrieve a list of certificates.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
-        /// </param>
-        /// <param name='certificateName'>
-        /// The name of certificate.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this ICertificateOperations operations, string resourceGroupName, string automationAccountName, string certificateName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Certificate>> ListByAutomationAccountAsync(this ICertificateOperations operations, string resourceGroupName, string automationAccountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, automationAccountName, certificateName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Retrieve the certificate identified by certificate name.
@@ -61,7 +58,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -81,7 +78,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -106,13 +103,13 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='certificateName'>
-        /// The parameters supplied to the create or update certificate operation.
+        /// The name of certificate.
         /// </param>
         public static Certificate CreateOrUpdate(this ICertificateOperations operations, string resourceGroupName, string automationAccountName, string certificateName, CertificateCreateOrUpdateParameters parameters)
         {
@@ -126,13 +123,13 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='certificateName'>
-        /// The parameters supplied to the create or update certificate operation.
+        /// The name of certificate.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -151,13 +148,13 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='certificateName'>
-        /// The parameters supplied to the update certificate operation.
+        /// The name of certificate.
         /// </param>
         public static Certificate Update(this ICertificateOperations operations, string resourceGroupName, string automationAccountName, string certificateName, CertificateUpdateParameters parameters)
         {
@@ -171,13 +168,13 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='certificateName'>
-        /// The parameters supplied to the update certificate operation.
+        /// The name of certificate.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -190,43 +187,46 @@ namespace Microsoft.Azure.Management.Automation
             }
         }
         /// <summary>
-        /// Retrieve a list of certificates.
+        /// Delete the certificate.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<Certificate> ListByAutomationAccount(this ICertificateOperations operations, string resourceGroupName, string automationAccountName)
+        /// <param name='certificateName'>
+        /// The name of certificate.
+        /// </param>
+        public static void Delete(this ICertificateOperations operations, string resourceGroupName, string automationAccountName, string certificateName)
         {
-                return ((ICertificateOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName).GetAwaiter().GetResult();
+                ((ICertificateOperations)operations).DeleteAsync(resourceGroupName, automationAccountName, certificateName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieve a list of certificates.
+        /// Delete the certificate.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
+        /// </param>
+        /// <param name='certificateName'>
+        /// The name of certificate.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Certificate>> ListByAutomationAccountAsync(this ICertificateOperations operations, string resourceGroupName, string automationAccountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this ICertificateOperations operations, string resourceGroupName, string automationAccountName, string certificateName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, automationAccountName, certificateName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieve a list of certificates.

@@ -59,6 +59,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAzureFirewallAutoscaleConfiguration AutoscaleConfiguration { get; set; }
 
+        public PSAzureFirewallAfcConfiguration AfcConfiguration { get; set; }
+
         public string[] PrivateRange
         {
             get

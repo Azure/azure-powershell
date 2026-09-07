@@ -432,6 +432,9 @@
   <data name="MSITenantDomainNotFound" xml:space="preserve">
     <value>Please ensure that the managed service identity found on this machine has proper permissions to the provided tenant domain.</value>
   </data>
+  <data name="MSITenantMismatch" xml:space="preserve">
+    <value>The current context is using Managed Identity authentication, which is scoped to tenant '{0}'. The requested -TenantId '{1}' does not match the current tenant and cannot be used. Remove the -TenantId parameter, or use Connect-AzAccount with a different authentication method to target a different tenant.</value>
+  </data>
   <data name="ServicePrincipalTenantDomainNotFound" xml:space="preserve">
     <value>Please ensure that the provided service principal '{0}' is found in the provided tenant domain.</value>
   </data>

@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             if (configuration == null) return;
 
-            this.CreationTime = configuration.CreationTime.ToLocalTime();
-            this.LastModifiedTime = configuration.LastModifiedTime.ToLocalTime();
+            this.CreationTime = configuration.CreationTime?.ToLocalTime();
+            this.LastModifiedTime = configuration.LastModifiedTime?.ToLocalTime();
             this.Slot = slot;
         }
 

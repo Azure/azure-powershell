@@ -54,10 +54,11 @@ param(
     [Parameter(ParameterSetName='Builtin', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
+    [Alias('ManagementGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The name of the management group.
-    ${ManagementGroupName},
+    ${ManagementGroupId},
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Builtin', ValueFromPipelineByPropertyName)]
@@ -181,30 +182,30 @@ begin {
     # mapping table of generated cmdlet parameter sets
     if ($Version -or $ListVersion) {
         $mapping = @{
-            NameSub = 'Az.Policy.private\Get-AzPolicySetDefinitionVersion_Get';               # Name, SubscriptionId
-            NameMG = 'Az.Policy.private\Get-AzPolicySetDefinitionVersion_Get1';               # Name, ManagementGroupName
-            MG = 'Az.Policy.private\Get-AzPolicySetDefinitionVersion_List';                   # ManagementGroupName
-            Sub = 'Az.Policy.private\Get-AzPolicySetDefinitionVersion_List1';                 # SubscriptionId
-            BuiltinId='Az.Policy.private\Get-AzPolicySetDefinitionVersionBuilt_Get';          # Id
-            BuiltinGet='Az.Policy.private\Get-AzPolicySetDefinitionVersionBuilt_Get';         # Name
+            NameSub = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersion';               # Name, SubscriptionId
+            NameMG = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersion';                # Name, ManagementGroupName
+            MG = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersion';                    # ManagementGroupName
+            Sub = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersion';                   # SubscriptionId
+            BuiltinId='Az.Policy.internal\Get-AzPolicySetDefinitionVersionBuilt';          # Id
+            BuiltinGet='Az.Policy.internal\Get-AzPolicySetDefinitionVersionBuilt';         # Name
         }
     }
     else {
         $mapping = @{
-            NameSub = 'Az.Policy.private\Get-AzPolicySetDefinition_Get';                      # Name, SubscriptionId
-            NameMG = 'Az.Policy.private\Get-AzPolicySetDefinition_Get1';                      # Name, ManagementGroupName
-            Sub = 'Az.Policy.private\Get-AzPolicySetDefinition_List';                         # SubscriptionId
-            MG = 'Az.Policy.private\Get-AzPolicySetDefinition_List1';                         # ManagementGroupName
-            BuiltinId='Az.Policy.private\Get-AzPolicySetDefinitionBuilt_Get';                 # Id
-            BuiltinGet='Az.Policy.private\Get-AzPolicySetDefinitionBuilt_Get';                # Name
+            NameSub = 'Az.Policy.internal\Get-AzPolicySetDefinition';                      # Name, SubscriptionId
+            NameMG = 'Az.Policy.internal\Get-AzPolicySetDefinition';                       # Name, ManagementGroupName
+            Sub = 'Az.Policy.internal\Get-AzPolicySetDefinition';                          # SubscriptionId
+            MG = 'Az.Policy.internal\Get-AzPolicySetDefinition';                           # ManagementGroupName
+            BuiltinId='Az.Policy.internal\Get-AzPolicySetDefinitionBuilt';                 # Id
+            BuiltinGet='Az.Policy.internal\Get-AzPolicySetDefinitionBuilt';                # Name
         }
     }
 
     if ($ListVersion) {
-        $mapping['NameSub'] = 'Az.Policy.private\Get-AzPolicySetDefinitionVersion_List2';         # Name, SubscriptionId
-        $mapping['NameMG'] = 'Az.Policy.private\Get-AzPolicySetDefinitionVersion_List3';          # Name, ManagementGroup
-        $mapping['BuiltinId'] = 'Az.Policy.private\Get-AzPolicySetDefinitionVersionBuilt_List';   # Id
-        $mapping['BuiltinGet'] = 'Az.Policy.private\Get-AzPolicySetDefinitionVersionBuilt_List';  # Name
+        $mapping['NameSub'] = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersion';          # Name, SubscriptionId
+        $mapping['NameMG'] = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersion';           # Name, ManagementGroup
+        $mapping['BuiltinId'] = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersionBuilt';   # Id
+        $mapping['BuiltinGet'] = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersionBuilt';  # Name
    }
 }
 
@@ -217,7 +218,7 @@ process {
     $PSBoundParameters['ErrorAction'] = 'Stop'
 
     # handle disallowed cases not handled by PS parameter attributes
-    if ($PSBoundParameters['SubscriptionId'] -and $PSBoundParameters['ManagementGroupName']) {
+    if ($PSBoundParameters['SubscriptionId'] -and $PSBoundParameters['ManagementGroupId']) {
         throw 'Only ManagementGroupName or SubscriptionId can be provided, not both.'
     }
 
@@ -257,7 +258,7 @@ process {
                         }
                     }
                     'mgname' {
-                        $PSBoundParameters['ManagementGroupName'] = $parsed['ManagementGroupName']
+                        $PSBoundParameters['ManagementGroupId'] = $parsed['ManagementGroupName']
                         $PSBoundParameters['Name'] = $parsed['Name']
                         $calledParameterSet = 'NameMG';
                     }
@@ -281,12 +282,7 @@ process {
                 $calledParameterSet = 'Sub';
             }
         }
-        elseif ($PSBoundParameters['ManagementGroupName']) {
-            if (!($PSBoundParameters['Version'] -or $PSBoundParameters['ListVersion'])) {
-                $PSBoundParameters['ManagementGroupId'] = $PSBoundParameters['ManagementGroupName']
-                $null = $PSBoundParameters.Remove('ManagementGroupName')
-            }
-
+        elseif ($PSBoundParameters['ManagementGroupId']) {
             if ($PSBoundParameters['Name']) {
                 $calledParameterSet = 'NameMG'
             }

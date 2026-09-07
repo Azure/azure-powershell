@@ -13,13 +13,13 @@ namespace Microsoft.Azure.Management.Maintenance
     public static partial class ConfigurationAssignmentsOperationsExtensions
     {
         /// <summary>
-        /// Get configuration assignment for resource..
+        /// List configurationAssignments for resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
@@ -28,16 +28,79 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Resource parent type
         /// </param>
         /// <param name='resourceParentName'>
-        /// Resource parent identifier
+        /// Resource parent name
         /// </param>
         /// <param name='resourceType'>
         /// Resource type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource name
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ConfigurationAssignment> ListParent(this IConfigurationAssignmentsOperations operations, string resourceGroupName, string providerName, string resourceParentType, string resourceParentName, string resourceType, string resourceName)
+        {
+                return ((IConfigurationAssignmentsOperations)operations).ListParentAsync(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List configurationAssignments for resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='providerName'>
+        /// Resource provider name
+        /// </param>
+        /// <param name='resourceParentType'>
+        /// Resource parent type
+        /// </param>
+        /// <param name='resourceParentName'>
+        /// Resource parent name
+        /// </param>
+        /// <param name='resourceType'>
+        /// Resource type
+        /// </param>
+        /// <param name='resourceName'>
+        /// Resource name
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConfigurationAssignment>> ListParentAsync(this IConfigurationAssignmentsOperations operations, string resourceGroupName, string providerName, string resourceParentType, string resourceParentName, string resourceType, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListParentWithHttpMessagesAsync(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get configuration assignment for resource..
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='providerName'>
+        /// Resource provider name
+        /// </param>
+        /// <param name='resourceParentType'>
+        /// Resource parent type
+        /// </param>
+        /// <param name='resourceParentName'>
+        /// Resource parent name
+        /// </param>
+        /// <param name='resourceType'>
+        /// Resource type
+        /// </param>
+        /// <param name='resourceName'>
+        /// Resource name
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         public static ConfigurationAssignment GetParent(this IConfigurationAssignmentsOperations operations, string resourceGroupName, string providerName, string resourceParentType, string resourceParentName, string resourceType, string resourceName, string configurationAssignmentName)
         {
@@ -51,7 +114,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
@@ -60,16 +123,16 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Resource parent type
         /// </param>
         /// <param name='resourceParentName'>
-        /// Resource parent identifier
+        /// Resource parent name
         /// </param>
         /// <param name='resourceType'>
         /// Resource type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource name
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -88,7 +151,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
@@ -97,16 +160,16 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Resource parent type
         /// </param>
         /// <param name='resourceParentName'>
-        /// Resource parent identifier
+        /// Resource parent name
         /// </param>
         /// <param name='resourceType'>
         /// Resource type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource name
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         public static ConfigurationAssignment CreateOrUpdateParent(this IConfigurationAssignmentsOperations operations, string resourceGroupName, string providerName, string resourceParentType, string resourceParentName, string resourceType, string resourceName, string configurationAssignmentName, ConfigurationAssignment configurationAssignment)
         {
@@ -120,7 +183,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
@@ -129,16 +192,16 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Resource parent type
         /// </param>
         /// <param name='resourceParentName'>
-        /// Resource parent identifier
+        /// Resource parent name
         /// </param>
         /// <param name='resourceType'>
         /// Resource type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource name
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -157,7 +220,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
@@ -166,16 +229,16 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Resource parent type
         /// </param>
         /// <param name='resourceParentName'>
-        /// Resource parent identifier
+        /// Resource parent name
         /// </param>
         /// <param name='resourceType'>
         /// Resource type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource name
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Unique configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         public static ConfigurationAssignment DeleteParent(this IConfigurationAssignmentsOperations operations, string resourceGroupName, string providerName, string resourceParentType, string resourceParentName, string resourceType, string resourceName, string configurationAssignmentName)
         {
@@ -189,7 +252,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
@@ -198,16 +261,16 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Resource parent type
         /// </param>
         /// <param name='resourceParentName'>
-        /// Resource parent identifier
+        /// Resource parent name
         /// </param>
         /// <param name='resourceType'>
         /// Resource type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource name
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Unique configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -226,19 +289,19 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
         /// </param>
         /// <param name='resourceType'>
-        /// Resource type
+        /// Resource parent type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource parent name
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         public static ConfigurationAssignment Get(this IConfigurationAssignmentsOperations operations, string resourceGroupName, string providerName, string resourceType, string resourceName, string configurationAssignmentName)
         {
@@ -252,19 +315,19 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
         /// </param>
         /// <param name='resourceType'>
-        /// Resource type
+        /// Resource parent type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource parent name
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -283,19 +346,19 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
         /// </param>
         /// <param name='resourceType'>
-        /// Resource type
+        /// Resource parent type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource parent name
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         public static ConfigurationAssignment CreateOrUpdate(this IConfigurationAssignmentsOperations operations, string resourceGroupName, string providerName, string resourceType, string resourceName, string configurationAssignmentName, ConfigurationAssignment configurationAssignment)
         {
@@ -309,19 +372,19 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
         /// </param>
         /// <param name='resourceType'>
-        /// Resource type
+        /// Resource parent type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource parent name
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -340,19 +403,19 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
         /// </param>
         /// <param name='resourceType'>
-        /// Resource type
+        /// Resource parent type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource parent name
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Unique configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         public static ConfigurationAssignment Delete(this IConfigurationAssignmentsOperations operations, string resourceGroupName, string providerName, string resourceType, string resourceName, string configurationAssignmentName)
         {
@@ -366,19 +429,19 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
         /// </param>
         /// <param name='resourceType'>
-        /// Resource type
+        /// Resource parent type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource parent name
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Unique configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -391,22 +454,16 @@ namespace Microsoft.Azure.Management.Maintenance
             }
         }
         /// <summary>
-        /// List configurationAssignments for resource.
+        /// Get Configuration records within a subscription and resource group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
-        /// </param>
-        /// <param name='resourceParentType'>
-        /// Resource parent type
-        /// </param>
-        /// <param name='resourceParentName'>
-        /// Resource parent identifier
         /// </param>
         /// <param name='resourceType'>
         /// Resource type
@@ -414,28 +471,22 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <param name='resourceName'>
         /// Resource identifier
         /// </param>
-        public static System.Collections.Generic.IEnumerable<ConfigurationAssignment> ListParent(this IConfigurationAssignmentsOperations operations, string resourceGroupName, string providerName, string resourceParentType, string resourceParentName, string resourceType, string resourceName)
+        public static Microsoft.Rest.Azure.IPage<ConfigurationAssignment> List(this IConfigurationAssignmentsOperations operations, string resourceGroupName, string providerName, string resourceType, string resourceName)
         {
-                return ((IConfigurationAssignmentsOperations)operations).ListParentAsync(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName).GetAwaiter().GetResult();
+                return ((IConfigurationAssignmentsOperations)operations).ListAsync(resourceGroupName, providerName, resourceType, resourceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// List configurationAssignments for resource.
+        /// Get Configuration records within a subscription and resource group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
-        /// </param>
-        /// <param name='resourceParentType'>
-        /// Resource parent type
-        /// </param>
-        /// <param name='resourceParentName'>
-        /// Resource parent identifier
         /// </param>
         /// <param name='resourceType'>
         /// Resource type
@@ -446,9 +497,9 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<ConfigurationAssignment>> ListParentAsync(this IConfigurationAssignmentsOperations operations, string resourceGroupName, string providerName, string resourceParentType, string resourceParentName, string resourceType, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConfigurationAssignment>> ListAsync(this IConfigurationAssignmentsOperations operations, string resourceGroupName, string providerName, string resourceType, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListParentWithHttpMessagesAsync(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, providerName, resourceType, resourceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -459,21 +510,12 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
-        /// <param name='providerName'>
-        /// Resource provider name
-        /// </param>
-        /// <param name='resourceType'>
-        /// Resource type
-        /// </param>
-        /// <param name='resourceName'>
-        /// Resource identifier
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<ConfigurationAssignment> List(this IConfigurationAssignmentsOperations operations, string resourceGroupName, string providerName, string resourceType, string resourceName)
+        public static Microsoft.Rest.Azure.IPage<ConfigurationAssignment> ListParentNext(this IConfigurationAssignmentsOperations operations, string nextPageLink)
         {
-                return ((IConfigurationAssignmentsOperations)operations).ListAsync(resourceGroupName, providerName, resourceType, resourceName).GetAwaiter().GetResult();
+                return ((IConfigurationAssignmentsOperations)operations).ListParentNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -482,24 +524,48 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// Resource group name
-        /// </param>
-        /// <param name='providerName'>
-        /// Resource provider name
-        /// </param>
-        /// <param name='resourceType'>
-        /// Resource type
-        /// </param>
-        /// <param name='resourceName'>
-        /// Resource identifier
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<ConfigurationAssignment>> ListAsync(this IConfigurationAssignmentsOperations operations, string resourceGroupName, string providerName, string resourceType, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConfigurationAssignment>> ListParentNextAsync(this IConfigurationAssignmentsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, providerName, resourceType, resourceName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListParentNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get Configuration records within a subscription and resource group
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ConfigurationAssignment> ListNext(this IConfigurationAssignmentsOperations operations, string nextPageLink)
+        {
+                return ((IConfigurationAssignmentsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get Configuration records within a subscription and resource group
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConfigurationAssignment>> ListNextAsync(this IConfigurationAssignmentsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

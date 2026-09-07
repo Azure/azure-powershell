@@ -13,46 +13,43 @@ namespace Microsoft.Azure.Management.Automation
     public static partial class Python3PackageOperationsExtensions
     {
         /// <summary>
-        /// Delete the python 3 package by name.
+        /// Retrieve a list of python 3 packages.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        /// <param name='packageName'>
-        /// The python package name.
-        /// </param>
-        public static void Delete(this IPython3PackageOperations operations, string resourceGroupName, string automationAccountName, string packageName)
+        public static Microsoft.Rest.Azure.IPage<Module> ListByAutomationAccount(this IPython3PackageOperations operations, string resourceGroupName, string automationAccountName)
         {
-                ((IPython3PackageOperations)operations).DeleteAsync(resourceGroupName, automationAccountName, packageName).GetAwaiter().GetResult();
+                return ((IPython3PackageOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Delete the python 3 package by name.
+        /// Retrieve a list of python 3 packages.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
-        /// </param>
-        /// <param name='packageName'>
-        /// The python package name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IPython3PackageOperations operations, string resourceGroupName, string automationAccountName, string packageName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Module>> ListByAutomationAccountAsync(this IPython3PackageOperations operations, string resourceGroupName, string automationAccountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, automationAccountName, packageName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Retrieve the python 3 package identified by package name.
@@ -61,7 +58,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -81,7 +78,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -106,13 +103,13 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='packageName'>
-        /// The name of python package.
+        /// The python package name.
         /// </param>
         public static Module CreateOrUpdate(this IPython3PackageOperations operations, string resourceGroupName, string automationAccountName, string packageName, PythonPackageCreateParameters parameters)
         {
@@ -126,13 +123,13 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='packageName'>
-        /// The name of python package.
+        /// The python package name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -151,13 +148,13 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='packageName'>
-        /// The name of python package.
+        /// The python package name.
         /// </param>
         public static Module Update(this IPython3PackageOperations operations, string resourceGroupName, string automationAccountName, string packageName, PythonPackageUpdateParameters parameters)
         {
@@ -171,13 +168,13 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='packageName'>
-        /// The name of python package.
+        /// The python package name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -190,43 +187,46 @@ namespace Microsoft.Azure.Management.Automation
             }
         }
         /// <summary>
-        /// Retrieve a list of python 3 packages.
+        /// Delete the python 3 package by name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<Module> ListByAutomationAccount(this IPython3PackageOperations operations, string resourceGroupName, string automationAccountName)
+        /// <param name='packageName'>
+        /// The python package name.
+        /// </param>
+        public static void Delete(this IPython3PackageOperations operations, string resourceGroupName, string automationAccountName, string packageName)
         {
-                return ((IPython3PackageOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName).GetAwaiter().GetResult();
+                ((IPython3PackageOperations)operations).DeleteAsync(resourceGroupName, automationAccountName, packageName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieve a list of python 3 packages.
+        /// Delete the python 3 package by name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
+        /// </param>
+        /// <param name='packageName'>
+        /// The python package name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Module>> ListByAutomationAccountAsync(this IPython3PackageOperations operations, string resourceGroupName, string automationAccountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IPython3PackageOperations operations, string resourceGroupName, string automationAccountName, string packageName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, automationAccountName, packageName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieve a list of python 3 packages.

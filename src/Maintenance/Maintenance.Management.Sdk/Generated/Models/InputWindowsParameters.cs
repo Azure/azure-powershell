@@ -30,7 +30,9 @@ namespace Microsoft.Azure.Management.Maintenance.Models
         /// <param name="kbNumbersToInclude">Windows KBID to be included for patching.
         /// </param>
 
-        /// <param name="classificationsToInclude">Classification category of patches to be patched
+        /// <param name="classificationsToInclude">Classification category of patches to be patched. Allowed values are
+        /// &#39;Critical&#39;, &#39;Security&#39;, &#39;UpdateRollup&#39;, &#39;FeaturePack&#39;, &#39;ServicePack&#39;,
+        /// &#39;Definition&#39;, &#39;Tools&#39;, and &#39;Updates&#39;.
         /// </param>
 
         /// <param name="excludeKbsRequiringReboot">Exclude patches which need reboot
@@ -64,7 +66,9 @@ namespace Microsoft.Azure.Management.Maintenance.Models
         public System.Collections.Generic.IList<string> KbNumbersToInclude {get; set; }
 
         /// <summary>
-        /// Gets or sets classification category of patches to be patched
+        /// Gets or sets classification category of patches to be patched. Allowed
+        /// values are &#39;Critical&#39;, &#39;Security&#39;, &#39;UpdateRollup&#39;, &#39;FeaturePack&#39;,
+        /// &#39;ServicePack&#39;, &#39;Definition&#39;, &#39;Tools&#39;, and &#39;Updates&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "classificationsToInclude")]
         public System.Collections.Generic.IList<string> ClassificationsToInclude {get; set; }
