@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added `MigrateGatewayForPointToSiteProfile` and `UpgradeGatewayToDualStack` as supported values for the `-MigrationType` parameter of `New-AzVirtualNetworkGatewayMigrationParameter`, and fixed the cmdlet to honor the user-provided `-MigrationType` value.
 
 ## Version 8.2.0
 * Added `Get-AzExpressRouteLag`, `New-AzExpressRouteLag`, `Set-AzExpressRouteLag`, `Remove-AzExpressRouteLag`, `New-AzExpressRouteLagLOA`, `Get-AzExpressRouteLagLink`, and `Get-AzExpressRouteLagMember` for `ExpressRouteLag` resources (Microsoft.Network 2025-09-01 API).
