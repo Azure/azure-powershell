@@ -13,6 +13,57 @@ namespace Microsoft.Azure.Management.CosmosDB
     public static partial class CollectionOperationsExtensions
     {
         /// <summary>
+        /// Retrieves metric definitions for the given collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseRid'>
+        /// Cosmos DB database rid.
+        /// </param>
+        /// <param name='collectionRid'>
+        /// Cosmos DB collection rid.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<MetricDefinition> ListMetricDefinitions(this ICollectionOperations operations, string resourceGroupName, string accountName, string databaseRid, string collectionRid)
+        {
+                return ((ICollectionOperations)operations).ListMetricDefinitionsAsync(resourceGroupName, accountName, databaseRid, collectionRid).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves metric definitions for the given collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseRid'>
+        /// Cosmos DB database rid.
+        /// </param>
+        /// <param name='collectionRid'>
+        /// Cosmos DB collection rid.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MetricDefinition>> ListMetricDefinitionsAsync(this ICollectionOperations operations, string resourceGroupName, string accountName, string databaseRid, string collectionRid, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListMetricDefinitionsWithHttpMessagesAsync(resourceGroupName, accountName, databaseRid, collectionRid, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Retrieves the metrics determined by the given filter for the given database
         /// account and collection.
         /// </summary>
@@ -37,7 +88,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// have an or of multiple names), startTime, endTime, and timeGrain. The
         /// supported operator is eq.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<Metric> ListMetrics(this ICollectionOperations operations, string resourceGroupName, string accountName, string databaseRid, string collectionRid, string filter)
+        public static Microsoft.Rest.Azure.IPage<Metric> ListMetrics(this ICollectionOperations operations, string resourceGroupName, string accountName, string databaseRid, string collectionRid, string filter)
         {
                 return ((ICollectionOperations)operations).ListMetricsAsync(resourceGroupName, accountName, databaseRid, collectionRid, filter).GetAwaiter().GetResult();
         }
@@ -70,7 +121,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Metric>> ListMetricsAsync(this ICollectionOperations operations, string resourceGroupName, string accountName, string databaseRid, string collectionRid, string filter, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Metric>> ListMetricsAsync(this ICollectionOperations operations, string resourceGroupName, string accountName, string databaseRid, string collectionRid, string filter, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroupName, accountName, databaseRid, collectionRid, filter, null, cancellationToken).ConfigureAwait(false))
             {
@@ -100,7 +151,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// supported parameter is name.value (name of the metric, can have an or of
         /// multiple names).
         /// </param>
-        public static System.Collections.Generic.IEnumerable<Usage> ListUsages(this ICollectionOperations operations, string resourceGroupName, string accountName, string databaseRid, string collectionRid, string filter = default(string))
+        public static Microsoft.Rest.Azure.IPage<Usage> ListUsages(this ICollectionOperations operations, string resourceGroupName, string accountName, string databaseRid, string collectionRid, string filter = default(string))
         {
                 return ((ICollectionOperations)operations).ListUsagesAsync(resourceGroupName, accountName, databaseRid, collectionRid, filter).GetAwaiter().GetResult();
         }
@@ -131,7 +182,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Usage>> ListUsagesAsync(this ICollectionOperations operations, string resourceGroupName, string accountName, string databaseRid, string collectionRid, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Usage>> ListUsagesAsync(this ICollectionOperations operations, string resourceGroupName, string accountName, string databaseRid, string collectionRid, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListUsagesWithHttpMessagesAsync(resourceGroupName, accountName, databaseRid, collectionRid, filter, null, cancellationToken).ConfigureAwait(false))
             {
@@ -144,21 +195,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseRid'>
-        /// Cosmos DB database rid.
-        /// </param>
-        /// <param name='collectionRid'>
-        /// Cosmos DB collection rid.
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<MetricDefinition> ListMetricDefinitions(this ICollectionOperations operations, string resourceGroupName, string accountName, string databaseRid, string collectionRid)
+        public static Microsoft.Rest.Azure.IPage<MetricDefinition> ListMetricDefinitionsNext(this ICollectionOperations operations, string nextPageLink)
         {
-                return ((ICollectionOperations)operations).ListMetricDefinitionsAsync(resourceGroupName, accountName, databaseRid, collectionRid).GetAwaiter().GetResult();
+                return ((ICollectionOperations)operations).ListMetricDefinitionsNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -167,24 +209,83 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseRid'>
-        /// Cosmos DB database rid.
-        /// </param>
-        /// <param name='collectionRid'>
-        /// Cosmos DB collection rid.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<MetricDefinition>> ListMetricDefinitionsAsync(this ICollectionOperations operations, string resourceGroupName, string accountName, string databaseRid, string collectionRid, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MetricDefinition>> ListMetricDefinitionsNextAsync(this ICollectionOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListMetricDefinitionsWithHttpMessagesAsync(resourceGroupName, accountName, databaseRid, collectionRid, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListMetricDefinitionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account and collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Metric> ListMetricsNext(this ICollectionOperations operations, string nextPageLink)
+        {
+                return ((ICollectionOperations)operations).ListMetricsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account and collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Metric>> ListMetricsNextAsync(this ICollectionOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListMetricsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the usages (most recent storage data) for the given collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Usage> ListUsagesNext(this ICollectionOperations operations, string nextPageLink)
+        {
+                return ((ICollectionOperations)operations).ListUsagesNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the usages (most recent storage data) for the given collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Usage>> ListUsagesNextAsync(this ICollectionOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListUsagesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

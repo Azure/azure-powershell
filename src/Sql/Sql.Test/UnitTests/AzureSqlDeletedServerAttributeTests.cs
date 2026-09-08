@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Server.Cmdlet;
+using Microsoft.Azure.Commands.Sql.Server.Services;
 using Microsoft.Azure.Commands.Sql.Test.Utilities;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
@@ -37,8 +39,49 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
             UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.None);
 
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "Location", isMandatory: true, valueFromPipelineByName: true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "Location", isMandatory: false, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: false, valueFromPipelineByName: true);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateDeletedServerModelHandlesIncompleteResourceIds()
+        {
+            var deletedServer = new DeletedServer(
+                id: "/subscriptions",
+                name: "testserver");
+
+            var model = new AzureSqlDeletedServerAdapter(null).CreateDeletedServerModelFromResponse(deletedServer);
+
+            Assert.Null(model.SubscriptionId);
+            Assert.Null(model.Location);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateDeletedServerModelNormalizesLocation()
+        {
+            var deletedServer = new DeletedServer(
+                id: "/subscriptions/subscriptionId/providers/Microsoft.Sql/locations/Central US/deletedServers/testserver",
+                name: "testserver");
+
+            var model = new AzureSqlDeletedServerAdapter(null).CreateDeletedServerModelFromResponse(deletedServer);
+
+            Assert.Equal("subscriptionId", model.SubscriptionId);
+            Assert.Equal("centralus", model.Location);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateDeletedServerModelGetsResourceGroupFromOriginalIdWhenPropertyIsMissing()
+        {
+            var deletedServer = new DeletedServer(
+                name: "testserver",
+                originalId: "/subscriptions/subscriptionId/resourceGroups/testResourceGroup/providers/Microsoft.Sql/servers/testserver");
+
+            var model = new AzureSqlDeletedServerAdapter(null).CreateDeletedServerModelFromResponse(deletedServer);
+
+            Assert.Equal("testResourceGroup", model.ResourceGroupName);
         }
     }
 }

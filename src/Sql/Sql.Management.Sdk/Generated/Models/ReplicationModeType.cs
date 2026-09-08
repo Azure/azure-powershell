@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ReplicationModeType
     {
+        /// <summary>
+        /// Async
+        /// </summary>
         public const string Async = "Async";
+        /// <summary>
+        /// Sync
+        /// </summary>
         public const string Sync = "Sync";
     }
 }

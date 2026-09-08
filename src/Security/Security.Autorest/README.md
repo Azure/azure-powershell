@@ -28,13 +28,14 @@ For information on how to develop for `Az.Security`, see [how-to.md](how-to.md).
 
 ###
 ``` yaml
-commit: 6c4497e6b0aaad8127f2dd50fa8a29aaf68f24e6
+commit: a427dd4d108b1fb93340dfeca3994de1c695b53b
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/security/resource-manager/Microsoft.Security/preview/2023-10-01-preview/securityConnectors.json
-  - $(repo)/specification/security/resource-manager/Microsoft.Security/preview/2023-09-01-preview/securityConnectorsDevOps.json
-  - $(repo)/specification/security/resource-manager/Microsoft.Security/stable/2023-11-15/apiCollections.json
+  - $(repo)/specification/security/resource-manager/Microsoft.Security/Security/preview/2023-10-01-preview/securityConnectors.json
+  - $(repo)/specification/security/resource-manager/Microsoft.Security/Security/preview/2023-09-01-preview/securityConnectorsDevOps.json
+  - $(repo)/specification/security/resource-manager/Microsoft.Security/Security/stable/2023-11-15/apiCollections.json
+  - $(repo)/specification/security/resource-manager/Microsoft.Security/Security/preview/2026-04-01-preview/security-SqlVulnerabilityAssessments.json
 
 title: Security
 module-version: 1.5.1
@@ -126,6 +127,27 @@ directive:
   - where:
       subject: ^(DevOpsOperationResult)(.*)
     remove: true
+
+  # ScanOperationResult is only used internally to poll the InitiateScan long-running-operation; not meant to be called directly
+  - where:
+      subject: ^(SqlVulnerabilityAssessmentScanOperationResult)(.*)
+    remove: true
+
+  # Avoid a cmdlet name collision with the legacy (2020-07-01-preview) hand-written
+  # Get-AzSecuritySqlVulnerabilityAssessmentScanResult cmdlet in src/Security/Security/Cmdlets/SqlVulnerabilityAssessment.
+  # Renamed to ScanRuleResult since this resource represents the result of a single rule within a scan.
+  - where:
+      subject: ^(SqlVulnerabilityAssessmentScanResult)(.*)
+    set:
+      subject: SqlVulnerabilityAssessmentScanRuleResult
+
+  # SQL Vulnerability Assessment (2026-04-01-preview) cmdlets are preview
+  - where:
+      subject: (.*)SqlVulnerabilityAssessment(.*)
+    set:
+      preview-announcement:
+        preview-message: Cmdlets for Sql Vulnerability Assessment are in preview.
+        estimated-ga-date: 2027-04-01
 
   - where:
       subject: ^(DevOpsConfiguration|AzureDevOps|GitHub|GitLab)(.*)

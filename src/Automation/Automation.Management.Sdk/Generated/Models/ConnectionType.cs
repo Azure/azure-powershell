@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Automation.Models
     /// Definition of the connection type.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ConnectionType
+    public partial class ConnectionType : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ConnectionType class.
@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the ConnectionType class.
         /// </summary>
 
-        /// <param name="id">Gets the id of the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Gets the name of the connection type.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="isGlobal">Gets or sets a Boolean value to indicate if the connection type is global.
@@ -48,12 +54,10 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="description">Gets or sets the description.
         /// </param>
-        public ConnectionType(string id = default(string), string name = default(string), string type = default(string), bool? isGlobal = default(bool?), System.Collections.Generic.IDictionary<string, FieldDefinition> fieldDefinitions = default(System.Collections.Generic.IDictionary<string, FieldDefinition>), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string description = default(string))
+        public ConnectionType(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? isGlobal = default(bool?), System.Collections.Generic.IDictionary<string, FieldDefinition> fieldDefinitions = default(System.Collections.Generic.IDictionary<string, FieldDefinition>), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string description = default(string))
 
+        : base(id, name, type, systemData)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.IsGlobal = isGlobal;
             this.FieldDefinitions = fieldDefinitions;
             this.CreationTime = creationTime;
@@ -67,24 +71,6 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets gets the id of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets gets the name of the connection type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets resource type
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets gets or sets a Boolean value to indicate if the connection
@@ -103,13 +89,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets gets the creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.creationTime")]
-        public System.DateTimeOffset CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets or sets gets or sets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; set; }
+        public System.DateTimeOffset? LastModifiedTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the description.

@@ -19,8 +19,9 @@ using System.Runtime.InteropServices;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Microsoft")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Microsoft")]
 [assembly: System.Reflection.AssemblyProductAttribute("Microsoft Azure PowerShell")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Microsoft Azure PowerShell - Policy")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("9.0.0")]
-[assembly: System.Reflection.AssemblyVersionAttribute("9.0.0")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Microsoft Azure PowerShell - PolicyClient")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("10.1.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("10.1.0")]
 [assembly: System.Runtime.InteropServices.ComVisibleAttribute(false)]
 [assembly: System.CLSCompliantAttribute(false)]
+

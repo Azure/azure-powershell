@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Get configuration assignment for resource..
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Register configuration for resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='configurationAssignment'>
         /// The configurationAssignment
@@ -75,10 +75,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Register configuration for resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='configurationAssignment'>
         /// The configurationAssignment
@@ -104,10 +104,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Unregister configuration for resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Unique configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

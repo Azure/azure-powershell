@@ -29,11 +29,15 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="enableResponseBuffering">Enable response buffering.
         /// </param>
-        public ApplicationGatewayGlobalConfiguration(bool? enableRequestBuffering = default(bool?), bool? enableResponseBuffering = default(bool?))
+
+        /// <param name="disableDefaultServerHeaderInResponse">Disable default server header in response.
+        /// </param>
+        public ApplicationGatewayGlobalConfiguration(bool? enableRequestBuffering = default(bool?), bool? enableResponseBuffering = default(bool?), bool? disableDefaultServerHeaderInResponse = default(bool?))
 
         {
             this.EnableRequestBuffering = enableRequestBuffering;
             this.EnableResponseBuffering = enableResponseBuffering;
+            this.DisableDefaultServerHeaderInResponse = disableDefaultServerHeaderInResponse;
             CustomInit();
         }
 
@@ -54,5 +58,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enableResponseBuffering")]
         public bool? EnableResponseBuffering {get; set; }
+
+        /// <summary>
+        /// Gets or sets disable default server header in response.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "disableDefaultServerHeaderInResponse")]
+        public bool? DisableDefaultServerHeaderInResponse {get; set; }
     }
 }

@@ -43,11 +43,9 @@ namespace Microsoft.Azure.Management.KeyVault
 
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        string SubscriptionId { get; set;}
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -72,24 +70,14 @@ namespace Microsoft.Azure.Management.KeyVault
 
 
         /// <summary>
-        /// Gets the IVaultsOperations
-        /// </summary>
-        IVaultsOperations Vaults { get; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations
-        /// </summary>
-        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations
-        /// </summary>
-        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
-
-        /// <summary>
         /// Gets the IManagedHsmsOperations
         /// </summary>
         IManagedHsmsOperations ManagedHsms { get; }
+
+        /// <summary>
+        /// Gets the IVaultsOperations
+        /// </summary>
+        IVaultsOperations Vaults { get; }
 
         /// <summary>
         /// Gets the IMhsmPrivateEndpointConnectionsOperations
@@ -105,6 +93,16 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Gets the IMhsmRegionsOperations
         /// </summary>
         IMhsmRegionsOperations MhsmRegions { get; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations
+        /// </summary>
+        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations
+        /// </summary>
+        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
 
     }
 }

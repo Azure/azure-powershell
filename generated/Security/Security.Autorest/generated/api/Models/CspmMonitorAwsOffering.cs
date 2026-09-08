@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description; }
 
         /// <summary>Internal Acessors for Description</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description = value ?? null; }
 
         /// <summary>Internal Acessors for NativeCloudConnection</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICspmMonitorAwsOfferingNativeCloudConnection Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICspmMonitorAwsOfferingInternal.NativeCloudConnection { get => (this._nativeCloudConnection = this._nativeCloudConnection ?? new Microsoft.Azure.PowerShell.Cmdlets.Security.Models.CspmMonitorAwsOfferingNativeCloudConnection()); set { {_nativeCloudConnection = value;} } }

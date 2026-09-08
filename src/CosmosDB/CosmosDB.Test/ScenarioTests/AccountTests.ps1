@@ -1,4 +1,4 @@
-﻿#
+#
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -240,7 +240,7 @@ function Test-AddRegionOperation
 
   try {
       try {  
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover -DisableLocalAuth $true
         do 
         {
             $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
@@ -275,7 +275,7 @@ function Test-PrivateEndpoint
   try{
 
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgname -Location   $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover -DisableLocalAuth $true
       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName
       $resourceId = $cosmosDBAccount.Id
 
@@ -326,7 +326,7 @@ function Test-AnalyticalStorageSchemaTypeNewAccount
   try
   {
     New-AzResourceGroup -Name $resourceGroupName -Location $location
-    $account = New-AzCosmosDBAccount -ResourceGroupname $resourceGroupName -Name $accountName -Location $location -AnalyticalStorageSchemaType $schemaType
+    $account = New-AzCosmosDBAccount -ResourceGroupname $resourceGroupName -Name $accountName -Location $location -AnalyticalStorageSchemaType $schemaType -DisableLocalAuth $true
     do 
     {
         $account = Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
@@ -351,7 +351,7 @@ function Test-AnalyticalStorageSchemaTypeUpdateAccount
   try
   {
     New-AzResourceGroup -ResourceGroupName $resourceGroupName -Location $location
-    $account = New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
+    $account = New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DisableLocalAuth $true
     Assert-AreEqual $account.AnalyticalStorageConfiguration.SchemaType "WellDefined"
 
     Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName -AnalyticalStorageSchemaType $schemaType

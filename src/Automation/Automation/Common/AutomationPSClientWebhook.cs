@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         response = this.automationManagementClient.Webhook.ListByAutomationAccount(
                             resourceGroupName,
                             automationAccountName,
-                            new ODataQuery<Webhook>(filter));
+                            filter);
                     }
                 }
                 else

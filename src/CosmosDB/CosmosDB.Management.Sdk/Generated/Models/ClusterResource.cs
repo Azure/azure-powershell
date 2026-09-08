@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// <summary>
     /// Representation of a managed Cassandra cluster.
     /// </summary>
-    public partial class ClusterResource : ManagedCassandraARMResourceProperties
+    public partial class ClusterResource : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ClusterResource class.
@@ -24,13 +24,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Initializes a new instance of the ClusterResource class.
         /// </summary>
 
-        /// <param name="id">The unique resource identifier of the ARM resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the ARM resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of Azure resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
+        /// <param name="properties">Properties of a managed Cassandra cluster.
         /// </param>
 
         /// <param name="location">The location of the resource group to which the resource belongs.
@@ -41,20 +50,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// A maximum of 15 tags can be provided for a resource. Each tag must have a
         /// key no greater than 128 characters and value no greater than 256
         /// characters. For example, the default experience for a template type is set
-        /// with &#34;defaultExperience&#34;: &#34;Cassandra&#34;. Current &#34;defaultExperience&#34; values
-        /// also include &#34;Table&#34;, &#34;Graph&#34;, &#34;DocumentDB&#34;, and &#34;MongoDB&#34;.
+        /// with \&#34;defaultExperience\&#34;: \&#34;Cassandra\&#34;. Current \&#34;defaultExperience\&#34;
+        /// values also include \&#34;Table\&#34;, \&#34;Graph\&#34;, \&#34;DocumentDB\&#34;, and \&#34;MongoDB\&#34;.
         /// </param>
 
         /// <param name="identity">Identity for the resource.
         /// </param>
+        public ClusterResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), ClusterResourceProperties properties = default(ClusterResourceProperties), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedCassandraManagedServiceIdentity identity = default(ManagedCassandraManagedServiceIdentity))
 
-        /// <param name="properties">Properties of a managed Cassandra cluster.
-        /// </param>
-        public ClusterResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedCassandraManagedServiceIdentity identity = default(ManagedCassandraManagedServiceIdentity), ClusterResourceProperties properties = default(ClusterResourceProperties))
-
-        : base(id, name, type, location, tags, identity)
+        : base(id, name, type, systemData)
         {
             this.Properties = properties;
+            this.Location = location;
+            this.Tags = tags;
+            this.Identity = identity;
             CustomInit();
         }
 
@@ -69,5 +78,31 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
         public ClusterResourceProperties Properties {get; set; }
+
+        /// <summary>
+        /// Gets or sets the location of the resource group to which the resource
+        /// belongs.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
+
+        /// <summary>
+        /// Gets or sets tags are a list of key-value pairs that describe the resource.
+        /// These tags can be used in viewing and grouping this resource (across
+        /// resource groups). A maximum of 15 tags can be provided for a resource. Each
+        /// tag must have a key no greater than 128 characters and value no greater
+        /// than 256 characters. For example, the default experience for a template
+        /// type is set with \&#34;defaultExperience\&#34;: \&#34;Cassandra\&#34;. Current
+        /// \&#34;defaultExperience\&#34; values also include \&#34;Table\&#34;, \&#34;Graph\&#34;,
+        /// \&#34;DocumentDB\&#34;, and \&#34;MongoDB\&#34;.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets or sets identity for the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public ManagedCassandraManagedServiceIdentity Identity {get; set; }
     }
 }

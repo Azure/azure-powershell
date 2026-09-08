@@ -2639,3 +2639,36 @@ function Test-AzureFirewallEdgeZoneZonesValidation {
         Clean-ResourceGroup $rgname
     }
 }
+function Test-AzureFirewallAfcConfiguration {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = "centraluseuap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+
+    try {
+        New-AzResourceGroup -Name $rgname -Location $location
+
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet | Out-Null
+
+        # IpTag required by the subscription's AddIpTagsToPublicIpAddresses policy
+        $ipTag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/NonProd"
+        New-AzPublicIpAddress -ResourceGroupName $rgname -Name $publicIpName -Location $location -AllocationMethod Static -Sku Standard -IpTag $ipTag | Out-Null
+
+        New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName
+
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+
+        # AfcConfiguration (incl. ServiceEndpoint) is a read-only property surfaced from the RP; a standard firewall is not AFC-managed
+        Assert-Null $getAzureFirewall.AfcConfiguration
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

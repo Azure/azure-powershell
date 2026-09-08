@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             if (configuration == null) return;
 
-            this.CreationTime = configuration.CreationTime.ToLocalTime();
-            this.LastModifiedTime = configuration.LastModifiedTime.ToLocalTime();
+            this.CreationTime = configuration.CreationTime.GetValueOrDefault().ToLocalTime();
+            this.LastModifiedTime = configuration.LastModifiedTime.GetValueOrDefault().ToLocalTime();
             this.Description = configuration.Description;
             this.LogVerbose = configuration.LogVerbose ?? false;
             this.State = configuration.State;

@@ -120,6 +120,11 @@ namespace Microsoft.Azure.Commands.Compute
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.")]
+        public SwitchParameter DisableCapacityReservationAssignment { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -160,6 +165,13 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
         public int vCPUCountPerCore { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies processor frequency behavior.")]
+        [PSArgumentCompleter("Deterministic", "Opportunistic")]
+        public string ProcessorMode { get; set; }
         
         [Parameter(
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. By default, UefiSettings will not be enabled unless this property is set.",
@@ -411,6 +423,11 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
                     }
 
+                    if (this.IsParameterBound(c => c.CapacityReservationGroupId) && this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+                    {
+                        throw new ArgumentException("Parameters '-CapacityReservationGroupId' and '-DisableCapacityReservationAssignment' cannot be used together. '-DisableCapacityReservationAssignment' opts the virtual machine out of any capacity reservation.");
+                    }
+
                     if (this.IsParameterBound(c => c.CapacityReservationGroupId))
                     {
                         if (parameters.CapacityReservation == null)
@@ -418,6 +435,15 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.CapacityReservation = new CapacityReservationProfile();
                         }
                         parameters.CapacityReservation.CapacityReservationGroup = new SubResource(CapacityReservationGroupId);
+                    }
+
+                    if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+                    {
+                        if (parameters.CapacityReservation == null)
+                        {
+                            parameters.CapacityReservation = new CapacityReservationProfile();
+                        }
+                        parameters.CapacityReservation.DisableCapacityReservationAssignment = this.DisableCapacityReservationAssignment.IsPresent;
                     }
 
                     if (parameters.StorageProfile != null && parameters.StorageProfile.ImageReference != null && parameters.StorageProfile.ImageReference.Id != null)
@@ -449,6 +475,15 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.HardwareProfile.VmSizeProperties = new VMSizeProperties();
                         }
                         parameters.HardwareProfile.VmSizeProperties.VCPUsAvailable = this.vCPUCountAvailable;
+                    }
+
+                    if (this.IsParameterBound(c => c.ProcessorMode))
+                    {
+                        if (parameters.HardwareProfile == null)
+                        {
+                            parameters.HardwareProfile = new HardwareProfile();
+                        }
+                        parameters.HardwareProfile.ProcessorMode = this.ProcessorMode;
                     }
 
                     if (this.IsParameterBound(c => c.AlignRegionalDisksToVMZone))

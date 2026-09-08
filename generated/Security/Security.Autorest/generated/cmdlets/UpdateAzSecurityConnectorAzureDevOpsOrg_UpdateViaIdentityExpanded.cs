@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update monitored Azure DevOps organization details.</summary>
+    /// <summary>update monitored Azure DevOps organization details.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default/azureDevOpsOrgs/{orgName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzSecurityConnectorAzureDevOpsOrg_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsOrg))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Description(@"Update monitored Azure DevOps organization details.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Description(@"update monitored Azure DevOps organization details.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Security.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default/azureDevOpsOrgs/{orgName}", ApiVersion = "2023-09-01-preview")]
     public partial class UpdateAzSecurityConnectorAzureDevOpsOrg_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
@@ -42,15 +42,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Cmdlets
 
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
-
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>Configuration payload for PR Annotations.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Configuration payload for PR Annotations.")]
@@ -255,11 +246,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Security.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -608,24 +594,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsOrg
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

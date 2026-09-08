@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 CosmosDBManagementClient.DatabaseAccounts.Get(ResourceGroupName, AccountName);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 throw e;
             }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 CosmosDBManagementClient.TableResources.GetTable(ResourceGroupName, AccountName, Name);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {

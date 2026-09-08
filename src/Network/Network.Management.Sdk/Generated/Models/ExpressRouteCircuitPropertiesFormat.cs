@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="serviceProviderProvisioningState">The ServiceProviderProvisioningState state of the resource.
         /// Possible values include: &#39;NotProvisioned&#39;, &#39;Provisioning&#39;, &#39;Provisioned&#39;,
-        /// &#39;Deprovisioning&#39;</param>
+        /// &#39;Deprovisioning&#39;, &#39;DeProvisioned&#39;</param>
 
         /// <param name="authorizations">The list of authorizations.
         /// </param>
@@ -60,6 +60,15 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="stag">The identifier of the circuit traffic. Outer tag for QinQ encapsulation.
         /// </param>
 
+        /// <param name="resiliencyLevel">The resiliency level of the ExpressRoute circuit.
+        /// Possible values include: &#39;Standard&#39;, &#39;High&#39;, &#39;Maximum&#39;</param>
+
+        /// <param name="partnerAccountId">Account ID of customer account on partner cloud provider.
+        /// </param>
+
+        /// <param name="activationKey">Activation Key from partner cloud provider.
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the express route circuit resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
@@ -78,7 +87,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="enableDirectPortRateLimit">Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
         /// </param>
-        public ExpressRouteCircuitPropertiesFormat(bool? allowClassicOperations = default(bool?), string circuitProvisioningState = default(string), string serviceProviderProvisioningState = default(string), System.Collections.Generic.IList<ExpressRouteCircuitAuthorization> authorizations = default(System.Collections.Generic.IList<ExpressRouteCircuitAuthorization>), System.Collections.Generic.IList<ExpressRouteCircuitPeering> peerings = default(System.Collections.Generic.IList<ExpressRouteCircuitPeering>), string serviceKey = default(string), string serviceProviderNotes = default(string), ExpressRouteCircuitServiceProviderProperties serviceProviderProperties = default(ExpressRouteCircuitServiceProviderProperties), SubResource expressRoutePort = default(SubResource), double? bandwidthInGbps = default(double?), int? stag = default(int?), string provisioningState = default(string), string gatewayManagerEtag = default(string), bool? globalReachEnabled = default(bool?), string authorizationKey = default(string), string authorizationStatus = default(string), bool? enableDirectPortRateLimit = default(bool?))
+        public ExpressRouteCircuitPropertiesFormat(bool? allowClassicOperations = default(bool?), string circuitProvisioningState = default(string), string serviceProviderProvisioningState = default(string), System.Collections.Generic.IList<ExpressRouteCircuitAuthorization> authorizations = default(System.Collections.Generic.IList<ExpressRouteCircuitAuthorization>), System.Collections.Generic.IList<ExpressRouteCircuitPeering> peerings = default(System.Collections.Generic.IList<ExpressRouteCircuitPeering>), string serviceKey = default(string), string serviceProviderNotes = default(string), ExpressRouteCircuitServiceProviderProperties serviceProviderProperties = default(ExpressRouteCircuitServiceProviderProperties), SubResource expressRoutePort = default(SubResource), double? bandwidthInGbps = default(double?), int? stag = default(int?), string resiliencyLevel = default(string), string partnerAccountId = default(string), string activationKey = default(string), string provisioningState = default(string), string gatewayManagerEtag = default(string), bool? globalReachEnabled = default(bool?), string authorizationKey = default(string), string authorizationStatus = default(string), bool? enableDirectPortRateLimit = default(bool?))
 
         {
             this.AllowClassicOperations = allowClassicOperations;
@@ -92,6 +101,9 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ExpressRoutePort = expressRoutePort;
             this.BandwidthInGbps = bandwidthInGbps;
             this.Stag = stag;
+            this.ResiliencyLevel = resiliencyLevel;
+            this.PartnerAccountId = partnerAccountId;
+            this.ActivationKey = activationKey;
             this.ProvisioningState = provisioningState;
             this.GatewayManagerEtag = gatewayManagerEtag;
             this.GlobalReachEnabled = globalReachEnabled;
@@ -120,7 +132,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string CircuitProvisioningState {get; set; }
 
         /// <summary>
-        /// Gets or sets the ServiceProviderProvisioningState state of the resource. Possible values include: &#39;NotProvisioned&#39;, &#39;Provisioning&#39;, &#39;Provisioned&#39;, &#39;Deprovisioning&#39;
+        /// Gets or sets the ServiceProviderProvisioningState state of the resource. Possible values include: &#39;NotProvisioned&#39;, &#39;Provisioning&#39;, &#39;Provisioned&#39;, &#39;Deprovisioning&#39;, &#39;DeProvisioned&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "serviceProviderProvisioningState")]
         public string ServiceProviderProvisioningState {get; set; }
@@ -175,6 +187,24 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "stag")]
         public int? Stag {get; private set; }
+
+        /// <summary>
+        /// Gets the resiliency level of the ExpressRoute circuit. Possible values include: &#39;Standard&#39;, &#39;High&#39;, &#39;Maximum&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resiliencyLevel")]
+        public string ResiliencyLevel {get; private set; }
+
+        /// <summary>
+        /// Gets or sets account ID of customer account on partner cloud provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "partnerAccountId")]
+        public string PartnerAccountId {get; set; }
+
+        /// <summary>
+        /// Gets or sets activation Key from partner cloud provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "activationKey")]
+        public string ActivationKey {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the express route circuit resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

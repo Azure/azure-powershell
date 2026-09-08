@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='restoreTimestampInUtc'>
         /// The timestamp when the restorable resources existed.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<RestorableMongodbResourcesGetResult> List(this IRestorableMongodbResourcesOperations operations, string location, string instanceId, string restoreLocation = default(string), string restoreTimestampInUtc = default(string))
+        public static Microsoft.Rest.Azure.IPage<RestorableMongodbResourcesGetResult> List(this IRestorableMongodbResourcesOperations operations, string location, string instanceId, string restoreLocation = default(string), string restoreTimestampInUtc = default(string))
         {
                 return ((IRestorableMongodbResourcesOperations)operations).ListAsync(location, instanceId, restoreLocation, restoreTimestampInUtc).GetAwaiter().GetResult();
         }
@@ -64,9 +64,50 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<RestorableMongodbResourcesGetResult>> ListAsync(this IRestorableMongodbResourcesOperations operations, string location, string instanceId, string restoreLocation = default(string), string restoreTimestampInUtc = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RestorableMongodbResourcesGetResult>> ListAsync(this IRestorableMongodbResourcesOperations operations, string location, string instanceId, string restoreLocation = default(string), string restoreTimestampInUtc = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(location, instanceId, restoreLocation, restoreTimestampInUtc, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Return a list of database and collection combo that exist on the account at
+        /// the given timestamp and location. This helps in scenarios to validate what
+        /// resources exist at given timestamp and location. This API requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39;
+        /// permission.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<RestorableMongodbResourcesGetResult> ListNext(this IRestorableMongodbResourcesOperations operations, string nextPageLink)
+        {
+                return ((IRestorableMongodbResourcesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Return a list of database and collection combo that exist on the account at
+        /// the given timestamp and location. This helps in scenarios to validate what
+        /// resources exist at given timestamp and location. This API requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39;
+        /// permission.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RestorableMongodbResourcesGetResult>> ListNextAsync(this IRestorableMongodbResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
