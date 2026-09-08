@@ -288,3 +288,49 @@ function Test-PublicIpPrefixInEdgeZone
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests creating a StandardV2 SKU publicIpPrefix and reading the read-only UpgradedToV2 property.
+#>
+function Test-PublicIpPrefixStandardV2UpgradedToV2
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/publicIpPrefixes"
+    $location = Get-ProviderLocation $resourceTypeParent "West Europe"
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create a StandardV2 SKU public IP prefix
+        $actual = New-AzPublicIpPrefix -ResourceGroupName $rgname -name $rname -location $location -Sku StandardV2 -PrefixLength 30
+        $expected = Get-AzPublicIpPrefix -ResourceGroupName $rgname -name $rname
+
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected.Name $actual.Name
+        Assert-AreEqual "StandardV2" $expected.Sku.Name
+        Assert-AreEqual 30 $expected.PrefixLength
+        Assert-AreEqual "Succeeded" $expected.ProvisioningState
+
+        # UpgradedToV2 is a read-only property. A natively-created StandardV2 resource has not been
+        # upgraded from Standard, so the value is not $true (it is $false or $null on a fresh resource).
+        Assert-True { $expected.UpgradedToV2 -ne $true }
+
+        # delete
+        $delete = Remove-AzPublicIpPrefix -ResourceGroupName $rgname -name $rname -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $list = Get-AzPublicIpPrefix -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

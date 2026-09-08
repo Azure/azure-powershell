@@ -35,8 +35,9 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-DataDiskSizeInGb <Int32[]>] [-ProximityPlacementGroupId <String>] [-HostGroupId <String>]
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-ScaleInPolicy <String[]>]
  [-SkipExtensionsOnOverprovisionedVMs] [-EncryptionAtHost] [-PlatformFaultDomainCount <Int32>]
- [-OrchestrationMode <String>] [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>]
- [-DiskControllerType <String>] [-SharedGalleryImageId <String>] [-SecurityType <String>]
+ [-OrchestrationMode <String>] [-CapacityReservationGroupId <String>]
+ [-DisableCapacityReservationAssignment] [-ImageReferenceId <String>]
+ [-DiskControllerType <String>] [-SharedGalleryImageId <String>] [-ProcessorMode <String>] [-SecurityType <String>]
  [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>]
  [-SecurityPostureExcludeExtension <String[]>] [-SkuProfileVmSize <String[]>]
  [-SkuProfileAllocationStrategy <String>] [-EnableProxyAgent] [-AddProxyAgentExtension]
@@ -292,6 +293,11 @@ $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 
 The virtual machine scale set above has Trusted Launch enabled by default. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
+### Example 7: Create a VMSS with processor mode
+```powershell
+New-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -Credential (Get-Credential) -Location "westus" -VmSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+```
+
 ## PARAMETERS
 
 ### -AddProxyAgentExtension
@@ -432,6 +438,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableCapacityReservationAssignment
+Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -881,6 +902,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProcessorMode
+Specifies processor frequency behavior for VM instances in the scale set model. Typical values are `Deterministic` and `Opportunistic`.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -87,6 +87,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
             {_operationResultId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString>("operationResultId"), out var __jsonOperationResultId) ? (string)__jsonOperationResultId : (string)_operationResultId;}
             {_serviceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString>("serviceName"), out var __jsonServiceName) ? (string)__jsonServiceName : (string)_serviceName;}
             {_apiId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString>("apiId"), out var __jsonApiId) ? (string)__jsonApiId : (string)_apiId;}
+            {_resourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString>("resourceId"), out var __jsonResourceId) ? (string)__jsonResourceId : (string)_resourceId;}
+            {_ruleId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString>("ruleId"), out var __jsonRuleId) ? (string)__jsonRuleId : (string)_ruleId;}
+            {_scanId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString>("scanId"), out var __jsonScanId) ? (string)__jsonScanId : (string)_scanId;}
+            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)_operationId;}
+            {_scanResultId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString>("scanResultId"), out var __jsonScanResultId) ? (string)__jsonScanResultId : (string)_scanResultId;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
@@ -121,6 +126,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
             AddIf( null != (((object)this._operationResultId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString(this._operationResultId.ToString()) : null, "operationResultId" ,container.Add );
             AddIf( null != (((object)this._serviceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString(this._serviceName.ToString()) : null, "serviceName" ,container.Add );
             AddIf( null != (((object)this._apiId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString(this._apiId.ToString()) : null, "apiId" ,container.Add );
+            AddIf( null != (((object)this._resourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString(this._resourceId.ToString()) : null, "resourceId" ,container.Add );
+            AddIf( null != (((object)this._ruleId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString(this._ruleId.ToString()) : null, "ruleId" ,container.Add );
+            AddIf( null != (((object)this._scanId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString(this._scanId.ToString()) : null, "scanId" ,container.Add );
+            AddIf( null != (((object)this._operationId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString(this._operationId.ToString()) : null, "operationId" ,container.Add );
+            AddIf( null != (((object)this._scanResultId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString(this._scanResultId.ToString()) : null, "scanResultId" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

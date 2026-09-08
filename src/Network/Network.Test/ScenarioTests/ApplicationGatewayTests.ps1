@@ -5531,6 +5531,63 @@ function Test-ApplicationGatewayFirewallPolicyWithJSChallenge
 	}
 }
 
+function Test-ApplicationGatewayFirewallPolicyWithCaptcha
+{
+	# Setup
+	# Pinned to a region where the CAPTCHA feature is available.
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "Central US EUAP"
+	$rgname = Get-ResourceGroupName
+	$wafPolicyName = "wafPolicy1"
+
+	try {
+
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+
+		# Custom rule with CAPTCHA action
+		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Malicious-Header
+		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Any -NegationCondition $False
+		$customRule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action CAPTCHA
+
+		# Policy settings with CAPTCHA cookie expiration
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70 -CaptchaExpirationInMins 100
+
+		# Managed rule set with a rule-level override using the CAPTCHA action.
+		# Per-rule CAPTCHA is only supported for Microsoft_BotManagerRuleSet (1.0+), and
+		# per-rule actions require a full AzWAF base rule set (Microsoft_DefaultRuleSet).
+		$ruleOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 100100 -State Enabled -Action CAPTCHA
+		$ruleGroupOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName BadBots -Rule $ruleOverride
+		$drsRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "Microsoft_DefaultRuleSet" -RuleSetVersion "2.1"
+		$botRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "Microsoft_BotManagerRuleSet" -RuleSetVersion "1.1" -RuleGroupOverride $ruleGroupOverride
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $drsRuleSet,$botRuleSet
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings -CustomRule $customRule
+
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+
+		# Check custom rule CAPTCHA action
+		Assert-AreEqual $policy.CustomRules[0].Name $customRule.Name
+		Assert-AreEqual $policy.CustomRules[0].RuleType $customRule.RuleType
+		Assert-AreEqual $policy.CustomRules[0].Action $customRule.Action
+		Assert-AreEqual $policy.CustomRules[0].Action "CAPTCHA"
+		Assert-AreEqual $policy.CustomRules[0].Priority $customRule.Priority
+
+		# Check managed rule-level override CAPTCHA action
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleSetType "Microsoft_BotManagerRuleSet"
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[0].Action $ruleOverride.Action
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[0].Action "CAPTCHA"
+
+		# Check CAPTCHA cookie expiration policy setting
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+		Assert-AreEqual $policy.PolicySettings.CaptchaExpirationInMins $policySettings.CaptchaExpirationInMins
+		Assert-AreEqual $policy.PolicySettings.CaptchaExpirationInMins 100
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
 function Test-ApplicationGatewayFirewallPolicyCustomRuleRemoval
 {
 	# Setup

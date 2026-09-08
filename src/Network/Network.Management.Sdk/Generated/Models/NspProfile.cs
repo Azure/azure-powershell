@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="diagnosticSettingsVersion">Version number that increases with every update to diagnostic settings
         /// within the profile.
         /// </param>
-        public NspProfile(string id = default(string), string name = default(string), string type = default(string), SecurityPerimeterSystemData systemData = default(SecurityPerimeterSystemData), string accessRulesVersion = default(string), string diagnosticSettingsVersion = default(string))
+        public NspProfile(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string accessRulesVersion = default(string), string diagnosticSettingsVersion = default(string))
 
         : base(id, name, type, systemData)
         {

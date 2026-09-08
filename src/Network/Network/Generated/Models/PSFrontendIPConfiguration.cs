@@ -67,6 +67,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId GatewayLoadBalancer { get; set; }
         [JsonProperty(Order = 1)]
         public PSDdosSettings DdosSettings { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableConnectionTracking { get; set; }
 
         [JsonIgnore]
         public string ZonesText

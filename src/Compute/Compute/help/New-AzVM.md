@@ -26,13 +26,13 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
  [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DiskControllerType <String>]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-ProcessorMode <String>] [-DiskControllerType <String>]
  [-SharedGalleryImageId <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SshKeyType <String>]
  [-ZonePlacementPolicy <String>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
  [-AlignRegionalDisksToVMZone] [-EnableProxyAgent] [-AddProxyAgentExtension]
  [-ScheduledEventsApiVersion <String>] [-EnableAllInstancesDown <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DisableCapacityReservationAssignment] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -59,8 +59,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
  [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProcessorMode <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DisableCapacityReservationAssignment]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -379,6 +379,13 @@ $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
 
 This example shows how the simple cmdlet call with minimal parameters will result in a TrustedLaunch enabled VM with a Gen2 image. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
+### Example 14: Create a VM with a specific processor mode
+```powershell
+New-AzVM -ResourceGroupName "myResourceGroup" -Location "westus" -Name "myVM" -Credential (Get-Credential) -Size "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+```
+
+This command creates a VM and sets processor frequency behavior to deterministic mode.
+
 ## PARAMETERS
 
 ### -AddProxyAgentExtension
@@ -564,6 +571,22 @@ Indicates that this cmdlet does not install the **BG Info** extension on the vir
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableCapacityReservationAssignment
+Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment.
+When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
 Required: False
@@ -1059,6 +1082,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProcessorMode
+Specifies processor frequency behavior. Typical values are `Deterministic` and `Opportunistic`.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase
 {
     using System;
+    using System.Collections;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
@@ -66,6 +67,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
             {
                 // Any other error during existence check is non-fatal.
                 existing = null;
+            }
+
+            // Preserve existing tags only when -Tag is omitted; explicitly supplied tags replace the existing set rather than being merged.
+            bool tagBound = this.MyInvocation.BoundParameters.ContainsKey("Tag");
+            if (!tagBound && existing?.Tags != null)
+            {
+                parameters.Tags = new Hashtable();
+                foreach (var tag in existing.Tags)
+                {
+                    parameters.Tags[tag.Key] = tag.Value;
+                }
+            }
+            else if (tagBound && parameters.Tags == null)
+            {
+                parameters.Tags = new Hashtable();
             }
 
             Action executeAction = () =>

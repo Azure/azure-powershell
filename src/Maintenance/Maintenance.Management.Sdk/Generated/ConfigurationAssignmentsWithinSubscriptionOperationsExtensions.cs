@@ -13,18 +13,20 @@ namespace Microsoft.Azure.Management.Maintenance
     public static partial class ConfigurationAssignmentsWithinSubscriptionOperationsExtensions
     {
         /// <summary>
-        /// Get configuration assignment within a subscription
+        /// [UNSUPPORTED] Get configuration assignment within a subscription. This API
+        /// is not implemented yet.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<ConfigurationAssignment> List(this IConfigurationAssignmentsWithinSubscriptionOperations operations)
+        public static Microsoft.Rest.Azure.IPage<ConfigurationAssignment> List(this IConfigurationAssignmentsWithinSubscriptionOperations operations)
         {
                 return ((IConfigurationAssignmentsWithinSubscriptionOperations)operations).ListAsync().GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Get configuration assignment within a subscription
+        /// [UNSUPPORTED] Get configuration assignment within a subscription. This API
+        /// is not implemented yet.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -32,9 +34,44 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<ConfigurationAssignment>> ListAsync(this IConfigurationAssignmentsWithinSubscriptionOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConfigurationAssignment>> ListAsync(this IConfigurationAssignmentsWithinSubscriptionOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// [UNSUPPORTED] Get configuration assignment within a subscription. This API
+        /// is not implemented yet.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ConfigurationAssignment> ListNext(this IConfigurationAssignmentsWithinSubscriptionOperations operations, string nextPageLink)
+        {
+                return ((IConfigurationAssignmentsWithinSubscriptionOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// [UNSUPPORTED] Get configuration assignment within a subscription. This API
+        /// is not implemented yet.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConfigurationAssignment>> ListNextAsync(this IConfigurationAssignmentsWithinSubscriptionOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

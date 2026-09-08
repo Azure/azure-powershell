@@ -149,15 +149,6 @@ begin {
     if ($writeln) {
         Write-Host -ForegroundColor Cyan "begin:Get-AzPolicyAssignment(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
-
-    # make mapping table
-    $mapping = @{
-        Get = 'Az.Policy.private\Get-AzPolicyAssignment_Get';
-        List = 'Az.Policy.private\Get-AzPolicyAssignment_List';
-        List1 = 'Az.Policy.private\Get-AzPolicyAssignment_List1';
-        List2 = 'Az.Policy.private\Get-AzPolicyAssignment_List2';
-        List3 = 'Az.Policy.private\Get-AzPolicyAssignment_List3';
-    }
 }
 
 process {
@@ -168,7 +159,6 @@ process {
     $calledParameters = $PSBoundParameters
 
     if ($Name) {
-        $calledParameterSet = 'Get'
         $calledParameters.Name = $Name
 
         if (!$Scope) {
@@ -178,7 +168,6 @@ process {
         $calledParameters.Scope = $Scope
     }
     elseif ($Id) {
-        $calledParameterSet = 'Get'
         $parsed = ParsePolicyAssignmentId $Id
         $calledParameters.Name = $parsed.Name
         $calledParameters.Scope = $parsed.Scope
@@ -192,8 +181,6 @@ process {
             $calledParameters.Filter = 'atScope()'
         }
 
-        $calledParameterSet = 'List3'
-
         if ($Scope) {
             $resolved = ResolvePolicyAssignment $null $Scope $null
             switch ($resolved.ScopeType) {
@@ -202,19 +189,16 @@ process {
                         throw 'The IncludeDescendent switch is not supported for management group scopes.'
                     }
 
-                    $calledParameterSet = 'List2'
                     $calledParameters.ManagementGroupId = $resolved.ManagementGroupName
                 }
                 'subId' {
                     $calledParameters.SubscriptionId = @($resolved.SubscriptionId)
                 }
                 'rgname' {
-                    $calledParameterSet = 'List'
                     $calledParameters.SubscriptionId = @($resolved.SubscriptionId)
                     $calledParameters.ResourceGroupName = $resolved.ResourceGroupName
                 }
                 'resource' {
-                    $calledParameterSet = 'List1'
                     $calledParameters.ResourceProviderNamespace = $resolved.ResourceNamespace
                     $calledParameters.ResourceName = $resolved.ResourceName
                     $calledParameters.ResourceType = $resolved.ResourceType
@@ -224,7 +208,6 @@ process {
                 }
                 'none' {
                     # This will fail, but return a helpful message
-                    $calledParameterSet = 'Get1'
                     $calledParameters = @{ Id = $resolved.Scope }
                 }
             }
@@ -240,15 +223,8 @@ process {
     $null = $calledParameters.Remove('PolicyDefinitionId')
     $null = $calledParameters.Remove('IncludeDescendent')
 
-    if ($writeln) {
-        Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $calledParameters ')'
-    }
-
-    $cmdInfo = Get-Command -Name $mapping[$calledParameterSet]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-    $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$calledParameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-    $scriptCmd = {& $wrappedCmd @calledParameters}
-    $object = Invoke-Command -ScriptBlock $scriptCmd
+    # call the internal cmdlet with the parsed parameters
+    $object = Az.Policy.internal\Get-AzPolicyAssignment @calledParameters
 
     foreach ($item in $object) {
         $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force

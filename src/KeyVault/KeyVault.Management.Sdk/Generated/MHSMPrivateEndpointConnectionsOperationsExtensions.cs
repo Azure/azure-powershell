@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<MhsmPrivateEndpointConnection> ListByResource(this IMhsmPrivateEndpointConnectionsOperations operations, string resourceGroupName, string name)
         {
@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -61,10 +61,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the managed hsm
@@ -83,10 +83,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the managed hsm
@@ -110,10 +110,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the managed hsm
@@ -132,10 +132,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the managed hsm
@@ -159,10 +159,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the managed hsm
@@ -181,10 +181,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the managed hsm
@@ -208,10 +208,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the managed hsm
@@ -230,10 +230,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection associated with the managed hsm

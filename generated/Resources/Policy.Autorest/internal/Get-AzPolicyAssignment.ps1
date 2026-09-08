@@ -41,21 +41,24 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IPolicyIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ManagementGroupId <String>]: The ID of the management group.
+  [ManagementGroupId <String>]: The management group ID.
   [ManagementGroupName <String>]: The name of the management group. The name is case insensitive.
   [ParentResourcePath <String>]: The parent resource path. Use empty string if there is none.
-  [PolicyAssignmentId <String>]: The ID of the policy assignment to delete. Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
-  [PolicyAssignmentName <String>]: The name of the policy assignment to delete.
-  [PolicyDefinitionName <String>]: The name of the policy definition to create.
+  [PolicyAssignmentName <String>]: The name of the policy assignment to get.
+  [PolicyDefinitionName <String>]: The name of the policy definition to get.
   [PolicyDefinitionVersion <String>]: The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
-  [PolicyExemptionName <String>]: The name of the policy exemption to delete.
-  [PolicySetDefinitionName <String>]: The name of the policy set definition to create.
-  [ResourceGroupName <String>]: The name of the resource group that contains policy assignments.
+  [PolicyEnrollmentName <String>]: The name of the policy enrollment.
+  [PolicyExemptionName <String>]: The name of the policy exemption to get.
+  [PolicyMode <String>]: The policy mode of the data policy manifest to get.
+  [PolicySetDefinitionName <String>]: The name of the policy set definition to get.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the resource.
   [ResourceProviderNamespace <String>]: The namespace of the resource provider. For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
   [ResourceType <String>]: The resource type name. For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
-  [Scope <String>]: The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+  [Scope <String>]: The fully qualified Azure Resource manager identifier of the resource.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VariableName <String>]: The name of the variable to operate on.
+  [VariableValueName <String>]: The name of the variable value to operate on.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/get-azpolicyassignment
 #>
@@ -73,17 +76,8 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The scope of the policy assignment.
-    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+    # The fully qualified Azure Resource manager identifier of the resource.
     ${Scope},
-
-    [Parameter(ParameterSetName='Get1', Mandatory)]
-    [Alias('PolicyAssignmentId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The ID of the policy assignment to get.
-    # Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
-    ${Id},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -92,14 +86,15 @@ param(
     ${InputObject},
 
     [Parameter(ParameterSetName='List', Mandatory)]
-    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Parameter(ParameterSetName='List3', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The name of the resource group that contains policy assignments.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='List')]
-    [Parameter(ParameterSetName='List1')]
+    [Parameter(ParameterSetName='List2')]
     [Parameter(ParameterSetName='List3')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -111,36 +106,37 @@ param(
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
+    # The management group ID.
+    ${ManagementGroupId},
+
+    [Parameter(ParameterSetName='List3', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
+    [System.String]
     # The parent resource path.
     # Use empty string if there is none.
     ${ParentResourcePath},
 
-    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Parameter(ParameterSetName='List3', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The name of the resource.
     ${ResourceName},
 
-    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Parameter(ParameterSetName='List3', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The namespace of the resource provider.
     # For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
     ${ResourceProviderNamespace},
 
-    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Parameter(ParameterSetName='List3', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The resource type name.
     # For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
     ${ResourceType},
 
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='GetViaIdentity')]
-    [Parameter(ParameterSetName='List')]
-    [Parameter(ParameterSetName='List1')]
-    [Parameter(ParameterSetName='List2')]
-    [Parameter(ParameterSetName='List3')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.String]
     # Comma-separated list of additional properties to be included in the response.
@@ -223,22 +219,18 @@ begin {
 
         $mapping = @{
             Get = 'Az.Policy.private\Get-AzPolicyAssignment_Get';
-            Get1 = 'Az.Policy.private\Get-AzPolicyAssignment_Get1';
             GetViaIdentity = 'Az.Policy.private\Get-AzPolicyAssignment_GetViaIdentity';
             List = 'Az.Policy.private\Get-AzPolicyAssignment_List';
             List1 = 'Az.Policy.private\Get-AzPolicyAssignment_List1';
             List2 = 'Az.Policy.private\Get-AzPolicyAssignment_List2';
             List3 = 'Az.Policy.private\Get-AzPolicyAssignment_List3';
         }
-        if (('List', 'List1', 'List3') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('List', 'List2', 'List3') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
-        }
-        if (('List2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ManagementGroupId') ) {
-            $PSBoundParameters['ManagementGroupId'] = { "" }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

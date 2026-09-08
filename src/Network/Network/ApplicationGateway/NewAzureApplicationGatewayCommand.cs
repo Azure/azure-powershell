@@ -225,6 +225,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = " Whether the default server header is disabled in responses.")]
+        public bool? DisableDefaultServerHeaderInResponse { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = " Whether Force firewallPolicy association is enabled.")]
         public SwitchParameter ForceFirewallPolicyAssociation { get; set; }
         
@@ -457,6 +462,11 @@ namespace Microsoft.Azure.Commands.Network
                 else
                 {
                     applicationGateway.GlobalConfiguration.EnableResponseBuffering = true;
+                }
+
+                if (this.DisableDefaultServerHeaderInResponse.HasValue)
+                {
+                    applicationGateway.GlobalConfiguration.DisableDefaultServerHeaderInResponse = this.DisableDefaultServerHeaderInResponse.Value;
                 }
             }
 
