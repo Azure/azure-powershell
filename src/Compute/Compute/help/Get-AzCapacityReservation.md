@@ -39,7 +39,7 @@ This will retrieve the Capacity Reservation resource named "resource1" with its 
 
 ### Example 3
 ```powershell
-(Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName "CRGroup1" -Name "resource1" -InstanceView).InstanceView.ReservationStateInfo.ReservationState
+(Get-AzCapacityReservation -ResourceGroupName "myRG" -ReservationGroupName "CRGroup1" -Name "resource1" -InstanceView).InstanceView.ReservationStateInfo.ReservationState
 ```
 
 For a Future Capacity Reservation, this will retrieve the current reservation state from the instance view.
