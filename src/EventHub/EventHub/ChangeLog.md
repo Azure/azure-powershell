@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Extended Change Safety support to AutoRest-generated cmdlets.
+* Added Change Safety support for additional cmdlets.
 
 ## Version 5.6.0
 * Added parameter `IPAddressType` to cmdlets 'New-AzEventHubNamespace' and 'Set-AzEventHubNamespace'

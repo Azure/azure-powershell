@@ -19,7 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Extended Change Safety support to AutoRest-generated cmdlets.
+* Added Change Safety support for additional cmdlets.
 
 ## Version 4.3.0
 * Added parameters 'GeoDataReplicationMaxReplicationLagDurationInSecond', 'GeoDataReplicationLocation', and 'IPAddressType' to cmdlets 'New-AzServiceBusNamespace' and 'Set-AzServiceBusNamespace'

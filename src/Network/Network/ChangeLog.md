@@ -19,7 +19,7 @@
 --->
 
 ## Upcoming Release
-* Extended Change Safety support to AutoRest-generated cmdlets.
+* Added Change Safety support for additional cmdlets.
 * Added support for the `CAPTCHA` action in Application Gateway WAF (Web Application Firewall) policies.
     - Added `CAPTCHA` as an allowed value for the `-Action` parameter of custom rules (`New-AzApplicationGatewayFirewallCustomRule`) and managed rule overrides (`New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`).
     - Added the `-CaptchaExpirationInMins` parameter to `New-AzApplicationGatewayFirewallPolicySetting`.
