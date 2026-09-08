@@ -5401,6 +5401,12 @@ function Test-CapacityReservation
 Tests the creation of Future capacity reservations using the ScheduleProfileStart and
 MinimumCommitmentDays parameters of New-AzCapacityReservation, and verifies the read-only
 ScheduleProfile and instance view ReservationStateInfo returned by Get-AzCapacityReservation.
+
+.NOTES
+Re-recording this test (Record mode) requires:
+- The target region ('eastus2euap') to have Future Capacity Reservations enabled.
+- The subscription to have one of the AFEC feature flags registered:
+  Microsoft.Compute/TestSubscription or Microsoft.Compute/FutureCapacityReservation.
 #>
 function Test-CapacityReservationFutureReservation
 {
