@@ -26,6 +26,7 @@ Currently, only Azure VM backup items are supported. Set the vault context by us
 
 ### Example 1: Enable Source Scan for an Azure VM backup item
 ```powershell
+$vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
 $Cont = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -VaultId $vault.ID
 $PI = Get-AzRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVM -VaultId $vault.ID
 Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $PI[0] -State Enabled -VaultId $vault.ID
@@ -37,6 +38,7 @@ The last command enables Source Scan for the item in $PI\[0\], and returns the t
 
 ### Example 2: Disable Source Scan for an Azure VM backup item without confirmation
 ```powershell
+$vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
 $item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
 Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $item[0] -State Disabled -VaultId $vault.ID -Force
 ```
