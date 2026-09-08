@@ -43,15 +43,15 @@ Describe 'ElasticSanBackupRestoreConfiguration' {
 
         ($restoreConfig -ne $null) | Should Be $true
         $restoreConfig.ObjectType | Should Be "GenericRestoreDatasourceCriteria"
-        $restoreConfig.ResourceSelector.ObjectType | Should Be "ResourceListSelectionCriteria"
-        $restoreConfig.ResourceSelector.ResourceIdentifier.Count | Should Be 1
-        $restoreConfig.ResourceSelector.ResourceIdentifier[0] | Should Be "source-vol1"
+        $restoreConfig.ResourceSelectorObjectType | Should Be "ResourceListSelectionCriteria"
+        $restoreConfig.ResourceSelectorResourceIdentifier.Count | Should Be 1
+        $restoreConfig.ResourceSelectorResourceIdentifier[0] | Should Be "source-vol1"
     }
 
     It 'RestoreConfigWithResourceNameOverride' {
         $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1") -ResourceNameOverride @{"source-vol1" = "restored-vol1"}
 
-        $restoreConfig.ResourceSelector.ResourceNameOverride["source-vol1"] | Should Be "restored-vol1"
+        $restoreConfig.ResourceSelectorResourceNameOverride["source-vol1"] | Should Be "restored-vol1"
     }
 
     It 'RestoreConfigThrowsWhenResourceIdentifierMissing' {

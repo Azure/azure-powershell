@@ -80,8 +80,9 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
 
         if($DatasourceType.ToString() -eq "AzureElasticSAN"){
 
-            # reject parameters that belong to other datasource types
-            if($ExcludedResourceType -ne $null -or $IncludedResourceType -ne $null -or $ExcludedNamespace -ne $null -or $IncludedNamespace -ne $null -or $LabelSelector -ne $null -or $IncludeClusterScopeResource -ne $null -or $ConflictPolicy -ne $null -or $NamespaceMapping -ne $null -or $PersistentVolumeRestoreMode -ne $null -or $RestoreHookReference -ne $null -or $ResourceModifierReference -ne $null -or $StagingResourceGroupId -ne $null -or $StagingStorageAccountId -ne $null){
+            # reject parameters that belong to other datasource types.
+            # Note: the model cmdlet runtime initializes string-typed parameters to empty string rather than $null, so string parameters are checked with IsNullOrEmpty.
+            if($ExcludedResourceType -ne $null -or $IncludedResourceType -ne $null -or $ExcludedNamespace -ne $null -or $IncludedNamespace -ne $null -or $LabelSelector -ne $null -or $IncludeClusterScopeResource -ne $null -or -not [string]::IsNullOrEmpty($ConflictPolicy) -or $NamespaceMapping -ne $null -or -not [string]::IsNullOrEmpty($PersistentVolumeRestoreMode) -or $RestoreHookReference -ne $null -or $ResourceModifierReference -ne $null -or -not [string]::IsNullOrEmpty($StagingResourceGroupId) -or -not [string]::IsNullOrEmpty($StagingStorageAccountId)){
                 throw "Invalid parameters for DatasourceType AzureElasticSAN. Only ResourceIdentifier and ResourceNameOverride are supported."
             }
 
@@ -95,17 +96,13 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
                 throw "DatasourceType AzureElasticSAN currently supports exactly one volume per restore request. Please provide a single entry in ResourceIdentifier."
             }
 
-            # Build the nested resource selector used by GenericRestoreDatasourceCriteria.
-            $resourceListCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteria]::new()
-            $resourceListCriteria.ObjectType = "ResourceListSelectionCriteria"
-            $resourceListCriteria.ResourceIdentifier = $ResourceIdentifier
-
+            # AutoRest v4 flattens the resource selector onto GenericRestoreDatasourceCriteria; the nested ResourceSelector is internal, so the inlined public accessors are used instead.
             $restoreCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.GenericRestoreDatasourceCriteria]::new()
-            $restoreCriteria.ResourceSelector = $resourceListCriteria
+            $restoreCriteria.ResourceSelectorObjectType = "ResourceListSelectionCriteria"
+            $restoreCriteria.ResourceSelectorResourceIdentifier = [System.Collections.Generic.List[string]]$ResourceIdentifier
 
             if($ResourceNameOverride -ne $null -and $ResourceNameOverride.Count -gt 0){
 
-                $resourceListCriteria.ResourceNameOverride = [System.Collections.Generic.Dictionary[string,string]]::new()
                 $seenTargets = @{}
 
                 foreach($key in $ResourceNameOverride.Keys){
@@ -123,7 +120,7 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
                     }
                     $seenTargets[$value] = $true
 
-                    $resourceListCriteria.ResourceNameOverride[$key] = $value
+                    $restoreCriteria.ResourceSelectorResourceNameOverride[$key] = $value
                 }
             }
 
