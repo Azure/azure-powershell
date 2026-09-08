@@ -130,6 +130,10 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
             return $restoreCriteria
         }
 
+        if($ResourceIdentifier -ne $null -or $ResourceNameOverride -ne $null){
+            throw "ResourceIdentifier and ResourceNameOverride are only supported for DatasourceType AzureElasticSAN."
+        }
+
         $hasStagingResourceGroupId = $PSBoundParameters.Remove("StagingResourceGroupId")
         $hasStagingStorageAccountId = $PSBoundParameters.Remove("StagingStorageAccountId")
 

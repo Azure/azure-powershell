@@ -209,6 +209,9 @@ function New-AzDataProtectionBackupConfigurationClientObject{
             $dataSourceParam.ObjectType = "GenericBackupDatasourceParameters"
             $dataSourceParam.ResourceSelector = $ResourceSelector
         }
+        elseif($ResourceSelector -ne $null){
+            throw "ResourceSelector is only supported for DatasourceType AzureElasticSAN."
+        }
 
         $dataSourceParam
     }

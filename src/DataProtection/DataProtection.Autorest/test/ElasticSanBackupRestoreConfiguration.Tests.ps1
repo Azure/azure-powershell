@@ -34,6 +34,10 @@ Describe 'ElasticSanBackupRestoreConfiguration' {
         { New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceSelector @("volume001") -IncludedNamespace @("ns1") } | Should -Throw "Invalid parameters"
     }
 
+    It 'BackupConfigThrowsWhenResourceSelectorSuppliedForAnotherDatasourceType' {
+        { New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureKubernetesService -ResourceSelector @("volume001") } | Should -Throw "only supported for DatasourceType AzureElasticSAN"
+    }
+
     It 'RestoreConfigSingleIdentifier' {
         $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1")
 
@@ -68,5 +72,13 @@ Describe 'ElasticSanBackupRestoreConfiguration' {
 
     It 'RestoreConfigThrowsWhenForeignParametersSupplied' {
         { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1") -IncludedNamespace @("ns1") } | Should -Throw "Invalid parameters"
+    }
+
+    It 'RestoreConfigThrowsWhenResourceIdentifierSuppliedForAnotherDatasourceType' {
+        { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureKubernetesService -ResourceIdentifier @("source-vol1") } | Should -Throw "only supported for DatasourceType AzureElasticSAN"
+    }
+
+    It 'RestoreConfigThrowsWhenResourceNameOverrideSuppliedForAnotherDatasourceType' {
+        { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureKubernetesService -ResourceNameOverride @{"source-vol1" = "restored-vol1"} } | Should -Throw "only supported for DatasourceType AzureElasticSAN"
     }
 }
