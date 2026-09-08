@@ -24,19 +24,6 @@ Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <Strin
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
-```
-Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-Token <String>]
- [-XmsDeletedVaultId <String>] [-AsJob] [-AzureMonitorAlertsForAllJobFailure <String>]
- [-CostManagementSettingGranularityLevel <String>] [-CrossRegionRestoreState <String>]
- [-CrossSubscriptionRestoreState <String>] [-DefaultProfile <PSObject>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-EncryptionSetting <IEncryptionSettings>] [-ETag <String>]
- [-ImmutabilityState <String>] [-NoWait] [-ReplicatedRegion <String[]>]
- [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionDurationInDay <Double>]
- [-SoftDeleteState <String>] [-StorageSetting <IStorageSetting[]>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Update a BackupVault resource belonging to a resource group.
 
@@ -246,21 +233,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CostManagementSettingGranularityLevel
-Settings for granularity level
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CrossRegionRestoreState
 Cross region restore state of the vault.
 Allowed values are Disabled, Enabled.
@@ -324,36 +296,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EncryptionSetting
-Customer Managed Key details of the resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IEncryptionSettings
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ETag
-Optional ETag.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ImmutabilityState
 Immutability state of the vault.
 Allowed values are Disabled, Unlocked, Locked.
@@ -370,42 +312,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReplicatedRegion
-List of replicated regions for Backup Vault
-
-```yaml
-Type: System.String[]
-Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -495,21 +407,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageSetting
-Storage Settings
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStorageSetting[]
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -588,21 +485,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -XmsDeletedVaultId
-The ID of the deleted backup vault to restore from during undelete flow.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -648,4 +530,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

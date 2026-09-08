@@ -172,9 +172,9 @@ function Update-AzDataProtectionBackupVault
         $hasCmkUserAssignedIdentityId = $PSBoundParameters.Remove("CmkUserAssignedIdentityId")
         $hasCmkEncryptionKeyUri = $PSBoundParameters.Remove("CmkEncryptionKeyUri")
         $hasCostManagementGranularity = $PSBoundParameters.Remove("CostManagementGranularity")
-        if ($hasCostManagementGranularity) { $PSBoundParameters.Add("CostManagementSettingGranularityLevel", $CostManagementGranularity) }
 
         if (-not $hasCmkEncryptionState -and -not $hasCmkIdentityType -and -not $hasCmkUserAssignedIdentityId -and -not $hasCmkEncryptionKeyUri) {
+            if ($hasCostManagementGranularity) { $PSBoundParameters.Add("CostManagementSettingGranularityLevel", $CostManagementGranularity) }
             Az.DataProtection.Internal\Update-AzDataProtectionBackupVault @PSBoundParameters
             return
         }
@@ -221,6 +221,7 @@ function Update-AzDataProtectionBackupVault
         if ($hasSoftDeleteState) { $PSBoundParameters.Add("SoftDeleteState", $SoftDeleteState) }
         if ($hasTag) { $PSBoundParameters.Add("Tag", $Tag) }
         if ($hasUserAssignedIdentity) { $PSBoundParameters.Add("UserAssignedIdentity", $UserAssignedIdentity) }
+        if ($hasCostManagementGranularity) { $PSBoundParameters.Add("CostManagementSettingGranularityLevel", $CostManagementGranularity) }
 
         Az.DataProtection.Internal\Update-AzDataProtectionBackupVault @PSBoundParameters
     }

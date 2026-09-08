@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "129" ],
-        "x-ms-client-request-id": [ "1239f0b8-881d-40b7-9f90-4a32e0afb6d4" ],
+        "x-ms-unique-id": [ "141" ],
+        "x-ms-client-request-id": [ "77994eda-5192-412c-a097-912f16edcc8a" ],
         "CommandName": [ "Get-AzDataProtectionBackupInstance" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupInstance_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,16 +22,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/2346e35d-300b-45d1-8611-81d2a15231a0" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/666a3697-06fd-496b-9dc6-95361c0ed4cc" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "d0f4343f-1140-4d36-b821-82ba0d77ee11" ],
-        "x-ms-correlation-request-id": [ "d0f4343f-1140-4d36-b821-82ba0d77ee11" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260907T114951Z:d0f4343f-1140-4d36-b821-82ba0d77ee11" ],
+        "x-ms-request-id": [ "fa4b7841-0b96-4469-85ac-ee5a680609ba" ],
+        "x-ms-correlation-request-id": [ "fa4b7841-0b96-4469-85ac-ee5a680609ba" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260908T123215Z:fa4b7841-0b96-4469-85ac-ee5a680609ba" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E5B95D61F29B40C1AC196F42D6CB9EF2 Ref B: SG2AA1040518060 Ref C: 2026-09-07T11:49:50Z" ],
-        "Date": [ "Mon, 07 Sep 2026 11:49:51 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 9032B400E6EF495391A7F0E84CC84855 Ref B: SG2AA1040518042 Ref C: 2026-09-08T12:32:15Z" ],
+        "Date": [ "Tue, 08 Sep 2026 12:32:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4229" ],
@@ -46,7 +46,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupInstances/blobsourcesa1-blobsourcesa1-101a9c14-fdef-49a7-9c39-c785a50904c9/findRestorableTimeRanges?api-version=2026-06-01",
-      "Content": "{\r\n  \"sourceDataStoreType\": \"OperationalStore\",\r\n  \"startTime\": \"2026-08-08T17:19:51.0000000Z\",\r\n  \"endTime\": \"2026-09-07T17:19:51.0000000Z\"\r\n}",
+      "Content": "{\r\n  \"sourceDataStoreType\": \"OperationalStore\",\r\n  \"startTime\": \"2026-08-09T18:02:15.0000000Z\",\r\n  \"endTime\": \"2026-09-08T18:02:15.0000000Z\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -60,24 +60,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/a0c9a778-6dc0-49b4-b722-6bb43ec51ad7" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/083818e7-0df2-4f8e-b2f4-3f4e724ec9df" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-request-id": [ "2102abae-872d-40dd-9f90-c52f5f4524cc" ],
-        "x-ms-correlation-request-id": [ "2102abae-872d-40dd-9f90-c52f5f4524cc" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260907T114953Z:2102abae-872d-40dd-9f90-c52f5f4524cc" ],
+        "x-ms-request-id": [ "4380ad75-9443-4ad5-9989-2b3945a8d8c1" ],
+        "x-ms-correlation-request-id": [ "4380ad75-9443-4ad5-9989-2b3945a8d8c1" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260908T123217Z:4380ad75-9443-4ad5-9989-2b3945a8d8c1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: BFE5D3B3E4F646EFB0230C744CB6894A Ref B: SG2AA1040518060 Ref C: 2026-09-07T11:49:52Z" ],
-        "Date": [ "Mon, 07 Sep 2026 11:49:53 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 017E441897A847A881EB19524A98BC4B Ref B: SG2AA1040518042 Ref C: 2026-09-08T12:32:15Z" ],
+        "Date": [ "Tue, 08 Sep 2026 12:32:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "381" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"restorableTimeRanges\":[{\"startTime\":\"2026-08-08T17:19:51.0000000Z\",\"endTime\":\"2026-09-07T11:49:53.6463452Z\",\"objectType\":\"RestorableTimeRange\"}],\"objectType\":\"AzureBackupFindRestorableTimeRangesResponse\"},\"id\":\"blobsourcesa1-blobsourcesa1-101a9c14-fdef-49a7-9c39-c785a50904c9\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges\"}",
+      "Content": "{\"properties\":{\"restorableTimeRanges\":[{\"startTime\":\"2026-08-09T18:02:15.0000000Z\",\"endTime\":\"2026-09-08T12:32:17.4700545Z\",\"objectType\":\"RestorableTimeRange\"}],\"objectType\":\"AzureBackupFindRestorableTimeRangesResponse\"},\"id\":\"blobsourcesa1-blobsourcesa1-101a9c14-fdef-49a7-9c39-c785a50904c9\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges\"}",
       "isContentBase64": false
     }
   }
