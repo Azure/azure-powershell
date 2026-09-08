@@ -13,46 +13,49 @@ namespace Microsoft.Azure.Management.Automation
     public static partial class JobScheduleOperationsExtensions
     {
         /// <summary>
-        /// Delete the job schedule identified by job schedule name.
+        /// Retrieve a list of job schedules.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        /// <param name='jobScheduleId'>
-        /// The job schedule name.
+        /// <param name='filter'>
+        /// The filter to apply on the operation.
         /// </param>
-        public static void Delete(this IJobScheduleOperations operations, string resourceGroupName, string automationAccountName, System.Guid jobScheduleId)
+        public static Microsoft.Rest.Azure.IPage<JobSchedule> ListByAutomationAccount(this IJobScheduleOperations operations, string resourceGroupName, string automationAccountName, string filter = default(string))
         {
-                ((IJobScheduleOperations)operations).DeleteAsync(resourceGroupName, automationAccountName, jobScheduleId).GetAwaiter().GetResult();
+                return ((IJobScheduleOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName, filter).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Delete the job schedule identified by job schedule name.
+        /// Retrieve a list of job schedules.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        /// <param name='jobScheduleId'>
-        /// The job schedule name.
+        /// <param name='filter'>
+        /// The filter to apply on the operation.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IJobScheduleOperations operations, string resourceGroupName, string automationAccountName, System.Guid jobScheduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobSchedule>> ListByAutomationAccountAsync(this IJobScheduleOperations operations, string resourceGroupName, string automationAccountName, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, automationAccountName, jobScheduleId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, filter, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Retrieve the job schedule identified by job schedule name.
@@ -61,7 +64,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -81,7 +84,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -106,7 +109,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -126,7 +129,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -145,49 +148,46 @@ namespace Microsoft.Azure.Management.Automation
             }
         }
         /// <summary>
-        /// Retrieve a list of job schedules.
+        /// Delete the job schedule identified by job schedule name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<JobSchedule> ListByAutomationAccount(this IJobScheduleOperations operations, string resourceGroupName, string automationAccountName, Microsoft.Rest.Azure.OData.ODataQuery<JobSchedule> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<JobSchedule>))
+        /// <param name='jobScheduleId'>
+        /// The job schedule name.
+        /// </param>
+        public static void Delete(this IJobScheduleOperations operations, string resourceGroupName, string automationAccountName, System.Guid jobScheduleId)
         {
-                return ((IJobScheduleOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName, odataQuery).GetAwaiter().GetResult();
+                ((IJobScheduleOperations)operations).DeleteAsync(resourceGroupName, automationAccountName, jobScheduleId).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieve a list of job schedules.
+        /// Delete the job schedule identified by job schedule name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
+        /// </param>
+        /// <param name='jobScheduleId'>
+        /// The job schedule name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobSchedule>> ListByAutomationAccountAsync(this IJobScheduleOperations operations, string resourceGroupName, string automationAccountName, Microsoft.Rest.Azure.OData.ODataQuery<JobSchedule> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<JobSchedule>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IJobScheduleOperations operations, string resourceGroupName, string automationAccountName, System.Guid jobScheduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, odataQuery, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, automationAccountName, jobScheduleId, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieve a list of job schedules.

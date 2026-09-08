@@ -20,12 +20,26 @@
 
 -->
 ## Upcoming Release
+* Added cmdlets and parameters to configure first-party service tags for implicit public IP addresses on VMs (Virtual Machines) and VMSS (Virtual Machine Scale Sets).
+
+## Version 11.9.0
+* Added `-WireServerUseLocalFileRules` and `-ImdsUseLocalFileRules` to `Set-AzVMProxyAgentSetting` and `Set-AzVmssProxyAgentSetting` to configure local file rules for Virtual Machine (VM) and Virtual Machine Scale Set (VMSS) host endpoints. [#30055]
+* Updated ComputeRP, DiskRP, and GalleryRP cmdlets to API versions 2026-04-01, 2026-03-02, and 2025-12-03, respectively.
+* Added `-ProcessorMode` to VM and VMSS create and update cmdlets: `New-AzVMConfig`, `New-AzVM`, `Update-AzVM`, `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss`. [#30012]
+* Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM during stop; it cannot be used with `-Hibernate`, `-StayProvisioned`, or `-SkipShutdown`.
+* Added `-ReservationType` to `New-AzCapacityReservationGroup` and `Update-AzCapacityReservationGroup` for `Open` capacity reservation groups, and exposed `ReservationType` in output.
+* Added `-DisableCapacityReservationAssignment` to `New-AzVM`, `New-AzVMConfig`, and `Update-AzVM` to opt a VM out of capacity reservation.
+* Added `CapacityReservationType` to `Get-AzVM -Status` instance views.
+* Added `-DisableCapacityReservationAssignment` to `New-AzVmss`, `New-AzVmssConfig`, and `Update-AzVmss` to opt VMSS instances out of capacity reservation.
+* Added `CapacityReservation` property to `Get-AzVmssVM` output and `CapacityReservationType` property to its `-InstanceView` output.
 
 ## Version 11.8.0
 * Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.
 * Added `New-AzInterconnectBlock`, `Get-AzInterconnectBlock`, `Update-AzInterconnectBlock`, and `Remove-AzInterconnectBlock` cmdlets to manage Microsoft.Compute/interconnectBlocks resources for high-performance artificial intelligence (AI) and machine learning (ML) workloads.
 * Marked the `-EnableWAD`, `-SkipStorage`, and `-InstallNewExtension` parameters of `Set-AzVMAEMExtension` as deprecated using breaking-change attributes. They will be removed in a future major release.
 * Preserved CMD-special characters in `Invoke-AzVMRunCommand` and `Invoke-AzVmssVMRunCommand` parameter values for Windows PowerShell RunCommand execution. [#29880]
+* Added `Set-AzVMZoneMovement` to set ZoneMovement configuration on a VM (Virtual Machine) model and persist it with `Update-AzVM`.
+    - Added `ResiliencyProfile` support in VM create and update flows so ZoneMovement is sent to the Compute API.
 
 ## Version 11.7.0
 * ComputeRP related cmdlets will now use 2026-03-01 version of the ComputeRP API.

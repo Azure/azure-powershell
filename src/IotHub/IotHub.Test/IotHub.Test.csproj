@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\IotHub\IotHub.csproj" />
     <ProjectReference Include="..\IotHub.Management.Sdk\IotHub.Management.Sdk.csproj" />
     <ProjectReference Include="..\..\EventHub\EventHub.Management.Sdk\EventHub.Management.Sdk.csproj" />
     <ProjectReference Include="..\..\Storage\Storage.Management.Sdk\Storage.Management.Sdk.csproj" />

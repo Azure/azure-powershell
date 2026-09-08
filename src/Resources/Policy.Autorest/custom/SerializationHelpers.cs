@@ -106,5 +106,92 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
                 }
             }
         }
+
+        /// <summary>
+        /// RestoreSentinel reverses the effect of <see cref="SetSentinel(IDictionary{string, object})"/>:
+        /// any value that was replaced with a <see cref="DateTime"/> sentinel (Year == 1) is set back to <c>null</c>.
+        /// Call this after serialization to avoid permanently mutating the in-memory object.
+        /// </summary>
+        public static void RestoreSentinel(IDictionary<string, object> inputObject)
+        {
+            var updates = new List<KeyValuePair<string, object>>();
+            foreach (var key in inputObject.Keys)
+            {
+                var value = inputObject[key];
+                if (value is DateTime dt && dt.Year == 1)
+                {
+                    updates.Add(new KeyValuePair<string, object>(key, null));
+                }
+                else if (value is Hashtable childHashtable)
+                {
+                    RestoreSentinel(childHashtable);
+                }
+                else if (value is Dictionary<string, object> child)
+                {
+                    RestoreSentinel(child);
+                }
+                else if (value is object[] arr)
+                {
+                    RestoreSentinel(arr);
+                }
+            }
+
+            foreach (var item in updates)
+            {
+                inputObject[item.Key] = null;
+            }
+        }
+
+        /// <summary>
+        /// RestoreSentinel reverses the effect of <see cref="SetSentinel(Hashtable)"/>:
+        /// any value that was replaced with a <see cref="DateTime"/> sentinel (Year == 1) is set back to <c>null</c>.
+        /// </summary>
+        public static void RestoreSentinel(Hashtable inputObject)
+        {
+            var updates = new List<KeyValuePair<string, object>>();
+            foreach (var key in inputObject.Keys)
+            {
+                var value = inputObject[key];
+                if (value is DateTime dt && dt.Year == 1)
+                {
+                    updates.Add(new KeyValuePair<string, object>(key.ToString(), null));
+                }
+                else if (value is Hashtable childHashtable)
+                {
+                    RestoreSentinel(childHashtable);
+                }
+                else if (value is Dictionary<string, object> child)
+                {
+                    RestoreSentinel(child);
+                }
+                else if (value is object[] arr)
+                {
+                    RestoreSentinel(arr);
+                }
+            }
+
+            foreach (var item in updates)
+            {
+                inputObject[item.Key] = null;
+            }
+        }
+
+        /// <summary>
+        /// RestoreSentinel reverses the effect of <see cref="SetSentinel(object[])"/> on nested dictionaries within an array.
+        /// </summary>
+        public static void RestoreSentinel(object[] inputObject)
+        {
+            foreach (var item in inputObject)
+            {
+                if (item is Hashtable childHashtable)
+                {
+                    RestoreSentinel(childHashtable);
+                }
+                else if (item is Dictionary<string, object> child)
+                {
+                    RestoreSentinel(child);
+                }
+            }
+        }
     }
 }

@@ -14,7 +14,6 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Management.NetApp.Models;
-
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
     /// <summary>
@@ -89,6 +88,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
 
         public string WriteBack { get; set; }
 
+        /// <summary>
+        /// Gets flag indicating whether file access logs are enabled for the Cache,
+        /// based on active diagnostic settings present on the Cache. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
         public string FileAccessLogs { get; set; }
     }
 }

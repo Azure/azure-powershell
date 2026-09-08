@@ -25,28 +25,31 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the AutomationAccount class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource Id for the resource
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
         /// </param>
 
-        /// <param name="location">The Azure Region where the resource lives
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="etag">Gets or sets the etag of the resource.
         /// </param>
 
         /// <param name="identity">Identity for the resource.
-        /// </param>
-
-        /// <param name="systemData">Resource system metadata.
         /// </param>
 
         /// <param name="sku">Gets or sets the SKU of account.
@@ -84,13 +87,12 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <param name="automationHybridServiceUrl">URL of automation hybrid service which is used for hybrid worker
         /// on-boarding.
         /// </param>
-        public AutomationAccount(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), string etag = default(string), Identity identity = default(Identity), SystemData systemData = default(SystemData), Sku sku = default(Sku), string lastModifiedBy = default(string), string state = default(string), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string description = default(string), EncryptionProperties encryption = default(EncryptionProperties), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), bool? publicNetworkAccess = default(bool?), bool? disableLocalAuth = default(bool?), string automationHybridServiceUrl = default(string))
+        public AutomationAccount(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), Identity identity = default(Identity), Sku sku = default(Sku), string lastModifiedBy = default(string), string state = default(string), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string description = default(string), EncryptionProperties encryption = default(EncryptionProperties), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), bool? publicNetworkAccess = default(bool?), bool? disableLocalAuth = default(bool?), string automationHybridServiceUrl = default(string))
 
-        : base(id, name, type, tags, location)
+        : base(location, id, name, type, systemData, tags)
         {
             this.Etag = etag;
             this.Identity = identity;
-            this.SystemData = systemData;
             this.Sku = sku;
             this.LastModifiedBy = lastModifiedBy;
             this.State = state;
@@ -124,12 +126,6 @@ namespace Microsoft.Azure.Management.Automation.Models
         public Identity Identity {get; set; }
 
         /// <summary>
-        /// Gets resource system metadata.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
-
-        /// <summary>
         /// Gets or sets gets or sets the SKU of account.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sku")]
@@ -151,13 +147,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets gets the creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.creationTime")]
-        public System.DateTimeOffset CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets gets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; private set; }
+        public System.DateTimeOffset? LastModifiedTime {get; private set; }
 
         /// <summary>
         /// Gets or sets gets or sets the description.
@@ -204,9 +200,9 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-
+            base.Validate();
 
 
             if (this.Sku != null)

@@ -215,8 +215,8 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The ID of the policy assignment to delete.
-Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+The ID of the policy exemption to update.
+Use the format '{scope}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}'.
 
 ```yaml
 Type: System.String
@@ -361,7 +361,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Management.Automation.SwitchParameter
 
-### System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
 ### System.String
 

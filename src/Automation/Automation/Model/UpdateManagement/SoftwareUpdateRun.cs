@@ -26,15 +26,15 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
             this.AutomationAccountName = automationAccountName;
             this.ComputerCount = sucr.ComputerCount.HasValue ? sucr.ComputerCount.Value : 0;    // TODO: why do we have this nullable still?
             this.ConfiguredDuration = XmlConvert.ToTimeSpan(sucr.ConfiguredDuration);
-            this.CreationTime = sucr.CreationTime;
-            this.EndTime = sucr.EndTime;
+            this.CreationTime = sucr.CreationTime.GetValueOrDefault();
+            this.EndTime = sucr.EndTime.GetValueOrDefault();
             this.FailedCount = sucr.FailedCount.HasValue ? sucr.FailedCount.Value : 0;
-            this.LastModifiedTime = sucr.LastModifiedTime;
+            this.LastModifiedTime = sucr.LastModifiedTime.GetValueOrDefault();
             this.Name = sucr.Name;
             this.OperatingSystem = (OperatingSystemType)Enum.Parse(typeof(OperatingSystemType), sucr.OSType, true);
             this.RunId = Guid.Parse(sucr.Name);
             this.SoftwareUpdateConfigurationName = sucr.SoftwareUpdateConfiguration.Name;
-            this.StartTime = sucr.StartTime;
+            this.StartTime = sucr.StartTime.GetValueOrDefault();
             this.Status = (SoftwareUpdateRunStatus)Enum.Parse(typeof(SoftwareUpdateRunStatus), sucr.Status, true);
             this.Tasks = TaskConverter(sucr.Tasks);
         }

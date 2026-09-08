@@ -14,8 +14,14 @@ namespace Microsoft.Azure.Management.Automation.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OperatingSystemType
     {
+        /// <summary>
+        /// Windows
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Windows")]
         Windows,
+        /// <summary>
+        /// Linux
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Linux")]
         Linux
     }

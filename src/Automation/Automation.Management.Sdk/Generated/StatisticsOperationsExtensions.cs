@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='filter'>
         /// The filter to apply on the operation.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<Statistics> ListByAutomationAccount(this IStatisticsOperations operations, string resourceGroupName, string automationAccountName, string filter = default(string))
+        public static Microsoft.Rest.Azure.IPage<Statistics> ListByAutomationAccount(this IStatisticsOperations operations, string resourceGroupName, string automationAccountName, string filter = default(string))
         {
                 return ((IStatisticsOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName, filter).GetAwaiter().GetResult();
         }
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -50,9 +50,42 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Statistics>> ListByAutomationAccountAsync(this IStatisticsOperations operations, string resourceGroupName, string automationAccountName, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Statistics>> ListByAutomationAccountAsync(this IStatisticsOperations operations, string resourceGroupName, string automationAccountName, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, filter, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieve the statistics for the account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Statistics> ListByAutomationAccountNext(this IStatisticsOperations operations, string nextPageLink)
+        {
+                return ((IStatisticsOperations)operations).ListByAutomationAccountNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieve the statistics for the account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Statistics>> ListByAutomationAccountNextAsync(this IStatisticsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByAutomationAccountNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

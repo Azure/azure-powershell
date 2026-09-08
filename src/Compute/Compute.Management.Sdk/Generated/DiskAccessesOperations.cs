@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Compute
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
                 }
             }
-            string apiVersion = "2025-01-02";
+            string apiVersion = "2026-03-02";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Management.Compute
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
             }
-            string apiVersion = "2025-01-02";
+            string apiVersion = "2026-03-02";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -520,7 +520,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diskAccessName");
             }
 
-            string apiVersion = "2025-01-02";
+            string apiVersion = "2026-03-02";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -831,7 +831,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diskAccessName");
             }
 
-            string apiVersion = "2025-01-02";
+            string apiVersion = "2026-03-02";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1069,7 +1069,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "privateEndpointConnectionName");
             }
 
-            string apiVersion = "2025-01-02";
+            string apiVersion = "2026-03-02";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1361,7 +1361,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diskAccessName");
             }
 
-            string apiVersion = "2025-01-02";
+            string apiVersion = "2026-03-02";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1601,7 +1601,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diskAccessName");
             }
 
-            string apiVersion = "2025-01-02";
+            string apiVersion = "2026-03-02";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1858,7 +1858,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diskAccessName");
             }
 
-            string apiVersion = "2025-01-02";
+            string apiVersion = "2026-03-02";
             DiskAccessUpdate diskAccess = new DiskAccessUpdate();
             if(tags != null)
             {
@@ -2114,7 +2114,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diskAccessName");
             }
 
-            string apiVersion = "2025-01-02";
+            string apiVersion = "2026-03-02";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2338,7 +2338,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "privateEndpointConnectionName");
             }
 
-            string apiVersion = "2025-01-02";
+            string apiVersion = "2026-03-02";
             PrivateEndpointConnection privateEndpointConnection = new PrivateEndpointConnection();
             if(privateLinkServiceConnectionState != null)
             {
@@ -2604,7 +2604,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "privateEndpointConnectionName");
             }
 
-            string apiVersion = "2025-01-02";
+            string apiVersion = "2026-03-02";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

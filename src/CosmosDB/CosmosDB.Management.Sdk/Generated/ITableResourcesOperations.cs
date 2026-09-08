@@ -14,6 +14,236 @@ namespace Microsoft.Azure.Management.CosmosDB
     public partial interface ITableResourcesOperations
     {
         /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Table Role Assignments.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the list of all Azure Cosmos DB Table Role Assignments.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<TableRoleAssignmentResource>>> ListTableRoleAssignmentsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
+        /// Assignment with the given Id.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
+        /// Assignment with the given Id.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleAssignmentResource>> GetTableRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Table Role Assignment.
+        /// </summary>
+        /// <remarks>
+        /// Creates or updates an Azure Cosmos DB Table Role Assignment.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='createUpdateTableRoleAssignmentParameters'>
+        /// The properties required to create or update a Role Assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleAssignmentResource,TableResourcesCreateUpdateTableRoleAssignmentHeaders>> CreateUpdateTableRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, TableRoleAssignmentResource createUpdateTableRoleAssignmentParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Table Role Assignment.
+        /// </summary>
+        /// <remarks>
+        /// Deletes an existing Azure Cosmos DB Table Role Assignment.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TableResourcesDeleteTableRoleAssignmentHeaders>> DeleteTableRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Table Role Definitions.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the list of all Azure Cosmos DB Table Role Definitions.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<TableRoleDefinitionResource>>> ListTableRoleDefinitionsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
+        /// Definition with the given Id.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
+        /// Definition with the given Id.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleDefinitionResource>> GetTableRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Table Role Definition.
+        /// </summary>
+        /// <remarks>
+        /// Creates or updates an Azure Cosmos DB Table Role Definition.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='createUpdateTableRoleDefinitionParameters'>
+        /// The properties required to create or update a Role Definition.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleDefinitionResource,TableResourcesCreateUpdateTableRoleDefinitionHeaders>> CreateUpdateTableRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, TableRoleDefinitionResource createUpdateTableRoleDefinitionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Table Role Definition.
+        /// </summary>
+        /// <remarks>
+        /// Deletes an existing Azure Cosmos DB Table Role Definition.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TableResourcesDeleteTableRoleDefinitionHeaders>> DeleteTableRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Lists the Tables under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <remarks>
@@ -37,7 +267,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<TableGetResults>>> ListTablesWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<TableGetResults>>> ListTablesWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the Tables under an existing Azure Cosmos DB database account with the
@@ -127,6 +357,38 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TableResourcesDeleteTableHeaders>> DeleteTableWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves continuous backup information for a table.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves continuous backup information for a table.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the continuous backup restore location.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BackupInformation,TableResourcesRetrieveContinuousBackupInformationHeaders>> RetrieveContinuousBackupInformationWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, ContinuousBackupRestoreLocation location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the RUs per second of the Table under an existing Azure Cosmos DB
@@ -250,10 +512,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,TableResourcesMigrateTableToManualThroughputHeaders>> MigrateTableToManualThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieves continuous backup information for a table.
+        /// Creates or updates an Azure Cosmos DB Table Role Assignment.
         /// </summary>
         /// <remarks>
-        /// Retrieves continuous backup information for a table.
+        /// Creates or updates an Azure Cosmos DB Table Role Assignment.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -261,11 +523,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        /// <param name='tableName'>
-        /// Cosmos DB table name.
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
         /// </param>
-        /// <param name='location'>
-        /// The name of the continuous backup restore location.
+        /// <param name='createUpdateTableRoleAssignmentParameters'>
+        /// The properties required to create or update a Role Assignment.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -279,15 +541,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BackupInformation>> RetrieveContinuousBackupInformationWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, ContinuousBackupRestoreLocation location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleAssignmentResource,TableResourcesCreateUpdateTableRoleAssignmentHeaders>> BeginCreateUpdateTableRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, TableRoleAssignmentResource createUpdateTableRoleAssignmentParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
-        /// Definition with the given Id.
+        /// Deletes an existing Azure Cosmos DB Table Role Assignment.
         /// </summary>
         /// <remarks>
-        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
-        /// Definition with the given Id.
+        /// Deletes an existing Azure Cosmos DB Table Role Assignment.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -295,8 +555,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -307,10 +567,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleDefinitionResource>> GetTableRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TableResourcesDeleteTableRoleAssignmentHeaders>> BeginDeleteTableRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates an Azure Cosmos DB Table Role Definition.
@@ -342,7 +599,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleDefinitionResource,TableResourcesCreateUpdateTableRoleDefinitionHeaders>> CreateUpdateTableRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, TableRoleDefinitionResource createUpdateTableRoleDefinitionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleDefinitionResource,TableResourcesCreateUpdateTableRoleDefinitionHeaders>> BeginCreateUpdateTableRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, TableRoleDefinitionResource createUpdateTableRoleDefinitionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes an existing Azure Cosmos DB Table Role Definition.
@@ -368,148 +625,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TableResourcesDeleteTableRoleDefinitionHeaders>> DeleteTableRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Retrieves the list of all Azure Cosmos DB Table Role Definitions.
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the list of all Azure Cosmos DB Table Role Definitions.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<TableRoleDefinitionResource>>> ListTableRoleDefinitionsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
-        /// Assignment with the given Id.
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
-        /// Assignment with the given Id.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleAssignmentResource>> GetTableRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Creates or updates an Azure Cosmos DB Table Role Assignment.
-        /// </summary>
-        /// <remarks>
-        /// Creates or updates an Azure Cosmos DB Table Role Assignment.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='createUpdateTableRoleAssignmentParameters'>
-        /// The properties required to create or update a Role Assignment.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleAssignmentResource,TableResourcesCreateUpdateTableRoleAssignmentHeaders>> CreateUpdateTableRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, TableRoleAssignmentResource createUpdateTableRoleAssignmentParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB Table Role Assignment.
-        /// </summary>
-        /// <remarks>
-        /// Deletes an existing Azure Cosmos DB Table Role Assignment.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TableResourcesDeleteTableRoleAssignmentHeaders>> DeleteTableRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Retrieves the list of all Azure Cosmos DB Table Role Assignments.
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the list of all Azure Cosmos DB Table Role Assignments.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<TableRoleAssignmentResource>>> ListTableRoleAssignmentsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TableResourcesDeleteTableRoleDefinitionHeaders>> BeginDeleteTableRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create or update an Azure Cosmos DB Table
@@ -568,6 +684,38 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TableResourcesDeleteTableHeaders>> BeginDeleteTableWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves continuous backup information for a table.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves continuous backup information for a table.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the continuous backup restore location.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BackupInformation,TableResourcesRetrieveContinuousBackupInformationHeaders>> BeginRetrieveContinuousBackupInformationWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, ContinuousBackupRestoreLocation location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update RUs per second of an Azure Cosmos DB Table
@@ -660,22 +808,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,TableResourcesMigrateTableToManualThroughputHeaders>> BeginMigrateTableToManualThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieves continuous backup information for a table.
+        /// Retrieves the list of all Azure Cosmos DB Table Role Assignments.
         /// </summary>
         /// <remarks>
-        /// Retrieves continuous backup information for a table.
+        /// Retrieves the list of all Azure Cosmos DB Table Role Assignments.
         /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='tableName'>
-        /// Cosmos DB table name.
-        /// </param>
-        /// <param name='location'>
-        /// The name of the continuous backup restore location.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -689,25 +828,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BackupInformation>> BeginRetrieveContinuousBackupInformationWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, ContinuousBackupRestoreLocation location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<TableRoleAssignmentResource>>> ListTableRoleAssignmentsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB Table Role Definition.
+        /// Retrieves the list of all Azure Cosmos DB Table Role Definitions.
         /// </summary>
         /// <remarks>
-        /// Creates or updates an Azure Cosmos DB Table Role Definition.
+        /// Retrieves the list of all Azure Cosmos DB Table Role Definitions.
         /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        /// <param name='createUpdateTableRoleDefinitionParameters'>
-        /// The properties required to create or update a Role Definition.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -721,51 +851,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleDefinitionResource,TableResourcesCreateUpdateTableRoleDefinitionHeaders>> BeginCreateUpdateTableRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, TableRoleDefinitionResource createUpdateTableRoleDefinitionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<TableRoleDefinitionResource>>> ListTableRoleDefinitionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB Table Role Definition.
+        /// Lists the Tables under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <remarks>
-        /// Deletes an existing Azure Cosmos DB Table Role Definition.
+        /// Lists the Tables under an existing Azure Cosmos DB database account.
         /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TableResourcesDeleteTableRoleDefinitionHeaders>> BeginDeleteTableRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Creates or updates an Azure Cosmos DB Table Role Assignment.
-        /// </summary>
-        /// <remarks>
-        /// Creates or updates an Azure Cosmos DB Table Role Assignment.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='createUpdateTableRoleAssignmentParameters'>
-        /// The properties required to create or update a Role Assignment.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -779,33 +874,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleAssignmentResource,TableResourcesCreateUpdateTableRoleAssignmentHeaders>> BeginCreateUpdateTableRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, TableRoleAssignmentResource createUpdateTableRoleAssignmentParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB Table Role Assignment.
-        /// </summary>
-        /// <remarks>
-        /// Deletes an existing Azure Cosmos DB Table Role Assignment.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TableResourcesDeleteTableRoleAssignmentHeaders>> BeginDeleteTableRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<TableGetResults>>> ListTablesNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

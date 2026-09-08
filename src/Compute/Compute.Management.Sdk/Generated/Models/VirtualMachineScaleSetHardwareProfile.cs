@@ -28,10 +28,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Minimum api-version: 2021-11-01. Please follow the instructions in [VM
         /// Customization](https://aka.ms/vmcustomization) for more details.
         /// </param>
-        public VirtualMachineScaleSetHardwareProfile(VMSizeProperties vmSizeProperties = default(VMSizeProperties))
+
+        /// <param name="processorMode">Specifies the processor mode for the virtual machine scale set. Optional;
+        /// if omitted, the platform default applies (currently Deterministic). This
+        /// property can be updated on a running VMSS without deallocation or reboot.
+        /// Minimum api-version: 2026-04-01.
+        /// Possible values include: &#39;Deterministic&#39;, &#39;Opportunistic&#39;</param>
+        public VirtualMachineScaleSetHardwareProfile(VMSizeProperties vmSizeProperties = default(VMSizeProperties), string processorMode = default(string))
 
         {
             this.VmSizeProperties = vmSizeProperties;
+            this.ProcessorMode = processorMode;
             CustomInit();
         }
 
@@ -49,5 +56,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmSizeProperties")]
         public VMSizeProperties VmSizeProperties {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the processor mode for the virtual machine scale
+        /// set. Optional; if omitted, the platform default applies (currently
+        /// Deterministic). This property can be updated on a running VMSS without
+        /// deallocation or reboot. Minimum api-version: 2026-04-01. Possible values include: &#39;Deterministic&#39;, &#39;Opportunistic&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "processorMode")]
+        public string ProcessorMode {get; set; }
     }
 }

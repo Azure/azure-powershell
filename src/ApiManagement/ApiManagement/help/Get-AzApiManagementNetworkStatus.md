@@ -73,18 +73,6 @@ Error            :
 LastUpdated      : 5/2/2019 5:06:41 PM
 LastStatusChange : 1/30/2019 5:31:39 PM
 
-Name             : https://prod3.metrics.nsatc.net:1886/RecoveryService
-Status           : success
-Error            :
-LastUpdated      : 5/2/2019 5:07:11 PM
-LastStatusChange : 4/29/2019 1:31:30 PM
-
-Name             : prod.warmpath.msftcloudes.com
-Status           : success
-Error            :
-LastUpdated      : 5/2/2019 5:06:38 PM
-LastStatusChange : 1/30/2019 5:31:38 PM
-
 Name             : Scm
 Status           : success
 Error            :

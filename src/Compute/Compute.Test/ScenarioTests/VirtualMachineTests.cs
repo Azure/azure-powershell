@@ -314,6 +314,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineStopForceDeallocate()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineStopForceDeallocate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineStopForceDeallocateExecution()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineStopForceDeallocateExecution");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineRemoteDesktop()
         {
             TestRunner.RunTestScript("Test-VirtualMachineRemoteDesktop");
@@ -503,6 +517,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMProcessorModeFeatures()
+        {
+            TestRunner.RunTestScript("Test-VMProcessorModeFeatures");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVirtualMachineById()
         {
             TestRunner.RunTestScript("Test-GetVirtualMachineById");
@@ -643,6 +664,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestOpenCapacityReservationGroup()
+        {
+            TestRunner.RunTestScript("Test-OpenCapacityReservationGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestVMDisableCapacityReservationAssignment()
+        {
+            TestRunner.RunTestScript("Test-VMDisableCapacityReservationAssignment");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestVMDefaultsToTrustedLaunchImgWhenStnd()
         {
             TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchImgWhenStnd");
@@ -695,6 +730,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineAddProxyAgentExtension()
         {
             TestRunner.RunTestScript("Test-VirtualMachineAddProxyAgentExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineProxyAgentUseLocalFileRules()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineProxyAgentUseLocalFileRules");
         }
 
         [Fact]

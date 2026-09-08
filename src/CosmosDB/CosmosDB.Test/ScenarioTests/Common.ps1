@@ -132,3 +132,26 @@ function SleepInRecordMode ([int]$SleepIntervalInSec)
         Wait-Seconds $SleepIntervalInSec 
     }
 }
+
+<#
+.SYNOPSIS
+Generic poller: repeatedly evaluates a scriptblock until it returns a truthy value, instead of a
+blind Start-TestSleep. Use for "wait until resource is visible/restorable" scenarios. In Playback
+the polled calls simply replay from the recording, so the loop resolves at the same iteration.
+#>
+function Wait-CosmosDBCondition
+{
+    param(
+        [Parameter(Mandatory = $true)][scriptblock]$Condition,
+        [string]$Message = "condition to be met",
+        [int]$TimeoutSeconds = 600,
+        [int]$PollIntervalSeconds = 30
+    )
+    $start = Get-Date
+    while (-not (& $Condition)) {
+        if ((Get-Date) -gt $start.AddSeconds($TimeoutSeconds)) {
+            throw "Timed out after $TimeoutSeconds seconds waiting for $Message."
+        }
+        Start-TestSleep -Seconds $PollIntervalSeconds
+    }
+}
