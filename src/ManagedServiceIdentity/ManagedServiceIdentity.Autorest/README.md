@@ -36,6 +36,7 @@ input-file:
 
 subject-prefix: ""
 module-version: 0.3.0
+enable-change-safety: true
 
 directive:
   # Update Location parameter available

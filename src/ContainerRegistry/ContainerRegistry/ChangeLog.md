@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Extended Change Safety support to AutoRest-generated cmdlets.
 
 ## Version 5.1.0
 * Added ChangeSafety Support
