@@ -96,7 +96,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
                 {
                     return new RangeBasedItemLevelRestoreCriteria(json);
                 }
-                // [eSAN graft] eSAN generic restore datasource criteria (2024-02-01-preview only)
                 case "GenericRestoreDatasourceCriteria":
                 {
                     return new GenericRestoreDatasourceCriteria(json);

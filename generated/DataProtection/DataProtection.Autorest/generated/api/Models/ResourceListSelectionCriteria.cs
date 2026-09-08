@@ -1,11 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 //
-// [eSAN graft] Hand-added model for Azure Elastic SAN (eSAN) restore support.
-// "ResourceListSelectionCriteria" exists only in the 2024-02-01-preview DataProtection
-// API and is NOT present in the stable 2026-03-01 spec this module is generated from.
-// It is the value carried by GenericRestoreDatasourceCriteria.ResourceSelector.
-// Remove/replace with generated code when eSAN is promoted into the stable spec.
+// [eSAN compatibility model] Hand-added before regeneration to expose the
+// ResourceListSelectionCriteria shape defined by the stable 2026-06-01 API.
+// Replace this compatibility model with native AutoRest output on regeneration.
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
 {
@@ -80,8 +78,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             }
             {_objectType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString>("objectType"), out var __jsonObjectType) ? (string)__jsonObjectType : (string)_objectType;}
             {_resourceIdentifier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonArray>("resourceIdentifiers"), out var __jsonResourceIdentifiers) ? If( __jsonResourceIdentifiers as Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _resourceIdentifier;}
-            // [eSAN graft] resourceNameOverrides (string->string map) is write-only for the cmdlet
-            // use case; round-trip read-back is intentionally not deserialized here.
             AfterFromJson(json);
         }
 

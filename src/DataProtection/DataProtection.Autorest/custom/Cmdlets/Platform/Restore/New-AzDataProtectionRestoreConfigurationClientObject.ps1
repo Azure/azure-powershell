@@ -95,14 +95,17 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
                 throw "DatasourceType AzureElasticSAN currently supports exactly one volume per restore request. Please provide a single entry in ResourceIdentifier."
             }
 
-            # The 2026-06-01 GA API flattens the nested ResourceListSelectionCriteria onto
-            # GenericRestoreDatasourceCriteria, so populate the inlined ResourceSelector* properties.
+            # Build the nested resource selector used by GenericRestoreDatasourceCriteria.
+            $resourceListCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteria]::new()
+            $resourceListCriteria.ObjectType = "ResourceListSelectionCriteria"
+            $resourceListCriteria.ResourceIdentifier = $ResourceIdentifier
+
             $restoreCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.GenericRestoreDatasourceCriteria]::new()
-            $restoreCriteria.ResourceSelectorObjectType = "ResourceListSelectionCriteria"
-            $restoreCriteria.ResourceSelectorResourceIdentifier = $ResourceIdentifier
+            $restoreCriteria.ResourceSelector = $resourceListCriteria
 
             if($ResourceNameOverride -ne $null -and $ResourceNameOverride.Count -gt 0){
 
+                $resourceListCriteria.ResourceNameOverride = [System.Collections.Generic.Dictionary[string,string]]::new()
                 $seenTargets = @{}
 
                 foreach($key in $ResourceNameOverride.Keys){
@@ -120,7 +123,7 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
                     }
                     $seenTargets[$value] = $true
 
-                    $restoreCriteria.ResourceSelectorResourceNameOverride[$key] = $value
+                    $resourceListCriteria.ResourceNameOverride[$key] = $value
                 }
             }
 

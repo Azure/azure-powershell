@@ -16,7 +16,6 @@ function Get-VaultIdentity {
         Write-Host "Using Vault UAMI with ARMId: $UserAssignedIdentityARMId with Principal ID: $vaultIdentity"
     } else {
         $vaultIdentity = $vault.Identity.PrincipalId
-        if (-not $vaultIdentity) { $vaultIdentity = $vault.IdentityPrincipalId }
         Write-Host "Using system-assigned identity with Principal ID: $vaultIdentity"
     }
 
@@ -136,8 +135,7 @@ function Set-AzDataProtectionMSIPermission {
               # For proxy datasources whose RBAC parent is the datasourceSet (e.g. Elastic SAN volume groups -> parent elasticSans), datasource-level roles must be assigned on the parent resource.
               $DatasourceRoleScope = $DataSourceId
               if($manifest.dataSourceSetParentResource -eq $true -and $DataSourceId -ne $null){
-                  $splitDatasourceId = $DataSourceId.Split("/")
-                  $DatasourceRoleScope = [System.String]::Join('/', $splitDatasourceId[0..($splitDatasourceId.Count - 3)])
+                  $DatasourceRoleScope = GetParentResourceIdFromArmId -Id $DataSourceId -ParentResourceType $manifest.parentResourceType
               }
               
               $vault = Az.DataProtection\Get-AzDataProtectionBackupVault -VaultName $VaultName -ResourceGroupName $VaultResourceGroup -SubscriptionId $subscriptionIdInternal
@@ -299,8 +297,7 @@ function Set-AzDataProtectionMSIPermission {
               # For proxy datasources whose RBAC parent is the datasourceSet (e.g. Elastic SAN volume groups -> parent elasticSans), datasource-level roles must be assigned on the parent resource.
               $DatasourceRoleScope = $DataSourceId
               if($manifest.dataSourceSetParentResource -eq $true -and $DataSourceId -ne $null){
-                  $splitDatasourceId = $DataSourceId.Split("/")
-                  $DatasourceRoleScope = [System.String]::Join('/', $splitDatasourceId[0..($splitDatasourceId.Count - 3)])
+                  $DatasourceRoleScope = GetParentResourceIdFromArmId -Id $DataSourceId -ParentResourceType $manifest.parentResourceType
               }
 
               $ResourceArray = $DataSourceId.Split("/")
