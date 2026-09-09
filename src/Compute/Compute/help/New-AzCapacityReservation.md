@@ -33,9 +33,7 @@ New-AzCapacityReservation -ResourceGroupName "myRG" -Location "eastus" -Reservat
 This command will create a Capacity Reservation resource with the provided sku and capacity in the Capacity Reservation Group named "myCapacityReservationGroup".
 
 ### Example 2
-```powershell
--ScheduleProfileStart "2026-12-25" -MinimumCommitmentDayCount 30
-```
+    New-AzCapacityReservation -ResourceGroupName "myRG" -Location "eastus" -ReservationGroupName "myCapacityReservationGroup" -Name "myFutureCapacityReservation" -Sku "Standard_DS1_v2" -CapacityToReserve 4 -ScheduleProfileStart "2026-12-25" -MinimumCommitmentDayCount 30
 
 This command will create a Future Capacity Reservation resource that reserves capacity starting on 2026-12-25, and that cannot be updated or deleted until 30 days have passed after the start date if the reservation is fulfilled.
 
