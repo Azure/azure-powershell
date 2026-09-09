@@ -15,6 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzAppNetworkMember'))
 }
 
 Describe 'Update-AzAppNetworkMember' {
+    # Update-AzAppNetworkMember (partial-update PATCH) coverage lives in the consolidated
+    # New-AzAppNetworkMember lifecycle test, which creates a member and PATCHes its
+    # release channel (one live member per AKS cluster).
     It 'UpdateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

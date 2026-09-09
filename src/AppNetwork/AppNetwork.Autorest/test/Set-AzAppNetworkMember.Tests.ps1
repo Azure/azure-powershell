@@ -15,6 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzAppNetworkMember'))
 }
 
 Describe 'Set-AzAppNetworkMember' {
+    # Set-AzAppNetworkMember (full-replace PUT) coverage lives in the consolidated
+    # New-AzAppNetworkMember lifecycle test, which creates a member and re-PUTs it with
+    # a changed release channel (one live member per AKS cluster).
     It 'UpdateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

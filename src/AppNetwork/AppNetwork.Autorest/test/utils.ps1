@@ -60,7 +60,11 @@ function setupEnv() {
     # Provide an existing cluster's ARM resource id via $env.aksClusterId, or set
     # AKS_CLUSTER_ID before recording. AppLinkMember provisioning is a service-side
     # mesh onboarding operation, so the target cluster must already be reachable.
-    $env.aksClusterId = $env:AKS_CLUSTER_ID
+    # Prefer the AKS_CLUSTER_ID env var when set; otherwise keep any value loaded
+    # from a cached env.json (via -UsePreviousConfigForRecord) instead of clobbering it.
+    if ($env:AKS_CLUSTER_ID) {
+        $env.aksClusterId = $env:AKS_CLUSTER_ID
+    }
     if ($TestMode -ne 'playback') {
         Write-Host "Creating resource group $($env.resourceGroup) in $($env.location)"
         New-AzResourceGroup -Name $env.resourceGroup -Location $env.location | Out-Null
