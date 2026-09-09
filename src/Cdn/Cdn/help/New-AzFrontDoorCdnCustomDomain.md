@@ -8,22 +8,51 @@ schema: 2.0.0
 # New-AzFrontDoorCdnCustomDomain
 
 ## SYNOPSIS
-Creates a new domain within the specified profile.
+Create a new domain within the specified profile.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AzureDnsZoneId <String>] [-ExtendedProperty <Hashtable>] [-HostName <String>]
- [-MtlSettingCertificatePassthrough <EnabledState>] [-MtlSettingCertificateValidation <EnabledState>]
- [-MtlSettingOcsp <EnabledState>] [-MtlSettingOtherAllowedFqdn <String[]>]
- [-MtlSettingSecret <IResourceReference[]>] [-PropertiesPreValidatedCustomDomainResourceId <String>]
+ [-MtlSettingScenario <String>] [-PropertiesPreValidatedCustomDomainResourceId <String>]
  [-TlsSetting <IAfdDomainHttpsParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityProfileExpanded
+```
+New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileInputObject <ICdnIdentity>
+ [-AzureDnsZoneId <String>] [-ExtendedProperty <Hashtable>] [-HostName <String>] [-MtlSettingScenario <String>]
+ [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityProfile
+```
+New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileInputObject <ICdnIdentity>
+ -CustomDomain <IAfdDomain> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new domain within the specified profile.
+Create a new domain within the specified profile.
 
 ## EXAMPLES
 
@@ -65,7 +94,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -75,8 +104,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CustomDomain
+Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g.
+www.contoso.com.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain
+Parameter Sets: CreateViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CustomDomainName
-Name of the domain under the profile which is unique globally
+Name of the domain under the profile which is unique globally.
 
 ```yaml
 Type: System.String
@@ -111,7 +156,7 @@ Key-Value pair representing migration properties for domains.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -127,7 +172,7 @@ Must be a domain name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -137,77 +182,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MtlSettingCertificatePassthrough
-Set to Disabled by default.
-If set to Enabled, then selected client certificate chain(s) are sent directly to origin using reserved header.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MtlSettingCertificateValidation
-Set to Enabled by default.
-If set to Disabled, validation of client certificate chain for mutual TLS handshake will be skipped.
+### -JsonString
+Json string supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MtlSettingOcsp
-Set to Enabled by default.
-If set to Disabled, revocation status of client certificate chain will be checked before establishing mutual TLS connection.
+### -MtlSettingScenario
+Supported scenarios for establishing mTLS connection.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MtlSettingOtherAllowedFqdn
-List of FQDN that will be accepted for mutual TLS validation in addition to custom domain's hostname.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MtlSettingSecret
-List of one or two of Resource References (ie.
-subs/rg/profile/secret) to Secrets of type MtlsCertificateChain to use in mutual TLS handshake.
-To construct, see NOTES section for MTLSETTINGSECRET properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IResourceReference[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -232,30 +242,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+### -ProfileInputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: CreateViaIdentityProfileExpanded, CreateViaIdentityProfile
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -ProfileName
+Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -267,7 +277,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -278,11 +288,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -293,11 +304,12 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Azure Subscription ID.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -310,11 +322,10 @@ Accept wildcard characters: False
 ### -TlsSetting
 The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate.
 If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
-To construct, see NOTES section for TLSSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IAfdDomainHttpsParameters
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParameters
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -360,9 +371,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IAfdDomain
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain
 
 ## NOTES
 

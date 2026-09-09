@@ -10,4 +10,3 @@ ProbeIntervalInSecond ProbePath          ProbeProtocol ProbeRequestType
 ```
 
 Create an in-memory object for AzureCDN HealthProbeParameters
-

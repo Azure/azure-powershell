@@ -1,8 +1,8 @@
 {
-  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010?api-version=2024-05-01-preview+1": {
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get?api-version=2026-04-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get?api-version=2026-04-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"loadBalancingSettings\": {\r\n      \"sampleSize\": 5,\r\n      \"successfulSamplesRequired\": 4,\r\n      \"additionalLatencyInMilliseconds\": 200\r\n    },\r\n    \"healthProbeSettings\": {\r\n      \"probePath\": \"/\",\r\n      \"probeRequestType\": \"GET\",\r\n      \"probeProtocol\": \"Https\",\r\n      \"probeIntervalInSeconds\": 1\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,39 +18,41 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "50b6bec3-8563-449d-ba24-26b40ebf32d0" ],
-        "x-ms-client-request-id": [ "78295b78-c9eb-4e30-9727-0e5d0bffee20" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
-        "x-ms-correlation-request-id": [ "c4837d06-4cda-4ec5-9a26-5cc66dd0d9b8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240716T091739Z:c4837d06-4cda-4ec5-9a26-5cc66dd0d9b8" ],
+        "x-ms-request-id": [ "ea952526-cb95-408d-b03b-c23086fdc0da" ],
+        "x-ms-client-request-id": [ "9c0c0a08-9c53-4da2-bd85-43b858e6c4bf" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/b49a722e-e604-456d-9218-0038e9f1e10b" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "3a77e1eb-29a7-4023-9212-772b6d07b9f8" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033022Z:3a77e1eb-29a7-4023-9212-772b6d07b9f8" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 629E1CB79C6846C4B0FFE610260F5EAC Ref B: MAA201060513027 Ref C: 2024-07-16T09:17:37Z" ],
-        "Date": [ "Tue, 16 Jul 2024 09:17:39 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 33EBFB1AACCF4EF9A429FEEF41FE2B59 Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:30:21Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:30:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "628" ],
+        "Content-Length": [ "698" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/origingroups/org-pstest010\",\"type\":\"Microsoft.Cdn/profiles/origingroups\",\"name\":\"org-pstest010\",\"properties\":{\"loadBalancingSettings\":{\"sampleSize\":5,\"successfulSamplesRequired\":4,\"additionalLatencyInMilliseconds\":200},\"healthProbeSettings\":{\"probePath\":\"/\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":1},\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"sessionAffinityState\":\"Disabled\",\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/origingroups/org-pstest-orig-get\",\"type\":\"Microsoft.Cdn/profiles/origingroups\",\"name\":\"org-pstest-orig-get\",\"properties\":{\"loadBalancingSettings\":{\"sampleSize\":5,\"successfulSamplesRequired\":4,\"additionalLatencyInMilliseconds\":200,\"capacityDistributionSettings\":null},\"healthProbeSettings\":{\"probePath\":\"/\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":1},\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"sessionAffinityState\":\"Disabled\",\"authentication\":null,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010?api-version=2024-05-01-preview+2": {
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get?api-version=2026-04-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get?api-version=2026-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "164" ],
-        "x-ms-client-request-id": [ "78295b78-c9eb-4e30-9727-0e5d0bffee20" ],
+        "x-ms-unique-id": [ "218" ],
+        "x-ms-client-request-id": [ "9c0c0a08-9c53-4da2-bd85-43b858e6c4bf" ],
         "CommandName": [ "New-AzFrontDoorCdnOriginGroup" ],
         "FullCommandName": [ "New-AzFrontDoorCdnOriginGroup_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.Cdn/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ]
       },
       "ContentHeaders": {
       }
@@ -61,39 +63,41 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "3450e1cd-6634-4857-9434-35122400ceeb" ],
-        "x-ms-client-request-id": [ "78295b78-c9eb-4e30-9727-0e5d0bffee20" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "046bd325-e791-4a69-afb0-4b0ab26333f8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240716T091810Z:046bd325-e791-4a69-afb0-4b0ab26333f8" ],
+        "x-ms-request-id": [ "2b98d2bf-cf89-4c30-a363-0235e6e9522b" ],
+        "x-ms-client-request-id": [ "9c0c0a08-9c53-4da2-bd85-43b858e6c4bf" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/0707a4ac-8199-435a-895b-44aed53a808d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "a5138594-a07a-43e1-bf6f-a762ae73d031" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033053Z:a5138594-a07a-43e1-bf6f-a762ae73d031" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 450FF4069B0C49A185E30EA92D6CF134 Ref B: MAA201060513027 Ref C: 2024-07-16T09:18:09Z" ],
-        "Date": [ "Tue, 16 Jul 2024 09:18:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 61691075904B4BC1B7E6A6DE4E7AB6E8 Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:30:53Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:30:52 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "628" ],
+        "Content-Length": [ "698" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/origingroups/org-pstest010\",\"type\":\"Microsoft.Cdn/profiles/origingroups\",\"name\":\"org-pstest010\",\"properties\":{\"loadBalancingSettings\":{\"sampleSize\":5,\"successfulSamplesRequired\":4,\"additionalLatencyInMilliseconds\":200},\"healthProbeSettings\":{\"probePath\":\"/\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":1},\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"sessionAffinityState\":\"Disabled\",\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/origingroups/org-pstest-orig-get\",\"type\":\"Microsoft.Cdn/profiles/origingroups\",\"name\":\"org-pstest-orig-get\",\"properties\":{\"loadBalancingSettings\":{\"sampleSize\":5,\"successfulSamplesRequired\":4,\"additionalLatencyInMilliseconds\":200,\"capacityDistributionSettings\":null},\"healthProbeSettings\":{\"probePath\":\"/\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":1},\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"sessionAffinityState\":\"Disabled\",\"authentication\":null,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010?api-version=2024-05-01-preview+3": {
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get?api-version=2026-04-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get?api-version=2026-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "165" ],
-        "x-ms-client-request-id": [ "78295b78-c9eb-4e30-9727-0e5d0bffee20" ],
+        "x-ms-unique-id": [ "219" ],
+        "x-ms-client-request-id": [ "9c0c0a08-9c53-4da2-bd85-43b858e6c4bf" ],
         "CommandName": [ "New-AzFrontDoorCdnOriginGroup" ],
         "FullCommandName": [ "New-AzFrontDoorCdnOriginGroup_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.Cdn/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ]
       },
       "ContentHeaders": {
       }
@@ -104,72 +108,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "fb0de854-9c08-49aa-9352-e91b4c228194" ],
-        "x-ms-client-request-id": [ "78295b78-c9eb-4e30-9727-0e5d0bffee20" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "f22d95f7-22f1-4777-8aa8-f4eb106e1e19" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240716T091812Z:f22d95f7-22f1-4777-8aa8-f4eb106e1e19" ],
+        "x-ms-request-id": [ "9c7ac061-328d-4183-affc-a17844e8d3af" ],
+        "x-ms-client-request-id": [ "9c0c0a08-9c53-4da2-bd85-43b858e6c4bf" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/04041048-ae68-4ca7-936b-e8858fd768d1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "eb69d9f3-8a76-4978-9216-f2ed90ede7a5" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033053Z:eb69d9f3-8a76-4978-9216-f2ed90ede7a5" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E23943B5E8484606AC158873FF660D79 Ref B: MAA201060513027 Ref C: 2024-07-16T09:18:11Z" ],
-        "Date": [ "Tue, 16 Jul 2024 09:18:12 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 89AA4037206B435E8B585F0AC1C590E1 Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:30:53Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:30:53 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "628" ],
+        "Content-Length": [ "698" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/origingroups/org-pstest010\",\"type\":\"Microsoft.Cdn/profiles/origingroups\",\"name\":\"org-pstest010\",\"properties\":{\"loadBalancingSettings\":{\"sampleSize\":5,\"successfulSamplesRequired\":4,\"additionalLatencyInMilliseconds\":200},\"healthProbeSettings\":{\"probePath\":\"/\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":1},\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"sessionAffinityState\":\"Disabled\",\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/origingroups/org-pstest-orig-get\",\"type\":\"Microsoft.Cdn/profiles/origingroups\",\"name\":\"org-pstest-orig-get\",\"properties\":{\"loadBalancingSettings\":{\"sampleSize\":5,\"successfulSamplesRequired\":4,\"additionalLatencyInMilliseconds\":200,\"capacityDistributionSettings\":null},\"healthProbeSettings\":{\"probePath\":\"/\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":1},\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"sessionAffinityState\":\"Disabled\",\"authentication\":null,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010?api-version=2024-05-01-preview+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010?api-version=2024-05-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "166" ],
-        "x-ms-client-request-id": [ "11620c5a-3849-4765-af5a-bf79d5d210d8" ],
-        "CommandName": [ "Get-AzFrontDoorCdnOriginGroup" ],
-        "FullCommandName": [ "Get-AzFrontDoorCdnOriginGroup_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.Cdn/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "697a2aa2-1dd6-4059-bfe9-c9cd728c351c" ],
-        "x-ms-client-request-id": [ "11620c5a-3849-4765-af5a-bf79d5d210d8" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "38cf64ff-64f1-4e75-878a-48b163ff3254" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240716T091813Z:38cf64ff-64f1-4e75-878a-48b163ff3254" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F03A3A8BC300454F9835919282A8450B Ref B: MAA201060513027 Ref C: 2024-07-16T09:18:12Z" ],
-        "Date": [ "Tue, 16 Jul 2024 09:18:13 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "628" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/origingroups/org-pstest010\",\"type\":\"Microsoft.Cdn/profiles/origingroups\",\"name\":\"org-pstest010\",\"properties\":{\"loadBalancingSettings\":{\"sampleSize\":5,\"successfulSamplesRequired\":4,\"additionalLatencyInMilliseconds\":200},\"healthProbeSettings\":{\"probePath\":\"/\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":1},\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"sessionAffinityState\":\"Disabled\",\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010/origins/ori-psName010?api-version=2024-05-01-preview+5": {
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get/origins/ori-psName-get?api-version=2026-04-01-preview+4": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010/origins/ori-psName010?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get/origins/ori-psName-get?api-version=2026-04-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"hostName\": \"en.wikipedia.org\",\r\n    \"httpPort\": 80,\r\n    \"httpsPort\": 443,\r\n    \"originHostHeader\": \"en.wikipedia.org\",\r\n    \"priority\": 1,\r\n    \"weight\": 1000\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -186,40 +149,42 @@
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "ef032621-80ec-4b9e-939f-e94bf439e438" ],
-        "x-ms-client-request-id": [ "0e1a6557-e9fe-47ed-bbbc-3bd047488fd0" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/operationresults/f99314d5-0751-4e96-aeca-f241be058ef5?api-version=2024-05-01-preview\u0026t=638567182964964428\u0026c=MIIHhzCCBm-gAwIBAgITHgTSAvXh1GCKrw08WQAABNIC9TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI3MTUyNDA3WhcNMjUwNjIyMTUyNDA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOX5t0OxQxE3upQbbFvsmp5T7gqPC72fDSg6G0QO-q7rqYToC8QZH_q_PRft3qJZILPcMnC3i05PTpzbeogSlCaa_AwlLL7W5xwBRGnsSFi6uqID-boEdPC1XBtfJ14hE4xgTlvyDFkeshYKWfG6lyrFXbpwsk-8W5euzj5uEAU138aMueyASKkhbn0w-sYa2oA_U3jECVOIlAwWtv49Wed78xbdxyOXsueDyzxDOoM-H1uA24aMiLn3z563K9_bYY4a6hsemVB7YhKwCV0dGFB2NlQuW_yO_VNKEK9b5n56xBisqDcyIAGbNaCFxMjAXplvF7azyX5n0rlTcXgQ5EUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBQdmu6OxIvudboSaHvi8VnT7XivcjAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAAE87bMgkwSJkJtWUWHywZrpdkdbMMJKKdyoixpEZVLQBkS9P248tTUDTQq_W-W_H7OUWFz7F2SmgWJcMU4lnrWQB7xGR2SU5N_Uq5D-F95ksx2I3ALBtLB8wC6t2cwtzjFIPYr9NPyCtZrnbgh6CAFqGpOq0mVkPAHZBfOfywStnkVpA4JYP0B8IIBfA4E-YqSFxC_9vSP8doGWlUkJhw7E1ylemxWU0jv_96awij-EayTYpo-pH2U6hG6hdW5nRZ929VEbgHmcDW03GdpvtqiZGWC3RdWgVHTZPvQ5XyUmZOaBQILallvd5D9QYh1VmY4oAl5QfafZ76IVrmfwu6c\u0026s=O_rwOvmG6Ms72POBnQzN7aTDcfb4gqaXyAiSDTxtVBVm5flBm6skb0qG0CpJwQ3dCI8VEClKAOj5Q_bsVBHDGkrhBa4-L2qz_HUlSHiHWXHuJZRKSwBR6fbb6rt5AxfcmcSivLZEiwHhgTlAX_SWE5elnZxe4O64ocqWU6Ke3Knwz0H02Ra5CgOhUlCQxnr4VjCdIl55iZFMpA2rhCoMyEqf5fKn4cuIwLrt9oE3nAu-0P8LFlx754Gxn77_P2ms9pA2ZJ7EIHbANWF2OCoqhZjxV-cBLbK9_upVZUA43cASr86kh44W98qw4jJBA7KCgU_wf8OZg-PAfLxY0qQIjQ\u0026h=qjY-owp6Ww1pOBVG4mKG37Cl9Cl56PBSQ9u7ZoavEAk" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
-        "x-ms-correlation-request-id": [ "d741e6b4-2cb9-4387-8d62-3010d14db785" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240716T091816Z:d741e6b4-2cb9-4387-8d62-3010d14db785" ],
+        "x-ms-request-id": [ "b184802c-228b-48fd-8833-87ea3b3951f5" ],
+        "x-ms-client-request-id": [ "8b894bba-01f1-40fc-a1b1-87e9512481ec" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/93c1fdbd-54b3-4e02-a323-cbf8d6dc71fb?api-version=2026-04-01-preview\u0026t=639177822564868579\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=FoFlPPc7m3BG-6mDFliFPSYKmnOpccoAIo_FyIovFYYMMXPQ002nA18ovukb76SsH76svA_9xSuy7NPaCkUejqAX1uWLYcTBjqP_U4_U1FsMD45buTTfSH4vYnMJtpPy2RQ1s027phuQm8Mdh_1pkmKNeeDlrs82wzscLD6tzNYJ3Mjhb-6a1rbnDWCSZEj5-B6boEl5tbi6knRtjkBig2QARwITI6yeh1Tb9UEjcGkE2Iim41tNOIj9ynU-ygo3N4ocDg9Ecwi4srQ3nvr5K4OzMK7sSLqG903xvDnbOU3xepz7fBn-zDtUwrXUta_bZyvLzXHQg1yt94AOPjU3hQ\u0026h=koO1-4q5p6EZVoYeodt8JBMbZmd3vNxbbUmLkIiXUfU" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/bbf6ee4b-e84d-4f8c-9b88-66ed870331a3" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "85b43060-2632-4845-92b5-af3b69755c85" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033056Z:85b43060-2632-4845-92b5-af3b69755c85" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 275703916CA04E0C800699A6F383F72E Ref B: MAA201060513027 Ref C: 2024-07-16T09:18:13Z" ],
-        "Date": [ "Tue, 16 Jul 2024 09:18:16 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D75E50AAC2C74D139CA912A3B9E12F08 Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:30:53Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:30:56 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "589" ],
+        "Content-Length": [ "633" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/origingroups/org-pstest010/origins/ori-psName010\",\"type\":\"Microsoft.Cdn/profiles/origingroups/origins\",\"name\":\"ori-psName010\",\"properties\":{\"originGroupName\":\"org-pstest010\",\"hostName\":\"en.wikipedia.org\",\"httpPort\":80,\"httpsPort\":443,\"originHostHeader\":\"en.wikipedia.org\",\"priority\":1,\"weight\":1000,\"enabledState\":\"Enabled\",\"sharedPrivateLinkResource\":null,\"enforceCertificateNameCheck\":true,\"provisioningState\":\"Creating\",\"deploymentStatus\":\"NotStarted\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/origingroups/org-pstest-orig-get/origins/ori-psName-get\",\"type\":\"Microsoft.Cdn/profiles/origingroups/origins\",\"name\":\"ori-psName-get\",\"properties\":{\"originGroupName\":\"org-pstest-orig-get\",\"hostName\":\"en.wikipedia.org\",\"httpPort\":80,\"httpsPort\":443,\"originHostHeader\":\"en.wikipedia.org\",\"priority\":1,\"weight\":1000,\"enabledState\":\"Enabled\",\"sharedPrivateLinkResource\":null,\"enforceCertificateNameCheck\":true,\"originCapacityResource\":null,\"provisioningState\":\"Creating\",\"deploymentStatus\":\"NotStarted\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/operationresults/f99314d5-0751-4e96-aeca-f241be058ef5?api-version=2024-05-01-preview\u0026t=638567182964964428\u0026c=MIIHhzCCBm-gAwIBAgITHgTSAvXh1GCKrw08WQAABNIC9TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI3MTUyNDA3WhcNMjUwNjIyMTUyNDA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOX5t0OxQxE3upQbbFvsmp5T7gqPC72fDSg6G0QO-q7rqYToC8QZH_q_PRft3qJZILPcMnC3i05PTpzbeogSlCaa_AwlLL7W5xwBRGnsSFi6uqID-boEdPC1XBtfJ14hE4xgTlvyDFkeshYKWfG6lyrFXbpwsk-8W5euzj5uEAU138aMueyASKkhbn0w-sYa2oA_U3jECVOIlAwWtv49Wed78xbdxyOXsueDyzxDOoM-H1uA24aMiLn3z563K9_bYY4a6hsemVB7YhKwCV0dGFB2NlQuW_yO_VNKEK9b5n56xBisqDcyIAGbNaCFxMjAXplvF7azyX5n0rlTcXgQ5EUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBQdmu6OxIvudboSaHvi8VnT7XivcjAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAAE87bMgkwSJkJtWUWHywZrpdkdbMMJKKdyoixpEZVLQBkS9P248tTUDTQq_W-W_H7OUWFz7F2SmgWJcMU4lnrWQB7xGR2SU5N_Uq5D-F95ksx2I3ALBtLB8wC6t2cwtzjFIPYr9NPyCtZrnbgh6CAFqGpOq0mVkPAHZBfOfywStnkVpA4JYP0B8IIBfA4E-YqSFxC_9vSP8doGWlUkJhw7E1ylemxWU0jv_96awij-EayTYpo-pH2U6hG6hdW5nRZ929VEbgHmcDW03GdpvtqiZGWC3RdWgVHTZPvQ5XyUmZOaBQILallvd5D9QYh1VmY4oAl5QfafZ76IVrmfwu6c\u0026s=O_rwOvmG6Ms72POBnQzN7aTDcfb4gqaXyAiSDTxtVBVm5flBm6skb0qG0CpJwQ3dCI8VEClKAOj5Q_bsVBHDGkrhBa4-L2qz_HUlSHiHWXHuJZRKSwBR6fbb6rt5AxfcmcSivLZEiwHhgTlAX_SWE5elnZxe4O64ocqWU6Ke3Knwz0H02Ra5CgOhUlCQxnr4VjCdIl55iZFMpA2rhCoMyEqf5fKn4cuIwLrt9oE3nAu-0P8LFlx754Gxn77_P2ms9pA2ZJ7EIHbANWF2OCoqhZjxV-cBLbK9_upVZUA43cASr86kh44W98qw4jJBA7KCgU_wf8OZg-PAfLxY0qQIjQ\u0026h=qjY-owp6Ww1pOBVG4mKG37Cl9Cl56PBSQ9u7ZoavEAk+6": {
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/93c1fdbd-54b3-4e02-a323-cbf8d6dc71fb?api-version=2026-04-01-preview\u0026t=639177822564868579\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=FoFlPPc7m3BG-6mDFliFPSYKmnOpccoAIo_FyIovFYYMMXPQ002nA18ovukb76SsH76svA_9xSuy7NPaCkUejqAX1uWLYcTBjqP_U4_U1FsMD45buTTfSH4vYnMJtpPy2RQ1s027phuQm8Mdh_1pkmKNeeDlrs82wzscLD6tzNYJ3Mjhb-6a1rbnDWCSZEj5-B6boEl5tbi6knRtjkBig2QARwITI6yeh1Tb9UEjcGkE2Iim41tNOIj9ynU-ygo3N4ocDg9Ecwi4srQ3nvr5K4OzMK7sSLqG903xvDnbOU3xepz7fBn-zDtUwrXUta_bZyvLzXHQg1yt94AOPjU3hQ\u0026h=koO1-4q5p6EZVoYeodt8JBMbZmd3vNxbbUmLkIiXUfU+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/operationresults/f99314d5-0751-4e96-aeca-f241be058ef5?api-version=2024-05-01-preview\u0026t=638567182964964428\u0026c=MIIHhzCCBm-gAwIBAgITHgTSAvXh1GCKrw08WQAABNIC9TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI3MTUyNDA3WhcNMjUwNjIyMTUyNDA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOX5t0OxQxE3upQbbFvsmp5T7gqPC72fDSg6G0QO-q7rqYToC8QZH_q_PRft3qJZILPcMnC3i05PTpzbeogSlCaa_AwlLL7W5xwBRGnsSFi6uqID-boEdPC1XBtfJ14hE4xgTlvyDFkeshYKWfG6lyrFXbpwsk-8W5euzj5uEAU138aMueyASKkhbn0w-sYa2oA_U3jECVOIlAwWtv49Wed78xbdxyOXsueDyzxDOoM-H1uA24aMiLn3z563K9_bYY4a6hsemVB7YhKwCV0dGFB2NlQuW_yO_VNKEK9b5n56xBisqDcyIAGbNaCFxMjAXplvF7azyX5n0rlTcXgQ5EUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBQdmu6OxIvudboSaHvi8VnT7XivcjAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAAE87bMgkwSJkJtWUWHywZrpdkdbMMJKKdyoixpEZVLQBkS9P248tTUDTQq_W-W_H7OUWFz7F2SmgWJcMU4lnrWQB7xGR2SU5N_Uq5D-F95ksx2I3ALBtLB8wC6t2cwtzjFIPYr9NPyCtZrnbgh6CAFqGpOq0mVkPAHZBfOfywStnkVpA4JYP0B8IIBfA4E-YqSFxC_9vSP8doGWlUkJhw7E1ylemxWU0jv_96awij-EayTYpo-pH2U6hG6hdW5nRZ929VEbgHmcDW03GdpvtqiZGWC3RdWgVHTZPvQ5XyUmZOaBQILallvd5D9QYh1VmY4oAl5QfafZ76IVrmfwu6c\u0026s=O_rwOvmG6Ms72POBnQzN7aTDcfb4gqaXyAiSDTxtVBVm5flBm6skb0qG0CpJwQ3dCI8VEClKAOj5Q_bsVBHDGkrhBa4-L2qz_HUlSHiHWXHuJZRKSwBR6fbb6rt5AxfcmcSivLZEiwHhgTlAX_SWE5elnZxe4O64ocqWU6Ke3Knwz0H02Ra5CgOhUlCQxnr4VjCdIl55iZFMpA2rhCoMyEqf5fKn4cuIwLrt9oE3nAu-0P8LFlx754Gxn77_P2ms9pA2ZJ7EIHbANWF2OCoqhZjxV-cBLbK9_upVZUA43cASr86kh44W98qw4jJBA7KCgU_wf8OZg-PAfLxY0qQIjQ\u0026h=qjY-owp6Ww1pOBVG4mKG37Cl9Cl56PBSQ9u7ZoavEAk",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/93c1fdbd-54b3-4e02-a323-cbf8d6dc71fb?api-version=2026-04-01-preview\u0026t=639177822564868579\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=FoFlPPc7m3BG-6mDFliFPSYKmnOpccoAIo_FyIovFYYMMXPQ002nA18ovukb76SsH76svA_9xSuy7NPaCkUejqAX1uWLYcTBjqP_U4_U1FsMD45buTTfSH4vYnMJtpPy2RQ1s027phuQm8Mdh_1pkmKNeeDlrs82wzscLD6tzNYJ3Mjhb-6a1rbnDWCSZEj5-B6boEl5tbi6knRtjkBig2QARwITI6yeh1Tb9UEjcGkE2Iim41tNOIj9ynU-ygo3N4ocDg9Ecwi4srQ3nvr5K4OzMK7sSLqG903xvDnbOU3xepz7fBn-zDtUwrXUta_bZyvLzXHQg1yt94AOPjU3hQ\u0026h=koO1-4q5p6EZVoYeodt8JBMbZmd3vNxbbUmLkIiXUfU",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "168" ],
-        "x-ms-client-request-id": [ "0e1a6557-e9fe-47ed-bbbc-3bd047488fd0" ],
+        "x-ms-unique-id": [ "221" ],
+        "x-ms-client-request-id": [ "8b894bba-01f1-40fc-a1b1-87e9512481ec" ],
         "CommandName": [ "New-AzFrontDoorCdnOrigin" ],
         "FullCommandName": [ "New-AzFrontDoorCdnOrigin_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.Cdn/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ]
       },
       "ContentHeaders": {
       }
@@ -230,15 +195,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "a300e188-aae8-4bbe-b615-28168df4ab8c" ],
-        "x-ms-client-request-id": [ "0e1a6557-e9fe-47ed-bbbc-3bd047488fd0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "d2e1d029-d482-400a-a676-930797a050e5" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240716T091827Z:d2e1d029-d482-400a-a676-930797a050e5" ],
+        "x-ms-request-id": [ "f64cdae8-0f47-455b-940c-f4feb7d73ecf" ],
+        "x-ms-client-request-id": [ "8b894bba-01f1-40fc-a1b1-87e9512481ec" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/5c1bb30d-853e-4e6b-af32-2b1671be864f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "54d02cb6-a1dd-42de-87be-e00ffddd42d5" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033107Z:54d02cb6-a1dd-42de-87be-e00ffddd42d5" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C36D702F02E54F24B2803BD1471185B0 Ref B: MAA201060513027 Ref C: 2024-07-16T09:18:26Z" ],
-        "Date": [ "Tue, 16 Jul 2024 09:18:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DE1E5C56D3594AAB9700E2A13DA19376 Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:31:06Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:31:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "62" ],
@@ -249,20 +216,20 @@
       "isContentBase64": false
     }
   },
-  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/operationresults/f99314d5-0751-4e96-aeca-f241be058ef5?api-version=2024-05-01-preview\u0026t=638567182964964428\u0026c=MIIHhzCCBm-gAwIBAgITHgTSAvXh1GCKrw08WQAABNIC9TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI3MTUyNDA3WhcNMjUwNjIyMTUyNDA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOX5t0OxQxE3upQbbFvsmp5T7gqPC72fDSg6G0QO-q7rqYToC8QZH_q_PRft3qJZILPcMnC3i05PTpzbeogSlCaa_AwlLL7W5xwBRGnsSFi6uqID-boEdPC1XBtfJ14hE4xgTlvyDFkeshYKWfG6lyrFXbpwsk-8W5euzj5uEAU138aMueyASKkhbn0w-sYa2oA_U3jECVOIlAwWtv49Wed78xbdxyOXsueDyzxDOoM-H1uA24aMiLn3z563K9_bYY4a6hsemVB7YhKwCV0dGFB2NlQuW_yO_VNKEK9b5n56xBisqDcyIAGbNaCFxMjAXplvF7azyX5n0rlTcXgQ5EUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBQdmu6OxIvudboSaHvi8VnT7XivcjAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAAE87bMgkwSJkJtWUWHywZrpdkdbMMJKKdyoixpEZVLQBkS9P248tTUDTQq_W-W_H7OUWFz7F2SmgWJcMU4lnrWQB7xGR2SU5N_Uq5D-F95ksx2I3ALBtLB8wC6t2cwtzjFIPYr9NPyCtZrnbgh6CAFqGpOq0mVkPAHZBfOfywStnkVpA4JYP0B8IIBfA4E-YqSFxC_9vSP8doGWlUkJhw7E1ylemxWU0jv_96awij-EayTYpo-pH2U6hG6hdW5nRZ929VEbgHmcDW03GdpvtqiZGWC3RdWgVHTZPvQ5XyUmZOaBQILallvd5D9QYh1VmY4oAl5QfafZ76IVrmfwu6c\u0026s=O_rwOvmG6Ms72POBnQzN7aTDcfb4gqaXyAiSDTxtVBVm5flBm6skb0qG0CpJwQ3dCI8VEClKAOj5Q_bsVBHDGkrhBa4-L2qz_HUlSHiHWXHuJZRKSwBR6fbb6rt5AxfcmcSivLZEiwHhgTlAX_SWE5elnZxe4O64ocqWU6Ke3Knwz0H02Ra5CgOhUlCQxnr4VjCdIl55iZFMpA2rhCoMyEqf5fKn4cuIwLrt9oE3nAu-0P8LFlx754Gxn77_P2ms9pA2ZJ7EIHbANWF2OCoqhZjxV-cBLbK9_upVZUA43cASr86kh44W98qw4jJBA7KCgU_wf8OZg-PAfLxY0qQIjQ\u0026h=qjY-owp6Ww1pOBVG4mKG37Cl9Cl56PBSQ9u7ZoavEAk+7": {
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/93c1fdbd-54b3-4e02-a323-cbf8d6dc71fb?api-version=2026-04-01-preview\u0026t=639177822564868579\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=FoFlPPc7m3BG-6mDFliFPSYKmnOpccoAIo_FyIovFYYMMXPQ002nA18ovukb76SsH76svA_9xSuy7NPaCkUejqAX1uWLYcTBjqP_U4_U1FsMD45buTTfSH4vYnMJtpPy2RQ1s027phuQm8Mdh_1pkmKNeeDlrs82wzscLD6tzNYJ3Mjhb-6a1rbnDWCSZEj5-B6boEl5tbi6knRtjkBig2QARwITI6yeh1Tb9UEjcGkE2Iim41tNOIj9ynU-ygo3N4ocDg9Ecwi4srQ3nvr5K4OzMK7sSLqG903xvDnbOU3xepz7fBn-zDtUwrXUta_bZyvLzXHQg1yt94AOPjU3hQ\u0026h=koO1-4q5p6EZVoYeodt8JBMbZmd3vNxbbUmLkIiXUfU+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/operationresults/f99314d5-0751-4e96-aeca-f241be058ef5?api-version=2024-05-01-preview\u0026t=638567182964964428\u0026c=MIIHhzCCBm-gAwIBAgITHgTSAvXh1GCKrw08WQAABNIC9TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI3MTUyNDA3WhcNMjUwNjIyMTUyNDA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOX5t0OxQxE3upQbbFvsmp5T7gqPC72fDSg6G0QO-q7rqYToC8QZH_q_PRft3qJZILPcMnC3i05PTpzbeogSlCaa_AwlLL7W5xwBRGnsSFi6uqID-boEdPC1XBtfJ14hE4xgTlvyDFkeshYKWfG6lyrFXbpwsk-8W5euzj5uEAU138aMueyASKkhbn0w-sYa2oA_U3jECVOIlAwWtv49Wed78xbdxyOXsueDyzxDOoM-H1uA24aMiLn3z563K9_bYY4a6hsemVB7YhKwCV0dGFB2NlQuW_yO_VNKEK9b5n56xBisqDcyIAGbNaCFxMjAXplvF7azyX5n0rlTcXgQ5EUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBQdmu6OxIvudboSaHvi8VnT7XivcjAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAAE87bMgkwSJkJtWUWHywZrpdkdbMMJKKdyoixpEZVLQBkS9P248tTUDTQq_W-W_H7OUWFz7F2SmgWJcMU4lnrWQB7xGR2SU5N_Uq5D-F95ksx2I3ALBtLB8wC6t2cwtzjFIPYr9NPyCtZrnbgh6CAFqGpOq0mVkPAHZBfOfywStnkVpA4JYP0B8IIBfA4E-YqSFxC_9vSP8doGWlUkJhw7E1ylemxWU0jv_96awij-EayTYpo-pH2U6hG6hdW5nRZ929VEbgHmcDW03GdpvtqiZGWC3RdWgVHTZPvQ5XyUmZOaBQILallvd5D9QYh1VmY4oAl5QfafZ76IVrmfwu6c\u0026s=O_rwOvmG6Ms72POBnQzN7aTDcfb4gqaXyAiSDTxtVBVm5flBm6skb0qG0CpJwQ3dCI8VEClKAOj5Q_bsVBHDGkrhBa4-L2qz_HUlSHiHWXHuJZRKSwBR6fbb6rt5AxfcmcSivLZEiwHhgTlAX_SWE5elnZxe4O64ocqWU6Ke3Knwz0H02Ra5CgOhUlCQxnr4VjCdIl55iZFMpA2rhCoMyEqf5fKn4cuIwLrt9oE3nAu-0P8LFlx754Gxn77_P2ms9pA2ZJ7EIHbANWF2OCoqhZjxV-cBLbK9_upVZUA43cASr86kh44W98qw4jJBA7KCgU_wf8OZg-PAfLxY0qQIjQ\u0026h=qjY-owp6Ww1pOBVG4mKG37Cl9Cl56PBSQ9u7ZoavEAk",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/93c1fdbd-54b3-4e02-a323-cbf8d6dc71fb?api-version=2026-04-01-preview\u0026t=639177822564868579\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=FoFlPPc7m3BG-6mDFliFPSYKmnOpccoAIo_FyIovFYYMMXPQ002nA18ovukb76SsH76svA_9xSuy7NPaCkUejqAX1uWLYcTBjqP_U4_U1FsMD45buTTfSH4vYnMJtpPy2RQ1s027phuQm8Mdh_1pkmKNeeDlrs82wzscLD6tzNYJ3Mjhb-6a1rbnDWCSZEj5-B6boEl5tbi6knRtjkBig2QARwITI6yeh1Tb9UEjcGkE2Iim41tNOIj9ynU-ygo3N4ocDg9Ecwi4srQ3nvr5K4OzMK7sSLqG903xvDnbOU3xepz7fBn-zDtUwrXUta_bZyvLzXHQg1yt94AOPjU3hQ\u0026h=koO1-4q5p6EZVoYeodt8JBMbZmd3vNxbbUmLkIiXUfU",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "169" ],
-        "x-ms-client-request-id": [ "0e1a6557-e9fe-47ed-bbbc-3bd047488fd0" ],
+        "x-ms-unique-id": [ "222" ],
+        "x-ms-client-request-id": [ "8b894bba-01f1-40fc-a1b1-87e9512481ec" ],
         "CommandName": [ "New-AzFrontDoorCdnOrigin" ],
         "FullCommandName": [ "New-AzFrontDoorCdnOrigin_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.Cdn/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ]
       },
       "ContentHeaders": {
       }
@@ -273,15 +240,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "6ac1998c-32bf-432a-9721-4375fd3b4ad7" ],
-        "x-ms-client-request-id": [ "0e1a6557-e9fe-47ed-bbbc-3bd047488fd0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-correlation-request-id": [ "48aef249-9ac3-424d-bd76-4209007eea77" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240716T091858Z:48aef249-9ac3-424d-bd76-4209007eea77" ],
+        "x-ms-request-id": [ "6b152381-9c22-4eb5-a1a8-3c537bf9c4b1" ],
+        "x-ms-client-request-id": [ "8b894bba-01f1-40fc-a1b1-87e9512481ec" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/97f56bcf-3fba-4a76-a313-f0eceee8a741" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "2de35a12-e2bb-44ef-afb8-6b417f4a376b" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033138Z:2de35a12-e2bb-44ef-afb8-6b417f4a376b" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0AED9581D9A34A97889DFBFEC28E50DC Ref B: MAA201060513027 Ref C: 2024-07-16T09:18:57Z" ],
-        "Date": [ "Tue, 16 Jul 2024 09:18:58 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6D1FA456159944A388D907DAEA063311 Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:31:37Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:31:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "61" ],
@@ -292,20 +261,20 @@
       "isContentBase64": false
     }
   },
-  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010/origins/ori-psName010?api-version=2024-05-01-preview+8": {
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get/origins/ori-psName-get?api-version=2026-04-01-preview+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010/origins/ori-psName010?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get/origins/ori-psName-get?api-version=2026-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "170" ],
-        "x-ms-client-request-id": [ "0e1a6557-e9fe-47ed-bbbc-3bd047488fd0" ],
+        "x-ms-unique-id": [ "223" ],
+        "x-ms-client-request-id": [ "8b894bba-01f1-40fc-a1b1-87e9512481ec" ],
         "CommandName": [ "New-AzFrontDoorCdnOrigin" ],
         "FullCommandName": [ "New-AzFrontDoorCdnOrigin_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.Cdn/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ]
       },
       "ContentHeaders": {
       }
@@ -316,38 +285,40 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "20bc2c09-814d-49c2-9ba5-ca89e957646e" ],
-        "x-ms-client-request-id": [ "0e1a6557-e9fe-47ed-bbbc-3bd047488fd0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "x-ms-correlation-request-id": [ "7a228a65-eb69-4395-b4e6-a54cbf1f1bab" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240716T091859Z:7a228a65-eb69-4395-b4e6-a54cbf1f1bab" ],
+        "x-ms-request-id": [ "63145b0d-339e-4714-bf56-0243c39ba2cc" ],
+        "x-ms-client-request-id": [ "8b894bba-01f1-40fc-a1b1-87e9512481ec" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/79bb073e-db19-4973-bb33-7ace0b58a5bc" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "1eef06fb-13e8-4bcc-8b59-2cbd97620de5" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033138Z:1eef06fb-13e8-4bcc-8b59-2cbd97620de5" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2B22F491D0D249A787501C83C3DAFAEE Ref B: MAA201060513027 Ref C: 2024-07-16T09:18:58Z" ],
-        "Date": [ "Tue, 16 Jul 2024 09:18:59 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E4E617F07A1D49FEA643687A73565524 Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:31:38Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:31:37 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "590" ],
+        "Content-Length": [ "634" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/origingroups/org-pstest010/origins/ori-psName010\",\"type\":\"Microsoft.Cdn/profiles/origingroups/origins\",\"name\":\"ori-psName010\",\"properties\":{\"originGroupName\":\"org-pstest010\",\"hostName\":\"en.wikipedia.org\",\"httpPort\":80,\"httpsPort\":443,\"originHostHeader\":\"en.wikipedia.org\",\"priority\":1,\"weight\":1000,\"enabledState\":\"Enabled\",\"sharedPrivateLinkResource\":null,\"enforceCertificateNameCheck\":true,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/origingroups/org-pstest-orig-get/origins/ori-psName-get\",\"type\":\"Microsoft.Cdn/profiles/origingroups/origins\",\"name\":\"ori-psName-get\",\"properties\":{\"originGroupName\":\"org-pstest-orig-get\",\"hostName\":\"en.wikipedia.org\",\"httpPort\":80,\"httpsPort\":443,\"originHostHeader\":\"en.wikipedia.org\",\"priority\":1,\"weight\":1000,\"enabledState\":\"Enabled\",\"sharedPrivateLinkResource\":null,\"enforceCertificateNameCheck\":true,\"originCapacityResource\":null,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFrontDoorCdnOrigin+[NoContext]+List+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010/origins?api-version=2024-05-01-preview+1": {
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+List+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get/origins?api-version=2026-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010/origins?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get/origins?api-version=2026-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "171" ],
-        "x-ms-client-request-id": [ "621d5757-c135-41d2-bbe6-5074086d66de" ],
+        "x-ms-unique-id": [ "224" ],
+        "x-ms-client-request-id": [ "3d3ecdab-361e-4178-a866-479e20e86495" ],
         "CommandName": [ "Get-AzFrontDoorCdnOrigin" ],
         "FullCommandName": [ "Get-AzFrontDoorCdnOrigin_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.Cdn/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -359,38 +330,40 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "e5f4c14f-a421-43fb-9f09-a78d6b289396" ],
-        "x-ms-client-request-id": [ "621d5757-c135-41d2-bbe6-5074086d66de" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "5b6d11ac-3429-4c78-8bfd-3e29d8d1ea96" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240716T091900Z:5b6d11ac-3429-4c78-8bfd-3e29d8d1ea96" ],
+        "x-ms-request-id": [ "a2c1195c-f05c-4077-9c9b-7540f0effa14" ],
+        "x-ms-client-request-id": [ "3d3ecdab-361e-4178-a866-479e20e86495" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/d94ad72a-b4a1-40c3-8743-68b68b48084f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "8806d1dc-9d21-4975-8b42-9adb89c42127" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033139Z:8806d1dc-9d21-4975-8b42-9adb89c42127" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 971D9C31E055425083F1F12D1938D3F5 Ref B: MAA201060513027 Ref C: 2024-07-16T09:18:59Z" ],
-        "Date": [ "Tue, 16 Jul 2024 09:19:00 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: FA84DE9950904192B33CDA728A36C98E Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:31:38Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:31:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "602" ],
+        "Content-Length": [ "646" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/origingroups/org-pstest010/origins/ori-psName010\",\"type\":\"Microsoft.Cdn/profiles/origingroups/origins\",\"name\":\"ori-psName010\",\"properties\":{\"originGroupName\":\"org-pstest010\",\"hostName\":\"en.wikipedia.org\",\"httpPort\":80,\"httpsPort\":443,\"originHostHeader\":\"en.wikipedia.org\",\"priority\":1,\"weight\":1000,\"enabledState\":\"Enabled\",\"sharedPrivateLinkResource\":null,\"enforceCertificateNameCheck\":true,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/origingroups/org-pstest-orig-get/origins/ori-psName-get\",\"type\":\"Microsoft.Cdn/profiles/origingroups/origins\",\"name\":\"ori-psName-get\",\"properties\":{\"originGroupName\":\"org-pstest-orig-get\",\"hostName\":\"en.wikipedia.org\",\"httpPort\":80,\"httpsPort\":443,\"originHostHeader\":\"en.wikipedia.org\",\"priority\":1,\"weight\":1000,\"enabledState\":\"Enabled\",\"sharedPrivateLinkResource\":null,\"enforceCertificateNameCheck\":true,\"originCapacityResource\":null,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzFrontDoorCdnOrigin+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010/origins/ori-psName010?api-version=2024-05-01-preview+1": {
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get/origins/ori-psName-get?api-version=2026-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010/origins/ori-psName010?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get/origins/ori-psName-get?api-version=2026-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "172" ],
-        "x-ms-client-request-id": [ "e0bcccaf-fdbf-4573-84fe-ef2458ef4d1c" ],
+        "x-ms-unique-id": [ "225" ],
+        "x-ms-client-request-id": [ "ebc5bda2-4734-49ad-803f-3b6cf27f1d6f" ],
         "CommandName": [ "Get-AzFrontDoorCdnOrigin" ],
         "FullCommandName": [ "Get-AzFrontDoorCdnOrigin_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.Cdn/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -402,38 +375,40 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "1dbfaf70-923b-42b0-b47f-c1cb9e6b7800" ],
-        "x-ms-client-request-id": [ "e0bcccaf-fdbf-4573-84fe-ef2458ef4d1c" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-correlation-request-id": [ "f7199d9f-74a1-41f6-af91-d8c8bb5f5292" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240716T091902Z:f7199d9f-74a1-41f6-af91-d8c8bb5f5292" ],
+        "x-ms-request-id": [ "e84366d2-7d96-433b-b463-39d4fc37814a" ],
+        "x-ms-client-request-id": [ "ebc5bda2-4734-49ad-803f-3b6cf27f1d6f" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/99070eec-bd10-4284-b1aa-cf1ee18fd8cc" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-correlation-request-id": [ "e9937e2d-05c0-4c7d-ac6c-078c2012f311" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033139Z:e9937e2d-05c0-4c7d-ac6c-078c2012f311" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F587B90EC73040BC89484A6C8FF9D3CC Ref B: MAA201060513027 Ref C: 2024-07-16T09:19:00Z" ],
-        "Date": [ "Tue, 16 Jul 2024 09:19:01 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: BBE9FF2B4F3041A08B83813F934483AE Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:31:39Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:31:39 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "590" ],
+        "Content-Length": [ "634" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/origingroups/org-pstest010/origins/ori-psName010\",\"type\":\"Microsoft.Cdn/profiles/origingroups/origins\",\"name\":\"ori-psName010\",\"properties\":{\"originGroupName\":\"org-pstest010\",\"hostName\":\"en.wikipedia.org\",\"httpPort\":80,\"httpsPort\":443,\"originHostHeader\":\"en.wikipedia.org\",\"priority\":1,\"weight\":1000,\"enabledState\":\"Enabled\",\"sharedPrivateLinkResource\":null,\"enforceCertificateNameCheck\":true,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/origingroups/org-pstest-orig-get/origins/ori-psName-get\",\"type\":\"Microsoft.Cdn/profiles/origingroups/origins\",\"name\":\"ori-psName-get\",\"properties\":{\"originGroupName\":\"org-pstest-orig-get\",\"hostName\":\"en.wikipedia.org\",\"httpPort\":80,\"httpsPort\":443,\"originHostHeader\":\"en.wikipedia.org\",\"priority\":1,\"weight\":1000,\"enabledState\":\"Enabled\",\"sharedPrivateLinkResource\":null,\"enforceCertificateNameCheck\":true,\"originCapacityResource\":null,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFrontDoorCdnOrigin+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010/origins/ori-psName010?api-version=2024-05-01-preview+1": {
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get/origins/ori-psName-get?api-version=2026-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010/origins/ori-psName010?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get/origins/ori-psName-get?api-version=2026-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "173" ],
-        "x-ms-client-request-id": [ "a6f14cd5-42ca-4730-baf4-4f3173aecdbc" ],
+        "x-ms-unique-id": [ "226" ],
+        "x-ms-client-request-id": [ "a01f7d29-2ec5-466e-9a4b-c02eea32491f" ],
         "CommandName": [ "Get-AzFrontDoorCdnOrigin" ],
         "FullCommandName": [ "Get-AzFrontDoorCdnOrigin_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.Cdn/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -445,38 +420,40 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "1ba4ba3a-a1a3-4198-a16e-66ff14be0e2f" ],
-        "x-ms-client-request-id": [ "a6f14cd5-42ca-4730-baf4-4f3173aecdbc" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "be1503a4-a93c-45f7-86c8-6931bceb75ce" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240716T091903Z:be1503a4-a93c-45f7-86c8-6931bceb75ce" ],
+        "x-ms-request-id": [ "bed3a46d-10a9-4783-bfe6-f681682fd861" ],
+        "x-ms-client-request-id": [ "a01f7d29-2ec5-466e-9a4b-c02eea32491f" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/2fd510d2-f376-477b-b766-a01e901f76e8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-correlation-request-id": [ "882f1d29-cf86-416e-b2fe-8841789200d6" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033140Z:882f1d29-cf86-416e-b2fe-8841789200d6" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 64A9D905CABD4A48A24FE93CB5860009 Ref B: MAA201060513027 Ref C: 2024-07-16T09:19:02Z" ],
-        "Date": [ "Tue, 16 Jul 2024 09:19:03 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4687A6D96DD94120904094B7CE94F390 Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:31:39Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:31:39 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "590" ],
+        "Content-Length": [ "634" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/origingroups/org-pstest010/origins/ori-psName010\",\"type\":\"Microsoft.Cdn/profiles/origingroups/origins\",\"name\":\"ori-psName010\",\"properties\":{\"originGroupName\":\"org-pstest010\",\"hostName\":\"en.wikipedia.org\",\"httpPort\":80,\"httpsPort\":443,\"originHostHeader\":\"en.wikipedia.org\",\"priority\":1,\"weight\":1000,\"enabledState\":\"Enabled\",\"sharedPrivateLinkResource\":null,\"enforceCertificateNameCheck\":true,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/origingroups/org-pstest-orig-get/origins/ori-psName-get\",\"type\":\"Microsoft.Cdn/profiles/origingroups/origins\",\"name\":\"ori-psName-get\",\"properties\":{\"originGroupName\":\"org-pstest-orig-get\",\"hostName\":\"en.wikipedia.org\",\"httpPort\":80,\"httpsPort\":443,\"originHostHeader\":\"en.wikipedia.org\",\"priority\":1,\"weight\":1000,\"enabledState\":\"Enabled\",\"sharedPrivateLinkResource\":null,\"enforceCertificateNameCheck\":true,\"originCapacityResource\":null,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFrontDoorCdnOrigin+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010/origins/ori-psName010?api-version=2024-05-01-preview+2": {
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get/origins/ori-psName-get?api-version=2026-04-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/originGroups/org-pstest010/origins/ori-psName010?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get/origins/ori-psName-get?api-version=2026-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "174" ],
-        "x-ms-client-request-id": [ "c6b5c2b4-3fb4-4048-b6b5-398bf01a571c" ],
+        "x-ms-unique-id": [ "227" ],
+        "x-ms-client-request-id": [ "6c361dba-8f69-416c-b0a1-052d372252f9" ],
         "CommandName": [ "Get-AzFrontDoorCdnOrigin" ],
         "FullCommandName": [ "Get-AzFrontDoorCdnOrigin_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.Cdn/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -488,22 +465,298 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "76a5d030-a0b1-4a34-82d0-1f87bbfd4567" ],
-        "x-ms-client-request-id": [ "c6b5c2b4-3fb4-4048-b6b5-398bf01a571c" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "4daf0510-f3df-491d-bddf-2c32279506e1" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240716T091904Z:4daf0510-f3df-491d-bddf-2c32279506e1" ],
+        "x-ms-request-id": [ "f7660550-2d16-4f04-8154-e29fc4236c5b" ],
+        "x-ms-client-request-id": [ "6c361dba-8f69-416c-b0a1-052d372252f9" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/dbbac054-a944-452f-83a9-015a3002ec46" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "1a826e77-a42f-4f69-88f4-ef8283a59572" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033141Z:1a826e77-a42f-4f69-88f4-ef8283a59572" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 96902DA008474CB99D4F02090A4D3FCF Ref B: MAA201060513027 Ref C: 2024-07-16T09:19:03Z" ],
-        "Date": [ "Tue, 16 Jul 2024 09:19:04 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DB6C89F0C72744019359B1F853269D5B Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:31:40Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:31:40 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "590" ],
+        "Content-Length": [ "634" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/fdp-cpd84s/origingroups/org-pstest010/origins/ori-psName010\",\"type\":\"Microsoft.Cdn/profiles/origingroups/origins\",\"name\":\"ori-psName010\",\"properties\":{\"originGroupName\":\"org-pstest010\",\"hostName\":\"en.wikipedia.org\",\"httpPort\":80,\"httpsPort\":443,\"originHostHeader\":\"en.wikipedia.org\",\"priority\":1,\"weight\":1000,\"enabledState\":\"Enabled\",\"sharedPrivateLinkResource\":null,\"enforceCertificateNameCheck\":true,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/origingroups/org-pstest-orig-get/origins/ori-psName-get\",\"type\":\"Microsoft.Cdn/profiles/origingroups/origins\",\"name\":\"ori-psName-get\",\"properties\":{\"originGroupName\":\"org-pstest-orig-get\",\"hostName\":\"en.wikipedia.org\",\"httpPort\":80,\"httpsPort\":443,\"originHostHeader\":\"en.wikipedia.org\",\"priority\":1,\"weight\":1000,\"enabledState\":\"Enabled\",\"sharedPrivateLinkResource\":null,\"enforceCertificateNameCheck\":true,\"originCapacityResource\":null,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get/origins/ori-psName-get?api-version=2026-04-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get/origins/ori-psName-get?api-version=2026-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "228" ],
+        "x-ms-client-request-id": [ "e7a12e4f-34a5-4077-bbf7-60b54dd85b09" ],
+        "CommandName": [ "Remove-AzFrontDoorCdnOrigin" ],
+        "FullCommandName": [ "Remove-AzFrontDoorCdnOrigin_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/192d1899-ade7-44c9-bb79-5fe02c74a878/profileresults/fdp-qlbsed/origingroupresults/org-pstest-orig-get/originresults/ori-psName-get?api-version=2026-04-01-preview\u0026t=639177823029878813\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=QUTztxTLIH-3rIZmfvN1W8wwA3Wj4zqCeGL-wUSdBSueeCYO0zjQhaof3Py3rDMHmoqVRp1v2y3VAeBA97t7RrF9btVLPsWUlHe8wzXOpOJ1v1fmMz8ItCr4S2XDlmBtMPCRjxtST60kwtE8VvKT6dwOJNl7Jukh6cKTX5nH1Mw3xLoePIty5uo9Qb2smUmdgn4P2dQNwopmrccxUN5hjmNEkQ5P1awV9FADt8a_cJ8yn2qtu4eLkb_9c9YxF48DdoolUVJpfcnv0hLF-jR7f7Odkw4VIF0Obu0IzHofZjzr3V7CnE6DVW2bU_cufv9tCsY5H2u6ck0feGBb2hnUow\u0026h=R85AeejF_Uuw0oIdEENvXagbkO1VizoryZnS5P5_vLs" ],
+        "Retry-After": [ "10" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "33bb5e2c-ce20-4d43-9a53-aa49613828b5" ],
+        "x-ms-client-request-id": [ "e7a12e4f-34a5-4077-bbf7-60b54dd85b09" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/192d1899-ade7-44c9-bb79-5fe02c74a878?api-version=2026-04-01-preview\u0026t=639177823029878813\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=LAoBrhLh0zXdUiUYVS2c_yGAvwJetXxXaiPbbBpHk9Js5cO3CHHzIjZz5XFl75EZY9Wn-ll5RiP-H8nAfPEaGZ3k-GYoBT5UkPZ7Wg3nQlsdGJxBP7xbkE75AR0FPIL1mK5RXtzRNWkmHHej6I93e9qX6Wjv3eMTUmrnq4-vdDsCKBTIKFYDb5hsw6tlSW8x3AuUf9m9XjMPcZcbV5AglG2zg_bWlKMQWMoq6nbWcgGS5W10IgDjxBuPdc6xc6owOq6gX1rlV4Arj1oCGqxTSU2znjHgOE3giDVvssZi5EaI1WDihLOxzzQkXxTG_a1xxtZl25_Bkz8zHaKvZ0mEIg\u0026h=FpO0iw7Cs2BxtNuoPTdcHJ4YRahpfhf-nSVp1HXD8jk" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/627695c1-2108-46ec-88b6-3261543c0996" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "af3c2796-1221-4145-9977-0319f28793f3" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033143Z:af3c2796-1221-4145-9977-0319f28793f3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0090221EB6914898BD86CBFCB83D764D Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:31:41Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:31:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/192d1899-ade7-44c9-bb79-5fe02c74a878?api-version=2026-04-01-preview\u0026t=639177823029878813\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=LAoBrhLh0zXdUiUYVS2c_yGAvwJetXxXaiPbbBpHk9Js5cO3CHHzIjZz5XFl75EZY9Wn-ll5RiP-H8nAfPEaGZ3k-GYoBT5UkPZ7Wg3nQlsdGJxBP7xbkE75AR0FPIL1mK5RXtzRNWkmHHej6I93e9qX6Wjv3eMTUmrnq4-vdDsCKBTIKFYDb5hsw6tlSW8x3AuUf9m9XjMPcZcbV5AglG2zg_bWlKMQWMoq6nbWcgGS5W10IgDjxBuPdc6xc6owOq6gX1rlV4Arj1oCGqxTSU2znjHgOE3giDVvssZi5EaI1WDihLOxzzQkXxTG_a1xxtZl25_Bkz8zHaKvZ0mEIg\u0026h=FpO0iw7Cs2BxtNuoPTdcHJ4YRahpfhf-nSVp1HXD8jk+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/192d1899-ade7-44c9-bb79-5fe02c74a878?api-version=2026-04-01-preview\u0026t=639177823029878813\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=LAoBrhLh0zXdUiUYVS2c_yGAvwJetXxXaiPbbBpHk9Js5cO3CHHzIjZz5XFl75EZY9Wn-ll5RiP-H8nAfPEaGZ3k-GYoBT5UkPZ7Wg3nQlsdGJxBP7xbkE75AR0FPIL1mK5RXtzRNWkmHHej6I93e9qX6Wjv3eMTUmrnq4-vdDsCKBTIKFYDb5hsw6tlSW8x3AuUf9m9XjMPcZcbV5AglG2zg_bWlKMQWMoq6nbWcgGS5W10IgDjxBuPdc6xc6owOq6gX1rlV4Arj1oCGqxTSU2znjHgOE3giDVvssZi5EaI1WDihLOxzzQkXxTG_a1xxtZl25_Bkz8zHaKvZ0mEIg\u0026h=FpO0iw7Cs2BxtNuoPTdcHJ4YRahpfhf-nSVp1HXD8jk",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "229" ],
+        "x-ms-client-request-id": [ "e7a12e4f-34a5-4077-bbf7-60b54dd85b09" ],
+        "CommandName": [ "Remove-AzFrontDoorCdnOrigin" ],
+        "FullCommandName": [ "Remove-AzFrontDoorCdnOrigin_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "af02969a-741c-4a03-af7a-957dcdc79b13" ],
+        "x-ms-client-request-id": [ "e7a12e4f-34a5-4077-bbf7-60b54dd85b09" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/6e9d2c6e-6fba-4afe-889e-b1a07cb4a800" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "f43e2b96-b5e1-4f19-8be2-66b92f27c46b" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033153Z:f43e2b96-b5e1-4f19-8be2-66b92f27c46b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B926B4C4F39840559A17FB0A54ACF243 Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:31:53Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:31:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "172" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"status\":\"Failed\",\"error\":{\"code\":\"InternalError\",\"message\":\"Sorry, it looks like there was an error on our end. Please contact Support if you keep having this problem.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get?api-version=2026-04-01-preview+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest-orig-get?api-version=2026-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "230" ],
+        "x-ms-client-request-id": [ "212ae151-4553-4ef4-8b4e-bf18d4a09ba9" ],
+        "CommandName": [ "Remove-AzFrontDoorCdnOriginGroup" ],
+        "FullCommandName": [ "Remove-AzFrontDoorCdnOriginGroup_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/9b018bef-0101-4024-8d0f-3296dab1bd76/profileresults/fdp-qlbsed/origingroupresults/org-pstest-orig-get?api-version=2026-04-01-preview\u0026t=639177823165202845\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=ZTsz0zvfzwv44yON17nYuAdhJX6yNxJm15ywzwdIV137mK3MuzsMvlyMFLW1YHTxXAzU3nHmDtA89lE4mB5_by1pvcUKQ2zUd12GgBnHeyn-006odj88E2TlfGA7a6z7PStnT7kd79TlEarKDP0Ay_I7axfV2G-rA926Wp_78ahHaksTiFuB0rPRPoEkm3Dl8YUr9B87-5qLbyT35N1CyBd_WqcD3kGkQdJZO3uaS7lxRJpZQpO1czFU3o7R-Q1O2TG9h-Hwl0fDNz45z4MwCETUrY-L-2ki9V8rwMw8dO7aIuDrU22ASKje1ntLvJOXUE0ZSAj9FZ6hbJo7_YULIA\u0026h=8H0C0P-e9QCyKxWru9z959yKyL0hvsm-tkyTaVU8HxM" ],
+        "Retry-After": [ "10" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "149c80ac-7d68-4686-8269-7a1409d16346" ],
+        "x-ms-client-request-id": [ "212ae151-4553-4ef4-8b4e-bf18d4a09ba9" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/9b018bef-0101-4024-8d0f-3296dab1bd76?api-version=2026-04-01-preview\u0026t=639177823165046588\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=F7tRR4LyiqDZ3cZaVmZno6vPm3zcODBvynU7-_a_KdIG9FAakRCifhH-PEj7PsnKLk1bL3pmtv4F21Dj1R-ddJmXN2Fn77URqi4rhWSwbwTfFHjznzxwKFKZScm7rA8QvNBZRT-bEKmXpJmduQRq-kfowcfzLB6qVZNv8x-0x6A6-b-Bk-gQXyaiHJrJKB3VTTqnwGeSsvvwMPM5iAu31z4BR0C7HMu-4g8F2p44wZqWNW71OwQ3O2xOs59i9t8Qwt2vwMpU7LJVqbRZ1Ra5MBPp98MQ47bi7WLzC7Dva3hIYCq8ZuhzC5E7_NQSUcSJJ2DD7ERQz7GrbdH7gb4_fA\u0026h=jQN6erkPWoPDTjBdggjJOzoW7Ppaw4z2ka2sk0QRhVA" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/6eca6ab0-bae8-4ecc-bd43-1f5cbd78a1eb" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "e4fe39af-c4ca-4c2b-ad15-3c0143f77d42" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033156Z:e4fe39af-c4ca-4c2b-ad15-3c0143f77d42" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 646617788E63472692A2F175A5A44BF8 Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:31:53Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:31:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/9b018bef-0101-4024-8d0f-3296dab1bd76?api-version=2026-04-01-preview\u0026t=639177823165046588\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=F7tRR4LyiqDZ3cZaVmZno6vPm3zcODBvynU7-_a_KdIG9FAakRCifhH-PEj7PsnKLk1bL3pmtv4F21Dj1R-ddJmXN2Fn77URqi4rhWSwbwTfFHjznzxwKFKZScm7rA8QvNBZRT-bEKmXpJmduQRq-kfowcfzLB6qVZNv8x-0x6A6-b-Bk-gQXyaiHJrJKB3VTTqnwGeSsvvwMPM5iAu31z4BR0C7HMu-4g8F2p44wZqWNW71OwQ3O2xOs59i9t8Qwt2vwMpU7LJVqbRZ1Ra5MBPp98MQ47bi7WLzC7Dva3hIYCq8ZuhzC5E7_NQSUcSJJ2DD7ERQz7GrbdH7gb4_fA\u0026h=jQN6erkPWoPDTjBdggjJOzoW7Ppaw4z2ka2sk0QRhVA+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/9b018bef-0101-4024-8d0f-3296dab1bd76?api-version=2026-04-01-preview\u0026t=639177823165046588\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=F7tRR4LyiqDZ3cZaVmZno6vPm3zcODBvynU7-_a_KdIG9FAakRCifhH-PEj7PsnKLk1bL3pmtv4F21Dj1R-ddJmXN2Fn77URqi4rhWSwbwTfFHjznzxwKFKZScm7rA8QvNBZRT-bEKmXpJmduQRq-kfowcfzLB6qVZNv8x-0x6A6-b-Bk-gQXyaiHJrJKB3VTTqnwGeSsvvwMPM5iAu31z4BR0C7HMu-4g8F2p44wZqWNW71OwQ3O2xOs59i9t8Qwt2vwMpU7LJVqbRZ1Ra5MBPp98MQ47bi7WLzC7Dva3hIYCq8ZuhzC5E7_NQSUcSJJ2DD7ERQz7GrbdH7gb4_fA\u0026h=jQN6erkPWoPDTjBdggjJOzoW7Ppaw4z2ka2sk0QRhVA",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "231" ],
+        "x-ms-client-request-id": [ "212ae151-4553-4ef4-8b4e-bf18d4a09ba9" ],
+        "CommandName": [ "Remove-AzFrontDoorCdnOriginGroup" ],
+        "FullCommandName": [ "Remove-AzFrontDoorCdnOriginGroup_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "47fc1a8d-4f4b-44b6-bd2e-6dd4f4fa4ab5" ],
+        "x-ms-client-request-id": [ "212ae151-4553-4ef4-8b4e-bf18d4a09ba9" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/4b58843e-8048-4c89-a396-3eefc82ee58d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "fe32445a-66a9-421d-8a5d-887839c7aa62" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033207Z:fe32445a-66a9-421d-8a5d-887839c7aa62" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A744C13A171D409B8FBCD469DDA8EE14 Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:32:06Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:32:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "62" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"status\":\"InProgress\",\"error\":{\"code\":\"None\",\"message\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/9b018bef-0101-4024-8d0f-3296dab1bd76?api-version=2026-04-01-preview\u0026t=639177823165046588\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=F7tRR4LyiqDZ3cZaVmZno6vPm3zcODBvynU7-_a_KdIG9FAakRCifhH-PEj7PsnKLk1bL3pmtv4F21Dj1R-ddJmXN2Fn77URqi4rhWSwbwTfFHjznzxwKFKZScm7rA8QvNBZRT-bEKmXpJmduQRq-kfowcfzLB6qVZNv8x-0x6A6-b-Bk-gQXyaiHJrJKB3VTTqnwGeSsvvwMPM5iAu31z4BR0C7HMu-4g8F2p44wZqWNW71OwQ3O2xOs59i9t8Qwt2vwMpU7LJVqbRZ1Ra5MBPp98MQ47bi7WLzC7Dva3hIYCq8ZuhzC5E7_NQSUcSJJ2DD7ERQz7GrbdH7gb4_fA\u0026h=jQN6erkPWoPDTjBdggjJOzoW7Ppaw4z2ka2sk0QRhVA+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/9b018bef-0101-4024-8d0f-3296dab1bd76?api-version=2026-04-01-preview\u0026t=639177823165046588\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=F7tRR4LyiqDZ3cZaVmZno6vPm3zcODBvynU7-_a_KdIG9FAakRCifhH-PEj7PsnKLk1bL3pmtv4F21Dj1R-ddJmXN2Fn77URqi4rhWSwbwTfFHjznzxwKFKZScm7rA8QvNBZRT-bEKmXpJmduQRq-kfowcfzLB6qVZNv8x-0x6A6-b-Bk-gQXyaiHJrJKB3VTTqnwGeSsvvwMPM5iAu31z4BR0C7HMu-4g8F2p44wZqWNW71OwQ3O2xOs59i9t8Qwt2vwMpU7LJVqbRZ1Ra5MBPp98MQ47bi7WLzC7Dva3hIYCq8ZuhzC5E7_NQSUcSJJ2DD7ERQz7GrbdH7gb4_fA\u0026h=jQN6erkPWoPDTjBdggjJOzoW7Ppaw4z2ka2sk0QRhVA",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "232" ],
+        "x-ms-client-request-id": [ "212ae151-4553-4ef4-8b4e-bf18d4a09ba9" ],
+        "CommandName": [ "Remove-AzFrontDoorCdnOriginGroup" ],
+        "FullCommandName": [ "Remove-AzFrontDoorCdnOriginGroup_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "d2934b88-e0b8-4f2a-a79d-9c01b2022faa" ],
+        "x-ms-client-request-id": [ "212ae151-4553-4ef4-8b4e-bf18d4a09ba9" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/738c6eab-4462-40f5-b9a8-fc3966fd9f8b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "798ec82e-90c8-4abf-9f8a-d038cd542019" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033238Z:798ec82e-90c8-4abf-9f8a-d038cd542019" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 741A55D607204907A5194D35FE80E645 Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:32:37Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:32:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "61" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"status\":\"Succeeded\",\"error\":{\"code\":\"None\",\"message\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzFrontDoorCdnOrigin+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/9b018bef-0101-4024-8d0f-3296dab1bd76?api-version=2026-04-01-preview\u0026t=639177823165046588\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=F7tRR4LyiqDZ3cZaVmZno6vPm3zcODBvynU7-_a_KdIG9FAakRCifhH-PEj7PsnKLk1bL3pmtv4F21Dj1R-ddJmXN2Fn77URqi4rhWSwbwTfFHjznzxwKFKZScm7rA8QvNBZRT-bEKmXpJmduQRq-kfowcfzLB6qVZNv8x-0x6A6-b-Bk-gQXyaiHJrJKB3VTTqnwGeSsvvwMPM5iAu31z4BR0C7HMu-4g8F2p44wZqWNW71OwQ3O2xOs59i9t8Qwt2vwMpU7LJVqbRZ1Ra5MBPp98MQ47bi7WLzC7Dva3hIYCq8ZuhzC5E7_NQSUcSJJ2DD7ERQz7GrbdH7gb4_fA\u0026h=jQN6erkPWoPDTjBdggjJOzoW7Ppaw4z2ka2sk0QRhVA+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/operationresults/9b018bef-0101-4024-8d0f-3296dab1bd76?api-version=2026-04-01-preview\u0026t=639177823165046588\u0026c=MIIHlDCCBnygAwIBAgIQezb8rseFMm1IRs195n9vVzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBXVVMyIENBIDAxMB4XDTI2MDQwNzIzNDE1NFoXDTI2MTAwMzA1NDE1NFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyN0RC1toIy0MUjNqRPJLB51RUbtwBvAu6pgWK5gw2lmci7lE7U6jMxMh_8ljqwlXFY90FwPHzKHdcfHD4M0Ma3DRUVgE-v0S1aUDhKodisph39p7biWkApcSmxbkzmQMB2D0u2Zm0IhszNnwquCfvJuftV7em4_XCA_NbUt5EYUpfjv1sYzkLLAA8_2geRJLmDRfZGZvSHhgN-bsErNiX7v-BdmAyt_5jYpEcuAWuKp_6DUtXPY_mbwCm-qkLcoXGR39z9dHcyaldZUrJJ6JYcAEG5QNboi3gR2R7bY7pVtxUqbJ9Gx2tDy1qzosxOu0hXflZnevb68ylv7B68Wu9AgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQNw-Elcx5N6tZ9jh67WrWJYZxlnzAfBgNVHSMEGDAWgBSs43L6A7Jznj2VyO-HW67dG6HtaDCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzM0L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jcmxzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvMzQvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMS8zNC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBOslPK0kujtTlyxe5WOtpNbQRYZ8iSxYHILxKtavGf63w2nf7l5nX07MzYQqUYkw1ZLV81KZUWrAqmYoK0fTLgq7S_ePVqJ0Bi0EefpAOxc4Q7FtrTXk-2n80mtrwbcDH_jHtUGHd5gGv7MEFSu5Wa2iI3mNDsNSZrscWUqrBhKiZ2zF0slf8YMpHWflHomPT5wBh2LQC9ub-GLJKfkVDFxokxP2roGR1np3ATyRygILitspiTUM4Bcia0TOmYoYUqpLZTBiVNI-ehKyCyQXxR9eeBX0xmiPRji8kPKfC97Q_8KsB0icYO2jpcYUsIggTmm6Rz61nAEqF34O6kWVt8\u0026s=F7tRR4LyiqDZ3cZaVmZno6vPm3zcODBvynU7-_a_KdIG9FAakRCifhH-PEj7PsnKLk1bL3pmtv4F21Dj1R-ddJmXN2Fn77URqi4rhWSwbwTfFHjznzxwKFKZScm7rA8QvNBZRT-bEKmXpJmduQRq-kfowcfzLB6qVZNv8x-0x6A6-b-Bk-gQXyaiHJrJKB3VTTqnwGeSsvvwMPM5iAu31z4BR0C7HMu-4g8F2p44wZqWNW71OwQ3O2xOs59i9t8Qwt2vwMpU7LJVqbRZ1Ra5MBPp98MQ47bi7WLzC7Dva3hIYCq8ZuhzC5E7_NQSUcSJJ2DD7ERQz7GrbdH7gb4_fA\u0026h=jQN6erkPWoPDTjBdggjJOzoW7Ppaw4z2ka2sk0QRhVA",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "233" ],
+        "x-ms-client-request-id": [ "212ae151-4553-4ef4-8b4e-bf18d4a09ba9" ],
+        "CommandName": [ "Remove-AzFrontDoorCdnOriginGroup" ],
+        "FullCommandName": [ "Remove-AzFrontDoorCdnOriginGroup_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "83c45dfb-4616-420e-a1c5-95496dec4923" ],
+        "x-ms-client-request-id": [ "212ae151-4553-4ef4-8b4e-bf18d4a09ba9" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/aada2c34-5299-435b-8635-874822cc565a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-correlation-request-id": [ "edab28eb-2478-4bc8-8e7a-832993f4a1b1" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260623T033238Z:edab28eb-2478-4bc8-8e7a-832993f4a1b1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5BB6F7CDCA814ECA924AF8BA34BC1790 Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:32:38Z" ],
+        "Date": [ "Tue, 23 Jun 2026 03:32:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "61" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"status\":\"Succeeded\",\"error\":{\"code\":\"None\",\"message\":null}}",
       "isContentBase64": false
     }
   }

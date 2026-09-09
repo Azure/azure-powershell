@@ -21,25 +21,26 @@ Create an in-memory object for MigrationEndpointMapping.
 Create an in-memory object for MigrationEndpointMapping.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationEndpointMapping
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrationEndpointMapping
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnMigrationEndpointMappingObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnmigrationendpointmappingobject
 #>
 function New-AzCdnMigrationEndpointMappingObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationEndpointMapping')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrationEndpointMapping')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="The name of the old endpoint.")]
+        [Parameter(HelpMessage="Name of the classic CDN profile endpoint.")]
         [string]
         $MigratedFrom,
-        [Parameter(HelpMessage="The name for the new endpoint.")]
+        [Parameter(HelpMessage="Name of the newly created migrated Azure Frontdoor Standard/Premium profile endpoint. This name will replace the name of the classic CDN endpoint resource.")]
         [string]
         $MigratedTo
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationEndpointMapping]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrationEndpointMapping]::New()
 
         if ($PSBoundParameters.ContainsKey('MigratedFrom')) {
             $Object.MigratedFrom = $MigratedFrom

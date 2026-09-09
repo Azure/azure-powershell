@@ -15,7 +15,7 @@ Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Pre
 ```
 Test-AzFrontDoorCdnProfileMigration -ResourceGroupName <String> [-SubscriptionId <String>]
  -ClassicResourceReferenceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +36,7 @@ True       Standard_AzureFrontDoor {}
 
 Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
 
-### Example 2: Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile, when the subscription of the CDN profile is different from the local subscrition.
+### Example 2: Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile, when the subscription of the CDN profile is different from the local subscription.
 ```powershell
 Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceReferenceId /subscriptions/testSubId01/resourcegroups/testrg/providers/Microsoft.Network/Frontdoors/frontdoorName -SubscriptionId testSubId01
 ```
@@ -47,7 +47,7 @@ CanMigrate DefaultSku              Error
 True       Standard_AzureFrontDoor {}
 ```
 
-Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile, when the subscription of the CDN profile is different from the local subscrition.
+Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile, when the subscription of the CDN profile is different from the local subscription.
 
 You need to set the value of the subscription parameter.
 
@@ -105,21 +105,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -196,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ICanMigrateResult
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult
 
 ## NOTES
 
