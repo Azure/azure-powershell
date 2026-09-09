@@ -12,7 +12,8 @@ only sends the properties provided. The service requires the administrator login
 included whenever the password is updated, so the cluster's existing administrator user name
 is resolved and included in the request automatically.
 .Example
-Reset-AzDocumentDBMongoClusterPassword -Name MyCluster -ResourceGroupName MyResourceGroup -AdministratorPassword (ConvertTo-SecureString "NewP@ssw0rd123!" -AsPlainText -Force)
+$password = Read-Host -Prompt 'Enter the new administrator password' -AsSecureString
+Reset-AzDocumentDBMongoClusterPassword -Name MyCluster -ResourceGroupName MyResourceGroup -AdministratorPassword $password
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.Models.IMongoCluster
 .Link

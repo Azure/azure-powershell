@@ -10,7 +10,8 @@ Restore a mongo cluster to a new cluster from a point in time.
 Restore a mongo cluster to a new cluster from a point in time. Creates a new mongo cluster
 from the backup of an existing (or deleted) source cluster at the requested point in time.
 .Example
-Restore-AzDocumentDBMongoCluster -Name RestoredCluster -ResourceGroupName MyResourceGroup -Location eastus2 -SourceCluster MySourceCluster -RestoreTime "2026-06-30T10:00:00Z" -AdministratorUserName dbadmin -AdministratorPassword (ConvertTo-SecureString "MyP@ssw0rd123!" -AsPlainText -Force)
+$password = Read-Host -Prompt 'Enter the administrator password' -AsSecureString
+Restore-AzDocumentDBMongoCluster -Name RestoredCluster -ResourceGroupName MyResourceGroup -Location eastus2 -SourceCluster MySourceCluster -RestoreTime "2026-06-30T10:00:00Z" -AdministratorUserName dbadmin -AdministratorPassword $password
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.Models.IMongoCluster
 .Link
