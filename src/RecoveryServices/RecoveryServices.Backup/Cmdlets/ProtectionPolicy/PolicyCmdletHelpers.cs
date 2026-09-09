@@ -96,6 +96,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         throw;
                     }
                 }
+                else if (exception.InnerException != null &&
+                         exception.InnerException is ErrorResponseException)
+                {
+                    var errorResponseEx = exception.InnerException as ErrorResponseException;
+                    if (errorResponseEx.Response == null ||
+                        errorResponseEx.Response.StatusCode != SystemNet.HttpStatusCode.NotFound)
+                    {
+                        throw;
+                    }
+                }
                 else
                 {
                     throw;

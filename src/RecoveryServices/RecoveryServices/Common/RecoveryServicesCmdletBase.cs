@@ -17,6 +17,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Xml;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
 
@@ -64,10 +65,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="ex">Exception to handle.</param>
         public void HandleException(Exception ex)
         {
+            ErrorResponseException errorResponseException = ex as ErrorResponseException;
+            AggregateException aggregateException = ex as AggregateException;
+            if (errorResponseException == null && aggregateException != null)
+            {
+                AggregateException flattenedException = aggregateException.Flatten();
+                if (flattenedException.InnerExceptions.Count == 1)
+                {
+                    errorResponseException =
+                        flattenedException.InnerExceptions[0] as ErrorResponseException;
+                }
+            }
+
             string clientRequestIdMsg = string.Empty;
             if (this.recoveryServicesClient != null)
             {
                 clientRequestIdMsg = "ClientRequestId: " + this.recoveryServicesClient.ClientRequestId + "\n";
+            }
+
+            if (errorResponseException != null)
+            {
+                throw CreateErrorResponseException(errorResponseException, clientRequestIdMsg);
             }
 
             CloudException cloudException = ex as CloudException;
@@ -140,6 +158,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     clientRequestIdMsg + ex.Message),
                     ex);
             }
+        }
+
+        private static Exception CreateErrorResponseException(
+            ErrorResponseException exception,
+            string clientRequestIdMessage)
+        {
+            ErrorDetail error = exception.Body?.Error;
+            if (error == null)
+            {
+                return new Exception(
+                    string.Format(
+                        Properties.Resources.InvalidCloudExceptionErrorMessage,
+                        clientRequestIdMessage + exception.Message),
+                    exception);
+            }
+
+            StringBuilder exceptionMessage = new StringBuilder();
+            exceptionMessage.Append(Properties.Resources.CloudExceptionDetails);
+
+            if (error.Details != null)
+            {
+                foreach (ErrorDetail detail in error.Details)
+                {
+                    if (!string.IsNullOrEmpty(detail.Code))
+                        exceptionMessage.AppendLine("ErrorCode: " + detail.Code);
+                    if (!string.IsNullOrEmpty(detail.Message))
+                        exceptionMessage.AppendLine("Message: " + detail.Message);
+
+                    exceptionMessage.AppendLine();
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(error.Code))
+                    exceptionMessage.AppendLine("ErrorCode: " + error.Code);
+                if (!string.IsNullOrEmpty(error.Message))
+                    exceptionMessage.AppendLine("Message: " + error.Message);
+            }
+
+            return new InvalidOperationException(exceptionMessage.ToString());
         }
 
         protected override void BeginProcessing()
