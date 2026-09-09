@@ -617,6 +617,24 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not determine the latest available BGInfo extension version.  Using the default version, {0}.  : {1}.
+        /// </summary>
+        internal static string BginfoExtensionVersionLookupFailed {
+            get {
+                return ResourceManager.GetString("BginfoExtensionVersionLookupFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occurred when installing the BGInfo extension.  The virtual machine was created successfully without it.  : {0}.
+        /// </summary>
+        internal static string ErrorDuringInstallingBginfoExtension {
+            get {
+                return ResourceManager.GetString("ErrorDuringInstallingBginfoExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error occurred when getting storage account, {0}, for boot diagnostics: {1}.
         /// </summary>
         internal static string ErrorDuringGettingStorageAccountForBootDiagnostics {
