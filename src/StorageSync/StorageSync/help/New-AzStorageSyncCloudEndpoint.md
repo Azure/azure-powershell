@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -ChangeEnumerationIntervalDay
-Change Enumeration Interval Day. This parameter defines the interval in days between change enumeration operations for the cloud endpoint. Valid values range from 1 to 20 days.
+Interval in days between change enumeration operations for the cloud endpoint. Valid values range from 1 to 20 days.
 
 ```yaml
 Type: System.Int32

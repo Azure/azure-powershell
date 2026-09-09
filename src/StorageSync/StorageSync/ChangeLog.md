@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved help for the `ChangeEnumerationIntervalDay` parameter
 * Fixed `Set-AzStorageSyncServer` to retrieve the registered server using the validated server ID
 * Added `ChangeEnumerationIntervalDay` parameter to `New-AzStorageSyncCloudEndpoint` cmdlet
     - Allows customers to configure the interval in days between change enumeration operations for cloud endpoints

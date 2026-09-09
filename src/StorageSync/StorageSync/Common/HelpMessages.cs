@@ -257,6 +257,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The change enumeration interval day parameter
         /// </summary>
-        public const string ChangeEnumerationIntervalDayParameter = "Change Enumeration Interval Days. This parameter defines the interval in days between change enumeration operations for the cloud endpoint. Valid values range from 1 to 20 days.";
+        public const string ChangeEnumerationIntervalDayParameter = "Interval in days between change enumeration operations for the cloud endpoint. Valid values range from 1 to 20 days.";
     }
 }
