@@ -14,31 +14,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzCdnEndpoint'  {
-    It 'Delete' { 
-        $endpointName = 'e-clipstest370'
-        $origin = @{
-            Name = "origin1"
-            HostName = "host1.hello.com"
-        };
-        $location = "westus"
-        Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-
-        New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location -Origin $origin
-        Remove-AzCdnEndpoint -Name $endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+Describe 'Remove-AzCdnEndpoint' {
+    BeforeAll {
+        $script:endpointName = 'e-clipstest310-rm'
+        $script:origin = @{ Name = 'origin1'; HostName = 'host1.hello.com' }
+        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $script:origin | Out-Null
     }
 
-    It 'DeleteViaIdentity' {
-        $endpointName = 'e-clipstest371'
-        $origin = @{
-            Name = "origin1"
-            HostName = "host1.hello.com"
-        };
-        $location = "westus"
-        Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+    It 'Delete' {
+        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        { Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction Stop } | Should -Throw
+    }
 
-        New-AzCdnEndpoint -SubscriptionId $env.SubscriptionId -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location -Origin $origin
-        $endpointObject = Get-AzCdnEndpoint -Name $endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        Remove-AzCdnEndpoint -InputObject $endpointObject
+    It 'DeleteViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnMigrationEndpointMappingObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnmigrationendpointmappingobject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create an in-memory object for MigrationEndpointMapping.
 
 ```
 New-AzCdnMigrationEndpointMappingObject [-MigratedFrom <String>] [-MigratedTo <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,7 @@ Generate a map for endpoint to be migrated
 ## PARAMETERS
 
 ### -MigratedFrom
-The name of the old endpoint.
+Name of the classic CDN profile endpoint.
 
 ```yaml
 Type: System.String
@@ -47,27 +47,13 @@ Accept wildcard characters: False
 ```
 
 ### -MigratedTo
-The name for the new endpoint.
+Name of the newly created migrated Azure Frontdoor Standard/Premium profile endpoint.
+This name will replace the name of the classic CDN endpoint resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -83,7 +69,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationEndpointMapping
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrationEndpointMapping
 
 ## NOTES
 

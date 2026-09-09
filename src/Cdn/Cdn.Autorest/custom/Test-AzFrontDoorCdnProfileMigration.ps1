@@ -25,13 +25,13 @@ PS C:\> {{ Add code here }}
 PS C:\> {{ Add code here }}
 {{ Add output here }}
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ICanMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofilemigration
 #>
 function Test-AzFrontDoorCdnProfileMigration {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ICanMigrateResult])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult])]
     [CmdletBinding(DefaultParameterSetName='CanExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -112,6 +112,21 @@ function Test-AzFrontDoorCdnProfileMigration {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.Cdn.private\Invoke-AzCdnCanProfileMigrate_CanExpanded' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
 
     process {
         Write-Host("This could take a few seconds to a few mins depending on the complexity of your resource.")

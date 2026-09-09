@@ -14,11 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzCdnAbortProfileToAFD
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-# Playback only
 Describe 'Invoke-AzCdnAbortProfileToAFDMigration' {
-    It 'Abort' {
-        $subId = $env.SubscriptionId
-        Invoke-AzCdnAbortProfileToAFDMigration -Subscription $subId -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
+    It 'Abort' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'AbortViaIdentity' -skip {

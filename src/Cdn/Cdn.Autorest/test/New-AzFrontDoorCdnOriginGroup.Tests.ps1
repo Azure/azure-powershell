@@ -14,16 +14,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnOriginGroup
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnOriginGroup'  {
+Describe 'New-AzFrontDoorCdnOriginGroup' {
+    BeforeAll {
+        $script:ogName = 'org-pstest-new'
+    }
+
+    AfterAll {
+        Remove-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName -ErrorAction SilentlyContinue
+    }
+
     It 'CreateExpanded' {
-        $originGroupName = 'org-pstest060'
-
-        $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
-        -ProbeProtocol "Https" -ProbeRequestType "GET"
-        $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
-        -SampleSize 5 -SuccessfulSamplesRequired 4
-
-        New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-        -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
+        $hp = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath '/' -ProbeProtocol 'Https' -ProbeRequestType 'GET'
+        $lb = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 -SampleSize 5 -SuccessfulSamplesRequired 4
+        $og = New-AzFrontDoorCdnOriginGroup -OriginGroupName $script:ogName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -LoadBalancingSetting $lb -HealthProbeSetting $hp
+        $og.Name | Should -Be $script:ogName
     }
 }

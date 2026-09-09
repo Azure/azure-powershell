@@ -18,14 +18,9 @@
 Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Description
 Commit the migrated Azure Front Door(Standard/Premium) profile..
-.Example
-PS C:\> {{ Add code here }}
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-{{ Add output here }}
+
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/invoke-azcdncommitprofiletoafdmigration
 #>
@@ -118,10 +113,30 @@ function Invoke-AzCdnCommitProfileToAFDMigration {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.Cdn.private\Invoke-AzCdnCommitProfileMigration_Commit' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
 
     process {
         Write-Host("Start to migrate.")
         Write-Host("This process will disable your classic CDN profile and move all your traffic and configurations to the new Front Door profile.")
         Az.Cdn.internal\Invoke-AzCdnCommitProfileMigration @PSBoundParameters
+        if ($NoWait -or $AsJob) {
+            Write-Warning("Migration request submitted successfully. After migration completes, traffic may still depend on the classic endpoint. Update your custom domain DNS or application references to use the new Azure Front Door Standard/Premium endpoint before April 1, 2028 to avoid any service disruption. Learn more: https://learn.microsoft.com/en-us/azure/cdn/migrate-tier?toc=/azure/frontdoor/toc.json.")
+        } else {
+            Write-Warning("Migration completed successfully. Traffic may still depend on the classic endpoint. Update your custom domain DNS or application references to use the new Azure Front Door Standard/Premium endpoint before April 1, 2028 to avoid any service disruption. Learn more: https://learn.microsoft.com/en-us/azure/cdn/migrate-tier?toc=/azure/frontdoor/toc.json.")
+        }
     }
 }

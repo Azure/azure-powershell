@@ -12,4 +12,3 @@ CustomerCertificate TLS12
 ```
 
 Create an in-memory object for AFDDomainHttpsParameters
-

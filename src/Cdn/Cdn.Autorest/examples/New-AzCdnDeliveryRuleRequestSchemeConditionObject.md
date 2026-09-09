@@ -10,4 +10,3 @@ RequestScheme
 ```
 
 Create an in-memory object for AzureCDN DeliveryRuleRequestSchemeCondition
-

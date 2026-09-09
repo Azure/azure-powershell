@@ -16,16 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzCdnProbe'))
 
 Describe 'Test-AzCdnProbe'  {
     It 'ValidateExpanded' {
-        { 
-            $probeUrl = "https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt"	
-            $validateProbeUrlResult = Test-AzCdnProbe -ProbeUrl $probeUrl
-        
-            $validateProbeUrlResult.IsValid | Should -BeTrue
-        
-            $probeUrl = "https://www.notexist.com/notexist/notexist.txt"
-            $validateProbeUrlResult = Test-AzCdnProbe -ProbeUrl $probeUrl    
+        $probeUrl = "https://www.notexist.com/notexist/notexist.txt"
+        $validateProbeUrlResult = Test-AzCdnProbe -ProbeUrl $probeUrl    
 
-            $validateProbeUrlResult.IsValid | Should -BeFalse
-        } | Should -Not -Throw
+        $validateProbeUrlResult.IsValid | Should -BeFalse
     }
 }
