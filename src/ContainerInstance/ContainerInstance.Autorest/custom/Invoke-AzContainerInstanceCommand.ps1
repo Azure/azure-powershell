@@ -144,10 +144,10 @@ function Invoke-AzContainerInstanceCommand {
       return $dynamicParameters
     }
 
-    process {
-      try {
-        Az.ContainerInstance.internal\Invoke-AzContainerInstanceCommand @PSBoundParameters
-      } catch {
+    process {
+      try {
+        Az.ContainerInstance.internal\Invoke-AzContainerInstanceCommand @PSBoundParameters
+      } catch {
         throw
       }
     }
