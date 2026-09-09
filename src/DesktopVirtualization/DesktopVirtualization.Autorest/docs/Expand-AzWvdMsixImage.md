@@ -8,7 +8,7 @@ schema: 2.0.0
 # Expand-AzWvdMsixImage
 
 ## SYNOPSIS
-Expands and Lists MSIX packages in an Image, given the Image Path.\nThis action uses incorrect Msix casing intentionally to match the previous APIs.
+Expands and Lists MSIX packages in an Image, given the Image Path. This action uses incorrect Msix casing intentionally to match the previous APIs.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ Expand-AzWvdMsixImage -HostPoolName <String> -ResourceGroupName <String> -JsonSt
 ```
 
 ## DESCRIPTION
-Expands and Lists MSIX packages in an Image, given the Image Path.\nThis action uses incorrect Msix casing intentionally to match the previous APIs.
+Expands and Lists MSIX packages in an Image, given the Image Path. This action uses incorrect Msix casing intentionally to match the previous APIs.
 
 ## EXAMPLES
 
@@ -256,4 +256,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -299,7 +299,37 @@ function setupEnv() {
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
     Write-Host -ForegroundColor Green "Wrote runtime env file '$envFile'."
 }
+
+function Protect-AvdTestRecordings() {
+    $jwtPattern = 'eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+'
+    $utf8WithoutBom = New-Object System.Text.UTF8Encoding($false)
+    $redactedCount = 0
+
+    foreach ($recordingFile in (Get-ChildItem -Path $PSScriptRoot -Filter '*.Recording.json' -File)) {
+        $content = [System.IO.File]::ReadAllText($recordingFile.FullName)
+        $matches = [regex]::Matches($content, $jwtPattern)
+        if ($matches.Count -eq 0) {
+            continue
+        }
+
+        $sanitizedContent = [regex]::Replace($content, $jwtPattern, '[REDACTED:jwt]')
+        [System.IO.File]::WriteAllText($recordingFile.FullName, $sanitizedContent, $utf8WithoutBom)
+        $redactedCount += $matches.Count
+    }
+
+    if ($redactedCount -gt 0) {
+        Write-Host -ForegroundColor Green "Redacted $redactedCount JWT value(s) from test recordings."
+    }
+}
+
 function cleanupEnv() {
+    # Recording files can contain short-lived host pool registration JWTs.
+    # Sanitize them before Azure resource cleanup so cleanup failures cannot leave
+    # credentials in the working tree.
+    if ($TestMode -eq 'record') {
+        Protect-AvdTestRecordings
+    }
+
     # Self-contained resource names are generated per-run by setupEnv and written to
     # the runtime env file; read them back so cleanup targets the same resources.
     $cfg = Get-AvdTestResourceConfig

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzWvdPrivateEndpointConnection
 
 ## SYNOPSIS
-Delete a PrivateEndpointConnectionWithSystemData
+Remove a private endpoint connection.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ Remove-AzWvdPrivateEndpointConnection -Name <String> -WorkspaceInputObject <IDes
 ```
 
 ## DESCRIPTION
-Delete a PrivateEndpointConnectionWithSystemData
+Remove a private endpoint connection.
 
 ## EXAMPLES
 
@@ -281,4 +281,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzWvdPrivateEndpointConnection
 
 ## SYNOPSIS
-Get a PrivateEndpointConnectionWithSystemData
+Get a private endpoint connection.
 
 ## SYNTAX
 
@@ -62,7 +62,7 @@ Get-AzWvdPrivateEndpointConnection -ResourceGroupName <String> -WorkspaceName <S
 ```
 
 ## DESCRIPTION
-Get a PrivateEndpointConnectionWithSystemData
+Get a private endpoint connection.
 
 ## EXAMPLES
 
@@ -319,4 +319,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

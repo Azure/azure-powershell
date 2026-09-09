@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzWvdPrivateEndpointConnection
 
 ## SYNOPSIS
-Delete a PrivateEndpointConnectionWithSystemData
+Remove a private endpoint connection.
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Remove-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdenti
 ```
 
 ## DESCRIPTION
-Delete a PrivateEndpointConnectionWithSystemData
+Remove a private endpoint connection.
 
 ## EXAMPLES
 

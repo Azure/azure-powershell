@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzWvdPrivateEndpointConnection
 
 ## SYNOPSIS
-Get a PrivateEndpointConnectionWithSystemData
+Get a private endpoint connection.
 
 ## SYNTAX
 
@@ -63,7 +63,7 @@ Get-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity>
 ```
 
 ## DESCRIPTION
-Get a PrivateEndpointConnectionWithSystemData
+Get a private endpoint connection.
 
 ## EXAMPLES
 

@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: DesktopVirtualization cmdlets
 Disconnect a userSession.
 
 ### [Expand-AzWvdMsixImage](Expand-AzWvdMsixImage.md)
-Expands and Lists MSIX packages in an Image, given the Image Path.\nThis action uses incorrect Msix casing intentionally to match the previous APIs.
+Expands and Lists MSIX packages in an Image, given the Image Path. This action uses incorrect Msix casing intentionally to match the previous APIs.
 
 ### [Get-AzWvdAppAttachPackage](Get-AzWvdAppAttachPackage.md)
 Get an app attach package.
@@ -39,7 +39,7 @@ Operation to list the RegistrationTokens associated with the HostPool.
 Get a msixpackage.
 
 ### [Get-AzWvdPrivateEndpointConnection](Get-AzWvdPrivateEndpointConnection.md)
-Get a PrivateEndpointConnectionWithSystemData
+Get a private endpoint connection.
 
 ### [Get-AzWvdPrivateLinkResource](Get-AzWvdPrivateLinkResource.md)
 List the private link resources available for this hostpool.
@@ -120,7 +120,7 @@ Remove a host pool.
 Remove an MSIX Package.
 
 ### [Remove-AzWvdPrivateEndpointConnection](Remove-AzWvdPrivateEndpointConnection.md)
-Delete a PrivateEndpointConnectionWithSystemData
+Remove a private endpoint connection.
 
 ### [Remove-AzWvdRegistrationInfo](Remove-AzWvdRegistrationInfo.md)
 Remove the Windows virtual desktop registration info.
@@ -181,4 +181,3 @@ Update a session host.
 
 ### [Update-AzWvdWorkspace](Update-AzWvdWorkspace.md)
 Update a workspace.
-
