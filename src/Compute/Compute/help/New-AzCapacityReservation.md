@@ -15,7 +15,7 @@ Creates a Capacity Reservation resource in a Capacity Reservation Group
 ```
 New-AzCapacityReservation -ResourceGroupName <String> -ReservationGroupName <String> -Name <String>
  -Location <String> -CapacityToReserve <Int32> -Sku <String> [-AsJob] [-Tag <Hashtable>] [-Zone <String[]>]
- [-ScheduleProfileStart <DateTime>] [-MinimumCommitmentDays <Int32>]
+ [-ScheduleProfileStart <DateTimeOffset>] [-MinimumCommitmentDayCount <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ This command will create a Capacity Reservation resource with the provided sku a
 
 ### Example 2
 ```powershell
-New-AzCapacityReservation -ResourceGroupName "myRG" -Location "eastus" -ReservationGroupName "myCapacityReservationGroup" -Name "myCapacityReservation" -Sku "Standard_DS1_v2" -CapacityToReserve 10 -Zone "1" -ScheduleProfileStart "2026-12-25" -MinimumCommitmentDays 30
+-ScheduleProfileStart "2026-12-25" -MinimumCommitmentDayCount 30
 ```
 
 This command will create a Future Capacity Reservation resource that reserves capacity starting on 2026-12-25, and that cannot be updated or deleted until 30 days have passed after the start date if the reservation is fulfilled.
@@ -101,7 +101,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MinimumCommitmentDays
+### -MinimumCommitmentDayCount
 The minimum number of days that must pass after the start date before a Future Capacity Reservation can be updated or deleted once fulfilled.
 Only valid for Future Capacity Reservations.
 Minimum API version: 2026-04-01.
@@ -169,7 +169,7 @@ Providing this parameter creates a Future Capacity Reservation.
 Minimum API version: 2026-04-01.
 
 ```yaml
-Type: System.DateTime
+Type: System.DateTimeOffset
 Parameter Sets: (All)
 Aliases:
 

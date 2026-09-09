@@ -96,13 +96,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The required start date for a Future Capacity Reservation. Must be at least 7 days in the future, and maximum 6 months in the future. In a Targeted or Open capacity reservation group, providing this parameter creates a Future Capacity Reservation.")]       
-        public DateTime ScheduleProfileStart { get; set; }
+        public DateTimeOffset ScheduleProfileStart { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The minimum number of days that must pass after the start date before the reservation can be updated or deleted once it has been committed. Must be >= 30 if provided. Only valid for Future Capacity Reservations.")]
-        public int MinimumCommitmentDays { get; set; }
+        public int MinimumCommitmentDayCount { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -129,12 +129,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.IsParameterBound(c => c.ScheduleProfileStart))
                     {
                         capacityReservation.ScheduleProfile = new ScheduleProfile();
-                        capacityReservation.ScheduleProfile.Start = this.ScheduleProfileStart.ToString("o", CultureInfo.InvariantCulture);
+                        capacityReservation.ScheduleProfile.Start = this.ScheduleProfileStart.DateTime.ToString("o", CultureInfo.InvariantCulture);
                     }
-                    if (this.IsParameterBound(c => c.MinimumCommitmentDays))
+                    if (this.IsParameterBound(c => c.MinimumCommitmentDayCount))
                     {
                         capacityReservation.ScheduleProfile = capacityReservation.ScheduleProfile == null ? new ScheduleProfile() : capacityReservation.ScheduleProfile;
-                        capacityReservation.ScheduleProfile.MinimumCommitmentDays = this.MinimumCommitmentDays;
+                        capacityReservation.ScheduleProfile.MinimumCommitmentDays = this.MinimumCommitmentDayCount;
                     }
 
                     var result = CapacityReservationClient.CreateOrUpdate(this.ResourceGroupName, this.ReservationGroupName,this.Name, capacityReservation);

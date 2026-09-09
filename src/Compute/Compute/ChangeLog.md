@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Added `-ScheduleProfileStart` and `-MinimumCommitmentDays` parameters to `New-AzCapacityReservation` to create Future Capacity Reservations, and surfaced the read-only `ScheduleProfile` (including `ModifiableUntil`) and instance view `ReservationStateInfo` on `Get-AzCapacityReservation` output. [#1570]
+* Added `-ScheduleProfileStart` and `-MinimumCommitmentDayCount` parameters to `New-AzCapacityReservation` to create Future Capacity Reservations, and surfaced the read-only `ScheduleProfile` (including `ModifiableUntil`) and instance view `ReservationStateInfo` on `Get-AzCapacityReservation` output. [#1570]
 * Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
 * Added cmdlets and parameters to configure first-party service tags for implicit public IP addresses on VMs (Virtual Machines) and VMSS (Virtual Machine Scale Sets).
 
