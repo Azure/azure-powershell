@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzAppNetworkMember'))
 }
 
 Describe 'Remove-AzAppNetworkMember' {
-    It 'Delete' {
+    # Delete coverage lives in the consolidated New-AzAppNetworkMember lifecycle test,
+    # which creates a member, reads it, then deletes it (one live member per AKS cluster).
+    It 'Delete' -skip {
         {
             Remove-AzAppNetworkMember -Name $env.memberName -AppLinkName $env.appLinkName -ResourceGroupName $env.resourceGroup
             { Get-AzAppNetworkMember -Name $env.memberName -AppLinkName $env.appLinkName -ResourceGroupName $env.resourceGroup -ErrorAction Stop } | Should -Throw

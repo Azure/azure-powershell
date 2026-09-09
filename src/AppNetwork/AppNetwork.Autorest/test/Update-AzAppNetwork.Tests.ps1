@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzAppNetwork'))
 Describe 'Update-AzAppNetwork' {
     It 'UpdateExpanded' {
         {
-            $appLink = Update-AzAppNetwork -Name $env.appLinkName -ResourceGroupName $env.resourceGroup -Tag @{ env = 'test' }
+            $appLink = Update-AzAppNetwork -Name $env.appLinkNameForUpdate -ResourceGroupName $env.resourceGroup -Tag @{ env = 'test' }
             $appLink.Tag['env'] | Should -Be 'test'
         } | Should -Not -Throw
     }

@@ -44,10 +44,15 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
-    $env.location = 'eastus'
+    $env.location = 'eastus2'
     $env.resourceGroup = 'appnetwork-test-' + (RandomString -allChars $false -len 6)
     $env.appLinkName = 'applink-' + (RandomString -allChars $false -len 6)
     $env.appLinkNameForCreate = 'applink-' + (RandomString -allChars $false -len 6)
+    $env.appLinkNameForUpdate = 'applink-' + (RandomString -allChars $false -len 6)
+    # Dedicated parent for the AppLinkMember lifecycle test. Keeping members off
+    # $env.appLinkName means the Remove-AzAppNetwork test can delete its parent
+    # without a child-member cascade.
+    $env.appLinkNameForMember = 'applink-' + (RandomString -allChars $false -len 6)
     $env.memberName = 'member-' + (RandomString -allChars $false -len 6)
     # AKS cluster used as the AppLinkMember target. It must be created with the
     # AppLink prerequisites enabled:
@@ -59,9 +64,16 @@ function setupEnv() {
     if ($TestMode -ne 'playback') {
         Write-Host "Creating resource group $($env.resourceGroup) in $($env.location)"
         New-AzResourceGroup -Name $env.resourceGroup -Location $env.location | Out-Null
-        # Create the AppNetwork resource that the Get/Update/Remove tests rely on.
+        # Create the AppNetwork resources that the Get/Remove/Update tests rely on.
+        # Get and Remove share $env.appLinkName; Update uses its own resource so it
+        # is independent of the Remove test's deletion (Pester runs files alphabetically).
         Write-Host "Creating AppNetwork $($env.appLinkName) in $($env.resourceGroup)"
         New-AzAppNetwork -Name $env.appLinkName -ResourceGroupName $env.resourceGroup -Location $env.location -EnableSystemAssignedIdentity | Out-Null
+        Write-Host "Creating AppNetwork $($env.appLinkNameForUpdate) in $($env.resourceGroup)"
+        New-AzAppNetwork -Name $env.appLinkNameForUpdate -ResourceGroupName $env.resourceGroup -Location $env.location -EnableSystemAssignedIdentity | Out-Null
+        # Parent AppNetwork for the consolidated AppLinkMember lifecycle test.
+        Write-Host "Creating AppNetwork $($env.appLinkNameForMember) in $($env.resourceGroup)"
+        New-AzAppNetwork -Name $env.appLinkNameForMember -ResourceGroupName $env.resourceGroup -Location $env.location -EnableSystemAssignedIdentity | Out-Null
     }
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

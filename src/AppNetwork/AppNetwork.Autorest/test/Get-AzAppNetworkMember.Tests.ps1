@@ -15,14 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAppNetworkMember'))
 }
 
 Describe 'Get-AzAppNetworkMember' {
-    It 'List' {
+    # Get/List coverage lives in the consolidated New-AzAppNetworkMember lifecycle test,
+    # which creates a member, reads it, then deletes it (one live member per AKS cluster).
+    It 'List' -skip {
         {
             $members = Get-AzAppNetworkMember -AppLinkName $env.appLinkName -ResourceGroupName $env.resourceGroup
             $members.Name | Should -Contain $env.memberName
         } | Should -Not -Throw
     }
 
-    It 'Get' {
+    It 'Get' -skip {
         {
             $member = Get-AzAppNetworkMember -Name $env.memberName -AppLinkName $env.appLinkName -ResourceGroupName $env.resourceGroup
             $member.Name | Should -Be $env.memberName

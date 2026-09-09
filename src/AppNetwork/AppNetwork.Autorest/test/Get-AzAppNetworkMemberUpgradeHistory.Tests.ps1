@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAppNetworkMemberUpgrade
 }
 
 Describe 'Get-AzAppNetworkMemberUpgradeHistory' {
-    It 'List' {
+    # Upgrade-history coverage lives in the consolidated New-AzAppNetworkMember lifecycle
+    # test, which creates a member, reads it, then deletes it (one live member per AKS cluster).
+    It 'List' -skip {
         # List upgrade history for the member; should not throw (may be empty).
         { Get-AzAppNetworkMemberUpgradeHistory -AppLinkName $env.appLinkName -AppLinkMemberName $env.memberName -ResourceGroupName $env.resourceGroup } | Should -Not -Throw
     }
