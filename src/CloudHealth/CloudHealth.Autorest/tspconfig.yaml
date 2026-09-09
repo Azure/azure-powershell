@@ -12,7 +12,7 @@ options:
     output-folder: "{output-dir}"
     # Pin the API version. Without this the emitter falls back to the latest
     # version declared in main.tsp.
-    api-version: "2026-05-01-preview"
+    api-version: "2026-09-01-preview"
     exclude-tableview-properties:
       - Id
       - Type

@@ -35,7 +35,7 @@ function New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject 
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("None", "Average", "Count", "Minimum", "Maximum", "Total")]
         [string]
         $AggregationType,
-        [Parameter(HelpMessage="Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.")]
+        [Parameter(HelpMessage="Optional: Dimension filter to apply to the dimension.")]
         [string]
         $DimensionFilter,
         [Parameter(Mandatory, HelpMessage="Name of the metric.")]

@@ -13,8 +13,8 @@ Create an in-memory object for ThresholdRuleV2.
 ## SYNTAX
 
 ```
-New-AzMonitorHealthModelThresholdRuleV2Object -Operator <String> [-LookBackWindow <String>]
- [-Sensitivity <String>] [-Threshold <Double>] [<CommonParameters>]
+New-AzMonitorHealthModelThresholdRuleV2Object -Operator <String> [-Sensitivity <String>] [-Threshold <Double>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,22 +31,6 @@ New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 9
 Creates a threshold rule using the GreaterThan operator and a threshold of 90.
 
 ## PARAMETERS
-
-### -LookBackWindow
-ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Operator
 Operator how to compare the signal value with the threshold.

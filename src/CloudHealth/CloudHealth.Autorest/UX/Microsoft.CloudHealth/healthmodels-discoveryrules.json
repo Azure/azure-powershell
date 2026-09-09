@@ -1,6 +1,6 @@
 {
   "resourceType": "healthmodels/discoveryrules",
-  "apiVersion": "2026-05-01-preview",
+  "apiVersion": "2026-09-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth"
   },

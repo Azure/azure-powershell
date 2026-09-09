@@ -31,10 +31,6 @@ function New-AzMonitorHealthModelThresholdRuleV2Object {
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT5M", "PT15M", "PT30M", "PT1H")]
-        [string]
-        $LookBackWindow,
         [Parameter(Mandatory, HelpMessage="Operator how to compare the signal value with the threshold.")]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "LessThanOrEqual", "GreaterThanOrEqual", "Equal", "NotEqual", "Dynamic")]
         [string]
@@ -51,9 +47,6 @@ function New-AzMonitorHealthModelThresholdRuleV2Object {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ThresholdRuleV2]::New()
 
-        if ($PSBoundParameters.ContainsKey('LookBackWindow')) {
-            $Object.LookBackWindow = $LookBackWindow
-        }
         if ($PSBoundParameters.ContainsKey('Operator')) {
             $Object.Operator = $Operator
         }

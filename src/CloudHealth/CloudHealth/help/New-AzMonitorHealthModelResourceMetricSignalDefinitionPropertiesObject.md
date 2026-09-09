@@ -69,7 +69,6 @@ Accept wildcard characters: False
 
 ### -DimensionFilter
 Optional: Dimension filter to apply to the dimension.
-Must only be set if also Dimension is set.
 
 ```yaml
 Type: System.String

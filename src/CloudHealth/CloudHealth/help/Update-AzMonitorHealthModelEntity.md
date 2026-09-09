@@ -18,8 +18,9 @@ Update-AzMonitorHealthModelEntity -HealthModelName <String> -Name <String> -Reso
  [-SubscriptionId <String>] [-CanvaPositionX <Single>] [-CanvaPositionY <Single>]
  [-DegradedActionGroupId <String[]>] [-DegradedDescription <String>] [-DegradedSeverity <String>]
  [-DisplayName <String>] [-HealthObjective <Single>] [-IconCustomData <String>] [-IconName <String>]
- [-Impact <String>] [-SignalGroup <ISignalGroups>] [-Tag <Hashtable>] [-UnhealthyActionGroupId <String[]>]
- [-UnhealthyDescription <String>] [-UnhealthySeverity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Impact <String>] [-SignalAggregationGroup <ISignalAggregationGroup[]>] [-SignalGroup <ISignalGroups>]
+ [-Tag <Hashtable>] [-UnhealthyActionGroupId <String[]>] [-UnhealthyDescription <String>]
+ [-UnhealthySeverity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,9 +30,10 @@ Update-AzMonitorHealthModelEntity -Name <String> -HealthmodelInputObject <ICloud
  [-CanvaPositionX <Single>] [-CanvaPositionY <Single>] [-DegradedActionGroupId <String[]>]
  [-DegradedDescription <String>] [-DegradedSeverity <String>] [-DisplayName <String>]
  [-HealthObjective <Single>] [-IconCustomData <String>] [-IconName <String>] [-Impact <String>]
- [-SignalGroup <ISignalGroups>] [-Tag <Hashtable>] [-UnhealthyActionGroupId <String[]>]
- [-UnhealthyDescription <String>] [-UnhealthySeverity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SignalAggregationGroup <ISignalAggregationGroup[]>] [-SignalGroup <ISignalGroups>] [-Tag <Hashtable>]
+ [-UnhealthyActionGroupId <String[]>] [-UnhealthyDescription <String>] [-UnhealthySeverity <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -39,10 +41,10 @@ Update-AzMonitorHealthModelEntity -Name <String> -HealthmodelInputObject <ICloud
 Update-AzMonitorHealthModelEntity -InputObject <ICloudHealthIdentity> [-CanvaPositionX <Single>]
  [-CanvaPositionY <Single>] [-DegradedActionGroupId <String[]>] [-DegradedDescription <String>]
  [-DegradedSeverity <String>] [-DisplayName <String>] [-HealthObjective <Single>] [-IconCustomData <String>]
- [-IconName <String>] [-Impact <String>] [-SignalGroup <ISignalGroups>] [-Tag <Hashtable>]
- [-UnhealthyActionGroupId <String[]>] [-UnhealthyDescription <String>] [-UnhealthySeverity <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IconName <String>] [-Impact <String>] [-SignalAggregationGroup <ISignalAggregationGroup[]>]
+ [-SignalGroup <ISignalGroups>] [-Tag <Hashtable>] [-UnhealthyActionGroupId <String[]>]
+ [-UnhealthyDescription <String>] [-UnhealthySeverity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -337,6 +339,24 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SignalAggregationGroup
+Logical aggregation groups over the signals on this entity.
+Overlap is allowed: the same signal may appear in more than one group's members.
+Each group is evaluated independently according to its strategy, and a shared signal can contribute to multiple group states and related per-group telemetry.
+Group states contribute alongside any ungrouped signals and the dependency-aggregated child health to the entity's overall worst-of composite.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

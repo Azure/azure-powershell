@@ -18,9 +18,10 @@ New-AzMonitorHealthModelEntity -HealthModelName <String> -Name <String> -Resourc
  [-SubscriptionId <String>] [-CanvaPositionX <Single>] [-CanvaPositionY <Single>]
  [-DegradedActionGroupId <String[]>] [-DegradedDescription <String>] [-DegradedSeverity <String>]
  [-DisplayName <String>] [-HealthObjective <Single>] [-IconCustomData <String>] [-IconName <String>]
- [-Impact <String>] [-SignalGroup <ISignalGroups>] [-Tag <Hashtable>] [-UnhealthyActionGroupId <String[]>]
- [-UnhealthyDescription <String>] [-UnhealthySeverity <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Impact <String>] [-SignalAggregationGroup <ISignalAggregationGroup[]>] [-SignalGroup <ISignalGroups>]
+ [-Tag <Hashtable>] [-UnhealthyActionGroupId <String[]>] [-UnhealthyDescription <String>]
+ [-UnhealthySeverity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -321,6 +322,24 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SignalAggregationGroup
+Logical aggregation groups over the signals on this entity.
+Overlap is allowed: the same signal may appear in more than one group's members.
+Each group is evaluated independently according to its strategy, and a shared signal can contribute to multiple group states and related per-group telemetry.
+Group states contribute alongside any ungrouped signals and the dependency-aggregated child health to the entity's overall worst-of composite.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
