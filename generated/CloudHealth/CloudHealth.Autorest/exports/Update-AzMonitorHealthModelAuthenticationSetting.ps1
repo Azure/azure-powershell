@@ -59,6 +59,7 @@ INPUTOBJECT <ICloudHealthIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 PROPERTY <IAuthenticationSettingProperties>: The resource-specific properties for this resource.
+  ManagedIdentityName <String>: Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
   [DisplayName <String>]: Display name
 
 RESOURCE <IAuthenticationSetting>: An authentication setting in a health model
@@ -132,6 +133,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityHealthmodelExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IManagedIdentityAuthenticationSettingProperties]))]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties]
     # The resource-specific properties for this resource.
     ${Property},

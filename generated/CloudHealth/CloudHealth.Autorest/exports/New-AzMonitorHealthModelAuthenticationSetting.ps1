@@ -34,6 +34,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PROPERTY <IAuthenticationSettingProperties>: The resource-specific properties for this resource.
+  ManagedIdentityName <String>: Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
   [DisplayName <String>]: Display name
 
 RESOURCE <IAuthenticationSetting>: An authentication setting in a health model
@@ -83,6 +84,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IManagedIdentityAuthenticationSettingProperties]))]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties]
     # The resource-specific properties for this resource.
     ${Property},

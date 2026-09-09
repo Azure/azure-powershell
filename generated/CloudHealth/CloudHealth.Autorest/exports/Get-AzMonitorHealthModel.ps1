@@ -50,7 +50,7 @@ https://learn.microsoft.com/powershell/module/az.cloudhealth/get-azmonitorhealth
 #>
 function Get-AzMonitorHealthModel {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('HealthModelName')]
@@ -60,7 +60,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Path')]
     [System.String]
     # The name of the resource group.

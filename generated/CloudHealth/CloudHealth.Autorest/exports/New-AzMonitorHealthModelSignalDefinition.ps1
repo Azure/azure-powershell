@@ -45,11 +45,21 @@ PROPERTY <ISignalDefinitionProperties>: The resource-specific properties for thi
       [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
       [Threshold <Double?>]: Threshold value
   SignalKind <String>: Kind of the signal definition
+  AggregationType <String>: Type of aggregation to apply to the metric
+  MetricName <String>: Name of the metric
+  MetricNamespace <String>: Metric namespace
+  TimeGrain <String>: Time range of signal. ISO duration format like PT10M.
+  QueryText <String>: Query text in KQL syntax
+  QueryText <String>: Query text in PromQL syntax
   [DataUnit <String>]: Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
   [DisplayName <String>]: Display name
   [RefreshInterval <String>]: Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
   [Tag <ISignalDefinitionPropertiesTags>]: Optional set of tags (key-value pairs)
     [(Any) <String>]: This indicates any property can be added to this object.
+  [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+  [TimeGrain <String>]: Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
+  [ValueColumnName <String>]: Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
+  [TimeGrain <String>]: Time range of signal. ISO duration format like PT10M.
 
 RESOURCE <ISignalDefinition>: A signal definition in a health model
   [Property <ISignalDefinitionProperties>]: The resource-specific properties for this resource.
@@ -110,6 +120,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinitionProperties], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceMetricSignalDefinitionProperties], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ILogAnalyticsQuerySignalDefinitionProperties], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IPrometheusMetricsSignalDefinitionProperties]))]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinitionProperties]
     # The resource-specific properties for this resource.
     ${Property},

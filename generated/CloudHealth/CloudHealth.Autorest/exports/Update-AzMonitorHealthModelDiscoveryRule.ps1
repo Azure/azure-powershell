@@ -73,6 +73,8 @@ RESOURCE <IDiscoveryRule>: A discovery rule which automatically finds entities a
 
 SPECIFICATION <IDiscoveryRuleSpecification>: Specification of the discovery rule defining how entities are discovered.
   Kind <String>: Kind of the discovery rule specification
+  ResourceGraphQuery <String>: Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
+  ApplicationInsightsResourceId <String>: Application Insights resource ID
 .Link
 https://learn.microsoft.com/powershell/module/az.cloudhealth/update-azmonitorhealthmodeldiscoveryrule
 #>
@@ -188,6 +190,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityHealthmodelExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecification], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceGraphQuerySpecification], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IApplicationInsightsTopologySpecification]))]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecification]
     # Specification of the discovery rule defining how entities are discovered.
     ${Specification},

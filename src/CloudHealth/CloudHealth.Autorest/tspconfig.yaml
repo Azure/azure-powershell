@@ -1,0 +1,95 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/CloudHealth/CloudHealth.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: "MonitorHealthModel"
+    service-name: "CloudHealth"
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    # Pin the API version. Without this the emitter falls back to the latest
+    # version declared in main.tsp.
+    api-version: "2026-05-01-preview"
+    exclude-tableview-properties:
+      - Id
+      - Type
+
+    directive:
+      # Hide the Operations endpoint from the public interface
+      - where:
+          subject: Operation
+        hide: true
+      # Default SubscriptionId to the current context
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: '(Get-AzContext).Subscription.Id'
+
+      # AuthenticationSetting, SignalDefinition and DiscoveryRule carry discriminated
+      # (polymorphic) property bags. The Expanded variants only flatten the base type, so
+      # the subtype-required fields (authenticationKind/managedIdentityName, the
+      # signalKind subtype metric fields, and specification/entityName) are unreachable and
+      # every Expanded call fails API payload validation. Keep their unexpanded variants so
+      # the property object built by the *Object cmdlets below can be passed directly.
+      - where:
+          subject: ^(AuthenticationSetting|SignalDefinition|DiscoveryRule)$
+          variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+        remove: false
+      - where:
+          subject: ^(?!AuthenticationSetting$|SignalDefinition$|DiscoveryRule$).*$
+          variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+        remove: true
+      - where:
+          variant: ^CreateViaIdentity.*$
+        remove: true
+
+      # Remove the set-* cmdlet
+      - where:
+          verb: Set
+        remove: true
+
+      # Strip ShouldProcess/ConfirmImpact from every Get-* cmdlet.
+      # Why: several health-model reads
+      #    - entity history
+      #    - signal history/recommendation
+      #    - data annotation
+      # are using POST, so the generator gives them SupportsShouldProcess + ConfirmImpact='Medium'.
+      - where:
+          verb: Get
+        set:
+          suppress-should-process: true
+
+      # Keep the discriminated property bags as explicit models and emit constructor
+      # cmdlets for them, so the unexpanded variants above are actually usable.
+      - no-inline:
+        - AuthenticationSettingProperties
+        - ManagedIdentityAuthenticationSettingProperties
+        - SignalDefinitionProperties
+        - ResourceMetricSignalDefinitionProperties
+        - LogAnalyticsQuerySignalDefinitionProperties
+        - PrometheusMetricsSignalDefinitionProperties
+        - DiscoveryRuleSpecification
+        - ApplicationInsightsTopologySpecification
+        - ResourceGraphQuerySpecification
+        - EvaluationRule
+        - ThresholdRuleV2
+
+      - model-cmdlet:
+        - model-name: ManagedIdentityAuthenticationSettingProperties
+        - model-name: ResourceMetricSignalDefinitionProperties
+        - model-name: LogAnalyticsQuerySignalDefinitionProperties
+        - model-name: PrometheusMetricsSignalDefinitionProperties
+        - model-name: ApplicationInsightsTopologySpecification
+        - model-name: ResourceGraphQuerySpecification
+        - model-name: EvaluationRule
+        - model-name: ThresholdRuleV2
+
+# Replaces the spec's linter block. The "client-sdk" rule set it also extends does not
+# exist in the @azure-tools/typespec-azure-rulesets version pinned by eng/emitter-package.json.
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"

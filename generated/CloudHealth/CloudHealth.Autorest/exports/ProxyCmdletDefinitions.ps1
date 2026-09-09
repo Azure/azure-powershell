@@ -2790,7 +2790,7 @@ https://learn.microsoft.com/powershell/module/az.cloudhealth/get-azmonitorhealth
 #>
 function Get-AzMonitorHealthModel {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('HealthModelName')]
@@ -2800,7 +2800,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -3356,6 +3356,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PROPERTY <IAuthenticationSettingProperties>: The resource-specific properties for this resource.
+  ManagedIdentityName <String>: Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
   [DisplayName <String>]: Display name
 
 RESOURCE <IAuthenticationSetting>: An authentication setting in a health model
@@ -3405,6 +3406,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IManagedIdentityAuthenticationSettingProperties]))]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties]
     # The resource-specific properties for this resource.
     ${Property},
@@ -3616,6 +3618,8 @@ RESOURCE <IDiscoveryRule>: A discovery rule which automatically finds entities a
 
 SPECIFICATION <IDiscoveryRuleSpecification>: Specification of the discovery rule defining how entities are discovered.
   Kind <String>: Kind of the discovery rule specification
+  ResourceGraphQuery <String>: Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
+  ApplicationInsightsResourceId <String>: Application Insights resource ID
 .Link
 https://learn.microsoft.com/powershell/module/az.cloudhealth/new-azmonitorhealthmodeldiscoveryrule
 #>
@@ -3697,6 +3701,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecification], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceGraphQuerySpecification], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IApplicationInsightsTopologySpecification]))]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecification]
     # Specification of the discovery rule defining how entities are discovered.
     ${Specification},
@@ -4514,11 +4519,21 @@ PROPERTY <ISignalDefinitionProperties>: The resource-specific properties for thi
       [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
       [Threshold <Double?>]: Threshold value
   SignalKind <String>: Kind of the signal definition
+  AggregationType <String>: Type of aggregation to apply to the metric
+  MetricName <String>: Name of the metric
+  MetricNamespace <String>: Metric namespace
+  TimeGrain <String>: Time range of signal. ISO duration format like PT10M.
+  QueryText <String>: Query text in KQL syntax
+  QueryText <String>: Query text in PromQL syntax
   [DataUnit <String>]: Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
   [DisplayName <String>]: Display name
   [RefreshInterval <String>]: Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
   [Tag <ISignalDefinitionPropertiesTags>]: Optional set of tags (key-value pairs)
     [(Any) <String>]: This indicates any property can be added to this object.
+  [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+  [TimeGrain <String>]: Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
+  [ValueColumnName <String>]: Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
+  [TimeGrain <String>]: Time range of signal. ISO duration format like PT10M.
 
 RESOURCE <ISignalDefinition>: A signal definition in a health model
   [Property <ISignalDefinitionProperties>]: The resource-specific properties for this resource.
@@ -4579,6 +4594,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinitionProperties], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceMetricSignalDefinitionProperties], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ILogAnalyticsQuerySignalDefinitionProperties], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IPrometheusMetricsSignalDefinitionProperties]))]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinitionProperties]
     # The resource-specific properties for this resource.
     ${Property},
@@ -6534,6 +6550,7 @@ INPUTOBJECT <ICloudHealthIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 PROPERTY <IAuthenticationSettingProperties>: The resource-specific properties for this resource.
+  ManagedIdentityName <String>: Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
   [DisplayName <String>]: Display name
 
 RESOURCE <IAuthenticationSetting>: An authentication setting in a health model
@@ -6607,6 +6624,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityHealthmodelExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IManagedIdentityAuthenticationSettingProperties]))]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties]
     # The resource-specific properties for this resource.
     ${Property},
@@ -6832,6 +6850,8 @@ RESOURCE <IDiscoveryRule>: A discovery rule which automatically finds entities a
 
 SPECIFICATION <IDiscoveryRuleSpecification>: Specification of the discovery rule defining how entities are discovered.
   Kind <String>: Kind of the discovery rule specification
+  ResourceGraphQuery <String>: Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
+  ApplicationInsightsResourceId <String>: Application Insights resource ID
 .Link
 https://learn.microsoft.com/powershell/module/az.cloudhealth/update-azmonitorhealthmodeldiscoveryrule
 #>
@@ -6947,6 +6967,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityHealthmodelExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecification], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceGraphQuerySpecification], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IApplicationInsightsTopologySpecification]))]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecification]
     # Specification of the discovery rule defining how entities are discovered.
     ${Specification},
@@ -7826,11 +7847,21 @@ PROPERTY <ISignalDefinitionProperties>: The resource-specific properties for thi
       [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
       [Threshold <Double?>]: Threshold value
   SignalKind <String>: Kind of the signal definition
+  AggregationType <String>: Type of aggregation to apply to the metric
+  MetricName <String>: Name of the metric
+  MetricNamespace <String>: Metric namespace
+  TimeGrain <String>: Time range of signal. ISO duration format like PT10M.
+  QueryText <String>: Query text in KQL syntax
+  QueryText <String>: Query text in PromQL syntax
   [DataUnit <String>]: Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
   [DisplayName <String>]: Display name
   [RefreshInterval <String>]: Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
   [Tag <ISignalDefinitionPropertiesTags>]: Optional set of tags (key-value pairs)
     [(Any) <String>]: This indicates any property can be added to this object.
+  [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+  [TimeGrain <String>]: Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
+  [ValueColumnName <String>]: Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
+  [TimeGrain <String>]: Time range of signal. ISO duration format like PT10M.
 
 RESOURCE <ISignalDefinition>: A signal definition in a health model
   [Property <ISignalDefinitionProperties>]: The resource-specific properties for this resource.
@@ -7915,6 +7946,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityHealthmodelExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinitionProperties], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceMetricSignalDefinitionProperties], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ILogAnalyticsQuerySignalDefinitionProperties], [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IPrometheusMetricsSignalDefinitionProperties]))]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinitionProperties]
     # The resource-specific properties for this resource.
     ${Property},
