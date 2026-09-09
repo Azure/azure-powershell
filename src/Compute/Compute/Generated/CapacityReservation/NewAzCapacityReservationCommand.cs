@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.IsParameterBound(c => c.ScheduleProfileStart))
                     {
                         capacityReservation.ScheduleProfile = new ScheduleProfile();
-                        capacityReservation.ScheduleProfile.Start = this.ScheduleProfileStart.DateTime.ToString("o", CultureInfo.InvariantCulture);
+                        capacityReservation.ScheduleProfile.Start = this.ScheduleProfileStart.ToString("o", CultureInfo.InvariantCulture);
                     }
                     if (this.IsParameterBound(c => c.MinimumCommitmentDayCount))
                     {
