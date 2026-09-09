@@ -1,11 +1,11 @@
 ---
-external help file:
+external help file: Az.DocumentDB-help.xml
 Module Name: Az.DocumentDB
-online version: https://learn.microsoft.com/powershell/module/az.documentdb/invoke-azdocumentdbpromotemongocluster
+online version: https://learn.microsoft.com/powershell/module/az.documentdb/switch-azdocumentdbmongocluster
 schema: 2.0.0
 ---
 
-# Invoke-AzDocumentDBPromoteMongoCluster
+# Switch-AzDocumentDBMongoCluster
 
 ## SYNOPSIS
 Promote a replica mongo cluster to a primary role.
@@ -13,9 +13,10 @@ Promote a replica mongo cluster to a primary role.
 ## SYNTAX
 
 ```
-Invoke-AzDocumentDBPromoteMongoCluster -MongoClusterName <String> -ResourceGroupName <String>
- -PromoteOption <String> -SourceCluster <String> [-SubscriptionId <String>] [-Mode <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Switch-AzDocumentDBMongoCluster -MongoClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -SourceCluster <String> -PromoteOption <String> [-Mode <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +29,7 @@ cluster; promotion only proceeds when they match.
 
 ### Example 1: Promote a read replica to a primary mongo cluster
 ```powershell
-Invoke-AzDocumentDBPromoteMongoCluster -Name myReplica -ResourceGroupName myResourceGroup -SourceCluster myCluster -Mode Switchover -PromoteOption Forced
+Switch-AzDocumentDBMongoCluster -Name myReplica -ResourceGroupName myResourceGroup -SourceCluster myCluster -Mode Switchover -PromoteOption Forced
 ```
 
 ```output

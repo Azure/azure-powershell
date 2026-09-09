@@ -27,9 +27,6 @@ List all the replicas for the mongo cluster.
 ### [Get-AzDocumentDBUser](Get-AzDocumentDBUser.md)
 Gets the definition of a Mongo cluster user.
 
-### [Invoke-AzDocumentDBPromoteMongoCluster](Invoke-AzDocumentDBPromoteMongoCluster.md)
-Promote a replica mongo cluster to a primary role.
-
 ### [New-AzDocumentDBFirewallRule](New-AzDocumentDBFirewallRule.md)
 Create a new firewall rule or create an existing firewall rule on a mongo cluster.
 
@@ -58,6 +55,9 @@ Reset the administrator password of a mongo cluster.
 
 ### [Restore-AzDocumentDBMongoCluster](Restore-AzDocumentDBMongoCluster.md)
 Restore a mongo cluster to a new cluster from a point in time.
+
+### [Switch-AzDocumentDBMongoCluster](Switch-AzDocumentDBMongoCluster.md)
+Promote a replica mongo cluster to a primary role.
 
 ### [Test-AzDocumentDBMongoClusterNameAvailability](Test-AzDocumentDBMongoClusterNameAvailability.md)
 Check if mongo cluster name is available for use.

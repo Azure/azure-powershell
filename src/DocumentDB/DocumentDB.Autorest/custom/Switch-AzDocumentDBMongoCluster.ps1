@@ -11,13 +11,13 @@ Promote a replica mongo cluster to a primary role. As a safety check, the expect
 (primary) cluster must be provided and is validated against the replica's actual source
 cluster; promotion only proceeds when they match.
 .Example
-Invoke-AzDocumentDBPromoteMongoCluster -Name MyReplica -ResourceGroupName MyResourceGroup -SourceCluster MySourceCluster -Mode Switchover -PromoteOption Forced
+Switch-AzDocumentDBMongoCluster -Name MyReplica -ResourceGroupName MyResourceGroup -SourceCluster MySourceCluster -Mode Switchover -PromoteOption Forced
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.Models.IMongoCluster
 .Link
-https://learn.microsoft.com/powershell/module/az.documentdb/invoke-azdocumentdbpromotemongocluster
+https://learn.microsoft.com/powershell/module/az.documentdb/switch-azdocumentdbmongocluster
 #>
-function Invoke-AzDocumentDBPromoteMongoCluster {
+function Switch-AzDocumentDBMongoCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.Models.IMongoCluster])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(

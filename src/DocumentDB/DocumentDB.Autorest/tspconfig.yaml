@@ -19,7 +19,7 @@ options:
       - where:
           subject: Operation
         hide: true
-      # Promote is exposed through the hand-written Invoke-AzDocumentDBPromoteMongoCluster custom cmdlet.
+      # Promote is exposed through the hand-written Switch-AzDocumentDBMongoCluster custom cmdlet.
       - where:
           verb: Invoke
           subject: PromoteMongoCluster
