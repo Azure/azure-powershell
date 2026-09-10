@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the network interface.
         /// </param>
         /// <param name='ipConfigurationName'>
-        /// The name of the ip configuration name.
+        /// The name of the ip configuration.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

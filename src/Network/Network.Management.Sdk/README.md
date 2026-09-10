@@ -27,7 +27,7 @@ use-extension:
 
 ###
 ``` yaml
-commit: a48bb3329f0d841f42232e6f0086b6e43bc242ef
+commit: 8cf7f3b839725be57eb0be92d0cdd8c7767cc2bd
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/applicationGateway.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/azureWebCategory.json
