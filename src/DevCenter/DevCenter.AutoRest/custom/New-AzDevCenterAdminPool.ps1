@@ -27,7 +27,7 @@ Creates or updates a machine pool
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IPool
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -61,7 +61,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminpool
 #>
 function New-AzDevCenterAdminPool {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IPool])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IPool])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
@@ -105,9 +105,9 @@ function New-AzDevCenterAdminPool {
         ${Location},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.AutoStartEnableStatus])]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.AutoStartEnableStatus]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [System.String]
         # Enables or disables whether the Dev Box should be automatically started at commencement of active hours.
         ${ActiveHourConfigurationAutoStartEnableStatus},
 
@@ -130,9 +130,9 @@ function New-AzDevCenterAdminPool {
         ${ActiveHourConfigurationDefaultTimeZone},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.KeepAwakeEnableStatus])]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.KeepAwakeEnableStatus]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [System.String]
         # Enables or disables whether the Dev Box should be kept awake during active hours.
         ${ActiveHourConfigurationKeepAwakeEnableStatus},
 
@@ -144,16 +144,16 @@ function New-AzDevCenterAdminPool {
         ${DevBoxDefinitionName},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.PoolDevBoxDefinitionType])]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.PoolDevBoxDefinitionType]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("Reference", "Value")]
+        [System.String]
         # Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly.
         ${DevBoxDefinitionType},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DevBoxTunnelEnableStatus])]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DevBoxTunnelEnableStatus]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        [System.String]
         # Indicates whether Dev Box Tunnel is enabled for a the pool.
         ${DevBoxTunnelEnableStatus},
 
@@ -171,9 +171,9 @@ function New-AzDevCenterAdminPool {
         ${ImageReferenceId},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus])]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        [System.String]
         # Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
         ${LocalAdministrator},
 
@@ -191,9 +191,9 @@ function New-AzDevCenterAdminPool {
         ${NetworkConnectionName},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SingleSignOnStatus])]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SingleSignOnStatus]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        [System.String]
         # Indicates whether Dev Boxes in this pool are created with single sign on enabled.
         # The also requires that single sign on be enabled on the tenant.
         ${SingleSignOnStatus},
@@ -228,9 +228,9 @@ function New-AzDevCenterAdminPool {
         ${SkuSize},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier])]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
+        [System.String]
         # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
         ${SkuTier},
 
@@ -241,9 +241,9 @@ function New-AzDevCenterAdminPool {
         ${StopOnDisconnectGracePeriodMinute},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus])]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [System.String]
         # Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
         ${StopOnDisconnectStatus},
 
@@ -254,23 +254,23 @@ function New-AzDevCenterAdminPool {
         ${StopOnNoConnectGracePeriodMinute},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnNoConnectEnableStatus])]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnNoConnectEnableStatus]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [System.String]
         # Enables the feature to stop a started Dev Box when it has not been connected to, once the grace period has lapsed.
         ${StopOnNoConnectStatus},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.ITrackedResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.VirtualNetworkType])]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.VirtualNetworkType]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("Managed", "Unmanaged")]
+        [System.String]
         # Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
         ${VirtualNetworkType},
 

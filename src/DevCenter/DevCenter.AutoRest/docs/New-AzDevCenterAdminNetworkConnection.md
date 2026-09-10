@@ -14,16 +14,16 @@ Creates or updates a Network Connections resource
 
 ### CreateExpanded (Default)
 ```
-New-AzDevCenterAdminNetworkConnection -Name <String> -ResourceGroupName <String>
- -DomainJoinType <DomainJoinType> -Location <String> -SubnetId <String> [-SubscriptionId <String>]
- [-DomainName <String>] [-DomainPassword <String>] [-DomainUsername <String>]
- [-NetworkingResourceGroupName <String>] [-OrganizationUnit <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDevCenterAdminNetworkConnection -Name <String> -ResourceGroupName <String> -DomainJoinType <String>
+ -Location <String> -SubnetId <String> [-SubscriptionId <String>] [-DomainName <String>]
+ [-DomainPassword <String>] [-DomainUsername <String>] [-NetworkingResourceGroupName <String>]
+ [-OrganizationUnit <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDevCenterAdminNetworkConnection -InputObject <IDevCenterIdentity> -DomainJoinType <DomainJoinType>
+New-AzDevCenterAdminNetworkConnection -InputObject <IDevCenterIdentity> -DomainJoinType <String>
  -Location <String> -SubnetId <String> [-DomainName <String>] [-DomainPassword <String>]
  [-DomainUsername <String>] [-NetworkingResourceGroupName <String>] [-OrganizationUnit <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 AAD Join type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DomainJoinType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -351,7 +351,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.INetworkConnection
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.INetworkConnection
 
 ## NOTES
 

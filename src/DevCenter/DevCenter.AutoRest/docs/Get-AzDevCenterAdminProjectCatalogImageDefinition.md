@@ -31,6 +31,18 @@ Get-AzDevCenterAdminProjectCatalogImageDefinition -InputObject <IDevCenterIdenti
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityCatalog
+```
+Get-AzDevCenterAdminProjectCatalogImageDefinition -CatalogInputObject <IDevCenterIdentity>
+ -ImageDefinitionName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityProject
+```
+Get-AzDevCenterAdminProjectCatalogImageDefinition -CatalogName <String> -ImageDefinitionName <String>
+ -ProjectInputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets an Image Definition from the catalog
 
@@ -66,12 +78,27 @@ This command gets the image definition "DefaultDevImage" in the catalog "Central
 
 ## PARAMETERS
 
+### -CatalogInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: GetViaIdentityCatalog
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CatalogName
 The name of the Catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityProject, List
 Aliases:
 
 Required: True
@@ -102,7 +129,7 @@ The name of the Image Definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityCatalog, GetViaIdentityProject
 Aliases:
 
 Required: True
@@ -114,11 +141,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: GetViaIdentityProject
 Aliases:
 
 Required: True
@@ -183,7 +224,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IImageDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IImageDefinition
 
 ## NOTES
 

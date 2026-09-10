@@ -25,6 +25,12 @@ Start-AzDevCenterAdminPoolHealthCheck -InputObject <IDevCenterIdentity> [-Defaul
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### RunViaIdentityProject
+```
+Start-AzDevCenterAdminPoolHealthCheck -PoolName <String> -ProjectInputObject <IDevCenterIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Triggers a refresh of the pool status.
 
@@ -80,7 +86,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
@@ -129,13 +134,28 @@ Name of the pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run
+Parameter Sets: Run, RunViaIdentityProject
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: RunViaIdentityProject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

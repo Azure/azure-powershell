@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDevCenterAdminDevCen
 
 Describe 'Update-AzDevCenterAdminDevCenter' {
     It 'UpdateExpanded' {
-        $devCenter = Update-AzDevCenterAdminDevCenter -Name $env.devCenterUpdate -ResourceGroupName $env.resourceGroup -IdentityType "SystemAssigned"
+        $devCenter = Update-AzDevCenterAdminDevCenter -Name $env.devCenterUpdate -ResourceGroupName $env.resourceGroup -EnableSystemAssignedIdentity $true
         $devCenter.Name | Should -Be $env.devCenterUpdate
         $devcenter.IdentityType | Should -Be "SystemAssigned"   
      }
@@ -24,7 +24,7 @@ Describe 'Update-AzDevCenterAdminDevCenter' {
     It 'UpdateViaIdentityExpanded' {
         $devCenterInput = Get-AzDevCenterAdminDevCenter -ResourceGroupName $env.resourceGroup -Name $env.devCenterUpdate
 
-        $devCenter = Update-AzDevCenterAdminDevCenter -InputObject $devCenterInput -IdentityType "SystemAssigned"
+        $devCenter = Update-AzDevCenterAdminDevCenter -InputObject $devCenterInput -EnableSystemAssignedIdentity $true
         $devCenter.Name | Should -Be $env.devCenterUpdate
         $devcenter.IdentityType | Should -Be "SystemAssigned" 
     }

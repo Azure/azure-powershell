@@ -32,11 +32,44 @@ Get-AzDevCenterAdminImageVersion -DevCenterName <String> -GalleryName <String> -
  [<CommonParameters>]
 ```
 
+### GetViaIdentityDevcenter
+```
+Get-AzDevCenterAdminImageVersion -GalleryName <String> -ImageName <String> -VersionName <String>
+ -DevcenterInputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityProject
+```
+Get-AzDevCenterAdminImageVersion -ImageName <String> -VersionName <String>
+ -ProjectInputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityGallery
+```
+Get-AzDevCenterAdminImageVersion -ImageName <String> -VersionName <String>
+ -GalleryInputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### Get1
 ```
 Get-AzDevCenterAdminImageVersion -ImageName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  -VersionName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityImage1
+```
+Get-AzDevCenterAdminImageVersion -VersionName <String> -Image1InputObject <IDevCenterIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityImage
+```
+Get-AzDevCenterAdminImageVersion -VersionName <String> -ImageInputObject <IDevCenterIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
@@ -96,6 +129,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevcenterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: GetViaIdentityDevcenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DevCenterName
 The name of the devcenter.
 
@@ -111,12 +159,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GalleryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: GetViaIdentityGallery
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -GalleryName
 The name of the gallery.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: List, Get, GetViaIdentityDevcenter
 Aliases:
 
 Required: True
@@ -126,12 +189,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Image1InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: GetViaIdentityImage1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ImageInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: GetViaIdentityImage
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ImageName
 The name of the image.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, List, Get, Get1
+Parameter Sets: List1, List, Get, GetViaIdentityDevcenter, GetViaIdentityProject, GetViaIdentityGallery, Get1
 Aliases:
 
 Required: True
@@ -143,11 +236,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 Parameter Sets: GetViaIdentity1, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: GetViaIdentityProject
 Aliases:
 
 Required: True
@@ -208,7 +315,7 @@ The version of the image.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
+Parameter Sets: Get, GetViaIdentityDevcenter, GetViaIdentityProject, GetViaIdentityGallery, Get1, GetViaIdentityImage1, GetViaIdentityImage
 Aliases:
 
 Required: True
@@ -227,7 +334,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IImageVersion
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IImageVersion
 
 ## NOTES
 

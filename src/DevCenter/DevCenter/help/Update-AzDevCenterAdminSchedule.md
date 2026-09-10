@@ -15,16 +15,16 @@ Partially updates a Scheduled.
 ### UpdateExpanded (Default)
 ```
 Update-AzDevCenterAdminSchedule -PoolName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-State <ScheduleEnableStatus>] [-Tag <Hashtable>] [-Time <String>]
- [-TimeZone <String>] [-Type <ScheduledType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] [-State <String>] [-Tag <Hashtable>] [-Time <String>] [-TimeZone <String>]
+ [-Type <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDevCenterAdminSchedule -InputObject <IDevCenterIdentity> [-State <ScheduleEnableStatus>]
- [-Tag <Hashtable>] [-Time <String>] [-TimeZone <String>] [-Type <ScheduledType>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDevCenterAdminSchedule -InputObject <IDevCenterIdentity> [-State <String>] [-Tag <Hashtable>]
+ [-Time <String>] [-TimeZone <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 Indicates whether or not this scheduled task is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduleEnableStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -238,7 +238,7 @@ Accept wildcard characters: False
 Supported type this scheduled task represents.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduledType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -289,7 +289,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ISchedule
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ISchedule
 
 ## NOTES
 

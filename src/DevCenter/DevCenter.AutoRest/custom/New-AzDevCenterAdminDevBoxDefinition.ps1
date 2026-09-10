@@ -27,7 +27,7 @@ Creates or updates a Dev Box definition.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IDevBoxDefinition
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevBoxDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -61,7 +61,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradmindevboxdefinition
 #>
 function New-AzDevCenterAdminDevBoxDefinition {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IDevBoxDefinition])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevBoxDefinition])]
   [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
     [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
@@ -107,9 +107,9 @@ function New-AzDevCenterAdminDevBoxDefinition {
   
     [Parameter(ParameterSetName = 'CreateExpanded')]
     [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.HibernateSupport])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.HibernateSupport]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+    [System.String]
     # Indicates whether Dev Boxes created with this definition are capable of hibernation.
     # Not all images are capable of supporting hibernation.
     # To find out more see https://aka.ms/devbox/hibernate
@@ -165,16 +165,16 @@ function New-AzDevCenterAdminDevBoxDefinition {
   
     [Parameter(ParameterSetName = 'CreateExpanded')]
     [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
+    [System.String]
     # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
     ${SkuTier},
   
     [Parameter(ParameterSetName = 'CreateExpanded')]
     [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
