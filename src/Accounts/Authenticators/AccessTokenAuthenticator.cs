@@ -68,7 +68,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             else if ((resourceId.EqualsInsensitively(environment.ActiveDirectoryServiceEndpointResourceId) ||
                       resourceId.EqualsInsensitively(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId) ||
                       resourceId.EqualsInsensitively(environment.GetEndpoint(environment.ActiveDirectoryServiceEndpointResourceId)) ||
-                      resourceId.EqualsInsensitively(environment.GetEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)))
+                      resourceId.EqualsInsensitively(environment.GetEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)) ||
+                      resourceId.EqualsInsensitively(environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager)))
                       && account.IsPropertySet(AzureAccount.Property.AccessToken))
             {
                 TracingAdapter.Information($"{DateTime.Now:T} - [AccessTokenAuthenticator] Creating access token - Tenant: '{tenant}', ResourceId: '{resourceId}', UserId: '{account.Id}'");
