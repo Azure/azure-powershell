@@ -20,8 +20,7 @@
 
 -->
 ## Upcoming Release
-* Added `-ScheduleProfileStart` and `-MinimumCommitmentDayCount` parameters to `New-AzCapacityReservation` to create Future Capacity Reservations, and surfaced the read-only `ScheduleProfile` (including `ModifiableUntil`) and instance view `ReservationStateInfo` on `Get-AzCapacityReservation` output. [#1570]
-* Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
+* Added `-ScheduleProfileStart` and `-MinimumCommitmentDayCount` parameters to `New-AzCapacityReservation` to create Future Capacity Reservations, and surfaced the read-only `ScheduleProfile` (including `ModifiableUntil`) and instance view `ReservationStateInfo` on `Get-AzCapacityReservation` output.
 * Added `SpotPlus` as a supported value for the `-Priority` parameter of `New-AzVM`, `New-AzVMConfig`, `New-AzVmss`, and `New-AzVmssConfig`.
     - `SpotPlus` is the next generation of Azure Spot for VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) deployments, and offers higher reliability and longer running time than `Spot`.
     - `-EvictionPolicy` and `-MaxPrice` behave the same way as they do for `Spot`.

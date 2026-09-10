@@ -5549,6 +5549,11 @@ function Test-CapacityReservationFutureReservation
         $sku1 = "Standard_DS1_v2"
         $sku2 = "Standard_A2_v2"
 
+        # The start dates are computed from the current date, so the exact value returned by the
+        # service is only deterministic when the test runs live. Guard the start-date assertions to
+        # Record mode; in Playback the recorded response carries the date from the recording session.
+        $testMode = Get-ComputeTestMode;
+
         # ModifiableUntil is only populated if the start date is 8+ weeks away from today
         $start1 = (Get-Date).AddDays(10).ToString("yyyy-MM-dd");
 
@@ -5562,19 +5567,25 @@ function Test-CapacityReservationFutureReservation
         $CRName1 = "cr1" + $rgname;
         $cr1 = New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName1 -Sku $sku1 -CapacityToReserve 4 -Location $loc -Zone $zone -ScheduleProfileStart $start1;
         Assert-NotNull $cr1.ScheduleProfile;
-        Assert-AreEqual ([datetimeoffset]$start1).Date ([datetimeoffset]$cr1.ScheduleProfile.Start).Date;
+        if ($testMode -eq 'Record') {
+            Assert-AreEqual ([datetimeoffset]$start1).Date ([datetimeoffset]$cr1.ScheduleProfile.Start).Date;
+        }
         Assert-NotNull $cr1.ScheduleProfile.MinimumCommitmentDays;
         Assert-Null $cr1.ScheduleProfile.ModifiableUntil;
 
         # Step 3: create a future reservation with both ScheduleProfileStart and MinimumCommitmentDayCount
         $CRName2 = "cr2" + $rgname;
         $cr2 = New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2 -Sku $sku2 -CapacityToReserve 4 -Location $loc -Zone $zone -ScheduleProfileStart $start2 -MinimumCommitmentDayCount 30;
-        Assert-AreEqual ([datetimeoffset]$start2).Date ([datetimeoffset]$cr2.ScheduleProfile.Start).Date;
+        if ($testMode -eq 'Record') {
+            Assert-AreEqual ([datetimeoffset]$start2).Date ([datetimeoffset]$cr2.ScheduleProfile.Start).Date;
+        }
         Assert-AreEqual 30 $cr2.ScheduleProfile.MinimumCommitmentDays;
 
         # Step 4: verify the schedule profile persisted server-side, including the read-only ModifiableUntil
         $cr2 = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2;
-        Assert-AreEqual ([datetimeoffset]$start2).Date ([datetimeoffset]$cr2.ScheduleProfile.Start).Date;
+        if ($testMode -eq 'Record') {
+            Assert-AreEqual ([datetimeoffset]$start2).Date ([datetimeoffset]$cr2.ScheduleProfile.Start).Date;
+        }
         Assert-AreEqual 30 $cr2.ScheduleProfile.MinimumCommitmentDays;
         Assert-NotNull $cr2.ScheduleProfile.ModifiableUntil;
 
