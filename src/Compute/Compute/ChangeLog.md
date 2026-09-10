@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added new cmdlets `Get-AzSharedVMExtensionVersion` and `Set-AzSharedVMExtensionVersionDeprecation` to read a published Shared VM Extension version and schedule it for deprecation.
 * Added `-WireServerUseLocalFileRules` and `-ImdsUseLocalFileRules` parameters to `Set-AzVMProxyAgentSetting` and `Set-AzVmssProxyAgentSetting` so users can configure local file rules for Virtual Machine (VM) and Virtual Machine Scale Set (VMSS) host endpoints. [#30055]
 * Updated ComputeRP-related cmdlets to use API version 2026-04-01, DiskRP-related cmdlets to use API version 2026-03-02, and GalleryRP-related cmdlets to use API version 2025-12-03.
 * Added `-ProcessorMode` support to VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) create and update flows in `New-AzVMConfig`, `New-AzVM`, `Update-AzVM`, `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss`. [#30012]
