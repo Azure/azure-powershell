@@ -1,1885 +1,318 @@
 {
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l?api-version=2026-05-01-preview+1": {
+  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-a9skjo?api-version=2026-09-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l?api-version=2026-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-a9skjo?api-version=2026-09-01-preview",
       "Content": "{\n  \"location\": \"centralus\",\n  \"identity\": {\n    \"type\": \"SystemAssigned\"\n  }\n}",
       "isContentBase64": false,
-      "Headers": {},
+      "Headers": {
+      },
       "ContentHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Content-Length": [
-          "79"
-        ]
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "79" ]
       }
     },
     "Response": {
       "StatusCode": 201,
       "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"3e049b70-0000-0300-0000-6a843b8a0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/centralus/a5e9cc02-54d0-44c0-ae02-4987e23c4d7c"
-        ],
-        "x-ms-providerhub-traffic": [
-          "True"
-        ],
-        "x-ms-request-id": [
-          "69f92474-ff41-4766-8b39-cf92c60fd339"
-        ],
-        "Azure-AsyncNotification": [
-          "Enabled"
-        ],
-        "x-ms-resource-provider-hint": [
-          "noPolling"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized"
-        ],
-        "x-ms-async-operation-timeout": [
-          "P6D"
-        ],
-        "x-ms-correlation-request-id": [
-          "c8f6f010-01da-4a3e-806c-51424ff56b4b"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "199"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [
-          "2999"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20260818T110130Z:c8f6f010-01da-4a3e-806c-51424ff56b4b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 427753A9BE524EFAB6021E4FF84509A4 Ref B: AMS231020615029 Ref C: 2026-08-18T11:01:27Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:01:30 GMT"
-        ]
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000000-0000-4000-8000-000000000164\"" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000165" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000166" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000167*EF145E98AC9A9A87DD2A8A3508D70991A06F8559E3FCC017523EF1D681FA0A59?api-version=2026-09-01-preview\u0026t=639246146629803397\u0026c=MIIHlDCCBnygAwIBAgIQaX_ZHFEoU7sz0HCXjYKicjANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MDgxMDE0NDQyOFoXDTI3MDIwNTIwNDQyOFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCmo6XnCcxYgqezw6xq8wogVij_CLvm25QJIKuvv5q4kAxbnvRWLCcl7I8zNofjDg9vjFXsIe44WqLx2P9eCA17Zj-b15gMMZ7DvT3XSQVqflPvNWZYvH-Hs_q-asiKwqzed7dVRhnc7Fre4ZS1gB3kxJldJi_0SUdZMBUGdQsnPt1NHe7cjFmvLLu4V5y5h-Opl8TJZeIfOv_1HxytPNqy4Lk7qhtmSwKezW7UCZyuqB8qHXjsivolPCqJYOxJqTSWBNUlr4_Eyx1ZXkWialHRy5d1HOI0r9n12CabF1Oyr1r7e0VXz4qwPaVYuGvU2TaXVw4ah-n-1Hz6WW9yDlKZAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBS8NVzR1PSHnmoESwmWF5O3nE8LuDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzE1L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS8xNS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQB6c1LNPLshpU-AYEyyHSPFFoMZGtO18Zuggl2ykMtDVbGFVLukymohkYRBUZi3k4zPrLI51NerUtl6W39DvHsOhUIGPauk9Ijx-WZ7nWtPvRqHwJwhEbZ_knicfLF0h_CIAxiQIan-hnwvJDUMW6N-2S072SPtC1-JqseHyMOJmIJGEuJfL-ucsnSGBMog4t3UuDwGuAnyT-OF-QEBKfG4L2qanCJSo6uqQxda08-r1CdCbhK9v5YiWu1Q97mPvShPVLIIXbXydEBjpsPCbE0xKGJB1YJjGfwG74U6pXlhrv9-sTiEsj9I9wqWv8jzycmhxlN_p24eVq6rGjq4nU0d\u0026s=gyGGGYbyazxtPPqdsj3M0Hl79NoTL8Wl4nYzqJzZLRPRuCMHfrMPWzY31urm7JxiEWHwmoVUSmhH_W8s-EZM6TgXAQOrpN87SkCXVKMFGeQZPEJQ-BdVOu8ws6upRfbRUXBo72RMmq2i_y7imZVvfAJUjKzWXAMKQGx2BjFA_WzbBa2aHHBGNOwUlwIvOxPbGh1vvEtykCitXWxikBTdJZVQphOFRLDmBgPEOSAqK0Ieis02ooP-Va8ir0znH9IzupJTxMQug_e9ZVOjCVWdZXVuaCRDmn1-SUu3N_3aqfdoWBvNQgE-qUsnim66dSKP1nrEWqE0tl3VlHpamK7gWA\u0026h=w-KOUbdshq8ySmu4bmkrpF_N8TCcpetWmnHtHc2G2bQ" ],
+        "x-ms-async-operation-timeout": [ "P6D" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000168" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052422Z:00000000-0000-4000-8000-000000000168" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CDACDA265AEA4B2AB8940495C677D077 Ref B: GVA201070812029 Ref C: 2026-09-10T05:24:20Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:24:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [
-          "678"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
+        "Content-Length": [ "690" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"name\":\"azps-hm-delete-ms1q6l\",\"type\":\"microsoft.cloudhealth/healthmodels\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-18T11:01:28.6863002Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-08-18T11:01:28.6863002Z\"},\"identity\":{\"principalId\":\"f9d750d1-6676-464b-bcfa-875159d11c56\",\"tenantId\":\"5380364e-35d4-4293-8bfe-fa76e835384e\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Accepted\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-a9skjo\",\"name\":\"azps-hm-delete-a9skjo\",\"type\":\"microsoft.cloudhealth/healthmodels\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"user1@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-10T05:24:21.1053504Z\",\"lastModifiedBy\":\"user1@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-10T05:24:21.1053504Z\"},\"identity\":{\"principalId\":\"00000000-0000-4000-8000-000000000169\",\"tenantId\":\"00000000-0000-4000-8000-000000000002\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Accepted\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized": {
+  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000167*EF145E98AC9A9A87DD2A8A3508D70991A06F8559E3FCC017523EF1D681FA0A59?api-version=2026-09-01-preview\u0026t=639246146629803397\u0026c=MIIHlDCCBnygAwIBAgIQaX_ZHFEoU7sz0HCXjYKicjANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MDgxMDE0NDQyOFoXDTI3MDIwNTIwNDQyOFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCmo6XnCcxYgqezw6xq8wogVij_CLvm25QJIKuvv5q4kAxbnvRWLCcl7I8zNofjDg9vjFXsIe44WqLx2P9eCA17Zj-b15gMMZ7DvT3XSQVqflPvNWZYvH-Hs_q-asiKwqzed7dVRhnc7Fre4ZS1gB3kxJldJi_0SUdZMBUGdQsnPt1NHe7cjFmvLLu4V5y5h-Opl8TJZeIfOv_1HxytPNqy4Lk7qhtmSwKezW7UCZyuqB8qHXjsivolPCqJYOxJqTSWBNUlr4_Eyx1ZXkWialHRy5d1HOI0r9n12CabF1Oyr1r7e0VXz4qwPaVYuGvU2TaXVw4ah-n-1Hz6WW9yDlKZAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBS8NVzR1PSHnmoESwmWF5O3nE8LuDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzE1L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS8xNS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQB6c1LNPLshpU-AYEyyHSPFFoMZGtO18Zuggl2ykMtDVbGFVLukymohkYRBUZi3k4zPrLI51NerUtl6W39DvHsOhUIGPauk9Ijx-WZ7nWtPvRqHwJwhEbZ_knicfLF0h_CIAxiQIan-hnwvJDUMW6N-2S072SPtC1-JqseHyMOJmIJGEuJfL-ucsnSGBMog4t3UuDwGuAnyT-OF-QEBKfG4L2qanCJSo6uqQxda08-r1CdCbhK9v5YiWu1Q97mPvShPVLIIXbXydEBjpsPCbE0xKGJB1YJjGfwG74U6pXlhrv9-sTiEsj9I9wqWv8jzycmhxlN_p24eVq6rGjq4nU0d\u0026s=gyGGGYbyazxtPPqdsj3M0Hl79NoTL8Wl4nYzqJzZLRPRuCMHfrMPWzY31urm7JxiEWHwmoVUSmhH_W8s-EZM6TgXAQOrpN87SkCXVKMFGeQZPEJQ-BdVOu8ws6upRfbRUXBo72RMmq2i_y7imZVvfAJUjKzWXAMKQGx2BjFA_WzbBa2aHHBGNOwUlwIvOxPbGh1vvEtykCitXWxikBTdJZVQphOFRLDmBgPEOSAqK0Ieis02ooP-Va8ir0znH9IzupJTxMQug_e9ZVOjCVWdZXVuaCRDmn1-SUu3N_3aqfdoWBvNQgE-qUsnim66dSKP1nrEWqE0tl3VlHpamK7gWA\u0026h=w-KOUbdshq8ySmu4bmkrpF_N8TCcpetWmnHtHc2G2bQ+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000167*EF145E98AC9A9A87DD2A8A3508D70991A06F8559E3FCC017523EF1D681FA0A59?api-version=2026-09-01-preview\u0026t=639246146629803397\u0026c=MIIHlDCCBnygAwIBAgIQaX_ZHFEoU7sz0HCXjYKicjANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MDgxMDE0NDQyOFoXDTI3MDIwNTIwNDQyOFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCmo6XnCcxYgqezw6xq8wogVij_CLvm25QJIKuvv5q4kAxbnvRWLCcl7I8zNofjDg9vjFXsIe44WqLx2P9eCA17Zj-b15gMMZ7DvT3XSQVqflPvNWZYvH-Hs_q-asiKwqzed7dVRhnc7Fre4ZS1gB3kxJldJi_0SUdZMBUGdQsnPt1NHe7cjFmvLLu4V5y5h-Opl8TJZeIfOv_1HxytPNqy4Lk7qhtmSwKezW7UCZyuqB8qHXjsivolPCqJYOxJqTSWBNUlr4_Eyx1ZXkWialHRy5d1HOI0r9n12CabF1Oyr1r7e0VXz4qwPaVYuGvU2TaXVw4ah-n-1Hz6WW9yDlKZAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBS8NVzR1PSHnmoESwmWF5O3nE8LuDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzE1L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS8xNS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQB6c1LNPLshpU-AYEyyHSPFFoMZGtO18Zuggl2ykMtDVbGFVLukymohkYRBUZi3k4zPrLI51NerUtl6W39DvHsOhUIGPauk9Ijx-WZ7nWtPvRqHwJwhEbZ_knicfLF0h_CIAxiQIan-hnwvJDUMW6N-2S072SPtC1-JqseHyMOJmIJGEuJfL-ucsnSGBMog4t3UuDwGuAnyT-OF-QEBKfG4L2qanCJSo6uqQxda08-r1CdCbhK9v5YiWu1Q97mPvShPVLIIXbXydEBjpsPCbE0xKGJB1YJjGfwG74U6pXlhrv9-sTiEsj9I9wqWv8jzycmhxlN_p24eVq6rGjq4nU0d\u0026s=gyGGGYbyazxtPPqdsj3M0Hl79NoTL8Wl4nYzqJzZLRPRuCMHfrMPWzY31urm7JxiEWHwmoVUSmhH_W8s-EZM6TgXAQOrpN87SkCXVKMFGeQZPEJQ-BdVOu8ws6upRfbRUXBo72RMmq2i_y7imZVvfAJUjKzWXAMKQGx2BjFA_WzbBa2aHHBGNOwUlwIvOxPbGh1vvEtykCitXWxikBTdJZVQphOFRLDmBgPEOSAqK0Ieis02ooP-Va8ir0znH9IzupJTxMQug_e9ZVOjCVWdZXVuaCRDmn1-SUu3N_3aqfdoWBvNQgE-qUsnim66dSKP1nrEWqE0tl3VlHpamK7gWA\u0026h=w-KOUbdshq8ySmu4bmkrpF_N8TCcpetWmnHtHc2G2bQ",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "75"
-        ],
-        "x-ms-client-request-id": [
-          "d9f2869a-08ed-4ed7-9f00-6b6864300020"
-        ],
-        "CommandName": [
-          "New-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "New-AzMonitorHealthModel_CreateExpanded"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "76" ],
+        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000170" ],
+        "CommandName": [ "New-AzMonitorHealthModel" ],
+        "FullCommandName": [ "New-AzMonitorHealthModel_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ]
       },
-      "ContentHeaders": {}
+      "ContentHeaders": {
+      }
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a8047497-0000-0300-0000-6a843b8b0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/536408e8-797b-4b8b-b2df-84ec3918748f"
-        ],
-        "x-ms-request-id": [
-          "f76b4e66-c727-49ee-b55e-bca52ed630d7"
-        ],
-        "x-ms-correlation-request-id": [
-          "3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110201Z:3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 790CFE1A25CB447A91963EBD00FEBB31 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:01Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:00 GMT"
-        ]
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000000-0000-4000-8000-000000000171\"" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/switzerlandnorth/00000000-0000-4000-8000-000000000172" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000173" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000174" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDNORTH:20260910T052454Z:00000000-0000-4000-8000-000000000174" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2921E4C870E34C04BECB96242E820ED7 Ref B: GVA201070812029 Ref C: 2026-09-10T05:24:53Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:24:53 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [
-          "633"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
+        "Content-Length": [ "632" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:01:29.5888671Z\",\"endTime\":\"2026-08-18T11:01:30.9782144Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000167*EF145E98AC9A9A87DD2A8A3508D70991A06F8559E3FCC017523EF1D681FA0A59\",\"name\":\"00000000-0000-4000-8000-000000000167*EF145E98AC9A9A87DD2A8A3508D70991A06F8559E3FCC017523EF1D681FA0A59\",\"resourceId\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-a9skjo\",\"status\":\"Succeeded\",\"startTime\":\"2026-09-10T05:24:21.943953Z\",\"endTime\":\"2026-09-10T05:24:23.2198151Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l?api-version=2026-05-01-preview+3": {
+  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-a9skjo?api-version=2026-09-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l?api-version=2026-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-a9skjo?api-version=2026-09-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "76"
-        ],
-        "x-ms-client-request-id": [
-          "d9f2869a-08ed-4ed7-9f00-6b6864300020"
-        ],
-        "CommandName": [
-          "New-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "New-AzMonitorHealthModel_CreateExpanded"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "77" ],
+        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000170" ],
+        "CommandName": [ "New-AzMonitorHealthModel" ],
+        "FullCommandName": [ "New-AzMonitorHealthModel_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ]
       },
-      "ContentHeaders": {}
+      "ContentHeaders": {
+      }
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"c300f168-0000-0200-0000-6a843b8b0000\""
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-providerhub-traffic": [
-          "True"
-        ],
-        "x-ms-request-id": [
-          "56fd2fb1-e9b3-464c-93fb-496a52831902"
-        ],
-        "x-ms-correlation-request-id": [
-          "e0f781cd-7850-4dd1-a899-37accfaf0a1a"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20260818T110201Z:e0f781cd-7850-4dd1-a899-37accfaf0a1a"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 9393F8B89F2A468A806F7A7CEF7A62DF Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:01Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:01 GMT"
-        ]
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000000-0000-4000-8000-000000000175\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000176" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000177" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052454Z:00000000-0000-4000-8000-000000000177" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6BE390C769FB4AB4A7A29D5AA4E30C61 Ref B: GVA201070812029 Ref C: 2026-09-10T05:24:54Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:24:54 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [
-          "679"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
+        "Content-Length": [ "691" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"name\":\"azps-hm-delete-ms1q6l\",\"type\":\"microsoft.cloudhealth/healthmodels\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-18T11:01:28.6863002Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-08-18T11:01:28.6863002Z\"},\"identity\":{\"principalId\":\"f9d750d1-6676-464b-bcfa-875159d11c56\",\"tenantId\":\"5380364e-35d4-4293-8bfe-fa76e835384e\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-a9skjo\",\"name\":\"azps-hm-delete-a9skjo\",\"type\":\"microsoft.cloudhealth/healthmodels\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"user1@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-10T05:24:21.1053504Z\",\"lastModifiedBy\":\"user1@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-10T05:24:21.1053504Z\"},\"identity\":{\"principalId\":\"00000000-0000-4000-8000-000000000169\",\"tenantId\":\"00000000-0000-4000-8000-000000000002\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l?api-version=2026-05-01-preview+4": {
+  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-a9skjo?api-version=2026-09-01-preview+4": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l?api-version=2026-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-a9skjo?api-version=2026-09-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [
-          "77"
-        ],
-        "x-ms-client-request-id": [
-          "803a5b4a-033a-4dd8-a2c8-a04aa8dfd415"
-        ],
-        "CommandName": [
-          "Remove-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "Remove-AzMonitorHealthModel_Delete"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ],
-        "Authorization": [
-          "[Filtered]"
-        ]
+        "x-ms-unique-id": [ "78" ],
+        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000178" ],
+        "CommandName": [ "Remove-AzMonitorHealthModel" ],
+        "FullCommandName": [ "Remove-AzMonitorHealthModel_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
       },
-      "ContentHeaders": {}
+      "ContentHeaders": {
+      }
     },
     "Response": {
       "StatusCode": 202,
       "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"3e044980-0000-0300-0000-6a843baa0000\""
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized"
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/centralus/3bc4940b-e7bc-47a2-a9a0-deee41a56382"
-        ],
-        "x-ms-providerhub-traffic": [
-          "True"
-        ],
-        "x-ms-request-id": [
-          "a367b570-444e-4bf0-8cc9-38f6595ea194"
-        ],
-        "Azure-AsyncNotification": [
-          "Enabled"
-        ],
-        "x-ms-resource-provider-hint": [
-          "noPolling"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized"
-        ],
-        "x-ms-correlation-request-id": [
-          "ae17ff11-8157-48f9-9180-9738179a09c6"
-        ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "199"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-deletes": [
-          "2999"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20260818T110203Z:ae17ff11-8157-48f9-9180-9738179a09c6"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: E85F0728E8154FA79A926B048B263E00 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:02Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:02 GMT"
-        ]
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000000-0000-4000-8000-000000000179\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000180*EF145E98AC9A9A87DD2A8A3508D70991A06F8559E3FCC017523EF1D681FA0A59?api-version=2026-09-01-preview\u0026t=639246146954313777\u0026c=MIIHlDCCBnygAwIBAgIQaX_ZHFEoU7sz0HCXjYKicjANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MDgxMDE0NDQyOFoXDTI3MDIwNTIwNDQyOFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCmo6XnCcxYgqezw6xq8wogVij_CLvm25QJIKuvv5q4kAxbnvRWLCcl7I8zNofjDg9vjFXsIe44WqLx2P9eCA17Zj-b15gMMZ7DvT3XSQVqflPvNWZYvH-Hs_q-asiKwqzed7dVRhnc7Fre4ZS1gB3kxJldJi_0SUdZMBUGdQsnPt1NHe7cjFmvLLu4V5y5h-Opl8TJZeIfOv_1HxytPNqy4Lk7qhtmSwKezW7UCZyuqB8qHXjsivolPCqJYOxJqTSWBNUlr4_Eyx1ZXkWialHRy5d1HOI0r9n12CabF1Oyr1r7e0VXz4qwPaVYuGvU2TaXVw4ah-n-1Hz6WW9yDlKZAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBS8NVzR1PSHnmoESwmWF5O3nE8LuDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzE1L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS8xNS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQB6c1LNPLshpU-AYEyyHSPFFoMZGtO18Zuggl2ykMtDVbGFVLukymohkYRBUZi3k4zPrLI51NerUtl6W39DvHsOhUIGPauk9Ijx-WZ7nWtPvRqHwJwhEbZ_knicfLF0h_CIAxiQIan-hnwvJDUMW6N-2S072SPtC1-JqseHyMOJmIJGEuJfL-ucsnSGBMog4t3UuDwGuAnyT-OF-QEBKfG4L2qanCJSo6uqQxda08-r1CdCbhK9v5YiWu1Q97mPvShPVLIIXbXydEBjpsPCbE0xKGJB1YJjGfwG74U6pXlhrv9-sTiEsj9I9wqWv8jzycmhxlN_p24eVq6rGjq4nU0d\u0026s=pKhdOe3mOr6GDJyfQ49SCNhihg_OriSt263HY7rov8VAT6Zjvvc4cyCtEPJZA1CB9dG25fJDHTYG74BbdGvZGrHP50rKagX6CEn-N_fkqa4C0R0zuuyMKVIk5OBIwbmNpvRxZs5jSAcHAuttlxeDlBrJLgUoXIqlRz5NPjYGvz6FiWNkoIaUi8F7fxuhXjdiM3WfopkyCKolv02-tTj9u91uWvd8i9NW7OyD-W0I1hvzEmT27qlWzxjw7tkCjEgAtHsCBA5pgT0V1HHVVZoDK-7wsMZfzk8NH-G3tildFG_oDVIZi-bRFhoDCTY2j5qGvtkmCLw_gO4c9ZcjJUHEsw\u0026h=lk_wfDB-poKVEovOLGOqE2QsO9uL6RGA40x2eQpYhf8" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000181" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000182" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000180*EF145E98AC9A9A87DD2A8A3508D70991A06F8559E3FCC017523EF1D681FA0A59?api-version=2026-09-01-preview\u0026t=639246146954313777\u0026c=MIIHlDCCBnygAwIBAgIQaX_ZHFEoU7sz0HCXjYKicjANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MDgxMDE0NDQyOFoXDTI3MDIwNTIwNDQyOFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCmo6XnCcxYgqezw6xq8wogVij_CLvm25QJIKuvv5q4kAxbnvRWLCcl7I8zNofjDg9vjFXsIe44WqLx2P9eCA17Zj-b15gMMZ7DvT3XSQVqflPvNWZYvH-Hs_q-asiKwqzed7dVRhnc7Fre4ZS1gB3kxJldJi_0SUdZMBUGdQsnPt1NHe7cjFmvLLu4V5y5h-Opl8TJZeIfOv_1HxytPNqy4Lk7qhtmSwKezW7UCZyuqB8qHXjsivolPCqJYOxJqTSWBNUlr4_Eyx1ZXkWialHRy5d1HOI0r9n12CabF1Oyr1r7e0VXz4qwPaVYuGvU2TaXVw4ah-n-1Hz6WW9yDlKZAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBS8NVzR1PSHnmoESwmWF5O3nE8LuDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzE1L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS8xNS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQB6c1LNPLshpU-AYEyyHSPFFoMZGtO18Zuggl2ykMtDVbGFVLukymohkYRBUZi3k4zPrLI51NerUtl6W39DvHsOhUIGPauk9Ijx-WZ7nWtPvRqHwJwhEbZ_knicfLF0h_CIAxiQIan-hnwvJDUMW6N-2S072SPtC1-JqseHyMOJmIJGEuJfL-ucsnSGBMog4t3UuDwGuAnyT-OF-QEBKfG4L2qanCJSo6uqQxda08-r1CdCbhK9v5YiWu1Q97mPvShPVLIIXbXydEBjpsPCbE0xKGJB1YJjGfwG74U6pXlhrv9-sTiEsj9I9wqWv8jzycmhxlN_p24eVq6rGjq4nU0d\u0026s=MFH7W4WaB0GAMujolNI6QCz3iuu3d-N4r98YkBwVMqaQP9Jjg3AtjltYREvZHJTfoZ1ptkfLFmL8aehtTUI8BWOvcr8h-ZoueA8ws6GTfh5GtudZgsB8RnJrv8BvilfF_4Tblm7WQBVgvaLB_d4qLX4jCrQvv9BSz7Jpm18ltCYot0lp1r7VUlwxPFanfghuwbbzxi0J_pXBON2cuiHgsFRufDV1dFzDJtjzi846PRhcVc5Xx4ZqHgB41u-LoLD_ouApPal5hmXL1d5Ic0zoiRRFhSkZz73BrPKFaSwipFLgLQyLUm_QHm9hi3RjwnOvQZc6Nyly3UVlEyScvEBjDA\u0026h=lk_wfDB-poKVEovOLGOqE2QsO9uL6RGA40x2eQpYhf8" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000183" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052455Z:00000000-0000-4000-8000-000000000183" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E054C84710D943C58B01171016146354 Ref B: GVA201070812029 Ref C: 2026-09-10T05:24:55Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:24:54 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [
-          "8"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
       },
       "Content": "bnVsbA==",
       "isContentBase64": false
     }
   },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized": {
+  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000180*EF145E98AC9A9A87DD2A8A3508D70991A06F8559E3FCC017523EF1D681FA0A59?api-version=2026-09-01-preview\u0026t=639246146954313777\u0026c=MIIHlDCCBnygAwIBAgIQaX_ZHFEoU7sz0HCXjYKicjANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MDgxMDE0NDQyOFoXDTI3MDIwNTIwNDQyOFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCmo6XnCcxYgqezw6xq8wogVij_CLvm25QJIKuvv5q4kAxbnvRWLCcl7I8zNofjDg9vjFXsIe44WqLx2P9eCA17Zj-b15gMMZ7DvT3XSQVqflPvNWZYvH-Hs_q-asiKwqzed7dVRhnc7Fre4ZS1gB3kxJldJi_0SUdZMBUGdQsnPt1NHe7cjFmvLLu4V5y5h-Opl8TJZeIfOv_1HxytPNqy4Lk7qhtmSwKezW7UCZyuqB8qHXjsivolPCqJYOxJqTSWBNUlr4_Eyx1ZXkWialHRy5d1HOI0r9n12CabF1Oyr1r7e0VXz4qwPaVYuGvU2TaXVw4ah-n-1Hz6WW9yDlKZAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBS8NVzR1PSHnmoESwmWF5O3nE8LuDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzE1L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS8xNS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQB6c1LNPLshpU-AYEyyHSPFFoMZGtO18Zuggl2ykMtDVbGFVLukymohkYRBUZi3k4zPrLI51NerUtl6W39DvHsOhUIGPauk9Ijx-WZ7nWtPvRqHwJwhEbZ_knicfLF0h_CIAxiQIan-hnwvJDUMW6N-2S072SPtC1-JqseHyMOJmIJGEuJfL-ucsnSGBMog4t3UuDwGuAnyT-OF-QEBKfG4L2qanCJSo6uqQxda08-r1CdCbhK9v5YiWu1Q97mPvShPVLIIXbXydEBjpsPCbE0xKGJB1YJjGfwG74U6pXlhrv9-sTiEsj9I9wqWv8jzycmhxlN_p24eVq6rGjq4nU0d\u0026s=MFH7W4WaB0GAMujolNI6QCz3iuu3d-N4r98YkBwVMqaQP9Jjg3AtjltYREvZHJTfoZ1ptkfLFmL8aehtTUI8BWOvcr8h-ZoueA8ws6GTfh5GtudZgsB8RnJrv8BvilfF_4Tblm7WQBVgvaLB_d4qLX4jCrQvv9BSz7Jpm18ltCYot0lp1r7VUlwxPFanfghuwbbzxi0J_pXBON2cuiHgsFRufDV1dFzDJtjzi846PRhcVc5Xx4ZqHgB41u-LoLD_ouApPal5hmXL1d5Ic0zoiRRFhSkZz73BrPKFaSwipFLgLQyLUm_QHm9hi3RjwnOvQZc6Nyly3UVlEyScvEBjDA\u0026h=lk_wfDB-poKVEovOLGOqE2QsO9uL6RGA40x2eQpYhf8+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000180*EF145E98AC9A9A87DD2A8A3508D70991A06F8559E3FCC017523EF1D681FA0A59?api-version=2026-09-01-preview\u0026t=639246146954313777\u0026c=MIIHlDCCBnygAwIBAgIQaX_ZHFEoU7sz0HCXjYKicjANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MDgxMDE0NDQyOFoXDTI3MDIwNTIwNDQyOFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCmo6XnCcxYgqezw6xq8wogVij_CLvm25QJIKuvv5q4kAxbnvRWLCcl7I8zNofjDg9vjFXsIe44WqLx2P9eCA17Zj-b15gMMZ7DvT3XSQVqflPvNWZYvH-Hs_q-asiKwqzed7dVRhnc7Fre4ZS1gB3kxJldJi_0SUdZMBUGdQsnPt1NHe7cjFmvLLu4V5y5h-Opl8TJZeIfOv_1HxytPNqy4Lk7qhtmSwKezW7UCZyuqB8qHXjsivolPCqJYOxJqTSWBNUlr4_Eyx1ZXkWialHRy5d1HOI0r9n12CabF1Oyr1r7e0VXz4qwPaVYuGvU2TaXVw4ah-n-1Hz6WW9yDlKZAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBS8NVzR1PSHnmoESwmWF5O3nE8LuDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzE1L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS8xNS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQB6c1LNPLshpU-AYEyyHSPFFoMZGtO18Zuggl2ykMtDVbGFVLukymohkYRBUZi3k4zPrLI51NerUtl6W39DvHsOhUIGPauk9Ijx-WZ7nWtPvRqHwJwhEbZ_knicfLF0h_CIAxiQIan-hnwvJDUMW6N-2S072SPtC1-JqseHyMOJmIJGEuJfL-ucsnSGBMog4t3UuDwGuAnyT-OF-QEBKfG4L2qanCJSo6uqQxda08-r1CdCbhK9v5YiWu1Q97mPvShPVLIIXbXydEBjpsPCbE0xKGJB1YJjGfwG74U6pXlhrv9-sTiEsj9I9wqWv8jzycmhxlN_p24eVq6rGjq4nU0d\u0026s=MFH7W4WaB0GAMujolNI6QCz3iuu3d-N4r98YkBwVMqaQP9Jjg3AtjltYREvZHJTfoZ1ptkfLFmL8aehtTUI8BWOvcr8h-ZoueA8ws6GTfh5GtudZgsB8RnJrv8BvilfF_4Tblm7WQBVgvaLB_d4qLX4jCrQvv9BSz7Jpm18ltCYot0lp1r7VUlwxPFanfghuwbbzxi0J_pXBON2cuiHgsFRufDV1dFzDJtjzi846PRhcVc5Xx4ZqHgB41u-LoLD_ouApPal5hmXL1d5Ic0zoiRRFhSkZz73BrPKFaSwipFLgLQyLUm_QHm9hi3RjwnOvQZc6Nyly3UVlEyScvEBjDA\u0026h=lk_wfDB-poKVEovOLGOqE2QsO9uL6RGA40x2eQpYhf8",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "78"
-        ],
-        "x-ms-client-request-id": [
-          "803a5b4a-033a-4dd8-a2c8-a04aa8dfd415"
-        ],
-        "CommandName": [
-          "Remove-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "Remove-AzMonitorHealthModel_Delete"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "79" ],
+        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000178" ],
+        "CommandName": [ "Remove-AzMonitorHealthModel" ],
+        "FullCommandName": [ "Remove-AzMonitorHealthModel_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ]
       },
-      "ContentHeaders": {}
+      "ContentHeaders": {
+      }
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a804c098-0000-0300-0000-6a843bac0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/68c4ec70-4d43-4824-8066-4407ae6bd1f2"
-        ],
-        "x-ms-request-id": [
-          "c5407392-497b-4fd9-a60a-0d95e2862f1c"
-        ],
-        "x-ms-correlation-request-id": [
-          "61401302-0c68-43c0-ba62-2145256df76d"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110234Z:61401302-0c68-43c0-ba62-2145256df76d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 94C8B2F452E642628B880A8F8EBA5180 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:33Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:33 GMT"
-        ]
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000000-0000-4000-8000-000000000184\"" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/switzerlandnorth/00000000-0000-4000-8000-000000000185" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000186" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000187" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDNORTH:20260910T052526Z:00000000-0000-4000-8000-000000000187" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 90332B9C850A4B318F49549834AB31B7 Ref B: GVA201070812029 Ref C: 2026-09-10T05:25:26Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:25:26 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [
-          "632"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
+        "Content-Length": [ "632" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:02:02.662133Z\",\"endTime\":\"2026-08-18T11:02:03.9277318Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000180*EF145E98AC9A9A87DD2A8A3508D70991A06F8559E3FCC017523EF1D681FA0A59\",\"name\":\"00000000-0000-4000-8000-000000000180*EF145E98AC9A9A87DD2A8A3508D70991A06F8559E3FCC017523EF1D681FA0A59\",\"resourceId\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-a9skjo\",\"status\":\"Succeeded\",\"startTime\":\"2026-09-10T05:24:55.292466Z\",\"endTime\":\"2026-09-10T05:24:56.5534792Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+2": {
+  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000180*EF145E98AC9A9A87DD2A8A3508D70991A06F8559E3FCC017523EF1D681FA0A59?api-version=2026-09-01-preview\u0026t=639246146954313777\u0026c=MIIHlDCCBnygAwIBAgIQaX_ZHFEoU7sz0HCXjYKicjANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MDgxMDE0NDQyOFoXDTI3MDIwNTIwNDQyOFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCmo6XnCcxYgqezw6xq8wogVij_CLvm25QJIKuvv5q4kAxbnvRWLCcl7I8zNofjDg9vjFXsIe44WqLx2P9eCA17Zj-b15gMMZ7DvT3XSQVqflPvNWZYvH-Hs_q-asiKwqzed7dVRhnc7Fre4ZS1gB3kxJldJi_0SUdZMBUGdQsnPt1NHe7cjFmvLLu4V5y5h-Opl8TJZeIfOv_1HxytPNqy4Lk7qhtmSwKezW7UCZyuqB8qHXjsivolPCqJYOxJqTSWBNUlr4_Eyx1ZXkWialHRy5d1HOI0r9n12CabF1Oyr1r7e0VXz4qwPaVYuGvU2TaXVw4ah-n-1Hz6WW9yDlKZAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBS8NVzR1PSHnmoESwmWF5O3nE8LuDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzE1L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS8xNS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQB6c1LNPLshpU-AYEyyHSPFFoMZGtO18Zuggl2ykMtDVbGFVLukymohkYRBUZi3k4zPrLI51NerUtl6W39DvHsOhUIGPauk9Ijx-WZ7nWtPvRqHwJwhEbZ_knicfLF0h_CIAxiQIan-hnwvJDUMW6N-2S072SPtC1-JqseHyMOJmIJGEuJfL-ucsnSGBMog4t3UuDwGuAnyT-OF-QEBKfG4L2qanCJSo6uqQxda08-r1CdCbhK9v5YiWu1Q97mPvShPVLIIXbXydEBjpsPCbE0xKGJB1YJjGfwG74U6pXlhrv9-sTiEsj9I9wqWv8jzycmhxlN_p24eVq6rGjq4nU0d\u0026s=pKhdOe3mOr6GDJyfQ49SCNhihg_OriSt263HY7rov8VAT6Zjvvc4cyCtEPJZA1CB9dG25fJDHTYG74BbdGvZGrHP50rKagX6CEn-N_fkqa4C0R0zuuyMKVIk5OBIwbmNpvRxZs5jSAcHAuttlxeDlBrJLgUoXIqlRz5NPjYGvz6FiWNkoIaUi8F7fxuhXjdiM3WfopkyCKolv02-tTj9u91uWvd8i9NW7OyD-W0I1hvzEmT27qlWzxjw7tkCjEgAtHsCBA5pgT0V1HHVVZoDK-7wsMZfzk8NH-G3tildFG_oDVIZi-bRFhoDCTY2j5qGvtkmCLw_gO4c9ZcjJUHEsw\u0026h=lk_wfDB-poKVEovOLGOqE2QsO9uL6RGA40x2eQpYhf8+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000180*EF145E98AC9A9A87DD2A8A3508D70991A06F8559E3FCC017523EF1D681FA0A59?api-version=2026-09-01-preview\u0026t=639246146954313777\u0026c=MIIHlDCCBnygAwIBAgIQaX_ZHFEoU7sz0HCXjYKicjANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MDgxMDE0NDQyOFoXDTI3MDIwNTIwNDQyOFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCmo6XnCcxYgqezw6xq8wogVij_CLvm25QJIKuvv5q4kAxbnvRWLCcl7I8zNofjDg9vjFXsIe44WqLx2P9eCA17Zj-b15gMMZ7DvT3XSQVqflPvNWZYvH-Hs_q-asiKwqzed7dVRhnc7Fre4ZS1gB3kxJldJi_0SUdZMBUGdQsnPt1NHe7cjFmvLLu4V5y5h-Opl8TJZeIfOv_1HxytPNqy4Lk7qhtmSwKezW7UCZyuqB8qHXjsivolPCqJYOxJqTSWBNUlr4_Eyx1ZXkWialHRy5d1HOI0r9n12CabF1Oyr1r7e0VXz4qwPaVYuGvU2TaXVw4ah-n-1Hz6WW9yDlKZAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBS8NVzR1PSHnmoESwmWF5O3nE8LuDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzE1L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTUvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS8xNS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQB6c1LNPLshpU-AYEyyHSPFFoMZGtO18Zuggl2ykMtDVbGFVLukymohkYRBUZi3k4zPrLI51NerUtl6W39DvHsOhUIGPauk9Ijx-WZ7nWtPvRqHwJwhEbZ_knicfLF0h_CIAxiQIan-hnwvJDUMW6N-2S072SPtC1-JqseHyMOJmIJGEuJfL-ucsnSGBMog4t3UuDwGuAnyT-OF-QEBKfG4L2qanCJSo6uqQxda08-r1CdCbhK9v5YiWu1Q97mPvShPVLIIXbXydEBjpsPCbE0xKGJB1YJjGfwG74U6pXlhrv9-sTiEsj9I9wqWv8jzycmhxlN_p24eVq6rGjq4nU0d\u0026s=pKhdOe3mOr6GDJyfQ49SCNhihg_OriSt263HY7rov8VAT6Zjvvc4cyCtEPJZA1CB9dG25fJDHTYG74BbdGvZGrHP50rKagX6CEn-N_fkqa4C0R0zuuyMKVIk5OBIwbmNpvRxZs5jSAcHAuttlxeDlBrJLgUoXIqlRz5NPjYGvz6FiWNkoIaUi8F7fxuhXjdiM3WfopkyCKolv02-tTj9u91uWvd8i9NW7OyD-W0I1hvzEmT27qlWzxjw7tkCjEgAtHsCBA5pgT0V1HHVVZoDK-7wsMZfzk8NH-G3tildFG_oDVIZi-bRFhoDCTY2j5qGvtkmCLw_gO4c9ZcjJUHEsw\u0026h=lk_wfDB-poKVEovOLGOqE2QsO9uL6RGA40x2eQpYhf8",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "79"
-        ],
-        "x-ms-client-request-id": [
-          "803a5b4a-033a-4dd8-a2c8-a04aa8dfd415"
-        ],
-        "CommandName": [
-          "Remove-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "Remove-AzMonitorHealthModel_Delete"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "80" ],
+        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000178" ],
+        "CommandName": [ "Remove-AzMonitorHealthModel" ],
+        "FullCommandName": [ "Remove-AzMonitorHealthModel_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ]
       },
-      "ContentHeaders": {}
+      "ContentHeaders": {
+      }
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a804c098-0000-0300-0000-6a843bac0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/88925777-1883-4212-8ce4-02e0cb09769d"
-        ],
-        "x-ms-request-id": [
-          "1bbf92b4-25c2-4b5a-899a-2f6c4a6d3256"
-        ],
-        "x-ms-correlation-request-id": [
-          "e708319f-6a8e-4fb7-82c3-7be872f43977"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110234Z:e708319f-6a8e-4fb7-82c3-7be872f43977"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 2EDDC1C6C3B2422187CC07D0F4E0CCB0 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:34Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:33 GMT"
-        ]
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000000-0000-4000-8000-000000000184\"" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/italynorth/00000000-0000-4000-8000-000000000188" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000189" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000190" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "ITALYNORTH:20260910T052527Z:00000000-0000-4000-8000-000000000190" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6C6AF2F953014ECB929FEA6E7BC7455E Ref B: GVA201070812029 Ref C: 2026-09-10T05:25:27Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:25:26 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [
-          "632"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
+        "Content-Length": [ "632" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:02:02.662133Z\",\"endTime\":\"2026-08-18T11:02:03.9277318Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000180*EF145E98AC9A9A87DD2A8A3508D70991A06F8559E3FCC017523EF1D681FA0A59\",\"name\":\"00000000-0000-4000-8000-000000000180*EF145E98AC9A9A87DD2A8A3508D70991A06F8559E3FCC017523EF1D681FA0A59\",\"resourceId\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-a9skjo\",\"status\":\"Succeeded\",\"startTime\":\"2026-09-10T05:24:55.292466Z\",\"endTime\":\"2026-09-10T05:24:56.5534792Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l?api-version=2026-05-01-preview+7": {
+  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-a9skjo?api-version=2026-09-01-preview+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l?api-version=2026-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-a9skjo?api-version=2026-09-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [
-          "80"
-        ],
-        "x-ms-client-request-id": [
-          "5ad04756-0c59-44a8-9967-166793eb198e"
-        ],
-        "CommandName": [
-          "Get-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "Get-AzMonitorHealthModel_Get"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ],
-        "Authorization": [
-          "[Filtered]"
-        ]
+        "x-ms-unique-id": [ "81" ],
+        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000191" ],
+        "CommandName": [ "Get-AzMonitorHealthModel" ],
+        "FullCommandName": [ "Get-AzMonitorHealthModel_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
       },
-      "ContentHeaders": {}
+      "ContentHeaders": {
+      }
     },
     "Response": {
       "StatusCode": 404,
       "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "bc2a39d3-e617-4b50-92bc-b44899946597"
-        ],
-        "x-ms-correlation-request-id": [
-          "bc2a39d3-e617-4b50-92bc-b44899946597"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20260818T110235Z:bc2a39d3-e617-4b50-92bc-b44899946597"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 320B89DB61A847D5AF5E7307A3ACF2CE Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:35Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:34 GMT"
-        ]
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000192" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000192" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052528Z:00000000-0000-4000-8000-000000000192" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5509DF31E8E541948875C49FEFC2771F Ref B: GVA201070812029 Ref C: 2026-09-10T05:25:27Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:25:27 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [
-          "245"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
+        "Content-Length": [ "245" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l' under resource group 'azps-ch-rg-ms1q6l' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+2": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "75"
-        ],
-        "x-ms-client-request-id": [
-          "d9f2869a-08ed-4ed7-9f00-6b6864300020"
-        ],
-        "CommandName": [
-          "New-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "New-AzMonitorHealthModel_CreateExpanded"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
-      },
-      "ContentHeaders": {}
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a8047497-0000-0300-0000-6a843b8b0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/536408e8-797b-4b8b-b2df-84ec3918748f"
-        ],
-        "x-ms-request-id": [
-          "f76b4e66-c727-49ee-b55e-bca52ed630d7"
-        ],
-        "x-ms-correlation-request-id": [
-          "3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110201Z:3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 790CFE1A25CB447A91963EBD00FEBB31 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:01Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:00 GMT"
-        ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [
-          "633"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:01:29.5888671Z\",\"endTime\":\"2026-08-18T11:01:30.9782144Z\",\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "78"
-        ],
-        "x-ms-client-request-id": [
-          "803a5b4a-033a-4dd8-a2c8-a04aa8dfd415"
-        ],
-        "CommandName": [
-          "Remove-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "Remove-AzMonitorHealthModel_Delete"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
-      },
-      "ContentHeaders": {}
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a804c098-0000-0300-0000-6a843bac0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/68c4ec70-4d43-4824-8066-4407ae6bd1f2"
-        ],
-        "x-ms-request-id": [
-          "c5407392-497b-4fd9-a60a-0d95e2862f1c"
-        ],
-        "x-ms-correlation-request-id": [
-          "61401302-0c68-43c0-ba62-2145256df76d"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110234Z:61401302-0c68-43c0-ba62-2145256df76d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 94C8B2F452E642628B880A8F8EBA5180 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:33Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:33 GMT"
-        ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [
-          "632"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:02:02.662133Z\",\"endTime\":\"2026-08-18T11:02:03.9277318Z\",\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "78"
-        ],
-        "x-ms-client-request-id": [
-          "803a5b4a-033a-4dd8-a2c8-a04aa8dfd415"
-        ],
-        "CommandName": [
-          "Remove-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "Remove-AzMonitorHealthModel_Delete"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
-      },
-      "ContentHeaders": {}
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a804c098-0000-0300-0000-6a843bac0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/68c4ec70-4d43-4824-8066-4407ae6bd1f2"
-        ],
-        "x-ms-request-id": [
-          "c5407392-497b-4fd9-a60a-0d95e2862f1c"
-        ],
-        "x-ms-correlation-request-id": [
-          "61401302-0c68-43c0-ba62-2145256df76d"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110234Z:61401302-0c68-43c0-ba62-2145256df76d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 94C8B2F452E642628B880A8F8EBA5180 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:33Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:33 GMT"
-        ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [
-          "632"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:02:02.662133Z\",\"endTime\":\"2026-08-18T11:02:03.9277318Z\",\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+5": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "78"
-        ],
-        "x-ms-client-request-id": [
-          "803a5b4a-033a-4dd8-a2c8-a04aa8dfd415"
-        ],
-        "CommandName": [
-          "Remove-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "Remove-AzMonitorHealthModel_Delete"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
-      },
-      "ContentHeaders": {}
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a804c098-0000-0300-0000-6a843bac0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/68c4ec70-4d43-4824-8066-4407ae6bd1f2"
-        ],
-        "x-ms-request-id": [
-          "c5407392-497b-4fd9-a60a-0d95e2862f1c"
-        ],
-        "x-ms-correlation-request-id": [
-          "61401302-0c68-43c0-ba62-2145256df76d"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110234Z:61401302-0c68-43c0-ba62-2145256df76d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 94C8B2F452E642628B880A8F8EBA5180 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:33Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:33 GMT"
-        ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [
-          "632"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:02:02.662133Z\",\"endTime\":\"2026-08-18T11:02:03.9277318Z\",\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+6": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "78"
-        ],
-        "x-ms-client-request-id": [
-          "803a5b4a-033a-4dd8-a2c8-a04aa8dfd415"
-        ],
-        "CommandName": [
-          "Remove-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "Remove-AzMonitorHealthModel_Delete"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
-      },
-      "ContentHeaders": {}
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a804c098-0000-0300-0000-6a843bac0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/68c4ec70-4d43-4824-8066-4407ae6bd1f2"
-        ],
-        "x-ms-request-id": [
-          "c5407392-497b-4fd9-a60a-0d95e2862f1c"
-        ],
-        "x-ms-correlation-request-id": [
-          "61401302-0c68-43c0-ba62-2145256df76d"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110234Z:61401302-0c68-43c0-ba62-2145256df76d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 94C8B2F452E642628B880A8F8EBA5180 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:33Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:33 GMT"
-        ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [
-          "632"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:02:02.662133Z\",\"endTime\":\"2026-08-18T11:02:03.9277318Z\",\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+7": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "78"
-        ],
-        "x-ms-client-request-id": [
-          "803a5b4a-033a-4dd8-a2c8-a04aa8dfd415"
-        ],
-        "CommandName": [
-          "Remove-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "Remove-AzMonitorHealthModel_Delete"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
-      },
-      "ContentHeaders": {}
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a804c098-0000-0300-0000-6a843bac0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/68c4ec70-4d43-4824-8066-4407ae6bd1f2"
-        ],
-        "x-ms-request-id": [
-          "c5407392-497b-4fd9-a60a-0d95e2862f1c"
-        ],
-        "x-ms-correlation-request-id": [
-          "61401302-0c68-43c0-ba62-2145256df76d"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110234Z:61401302-0c68-43c0-ba62-2145256df76d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 94C8B2F452E642628B880A8F8EBA5180 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:33Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:33 GMT"
-        ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [
-          "632"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:02:02.662133Z\",\"endTime\":\"2026-08-18T11:02:03.9277318Z\",\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+8": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "78"
-        ],
-        "x-ms-client-request-id": [
-          "803a5b4a-033a-4dd8-a2c8-a04aa8dfd415"
-        ],
-        "CommandName": [
-          "Remove-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "Remove-AzMonitorHealthModel_Delete"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
-      },
-      "ContentHeaders": {}
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a804c098-0000-0300-0000-6a843bac0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/68c4ec70-4d43-4824-8066-4407ae6bd1f2"
-        ],
-        "x-ms-request-id": [
-          "c5407392-497b-4fd9-a60a-0d95e2862f1c"
-        ],
-        "x-ms-correlation-request-id": [
-          "61401302-0c68-43c0-ba62-2145256df76d"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110234Z:61401302-0c68-43c0-ba62-2145256df76d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 94C8B2F452E642628B880A8F8EBA5180 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:33Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:33 GMT"
-        ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [
-          "632"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"53b880b0-fc28-4567-b816-c24c119c6425*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:02:02.662133Z\",\"endTime\":\"2026-08-18T11:02:03.9277318Z\",\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "75"
-        ],
-        "x-ms-client-request-id": [
-          "d9f2869a-08ed-4ed7-9f00-6b6864300020"
-        ],
-        "CommandName": [
-          "New-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "New-AzMonitorHealthModel_CreateExpanded"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
-      },
-      "ContentHeaders": {}
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a8047497-0000-0300-0000-6a843b8b0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/536408e8-797b-4b8b-b2df-84ec3918748f"
-        ],
-        "x-ms-request-id": [
-          "f76b4e66-c727-49ee-b55e-bca52ed630d7"
-        ],
-        "x-ms-correlation-request-id": [
-          "3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110201Z:3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 790CFE1A25CB447A91963EBD00FEBB31 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:01Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:00 GMT"
-        ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [
-          "633"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:01:29.5888671Z\",\"endTime\":\"2026-08-18T11:01:30.9782144Z\",\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "75"
-        ],
-        "x-ms-client-request-id": [
-          "d9f2869a-08ed-4ed7-9f00-6b6864300020"
-        ],
-        "CommandName": [
-          "New-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "New-AzMonitorHealthModel_CreateExpanded"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
-      },
-      "ContentHeaders": {}
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a8047497-0000-0300-0000-6a843b8b0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/536408e8-797b-4b8b-b2df-84ec3918748f"
-        ],
-        "x-ms-request-id": [
-          "f76b4e66-c727-49ee-b55e-bca52ed630d7"
-        ],
-        "x-ms-correlation-request-id": [
-          "3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110201Z:3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 790CFE1A25CB447A91963EBD00FEBB31 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:01Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:00 GMT"
-        ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [
-          "633"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:01:29.5888671Z\",\"endTime\":\"2026-08-18T11:01:30.9782144Z\",\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+5": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "75"
-        ],
-        "x-ms-client-request-id": [
-          "d9f2869a-08ed-4ed7-9f00-6b6864300020"
-        ],
-        "CommandName": [
-          "New-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "New-AzMonitorHealthModel_CreateExpanded"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
-      },
-      "ContentHeaders": {}
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a8047497-0000-0300-0000-6a843b8b0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/536408e8-797b-4b8b-b2df-84ec3918748f"
-        ],
-        "x-ms-request-id": [
-          "f76b4e66-c727-49ee-b55e-bca52ed630d7"
-        ],
-        "x-ms-correlation-request-id": [
-          "3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110201Z:3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 790CFE1A25CB447A91963EBD00FEBB31 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:01Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:00 GMT"
-        ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [
-          "633"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:01:29.5888671Z\",\"endTime\":\"2026-08-18T11:01:30.9782144Z\",\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+6": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "75"
-        ],
-        "x-ms-client-request-id": [
-          "d9f2869a-08ed-4ed7-9f00-6b6864300020"
-        ],
-        "CommandName": [
-          "New-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "New-AzMonitorHealthModel_CreateExpanded"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
-      },
-      "ContentHeaders": {}
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a8047497-0000-0300-0000-6a843b8b0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/536408e8-797b-4b8b-b2df-84ec3918748f"
-        ],
-        "x-ms-request-id": [
-          "f76b4e66-c727-49ee-b55e-bca52ed630d7"
-        ],
-        "x-ms-correlation-request-id": [
-          "3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110201Z:3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 790CFE1A25CB447A91963EBD00FEBB31 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:01Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:00 GMT"
-        ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [
-          "633"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:01:29.5888671Z\",\"endTime\":\"2026-08-18T11:01:30.9782144Z\",\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+7": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "75"
-        ],
-        "x-ms-client-request-id": [
-          "d9f2869a-08ed-4ed7-9f00-6b6864300020"
-        ],
-        "CommandName": [
-          "New-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "New-AzMonitorHealthModel_CreateExpanded"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
-      },
-      "ContentHeaders": {}
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a8047497-0000-0300-0000-6a843b8b0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/536408e8-797b-4b8b-b2df-84ec3918748f"
-        ],
-        "x-ms-request-id": [
-          "f76b4e66-c727-49ee-b55e-bca52ed630d7"
-        ],
-        "x-ms-correlation-request-id": [
-          "3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110201Z:3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 790CFE1A25CB447A91963EBD00FEBB31 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:01Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:00 GMT"
-        ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [
-          "633"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:01:29.5888671Z\",\"endTime\":\"2026-08-18T11:01:30.9782144Z\",\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzMonitorHealthModel+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+8": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6?api-version=2026-05-01-preview&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [
-          "[Filtered]"
-        ],
-        "x-ms-unique-id": [
-          "75"
-        ],
-        "x-ms-client-request-id": [
-          "d9f2869a-08ed-4ed7-9f00-6b6864300020"
-        ],
-        "CommandName": [
-          "New-AzMonitorHealthModel"
-        ],
-        "FullCommandName": [
-          "New-AzMonitorHealthModel_CreateExpanded"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v7.1.0",
-          "PSVersion/v7.5.4",
-          "Az.CloudHealth/0.1.0"
-        ]
-      },
-      "ContentHeaders": {}
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"a8047497-0000-0300-0000-6a843b8b0000\""
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/westeurope/536408e8-797b-4b8b-b2df-84ec3918748f"
-        ],
-        "x-ms-request-id": [
-          "f76b4e66-c727-49ee-b55e-bca52ed630d7"
-        ],
-        "x-ms-correlation-request-id": [
-          "3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "249"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "3749"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20260818T110201Z:3f71a314-5436-47dd-ac8d-437cdad61c95"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 790CFE1A25CB447A91963EBD00FEBB31 Ref B: AMS231020615029 Ref C: 2026-08-18T11:02:01Z"
-        ],
-        "Date": [
-          "Tue, 18 Aug 2026 11:02:00 GMT"
-        ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [
-          "633"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"name\":\"5c1cb146-cf12-4951-983c-441e13d9791c*BC32BCEF9DDF9E0C45AD727E9061DD6794F7674A2BB2AD5CB80493B9FE3BE7F6\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azps-ch-rg-ms1q6l/providers/Microsoft.CloudHealth/healthmodels/azps-hm-delete-ms1q6l\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-18T11:01:29.5888671Z\",\"endTime\":\"2026-08-18T11:01:30.9782144Z\",\"properties\":null}",
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.CloudHealth/healthmodels/azps-hm-delete-a9skjo\u0027 under resource group \u0027azps-ch-rg-a9skjo\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
       "isContentBase64": false
     }
   }
