@@ -39,12 +39,12 @@ Write-Host -ForegroundColor DarkGreen "-------------------- End filtering change
 if (Test-Path $SubTasksFilePath) {
     Write-Host -ForegroundColor Green "-------------------- Start setting subtasks ... --------------------"
     Get-Content $SubTasksFilePath | ForEach-Object {
-      if ($_ && 'Predictor' -eq $_) {
+      if ($_ -and 'Predictor' -eq $_) {
         $subTaskPredictor = $true
-      } elseif ($_ && 'Installer' -eq $_) {
+      } elseif ($_ -and 'Installer' -eq $_) {
         Write-Host "##vso[task.setvariable variable=SubTaskInstaller]true"
         $subTaskInstaller = $true
-      } elseif ($_ && 'all' -eq $_) {
+      } elseif ($_ -and 'all' -eq $_) {
         $subTaskAll = $true
       }
     }
