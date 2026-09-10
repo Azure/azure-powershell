@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,6 +20,7 @@ using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionR
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using RestAzureNS = Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
@@ -94,8 +95,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 }
             }
 
-            Logger.Instance.WriteDebug("Executing CreateOrUpdateWithHttpMessagesAsync");
-            var response = BmsAdapter.Client.ProtectedItems.CreateOrUpdateWithHttpMessagesAsync(
+            Logger.Instance.WriteDebug("Executing BeginCreateOrUpdateWithHttpMessagesAsync");
+            var response = BmsAdapter.Client.ProtectedItems.BeginCreateOrUpdateWithHttpMessagesAsync(
                  resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                  vaultName ?? BmsAdapter.GetResourceName(),
                  AzureFabricName,
@@ -105,13 +106,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                  null,
                  customHeaders,
                  cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
-            return new RestAzureNS.AzureOperationResponse<ProtectedItemResource>
+            return ToAzureOperationResponse<ProtectedItemResource, ProtectedItemsCreateOrUpdateHeaders>(response);
+        }
+
+        /// <summary>
+        /// Configures Source Scan on an existing protected item using the dedicated action from
+        /// the 2026-07-01 Backup API.
+        /// </summary>
+        /// <param name="containerName">Name of the container which this item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="request">Source Scan configuration request</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <returns>Response returned by the service for this operation, including tracking headers for async jobs</returns>
+        public RestAzureNS.AzureOperationResponse ConfigureProtectedItemSourceScan(
+            string containerName,
+            string protectedItemName,
+            ProtectedItemConfigureSourceScanRequest request,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            if (request == null)
             {
-                Body = response.Body,
-                Request = response.Request,
-                Response = response.Response,
-                RequestId = response.RequestId
-            };
+                throw new ArgumentNullException(nameof(request));
+            }
+
+            var response = BmsAdapter.Client.ConfigureSourceScan.BeginExecuteWithHttpMessagesAsync(
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
+                AzureFabricName,
+                containerName,
+                protectedItemName,
+                request.SourceScanAction,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+
+            return ToAzureOperationResponseWithoutBody(response);
         }
 
         /// <summary>

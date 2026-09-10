@@ -24,14 +24,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Initializes a new instance of the Permission class.
         /// </summary>
 
+        /// <param name="id">The id for the permission.
+        /// </param>
+
         /// <param name="dataActions">An array of data actions that are allowed.
         /// </param>
 
         /// <param name="notDataActions">An array of data actions that are denied.
         /// </param>
-        public Permission(System.Collections.Generic.IList<string> dataActions = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> notDataActions = default(System.Collections.Generic.IList<string>))
+        public Permission(string id = default(string), System.Collections.Generic.IList<string> dataActions = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> notDataActions = default(System.Collections.Generic.IList<string>))
 
         {
+            this.Id = id;
             this.DataActions = dataActions;
             this.NotDataActions = notDataActions;
             CustomInit();
@@ -42,6 +46,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets the id for the permission.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
+        public string Id {get; set; }
 
         /// <summary>
         /// Gets or sets an array of data actions that are allowed.

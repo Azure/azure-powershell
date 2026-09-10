@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 {
     public partial class ServiceClientAdapter
     {
-
         /// <summary>
         /// Inquire protection containers in the vault according to the query params
         /// </summary>
@@ -206,13 +205,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 containerName,
                 parameters,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
-            return new RestAzureNS.AzureOperationResponse<ProtectionContainerResource>
-            {
-                Body = response.Body,
-                Request = response.Request,
-                Response = response.Response,
-                RequestId = response.RequestId
-            };
+            return ToAzureOperationResponse<ProtectionContainerResource, ProtectionContainersRegisterHeaders>(response);
         }
 
         /// <summary>

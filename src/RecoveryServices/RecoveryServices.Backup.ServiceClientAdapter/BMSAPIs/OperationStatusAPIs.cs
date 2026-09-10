@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -141,8 +141,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             return BmsAdapter.Client.GetOperationStatusWithHttpMessagesAsync(
-                                resourceGroupName,
-                                vaultName,
+                                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                                vaultName ?? BmsAdapter.GetResourceName(),
                                 operationId).Result;
         }
 
@@ -160,8 +160,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             var prepareResponseBase = BmsAdapter.Client.BmsPrepareDataMoveOperationResult.GetWithHttpMessagesAsync(
-                                resourceGroupName,
-                                vaultName,
+                                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                                vaultName ?? BmsAdapter.GetResourceName(),
                                 operationId).Result.Body;
 
             var prepareResponseSerialized = JsonConvert.SerializeObject(prepareResponseBase);

@@ -457,6 +457,51 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The runtime environment was not found. Runtime environment name: {0}..
+        /// </summary>
+        internal static string RuntimeEnvironmentNotFound {
+            get {
+                return ResourceManager.GetString("RuntimeEnvironmentNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A runtime environment with name '{0}' already exists. Use Set-AzAutomationRuntimeEnvironment to update an existing runtime environment..
+        /// </summary>
+        internal static string RuntimeEnvironmentAlreadyExists {
+            get {
+                return ResourceManager.GetString("RuntimeEnvironmentAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The package was not found. Package name: {0}..
+        /// </summary>
+        internal static string RuntimeEnvironmentPackageNotFound {
+            get {
+                return ResourceManager.GetString("RuntimeEnvironmentPackageNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A package with name '{0}' already exists. Use Set-AzAutomationRuntimeEnvironmentPackage to update an existing package..
+        /// </summary>
+        internal static string RuntimeEnvironmentPackageAlreadyExists {
+            get {
+                return ResourceManager.GetString("RuntimeEnvironmentPackageAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The -ContentUri parameter is required to update package '{0}'. The existing package has no content link, so a value must be provided..
+        /// </summary>
+        internal static string RuntimeEnvironmentPackageContentUriRequired {
+            get {
+                return ResourceManager.GetString("RuntimeEnvironmentPackageContentUriRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to For monthly occurrence, both day of week and occurrence need to be specified..
         /// </summary>
         internal static string MonthlyScheduleNeedsDayOfWeekAndOccurrence {

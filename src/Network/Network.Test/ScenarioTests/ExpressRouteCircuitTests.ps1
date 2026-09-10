@@ -146,6 +146,115 @@ function Test-ExpressRouteCircuitStageCRUD
 
 <#
 .SYNOPSIS
+Tests ExpressRouteCircuit CRUD for a multi-cloud circuit (SkuTier=MultiCloud) using -PartnerAccountId.
+#>
+function Test-ExpressRouteCircuitMultiCloudWithPartnerAccountIdCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $circuitName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "West US 2"
+    $partnerAccountId = "123456789"
+
+    try
+    {
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+      $circuit = New-AzExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname `
+          -SkuTier MultiCloud -SkuFamily MeteredData `
+          -ServiceProviderName "aws" -PeeringLocation "uswest2" -BandwidthInMbps 1000 `
+          -PartnerAccountId $partnerAccountId
+
+      $getCircuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+
+      Assert-AreEqual "MultiCloud_MeteredData" $getCircuit.Sku.Name
+      Assert-AreEqual "MultiCloud" $getCircuit.Sku.Tier
+      Assert-AreEqual "MeteredData" $getCircuit.Sku.Family
+      Assert-AreEqual "AWS" $getCircuit.ServiceProviderProperties.ServiceProviderName
+      Assert-AreEqual "uswest2" $getCircuit.ServiceProviderProperties.PeeringLocation
+      Assert-AreEqual $partnerAccountId $getCircuit.PartnerAccountId
+      Assert-NotNull $getCircuit.ActivationKey
+      Assert-AreEqual "Maximum" $getCircuit.ResiliencyLevel
+
+      $delete = Remove-AzExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
+      Assert-AreEqual true $delete
+    }
+    finally
+    {
+      Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests ExpressRouteCircuit CRUD for a multi-cloud circuit (SkuTier=MultiCloud) using -ActivationKey.
+#>
+function Test-ExpressRouteCircuitMultiCloudWithActivationKeyCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $circuitName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "West US 2"
+    $activationKey = "eyJjb25uZWN0aW9uU2l6ZU1icHMiOjEwMDAsInNoYXJlZENvbm5lY3Rpb25VdWlkIjoiOTE1Nzg2YjAtNjA4Ny00YzNiLThiNjktNDAxOTFkMzMxNDVmIiwiZGVzdGluYXRpb25BY2NvdW50SWQiOiI3ZDc0N2VlZC1iNDRjLTQyNTctOGQ0My1kZjllYmQ5NDU0NmIiLCJ2ZXJzaW9uIjoxLCJkZXN0aW5hdGlvbkVudmlyb25tZW50VXJpIjoiaHR0cHM6Ly9lYXN0dXMyZXVhcC1tdWx0aWNsb3VkLnBhcnRuZXItaW50ZXJjb25uZWN0LmF6dXJlLmNvbS9wcm92aWRlcnMvYXdzL2Vudmlyb25tZW50cy91c2Vhc3QyZXVhcCJ9"
+
+    try
+    {
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+      $circuit = New-AzExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname `
+          -SkuTier MultiCloud -SkuFamily MeteredData `
+          -ServiceProviderName "AWS" -PeeringLocation "uswest2" -BandwidthInMbps 1000 `
+          -ActivationKey $activationKey
+
+      $getCircuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+
+      Assert-AreEqual "MultiCloud_MeteredData" $getCircuit.Sku.Name
+      Assert-AreEqual "MultiCloud" $getCircuit.Sku.Tier
+      Assert-AreEqual "AWS" $getCircuit.ServiceProviderProperties.ServiceProviderName
+      Assert-NotNull $getCircuit.ActivationKey
+      Assert-AreEqual "Maximum" $getCircuit.ResiliencyLevel
+
+      $delete = Remove-AzExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
+      Assert-AreEqual true $delete
+    }
+    finally
+    {
+      Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Verifies that passing both -PartnerAccountId and -ActivationKey together fails with a client-side error.
+#>
+function Test-ExpressRouteCircuitMultiCloudMutualExclusion
+{
+    $rgname = Get-ResourceGroupName
+    $circuitName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "West US 2"
+
+    try
+    {
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+      Assert-ThrowsContains {
+          New-AzExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname `
+              -SkuTier MultiCloud -SkuFamily MeteredData `
+              -ServiceProviderName "AWS" -PeeringLocation "uswest2" -BandwidthInMbps 500 `
+              -PartnerAccountId "123456789012" -ActivationKey "dGVzdC1hY3RpdmF0aW9uLWtleQ=="
+      } "mutually exclusive"
+    }
+    finally
+    {
+      Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests ExpressRouteCircuitCRUD.
 #>
 function Test-ExpressRouteCircuitCRUD

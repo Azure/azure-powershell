@@ -102,6 +102,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="virtualRouterIps">VirtualRouter IPs.
         /// </param>
 
+        /// <param name="addressPrefixV6">IPv6 Address-prefix for this VirtualHub.
+        /// </param>
+
+        /// <param name="virtualRouterIpsV6">VirtualRouter IPv6 IPs.
+        /// </param>
+
         /// <param name="allowBranchToBranchTraffic">Flag to control transit for VirtualRouter hub.
         /// </param>
 
@@ -113,7 +119,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="virtualRouterAutoScaleConfiguration">The VirtualHub Router autoscale configuration.
         /// </param>
-        public VirtualHub(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string kind = default(string), string provisioningState = default(string), string routingState = default(string), SubResource virtualWan = default(SubResource), SubResource vpnGateway = default(SubResource), SubResource p2SVpnGateway = default(SubResource), SubResource expressRouteGateway = default(SubResource), SubResource azureFirewall = default(SubResource), SubResource securityPartnerProvider = default(SubResource), string addressPrefix = default(string), VirtualHubRouteTable routeTable = default(VirtualHubRouteTable), string securityProviderName = default(string), System.Collections.Generic.IList<VirtualHubRouteTableV2> virtualHubRouteTableV2S = default(System.Collections.Generic.IList<VirtualHubRouteTableV2>), string sku = default(string), System.Collections.Generic.IList<SubResource> bgpConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> ipConfigurations = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> routeMaps = default(System.Collections.Generic.IList<SubResource>), long? virtualRouterAsn = default(long?), System.Collections.Generic.IList<string> virtualRouterIps = default(System.Collections.Generic.IList<string>), bool? allowBranchToBranchTraffic = default(bool?), string preferredRoutingGateway = default(string), string hubRoutingPreference = default(string), VirtualRouterAutoScaleConfiguration virtualRouterAutoScaleConfiguration = default(VirtualRouterAutoScaleConfiguration))
+        public VirtualHub(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string kind = default(string), string provisioningState = default(string), string routingState = default(string), SubResource virtualWan = default(SubResource), SubResource vpnGateway = default(SubResource), SubResource p2SVpnGateway = default(SubResource), SubResource expressRouteGateway = default(SubResource), SubResource azureFirewall = default(SubResource), SubResource securityPartnerProvider = default(SubResource), string addressPrefix = default(string), VirtualHubRouteTable routeTable = default(VirtualHubRouteTable), string securityProviderName = default(string), System.Collections.Generic.IList<VirtualHubRouteTableV2> virtualHubRouteTableV2S = default(System.Collections.Generic.IList<VirtualHubRouteTableV2>), string sku = default(string), System.Collections.Generic.IList<SubResource> bgpConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> ipConfigurations = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> routeMaps = default(System.Collections.Generic.IList<SubResource>), long? virtualRouterAsn = default(long?), System.Collections.Generic.IList<string> virtualRouterIps = default(System.Collections.Generic.IList<string>), string addressPrefixV6 = default(string), System.Collections.Generic.IList<string> virtualRouterIpsV6 = default(System.Collections.Generic.IList<string>), bool? allowBranchToBranchTraffic = default(bool?), string preferredRoutingGateway = default(string), string hubRoutingPreference = default(string), VirtualRouterAutoScaleConfiguration virtualRouterAutoScaleConfiguration = default(VirtualRouterAutoScaleConfiguration))
 
         : base(id, name, type, location, tags)
         {
@@ -137,6 +143,8 @@ namespace Microsoft.Azure.Management.Network.Models
             this.RouteMaps = routeMaps;
             this.VirtualRouterAsn = virtualRouterAsn;
             this.VirtualRouterIps = virtualRouterIps;
+            this.AddressPrefixV6 = addressPrefixV6;
+            this.VirtualRouterIpsV6 = virtualRouterIpsV6;
             this.AllowBranchToBranchTraffic = allowBranchToBranchTraffic;
             this.PreferredRoutingGateway = preferredRoutingGateway;
             this.HubRoutingPreference = hubRoutingPreference;
@@ -274,6 +282,18 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<string> VirtualRouterIps {get; set; }
 
         /// <summary>
+        /// Gets or sets iPv6 Address-prefix for this VirtualHub.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.addressPrefixV6")]
+        public string AddressPrefixV6 {get; set; }
+
+        /// <summary>
+        /// Gets or sets virtualRouter IPv6 IPs.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualRouterIpsV6")]
+        public System.Collections.Generic.IList<string> VirtualRouterIpsV6 {get; set; }
+
+        /// <summary>
         /// Gets or sets flag to control transit for VirtualRouter hub.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.allowBranchToBranchTraffic")]
@@ -333,6 +353,8 @@ namespace Microsoft.Azure.Management.Network.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "VirtualRouterAsn", 0);
                 }
             }
+
+
 
 
 

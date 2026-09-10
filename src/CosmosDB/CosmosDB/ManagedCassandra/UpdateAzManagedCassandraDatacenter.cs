@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 dataCenterResource = CosmosDBManagementClient.CassandraDataCenters.GetWithHttpMessagesAsync(ResourceGroupName, ClusterName, DatacenterName).GetAwaiter().GetResult().Body;
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {

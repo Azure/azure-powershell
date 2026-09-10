@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -254,25 +254,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         public string PrepareDataMove(string vaultName, string resourceGroupName, PrepareDataMoveRequest prepareMoveRequest)
         {
             // prepare move
-            var prepareMoveHeaderResponse = BmsAdapter.Client.BeginBMSPrepareDataMoveWithHttpMessagesAsync(
+            var prepareMoveOperationResponse = BmsAdapter.Client.BeginBMSPrepareDataMoveWithHttpMessagesAsync(
                            resourceGroupName, vaultName, prepareMoveRequest).Result;
-            var prepareMoveOperationResponse = new RestAzureNS.AzureOperationResponse
-            {
-                Request = prepareMoveHeaderResponse.Request,
-                Response = prepareMoveHeaderResponse.Response,
-                RequestId = prepareMoveHeaderResponse.RequestId
-            };
 
             // track prepare-move operation to success
             var operationStatus = TrackingHelpers.GetOperationStatusDataMove(
-                prepareMoveOperationResponse,
+                ToAzureOperationResponse(prepareMoveOperationResponse),
                 operationId => GetDataMoveOperationStatus(operationId, vaultName, resourceGroupName));
 
             Logger.Instance.WriteDebug("Prepare move operation: " + operationStatus.Body.Status);
 
             // get the correlation Id and return it for trigger data move
             var operationResult = TrackingHelpers.GetCorrelationId(
-                prepareMoveOperationResponse,
+                ToAzureOperationResponse(prepareMoveOperationResponse),
                 operationId => GetPrepareDataMoveOperationResult(operationId, vaultName, resourceGroupName));
 
             Logger.Instance.WriteDebug("Prepare move - correlationId:" + operationResult.CorrelationId);
@@ -289,18 +283,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         public void TriggerDataMove(string vaultName, string resourceGroupName, TriggerDataMoveRequest triggerMoveRequest)
         {
             //trigger move 
-            var triggerMoveHeaderResponse = BmsAdapter.Client.BeginBMSTriggerDataMoveWithHttpMessagesAsync(
+            var triggerMoveOperationResponse = BmsAdapter.Client.BeginBMSTriggerDataMoveWithHttpMessagesAsync(
                            resourceGroupName, vaultName, triggerMoveRequest).Result;
-            var triggerMoveOperationResponse = new RestAzureNS.AzureOperationResponse
-            {
-                Request = triggerMoveHeaderResponse.Request,
-                Response = triggerMoveHeaderResponse.Response,
-                RequestId = triggerMoveHeaderResponse.RequestId
-            };
 
             // track trigger-move operation to success
             var operationStatus = TrackingHelpers.GetOperationStatusDataMove(
-                triggerMoveOperationResponse,
+                ToAzureOperationResponse(triggerMoveOperationResponse),
                 operationId => GetDataMoveOperationStatus(operationId, vaultName, resourceGroupName));
 
             Logger.Instance.WriteDebug("Trigger move operation: " + operationStatus.Body.Status);

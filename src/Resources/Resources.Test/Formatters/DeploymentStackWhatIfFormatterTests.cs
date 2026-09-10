@@ -27,6 +27,27 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Format_RendersTagsInStableOrder()
+        {
+            var result = new PSDeploymentStackWhatIfResult
+            {
+                Tags = new Dictionary<string, string>
+                {
+                    { "zebra", "last" },
+                    { "alpha", "first" }
+                }
+            };
+
+            string output = DeploymentStackWhatIfFormatter.Format(result);
+
+            Assert.Contains("Tags:", output);
+            Assert.Contains("alpha=first", output);
+            Assert.Contains("zebra=last", output);
+            Assert.True(output.IndexOf("alpha=first", StringComparison.Ordinal) < output.IndexOf("zebra=last", StringComparison.Ordinal));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Format_AlignsResourceStatusesAndPropertiesAndIndentsMultilineValues()
         {
             var result = new PSDeploymentStackWhatIfResult

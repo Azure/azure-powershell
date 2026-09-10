@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -156,12 +156,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 vaultName ?? BmsAdapter.GetResourceName(),
                 policyName,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
-            return new RestAzureNS.AzureOperationResponse
-            {
-                Request = response.Request,
-                Response = response.Response,
-                RequestId = response.RequestId
-            };
+            return ToAzureOperationResponse(response);
         }
     }
 }

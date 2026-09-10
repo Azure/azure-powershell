@@ -56,8 +56,8 @@ param(
     [Alias('ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The ID of the policy assignment to delete.
-    # Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+    # The ID of the policy exemption to update.
+    # Use the format '{scope}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}'.
     ${Id},
 
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -98,7 +98,6 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesMetadata]))]
     [System.String]
     # The policy assignment metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
@@ -269,7 +268,7 @@ process {
         $calledParameters.PolicyDefinitionReferenceId = $existing.PolicyDefinitionReferenceId
     }
 
-    if (!$calledParameters.Metadata) {
+    if (!$calledParameters.Metadata -and $existing.Metadata -and @($existing.Metadata.PSObject.Properties).Count -gt 0) {
         $calledParameters.Metadata = $existing.Metadata
     }
 

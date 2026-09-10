@@ -92,8 +92,7 @@ INPUTOBJECT <IPolicyAssignment>:
   [IdentityUserAssignedIdentity <IIdentityUserAssignedIdentities>]: The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
     [(Any) <IUserAssignedIdentitiesValue>]: This indicates any property can be added to this object.
   [Location <String>]: The location of the policy assignment. Only required when utilizing managed identity.
-  [Metadata <IPolicyAssignmentPropertiesMetadata>]: The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
-    [(Any) <Object>]: This indicates any property can be added to this object.
+  [MetadataRaw <IAny>]: The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
   [NonComplianceMessage <List<INonComplianceMessage>>]: The messages that describe why a resource is non-compliant with the policy.
     Message <String>: A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
     [PolicyDefinitionReferenceId <String>]: The policy definition reference ID within a policy set definition the message is intended for. This is only applicable if the policy assignment assigns a policy set definition. If this is not provided the message applies to all policies assigned by this policy assignment.
@@ -105,12 +104,14 @@ INPUTOBJECT <IPolicyAssignment>:
       [Kind <String>]: The selector kind.
       [NotIn <List<String>>]: The list of values to filter out.
     [Value <String>]: The value to override the policy property.
-  [Parameter <IParameterValues>]: The parameter values for the assigned policy rule. The keys are the parameter names.
-    [(Any) <Object>]: This indicates any property can be added to this object.
+  [ParameterRaw <IPolicyAssignmentPropertiesParameters>]: The parameter values for the assigned policy rule. The keys are the parameter names.
+    [(Any) <IParameterValuesValue>]: This indicates any property can be added to this object.
   [PolicyDefinitionId <String>]: The ID of the policy definition or policy set definition being assigned.
   [ResourceSelector <List<IResourceSelector>>]: The resource selector list to filter policies by resource properties.
     [Name <String>]: The name of the resource selector.
     [Selector <List<ISelector>>]: The list of the selector expressions.
+  [SelfServeExemptionSettingEnabled <Boolean?>]: Indicates whether self-serve exemption is enabled.
+  [SelfServeExemptionSettingPolicyDefinitionReferenceId <List<String>>]: The policy definition reference IDs for self-serve exemption.
 
 OVERRIDE <IOverride[]>: The policy property value override.
   [Kind <String>]: The override kind.
@@ -183,7 +184,6 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesMetadata]))]
     [System.String]
     # The policy assignment metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.

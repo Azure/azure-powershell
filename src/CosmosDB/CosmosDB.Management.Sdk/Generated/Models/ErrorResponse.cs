@@ -8,8 +8,15 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     using System.Linq;
 
     /// <summary>
-    /// Error Response.
+    /// Common error response for all Azure Resource Manager APIs to return error
+    /// details for failed operations. (This also follows the OData error response
+    /// format.).
     /// </summary>
+    /// <remarks>
+    /// Common error response for all Azure Resource Manager APIs to return error
+    /// details for failed operations. (This also follows the OData error response
+    /// format.).
+    /// </remarks>
     public partial class ErrorResponse
     {
         /// <summary>
@@ -24,16 +31,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
 
-        /// <param name="code">Error code.
+        /// <param name="error">The error object.
         /// </param>
-
-        /// <param name="message">Error message indicating why the operation failed.
-        /// </param>
-        public ErrorResponse(string code = default(string), string message = default(string))
+        public ErrorResponse(ErrorDetail error = default(ErrorDetail))
 
         {
-            this.Code = code;
-            this.Message = message;
+            this.Error = error;
             CustomInit();
         }
 
@@ -44,15 +47,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
 
         /// <summary>
-        /// Gets or sets error code.
+        /// Gets or sets the error object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "code")]
-        public string Code {get; set; }
-
-        /// <summary>
-        /// Gets or sets error message indicating why the operation failed.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "message")]
-        public string Message {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "error")]
+        public ErrorDetail Error {get; set; }
     }
 }

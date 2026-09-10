@@ -145,6 +145,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 hasInfo = true;
             }
 
+            if (this.whatIfResult?.Tags?.Any() == true)
+            {
+                string tags = string.Join(", ", this.whatIfResult.Tags
+                    .OrderBy(tag => tag.Key, StringComparer.Ordinal)
+                    .Select(tag => $"{tag.Key}={tag.Value}"));
+                this.builder.Append("Tags: ", Color.Green).AppendLine(tags);
+                hasInfo = true;
+            }
+
             if (!string.IsNullOrEmpty(this.whatIfProps?.ProvisioningState))
             {
                 this.builder.Append("Provisioning State: ", Color.Green).AppendLine(this.whatIfProps.ProvisioningState);

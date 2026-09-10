@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 {
                     readClientEncryptionKeyGetResults = CosmosDBManagementClient.SqlResources.GetClientEncryptionKey(ResourceGroupName, AccountName, DatabaseName, Name);
                 }
-                catch (CloudException e)
+                catch (ErrorResponseException e)
                 {
                     if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                     {
