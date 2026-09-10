@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Exposed the backup storage redundancy type in the output of `Get-AzSqlInstanceDatabaseLongTermRetentionBackup`.
+* Fixed `Restore-AzSqlDatabase` to omit the HA replica count when the parameter is not specified.
 
 ## Version 7.1.0
 * Added multi-database Managed Instance links through `LinkMode` on `New-AzSqlInstanceLink` and database membership updates on `Update-AzSqlInstanceLink`.
