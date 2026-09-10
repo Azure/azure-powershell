@@ -95,6 +95,16 @@ namespace StorageSyncTests
         }
 
         /// <summary>
+        /// Defines the test method TestSetCloudEndpoint.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetCloudEndpoint()
+        {
+            TestRunner.RunTestScript("Test-SetCloudEndpoint");
+        }
+
+        /// <summary>
         /// Defines the test method TestRemoveCloudEndpoint.
         /// </summary>
         [Fact]
