@@ -1,0 +1,181 @@
+{
+  "resourceType": "trafficmanagerprofiles",
+  "apiVersion": "2024-04-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/trafficmanager"
+  },
+  "commands": [
+    {
+      "name": "Get-AzTrafficManagerEndpoint",
+      "description": "Gets a Traffic Manager endpoint.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/trafficmanager/get-aztrafficmanagerendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EndpointName <String>",
+              "-EndpointType <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a Traffic Manager endpoint.",
+          "parameters": [
+            {
+              "name": "-EndpointName",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-EndpointType",
+              "value": "[Path.endpointType]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzTrafficManagerProfile",
+      "description": "Gets a Traffic Manager profile.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/trafficmanager/get-aztrafficmanagerprofile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a Traffic Manager profile.",
+          "parameters": [
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzTrafficManagerEndpoint",
+      "description": "Deletes a Traffic Manager endpoint.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/trafficmanager/remove-aztrafficmanagerendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EndpointName <String>",
+              "-EndpointType <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a Traffic Manager endpoint.",
+          "parameters": [
+            {
+              "name": "-EndpointName",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-EndpointType",
+              "value": "[Path.endpointType]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzTrafficManagerProfile",
+      "description": "Deletes a Traffic Manager profile.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/trafficmanager/remove-aztrafficmanagerprofile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a Traffic Manager profile.",
+          "parameters": [
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
