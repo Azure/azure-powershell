@@ -2390,6 +2390,70 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalAggregationGroup</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalAggregationGroup#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AggregatedHealthState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AggregationType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DegradedThreshold</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IgnoreUnknown</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UnhealthyThreshold</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Unit</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AggregatedHealthState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AggregationType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DegradedThreshold</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IgnoreUnknown</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UnhealthyThreshold</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Unit</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalConfiguration</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalConfiguration#Multiple</TypeName>
@@ -2861,9 +2925,6 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>LookBackWindow</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Operator</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -2876,9 +2937,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>LookBackWindow</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Operator</PropertyName>
               </TableColumnItem>

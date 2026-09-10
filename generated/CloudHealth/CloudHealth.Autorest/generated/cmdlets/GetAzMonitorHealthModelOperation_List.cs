@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.HttpPath(Path = "/providers/Microsoft.CloudHealth/operations", ApiVersion = "2026-05-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.HttpPath(Path = "/providers/Microsoft.CloudHealth/operations", ApiVersion = "2026-09-01-preview")]
     public partial class GetAzMonitorHealthModelOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IContext

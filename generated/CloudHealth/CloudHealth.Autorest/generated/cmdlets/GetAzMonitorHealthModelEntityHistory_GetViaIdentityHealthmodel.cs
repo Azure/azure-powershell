@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityHistoryResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Description(@"Retrieve the health state transition history for an entity")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/entities/{entityName}/getHistory", ApiVersion = "2026-05-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/entities/{entityName}/getHistory", ApiVersion = "2026-09-01-preview")]
     public partial class GetAzMonitorHealthModelEntityHistory_GetViaIdentityHealthmodel : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IContext

@@ -41,7 +41,6 @@ PROPERTY <ISignalDefinitionProperties>: The resource-specific properties for thi
     UnhealthyRule <IThresholdRuleV2>: Unhealthy rule with static threshold.
     [DegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
       Operator <String>: Operator how to compare the signal value with the threshold
-      [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
       [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
       [Threshold <Double?>]: Threshold value
   SignalKind <String>: Kind of the signal definition
@@ -56,7 +55,7 @@ PROPERTY <ISignalDefinitionProperties>: The resource-specific properties for thi
   [RefreshInterval <String>]: Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
   [Tag <ISignalDefinitionPropertiesTags>]: Optional set of tags (key-value pairs)
     [(Any) <String>]: This indicates any property can be added to this object.
-  [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+  [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension.
   [TimeGrain <String>]: Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
   [ValueColumnName <String>]: Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
   [TimeGrain <String>]: Time range of signal. ISO duration format like PT10M.
@@ -67,7 +66,6 @@ RESOURCE <ISignalDefinition>: A signal definition in a health model
       UnhealthyRule <IThresholdRuleV2>: Unhealthy rule with static threshold.
       [DegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
         Operator <String>: Operator how to compare the signal value with the threshold
-        [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
         [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
         [Threshold <Double?>]: Threshold value
     SignalKind <String>: Kind of the signal definition

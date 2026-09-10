@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         Description = @"Aggregation type for child dependencies.",
         SerializedName = @"aggregationType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("WorstOf", "MinHealthy", "MaxNotHealthy")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("WorstOf", "BestOf", "MinHealthy", "MaxNotHealthy")]
         string AggregationType { get; set; }
         /// <summary>
         /// Degraded threshold for aggregation. For MinHealthy: parent is degraded when healthy count/percentage falls to or below
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
 
     {
         /// <summary>Aggregation type for child dependencies.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("WorstOf", "MinHealthy", "MaxNotHealthy")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("WorstOf", "BestOf", "MinHealthy", "MaxNotHealthy")]
         string AggregationType { get; set; }
         /// <summary>
         /// Degraded threshold for aggregation. For MinHealthy: parent is degraded when healthy count/percentage falls to or below

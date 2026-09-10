@@ -71,6 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             {_healthObjective = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNumber>("healthObjective"), out var __jsonHealthObjective) ? (float?)__jsonHealthObjective : _healthObjective;}
             {_impact = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("impact"), out var __jsonImpact) ? (string)__jsonImpact : (string)_impact;}
             {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.EntityPropertiesTags.FromJson(__jsonTags) : _tag;}
+            {_signalAggregationGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonArray>("signalAggregationGroups"), out var __jsonSignalAggregationGroups) ? If( __jsonSignalAggregationGroups as Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup) (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalAggregationGroup.FromJson(__u) )) ))() : null : _signalAggregationGroup;}
             {_discoveredBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("discoveredBy"), out var __jsonDiscoveredBy) ? (string)__jsonDiscoveredBy : (string)_discoveredBy;}
             {_healthState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("healthState"), out var __jsonHealthState) ? (string)__jsonHealthState : (string)_healthState;}
             {_signalGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonObject>("signalGroups"), out var __jsonSignalGroups) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalGroups.FromJson(__jsonSignalGroups) : _signalGroup;}
@@ -119,6 +120,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             AddIf( null != this._healthObjective ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNumber((float)this._healthObjective) : null, "healthObjective" ,container.Add );
             AddIf( null != (((object)this._impact)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._impact.ToString()) : null, "impact" ,container.Add );
             AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
+            if (null != this._signalAggregationGroup)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.XNodeArray();
+                foreach( var __x in this._signalAggregationGroup )
+                {
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                }
+                container.Add("signalAggregationGroups",__w);
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._discoveredBy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._discoveredBy.ToString()) : null, "discoveredBy" ,container.Add );

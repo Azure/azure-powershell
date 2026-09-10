@@ -34,9 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         /// <summary>Backing field for <see cref="DimensionFilter" /> property.</summary>
         private string _dimensionFilter;
 
-        /// <summary>
-        /// Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
-        /// </summary>
+        /// <summary>Optional: Dimension filter to apply to the dimension.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
         public string DimensionFilter { get => this._dimensionFilter; set => this._dimensionFilter = value; }
 
@@ -183,16 +181,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         SerializedName = @"dataUnit",
         PossibleTypes = new [] { typeof(string) })]
         string DataUnit { get; set; }
-        /// <summary>
-        /// Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
-        /// </summary>
+        /// <summary>Optional: Dimension filter to apply to the dimension.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.",
+        Description = @"Optional: Dimension filter to apply to the dimension.",
         SerializedName = @"dimensionFilter",
         PossibleTypes = new [] { typeof(string) })]
         string DimensionFilter { get; set; }
@@ -274,9 +270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         string AggregationType { get; set; }
         /// <summary>Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))</summary>
         string DataUnit { get; set; }
-        /// <summary>
-        /// Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
-        /// </summary>
+        /// <summary>Optional: Dimension filter to apply to the dimension.</summary>
         string DimensionFilter { get; set; }
         /// <summary>Display name</summary>
         string DisplayName { get; set; }

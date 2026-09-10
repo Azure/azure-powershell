@@ -34,13 +34,11 @@ To create the parameters described below, construct a hash table containing the 
 
 DEGRADEDRULE <IThresholdRuleV2>: Degraded rule with static threshold.
   Operator <String>: Operator how to compare the signal value with the threshold
-  [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
   [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
   [Threshold <Double?>]: Threshold value
 
 UNHEALTHYRULE <IThresholdRuleV2>: Unhealthy rule with static threshold.
   Operator <String>: Operator how to compare the signal value with the threshold
-  [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
   [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
   [Threshold <Double?>]: Threshold value
 .Link

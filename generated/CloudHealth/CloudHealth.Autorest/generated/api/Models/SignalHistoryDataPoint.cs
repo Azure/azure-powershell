@@ -70,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         Description = @"Health state at this point in time",
         SerializedName = @"healthState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown", "Deleted")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown")]
         string HealthState { get; set; }
         /// <summary>Timestamp of the data point</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         /// <summary>Additional context as provided by the submitter</summary>
         string AdditionalContext { get; set; }
         /// <summary>Health state at this point in time</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown", "Deleted")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown")]
         string HealthState { get; set; }
         /// <summary>Timestamp of the data point</summary>
         global::System.DateTime OccurredAt { get; set; }

@@ -2997,7 +2997,6 @@ BODY <IHealthReportRequest>: Health report that's submitted for a specific signa
   [AdditionalContext <String>]: Optional additional context or description for the health report
   [EvaluationRuleDegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
     Operator <String>: Operator how to compare the signal value with the threshold
-    [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
     [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
     [Threshold <Double?>]: Threshold value
   [EvaluationRuleUnhealthyRule <IThresholdRuleV2>]: Unhealthy rule with static threshold.
@@ -3006,13 +3005,11 @@ BODY <IHealthReportRequest>: Health report that's submitted for a specific signa
 
 EVALUATIONRULEDEGRADEDRULE <IThresholdRuleV2>: Degraded rule with static threshold.
   Operator <String>: Operator how to compare the signal value with the threshold
-  [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
   [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
   [Threshold <Double?>]: Threshold value
 
 EVALUATIONRULEUNHEALTHYRULE <IThresholdRuleV2>: Unhealthy rule with static threshold.
   Operator <String>: Operator how to compare the signal value with the threshold
-  [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
   [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
   [Threshold <Double?>]: Threshold value
 
@@ -3111,7 +3108,7 @@ param(
     [Parameter(ParameterSetName='IngestExpanded', Mandatory)]
     [Parameter(ParameterSetName='IngestViaIdentityExpanded', Mandatory)]
     [Parameter(ParameterSetName='IngestViaIdentityHealthmodelExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown", "Deleted")]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown")]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
     [System.String]
     # Health state to report for the signal
@@ -3894,6 +3891,16 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+SIGNALAGGREGATIONGROUP <ISignalAggregationGroup[]>: Logical aggregation groups over the signals on this entity. Overlap is allowed: the same signal may appear in more than one group's members. Each group is evaluated independently according to its strategy, and a shared signal can contribute to multiple group states and related per-group telemetry. Group states contribute alongside any ungrouped signals and the dependency-aggregated child health to the entity's overall worst-of composite.
+  Member <List<String>>: Names of signals on this entity which are members of the group. Members are matched by name; references to signals that do not currently exist on the entity are accepted (typically for pre-declared external signals) and surfaced via 'unresolvedMembers'. A signal may be listed in multiple groups; no duplicates within this list.
+  Name <String>: Name of the aggregation group. Unique within the entity.
+  [AggregationType <String>]: Aggregation strategy applied across the members of this group.
+  [DegradedThreshold <Double?>]: Degraded threshold for threshold-bearing strategies (MinHealthy, MaxNotHealthy). For MinHealthy: group is degraded when the healthy member count/percentage falls to or below this value. For MaxNotHealthy: group is degraded when the not-healthy member count/percentage reaches or exceeds this value. Optional — if not set, the group transitions directly between Healthy and Unhealthy. MUST NOT be set when aggregationType is WorstOf or BestOf.
+  [DisplayName <String>]: Display name
+  [IgnoreUnknown <Boolean?>]: If true (default), members reporting Unknown are excluded from the aggregation. For MinHealthy and MaxNotHealthy this flag affects the denominator/count and is meaningful. For WorstOf and BestOf the flag has no observable effect: under WorstOf, Unknown=0 is the lowest severity and can never beat any non-Unknown member in a Max() so filtering it changes nothing observable; under BestOf, Unknown is unconditionally excluded by the strategy itself irrespective of the flag. The flag is retained on the contract for vocabulary symmetry across all four strategies.
+  [UnhealthyThreshold <Double?>]: Unhealthy threshold for threshold-bearing strategies. Required when aggregationType is MinHealthy or MaxNotHealthy; MUST NOT be set otherwise.
+  [Unit <String>]: Unit type for the thresholds. Required when aggregationType is MinHealthy or MaxNotHealthy; MUST NOT be set otherwise.
+
 SIGNALGROUP <ISignalGroups>: Signal groups which are assigned to this entity
   [AzureLogAnalyticAuthenticationSetting <String>]: Reference to the name of the authentication setting which is used for querying the data source.
   [AzureLogAnalyticLogAnalyticsWorkspaceResourceId <String>]: Log Analytics workspace resource ID.
@@ -3904,7 +3911,6 @@ SIGNALGROUP <ISignalGroups>: Signal groups which are assigned to this entity
       UnhealthyRule <IThresholdRuleV2>: Unhealthy rule with static threshold.
       [DegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
         Operator <String>: Operator how to compare the signal value with the threshold
-        [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
         [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
         [Threshold <Double?>]: Threshold value
     [QueryText <String>]: Query text in KQL syntax
@@ -3926,7 +3932,7 @@ SIGNALGROUP <ISignalGroups>: Signal groups which are assigned to this entity
   [AzureResourceSignal <List<IAzureResourceSignal>>]: Signals assigned to this group.
     [AggregationType <String>]: Type of aggregation to apply to the metric
     [DataUnit <String>]: Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
-    [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+    [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension.
     [DisplayName <String>]: Display name
     [EvaluationRule <IEvaluationRule>]: Evaluation rules for the signal definition
     [MetricName <String>]: Name of the metric
@@ -4039,6 +4045,16 @@ param(
     [System.String]
     # Impact of the entity in health state propagation
     ${Impact},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup[]]
+    # Logical aggregation groups over the signals on this entity.
+    # Overlap is allowed: the same signal may appear in more than one group's members.
+    # Each group is evaluated independently according to its strategy, and a shared signal can contribute to multiple group states and related per-group telemetry.
+    # Group states contribute alongside any ungrouped signals and the dependency-aggregated child health to the entity's overall worst-of composite.
+    ${SignalAggregationGroup},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
@@ -4515,7 +4531,6 @@ PROPERTY <ISignalDefinitionProperties>: The resource-specific properties for thi
     UnhealthyRule <IThresholdRuleV2>: Unhealthy rule with static threshold.
     [DegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
       Operator <String>: Operator how to compare the signal value with the threshold
-      [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
       [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
       [Threshold <Double?>]: Threshold value
   SignalKind <String>: Kind of the signal definition
@@ -4530,7 +4545,7 @@ PROPERTY <ISignalDefinitionProperties>: The resource-specific properties for thi
   [RefreshInterval <String>]: Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
   [Tag <ISignalDefinitionPropertiesTags>]: Optional set of tags (key-value pairs)
     [(Any) <String>]: This indicates any property can be added to this object.
-  [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+  [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension.
   [TimeGrain <String>]: Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
   [ValueColumnName <String>]: Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
   [TimeGrain <String>]: Time range of signal. ISO duration format like PT10M.
@@ -4541,7 +4556,6 @@ RESOURCE <ISignalDefinition>: A signal definition in a health model
       UnhealthyRule <IThresholdRuleV2>: Unhealthy rule with static threshold.
       [DegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
         Operator <String>: Operator how to compare the signal value with the threshold
-        [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
         [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
         [Threshold <Double?>]: Threshold value
     SignalKind <String>: Kind of the signal definition
@@ -7177,6 +7191,16 @@ INPUTOBJECT <ICloudHealthIdentity>: Identity Parameter
   [SignalDefinitionName <String>]: Name of the signal definition. Must be unique within a health model.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
+SIGNALAGGREGATIONGROUP <ISignalAggregationGroup[]>: Logical aggregation groups over the signals on this entity. Overlap is allowed: the same signal may appear in more than one group's members. Each group is evaluated independently according to its strategy, and a shared signal can contribute to multiple group states and related per-group telemetry. Group states contribute alongside any ungrouped signals and the dependency-aggregated child health to the entity's overall worst-of composite.
+  Member <List<String>>: Names of signals on this entity which are members of the group. Members are matched by name; references to signals that do not currently exist on the entity are accepted (typically for pre-declared external signals) and surfaced via 'unresolvedMembers'. A signal may be listed in multiple groups; no duplicates within this list.
+  Name <String>: Name of the aggregation group. Unique within the entity.
+  [AggregationType <String>]: Aggregation strategy applied across the members of this group.
+  [DegradedThreshold <Double?>]: Degraded threshold for threshold-bearing strategies (MinHealthy, MaxNotHealthy). For MinHealthy: group is degraded when the healthy member count/percentage falls to or below this value. For MaxNotHealthy: group is degraded when the not-healthy member count/percentage reaches or exceeds this value. Optional — if not set, the group transitions directly between Healthy and Unhealthy. MUST NOT be set when aggregationType is WorstOf or BestOf.
+  [DisplayName <String>]: Display name
+  [IgnoreUnknown <Boolean?>]: If true (default), members reporting Unknown are excluded from the aggregation. For MinHealthy and MaxNotHealthy this flag affects the denominator/count and is meaningful. For WorstOf and BestOf the flag has no observable effect: under WorstOf, Unknown=0 is the lowest severity and can never beat any non-Unknown member in a Max() so filtering it changes nothing observable; under BestOf, Unknown is unconditionally excluded by the strategy itself irrespective of the flag. The flag is retained on the contract for vocabulary symmetry across all four strategies.
+  [UnhealthyThreshold <Double?>]: Unhealthy threshold for threshold-bearing strategies. Required when aggregationType is MinHealthy or MaxNotHealthy; MUST NOT be set otherwise.
+  [Unit <String>]: Unit type for the thresholds. Required when aggregationType is MinHealthy or MaxNotHealthy; MUST NOT be set otherwise.
+
 SIGNALGROUP <ISignalGroups>: Signal groups which are assigned to this entity
   [AzureLogAnalyticAuthenticationSetting <String>]: Reference to the name of the authentication setting which is used for querying the data source.
   [AzureLogAnalyticLogAnalyticsWorkspaceResourceId <String>]: Log Analytics workspace resource ID.
@@ -7187,7 +7211,6 @@ SIGNALGROUP <ISignalGroups>: Signal groups which are assigned to this entity
       UnhealthyRule <IThresholdRuleV2>: Unhealthy rule with static threshold.
       [DegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
         Operator <String>: Operator how to compare the signal value with the threshold
-        [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
         [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
         [Threshold <Double?>]: Threshold value
     [QueryText <String>]: Query text in KQL syntax
@@ -7209,7 +7232,7 @@ SIGNALGROUP <ISignalGroups>: Signal groups which are assigned to this entity
   [AzureResourceSignal <List<IAzureResourceSignal>>]: Signals assigned to this group.
     [AggregationType <String>]: Type of aggregation to apply to the metric
     [DataUnit <String>]: Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
-    [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+    [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension.
     [DisplayName <String>]: Display name
     [EvaluationRule <IEvaluationRule>]: Evaluation rules for the signal definition
     [MetricName <String>]: Name of the metric
@@ -7335,6 +7358,16 @@ param(
     [System.String]
     # Impact of the entity in health state propagation
     ${Impact},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup[]]
+    # Logical aggregation groups over the signals on this entity.
+    # Overlap is allowed: the same signal may appear in more than one group's members.
+    # Each group is evaluated independently according to its strategy, and a shared signal can contribute to multiple group states and related per-group telemetry.
+    # Group states contribute alongside any ungrouped signals and the dependency-aggregated child health to the entity's overall worst-of composite.
+    ${SignalAggregationGroup},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
@@ -7843,7 +7876,6 @@ PROPERTY <ISignalDefinitionProperties>: The resource-specific properties for thi
     UnhealthyRule <IThresholdRuleV2>: Unhealthy rule with static threshold.
     [DegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
       Operator <String>: Operator how to compare the signal value with the threshold
-      [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
       [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
       [Threshold <Double?>]: Threshold value
   SignalKind <String>: Kind of the signal definition
@@ -7858,7 +7890,7 @@ PROPERTY <ISignalDefinitionProperties>: The resource-specific properties for thi
   [RefreshInterval <String>]: Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
   [Tag <ISignalDefinitionPropertiesTags>]: Optional set of tags (key-value pairs)
     [(Any) <String>]: This indicates any property can be added to this object.
-  [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+  [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension.
   [TimeGrain <String>]: Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
   [ValueColumnName <String>]: Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
   [TimeGrain <String>]: Time range of signal. ISO duration format like PT10M.
@@ -7869,7 +7901,6 @@ RESOURCE <ISignalDefinition>: A signal definition in a health model
       UnhealthyRule <IThresholdRuleV2>: Unhealthy rule with static threshold.
       [DegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
         Operator <String>: Operator how to compare the signal value with the threshold
-        [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
         [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
         [Threshold <Double?>]: Threshold value
     SignalKind <String>: Kind of the signal definition
@@ -8488,13 +8519,11 @@ To create the parameters described below, construct a hash table containing the 
 
 DEGRADEDRULE <IThresholdRuleV2>: Degraded rule with static threshold.
   Operator <String>: Operator how to compare the signal value with the threshold
-  [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
   [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
   [Threshold <Double?>]: Threshold value
 
 UNHEALTHYRULE <IThresholdRuleV2>: Unhealthy rule with static threshold.
   Operator <String>: Operator how to compare the signal value with the threshold
-  [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
   [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
   [Threshold <Double?>]: Threshold value
 .Link
@@ -8623,7 +8652,6 @@ EVALUATIONRULE <IEvaluationRule>: Evaluation rules for the signal definition.
   UnhealthyRule <IThresholdRuleV2>: Unhealthy rule with static threshold.
   [DegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
     Operator <String>: Operator how to compare the signal value with the threshold
-    [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
     [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
     [Threshold <Double?>]: Threshold value
 
@@ -8914,7 +8942,6 @@ EVALUATIONRULE <IEvaluationRule>: Evaluation rules for the signal definition.
   UnhealthyRule <IThresholdRuleV2>: Unhealthy rule with static threshold.
   [DegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
     Operator <String>: Operator how to compare the signal value with the threshold
-    [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
     [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
     [Threshold <Double?>]: Threshold value
 
@@ -9190,7 +9217,6 @@ EVALUATIONRULE <IEvaluationRule>: Evaluation rules for the signal definition.
   UnhealthyRule <IThresholdRuleV2>: Unhealthy rule with static threshold.
   [DegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
     Operator <String>: Operator how to compare the signal value with the threshold
-    [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
     [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
     [Threshold <Double?>]: Threshold value
 
@@ -9239,7 +9265,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
     [System.String]
     # Optional: Dimension filter to apply to the dimension.
-    # Must only be set if also Dimension is set.
     ${DimensionFilter},
 
     [Parameter()]
@@ -9378,14 +9403,6 @@ param(
     [System.String]
     # Operator how to compare the signal value with the threshold.
     ${Operator},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT5M", "PT15M", "PT30M", "PT1H")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
-    # Only applicable when operator is Dynamic.
-    ${LookBackWindow},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Low", "Medium", "High")]

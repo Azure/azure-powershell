@@ -150,6 +150,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
+        /// <summary>
+        /// Logical aggregation groups over the signals on this entity. Overlap is allowed: the same signal may appear in more than
+        /// one group's members. Each group is evaluated independently according to its strategy, and a shared signal can contribute
+        /// to multiple group states and related per-group telemetry. Group states contribute alongside any ungrouped signals and
+        /// the dependency-aggregated child health to the entity's overall worst-of composite.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup> SignalAggregationGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesInternal)Property).SignalAggregationGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesInternal)Property).SignalAggregationGroup = value ?? null /* arrayOf */; }
+
         /// <summary>Signal groups which are assigned to this entity</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalGroups SignalGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesInternal)Property).SignalGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesInternal)Property).SignalGroup = value ?? null /* model class */; }
@@ -334,7 +343,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         Description = @"Health state of this entity",
         SerializedName = @"healthState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown", "Deleted")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown")]
         string HealthState { get;  }
         /// <summary>Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
@@ -382,6 +391,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Deleting")]
         string ProvisioningState { get;  }
+        /// <summary>
+        /// Logical aggregation groups over the signals on this entity. Overlap is allowed: the same signal may appear in more than
+        /// one group's members. Each group is evaluated independently according to its strategy, and a shared signal can contribute
+        /// to multiple group states and related per-group telemetry. Group states contribute alongside any ungrouped signals and
+        /// the dependency-aggregated child health to the entity's overall worst-of composite.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Logical aggregation groups over the signals on this entity. Overlap is allowed: the same signal may appear in more than one group's members. Each group is evaluated independently according to its strategy, and a shared signal can contribute to multiple group states and related per-group telemetry. Group states contribute alongside any ungrouped signals and the dependency-aggregated child health to the entity's overall worst-of composite.",
+        SerializedName = @"signalAggregationGroups",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup> SignalAggregationGroup { get; set; }
         /// <summary>Signal groups which are assigned to this entity</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = false,
@@ -476,7 +501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         /// <summary>Health objective as a percentage of time the entity should be healthy.</summary>
         float? HealthObjective { get; set; }
         /// <summary>Health state of this entity</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown", "Deleted")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown")]
         string HealthState { get; set; }
         /// <summary>Visual icon definition. If not set, a default icon is used.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IIconDefinition Icon { get; set; }
@@ -492,6 +517,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         /// <summary>The status of the last operation.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Deleting")]
         string ProvisioningState { get; set; }
+        /// <summary>
+        /// Logical aggregation groups over the signals on this entity. Overlap is allowed: the same signal may appear in more than
+        /// one group's members. Each group is evaluated independently according to its strategy, and a shared signal can contribute
+        /// to multiple group states and related per-group telemetry. Group states contribute alongside any ungrouped signals and
+        /// the dependency-aggregated child health to the entity's overall worst-of composite.
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup> SignalAggregationGroup { get; set; }
         /// <summary>Signal groups which are assigned to this entity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalGroups SignalGroup { get; set; }
         /// <summary>Optional set of tags (key-value pairs)</summary>

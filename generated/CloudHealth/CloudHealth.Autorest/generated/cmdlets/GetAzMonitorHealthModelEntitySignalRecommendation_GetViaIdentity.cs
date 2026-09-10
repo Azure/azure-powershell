@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetSignalRecommendationsResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Description(@"Get recommended signal configurations for a given Entity (only applicable for Entities representing Azure resources)")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/entities/{entityName}/getSignalRecommendations", ApiVersion = "2026-05-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/entities/{entityName}/getSignalRecommendations", ApiVersion = "2026-09-01-preview")]
     public partial class GetAzMonitorHealthModelEntitySignalRecommendation_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IContext

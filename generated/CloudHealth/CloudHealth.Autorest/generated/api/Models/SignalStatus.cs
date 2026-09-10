@@ -100,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         Description = @"Health state of this signal",
         SerializedName = @"healthState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown", "Deleted")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown")]
         string HealthState { get;  }
         /// <summary>Timestamp when the value was reported</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         /// <summary>Error message if the signal status cannot be retrieved</summary>
         string Error { get; set; }
         /// <summary>Health state of this signal</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown", "Deleted")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown")]
         string HealthState { get; set; }
         /// <summary>Timestamp when the value was reported</summary>
         global::System.DateTime? ReportedAt { get; set; }

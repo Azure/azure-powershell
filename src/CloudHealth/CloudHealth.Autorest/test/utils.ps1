@@ -34,6 +34,7 @@ function Start-TestSleep {
 }
 
 $env = @{}
+$script:ownedResourceGroup = $null
 if ($UsePreviousConfigForRecord) {
     $cachedEnvPath = Join-Path $PSScriptRoot 'env.json'
     if (Test-Path -Path $cachedEnvPath) {
@@ -58,9 +59,16 @@ function setupEnv() {
         return
     }
 
+    if ($UsePreviousConfigForRecord -or $null -ne $script:ownedResourceGroup) {
+        throw 'CloudHealth record/live tests require a fresh resource group for each run.'
+    }
+
     $context = Get-AzContext
     if ($null -eq $context) {
         throw 'Az context is required for CloudHealth record/live tests.'
+    }
+    if ([string]::IsNullOrWhiteSpace($env:AZURE_TEST_SUBSCRIPTION_ID) -or $context.Subscription.Id -ne $env:AZURE_TEST_SUBSCRIPTION_ID) {
+        throw 'Set AZURE_TEST_SUBSCRIPTION_ID and select the matching Az context before CloudHealth record/live tests.'
     }
 
     $suffix = RandomString $false 6
@@ -102,10 +110,22 @@ function setupEnv() {
     $env.DiscoveryRuleCreateName = $env.AddWithCache('DiscoveryRuleCreateName', "azps-disc-create-$suffix", $UsePreviousConfigForRecord)
     $env.DiscoveryRuleDeleteName = $env.AddWithCache('DiscoveryRuleDeleteName', "azps-disc-delete-$suffix", $UsePreviousConfigForRecord)
 
-    $resourceGroup = Get-AzResourceGroup -Name $env.ResourceGroupName -ErrorAction SilentlyContinue
-    if ($null -eq $resourceGroup) {
-        New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
+    $resourceGroup = $null
+    try {
+        $resourceGroup = Get-AzResourceGroup -Name $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -ErrorAction Stop
+    } catch {
+        if ($null -eq $_.Exception.PSObject.Properties['StatusCode'] -or $_.Exception.StatusCode -ne [System.Net.HttpStatusCode]::NotFound) {
+            throw
+        }
     }
+    if ($null -ne $resourceGroup) {
+        throw "Resource group '$($env.ResourceGroupName)' already exists; refusing to reuse it."
+    }
+    $resourceGroup = New-AzResourceGroup -Name $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -Location $env.Location -ErrorAction Stop
+    if ($null -eq $resourceGroup -or $resourceGroup.Id -ne "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)") {
+        throw 'The created resource group identity could not be verified.'
+    }
+    $script:ownedResourceGroup = @{ Name = $env.ResourceGroupName; SubscriptionId = $env.SubscriptionId }
 
     $healthModel = Get-AzMonitorHealthModel -ResourceGroupName $env.ResourceGroupName -Name $env.HealthModelName -ErrorAction SilentlyContinue
     if ($null -eq $healthModel) {
@@ -150,8 +170,7 @@ function setupEnv() {
     $discoveryRule = Get-AzMonitorHealthModelDiscoveryRule -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.DiscoveryRuleName -ErrorAction SilentlyContinue
     if ($null -eq $discoveryRule) {
         $specification = New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where isnotempty(id) | project id | take 1"
-        $discoveryProperty = New-AzMonitorHealthModelDiscoveryRulePropertiesObject -AuthenticationSetting $env.AuthenticationSettingName -AddRecommendedSignal Enabled -AddResourceHealthSignal Disabled -DiscoverRelationship Disabled -DisplayName 'Shared discovery rule' -Specification $specification
-        $discoveryRule = New-AzMonitorHealthModelDiscoveryRule -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.DiscoveryRuleName -Property $discoveryProperty
+        $discoveryRule = New-AzMonitorHealthModelDiscoveryRule -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.DiscoveryRuleName -AuthenticationSetting $env.AuthenticationSettingName -AddRecommendedSignal Enabled -AddResourceHealthSignal Disabled -DiscoverRelationship Disabled -DisplayName 'Shared discovery rule' -Specification $specification
     }
 
     $envFile = 'env.json'
@@ -164,8 +183,13 @@ function setupEnv() {
 
 function cleanupEnv() {
     if (($TestMode -eq 'record') -or ($TestMode -eq 'live')) {
-        if ($env.ContainsKey('ResourceGroupName') -and -not [string]::IsNullOrWhiteSpace($env.ResourceGroupName)) {
-            Remove-AzResourceGroup -Name $env.ResourceGroupName -Confirm:$false -ErrorAction SilentlyContinue | Out-Null
+        if ($null -ne $script:ownedResourceGroup) {
+            $context = Get-AzContext
+            if ($null -eq $context -or $context.Subscription.Id -ne $script:ownedResourceGroup.SubscriptionId -or $env:AZURE_TEST_SUBSCRIPTION_ID -ne $script:ownedResourceGroup.SubscriptionId) {
+                throw 'Az context no longer matches the owned CloudHealth test resource group; refusing cleanup.'
+            }
+            Remove-AzResourceGroup -Name $script:ownedResourceGroup.Name -SubscriptionId $script:ownedResourceGroup.SubscriptionId -Confirm:$false -ErrorAction Stop | Out-Null
+            $script:ownedResourceGroup = $null
         }
     }
 }

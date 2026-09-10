@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthenticationSettingsCreateOrUpdate(string subscriptionId, string resourceGroupName, string healthModelName, string authenticationSettingName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthenticationSettingsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting> AuthenticationSettingsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthenticationSettingsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string healthModelName, string authenticationSettingName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting> AuthenticationSettingsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string authenticationSettingName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting> AuthenticationSettingsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string authenticationSettingName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -681,7 +681,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthenticationSettingsDelete(string subscriptionId, string resourceGroupName, string healthModelName, string authenticationSettingName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -725,7 +725,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthenticationSettingsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -963,7 +963,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthenticationSettingsGet(string subscriptionId, string resourceGroupName, string healthModelName, string authenticationSettingName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1006,7 +1006,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthenticationSettingsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1060,7 +1060,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting> AuthenticationSettingsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1117,7 +1117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting> AuthenticationSettingsGetWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string authenticationSettingName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1303,7 +1303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthenticationSettingsListByHealthModel(string subscriptionId, string resourceGroupName, string healthModelName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1345,7 +1345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthenticationSettingsListByHealthModelViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1397,7 +1397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingListResult> AuthenticationSettingsListByHealthModelViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1451,7 +1451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingListResult> AuthenticationSettingsListByHealthModelWithResult(string subscriptionId, string resourceGroupName, string healthModelName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1638,7 +1638,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task DiscoveryRulesCreateOrUpdate(string subscriptionId, string resourceGroupName, string healthModelName, string discoveryRuleName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1687,7 +1687,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task DiscoveryRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1747,7 +1747,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule> DiscoveryRulesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1811,7 +1811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task DiscoveryRulesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string healthModelName, string discoveryRuleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1860,7 +1860,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule> DiscoveryRulesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string discoveryRuleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1910,7 +1910,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule> DiscoveryRulesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string discoveryRuleName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2289,7 +2289,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task DiscoveryRulesDelete(string subscriptionId, string resourceGroupName, string healthModelName, string discoveryRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2333,7 +2333,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task DiscoveryRulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2571,7 +2571,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task DiscoveryRulesGet(string subscriptionId, string resourceGroupName, string healthModelName, string discoveryRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2614,7 +2614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task DiscoveryRulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2668,7 +2668,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule> DiscoveryRulesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2725,7 +2725,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule> DiscoveryRulesGetWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string discoveryRuleName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2911,7 +2911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task DiscoveryRulesListByHealthModel(string subscriptionId, string resourceGroupName, string healthModelName, global::System.DateTime? timestamp, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2957,7 +2957,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task DiscoveryRulesListByHealthModelViaIdentity(global::System.String viaIdentity, global::System.DateTime? timestamp, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3013,7 +3013,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleListResult> DiscoveryRulesListByHealthModelViaIdentityWithResult(global::System.String viaIdentity, global::System.DateTime? timestamp, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3071,7 +3071,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleListResult> DiscoveryRulesListByHealthModelWithResult(string subscriptionId, string resourceGroupName, string healthModelName, global::System.DateTime? timestamp, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3260,7 +3260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesAddDataAnnotation(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAddDataAnnotationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDataAnnotation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3310,7 +3310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesAddDataAnnotationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAddDataAnnotationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDataAnnotation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3371,7 +3371,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDataAnnotation> EntitiesAddDataAnnotationViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAddDataAnnotationRequest body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3436,7 +3436,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesAddDataAnnotationViaJsonString(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDataAnnotation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3486,7 +3486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDataAnnotation> EntitiesAddDataAnnotationViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3537,7 +3537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDataAnnotation> EntitiesAddDataAnnotationWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAddDataAnnotationRequest body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3734,7 +3734,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesCreateOrUpdate(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntity body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntity>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3783,7 +3783,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntity body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntity>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3843,7 +3843,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntity> EntitiesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntity body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3907,7 +3907,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntity>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3956,7 +3956,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntity> EntitiesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4006,7 +4006,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntity> EntitiesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntity body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4383,7 +4383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesDelete(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4427,7 +4427,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4665,7 +4665,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesGet(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntity>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4713,7 +4713,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesGetDataAnnotations(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetDataAnnotationsRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetDataAnnotationsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4763,7 +4763,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesGetDataAnnotationsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetDataAnnotationsRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetDataAnnotationsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4824,7 +4824,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetDataAnnotationsResponse> EntitiesGetDataAnnotationsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetDataAnnotationsRequest body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4889,7 +4889,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesGetDataAnnotationsViaJsonString(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetDataAnnotationsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4939,7 +4939,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetDataAnnotationsResponse> EntitiesGetDataAnnotationsViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4990,7 +4990,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetDataAnnotationsResponse> EntitiesGetDataAnnotationsWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetDataAnnotationsRequest body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5187,7 +5187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesGetHistory(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityHistoryRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityHistoryResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5237,7 +5237,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesGetHistoryViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityHistoryRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityHistoryResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5298,7 +5298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityHistoryResponse> EntitiesGetHistoryViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityHistoryRequest body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5363,7 +5363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesGetHistoryViaJsonString(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityHistoryResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5413,7 +5413,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityHistoryResponse> EntitiesGetHistoryViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5464,7 +5464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityHistoryResponse> EntitiesGetHistoryWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityHistoryRequest body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5659,7 +5659,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesGetSignalHistory(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalHistoryRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalHistoryResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5709,7 +5709,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesGetSignalHistoryViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalHistoryRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalHistoryResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5770,7 +5770,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalHistoryResponse> EntitiesGetSignalHistoryViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalHistoryRequest body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5835,7 +5835,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesGetSignalHistoryViaJsonString(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalHistoryResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5885,7 +5885,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalHistoryResponse> EntitiesGetSignalHistoryViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5936,7 +5936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalHistoryResponse> EntitiesGetSignalHistoryWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalHistoryRequest body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6131,7 +6131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesGetSignalRecommendations(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetSignalRecommendationsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6177,7 +6177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesGetSignalRecommendationsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetSignalRecommendationsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6234,7 +6234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetSignalRecommendationsResponse> EntitiesGetSignalRecommendationsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6294,7 +6294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IGetSignalRecommendationsResponse> EntitiesGetSignalRecommendationsWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6479,7 +6479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntity>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6533,7 +6533,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntity> EntitiesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6590,7 +6590,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntity> EntitiesGetWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6779,7 +6779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesIngestHealthReport(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6831,7 +6831,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesIngestHealthReportViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6898,7 +6898,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesIngestHealthReportViaJsonString(string subscriptionId, string resourceGroupName, string healthModelName, string entityName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7032,7 +7032,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesListByHealthModel(string subscriptionId, string resourceGroupName, string healthModelName, global::System.DateTime? timestamp, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7078,7 +7078,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task EntitiesListByHealthModelViaIdentity(global::System.String viaIdentity, global::System.DateTime? timestamp, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7134,7 +7134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityListResult> EntitiesListByHealthModelViaIdentityWithResult(global::System.String viaIdentity, global::System.DateTime? timestamp, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7192,7 +7192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityListResult> EntitiesListByHealthModelWithResult(string subscriptionId, string resourceGroupName, string healthModelName, global::System.DateTime? timestamp, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7380,7 +7380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthModelsCreate(string subscriptionId, string resourceGroupName, string healthModelName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7427,7 +7427,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthModelsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7484,7 +7484,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel> HealthModelsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7544,7 +7544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthModelsCreateViaJsonString(string subscriptionId, string resourceGroupName, string healthModelName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7590,7 +7590,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel> HealthModelsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string healthModelName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7637,7 +7637,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel> HealthModelsCreateWithResult(string subscriptionId, string resourceGroupName, string healthModelName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8008,7 +8008,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthModelsDelete(string subscriptionId, string resourceGroupName, string healthModelName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8050,7 +8050,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthModelsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8281,7 +8281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthModelsGet(string subscriptionId, string resourceGroupName, string healthModelName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8322,7 +8322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthModelsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8373,7 +8373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel> HealthModelsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8426,7 +8426,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel> HealthModelsGetWithResult(string subscriptionId, string resourceGroupName, string healthModelName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8604,7 +8604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthModelsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModelListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8644,7 +8644,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthModelsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModelListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8693,7 +8693,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModelListResult> HealthModelsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8743,7 +8743,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModelListResult> HealthModelsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8918,7 +8918,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthModelsListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModelListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8956,7 +8956,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthModelsListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModelListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9002,7 +9002,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModelListResult> HealthModelsListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9048,7 +9048,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModelListResult> HealthModelsListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9220,7 +9220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthModelsUpdate(string subscriptionId, string resourceGroupName, string healthModelName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModelUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9267,7 +9267,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthModelsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModelUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9324,7 +9324,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel> HealthModelsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModelUpdate body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9384,7 +9384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthModelsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string healthModelName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9430,7 +9430,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel> HealthModelsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string healthModelName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9477,7 +9477,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModel> HealthModelsUpdateWithResult(string subscriptionId, string resourceGroupName, string healthModelName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthModelUpdate body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9846,7 +9846,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9882,7 +9882,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9925,7 +9925,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9967,7 +9967,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10135,7 +10135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task RelationshipsCreateOrUpdate(string subscriptionId, string resourceGroupName, string healthModelName, string relationshipName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10184,7 +10184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task RelationshipsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10244,7 +10244,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship> RelationshipsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10309,7 +10309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task RelationshipsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string healthModelName, string relationshipName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10359,7 +10359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship> RelationshipsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string relationshipName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10410,7 +10410,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship> RelationshipsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string relationshipName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10791,7 +10791,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task RelationshipsDelete(string subscriptionId, string resourceGroupName, string healthModelName, string relationshipName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10835,7 +10835,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task RelationshipsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11075,7 +11075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task RelationshipsGet(string subscriptionId, string resourceGroupName, string healthModelName, string relationshipName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11118,7 +11118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task RelationshipsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11172,7 +11172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship> RelationshipsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11230,7 +11230,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationship> RelationshipsGetWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string relationshipName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11417,7 +11417,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task RelationshipsListByHealthModel(string subscriptionId, string resourceGroupName, string healthModelName, global::System.DateTime? timestamp, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationshipListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11463,7 +11463,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task RelationshipsListByHealthModelViaIdentity(global::System.String viaIdentity, global::System.DateTime? timestamp, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationshipListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11519,7 +11519,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationshipListResult> RelationshipsListByHealthModelViaIdentityWithResult(global::System.String viaIdentity, global::System.DateTime? timestamp, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11577,7 +11577,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IRelationshipListResult> RelationshipsListByHealthModelWithResult(string subscriptionId, string resourceGroupName, string healthModelName, global::System.DateTime? timestamp, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11766,7 +11766,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task SignalDefinitionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string healthModelName, string signalDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11815,7 +11815,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task SignalDefinitionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11875,7 +11875,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition> SignalDefinitionsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11939,7 +11939,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task SignalDefinitionsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string healthModelName, string signalDefinitionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11988,7 +11988,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition> SignalDefinitionsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string signalDefinitionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12038,7 +12038,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition> SignalDefinitionsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string signalDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition body, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12417,7 +12417,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task SignalDefinitionsDelete(string subscriptionId, string resourceGroupName, string healthModelName, string signalDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12461,7 +12461,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task SignalDefinitionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12699,7 +12699,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task SignalDefinitionsGet(string subscriptionId, string resourceGroupName, string healthModelName, string signalDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12742,7 +12742,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task SignalDefinitionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12796,7 +12796,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition> SignalDefinitionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12853,7 +12853,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition> SignalDefinitionsGetWithResult(string subscriptionId, string resourceGroupName, string healthModelName, string signalDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13039,7 +13039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task SignalDefinitionsListByHealthModel(string subscriptionId, string resourceGroupName, string healthModelName, global::System.DateTime? timestamp, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13085,7 +13085,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task SignalDefinitionsListByHealthModelViaIdentity(global::System.String viaIdentity, global::System.DateTime? timestamp, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13141,7 +13141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinitionListResult> SignalDefinitionsListByHealthModelViaIdentityWithResult(global::System.String viaIdentity, global::System.DateTime? timestamp, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13199,7 +13199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinitionListResult> SignalDefinitionsListByHealthModelWithResult(string subscriptionId, string resourceGroupName, string healthModelName, global::System.DateTime? timestamp, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-05-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

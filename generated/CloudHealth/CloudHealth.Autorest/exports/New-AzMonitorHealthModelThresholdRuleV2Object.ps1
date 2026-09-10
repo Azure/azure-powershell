@@ -40,14 +40,6 @@ param(
     ${Operator},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT5M", "PT15M", "PT30M", "PT1H")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
-    # Only applicable when operator is Dynamic.
-    ${LookBackWindow},
-
-    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Low", "Medium", "High")]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
     [System.String]

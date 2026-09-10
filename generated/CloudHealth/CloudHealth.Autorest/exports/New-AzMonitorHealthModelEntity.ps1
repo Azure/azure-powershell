@@ -30,6 +30,16 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+SIGNALAGGREGATIONGROUP <ISignalAggregationGroup[]>: Logical aggregation groups over the signals on this entity. Overlap is allowed: the same signal may appear in more than one group's members. Each group is evaluated independently according to its strategy, and a shared signal can contribute to multiple group states and related per-group telemetry. Group states contribute alongside any ungrouped signals and the dependency-aggregated child health to the entity's overall worst-of composite.
+  Member <List<String>>: Names of signals on this entity which are members of the group. Members are matched by name; references to signals that do not currently exist on the entity are accepted (typically for pre-declared external signals) and surfaced via 'unresolvedMembers'. A signal may be listed in multiple groups; no duplicates within this list.
+  Name <String>: Name of the aggregation group. Unique within the entity.
+  [AggregationType <String>]: Aggregation strategy applied across the members of this group.
+  [DegradedThreshold <Double?>]: Degraded threshold for threshold-bearing strategies (MinHealthy, MaxNotHealthy). For MinHealthy: group is degraded when the healthy member count/percentage falls to or below this value. For MaxNotHealthy: group is degraded when the not-healthy member count/percentage reaches or exceeds this value. Optional — if not set, the group transitions directly between Healthy and Unhealthy. MUST NOT be set when aggregationType is WorstOf or BestOf.
+  [DisplayName <String>]: Display name
+  [IgnoreUnknown <Boolean?>]: If true (default), members reporting Unknown are excluded from the aggregation. For MinHealthy and MaxNotHealthy this flag affects the denominator/count and is meaningful. For WorstOf and BestOf the flag has no observable effect: under WorstOf, Unknown=0 is the lowest severity and can never beat any non-Unknown member in a Max() so filtering it changes nothing observable; under BestOf, Unknown is unconditionally excluded by the strategy itself irrespective of the flag. The flag is retained on the contract for vocabulary symmetry across all four strategies.
+  [UnhealthyThreshold <Double?>]: Unhealthy threshold for threshold-bearing strategies. Required when aggregationType is MinHealthy or MaxNotHealthy; MUST NOT be set otherwise.
+  [Unit <String>]: Unit type for the thresholds. Required when aggregationType is MinHealthy or MaxNotHealthy; MUST NOT be set otherwise.
+
 SIGNALGROUP <ISignalGroups>: Signal groups which are assigned to this entity
   [AzureLogAnalyticAuthenticationSetting <String>]: Reference to the name of the authentication setting which is used for querying the data source.
   [AzureLogAnalyticLogAnalyticsWorkspaceResourceId <String>]: Log Analytics workspace resource ID.
@@ -40,7 +50,6 @@ SIGNALGROUP <ISignalGroups>: Signal groups which are assigned to this entity
       UnhealthyRule <IThresholdRuleV2>: Unhealthy rule with static threshold.
       [DegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
         Operator <String>: Operator how to compare the signal value with the threshold
-        [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
         [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
         [Threshold <Double?>]: Threshold value
     [QueryText <String>]: Query text in KQL syntax
@@ -62,7 +71,7 @@ SIGNALGROUP <ISignalGroups>: Signal groups which are assigned to this entity
   [AzureResourceSignal <List<IAzureResourceSignal>>]: Signals assigned to this group.
     [AggregationType <String>]: Type of aggregation to apply to the metric
     [DataUnit <String>]: Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
-    [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+    [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension.
     [DisplayName <String>]: Display name
     [EvaluationRule <IEvaluationRule>]: Evaluation rules for the signal definition
     [MetricName <String>]: Name of the metric
@@ -175,6 +184,16 @@ param(
     [System.String]
     # Impact of the entity in health state propagation
     ${Impact},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup[]]
+    # Logical aggregation groups over the signals on this entity.
+    # Overlap is allowed: the same signal may appear in more than one group's members.
+    # Each group is evaluated independently according to its strategy, and a shared signal can contribute to multiple group states and related per-group telemetry.
+    # Group states contribute alongside any ungrouped signals and the dependency-aggregated child health to the entity's overall worst-of composite.
+    ${SignalAggregationGroup},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]

@@ -119,10 +119,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2Internal)this).Sensitivity = (string) content.GetValueForProperty("Sensitivity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2Internal)this).Sensitivity, global::System.Convert.ToString);
             }
-            if (content.Contains("LookBackWindow"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2Internal)this).LookBackWindow = (string) content.GetValueForProperty("LookBackWindow",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2Internal)this).LookBackWindow, global::System.Convert.ToString);
-            }
             AfterDeserializeDictionary(content);
         }
 
@@ -151,10 +147,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             if (content.Contains("Sensitivity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2Internal)this).Sensitivity = (string) content.GetValueForProperty("Sensitivity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2Internal)this).Sensitivity, global::System.Convert.ToString);
-            }
-            if (content.Contains("LookBackWindow"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2Internal)this).LookBackWindow = (string) content.GetValueForProperty("LookBackWindow",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2Internal)this).LookBackWindow, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

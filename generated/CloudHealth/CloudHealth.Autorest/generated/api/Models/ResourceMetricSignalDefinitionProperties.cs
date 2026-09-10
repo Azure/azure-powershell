@@ -31,9 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         /// <summary>Backing field for <see cref="DimensionFilter" /> property.</summary>
         private string _dimensionFilter;
 
-        /// <summary>
-        /// Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
-        /// </summary>
+        /// <summary>Optional: Dimension filter to apply to the dimension.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
         public string DimensionFilter { get => this._dimensionFilter; set => this._dimensionFilter = value; }
 
@@ -123,16 +121,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("None", "Average", "Count", "Minimum", "Maximum", "Total")]
         string AggregationType { get; set; }
-        /// <summary>
-        /// Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
-        /// </summary>
+        /// <summary>Optional: Dimension filter to apply to the dimension.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.",
+        Description = @"Optional: Dimension filter to apply to the dimension.",
         SerializedName = @"dimensionFilter",
         PossibleTypes = new [] { typeof(string) })]
         string DimensionFilter { get; set; }
@@ -178,9 +174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         /// <summary>Type of aggregation to apply to the metric</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("None", "Average", "Count", "Minimum", "Maximum", "Total")]
         string AggregationType { get; set; }
-        /// <summary>
-        /// Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
-        /// </summary>
+        /// <summary>Optional: Dimension filter to apply to the dimension.</summary>
         string DimensionFilter { get; set; }
         /// <summary>Name of the metric</summary>
         string MetricName { get; set; }

@@ -132,6 +132,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.EntityPropertiesTagsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SignalAggregationGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesInternal)this).SignalAggregationGroup = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup>) content.GetValueForProperty("SignalAggregationGroup",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesInternal)this).SignalAggregationGroup, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup>(__y, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalAggregationGroupTypeConverter.ConvertFrom));
+            }
             if (content.Contains("DiscoveredBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesInternal)this).DiscoveredBy = (string) content.GetValueForProperty("DiscoveredBy",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesInternal)this).DiscoveredBy, global::System.Convert.ToString);
@@ -240,6 +244,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.EntityPropertiesTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SignalAggregationGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesInternal)this).SignalAggregationGroup = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup>) content.GetValueForProperty("SignalAggregationGroup",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesInternal)this).SignalAggregationGroup, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup>(__y, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalAggregationGroupTypeConverter.ConvertFrom));
             }
             if (content.Contains("DiscoveredBy"))
             {

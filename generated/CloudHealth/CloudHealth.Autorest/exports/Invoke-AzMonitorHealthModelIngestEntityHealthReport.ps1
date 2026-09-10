@@ -40,7 +40,6 @@ BODY <IHealthReportRequest>: Health report that's submitted for a specific signa
   [AdditionalContext <String>]: Optional additional context or description for the health report
   [EvaluationRuleDegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
     Operator <String>: Operator how to compare the signal value with the threshold
-    [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
     [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
     [Threshold <Double?>]: Threshold value
   [EvaluationRuleUnhealthyRule <IThresholdRuleV2>]: Unhealthy rule with static threshold.
@@ -49,13 +48,11 @@ BODY <IHealthReportRequest>: Health report that's submitted for a specific signa
 
 EVALUATIONRULEDEGRADEDRULE <IThresholdRuleV2>: Degraded rule with static threshold.
   Operator <String>: Operator how to compare the signal value with the threshold
-  [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
   [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
   [Threshold <Double?>]: Threshold value
 
 EVALUATIONRULEUNHEALTHYRULE <IThresholdRuleV2>: Unhealthy rule with static threshold.
   Operator <String>: Operator how to compare the signal value with the threshold
-  [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
   [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
   [Threshold <Double?>]: Threshold value
 
@@ -154,7 +151,7 @@ param(
     [Parameter(ParameterSetName='IngestExpanded', Mandatory)]
     [Parameter(ParameterSetName='IngestViaIdentityExpanded', Mandatory)]
     [Parameter(ParameterSetName='IngestViaIdentityHealthmodelExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown", "Deleted")]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Healthy", "Degraded", "Unhealthy", "Unknown")]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
     [System.String]
     # Health state to report for the signal

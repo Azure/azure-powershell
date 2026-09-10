@@ -280,6 +280,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>
+        /// Logical aggregation groups over the signals on this entity. Overlap is allowed: the same signal may appear in more than
+        /// one group's members. Each group is evaluated independently according to its strategy, and a shared signal can contribute
+        /// to multiple group states and related per-group telemetry. Group states contribute alongside any ungrouped signals and
+        /// the dependency-aggregated child health to the entity's overall worst-of composite.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Logical aggregation groups over the signals on this entity. Overlap is allowed: the same signal may appear in more than one group's members. Each group is evaluated independently according to its strategy, and a shared signal can contribute to multiple group states and related per-group telemetry. Group states contribute alongside any ungrouped signals and the dependency-aggregated child health to the entity's overall worst-of composite.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Logical aggregation groups over the signals on this entity. Overlap is allowed: the same signal may appear in more than one group's members. Each group is evaluated independently according to its strategy, and a shared signal can contribute to multiple group states and related per-group telemetry. Group states contribute alongside any ungrouped signals and the dependency-aggregated child health to the entity's overall worst-of composite.",
+        SerializedName = @"signalAggregationGroups",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup[] SignalAggregationGroup { get => _resourceBody.SignalAggregationGroup?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.SignalAggregationGroup = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup>(value) : null); }
+
         /// <summary>Signal groups which are assigned to this entity</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Signal groups which are assigned to this entity")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Body)]
@@ -689,6 +706,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
             {
                 this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SignalAggregationGroup")))
+            {
+                this.SignalAggregationGroup = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalAggregationGroup[])(this.MyInvocation?.BoundParameters["SignalAggregationGroup"]);
             }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("CanvaPositionX")))
             {

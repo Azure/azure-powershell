@@ -18,10 +18,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzMonitorHealthModelEn
 Describe 'Update-AzMonitorHealthModelEntity' {
     It 'UpdateExpanded' {
         {
-            $result = Update-AzMonitorHealthModelEntity -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.EntityName -DisplayName 'Shared entity updated' -HealthObjective 99.7 -Impact Standard
+            $groups = @(
+                @{ Name = 'availability'; AggregationType = 'WorstOf'; Member = @('signal-one', 'signal-two'); IgnoreUnknown = $true }
+                @{ Name = 'performance'; AggregationType = 'BestOf'; Member = @('signal-three'); IgnoreUnknown = $false }
+            )
+            Update-AzMonitorHealthModelEntity -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.EntityName -SignalAggregationGroup $groups | Out-Null
+            $before = Get-AzMonitorHealthModelEntity -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.EntityName
+            @($before.SignalAggregationGroup).Count | Should -Be 2
+
+            $updatedGroups = @(
+                @{ Name = 'availability'; AggregationType = 'BestOf'; Member = @('signal-one', 'signal-two', 'signal-three'); IgnoreUnknown = $false }
+            )
+            $result = Update-AzMonitorHealthModelEntity -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.EntityName -DisplayName 'Shared entity updated' -HealthObjective 99.7 -Impact Standard -SignalAggregationGroup $updatedGroups
             $result | Should -Not -BeNullOrEmpty
             $result.Name | Should -Be $env.EntityName
             $result.DisplayName | Should -Be 'Shared entity updated'
+            $stored = Get-AzMonitorHealthModelEntity -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.EntityName
+            foreach ($entity in @($result, $stored)) {
+                @($entity.SignalAggregationGroup).Count | Should -Be 1
+                $actual = @($entity.SignalAggregationGroup | Where-Object Name -eq $updatedGroups[0].Name)
+                $actual.Count | Should -Be 1
+                $actual[0].AggregationType | Should -Be $updatedGroups[0].AggregationType
+                $actual[0].IgnoreUnknown | Should -Be $false
+                @($actual[0].Member).Count | Should -Be 3
+                ($actual[0].Member | Sort-Object) -join ',' | Should -Be (($updatedGroups[0].Member | Sort-Object) -join ',')
+            }
         } | Should -Not -Throw
     }
 

@@ -11,16 +11,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2Internal
     {
 
-        /// <summary>Backing field for <see cref="LookBackWindow" /> property.</summary>
-        private string _lookBackWindow;
-
-        /// <summary>
-        /// ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator
-        /// is Dynamic.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
-        public string LookBackWindow { get => this._lookBackWindow; set => this._lookBackWindow = value; }
-
         /// <summary>Backing field for <see cref="Operator" /> property.</summary>
         private string _operator;
 
@@ -54,21 +44,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
     public partial interface IThresholdRuleV2 :
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator
-        /// is Dynamic.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.",
-        SerializedName = @"lookBackWindow",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT5M", "PT15M", "PT30M", "PT1H")]
-        string LookBackWindow { get; set; }
         /// <summary>Operator how to compare the signal value with the threshold</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = true,
@@ -112,12 +87,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
     internal partial interface IThresholdRuleV2Internal
 
     {
-        /// <summary>
-        /// ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator
-        /// is Dynamic.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT5M", "PT15M", "PT30M", "PT1H")]
-        string LookBackWindow { get; set; }
         /// <summary>Operator how to compare the signal value with the threshold</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "LessThanOrEqual", "GreaterThanOrEqual", "Equal", "NotEqual", "Dynamic")]
         string Operator { get; set; }

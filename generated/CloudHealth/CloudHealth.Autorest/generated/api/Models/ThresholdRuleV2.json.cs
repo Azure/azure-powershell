@@ -78,7 +78,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             {_operator = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("operator"), out var __jsonOperator) ? (string)__jsonOperator : (string)_operator;}
             {_threshold = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNumber>("threshold"), out var __jsonThreshold) ? (double?)__jsonThreshold : _threshold;}
             {_sensitivity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("sensitivity"), out var __jsonSensitivity) ? (string)__jsonSensitivity : (string)_sensitivity;}
-            {_lookBackWindow = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("lookBackWindow"), out var __jsonLookBackWindow) ? (string)__jsonLookBackWindow : (string)_lookBackWindow;}
             AfterFromJson(json);
         }
 
@@ -104,7 +103,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             AddIf( null != (((object)this._operator)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._operator.ToString()) : null, "operator" ,container.Add );
             AddIf( null != this._threshold ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNumber((double)this._threshold) : null, "threshold" ,container.Add );
             AddIf( null != (((object)this._sensitivity)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._sensitivity.ToString()) : null, "sensitivity" ,container.Add );
-            AddIf( null != (((object)this._lookBackWindow)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._lookBackWindow.ToString()) : null, "lookBackWindow" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

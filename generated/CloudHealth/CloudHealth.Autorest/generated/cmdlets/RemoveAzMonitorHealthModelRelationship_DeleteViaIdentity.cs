@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Description(@"Delete a Relationship")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/relationships/{relationshipName}", ApiVersion = "2026-05-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/relationships/{relationshipName}", ApiVersion = "2026-09-01-preview")]
     public partial class RemoveAzMonitorHealthModelRelationship_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IContext
