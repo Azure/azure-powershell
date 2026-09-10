@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the network interface.
         /// </param>
         /// <param name='ipConfigurationName'>
-        /// The name of the ip configuration name.
+        /// The name of the ip configuration.
         /// </param>
         public static NetworkInterfaceIPConfiguration Get(this INetworkInterfaceIPConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string ipConfigurationName)
         {
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the network interface.
         /// </param>
         /// <param name='ipConfigurationName'>
-        /// The name of the ip configuration name.
+        /// The name of the ip configuration.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
