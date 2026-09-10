@@ -151,6 +151,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         targetErrorCategory = ErrorCategory.InvalidOperation;
                     }
                 }
+                else if (exception is ErrorResponseException)
+                {
+                    var responseEx = exception as ErrorResponseException;
+                    if (responseEx.Response != null && responseEx.Response.StatusCode == SystemNet.HttpStatusCode.NotFound)
+                    {
+                        WriteDebug(string.Format(Resources.CloudExceptionCodeNotFound, responseEx.Response.StatusCode));
+
+                        targetEx = new Exception(Resources.ResourceNotFoundMessage);
+                        targetErrorCategory = ErrorCategory.InvalidArgument;
+                    }
+                    else if (responseEx.Body != null && responseEx.Body.Error != null)
+                    {
+                        WriteDebug(string.Format(Resources.CloudException, responseEx.Body.Error.Code, responseEx.Body.Error.Message));
+
+                        targetErrorId = responseEx.Body.Error.Code;
+                        targetErrorCategory = ErrorCategory.InvalidOperation;
+                    }
+                }
                 else if (exception is SystemNet.WebException)
                 {
                     var webEx = exception as SystemNet.WebException;

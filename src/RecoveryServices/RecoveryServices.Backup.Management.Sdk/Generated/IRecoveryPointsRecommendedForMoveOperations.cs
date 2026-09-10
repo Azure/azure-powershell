@@ -19,21 +19,20 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <remarks>
         /// Lists the recovery points recommended for move to another tier
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// 
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// 
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// 
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='objectType'>
         /// Gets the class type.
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecoveryPointResource>>> ListWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string objectType = default(string), System.Collections.Generic.IList<string> excludedRPList = default(System.Collections.Generic.IList<string>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecoveryPointResource>>> ListWithHttpMessagesAsync(string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string objectType = default(string), System.Collections.Generic.IList<string> excludedRPList = default(System.Collections.Generic.IList<string>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the recovery points recommended for move to another tier

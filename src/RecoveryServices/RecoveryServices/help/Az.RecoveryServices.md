@@ -309,6 +309,9 @@ Sets the properties for backup management.
 ### [Set-AzRecoveryServicesBackupProtectionPolicy](Set-AzRecoveryServicesBackupProtectionPolicy.md)
 Modifies a Backup protection policy.
 
+### [Set-AzRecoveryServicesBackupItemSourceScanConfiguration](Set-AzRecoveryServicesBackupItemSourceScanConfiguration.md)
+Configures Source Scan (Microsoft Defender for Cloud) for a Backup-protected item.
+
 ### [Set-AzRecoveryServicesResourceGuardMapping](Set-AzRecoveryServicesResourceGuardMapping.md)
 Sets the resource guard mapping to the recovery services vault.
 
@@ -423,4 +426,3 @@ Updates MSIdentity to the recovery services vault.
 
 ### [Wait-AzRecoveryServicesBackupJob](Wait-AzRecoveryServicesBackupJob.md)
 Waits for a Backup job to finish.
-

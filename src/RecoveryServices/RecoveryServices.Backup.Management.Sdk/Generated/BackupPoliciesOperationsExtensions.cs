@@ -14,56 +14,57 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Lists of backup policies associated with Recovery Services Vault. API
-        /// provides pagination parameters to fetch scoped results.
+        /// provides pagination parameters to fetch
+        /// scoped results.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the VaultResource
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ProtectionPolicyResource> List(this IBackupPoliciesOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<ProtectionPolicyQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ProtectionPolicyQueryObject>))
+        public static Microsoft.Rest.Azure.IPage<ProtectionPolicyResource> List(this IBackupPoliciesOperations operations, string resourceGroupName, string vaultName, string filter = default(string))
         {
-                return ((IBackupPoliciesOperations)operations).ListAsync(vaultName, resourceGroupName, odataQuery).GetAwaiter().GetResult();
+                return ((IBackupPoliciesOperations)operations).ListAsync(resourceGroupName, vaultName, filter).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Lists of backup policies associated with Recovery Services Vault. API
-        /// provides pagination parameters to fetch scoped results.
+        /// provides pagination parameters to fetch
+        /// scoped results.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the VaultResource
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ProtectionPolicyResource>> ListAsync(this IBackupPoliciesOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<ProtectionPolicyQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ProtectionPolicyQueryObject>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ProtectionPolicyResource>> ListAsync(this IBackupPoliciesOperations operations, string resourceGroupName, string vaultName, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(vaultName, resourceGroupName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, vaultName, filter, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
         /// Lists of backup policies associated with Recovery Services Vault. API
-        /// provides pagination parameters to fetch scoped results.
+        /// provides pagination parameters to fetch
+        /// scoped results.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -78,7 +79,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Lists of backup policies associated with Recovery Services Vault. API
-        /// provides pagination parameters to fetch scoped results.
+        /// provides pagination parameters to fetch
+        /// scoped results.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

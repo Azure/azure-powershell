@@ -8,25 +8,32 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource management error response.
+    /// Common error response for all Azure Resource Manager APIs to return error
+    /// details for failed operations. (This also follows the OData error response
+    /// format.).
     /// </summary>
-    public partial class NewErrorResponse
+    /// <remarks>
+    /// Common error response for all Azure Resource Manager APIs to return error
+    /// details for failed operations. (This also follows the OData error response
+    /// format.).
+    /// </remarks>
+    public partial class ErrorResponse
     {
         /// <summary>
-        /// Initializes a new instance of the NewErrorResponse class.
+        /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        public NewErrorResponse()
+        public ErrorResponse()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the NewErrorResponse class.
+        /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
 
         /// <param name="error">The error object.
         /// </param>
-        public NewErrorResponse(NewErrorResponseError error = default(NewErrorResponseError))
+        public ErrorResponse(ManagementErrorDetail error = default(ManagementErrorDetail))
 
         {
             this.Error = error;
@@ -43,6 +50,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Gets or sets the error object.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "error")]
-        public NewErrorResponseError Error {get; set; }
+        public ManagementErrorDetail Error {get; set; }
     }
 }
