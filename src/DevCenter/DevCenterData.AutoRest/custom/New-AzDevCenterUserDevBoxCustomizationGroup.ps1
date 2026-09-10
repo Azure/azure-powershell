@@ -44,7 +44,7 @@ New-AzDevCenterUserDevBoxCustomizationGroup -DevCenterName Contoso -InputObject 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationGroup
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.ICustomizationGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -81,7 +81,7 @@ TASK <ICustomizationTask[]>: Tasks to apply. Note by default tasks are excluded 
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserdevboxcustomizationgroup
 #>
 function New-AzDevCenterUserDevBoxCustomizationGroup {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationGroup])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.ICustomizationGroup])]
   [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
     [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
@@ -140,7 +140,7 @@ function New-AzDevCenterUserDevBoxCustomizationGroup {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTask[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.ICustomizationTask[]]
     # Tasks to apply.
     # Note by default tasks are excluded from the response when listing customization groups.
     # To include them, use the `include=tasks` queryparameter.

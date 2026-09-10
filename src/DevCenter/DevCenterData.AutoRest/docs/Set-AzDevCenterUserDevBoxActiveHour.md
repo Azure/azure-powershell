@@ -114,7 +114,7 @@ Manual user set active hours configuration.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IUserActiveHoursConfiguration
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IUserActiveHoursConfiguration
 Parameter Sets: Set, SetByDevCenter
 Aliases:
 
@@ -298,11 +298,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IUserActiveHoursConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IUserActiveHoursConfiguration
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBox
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevBox
 
 ## NOTES
 
