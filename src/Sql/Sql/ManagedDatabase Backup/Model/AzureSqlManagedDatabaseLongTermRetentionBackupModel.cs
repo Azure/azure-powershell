@@ -28,6 +28,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model
         public DateTime? BackupExpirationTime { get; set; }
 
         /// <summary>
+        /// Gets or sets the storage redundancy type of the backup, such as Geo, Local, Zone, or GeoZone.
+        /// </summary>
+        public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
         /// Gets or sets the backup name.
         /// </summary>
         public string BackupName { get; set; }
