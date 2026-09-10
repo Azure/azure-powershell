@@ -33,6 +33,20 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The Ipam Pool")]
         public PSIpamPool InputObject { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Minimum number of IP addresses required for allocations from this IPAM pool to be compliant. Must be less than or equal to the maximum allocation size. Specify an empty string to clear the minimum.")]
+        [AllowEmptyString]
+        public string MinAllocationSize { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Maximum number of IP addresses allowed for allocations from this IPAM pool to be compliant. Must be greater than or equal to the minimum allocation size. Specify an empty string to clear the maximum.")]
+        [AllowEmptyString]
+        public string MaxAllocationSize { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -45,6 +59,16 @@ namespace Microsoft.Azure.Commands.Network
                 if (!this.IsIpamPoolPresent(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name))
                 {
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
+                }
+
+                if (this.MyInvocation.BoundParameters.ContainsKey(nameof(this.MinAllocationSize)))
+                {
+                    this.InputObject.Properties.MinAllocationSize = this.MinAllocationSize;
+                }
+
+                if (this.MyInvocation.BoundParameters.ContainsKey(nameof(this.MaxAllocationSize)))
+                {
+                    this.InputObject.Properties.MaxAllocationSize = this.MaxAllocationSize;
                 }
 
                 // Map to the sdk object

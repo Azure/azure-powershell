@@ -101,6 +101,20 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Minimum number of IP addresses required for allocations from this IPAM pool to be compliant. Must be less than or equal to the maximum allocation size.",
+            ParameterSetName = CreateByNameParameterSet)]
+        public virtual string MinAllocationSize { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Maximum number of IP addresses allowed for allocations from this IPAM pool to be compliant. Must be greater than or equal to the minimum allocation size.",
+            ParameterSetName = CreateByNameParameterSet)]
+        public virtual string MaxAllocationSize { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.",
             ParameterSetName = CreateByNameParameterSet)]
         public Hashtable Tag { get; set; }
@@ -152,6 +166,16 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.ParentPoolName))
             {
                 ipamPool.Properties.ParentPoolName = this.ParentPoolName;
+            }
+
+            if (!string.IsNullOrEmpty(this.MinAllocationSize))
+            {
+                ipamPool.Properties.MinAllocationSize = this.MinAllocationSize;
+            }
+
+            if (!string.IsNullOrEmpty(this.MaxAllocationSize))
+            {
+                ipamPool.Properties.MaxAllocationSize = this.MaxAllocationSize;
             }
 
             // Map to the sdk object

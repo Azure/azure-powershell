@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added minimum and maximum allocation size bounds to IPAM pool creation, update, and output.
+    - Use `-MinAllocationSize` and `-MaxAllocationSize` with `New-AzNetworkManagerIpamPool` or `Set-AzNetworkManagerIpamPool`.
+    - Specify an empty string with either `Set-AzNetworkManagerIpamPool` parameter to clear that bound.
 
 ## Version 8.2.0
 * Added `Get-AzExpressRouteLag`, `New-AzExpressRouteLag`, `Set-AzExpressRouteLag`, `Remove-AzExpressRouteLag`, `New-AzExpressRouteLagLOA`, `Get-AzExpressRouteLagLink`, and `Get-AzExpressRouteLagMember` for `ExpressRouteLag` resources (Microsoft.Network 2025-09-01 API).
