@@ -111,6 +111,13 @@ param(
     # Security alerts cannot be disabled.
     ${AzureMonitorAlertsForAllJobFailure},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("VaultLevel", "ProtectedItemLevel", "ProtectedItemWithParentTag")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Settings for granularity level
+    ${CostManagementSettingGranularityLevel},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]

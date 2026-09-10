@@ -6599,6 +6599,13 @@ param(
     # Security alerts cannot be disabled.
     ${AzureMonitorAlertsForAllJobFailure},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("VaultLevel", "ProtectedItemLevel", "ProtectedItemWithParentTag")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Settings for granularity level
+    ${CostManagementSettingGranularityLevel},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
@@ -6971,7 +6978,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName]
     # Retention Rule Name.
-    # Note: Default and Default_OperationalStore are default retention rules and cannot be removed.
+    # Note: "Default" retention rules cannot be removed, regardless of lifecycle.
     ${Name},
 
     [Parameter(ParameterSetName='RemoveRetention', Mandatory)]
@@ -6995,7 +7002,8 @@ param(
     [Parameter(ParameterSetName='AddRetention')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.Nullable[System.Boolean]]
-    # Specifies whether to modify an existing LifeCycle.
+    # [Deprecated] Optional; this parameter will be removed in an upcoming release.
+    # Setting -OverwriteLifeCycle $false blocks updating an existing retention rule; when $true or omitted, the existing rule lifecycles are replaced in place — the default behavior once this parameter is removed.
     ${OverwriteLifeCycle}
 )
 
@@ -7773,7 +7781,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BACKUPCONFIGURATION <IBackupDatasourceParameters>: Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService, AzureBlob, AzureDataLakeStorage.
+BACKUPCONFIGURATION <IBackupDatasourceParameters>: Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService, AzureBlob, AzureDataLakeStorage, AzureElasticSAN.
   ObjectType <String>: Type of the specific object - used for deserializing
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionbackupinstance
@@ -7836,7 +7844,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupDatasourceParameters]
     # Backup configuration for backup.
-    # Use this parameter to configure protection for AzureKubernetesService, AzureBlob, AzureDataLakeStorage.
+    # Use this parameter to configure protection for AzureKubernetesService, AzureBlob, AzureDataLakeStorage, AzureElasticSAN.
     ${BackupConfiguration},
 
     [Parameter()]
@@ -8127,7 +8135,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.Management.Automation.PSObject]
     # Restore configuration for restore.
-    # Use this parameter to restore with AzureKubernetesService.
+    # Use this parameter to restore with AzureKubernetesService, AzureElasticSAN.
     ${RestoreConfiguration},
 
     [Parameter(ParameterSetName='AlternateLocationFullRecovery')]
@@ -8461,7 +8469,15 @@ param(
     # List of auto-protection exclusion rules.
     # Each rule is a BlobBackupAutoProtectionRule object specifying container name prefix patterns to exclude.
     # Use this parameter along with -AutoProtection.
-    ${AutoProtectionExclusionRule}
+    ${AutoProtectionExclusionRule},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String[]]
+    # List of resource selectors (volume names) to be backed up.
+    # Use this parameter for DatasourceType AzureElasticSAN.
+    # The service currently supports exactly one volume per backup instance.
+    ${ResourceSelector}
 )
 
 begin {
@@ -10155,7 +10171,23 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
     # Staging storage account Id for restore.
-    ${StagingStorageAccountId}
+    ${StagingStorageAccountId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String[]]
+    # List of source volume names to be restored.
+    # Use this parameter for DatasourceType AzureElasticSAN.
+    # The service currently supports exactly one volume per restore request.
+    ${ResourceIdentifier},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Collections.Hashtable]
+    # Map of source volume name to target volume name to restore into.
+    # Use this parameter for DatasourceType AzureElasticSAN.
+    # Any source name not included will be restored with a default naming format.
+    ${ResourceNameOverride}
 )
 
 begin {

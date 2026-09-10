@@ -72,6 +72,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
 
             switch ( json.StringProperty("objectType") )
             {
+                case "GenericRestoreDatasourceCriteria":
+                {
+                    return new GenericRestoreDatasourceCriteria(json);
+                }
                 case "ItemPathBasedRestoreCriteria":
                 {
                     return new ItemPathBasedRestoreCriteria(json);
@@ -95,10 +99,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
                 case "RangeBasedItemLevelRestoreCriteria":
                 {
                     return new RangeBasedItemLevelRestoreCriteria(json);
-                }
-                case "GenericRestoreDatasourceCriteria":
-                {
-                    return new GenericRestoreDatasourceCriteria(json);
                 }
             }
             return new ItemLevelRestoreCriteria(json);

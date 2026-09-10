@@ -16,6 +16,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
         public string AzureMonitorAlertsForAllJobFailure { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IMonitoringSettingsInternal)MonitoringSetting).AzureMonitorAlertsForAllJobFailure; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IMonitoringSettingsInternal)MonitoringSetting).AzureMonitorAlertsForAllJobFailure = value ?? null; }
 
+        /// <summary>Backing field for <see cref="CostManagementSetting" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICostManagementSettings _costManagementSetting;
+
+        /// <summary>Cost Management Settings of the vault</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICostManagementSettings CostManagementSetting { get => (this._costManagementSetting = this._costManagementSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.CostManagementSettings()); set => this._costManagementSetting = value; }
+
+        /// <summary>Settings for granularity level</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
+        public string CostManagementSettingGranularityLevel { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICostManagementSettingsInternal)CostManagementSetting).GranularityLevel; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICostManagementSettingsInternal)CostManagementSetting).GranularityLevel = value ?? null; }
+
         /// <summary>CrossRegionRestore state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
         public string CrossRegionRestoreState { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFeatureSettingsInternal)FeatureSetting).CrossRegionRestoreState; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFeatureSettingsInternal)FeatureSetting).CrossRegionRestoreState = value ?? null; }
@@ -38,6 +49,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         /// <summary>Immutability state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
         public string ImmutabilityState { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ISecuritySettingsInternal)SecuritySetting).ImmutabilityState; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ISecuritySettingsInternal)SecuritySetting).ImmutabilityState = value ?? null; }
+
+        /// <summary>Internal Acessors for CostManagementSetting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICostManagementSettings Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchBackupVaultInputInternal.CostManagementSetting { get => (this._costManagementSetting = this._costManagementSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.CostManagementSettings()); set { {_costManagementSetting = value;} } }
 
         /// <summary>Internal Acessors for FeatureSetting</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFeatureSettings Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchBackupVaultInputInternal.FeatureSetting { get => (this._featureSetting = this._featureSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.FeatureSettings()); set { {_featureSetting = value;} } }
@@ -113,6 +127,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string AzureMonitorAlertsForAllJobFailure { get; set; }
+        /// <summary>Settings for granularity level</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Settings for granularity level",
+        SerializedName = @"granularityLevel",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("VaultLevel", "ProtectedItemLevel", "ProtectedItemWithParentTag")]
+        string CostManagementSettingGranularityLevel { get; set; }
         /// <summary>CrossRegionRestore state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -202,6 +228,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
     {
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string AzureMonitorAlertsForAllJobFailure { get; set; }
+        /// <summary>Cost Management Settings of the vault</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICostManagementSettings CostManagementSetting { get; set; }
+        /// <summary>Settings for granularity level</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("VaultLevel", "ProtectedItemLevel", "ProtectedItemWithParentTag")]
+        string CostManagementSettingGranularityLevel { get; set; }
         /// <summary>CrossRegionRestore state</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Disabled", "Enabled")]
         string CrossRegionRestoreState { get; set; }
