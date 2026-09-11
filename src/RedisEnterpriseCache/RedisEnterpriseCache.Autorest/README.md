@@ -210,6 +210,11 @@ directive:
       parameter-name: NotifyKeyspaceEvent
     set:
       parameter-name: NotifyKeyspaceEvents
+  # Keep the output/model property name consistent with the input parameter (plural)
+  - where:
+      property-name: NotifyKeyspaceEvent
+    set:
+      property-name: NotifyKeyspaceEvents
 
   # Remove unused variants
   - where:
