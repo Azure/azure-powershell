@@ -182,16 +182,14 @@ function Test-AzureVMSourceScan
 	$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
 
 	Assert-True { $vault.Properties.SourceScanConfiguration.State -eq "Enabled" }
+	Start-TestSleep -Seconds 10
 
 	# If source scan is already configured on the selected item, disable first so the test can
 	# validate both disable and enable transitions deterministically.
 	if ($targetItem.SourceSideScanStatus -eq "Configured")
 	{
-		$job = Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $targetItem -State Disabled -VaultId $vault.ID -Force
-		if ($null -ne $job)
-		{
-			Assert-True { $job.Status -eq "Completed" }
-		}
+		$result = Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $targetItem -State Disabled -VaultId $vault.ID -Force
+		Assert-Null $result
 
 		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
 		$targetItem = $item | Where-Object { $_.Name -eq $targetItem.Name } | Select-Object -First 1
@@ -200,11 +198,8 @@ function Test-AzureVMSourceScan
 	}
 
 	# Enable Source Scan for the item
-	$job = Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $targetItem -State Enabled -VaultId $vault.ID -Force
-	if ($null -ne $job)
-	{
-		Assert-True { $job.Status -eq "Completed" }
-	}
+	$result = Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $targetItem -State Enabled -VaultId $vault.ID -Force
+	Assert-Null $result
 
 	$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
 	$targetItem = $item | Where-Object { $_.Name -eq $targetItem.Name } | Select-Object -First 1
@@ -215,11 +210,9 @@ function Test-AzureVMSourceScan
 	Assert-NotNull $targetItem.SourceSideScanSummary
 
 	# Disable Source Scan for the item
-	$job = Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $targetItem -State Disabled -VaultId $vault.ID -Force
-	if ($null -ne $job)
-	{
-		Assert-True { $job.Status -eq "Completed" }
-	}
+	$targetItem = Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $targetItem -State Disabled -VaultId $vault.ID -Force -PassThru
+	Assert-NotNull $targetItem
+	Assert-True { $targetItem.SourceSideScanStatus -eq "NotConfigured" }
 
 	$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
 	$targetItem = $item | Where-Object { $_.Name -eq $targetItem.Name } | Select-Object -First 1

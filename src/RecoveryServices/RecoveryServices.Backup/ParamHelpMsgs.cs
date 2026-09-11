@@ -126,6 +126,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string SourceScanItem = "Specifies the backup item for which Source Scan (Microsoft Defender for Cloud) is to be configured.";
             public const string SourceScanState = "Specifies the Source Scan state to set for the item. Allowed values are Enabled, Disabled.";
             public const string SourceScanForceOption = "Forces the Source Scan configuration change (prevents confirmation dialog). This parameter is optional.";
+            public const string SourceScanPassThru = "Returns the updated backup item after the Source Scan configuration operation completes.";
         }
 
         internal static class ProtectableItem

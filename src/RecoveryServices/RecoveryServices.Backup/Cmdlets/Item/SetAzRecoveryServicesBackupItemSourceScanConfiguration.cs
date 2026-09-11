@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// enabling or disabling it, while preserving all other properties of the protected item.
     /// </summary>
     [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBISourceScanConfiguration")]
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupItemSourceScanConfiguration", SupportsShouldProcess = true), OutputType(typeof(JobBase))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupItemSourceScanConfiguration", SupportsShouldProcess = true), OutputType(typeof(ItemBase))]
     public class SetAzRecoveryServicesBackupItemSourceScanConfiguration : RSBackupVaultCmdletBase
     {
         /// <summary>
@@ -50,6 +50,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.SourceScanForceOption)]
         public SwitchParameter Force { get; set; }
+
+        /// <summary>
+        /// Returns the updated backup item when specified.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.SourceScanPassThru)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -83,21 +89,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 ServiceClientModel.SourceScanAction.Disable
                         };
 
-                    var response = ServiceClientAdapter.ConfigureProtectedItemSourceScan(
+                    ServiceClientAdapter.ConfigureProtectedItemSourceScan(
                         containerUri,
                         protectedItemUri,
                         request,
                         vaultName: vaultName,
                         resourceGroupName: resourceGroupName);
 
-                    var jobObj = HandleCreatedJob(
-                        response,
-                        Resources.ConfigureSourceScanOperation,
-                        vaultName: vaultName,
-                        resourceGroupName: resourceGroupName,
-                        returnJobObject: true);
+                    if (PassThru.IsPresent)
+                    {
+                        var protectedItemResponse = ServiceClientAdapter.GetProtectedItem(
+                            containerUri,
+                            protectedItemUri,
+                            queryFilter: null,
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName);
 
-                    WriteObject(jobObj);
+                        WriteObject(ConversionHelpers.GetItemModel(protectedItemResponse.Body));
+                    }
                 };
 
                 if (string.Equals(State, "Disabled", StringComparison.OrdinalIgnoreCase))

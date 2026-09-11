@@ -23,6 +23,7 @@
 * Added Microsoft Defender for Cloud Source Scan configuration for Recovery Services vaults and Azure Virtual Machine backup items.
     - Added support in `Update-AzRecoveryServicesVault -SourceScanState` to enable or disable vault-level Source Scan.
     - Added support in `Set-AzRecoveryServicesBackupItemSourceScanConfiguration`, or its `Set-AzRecoveryServicesBISourceScanConfiguration` alias, to enable or disable Source Scan for a protected item.
+    - Updated `Set-AzRecoveryServicesBackupItemSourceScanConfiguration` to wait for the Source Scan operation to complete, return no output by default, and return the updated backup item when `-PassThru` is specified.
     - Added Source Scan and threat details to backup item and recovery point output.
 * Added Cross Region Restore support for Azure File Share backup items (`Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`)
 * Refined soft delete behavior for Azure File share backup items
