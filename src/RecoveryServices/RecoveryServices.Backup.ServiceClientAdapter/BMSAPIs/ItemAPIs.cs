@@ -20,6 +20,7 @@ using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionR
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using RestAzureNS = Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
@@ -94,10 +95,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 }
             }
 
-            Logger.Instance.WriteDebug("Executing CreateOrUpdateWithHttpMessagesAsync");
-            return BmsAdapter.Client.ProtectedItems.CreateOrUpdateWithHttpMessagesAsync(
-                 vaultName ?? BmsAdapter.GetResourceName(),
+            Logger.Instance.WriteDebug("Executing BeginCreateOrUpdateWithHttpMessagesAsync");
+            var response = BmsAdapter.Client.ProtectedItems.BeginCreateOrUpdateWithHttpMessagesAsync(
                  resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                 vaultName ?? BmsAdapter.GetResourceName(),
                  AzureFabricName,
                  containerName,
                  protectedItemName,
@@ -105,6 +106,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                  null,
                  customHeaders,
                  cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+            return ToAzureOperationResponse<ProtectedItemResource, ProtectedItemsCreateOrUpdateHeaders>(response);
+        }
+
+        /// <summary>
+        /// Configures Source Scan on an existing protected item using the dedicated action from
+        /// the 2026-07-01 Backup API.
+        /// </summary>
+        /// <param name="containerName">Name of the container which this item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="request">Source Scan configuration request</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <returns>Response returned by the service for this operation, including tracking headers for async jobs</returns>
+        public RestAzureNS.AzureOperationResponse ConfigureProtectedItemSourceScan(
+            string containerName,
+            string protectedItemName,
+            ProtectedItemConfigureSourceScanRequest request,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request));
+            }
+
+            var response = BmsAdapter.Client.ConfigureSourceScan.BeginExecuteWithHttpMessagesAsync(
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
+                AzureFabricName,
+                containerName,
+                protectedItemName,
+                request.SourceScanAction,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+
+            return ToAzureOperationResponseWithoutBody(response);
         }
 
         /// <summary>
@@ -156,7 +192,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                     }
 
                     unlockDeleteRequest.ResourceToBeDeleted = protectedItemUri;
-                    UnlockDeleteResponse unlockDeleteResponse = BmsAdapter.Client.ResourceGuardProxy.UnlockDeleteWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), resourceGuardMapping[0].Name, unlockDeleteRequest.ResourceGuardOperationRequests, unlockDeleteRequest.ResourceToBeDeleted , customHeaders).Result.Body;
+                    UnlockDeleteResponse unlockDeleteResponse = BmsAdapter.Client.ResourceGuardProxy.UnlockDeleteWithHttpMessagesAsync(resourceGroupName ?? BmsAdapter.GetResourceGroupName(), vaultName ?? BmsAdapter.GetResourceName(), resourceGuardMapping[0].Name, unlockDeleteRequest.ResourceGuardOperationRequests, unlockDeleteRequest.ResourceToBeDeleted , customHeaders).Result.Body;
                 }
                 else if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
                 {
@@ -169,8 +205,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             }
 
             return BmsAdapter.Client.ProtectedItems.DeleteWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
                 AzureFabricName,
                 containerName,
                 protectedItemName,
@@ -194,12 +230,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             return BmsAdapter.Client.ProtectedItems.GetWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
                 AzureFabricName,
                 containerName,
                 protectedItemName,
-                queryFilter,
+                queryFilter?.Filter,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
 
@@ -222,7 +258,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 () => BmsAdapter.Client.BackupProtectedItems.ListWithHttpMessagesAsync(
                     vaultName ?? BmsAdapter.GetResourceName(),
                     resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                    queryFilter,
+                    queryFilter?.Filter,
                     skipToken,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
@@ -284,8 +320,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             return BmsAdapter.Client.Backups.TriggerWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
                 AzureFabricName,
                 containerName,
                 itemName,
@@ -339,8 +375,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             return BmsAdapter.Client.ProtectionIntent.CreateOrUpdateWithHttpMessagesAsync(
-                 vaultName ?? BmsAdapter.GetResourceName(),
                  resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                 vaultName ?? BmsAdapter.GetResourceName(),
                  AzureFabricName,
                  protectedItemName,
                  request,
@@ -360,8 +396,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             return BmsAdapter.Client.ProtectionIntent.DeleteWithHttpMessagesAsync(
-                 vaultName ?? BmsAdapter.GetResourceName(),
                  resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                 vaultName ?? BmsAdapter.GetResourceName(),
                  AzureFabricName,
                  protectedItemName,
                  cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
@@ -385,7 +421,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 () => BmsAdapter.Client.BackupProtectionIntent.ListWithHttpMessagesAsync(
                     vaultName ?? BmsAdapter.GetResourceName(),
                     resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                    queryFilter,
+                    queryFilter?.Filter,
                     skipToken,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
@@ -415,11 +451,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         {
             Func<RestAzureNS.IPage<WorkloadItemResource>> listAsync =
                 () => BmsAdapter.Client.BackupWorkloadItems.ListWithHttpMessagesAsync(
-                    vaultName ?? BmsAdapter.GetResourceName(),
                     resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    vaultName ?? BmsAdapter.GetResourceName(),
                     AzureFabricName,
                     containerName,
-                    queryFilter,
+                    queryFilter?.Filter,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             Func<string, RestAzureNS.IPage<WorkloadItemResource>> listNextAsync =

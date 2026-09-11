@@ -20,6 +20,11 @@
 
 -->
 ## Upcoming Release
+* Added `SpotPlus` as a supported value for the `-Priority` parameter of `New-AzVM`, `New-AzVMConfig`, `New-AzVmss`, and `New-AzVmssConfig`.
+    - `SpotPlus` is the next generation of Azure Spot for VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) deployments, and offers higher reliability and longer running time than `Spot`.
+    - `-EvictionPolicy` and `-MaxPrice` behave the same way as they do for `Spot`.
+    - Requires the `Microsoft.Compute/SpotPlus` subscription feature to be registered, and a region where the feature is enabled.
+* For `New-AzVM`: If the extension-version catalogue lookup fails, the cmdlet uses the default BGInfo (Background Information) extension version, and installation failures now emit a warning rather than terminating the cmdlet.
 * Added cmdlets and parameters to configure first-party service tags for implicit public IP addresses on VMs (Virtual Machines) and VMSS (Virtual Machine Scale Sets).
 
 ## Version 11.9.0

@@ -14,73 +14,73 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Fetches the status of an operation such as triggering a backup, restore.
-        /// The status can be in progress, completed or failed. You can refer to the
-        /// OperationStatus enum for all the possible states of the operation. Some
-        /// operations create jobs. This method returns the list of jobs associated
-        /// with the operation.
+        /// The status can be in progress, completed
+        /// or failed. You can refer to the OperationStatus enum for all the possible
+        /// states of the operation. Some operations
+        /// create jobs. This method returns the list of jobs associated with the
+        /// operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backup item.
+        /// backupFabrics
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with the backup item.
+        /// The name of the ProtectionContainerResource
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backup item name whose details are to be fetched.
+        /// The name of the ProtectedItemResource
         /// </param>
         /// <param name='operationId'>
-        /// OperationID represents the operation whose status needs to be fetched.
+        /// The name of the ProtectedItemResource
         /// </param>
-        public static OperationStatus Get(this IProtectedItemOperationStatusesOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string operationId)
+        public static OperationStatus Get(this IProtectedItemOperationStatusesOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string operationId)
         {
-                return ((IProtectedItemOperationStatusesOperations)operations).GetAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, operationId).GetAwaiter().GetResult();
+                return ((IProtectedItemOperationStatusesOperations)operations).GetAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, operationId).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Fetches the status of an operation such as triggering a backup, restore.
-        /// The status can be in progress, completed or failed. You can refer to the
-        /// OperationStatus enum for all the possible states of the operation. Some
-        /// operations create jobs. This method returns the list of jobs associated
-        /// with the operation.
+        /// The status can be in progress, completed
+        /// or failed. You can refer to the OperationStatus enum for all the possible
+        /// states of the operation. Some operations
+        /// create jobs. This method returns the list of jobs associated with the
+        /// operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backup item.
+        /// backupFabrics
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with the backup item.
+        /// The name of the ProtectionContainerResource
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backup item name whose details are to be fetched.
+        /// The name of the ProtectedItemResource
         /// </param>
         /// <param name='operationId'>
-        /// OperationID represents the operation whose status needs to be fetched.
+        /// The name of the ProtectedItemResource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<OperationStatus> GetAsync(this IProtectedItemOperationStatusesOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<OperationStatus> GetAsync(this IProtectedItemOperationStatusesOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, operationId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, operationId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

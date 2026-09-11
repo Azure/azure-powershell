@@ -11,8 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// The configuration settings of the app registration for the custom Open ID
     /// Connect provider.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class OpenIdConnectRegistration : ProxyOnlyResource
+    public partial class OpenIdConnectRegistration
     {
         /// <summary>
         /// Initializes a new instance of the OpenIdConnectRegistration class.
@@ -26,18 +25,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the OpenIdConnectRegistration class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="clientId">The client id of the custom Open ID Connect provider.
         /// </param>
 
@@ -47,9 +34,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="openIdConnectConfiguration">The configuration settings of the endpoints used for the custom Open ID
         /// Connect provider.
         /// </param>
-        public OpenIdConnectRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string clientId = default(string), OpenIdConnectClientCredential clientCredential = default(OpenIdConnectClientCredential), OpenIdConnectConfig openIdConnectConfiguration = default(OpenIdConnectConfig))
+        public OpenIdConnectRegistration(string clientId = default(string), OpenIdConnectClientCredential clientCredential = default(OpenIdConnectClientCredential), OpenIdConnectConfig openIdConnectConfiguration = default(OpenIdConnectConfig))
 
-        : base(id, name, kind, type)
         {
             this.ClientId = clientId;
             this.ClientCredential = clientCredential;
@@ -66,21 +52,21 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Gets or sets the client id of the custom Open ID Connect provider.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.clientId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "clientId")]
         public string ClientId {get; set; }
 
         /// <summary>
         /// Gets or sets the authentication credentials of the custom Open ID Connect
         /// provider.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.clientCredential")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "clientCredential")]
         public OpenIdConnectClientCredential ClientCredential {get; set; }
 
         /// <summary>
         /// Gets or sets the configuration settings of the endpoints used for the
         /// custom Open ID Connect provider.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.openIdConnectConfiguration")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "openIdConnectConfiguration")]
         public OpenIdConnectConfig OpenIdConnectConfiguration {get; set; }
     }
 }

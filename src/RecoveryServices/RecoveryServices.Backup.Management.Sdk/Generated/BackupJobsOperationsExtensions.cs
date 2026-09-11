@@ -18,22 +18,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the VaultResource
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<JobResource> List(this IBackupJobsOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<JobQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<JobQueryObject>), string skipToken = default(string))
+        public static Microsoft.Rest.Azure.IPage<JobResource> List(this IBackupJobsOperations operations, string resourceGroupName, string vaultName, string filter = default(string), string skipToken = default(string))
         {
-                return ((IBackupJobsOperations)operations).ListAsync(vaultName, resourceGroupName, odataQuery, skipToken).GetAwaiter().GetResult();
+                return ((IBackupJobsOperations)operations).ListAsync(resourceGroupName, vaultName, filter, skipToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -42,15 +41,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the VaultResource
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
@@ -58,9 +56,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobResource>> ListAsync(this IBackupJobsOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<JobQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<JobQueryObject>), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobResource>> ListAsync(this IBackupJobsOperations operations, string resourceGroupName, string vaultName, string filter = default(string), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(vaultName, resourceGroupName, odataQuery, skipToken, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, vaultName, filter, skipToken, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Description of the parameters of Private Access for a Web Site.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateAccess : ProxyOnlyResource
+    public partial class PrivateAccess : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the PrivateAccess class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the PrivateAccess class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="enabled">Whether private access is enabled or not.
@@ -42,10 +48,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="virtualNetworks">The Virtual Networks (and subnets) allowed to access the site privately.
         /// </param>
-        public PrivateAccess(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? enabled = default(bool?), System.Collections.Generic.IList<PrivateAccessVirtualNetwork> virtualNetworks = default(System.Collections.Generic.IList<PrivateAccessVirtualNetwork>))
+        public PrivateAccess(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), bool? enabled = default(bool?), System.Collections.Generic.IList<PrivateAccessVirtualNetwork> virtualNetworks = default(System.Collections.Generic.IList<PrivateAccessVirtualNetwork>))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.Enabled = enabled;
             this.VirtualNetworks = virtualNetworks;
             CustomInit();
@@ -56,6 +63,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets whether private access is enabled or not.

@@ -271,12 +271,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
             };
         }
 
-        private AzureSqlManagedDatabaseLongTermRetentionBackupModel GetBackupModel(ManagedInstanceLongTermRetentionBackup backup, string locationName)
+        internal static AzureSqlManagedDatabaseLongTermRetentionBackupModel GetBackupModel(
+            ManagedInstanceLongTermRetentionBackup backup,
+            string locationName)
         {
             return new AzureSqlManagedDatabaseLongTermRetentionBackupModel()
             {
                 BackupExpirationTime = backup.BackupExpirationTime,
                 BackupName = backup.Name,
+                BackupStorageRedundancy = backup.BackupStorageRedundancy,
                 BackupTime = backup.BackupTime,
                 DatabaseDeletionTime = backup.DatabaseDeletionTime,
                 DatabaseName = backup.DatabaseName,
@@ -288,7 +291,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
             };
         }
 
-        private string GetResourceGroupNameFromResourceId(string resourceId)
+        private static string GetResourceGroupNameFromResourceId(string resourceId)
         {
             if (resourceId.Contains("/resourceGroups/"))
             {

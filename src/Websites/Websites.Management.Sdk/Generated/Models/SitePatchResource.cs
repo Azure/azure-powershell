@@ -94,6 +94,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="lastModifiedTimeUtc">Last time the app was modified, in UTC. Read-only.
         /// </param>
 
+        /// <param name="dnsConfiguration">Property to configure various DNS related settings for a site.
+        /// </param>
+
         /// <param name="trafficManagerHostNames">Azure Traffic Manager hostnames associated with the app. Read-only.
         /// </param>
 
@@ -110,6 +113,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="clientAffinityEnabled">&lt;code&gt;true&lt;/code&gt; to enable client affinity; &lt;code&gt;false&lt;/code&gt; to stop
         /// sending session affinity cookies, which route client requests in the same
         /// session to the same instance. Default is &lt;code&gt;true&lt;/code&gt;.
+        /// </param>
+
+        /// <param name="clientAffinityProxyEnabled">&lt;code&gt;true&lt;/code&gt; to override client affinity cookie domain with
+        /// X-Forwarded-Host request header. &lt;code&gt;false&lt;/code&gt; to use default domain.
+        /// Default is &lt;code&gt;false&lt;/code&gt;.
         /// </param>
 
         /// <param name="clientCertEnabled">&lt;code&gt;true&lt;/code&gt; to enable client certificate authentication (TLS mutual
@@ -129,9 +137,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </param>
 
         /// <param name="hostNamesDisabled">&lt;code&gt;true&lt;/code&gt; to disable the public hostnames of the app; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.
-        /// If &lt;code&gt;true&lt;/code&gt;, the app is only accessible via API management
-        /// process.
+        /// &lt;code&gt;false&lt;/code&gt;.\n If &lt;code&gt;true&lt;/code&gt;, the app is only accessible via
+        /// API management process.
         /// </param>
 
         /// <param name="customDomainVerificationId">Unique identifier that verifies the custom domains assigned to the app.
@@ -182,6 +189,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="inProgressOperationId">Specifies an operation id if this site has a pending operation.
         /// </param>
 
+        /// <param name="publicNetworkAccess">Property to allow or block all public traffic. Allowed Values: &#39;Enabled&#39;,
+        /// &#39;Disabled&#39; or an empty string.
+        /// </param>
+
         /// <param name="storageAccountRequired">Checks if Customer provided storage account is required
         /// </param>
 
@@ -193,7 +204,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// This must be of the form
         /// /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
         /// </param>
-        public SitePatchResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), UsageState? usageState = default(UsageState?), SiteConfig siteConfig = default(SiteConfig), CloningInfo cloningInfo = default(CloningInfo), RedundancyMode? redundancyMode = default(RedundancyMode?), string state = default(string), System.Collections.Generic.IList<string> hostNames = default(System.Collections.Generic.IList<string>), string repositorySiteName = default(string), bool? enabled = default(bool?), System.Collections.Generic.IList<string> enabledHostNames = default(System.Collections.Generic.IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), System.Collections.Generic.IList<HostNameSslState> hostNameSslStates = default(System.Collections.Generic.IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), System.Collections.Generic.IList<string> trafficManagerHostNames = default(System.Collections.Generic.IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), ClientCertMode? clientCertMode = default(ClientCertMode?), string clientCertExclusionPaths = default(string), bool? hostNamesDisabled = default(bool?), string customDomainVerificationId = default(string), string outboundIPAddresses = default(string), string possibleOutboundIPAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), System.Guid? inProgressOperationId = default(System.Guid?), bool? storageAccountRequired = default(bool?), string keyVaultReferenceIdentity = default(string), string virtualNetworkSubnetId = default(string))
+        public SitePatchResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), UsageState? usageState = default(UsageState?), SiteConfig siteConfig = default(SiteConfig), CloningInfo cloningInfo = default(CloningInfo), RedundancyMode? redundancyMode = default(RedundancyMode?), string state = default(string), System.Collections.Generic.IList<string> hostNames = default(System.Collections.Generic.IList<string>), string repositorySiteName = default(string), bool? enabled = default(bool?), System.Collections.Generic.IList<string> enabledHostNames = default(System.Collections.Generic.IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), System.Collections.Generic.IList<HostNameSslState> hostNameSslStates = default(System.Collections.Generic.IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteDnsConfig dnsConfiguration = default(SiteDnsConfig), System.Collections.Generic.IList<string> trafficManagerHostNames = default(System.Collections.Generic.IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientAffinityProxyEnabled = default(bool?), bool? clientCertEnabled = default(bool?), ClientCertMode? clientCertMode = default(ClientCertMode?), string clientCertExclusionPaths = default(string), bool? hostNamesDisabled = default(bool?), string customDomainVerificationId = default(string), string outboundIPAddresses = default(string), string possibleOutboundIPAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), System.Guid? inProgressOperationId = default(System.Guid?), string publicNetworkAccess = default(string), bool? storageAccountRequired = default(bool?), string keyVaultReferenceIdentity = default(string), string virtualNetworkSubnetId = default(string))
 
         : base(id, name, kind, type)
         {
@@ -214,11 +225,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.IsXenon = isXenon;
             this.HyperV = hyperV;
             this.LastModifiedTimeUtc = lastModifiedTimeUtc;
+            this.DnsConfiguration = dnsConfiguration;
             this.TrafficManagerHostNames = trafficManagerHostNames;
             this.ScmSiteAlsoStopped = scmSiteAlsoStopped;
             this.TargetSwapSlot = targetSwapSlot;
             this.HostingEnvironmentProfile = hostingEnvironmentProfile;
             this.ClientAffinityEnabled = clientAffinityEnabled;
+            this.ClientAffinityProxyEnabled = clientAffinityProxyEnabled;
             this.ClientCertEnabled = clientCertEnabled;
             this.ClientCertMode = clientCertMode;
             this.ClientCertExclusionPaths = clientCertExclusionPaths;
@@ -236,6 +249,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.SlotSwapStatus = slotSwapStatus;
             this.HttpsOnly = httpsOnly;
             this.InProgressOperationId = inProgressOperationId;
+            this.PublicNetworkAccess = publicNetworkAccess;
             this.StorageAccountRequired = storageAccountRequired;
             this.KeyVaultReferenceIdentity = keyVaultReferenceIdentity;
             this.VirtualNetworkSubnetId = virtualNetworkSubnetId;
@@ -359,6 +373,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public System.DateTime? LastModifiedTimeUtc {get; private set; }
 
         /// <summary>
+        /// Gets or sets property to configure various DNS related settings for a site.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dnsConfiguration")]
+        public SiteDnsConfig DnsConfiguration {get; set; }
+
+        /// <summary>
         /// Gets azure Traffic Manager hostnames associated with the app. Read-only.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.trafficManagerHostNames")]
@@ -393,6 +413,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public bool? ClientAffinityEnabled {get; set; }
 
         /// <summary>
+        /// Gets or sets &lt;code&gt;true&lt;/code&gt; to override client affinity cookie domain
+        /// with X-Forwarded-Host request header. &lt;code&gt;false&lt;/code&gt; to use default
+        /// domain. Default is &lt;code&gt;false&lt;/code&gt;.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.clientAffinityProxyEnabled")]
+        public bool? ClientAffinityProxyEnabled {get; set; }
+
+        /// <summary>
         /// Gets or sets &lt;code&gt;true&lt;/code&gt; to enable client certificate authentication
         /// (TLS mutual authentication); otherwise, &lt;code&gt;false&lt;/code&gt;. Default is
         /// &lt;code&gt;false&lt;/code&gt;.
@@ -420,9 +448,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <summary>
         /// Gets or sets &lt;code&gt;true&lt;/code&gt; to disable the public hostnames of the app;
-        /// otherwise, &lt;code&gt;false&lt;/code&gt;.
-        /// If &lt;code&gt;true&lt;/code&gt;, the app is only accessible via API management
-        /// process.
+        /// otherwise, &lt;code&gt;false&lt;/code&gt;.\n If &lt;code&gt;true&lt;/code&gt;, the app is only
+        /// accessible via API management process.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hostNamesDisabled")]
         public bool? HostNamesDisabled {get; set; }
@@ -516,6 +543,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public System.Guid? InProgressOperationId {get; private set; }
 
         /// <summary>
+        /// Gets or sets property to allow or block all public traffic. Allowed Values:
+        /// &#39;Enabled&#39;, &#39;Disabled&#39; or an empty string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicNetworkAccess")]
+        public string PublicNetworkAccess {get; set; }
+
+        /// <summary>
         /// Gets or sets checks if Customer provided storage account is required
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.storageAccountRequired")]
@@ -553,6 +587,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
             {
                 this.CloningInfo.Validate();
             }
+
+
 
 
 

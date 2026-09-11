@@ -10,8 +10,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// <summary>
     /// Class representing detector definition
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class DetectorDefinition : ProxyOnlyResource
+    public partial class DetectorDefinition
     {
         /// <summary>
         /// Initializes a new instance of the DetectorDefinition class.
@@ -25,18 +24,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the DetectorDefinition class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="displayName">Display name of the detector
         /// </param>
 
@@ -48,9 +35,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="isEnabled">Flag representing whether detector is enabled or not.
         /// </param>
-        public DetectorDefinition(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string displayName = default(string), string description = default(string), double? rank = default(double?), bool? isEnabled = default(bool?))
+        public DetectorDefinition(string displayName = default(string), string description = default(string), double? rank = default(double?), bool? isEnabled = default(bool?))
 
-        : base(id, name, kind, type)
         {
             this.DisplayName = displayName;
             this.Description = description;
@@ -68,25 +54,25 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Gets display name of the detector
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.displayName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "displayName")]
         public string DisplayName {get; private set; }
 
         /// <summary>
         /// Gets description of the detector
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.description")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
         public string Description {get; private set; }
 
         /// <summary>
         /// Gets detector Rank
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.rank")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "rank")]
         public double? Rank {get; private set; }
 
         /// <summary>
         /// Gets flag representing whether detector is enabled or not.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isEnabled")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isEnabled")]
         public bool? IsEnabled {get; private set; }
     }
 }

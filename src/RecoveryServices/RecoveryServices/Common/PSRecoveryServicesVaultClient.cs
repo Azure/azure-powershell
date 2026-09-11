@@ -114,8 +114,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 }
             }
 
-            var response = GetRecoveryServicesClient.Vaults.UpdateWithHttpMessagesAsync(resourceGroupName, vaultName, vault, default(string), customHeaders).Result;
-            return response.Body;
+            GetRecoveryServicesClient.Vaults.UpdateWithHttpMessagesAsync(
+                resourceGroupName, vaultName, vault, default(string), customHeaders).GetAwaiter().GetResult();
+
+            return GetVault(resourceGroupName, vaultName);
         }
 
         /// <summary>
@@ -184,7 +186,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public BackupResourceConfigResource GetVaultStorageConfig(string resouceGroupName, string vaultName)
         {
             return GetRecoveryServicesBackupClient.BackupResourceStorageConfigsNonCrr.GetWithHttpMessagesAsync(
-                vaultName, resouceGroupName, GetRequestHeaders()).Result.Body;
+                resouceGroupName,vaultName,GetRequestHeaders()).Result.Body;
         }
 
         /// <summary>
@@ -195,7 +197,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns></returns>
         public List<ResourceGuardProxyBaseResource> ListResourceGuardMapping(string vaultName, string resourceGroupName)
         {
-            Func<IPage<ResourceGuardProxyBaseResource>> proxyPagedList = () => GetRecoveryServicesBackupClient.ResourceGuardProxies.GetWithHttpMessagesAsync(vaultName, resourceGroupName).Result.Body;
+            Func<IPage<ResourceGuardProxyBaseResource>> proxyPagedList = () => GetRecoveryServicesBackupClient.ResourceGuardProxies.GetWithHttpMessagesAsync(resourceGroupName, vaultName).Result.Body;
 
             Func<string, IPage<ResourceGuardProxyBaseResource>> proxyPagedListNext = nextLink => GetRecoveryServicesBackupClient.ResourceGuardProxies.GetNextWithHttpMessagesAsync(
                     nextLink).Result.Body;

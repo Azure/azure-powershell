@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Slot Config names azure resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SlotConfigNamesResource : ProxyOnlyResource
+    public partial class SlotConfigNamesResource : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the SlotConfigNamesResource class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the SlotConfigNamesResource class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="connectionStringNames">List of connection string names.
@@ -45,10 +51,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="azureStorageConfigNames">List of external Azure storage account identifiers.
         /// </param>
-        public SlotConfigNamesResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.Collections.Generic.IList<string> connectionStringNames = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> appSettingNames = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> azureStorageConfigNames = default(System.Collections.Generic.IList<string>))
+        public SlotConfigNamesResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), System.Collections.Generic.IList<string> connectionStringNames = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> appSettingNames = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> azureStorageConfigNames = default(System.Collections.Generic.IList<string>))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.ConnectionStringNames = connectionStringNames;
             this.AppSettingNames = appSettingNames;
             this.AzureStorageConfigNames = azureStorageConfigNames;
@@ -60,6 +67,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets list of connection string names.

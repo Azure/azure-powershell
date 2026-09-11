@@ -20,11 +20,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Generates a preview workflow file for the static site
         /// </remarks>
         /// <param name='location'>
-        /// Location where you plan to create the static site.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='staticSitesWorkflowPreviewRequest'>
-        /// A JSON representation of the StaticSitesWorkflowPreviewRequest properties.
-        /// See example.
+        /// The request body
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets all static sites in the specified resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -90,7 +89,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the details of a static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -118,10 +117,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates an existing static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to create or update.
+        /// Name of the static site.
         /// </param>
         /// <param name='staticSiteEnvelope'>
         /// A JSON representation of the staticsite properties. See example.
@@ -138,30 +137,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteARMResource>> CreateOrUpdateStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, StaticSiteARMResource staticSiteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Deletes a static site.
-        /// </summary>
-        /// <remarks>
-        /// Description for Deletes a static site.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the static site to delete.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteARMResource,StaticSitesCreateOrUpdateStaticSiteHeaders>> CreateOrUpdateStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, StaticSiteARMResource staticSiteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Creates a new static site in an existing resource group, or
@@ -172,10 +148,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates an existing static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to create or update.
+        /// Name of the static site.
         /// </param>
         /// <param name='staticSiteEnvelope'>
         /// A JSON representation of the staticsite properties. See example.
@@ -195,16 +171,39 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteARMResource>> UpdateStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, StaticSitePatchResource staticSiteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Deletes a static site.
+        /// </summary>
+        /// <remarks>
+        /// Description for Deletes a static site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesDeleteStaticSiteHeaders>> DeleteStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets the list of users of a static site.
         /// </summary>
         /// <remarks>
         /// Description for Gets the list of users of a static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site.
+        /// 
         /// </param>
         /// <param name='authprovider'>
         /// The auth provider for the users.
@@ -224,51 +223,22 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StaticSiteUserARMResource>>> ListStaticSiteUsersWithHttpMessagesAsync(string resourceGroupName, string name, string authprovider, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Deletes the user entry from the static site.
-        /// </summary>
-        /// <remarks>
-        /// Description for Deletes the user entry from the static site.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the staticsite.
-        /// </param>
-        /// <param name='authprovider'>
-        /// The auth provider for this user.
-        /// </param>
-        /// <param name='userid'>
-        /// The user id of the user.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteStaticSiteUserWithHttpMessagesAsync(string resourceGroupName, string name, string authprovider, string userid, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Description for Updates a user entry with the listed roles
         /// </summary>
         /// <remarks>
         /// Description for Updates a user entry with the listed roles
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site.
+        /// 
         /// </param>
         /// <param name='authprovider'>
-        /// The auth provider for this user.
+        /// 
         /// </param>
         /// <param name='userid'>
-        /// The user id of the user.
+        /// 
         /// </param>
         /// <param name='staticSiteUserEnvelope'>
         /// A JSON representation of the StaticSiteUser properties. See example.
@@ -288,13 +258,125 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteUserARMResource>> UpdateStaticSiteUserWithHttpMessagesAsync(string resourceGroupName, string name, string authprovider, string userid, StaticSiteUserARMResource staticSiteUserEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Deletes the user entry from the static site.
+        /// </summary>
+        /// <remarks>
+        /// Description for Deletes the user entry from the static site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// 
+        /// </param>
+        /// <param name='authprovider'>
+        /// 
+        /// </param>
+        /// <param name='userid'>
+        /// 
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteStaticSiteUserWithHttpMessagesAsync(string resourceGroupName, string name, string authprovider, string userid, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Gets the basic auth properties for a static site as a
+        /// collection.
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets the basic auth properties for a static site as a
+        /// collection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StaticSiteBasicAuthPropertiesARMResource>>> ListBasicAuthWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Gets the basic auth properties for a static site.
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets the basic auth properties for a static site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteBasicAuthPropertiesARMResource>> GetBasicAuthWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Adds or updates basic auth for a static site.
+        /// </summary>
+        /// <remarks>
+        /// Description for Adds or updates basic auth for a static site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='basicAuthEnvelope'>
+        /// A JSON representation of the basic auth properties.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteBasicAuthPropertiesARMResource>> CreateOrUpdateBasicAuthWithHttpMessagesAsync(string resourceGroupName, string name, StaticSiteBasicAuthPropertiesARMResource basicAuthEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets all static site builds for a particular static site.
         /// </summary>
         /// <remarks>
         /// Description for Gets all static site builds for a particular static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -320,7 +402,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the details of a static site build.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -349,7 +431,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a static site build.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -366,7 +448,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesDeleteStaticSiteBuildHeaders>> DeleteStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Creates or updates the app settings of a static site build.
@@ -375,7 +457,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Creates or updates the app settings of a static site build.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -409,7 +491,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// site build.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -435,13 +517,209 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StringDictionary>> CreateOrUpdateStaticSiteBuildFunctionAppSettingsWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, StringDictionary appSettings, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Returns overviews of database connections for a static site build
+        /// </summary>
+        /// <remarks>
+        /// Returns overviews of database connections for a static site build
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DatabaseConnection>>> GetBuildDatabaseConnectionsWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Returns overview of a database connection for a static site build by name
+        /// </summary>
+        /// <remarks>
+        /// Returns overview of a database connection for a static site build by name
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DatabaseConnection>> GetBuildDatabaseConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string databaseConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Create or update a database connection for a static site
+        /// build
+        /// </summary>
+        /// <remarks>
+        /// Description for Create or update a database connection for a static site
+        /// build
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='databaseConnectionRequestEnvelope'>
+        /// A JSON representation of the database connection request properties
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DatabaseConnection>> CreateOrUpdateBuildDatabaseConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string databaseConnectionName, DatabaseConnection databaseConnectionRequestEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Create or update a database connection for a static site
+        /// build
+        /// </summary>
+        /// <remarks>
+        /// Description for Create or update a database connection for a static site
+        /// build
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='databaseConnectionRequestEnvelope'>
+        /// A JSON representation of the database connection request properties
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DatabaseConnection>> UpdateBuildDatabaseConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string databaseConnectionName, DatabaseConnectionPatchRequest databaseConnectionRequestEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete a database connection for a static site build
+        /// </summary>
+        /// <remarks>
+        /// Delete a database connection for a static site build
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteBuildDatabaseConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string databaseConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Returns details of a database connection for a static site build by name
+        /// </summary>
+        /// <remarks>
+        /// Returns details of a database connection for a static site build by name
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DatabaseConnection>> GetBuildDatabaseConnectionWithDetailsWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string databaseConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets the functions of a particular static site build.
         /// </summary>
         /// <remarks>
         /// Description for Gets the functions of a particular static site build.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -464,13 +742,175 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StaticSiteFunctionOverviewARMResource>>> ListStaticSiteBuildFunctionsWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Returns details of all backends linked to a static site build
+        /// </summary>
+        /// <remarks>
+        /// Returns details of all backends linked to a static site build
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StaticSiteLinkedBackendARMResource>>> GetLinkedBackendsForBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Returns the details of a linked backend linked to a static site build by
+        /// name
+        /// </summary>
+        /// <remarks>
+        /// Returns the details of a linked backend linked to a static site build by
+        /// name
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteLinkedBackendARMResource>> GetLinkedBackendForBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string linkedBackendName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Link backend to a static site build
+        /// </summary>
+        /// <remarks>
+        /// Link backend to a static site build
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='staticSiteLinkedBackendEnvelope'>
+        /// A JSON representation of the linked backend request properties
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteLinkedBackendARMResource,StaticSitesLinkBackendToBuildHeaders>> LinkBackendToBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Unlink a backend from a static site build
+        /// </summary>
+        /// <remarks>
+        /// Unlink a backend from a static site build
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='isCleaningAuthConfig'>
+        /// Decides if auth will be removed from backend configuration
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> UnlinkBackendFromBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string linkedBackendName, bool? isCleaningAuthConfig = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Validates that a backend can be linked to a static site build
+        /// </summary>
+        /// <remarks>
+        /// Validates that a backend can be linked to a static site build
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='staticSiteLinkedBackendEnvelope'>
+        /// A JSON representation of the linked backend request properties
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesValidateBackendForBuildHeaders>> ValidateBackendForBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets the application settings of a static site build.
         /// </summary>
         /// <remarks>
         /// Description for Gets the application settings of a static site build.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -499,7 +939,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the application settings of a static site build.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -522,6 +962,35 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StringDictionary>> ListStaticSiteBuildFunctionAppSettingsWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Returns details of database connections for a static site build
+        /// </summary>
+        /// <remarks>
+        /// Returns details of database connections for a static site build
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DatabaseConnection>>> GetBuildDatabaseConnectionsWithDetailsWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets the details of the user provided function apps
         /// registered with a static site build
         /// </summary>
@@ -530,7 +999,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// registered with a static site build
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -561,7 +1030,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// registered with a static site build
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -595,7 +1064,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// build
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -604,7 +1073,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The stage site identifier.
         /// </param>
         /// <param name='functionAppName'>
-        /// Name of the function app to register with the static site build.
+        /// Name of the function app registered with the static site build.
         /// </param>
         /// <param name='isForced'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on
@@ -627,7 +1096,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteUserProvidedFunctionAppARMResource>> RegisterUserProvidedFunctionAppWithStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string functionAppName, StaticSiteUserProvidedFunctionAppARMResource staticSiteUserProvidedFunctionEnvelope, bool? isForced = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteUserProvidedFunctionAppARMResource,StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildHeaders>> RegisterUserProvidedFunctionAppWithStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string functionAppName, StaticSiteUserProvidedFunctionAppARMResource staticSiteUserProvidedFunctionEnvelope, bool? isForced = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Detach the user provided function app from the static site
@@ -638,7 +1107,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// build
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -669,13 +1138,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='environmentName'>
-        /// Name of the environment.
+        /// The stage site identifier.
         /// </param>
         /// <param name='staticSiteZipDeploymentEnvelope'>
         /// A JSON representation of the StaticSiteZipDeployment properties. See
@@ -690,7 +1159,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> CreateZipDeploymentForStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesCreateZipDeploymentForStaticSiteBuildHeaders>> CreateZipDeploymentForStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Creates or updates the app settings of a static site.
@@ -699,7 +1168,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Creates or updates the app settings of a static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -730,7 +1199,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -759,7 +1228,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Creates an invitation link for a user with the role
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -790,10 +1259,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site resource to search in.
+        /// Name of the static site.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -818,10 +1287,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site resource to search in.
+        /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
         /// The custom domain name.
@@ -849,13 +1318,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// resource group and static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to create.
+        /// The custom domain name.
         /// </param>
         /// <param name='staticSiteCustomDomainRequestPropertiesEnvelope'>
         /// A JSON representation of the static site custom domain request properties.
@@ -873,7 +1342,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteCustomDomainOverviewARMResource>> CreateOrUpdateStaticSiteCustomDomainWithHttpMessagesAsync(string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteCustomDomainOverviewARMResource,StaticSitesCreateOrUpdateStaticSiteCustomDomainHeaders>> CreateOrUpdateStaticSiteCustomDomainWithHttpMessagesAsync(string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a custom domain.
@@ -882,13 +1351,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a custom domain.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to delete.
+        /// The custom domain name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -899,7 +1368,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteStaticSiteCustomDomainWithHttpMessagesAsync(string resourceGroupName, string name, string domainName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesDeleteStaticSiteCustomDomainHeaders>> DeleteStaticSiteCustomDomainWithHttpMessagesAsync(string resourceGroupName, string name, string domainName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Validates a particular custom domain can be added to a
@@ -910,13 +1379,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to validate.
+        /// The custom domain name.
         /// </param>
         /// <param name='staticSiteCustomDomainRequestPropertiesEnvelope'>
         /// A JSON representation of the static site custom domain request properties.
@@ -931,19 +1400,19 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ValidateCustomDomainCanBeAddedToStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesValidateCustomDomainCanBeAddedToStaticSiteHeaders>> ValidateCustomDomainCanBeAddedToStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Detaches a static site.
+        /// Returns overviews of database connections for a static site
         /// </summary>
         /// <remarks>
-        /// Description for Detaches a static site.
+        /// Returns overviews of database connections for a static site
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to detach.
+        /// Name of the static site
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -954,7 +1423,181 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DetachStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DatabaseConnection>>> GetDatabaseConnectionsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Returns overview of a database connection for a static site by name
+        /// </summary>
+        /// <remarks>
+        /// Returns overview of a database connection for a static site by name
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DatabaseConnection>> GetDatabaseConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string databaseConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Create or update a database connection for a static site
+        /// </summary>
+        /// <remarks>
+        /// Description for Create or update a database connection for a static site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='databaseConnectionRequestEnvelope'>
+        /// A JSON representation of the database connection request properties
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DatabaseConnection>> CreateOrUpdateDatabaseConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string databaseConnectionName, DatabaseConnection databaseConnectionRequestEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Create or update a database connection for a static site
+        /// </summary>
+        /// <remarks>
+        /// Description for Create or update a database connection for a static site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='databaseConnectionRequestEnvelope'>
+        /// A JSON representation of the database connection request properties
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DatabaseConnection>> UpdateDatabaseConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string databaseConnectionName, DatabaseConnectionPatchRequest databaseConnectionRequestEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete a database connection for a static site
+        /// </summary>
+        /// <remarks>
+        /// Delete a database connection for a static site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteDatabaseConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string databaseConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Returns details of a database connection for a static site by name
+        /// </summary>
+        /// <remarks>
+        /// Returns details of a database connection for a static site by name
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DatabaseConnection>> GetDatabaseConnectionWithDetailsWithHttpMessagesAsync(string resourceGroupName, string name, string databaseConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Detaches a static site.
+        /// </summary>
+        /// <remarks>
+        /// Description for Detaches a static site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesDetachStaticSiteHeaders>> DetachStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets the functions of a static site.
@@ -963,7 +1606,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the functions of a static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -983,13 +1626,159 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StaticSiteFunctionOverviewARMResource>>> ListStaticSiteFunctionsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Returns details of all backends linked to a static site
+        /// </summary>
+        /// <remarks>
+        /// Returns details of all backends linked to a static site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StaticSiteLinkedBackendARMResource>>> GetLinkedBackendsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Returns the details of a linked backend linked to a static site by name
+        /// </summary>
+        /// <remarks>
+        /// Returns the details of a linked backend linked to a static site by name
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteLinkedBackendARMResource>> GetLinkedBackendWithHttpMessagesAsync(string resourceGroupName, string name, string linkedBackendName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Link backend to a static site
+        /// </summary>
+        /// <remarks>
+        /// Link backend to a static site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='staticSiteLinkedBackendEnvelope'>
+        /// A JSON representation of the linked backend request properties
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteLinkedBackendARMResource,StaticSitesLinkBackendHeaders>> LinkBackendWithHttpMessagesAsync(string resourceGroupName, string name, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Unlink a backend from a static site
+        /// </summary>
+        /// <remarks>
+        /// Unlink a backend from a static site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='isCleaningAuthConfig'>
+        /// Decides if Easy Auth configuration will be removed from backend
+        /// configuration
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> UnlinkBackendWithHttpMessagesAsync(string resourceGroupName, string name, string linkedBackendName, bool? isCleaningAuthConfig = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Validates that a backend can be linked to a static site
+        /// </summary>
+        /// <remarks>
+        /// Validates that a backend can be linked to a static site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='staticSiteLinkedBackendEnvelope'>
+        /// A JSON representation of the linked backend request properties
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesValidateBackendHeaders>> ValidateBackendWithHttpMessagesAsync(string resourceGroupName, string name, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets the application settings of a static site.
         /// </summary>
         /// <remarks>
         /// Description for Gets the application settings of a static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1015,7 +1804,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Lists the roles configured for the static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1041,7 +1830,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the application settings of a static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1067,7 +1856,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Lists the secrets for an existing static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1095,7 +1884,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// with a static site
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1121,7 +1910,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1150,7 +1939,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Approves or rejects a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1173,7 +1962,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource>> ApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource,StaticSitesApproveOrRejectPrivateEndpointConnectionHeaders>> ApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, RemotePrivateEndpointConnectionARMResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a private endpoint connection
@@ -1182,7 +1971,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1202,7 +1991,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> DeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,StaticSitesDeletePrivateEndpointConnectionHeaders>> DeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets the private link resources
@@ -1211,10 +2000,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the private link resources
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the site.
+        /// Name of the static site.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1237,7 +2026,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Resets the api key for an existing static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1257,6 +2046,32 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ResetStaticSiteApiKeyWithHttpMessagesAsync(string resourceGroupName, string name, StaticSiteResetPropertiesARMResource resetPropertiesEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Returns details of database connections for a static site
+        /// </summary>
+        /// <remarks>
+        /// Returns details of database connections for a static site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DatabaseConnection>>> GetDatabaseConnectionsWithDetailsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets the details of the user provided function apps
         /// registered with a static site
         /// </summary>
@@ -1265,7 +2080,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// registered with a static site
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1293,7 +2108,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// registered with a static site
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1322,13 +2137,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Register a user provided function app with a static site
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='functionAppName'>
-        /// Name of the function app to register with the static site.
+        /// Name of the function app registered with the static site.
         /// </param>
         /// <param name='isForced'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on
@@ -1351,7 +2166,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteUserProvidedFunctionAppARMResource>> RegisterUserProvidedFunctionAppWithStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, string functionAppName, StaticSiteUserProvidedFunctionAppARMResource staticSiteUserProvidedFunctionEnvelope, bool? isForced = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteUserProvidedFunctionAppARMResource,StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteHeaders>> RegisterUserProvidedFunctionAppWithStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, string functionAppName, StaticSiteUserProvidedFunctionAppARMResource staticSiteUserProvidedFunctionEnvelope, bool? isForced = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Detach the user provided function app from the static site
@@ -1360,7 +2175,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Detach the user provided function app from the static site
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1386,7 +2201,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deploys zipped content to a static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1404,7 +2219,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> CreateZipDeploymentForStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesCreateZipDeploymentForStaticSiteHeaders>> CreateZipDeploymentForStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Creates a new static site in an existing resource group, or
@@ -1415,10 +2230,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates an existing static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to create or update.
+        /// Name of the static site.
         /// </param>
         /// <param name='staticSiteEnvelope'>
         /// A JSON representation of the staticsite properties. See example.
@@ -1435,7 +2250,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteARMResource>> BeginCreateOrUpdateStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, StaticSiteARMResource staticSiteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteARMResource,StaticSitesCreateOrUpdateStaticSiteHeaders>> BeginCreateOrUpdateStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, StaticSiteARMResource staticSiteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a static site.
@@ -1444,10 +2259,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to delete.
+        /// Name of the static site.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1458,7 +2273,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesDeleteStaticSiteHeaders>> BeginDeleteStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a static site build.
@@ -1467,7 +2282,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a static site build.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1484,7 +2299,74 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesDeleteStaticSiteBuildHeaders>> BeginDeleteStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Link backend to a static site build
+        /// </summary>
+        /// <remarks>
+        /// Link backend to a static site build
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='staticSiteLinkedBackendEnvelope'>
+        /// A JSON representation of the linked backend request properties
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteLinkedBackendARMResource,StaticSitesLinkBackendToBuildHeaders>> BeginLinkBackendToBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Validates that a backend can be linked to a static site build
+        /// </summary>
+        /// <remarks>
+        /// Validates that a backend can be linked to a static site build
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='staticSiteLinkedBackendEnvelope'>
+        /// A JSON representation of the linked backend request properties
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesValidateBackendForBuildHeaders>> BeginValidateBackendForBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Register a user provided function app with a static site
@@ -1495,7 +2377,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// build
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1504,7 +2386,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The stage site identifier.
         /// </param>
         /// <param name='functionAppName'>
-        /// Name of the function app to register with the static site build.
+        /// Name of the function app registered with the static site build.
         /// </param>
         /// <param name='isForced'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on
@@ -1527,7 +2409,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteUserProvidedFunctionAppARMResource>> BeginRegisterUserProvidedFunctionAppWithStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string functionAppName, StaticSiteUserProvidedFunctionAppARMResource staticSiteUserProvidedFunctionEnvelope, bool? isForced = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteUserProvidedFunctionAppARMResource,StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildHeaders>> BeginRegisterUserProvidedFunctionAppWithStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string functionAppName, StaticSiteUserProvidedFunctionAppARMResource staticSiteUserProvidedFunctionEnvelope, bool? isForced = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deploys zipped content to a specific environment of a
@@ -1538,13 +2420,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='environmentName'>
-        /// Name of the environment.
+        /// The stage site identifier.
         /// </param>
         /// <param name='staticSiteZipDeploymentEnvelope'>
         /// A JSON representation of the StaticSiteZipDeployment properties. See
@@ -1559,7 +2441,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginCreateZipDeploymentForStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesCreateZipDeploymentForStaticSiteBuildHeaders>> BeginCreateZipDeploymentForStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Creates a new static site custom domain in an existing
@@ -1570,13 +2452,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// resource group and static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to create.
+        /// The custom domain name.
         /// </param>
         /// <param name='staticSiteCustomDomainRequestPropertiesEnvelope'>
         /// A JSON representation of the static site custom domain request properties.
@@ -1594,7 +2476,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteCustomDomainOverviewARMResource>> BeginCreateOrUpdateStaticSiteCustomDomainWithHttpMessagesAsync(string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteCustomDomainOverviewARMResource,StaticSitesCreateOrUpdateStaticSiteCustomDomainHeaders>> BeginCreateOrUpdateStaticSiteCustomDomainWithHttpMessagesAsync(string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a custom domain.
@@ -1603,13 +2485,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a custom domain.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to delete.
+        /// The custom domain name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1620,7 +2502,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteStaticSiteCustomDomainWithHttpMessagesAsync(string resourceGroupName, string name, string domainName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesDeleteStaticSiteCustomDomainHeaders>> BeginDeleteStaticSiteCustomDomainWithHttpMessagesAsync(string resourceGroupName, string name, string domainName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Validates a particular custom domain can be added to a
@@ -1631,13 +2513,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to validate.
+        /// The custom domain name.
         /// </param>
         /// <param name='staticSiteCustomDomainRequestPropertiesEnvelope'>
         /// A JSON representation of the static site custom domain request properties.
@@ -1652,7 +2534,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginValidateCustomDomainCanBeAddedToStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesValidateCustomDomainCanBeAddedToStaticSiteHeaders>> BeginValidateCustomDomainCanBeAddedToStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Detaches a static site.
@@ -1661,10 +2543,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Detaches a static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to detach.
+        /// Name of the static site.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1675,7 +2557,68 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDetachStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesDetachStaticSiteHeaders>> BeginDetachStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Link backend to a static site
+        /// </summary>
+        /// <remarks>
+        /// Link backend to a static site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='staticSiteLinkedBackendEnvelope'>
+        /// A JSON representation of the linked backend request properties
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteLinkedBackendARMResource,StaticSitesLinkBackendHeaders>> BeginLinkBackendWithHttpMessagesAsync(string resourceGroupName, string name, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Validates that a backend can be linked to a static site
+        /// </summary>
+        /// <remarks>
+        /// Validates that a backend can be linked to a static site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='staticSiteLinkedBackendEnvelope'>
+        /// A JSON representation of the linked backend request properties
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesValidateBackendHeaders>> BeginValidateBackendWithHttpMessagesAsync(string resourceGroupName, string name, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Approves or rejects a private endpoint connection
@@ -1684,7 +2627,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Approves or rejects a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1707,7 +2650,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource>> BeginApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource,StaticSitesApproveOrRejectPrivateEndpointConnectionHeaders>> BeginApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, RemotePrivateEndpointConnectionARMResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a private endpoint connection
@@ -1716,7 +2659,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1736,7 +2679,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginDeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,StaticSitesDeletePrivateEndpointConnectionHeaders>> BeginDeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Register a user provided function app with a static site
@@ -1745,13 +2688,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Register a user provided function app with a static site
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='functionAppName'>
-        /// Name of the function app to register with the static site.
+        /// Name of the function app registered with the static site.
         /// </param>
         /// <param name='isForced'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on
@@ -1774,7 +2717,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteUserProvidedFunctionAppARMResource>> BeginRegisterUserProvidedFunctionAppWithStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, string functionAppName, StaticSiteUserProvidedFunctionAppARMResource staticSiteUserProvidedFunctionEnvelope, bool? isForced = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticSiteUserProvidedFunctionAppARMResource,StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteHeaders>> BeginRegisterUserProvidedFunctionAppWithStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, string functionAppName, StaticSiteUserProvidedFunctionAppARMResource staticSiteUserProvidedFunctionEnvelope, bool? isForced = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deploys zipped content to a static site.
@@ -1783,7 +2726,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deploys zipped content to a static site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1801,7 +2744,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginCreateZipDeploymentForStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticSitesCreateZipDeploymentForStaticSiteHeaders>> BeginCreateZipDeploymentForStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get all Static Sites for a subscription.
@@ -1873,6 +2816,31 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StaticSiteUserARMResource>>> ListStaticSiteUsersNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Gets the basic auth properties for a static site as a
+        /// collection.
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets the basic auth properties for a static site as a
+        /// collection.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StaticSiteBasicAuthPropertiesARMResource>>> ListBasicAuthNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets all static site builds for a particular static site.
         /// </summary>
         /// <remarks>
@@ -1896,6 +2864,29 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StaticSiteBuildARMResource>>> GetStaticSiteBuildsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Returns overviews of database connections for a static site build
+        /// </summary>
+        /// <remarks>
+        /// Returns overviews of database connections for a static site build
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DatabaseConnection>>> GetBuildDatabaseConnectionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets the functions of a particular static site build.
         /// </summary>
         /// <remarks>
@@ -1917,6 +2908,52 @@ namespace Microsoft.Azure.Management.WebSites
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StaticSiteFunctionOverviewARMResource>>> ListStaticSiteBuildFunctionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Returns details of all backends linked to a static site build
+        /// </summary>
+        /// <remarks>
+        /// Returns details of all backends linked to a static site build
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StaticSiteLinkedBackendARMResource>>> GetLinkedBackendsForBuildNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Returns details of database connections for a static site build
+        /// </summary>
+        /// <remarks>
+        /// Returns details of database connections for a static site build
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DatabaseConnection>>> GetBuildDatabaseConnectionsWithDetailsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets the details of the user provided function apps
@@ -1969,6 +3006,29 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StaticSiteCustomDomainOverviewARMResource>>> ListStaticSiteCustomDomainsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Returns overviews of database connections for a static site
+        /// </summary>
+        /// <remarks>
+        /// Returns overviews of database connections for a static site
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DatabaseConnection>>> GetDatabaseConnectionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets the functions of a static site.
         /// </summary>
         /// <remarks>
@@ -1990,6 +3050,29 @@ namespace Microsoft.Azure.Management.WebSites
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StaticSiteFunctionOverviewARMResource>>> ListStaticSiteFunctionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Returns details of all backends linked to a static site
+        /// </summary>
+        /// <remarks>
+        /// Returns details of all backends linked to a static site
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StaticSiteLinkedBackendARMResource>>> GetLinkedBackendsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets the list of private endpoint connections associated
@@ -2015,6 +3098,29 @@ namespace Microsoft.Azure.Management.WebSites
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RemotePrivateEndpointConnectionARMResource>>> GetPrivateEndpointConnectionListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Returns details of database connections for a static site
+        /// </summary>
+        /// <remarks>
+        /// Returns details of database connections for a static site
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DatabaseConnection>>> GetDatabaseConnectionsWithDetailsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets the details of the user provided function apps

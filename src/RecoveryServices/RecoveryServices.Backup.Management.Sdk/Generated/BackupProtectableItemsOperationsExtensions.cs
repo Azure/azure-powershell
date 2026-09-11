@@ -14,45 +14,45 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Provides a pageable list of protectable objects within your subscription
-        /// according to the query filter and the pagination parameters.
+        /// according to the query filter and the
+        /// pagination parameters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='odataQuery'>
-        /// 
         /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<WorkloadProtectableItemResource> List(this IBackupProtectableItemsOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<BmspoQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BmspoQueryObject>), string skipToken = default(string))
+        public static Microsoft.Rest.Azure.IPage<WorkloadProtectableItemResource> List(this IBackupProtectableItemsOperations operations, string vaultName, string resourceGroupName, string filter = default(string), string skipToken = default(string))
         {
-                return ((IBackupProtectableItemsOperations)operations).ListAsync(vaultName, resourceGroupName, odataQuery, skipToken).GetAwaiter().GetResult();
+                return ((IBackupProtectableItemsOperations)operations).ListAsync(vaultName, resourceGroupName, filter, skipToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Provides a pageable list of protectable objects within your subscription
-        /// according to the query filter and the pagination parameters.
+        /// according to the query filter and the
+        /// pagination parameters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='odataQuery'>
-        /// 
         /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
@@ -60,16 +60,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<WorkloadProtectableItemResource>> ListAsync(this IBackupProtectableItemsOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<BmspoQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BmspoQueryObject>), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<WorkloadProtectableItemResource>> ListAsync(this IBackupProtectableItemsOperations operations, string vaultName, string resourceGroupName, string filter = default(string), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(vaultName, resourceGroupName, odataQuery, skipToken, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(vaultName, resourceGroupName, filter, skipToken, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
         /// Provides a pageable list of protectable objects within your subscription
-        /// according to the query filter and the pagination parameters.
+        /// according to the query filter and the
+        /// pagination parameters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -84,7 +85,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Provides a pageable list of protectable objects within your subscription
-        /// according to the query filter and the pagination parameters.
+        /// according to the query filter and the
+        /// pagination parameters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         [System.Runtime.Serialization.EnumMember(Value = "Failed")]
         Failed,
         [System.Runtime.Serialization.EnumMember(Value = "Error")]
-        Error
+        Error,
+        [System.Runtime.Serialization.EnumMember(Value = "Aborted")]
+        Aborted,
+        [System.Runtime.Serialization.EnumMember(Value = "Running")]
+        Running
     }
     internal static class TriggeredWebJobStatusEnumExtension
     {
@@ -37,6 +41,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return "Failed";
                 case TriggeredWebJobStatus.Error:
                     return "Error";
+                case TriggeredWebJobStatus.Aborted:
+                    return "Aborted";
+                case TriggeredWebJobStatus.Running:
+                    return "Running";
             }
             return null;
         }
@@ -50,6 +58,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return TriggeredWebJobStatus.Failed;
                 case "Error":
                     return TriggeredWebJobStatus.Error;
+                case "Aborted":
+                    return TriggeredWebJobStatus.Aborted;
+                case "Running":
+                    return TriggeredWebJobStatus.Running;
             }
             return null;
         }

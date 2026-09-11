@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// resource group in the subscription.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -69,10 +69,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// given site as a collection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of web app
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// given site
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app
@@ -125,10 +125,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// given site as a collection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of web app
         /// </param>
         /// <param name='slot'>
         /// Name of web app slot. If not specified then will default to production
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// given site
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app

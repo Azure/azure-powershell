@@ -139,10 +139,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
 
         /// <summary>
-        /// Gets or sets certificate password.
+        /// Gets certificate password.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.password")]
-        public string Password {get; set; }
+        public string Password {get; private set; }
 
         /// <summary>
         /// Gets friendly name of the certificate.

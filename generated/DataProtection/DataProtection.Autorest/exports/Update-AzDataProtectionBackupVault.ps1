@@ -295,6 +295,13 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
+    # Cost Management Granularity of the vault.
+    # Allowed values are VaultLevel, ProtectedItemLevel, ProtectedItemWithParentTag.
+    ${CostManagementGranularity},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
     # Enable CMK encryption state for a Backup Vault.
     ${CmkEncryptionState},
 

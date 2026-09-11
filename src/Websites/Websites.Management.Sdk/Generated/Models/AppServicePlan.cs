@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// App Service plan.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AppServicePlan : Resource
+    public partial class AppServicePlan : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the AppServicePlan class.
@@ -25,28 +25,39 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the AppServicePlan class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="kind">Kind of resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource Location.
-        /// </param>
-
-        /// <param name="type">Resource type.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="sku">Description of a SKU for a scalable resource.
         /// </param>
 
         /// <param name="extendedLocation">Extended Location.
+        /// </param>
+
+        /// <param name="kind">Kind of resource. If the resource is an app, you can refer to
+        /// https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference
+        /// for details supported values for kind.
+        /// </param>
+
+        /// <param name="identity">Managed service identity.
         /// </param>
 
         /// <param name="provisioningState">Provisioning state of the App Service Plan.
@@ -67,6 +78,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </param>
 
         /// <param name="maximumNumberOfWorkers">Maximum number of instances that can be assigned to this App Service plan.
+        /// </param>
+
+        /// <param name="numberOfWorkers">The number of instances that are assigned to this App Service plan.
         /// </param>
 
         /// <param name="geoRegion">Geographical location for the App Service plan.
@@ -122,18 +136,57 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="kubeEnvironmentProfile">Specification for the Kubernetes Environment to use for the App Service
         /// plan.
         /// </param>
-        public AppServicePlan(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SkuDescription sku = default(SkuDescription), ExtendedLocation extendedLocation = default(ExtendedLocation), ProvisioningState? provisioningState = default(ProvisioningState?), string workerTierName = default(string), StatusOptions? status = default(StatusOptions?), string subscription = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), int? maximumNumberOfWorkers = default(int?), string geoRegion = default(string), bool? perSiteScaling = default(bool?), bool? elasticScaleEnabled = default(bool?), int? maximumElasticWorkerCount = default(int?), int? numberOfSites = default(int?), bool? isSpot = default(bool?), System.DateTime? spotExpirationTime = default(System.DateTime?), System.DateTime? freeOfferExpirationTime = default(System.DateTime?), string resourceGroup = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), int? targetWorkerCount = default(int?), int? targetWorkerSizeId = default(int?), KubeEnvironmentProfile kubeEnvironmentProfile = default(KubeEnvironmentProfile))
 
-        : base(location, id, name, kind, type, tags)
+        /// <param name="zoneRedundant">If &lt;code&gt;true&lt;/code&gt;, this App Service Plan will perform availability zone
+        /// balancing.
+        /// If &lt;code&gt;false&lt;/code&gt;, this App Service Plan will not perform availability
+        /// zone balancing.
+        /// </param>
+
+        /// <param name="asyncScalingEnabled">If &lt;code&gt;true&lt;/code&gt;, this App Service Plan will attempt to scale
+        /// asynchronously if there are insufficient workers to scale synchronously.
+        /// If &lt;code&gt;false&lt;/code&gt;, this App Service Plan will only attempt sync
+        /// scaling.
+        /// </param>
+
+        /// <param name="planDefaultIdentity">Identity to use by platform for various features and integrations using
+        /// managed identity.
+        /// </param>
+
+        /// <param name="isCustomMode">Whether this server farm is in custom mode.
+        /// </param>
+
+        /// <param name="registryAdapters">Registry adapters associated with this App Service plan.
+        /// </param>
+
+        /// <param name="installScripts">Install scripts associated with this App Service plan.
+        /// </param>
+
+        /// <param name="network">All network settings for the server farm.
+        /// </param>
+
+        /// <param name="storageMounts">Storage mounts associated with this App Service plan.
+        /// </param>
+
+        /// <param name="rdpEnabled">If &lt;code&gt;true&lt;/code&gt;, RDP access is enabled for this App Service plan. Only
+        /// applicable for IsCustomMode ASPs.
+        /// If &lt;code&gt;false&lt;/code&gt;, RDP access is disabled.
+        /// </param>
+        public AppServicePlan(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SkuDescription sku = default(SkuDescription), ExtendedLocation extendedLocation = default(ExtendedLocation), string kind = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), ProvisioningState? provisioningState = default(ProvisioningState?), string workerTierName = default(string), StatusOptions? status = default(StatusOptions?), string subscription = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), int? maximumNumberOfWorkers = default(int?), int? numberOfWorkers = default(int?), string geoRegion = default(string), bool? perSiteScaling = default(bool?), bool? elasticScaleEnabled = default(bool?), int? maximumElasticWorkerCount = default(int?), int? numberOfSites = default(int?), bool? isSpot = default(bool?), System.DateTime? spotExpirationTime = default(System.DateTime?), System.DateTime? freeOfferExpirationTime = default(System.DateTime?), string resourceGroup = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), int? targetWorkerCount = default(int?), int? targetWorkerSizeId = default(int?), KubeEnvironmentProfile kubeEnvironmentProfile = default(KubeEnvironmentProfile), bool? zoneRedundant = default(bool?), bool? asyncScalingEnabled = default(bool?), DefaultIdentity planDefaultIdentity = default(DefaultIdentity), bool? isCustomMode = default(bool?), System.Collections.Generic.IList<RegistryAdapter> registryAdapters = default(System.Collections.Generic.IList<RegistryAdapter>), System.Collections.Generic.IList<InstallScript> installScripts = default(System.Collections.Generic.IList<InstallScript>), ServerFarmNetworkSettings network = default(ServerFarmNetworkSettings), System.Collections.Generic.IList<StorageMount> storageMounts = default(System.Collections.Generic.IList<StorageMount>), bool? rdpEnabled = default(bool?))
+
+        : base(location, id, name, type, systemData, tags)
         {
             this.Sku = sku;
             this.ExtendedLocation = extendedLocation;
+            this.Kind = kind;
+            this.Identity = identity;
             this.ProvisioningState = provisioningState;
             this.WorkerTierName = workerTierName;
             this.Status = status;
             this.Subscription = subscription;
             this.HostingEnvironmentProfile = hostingEnvironmentProfile;
             this.MaximumNumberOfWorkers = maximumNumberOfWorkers;
+            this.NumberOfWorkers = numberOfWorkers;
             this.GeoRegion = geoRegion;
             this.PerSiteScaling = perSiteScaling;
             this.ElasticScaleEnabled = elasticScaleEnabled;
@@ -149,6 +202,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.TargetWorkerCount = targetWorkerCount;
             this.TargetWorkerSizeId = targetWorkerSizeId;
             this.KubeEnvironmentProfile = kubeEnvironmentProfile;
+            this.ZoneRedundant = zoneRedundant;
+            this.AsyncScalingEnabled = asyncScalingEnabled;
+            this.PlanDefaultIdentity = planDefaultIdentity;
+            this.IsCustomMode = isCustomMode;
+            this.RegistryAdapters = registryAdapters;
+            this.InstallScripts = installScripts;
+            this.Network = network;
+            this.StorageMounts = storageMounts;
+            this.RdpEnabled = rdpEnabled;
             CustomInit();
         }
 
@@ -169,6 +231,20 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "extendedLocation")]
         public ExtendedLocation ExtendedLocation {get; set; }
+
+        /// <summary>
+        /// Gets or sets kind of resource. If the resource is an app, you can refer to
+        /// https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference
+        /// for details supported values for kind.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
+
+        /// <summary>
+        /// Gets or sets managed service identity.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity {get; set; }
 
         /// <summary>
         /// Gets provisioning state of the App Service Plan. Possible values include: &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;InProgress&#39;, &#39;Deleting&#39;
@@ -207,6 +283,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maximumNumberOfWorkers")]
         public int? MaximumNumberOfWorkers {get; private set; }
+
+        /// <summary>
+        /// Gets the number of instances that are assigned to this App Service plan.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.numberOfWorkers")]
+        public int? NumberOfWorkers {get; private set; }
 
         /// <summary>
         /// Gets geographical location for the App Service plan.
@@ -308,6 +390,70 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.kubeEnvironmentProfile")]
         public KubeEnvironmentProfile KubeEnvironmentProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets if &lt;code&gt;true&lt;/code&gt;, this App Service Plan will perform
+        /// availability zone balancing.
+        /// If &lt;code&gt;false&lt;/code&gt;, this App Service Plan will not perform availability
+        /// zone balancing.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.zoneRedundant")]
+        public bool? ZoneRedundant {get; set; }
+
+        /// <summary>
+        /// Gets or sets if &lt;code&gt;true&lt;/code&gt;, this App Service Plan will attempt to
+        /// scale asynchronously if there are insufficient workers to scale
+        /// synchronously.
+        /// If &lt;code&gt;false&lt;/code&gt;, this App Service Plan will only attempt sync
+        /// scaling.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.asyncScalingEnabled")]
+        public bool? AsyncScalingEnabled {get; set; }
+
+        /// <summary>
+        /// Gets or sets identity to use by platform for various features and
+        /// integrations using managed identity.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.planDefaultIdentity")]
+        public DefaultIdentity PlanDefaultIdentity {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether this server farm is in custom mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isCustomMode")]
+        public bool? IsCustomMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets registry adapters associated with this App Service plan.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.registryAdapters")]
+        public System.Collections.Generic.IList<RegistryAdapter> RegistryAdapters {get; set; }
+
+        /// <summary>
+        /// Gets or sets install scripts associated with this App Service plan.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.installScripts")]
+        public System.Collections.Generic.IList<InstallScript> InstallScripts {get; set; }
+
+        /// <summary>
+        /// Gets or sets all network settings for the server farm.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.network")]
+        public ServerFarmNetworkSettings Network {get; set; }
+
+        /// <summary>
+        /// Gets or sets storage mounts associated with this App Service plan.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.storageMounts")]
+        public System.Collections.Generic.IList<StorageMount> StorageMounts {get; set; }
+
+        /// <summary>
+        /// Gets or sets if &lt;code&gt;true&lt;/code&gt;, RDP access is enabled for this App
+        /// Service plan. Only applicable for IsCustomMode ASPs.
+        /// If &lt;code&gt;false&lt;/code&gt;, RDP access is disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.rdpEnabled")]
+        public bool? RdpEnabled {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -317,6 +463,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public override void Validate()
         {
             base.Validate();
+
+
+
+
+
+
+
 
 
 

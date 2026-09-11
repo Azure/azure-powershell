@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// User credentials used for publishing activity.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class User : ProxyOnlyResource
+    public partial class User : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the User class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the User class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="publishingUserName">Username used for publishing.
@@ -51,10 +57,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="scmUri">Url of SCM site.
         /// </param>
-        public User(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string publishingUserName = default(string), string publishingPassword = default(string), string publishingPasswordHash = default(string), string publishingPasswordHashSalt = default(string), string scmUri = default(string))
+        public User(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), string publishingUserName = default(string), string publishingPassword = default(string), string publishingPasswordHash = default(string), string publishingPasswordHashSalt = default(string), string scmUri = default(string))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.PublishingUserName = publishingUserName;
             this.PublishingPassword = publishingPassword;
             this.PublishingPasswordHash = publishingPasswordHash;
@@ -68,6 +75,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets username used for publishing.

@@ -102,8 +102,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             #endregion
 
             var response = BmsAdapter.Client.Restores.TriggerWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
                 AzureFabricName,
                 containerUri,
                 protectedItemUri,
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 customHeaders,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
 
-            return response;
+            return ToAzureOperationResponse(response);
         }
 
 

@@ -215,7 +215,24 @@ This example creates a VM using a VMConfig object for the TrustedLaunch Security
 $vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
 ```
 
-### Example 5: Create a virtual machine configuration object that opts out of capacity reservation
+### Example 5: Create a SpotPlus VM config and deploy it
+```powershell
+$cred = Get-Credential
+$nic = Get-AzNetworkInterface -ResourceGroupName "MyResourceGroup" -Name "MyNic"
+$vmConfig = New-AzVMConfig -VMName "MySpotPlusVM" -VMSize "Standard_D2s_v5" -Priority "SpotPlus" -EvictionPolicy "Deallocate" -MaxPrice -1
+$vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName "MySpotPlusVM" -Credential $cred
+$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2022-Datacenter" -Version "latest"
+$vmConfig = Set-AzVMOSDisk -VM $vmConfig -CreateOption "FromImage" -StorageAccountType "Standard_LRS"
+$vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
+New-AzVM -ResourceGroupName "MyResourceGroup" -Location "eastus2" -VM $vmConfig
+(Get-AzVM -ResourceGroupName "MyResourceGroup" -Name "MySpotPlusVM").Priority
+```
+
+This example creates a Spot Plus VM configuration object and deploys it. Spot Plus is the next generation of Azure Spot and provides higher reliability and longer running time than 'Spot' at a discounted price.
+'-EvictionPolicy' and '-MaxPrice' behave the same way as they do for 'Spot'.
+Using 'SpotPlus' requires the 'Microsoft.Compute/SpotPlus' subscription feature to be registered and a region where the feature is enabled.
+
+### Example 6: Create a virtual machine configuration object that opts out of capacity reservation
 ```powershell
 $vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_D2s_v3" -DisableCapacityReservationAssignment;
 New-AzVM -ResourceGroupName "myRG" -Location "eastus" -VM $vmConfig;
@@ -577,9 +594,10 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machine.  Only supported values are 'Regular', 'Spot' and 'Low'.
+The priority for the virtual machine.  Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'.
 'Regular' is for regular virtual machine.
 'Spot' is for spot virtual machine.
+'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'.
 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
 
 ```yaml

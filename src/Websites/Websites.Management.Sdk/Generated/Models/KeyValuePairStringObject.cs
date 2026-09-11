@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="key">
         /// </param>
 
-        /// <param name="value">Anything
+        /// <param name="value">Any object
         /// </param>
         public KeyValuePairStringObject(string key = default(string), object value = default(object))
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public string Key {get; private set; }
 
         /// <summary>
-        /// Gets anything
+        /// Gets any object
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
         public object Value {get; private set; }

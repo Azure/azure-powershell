@@ -11,8 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// The configuration settings of the platform of App Service
     /// Authentication/Authorization.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AuthPlatform : ProxyOnlyResource
+    public partial class AuthPlatform
     {
         /// <summary>
         /// Initializes a new instance of the AuthPlatform class.
@@ -25,18 +24,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the AuthPlatform class.
         /// </summary>
-
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
 
         /// <param name="enabled">&lt;code&gt;true&lt;/code&gt; if the Authentication / Authorization feature is enabled
         /// for the current app; otherwise, &lt;code&gt;false&lt;/code&gt;.
@@ -52,9 +39,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// file.
         /// If the path is relative, base will the site&#39;s root directory.
         /// </param>
-        public AuthPlatform(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? enabled = default(bool?), string runtimeVersion = default(string), string configFilePath = default(string))
+        public AuthPlatform(bool? enabled = default(bool?), string runtimeVersion = default(string), string configFilePath = default(string))
 
-        : base(id, name, kind, type)
         {
             this.Enabled = enabled;
             this.RuntimeVersion = runtimeVersion;
@@ -72,7 +58,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Gets or sets &lt;code&gt;true&lt;/code&gt; if the Authentication / Authorization
         /// feature is enabled for the current app; otherwise, &lt;code&gt;false&lt;/code&gt;.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enabled")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enabled")]
         public bool? Enabled {get; set; }
 
         /// <summary>
@@ -81,7 +67,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// The setting in this value can control the behavior of certain features in
         /// the Authentication / Authorization module.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.runtimeVersion")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "runtimeVersion")]
         public string RuntimeVersion {get; set; }
 
         /// <summary>
@@ -89,7 +75,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// come from a file.
         /// If the path is relative, base will the site&#39;s root directory.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.configFilePath")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "configFilePath")]
         public string ConfigFilePath {get; set; }
     }
 }

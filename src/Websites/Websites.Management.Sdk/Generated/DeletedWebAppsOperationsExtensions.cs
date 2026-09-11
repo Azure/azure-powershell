@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// 
+        /// The name of the Azure region.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<DeletedSite> ListByLocation(this IDeletedWebAppsOperations operations, string location)
         {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// 
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// 
+        /// The name of the Azure region.
         /// </param>
         /// <param name='deletedSiteId'>
         /// The numeric ID of the deleted app, e.g. 12345
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// 
+        /// The name of the Azure region.
         /// </param>
         /// <param name='deletedSiteId'>
         /// The numeric ID of the deleted app, e.g. 12345

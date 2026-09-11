@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Triggered Web Job Information.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class TriggeredWebJob : ProxyOnlyResource
+    public partial class TriggeredWebJob : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the TriggeredWebJob class.
@@ -25,16 +25,25 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the TriggeredWebJob class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="usingSdk">Using SDK?
         /// </param>
 
         /// <param name="latestRun">Latest job run information.
@@ -61,15 +70,21 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="error">Error information.
         /// </param>
 
-        /// <param name="usingSdk">Using SDK?
+        /// <param name="publicNetworkAccess">Property to allow or block all public traffic. Allowed Values: &#39;Enabled&#39;,
+        /// &#39;Disabled&#39; or an empty string.
+        /// </param>
+
+        /// <param name="storageAccountRequired">Checks if Customer provided storage account is required
         /// </param>
 
         /// <param name="settings">Job settings.
         /// </param>
-        public TriggeredWebJob(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), TriggeredJobRun latestRun = default(TriggeredJobRun), string historyUrl = default(string), string schedulerLogsUrl = default(string), string runCommand = default(string), string url = default(string), string extraInfoUrl = default(string), WebJobType? webJobType = default(WebJobType?), string error = default(string), bool? usingSdk = default(bool?), System.Collections.Generic.IDictionary<string, object> settings = default(System.Collections.Generic.IDictionary<string, object>))
+        public TriggeredWebJob(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), bool? usingSdk = default(bool?), TriggeredJobRun latestRun = default(TriggeredJobRun), string historyUrl = default(string), string schedulerLogsUrl = default(string), string runCommand = default(string), string url = default(string), string extraInfoUrl = default(string), WebJobType? webJobType = default(WebJobType?), string error = default(string), string publicNetworkAccess = default(string), bool? storageAccountRequired = default(bool?), System.Collections.Generic.IDictionary<string, object> settings = default(System.Collections.Generic.IDictionary<string, object>))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
+            this.UsingSdk = usingSdk;
             this.LatestRun = latestRun;
             this.HistoryUrl = historyUrl;
             this.SchedulerLogsUrl = schedulerLogsUrl;
@@ -78,7 +93,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.ExtraInfoUrl = extraInfoUrl;
             this.WebJobType = webJobType;
             this.Error = error;
-            this.UsingSdk = usingSdk;
+            this.PublicNetworkAccess = publicNetworkAccess;
+            this.StorageAccountRequired = storageAccountRequired;
             this.Settings = settings;
             CustomInit();
         }
@@ -88,6 +104,18 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
+
+        /// <summary>
+        /// Gets or sets using SDK?
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.using_sdk")]
+        public bool? UsingSdk {get; set; }
 
         /// <summary>
         /// Gets or sets latest job run information.
@@ -138,10 +166,17 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public string Error {get; set; }
 
         /// <summary>
-        /// Gets or sets using SDK?
+        /// Gets or sets property to allow or block all public traffic. Allowed Values:
+        /// &#39;Enabled&#39;, &#39;Disabled&#39; or an empty string.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.using_sdk")]
-        public bool? UsingSdk {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicNetworkAccess")]
+        public string PublicNetworkAccess {get; set; }
+
+        /// <summary>
+        /// Gets or sets checks if Customer provided storage account is required
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.storageAccountRequired")]
+        public bool? StorageAccountRequired {get; set; }
 
         /// <summary>
         /// Gets or sets job settings.

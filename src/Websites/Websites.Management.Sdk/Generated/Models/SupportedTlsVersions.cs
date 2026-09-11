@@ -16,5 +16,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public const string One0 = "1.0";
         public const string One1 = "1.1";
         public const string One2 = "1.2";
+        public const string One3 = "1.3";
     }
 }

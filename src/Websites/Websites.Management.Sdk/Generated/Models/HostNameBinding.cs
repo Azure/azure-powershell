@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// A hostname binding object.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class HostNameBinding : ProxyOnlyResource
+    public partial class HostNameBinding : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the HostNameBinding class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the HostNameBinding class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="sslState">SSL type
@@ -63,10 +69,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="virtualIP">Virtual IP address assigned to the hostname if IP based SSL is enabled.
         /// </param>
-        public HostNameBinding(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SslState? sslState = default(SslState?), string siteName = default(string), string domainId = default(string), string azureResourceName = default(string), AzureResourceType? azureResourceType = default(AzureResourceType?), CustomHostNameDnsRecordType? customHostNameDnsRecordType = default(CustomHostNameDnsRecordType?), HostNameType? hostNameType = default(HostNameType?), string thumbprint = default(string), string virtualIP = default(string))
+        public HostNameBinding(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), SslState? sslState = default(SslState?), string siteName = default(string), string domainId = default(string), string azureResourceName = default(string), AzureResourceType? azureResourceType = default(AzureResourceType?), CustomHostNameDnsRecordType? customHostNameDnsRecordType = default(CustomHostNameDnsRecordType?), HostNameType? hostNameType = default(HostNameType?), string thumbprint = default(string), string virtualIP = default(string))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.SslState = sslState;
             this.SiteName = siteName;
             this.DomainId = domainId;
@@ -84,6 +91,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets sSL type Possible values include: &#39;Disabled&#39;, &#39;SniEnabled&#39;, &#39;IpBasedEnabled&#39;

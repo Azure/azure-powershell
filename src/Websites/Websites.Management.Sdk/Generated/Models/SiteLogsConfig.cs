@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Configuration of App Service site logs.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SiteLogsConfig : ProxyOnlyResource
+    public partial class SiteLogsConfig : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the SiteLogsConfig class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the SiteLogsConfig class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="applicationLogs">Application logs configuration.
@@ -48,10 +54,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="detailedErrorMessages">Detailed error messages configuration.
         /// </param>
-        public SiteLogsConfig(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), ApplicationLogsConfig applicationLogs = default(ApplicationLogsConfig), HttpLogsConfig httpLogs = default(HttpLogsConfig), EnabledConfig failedRequestsTracing = default(EnabledConfig), EnabledConfig detailedErrorMessages = default(EnabledConfig))
+        public SiteLogsConfig(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), ApplicationLogsConfig applicationLogs = default(ApplicationLogsConfig), HttpLogsConfig httpLogs = default(HttpLogsConfig), EnabledConfig failedRequestsTracing = default(EnabledConfig), EnabledConfig detailedErrorMessages = default(EnabledConfig))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.ApplicationLogs = applicationLogs;
             this.HttpLogs = httpLogs;
             this.FailedRequestsTracing = failedRequestsTracing;
@@ -64,6 +71,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets application logs configuration.
@@ -96,6 +109,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </exception>
         public virtual void Validate()
         {
+
             if (this.ApplicationLogs != null)
             {
                 this.ApplicationLogs.Validate();

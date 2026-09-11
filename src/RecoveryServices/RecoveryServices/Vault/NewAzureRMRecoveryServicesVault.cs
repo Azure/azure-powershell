@@ -188,8 +188,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         if (vaultCreateArgs.Properties.SecuritySettings == null) { vaultCreateArgs.Properties.SecuritySettings = new SecuritySettings(); }
                         if (vaultCreateArgs.Properties.SecuritySettings.ImmutabilitySettings == null) { vaultCreateArgs.Properties.SecuritySettings.ImmutabilitySettings = new ServiceClientModel.ImmutabilitySettings(); }
                        
-                        if (ImmutabilityState != 0)
+                        if (ImmutabilityState != cmdletModel.ImmutabilityState.Disabled)
+                        {
                             vaultCreateArgs.Properties.SecuritySettings.ImmutabilitySettings.State = ImmutabilityState.ToString();
+                            vaultCreateArgs.Properties.SecuritySettings.ImmutabilitySettings.Configuration =
+                                new ServiceClientModel.ImmutabilityConfiguration
+                                {
+                                    Type = ServiceClientModel.ImmutabilityType.AsPerPolicy
+                                };
+                        }
                     }
 
                     // Set default soft delete settings

@@ -41,9 +41,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="protectableObjectType">Type of the protectable object associated with this container
         /// </param>
-        public AzureSqlContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string))
 
-        : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType)
+        /// <param name="sourceLocation">Source location of the container
+        /// </param>
+        public AzureSqlContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string sourceLocation = default(string))
+
+        : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType, sourceLocation)
         {
             CustomInit();
         }

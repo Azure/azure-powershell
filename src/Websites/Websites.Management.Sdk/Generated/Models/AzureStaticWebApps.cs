@@ -10,8 +10,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// <summary>
     /// The configuration settings of the Azure Static Web Apps provider.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AzureStaticWebApps : ProxyOnlyResource
+    public partial class AzureStaticWebApps
     {
         /// <summary>
         /// Initializes a new instance of the AzureStaticWebApps class.
@@ -25,27 +24,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the AzureStaticWebApps class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="enabled">&lt;code&gt;false&lt;/code&gt; if the Azure Static Web Apps provider should not be
         /// enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.
         /// </param>
 
         /// <param name="registration">The configuration settings of the Azure Static Web Apps registration.
         /// </param>
-        public AzureStaticWebApps(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? enabled = default(bool?), AzureStaticWebAppsRegistration registration = default(AzureStaticWebAppsRegistration))
+        public AzureStaticWebApps(bool? enabled = default(bool?), AzureStaticWebAppsRegistration registration = default(AzureStaticWebAppsRegistration))
 
-        : base(id, name, kind, type)
         {
             this.Enabled = enabled;
             this.Registration = registration;
@@ -63,14 +49,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// should not be enabled despite the set registration; otherwise,
         /// &lt;code&gt;true&lt;/code&gt;.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enabled")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enabled")]
         public bool? Enabled {get; set; }
 
         /// <summary>
         /// Gets or sets the configuration settings of the Azure Static Web Apps
         /// registration.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.registration")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "registration")]
         public AzureStaticWebAppsRegistration Registration {get; set; }
     }
 }

@@ -36,13 +36,13 @@ function Get-TenantId {
 
     $tenantId = $null
     if ((Get-StorageTestMode) -ne 'Playback') 
-        {
-            $tenantId = (Get-Azcontext).Tenant.Id
-        }
-        else 
-        {
-            $tenantId = "0483643a-cb2f-462a-bc27-1a270e5bdc0a"
-        }
+    {
+        $tenantId = (Get-Azcontext).Tenant.Id
+    }
+    else 
+    {
+        $tenantId = [Microsoft.Azure.Commands.StorageSync.Test.Common.StorageSyncTestConstants]::TenantId
+    }
     return $tenantId
 }
 

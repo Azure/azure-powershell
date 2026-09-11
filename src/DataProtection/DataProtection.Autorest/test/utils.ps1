@@ -98,8 +98,8 @@ function setupEnv() {
 
     $BlobsRestoreVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
-        ResourceGroupName = "adkayeth"
-        VaultName = "sadsasad"
+        ResourceGroupName = "dataprotectionpstest-rg"
+        VaultName = "dataprotectionpstest-bv"
     }
 
     $OssVariables = @{
@@ -168,16 +168,16 @@ function setupEnv() {
     }
 
     $AksRestoreVariables = @{
-        SubscriptionId = "2c6832bf-90ef-457a-a663-9aeae88a7f80" 
-        ResourceGroupName = "tiering-test"
-        VaultName = "aks-tiering-test" #"demobackupvault"
-        NewPolicyName = "" #"pstest-aks-policy"
-        PolicyName = "test01"
-        DataSourceLocation = "eastasia"
-        SourceClusterId = "/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/tiering-test/providers/Microsoft.ContainerService/managedClusters/aks-test-ps-backup"
-        SnapshotResourceGroupId = "/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/tiering-test"
-        FriendlyName = "aks-test-ps-backup\newBI"
-        ClusterName = "aks-test-ps-backup"
+        SubscriptionId = "97cda027-4279-4cde-b4ff-19afa0021d87"
+        ResourceGroupName = "shashargea-aue"
+        VaultName = "bv-aks-aue"
+        NewPolicyName = ""
+        PolicyName = "aks-operational-only"
+        DataSourceLocation = "australiaeast"
+        SourceClusterId = "/subscriptions/97cda027-4279-4cde-b4ff-19afa0021d87/resourceGroups/shashargea-aue/providers/Microsoft.ContainerService/managedClusters/testautomatic-aue"
+        SnapshotResourceGroupId = "/subscriptions/97cda027-4279-4cde-b4ff-19afa0021d87/resourceGroups/shashargea-snap-aue"
+        FriendlyName = "testautomatic-aue"
+        ClusterName = "testautomatic-aue"
     }
 
     $BlobHardeningVariables = @{
@@ -250,11 +250,11 @@ function setupEnv() {
     }
 
     $CrossSubscriptionRestoreVariables = @{
-        ResourceGroupName = "pgflexrestorefix"
-        VaultName = "pgflexrestorevault"
-        SubscriptionId = "2c6832bf-90ef-457a-a663-9aeae88a7f80"
-        TargetContainerArmId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/afs-pstest-rg/providers/Microsoft.Storage/storageAccounts/afspstestsa/blobServices/default/containers/pgflex-csr"
-        TargetContainerURI =  "https://afspstestsa.blob.core.windows.net/pgflex-csr"
+        ResourceGroupName = "pgflexfeaturetesting"
+        VaultName = "VaultSDTesting"
+        SubscriptionId = "97cda027-4279-4cde-b4ff-19afa0021d87"
+        TargetContainerArmId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/blob-pstest-rg/providers/Microsoft.Storage/storageAccounts/blobpstestsa/blobServices/default/containers/pgflex-csr"
+        TargetContainerURI =  "https://blobpstestsa.blob.core.windows.net/pgflex-csr"
         FileNamePrefix = "pgflex-csr-pstest-restoreasfiles"
     }
 
@@ -342,7 +342,7 @@ function setupEnv() {
     $DPPVaultSoftDeleteVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         Location = "eastus2euap" 
-        DeletedVaultName = "raghavchugh-test-dpp-uami-soft-delete-ON"
+        DeletedVaultName = "azps-dpp-vault-undelete-test"
         ResourceGroupName = "raghavchugh-test-rg"
     }
 
@@ -386,4 +386,3 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
 }
-
