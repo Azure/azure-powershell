@@ -26,6 +26,7 @@ Describe 'New-AzRedisEnterpriseCache' {
             EvictionPolicy = "VolatileLRU"
             PublicNetworkAccess = "Enabled"
             AccessKeysAuthentication = "Enabled"
+            NotifyKeyspaceEvents = "KEA"
             MaintenanceConfigurationMaintenanceWindow = @(@{Type="Weekly"; ScheduleDayOfWeek="Monday"; StartHourUtc=6; Duration="PT10H"}, @{Type="Weekly"; ScheduleDayOfWeek="Thursday"; StartHourUtc=6; Duration="PT10H"})
         }
         $cache = New-AzRedisEnterpriseCache @splat -EnableSystemAssignedIdentity -Module "{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RedisBloom, args:`"ERROR_RATE 0.001 INITIAL_SIZE 400`"}"
@@ -46,11 +47,15 @@ Describe 'New-AzRedisEnterpriseCache' {
         $cache.Database[$databaseName].EvictionPolicy | Should -Be $splat.EvictionPolicy
         $cache.Database[$databaseName].ProvisioningState | Should -Be "Succeeded"
         $cache.Database[$databaseName].ResourceState | Should -Be "Running"
+        $cache.Database[$databaseName].NotifyKeyspaceEvent | Should -Be $splat.NotifyKeyspaceEvents
         $cache.IdentityType | Should -Be "SystemAssigned"
         $cache.MaintenanceConfigurationMaintenanceWindow | Should -Not -Be $null
         $cache.MaintenanceConfigurationMaintenanceWindow.Count | Should -Be 2
         $cache.MaintenanceConfigurationMaintenanceWindow[0].ScheduleDayOfWeek | Should -Be "Monday"
         $cache.MaintenanceConfigurationMaintenanceWindow[0].StartHourUtc | Should -Be 6
+        $cache.MaintenanceConfigurationMaintenanceWindow[0].Duration | Should -Be "PT10H"
+        $cache.MaintenanceConfigurationMaintenanceWindow[1].ScheduleDayOfWeek | Should -Be "Thursday"
+        $cache.MaintenanceConfigurationMaintenanceWindow[1].StartHourUtc | Should -Be 6
     }
 
     It 'CreateNoDatabase' {

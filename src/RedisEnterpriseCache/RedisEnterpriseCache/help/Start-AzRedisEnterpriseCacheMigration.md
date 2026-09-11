@@ -159,7 +159,6 @@ Accept wildcard characters: False
 
 ### -SkipDataMigration
 Sets whether to skip data migration and only migrate the endpoint.
-This property is required by the service and must be true during the public preview.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

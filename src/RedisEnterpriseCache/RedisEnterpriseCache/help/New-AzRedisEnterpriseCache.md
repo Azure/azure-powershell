@@ -22,7 +22,8 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
  [-HighAvailability <String>] [-PublicNetworkAccess <String>] [-EnableSystemAssignedIdentity]
  [-UserAssignedIdentity <String[]>] [-KeyEncryptionKeyIdentityType <String>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
- [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>] [-AofPersistenceEnabled]
+ [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>] [-NotifyKeyspaceEvents <String>]
+ [-AofPersistenceEnabled]
  [-AofPersistenceFrequency <String>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -531,6 +532,25 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotifyKeyspaceEvents
+Specifies which keyspace events should trigger notifications on the default database.
+Default is an empty string, meaning this feature is disabled.
+When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present.
+For example, 'AKE' enables all standard events.
+See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateClusterWithDatabase
 Aliases:
 
 Required: False
