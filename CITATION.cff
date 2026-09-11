@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+title: "Azure PowerShell"
+type: software
+message: "If you use Azure PowerShell in your research, please cite this software."
+authors:
+
+* name: "Microsoft"
+  affiliation: "Microsoft"
+  repository-code: "https://github.com/Azure/azure-powershell"
+  url: "https://github.com/Azure/azure-powershell"
+  license: "MIT"
+  version: "16.3.0"
+  keywords:
+* Azure
+* "Microsoft Azure"
+* PowerShell
+* "Azure PowerShell"
+* "cloud computing"
+* "cloud management"
+  abstract: >
+  Azure PowerShell is a collection of PowerShell cmdlets for developers
+  and administrators to develop, deploy, administer, and manage Microsoft
+  Azure resources.
