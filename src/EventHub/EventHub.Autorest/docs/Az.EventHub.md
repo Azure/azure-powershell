@@ -1,6 +1,6 @@
 ---
 Module Name: Az.EventHub
-Module Guid: 9c68a770-c357-4604-8540-e4546e52f1b2
+Module Guid: e95bea1f-5a83-4492-a7a9-422b91d14342
 Download Help Link: https://learn.microsoft.com/powershell/module/az.eventhub
 Help Version: 1.0.0.0
 Locale: en-US
@@ -11,6 +11,9 @@ Locale: en-US
 Microsoft Azure PowerShell: EventHub cmdlets
 
 ## Az.EventHub Cmdlets
+### [Approve-AzEventHubFabricShortcut](Approve-AzEventHubFabricShortcut.md)
+Approves a Microsoft Fabric shortcut.
+
 ### [Approve-AzEventHubPrivateEndpointConnection](Approve-AzEventHubPrivateEndpointConnection.md)
 Approves an EventHub PrivateEndpointConnection
 
@@ -37,6 +40,9 @@ List the quantity of available pre-provisioned Event Hubs Clusters, indexed by A
 
 ### [Get-AzEventHubConsumerGroup](Get-AzEventHubConsumerGroup.md)
 Gets a description for the specified consumer group.
+
+### [Get-AzEventHubFabricShortcut](Get-AzEventHubFabricShortcut.md)
+Gets a Microsoft Fabric shortcut.
 
 ### [Get-AzEventHubGeoDRConfiguration](Get-AzEventHubGeoDRConfiguration.md)
 Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
@@ -65,6 +71,12 @@ Gets lists of resources that supports Privatelinks.
 ### [Get-AzEventHubSchemaGroup](Get-AzEventHubSchemaGroup.md)
 Gets the details of an EventHub schema group.
 
+### [Get-AzEventHubUpgradePreferencesOperation](Get-AzEventHubUpgradePreferencesOperation.md)
+Gets the upgrade preferences for an Event Hubs Dedicated cluster.
+
+### [Invoke-AzEventHubRejectFabricShortcut](Invoke-AzEventHubRejectFabricShortcut.md)
+Rejects a Microsoft Fabric shortcut.
+
 ### [New-AzEventHub](New-AzEventHub.md)
 Create a new Event Hub as a nested resource within a Namespace.
 
@@ -79,6 +91,9 @@ Create an instance of an Event Hubs Cluster.
 
 ### [New-AzEventHubConsumerGroup](New-AzEventHubConsumerGroup.md)
 Create an Event Hubs consumer group as a nested resource within a Namespace.
+
+### [New-AzEventHubFabricShortcut](New-AzEventHubFabricShortcut.md)
+Create a Microsoft Fabric shortcut.
 
 ### [New-AzEventHubGeoDRConfiguration](New-AzEventHubGeoDRConfiguration.md)
 Create a new Alias(Disaster Recovery configuration)
@@ -104,6 +119,9 @@ Create an EventHub schema group.
 ### [New-AzEventHubThrottlingPolicyConfig](New-AzEventHubThrottlingPolicyConfig.md)
 Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup
 
+### [New-AzEventHubUpgradePreferencesOperation](New-AzEventHubUpgradePreferencesOperation.md)
+Create the upgrade preferences for an Event Hubs Dedicated cluster.
+
 ### [New-AzEventHubVirtualNetworkRuleConfig](New-AzEventHubVirtualNetworkRuleConfig.md)
 Constructs an INwRuleSetVirtualNetworkRules object that can be fed as input to Set-AzEventHubNetworkRuleSet
 
@@ -122,6 +140,9 @@ This operation is idempotent.
 
 ### [Remove-AzEventHubConsumerGroup](Remove-AzEventHubConsumerGroup.md)
 Deletes a consumer group from the specified Event Hub and resource group.
+
+### [Remove-AzEventHubFabricShortcut](Remove-AzEventHubFabricShortcut.md)
+Deletes a Microsoft Fabric shortcut.
 
 ### [Remove-AzEventHubGeoDRConfiguration](Remove-AzEventHubGeoDRConfiguration.md)
 Deletes an Alias(Disaster Recovery configuration)
