@@ -47,7 +47,7 @@ Describe 'New-AzRedisEnterpriseCache' {
         $cache.Database[$databaseName].EvictionPolicy | Should -Be $splat.EvictionPolicy
         $cache.Database[$databaseName].ProvisioningState | Should -Be "Succeeded"
         $cache.Database[$databaseName].ResourceState | Should -Be "Running"
-        $cache.Database[$databaseName].NotifyKeyspaceEvent | Should -Be $splat.NotifyKeyspaceEvents
+        $cache.Database[$databaseName].NotifyKeyspaceEvents | Should -Be $splat.NotifyKeyspaceEvents
         $cache.IdentityType | Should -Be "SystemAssigned"
         $cache.MaintenanceConfigurationMaintenanceWindow | Should -Not -Be $null
         $cache.MaintenanceConfigurationMaintenanceWindow.Count | Should -Be 2
@@ -193,7 +193,7 @@ Describe 'New-AzRedisEnterpriseCacheDatabase' {
         $database.Port | Should -Be $splat.Port
         $database.ProvisioningState | Should -Be "Succeeded"
         $database.ResourceState | Should -Be "Running"
-        $database.NotifyKeyspaceEvent | Should -Be "KEA"
+        $database.NotifyKeyspaceEvents | Should -Be "KEA"
     }
 
     It 'Create a georeplicated database' {
@@ -415,7 +415,7 @@ Describe 'Update-AzRedisEnterpriseCacheDatabase' {
     It 'UpdateNotifyKeyspaceEvents' {
         {
             $database = New-AzRedisEnterpriseCacheDatabase -ClusterName $env.ClusterName2 -ResourceGroupName $env.ResourceGroupName -ClusteringPolicy "EnterpriseCluster" -NotifyKeyspaceEvents "Kg"
-            $database.NotifyKeyspaceEvent | Should -Be "Kg"
+            $database.NotifyKeyspaceEvents | Should -Be "Kg"
         } | Should -Not -Throw
     }
 }
