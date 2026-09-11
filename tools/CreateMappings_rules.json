@@ -937,10 +937,6 @@
     "alias": "ScVmm"
   },
   {
-    "alias": "ArizeAI",
-    "module": "ArizeAI"
-  },
-  {
     "alias": "LambdaTest",
     "module": "LambdaTest"
   },

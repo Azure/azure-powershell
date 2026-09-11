@@ -539,12 +539,6 @@
       "Remove-AzArcResourceBridge": {},
       "Update-AzArcResourceBridge": {}
     },
-    "Az.ArizeAI": {
-      "Get-AzArizeAIOrganization": {},
-      "New-AzArizeAIOrganization": {},
-      "Remove-AzArizeAIOrganization": {},
-      "Update-AzArizeAIOrganization": {}
-    },
     "Az.ArtifactSigning": {
       "Get-AzArtifactSigningCertificateChain": {},
       "Get-AzArtifactSigningCertificateRoot": {},
