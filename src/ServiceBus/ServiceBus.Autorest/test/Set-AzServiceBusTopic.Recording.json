@@ -1,8 +1,8 @@
 {
-  "Set-AzServiceBusTopic+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-01-01+1": {
+  "Set-AzServiceBusTopic+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-07-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-07-01-preview",
       "Content": "{\n}",
       "isContentBase64": false,
       "Headers": {
@@ -41,10 +41,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusTopic+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-01-01+1": {
+  "Set-AzServiceBusTopic+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-07-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -88,10 +88,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusTopic+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-01-01+2": {
+  "Set-AzServiceBusTopic+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-07-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-07-01-preview",
       "Content": "{\n  \"properties\": {\n    \"defaultMessageTimeToLive\": \"P7D\",\n    \"maxSizeInMegabytes\": 1024,\n    \"maxMessageSizeInKilobytes\": 1024,\n    \"requiresDuplicateDetection\": false,\n    \"duplicateDetectionHistoryTimeWindow\": \"PT10M\",\n    \"enableBatchedOperations\": true,\n    \"status\": \"Active\",\n    \"supportOrdering\": true,\n    \"autoDeleteOnIdle\": \"P10675199DT2H48M5.4775807S\",\n    \"enablePartitioning\": false,\n    \"enableExpress\": false\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -130,10 +130,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusTopic+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-01-01+3": {
+  "Set-AzServiceBusTopic+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-07-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -177,10 +177,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusTopic+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-01-01+4": {
+  "Set-AzServiceBusTopic+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-07-01-preview+4": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-07-01-preview",
       "Content": "{\n  \"properties\": {\n    \"defaultMessageTimeToLive\": \"P7D\",\n    \"maxSizeInMegabytes\": 1024,\n    \"maxMessageSizeInKilobytes\": 1024,\n    \"requiresDuplicateDetection\": false,\n    \"duplicateDetectionHistoryTimeWindow\": \"PT10M\",\n    \"enableBatchedOperations\": false,\n    \"status\": \"Active\",\n    \"supportOrdering\": true,\n    \"autoDeleteOnIdle\": \"P10675199DT2H48M5.4775807S\",\n    \"enablePartitioning\": false,\n    \"enableExpress\": false\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -219,10 +219,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusTopic+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-01-01+5": {
+  "Set-AzServiceBusTopic+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-07-01-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -266,10 +266,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusTopic+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-01-01+6": {
+  "Set-AzServiceBusTopic+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-07-01-preview+6": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topicToUpdate?api-version=2026-07-01-preview",
       "Content": "{\n  \"properties\": {\n    \"defaultMessageTimeToLive\": \"P7D\",\n    \"maxSizeInMegabytes\": 1024,\n    \"maxMessageSizeInKilobytes\": 1024,\n    \"requiresDuplicateDetection\": false,\n    \"duplicateDetectionHistoryTimeWindow\": \"PT10M\",\n    \"enableBatchedOperations\": true,\n    \"status\": \"Active\",\n    \"supportOrdering\": true,\n    \"autoDeleteOnIdle\": \"P10675199DT2H48M5.4775807S\",\n    \"enablePartitioning\": false,\n    \"enableExpress\": false\n  }\n}",
       "isContentBase64": false,
       "Headers": {

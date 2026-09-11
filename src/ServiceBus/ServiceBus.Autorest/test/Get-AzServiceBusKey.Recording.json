@@ -1,8 +1,8 @@
 {
-  "Get-AzServiceBusKey+[NoContext]+GetExpandedNamespace+$POST+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/AuthorizationRules/namespaceAuthRule1/listKeys?api-version=2026-01-01+1": {
+  "Get-AzServiceBusKey+[NoContext]+GetExpandedNamespace+$POST+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/AuthorizationRules/namespaceAuthRule1/listKeys?api-version=2026-07-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/AuthorizationRules/namespaceAuthRule1/listKeys?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/AuthorizationRules/namespaceAuthRule1/listKeys?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -46,10 +46,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzServiceBusKey+[NoContext]+GetExpandedQueue+$POST+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/queues/queue1/authorizationRules/queueAuthRule1/listKeys?api-version=2026-01-01+1": {
+  "Get-AzServiceBusKey+[NoContext]+GetExpandedQueue+$POST+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/queues/queue1/authorizationRules/queueAuthRule1/listKeys?api-version=2026-07-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/queues/queue1/authorizationRules/queueAuthRule1/listKeys?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/queues/queue1/authorizationRules/queueAuthRule1/listKeys?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -93,10 +93,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzServiceBusKey+[NoContext]+GetExpandedTopic+$POST+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/authorizationRules/topicAuthRule1/listKeys?api-version=2026-01-01+1": {
+  "Get-AzServiceBusKey+[NoContext]+GetExpandedTopic+$POST+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/authorizationRules/topicAuthRule1/listKeys?api-version=2026-07-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/authorizationRules/topicAuthRule1/listKeys?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/authorizationRules/topicAuthRule1/listKeys?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

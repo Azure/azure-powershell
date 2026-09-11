@@ -1,8 +1,8 @@
 {
-  "Set-AzServiceBusRule+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2026-01-01+1": {
+  "Set-AzServiceBusRule+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2026-07-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -46,10 +46,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2026-01-01+2": {
+  "Set-AzServiceBusRule+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2026-07-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2026-07-01-preview",
       "Content": "{\n  \"properties\": {\n    \"action\": {\n      \"sqlExpression\": \"SET a=b\",\n      \"compatibilityLevel\": 20\n    },\n    \"sqlFilter\": {\n      \"sqlExpression\": \"x=y\",\n      \"compatibilityLevel\": 20\n    },\n    \"filterType\": \"SqlFilter\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -88,10 +88,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+1": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -135,10 +135,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+2": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -182,10 +182,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+3": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": "{\n  \"properties\": {\n    \"correlationFilter\": {\n      \"properties\": {\n        \"a\": \"b\",\n        \"c\": \"d\"\n      },\n      \"correlationId\": \"correlationid\",\n      \"messageId\": \"messageid\",\n      \"replyTo\": \"replyto\",\n      \"label\": \"label\",\n      \"sessionId\": \"sessionid\",\n      \"replyToSessionId\": \"replytosessionid\",\n      \"contentType\": \"secondcontenttype\"\n    },\n    \"filterType\": \"CorrelationFilter\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -224,10 +224,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+4": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -271,10 +271,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+5": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+5": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": "{\n  \"properties\": {\n    \"correlationFilter\": {\n      \"properties\": {\n        \"a\": \"b\",\n        \"c\": \"d\"\n      },\n      \"correlationId\": \"secondcorrelationid\",\n      \"messageId\": \"messageid\",\n      \"replyTo\": \"replyto\",\n      \"label\": \"label\",\n      \"sessionId\": \"sessionid\",\n      \"replyToSessionId\": \"replytosessionid\",\n      \"contentType\": \"secondcontenttype\"\n    },\n    \"filterType\": \"CorrelationFilter\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -313,10 +313,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+6": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -360,10 +360,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+7": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+7": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": "{\n  \"properties\": {\n    \"correlationFilter\": {\n      \"properties\": {\n        \"a\": \"b\",\n        \"c\": \"d\"\n      },\n      \"correlationId\": \"secondcorrelationid\",\n      \"messageId\": \"messageid\",\n      \"replyTo\": \"replyto\",\n      \"label\": \"secondlabel\",\n      \"sessionId\": \"sessionid\",\n      \"replyToSessionId\": \"replytosessionid\",\n      \"contentType\": \"secondcontenttype\"\n    },\n    \"filterType\": \"CorrelationFilter\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -402,10 +402,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+8": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -449,10 +449,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+9": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+9": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": "{\n  \"properties\": {\n    \"correlationFilter\": {\n      \"properties\": {\n        \"a\": \"b\",\n        \"c\": \"d\"\n      },\n      \"correlationId\": \"secondcorrelationid\",\n      \"messageId\": \"secondmessageid\",\n      \"replyTo\": \"replyto\",\n      \"label\": \"secondlabel\",\n      \"sessionId\": \"sessionid\",\n      \"replyToSessionId\": \"replytosessionid\",\n      \"contentType\": \"secondcontenttype\"\n    },\n    \"filterType\": \"CorrelationFilter\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -491,10 +491,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+10": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -538,10 +538,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+11": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+11": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": "{\n  \"properties\": {\n    \"correlationFilter\": {\n      \"properties\": {\n        \"a\": \"b\"\n      },\n      \"correlationId\": \"secondcorrelationid\",\n      \"messageId\": \"secondmessageid\",\n      \"replyTo\": \"replyto\",\n      \"label\": \"secondlabel\",\n      \"sessionId\": \"sessionid\",\n      \"replyToSessionId\": \"replytosessionid\",\n      \"contentType\": \"secondcontenttype\"\n    },\n    \"filterType\": \"CorrelationFilter\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -580,10 +580,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+12": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -627,10 +627,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+13": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+13": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": "{\n  \"properties\": {\n    \"correlationFilter\": {\n      \"properties\": {\n        \"a\": \"b\"\n      },\n      \"correlationId\": \"secondcorrelationid\",\n      \"messageId\": \"secondmessageid\",\n      \"replyTo\": \"secondreplyto\",\n      \"label\": \"secondlabel\",\n      \"sessionId\": \"sessionid\",\n      \"replyToSessionId\": \"replytosessionid\",\n      \"contentType\": \"secondcontenttype\"\n    },\n    \"filterType\": \"CorrelationFilter\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -669,10 +669,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+14": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -716,10 +716,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+15": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+15": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": "{\n  \"properties\": {\n    \"correlationFilter\": {\n      \"properties\": {\n        \"a\": \"b\"\n      },\n      \"correlationId\": \"secondcorrelationid\",\n      \"messageId\": \"secondmessageid\",\n      \"replyTo\": \"secondreplyto\",\n      \"label\": \"secondlabel\",\n      \"sessionId\": \"sessionid\",\n      \"replyToSessionId\": \"secondreplytosessionid\",\n      \"contentType\": \"secondcontenttype\"\n    },\n    \"filterType\": \"CorrelationFilter\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -758,10 +758,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+16": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -805,10 +805,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+17": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+17": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": "{\n  \"properties\": {\n    \"correlationFilter\": {\n      \"properties\": {\n        \"a\": \"b\"\n      },\n      \"correlationId\": \"secondcorrelationid\",\n      \"messageId\": \"secondmessageid\",\n      \"replyTo\": \"secondreplyto\",\n      \"label\": \"secondlabel\",\n      \"sessionId\": \"secondsessionid\",\n      \"replyToSessionId\": \"secondreplytosessionid\",\n      \"contentType\": \"secondcontenttype\"\n    },\n    \"filterType\": \"CorrelationFilter\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -847,10 +847,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+18": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+18": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -894,10 +894,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+19": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+19": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": "{\n  \"properties\": {\n    \"correlationFilter\": {\n      \"properties\": {\n        \"a\": \"b\"\n      },\n      \"correlationId\": \"secondcorrelationid\",\n      \"messageId\": \"secondmessageid\",\n      \"to\": \"secondto\",\n      \"replyTo\": \"secondreplyto\",\n      \"label\": \"secondlabel\",\n      \"sessionId\": \"secondsessionid\",\n      \"replyToSessionId\": \"secondreplytosessionid\",\n      \"contentType\": \"secondcontenttype\"\n    },\n    \"filterType\": \"CorrelationFilter\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -936,10 +936,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01+20": {
+  "Set-AzServiceBusRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview+20": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
