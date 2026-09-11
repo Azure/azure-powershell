@@ -15,11 +15,106 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzPostgreSqlFlexibleSer
 }
 
 Describe 'Start-AzPostgreSqlFlexibleServer' {
-    It 'Start' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $serverTargets = @()
+        for ($i = 1; $i -le 6; $i++) {
+            $resourceGroupName = $env["ResourceGroupName$i"]
+            $serverName = $env["ServerName$i"]
+            if ($resourceGroupName -and $serverName) {
+                $serverTargets += [ordered]@{
+                    Index = $i
+                    ResourceGroupName = $resourceGroupName
+                    ServerName = $serverName
+                }
+            }
+        }
+
+        $hasAllServers = $serverTargets.Count -eq 6
+
+        function Wait-ServerReady {
+            param(
+                [Parameter(Mandatory = $true)]
+                [string]$ResourceGroupName,
+
+                [Parameter(Mandatory = $true)]
+                [string]$ServerName,
+
+                [int]$TimeoutSeconds = 1800,
+                [int]$PollSeconds = 15
+            )
+
+            $timeoutAt = (Get-Date).AddSeconds($TimeoutSeconds)
+            while ((Get-Date) -lt $timeoutAt) {
+                $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+                if ($server.State -eq 'Ready') {
+                    return $server
+                }
+
+                Start-TestSleep -Seconds $PollSeconds
+            }
+
+            throw "Timed out waiting for server '$ServerName' in resource group '$ResourceGroupName' to reach Ready state."
+        }
+
+        function Wait-ServerStopped {
+            param(
+                [Parameter(Mandatory = $true)]
+                [string]$ResourceGroupName,
+
+                [Parameter(Mandatory = $true)]
+                [string]$ServerName,
+
+                [int]$TimeoutSeconds = 1800,
+                [int]$PollSeconds = 15
+            )
+
+            $timeoutAt = (Get-Date).AddSeconds($TimeoutSeconds)
+            while ((Get-Date) -lt $timeoutAt) {
+                $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+                if ($server.State -eq 'Stopped') {
+                    return $server
+                }
+
+                Start-TestSleep -Seconds $PollSeconds
+            }
+
+            throw "Timed out waiting for server '$ServerName' in resource group '$ResourceGroupName' to reach Stopped state."
+        }
+
+        function Ensure-ServerStopped {
+            param(
+                [Parameter(Mandatory = $true)]
+                [string]$ResourceGroupName,
+
+                [Parameter(Mandatory = $true)]
+                [string]$ServerName
+            )
+
+            $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+            if ($server.State -eq 'Stopped') {
+                return $server
+            }
+
+            Stop-AzPostgreSqlFlexibleServer -ResourceGroupName $ResourceGroupName -Name $ServerName | Out-Null
+            return Wait-ServerStopped -ResourceGroupName $ResourceGroupName -ServerName $ServerName
+        }
     }
 
-    It 'StartViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'StartAllServersAndVerifyStateThenSecondStartFails' -Skip:(-not $hasAllServers) {
+        foreach ($target in $serverTargets) {
+            Ensure-ServerStopped -ResourceGroupName $target.ResourceGroupName -ServerName $target.ServerName | Out-Null
+
+            Start-AzPostgreSqlFlexibleServer -ResourceGroupName $target.ResourceGroupName -Name $target.ServerName | Out-Null
+
+            $readyServer = Wait-ServerReady -ResourceGroupName $target.ResourceGroupName -ServerName $target.ServerName
+            $readyServer.State | Should -Be 'Ready'
+
+            {
+                Start-AzPostgreSqlFlexibleServer `
+                    -ResourceGroupName $target.ResourceGroupName `
+                    -Name $target.ServerName `
+                    -ErrorAction Stop
+            } | Should -Throw
+        }
     }
 }

@@ -15,19 +15,48 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzPostgreSqlFlexibleServ
 }
 
 Describe 'Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally' {
-    It 'CheckExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $existingServerName = $env.ServerName
+        if ([string]::IsNullOrWhiteSpace($existingServerName)) {
+            $existingServerName = $env.ServerName1
+        }
+
+        $chars = 'abcdefghijklmnopqrstuvwxyz0123456789'.ToCharArray()
+        if ($TestMode -eq 'playback') {
+            $availableServerName = Get-PlaybackAvailableServerName -RecordingPath $TestRecordingFile
+            if ([string]::IsNullOrWhiteSpace($availableServerName)) {
+                throw "Unable to resolve a deterministic server name for playback from recording file '$TestRecordingFile'."
+            }
+        }
+        else {
+            $availableServerName = -join (1..63 | ForEach-Object { $chars[(Get-Random -Minimum 0 -Maximum $chars.Length)] })
+        }
+
+        $invalidNameMessage = "Specified server name contains unsupported characters or is too long. Server name must be no longer than 63 characters long, contain only lower-case characters or digits, cannot contain '.' or '_' characters and can't start or end with '-' character."
+        $alreadyExistsMessage = 'Specified server name is already used.'
     }
 
-    It 'Check' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckExpandedShouldReturnInvalidForWrongCharacters' {
+        $result = Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally -Name 'wrong-~server'
+
+        $result.NameAvailable | Should -Be $false
+        $result.Reason | Should -Be 'Invalid'
+        $result.Message | Should -Be $invalidNameMessage
     }
 
-    It 'CheckViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckExpandedShouldReturnAvailableForRandom63CharName' {
+        $result = Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally -Name $availableServerName
+
+        $result.NameAvailable | Should -Be $true
+        [string]::IsNullOrEmpty($result.Reason) | Should -Be $true
+        [string]::IsNullOrEmpty($result.Message) | Should -Be $true
     }
 
-    It 'CheckViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckShouldReturnAlreadyExistsForExistingServerName' -Skip:([string]::IsNullOrWhiteSpace($existingServerName)) {
+        $result = Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally -Name $existingServerName
+
+        $result.NameAvailable | Should -Be $false
+        $result.Reason | Should -Be 'AlreadyExists'
+        $result.Message | Should -Be $alreadyExistsMessage
     }
 }
