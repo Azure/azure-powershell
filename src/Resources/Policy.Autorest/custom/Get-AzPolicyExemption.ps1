@@ -141,16 +141,6 @@ begin {
     if ($writeln) {
         Write-Host -ForegroundColor Cyan "begin:Get-AzPolicyExemption(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
-
-    # make mapping table
-    $mapping = @{
-        Get = 'Az.Policy.private\Get-AzPolicyExemption_Get';
-        GetViaIdentity = 'Az.Policy.private\Get-AzPolicyExemption_GetViaIdentity';
-        List = 'Az.Policy.private\Get-AzPolicyExemption_List';
-        List1 = 'Az.Policy.private\Get-AzPolicyExemption_List1';
-        List2 = 'Az.Policy.private\Get-AzPolicyExemption_List2';
-        List3 = 'Az.Policy.private\Get-AzPolicyExemption_List3';
-    }
 }
 
 process {
@@ -177,7 +167,6 @@ process {
     }
 
     if ($Name) {
-        $calledParameterSet = 'Get'
         $calledParameters.Name = $Name
         $calledParameters.Scope = $Scope
     }
@@ -198,20 +187,16 @@ process {
                         throw 'The IncludeDescendent switch is not supported for management group scopes.'
                     }
 
-                    $calledParameterSet = 'List3'
                     $calledParameters.ManagementGroupId = $resolved.ManagementGroupName
                 }
                 'subId' {
-                    $calledParameterSet = 'List'
                     $calledParameters.SubscriptionId = @($resolved.SubscriptionId)
                 }
                 'rgname' {
-                    $calledParameterSet = 'List1'
                     $calledParameters.SubscriptionId = @($resolved.SubscriptionId)
                     $calledParameters.ResourceGroupName = $resolved.ResourceGroupName
                 }
                 'resource' {
-                    $calledParameterSet = 'List2'
                     $calledParameters.ResourceProviderNamespace = $resolved.ResourceNamespace
                     $calledParameters.ResourceName = $resolved.ResourceName
                     $calledParameters.ResourceType = $resolved.ResourceType
@@ -232,15 +217,8 @@ process {
     $null = $calledParameters.Remove('PolicyAssignmentIdFilter')
     $null = $calledParameters.Remove('IncludeDescendent')
 
-    if ($writeln) {
-        Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $calledParameters ')'
-    }
-
-    $cmdInfo = Get-Command -Name $mapping[$calledParameterSet]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $calledParameterSet, $PSCmdlet)
-    $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$calledParameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-    $scriptCmd = {& $wrappedCmd @calledParameters}
-    $object = Invoke-Command -ScriptBlock $scriptCmd
+    # call the internal cmdlet with the parsed parameters
+    $object = Az.Policy.internal\Get-AzPolicyExemption @calledParameters
 
     foreach ($item in $object) {
         $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force

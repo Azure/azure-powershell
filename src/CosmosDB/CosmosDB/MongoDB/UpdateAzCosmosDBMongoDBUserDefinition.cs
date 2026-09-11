@@ -108,9 +108,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             MongoUserDefinitionGetResults mongoUserDefinitionGetResults = null;
             try
             {
-                mongoUserDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.GetMongoUserDefinition(Id, ResourceGroupName, AccountName);
+                mongoUserDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.GetMongoUserDefinition(ResourceGroupName, AccountName, Id);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Id, "Updating the CosmosDB MongoDB User Definition"))
             {
-                mongoUserDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoUserDefinitionWithHttpMessagesAsync(Id, ResourceGroupName, AccountName, mongoUserDefinitionCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                mongoUserDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoUserDefinitionWithHttpMessagesAsync(ResourceGroupName, AccountName, Id, mongoUserDefinitionCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSMongoDBUserDefinitionGetResults(mongoUserDefinitionGetResults));
             }
 

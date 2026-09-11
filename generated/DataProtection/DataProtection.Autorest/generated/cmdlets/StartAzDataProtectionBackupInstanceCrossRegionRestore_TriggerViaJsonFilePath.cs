@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description(@"Triggers Cross Region Restore for BackupInstance.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/crossRegionRestore", ApiVersion = "2026-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/crossRegionRestore", ApiVersion = "2026-06-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.NotSuggestDefaultParameterSet]
     public partial class StartAzDataProtectionBackupInstanceCrossRegionRestore_TriggerViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener,

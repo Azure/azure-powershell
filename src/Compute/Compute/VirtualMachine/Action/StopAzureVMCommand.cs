@@ -106,16 +106,32 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Optional parameter to hibernate a virtual machine. (Feature in Preview)")]
         public SwitchParameter Hibernate { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ResourceGroupNameParameterSet,
+            HelpMessage = "Optional parameter to force deallocate a virtual machine during stop operations. Cannot be used with -StayProvisioned, -SkipShutdown, or -Hibernate.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = IdParameterSet,
+            HelpMessage = "Optional parameter to force deallocate a virtual machine during stop operations. Cannot be used with -StayProvisioned, -SkipShutdown, or -Hibernate.")]
+        public SwitchParameter ForceDeallocate { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (this.ForceDeallocate.IsPresent && (this.StayProvisioned.IsPresent || this.SkipShutdown.IsPresent))
+            {
+                throw new PSArgumentException("The -ForceDeallocate parameter cannot be used together with -StayProvisioned or -SkipShutdown.");
+            }
 
             ExecuteClientAction(() =>
             {
                 if (this.ShouldProcess(Name, VerbsLifecycle.Stop) 
                     && (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption)))
                 {
-                    if (ParameterSetName.Equals(IdParameterSet) && string.IsNullOrEmpty(Name))
+                    if (ParameterSetName.Equals(IdParameterSet)
+                        && string.IsNullOrEmpty(Name))
                     {
                         ResourceIdentifier parsedId = new ResourceIdentifier(Id);
                         this.ResourceGroupName = parsedId.ResourceGroupName;
@@ -123,6 +139,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
 
                     Rest.Azure.AzureOperationResponse op;
+                    bool? forceDeallocate = this.ForceDeallocate.IsPresent ? (bool?)true : null;
                     if (this.StayProvisioned) 
                     {
                         bool? skipShutdown = this.SkipShutdown.IsPresent ? (bool?)true : null;
@@ -150,11 +167,11 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         if (NoWait.IsPresent)
                         {
-                            op = this.VirtualMachineClient.BeginDeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name).GetAwaiter().GetResult();
+                            op = this.VirtualMachineClient.BeginDeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, null, forceDeallocate, null, CancellationToken.None).GetAwaiter().GetResult();
                         }
                         else
                         {
-                            op = this.VirtualMachineClient.DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name).GetAwaiter().GetResult();
+                            op = this.VirtualMachineClient.DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, null, forceDeallocate, null, CancellationToken.None).GetAwaiter().GetResult();
                         }
 
                     }

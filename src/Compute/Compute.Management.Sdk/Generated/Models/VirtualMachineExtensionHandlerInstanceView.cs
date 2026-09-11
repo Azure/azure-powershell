@@ -27,7 +27,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="type">Specifies the type of the extension; an example is &#34;CustomScriptExtension&#34;.
         /// </param>
 
-        /// <param name="typeHandlerVersion">Specifies the version of the script handler.
+        /// <param name="typeHandlerVersion">Specifies the Major.Minor.Patch.Hotfix version of the script handler. Azure
+        /// platform will deliver the latest Patch.Hotfix version in the Major.Minor
+        /// series.
         /// </param>
 
         /// <param name="status">The extension handler status.
@@ -55,7 +57,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string Type {get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the version of the script handler.
+        /// Gets or sets specifies the Major.Minor.Patch.Hotfix version of the script
+        /// handler. Azure platform will deliver the latest Patch.Hotfix version in the
+        /// Major.Minor series.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeHandlerVersion")]
         public string TypeHandlerVersion {get; set; }

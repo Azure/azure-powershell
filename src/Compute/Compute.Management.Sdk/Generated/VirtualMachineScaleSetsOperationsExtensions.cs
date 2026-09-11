@@ -632,6 +632,47 @@ namespace Microsoft.Azure.Management.Compute
             (await operations.UpdateInstancesWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Migrates one or more virtual machines in a VM scale set to an availability
+        /// zone.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VM scale set.
+        /// </param>
+        public static VirtualMachineScaleSetsMigrateVMAvailabilityZoneHeaders MigrateVMAvailabilityZone(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, MigrateVMAvailabilityZoneInput body)
+        {
+                return ((IVirtualMachineScaleSetsOperations)operations).MigrateVMAvailabilityZoneAsync(resourceGroupName, vmScaleSetName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Migrates one or more virtual machines in a VM scale set to an availability
+        /// zone.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VM scale set.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualMachineScaleSetsMigrateVMAvailabilityZoneHeaders> MigrateVMAvailabilityZoneAsync(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, MigrateVMAvailabilityZoneInput body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.MigrateVMAvailabilityZoneWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Gets list of OS upgrades on a VM scale set instance.
         /// </summary>
         /// <param name='operations'>
@@ -1437,6 +1478,47 @@ namespace Microsoft.Azure.Management.Compute
         public static async System.Threading.Tasks.Task BeginUpdateInstancesAsync(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, System.Collections.Generic.IList<string> instanceIds, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginUpdateInstancesWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Migrates one or more virtual machines in a VM scale set to an availability
+        /// zone.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VM scale set.
+        /// </param>
+        public static VirtualMachineScaleSetsMigrateVMAvailabilityZoneHeaders BeginMigrateVMAvailabilityZone(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, MigrateVMAvailabilityZoneInput body)
+        {
+                return ((IVirtualMachineScaleSetsOperations)operations).BeginMigrateVMAvailabilityZoneAsync(resourceGroupName, vmScaleSetName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Migrates one or more virtual machines in a VM scale set to an availability
+        /// zone.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VM scale set.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualMachineScaleSetsMigrateVMAvailabilityZoneHeaders> BeginMigrateVMAvailabilityZoneAsync(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, MigrateVMAvailabilityZoneInput body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginMigrateVMAvailabilityZoneWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Perform maintenance on one or more virtual machines in a VM scale set.

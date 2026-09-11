@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             if (module == null) return;
 
-            this.CreationTime = module.CreationTime.ToLocalTime();
-            this.LastModifiedTime = module.LastModifiedTime.ToLocalTime();
+            this.CreationTime = module.CreationTime.GetValueOrDefault().ToLocalTime();
+            this.LastModifiedTime = module.LastModifiedTime.GetValueOrDefault().ToLocalTime();
             this.IsGlobal = module.IsGlobal.HasValue ? module.IsGlobal.Value : false;
             this.Version = module.Version;
             this.ProvisioningState = module.ProvisioningState.ToString();

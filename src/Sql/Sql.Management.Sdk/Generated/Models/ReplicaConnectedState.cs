@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ReplicaConnectedState
     {
+        /// <summary>
+        /// DISCONNECTED
+        /// </summary>
         public const string Disconnected = "DISCONNECTED";
+        /// <summary>
+        /// CONNECTED
+        /// </summary>
         public const string Connected = "CONNECTED";
     }
 }

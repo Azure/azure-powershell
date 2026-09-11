@@ -35,12 +35,18 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="securityProfile">Specifies the security profile for the managed disk.
         /// </param>
-        public VirtualMachineScaleSetManagedDiskParameters(string storageAccountType = default(string), DiskEncryptionSetParameters diskEncryptionSet = default(DiskEncryptionSetParameters), VMDiskSecurityProfile securityProfile = default(VMDiskSecurityProfile))
+
+        /// <param name="additionalDiskProperties">Specifies additional properties for the managed disk that can be set at the
+        /// time of implicit creation of the disk. This property is not captured for
+        /// Restore Points.
+        /// </param>
+        public VirtualMachineScaleSetManagedDiskParameters(string storageAccountType = default(string), DiskEncryptionSetParameters diskEncryptionSet = default(DiskEncryptionSetParameters), VMDiskSecurityProfile securityProfile = default(VMDiskSecurityProfile), AdditionalDiskProperties additionalDiskProperties = default(AdditionalDiskProperties))
 
         {
             this.StorageAccountType = storageAccountType;
             this.DiskEncryptionSet = diskEncryptionSet;
             this.SecurityProfile = securityProfile;
+            this.AdditionalDiskProperties = additionalDiskProperties;
             CustomInit();
         }
 
@@ -70,5 +76,29 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "securityProfile")]
         public VMDiskSecurityProfile SecurityProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies additional properties for the managed disk that can
+        /// be set at the time of implicit creation of the disk. This property is not
+        /// captured for Restore Points.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "additionalDiskProperties")]
+        public AdditionalDiskProperties AdditionalDiskProperties {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+            if (this.AdditionalDiskProperties != null)
+            {
+                this.AdditionalDiskProperties.Validate();
+            }
+        }
     }
 }

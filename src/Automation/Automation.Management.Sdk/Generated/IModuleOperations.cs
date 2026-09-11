@@ -14,19 +14,16 @@ namespace Microsoft.Azure.Management.Automation
     public partial interface IModuleOperations
     {
         /// <summary>
-        /// Delete the module by name.
+        /// Retrieve a list of modules.
         /// </summary>
         /// <remarks>
-        /// Delete the module by name.
+        /// Retrieve a list of modules.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
-        /// </param>
-        /// <param name='moduleName'>
-        /// The module name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -37,7 +34,10 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string moduleName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Module>>> ListByAutomationAccountWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieve the module identified by module name.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Automation
         /// Retrieve the module identified by module name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -75,13 +75,13 @@ namespace Microsoft.Azure.Management.Automation
         /// Create or Update the module identified by module name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='moduleName'>
-        /// The name of module.
+        /// The module name.
         /// </param>
         /// <param name='parameters'>
         /// The create or update parameters for module.
@@ -107,13 +107,13 @@ namespace Microsoft.Azure.Management.Automation
         /// Update the module identified by module name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='moduleName'>
-        /// The name of module.
+        /// The module name.
         /// </param>
         /// <param name='parameters'>
         /// The update parameters for module.
@@ -133,16 +133,19 @@ namespace Microsoft.Azure.Management.Automation
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Module>> UpdateWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string moduleName, ModuleUpdateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieve a list of modules.
+        /// Delete the module by name.
         /// </summary>
         /// <remarks>
-        /// Retrieve a list of modules.
+        /// Delete the module by name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
+        /// </param>
+        /// <param name='moduleName'>
+        /// The module name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -153,10 +156,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Module>>> ListByAutomationAccountWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string moduleName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieve a list of modules.

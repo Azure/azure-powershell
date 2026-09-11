@@ -25,5 +25,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gateway
         /// </summary>
         public const string Gateway = "Gateway";
+        /// <summary>
+        /// Service load balancer SKU.
+        /// </summary>
+        public const string Service = "Service";
     }
 }

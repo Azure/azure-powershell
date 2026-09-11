@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
         /// information.
         /// </param>
-        public SecurityPerimeterResource(string id = default(string), string name = default(string), string type = default(string), SecurityPerimeterSystemData systemData = default(SecurityPerimeterSystemData))
+        public SecurityPerimeterResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
 
         {
             this.Id = id;
@@ -80,6 +80,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// information.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SecurityPerimeterSystemData SystemData {get; private set; }
+        public SystemData SystemData {get; private set; }
     }
 }

@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             this.StreamRecordId = jobStream.JobStreamId;
             this.Type = jobStream.StreamType;
-            this.Time = jobStream.Time;
+            this.Time = jobStream.Time.GetValueOrDefault();
             this.AutomationAccountName = automationAccountName;
             this.ResourceGroupName = resourceGroupName;
             this.JobId = jobId;

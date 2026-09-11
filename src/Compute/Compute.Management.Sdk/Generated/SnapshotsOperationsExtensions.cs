@@ -325,6 +325,100 @@ namespace Microsoft.Azure.Management.Compute
             (await operations.RevokeAccessWithHttpMessagesAsync(resourceGroupName, snapshotName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Updates the immutability policy of a snapshot. Sets or extends an unlocked
+        /// immutability policy with the specified duration and type. If the snapshot
+        /// already has a locked policy, the request will be rejected. Use
+        /// updateImmutabilityPolicyLock to lock an immutability policy.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='snapshotName'>
+        /// The name of the snapshot that is being created. The name can&#39;t be changed
+        /// after the snapshot is created. Supported characters for the name are a-z,
+        /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+        /// </param>
+        public static Snapshot UpdateImmutabilityPolicy(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, ImmutabilityPolicyData immutabilityPolicyData)
+        {
+                return ((ISnapshotsOperations)operations).UpdateImmutabilityPolicyAsync(resourceGroupName, snapshotName, immutabilityPolicyData).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates the immutability policy of a snapshot. Sets or extends an unlocked
+        /// immutability policy with the specified duration and type. If the snapshot
+        /// already has a locked policy, the request will be rejected. Use
+        /// updateImmutabilityPolicyLock to lock an immutability policy.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='snapshotName'>
+        /// The name of the snapshot that is being created. The name can&#39;t be changed
+        /// after the snapshot is created. Supported characters for the name are a-z,
+        /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Snapshot> UpdateImmutabilityPolicyAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, ImmutabilityPolicyData immutabilityPolicyData, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateImmutabilityPolicyWithHttpMessagesAsync(resourceGroupName, snapshotName, immutabilityPolicyData, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Locks the immutability policy of a snapshot. Once locked, the policy cannot
+        /// be reduced or removed until the lock period expires.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='snapshotName'>
+        /// The name of the snapshot that is being created. The name can&#39;t be changed
+        /// after the snapshot is created. Supported characters for the name are a-z,
+        /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+        /// </param>
+        public static Snapshot UpdateImmutabilityPolicyLock(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, ImmutabilityPolicyLockData immutabilityPolicyData)
+        {
+                return ((ISnapshotsOperations)operations).UpdateImmutabilityPolicyLockAsync(resourceGroupName, snapshotName, immutabilityPolicyData).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Locks the immutability policy of a snapshot. Once locked, the policy cannot
+        /// be reduced or removed until the lock period expires.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='snapshotName'>
+        /// The name of the snapshot that is being created. The name can&#39;t be changed
+        /// after the snapshot is created. Supported characters for the name are a-z,
+        /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Snapshot> UpdateImmutabilityPolicyLockAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, ImmutabilityPolicyLockData immutabilityPolicyData, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateImmutabilityPolicyLockWithHttpMessagesAsync(resourceGroupName, snapshotName, immutabilityPolicyData, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates or updates a snapshot.
         /// </summary>
         /// <param name='operations'>
@@ -532,6 +626,100 @@ namespace Microsoft.Azure.Management.Compute
         public static async System.Threading.Tasks.Task BeginRevokeAccessAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginRevokeAccessWithHttpMessagesAsync(resourceGroupName, snapshotName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Updates the immutability policy of a snapshot. Sets or extends an unlocked
+        /// immutability policy with the specified duration and type. If the snapshot
+        /// already has a locked policy, the request will be rejected. Use
+        /// updateImmutabilityPolicyLock to lock an immutability policy.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='snapshotName'>
+        /// The name of the snapshot that is being created. The name can&#39;t be changed
+        /// after the snapshot is created. Supported characters for the name are a-z,
+        /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+        /// </param>
+        public static Snapshot BeginUpdateImmutabilityPolicy(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, ImmutabilityPolicyData immutabilityPolicyData)
+        {
+                return ((ISnapshotsOperations)operations).BeginUpdateImmutabilityPolicyAsync(resourceGroupName, snapshotName, immutabilityPolicyData).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates the immutability policy of a snapshot. Sets or extends an unlocked
+        /// immutability policy with the specified duration and type. If the snapshot
+        /// already has a locked policy, the request will be rejected. Use
+        /// updateImmutabilityPolicyLock to lock an immutability policy.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='snapshotName'>
+        /// The name of the snapshot that is being created. The name can&#39;t be changed
+        /// after the snapshot is created. Supported characters for the name are a-z,
+        /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Snapshot> BeginUpdateImmutabilityPolicyAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, ImmutabilityPolicyData immutabilityPolicyData, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginUpdateImmutabilityPolicyWithHttpMessagesAsync(resourceGroupName, snapshotName, immutabilityPolicyData, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Locks the immutability policy of a snapshot. Once locked, the policy cannot
+        /// be reduced or removed until the lock period expires.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='snapshotName'>
+        /// The name of the snapshot that is being created. The name can&#39;t be changed
+        /// after the snapshot is created. Supported characters for the name are a-z,
+        /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+        /// </param>
+        public static Snapshot BeginUpdateImmutabilityPolicyLock(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, ImmutabilityPolicyLockData immutabilityPolicyData)
+        {
+                return ((ISnapshotsOperations)operations).BeginUpdateImmutabilityPolicyLockAsync(resourceGroupName, snapshotName, immutabilityPolicyData).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Locks the immutability policy of a snapshot. Once locked, the policy cannot
+        /// be reduced or removed until the lock period expires.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='snapshotName'>
+        /// The name of the snapshot that is being created. The name can&#39;t be changed
+        /// after the snapshot is created. Supported characters for the name are a-z,
+        /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Snapshot> BeginUpdateImmutabilityPolicyLockAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, ImmutabilityPolicyLockData immutabilityPolicyData, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginUpdateImmutabilityPolicyLockWithHttpMessagesAsync(resourceGroupName, snapshotName, immutabilityPolicyData, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Lists snapshots under a subscription.

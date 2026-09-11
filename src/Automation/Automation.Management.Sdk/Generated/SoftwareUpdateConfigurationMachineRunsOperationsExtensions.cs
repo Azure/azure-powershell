@@ -13,64 +13,13 @@ namespace Microsoft.Azure.Management.Automation
     public static partial class SoftwareUpdateConfigurationMachineRunsOperationsExtensions
     {
         /// <summary>
-        /// Get a single software update configuration machine run by Id.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='softwareUpdateConfigurationMachineRunId'>
-        /// The Id of the software update configuration machine run.
-        /// </param>
-        /// <param name='clientRequestId'>
-        /// Identifies this specific client request.
-        /// </param>
-        public static SoftwareUpdateConfigurationMachineRun GetById(this ISoftwareUpdateConfigurationMachineRunsOperations operations, string resourceGroupName, string automationAccountName, System.Guid softwareUpdateConfigurationMachineRunId, string clientRequestId = default(string))
-        {
-                return ((ISoftwareUpdateConfigurationMachineRunsOperations)operations).GetByIdAsync(resourceGroupName, automationAccountName, softwareUpdateConfigurationMachineRunId, clientRequestId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Get a single software update configuration machine run by Id.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='softwareUpdateConfigurationMachineRunId'>
-        /// The Id of the software update configuration machine run.
-        /// </param>
-        /// <param name='clientRequestId'>
-        /// Identifies this specific client request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SoftwareUpdateConfigurationMachineRun> GetByIdAsync(this ISoftwareUpdateConfigurationMachineRunsOperations operations, string resourceGroupName, string automationAccountName, System.Guid softwareUpdateConfigurationMachineRunId, string clientRequestId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetByIdWithHttpMessagesAsync(resourceGroupName, automationAccountName, softwareUpdateConfigurationMachineRunId, clientRequestId, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Return list of software update configuration machine runs
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -101,7 +50,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -126,6 +75,57 @@ namespace Microsoft.Azure.Management.Automation
         public static async System.Threading.Tasks.Task<SoftwareUpdateConfigurationMachineRunListResult> ListAsync(this ISoftwareUpdateConfigurationMachineRunsOperations operations, string resourceGroupName, string automationAccountName, string clientRequestId = default(string), string filter = default(string), string skip = default(string), string top = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, automationAccountName, clientRequestId, filter, skip, top, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get a single software update configuration machine run by Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='softwareUpdateConfigurationMachineRunId'>
+        /// The Id of the software update configuration machine run.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// Identifies this specific client request.
+        /// </param>
+        public static SoftwareUpdateConfigurationMachineRun GetById(this ISoftwareUpdateConfigurationMachineRunsOperations operations, string resourceGroupName, string automationAccountName, System.Guid softwareUpdateConfigurationMachineRunId, string clientRequestId = default(string))
+        {
+                return ((ISoftwareUpdateConfigurationMachineRunsOperations)operations).GetByIdAsync(resourceGroupName, automationAccountName, softwareUpdateConfigurationMachineRunId, clientRequestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get a single software update configuration machine run by Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='softwareUpdateConfigurationMachineRunId'>
+        /// The Id of the software update configuration machine run.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// Identifies this specific client request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SoftwareUpdateConfigurationMachineRun> GetByIdAsync(this ISoftwareUpdateConfigurationMachineRunsOperations operations, string resourceGroupName, string automationAccountName, System.Guid softwareUpdateConfigurationMachineRunId, string clientRequestId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetByIdWithHttpMessagesAsync(resourceGroupName, automationAccountName, softwareUpdateConfigurationMachineRunId, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

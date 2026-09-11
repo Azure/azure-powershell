@@ -11,16 +11,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Cmdlets
     using System;
 
     /// <summary>
-    /// Gets a list of API collections within a resource group that have been onboarded to Microsoft Defender for APIs.
+    /// Gets a list of Azure API Management APIs that have been onboarded to Microsoft Defender for APIs. If an Azure API Management
+    /// API is onboarded to Microsoft Defender for APIs, the system will monitor the operations within the Azure API Management
+    /// API for intrusive behaviors and provide alerts for attacks that have been detected.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] ListByResourceGroup=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/apiCollections"
+    /// [OpenAPI] ListByAzureApiManagementService=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/providers/Microsoft.Security/apiCollections"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzSecurityApiCollection_List1")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollection))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Description(@"Gets a list of API collections within a resource group that have been onboarded to Microsoft Defender for APIs.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Description(@"Gets a list of Azure API Management APIs that have been onboarded to Microsoft Defender for APIs. If an Azure API Management API is onboarded to Microsoft Defender for APIs, the system will monitor the operations within the Azure API Management API for intrusive behaviors and provide alerts for attacks that have been detected.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Security.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/apiCollections", ApiVersion = "2023-11-15")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Security.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/providers/Microsoft.Security/apiCollections", ApiVersion = "2023-11-15")]
     public partial class GetAzSecurityApiCollection_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IContext
@@ -138,6 +140,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Security.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="ServiceName" /> property.</summary>
+        private string _serviceName;
+
+        /// <summary>The name of the API Management service.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the API Management service.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The name of the API Management service.",
+        SerializedName = @"serviceName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Security.ParameterCategory.Path)]
+        public string ServiceName { get => this._serviceName; set => this._serviceName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
@@ -374,13 +390,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.ApiCollectionsListByResourceGroup(SubscriptionId, ResourceGroupName, onOk, onDefault, this, Pipeline);
+                        await this.Client.ApiCollectionsListByAzureApiManagementService(SubscriptionId, ResourceGroupName, ServiceName, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ServiceName=ServiceName})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -512,7 +528,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Cmdlets
                         {
                             requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get );
                             await ((Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                            await this.Client.ApiCollectionsListByResourceGroup_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                            await this.Client.ApiCollectionsListByAzureApiManagementService_Call(requestMessage, onOk, onDefault, this, Pipeline);
                         }
                     }
                 }
