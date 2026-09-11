@@ -25,7 +25,7 @@
 * Added `Undo-AzRedisEnterpriseCacheMigration` cmdlet to cancel or rollback a migration operation in a Redis Enterprise cluster
 * Added `Test-AzRedisEnterpriseCacheMigration` cmdlet to validate if a source Azure Cache for Redis resource can be migrated to a target Azure Managed Redis resource
 * Added `MaintenanceConfigurationMaintenanceWindow` parameter to `New-AzRedisEnterpriseCache` and `Update-AzRedisEnterpriseCache` for configuring maintenance windows
-* Added `NotifyKeyspaceEvents` parameter to `New-AzRedisEnterpriseCacheDatabase` and `Update-AzRedisEnterpriseCacheDatabase` for configuring keyspace notifications
+* Added `NotifyKeyspaceEvents` parameter to `New-AzRedisEnterpriseCache`, `New-AzRedisEnterpriseCacheDatabase`, and `Update-AzRedisEnterpriseCacheDatabase` for configuring keyspace notifications
 * Added `AccessString` parameter to `New-AzRedisEnterpriseCacheAccessPolicyAssignment` for configuring custom Redis ACL permissions on an access policy assignment
 
 ## Version 2.0.0

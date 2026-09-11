@@ -210,6 +210,10 @@ directive:
       parameter-name: NotifyKeyspaceEvent
     set:
       parameter-name: NotifyKeyspaceEvents
+  - where:
+      property-name: NotifyKeyspaceEvent
+    set:
+      property-name: NotifyKeyspaceEvents
 
   # Remove unused variants
   - where:

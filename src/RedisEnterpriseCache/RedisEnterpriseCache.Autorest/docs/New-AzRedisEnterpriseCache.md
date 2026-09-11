@@ -21,10 +21,10 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -Lo
  [-EvictionPolicy <String>] [-GroupNickname <String>] [-HighAvailability <String>]
  [-KeyEncryptionKeyIdentityType <String>] [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
  [-LinkedDatabase <ILinkedDatabase[]>] [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>]
- [-MinimumTlsVersion <String>] [-Module <IModule[]>] [-Port <Int32>] [-PublicNetworkAccess <String>]
- [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MinimumTlsVersion <String>] [-Module <IModule[]>] [-NotifyKeyspaceEvents <String>] [-Port <Int32>]
+ [-PublicNetworkAccess <String>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Zone <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateClusterOnly
@@ -176,6 +176,20 @@ Database                                               : {[default, {
 
 This command creates a Redis Enterprise cache named MyCache with custom maintenance windows on Saturdays and Wednesdays starting at midnight UTC for 10 hours.
 At least 2 maintenance windows are required.
+
+### Example 6: Create a Redis Enterprise cache with keyspace notifications enabled
+```powershell
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Balanced_B10" -PublicNetworkAccess "Enabled" -NotifyKeyspaceEvents "AKE"
+```
+
+```output
+Location Name    Type                            Zone Database
+-------- ----    ----                            ---- --------
+East US  MyCache Microsoft.Cache/redisEnterprise      {default}
+
+```
+
+This command creates a Redis Enterprise cache named MyCache with an associated default database that has all standard keyspace notifications enabled.
 
 ## PARAMETERS
 
@@ -522,6 +536,25 @@ Parameter Sets: CreateClusterOnly
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotifyKeyspaceEvents
+Specifies which keyspace events should trigger notifications.
+Default is an empty string, meaning this feature is disabled.
+When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present.
+For example, 'AKE' enables all standard events.
+See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateClusterWithDatabase
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

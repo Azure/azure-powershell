@@ -72,7 +72,7 @@ GeoReplicationLinkedDatabase :
 Id                           : /subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default
 Module                       :
 Name                         : default
-NotifyKeyspaceEvent          : AKE
+NotifyKeyspaceEvents         : AKE
 PersistenceAofEnabled        :
 PersistenceAofFrequency      :
 PersistenceRdbEnabled        :

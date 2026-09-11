@@ -130,3 +130,17 @@ Database                                               : {[default, {
 ```
 
 This command creates a Redis Enterprise cache named MyCache with custom maintenance windows on Saturdays and Wednesdays starting at midnight UTC for 10 hours. At least 2 maintenance windows are required.
+
+### Example 6: Create a Redis Enterprise cache with keyspace notifications enabled
+```powershell
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Balanced_B10" -PublicNetworkAccess "Enabled" -NotifyKeyspaceEvents "AKE"
+```
+
+```output
+Location Name    Type                            Zone Database
+-------- ----    ----                            ---- --------
+East US  MyCache Microsoft.Cache/redisEnterprise      {default}
+
+```
+
+This command creates a Redis Enterprise cache named MyCache with an associated default database that has all standard keyspace notifications enabled.

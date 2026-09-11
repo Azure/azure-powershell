@@ -674,13 +674,13 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-lhvxi2s3/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-8laxn9my/databases/default?api-version=2026-06-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"clusteringPolicy\": \"OSSCluster\",\r\n    \"evictionPolicy\": \"VolatileLRU\",\r\n    \"modules\": [\r\n      {\r\n        \"name\": \"RedisTimeSeries\",\r\n        \"args\": \"RETENTION_POLICY 20\"\r\n      },\r\n      {\r\n        \"name\": \"RedisBloom\",\r\n        \"args\": \"ERROR_RATE 0.001 INITIAL_SIZE 400\"\r\n      }\r\n    ],\r\n    \"accessKeysAuthentication\": \"Enabled\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"clusteringPolicy\": \"OSSCluster\",\r\n    \"evictionPolicy\": \"VolatileLRU\",\r\n    \"modules\": [\r\n      {\r\n        \"name\": \"RedisTimeSeries\",\r\n        \"args\": \"RETENTION_POLICY 20\"\r\n      },\r\n      {\r\n        \"name\": \"RedisBloom\",\r\n        \"args\": \"ERROR_RATE 0.001 INITIAL_SIZE 400\"\r\n      }\r\n    ],\r\n    \"accessKeysAuthentication\": \"Enabled\",\r\n    \"notifyKeyspaceEvents\": \"KEA\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "406" ]
+        "Content-Length": [ "442" ]
       }
     },
     "Response": {
@@ -704,11 +704,11 @@
         "Date": [ "Fri, 17 Jul 2026 08:30:42 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "925" ],
+        "Content-Length": [ "928" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"default\",\r\n  \"id\": \"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-lhvxi2s3/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-8laxn9my/databases/default\",\r\n  \"type\": \"Microsoft.Cache/redisEnterprise/databases\",\r\n  \"properties\": {\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"port\": 10000,\r\n    \"provisioningState\": \"Creating\",\r\n    \"resourceState\": \"Creating\",\r\n    \"clusteringPolicy\": \"OSSCluster\",\r\n    \"evictionPolicy\": \"VolatileLRU\",\r\n    \"modules\": [\r\n      {\r\n        \"name\": \"RedisTimeSeries\",\r\n        \"args\": \"RETENTION_POLICY 20\",\r\n        \"version\": \"1.4.8\"\r\n      },\r\n      {\r\n        \"name\": \"RedisBloom\",\r\n        \"args\": \"ERROR_RATE 0.001 INITIAL_SIZE 400\",\r\n        \"version\": \"2.2.4\"\r\n      }\r\n    ],\r\n    \"notifyKeyspaceEvents\": \"\",\r\n    \"deferUpgrade\": \"NotDeferred\",\r\n    \"redisVersion\": \"7.4\",\r\n    \"accessKeysAuthentication\": \"Enabled\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"default\",\r\n  \"id\": \"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-lhvxi2s3/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-8laxn9my/databases/default\",\r\n  \"type\": \"Microsoft.Cache/redisEnterprise/databases\",\r\n  \"properties\": {\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"port\": 10000,\r\n    \"provisioningState\": \"Creating\",\r\n    \"resourceState\": \"Creating\",\r\n    \"clusteringPolicy\": \"OSSCluster\",\r\n    \"evictionPolicy\": \"VolatileLRU\",\r\n    \"modules\": [\r\n      {\r\n        \"name\": \"RedisTimeSeries\",\r\n        \"args\": \"RETENTION_POLICY 20\",\r\n        \"version\": \"1.4.8\"\r\n      },\r\n      {\r\n        \"name\": \"RedisBloom\",\r\n        \"args\": \"ERROR_RATE 0.001 INITIAL_SIZE 400\",\r\n        \"version\": \"2.2.4\"\r\n      }\r\n    ],\r\n    \"notifyKeyspaceEvents\": \"KEA\",\r\n    \"deferUpgrade\": \"NotDeferred\",\r\n    \"redisVersion\": \"7.4\",\r\n    \"accessKeysAuthentication\": \"Enabled\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
@@ -794,11 +794,11 @@
         "Date": [ "Fri, 17 Jul 2026 08:31:14 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "928" ],
+        "Content-Length": [ "931" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"default\",\r\n  \"id\": \"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-lhvxi2s3/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-8laxn9my/databases/default\",\r\n  \"type\": \"Microsoft.Cache/redisEnterprise/databases\",\r\n  \"properties\": {\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"port\": 10000,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Running\",\r\n    \"clusteringPolicy\": \"OSSCluster\",\r\n    \"evictionPolicy\": \"VolatileLRU\",\r\n    \"modules\": [\r\n      {\r\n        \"name\": \"RedisTimeSeries\",\r\n        \"args\": \"RETENTION_POLICY 20\",\r\n        \"version\": \"1.12.13\"\r\n      },\r\n      {\r\n        \"name\": \"RedisBloom\",\r\n        \"args\": \"ERROR_RATE 0.001 INITIAL_SIZE 400\",\r\n        \"version\": \"2.8.21\"\r\n      }\r\n    ],\r\n    \"notifyKeyspaceEvents\": \"\",\r\n    \"deferUpgrade\": \"NotDeferred\",\r\n    \"redisVersion\": \"7.4\",\r\n    \"accessKeysAuthentication\": \"Enabled\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"default\",\r\n  \"id\": \"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-lhvxi2s3/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-8laxn9my/databases/default\",\r\n  \"type\": \"Microsoft.Cache/redisEnterprise/databases\",\r\n  \"properties\": {\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"port\": 10000,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Running\",\r\n    \"clusteringPolicy\": \"OSSCluster\",\r\n    \"evictionPolicy\": \"VolatileLRU\",\r\n    \"modules\": [\r\n      {\r\n        \"name\": \"RedisTimeSeries\",\r\n        \"args\": \"RETENTION_POLICY 20\",\r\n        \"version\": \"1.12.13\"\r\n      },\r\n      {\r\n        \"name\": \"RedisBloom\",\r\n        \"args\": \"ERROR_RATE 0.001 INITIAL_SIZE 400\",\r\n        \"version\": \"2.8.21\"\r\n      }\r\n    ],\r\n    \"notifyKeyspaceEvents\": \"KEA\",\r\n    \"deferUpgrade\": \"NotDeferred\",\r\n    \"redisVersion\": \"7.4\",\r\n    \"accessKeysAuthentication\": \"Enabled\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
@@ -4850,11 +4850,11 @@
         "Date": [ "Fri, 17 Jul 2026 08:59:24 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "928" ],
+        "Content-Length": [ "931" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"default\",\r\n  \"id\": \"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-lhvxi2s3/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-8laxn9my/databases/default\",\r\n  \"type\": \"Microsoft.Cache/redisEnterprise/databases\",\r\n  \"properties\": {\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"port\": 10000,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Running\",\r\n    \"clusteringPolicy\": \"OSSCluster\",\r\n    \"evictionPolicy\": \"VolatileLRU\",\r\n    \"modules\": [\r\n      {\r\n        \"name\": \"RedisTimeSeries\",\r\n        \"args\": \"RETENTION_POLICY 20\",\r\n        \"version\": \"1.12.13\"\r\n      },\r\n      {\r\n        \"name\": \"RedisBloom\",\r\n        \"args\": \"ERROR_RATE 0.001 INITIAL_SIZE 400\",\r\n        \"version\": \"2.8.21\"\r\n      }\r\n    ],\r\n    \"notifyKeyspaceEvents\": \"\",\r\n    \"deferUpgrade\": \"NotDeferred\",\r\n    \"redisVersion\": \"7.4\",\r\n    \"accessKeysAuthentication\": \"Enabled\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"default\",\r\n  \"id\": \"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-lhvxi2s3/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-8laxn9my/databases/default\",\r\n  \"type\": \"Microsoft.Cache/redisEnterprise/databases\",\r\n  \"properties\": {\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"port\": 10000,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Running\",\r\n    \"clusteringPolicy\": \"OSSCluster\",\r\n    \"evictionPolicy\": \"VolatileLRU\",\r\n    \"modules\": [\r\n      {\r\n        \"name\": \"RedisTimeSeries\",\r\n        \"args\": \"RETENTION_POLICY 20\",\r\n        \"version\": \"1.12.13\"\r\n      },\r\n      {\r\n        \"name\": \"RedisBloom\",\r\n        \"args\": \"ERROR_RATE 0.001 INITIAL_SIZE 400\",\r\n        \"version\": \"2.8.21\"\r\n      }\r\n    ],\r\n    \"notifyKeyspaceEvents\": \"KEA\",\r\n    \"deferUpgrade\": \"NotDeferred\",\r\n    \"redisVersion\": \"7.4\",\r\n    \"accessKeysAuthentication\": \"Enabled\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },

@@ -181,6 +181,16 @@ function New-AzRedisEnterpriseCache {
         # Can be updated even after database is created.
         ${AccessKeysAuthentication},
 
+        [Parameter(ParameterSetName='CreateClusterWithDatabase')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [System.String]
+        # Specifies which keyspace events should trigger notifications.
+        # Default is an empty string, meaning this feature is disabled.
+        # When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present.
+        # For example, 'AKE' enables all standard events.
+        # See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+        ${NotifyKeyspaceEvents},
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.String]
@@ -359,6 +369,7 @@ function New-AzRedisEnterpriseCache {
         $null = $GetPSBoundParameters.Remove("GroupNickname")
         $null = $GetPSBoundParameters.Remove("LinkedDatabase")
         $null = $GetPSBoundParameters.Remove("AccessKeysAuthentication")
+        $null = $GetPSBoundParameters.Remove("NotifyKeyspaceEvents")
         $cluster = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCache @GetPSBoundParameters
 
         if (('CreateClusterOnly') -contains $PSCmdlet.ParameterSetName)

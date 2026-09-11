@@ -26,6 +26,7 @@ Describe 'New-AzRedisEnterpriseCache' {
             EvictionPolicy = "VolatileLRU"
             PublicNetworkAccess = "Enabled"
             AccessKeysAuthentication = "Enabled"
+            NotifyKeyspaceEvents = "KEA"
             MaintenanceConfigurationMaintenanceWindow = @(@{Type="Weekly"; ScheduleDayOfWeek="Monday"; StartHourUtc=6; Duration="PT10H"}, @{Type="Weekly"; ScheduleDayOfWeek="Thursday"; StartHourUtc=6; Duration="PT10H"})
         }
         $cache = New-AzRedisEnterpriseCache @splat -EnableSystemAssignedIdentity -Module "{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RedisBloom, args:`"ERROR_RATE 0.001 INITIAL_SIZE 400`"}"
@@ -46,6 +47,7 @@ Describe 'New-AzRedisEnterpriseCache' {
         $cache.Database[$databaseName].EvictionPolicy | Should -Be $splat.EvictionPolicy
         $cache.Database[$databaseName].ProvisioningState | Should -Be "Succeeded"
         $cache.Database[$databaseName].ResourceState | Should -Be "Running"
+        $cache.Database[$databaseName].NotifyKeyspaceEvents | Should -Be $splat.NotifyKeyspaceEvents
         $cache.IdentityType | Should -Be "SystemAssigned"
         $cache.MaintenanceConfigurationMaintenanceWindow | Should -Not -Be $null
         $cache.MaintenanceConfigurationMaintenanceWindow.Count | Should -Be 2
@@ -188,7 +190,7 @@ Describe 'New-AzRedisEnterpriseCacheDatabase' {
         $database.Port | Should -Be $splat.Port
         $database.ProvisioningState | Should -Be "Succeeded"
         $database.ResourceState | Should -Be "Running"
-        $database.NotifyKeyspaceEvent | Should -Be "KEA"
+        $database.NotifyKeyspaceEvents | Should -Be "KEA"
     }
 
     It 'Create a georeplicated database' {
@@ -410,7 +412,7 @@ Describe 'Update-AzRedisEnterpriseCacheDatabase' {
     It 'UpdateNotifyKeyspaceEvents' {
         {
             $database = New-AzRedisEnterpriseCacheDatabase -ClusterName $env.ClusterName2 -ResourceGroupName $env.ResourceGroupName -ClusteringPolicy "EnterpriseCluster" -NotifyKeyspaceEvents "Kg"
-            $database.NotifyKeyspaceEvent | Should -Be "Kg"
+            $database.NotifyKeyspaceEvents | Should -Be "Kg"
         } | Should -Not -Throw
     }
 }
