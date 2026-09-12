@@ -18,16 +18,17 @@ New-AzWvdHostPool -HostPoolType <String> -LoadBalancerType <String> -Location <S
  -PreferredAppGroupType <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
- [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
- [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <String>] [-Kind <String>]
- [-ManagedBy <String>] [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>]
+ [-AgentUpdateUseSessionHostLocalTime] [-AllowRdpShortPathWithPrivateLink <String>]
+ [-CustomRdpProperty <String>] [-Description <String>] [-DirectUdp <String>] [-ExpirationTime <DateTime>]
+ [-FriendlyName <String>] [-IdentityType <String>] [-Kind <String>] [-ManagedBy <String>]
+ [-ManagedPrivateUdp <String>] [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>]
  [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-PublicNetworkAccess <String>] [-RegistrationInfoToken <String>]
- [-RegistrationTokenOperation <String>] [-Ring <Int32>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-SsoadfsAuthority <String>]
- [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <String>] [-StartVMOnConnect]
- [-Tag <Hashtable>] [-ValidationEnvironment] [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-PlanVersion <String>] [-PublicNetworkAccess <String>] [-PublicUdp <String>]
+ [-RegistrationInfoToken <String>] [-RegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
+ [-SsoSecretType <String>] [-StartVMOnConnect] [-Tag <Hashtable>] [-ValidationEnvironment]
+ [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -179,6 +180,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AllowRdpShortPathWithPrivateLink
+Controls if the use of RDPShortPath transport is allowed, possibly bypassing Private Link routes.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CustomRdpProperty
 Custom rdp property of HostPool.
 
@@ -231,6 +247,22 @@ Desktop App Group Name
 ```yaml
 Type: System.String
 Parameter Sets: FullScenarioCreate
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DirectUdp
+Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
+This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -381,6 +413,22 @@ Accept wildcard characters: False
 The fully qualified resource ID of the resource that manages this resource.
 Indicates if this resource is managed by another Azure resource.
 If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedPrivateUdp
+Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
+This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
 
 ```yaml
 Type: System.String
@@ -549,6 +597,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicUdp
+Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
+This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RegistrationInfoToken
 The registration token base64 encoded string.
 
@@ -566,6 +630,22 @@ Accept wildcard characters: False
 
 ### -RegistrationTokenOperation
 The type of resetting the token.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RelayUdp
+Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
+This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
 
 ```yaml
 Type: System.String
