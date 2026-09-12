@@ -20,7 +20,7 @@ Update-AzGrafana -Name <String> -ResourceGroupName <String> [-SubscriptionId <St
  [-EnterpriseConfigurationMarketplaceAutoRenew <String>] [-EnterpriseConfigurationMarketplacePlanId <String>]
  [-GrafanaMajorVersion <String>] [-GrafanaPlugin <Hashtable>]
  [-MonitorWorkspaceIntegration <IAzureMonitorWorkspaceIntegration[]>] [-PublicNetworkAccess <String>]
- [-SecurityCsrfAlwaysCheck] [-SkuName <String>] [-SmtpEnabled] [-SmtpFromAddress <String>]
+ [-SecurityCsrfAlwaysCheck] [-SkuName <String>] [-SkuSize <String>] [-SmtpEnabled] [-SmtpFromAddress <String>]
  [-SmtpFromName <String>] [-SmtpHost <String>] [-SmtpPassword <SecureString>] [-SmtpSkipVerify]
  [-SmtpStartTlsPolicy <String>] [-SmtpUser <String>] [-SnapshotExternalEnabled] [-Tag <Hashtable>]
  [-UnifiedAlertingScreenshotCaptureEnabled] [-UserAssignedIdentity <String[]>] [-UserEditorsCanAdmin]
@@ -35,7 +35,7 @@ Update-AzGrafana -InputObject <IDashboardIdentity> [-ApiKey <String>] [-CreatorC
  [-EnterpriseConfigurationMarketplaceAutoRenew <String>] [-EnterpriseConfigurationMarketplacePlanId <String>]
  [-GrafanaMajorVersion <String>] [-GrafanaPlugin <Hashtable>]
  [-MonitorWorkspaceIntegration <IAzureMonitorWorkspaceIntegration[]>] [-PublicNetworkAccess <String>]
- [-SecurityCsrfAlwaysCheck] [-SkuName <String>] [-SmtpEnabled] [-SmtpFromAddress <String>]
+ [-SecurityCsrfAlwaysCheck] [-SkuName <String>] [-SkuSize <String>] [-SmtpEnabled] [-SmtpFromAddress <String>]
  [-SmtpFromName <String>] [-SmtpHost <String>] [-SmtpPassword <SecureString>] [-SmtpSkipVerify]
  [-SmtpStartTlsPolicy <String>] [-SmtpUser <String>] [-SnapshotExternalEnabled] [-Tag <Hashtable>]
  [-UnifiedAlertingScreenshotCaptureEnabled] [-UserAssignedIdentity <String[]>] [-UserEditorsCanAdmin]
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -245,7 +245,7 @@ Accept wildcard characters: False
 ```
 
 ### -MonitorWorkspaceIntegration
-The MonitorWorkspaceIntegration of Azure Managed Grafana.
+Array of AzureMonitorWorkspaceIntegration
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IAzureMonitorWorkspaceIntegration[]
@@ -336,7 +336,22 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-The Sku of the grafana resource.
+The name of the SKU.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuSize
+Specifies the capacity tier of the Grafana instance.
 
 ```yaml
 Type: System.String
@@ -492,6 +507,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
