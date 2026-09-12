@@ -288,6 +288,38 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Create = 'Az.Kusto.private\New-AzKustoScript_Create';
+        CreateExpanded = 'Az.Kusto.private\New-AzKustoScript_CreateExpanded';
+        CreateViaIdentityCluster = 'Az.Kusto.private\New-AzKustoScript_CreateViaIdentityCluster';
+        CreateViaIdentityClusterExpanded = 'Az.Kusto.private\New-AzKustoScript_CreateViaIdentityClusterExpanded';
+        CreateViaIdentityDatabase = 'Az.Kusto.private\New-AzKustoScript_CreateViaIdentityDatabase';
+        CreateViaIdentityDatabaseExpanded = 'Az.Kusto.private\New-AzKustoScript_CreateViaIdentityDatabaseExpanded';
+        CreateViaJsonFilePath = 'Az.Kusto.private\New-AzKustoScript_CreateViaJsonFilePath';
+        CreateViaJsonString = 'Az.Kusto.private\New-AzKustoScript_CreateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
