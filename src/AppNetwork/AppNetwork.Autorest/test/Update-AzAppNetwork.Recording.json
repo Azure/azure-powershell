@@ -1,0 +1,182 @@
+{
+  "Update-AzAppNetwork+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/resourceGroups/appnetwork-test-nm2jpx/providers/Microsoft.AppLink/appLinks/applink-wkg6e8?api-version=2025-08-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/resourceGroups/appnetwork-test-nm2jpx/providers/Microsoft.AppLink/appLinks/applink-wkg6e8?api-version=2025-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "115" ],
+        "x-ms-client-request-id": [ "ec4488ca-2f44-4e1c-9878-801811ea3488" ],
+        "CommandName": [ "Update-AzAppNetwork" ],
+        "FullCommandName": [ "Update-AzAppNetwork_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.5", "Az.AppNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8600a6e6-0000-0800-0000-6aa1cf5a0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "8e03b0ae-708a-4999-9ea4-ab2abe98c05c" ],
+        "x-ms-correlation-request-id": [ "136d95dc-8d0b-4e45-abf1-a8a12c1647a4" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20260909T220904Z:136d95dc-8d0b-4e45-abf1-a8a12c1647a4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0C8C29D924AD4712A5B50ECF18719CA2 Ref B: CO1AA3060818025 Ref C: 2026-09-09T22:09:04Z" ],
+        "Date": [ "Wed, 09 Sep 2026 22:09:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "658" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/resourceGroups/appnetwork-test-nm2jpx/providers/Microsoft.AppLink/appLinks/applink-wkg6e8\",\"name\":\"applink-wkg6e8\",\"type\":\"microsoft.applink/applinks\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"gerobayopaz@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-09T21:26:52.180851Z\",\"lastModifiedBy\":\"gerobayopaz@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-09T21:26:52.180851Z\"},\"identity\":{\"principalId\":\"45884e50-20b2-4997-a940-64b3b79a2bcf\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzAppNetwork+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/resourceGroups/appnetwork-test-nm2jpx/providers/Microsoft.AppLink/appLinks/applink-wkg6e8?api-version=2025-08-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/resourceGroups/appnetwork-test-nm2jpx/providers/Microsoft.AppLink/appLinks/applink-wkg6e8?api-version=2025-08-01-preview",
+      "Content": "{\n  \"tags\": {\n    \"env\": \"test\"\n  },\n  \"location\": \"eastus2\",\n  \"identity\": {\n    \"type\": \"SystemAssigned\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "112" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3d136886-0000-0200-0000-6aa1d9010000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=65637ed6-6841-46fa-8bae-8051a8b691f7/eastus2/c68aa871-2461-476c-af44-c76b60e08d43" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-envoy-upstream-service-time": [ "114" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/providers/Microsoft.AppLink/locations/EASTUS2/operationStatuses/9b381e00-358d-432e-a7c6-64370999954e*D7CCDCFA014A683624F1A11D3F410A2E8959F98A018115674F830D5910499294?api-version=2025-08-01-preview\u0026t=639245885453792455\u0026c=MIIHlDCCBnygAwIBAgIQfT1i8kvhfoEiJowKzJPkqjANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MDgxMTE2MDkzMFoXDTI3MDIwNjIyMDkzMFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCxd12mc8IQQmAFdTvFzsb5ZWMRl3GqNfiZohC1r_3u2BjZbyYlQLsy-6EDN6Omve3virp1Fy-Q42KrIz5VNhPu7SQyVKnPhXmluUUAiYzxY0G6k-pqoH0kng2xeLvCmz1mcwGGDzGQF_34NaJ83kUQFJUhJhQQ-hlXeALVUYJNLJ1UqxKUdTo_w5vxH1TxfprKs669Ykx_EPQSMHHutYEeJDBiW5d9PH8P_axXmkEHWcVLCoMEk8OYn3gzFhRP0eExTIH_S7Kyi_V8gbeBMwchl5PgS3EdlOdG296Omg5gZFpEtF_ja1yfWzGri7P_dZYTyU3soCb1aOGG0VDWoTuxAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBRxntewVQ24gx9RQn28Ocnz1BSdGTAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTgvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzE4L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTgvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS8xOC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQA1qcO5loUY-uNe5bLwqVdOyEGCAkkDfD3nrjc7Qobnrr7NQug06nRSQUmsiN7CvJBULrJpt--kbOeDmJ0-le5CzhJ5iHa78XpMs0nK4eD6acpJFy4jI9e_MBVYztdXAyGdDrHt8s5qFTP07UM0F36ScqAKaEna9wlBk0QbdZaISlBD6mGrTHiGtV3WK0KcwAsXSJ8mM7riRsqK3ajqDA7SoSDg27fpFv4uWoX3OZFlf1w_66y20DsfbDWvcdXrZGWDtqwBjIrTzlIBVDI3Q_bgm9rVczhu1AqohQCtPq6cNDL5LS4IhHkA-RVQK0xu5Qol3dQkSSYh14i_vmf8czre\u0026s=EKpuaap-F50gmubDO7dxBXKf0omvdnXA0-twHzAk40qqcCwGVlTna1oVhLlG4i4_XuFL6TZqBp9NszSKGbcIAJZS6lxSszZdIkjUCP9r-JTsWrYEFL7CQYRkQjxIYNIqvXV3F54xZsoP5JIf47aF5kDv5qr7UtI1L6wlXFxiWE9lkOfWzLOTj3-UXaicmxeFHFSdyjtIVE-yobkUlYL4iKSFusdTbf8-zgMgbq-zUsCvhHH6XPV4ZjP168B0beFiko2BKIp41xOTgRue8CPPZnFcTgR4X9W5hFdf1a4KkLAxg83xNx_OiYHN7V5ETJesSpbeRe1Qppshvd-7zmUFpw\u0026h=Z9BwmKmA2Mo1b3k5gRnJgtMI56ffOU04Qhq6bu4r3hI" ],
+        "x-ms-request-id": [ "9b381e00-358d-432e-a7c6-64370999954e" ],
+        "x-ms-correlation-request-id": [ "ed5d53af-0573-472d-afee-fa096fdb2a49" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20260909T220905Z:ed5d53af-0573-472d-afee-fa096fdb2a49" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 492E1094E7294304861A76D77A52ADAD Ref B: CO1AA3060818025 Ref C: 2026-09-09T22:09:04Z" ],
+        "Date": [ "Wed, 09 Sep 2026 22:09:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "680" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/resourceGroups/appnetwork-test-nm2jpx/providers/Microsoft.AppLink/appLinks/applink-wkg6e8\",\"name\":\"applink-wkg6e8\",\"type\":\"microsoft.applink/applinks\",\"location\":\"eastus2\",\"tags\":{\"env\":\"test\"},\"systemData\":{\"createdBy\":\"gerobayopaz@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-09T21:26:52.180851Z\",\"lastModifiedBy\":\"gerobayopaz@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-09T22:09:04.5823721Z\"},\"identity\":{\"principalId\":\"45884e50-20b2-4997-a940-64b3b79a2bcf\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzAppNetwork+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/providers/Microsoft.AppLink/locations/EASTUS2/operationStatuses/9b381e00-358d-432e-a7c6-64370999954e*D7CCDCFA014A683624F1A11D3F410A2E8959F98A018115674F830D5910499294?api-version=2025-08-01-preview\u0026t=639245885453792455\u0026c=MIIHlDCCBnygAwIBAgIQfT1i8kvhfoEiJowKzJPkqjANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MDgxMTE2MDkzMFoXDTI3MDIwNjIyMDkzMFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCxd12mc8IQQmAFdTvFzsb5ZWMRl3GqNfiZohC1r_3u2BjZbyYlQLsy-6EDN6Omve3virp1Fy-Q42KrIz5VNhPu7SQyVKnPhXmluUUAiYzxY0G6k-pqoH0kng2xeLvCmz1mcwGGDzGQF_34NaJ83kUQFJUhJhQQ-hlXeALVUYJNLJ1UqxKUdTo_w5vxH1TxfprKs669Ykx_EPQSMHHutYEeJDBiW5d9PH8P_axXmkEHWcVLCoMEk8OYn3gzFhRP0eExTIH_S7Kyi_V8gbeBMwchl5PgS3EdlOdG296Omg5gZFpEtF_ja1yfWzGri7P_dZYTyU3soCb1aOGG0VDWoTuxAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBRxntewVQ24gx9RQn28Ocnz1BSdGTAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTgvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzE4L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTgvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS8xOC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQA1qcO5loUY-uNe5bLwqVdOyEGCAkkDfD3nrjc7Qobnrr7NQug06nRSQUmsiN7CvJBULrJpt--kbOeDmJ0-le5CzhJ5iHa78XpMs0nK4eD6acpJFy4jI9e_MBVYztdXAyGdDrHt8s5qFTP07UM0F36ScqAKaEna9wlBk0QbdZaISlBD6mGrTHiGtV3WK0KcwAsXSJ8mM7riRsqK3ajqDA7SoSDg27fpFv4uWoX3OZFlf1w_66y20DsfbDWvcdXrZGWDtqwBjIrTzlIBVDI3Q_bgm9rVczhu1AqohQCtPq6cNDL5LS4IhHkA-RVQK0xu5Qol3dQkSSYh14i_vmf8czre\u0026s=EKpuaap-F50gmubDO7dxBXKf0omvdnXA0-twHzAk40qqcCwGVlTna1oVhLlG4i4_XuFL6TZqBp9NszSKGbcIAJZS6lxSszZdIkjUCP9r-JTsWrYEFL7CQYRkQjxIYNIqvXV3F54xZsoP5JIf47aF5kDv5qr7UtI1L6wlXFxiWE9lkOfWzLOTj3-UXaicmxeFHFSdyjtIVE-yobkUlYL4iKSFusdTbf8-zgMgbq-zUsCvhHH6XPV4ZjP168B0beFiko2BKIp41xOTgRue8CPPZnFcTgR4X9W5hFdf1a4KkLAxg83xNx_OiYHN7V5ETJesSpbeRe1Qppshvd-7zmUFpw\u0026h=Z9BwmKmA2Mo1b3k5gRnJgtMI56ffOU04Qhq6bu4r3hI+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/providers/Microsoft.AppLink/locations/EASTUS2/operationStatuses/9b381e00-358d-432e-a7c6-64370999954e*D7CCDCFA014A683624F1A11D3F410A2E8959F98A018115674F830D5910499294?api-version=2025-08-01-preview\u0026t=639245885453792455\u0026c=MIIHlDCCBnygAwIBAgIQfT1i8kvhfoEiJowKzJPkqjANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MDgxMTE2MDkzMFoXDTI3MDIwNjIyMDkzMFowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCxd12mc8IQQmAFdTvFzsb5ZWMRl3GqNfiZohC1r_3u2BjZbyYlQLsy-6EDN6Omve3virp1Fy-Q42KrIz5VNhPu7SQyVKnPhXmluUUAiYzxY0G6k-pqoH0kng2xeLvCmz1mcwGGDzGQF_34NaJ83kUQFJUhJhQQ-hlXeALVUYJNLJ1UqxKUdTo_w5vxH1TxfprKs669Ykx_EPQSMHHutYEeJDBiW5d9PH8P_axXmkEHWcVLCoMEk8OYn3gzFhRP0eExTIH_S7Kyi_V8gbeBMwchl5PgS3EdlOdG296Omg5gZFpEtF_ja1yfWzGri7P_dZYTyU3soCb1aOGG0VDWoTuxAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBRxntewVQ24gx9RQn28Ocnz1BSdGTAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTgvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzE4L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvMTgvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS8xOC9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQA1qcO5loUY-uNe5bLwqVdOyEGCAkkDfD3nrjc7Qobnrr7NQug06nRSQUmsiN7CvJBULrJpt--kbOeDmJ0-le5CzhJ5iHa78XpMs0nK4eD6acpJFy4jI9e_MBVYztdXAyGdDrHt8s5qFTP07UM0F36ScqAKaEna9wlBk0QbdZaISlBD6mGrTHiGtV3WK0KcwAsXSJ8mM7riRsqK3ajqDA7SoSDg27fpFv4uWoX3OZFlf1w_66y20DsfbDWvcdXrZGWDtqwBjIrTzlIBVDI3Q_bgm9rVczhu1AqohQCtPq6cNDL5LS4IhHkA-RVQK0xu5Qol3dQkSSYh14i_vmf8czre\u0026s=EKpuaap-F50gmubDO7dxBXKf0omvdnXA0-twHzAk40qqcCwGVlTna1oVhLlG4i4_XuFL6TZqBp9NszSKGbcIAJZS6lxSszZdIkjUCP9r-JTsWrYEFL7CQYRkQjxIYNIqvXV3F54xZsoP5JIf47aF5kDv5qr7UtI1L6wlXFxiWE9lkOfWzLOTj3-UXaicmxeFHFSdyjtIVE-yobkUlYL4iKSFusdTbf8-zgMgbq-zUsCvhHH6XPV4ZjP168B0beFiko2BKIp41xOTgRue8CPPZnFcTgR4X9W5hFdf1a4KkLAxg83xNx_OiYHN7V5ETJesSpbeRe1Qppshvd-7zmUFpw\u0026h=Z9BwmKmA2Mo1b3k5gRnJgtMI56ffOU04Qhq6bu4r3hI",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "117" ],
+        "x-ms-client-request-id": [ "ec4488ca-2f44-4e1c-9878-801811ea3488" ],
+        "CommandName": [ "Update-AzAppNetwork" ],
+        "FullCommandName": [ "Update-AzAppNetwork_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.5", "Az.AppNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8100d8c6-0000-0800-0000-6aa1d90d0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=65637ed6-6841-46fa-8bae-8051a8b691f7/westus2/b2456fe5-411b-43c2-b688-4ae4d988c4bf" ],
+        "x-ms-request-id": [ "56f2cf4f-cfdc-4d26-97d8-9b845d6550ff" ],
+        "x-ms-correlation-request-id": [ "78acfa20-1c16-42e9-aab5-2501af190cbb" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260909T220935Z:78acfa20-1c16-42e9-aab5-2501af190cbb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4B001431D6E942C88FC20EE36CEF3C81 Ref B: CO1AA3060818025 Ref C: 2026-09-09T22:09:35Z" ],
+        "Date": [ "Wed, 09 Sep 2026 22:09:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "617" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/providers/Microsoft.AppLink/locations/EASTUS2/operationStatuses/9b381e00-358d-432e-a7c6-64370999954e*D7CCDCFA014A683624F1A11D3F410A2E8959F98A018115674F830D5910499294\",\"name\":\"9b381e00-358d-432e-a7c6-64370999954e*D7CCDCFA014A683624F1A11D3F410A2E8959F98A018115674F830D5910499294\",\"resourceId\":\"/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/resourceGroups/appnetwork-test-nm2jpx/providers/Microsoft.AppLink/appLinks/applink-wkg6e8\",\"status\":\"Succeeded\",\"startTime\":\"2026-09-09T22:09:04.9446688Z\",\"endTime\":\"2026-09-09T22:09:12.3636422Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzAppNetwork+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/resourceGroups/appnetwork-test-nm2jpx/providers/Microsoft.AppLink/appLinks/applink-wkg6e8?api-version=2025-08-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/resourceGroups/appnetwork-test-nm2jpx/providers/Microsoft.AppLink/appLinks/applink-wkg6e8?api-version=2025-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "118" ],
+        "x-ms-client-request-id": [ "ec4488ca-2f44-4e1c-9878-801811ea3488" ],
+        "CommandName": [ "Update-AzAppNetwork" ],
+        "FullCommandName": [ "Update-AzAppNetwork_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.5", "Az.AppNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"88001ee5-0000-0800-0000-6aa1d9080000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "d51fa87f-a2ae-4b5c-9325-282e44e4c63f" ],
+        "x-ms-correlation-request-id": [ "86d7b4bc-67e8-4941-9b9f-f5afb64629f9" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20260909T220935Z:86d7b4bc-67e8-4941-9b9f-f5afb64629f9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E22857426BAD429BA8C001222C3994C2 Ref B: CO1AA3060818025 Ref C: 2026-09-09T22:09:35Z" ],
+        "Date": [ "Wed, 09 Sep 2026 22:09:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "681" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/resourceGroups/appnetwork-test-nm2jpx/providers/Microsoft.AppLink/appLinks/applink-wkg6e8\",\"name\":\"applink-wkg6e8\",\"type\":\"microsoft.applink/applinks\",\"location\":\"eastus2\",\"tags\":{\"env\":\"test\"},\"systemData\":{\"createdBy\":\"gerobayopaz@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-09T21:26:52.180851Z\",\"lastModifiedBy\":\"gerobayopaz@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-09T22:09:04.5823721Z\"},\"identity\":{\"principalId\":\"45884e50-20b2-4997-a940-64b3b79a2bcf\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}
