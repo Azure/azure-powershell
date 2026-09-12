@@ -1,0 +1,70 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/Mdp/Mdp.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: "Mdp"
+    service-name: Mdp
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+
+    directive:
+      # Default SubscriptionId to current context
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      # Don't expose images and usages endpoints
+      - where:
+          subject: ImageVersion
+        remove: true
+      - where:
+          subject: SubscriptionUsage
+        remove: true
+      - where:
+          subject: UsageSubscriptionUsage
+        remove: true
+      # Don't expose operations, name availability and pool resource delete
+      - where:
+          subject: Operation
+        remove: true
+      - where:
+          subject: PoolResource
+        remove: true
+      - where:
+          subject: PoolNameAvailability
+        remove: true
+      # Hide set cmdlets
+      - where:
+          verb: Set
+        hide: true
+      # Rename to pool agents
+      - where:
+          verb: Get
+          subject: ResourceDetail
+        set:
+          subject: PoolAgent
+      # Rename LocationName parameter
+      - where:
+          verb: Get
+          subject: Sku
+          parameter-name: LocationName
+        set:
+          parameter-name: Location
+      # Dont flatten hash objects
+      - no-inline:
+          - AgentProfile
+          - OrganizationProfile
+          - FabricProfile
+
+# Remove this once the spec repo drops that rule set.
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"

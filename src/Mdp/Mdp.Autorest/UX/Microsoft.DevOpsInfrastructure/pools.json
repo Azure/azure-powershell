@@ -1,6 +1,6 @@
 {
   "resourceType": "pools",
-  "apiVersion": "2024-10-19",
+  "apiVersion": "2026-07-03-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.mdp"
   },
