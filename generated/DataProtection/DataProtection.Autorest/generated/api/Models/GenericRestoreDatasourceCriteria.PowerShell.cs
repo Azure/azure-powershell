@@ -119,18 +119,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IItemLevelRestoreCriteriaInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IItemLevelRestoreCriteriaInternal)this).ObjectType, global::System.Convert.ToString);
             }
-            if (content.Contains("ResourceSelectorObjectType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IGenericRestoreDatasourceCriteriaInternal)this).ResourceSelectorObjectType = (string) content.GetValueForProperty("ResourceSelectorObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IGenericRestoreDatasourceCriteriaInternal)this).ResourceSelectorObjectType, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceSelectorResourceIdentifier"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IGenericRestoreDatasourceCriteriaInternal)this).ResourceSelectorResourceIdentifier = (System.Collections.Generic.List<string>) content.GetValueForProperty("ResourceSelectorResourceIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IGenericRestoreDatasourceCriteriaInternal)this).ResourceSelectorResourceIdentifier, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("ResourceSelectorResourceNameOverride"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IGenericRestoreDatasourceCriteriaInternal)this).ResourceSelectorResourceNameOverride = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteriaResourceNameOverrides) content.GetValueForProperty("ResourceSelectorResourceNameOverride",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IGenericRestoreDatasourceCriteriaInternal)this).ResourceSelectorResourceNameOverride, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteriaResourceNameOverridesTypeConverter.ConvertFrom);
-            }
             AfterDeserializeDictionary(content);
         }
 
@@ -155,18 +143,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             if (content.Contains("ObjectType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IItemLevelRestoreCriteriaInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IItemLevelRestoreCriteriaInternal)this).ObjectType, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceSelectorObjectType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IGenericRestoreDatasourceCriteriaInternal)this).ResourceSelectorObjectType = (string) content.GetValueForProperty("ResourceSelectorObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IGenericRestoreDatasourceCriteriaInternal)this).ResourceSelectorObjectType, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceSelectorResourceIdentifier"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IGenericRestoreDatasourceCriteriaInternal)this).ResourceSelectorResourceIdentifier = (System.Collections.Generic.List<string>) content.GetValueForProperty("ResourceSelectorResourceIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IGenericRestoreDatasourceCriteriaInternal)this).ResourceSelectorResourceIdentifier, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("ResourceSelectorResourceNameOverride"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IGenericRestoreDatasourceCriteriaInternal)this).ResourceSelectorResourceNameOverride = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteriaResourceNameOverrides) content.GetValueForProperty("ResourceSelectorResourceNameOverride",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IGenericRestoreDatasourceCriteriaInternal)this).ResourceSelectorResourceNameOverride, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteriaResourceNameOverridesTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }

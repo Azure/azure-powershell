@@ -8,7 +8,7 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
     param(
         [Parameter(Mandatory, HelpMessage='Datasource Type')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
-        [ValidateSet('AzureKubernetesService')]
+        [ValidateSet('AzureKubernetesService', 'AzureElasticSAN')]
         ${DatasourceType},
         
         [Parameter(Mandatory=$false, HelpMessage='List of resource types to be excluded for restore')]
@@ -65,10 +65,75 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
         [Parameter(Mandatory=$false, HelpMessage='Staging storage account Id for restore.')]
         [System.String]
         [ValidatePattern("/subscriptions/([A-z0-9\-]+)/resourceGroups/([A-z0-9\-]+)/providers/Microsoft.Storage/storageAccounts/([A-z0-9\-]+)")]
-        ${StagingStorageAccountId}
+        ${StagingStorageAccountId},
+
+        [Parameter(Mandatory=$false, HelpMessage='List of source volume names to be restored. Use this parameter for DatasourceType AzureElasticSAN. The service currently supports exactly one volume per restore request.')]
+        [System.String[]]
+        ${ResourceIdentifier},
+
+        [Parameter(Mandatory=$false, HelpMessage='Map of source volume name to target volume name to restore into. Use this parameter for DatasourceType AzureElasticSAN. Any source name not included will be restored with a default naming format.')]
+        [System.Collections.Hashtable]
+        ${ResourceNameOverride}
     )
 
     process {
+
+        if($DatasourceType.ToString() -eq "AzureElasticSAN"){
+
+            # reject parameters that belong to other datasource types.
+            # Note: the model cmdlet runtime initializes string-typed parameters to empty string rather than $null, so string parameters are checked with IsNullOrEmpty.
+            if($ExcludedResourceType -ne $null -or $IncludedResourceType -ne $null -or $ExcludedNamespace -ne $null -or $IncludedNamespace -ne $null -or $LabelSelector -ne $null -or $IncludeClusterScopeResource -ne $null -or -not [string]::IsNullOrEmpty($ConflictPolicy) -or $NamespaceMapping -ne $null -or -not [string]::IsNullOrEmpty($PersistentVolumeRestoreMode) -or $RestoreHookReference -ne $null -or $ResourceModifierReference -ne $null -or -not [string]::IsNullOrEmpty($StagingResourceGroupId) -or -not [string]::IsNullOrEmpty($StagingStorageAccountId)){
+                throw "Invalid parameters for DatasourceType AzureElasticSAN. Only ResourceIdentifier and ResourceNameOverride are supported."
+            }
+
+            if($ResourceIdentifier -eq $null -or $ResourceIdentifier.Count -eq 0){
+                throw "Please input parameter ResourceIdentifier for DatasourceType AzureElasticSAN."
+            }
+
+            # Current eSAN service supports restoring exactly one volume per restore request.
+            # The payload remains a list for forward compatibility when multi-volume support ships.
+            if($ResourceIdentifier.Count -ne 1){
+                throw "DatasourceType AzureElasticSAN currently supports exactly one volume per restore request. Please provide a single entry in ResourceIdentifier."
+            }
+
+            # Build the nested resource selector; the no-inline directive keeps ResourceSelector as a settable nested property on GenericRestoreDatasourceCriteria.
+            $resourceListCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteria]::new()
+            $resourceListCriteria.ObjectType = "ResourceListSelectionCriteria"
+            $resourceListCriteria.ResourceIdentifier = [System.Collections.Generic.List[string]]$ResourceIdentifier
+
+            $restoreCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.GenericRestoreDatasourceCriteria]::new()
+            $restoreCriteria.ResourceSelector = $resourceListCriteria
+
+            if($ResourceNameOverride -ne $null -and $ResourceNameOverride.Count -gt 0){
+
+                $resourceListCriteria.ResourceNameOverride = [System.Collections.Generic.Dictionary[string,string]]::new()
+                $seenTargets = @{}
+
+                foreach($key in $ResourceNameOverride.Keys){
+                    if($ResourceIdentifier -notcontains $key){
+                        throw "ResourceNameOverride key '$key' is not present in ResourceIdentifier. Each override key must match a source volume in ResourceIdentifier."
+                    }
+
+                    $value = $ResourceNameOverride[$key]
+                    if($value -eq $null -or $value -eq ""){
+                        throw "ResourceNameOverride value for key '$key' must be a non-empty target volume name."
+                    }
+
+                    if($seenTargets.ContainsKey($value)){
+                        throw "ResourceNameOverride target name '$value' is specified more than once. Target names must be unique."
+                    }
+                    $seenTargets[$value] = $true
+
+                    $resourceListCriteria.ResourceNameOverride[$key] = $value
+                }
+            }
+
+            return $restoreCriteria
+        }
+
+        if($ResourceIdentifier -ne $null -or $ResourceNameOverride -ne $null){
+            throw "ResourceIdentifier and ResourceNameOverride are only supported for DatasourceType AzureElasticSAN."
+        }
 
         $hasStagingResourceGroupId = $PSBoundParameters.Remove("StagingResourceGroupId")
         $hasStagingStorageAccountId = $PSBoundParameters.Remove("StagingStorageAccountId")

@@ -127,10 +127,10 @@ function Initialize-AzDataProtectionRestoreRequest
         [System.String[]]
         ${ToPrefixPattern},
 
-        [Parameter(ParameterSetName="OriginalLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService.')]
-        [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService.')]
-        [Parameter(ParameterSetName="OriginalLocationFullRecovery", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService.')]
-        [Parameter(ParameterSetName="AlternateLocationFullRecovery", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService.')]
+        [Parameter(ParameterSetName="OriginalLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN.')]
+        [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN.')]
+        [Parameter(ParameterSetName="OriginalLocationFullRecovery", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN.')]
+        [Parameter(ParameterSetName="AlternateLocationFullRecovery", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN.')]
         [PSObject]
         ${RestoreConfiguration},
 
@@ -271,7 +271,7 @@ function Initialize-AzDataProtectionRestoreRequest
         elseif(!($ItemLevelRecovery))
         {   
             # RestoreTargetInfo for OLR ALR Full recovery
-            if($DatasourceType -ne "AzureKubernetesService"){
+            if($DatasourceType -ne "AzureKubernetesService" -and $DatasourceType -ne "AzureElasticSAN"){
                 $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.RestoreTargetInfo]::new()
                 $restoreRequest.RestoreTargetInfo.ObjectType = "restoreTargetInfo"
             }
@@ -280,12 +280,12 @@ function Initialize-AzDataProtectionRestoreRequest
                 $restoreRequest.RestoreTargetInfo.ObjectType = "itemLevelRestoreTargetInfo"
                 $restoreCriteriaList = @()
 
-                # ItemLevelRecovery for AzureKubernetesService
+                # ItemLevelRecovery for AzureKubernetesService / AzureElasticSAN (RestoreConfiguration path)
                 if($RestoreConfiguration -ne $null){
                     $restoreCriteria = $RestoreConfiguration
                 }
                 else{
-                    $errormsg = "Please input parameter RestoreConfiguration for AKS cluster restore. Use command New-AzDataProtectionRestoreConfigurationClientObject for creating the RestoreConfiguration"
+                    $errormsg = "Please input parameter RestoreConfiguration for $DatasourceType restore. Use command New-AzDataProtectionRestoreConfigurationClientObject for creating the RestoreConfiguration"
     		        throw $errormsg
                 }                
                 
@@ -307,7 +307,7 @@ function Initialize-AzDataProtectionRestoreRequest
             }
             
             # can generalise this condition to manifest level if needed
-            if($DatasourceType -ne "AzureKubernetesService"){ # TODO: remove Datasource dependency
+            if($DatasourceType -ne "AzureKubernetesService" -and $DatasourceType -ne "AzureElasticSAN"){ # TODO: remove Datasource dependency
                 
                 if(($RecoveryPoint -ne $null) -and ($RecoveryPoint -ne "") -and $ContainersList.length -gt 0){
                     $hasPrefixMatch = $PSBoundParameters.Remove("PrefixMatch")
@@ -378,12 +378,12 @@ function Initialize-AzDataProtectionRestoreRequest
                 }
             }
             else{
-                # ItemLevelRecovery for AzureKubernetesService
+                # ItemLevelRecovery for AzureKubernetesService / AzureElasticSAN (RestoreConfiguration path)
                 if($RestoreConfiguration -ne $null){
                     $restoreCriteria = $RestoreConfiguration
                 }
                 else{
-                    $errormsg = "Please input parameter RestoreConfiguration for AKS cluster restore. Use command New-AzDataProtectionRestoreConfigurationClientObject for creating the RestoreConfiguration"
+                    $errormsg = "Please input parameter RestoreConfiguration for $DatasourceType restore. Use command New-AzDataProtectionRestoreConfigurationClientObject for creating the RestoreConfiguration"
     		        throw $errormsg
                 }
                 

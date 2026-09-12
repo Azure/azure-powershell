@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded the DataProtection API version to `2026-06-01` (general availability), which natively models the Azure Elastic SAN (Storage Area Network) backup and restore types
+* Added `AzureElasticSAN` datasource support for backup and restore
+    - Added `-ResourceSelector` parameter to `New-AzDataProtectionBackupConfigurationClientObject` for selecting the volume to back up (the service currently supports one volume per backup instance)
+    - Added `-ResourceIdentifier` and `-ResourceNameOverride` parameters to `New-AzDataProtectionRestoreConfigurationClientObject` for selecting and optionally renaming the volume to restore
+    - Enabled `AzureElasticSAN` in `Initialize-AzDataProtectionRestoreRequest` and `Set-AzDataProtectionMSIPermission`
 * Added cost management granularity support to backup vault creation and update cmdlets
     - Added `-CostManagementGranularity` parameter to `New-AzDataProtectionBackupVault` and `Update-AzDataProtectionBackupVault`
     - Allowed values are `VaultLevel`, `ProtectedItemLevel`, `ProtectedItemWithParentTag`

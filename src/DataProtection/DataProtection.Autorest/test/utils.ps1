@@ -222,6 +222,19 @@ function setupEnv() {
         TargetCrossSubStorageAccountRGName = "dataprotectionpstest2-rg"
     }
 
+    $ElasticSanVariables = @{
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        Location = "eastasia"
+        ResourceGroupName = "dpp-esan-ps-recording"
+        VaultName = "TestEsanVault"
+        PolicyName = "TestEsanPolicy"
+        VolumeGroupName = "dppesantestps01-vg"
+        SourceVolumeName = "srcvol1"
+        RestoredVolumeName = "restoredvol1"
+        VolumeGroupId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dpp-esan-ps-recording/providers/Microsoft.ElasticSan/elasticSans/dppesantestps01/volumeGroups/dppesantestps01-vg"
+        SnapshotResourceGroupId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dpp-esan-ps-recording"
+    }
+
     $UpdateBIWithUAMIVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         ResourceGroupName = "hiagarg"
@@ -348,6 +361,7 @@ function setupEnv() {
     $env.add("TestAksRestoreScenario", $AksRestoreVariables) | Out-Null
     $env.add("TestBlobHardeningScenario", $BlobHardeningVariables) | Out-Null
     $env.add("TestAdlsBlobHardeningScenario", $AdlsBlobHardeningVariables) | Out-Null
+    $env.add("TestElasticSanScenario", $ElasticSanVariables) | Out-Null
     $env.add("TestCrossSubscriptionRestoreScenario", $CrossSubscriptionRestoreVariables) | Out-Null
     $env.add("TestCrossRegionRestoreScenario", $CrossRegionRestoreVariables) | Out-Null
     $env.add("TestSoftDelete", $SoftDeleteVariables) | Out-Null
