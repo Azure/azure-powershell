@@ -1,0 +1,47 @@
+{
+  "resourceType": "serviceGroups/goalAssignments/goalResources",
+  "apiVersion": "2026-08-31-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement"
+  },
+  "commands": [
+    {
+      "name": "Get-AzResilienceManagementGoalResource",
+      "description": "Get a GoalResource",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/goalAssignments/{goalAssignmentName}/goalResources/{goalResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement/get-azresiliencemanagementgoalresource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-GoalAssignmentName <String>",
+              "-Name <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a GoalResource",
+          "parameters": [
+            {
+              "name": "-GoalAssignmentName",
+              "value": "[Path.goalAssignmentName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.goalResourceName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
