@@ -118,6 +118,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {_protectedNic = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("protectedNics"), out var __jsonProtectedNics) ? If( __jsonProtectedNics as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedNicProperties>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedNicProperties) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHciprotectedNicProperties.FromJson(__f) )) ))() : null : _protectedNic;}
             {_targetVMBiosId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("targetVmBiosId"), out var __jsonTargetVMBiosId) ? (string)__jsonTargetVMBiosId : (string)_targetVMBiosId;}
             {_lastReplicationUpdateTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("lastReplicationUpdateTime"), out var __jsonLastReplicationUpdateTime) ? global::System.DateTime.TryParse((string)__jsonLastReplicationUpdateTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastReplicationUpdateTimeValue) ? __jsonLastReplicationUpdateTimeValue : _lastReplicationUpdateTime : _lastReplicationUpdateTime;}
+            {_securityOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("securityOption"), out var __jsonSecurityOption) ? (string)__jsonSecurityOption : (string)_securityOption;}
+            {_convertToGen2 = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("convertToGen2"), out var __jsonConvertToGen2) ? (bool?)__jsonConvertToGen2 : _convertToGen2;}
+            {_migrateAsArcVM = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("migrateAsArcVM"), out var __jsonMigrateAsArcVM) ? (bool?)__jsonMigrateAsArcVM : _migrateAsArcVM;}
             AfterFromJson(json);
         }
 
@@ -274,6 +277,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 AddIf( null != this._lastReplicationUpdateTime ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._lastReplicationUpdateTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "lastReplicationUpdateTime" ,container.Add );
             }
+            AddIf( null != (((object)this._securityOption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._securityOption.ToString()) : null, "securityOption" ,container.Add );
+            AddIf( null != this._convertToGen2 ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._convertToGen2) : null, "convertToGen2" ,container.Add );
+            AddIf( null != this._migrateAsArcVM ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._migrateAsArcVM) : null, "migrateAsArcVM" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
