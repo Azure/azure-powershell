@@ -163,8 +163,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                     else if (responseEx.Body != null && responseEx.Body.Error != null)
                     {
-                        WriteDebug(string.Format(Resources.CloudException, responseEx.Body.Error.Code, responseEx.Body.Error.Message));
+                        string serviceError = string.Format(
+                            Resources.CloudException,
+                            responseEx.Body.Error.Code,
+                            responseEx.Body.Error.Message);
+                        WriteDebug(serviceError);
 
+                        targetEx = new Exception(serviceError, responseEx);
                         targetErrorId = responseEx.Body.Error.Code;
                         targetErrorCategory = ErrorCategory.InvalidOperation;
                     }
