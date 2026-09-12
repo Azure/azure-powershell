@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseDetails
 https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/new-azconnectedlicensedetail
 #>
 function New-AzConnectedLicenseDetail {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseDetails')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
@@ -42,7 +43,7 @@ function New-AzConnectedLicenseDetail {
         [string]
         $State,
         [Parameter(HelpMessage="Describes the license target server.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Windows Server 2012", "Windows Server 2012 R2")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Windows Server 2012", "Windows Server 2012 R2", "Windows Server 2016")]
         [string]
         $Target,
         [Parameter(HelpMessage="Describes the license core type (pCore or vCore).")]

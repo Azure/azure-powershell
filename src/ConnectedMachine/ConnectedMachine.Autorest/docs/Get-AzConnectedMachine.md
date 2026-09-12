@@ -12,7 +12,7 @@ Retrieves information about the model view or the instance view of a hybrid mach
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzConnectedMachine [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Get-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-Subscription
  [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzConnectedMachine -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -102,7 +102,7 @@ The expand expression to apply on the operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: False
@@ -133,7 +133,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -145,6 +145,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

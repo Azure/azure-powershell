@@ -1,8 +1,8 @@
 {
-  "Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration+[NoContext]+Reconcile+$POST+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3/networkSecurityPerimeterConfigurations/a12ebbfe-c600-4964-b1aa-1b302b91d074.testAssociation/reconcile?api-version=2024-07-31-preview+1": {
+  "Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration+[NoContext]+Reconcile+$POST+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3/networkSecurityPerimeterConfigurations/a12ebbfe-c600-4964-b1aa-1b302b91d074.testAssociation/reconcile?api-version=2026-06-16-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3/networkSecurityPerimeterConfigurations/a12ebbfe-c600-4964-b1aa-1b302b91d074.testAssociation/reconcile?api-version=2024-07-31-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3/networkSecurityPerimeterConfigurations/a12ebbfe-c600-4964-b1aa-1b302b91d074.testAssociation/reconcile?api-version=2026-06-16-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

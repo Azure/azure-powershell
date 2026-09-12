@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedPrivateLinkScopeTag
 
 ## SYNOPSIS
-update an existing PrivateLinkScope's tags.
+Update an existing PrivateLinkScope's tags.
 To update other fields use the CreateOrupdate method.
 
 ## SYNTAX
@@ -55,7 +55,7 @@ Update-AzConnectedPrivateLinkScopeTag -InputObject <IConnectedMachineIdentity>
 ```
 
 ## DESCRIPTION
-update an existing PrivateLinkScope's tags.
+Update an existing PrivateLinkScope's tags.
 To update other fields use the CreateOrupdate method.
 
 ## EXAMPLES
@@ -185,6 +185,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
