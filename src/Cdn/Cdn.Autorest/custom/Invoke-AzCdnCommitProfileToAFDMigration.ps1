@@ -133,5 +133,10 @@ function Invoke-AzCdnCommitProfileToAFDMigration {
         Write-Host("Start to migrate.")
         Write-Host("This process will disable your classic CDN profile and move all your traffic and configurations to the new Front Door profile.")
         Az.Cdn.internal\Invoke-AzCdnCommitProfileMigration @PSBoundParameters
+        if ($NoWait -or $AsJob) {
+            Write-Warning("Migration request submitted successfully. After migration completes, traffic may still depend on the classic endpoint. Update your custom domain DNS or application references to use the new Azure Front Door Standard/Premium endpoint before April 1, 2028 to avoid any service disruption. Learn more: https://learn.microsoft.com/en-us/azure/cdn/migrate-tier?toc=/azure/frontdoor/toc.json.")
+        } else {
+            Write-Warning("Migration completed successfully. Traffic may still depend on the classic endpoint. Update your custom domain DNS or application references to use the new Azure Front Door Standard/Premium endpoint before April 1, 2028 to avoid any service disruption. Learn more: https://learn.microsoft.com/en-us/azure/cdn/migrate-tier?toc=/azure/frontdoor/toc.json.")
+        }
     }
 }
