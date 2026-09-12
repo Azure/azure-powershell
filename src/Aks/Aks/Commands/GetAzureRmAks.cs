@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -87,6 +88,10 @@ namespace Microsoft.Azure.Commands.Aks
                             break;
                         case IdParameterSet:
                             var resource = new ResourceIdentifier(Id);
+                            if (!string.IsNullOrEmpty(resource.Subscription))
+                            {
+                                Client.SubscriptionId = Guid.Parse(resource.Subscription);
+                            }
                             var idCluster = Client.ManagedClusters.Get(resource.ResourceGroupName, resource.ResourceName);
                             WriteObject(AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(idCluster), true);
                             break;
