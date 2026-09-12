@@ -156,6 +156,9 @@
   <data name="CannotParseReliabilityLevel" xml:space="preserve">
     <value>Cannot parse reliability level {0}.</value>
   </data>
+  <data name="CannotParseDurabilityLevel" xml:space="preserve">
+    <value>Cannot parse durability level {0}. Valid values are Bronze, Silver, and Gold.</value>
+  </data>
   <data name="CannotParseVmImage" xml:space="preserve">
     <value>Cannot parse vmImage {0}.</value>
   </data>
