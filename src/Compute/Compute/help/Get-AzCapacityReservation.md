@@ -25,17 +25,24 @@ The **Get-AzCapacityReservation** cmdlet gets the properties of Capacity Reserva
 
 ### Example 1
 ```powershell
-Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName "CRGroup1"
+Get-AzCapacityReservation -ResourceGroupName "myRG" -ReservationGroupName "CRGroup1"
 ```
 
 This will retrieve all the Capacity Reservation resources from the Capacity Reservation Group named "CRGroup1".
 
 ### Example 2
 ```powershell
-Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName "CRGroup1" -Name "resource1" -InstanceView
+Get-AzCapacityReservation -ResourceGroupName "myRG" -ReservationGroupName "CRGroup1" -Name "resource1" -InstanceView
 ```
 
 This will retrieve the Capacity Reservation resource named "resource1" with its instance view information from the Capacity Reservation Group named "CRGroup1".
+
+### Example 3
+```powershell
+(Get-AzCapacityReservation -ResourceGroupName "myRG" -ReservationGroupName "CRGroup1" -Name "resource1" -InstanceView).InstanceView.ReservationStateInfo.ReservationState
+```
+
+For a Future Capacity Reservation, this will retrieve the current reservation state from the instance view.
 
 ## PARAMETERS
 
