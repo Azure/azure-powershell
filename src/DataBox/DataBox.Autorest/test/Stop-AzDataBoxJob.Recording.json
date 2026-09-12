@@ -1,8 +1,8 @@
 {
-  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellSchedulej2hr/cancel?api-version=2025-02-01+1": {
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellSchedulemgpc/cancel?api-version=2025-02-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellSchedulej2hr/cancel?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellSchedulemgpc/cancel?api-version=2025-02-01",
       "Content": "{\r\n  \"reason\": \"Test Job\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -13,34 +13,33 @@
       }
     },
     "Response": {
-      "StatusCode": 204,
+      "StatusCode": 404,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "aaf34d83-5b2d-4044-a7c6-15a44ade9b45" ],
+        "x-ms-correlation-request-id": [ "aaf34d83-5b2d-4044-a7c6-15a44ade9b45" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260525T065051Z:aaf34d83-5b2d-4044-a7c6-15a44ade9b45" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "205633f2-fbe1-4019-8a86-fc137456bea0" ],
-        "x-ms-client-request-id": [ "13e6c94c-edc5-4391-8174-1ab9328a46d2" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f36494aa-c092-4cef-9cdd-5a3c7a472793/westindia/54d2fb44-7097-43b9-9212-7588fdeef020" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "205633f2-fbe1-4019-8a86-fc137456bea0" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250417T213517Z:205633f2-fbe1-4019-8a86-fc137456bea0" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 225C33D7510348FD9CD14F2F309233A6 Ref B: MAA201060515023 Ref C: 2025-04-17T21:35:16Z" ],
-        "Date": [ "Thu, 17 Apr 2025 21:35:16 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 976AE7EB2AE84F609E71142A45B9309A Ref B: SG2AA1070301042 Ref C: 2026-05-25T06:50:51Z" ],
+        "Date": [ "Mon, 25 May 2026 06:50:50 GMT" ]
       },
       "ContentHeaders": {
+        "Content-Length": [ "235" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": null,
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.DataBox/jobs/powershellSchedulemgpc\u0027 under resource group \u0027databox-pwsh-rg-ev\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
       "isContentBase64": false
     }
   },
-  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellths7/cancel?api-version=2025-02-01+2": {
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellvcmt/cancel?api-version=2025-02-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellths7/cancel?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellvcmt/cancel?api-version=2025-02-01",
       "Content": "{\r\n  \"reason\": \"Test Job\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -51,34 +50,33 @@
       }
     },
     "Response": {
-      "StatusCode": 204,
+      "StatusCode": 404,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "7d98f302-1ea2-402d-913e-f2b7bc36ff8b" ],
+        "x-ms-correlation-request-id": [ "7d98f302-1ea2-402d-913e-f2b7bc36ff8b" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260525T065051Z:7d98f302-1ea2-402d-913e-f2b7bc36ff8b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "9d008874-e9cf-446a-b851-da973ae835e9" ],
-        "x-ms-client-request-id": [ "4070acad-3e31-446d-8093-ba3107b3feac" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f36494aa-c092-4cef-9cdd-5a3c7a472793/westindia/ee868d33-1e50-49ab-8ba4-fb5187df34e6" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11998" ],
-        "x-ms-correlation-request-id": [ "9d008874-e9cf-446a-b851-da973ae835e9" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250417T213517Z:9d008874-e9cf-446a-b851-da973ae835e9" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C35429B72E7445798FEE15D32D038F32 Ref B: MAA201060515023 Ref C: 2025-04-17T21:35:17Z" ],
-        "Date": [ "Thu, 17 Apr 2025 21:35:17 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E3D5F8E8FE5A4F1E899021F40A468649 Ref B: SG2AA1070301042 Ref C: 2026-05-25T06:50:51Z" ],
+        "Date": [ "Mon, 25 May 2026 06:50:51 GMT" ]
       },
       "ContentHeaders": {
+        "Content-Length": [ "227" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": null,
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.DataBox/jobs/powershellvcmt\u0027 under resource group \u0027databox-pwsh-rg-ev\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
       "isContentBase64": false
     }
   },
-  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellExportf9j3/cancel?api-version=2025-02-01+3": {
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellExportq43j/cancel?api-version=2025-02-01+3": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellExportf9j3/cancel?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellExportq43j/cancel?api-version=2025-02-01",
       "Content": "{\r\n  \"reason\": \"Test Job\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -89,34 +87,33 @@
       }
     },
     "Response": {
-      "StatusCode": 204,
+      "StatusCode": 404,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "62640293-4082-4230-941e-72ace2b60ea1" ],
+        "x-ms-correlation-request-id": [ "62640293-4082-4230-941e-72ace2b60ea1" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260525T065052Z:62640293-4082-4230-941e-72ace2b60ea1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "fb851a1e-6a9e-4672-a7eb-408bf5ed2dc7" ],
-        "x-ms-client-request-id": [ "b2335d7c-06fb-4960-8330-b77e014bafe2" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f36494aa-c092-4cef-9cdd-5a3c7a472793/westindia/4ac813b0-b716-4caf-ab00-86c976ead10d" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "fb851a1e-6a9e-4672-a7eb-408bf5ed2dc7" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250417T213519Z:fb851a1e-6a9e-4672-a7eb-408bf5ed2dc7" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B3170A309B914D00A7C46BA7E37E1F18 Ref B: MAA201060515023 Ref C: 2025-04-17T21:35:18Z" ],
-        "Date": [ "Thu, 17 Apr 2025 21:35:18 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3692B771D939449690B27A5F50111512 Ref B: SG2AA1070301042 Ref C: 2026-05-25T06:50:52Z" ],
+        "Date": [ "Mon, 25 May 2026 06:50:51 GMT" ]
       },
       "ContentHeaders": {
+        "Content-Length": [ "233" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": null,
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.DataBox/jobs/powershellExportq43j\u0027 under resource group \u0027databox-pwsh-rg-ev\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
       "isContentBase64": false
     }
   },
-  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellUAIicpg/cancel?api-version=2025-02-01+4": {
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellUAIfa4m/cancel?api-version=2025-02-01+4": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellUAIicpg/cancel?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellUAIfa4m/cancel?api-version=2025-02-01",
       "Content": "{\r\n  \"reason\": \"Test Job\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -127,34 +124,33 @@
       }
     },
     "Response": {
-      "StatusCode": 204,
+      "StatusCode": 404,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "990afd31-bc0e-4fe1-997f-38ef4a035b06" ],
+        "x-ms-correlation-request-id": [ "990afd31-bc0e-4fe1-997f-38ef4a035b06" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260525T065052Z:990afd31-bc0e-4fe1-997f-38ef4a035b06" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "2a9bc744-81a8-42ea-9db1-8dc38adea855" ],
-        "x-ms-client-request-id": [ "503d4d58-7a69-456e-bab0-41226396ec65" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f36494aa-c092-4cef-9cdd-5a3c7a472793/westindia/60b72ef5-28f9-4446-a207-701980aa85a5" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "2a9bc744-81a8-42ea-9db1-8dc38adea855" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250417T213520Z:2a9bc744-81a8-42ea-9db1-8dc38adea855" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C4A26C79FF3B4F53A696A98BB79AD968 Ref B: MAA201060515023 Ref C: 2025-04-17T21:35:19Z" ],
-        "Date": [ "Thu, 17 Apr 2025 21:35:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E49CEF368B3B4388AB1D8F17F87D68C4 Ref B: SG2AA1070301042 Ref C: 2026-05-25T06:50:52Z" ],
+        "Date": [ "Mon, 25 May 2026 06:50:52 GMT" ]
       },
       "ContentHeaders": {
+        "Content-Length": [ "230" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": null,
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.DataBox/jobs/powershellUAIfa4m\u0027 under resource group \u0027databox-pwsh-rg-ev\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
       "isContentBase64": false
     }
   },
-  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/PwshDiskoi75/cancel?api-version=2025-02-01+5": {
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/PwshDiskgr7d/cancel?api-version=2025-02-01+5": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/PwshDiskoi75/cancel?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/PwshDiskgr7d/cancel?api-version=2025-02-01",
       "Content": "{\r\n  \"reason\": \"Test Job\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -165,34 +161,33 @@
       }
     },
     "Response": {
-      "StatusCode": 204,
+      "StatusCode": 404,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "916a27ac-fc5f-4289-a5ed-f94c495e888e" ],
+        "x-ms-correlation-request-id": [ "916a27ac-fc5f-4289-a5ed-f94c495e888e" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260525T065053Z:916a27ac-fc5f-4289-a5ed-f94c495e888e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "9c285a24-a966-49e3-bbc3-7817dc596121" ],
-        "x-ms-client-request-id": [ "791c3280-f4bd-41a7-a77f-78581eebca20" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f36494aa-c092-4cef-9cdd-5a3c7a472793/westindia/63f4f733-8248-4915-9ea0-e53868a1dcec" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "9c285a24-a966-49e3-bbc3-7817dc596121" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250417T213522Z:9c285a24-a966-49e3-bbc3-7817dc596121" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 42ECFDE398104E6C8E715FEE5163608A Ref B: MAA201060515023 Ref C: 2025-04-17T21:35:20Z" ],
-        "Date": [ "Thu, 17 Apr 2025 21:35:21 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 770E76F87AA6460C9FF34CB4B519D9EE Ref B: SG2AA1070301042 Ref C: 2026-05-25T06:50:53Z" ],
+        "Date": [ "Mon, 25 May 2026 06:50:53 GMT" ]
       },
       "ContentHeaders": {
+        "Content-Length": [ "225" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": null,
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.DataBox/jobs/PwshDiskgr7d\u0027 under resource group \u0027databox-pwsh-rg-ev\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
       "isContentBase64": false
     }
   },
-  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/PwshHeavyvog4/cancel?api-version=2025-02-01+6": {
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/PwshHeavycnjw/cancel?api-version=2025-02-01+6": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/PwshHeavyvog4/cancel?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/PwshHeavycnjw/cancel?api-version=2025-02-01",
       "Content": "{\r\n  \"reason\": \"Test Job\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -203,27 +198,26 @@
       }
     },
     "Response": {
-      "StatusCode": 204,
+      "StatusCode": 404,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "a7412033-0ba6-4fc0-b602-eacec59f9fb7" ],
+        "x-ms-correlation-request-id": [ "a7412033-0ba6-4fc0-b602-eacec59f9fb7" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260525T065053Z:a7412033-0ba6-4fc0-b602-eacec59f9fb7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "5294cab0-af21-4ff4-9e66-f9bbf6ba1966" ],
-        "x-ms-client-request-id": [ "9d2c5199-4bd5-4994-ab8d-17bd292312c1" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f36494aa-c092-4cef-9cdd-5a3c7a472793/westindia/f27e1657-b59d-473a-a25e-4ce544be7769" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "5294cab0-af21-4ff4-9e66-f9bbf6ba1966" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250417T213523Z:5294cab0-af21-4ff4-9e66-f9bbf6ba1966" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 10DA0173EACF40E2A82CF25A2866599B Ref B: MAA201060515023 Ref C: 2025-04-17T21:35:22Z" ],
-        "Date": [ "Thu, 17 Apr 2025 21:35:22 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: FEDD6E94237646ACB184A7ABF4439E99 Ref B: SG2AA1070301042 Ref C: 2026-05-25T06:50:53Z" ],
+        "Date": [ "Mon, 25 May 2026 06:50:53 GMT" ]
       },
       "ContentHeaders": {
+        "Content-Length": [ "226" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": null,
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.DataBox/jobs/PwshHeavycnjw\u0027 under resource group \u0027databox-pwsh-rg-ev\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
       "isContentBase64": false
     }
   }

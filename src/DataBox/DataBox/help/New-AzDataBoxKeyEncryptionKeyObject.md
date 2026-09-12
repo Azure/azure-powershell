@@ -1,7 +1,7 @@
 ---
 external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxKeyEncryptionKeyObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxkeyencryptionkeyobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,9 @@ Create an in-memory object for KeyEncryptionKey.
 ## SYNTAX
 
 ```
-New-AzDataBoxKeyEncryptionKeyObject -KekType <KekType> [-IdentityProperty <IIdentityProperties>]
- [-KekUrl <String>] [-KekVaultResourceId <String>] [<CommonParameters>]
+New-AzDataBoxKeyEncryptionKeyObject -KekType <String> [-IdentityPropertyType <String>] [-KekUrl <String>]
+ [-KekVaultResourceId <String>] [-UserAssignedResourceId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,12 +38,11 @@ Create a in-memory object for KeyEncryptionKey
 
 ## PARAMETERS
 
-### -IdentityProperty
-Managed identity properties used for key encryption.
-To construct, see NOTES section for IDENTITYPROPERTY properties and create a hash table.
+### -IdentityPropertyType
+Managed service identity type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IIdentityProperties
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 Type of encryption key used for key encryption.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.KekType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -100,6 +100,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserAssignedResourceId
+Arm resource id for user assigned identity to be used to fetch MSI token.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -107,7 +122,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.KeyEncryptionKey
 
 ## NOTES
 

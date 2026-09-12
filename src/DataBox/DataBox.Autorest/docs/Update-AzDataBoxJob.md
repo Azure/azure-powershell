@@ -8,28 +8,32 @@ schema: 2.0.0
 # Update-AzDataBoxJob
 
 ## SYNOPSIS
-Updates the properties of an existing job.
+Update the properties of an existing job.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
 Update-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-ContactDetail <IContactDetails>] [-ContactDetailContactName <String>] [-ContactDetailMobile <String>]
- [-ContactDetailPhone <String>] [-ContactDetailPhoneExtension <String>]
- [-EncryptionPreferenceDoubleEncryption <DoubleEncryption>]
- [-EncryptionPreferenceHardwareEncryption <HardwareEncryption>] [-IdentityType <String>]
- [-KeyEncryptionKey <IKeyEncryptionKey>] [-PreferencePreferredDataCenterRegion <String[]>]
- [-ReturnToCustomerPackageDetailCarrierAccountNumber <String>]
- [-ReturnToCustomerPackageDetailCarrierName <String>] [-ReturnToCustomerPackageDetailTrackingId <String>]
- [-ReverseShippingDetail <IShippingAddress>] [-ReverseTransportPreferredShipmentType <TransportShipmentTypes>]
- [-ShippingAddress <IShippingAddress>] [-StorageAccountAccessTierPreference <StorageAccountAccessTier[]>]
- [-Tag <Hashtable>] [-TransportPreferredShipmentType <TransportShipmentTypes>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Detail <IUpdateJobDetails>] [-IdentityType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzDataBoxJob -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzDataBoxJob -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates the properties of an existing job.
+Update the properties of an existing job.
 
 ## EXAMPLES
 
@@ -128,82 +132,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ContactDetail
-Contact details for notification and shipping.
-To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContactDetailContactName
-Contact name of the person.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContactDetailMobile
-Mobile number of the contact person.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContactDetailPhone
-Phone number of the contact person.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContactDetailPhoneExtension
-Phone extension number of the contact person.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -220,27 +148,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EncryptionPreferenceDoubleEncryption
-Defines secondary layer of software-based encryption enablement.
+### -Detail
+Details of a job to be updated.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EncryptionPreferenceHardwareEncryption
-Defines Hardware level encryption (Only for disk)
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.HardwareEncryption
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IUpdateJobDetails
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -255,7 +168,7 @@ Identity type
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -281,16 +194,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyEncryptionKey
-Key encryption key for the job.
-To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Update operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -328,21 +255,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PreferencePreferredDataCenterRegion
-Preferred data center region.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The Resource Group Name
 
@@ -352,113 +264,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReturnToCustomerPackageDetailCarrierAccountNumber
-Carrier Account Number of customer for customer disk.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReturnToCustomerPackageDetailCarrierName
-Name of the carrier.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReturnToCustomerPackageDetailTrackingId
-Tracking Id of shipment.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReverseShippingDetail
-Shipping address where customer wishes to receive the device.
-To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReverseTransportPreferredShipmentType
-Indicates Shipment Logistics type that the customer preferred.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ShippingAddress
-Shipping address of the customer.
-To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageAccountAccessTierPreference
-Preferences related to the Access Tier of storage accounts.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StorageAccountAccessTier[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -486,22 +291,7 @@ These tags can be used in viewing and grouping this resource (across resource gr
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TransportPreferredShipmentType
-Indicates Shipment Logistics type that the customer preferred.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -512,11 +302,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-User Assigned Identities
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -564,7 +355,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IJobResource
 
 ## NOTES
 

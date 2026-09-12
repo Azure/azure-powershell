@@ -162,7 +162,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IUnencryptedCredentials
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IUnencryptedCredentials
 
 ## NOTES
 
