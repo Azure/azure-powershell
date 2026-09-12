@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.0
 * Added cost management granularity support to backup vault creation and update cmdlets
     - Added `-CostManagementGranularity` parameter to `New-AzDataProtectionBackupVault` and `Update-AzDataProtectionBackupVault`
     - Allowed values are `VaultLevel`, `ProtectedItemLevel`, `ProtectedItemWithParentTag`
