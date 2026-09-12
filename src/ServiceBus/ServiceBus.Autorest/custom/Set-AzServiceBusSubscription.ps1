@@ -189,6 +189,17 @@ function Set-AzServiceBusSubscription{
         ${ProxyUseDefaultCredentials}
 	)
 
+    dynamicparam {
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command 'Az.ServiceBus.private\New-AzServiceBusSubscription_CreateViaIdentity' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) { $dynamicParameters.Add($entry.Key, $entry.Value) }
+            }
+        }
+        return $dynamicParameters
+    }
     process{
         try{
             $hasAutoDeleteOnIdle = $PSBoundParameters.Remove('AutoDeleteOnIdle')
