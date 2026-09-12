@@ -165,6 +165,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.NewSdkExtensions
                     ResourceTypeName = resourceType.ResourceType,
                     Locations = resourceType.Locations != null ? resourceType.Locations.ToArray() : null,
                     ApiVersions = resourceType.ApiVersions != null ? resourceType.ApiVersions.ToArray() : null,
+                    DefaultApiVersion = resourceType.DefaultApiVersion
                 }).ToArray(),
             };
         }
