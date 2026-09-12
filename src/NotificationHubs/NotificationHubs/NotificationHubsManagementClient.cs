@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs
                 GcmCredential = nhAttributes.GcmCredential,
                 MpnsCredential = nhAttributes.MpnsCredential,
                 WnsCredential = nhAttributes.WnsCredential,
-                NotificationHubCreateOrUpdateParametersName = nhAttributes.Name,
+                PropertiesName = nhAttributes.Name,
                 RegistrationTtl = nhAttributes.RegistrationTtl
             };
 
@@ -236,8 +236,8 @@ namespace Microsoft.Azure.Commands.NotificationHubs
                 BaiduCredential = nhAttributes.BaiduCredential,
                 GcmCredential = nhAttributes.GcmCredential,
                 MpnsCredential = nhAttributes.MpnsCredential,
-                WnsCredential = nhAttributes.WnsCredential,                
-                NotificationHubCreateOrUpdateParametersName = nhAttributes.Name,
+                WnsCredential = nhAttributes.WnsCredential,
+                PropertiesName = nhAttributes.Name,
                 RegistrationTtl = nhAttributes.RegistrationTtl
             };
 
