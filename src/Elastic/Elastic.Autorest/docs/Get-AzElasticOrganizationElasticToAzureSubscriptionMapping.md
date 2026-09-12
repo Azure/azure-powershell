@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticOrganizationElasticToAzureSubscriptionMapping
 
 ## SYNOPSIS
-Retrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
+\>;\n  /**\nRetrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzElasticOrganizationElasticToAzureSubscriptionMapping [-SubscriptionId <Str
 ```
 
 ## DESCRIPTION
-Retrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
+\>;\n  /**\nRetrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
 
 ## EXAMPLES
 

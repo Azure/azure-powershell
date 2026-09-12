@@ -165,7 +165,7 @@ Accept wildcard characters: False
 ```
 
 ### -MonitorName
-Monitor resource name
+A sequence of textual characters.
 
 ```yaml
 Type: System.String
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -RuleSetName
-Tag Rule Set resource name
+A sequence of textual characters.
 
 ```yaml
 Type: System.String
