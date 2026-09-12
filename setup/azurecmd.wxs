@@ -87,7 +87,13 @@
 
     <InstallExecuteSequence>
       <Custom Action='ExecutionPolicy' Before='InstallFiles'/>
+      <!-- Windows Installer does not always refresh the Add/Remove Programs InstallDate value when
+           an existing installation is upgraded, so Control Panel keeps reporting the date of the
+           previous version. Rewrite the value after RegisterProduct has published the ARP data. -->
+      <Custom Action='RefreshInstallDate' After='RegisterProduct'>NOT REMOVE</Custom>
     </InstallExecuteSequence>
+
+    <CustomAction Id='RefreshInstallDate' Execute='deferred' Property="POWERSHELLEXE" ExeCommand="-noprofile -nologo -noninteractive -executionpolicy bypass -command &quot;Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\[ProductCode]' -Name 'InstallDate' -Value (Get-Date -Format 'yyyyMMdd') -Type String -Force&quot;" Impersonate="no" Return='ignore'/>
 
   <?if $(sys.BUILDARCH) = "x64" ?>
 <!-- 
