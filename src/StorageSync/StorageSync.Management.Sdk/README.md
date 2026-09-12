@@ -26,10 +26,10 @@ payload-flattening-threshold: 1
 
 ###
 ``` yaml
-commit: 2ec4c94bd944ea1230297b26ba6bbfa94becdcce
+commit: d3b945fecd41154a224759bc6ef80826f37eaef5
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/storagesync/resource-manager/Microsoft.StorageSync/StorageSync/stable/2022-09-01/storagesync.json
-
+  - https://github.com/azure/azure-rest-api-specs/blob/$(commit)/specification/storagesync/resource-manager/Microsoft.StorageSync/StorageSync/stable/2025-12-01/storagesync.json
+  
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.StorageSync

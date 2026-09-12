@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
             else if (Permission != null)
             {
-                permissions = new List<Permission>(Permission.Select(p => new Permission(p.DataActions)));
+                permissions = new List<Permission>(Permission.Select(p => new Permission(dataActions: p.DataActions)));
             }
 
             Id = RoleHelper.ParseToRoleDefinitionId(Id);
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 readSqlRoleDefinitionGetResults = CosmosDBManagementClient.SqlResources.GetSqlRoleDefinition(Id, ResourceGroupName, AccountName);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {

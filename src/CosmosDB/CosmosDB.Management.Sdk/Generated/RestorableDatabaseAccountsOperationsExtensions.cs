@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='location'>
         /// Cosmos DB region, with spaces between words and each word capitalized.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<RestorableDatabaseAccountGetResult> ListByLocation(this IRestorableDatabaseAccountsOperations operations, string location)
+        public static Microsoft.Rest.Azure.IPage<RestorableDatabaseAccountGetResult> ListByLocation(this IRestorableDatabaseAccountsOperations operations, string location)
         {
                 return ((IRestorableDatabaseAccountsOperations)operations).ListByLocationAsync(location).GetAwaiter().GetResult();
         }
@@ -44,42 +44,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<RestorableDatabaseAccountGetResult>> ListByLocationAsync(this IRestorableDatabaseAccountsOperations operations, string location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RestorableDatabaseAccountGetResult>> ListByLocationAsync(this IRestorableDatabaseAccountsOperations operations, string location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByLocationWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Lists all the restorable Azure Cosmos DB database accounts available under
-        /// the subscription. This call requires
-        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
-        /// permission.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<RestorableDatabaseAccountGetResult> List(this IRestorableDatabaseAccountsOperations operations)
-        {
-                return ((IRestorableDatabaseAccountsOperations)operations).ListAsync().GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all the restorable Azure Cosmos DB database accounts available under
-        /// the subscription. This call requires
-        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
-        /// permission.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<RestorableDatabaseAccountGetResult>> ListAsync(this IRestorableDatabaseAccountsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -125,6 +92,117 @@ namespace Microsoft.Azure.Management.CosmosDB
         public static async System.Threading.Tasks.Task<RestorableDatabaseAccountGetResult> GetByLocationAsync(this IRestorableDatabaseAccountsOperations operations, string location, string instanceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetByLocationWithHttpMessagesAsync(location, instanceId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription. This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<RestorableDatabaseAccountGetResult> List(this IRestorableDatabaseAccountsOperations operations)
+        {
+                return ((IRestorableDatabaseAccountsOperations)operations).ListAsync().GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription. This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RestorableDatabaseAccountGetResult>> ListAsync(this IRestorableDatabaseAccountsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription and in a region.  This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<RestorableDatabaseAccountGetResult> ListByLocationNext(this IRestorableDatabaseAccountsOperations operations, string nextPageLink)
+        {
+                return ((IRestorableDatabaseAccountsOperations)operations).ListByLocationNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription and in a region.  This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RestorableDatabaseAccountGetResult>> ListByLocationNextAsync(this IRestorableDatabaseAccountsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByLocationNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription. This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<RestorableDatabaseAccountGetResult> ListNext(this IRestorableDatabaseAccountsOperations operations, string nextPageLink)
+        {
+                return ((IRestorableDatabaseAccountsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription. This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RestorableDatabaseAccountGetResult>> ListNextAsync(this IRestorableDatabaseAccountsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

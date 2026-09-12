@@ -114,7 +114,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// snapshot.
         /// Possible values include: &#39;Unknown&#39;, &#39;Pending&#39;, &#39;Available&#39;,
         /// &#39;InstantAccess&#39;, &#39;AvailableWithInstantAccess&#39;</param>
-        public SnapshotProperties(CreationData creationData, System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), int? diskSizeGb = default(int?), long? diskSizeBytes = default(long?), string diskState = default(string), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), bool? incremental = default(bool?), string incrementalSnapshotFamilyId = default(string), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), double? completionPercent = default(double?), CopyCompletionError copyCompletionError = default(CopyCompletionError), string dataAccessAuthMode = default(string), string snapshotAccessState = default(string))
+
+        /// <param name="immutabilityPolicy">The immutability policy currently applied to this snapshot. Present only
+        /// when an immutability policy has been configured.
+        /// </param>
+        public SnapshotProperties(CreationData creationData, System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), int? diskSizeGb = default(int?), long? diskSizeBytes = default(long?), string diskState = default(string), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), bool? incremental = default(bool?), string incrementalSnapshotFamilyId = default(string), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), double? completionPercent = default(double?), CopyCompletionError copyCompletionError = default(CopyCompletionError), string dataAccessAuthMode = default(string), string snapshotAccessState = default(string), ImmutabilityPolicy immutabilityPolicy = default(ImmutabilityPolicy))
 
         {
             this.TimeCreated = timeCreated;
@@ -141,6 +145,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.CopyCompletionError = copyCompletionError;
             this.DataAccessAuthMode = dataAccessAuthMode;
             this.SnapshotAccessState = snapshotAccessState;
+            this.ImmutabilityPolicy = immutabilityPolicy;
             CustomInit();
         }
 
@@ -311,6 +316,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "snapshotAccessState")]
         public string SnapshotAccessState {get; private set; }
+
+        /// <summary>
+        /// Gets the immutability policy currently applied to this snapshot. Present
+        /// only when an immutability policy has been configured.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "immutabilityPolicy")]
+        public ImmutabilityPolicy ImmutabilityPolicy {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -351,6 +363,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.CopyCompletionError.Validate();
             }
+
 
 
         }

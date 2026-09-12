@@ -18,6 +18,9 @@ Describe 'DiskBackupScenario' {
         $diskId = $env.TestDiskBackupScenario.DiskId
         $snapshotRg = $env.TestDiskBackupScenario.SnapshotRG
         $restoreDiskId = $env.TestDiskBackupScenario.RestoreDiskId
+        if ($TestMode -ne 'playback') {
+            $restoreDiskId = '{0}-{1}' -f $restoreDiskId, ([Guid]::NewGuid().ToString('N').Substring(0, 8))
+        }
         $policyName = $env.TestDiskBackupScenario.NewPolicyName
         $sub = $env.TestDiskBackupScenario.SubscriptionId
 

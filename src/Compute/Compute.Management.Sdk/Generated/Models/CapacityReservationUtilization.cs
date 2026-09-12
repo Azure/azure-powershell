@@ -33,11 +33,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="virtualMachinesAllocated">A list of all virtual machines resource ids allocated against the capacity
         /// reservation.
         /// </param>
-        public CapacityReservationUtilization(int? currentCapacity = default(int?), System.Collections.Generic.IList<SubResourceReadOnly> virtualMachinesAllocated = default(System.Collections.Generic.IList<SubResourceReadOnly>))
+
+        /// <param name="usedReservedCountBySubscription">For open capacity reservations, this provides a map of the used reserved
+        /// capacity count keyed by the subscription id (a GUID) that is consuming the
+        /// capacity, i.e. each entry maps a consuming subscription id to the count of
+        /// reserved capacity it is currently using. This is populated only for open
+        /// capacity reservations and is not reported for targeted and block capacity
+        /// reservations, which instead report allocation through
+        /// virtualMachinesAllocated. Minimum api-version: 2026-04-01.
+        /// </param>
+        public CapacityReservationUtilization(int? currentCapacity = default(int?), System.Collections.Generic.IList<SubResourceReadOnly> virtualMachinesAllocated = default(System.Collections.Generic.IList<SubResourceReadOnly>), System.Collections.Generic.IDictionary<string, int?> usedReservedCountBySubscription = default(System.Collections.Generic.IDictionary<string, int?>))
 
         {
             this.CurrentCapacity = currentCapacity;
             this.VirtualMachinesAllocated = virtualMachinesAllocated;
+            this.UsedReservedCountBySubscription = usedReservedCountBySubscription;
             CustomInit();
         }
 
@@ -61,5 +71,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualMachinesAllocated")]
         public System.Collections.Generic.IList<SubResourceReadOnly> VirtualMachinesAllocated {get; private set; }
+
+        /// <summary>
+        /// Gets for open capacity reservations, this provides a map of the used
+        /// reserved capacity count keyed by the subscription id (a GUID) that is
+        /// consuming the capacity, i.e. each entry maps a consuming subscription id to
+        /// the count of reserved capacity it is currently using. This is populated
+        /// only for open capacity reservations and is not reported for targeted and
+        /// block capacity reservations, which instead report allocation through
+        /// virtualMachinesAllocated. Minimum api-version: 2026-04-01.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "usedReservedCountBySubscription")]
+        public System.Collections.Generic.IDictionary<string, int?> UsedReservedCountBySubscription {get; private set; }
     }
 }

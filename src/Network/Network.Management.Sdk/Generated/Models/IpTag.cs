@@ -29,11 +29,15 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="tag">The value of the IP tag associated with the public IP. Example: SQL.
         /// </param>
-        public IpTag(string ipTagType = default(string), string tag = default(string))
+
+        /// <param name="firstPartyServiceTagId">The resource ID of the first party service tag associated with the IP tag.
+        /// </param>
+        public IpTag(string ipTagType = default(string), string tag = default(string), string firstPartyServiceTagId = default(string))
 
         {
             this.IPTagType = ipTagType;
             this.Tag = tag;
+            this.FirstPartyServiceTagId = firstPartyServiceTagId;
             CustomInit();
         }
 
@@ -55,5 +59,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tag")]
         public string Tag {get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource ID of the first party service tag associated with
+        /// the IP tag.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "firstPartyServiceTagId")]
+        public string FirstPartyServiceTagId {get; set; }
     }
 }

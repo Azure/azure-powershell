@@ -61,7 +61,6 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesMetadata]))]
     [System.String]
     # The policy definition metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
@@ -69,7 +68,6 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IParameterDefinitions]))]
     [System.String]
     # The parameter definitions for parameters used in the policy rule.
     # The keys are the parameter names.
@@ -128,10 +126,11 @@ param(
 
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
+    [Alias('ManagementGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The ID of the management group.
-    ${ManagementGroupName},
+    ${ManagementGroupId},
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
@@ -196,12 +195,6 @@ begin {
     if ($writeln) {
         Write-Host -ForegroundColor Cyan "begin:New-AzPolicyDefinition(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
-
-    # mapping table of generated cmdlet parameter sets
-    $mapping = @{
-        CreateExpanded = 'Az.Policy.private\New-AzPolicyDefinition_CreateExpanded';
-        CreateExpanded1 = 'Az.Policy.private\New-AzPolicyDefinition_CreateExpanded1';
-    }
 }
 
 process {
@@ -246,13 +239,11 @@ process {
 
     # resolve [string] 'metadata' input parameter to [hashtable]
     if ($Metadata) {
-        $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
+        $calledParameters.Metadata = (ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
     }
     elseif ($calledParameters.Metadata) {
-        $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
+        $calledParameters.Metadata = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
     }
-
-    $null = $calledParameters.Remove('Metadata')
 
     # resolve [string] 'parameter' input parameter (could be a path)
     if ($Parameter) {
@@ -265,28 +256,15 @@ process {
         $null = $calledParameters.Remove('Parameter')
     }
 
-    # determine called parameterset and convert ManagementGroupName parameter to ManagementGroupId if needed
-    if ($calledParameters.ManagementGroupName) {
-        $calledParameterSet = 'CreateExpanded1'
-        $calledParameters.ManagementGroupId = $calledParameters.ManagementGroupName
-        $null = $calledParameters.Remove('ManagementGroupName')
-    } else {
-        $calledParameterSet = 'CreateExpanded'
+    # ensure we have a subscription ID if the user did not provide a management group ID
+    if (!$calledParameters.ManagementGroupId) {
         if (!$SubscriptionId) {
             $calledParameters.SubscriptionId = (Get-SubscriptionId)
         }
     }
 
-    if ($writeln) {
-        Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $calledParameters ')'
-    }
-
-    # call internal generated cmdlet, convert generic JSON output properties to PSCustomObject
-    $cmdInfo = Get-Command -Name $mapping[$calledParameterSet]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $calledParameterSet, $PSCmdlet)
-    $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$calledParameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-    $scriptCmd = {& $wrappedCmd @calledParameters}
-    $item = Invoke-Command -ScriptBlock $scriptCmd
+    # call the internal cmdlet with the parsed parameters
+    $item = Az.Policy.internal\New-AzPolicyDefinition @calledParameters
 
     $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
     $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (ConvertObjectToPSObject $item.Parameter) -Force

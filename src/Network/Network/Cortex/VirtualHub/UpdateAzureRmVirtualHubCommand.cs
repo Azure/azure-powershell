@@ -133,6 +133,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The IPv6 address space string for this virtual hub.")]
+        public string AddressPrefixV6 { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -169,6 +174,12 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrWhiteSpace(this.AddressPrefix))
             {
                 virtualHubToUpdate.AddressPrefix = this.AddressPrefix;
+            }
+
+            //// Update IPv6 address prefix, if specified
+            if (!string.IsNullOrWhiteSpace(this.AddressPrefixV6))
+            {
+                virtualHubToUpdate.AddressPrefixV6 = this.AddressPrefixV6;
             }
 
             //// HubVirtualNetworkConnections

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description(@"Lists deleted backup vaults by location")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/deletedVaults", ApiVersion = "2026-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/deletedVaults", ApiVersion = "2026-06-01")]
     public partial class GetAzDataProtectionSoftDeletedBackupVault_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IContext

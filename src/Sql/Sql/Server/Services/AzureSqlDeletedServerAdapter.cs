@@ -77,14 +77,24 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         }
 
         /// <summary>
+        /// Gets all deleted Azure SQL servers in a subscription.
+        /// </summary>
+        /// <param name="subscriptionId">Optional. The subscription ID. If null, uses the current context.</param>
+        /// <returns>List of all deleted servers in the subscription.</returns>
+        public IEnumerable<DeletedServer> ListDeletedServers(string subscriptionId = null)
+        {
+            return Communicator.ListDeletedServers(subscriptionId);
+        }
+
+        /// <summary>
         /// Gets all deleted Azure SQL servers in a location.
         /// </summary>
         /// <param name="location">The Azure region (location) where the deleted servers resided.</param>
         /// <param name="subscriptionId">Optional. The subscription ID associated with the servers. If null, uses the current context.</param>
         /// <returns>List of deleted servers in the specified location.</returns>
-        public IEnumerable<DeletedServer> ListDeletedServers(string location, string subscriptionId = null)
+        public IEnumerable<DeletedServer> ListDeletedServersByLocation(string location, string subscriptionId = null)
         {
-            return Communicator.ListDeletedServers(location, subscriptionId);
+            return Communicator.ListDeletedServersByLocation(location, subscriptionId);
         }
 
         /// <summary>
@@ -99,21 +109,30 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
                 return null;
             }
 
-            string[] segments = deletedServer.OriginalId.Split('/');
-
-            // Parse servername and subscription from originalId if available
-            string parsedServerName = segments[8];
-            string parsedSubscriptionId = segments[2];
-            string parsedResourceGroupName = segments[4];
+            // Id format: /subscriptions/{sub}[2]/providers/Microsoft.Sql/locations/{location}[6]/deletedServers/{name}
+            // Note: the subscription-level list endpoint embeds the location display name (e.g. "Central US")
+            // while the location-scoped endpoints embed the normalized name (e.g. "centralus"). Strip spaces so
+            // callers always get a consistent, normalized location value regardless of which endpoint was used.
+            string[] idSegments = deletedServer.Id?.Split('/');
+            string parsedSubscriptionId = idSegments?.Length > 2 ? idSegments[2] : null;
+            string parsedLocation = idSegments?.Length > 6
+                ? idSegments[6]?.Replace(" ", string.Empty).ToLowerInvariant()
+                : null;
+            string[] originalIdSegments = deletedServer.OriginalId?.Split('/');
+            string parsedResourceGroupName = !string.IsNullOrEmpty(deletedServer.OriginalResourceGroup)
+                ? deletedServer.OriginalResourceGroup
+                : originalIdSegments?.Length > 4 ? originalIdSegments[4] : null;
 
             AzureSqlDeletedServerModel model = new AzureSqlDeletedServerModel()
             {
-                ServerName = parsedServerName,
+                ServerName = deletedServer.Name,
                 DeletionTime = deletedServer.DeletionTime,
                 FullyQualifiedDomainName = deletedServer.FullyQualifiedDomainName,
                 Version = deletedServer.Version,
                 Id = deletedServer.Id,
                 OriginalId = deletedServer.OriginalId,
+                Location = parsedLocation,
+                ScheduledPurgeTime = deletedServer.ScheduledPurgeTime,
                 SubscriptionId = parsedSubscriptionId,
                 ResourceGroupName = parsedResourceGroupName
             };

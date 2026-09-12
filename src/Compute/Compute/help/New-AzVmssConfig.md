@@ -28,10 +28,11 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-SpotRestoreTimeout <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-TerminateScheduledEvents]
  [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>] [-ProximityPlacementGroupId <String>]
  [-ScaleInPolicy <String[]>] [-EncryptionAtHost] [-OrchestrationMode <String>]
- [-CapacityReservationGroupId <String>] [-UserData <String>] [-AutomaticRepairAction <String>]
+ [-CapacityReservationGroupId <String>] [-DisableCapacityReservationAssignment] [-UserData <String>] [-AutomaticRepairAction <String>]
  [-BaseRegularPriorityCount <Int32>] [-RegularPriorityPercentage <Int32>] [-ImageReferenceId <String>]
  [-SharedGalleryImageId <String>] [-OSImageScheduledEventEnabled]
- [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
+ [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-ProcessorMode <String>] [-SecurityType <String>]
+ [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>] [-SecurityPostureExcludeExtension <String[]>]
  [-SkuProfileVmSize <String[]>] [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate]
  [-EnableResilientVMDelete] [-EnableAutomaticZoneRebalance] [-AutomaticZoneRebalanceStrategy <String>]
@@ -57,10 +58,11 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>] [-ProximityPlacementGroupId <String>]
  [-ScaleInPolicy <String[]>] -IdentityType <ResourceIdentityType> [-IdentityId <String[]>]
  [-EncryptionIdentity <String>] [-EncryptionAtHost] [-OrchestrationMode <String>]
- [-CapacityReservationGroupId <String>] [-UserData <String>] [-AutomaticRepairAction <String>]
+ [-CapacityReservationGroupId <String>] [-DisableCapacityReservationAssignment] [-UserData <String>] [-AutomaticRepairAction <String>]
  [-BaseRegularPriorityCount <Int32>] [-RegularPriorityPercentage <Int32>] [-ImageReferenceId <String>]
  [-SharedGalleryImageId <String>] [-OSImageScheduledEventEnabled]
- [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
+ [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-ProcessorMode <String>] [-SecurityType <String>]
+ [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>] [-SecurityPostureExcludeExtension <String[]>]
  [-SkuProfileVmSize <String[]>] [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate]
  [-EnableResilientVMDelete] [-EnableAutomaticZoneRebalance] [-AutomaticZoneRebalanceStrategy <String>]
@@ -225,6 +227,28 @@ $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
 
 This example Creates a new VMSS using VMSSConfig object for the Trusted Launch Security Type and validates flags SecureBoot and Vtpm as True by default.
 
+### Example 6: Create a VMSS config with processor mode
+```powershell
+New-AzVmssConfig -Location "westus" -SkuName "Standard_E2pds_v8" -SkuCapacity 2 -ProcessorMode "Deterministic"
+```
+
+### Example 7: Create a SpotPlus VMSS config
+```powershell
+New-AzVmssConfig -Location "eastus2" -SkuName "Standard_D2s_v5" -SkuCapacity 2 -UpgradePolicyMode "Automatic" -Priority "SpotPlus" -EvictionPolicy "Deallocate" -MaxPrice -1
+```
+
+This command creates a scale set configuration object whose instances use the Spot Plus priority, the next generation of Azure Spot that provides higher reliability and longer running time than 'Spot' at a discounted price.
+'-EvictionPolicy' and '-MaxPrice' behave the same way as they do for 'Spot'.
+Using 'SpotPlus' requires the 'Microsoft.Compute/SpotPlus' subscription feature to be registered and a region where the feature is enabled.
+
+### Example 8: Create a SpotPlus VMSS config with a priority mix
+```powershell
+New-AzVmssConfig -Location "eastus2" -SkuName "Standard_D2s_v5" -SkuCapacity 10 -OrchestrationMode "Flexible" -PlatformFaultDomainCount 1 -Priority "SpotPlus" -EvictionPolicy "Delete" -BaseRegularPriorityCount 5 -RegularPriorityPercentage 50
+```
+
+This command creates a Flexible orchestration mode scale set configuration object that mixes regular priority instances with Spot Plus instances.
+The first 5 instances are regular priority, and 50 percent of the instances above that base are also regular priority. The remaining instances use the Spot Plus priority.
+
 ## PARAMETERS
 
 ### -AutomaticRepairAction
@@ -352,6 +376,21 @@ Disable Auto Rollback for Auto OS Upgrade Policy
 
 ```yaml
 Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableCapacityReservationAssignment
+Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -949,10 +988,26 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machien in the scale set.  Only supported values are 'Regular', 'Spot' and 'Low'.
+The priority for the virtual machine in the scale set.  Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'.
 'Regular' is for regular virtual machine.
 'Spot' is for spot virtual machine.
+'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'.
 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProcessorMode
+Specifies processor frequency behavior for VM instances in the scale set model. Typical values are `Deterministic` and `Opportunistic`.
 
 ```yaml
 Type: System.String

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="description">Gets or sets the description.
         /// </param>
-        public ConnectionTypeProperties(bool? isGlobal = default(bool?), System.Collections.Generic.IDictionary<string, FieldDefinition> fieldDefinitions = default(System.Collections.Generic.IDictionary<string, FieldDefinition>), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string description = default(string))
+        public ConnectionTypeProperties(bool? isGlobal = default(bool?), System.Collections.Generic.IDictionary<string, FieldDefinition> fieldDefinitions = default(System.Collections.Generic.IDictionary<string, FieldDefinition>), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string description = default(string))
 
         {
             this.IsGlobal = isGlobal;
@@ -72,13 +72,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets gets the creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
-        public System.DateTimeOffset CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets or sets gets or sets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; set; }
+        public System.DateTimeOffset? LastModifiedTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the description.

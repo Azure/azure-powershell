@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -41,7 +41,7 @@ function Test-MongoOperationsCmdlets
 Try {
 
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -DisableLocalAuth $true
 
             
       # create a new database
@@ -166,7 +166,7 @@ function Test-MongoInAccountRestoreOperationsSharedRUResourcesCmdlets
 Try {
 
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous -DisableLocalAuth $true
 
 
       # create a new database
@@ -292,7 +292,7 @@ function Test-MongoInAccountRestoreOperationsCmdlets
 Try {
 
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous -DisableLocalAuth $true
 
 
       # create a new database
@@ -456,7 +456,7 @@ function Test-MongoDBInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
     $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
     Try {
         $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-        New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
+        New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous -DisableLocalAuth $true
 
         # 1. Create a new database
         $NewDatabase = New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
@@ -598,7 +598,7 @@ function Test-MongoInAccountRestoreOperationsNoTimestampCmdlets
 Try {
 
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous -DisableLocalAuth $true
 
 
       # create a new database
@@ -732,7 +732,7 @@ function Test-MongoOperationsCmdletsUsingInputObject
 
 Try {
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -DisableLocalAuth $true
 
       #read the associated CosmosDB account
       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
@@ -880,7 +880,7 @@ function Test-MongoThroughputCmdlets
 
   Try{    
     $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-    New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+    New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -DisableLocalAuth $true
    
     $NewDatabase =  New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
     $Throughput = Get-AzCosmosDBMongoDBDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
@@ -972,7 +972,7 @@ function Test-MongoMigrateThroughputCmdlets
 
   Try{
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
-      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -DisableLocalAuth $true
 
       $NewDatabase =  New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
       $Throughput = Get-AzCosmosDBMongoDBDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
@@ -1058,7 +1058,7 @@ function Test-MongoRBACCmdlets
 
 Try {
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Capabilities $capabilities -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Capabilities $capabilities -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -DisableLocalAuth $true
 
 
       # create a new database

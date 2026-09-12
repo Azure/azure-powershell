@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public IList<InstanceViewStatus> Statuses { get; set; }
         public string AssignedHost { get; set; }
         public string PlacementGroupId { get; set; }
+        public string CapacityReservationType { get; set; }
 
     }
 }

@@ -66,6 +66,14 @@ function New-AzMigrateLocalServerReplication {
         ${IsDynamicMemoryEnabled},
 
         [Parameter()]
+        [ValidateSet("true" , "false")]
+        [ArgumentCompleter( { "true" , "false" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies whether to migrate the server as an Azure Arc-enabled VM. When set to 'true', an Azure Arc-enabled machine resource with the same name as -TargetVMName must already exist in the resource group specified by -TargetResourceGroupId.
+        ${MigrateAsArcVM},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.Int64]
         # Specifies the target RAM size in MB. 
@@ -182,6 +190,10 @@ function New-AzMigrateLocalServerReplication {
         if ($HasIsDynamicMemoryEnabled) {
             $isDynamicRamEnabled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
         }
+        $HasMigrateAsArcVM = $PSBoundParameters.ContainsKey('MigrateAsArcVM')
+        if ($HasMigrateAsArcVM) {
+            $migrateAsArcVMEnabled = [System.Convert]::ToBoolean($MigrateAsArcVM)
+        }
         $HasTargetVMRam = $PSBoundParameters.ContainsKey('TargetVMRam')
         $HasTargetVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetVirtualSwitchId')
         $HasTargetTestVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetTestVirtualSwitchId')
@@ -195,6 +207,7 @@ function New-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('TargetVirtualSwitchId')
         $null = $PSBoundParameters.Remove('TargetTestVirtualSwitchId')
         $null = $PSBoundParameters.Remove('IsDynamicMemoryEnabled')
+        $null = $PSBoundParameters.Remove('MigrateAsArcVM')
         $null = $PSBoundParameters.Remove('TargetVMRam')
         $null = $PSBoundParameters.Remove('DiskToInclude')
         $null = $PSBoundParameters.Remove('NicToInclude')
@@ -243,6 +256,39 @@ function New-AzMigrateLocalServerReplication {
                 -ResourceId $TargetTestVirtualSwitchId `
                 -ResourceType "LogicalNetwork" `
                 -Format $IdFormats.LogicalNetworkArmIdTemplate
+        }
+
+        # Validate TargetVMName (pure parameter check; hoisted up-front so we fail fast
+        # before doing any source/target discovery work).
+        if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
+            throw "The target virtual machine name must be between 1 and 64 characters long."
+        }
+        elseif ($TargetVMName -notmatch "^[^_\W][a-zA-Z0-9\-]{0,63}(?<![-._])$") {
+            throw "The target virtual machine name must begin with a letter or number, and can contain only letters, numbers, or hyphens(-). The names cannot contain special characters \/""[]:|<>+=;,?*@&, whitespace, or begin with '_' or end with '.' or '-'."
+        }
+        elseif (IsReservedOrTrademarked($TargetVMName)) {
+            throw "The target virtual machine name '$TargetVMName' or part of the name is a trademarked or reserved word."
+        }
+
+        # Arc-enabled VM reuse preflight (only when -MigrateAsArcVM "true").
+        # Verifies that the customer-onboarded Arc machine exists at the expected
+        # target ARM tuple and has a reusable Kind. Performed up-front so the
+        # cmdlet fails fast on Arc misconfig before any discovery work.
+        if ($HasMigrateAsArcVM -and $migrateAsArcVMEnabled) {
+            # Az.ConnectedMachine is a conditional dependency required only for the Arc
+            # reuse preflight. Fail fast with an actionable install hint if it's missing.
+            CheckConnectedMachineModuleDependency
+
+            # $TargetResourceGroupId is "/subscriptions/{sub}/resourceGroups/{rg}".
+            # Format already validated above by Test-AzureResourceIdFormat.
+            $targetRgIdArray = $TargetResourceGroupId.Split("/")
+            $targetSubId     = $targetRgIdArray[2]
+            $targetRgName    = $targetRgIdArray[4]
+
+            Test-ArcMachineReuseEligibility `
+                -TargetSubscriptionId    $targetSubId `
+                -TargetResourceGroupName $targetRgName `
+                -TargetVMName            $TargetVMName
         }
 
         # $MachineId is in the format of
@@ -618,17 +664,6 @@ function New-AzMigrateLocalServerReplication {
             throw "$($ArcResourceBridgeValidationMessages.NotRunning). Make sure the Arc Resource Bridge is online before retrying."
         }
 
-        # Validate TargetVMName
-        if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
-            throw "The target virtual machine name must be between 1 and 64 characters long."
-        }
-        elseif ($TargetVMName -notmatch "^[^_\W][a-zA-Z0-9\-]{0,63}(?<![-._])$") {
-            throw "The target virtual machine name must begin with a letter or number, and can contain only letters, numbers, or hyphens(-). The names cannot contain special characters \/""[]:|<>+=;,?*@&, whitespace, or begin with '_' or end with '.' or '-'."
-        }
-        elseif (IsReservedOrTrademarked($TargetVMName)) {
-            throw "The target virtual machine name '$TargetVMName' or part of the name is a trademarked or reserved word."
-        }
-
         # Construct create protected item request object
         $protectedItemProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemModelProperties]::new()
         $protectedItemProperties.PolicyName = $policyName
@@ -683,6 +718,9 @@ function New-AzMigrateLocalServerReplication {
         $customProperties.TargetResourceGroupId = $TargetResourceGroupId
         $customProperties.TargetVMName = $TargetVMName
         $customProperties.IsDynamicRam = if ($HasIsDynamicMemoryEnabled) { $isDynamicRamEnabled } else {  $isSourceDynamicMemoryEnabled }
+        if ($HasMigrateAsArcVM) {
+            $customProperties.MigrateAsArcVM = $migrateAsArcVMEnabled
+        }
     
         # Determine target VM Hyper-V Generation
         if ($SiteType -eq $SiteTypes.HyperVSites) { 

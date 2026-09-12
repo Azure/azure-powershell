@@ -40,10 +40,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <param name="logProgress">Gets or sets progress log option.
         /// </param>
 
+        /// <param name="runtimeEnvironment">Environment of the runbook.
+        /// </param>
+
         /// <param name="runbookType">Gets or sets the type of the runbook.
         /// Possible values include: &#39;Script&#39;, &#39;Graph&#39;, &#39;PowerShellWorkflow&#39;,
         /// &#39;PowerShell&#39;, &#39;GraphPowerShellWorkflow&#39;, &#39;GraphPowerShell&#39;, &#39;Python2&#39;,
-        /// &#39;Python3&#39;, &#39;PowerShell72&#39;</param>
+        /// &#39;Python3&#39;, &#39;Python&#39;, &#39;PowerShell72&#39;</param>
 
         /// <param name="draft">Gets or sets the draft runbook properties.
         /// </param>
@@ -56,7 +59,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="logActivityTrace">Gets or sets the activity-level tracing options of the runbook.
         /// </param>
-        public RunbookCreateOrUpdateParameters(string runbookType, string name = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), bool? logVerbose = default(bool?), bool? logProgress = default(bool?), RunbookDraft draft = default(RunbookDraft), ContentLink publishContentLink = default(ContentLink), string description = default(string), int? logActivityTrace = default(int?))
+        public RunbookCreateOrUpdateParameters(string runbookType, string name = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), bool? logVerbose = default(bool?), bool? logProgress = default(bool?), string runtimeEnvironment = default(string), RunbookDraft draft = default(RunbookDraft), ContentLink publishContentLink = default(ContentLink), string description = default(string), int? logActivityTrace = default(int?))
 
         {
             this.Name = name;
@@ -64,6 +67,7 @@ namespace Microsoft.Azure.Management.Automation.Models
             this.Tags = tags;
             this.LogVerbose = logVerbose;
             this.LogProgress = logProgress;
+            this.RuntimeEnvironment = runtimeEnvironment;
             this.RunbookType = runbookType;
             this.Draft = draft;
             this.PublishContentLink = publishContentLink;
@@ -109,7 +113,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         public bool? LogProgress {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the type of the runbook. Possible values include: &#39;Script&#39;, &#39;Graph&#39;, &#39;PowerShellWorkflow&#39;, &#39;PowerShell&#39;, &#39;GraphPowerShellWorkflow&#39;, &#39;GraphPowerShell&#39;, &#39;Python2&#39;, &#39;Python3&#39;, &#39;PowerShell72&#39;
+        /// Gets or sets environment of the runbook.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.runtimeEnvironment")]
+        public string RuntimeEnvironment {get; set; }
+
+        /// <summary>
+        /// Gets or sets gets or sets the type of the runbook. Possible values include: &#39;Script&#39;, &#39;Graph&#39;, &#39;PowerShellWorkflow&#39;, &#39;PowerShell&#39;, &#39;GraphPowerShellWorkflow&#39;, &#39;GraphPowerShell&#39;, &#39;Python2&#39;, &#39;Python3&#39;, &#39;Python&#39;, &#39;PowerShell72&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.runbookType")]
         public string RunbookType {get; set; }
@@ -150,6 +160,7 @@ namespace Microsoft.Azure.Management.Automation.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "RunbookType");
             }
+
 
 
 

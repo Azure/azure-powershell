@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="tier">The tier of the SKU.
-        /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Basic&#39;, &#39;Local&#39;</param>
+        /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Basic&#39;, &#39;Local&#39;,
+        /// &#39;MultiCloud&#39;</param>
 
         /// <param name="family">The family of the SKU.
         /// Possible values include: &#39;UnlimitedData&#39;, &#39;MeteredData&#39;</param>
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Name {get; set; }
 
         /// <summary>
-        /// Gets or sets the tier of the SKU. Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Basic&#39;, &#39;Local&#39;
+        /// Gets or sets the tier of the SKU. Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Basic&#39;, &#39;Local&#39;, &#39;MultiCloud&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tier")]
         public string Tier {get; set; }

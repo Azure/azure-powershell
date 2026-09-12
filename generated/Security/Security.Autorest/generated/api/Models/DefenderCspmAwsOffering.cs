@@ -116,16 +116,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         internal Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingMdcContainersImageAssessment MdcContainersImageAssessment { get => (this._mdcContainersImageAssessment = this._mdcContainersImageAssessment ?? new Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderCspmAwsOfferingMdcContainersImageAssessment()); set => this._mdcContainersImageAssessment = value; }
 
         /// <summary>Internal Acessors for Description</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description = value ?? null; }
 
         /// <summary>Internal Acessors for Ciem</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingCiem Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingInternal.Ciem { get => (this._ciem = this._ciem ?? new Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderCspmAwsOfferingCiem()); set { {_ciem = value;} } }
 
         /// <summary>Internal Acessors for CiemDiscovery</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingCiemDiscovery Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingInternal.CiemDiscovery { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingCiemInternal)Ciem).CiemDiscovery; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingCiemInternal)Ciem).CiemDiscovery = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingCiemDiscovery Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingInternal.CiemDiscovery { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingCiemInternal)Ciem).CiemDiscovery; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingCiemInternal)Ciem).CiemDiscovery = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for CiemOidc</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingCiemOidc Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingInternal.CiemOidc { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingCiemInternal)Ciem).CiemOidc; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingCiemInternal)Ciem).CiemOidc = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingCiemOidc Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingInternal.CiemOidc { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingCiemInternal)Ciem).CiemOidc; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingCiemInternal)Ciem).CiemOidc = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DataSensitivityDiscovery</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingDataSensitivityDiscovery Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingInternal.DataSensitivityDiscovery { get => (this._dataSensitivityDiscovery = this._dataSensitivityDiscovery ?? new Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderCspmAwsOfferingDataSensitivityDiscovery()); set { {_dataSensitivityDiscovery = value;} } }
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingVMScanners Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingInternal.VMScanner { get => (this._vMScanner = this._vMScanner ?? new Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderCspmAwsOfferingVMScanners()); set { {_vMScanner = value;} } }
 
         /// <summary>Internal Acessors for VMScannerConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingVMScannersConfiguration Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingInternal.VMScannerConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingVMScannersInternal)VMScanner).Configuration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingVMScannersInternal)VMScanner).Configuration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingVMScannersConfiguration Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingInternal.VMScannerConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingVMScannersInternal)VMScanner).Configuration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingVMScannersInternal)VMScanner).Configuration = value ?? null /* model class */; }
 
         /// <summary>The type of the security offering.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Security.Constant]
