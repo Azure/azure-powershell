@@ -5,35 +5,40 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{AD3998BD-3E51-44D1-A055-D7A9033ADB5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{C893888E-9690-4DE5-9158-164C21009FB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{C893888E-9690-4DE5-9158-164C21009FB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{F63559FE-5FCD-440A-A685-A99438C4C31B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{F63559FE-5FCD-440A-A685-A99438C4C31B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{F3C54E60-D53B-478C-8173-BA9101AB3D58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{F3C54E60-D53B-478C-8173-BA9101AB3D58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{ED803440-AD43-4EDC-9709-CF9C467543BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{ED803440-AD43-4EDC-9709-CF9C467543BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{8BEB7055-A642-4387-8DF2-9ED7B43FEE4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{8BEB7055-A642-4387-8DF2-9ED7B43FEE4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{E18F35D9-2F59-4668-9F74-F8A9BC1B3AEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{E18F35D9-2F59-4668-9F74-F8A9BC1B3AEE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F1010D34-3CBD-4B21-96CB-6153B422A0EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperationalInsights.Test", "OperationalInsights.Test\OperationalInsights.Test.csproj", "{09EAF805-4AE7-4EC1-B76C-DD2808738AC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights.Test", "OperationalInsights.Test\OperationalInsights.Test.csproj", "{09EAF805-4AE7-4EC1-B76C-DD2808738AC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperationalInsights", "OperationalInsights\OperationalInsights.csproj", "{42DF21A7-1002-488D-AE91-973EE23F3112}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights", "OperationalInsights\OperationalInsights.csproj", "{42DF21A7-1002-488D-AE91-973EE23F3112}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependentModules", "DependentModules", "{77B64301-6B96-4D75-B914-B4F3751E0F44}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Storage", "..\Storage\Storage.Autorest\Az.Storage.csproj", "{185FA7C2-EDC3-458D-8C3D-DB42DBE99EBE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management.Sdk", "..\Storage\Storage.Management.Sdk\Storage.Management.Sdk.csproj", "{3FDF69B9-5F16-4921-AACF-ABB660040E95}"
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Management.Sdk", "..\Storage\Storage.Management.Sdk\Storage.Management.Sdk.csproj", "{3FDF69B9-5F16-4921-AACF-ABB660040E95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Management", "..\Storage\Storage.Management\Storage.Management.csproj", "{B6467B71-8B8E-4A29-8159-EC8DBACF4691}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management", "..\Storage\Storage.Management\Storage.Management.csproj", "{B6467B71-8B8E-4A29-8159-EC8DBACF4691}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage", "..\Storage\Storage\Storage.csproj", "{9938F31A-07ED-4820-9CC2-4E7CB72D306B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage", "..\Storage\Storage\Storage.csproj", "{9938F31A-07ED-4820-9CC2-4E7CB72D306B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{A3828DB6-6110-4291-A0B2-C49D379B0032}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{A3828DB6-6110-4291-A0B2-C49D379B0032}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.common", "..\Storage\Storage.common\Storage.common.csproj", "{7A67C3ED-5F2E-4B1A-A96A-2A0757041078}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.common", "..\Storage\Storage.common\Storage.common.csproj", "{7A67C3ED-5F2E-4B1A-A96A-2A0757041078}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights.Management.Sdk", "OperationalInsights.Management.Sdk\OperationalInsights.Management.Sdk.csproj", "{131963B1-37FC-439C-A29A-9CC1BF264771}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Storage", "..\..\generated\Storage\Storage.Autorest\Az.Storage.csproj", "{E768E7C5-5F2D-4BE1-852A-3A36DF0E82C6}"
 EndProject
@@ -41,9 +46,6 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C893888E-9690-4DE5-9158-164C21009FB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -98,6 +100,13 @@ Global
 		{7A67C3ED-5F2E-4B1A-A96A-2A0757041078}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A67C3ED-5F2E-4B1A-A96A-2A0757041078}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A67C3ED-5F2E-4B1A-A96A-2A0757041078}.Release|Any CPU.Build.0 = Release|Any CPU
+		{131963B1-37FC-439C-A29A-9CC1BF264771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{131963B1-37FC-439C-A29A-9CC1BF264771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{131963B1-37FC-439C-A29A-9CC1BF264771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{131963B1-37FC-439C-A29A-9CC1BF264771}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 		{E768E7C5-5F2D-4BE1-852A-3A36DF0E82C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E768E7C5-5F2D-4BE1-852A-3A36DF0E82C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E768E7C5-5F2D-4BE1-852A-3A36DF0E82C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
