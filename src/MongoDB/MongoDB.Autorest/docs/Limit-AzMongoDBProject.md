@@ -41,8 +41,8 @@ Limit-AzMongoDBProject -ResourceGroupName sharmaanuTest -OrganizationName Kaneda
 ```
 
 ```output
-Current   : 0
-IsReached : False
+Current   : 1
+IsReached : True
 Maximum   : 1
 Type      : FREE
 ```
