@@ -112,7 +112,6 @@ pac110,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac111,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.KubernetesRuntime.0.2.0.zip;sourceType=sa]Az.KubernetesRuntime,0.2.0
 pac112,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Kusto.3.0.0.zip;sourceType=sa]Az.Kusto,3.0.0
 pac113,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.LabServices.0.2.0.zip;sourceType=sa]Az.LabServices,0.2.0
-pac114,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.LambdaTest.1.0.0.zip;sourceType=sa]Az.LambdaTest,1.0.0
 pac115,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.LoadTesting.2.0.0.zip;sourceType=sa]Az.LoadTesting,2.0.0
 pac116,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.LogicApp.1.7.0.zip;sourceType=sa]Az.LogicApp,1.7.0
 pac117,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MachineLearning.1.3.0.zip;sourceType=sa]Az.MachineLearning,1.3.0
