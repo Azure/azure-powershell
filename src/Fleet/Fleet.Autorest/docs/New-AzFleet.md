@@ -15,16 +15,21 @@ Create a Fleet.
 ### CreateExpanded (Default)
 ```
 New-AzFleet -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-EnableSystemAssignedIdentity] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-AgentProfileSubnetId <String>] [-AgentProfileVMSize <String>]
+ [-ApiServerAccessProfileEnablePrivateCluster] [-ApiServerAccessProfileEnableVnetIntegration]
+ [-ApiServerAccessProfileSubnetId <String>] [-EnableSystemAssignedIdentity] [-HubProfileDnsPrefix <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzFleet -InputObject <IFleetIdentity> -Location <String> [-IfMatch <String>] [-IfNoneMatch <String>]
- [-EnableSystemAssignedIdentity] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AgentProfileSubnetId <String>] [-AgentProfileVMSize <String>] [-ApiServerAccessProfileEnablePrivateCluster]
+ [-ApiServerAccessProfileEnableVnetIntegration] [-ApiServerAccessProfileSubnetId <String>]
+ [-EnableSystemAssignedIdentity] [-HubProfileDnsPrefix <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -145,6 +150,83 @@ This command creates a Fleet resource with a long running operation.
 
 ## PARAMETERS
 
+### -AgentProfileSubnetId
+The ID of the subnet which the Fleet hub node will join on startup.
+If this is not specified, a vnet and subnet will be generated and used.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AgentProfileVMSize
+The virtual machine size of the Fleet hub.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApiServerAccessProfileEnablePrivateCluster
+Whether to create the Fleet hub as a private cluster or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApiServerAccessProfileEnableVnetIntegration
+Whether to enable apiserver vnet integration for the Fleet hub or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApiServerAccessProfileSubnetId
+The subnet to be used when apiserver vnet integration is enabled.
+It is required when creating a new Fleet with BYO vnet.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run the command as a job
 
@@ -177,10 +259,25 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HubProfileDnsPrefix
+DNS prefix used to create the FQDN for the Fleet hub.
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -329,6 +426,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
