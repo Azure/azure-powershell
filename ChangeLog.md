@@ -1,5 +1,6 @@
 ## Upcoming Release
 #### Az.Websites
+* Fixed Web App output to retain networking, hosting, affinity, encryption, and resource metadata properties returned by the upgraded API.
 * Fixed Web App configuration reads and updates to preserve metadata, access-restriction defaults, HTTP/2 proxy settings, minimum TLS (Transport Layer Security) cipher suites, and scaling limits.
 * Preserved Boolean push settings and proxy resource interface compatibility after the Microsoft.Web API upgrade.
 
