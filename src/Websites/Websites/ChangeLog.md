@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed Web App configuration reads and updates to preserve metadata, access-restriction defaults, HTTP/2 proxy settings, minimum TLS (Transport Layer Security) cipher suites, and scaling limits.
 * Preserved existing Az.Websites output model compatibility after the Microsoft.Web API upgrade.
     - `PushSettings.IsPushEnabled` remains a Boolean value, and proxy resource models remain compatible with Azure resource handling.
 * Upgraded the Microsoft.Web API version from 2021-01-15 to 2025-05-01. Microsoft.CertificateRegistration and Microsoft.DomainRegistration remain on 2021-01-15.
