@@ -14,57 +14,57 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Provides a pageable list of workload item of a specific container according
-        /// to the query filter and the pagination parameters.
+        /// to the query filter and the pagination
+        /// parameters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the container.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Name of the container.
+        /// Name of the container whose details need to be fetched.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<WorkloadItemResource> List(this IBackupWorkloadItemsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, Microsoft.Rest.Azure.OData.ODataQuery<BMSWorkloadItemQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSWorkloadItemQueryObject>), string skipToken = default(string))
+        public static Microsoft.Rest.Azure.IPage<WorkloadItemResource> List(this IBackupWorkloadItemsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string filter = default(string), string skipToken = default(string))
         {
-                return ((IBackupWorkloadItemsOperations)operations).ListAsync(vaultName, resourceGroupName, fabricName, containerName, odataQuery, skipToken).GetAwaiter().GetResult();
+                return ((IBackupWorkloadItemsOperations)operations).ListAsync(resourceGroupName, vaultName, fabricName, containerName, filter, skipToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Provides a pageable list of workload item of a specific container according
-        /// to the query filter and the pagination parameters.
+        /// to the query filter and the pagination
+        /// parameters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the container.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Name of the container.
+        /// Name of the container whose details need to be fetched.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
@@ -72,16 +72,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<WorkloadItemResource>> ListAsync(this IBackupWorkloadItemsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, Microsoft.Rest.Azure.OData.ODataQuery<BMSWorkloadItemQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSWorkloadItemQueryObject>), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<WorkloadItemResource>> ListAsync(this IBackupWorkloadItemsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string filter = default(string), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, odataQuery, skipToken, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, filter, skipToken, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
         /// Provides a pageable list of workload item of a specific container according
-        /// to the query filter and the pagination parameters.
+        /// to the query filter and the pagination
+        /// parameters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -96,7 +97,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Provides a pageable list of workload item of a specific container according
-        /// to the query filter and the pagination parameters.
+        /// to the query filter and the pagination
+        /// parameters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

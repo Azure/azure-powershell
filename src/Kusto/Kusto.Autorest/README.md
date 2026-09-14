@@ -60,6 +60,7 @@ keep-pec-and-plr: true
 module-version: 0.1.4
 title: Kusto
 subject-prefix: $(service-name)
+enable-change-safety: true
 ```
 
 > Folders

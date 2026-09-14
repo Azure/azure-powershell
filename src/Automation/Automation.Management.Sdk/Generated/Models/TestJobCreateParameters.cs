@@ -30,11 +30,15 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <param name="runOn">Gets or sets the runOn which specifies the group name where the job is to
         /// be executed.
         /// </param>
-        public TestJobCreateParameters(System.Collections.Generic.IDictionary<string, string> parameters = default(System.Collections.Generic.IDictionary<string, string>), string runOn = default(string))
+
+        /// <param name="runtimeEnvironment">The runtime Environment Name on which job needs to be tested
+        /// </param>
+        public TestJobCreateParameters(System.Collections.Generic.IDictionary<string, string> parameters = default(System.Collections.Generic.IDictionary<string, string>), string runOn = default(string), string runtimeEnvironment = default(string))
 
         {
             this.Parameters = parameters;
             this.RunOn = runOn;
+            this.RuntimeEnvironment = runtimeEnvironment;
             CustomInit();
         }
 
@@ -56,5 +60,11 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "runOn")]
         public string RunOn {get; set; }
+
+        /// <summary>
+        /// Gets or sets the runtime Environment Name on which job needs to be tested
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "runtimeEnvironment")]
+        public string RuntimeEnvironment {get; set; }
     }
 }

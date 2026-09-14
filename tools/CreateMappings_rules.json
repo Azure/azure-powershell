@@ -937,10 +937,6 @@
     "alias": "ScVmm"
   },
   {
-    "alias": "ArizeAI",
-    "module": "ArizeAI"
-  },
-  {
     "alias": "Carbon",
     "module": "Carbon"
   },

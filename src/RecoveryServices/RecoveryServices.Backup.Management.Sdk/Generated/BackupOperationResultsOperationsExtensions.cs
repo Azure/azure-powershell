@@ -14,11 +14,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Provides the status of the delete operations such as deleting backed up
-        /// item. Once the operation has started, the status code in the response would
-        /// be Accepted. It will continue to be in this state till it reaches
-        /// completion. On successful completion, the status code will be OK. This
-        /// method expects OperationID as an argument. OperationID is part of the
-        /// Location header of the operation response.
+        /// item. Once the operation has started, the
+        /// status code in the response would be Accepted. It will continue to be in
+        /// this state till it reaches completion. On
+        /// successful completion, the status code will be OK. This method expects
+        /// OperationID as an argument. OperationID is
+        /// part of the Location header of the operation response.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -27,8 +28,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='operationId'>
         /// OperationID which represents the operation.
@@ -40,11 +40,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Provides the status of the delete operations such as deleting backed up
-        /// item. Once the operation has started, the status code in the response would
-        /// be Accepted. It will continue to be in this state till it reaches
-        /// completion. On successful completion, the status code will be OK. This
-        /// method expects OperationID as an argument. OperationID is part of the
-        /// Location header of the operation response.
+        /// item. Once the operation has started, the
+        /// status code in the response would be Accepted. It will continue to be in
+        /// this state till it reaches completion. On
+        /// successful completion, the status code will be OK. This method expects
+        /// OperationID as an argument. OperationID is
+        /// part of the Location header of the operation response.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -53,8 +54,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='operationId'>
         /// OperationID which represents the operation.
