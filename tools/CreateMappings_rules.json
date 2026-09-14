@@ -937,10 +937,6 @@
     "alias": "ScVmm"
   },
   {
-    "alias": "LambdaTest",
-    "module": "LambdaTest"
-  },
-  {
     "alias": "Carbon",
     "module": "Carbon"
   },
