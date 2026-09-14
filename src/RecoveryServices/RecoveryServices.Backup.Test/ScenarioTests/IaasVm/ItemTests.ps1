@@ -1217,7 +1217,12 @@ function Test-AzureVMRPMountScript
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
 
-		# Get details of mount script of recovery point
+		# Get details of mount script of recovery point.
+		# After the MSRC-114273 change the iSCSI mount script and its CHAP Password are
+		# retrieved through the dedicated listInstantItemRecoveryOperationResult action
+		# rather than from the provision operation-status response. These assertions confirm
+		# the mount script details (including the redaction-sensitive Password) are still
+		# returned to the user through the new path.
 		$mountScriptDetails = Get-AzRecoveryServicesBackupRPMountScript `
 			-VaultId $vault.ID `
 			-RecoveryPoint $rp
