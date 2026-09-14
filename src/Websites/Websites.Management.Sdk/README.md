@@ -56,6 +56,20 @@ directive:
   - from: swagger-document
     where: $..parameters[?(@.name=='subscriptionId')]
     transform: delete $.format
+  # The retired Track 1 SDK exposed ProxyOnlyResource as IResource. Apply this to the
+  # generated Web model only because referenced provider schemas reuse the same name.
+  - from: source-file-csharp
+    where: $
+    transform: >-
+      return $.replace(/public partial class ProxyOnlyResource(\s*\{)/, "public partial class ProxyOnlyResource : Microsoft.Rest.Azure.IResource$1")
+  # The flattened PushSettings model lost the required/non-nullable shape carried by
+  # PushSettingsProperties. Keep IsPushEnabled and its constructor parameter as bool.
+  - from: swagger-document
+    where: $.definitions.PushSettings
+    transform: $.required = ["properties"]
+  - from: swagger-document
+    where: $.definitions.PushSettingsProperties.properties.isPushEnabled
+    transform: $["x-nullable"] = false
   # 2025-05-01 marks the two deployment-status GETs as `x-ms-long-running-operation`.
   # The generator then calls `Client.OperationResultAsync`, which Microsoft.Rest only
   # provides for PUT/PATCH/POST/DELETE, so the SDK does not compile. A polling GET is

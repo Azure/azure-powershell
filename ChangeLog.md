@@ -1,3 +1,7 @@
+## Upcoming Release
+#### Az.Websites
+* Preserved Boolean push settings and proxy resource interface compatibility after the Microsoft.Web API upgrade.
+
 ## 16.3.0 - September 2026
 #### Az.Accounts 5.5.3
 * Fixed 'Get-AzSubscription' to throw a clear error instead of returning nothing when '-TenantId' does not match the current Managed Service Identity (MSI) context. [#25710]
