@@ -18,19 +18,19 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using ProxyResource = Microsoft.Azure.Management.Sql.Models.ProxyResource;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 {
     /// <summary>
     /// The SqlAuditClient class is responsible for transforming the data that was received form the endpoints to the cmdlets model of auditing policy and vice versa
     /// </summary>
-    public abstract class SqlAuditAdapter<AuditPolicyType, AuditModelType> where AuditPolicyType : ProxyResource
+    public abstract class SqlAuditAdapter<AuditPolicyType, AuditModelType> where AuditPolicyType : IResource
                                                                            where AuditModelType : ServerDevOpsAuditModel
     {
         /// <summary>
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return true;
         }
 
-        protected virtual void PolicizeAuditModel(AuditModelType model, ProxyResource policy)
+        protected virtual void PolicizeAuditModel(AuditModelType model, IResource policy)
         {
             dynamic dynamicPolicy = (dynamic)policy;
 
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
         }
 
-        internal virtual void PolicizePublicStorageInfo(AuditModelType model, ProxyResource policy) 
+        internal virtual void PolicizePublicStorageInfo(AuditModelType model, IResource policy)
         {
             dynamic dynamicPolicy = (dynamic)policy;
 
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 model.StorageAccountResourceId).GetAwaiter().GetResult()[GetStorageKeyKind(model) == StorageKeyKind.Secondary ? StorageKeyKind.Secondary : StorageKeyKind.Primary];
         }
 
-        internal virtual void PolicizeStorageInfo(AuditModelType model, ProxyResource policy)
+        internal virtual void PolicizeStorageInfo(AuditModelType model, IResource policy)
         {
             dynamic dynamicPolicy = (dynamic)policy;
 
@@ -683,8 +683,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
     }
 
     public abstract class SqlUserAuditAdapter<AuditPolicyType, ExtendedAuditPolicyType, AuditModelType> : SqlAuditAdapter<ExtendedAuditPolicyType, AuditModelType>
-        where AuditPolicyType : ProxyResource, new()
-        where ExtendedAuditPolicyType : ProxyResource, new()
+        where AuditPolicyType : IResource, new()
+        where ExtendedAuditPolicyType : IResource, new()
         where AuditModelType : ServerAuditModel
     {
         public SqlUserAuditAdapter(IAzureContext context, Guid roleAssignmentId = default(Guid)) : base(context, roleAssignmentId)
@@ -719,7 +719,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             model.RequiredFields = ((IEnumerable<string>)dynamicPolicy.RequiredFields)?.ToArray();
         }
 
-        protected override void PolicizeAuditModel(AuditModelType model, ProxyResource policy)
+        protected override void PolicizeAuditModel(AuditModelType model, IResource policy)
         {
             base.PolicizeAuditModel(model, policy);
 
@@ -737,7 +737,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             model.RetentionInDays = Convert.ToUInt32(retentionDays);
         }
 
-        internal override void PolicizeStorageInfo(AuditModelType model, ProxyResource policy)
+        internal override void PolicizeStorageInfo(AuditModelType model, IResource policy)
         {
             dynamic dynamicPolicy = (dynamic)policy;
 
@@ -749,7 +749,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
         }
 
-        internal override void PolicizePublicStorageInfo(AuditModelType model, ProxyResource policy)
+        internal override void PolicizePublicStorageInfo(AuditModelType model, IResource policy)
         {
             dynamic dynamicPolicy = (dynamic)policy;
 
@@ -842,7 +842,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return Communicator.SetExtendedAuditingPolicy(resourceGroup, serverName, policy);
         }
 
-        protected override void PolicizeAuditModel(ServerAuditModel model, ProxyResource policy)
+        protected override void PolicizeAuditModel(ServerAuditModel model, IResource policy)
         {
             dynamic dynamicPolicy = (dynamic)policy;
 
@@ -920,7 +920,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return base.SetAudit(model);
         }
 
-        protected override void PolicizeAuditModel(DatabaseAuditModel model, ProxyResource policy)
+        protected override void PolicizeAuditModel(DatabaseAuditModel model, IResource policy)
         {
             dynamic dynamicPolicy = (dynamic)policy;
 
