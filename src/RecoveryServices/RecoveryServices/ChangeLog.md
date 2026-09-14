@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Moved Instant Item Recovery (ILR) mount script retrieval to the dedicated `listMountScripts` action (api-version `2026-08-01`); `Get-AzRecoveryServicesBackupRPMountScript` no longer reads iSCSI CHAP connection details from the broad ILR operation-status response (MSRC-114273).
 * Fixed `New-AzRecoveryServicesVault` and `Update-AzRecoveryServicesVault` to use the AsPerPolicy configuration by default when enabling vault immutability.
 * Added Microsoft Defender for Cloud Source Scan configuration for Recovery Services vaults and Azure Virtual Machine backup items.
     - Added support in `Update-AzRecoveryServicesVault -SourceScanState` to enable or disable vault-level Source Scan.

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -249,6 +249,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
 
             return response;
+        }
+
+        /// <summary>
+        /// Fetches the ILR mount scripts for a completed provisionInstantItemRecovery operation.
+        /// Scripts are served by this dedicated action (not inlined in operationsStatus) post CHAP-redaction (MSRC 114273).
+        /// </summary>
+        /// <param name="containerName">Name of the container which the item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="recoveryPointId">ID of the recovery point</param>
+        /// <param name="provisionInstantItemRecoveryOperationId">Operation ID returned by the prior provisionInstantItemRecovery action</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <returns>Instant item recovery target containing the mount client scripts</returns>
+        public InstantItemRecoveryTarget GetInstantItemRecoveryOperationResult(
+            string containerName,
+            string protectedItemName,
+            string recoveryPointId,
+            string provisionInstantItemRecoveryOperationId,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            var response = BmsAdapter.Client.ItemLevelRecoveryConnections.ListInstantItemRecoveryOperationResultWithHttpMessagesAsync(
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
+                AzureFabricName,
+                containerName,
+                protectedItemName,
+                recoveryPointId,
+                provisionInstantItemRecoveryOperationId,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+
+            return response.Body;
         }
 
         /// <summary>
