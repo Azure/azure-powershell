@@ -95,13 +95,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The required start date for a Future Capacity Reservation. Must be at least 7 days in the future, and maximum 6 months in the future. In a Targeted or Open capacity reservation group, providing this parameter creates a Future Capacity Reservation.")]       
+            HelpMessage = "The required start date for a Future Capacity Reservation. Must be at least 7 days in the future, and maximum 6 months in the future. In a Targeted or Open capacity reservation group, providing a start date without an end date creates a Future Capacity Reservation.")]
         public DateTimeOffset ScheduleProfileStart { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The minimum number of days that must pass after the start date before the reservation can be updated or deleted once it has been committed. Must be >= 30 if provided. Only valid for Future Capacity Reservations.")]
+            HelpMessage = "The minimum number of days that must pass after the start date before a Future Capacity Reservation can be updated or deleted once it has been committed. Must be >= 30 if provided, and otherwise defaults to 30. Only valid for Future Capacity Reservations.")]
         public int MinimumCommitmentDayCount { get; set; }
 
         public override void ExecuteCmdlet()

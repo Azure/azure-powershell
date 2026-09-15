@@ -102,8 +102,9 @@ Accept wildcard characters: False
 ```
 
 ### -MinimumCommitmentDayCount
-The minimum number of days that must pass after the start date before a Future Capacity Reservation can be updated or deleted once committed.
-Only valid for Future Capacity Reservations.
+The minimum number of days that must pass after the start date before a Future Capacity Reservation can be updated or deleted once it has been committed.
+Must be at least 30 if provided, and otherwise defaults to 30.
+This parameter is only valid for Future Capacity Reservations.
 Minimum API version: 2026-04-01.
 
 ```yaml
@@ -164,8 +165,9 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleProfileStart
-The start date of the schedule for this capacity reservation.
-Providing this parameter creates a Future Capacity Reservation.
+The required start date for a Future Capacity Reservation.
+It must be at least 7 days and at most 6 months in the future.
+In a Targeted or Open capacity reservation group, providing a start date without an end date creates a Future Capacity Reservation.
 Minimum API version: 2026-04-01.
 
 ```yaml
