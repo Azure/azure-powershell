@@ -20,7 +20,7 @@ Create an in-memory object for DynamicRoutingEnrichment.
 .Description
 Create an in-memory object for DynamicRoutingEnrichment.
 .Example
-New-AzEventGridDynamicRoutingEnrichmentObject -Key key1 -Value vaule1
+New-AzEventGridDynamicRoutingEnrichmentObject -Key key1 -Value value1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.DynamicRoutingEnrichment

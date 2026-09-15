@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     /// <summary>
     /// Resource information with extended details.
     /// </summary>
-    public partial class Vault : Microsoft.Rest.Azure.IResource
+    public partial class Vault : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the Vault class.
@@ -25,13 +25,22 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// Initializes a new instance of the Vault class.
         /// </summary>
 
-        /// <param name="id">Fully qualified identifier of the key vault resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Name of the key vault resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type of the key vault resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
+        /// <param name="properties">Properties of the vault
         /// </param>
 
         /// <param name="location">Azure location of the key vault resource.
@@ -39,22 +48,13 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <param name="tags">Tags assigned to the key vault resource.
         /// </param>
+        public Vault(VaultProperties properties, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
 
-        /// <param name="systemData">System metadata for the key vault.
-        /// </param>
-
-        /// <param name="properties">Properties of the vault
-        /// </param>
-        public Vault(VaultProperties properties, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData))
-
+        : base(id, name, type, systemData)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
+            this.Properties = properties;
             this.Location = location;
             this.Tags = tags;
-            this.SystemData = systemData;
-            this.Properties = properties;
             CustomInit();
         }
 
@@ -65,22 +65,10 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
 
         /// <summary>
-        /// Gets fully qualified identifier of the key vault resource.
+        /// Gets or sets properties of the vault
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets name of the key vault resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets resource type of the key vault resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
+        public VaultProperties Properties {get; set; }
 
         /// <summary>
         /// Gets or sets azure location of the key vault resource.
@@ -93,18 +81,6 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
-
-        /// <summary>
-        /// Gets system metadata for the key vault.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
-
-        /// <summary>
-        /// Gets or sets properties of the vault
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
-        public VaultProperties Properties {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -117,16 +93,12 @@ namespace Microsoft.Azure.Management.KeyVault.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Properties");
             }
-
-
-
-
-
-
             if (this.Properties != null)
             {
                 this.Properties.Validate();
             }
+
+
         }
     }
 }

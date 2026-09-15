@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <returns>List of objects returned by the API</returns>
         public static List<T> GetPagedList<T>(
             Func<IPage<T>> listResources, Func<string, IPage<T>> listNext)
-            where T : class
+            where T : ServiceClientModel.Resource
         {
             var resources = new List<T>();
             string nextLink = null;

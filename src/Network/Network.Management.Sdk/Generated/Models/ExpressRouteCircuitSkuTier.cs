@@ -29,5 +29,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Local
         /// </summary>
         public const string Local = "Local";
+        /// <summary>
+        /// MultiCloud tier for cross-cloud connectivity.
+        /// </summary>
+        public const string MultiCloud = "MultiCloud";
     }
 }

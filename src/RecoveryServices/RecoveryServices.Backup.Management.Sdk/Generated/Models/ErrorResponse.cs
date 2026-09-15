@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="error">The error object.
         /// </param>
-        public ErrorResponse(ErrorDetail error = default(ErrorDetail))
+        public ErrorResponse(ManagementErrorDetail error = default(ManagementErrorDetail))
 
         {
             this.Error = error;
@@ -50,6 +50,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Gets or sets the error object.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "error")]
-        public ErrorDetail Error {get; set; }
+        public ManagementErrorDetail Error {get; set; }
     }
 }

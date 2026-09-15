@@ -79,9 +79,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             catch (AggregateException exception)
             {
                 // if http response is NotFound - then ignore and return NULL response
-                if (exception.InnerException != null && exception.InnerException is CloudException)
+                if (exception.InnerException is CloudException cloudEx)
                 {
-                    var cloudEx = exception.InnerException as CloudException;
                     if (cloudEx.Response != null)
                     {
                         if (cloudEx.Response.StatusCode != SystemNet.HttpStatusCode.NotFound)
@@ -96,12 +95,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         throw;
                     }
                 }
-                else if (exception.InnerException != null &&
-                         exception.InnerException is ErrorResponseException)
+                else if (exception.InnerException is ErrorResponseException responseEx)
                 {
-                    var errorResponseEx = exception.InnerException as ErrorResponseException;
-                    if (errorResponseEx.Response == null ||
-                        errorResponseEx.Response.StatusCode != SystemNet.HttpStatusCode.NotFound)
+                    if (responseEx.Response != null)
+                    {
+                        if (responseEx.Response.StatusCode != SystemNet.HttpStatusCode.NotFound)
+                        {
+                            Logger.Instance.WriteDebug("ErrorResponseException Response statusCode: " +
+                                                        responseEx.Response.StatusCode);
+                            throw;
+                        }
+                    }
+                    else
                     {
                         throw;
                     }

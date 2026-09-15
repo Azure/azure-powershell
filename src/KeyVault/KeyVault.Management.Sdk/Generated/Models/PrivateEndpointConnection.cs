@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     /// Private endpoint connection resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateEndpointConnection : Microsoft.Rest.Azure.IResource
+    public partial class PrivateEndpointConnection : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the PrivateEndpointConnection class.
@@ -24,6 +24,27 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// <summary>
         /// Initializes a new instance of the PrivateEndpointConnection class.
         /// </summary>
+
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
+        /// </param>
+
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
+        /// <param name="location">Azure location of the key vault resource.
+        /// </param>
+
+        /// <param name="tags">Tags assigned to the key vault resource.
+        /// </param>
 
         /// <param name="etag">Modified whenever there is a change in the state of private endpoint
         /// connection.
@@ -38,9 +59,12 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// <param name="provisioningState">Provisioning state of the private endpoint connection.
         /// Possible values include: &#39;Succeeded&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;,
         /// &#39;Failed&#39;, &#39;Disconnected&#39;</param>
-        public PrivateEndpointConnection(string etag = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string provisioningState = default(string))
+        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string provisioningState = default(string))
 
+        : base(id, name, type, systemData)
         {
+            this.Location = location;
+            this.Tags = tags;
             this.Etag = etag;
             this.PrivateEndpoint = privateEndpoint;
             this.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
@@ -53,6 +77,18 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets azure location of the key vault resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; private set; }
+
+        /// <summary>
+        /// Gets tags assigned to the key vault resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; private set; }
 
         /// <summary>
         /// Gets or sets modified whenever there is a change in the state of private
@@ -74,9 +110,9 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         public PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState {get; set; }
 
         /// <summary>
-        /// Gets or sets provisioning state of the private endpoint connection. Possible values include: &#39;Succeeded&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;, &#39;Disconnected&#39;
+        /// Gets provisioning state of the private endpoint connection. Possible values include: &#39;Succeeded&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;, &#39;Disconnected&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState {get; set; }
+        public string ProvisioningState {get; private set; }
     }
 }

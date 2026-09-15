@@ -356,6 +356,18 @@ Please contact Microsoft for further assistance.</value>
   <data name="DisableProtectionOperation" xml:space="preserve">
     <value>Disable Protection Operation</value>
   </data>
+  <data name="ConfigureSourceScanMessage" xml:space="preserve">
+    <value>Configuring Source Scan for the item</value>
+  </data>
+  <data name="ConfigureSourceScanWarning" xml:space="preserve">
+    <value>Are you sure you want to set Source Scan state to '{0}' for the item '{1}'</value>
+  </data>
+  <data name="ConfigureSourceScanOperation" xml:space="preserve">
+    <value>Configure Source Scan Operation</value>
+  </data>
+  <data name="SourceScanNotSupportedForItem" xml:space="preserve">
+    <value>Source Scan is currently only supported for Azure Virtual Machine backup items</value>
+  </data>
   <data name="FinalOperationStatus" xml:space="preserve">
     <value>Final operation status:</value>
   </data>

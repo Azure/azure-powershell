@@ -127,6 +127,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string IsSystemAssignedIdentity = "Switch to use the vault's system-assigned managed identity to access the storage account for identity-based Azure Files backup.";
             public const string UserAssignedIdentityArmUrl = "The ARM resource id (ARM URL) of the user-assigned managed identity used to access the storage account for identity-based Azure Files backup.";
             public const string ForceReregister = "Forces re-registration of the storage account when the access type or identity changes (prevents the confirmation prompt).";
+            public const string SourceScanItem = "Specifies the backup item for which Source Scan (Microsoft Defender for Cloud) is to be configured.";
+            public const string SourceScanState = "Specifies the Source Scan state to set for the item. Allowed values are Enabled, Disabled.";
+            public const string SourceScanForceOption = "Forces the Source Scan configuration change (prevents confirmation dialog). This parameter is optional.";
+            public const string SourceScanPassThru = "Returns the updated backup item after the Source Scan configuration operation completes.";
         }
 
         internal static class ProtectableItem

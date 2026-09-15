@@ -156,6 +156,10 @@ namespace Microsoft.Azure.Management.Compute
         /// </summary>
         public virtual IVirtualMachineScaleSetVMSOperations VirtualMachineScaleSetVMS { get; private set; }
         /// <summary>
+        /// Gets the IVirtualMachineScaleSetVMDiagnosticRunCommandsOperations
+        /// </summary>
+        public virtual IVirtualMachineScaleSetVMDiagnosticRunCommandsOperations VirtualMachineScaleSetVMDiagnosticRunCommands { get; private set; }
+        /// <summary>
         /// Gets the IVirtualMachineScaleSetVMExtensionsOperations
         /// </summary>
         public virtual IVirtualMachineScaleSetVMExtensionsOperations VirtualMachineScaleSetVMExtensions { get; private set; }
@@ -163,6 +167,10 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IVirtualMachineScaleSetVMRunCommandsOperations
         /// </summary>
         public virtual IVirtualMachineScaleSetVMRunCommandsOperations VirtualMachineScaleSetVMRunCommands { get; private set; }
+        /// <summary>
+        /// Gets the IVirtualMachineDiagnosticRunCommandsOperations
+        /// </summary>
+        public virtual IVirtualMachineDiagnosticRunCommandsOperations VirtualMachineDiagnosticRunCommands { get; private set; }
         /// <summary>
         /// Gets the IVirtualMachineExtensionsOperations
         /// </summary>
@@ -187,6 +195,10 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IDiskRestorePointOperations
         /// </summary>
         public virtual IDiskRestorePointOperations DiskRestorePoint { get; private set; }
+        /// <summary>
+        /// Gets the ITenantLevelGallerySharingOperations
+        /// </summary>
+        public virtual ITenantLevelGallerySharingOperations TenantLevelGallerySharing { get; private set; }
         /// <summary>
         /// Gets the IGalleriesOperations
         /// </summary>
@@ -215,6 +227,10 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the ISharedGalleryImageVersionsOperations
         /// </summary>
         public virtual ISharedGalleryImageVersionsOperations SharedGalleryImageVersions { get; private set; }
+        /// <summary>
+        /// Gets the IGallerySharingOperations
+        /// </summary>
+        public virtual IGallerySharingOperations GallerySharing { get; private set; }
         /// <summary>
         /// Gets the IGalleryApplicationsOperations
         /// </summary>
@@ -522,14 +538,17 @@ namespace Microsoft.Azure.Management.Compute
             this.VirtualMachineScaleSetExtensions = new VirtualMachineScaleSetExtensionsOperations(this);
             this.VirtualMachineScaleSetLifeCycleHookEvents = new VirtualMachineScaleSetLifeCycleHookEventsOperations(this);
             this.VirtualMachineScaleSetVMS = new VirtualMachineScaleSetVMSOperations(this);
+            this.VirtualMachineScaleSetVMDiagnosticRunCommands = new VirtualMachineScaleSetVMDiagnosticRunCommandsOperations(this);
             this.VirtualMachineScaleSetVMExtensions = new VirtualMachineScaleSetVMExtensionsOperations(this);
             this.VirtualMachineScaleSetVMRunCommands = new VirtualMachineScaleSetVMRunCommandsOperations(this);
+            this.VirtualMachineDiagnosticRunCommands = new VirtualMachineDiagnosticRunCommandsOperations(this);
             this.VirtualMachineExtensions = new VirtualMachineExtensionsOperations(this);
             this.DiskAccesses = new DiskAccessesOperations(this);
             this.DiskEncryptionSets = new DiskEncryptionSetsOperations(this);
             this.Disks = new DisksOperations(this);
             this.Snapshots = new SnapshotsOperations(this);
             this.DiskRestorePoint = new DiskRestorePointOperations(this);
+            this.TenantLevelGallerySharing = new TenantLevelGallerySharingOperations(this);
             this.Galleries = new GalleriesOperations(this);
             this.CommunityGalleries = new CommunityGalleriesOperations(this);
             this.CommunityGalleryImages = new CommunityGalleryImagesOperations(this);
@@ -537,6 +556,7 @@ namespace Microsoft.Azure.Management.Compute
             this.SharedGalleries = new SharedGalleriesOperations(this);
             this.SharedGalleryImages = new SharedGalleryImagesOperations(this);
             this.SharedGalleryImageVersions = new SharedGalleryImageVersionsOperations(this);
+            this.GallerySharing = new GallerySharingOperations(this);
             this.GalleryApplications = new GalleryApplicationsOperations(this);
             this.GalleryApplicationVersions = new GalleryApplicationVersionsOperations(this);
             this.GalleryImages = new GalleryImagesOperations(this);

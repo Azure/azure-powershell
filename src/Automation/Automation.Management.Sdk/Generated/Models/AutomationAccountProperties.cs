@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <param name="automationHybridServiceUrl">URL of automation hybrid service which is used for hybrid worker
         /// on-boarding.
         /// </param>
-        public AutomationAccountProperties(Sku sku = default(Sku), string lastModifiedBy = default(string), string state = default(string), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string description = default(string), EncryptionProperties encryption = default(EncryptionProperties), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), bool? publicNetworkAccess = default(bool?), bool? disableLocalAuth = default(bool?), string automationHybridServiceUrl = default(string))
+        public AutomationAccountProperties(Sku sku = default(Sku), string lastModifiedBy = default(string), string state = default(string), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string description = default(string), EncryptionProperties encryption = default(EncryptionProperties), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), bool? publicNetworkAccess = default(bool?), bool? disableLocalAuth = default(bool?), string automationHybridServiceUrl = default(string))
 
         {
             this.Sku = sku;
@@ -104,13 +104,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets gets the creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
-        public System.DateTimeOffset CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets gets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; private set; }
+        public System.DateTimeOffset? LastModifiedTime {get; private set; }
 
         /// <summary>
         /// Gets or sets gets or sets the description.

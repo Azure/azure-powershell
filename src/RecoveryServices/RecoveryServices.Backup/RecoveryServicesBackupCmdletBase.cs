@@ -153,23 +153,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else if (exception is ErrorResponseException)
                 {
-                    var errorResponseEx = exception as ErrorResponseException;
-                    if (errorResponseEx.Response != null &&
-                        errorResponseEx.Response.StatusCode == SystemNet.HttpStatusCode.NotFound)
+                    var responseEx = exception as ErrorResponseException;
+                    if (responseEx.Response != null && responseEx.Response.StatusCode == SystemNet.HttpStatusCode.NotFound)
                     {
-                        WriteDebug(string.Format(
-                            Resources.CloudExceptionCodeNotFound,
-                            errorResponseEx.Response.StatusCode));
+                        WriteDebug(string.Format(Resources.CloudExceptionCodeNotFound, responseEx.Response.StatusCode));
 
                         targetEx = new Exception(Resources.ResourceNotFoundMessage);
                         targetErrorCategory = ErrorCategory.InvalidArgument;
                     }
-                    else if (errorResponseEx.Body != null && errorResponseEx.Body.Error != null)
+                    else if (responseEx.Body != null && responseEx.Body.Error != null)
                     {
-                        var error = errorResponseEx.Body.Error;
-                        WriteDebug(string.Format(Resources.CloudException, error.Code, error.Message));
+                        string serviceError = string.Format(
+                            Resources.CloudException,
+                            responseEx.Body.Error.Code,
+                            responseEx.Body.Error.Message);
+                        WriteDebug(serviceError);
 
-                        targetErrorId = error.Code;
+                        targetEx = new Exception(serviceError, responseEx);
+                        targetErrorId = responseEx.Body.Error.Code;
                         targetErrorCategory = ErrorCategory.InvalidOperation;
                     }
                 }

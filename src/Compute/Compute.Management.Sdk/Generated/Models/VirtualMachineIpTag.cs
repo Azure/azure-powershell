@@ -29,11 +29,16 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="tag">IP tag associated with the public IP. Example: SQL, Storage etc.
         /// </param>
-        public VirtualMachineIpTag(string ipTagType = default(string), string tag = default(string))
+
+        /// <param name="firstPartyServiceTagId">The first party service tag resource identifier associated with the public
+        /// IP address.
+        /// </param>
+        public VirtualMachineIpTag(string ipTagType = default(string), string tag = default(string), string firstPartyServiceTagId = default(string))
 
         {
             this.IpTagType = ipTagType;
             this.Tag = tag;
+            this.FirstPartyServiceTagId = firstPartyServiceTagId;
             CustomInit();
         }
 
@@ -55,5 +60,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tag")]
         public string Tag {get; set; }
+
+        /// <summary>
+        /// Gets or sets the first party service tag resource identifier associated
+        /// with the public IP address.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "firstPartyServiceTagId")]
+        public string FirstPartyServiceTagId {get; set; }
     }
 }

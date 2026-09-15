@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,14 +39,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         {
             Func<RestAzureNS.IPage<WorkloadProtectableItemResource>> listAsync =
                 () => BmsAdapter.Client.BackupProtectableItems.ListWithHttpMessagesAsync(
-                    vaultName: vaultName ?? BmsAdapter.GetResourceName(),
-                    resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                    filter: queryFilter?.Filter,
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    queryFilter?.Filter,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             Func<string, RestAzureNS.IPage<WorkloadProtectableItemResource>> listNextAsync =
                 nextLink => BmsAdapter.Client.BackupProtectableItems.ListNextWithHttpMessagesAsync(
-                    nextPageLink: nextLink,
+                    nextLink,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             return HelperUtils.GetPagedList(listAsync, listNextAsync);

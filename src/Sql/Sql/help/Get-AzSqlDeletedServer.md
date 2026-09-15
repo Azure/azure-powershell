@@ -8,18 +8,17 @@ schema: 2.0.0
 # Get-AzSqlDeletedServer
 
 ## SYNOPSIS
-Gets information about deleted Azure SQL servers. (Server soft-delete feature is currently in Public Preview)
+Gets information about soft-deleted Azure SQL servers. (Server soft-delete feature is currently in Public Preview)
 
 ## SYNTAX
 
 ```
-Get-AzSqlDeletedServer -Location <String> [-ServerName <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzSqlDeletedServer [[-Location] <String>] [-ServerName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzSqlDeletedServer** cmdlet gets information about deleted Azure SQL servers in a specified location. 
-You can get information about a specific deleted server by providing the server name, or you can list all deleted servers in a location.
+The **Get-AzSqlDeletedServer** cmdlet returns information about one or more deleted Azure SQL servers in a subscription. Specify **-Location** to scope results to a region, specify **-ServerName** without **-Location** to filter subscription-level results by server name, or specify both parameters to retrieve a single deleted server.
 
 ## EXAMPLES
 
@@ -36,24 +35,34 @@ FullyQualifiedDomainName  : myserver.database.windows.net
 Version                   : 12.0
 Id                        : /subscriptions/12345678-1234-1234-1234-123456789012/providers/Microsoft.Sql/locations/centralus/deletedServers/myserver
 OriginalId                : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myresourcegroup/providers/Microsoft.Sql/servers/myserver
+ScheduledPurgeTime        : 11/13/2025 12:30:00 PM
 ResourceGroupName         : myresourcegroup
 SubscriptionId            : 12345678-1234-1234-1234-123456789012
 ```
 
 This command gets all deleted SQL servers in the Central US location under the current subscription.
 
-### Example 2: Get a specific deleted server
+### Example 2: Get all deleted servers in a subscription
+```powershell
+Get-AzSqlDeletedServer
+```
+
+This command gets all deleted SQL servers under the current subscription.
+
+### Example 3: Get a specific deleted server
 ```powershell
 Get-AzSqlDeletedServer -Location "centralus" -ServerName "myserver"
 ```
 
 ```output
 ServerName                : myserver
+Location                  : centralus
 DeletionTime              : 11/6/2025 12:30:00 PM
 FullyQualifiedDomainName  : myserver.database.windows.net
 Version                   : 12.0
 Id                        : /subscriptions/12345678-1234-1234-1234-123456789012/providers/Microsoft.Sql/locations/centralus/deletedServers/myserver
 OriginalId                : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myresourcegroup/providers/Microsoft.Sql/servers/myserver
+ScheduledPurgeTime        : 11/13/2025 12:30:00 PM
 ResourceGroupName         : myresourcegroup
 SubscriptionId            : 12345678-1234-1234-1234-123456789012
 ```
@@ -85,7 +94,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -93,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the deleted server to retrieve. If not specified, lists all deleted servers in the location.
+The name of the deleted server to retrieve. Without **-Location**, the cmdlet filters deleted servers across the current subscription by this name.
 
 ```yaml
 Type: System.String

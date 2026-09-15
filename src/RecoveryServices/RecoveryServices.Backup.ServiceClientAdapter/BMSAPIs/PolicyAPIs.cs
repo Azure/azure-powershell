@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -82,12 +82,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             }
 
             return BmsAdapter.Client.ProtectionPolicies.CreateOrUpdateWithHttpMessagesAsync(
-                vaultName: vaultName ?? BmsAdapter.GetResourceName(),
-                resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                policyName: policyName,
-                parameters: request,
-                xMsAuthorizationAuxiliary: null,
-                customHeaders: customHeaders,
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
+                policyName,
+                request,
+                null,
+                customHeaders,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
 
@@ -104,9 +104,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             return BmsAdapter.Client.ProtectionPolicies.GetWithHttpMessagesAsync(
-                vaultName: vaultName ?? BmsAdapter.GetResourceName(),
-                resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                policyName: policyName,
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
+                policyName,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
         }
 
@@ -126,14 +126,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         {
             Func<RestAzureNS.IPage<ProtectionPolicyResource>> listAsync =
                 () => BmsAdapter.Client.BackupPolicies.ListWithHttpMessagesAsync(
-                    vaultName: vaultName ?? BmsAdapter.GetResourceName(),
-                    resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                    filter: queryFilter?.Filter,
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    queryFilter?.Filter,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             Func<string, RestAzureNS.IPage<ProtectionPolicyResource>> listNextAsync =
                 nextLink => BmsAdapter.Client.BackupPolicies.ListNextWithHttpMessagesAsync(
-                    nextPageLink: nextLink,
+                    nextLink,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;            
 
             return HelperUtils.GetPagedList(listAsync, listNextAsync);
@@ -152,16 +152,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 string resourceGroupName = null)
         {
             var response = BmsAdapter.Client.ProtectionPolicies.DeleteWithHttpMessagesAsync(
-                vaultName: vaultName ?? BmsAdapter.GetResourceName(),
-                resourceGroupName: resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                policyName: policyName,
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
+                policyName,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
-            return new RestAzureNS.AzureOperationResponse
-            {
-                Request = response.Request,
-                Response = response.Response,
-                RequestId = response.RequestId
-            };
+            return ToAzureOperationResponse(response);
         }
     }
 }

@@ -306,6 +306,40 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Update = 'Az.Kusto.private\Update-AzKustoScript_Update';
+        UpdateExpanded = 'Az.Kusto.private\Update-AzKustoScript_UpdateExpanded';
+        UpdateViaIdentity = 'Az.Kusto.private\Update-AzKustoScript_UpdateViaIdentity';
+        UpdateViaIdentityCluster = 'Az.Kusto.private\Update-AzKustoScript_UpdateViaIdentityCluster';
+        UpdateViaIdentityClusterExpanded = 'Az.Kusto.private\Update-AzKustoScript_UpdateViaIdentityClusterExpanded';
+        UpdateViaIdentityDatabase = 'Az.Kusto.private\Update-AzKustoScript_UpdateViaIdentityDatabase';
+        UpdateViaIdentityDatabaseExpanded = 'Az.Kusto.private\Update-AzKustoScript_UpdateViaIdentityDatabaseExpanded';
+        UpdateViaIdentityExpanded = 'Az.Kusto.private\Update-AzKustoScript_UpdateViaIdentityExpanded';
+        UpdateViaJsonFilePath = 'Az.Kusto.private\Update-AzKustoScript_UpdateViaJsonFilePath';
+        UpdateViaJsonString = 'Az.Kusto.private\Update-AzKustoScript_UpdateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
