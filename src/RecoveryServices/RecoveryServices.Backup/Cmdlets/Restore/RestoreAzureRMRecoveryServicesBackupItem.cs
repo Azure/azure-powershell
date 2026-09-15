@@ -434,6 +434,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     throw new ArgumentException(Resources.AFSIdentityBothSpecified);
                 }
 
+                if (ParameterSetName == AzureFileShareParameterSet &&
+                    RestoreToSecondaryRegion.IsPresent &&
+                    (IsSystemAssignedIdentity.IsPresent ||
+                     !string.IsNullOrEmpty(UserAssignedIdentityArmUrl)))
+                {
+                    throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreIdentityNotSupported);
+                }
+
                 string RestoreType = null;
                 if (string.Compare(ParameterSetName, AzureManagedVMReplaceExistingParameterSet) == 0)
                 {

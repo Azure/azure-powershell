@@ -646,11 +646,17 @@ Please contact Microsoft for further assistance.</value>
   <data name="AzureFileShareCrossRegionRestoreRequestBuildFailed" xml:space="preserve">
     <value>Failed to construct the cross-region restore request: the target or source details were not populated. This indicates an internal error. Please retry; if the issue persists, contact support</value>
   </data>
+  <data name="AzureFileShareCrossRegionRestoreIdentityNotSupported" xml:space="preserve">
+    <value>Managed identity parameters are not supported with -RestoreToSecondaryRegion for Azure File Share because the cross-region restore API does not support identity information. Remove -IsSystemAssignedIdentity or -UserAssignedIdentityArmUrl and retry.</value>
+  </data>
   <data name="AzureFileShareUndeleteItemNotInSoftDeletedState" xml:space="preserve">
     <value>The Azure File Share item '{0}' is not in a soft-deleted state. Undo-AzRecoveryServicesBackupItemDeletion can only be run on an item whose DeleteState is 'ToBeDeleted'</value>
   </data>
   <data name="AFSIdentityBothSpecified" xml:space="preserve">
     <value>Both -IsSystemAssignedIdentity and -UserAssignedIdentityArmUrl were specified. Specify only one identity for identity-based Azure Files access.</value>
+  </data>
+  <data name="AFSRegisterParameterCombinationInvalid" xml:space="preserve">
+    <value>Azure Files registration requires -StorageAccountName with -BackupManagementType AzureStorage and -WorkloadType AzureFiles. The -ResourceId and -Container parameter sets support AzureWorkload registration only.</value>
   </data>
   <data name="AFSIdentityBasedRequiresIdentity" xml:space="preserve">
     <value>-AccessType 'IdentityBased' requires an identity. Specify either -IsSystemAssignedIdentity (to use the vault's system-assigned managed identity) or -UserAssignedIdentityArmUrl (to use a user-assigned managed identity).</value>

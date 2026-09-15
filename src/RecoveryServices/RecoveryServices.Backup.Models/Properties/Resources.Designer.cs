@@ -1960,6 +1960,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             }
         }
         /// <summary>
+        ///   Looks up a localized string similar to Managed identity parameters are not supported with -RestoreToSecondaryRegion for Azure File Share because the cross-region restore API does not support identity information.
+        /// </summary>
+        public static string AzureFileShareCrossRegionRestoreIdentityNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareCrossRegionRestoreIdentityNotSupported", resourceCulture);
+            }
+        }
+        /// <summary>
         ///   Looks up a localized string similar to The Azure File Share item &apos;{0}&apos; is not in a soft-deleted state. Undo-AzRecoveryServicesBackupItemDeletion can only be run on an item whose DeleteState is &apos;ToBeDeleted&apos;.
         /// </summary>
         public static string AzureFileShareUndeleteItemNotInSoftDeletedState
@@ -1977,6 +1987,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("AFSIdentityBothSpecified", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Azure Files registration requires -StorageAccountName with -BackupManagementType AzureStorage and -WorkloadType AzureFiles.
+        /// </summary>
+        public static string AFSRegisterParameterCombinationInvalid
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSRegisterParameterCombinationInvalid", resourceCulture);
             }
         }
         /// <summary>

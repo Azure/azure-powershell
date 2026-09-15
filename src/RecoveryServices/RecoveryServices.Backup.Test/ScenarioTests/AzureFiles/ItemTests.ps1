@@ -839,7 +839,29 @@ function Test-AzureFSRestoreToSecondaryRegion
 			-ResolveConflict Overwrite -RestoreToSecondaryRegion -ErrorAction Stop } `
 		"Item-level restore is not supported"
 
-	# VARIATION-3: full CRR restore to secondary region completes.
+	# VARIATION-3: CRR does not support managed identity restore parameters.
+	Assert-ThrowsContains `
+		{ Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] `
+			-TargetStorageAccountName $targetStorageAccountName `
+			-TargetFileShareName $targetFileShareName `
+			-ResolveConflict Overwrite -RestoreToSecondaryRegion `
+			-IsSystemAssignedIdentity -ErrorAction Stop } `
+		"Managed identity parameters are not supported"
+
+	Assert-ThrowsContains `
+		{ Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] `
+			-TargetStorageAccountName $targetStorageAccountName `
+			-TargetFileShareName $targetFileShareName `
+			-ResolveConflict Overwrite -RestoreToSecondaryRegion `
+			-UserAssignedIdentityArmUrl "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-uami" `
+			-ErrorAction Stop } `
+		"Managed identity parameters are not supported"
+
+	# VARIATION-4: full CRR restore to secondary region completes.
 	$crrJob = Restore-AzRecoveryServicesBackupItem `
 		-VaultId $vault.ID -VaultLocation $vault.Location `
 		-RecoveryPoint $rp[0] `
@@ -848,4 +870,158 @@ function Test-AzureFSRestoreToSecondaryRegion
 		-ResolveConflict Overwrite `
 		-RestoreToSecondaryRegion
 	Assert-True { @($crrJob).Count -gt 0 }
+}
+
+function Wait-AzureFSMsiJob
+{
+	param(
+		[Parameter(Mandatory = $true)]
+		[object] $Job,
+
+		[Parameter(Mandatory = $true)]
+		[string] $VaultId
+	)
+
+	$terminalStates = @("Completed", "CompletedWithWarnings", "Failed", "Cancelled")
+	$from = $Job.StartTime.ToUniversalTime().AddHours(-1)
+	$to = $Job.StartTime.ToUniversalTime().AddDays(1)
+	while ($Job.Status -notin $terminalStates)
+	{
+		if ($env:AZURE_TEST_MODE -eq "Record")
+		{
+			Start-Sleep -Seconds 15
+		}
+
+		$Job = Get-AzRecoveryServicesBackupJob `
+			-VaultId $VaultId `
+			-JobId $Job.JobId `
+			-From $from `
+			-To $to |
+			Select-Object -First 1
+	}
+
+	Assert-AreEqual "Completed" $Job.Status
+	return $Job
+}
+
+function Invoke-AzureFSMsiBackupAndRestore
+{
+	param(
+		[Parameter(Mandatory = $true)]
+		[string] $StorageAccountName,
+
+		[Parameter(Mandatory = $true)]
+		[string] $FileShareName,
+
+		[Parameter(Mandatory = $true)]
+		[string] $RestoreFolder,
+
+		[Parameter(Mandatory = $true)]
+		[bool] $UseSystemAssignedIdentity,
+
+		[string] $UserAssignedIdentityArmUrl
+	)
+
+	$resourceGroupName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_MSI_RESOURCE_GROUP" `
+		-PlaybackValue "afs-msi-test-rg"
+	$vaultName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_MSI_VAULT_NAME" `
+		-PlaybackValue "afs-msi-test-vault"
+	$vault = Get-AzRecoveryServicesVault `
+		-ResourceGroupName $resourceGroupName `
+		-Name $vaultName
+	Set-AzRecoveryServicesVaultContext -Vault $vault
+
+	$container = Get-AzRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-ContainerType AzureStorage `
+		-FriendlyName $StorageAccountName
+	Assert-NotNull $container
+
+	$item = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-Container $container `
+		-WorkloadType AzureFiles `
+		-Name $FileShareName
+	Assert-NotNull $item
+
+	$backupJob = Backup-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-Item $item `
+		-Confirm:$false
+	$backupJob = Wait-AzureFSMsiJob `
+		-Job $backupJob `
+		-VaultId $vault.ID
+
+	$recoveryPointStartDate = $backupJob.StartTime.ToUniversalTime().AddMinutes(-1)
+	$recoveryPointEndDate = $backupJob.EndTime.ToUniversalTime().AddMinutes(1)
+	$recoveryPoint = Get-AzRecoveryServicesBackupRecoveryPoint `
+		-VaultId $vault.ID `
+		-Item $item `
+		-StartDate $recoveryPointStartDate `
+		-EndDate $recoveryPointEndDate |
+		Sort-Object RecoveryPointTime -Descending |
+		Select-Object -First 1
+	Assert-NotNull $recoveryPoint
+
+	$restoreParameters = @{
+		VaultId = $vault.ID
+		RecoveryPoint = $recoveryPoint
+		ResolveConflict = "Overwrite"
+		TargetStorageAccountName = $StorageAccountName
+		TargetFileShareName = $FileShareName
+		TargetFolder = $RestoreFolder
+		Confirm = $false
+	}
+
+	if ($UseSystemAssignedIdentity)
+	{
+		$restoreParameters.IsSystemAssignedIdentity = $true
+	}
+	else
+	{
+		$restoreParameters.UserAssignedIdentityArmUrl = $UserAssignedIdentityArmUrl
+	}
+
+	$restoreJob = Restore-AzRecoveryServicesBackupItem @restoreParameters
+	$restoreJob = Wait-AzureFSMsiJob `
+		-Job $restoreJob `
+		-VaultId $vault.ID
+}
+
+function Test-AzureFSUamiBackupAndRestore
+{
+	$storageAccountName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_MSI_UAMI_STORAGE_ACCOUNT" `
+		-PlaybackValue "afsmsiuamisa"
+	$fileShareName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_MSI_UAMI_FILE_SHARE" `
+		-PlaybackValue "afsmsiuamishare"
+	$uamiId = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_MSI_UAMI_ID" `
+		-PlaybackValue "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/afs-msi-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/afs-msi-test-uami"
+
+	Invoke-AzureFSMsiBackupAndRestore `
+		-StorageAccountName $storageAccountName `
+		-FileShareName $fileShareName `
+		-RestoreFolder "uami-restore" `
+		-UseSystemAssignedIdentity:$false `
+		-UserAssignedIdentityArmUrl $uamiId
+}
+
+function Test-AzureFSSamiBackupAndRestore
+{
+	$storageAccountName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_MSI_SAMI_STORAGE_ACCOUNT" `
+		-PlaybackValue "afsmsisamisa"
+	$fileShareName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_MSI_SAMI_FILE_SHARE" `
+		-PlaybackValue "afsmsisamishare"
+
+	Invoke-AzureFSMsiBackupAndRestore `
+		-StorageAccountName $storageAccountName `
+		-FileShareName $fileShareName `
+		-RestoreFolder "sami-restore" `
+		-UseSystemAssignedIdentity:$true
 }

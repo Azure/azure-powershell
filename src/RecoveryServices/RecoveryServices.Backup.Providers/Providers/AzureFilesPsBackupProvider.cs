@@ -288,6 +288,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreAlrOnly);
             }
 
+            if (useSecondaryRegion &&
+                (restoreWithSystemAssignedIdentity ||
+                 !string.IsNullOrEmpty(restoreUserAssignedIdentityArmUrl)))
+            {
+                throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreIdentityNotSupported);
+            }
+
             //validate alternate location restore request
             ValidateLocationRestoreRequest(targetFileShareName, targetStorageAccountName, targetFolder);
 
