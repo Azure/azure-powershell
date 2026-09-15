@@ -295,6 +295,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreIdentityNotSupported);
             }
 
+            if (useSecondaryRegion && !string.IsNullOrEmpty(targetSubscriptionId))
+            {
+                throw new ArgumentException(Resources.CRRNotSupportedWIthCSR);
+            }
+
             //validate alternate location restore request
             ValidateLocationRestoreRequest(targetFileShareName, targetStorageAccountName, targetFolder);
 

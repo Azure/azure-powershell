@@ -8,7 +8,7 @@ schema: 2.0.0
 # Register-AzRecoveryServicesBackupContainer
 
 ## SYNOPSIS
-The **Register-AzRecoveryServicesBackupContainer** cmdlet registers an Azure VM for AzureWorkloads with specific workloadType.
+The **Register-AzRecoveryServicesBackupContainer** cmdlet registers Azure workload and Azure Storage backup containers with a Recovery Services vault.
 
 ## SYNTAX
 

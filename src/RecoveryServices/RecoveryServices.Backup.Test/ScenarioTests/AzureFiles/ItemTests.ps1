@@ -861,7 +861,19 @@ function Test-AzureFSRestoreToSecondaryRegion
 			-ErrorAction Stop } `
 		"Managed identity parameters are not supported"
 
-	# VARIATION-4: full CRR restore to secondary region completes.
+	# VARIATION-4: CRR cannot be combined with cross-subscription restore.
+	Assert-ThrowsContains `
+		{ Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] `
+			-TargetStorageAccountName $targetStorageAccountName `
+			-TargetFileShareName $targetFileShareName `
+			-ResolveConflict Overwrite -RestoreToSecondaryRegion `
+			-TargetSubscriptionId "55555555-5555-5555-5555-555555555555" `
+			-ErrorAction Stop } `
+		"Cross region restore is not supported along with cross subscription restore"
+
+	# VARIATION-5: full CRR restore to secondary region completes.
 	$crrJob = Restore-AzRecoveryServicesBackupItem `
 		-VaultId $vault.ID -VaultLocation $vault.Location `
 		-RecoveryPoint $rp[0] `
