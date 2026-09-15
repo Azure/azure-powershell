@@ -162,6 +162,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidatePattern(@"^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$")]
         public string ContainerSubscriptionId { get; set; }
 
+        /// <summary>
+        /// Access type used by backup to reach the storage account for Azure Files (KeyBased / IdentityBased).
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileShareParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.AccessType)]
+        [ValidateSet("KeyBased", "IdentityBased")]
+        public string AccessType { get; set; }
+
+        /// <summary>
+        /// Use the vault's system-assigned managed identity for identity-based Azure Files backup.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileShareParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.IsSystemAssignedIdentity)]
+        public SwitchParameter IsSystemAssignedIdentity { get; set; }
+
+        /// <summary>
+        /// ARM url of the user-assigned managed identity for identity-based Azure Files backup.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileShareParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.UserAssignedIdentityArmUrl)]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentityArmUrl { get; set; }
+
+        /// <summary>
+        /// Forces re-registration of the storage account when the access type / identity changes.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileShareParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.ForceReregister)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -182,6 +212,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 
                 string plainToken = HelperUtils.GetPlainToken(Token, SecureToken);
+
+                // Azure Files identity-based access (MSI) parameter validation.
+                if (ParameterSetName == AzureFileShareParameterSet)
+                {
+                    ValidateAfsIdentityParameters();
+                }
 
                 if (ShouldProcess(shouldProcessName, VerbsLifecycle.Enable))
                 {
@@ -277,6 +313,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { ItemParams.ResetExclusionSettings, ResetExclusionSettings },
                                 { ItemParams.ExcludeAllDataDisks, ExcludeAllDataDisks.IsPresent },
                                 { ItemParams.ContainerSubscriptionId, ContainerSubscriptionId },
+                                { ItemParams.AccessType, AccessType },
+                                { ItemParams.IsSystemAssignedIdentity, IsSystemAssignedIdentity.IsPresent },
+                                { ItemParams.UserAssignedIdentityArmUrl, UserAssignedIdentityArmUrl },
+                                { ItemParams.ForceReregister, Force.IsPresent },
+                                { ItemParams.ConfirmReregister, new Func<bool>(() =>
+                                    ShouldContinue(
+                                        string.Format(Resources.AFSReregisterIdentityChangeWarning, StorageAccountName),
+                                        Resources.AFSReregisterIdentityChangeCaption)) },
                                 { ResourceGuardParams.Token, plainToken },
                                 { ResourceGuardParams.IsMUAOperation, isMUAOperation },
                             }, ServiceClientAdapter);
@@ -350,6 +394,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                 }
             });
+        }
+
+        /// <summary>
+        /// Validates the Azure Files identity-based access (MSI) parameters supplied to Enable-Protection.
+        /// Enforces mutually-consistent AccessType + identity selection. Role-assignment existence and vault-MI
+        /// checks are validated by the backend service when the (re)registration request is sent.
+        /// </summary>
+        private void ValidateAfsIdentityParameters()
+        {
+            bool hasUami = !string.IsNullOrEmpty(UserAssignedIdentityArmUrl);
+            bool hasSami = IsSystemAssignedIdentity.IsPresent;
+
+            if (hasSami && hasUami)
+            {
+                throw new ArgumentException(Resources.AFSIdentityBothSpecified);
+            }
+
+            if (string.IsNullOrEmpty(AccessType) && (hasSami || hasUami))
+            {
+                throw new ArgumentException(Resources.AFSIdentityRequiresAccessType);
+            }
+
+            if (string.Equals(AccessType, ServiceClientModel.AccessType.IdentityBased, StringComparison.OrdinalIgnoreCase))
+            {
+                if (!hasSami && !hasUami)
+                {
+                    throw new ArgumentException(Resources.AFSIdentityBasedRequiresIdentity);
+                }
+            }
+            else if (string.Equals(AccessType, ServiceClientModel.AccessType.KeyBased, StringComparison.OrdinalIgnoreCase))
+            {
+                if (hasSami || hasUami)
+                {
+                    throw new ArgumentException(Resources.AFSKeyBasedWithIdentity);
+                }
+            }
         }
     }
 }

@@ -21,6 +21,9 @@
 ## Upcoming Release
 * Updated Recovery Services Backup commands to use management API version `2026-07-01`
     - Preserved request filtering, continuation paging, operation tracking responses, and backup error details after SDK contract changes.
+* Added Managed Identity (MI) based authentication support for Azure File Share backup:
+    - `Enable-AzRecoveryServicesBackupProtection` and `Register-AzRecoveryServicesBackupContainer` (extended to `-BackupManagementType AzureStorage`) now accept `-AccessType` (`KeyBased`/`IdentityBased`), `-IsSystemAssignedIdentity`, and `-UserAssignedIdentityArmUrl` to register/re-register a storage account with a vault managed identity; `-Force` re-registers when the access type or identity changes.
+    - `Restore-AzRecoveryServicesBackupItem` accepts `-IsSystemAssignedIdentity` and `-UserAssignedIdentityArmUrl` for identity-based Azure File Share restore, and `-TargetSubscriptionId` to enable Cross Subscription Restore (CSR).
 * Added Cross Region Restore support for Azure File Share backup items (`Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`)
 * Refined soft delete behavior for Azure File share backup items
     - `Undo-AzRecoveryServicesBackupItemDeletion` now throws a clear error when the target Azure File share item is not in the soft-deleted (`ToBeDeleted`) state instead of issuing an undelete request that cannot succeed.

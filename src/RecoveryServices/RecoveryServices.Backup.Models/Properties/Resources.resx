@@ -637,6 +637,27 @@ Please contact Microsoft for further assistance.</value>
   <data name="AzureFileShareUndeleteItemNotInSoftDeletedState" xml:space="preserve">
     <value>The Azure File Share item '{0}' is not in a soft-deleted state. Undo-AzRecoveryServicesBackupItemDeletion can only be run on an item whose DeleteState is 'ToBeDeleted'</value>
   </data>
+  <data name="AFSIdentityBothSpecified" xml:space="preserve">
+    <value>Both -IsSystemAssignedIdentity and -UserAssignedIdentityArmUrl were specified. Specify only one identity for identity-based Azure Files access.</value>
+  </data>
+  <data name="AFSIdentityBasedRequiresIdentity" xml:space="preserve">
+    <value>-AccessType 'IdentityBased' requires an identity. Specify either -IsSystemAssignedIdentity (to use the vault's system-assigned managed identity) or -UserAssignedIdentityArmUrl (to use a user-assigned managed identity).</value>
+  </data>
+  <data name="AFSIdentityRequiresAccessType" xml:space="preserve">
+    <value>An identity was specified without -AccessType. Specify -AccessType 'IdentityBased' when using -IsSystemAssignedIdentity or -UserAssignedIdentityArmUrl.</value>
+  </data>
+  <data name="AFSKeyBasedWithIdentity" xml:space="preserve">
+    <value>-AccessType 'KeyBased' cannot be combined with an identity (-IsSystemAssignedIdentity / -UserAssignedIdentityArmUrl). Use -AccessType 'IdentityBased' for identity-based access.</value>
+  </data>
+  <data name="AFSReregisterIdentityChangeWarning" xml:space="preserve">
+    <value>The storage account '{0}' is already registered with a different access type / identity. Re-registering will change how backup accesses the storage account. Do you want to continue?</value>
+  </data>
+  <data name="AFSReregisterIdentityChangeCaption" xml:space="preserve">
+    <value>Re-register storage account with new access type / identity</value>
+  </data>
+  <data name="AFSReregisterCanceled" xml:space="preserve">
+    <value>Re-registration of the storage account was canceled by the user.</value>
+  </data>
   <data name="RecoveryPointVaultRecoveryTypeException" xml:space="preserve">
     <value>Please ensure that the given RP recovery type is either 'VaultStandard' or SnapshotAndVaultStandard, or remove TargetZone</value>
   </data>

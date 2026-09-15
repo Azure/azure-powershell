@@ -123,6 +123,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string excludeAllDataDisks = "Option to specify to backup OS disks only";
             public const string ReprotectItem = "Specifies the backup item for which this cmdlet reverts the deletion."; 
             public const string containerSubscriptionId = "Subscription ID of the Azure Virtual Machine to be protected. Use this parameter to configure backup for a VM that resides in a different subscription than the Recovery Services vault (Cross Subscription Backup).";
+            public const string AccessType = "Specifies how backup accesses the storage account for Azure Files backup. Allowed values: 'KeyBased' (shared key, default) or 'IdentityBased' (vault managed identity via RBAC). When 'IdentityBased', an identity must be provided via -IsSystemAssignedIdentity or -UserAssignedIdentityArmUrl.";
+            public const string IsSystemAssignedIdentity = "Switch to use the vault's system-assigned managed identity to access the storage account for identity-based Azure Files backup.";
+            public const string UserAssignedIdentityArmUrl = "The ARM resource id (ARM URL) of the user-assigned managed identity used to access the storage account for identity-based Azure Files backup.";
+            public const string ForceReregister = "Forces re-registration of the storage account when the access type or identity changes (prevents the confirmation prompt).";
         }
 
         internal static class ProtectableItem
@@ -196,6 +200,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string TargetFileShareName = "The File Share to which the file share has to be restored to.";
             public const string TargetFolder = "The folder under which the file share has to be restored to within the targetFileShareName.Leave the variable empty to restore under root folder.";
             public const string MultipleSourceFilePath = "Used for Multiple files restore from a file share. The paths of the items to be restored within the file share.";
+            public const string IsSystemAssignedIdentity = "Switch to use the vault's system-assigned managed identity to access the storage account for identity-based Azure Files restore. The restore identity may differ from the identity registered on the storage account.";
+            public const string UserAssignedIdentityArmUrl = "The ARM resource id (ARM URL) of the user-assigned managed identity used to access the storage account for identity-based Azure Files restore. The restore identity may differ from the identity registered on the storage account.";
+            public const string TargetSubscriptionId = "ID of the target subscription to which the file share should be restored. Use this parameter for Cross Subscription Restore (CSR) of Azure Files.";
         }
 
         internal static class ProtectionCheck
