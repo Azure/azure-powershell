@@ -18,12 +18,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzMonitorHealthModelIn
 Describe 'Invoke-AzMonitorHealthModelIngestEntityHealthReport' {
     It 'IngestExpanded' {
         {
-            try {
-                $result = Invoke-AzMonitorHealthModelIngestEntityHealthReport -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -EntityName $env.EntityName -SignalName $env.SignalDefinitionName -HealthState Healthy -Value 88.8 -ExpiresInMinute 60 -PassThru -ErrorAction Stop
-                $result | Should -BeTrue
-            } catch {
-                $_.Exception.Message | Should -Match 'signal|entity|resource|applicable|invalid'
-            }
+            $result = Invoke-AzMonitorHealthModelIngestEntityHealthReport -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -EntityName $env.EntityName -SignalName $env.SignalDefinitionName -HealthState Healthy -Value 88.8 -ExpiresInMinute 60 -PassThru -ErrorAction Stop
+            $result | Should -BeTrue
         } | Should -Not -Throw
     }
 

@@ -38,7 +38,7 @@ Creates the property object for a signal definition backed by a Log Analytics qu
 
 ### -DataUnit
 Unit of the signal result (e.g.
-Bytes, MilliSeconds, Percent, Count)).
+Bytes, MilliSeconds, Percent, Count).
 
 ```yaml
 Type: System.String

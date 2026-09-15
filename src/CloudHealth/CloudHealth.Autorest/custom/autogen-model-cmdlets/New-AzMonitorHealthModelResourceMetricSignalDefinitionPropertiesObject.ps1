@@ -47,7 +47,7 @@ function New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject 
         [Parameter(Mandatory, HelpMessage="Time range of signal. ISO duration format like PT10M.")]
         [string]
         $TimeGrain,
-        [Parameter(HelpMessage="Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count)).")]
+        [Parameter(HelpMessage="Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count).")]
         [string]
         $DataUnit,
         [Parameter(HelpMessage="Display name.")]

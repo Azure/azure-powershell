@@ -27,7 +27,7 @@ There are multiple scripts created for performing different actions for developi
     - `-Pack`: After building, packages the module into a `.nupkg`.
     - `-Code`: After building, opens a VSCode window with the module's directory and runs (see `-Run`) the module.
     - `-Release`: Builds the module in `Release` configuration (as opposed to `Debug` configuration).
-    - `-NoDocs`: Supresses writing the documentation markdown files as part of the cmdlet exporting process.
+    - `-NoDocs`: Suppresses writing the documentation markdown files as part of the cmdlet exporting process.
     - `-Debugger`: Used when attaching the debugger in Visual Studio to the PowerShell session, and running the build process without recompiling the DLL. This suppresses running the script as an isolated process.
 - `run-module.ps1`
   - Creates an isolated PowerShell session and loads `Az.CloudHealth` into the session.

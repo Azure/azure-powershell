@@ -63,6 +63,13 @@ options:
         set:
           suppress-should-process: true
 
+      # Correct the extra closing parenthesis inherited by the signal-definition constructors.
+      - where:
+          model-name: SignalDefinitionProperties
+          property-name: DataUnit
+        set:
+          property-description: Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count).
+
       # Keep the discriminated property bags as explicit models and emit constructor
       # cmdlets for them, so the unexpanded variants above are actually usable.
       - no-inline:

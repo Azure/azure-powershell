@@ -18,11 +18,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMonitorHealthModelEntit
 Describe 'Get-AzMonitorHealthModelEntitySignalHistory' {
     It 'GetExpanded' {
         {
-            try {
-                Invoke-AzMonitorHealthModelIngestEntityHealthReport -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -EntityName $env.EntityName -SignalName $env.SignalDefinitionName -HealthState Unhealthy -Value 99.0 -ExpiresInMinute 60 -ErrorAction Stop | Out-Null
-            } catch {
-                $_.Exception.Message | Should -Match 'signal|entity|resource|applicable|invalid'
-            }
+            Invoke-AzMonitorHealthModelIngestEntityHealthReport -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -EntityName $env.EntityName -SignalName $env.SignalDefinitionName -HealthState Unhealthy -Value 99.0 -ExpiresInMinute 60 -ErrorAction Stop | Out-Null
             $result = Get-AzMonitorHealthModelEntitySignalHistory -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -EntityName $env.EntityName -SignalName $env.SignalDefinitionName -Top 5
             $result | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw

@@ -40,7 +40,7 @@ function New-AzMonitorHealthModelLogAnalyticsQuerySignalDefinitionPropertiesObje
         [Parameter(HelpMessage="Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.")]
         [string]
         $ValueColumnName,
-        [Parameter(HelpMessage="Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count)).")]
+        [Parameter(HelpMessage="Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count).")]
         [string]
         $DataUnit,
         [Parameter(HelpMessage="Display name.")]
