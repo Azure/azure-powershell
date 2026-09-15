@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed App Service Plan output to retain zone redundancy, worker counts, identities, scaling options, custom hosting settings, and resource metadata.
 * Fixed Web App output to retain networking, hosting, affinity, encryption, and resource metadata properties returned by the upgraded API.
 * Fixed Web App configuration reads and updates to preserve metadata, access-restriction defaults, HTTP/2 proxy settings, minimum TLS (Transport Layer Security) cipher suites, and scaling limits.
 * Preserved existing Az.Websites output model compatibility after the Microsoft.Web API upgrade.

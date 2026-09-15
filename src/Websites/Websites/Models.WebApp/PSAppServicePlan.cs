@@ -25,12 +25,15 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
             id: other.Id,
             kind: other.Kind,
             type: other.Type,
+            systemData: other.SystemData,
             tags: other.Tags,
+            identity: other.Identity,
             workerTierName: other.WorkerTierName,
             status: other.Status,
             subscription: other.Subscription,
             hostingEnvironmentProfile: other.HostingEnvironmentProfile,
             maximumNumberOfWorkers: other.MaximumNumberOfWorkers,
+            numberOfWorkers: other.NumberOfWorkers,
             geoRegion: other.GeoRegion,
             perSiteScaling: other.PerSiteScaling,
             numberOfSites: other.NumberOfSites,
@@ -43,7 +46,16 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
             targetWorkerCount: other.TargetWorkerCount,
             targetWorkerSizeId: other.TargetWorkerSizeId,
             provisioningState: other.ProvisioningState,
-            sku: other.Sku
+            sku: other.Sku,
+            zoneRedundant: other.ZoneRedundant,
+            asyncScalingEnabled: other.AsyncScalingEnabled,
+            planDefaultIdentity: other.PlanDefaultIdentity,
+            isCustomMode: other.IsCustomMode,
+            registryAdapters: other.RegistryAdapters,
+            installScripts: other.InstallScripts,
+            network: other.Network,
+            storageMounts: other.StorageMounts,
+            rdpEnabled: other.RdpEnabled
             )
         {
 
