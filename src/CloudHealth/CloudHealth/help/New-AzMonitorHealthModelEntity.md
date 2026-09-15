@@ -15,7 +15,7 @@ Create a Entity
 ### CreateExpanded (Default)
 ```
 New-AzMonitorHealthModelEntity -HealthModelName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CanvaPositionX <Single>] [-CanvaPositionY <Single>]
+ [-SubscriptionId <String>] [-CanvasPositionX <Single>] [-CanvasPositionY <Single>]
  [-DegradedActionGroupId <String[]>] [-DegradedDescription <String>] [-DegradedSeverity <String>]
  [-DisplayName <String>] [-HealthObjective <Single>] [-IconCustomData <String>] [-IconName <String>]
  [-Impact <String>] [-SignalAggregationGroup <ISignalAggregationGroup[]>] [-SignalGroup <ISignalGroups>]
@@ -68,7 +68,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CanvaPositionX
+### -CanvasPositionX
 X Coordinate
 
 ```yaml
@@ -83,7 +83,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CanvaPositionY
+### -CanvasPositionY
 Y Coordinate
 
 ```yaml

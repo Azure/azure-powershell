@@ -15,3 +15,5 @@ Custom cmdlets generally encompass additional functionality not described in the
 
 ## Usage
 To execute tests, run the `test-module.ps1`. To write tests, [this example](https://github.com/pester/Pester/blob/8b9cf4248315e44f1ac6673be149f7e0d7f10466/Examples/Planets/Get-Planet.Tests.ps1#L1) from the Pester repository is very useful for getting started.
+
+See the [module testing guide](../../README.md#recording-and-playback) for recording, fixture synchronization, and Azure resource cleanup.

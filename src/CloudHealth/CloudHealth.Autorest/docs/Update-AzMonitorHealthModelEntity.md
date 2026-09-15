@@ -15,7 +15,7 @@ Update a Entity
 ### UpdateExpanded (Default)
 ```
 Update-AzMonitorHealthModelEntity -HealthModelName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CanvaPositionX <Single>] [-CanvaPositionY <Single>]
+ [-SubscriptionId <String>] [-CanvasPositionX <Single>] [-CanvasPositionY <Single>]
  [-DegradedActionGroupId <String[]>] [-DegradedDescription <String>] [-DegradedSeverity <String>]
  [-DisplayName <String>] [-HealthObjective <Single>] [-IconCustomData <String>] [-IconName <String>]
  [-Impact <String>] [-SignalAggregationGroup <ISignalAggregationGroup[]>] [-SignalGroup <ISignalGroups>]
@@ -26,8 +26,8 @@ Update-AzMonitorHealthModelEntity -HealthModelName <String> -Name <String> -Reso
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMonitorHealthModelEntity -InputObject <ICloudHealthIdentity> [-CanvaPositionX <Single>]
- [-CanvaPositionY <Single>] [-DegradedActionGroupId <String[]>] [-DegradedDescription <String>]
+Update-AzMonitorHealthModelEntity -InputObject <ICloudHealthIdentity> [-CanvasPositionX <Single>]
+ [-CanvasPositionY <Single>] [-DegradedActionGroupId <String[]>] [-DegradedDescription <String>]
  [-DegradedSeverity <String>] [-DisplayName <String>] [-HealthObjective <Single>] [-IconCustomData <String>]
  [-IconName <String>] [-Impact <String>] [-SignalAggregationGroup <ISignalAggregationGroup[]>]
  [-SignalGroup <ISignalGroups>] [-Tag <Hashtable>] [-UnhealthyActionGroupId <String[]>]
@@ -38,7 +38,7 @@ Update-AzMonitorHealthModelEntity -InputObject <ICloudHealthIdentity> [-CanvaPos
 ### UpdateViaIdentityHealthmodelExpanded
 ```
 Update-AzMonitorHealthModelEntity -HealthmodelInputObject <ICloudHealthIdentity> -Name <String>
- [-CanvaPositionX <Single>] [-CanvaPositionY <Single>] [-DegradedActionGroupId <String[]>]
+ [-CanvasPositionX <Single>] [-CanvasPositionY <Single>] [-DegradedActionGroupId <String[]>]
  [-DegradedDescription <String>] [-DegradedSeverity <String>] [-DisplayName <String>]
  [-HealthObjective <Single>] [-IconCustomData <String>] [-IconName <String>] [-Impact <String>]
  [-SignalAggregationGroup <ISignalAggregationGroup[]>] [-SignalGroup <ISignalGroups>] [-Tag <Hashtable>]
@@ -84,7 +84,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CanvaPositionX
+### -CanvasPositionX
 X Coordinate
 
 ```yaml
@@ -99,7 +99,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CanvaPositionY
+### -CanvasPositionY
 Y Coordinate
 
 ```yaml

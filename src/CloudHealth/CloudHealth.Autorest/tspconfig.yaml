@@ -29,6 +29,17 @@ options:
           default:
             script: '(Get-AzContext).Subscription.Id'
 
+      # Work around the generator singularizing canvas to canva in the X parameter.
+      - where:
+          parameter-name: ^CanvaPositionX$
+        set:
+          parameter-name: CanvasPositionX
+      # Apply the same spelling fix to Y; serialized model properties stay unchanged.
+      - where:
+          parameter-name: ^CanvaPositionY$
+        set:
+          parameter-name: CanvasPositionY
+
       # AuthenticationSetting, SignalDefinition and DiscoveryRule carry discriminated
       # (polymorphic) property bags. The Expanded variants only flatten the base type, so
       # the subtype-required fields (authenticationKind/managedIdentityName, the
@@ -43,6 +54,8 @@ options:
           subject: ^(?!AuthenticationSetting$|SignalDefinition$|DiscoveryRule$).*$
           variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
         remove: true
+      # Keep creation simple: explicit parent identifiers plus the new resource name.
+      # ViaIdentity accepts resource identity objects, not authentication identities.
       - where:
           variant: ^CreateViaIdentity.*$
         remove: true
@@ -69,6 +82,41 @@ options:
           property-name: DataUnit
         set:
           property-description: Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count).
+
+      # Keep emitted Markdown accurate for TypeSpec and link to the hand-maintained guide.
+      # Avoid JavaScript block braces, which the TypeSpec configuration loader interpolates.
+      - from: source-file-other
+        transform: |
+          const path = $documentPath.replace(/\\/g, "/");
+          const guide = "See the [module testing guide](../../README.md#recording-and-playback) for recording, fixture synchronization, and Azure resource cleanup.";
+          if (path.endsWith("/CloudHealth.Autorest/README.md"))
+            $ = [
+              "# Az.CloudHealth",
+              "Manage Azure Monitor health models, entities, relationships, signal definitions, discovery rules, and authentication settings.",
+              "",
+              "## Generation",
+              "The module is generated from TypeSpec with the `@azure-tools/typespec-powershell` emitter.",
+              "",
+              "- [tsp-location.yaml](tsp-location.yaml) pins the API specification repository, directory, and commit.",
+              "- [tspconfig.yaml](tspconfig.yaml) selects the API version and configures cmdlet names, parameter sets, and model constructors.",
+              "",
+              "## Requirements",
+              "The [module manifest](../CloudHealth/Az.CloudHealth.psd1) defines supported PowerShell editions and required modules, including the minimum Az.Accounts version. Use its requirements when installing or updating dependencies.",
+              "",
+              "## Authentication",
+              "Authentication is provided by Az.Accounts. Connect with `Connect-AzAccount` and select the subscription context before running CloudHealth commands.",
+              "",
+              "## Development",
+              "- [Development and testing guide](../README.md): generation inputs, recording, playback, and test resource cleanup.",
+              "- [Custom cmdlets](custom/README.md): handwritten extensions to the generated module."
+            ].join("\n") + "\n";
+          else if (path.endsWith("/CloudHealth.Autorest/custom/README.md"))
+            $ = $.replace(
+              /(## Purpose\r?\n)[\s\S]*?(\r?\n## Usage)/,
+              "$1This allows the module to have cmdlets that were not defined in the TypeSpec specification. It also allows combining logic using generated cmdlets when the [TypeSpec emitter configuration](../tspconfig.yaml) is not sufficient. These custom cmdlets are then referenced by the cmdlets created at build-time in the `../exports` folder.\n$2"
+            );
+          else if (path.endsWith("/CloudHealth.Autorest/test/README.md"))
+            $ = $.includes(guide) ? $ : $.trimEnd() + "\n\n" + guide + "\n";
 
       # Keep the discriminated property bags as explicit models and emit constructor
       # cmdlets for them, so the unexpanded variants above are actually usable.

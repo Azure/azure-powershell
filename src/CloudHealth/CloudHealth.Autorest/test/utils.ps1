@@ -122,10 +122,10 @@ function setupEnv() {
         throw "Resource group '$($env.ResourceGroupName)' already exists; refusing to reuse it."
     }
     $resourceGroup = New-AzResourceGroup -Name $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -Location $env.Location -ErrorAction Stop
+    $script:ownedResourceGroup = @{ Name = $env.ResourceGroupName; SubscriptionId = $env.SubscriptionId }
     if ($null -eq $resourceGroup -or $resourceGroup.Id -ne "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)") {
         throw 'The created resource group identity could not be verified.'
     }
-    $script:ownedResourceGroup = @{ Name = $env.ResourceGroupName; SubscriptionId = $env.SubscriptionId }
 
     $healthModel = Get-AzMonitorHealthModel -ResourceGroupName $env.ResourceGroupName -Name $env.HealthModelName -ErrorAction SilentlyContinue
     if ($null -eq $healthModel) {
