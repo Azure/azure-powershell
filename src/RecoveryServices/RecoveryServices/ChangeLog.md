@@ -28,6 +28,7 @@
 * Added Managed Identity (MI) based authentication support for Azure File Share backup:
     - `Enable-AzRecoveryServicesBackupProtection` and `Register-AzRecoveryServicesBackupContainer` (extended to `-BackupManagementType AzureStorage`) now accept `-AccessType` (`KeyBased`/`IdentityBased`), `-IsSystemAssignedIdentity`, and `-UserAssignedIdentityArmUrl` to register/re-register a storage account with a vault managed identity; `-Force` re-registers when the access type or identity changes.
     - `Restore-AzRecoveryServicesBackupItem` accepts `-IsSystemAssignedIdentity` and `-UserAssignedIdentityArmUrl` for identity-based Azure File Share restore, and `-TargetSubscriptionId` to enable Cross Subscription Restore (CSR).
+    - Azure File Share Cross Region Restore can target a storage account in another subscription by combining `-RestoreToSecondaryRegion` and `-TargetSubscriptionId`.
 
 ## Version 7.14.1
 * Added Cross Region Restore for Azure File Share backups through `Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, and `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`.

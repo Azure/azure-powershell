@@ -215,5 +215,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 "Test-AzureFSCrossSubscriptionRestoreTargetLookup"
             );
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSCrossRegionCrossSubscriptionRestore()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSCrossRegionCrossSubscriptionRestore"
+            );
+        }
     }
 }

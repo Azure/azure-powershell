@@ -379,7 +379,7 @@ In this example, the backed up VM resides in a subscription different from the R
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureStorage -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "fileShareName" -UseSecondaryRegion
 $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID -UseSecondaryRegion
-$RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetStorageAccountName "targetStorageAccount" -TargetFileShareName "targetFileShare" -RestoreToSecondaryRegion -VaultId $vault.ID -VaultLocation $vault.Location
+$RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -ResolveConflict Overwrite -TargetStorageAccountName "targetStorageAccount" -TargetFileShareName "targetFileShare" -RestoreToSecondaryRegion -VaultId $vault.ID -VaultLocation $vault.Location
 ```
 
 ```output
@@ -390,7 +390,18 @@ WorkloadName    Operation       Status          StartTime              EndTime
 
 This example triggers a Cross Region Restore for an Azure File share. The first command gets the vault. The second command gets the backup item from the secondary region using `-UseSecondaryRegion`. The third command gets the secondary region recovery points. The last command restores the entire file share to an alternate location in the secondary region using `-RestoreToSecondaryRegion`. Cross Region Restore for Azure File shares supports only full-share restore to an alternate location; item-level restore and original-location restore are not supported.
 
-### Example 16: Restore an Azure file share by using a managed identity
+### Example 16: Cross Region Restore of an Azure file share to another subscription
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$backupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureStorage -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "fileShareName" -UseSecondaryRegion
+$recoveryPoint = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupItem -VaultId $vault.ID -UseSecondaryRegion | Select-Object -First 1
+$restoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $recoveryPoint -ResolveConflict Overwrite -TargetSubscriptionId "00000000-0000-0000-0000-000000000000" -TargetStorageAccountName "targetStorageAccount" -TargetFileShareName "targetFileShare" -RestoreToSecondaryRegion -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+This example restores a secondary-region Azure File Share recovery point to a storage account in another subscription. The target storage account must be in the vault's secondary region, Cross Subscription Restore must be enabled on the vault, and the target file share must exist.
+
+### Example 17: Restore an Azure file share by using a managed identity
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "vaultResourceGroup" -Name "vaultName"
@@ -839,7 +850,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetSubscriptionId
-ID of the target subscription to which the resource should be restored. For Azure File Share, use this parameter for Cross Subscription Restore to a storage account in another subscription.
+ID of the target subscription to which the resource should be restored. For Azure File Share, use this parameter for Cross Subscription Restore to a storage account in another subscription. It can be combined with **-RestoreToSecondaryRegion** when the target storage account is in the vault's secondary region.
 
 ```yaml
 Type: System.String

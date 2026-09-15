@@ -861,19 +861,7 @@ function Test-AzureFSRestoreToSecondaryRegion
 			-ErrorAction Stop } `
 		"Managed identity parameters are not supported"
 
-	# VARIATION-4: CRR cannot be combined with cross-subscription restore.
-	Assert-ThrowsContains `
-		{ Restore-AzRecoveryServicesBackupItem `
-			-VaultId $vault.ID -VaultLocation $vault.Location `
-			-RecoveryPoint $rp[0] `
-			-TargetStorageAccountName $targetStorageAccountName `
-			-TargetFileShareName $targetFileShareName `
-			-ResolveConflict Overwrite -RestoreToSecondaryRegion `
-			-TargetSubscriptionId "55555555-5555-5555-5555-555555555555" `
-			-ErrorAction Stop } `
-		"Cross region restore is not supported along with cross subscription restore"
-
-	# VARIATION-5: full CRR restore to secondary region completes.
+	# VARIATION-4: full CRR restore to secondary region completes.
 	$crrJob = Restore-AzRecoveryServicesBackupItem `
 		-VaultId $vault.ID -VaultLocation $vault.Location `
 		-RecoveryPoint $rp[0] `
@@ -1184,4 +1172,87 @@ function Test-AzureFSCrossSubscriptionRestoreTargetLookup
 			-Confirm:$false `
 			-ErrorAction Stop
 	} "Please provide a valid target storage account"
+}
+
+function Test-AzureFSCrossRegionCrossSubscriptionRestore
+{
+	$resourceGroupName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_CRR_CSR_RESOURCE_GROUP" `
+		-PlaybackValue "afs-crr-csr-test-rg"
+	$vaultName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_CRR_CSR_VAULT_NAME" `
+		-PlaybackValue "afs-crr-csr-test-vault"
+	$sourceStorageAccountName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_CRR_CSR_SOURCE_STORAGE_ACCOUNT" `
+		-PlaybackValue "afscrrsource"
+	$sourceFileShareName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_CRR_CSR_SOURCE_FILE_SHARE" `
+		-PlaybackValue "afscrrsourceshare"
+	$targetSubscriptionId = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_CRR_CSR_TARGET_SUBSCRIPTION" `
+		-PlaybackValue "55555555-5555-5555-5555-555555555555"
+	$targetStorageAccountName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_CRR_CSR_TARGET_STORAGE_ACCOUNT" `
+		-PlaybackValue "afscrrtarget"
+	$targetFileShareName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_CRR_CSR_TARGET_FILE_SHARE" `
+		-PlaybackValue "afscrrtargetshare"
+
+	$vault = Get-AzRecoveryServicesVault `
+		-ResourceGroupName $resourceGroupName `
+		-Name $vaultName
+	$item = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-BackupManagementType AzureStorage `
+		-WorkloadType AzureFiles `
+		-FriendlyName $sourceFileShareName `
+		-UseSecondaryRegion |
+		Where-Object ContainerName -match ([regex]::Escape($sourceStorageAccountName) + "$") |
+		Select-Object -First 1
+	Assert-NotNull $item
+	Assert-NotNull $item.LastBackupTime
+
+	$anchor = $item.LastBackupTime.ToUniversalTime()
+	$recoveryPoint = Get-AzRecoveryServicesBackupRecoveryPoint `
+		-VaultId $vault.ID `
+		-Item $item `
+		-StartDate $anchor.AddDays(-30) `
+		-EndDate $anchor.AddDays(1) `
+		-UseSecondaryRegion |
+		Sort-Object RecoveryPointTime -Descending |
+		Select-Object -First 1
+	Assert-NotNull $recoveryPoint
+
+	$restoreJob = Restore-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-VaultLocation $vault.Location `
+		-RecoveryPoint $recoveryPoint `
+		-ResolveConflict Overwrite `
+		-TargetSubscriptionId $targetSubscriptionId `
+		-TargetStorageAccountName $targetStorageAccountName `
+		-TargetFileShareName $targetFileShareName `
+		-TargetFolder "crr-csr-restore" `
+		-RestoreToSecondaryRegion `
+		-Confirm:$false
+
+	$terminalStates = @("Completed", "CompletedWithWarnings", "Failed", "Cancelled")
+	$jobQueryStart = $recoveryPoint.RecoveryPointTime.ToUniversalTime().AddMinutes(-1)
+	$jobQueryEnd = $recoveryPoint.RecoveryPointTime.ToUniversalTime().AddDays(7)
+	while ($restoreJob.Status -notin $terminalStates)
+	{
+		if ($env:AZURE_TEST_MODE -eq "Record")
+		{
+			Start-Sleep -Seconds 20
+		}
+
+		$restoreJob = Get-AzRecoveryServicesBackupJob `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-Job $restoreJob `
+			-From $jobQueryStart `
+			-To $jobQueryEnd `
+			-UseSecondaryRegion
+	}
+
+	Assert-AreEqual "Completed" $restoreJob.Status
 }
