@@ -55,42 +55,48 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             // switch subscription context 
             string subscriptionContext = RMAdapter.Client.SubscriptionId;
-            RMAdapter.Client.SubscriptionId = (subscriptionId != null)? subscriptionId: RMAdapter.Client.SubscriptionId;
-
-            Func<RestAzureNS.IPage<GenericResource>> listAsync =
-            () => RMAdapter.Client.Resources.ListWithHttpMessagesAsync(
-                getItemQueryParams,
-                cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
-
-            Func<string, RestAzureNS.IPage<GenericResource>> listNextAsync =
-                nextLink => RMAdapter.Client.Resources.ListNextWithHttpMessagesAsync(
-                    nextLink,
-                    cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
-
-            storageAccounts = HelperUtils.GetPagedRMList(listAsync, listNextAsync);
-            storageAccount = storageAccounts.Find(account =>
-                string.Compare(account.Name, storageAccountName) == 0);
-
-            if (storageAccount == null)
+            try
             {
-                getItemQueryParams = new ODataQuery<GenericResourceFilter>(q =>
-                q.ResourceType == "Microsoft.Storage/storageAccounts");
-                listAsync = () => RMAdapter.Client.Resources.ListWithHttpMessagesAsync(
+                RMAdapter.Client.SubscriptionId = (subscriptionId != null) ?
+                    subscriptionId : RMAdapter.Client.SubscriptionId;
+
+                Func<RestAzureNS.IPage<GenericResource>> listAsync =
+                () => RMAdapter.Client.Resources.ListWithHttpMessagesAsync(
                     getItemQueryParams,
                     cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
 
-                listNextAsync = nextLink => RMAdapter.Client.Resources.ListNextWithHttpMessagesAsync(
+                Func<string, RestAzureNS.IPage<GenericResource>> listNextAsync =
+                    nextLink => RMAdapter.Client.Resources.ListNextWithHttpMessagesAsync(
                     nextLink,
                     cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
 
                 storageAccounts = HelperUtils.GetPagedRMList(listAsync, listNextAsync);
                 storageAccount = storageAccounts.Find(account =>
                     string.Compare(account.Name, storageAccountName) == 0);
+
+                if (storageAccount == null)
+                {
+                    getItemQueryParams = new ODataQuery<GenericResourceFilter>(q =>
+                    q.ResourceType == "Microsoft.Storage/storageAccounts");
+                    listAsync = () => RMAdapter.Client.Resources.ListWithHttpMessagesAsync(
+                        getItemQueryParams,
+                        cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
+
+                    listNextAsync = nextLink => RMAdapter.Client.Resources.ListNextWithHttpMessagesAsync(
+                        nextLink,
+                        cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
+
+                    storageAccounts = HelperUtils.GetPagedRMList(listAsync, listNextAsync);
+                    storageAccount = storageAccounts.Find(account =>
+                        string.Compare(account.Name, storageAccountName) == 0);
+                }
+
+                return storageAccount;
             }
-
-            RMAdapter.Client.SubscriptionId = subscriptionContext;
-
-            return storageAccount;
+            finally
+            {
+                RMAdapter.Client.SubscriptionId = subscriptionContext;
+            }
         }
 
         /// <summary>
