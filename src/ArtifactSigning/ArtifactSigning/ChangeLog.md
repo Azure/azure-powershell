@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed token audience mismatch causing 401 Unauthorized on Artifact Signing endpoints by removing the trailing slash in the authentication resource URL.
+* Fixed token audience mismatch causing `401 Unauthorized` on Artifact Signing endpoints by removing the trailing slash in the authentication resource URL. [#30138]
 
 ## Version 0.2.1
 * Updated `System.Formats.Asn1` dependency from `6.0.1` to `8.0.1`.
