@@ -1,3 +1,11 @@
+# Override the upstream spec's linter.extends so it does not reference the
+# "client-sdk" ruleset, which is not present in the pinned
+# @azure-tools/typespec-azure-rulesets@0.63.0 (see eng/emitter-package.json).
+# Deep-merge replaces arrays with the child value, so this drops "client-sdk"
+# while keeping "resource-manager" when CI regenerates via New-DevTSPModule.
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"
 options:
   "@azure-tools/typespec-powershell":
     service-dir: "src"
