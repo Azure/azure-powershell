@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [Parameter(
             Mandatory = false,
             HelpMessage = AuditingHelpMessages.RequiredFieldsHelpMessage)]
-        [ValidateNotNull]
+        [ValidateCount(0, 52)]
         public string[] RequiredFields { get; set; }
 
         protected override ServerAuditModel ApplyUserInputToModel(ServerAuditModel model)

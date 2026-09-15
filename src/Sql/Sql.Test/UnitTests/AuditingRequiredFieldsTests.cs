@@ -54,7 +54,62 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             Assert.NotNull(property);
             Assert.Equal(typeof(string[]), property.PropertyType);
             Assert.False(property.GetCustomAttribute<ParameterAttribute>().Mandatory);
-            Assert.NotNull(property.GetCustomAttribute<ValidateNotNullAttribute>());
+            Assert.Null(property.GetCustomAttribute<ValidateNotNullAttribute>());
+            ValidateCountAttribute validateCount = property.GetCustomAttribute<ValidateCountAttribute>();
+            Assert.NotNull(validateCount);
+            Assert.Equal(0, validateCount.MinLength);
+            Assert.Equal(52, validateCount.MaxLength);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RequiredFieldsValidationAcceptsApiSupportedInputs()
+        {
+            AuditingRequiredFieldsValidator.Validate(CreateValidationModel(new[] { " EVENT_TIME ", "action_id" }));
+            AuditingRequiredFieldsValidator.Validate(CreateValidationModel(Array.Empty<string>(), false));
+            AuditingRequiredFieldsValidator.Validate(CreateValidationModel(new[] { "event_time" }, false, false));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RequiredFieldsValidationEnforcesApiLimits()
+        {
+            PSArgumentException countException = Assert.Throws<PSArgumentException>(() =>
+                AuditingRequiredFieldsValidator.Validate(CreateValidationModel(Enumerable.Repeat("event_time", 53).ToArray())));
+            Assert.Contains("maximum allowed number of 52 fields", countException.Message);
+
+            PSArgumentException lengthException = Assert.Throws<PSArgumentException>(() =>
+                AuditingRequiredFieldsValidator.Validate(CreateValidationModel(new[] { new string('a', 36) })));
+            Assert.Contains("cannot exceed 35 characters", lengthException.Message);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RequiredFieldsValidationRejectsInvalidApiInputs()
+        {
+            PSArgumentException monitorException = Assert.Throws<PSArgumentException>(() =>
+                AuditingRequiredFieldsValidator.Validate(CreateValidationModel(new[] { "event_time" }, false, true)));
+            Assert.Contains("isAzureMonitorTargetEnabled is set to true", monitorException.Message);
+
+            PSArgumentException duplicateException = Assert.Throws<PSArgumentException>(() =>
+                AuditingRequiredFieldsValidator.Validate(CreateValidationModel(new[] { " event_time ", "EVENT_TIME" })));
+            Assert.Contains("Duplicate field names found: 'event_time'", duplicateException.Message);
+
+            PSArgumentException invalidFieldException = Assert.Throws<PSArgumentException>(() =>
+                AuditingRequiredFieldsValidator.Validate(CreateValidationModel(new[] { "invalid_field" })));
+            Assert.Contains("Invalid audit field name 'invalid_field'", invalidFieldException.Message);
+
+            PSArgumentException emptyException = Assert.Throws<PSArgumentException>(() =>
+                AuditingRequiredFieldsValidator.Validate(CreateValidationModel(new string[] { null })));
+            Assert.Contains("at least one valid field name", emptyException.Message);
+
+            PSArgumentException whitespaceException = Assert.Throws<PSArgumentException>(() =>
+                AuditingRequiredFieldsValidator.Validate(CreateValidationModel(new[] { " " })));
+            Assert.Contains("at least one valid field name", whitespaceException.Message);
+
+            PSArgumentException commaDelimitedException = Assert.Throws<PSArgumentException>(() =>
+                AuditingRequiredFieldsValidator.Validate(CreateValidationModel(new[] { "event_time,action_id" })));
+            Assert.Contains("Invalid audit field name 'event_time,action_id'", commaDelimitedException.Message);
         }
 
         [Fact]
@@ -188,6 +243,22 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             IEnumerable<string> requiredFields = JObject.Parse(serialized)["properties"]?["requiredFields"]?.Values<string>();
 
             Assert.Equal(TestRequiredFields, requiredFields);
+        }
+
+        private static ServerAuditModel CreateValidationModel(
+            string[] requiredFields,
+            bool isAzureMonitorEnabled = true,
+            bool isPolicyEnabled = true)
+        {
+            return new ServerAuditModel
+            {
+                RequiredFields = requiredFields,
+                BlobStorageTargetState = isPolicyEnabled && !isAzureMonitorEnabled ? AuditStateType.Enabled : AuditStateType.Disabled,
+                StorageAccountResourceId = isPolicyEnabled && !isAzureMonitorEnabled ? "storageAccountResourceId" : null,
+                EventHubTargetState = AuditStateType.Disabled,
+                LogAnalyticsTargetState = isPolicyEnabled && isAzureMonitorEnabled ? AuditStateType.Enabled : AuditStateType.Disabled,
+                WorkspaceResourceId = isAzureMonitorEnabled ? "workspaceResourceId" : null
+            };
         }
 
         private sealed class TestServerAuditAdapter : SqlUserAuditAdapter<ServerBlobAuditingPolicy, ExtendedServerBlobAuditingPolicy, ServerAuditModel>

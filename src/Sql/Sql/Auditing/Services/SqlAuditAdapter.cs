@@ -24,9 +24,121 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 {
+    /// <summary>
+    /// Validates RequiredFields using the rules enforced by the 2026-08-01-preview auditing API.
+    /// </summary>
+    internal static class AuditingRequiredFieldsValidator
+    {
+        private const int MaxRequiredFieldsLength = 4000;
+
+        private static readonly HashSet<string> ValidAuditEventFields = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "audit_schema_version", "event_time", "sequence_number", "action_id", "succeeded",
+            "is_column_permission", "session_id", "server_principal_id", "database_principal_id",
+            "target_server_principal_id", "target_database_principal_id", "object_id",
+            "user_defined_event_id", "transaction_id", "class_type", "duration_milliseconds",
+            "response_rows", "affected_rows", "client_tls_version", "database_transaction_id",
+            "ledger_start_sequence_number", "is_local_secondary_replica", "client_ip",
+            "permission_bitmask", "sequence_group_id", "session_server_principal_name",
+            "server_principal_name", "server_principal_sid", "database_principal_name",
+            "target_server_principal_name", "target_server_principal_sid",
+            "target_database_principal_name", "server_instance_name", "database_name",
+            "schema_name", "object_name", "statement", "additional_information",
+            "user_defined_information", "application_name", "connection_id",
+            "data_sensitivity_information", "host_name", "session_context",
+            "client_tls_version_name", "external_policy_permissions_checked",
+            "obo_middle_tier_app_id", "event_id", "is_server_level_audit",
+            "action_name", "class_type_description", "securable_class_type"
+        };
+
+        private static readonly int MaxRequiredFieldNameLength = ValidAuditEventFields.Max(fieldName => fieldName.Length);
+
+        /// <summary>
+        /// Validates the required fields and effective auditing target state.
+        /// </summary>
+        /// <param name="model">The user auditing policy model.</param>
+        internal static void Validate(ServerAuditModel model)
+        {
+            string[] requiredFields = model.RequiredFields;
+            if (requiredFields == null || requiredFields.Length == 0)
+            {
+                return;
+            }
+
+            if (requiredFields.Length > ValidAuditEventFields.Count)
+            {
+                throw new PSArgumentException(
+                    $"Invalid parameter 'RequiredFields'. The array exceeds the maximum allowed number of {ValidAuditEventFields.Count} fields.",
+                    nameof(ServerAuditModel.RequiredFields));
+            }
+
+            if (requiredFields.Any(fieldName => fieldName != null && fieldName.Length > MaxRequiredFieldNameLength))
+            {
+                throw new PSArgumentException(
+                    $"Invalid parameter 'RequiredFields'. Each field name cannot exceed {MaxRequiredFieldNameLength} characters.",
+                    nameof(ServerAuditModel.RequiredFields));
+            }
+
+            bool isPolicyEnabled = model.BlobStorageTargetState == AuditStateType.Enabled ||
+                model.EventHubTargetState == AuditStateType.Enabled ||
+                model.LogAnalyticsTargetState == AuditStateType.Enabled;
+            bool isAzureMonitorTargetEnabled = model.EventHubTargetState == AuditStateType.Enabled ||
+                model.LogAnalyticsTargetState == AuditStateType.Enabled;
+
+            if (isPolicyEnabled && !isAzureMonitorTargetEnabled)
+            {
+                throw new PSArgumentException(
+                    "Invalid parameter 'RequiredFields'. RequiredFields parameter can only be specified when isAzureMonitorTargetEnabled is set to true.",
+                    nameof(ServerAuditModel.RequiredFields));
+            }
+
+            string[] fieldNames = requiredFields
+                .Select(fieldName => fieldName?.Trim())
+                .ToArray();
+
+            if (fieldNames.Any(string.IsNullOrWhiteSpace))
+            {
+                throw new PSArgumentException(
+                    "Invalid parameter 'RequiredFields'. Must contain at least one valid field name.",
+                    nameof(ServerAuditModel.RequiredFields));
+            }
+
+            string[] duplicateFields = fieldNames.GroupBy(fieldName => fieldName, StringComparer.OrdinalIgnoreCase)
+                .Where(group => group.Count() > 1)
+                .Select(group => group.Key)
+                .ToArray();
+
+            if (duplicateFields.Length > 0)
+            {
+                throw new PSArgumentException(
+                    $"Invalid parameter 'RequiredFields'. Duplicate field names found: '{string.Join(",", duplicateFields)}'.",
+                    nameof(ServerAuditModel.RequiredFields));
+            }
+
+            foreach (string fieldName in fieldNames)
+            {
+                if (!ValidAuditEventFields.Contains(fieldName))
+                {
+                    throw new PSArgumentException(
+                        $"Invalid audit field name '{fieldName}' in RequiredFields. Must be one of the valid audit_event fields.",
+                        nameof(ServerAuditModel.RequiredFields));
+                }
+            }
+
+            string internalRequiredFields = string.Join(",", fieldNames);
+            if (internalRequiredFields.Length > MaxRequiredFieldsLength)
+            {
+                throw new PSArgumentException(
+                    $"Invalid parameter 'RequiredFields'. The value exceeds the maximum allowed length of {MaxRequiredFieldsLength} characters.",
+                    nameof(ServerAuditModel.RequiredFields));
+            }
+        }
+    }
+
     /// <summary>
     /// The SqlAuditClient class is responsible for transforming the data that was received form the endpoints to the cmdlets model of auditing policy and vice versa
     /// </summary>
@@ -671,6 +783,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             if (model.DiagnosticsEnablingAuditCategory != null && model.DiagnosticsEnablingAuditCategory.Count > 1)
             {
                 throw new Exception($"Operation is not supported when multiple Diagnostic Settings enable {GetDiagnosticsEnablingAuditCategoryName()}");
+            }
+
+            if (model is ServerAuditModel userAuditModel)
+            {
+                AuditingRequiredFieldsValidator.Validate(userAuditModel);
             }
         }
 

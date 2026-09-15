@@ -285,7 +285,9 @@ Accept wildcard characters: False
 ### -RequiredFields
 The audit event fields that must be included in each audit record.
 Each item must be a valid `audit_event` field name.
+Specify no more than 52 unique fields, with each field name limited to 35 characters.
 This parameter can only be used when Azure Monitor is enabled as an audit target.
+Specify an empty array to clear the fields.
 
 ```yaml
 Type: System.String[]
