@@ -2092,3 +2092,290 @@ function Test-VirtualNetworkGatewayBasicIPToStandardIPMigration
         Clean-ResourceGroup $rgname
      }
 }
+
+<#
+.SYNOPSIS
+Virtual network gateway migration for point-to-site profile test
+#>
+function Test-VirtualNetworkGatewayPointToSiteProfileMigration
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rname2 = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = "eastus2euap"
+
+    try
+    {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+      # Create the Virtual Network
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -Sku Basic
+
+      # Point-to-site VPN client configuration required for MigrateGatewayForPointToSiteProfile
+      #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+      $samplePublicCertData = "MIIC6TCCAdGgAwIBAgIQNfcK7qIxCaBKV4WOhdnQzTANBgkqhkiG9w0BAQsFADAWMRQwEgYDVQQDDAtQMlNSb290Q2VydDAgFw0yNjA5MDQyMzA5MTlaGA8yMDU2MDkwNDIzMTkxN1owFjEUMBIGA1UEAwwLUDJTUm9vdENlcnQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDOEINKhM7bCN4289VjFHuXzYN265hu6iDB3l5ja9SMx/ipmcuQDLtJPtOHarkeMym/U/ri7ZBAF7g1unbc8pofrwicnYBxsFexI0qMGu7CWbApIyBosFnsMAp98Kwbc0bMpyEWjAH/qKOHE/8CCuU9OIsj5EGqBK9eaT8sA1xaq69eJhk4jlsRlyl9Lg3tCXnlK7eSdYCv8XEydZ2lbWbQYOVWRMYc0tXg4upGhTBO4u2+9yjiTtOoG4BzPUdBbhHVUGSjFUrSyAKMCg0zP0UVo70po+iEUDgayFlbo2WIRnkRlm1NhpLdOvnfucxyEzKV6IaS9u9upCZEFLqXsekBAgMBAAGjMTAvMA4GA1UdDwEB/wQEAwICBDAdBgNVHQ4EFgQUQ7veXu+WZ/714+4k9pDCl/XecMEwDQYJKoZIhvcNAQELBQADggEBAKVxr0b7AgNKF2lMw/9q+BMmWttF7umUfyFYBwVf9aVfCCGtOGqAbio8+wyQ5I7vGxHl8vvTpY8w1kbAM37tVNVxx+/JvoIU8hT90WHVHpnWAXZCuMyA3RUI3vOfwg6hDFt1kHHOH9X5jrQmhtYLUe0ELeeQ29/e9cdB2PUQm7xq3zZ2OmLYTWHb7O1zL04dAzL8PsBGAJPWq+wIZt7gpR8SpbLYadE3lS7EcdfOC709mqQVjS6esWPZskpOijkmxdoy6UfMnkgXBrgDbckwktD2HYgQ1tqFDu3ZH7CSh+Vf9/pU/pfHbhTNfowvBJIqx97+mi5nedVGuuFmb1Q3/9A="
+      $clientRootCertName = "BrkLiteTestMSFTRootCA.cer"
+      $rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
+
+      # Create & Get virtualnetworkgateway (retry on transient VPN gateway deployment errors)
+      $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+      $maxRetries = 5      # retries for transient VMSS/VPN gateway deployment errors
+      $retryWait = 120     # seconds between retries
+      $transientPattern = "Rolling Upgrade|VmssGatewayDeploymentFailed|VpnGatewayDeploymentFailed|intermittent error"
+      $attempt = 0
+      $gatewayCreated = $false
+      while (-not $gatewayCreated -and $attempt -lt $maxRetries) {
+          $attempt++
+          try {
+              $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku "VpnGw1" -VpnGatewayGeneration "Generation1" -VpnClientAddressPool "201.169.0.0/16" -VpnClientProtocol OpenVPN -VpnClientRootCertificates $rootCert -ErrorAction Stop
+              $gatewayCreated = $true
+          } catch {
+              if (($_.Exception.Message -match $transientPattern) -and ($attempt -lt $maxRetries)) {
+                  # A partially-provisioned gateway may exist; remove it before retrying so the name is free
+                  Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -ErrorAction SilentlyContinue | Remove-AzVirtualNetworkGateway -Force -ErrorAction SilentlyContinue | Out-Null
+                  Start-TestSleep -Seconds $retryWait
+              } else {
+                  throw
+              }
+          }
+      }
+      $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $gateway.ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $gateway.Name $actual.Name
+      Assert-AreEqual "Vpn" $gateway.GatewayType
+      Assert-AreEqual "RouteBased" $gateway.VpnType
+      Assert-NotNull $gateway.VpnClientConfiguration
+
+      #Trigger prepare migration on gateway
+      $migrationParams = New-AzVirtualNetworkGatewayMigrationParameter -MigrationType MigrateGatewayForPointToSiteProfile
+      Assert-AreEqual "MigrateGatewayForPointToSiteProfile" $migrationParams.MigrationType
+      Invoke-AzVirtualNetworkGatewayPrepareMigration -InputObject $gateway -MigrationParameter $migrationParams | Out-Null
+
+      # Poll until the prepare phase completes AND the gateway finishes provisioning (the internal VMSS rolling upgrade settles)
+      $maxWait = 1800      # seconds
+      $interval = 30       # seconds
+      $start = Get-Date
+      $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      while (((Get-Date) -lt $start.AddSeconds($maxWait)) -and (($gateway.VirtualNetworkGatewayMigrationStatus.Phase -ne "PrepareSucceeded") -or ($gateway.ProvisioningState -ne "Succeeded"))) {
+          Start-TestSleep -Seconds $interval
+          $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      }
+      Assert-NotNull $gateway.VirtualNetworkGatewayMigrationStatus
+      Assert-AreEqual "InProgress" $gateway.VirtualNetworkGatewayMigrationStatus.State
+      Assert-AreEqual "PrepareSucceeded" $gateway.VirtualNetworkGatewayMigrationStatus.Phase
+      Assert-AreEqual "Succeeded" $gateway.ProvisioningState
+
+      #Trigger execute migration on gateway (retry on transient VMSS rolling-upgrade errors)
+      $attempt = 0
+      $executeTriggered = $false
+      while (-not $executeTriggered -and $attempt -lt $maxRetries) {
+          $attempt++
+          try {
+              $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+              Invoke-AzVirtualNetworkGatewayExecuteMigration -InputObject $gateway -ErrorAction Stop | Out-Null
+              $executeTriggered = $true
+          } catch {
+              if (($_.Exception.Message -match $transientPattern) -and ($attempt -lt $maxRetries)) {
+                  Start-TestSleep -Seconds $retryWait
+              } else {
+                  throw
+              }
+          }
+      }
+
+      # Poll until the execute phase completes AND the gateway finishes provisioning (the internal VMSS rolling upgrade settles)
+      $start = Get-Date
+      $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      while (((Get-Date) -lt $start.AddSeconds($maxWait)) -and (($gateway.VirtualNetworkGatewayMigrationStatus.Phase -ne "ExecuteSucceeded") -or ($gateway.ProvisioningState -ne "Succeeded"))) {
+          Start-TestSleep -Seconds $interval
+          $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      }
+      Assert-NotNull $gateway.VirtualNetworkGatewayMigrationStatus
+      Assert-AreEqual "InProgress" $gateway.VirtualNetworkGatewayMigrationStatus.State
+      Assert-AreEqual "ExecuteSucceeded" $gateway.VirtualNetworkGatewayMigrationStatus.Phase
+      Assert-AreEqual "Succeeded" $gateway.ProvisioningState
+
+      #Trigger commit migration on gateway (retry on transient VMSS rolling-upgrade errors)
+      $attempt = 0
+      $commitTriggered = $false
+      while (-not $commitTriggered -and $attempt -lt $maxRetries) {
+          $attempt++
+          try {
+              $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+              Invoke-AzVirtualNetworkGatewayCommitMigration -InputObject $gateway -ErrorAction Stop | Out-Null
+              $commitTriggered = $true
+          } catch {
+              if (($_.Exception.Message -match $transientPattern) -and ($attempt -lt $maxRetries)) {
+                  Start-TestSleep -Seconds $retryWait
+              } else {
+                  throw
+              }
+          }
+      }
+
+      # Poll until the commit phase completes AND the gateway finishes provisioning
+      $start = Get-Date
+      $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      while (((Get-Date) -lt $start.AddSeconds($maxWait)) -and (($gateway.VirtualNetworkGatewayMigrationStatus.Phase -ne "CommitSucceeded") -or ($gateway.ProvisioningState -ne "Succeeded"))) {
+          Start-TestSleep -Seconds $interval
+          $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      }
+      Assert-NotNull $gateway.VirtualNetworkGatewayMigrationStatus
+      Assert-AreEqual "Succeeded" $gateway.VirtualNetworkGatewayMigrationStatus.State
+      Assert-AreEqual "CommitSucceeded" $gateway.VirtualNetworkGatewayMigrationStatus.Phase
+      Assert-AreEqual "Succeeded" $gateway.ProvisioningState
+     }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}
+
+<#
+.SYNOPSIS
+Virtual network gateway migration to dual stack test
+#>
+function Test-VirtualNetworkGatewayDualStackMigration
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rname2 = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = "centraluseuap"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = "centraluseuap"
+
+    try
+    {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+      # Create an IPv4-only Virtual Network. The gateway starts single stack so that it can later be upgraded to dual stack.
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix "10.0.0.0/24"
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip (Standard SKU is required for dual stack gateways)
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+
+      # Create & Get an IPv4-only virtualnetworkgateway
+      $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku "VpnGw2AZ" -VpnGatewayGeneration "Generation2"
+      $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $gateway.ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $gateway.Name $actual.Name
+      Assert-AreEqual "Vpn" $gateway.GatewayType
+      Assert-AreEqual "RouteBased" $gateway.VpnType
+
+      # Add an IPv6 address space to the VNet and the GatewaySubnet so the gateway can be upgraded to dual stack
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $vnet.AddressSpace.AddressPrefixes.Add("2001:db8::/48")
+      Set-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet -AddressPrefix @("10.0.0.0/24", "2001:db8::/64")
+      $vnet | Set-AzVirtualNetwork
+
+      #Trigger prepare migration on gateway
+      $migrationParams = New-AzVirtualNetworkGatewayMigrationParameter -MigrationType UpgradeGatewayToDualStack
+      Assert-AreEqual "UpgradeGatewayToDualStack" $migrationParams.MigrationType
+      Invoke-AzVirtualNetworkGatewayPrepareMigration -InputObject $gateway -MigrationParameter $migrationParams | Out-Null
+
+      # Poll until the prepare phase completes AND the gateway finishes provisioning (the internal VMSS rolling upgrade settles)
+      $maxWait = 1800      # seconds
+      $interval = 30       # seconds
+      $maxRetries = 5      # retries for transient VMSS rolling-upgrade errors between stages
+      $retryWait = 120     # seconds between retries
+      $transientPattern = "Rolling Upgrade|VmssGatewayDeploymentFailed|intermittent error"
+      $start = Get-Date
+      $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      while (((Get-Date) -lt $start.AddSeconds($maxWait)) -and (($gateway.VirtualNetworkGatewayMigrationStatus.Phase -ne "PrepareSucceeded") -or ($gateway.ProvisioningState -ne "Succeeded"))) {
+          Start-TestSleep -Seconds $interval
+          $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      }
+      Assert-NotNull $gateway.VirtualNetworkGatewayMigrationStatus
+      Assert-AreEqual "InProgress" $gateway.VirtualNetworkGatewayMigrationStatus.State
+      Assert-AreEqual "PrepareSucceeded" $gateway.VirtualNetworkGatewayMigrationStatus.Phase
+      Assert-AreEqual "Succeeded" $gateway.ProvisioningState
+
+      #Trigger execute migration on gateway (retry on transient VMSS rolling-upgrade errors)
+      $attempt = 0
+      $executeTriggered = $false
+      while (-not $executeTriggered -and $attempt -lt $maxRetries) {
+          $attempt++
+          try {
+              $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+              Invoke-AzVirtualNetworkGatewayExecuteMigration -InputObject $gateway -ErrorAction Stop | Out-Null
+              $executeTriggered = $true
+          } catch {
+              if (($_.Exception.Message -match $transientPattern) -and ($attempt -lt $maxRetries)) {
+                  Start-TestSleep -Seconds $retryWait
+              } else {
+                  throw
+              }
+          }
+      }
+
+      # Poll until the execute phase completes AND the gateway finishes provisioning (the internal VMSS rolling upgrade settles)
+      $start = Get-Date
+      $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      while (((Get-Date) -lt $start.AddSeconds($maxWait)) -and (($gateway.VirtualNetworkGatewayMigrationStatus.Phase -ne "ExecuteSucceeded") -or ($gateway.ProvisioningState -ne "Succeeded"))) {
+          Start-TestSleep -Seconds $interval
+          $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      }
+      Assert-NotNull $gateway.VirtualNetworkGatewayMigrationStatus
+      Assert-AreEqual "InProgress" $gateway.VirtualNetworkGatewayMigrationStatus.State
+      Assert-AreEqual "ExecuteSucceeded" $gateway.VirtualNetworkGatewayMigrationStatus.Phase
+      Assert-AreEqual "Succeeded" $gateway.ProvisioningState
+
+      #Trigger commit migration on gateway (retry on transient VMSS rolling-upgrade errors)
+      $attempt = 0
+      $commitTriggered = $false
+      while (-not $commitTriggered -and $attempt -lt $maxRetries) {
+          $attempt++
+          try {
+              $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+              Invoke-AzVirtualNetworkGatewayCommitMigration -InputObject $gateway -ErrorAction Stop | Out-Null
+              $commitTriggered = $true
+          } catch {
+              if (($_.Exception.Message -match $transientPattern) -and ($attempt -lt $maxRetries)) {
+                  Start-TestSleep -Seconds $retryWait
+              } else {
+                  throw
+              }
+          }
+      }
+
+      # Poll until the commit phase completes AND the gateway finishes provisioning
+      $start = Get-Date
+      $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      while (((Get-Date) -lt $start.AddSeconds($maxWait)) -and (($gateway.VirtualNetworkGatewayMigrationStatus.Phase -ne "CommitSucceeded") -or ($gateway.ProvisioningState -ne "Succeeded"))) {
+          Start-TestSleep -Seconds $interval
+          $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      }
+      Assert-NotNull $gateway.VirtualNetworkGatewayMigrationStatus
+      Assert-AreEqual "Succeeded" $gateway.VirtualNetworkGatewayMigrationStatus.State
+      Assert-AreEqual "CommitSucceeded" $gateway.VirtualNetworkGatewayMigrationStatus.Phase
+      Assert-AreEqual "Succeeded" $gateway.ProvisioningState
+     }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}

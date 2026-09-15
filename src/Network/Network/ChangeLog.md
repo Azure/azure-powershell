@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added `MigrateGatewayForPointToSiteProfile` and `UpgradeGatewayToDualStack` as supported values for the `-MigrationType` parameter of `New-AzVirtualNetworkGatewayMigrationParameter`, and fixed the cmdlet to honor the user-provided `-MigrationType` value.
 * Added minimum and maximum allocation size bounds to IPAM pool creation, update, and output.
     - Use `-MinAllocationSize` and `-MaxAllocationSize` with `New-AzNetworkManagerIpamPool` or `Set-AzNetworkManagerIpamPool`.
     - Specify an empty string with either `Set-AzNetworkManagerIpamPool` parameter to clear that bound.
