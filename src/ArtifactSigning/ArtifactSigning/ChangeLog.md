@@ -17,32 +17,44 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
 
+- Fixed token audience mismatch causing `401 Unauthorized` on Artifact Signing endpoints — corrected the trailing slash in the authentication resource URL.
+
 ## Version 0.2.1
-* Updated `System.Formats.Asn1` dependency from `6.0.1` to `8.0.1`.
+
+- Updated `System.Formats.Asn1` dependency from `6.0.1` to `8.0.1`.
 
 ## Version 0.2.0
-* Added ChangeSafety Support
+
+- Added ChangeSafety Support
 
 ## Version 0.1.6
-* Updated docs and code comments to reference artifact signing accounts instead of trusted signing accounts.
+
+- Updated docs and code comments to reference artifact signing accounts instead of trusted signing accounts.
 
 ## Version 0.1.5
-* Renamed from Az.TrustedSigning
+
+- Renamed from Az.TrustedSigning
 
 ## Version 0.1.4
-* Updated Azure.Core from 1.47.3 to 1.50.0
+
+- Updated Azure.Core from 1.47.3 to 1.50.0
 
 ## Version 0.1.3
-* Updated Azure.Core from 1.45.0 to 1.47.3
+
+- Updated Azure.Core from 1.45.0 to 1.47.3
 
 ## Version 0.1.2
-* Updated InvokeCIPolicySigning to support signing files with the .cip extension
+
+- Updated InvokeCIPolicySigning to support signing files with the .cip extension
 
 ## Version 0.1.1
-* Modified InvokeCIPolicySigning to include ShouldProcess command confirmation
+
+- Modified InvokeCIPolicySigning to include ShouldProcess command confirmation
 
 ## Version 0.1.0
-* Renamed from Az.CodeSigning
-* Adding support for control-plane commands via Az.TrustedSigning.Autorest
+
+- Renamed from Az.CodeSigning
+- Adding support for control-plane commands via Az.TrustedSigning.Autorest
