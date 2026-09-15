@@ -137,10 +137,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         {
             using (var client = new SqlManagementClient(new TokenCredentials("token")))
             {
-                AssertRequiredFieldsSerialized(client, new ServerBlobAuditingPolicy { RequiredFields = TestRequiredFields });
-                AssertRequiredFieldsSerialized(client, new ExtendedServerBlobAuditingPolicy { RequiredFields = TestRequiredFields });
-                AssertRequiredFieldsSerialized(client, new DatabaseBlobAuditingPolicy { RequiredFields = TestRequiredFields });
-                AssertRequiredFieldsSerialized(client, new ExtendedDatabaseBlobAuditingPolicy { RequiredFields = TestRequiredFields });
+                AssertRequiredFieldsSerialized(client, new ServerBlobAuditingPolicy { RequiredFields = TestRequiredFields }, TestRequiredFields);
+                AssertRequiredFieldsSerialized(client, new ExtendedServerBlobAuditingPolicy { RequiredFields = TestRequiredFields }, TestRequiredFields);
+                AssertRequiredFieldsSerialized(client, new DatabaseBlobAuditingPolicy { RequiredFields = TestRequiredFields }, TestRequiredFields);
+                AssertRequiredFieldsSerialized(client, new ExtendedDatabaseBlobAuditingPolicy { RequiredFields = TestRequiredFields }, TestRequiredFields);
+                AssertRequiredFieldsSerialized(client, new ServerBlobAuditingPolicy { RequiredFields = Array.Empty<string>() }, Array.Empty<string>());
+                AssertRequiredFieldsSerialized(client, new ExtendedServerBlobAuditingPolicy { RequiredFields = Array.Empty<string>() }, Array.Empty<string>());
+                AssertRequiredFieldsSerialized(client, new DatabaseBlobAuditingPolicy { RequiredFields = Array.Empty<string>() }, Array.Empty<string>());
+                AssertRequiredFieldsSerialized(client, new ExtendedDatabaseBlobAuditingPolicy { RequiredFields = Array.Empty<string>() }, Array.Empty<string>());
 
                 string serialized = SafeJsonConvert.SerializeObject(
                     new ServerBlobAuditingPolicy(),
@@ -225,24 +229,51 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
                     "server",
                     "database",
                     new ExtendedDatabaseBlobAuditingPolicy { State = BlobAuditingPolicyState.Disabled, RequiredFields = TestRequiredFields });
+                await client.ServerBlobAuditingPolicies.BeginCreateOrUpdateWithHttpMessagesAsync(
+                    "resourceGroup",
+                    "server",
+                    new ServerBlobAuditingPolicy { State = BlobAuditingPolicyState.Disabled, RequiredFields = Array.Empty<string>() });
+                await client.ExtendedServerBlobAuditingPolicies.BeginCreateOrUpdateWithHttpMessagesAsync(
+                    "resourceGroup",
+                    "server",
+                    new ExtendedServerBlobAuditingPolicy { State = BlobAuditingPolicyState.Disabled, RequiredFields = Array.Empty<string>() });
+                await client.DatabaseBlobAuditingPolicies.CreateOrUpdateWithHttpMessagesAsync(
+                    "resourceGroup",
+                    "server",
+                    "database",
+                    new DatabaseBlobAuditingPolicy { State = BlobAuditingPolicyState.Disabled, RequiredFields = Array.Empty<string>() });
+                await client.ExtendedDatabaseBlobAuditingPolicies.CreateOrUpdateWithHttpMessagesAsync(
+                    "resourceGroup",
+                    "server",
+                    "database",
+                    new ExtendedDatabaseBlobAuditingPolicy { State = BlobAuditingPolicyState.Disabled, RequiredFields = Array.Empty<string>() });
 
-                Assert.Equal(4, handler.RequestUris.Count);
+                Assert.Equal(8, handler.RequestUris.Count);
                 Assert.All(handler.RequestUris, requestUri =>
                     Assert.Contains("api-version=2026-08-01-preview", requestUri.Query));
                 Assert.All(handler.RequestMethods, requestMethod => Assert.Equal(HttpMethod.Put, requestMethod));
-                Assert.All(handler.RequestBodies, requestBody =>
+                Assert.All(handler.RequestBodies.Take(4), requestBody =>
                     Assert.Equal(
                         TestRequiredFields,
                         JObject.Parse(requestBody)["properties"]?["requiredFields"]?.Values<string>()));
+                Assert.All(handler.RequestBodies.Skip(4), requestBody =>
+                {
+                    JToken requiredFields = JObject.Parse(requestBody)["properties"]?["requiredFields"];
+                    Assert.Equal(JTokenType.Array, requiredFields?.Type);
+                    Assert.Empty(requiredFields.Values<string>());
+                });
             }
         }
 
-        private static void AssertRequiredFieldsSerialized(SqlManagementClient client, object policy)
+        private static void AssertRequiredFieldsSerialized(
+            SqlManagementClient client,
+            object policy,
+            IEnumerable<string> expectedRequiredFields)
         {
             string serialized = SafeJsonConvert.SerializeObject(policy, client.SerializationSettings);
             IEnumerable<string> requiredFields = JObject.Parse(serialized)["properties"]?["requiredFields"]?.Values<string>();
 
-            Assert.Equal(TestRequiredFields, requiredFields);
+            Assert.Equal(expectedRequiredFields, requiredFields);
         }
 
         private static ServerAuditModel CreateValidationModel(
