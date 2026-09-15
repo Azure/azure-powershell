@@ -69,15 +69,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                 existing = null;
             }
 
-            // Preserve existing tags when -Tag has no value; non-null tag values replace the existing set rather than being merged.
-            if (parameters.Tags == null && existing?.Tags != null)
-            {
-                parameters.Tags = new Hashtable();
-                foreach (var tag in existing.Tags)
-                {
-                    parameters.Tags[tag.Key] = tag.Value;
-                }
-            }
+            PreserveExistingTags(parameters, existing);
 
             Action executeAction = () =>
             {
@@ -107,6 +99,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
             else
             {
                 executeAction();
+            }
+        }
+
+        internal static void PreserveExistingTags(
+            PSDeploymentStackWhatIfParameters parameters,
+            PSDeploymentStackWhatIfResult existing)
+        {
+            // Preserve existing tags when -Tag has no value; non-null tag values replace the existing set rather than being merged.
+            if (parameters.Tags == null && existing?.Tags != null)
+            {
+                parameters.Tags = new Hashtable();
+                foreach (var tag in existing.Tags)
+                {
+                    parameters.Tags[tag.Key] = tag.Value;
+                }
             }
         }
 
