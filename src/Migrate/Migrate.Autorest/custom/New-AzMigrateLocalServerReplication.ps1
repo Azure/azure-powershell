@@ -74,6 +74,14 @@ function New-AzMigrateLocalServerReplication {
         ${MigrateAsArcVM},
 
         [Parameter()]
+        [ValidateSet("None", "SecureBootEnabled", "TrustedLaunch")]
+        [ArgumentCompleter( { "None", "SecureBootEnabled", "TrustedLaunch" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the security configuration of the target VM. 'SecureBootEnabled' enables Secure Boot. 'TrustedLaunch' enables Secure Boot and vTPM. Only supported for Generation 2 target VMs.
+        ${TargetVMSecurityOption},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.Int64]
         # Specifies the target RAM size in MB. 
@@ -194,6 +202,7 @@ function New-AzMigrateLocalServerReplication {
         if ($HasMigrateAsArcVM) {
             $migrateAsArcVMEnabled = [System.Convert]::ToBoolean($MigrateAsArcVM)
         }
+        $HasTargetVMSecurityOption = $PSBoundParameters.ContainsKey('TargetVMSecurityOption')
         $HasTargetVMRam = $PSBoundParameters.ContainsKey('TargetVMRam')
         $HasTargetVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetVirtualSwitchId')
         $HasTargetTestVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetTestVirtualSwitchId')
@@ -208,6 +217,7 @@ function New-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('TargetTestVirtualSwitchId')
         $null = $PSBoundParameters.Remove('IsDynamicMemoryEnabled')
         $null = $PSBoundParameters.Remove('MigrateAsArcVM')
+        $null = $PSBoundParameters.Remove('TargetVMSecurityOption')
         $null = $PSBoundParameters.Remove('TargetVMRam')
         $null = $PSBoundParameters.Remove('DiskToInclude')
         $null = $PSBoundParameters.Remove('NicToInclude')
@@ -730,6 +740,16 @@ function New-AzMigrateLocalServerReplication {
         else { 
             #Vmware source, non-BOIS VMs will be migrated to Gen2
             $customProperties.HyperVGeneration = if ($machine.Firmware -ieq "BIOS") { "1" } else { "2" }
+        }
+
+        # Gen 1 target VMs do not support Secure Boot or vTPM; fail before the service round-trip.
+        if ($HasTargetVMSecurityOption) {
+            if ($customProperties.HyperVGeneration -eq "1" -and
+                $TargetVMSecurityOption -ne $SecurityOptions.None) {
+                throw "-TargetVMSecurityOption '$TargetVMSecurityOption' requires a Generation 2 target VM. The source server '$MachineName' maps to a Generation 1 target VM."
+            }
+
+            $customProperties.SecurityOption = $TargetVMSecurityOption
         }
 
         # Validate TargetVMCPUCore

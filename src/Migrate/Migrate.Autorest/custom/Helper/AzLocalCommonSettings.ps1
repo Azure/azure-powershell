@@ -108,6 +108,13 @@ $OsTypes = @{
     OtherGuestFamily = "otherguestfamily";
 }
 
+# 'EnablevTPM' is omitted deliberately: the service always rejects it (error 2109020).
+$SecurityOptions = @{
+    None              = "None";
+    SecureBootEnabled = "SecureBootEnabled";
+    TrustedLaunch     = "TrustedLaunch";
+}
+
 $VmReplicationValidationMessage = "Replication could not be initiated. Please ensure the necessary changes are made, and allow up to 30 minutes before re-trying."
 $VmReplicationValidationMessages = @{
     VmPoweredOff            = "The VM is currently powered off. $VmReplicationValidationMessage";

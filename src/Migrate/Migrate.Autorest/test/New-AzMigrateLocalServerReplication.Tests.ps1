@@ -35,4 +35,53 @@ Describe 'New-AzMigrateLocalServerReplication' {
         $cmd = Get-Command Set-AzMigrateLocalServerReplication
         $cmd.Parameters.Keys | Should -Not -Contain 'MigrateAsArcVM'
     }
+
+    It 'TargetVMSecurityOption-ParameterExists' {
+        $cmd = Get-Command New-AzMigrateLocalServerReplication
+        $param = $cmd.Parameters['TargetVMSecurityOption']
+        $param | Should -Not -BeNullOrEmpty
+        $param.ParameterType.Name | Should -Be 'String'
+    }
+
+    It 'TargetVMSecurityOption-OnSetCmdlet' {
+        $cmd = Get-Command Set-AzMigrateLocalServerReplication
+        $param = $cmd.Parameters['TargetVMSecurityOption']
+        $param | Should -Not -BeNullOrEmpty
+        $param.ParameterType.Name | Should -Be 'String'
+    }
+
+    It 'TargetVMSecurityOption-OffersOnlySupportedValues' {
+        # EnablevTPM is always rejected by the service, so it must not be reachable from the cmdlet.
+        foreach ($name in 'New-AzMigrateLocalServerReplication', 'Set-AzMigrateLocalServerReplication') {
+            $completer = (Get-Command $name).Parameters['TargetVMSecurityOption'].Attributes |
+                Where-Object { $_ -is [System.Management.Automation.ArgumentCompleterAttribute] }
+            $values = & $completer.ScriptBlock
+            $values | Should -Be @('None', 'SecureBootEnabled', 'TrustedLaunch')
+            $values | Should -Not -Contain 'EnablevTPM'
+        }
+    }
+
+    It 'TargetVMSecurityOption-RejectsUnsupportedValue' {
+        # Rejected while binding the inner cmdlet, so no service call is made.
+        $err = $null
+        try {
+            New-AzMigrateLocalServerReplication `
+                -MachineId 'machine' `
+                -TargetStoragePathId 'storagePath' `
+                -TargetResourceGroupId 'resourceGroup' `
+                -TargetVMName 'vm' `
+                -SourceApplianceName 'source' `
+                -TargetApplianceName 'target' `
+                -TargetVirtualSwitchId 'switch' `
+                -OSDiskID 'osDisk' `
+                -TargetVMSecurityOption 'EnablevTPM' `
+                -ErrorAction Stop
+        }
+        catch {
+            $err = $_
+        }
+
+        $err | Should -Not -BeNullOrEmpty
+        $err.Exception.Message | Should -BeLike '*does not belong to the set*'
+    }
 }

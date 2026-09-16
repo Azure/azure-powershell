@@ -18,8 +18,8 @@ New-AzMigrateLocalServerReplication -MachineId <String> -OSDiskID <String> -Sour
  -TargetApplianceName <String> -TargetResourceGroupId <String> -TargetStoragePathId <String>
  -TargetVirtualSwitchId <String> -TargetVMName <String> [-IsDynamicMemoryEnabled <String>]
  [-MigrateAsArcVM <String>] [-SubscriptionId <String>] [-TargetTestVirtualSwitchId <String>]
- [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-TargetVMSecurityOption <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
@@ -28,8 +28,8 @@ New-AzMigrateLocalServerReplication -DiskToInclude <AzLocalDiskInput[]> -Machine
  -NicToInclude <AzLocalNicInput[]> -SourceApplianceName <String> -TargetApplianceName <String>
  -TargetResourceGroupId <String> -TargetStoragePathId <String> -TargetVMName <String>
  [-IsDynamicMemoryEnabled <String>] [-MigrateAsArcVM <String>] [-SubscriptionId <String>]
- [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-TargetVMSecurityOption <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -367,6 +367,24 @@ Specifies the target RAM size in MB.
 
 ```yaml
 Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetVMSecurityOption
+Specifies the security configuration of the target VM.
+'SecureBootEnabled' enables Secure Boot.
+'TrustedLaunch' enables Secure Boot and vTPM.
+Only supported for Generation 2 target VMs.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

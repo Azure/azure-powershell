@@ -73,6 +73,14 @@ function Set-AzMigrateLocalServerReplication {
         ${OsType},
 
         [Parameter()]
+        [ValidateSet("None", "SecureBootEnabled", "TrustedLaunch")]
+        [ArgumentCompleter( { "None", "SecureBootEnabled", "TrustedLaunch" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the security configuration of the target VM. 'SecureBootEnabled' enables Secure Boot. 'TrustedLaunch' enables Secure Boot and vTPM. Only supported for Generation 2 target VMs.
+        ${TargetVMSecurityOption},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -145,6 +153,7 @@ function Set-AzMigrateLocalServerReplication {
             $isDynamicRamEnabled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
         }
         $HasOsType = $PSBoundParameters.ContainsKey('OsType')
+        $HasTargetVMSecurityOption = $PSBoundParameters.ContainsKey('TargetVMSecurityOption')
 
         $null = $PSBoundParameters.Remove('TargetVMCPUCore')
         $null = $PSBoundParameters.Remove('IsDynamicMemoryEnabled')
@@ -153,6 +162,7 @@ function Set-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('NicToInclude')
         $null = $PSBoundParameters.Remove('TargetObjectID')
         $null = $PSBoundParameters.Remove('OsType')
+        $null = $PSBoundParameters.Remove('TargetVMSecurityOption')
         $null = $PSBoundParameters.Remove('WhatIf')
         $null = $PSBoundParameters.Remove('Confirm')
 
@@ -207,6 +217,16 @@ function Set-AzMigrateLocalServerReplication {
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
             $customPropertiesUpdate = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHCIProtectedItemModelCustomPropertiesUpdate]::new()
             $customPropertiesUpdate.InstanceType = $AzLocalInstanceTypes.VMwareToAzLocal
+        }
+
+        # Gen 1 target VMs do not support Secure Boot or vTPM; fail before the service round-trip.
+        if ($HasTargetVMSecurityOption) {
+            if ($customProperties.HyperVGeneration -eq "1" -and
+                $TargetVMSecurityOption -ne $SecurityOptions.None) {
+                throw "-TargetVMSecurityOption '$TargetVMSecurityOption' requires a Generation 2 target VM. Protected item '$TargetObjectID' has a Generation 1 target VM."
+            }
+
+            $customPropertiesUpdate.SecurityOption = $TargetVMSecurityOption
         }
 
         # Update target CPU core

@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Updated Azure Data Replication API version from 2024-09-01 to 2026-05-01
 * Added 'MigrateAsArcVM' parameter to 'New-AzMigrateLocalServerReplication' to support migrating VMs as Azure Arc-enabled VMs
+* Added 'TargetVMSecurityOption' parameter to 'New-AzMigrateLocalServerReplication' and 'Set-AzMigrateLocalServerReplication' to configure Secure Boot and Trusted Launch on the target virtual machine (VM). Supported values are 'None', 'SecureBootEnabled' and 'TrustedLaunch'; only Generation 2 target VMs are supported
 
 ## Version 3.0.0
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
