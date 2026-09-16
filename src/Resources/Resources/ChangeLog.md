@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Aligned deployment stack WhatIfResult tag preservation with deployment stack cmdlets when `-Tag` is omitted or explicitly given a null value.
 
 ## Version 10.2.0
 * Updated Policy cmdlets to use `2026-01-01` API
