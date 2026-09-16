@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cost management granularity support to backup vault creation and update cmdlets
+    - Added `-CostManagementGranularity` parameter to `New-AzDataProtectionBackupVault` and `Update-AzDataProtectionBackupVault`
+    - Allowed values are `VaultLevel`, `ProtectedItemLevel`, `ProtectedItemWithParentTag`
+* Defaulted cost management granularity to `VaultLevel` when `New-AzDataProtectionBackupVault` is called without `-CostManagementGranularity`
 
 ## Version 3.0.1
 * Deprecated the `-OverwriteLifeCycle` parameter on `Edit-AzDataProtectionPolicyRetentionRuleClientObject`
@@ -124,4 +128,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.DataProtection
-
