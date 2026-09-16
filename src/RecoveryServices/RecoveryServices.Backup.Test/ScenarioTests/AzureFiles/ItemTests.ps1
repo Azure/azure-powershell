@@ -1215,7 +1215,7 @@ function Test-AzureFSCrossSubscriptionRestoreTargetLookup
 			-TargetFileShareName $fileShareName `
 			-Confirm:$false `
 			-ErrorAction Stop
-	} "argument is null or empty"
+	} "TargetSubscriptionId cannot be null or empty"
 
 	Assert-ThrowsContains {
 		Restore-AzRecoveryServicesBackupItem `

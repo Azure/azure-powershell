@@ -334,7 +334,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.RestoreVM.TargetSubscriptionId)]
         [Parameter(Mandatory = false, ParameterSetName = AzureFileShareParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreFS.TargetSubscriptionId)]
-        [ValidateNotNullOrEmpty]
         public string TargetSubscriptionId { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMCreateNewParameterSet,
@@ -441,6 +440,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                      !string.IsNullOrEmpty(UserAssignedIdentityArmUrl)))
                 {
                     throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreIdentityNotSupported);
+                }
+
+                if (ParameterSetName == AzureFileShareParameterSet &&
+                    MyInvocation.BoundParameters.ContainsKey(nameof(TargetSubscriptionId)) &&
+                    string.IsNullOrEmpty(TargetSubscriptionId))
+                {
+                    throw new ArgumentException(Resources.AzureFileTargetSubscriptionCannotBeEmpty);
                 }
 
                 if (ParameterSetName == AzureFileShareParameterSet &&

@@ -217,6 +217,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to TargetSubscriptionId cannot be null or empty for Azure File Share restore.
+        /// </summary>
+        public static string AzureFileTargetSubscriptionCannotBeEmpty
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileTargetSubscriptionCannotBeEmpty", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to BackupManagementType value should be empty for WorkloadType AzureFiles..
         /// </summary>
         public static string AzureFileUnsupportedBackupManagementTypeException
