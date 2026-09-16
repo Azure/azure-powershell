@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Collections.Generic;
 using Xunit;
 
@@ -22,6 +23,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
     public class PSAppServicePlanConversionTests
     {
         [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [InlineData(true, 3)]
         [InlineData(false, 0)]
         [InlineData(null, null)]
@@ -35,9 +37,17 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                 systemData: new SystemData(createdBy: "creator"),
                 tags: new Dictionary<string, string> { { "environment", "test" } },
                 sku: new SkuDescription { Name = "P1v3", Tier = "PremiumV3", Capacity = 3 },
+                extendedLocation: new ExtendedLocation(name: "custom-location", type: "CustomLocation"),
                 kind: "app",
                 identity: new ManagedServiceIdentity(type: ManagedServiceIdentityType.SystemAssigned),
                 numberOfWorkers: workerCount,
+                elasticScaleEnabled: enabled,
+                maximumElasticWorkerCount: workerCount + 5,
+                hyperV: enabled,
+                kubeEnvironmentProfile: new KubeEnvironmentProfile(
+                    id: "/subscriptions/sub/resourceGroups/rg/providers/Microsoft.Web/kubeEnvironments/environment",
+                    name: "environment",
+                    type: "Microsoft.Web/kubeEnvironments"),
                 zoneRedundant: enabled,
                 asyncScalingEnabled: enabled,
                 planDefaultIdentity: new DefaultIdentity(identityType: ManagedServiceIdentityType.SystemAssigned),
@@ -57,9 +67,14 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             Assert.Equal(source.Kind, result.Kind);
             Assert.Same(source.Tags, result.Tags);
             Assert.Same(source.Sku, result.Sku);
+            Assert.Same(source.ExtendedLocation, result.ExtendedLocation);
             Assert.Same(source.SystemData, result.SystemData);
             Assert.Same(source.Identity, result.Identity);
             Assert.Equal(source.NumberOfWorkers, result.NumberOfWorkers);
+            Assert.Equal(source.ElasticScaleEnabled, result.ElasticScaleEnabled);
+            Assert.Equal(source.MaximumElasticWorkerCount, result.MaximumElasticWorkerCount);
+            Assert.Equal(source.HyperV, result.HyperV);
+            Assert.Same(source.KubeEnvironmentProfile, result.KubeEnvironmentProfile);
             Assert.Equal(source.ZoneRedundant, result.ZoneRedundant);
             Assert.Equal(source.AsyncScalingEnabled, result.AsyncScalingEnabled);
             Assert.Same(source.PlanDefaultIdentity, result.PlanDefaultIdentity);
@@ -72,13 +87,19 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UnspecifiedApiPropertiesRemainUnset()
         {
             var result = new PSAppServicePlan(new AppServicePlan(location: "westus"));
 
             Assert.Null(result.SystemData);
+            Assert.Null(result.ExtendedLocation);
             Assert.Null(result.Identity);
             Assert.Null(result.NumberOfWorkers);
+            Assert.Null(result.ElasticScaleEnabled);
+            Assert.Null(result.MaximumElasticWorkerCount);
+            Assert.Null(result.HyperV);
+            Assert.Null(result.KubeEnvironmentProfile);
             Assert.Null(result.ZoneRedundant);
             Assert.Null(result.AsyncScalingEnabled);
             Assert.Null(result.PlanDefaultIdentity);

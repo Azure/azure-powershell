@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Collections.Generic;
 using Xunit;
 
@@ -22,9 +23,10 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
     public class SiteConfigConversionTests
     {
         [Theory]
-        [InlineData(0, 0, false)]
-        [InlineData(2, 3, true)]
-        public void SiteConfigRoundTripPreservesApiProperties(int proxyFlag, int scaleLimit, bool alwaysOn)
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData(0, 0, false, "Disabled")]
+        [InlineData(2, 3, true, "Enabled")]
+        public void SiteConfigRoundTripPreservesApiProperties(int proxyFlag, int scaleLimit, bool alwaysOn, string publicNetworkAccess)
         {
             var source = new SiteConfig
             {
@@ -34,6 +36,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                 Http20ProxyFlag = proxyFlag,
                 MinTlsCipherSuite = "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
                 ElasticWebAppScaleLimit = scaleLimit,
+                PublicNetworkAccess = publicNetworkAccess,
                 AlwaysOn = alwaysOn,
                 AppSettings = new List<NameValuePair> { new NameValuePair { Name = "setting", Value = "value" } }
             };
@@ -46,14 +49,16 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             Assert.Equal(source.Http20ProxyFlag, result.Http20ProxyFlag);
             Assert.Equal(source.MinTlsCipherSuite, result.MinTlsCipherSuite);
             Assert.Equal(source.ElasticWebAppScaleLimit, result.ElasticWebAppScaleLimit);
+            Assert.Equal(source.PublicNetworkAccess, result.PublicNetworkAccess);
             Assert.Equal(source.AlwaysOn, result.AlwaysOn);
             Assert.Same(source.AppSettings, result.AppSettings);
         }
 
         [Theory]
-        [InlineData(0, 0, false)]
-        [InlineData(2, 3, true)]
-        public void SiteConfigResourceRoundTripPreservesApiProperties(int proxyFlag, int scaleLimit, bool alwaysOn)
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData(0, 0, false, "Disabled")]
+        [InlineData(2, 3, true, "Enabled")]
+        public void SiteConfigResourceRoundTripPreservesApiProperties(int proxyFlag, int scaleLimit, bool alwaysOn, string publicNetworkAccess)
         {
             var source = new SiteConfigResource
             {
@@ -63,6 +68,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                 Http20ProxyFlag = proxyFlag,
                 MinTlsCipherSuite = "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
                 ElasticWebAppScaleLimit = scaleLimit,
+                PublicNetworkAccess = publicNetworkAccess,
                 AlwaysOn = alwaysOn,
                 AppSettings = new List<NameValuePair> { new NameValuePair { Name = "setting", Value = "value" } }
             };
@@ -75,11 +81,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             Assert.Equal(source.Http20ProxyFlag, result.Http20ProxyFlag);
             Assert.Equal(source.MinTlsCipherSuite, result.MinTlsCipherSuite);
             Assert.Equal(source.ElasticWebAppScaleLimit, result.ElasticWebAppScaleLimit);
+            Assert.Equal(source.PublicNetworkAccess, result.PublicNetworkAccess);
             Assert.Equal(source.AlwaysOn, result.AlwaysOn);
             Assert.Same(source.AppSettings, result.AppSettings);
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UnspecifiedApiPropertiesRemainUnset()
         {
             var config = new SiteConfigResource().ConvertToSiteConfig();
@@ -91,12 +99,14 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             Assert.Null(config.Http20ProxyFlag);
             Assert.Null(config.MinTlsCipherSuite);
             Assert.Null(config.ElasticWebAppScaleLimit);
+            Assert.Null(config.PublicNetworkAccess);
             Assert.Null(resource.Metadata);
             Assert.Null(resource.IPSecurityRestrictionsDefaultAction);
             Assert.Null(resource.ScmIPSecurityRestrictionsDefaultAction);
             Assert.Null(resource.Http20ProxyFlag);
             Assert.Null(resource.MinTlsCipherSuite);
             Assert.Null(resource.ElasticWebAppScaleLimit);
+            Assert.Null(resource.PublicNetworkAccess);
         }
     }
 }

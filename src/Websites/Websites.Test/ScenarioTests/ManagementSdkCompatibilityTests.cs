@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -23,12 +24,14 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
     public class ManagementSdkCompatibilityTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProxyOnlyResourcePreservesResourceInterface()
         {
             Assert.True(typeof(IResource).IsAssignableFrom(typeof(ProxyOnlyResource)));
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PushSettingsPreservesNonNullablePropertyAndConstructor()
         {
             var property = typeof(PushSettings).GetProperty(nameof(PushSettings.IsPushEnabled));
@@ -52,6 +55,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VnetInfoConversionPreservesResourceAndConnectionProperties()
         {
             var routes = new List<VnetRoute>
