@@ -14,19 +14,18 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IFirewallPolicyIdpsSignaturesOverridesOperations
     {
         /// <summary>
-        /// Will update the status of policy&#39;s signature overrides for IDPS
+        /// Returns all signatures overrides objects for a specific policy as a list
+        /// containing a single value.
         /// </summary>
         /// <remarks>
-        /// Will update the status of policy&#39;s signature overrides for IDPS
+        /// Returns all signatures overrides objects for a specific policy as a list
+        /// containing a single value.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
-        /// </param>
-        /// <param name='parameters'>
-        /// Will contain all properties of the object to put
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -40,7 +39,33 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SignaturesOverrides>> PatchWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, SignaturesOverrides parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SignaturesOverridesList>> ListWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Returns all signatures overrides for a specific policy.
+        /// </summary>
+        /// <remarks>
+        /// Returns all signatures overrides for a specific policy.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='firewallPolicyName'>
+        /// The name of the Firewall Policy.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SignaturesOverrides>> GetWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Will override/create a new signature overrides for the policy&#39;s IDPS
@@ -49,7 +74,7 @@ namespace Microsoft.Azure.Management.Network
         /// Will override/create a new signature overrides for the policy&#39;s IDPS
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
@@ -72,16 +97,19 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SignaturesOverrides>> PutWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, SignaturesOverrides parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Returns all signatures overrides for a specific policy.
+        /// Will update the status of policy&#39;s signature overrides for IDPS
         /// </summary>
         /// <remarks>
-        /// Returns all signatures overrides for a specific policy.
+        /// Will update the status of policy&#39;s signature overrides for IDPS
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
+        /// </param>
+        /// <param name='parameters'>
+        /// Will contain all properties of the object to put
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -95,35 +123,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SignaturesOverrides>> GetWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Returns all signatures overrides objects for a specific policy as a list
-        /// containing a single value.
-        /// </summary>
-        /// <remarks>
-        /// Returns all signatures overrides objects for a specific policy as a list
-        /// containing a single value.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='firewallPolicyName'>
-        /// The name of the Firewall Policy.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SignaturesOverridesList>> ListWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SignaturesOverrides>> PatchWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, SignaturesOverrides parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

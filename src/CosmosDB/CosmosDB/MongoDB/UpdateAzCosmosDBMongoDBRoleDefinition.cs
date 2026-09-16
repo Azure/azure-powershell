@@ -104,9 +104,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             MongoRoleDefinitionGetResults mongoRoleDefinitionGetResults = null;
             try
             {
-                mongoRoleDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.GetMongoRoleDefinition(Id, ResourceGroupName, AccountName);
+                mongoRoleDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.GetMongoRoleDefinition(ResourceGroupName, AccountName, Id);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Id, "Updating the CosmosDB MongoDB Role Definition"))
             {
-                mongoRoleDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoRoleDefinitionWithHttpMessagesAsync(Id, ResourceGroupName, AccountName, mongoRoleDefinitionCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                mongoRoleDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoRoleDefinitionWithHttpMessagesAsync(ResourceGroupName, AccountName, Id, mongoRoleDefinitionCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSMongoDBRoleDefinitionGetResults(mongoRoleDefinitionGetResults));
             }
 

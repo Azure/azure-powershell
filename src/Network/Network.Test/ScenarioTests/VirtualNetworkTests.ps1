@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,6 +11,60 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
+<#
+.SYNOPSIS
+Tests creating an IP configuration move item.
+#>
+function Test-NewMoveIpConfigurationItem
+{
+    $sourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/networkInterfaces/source/ipConfigurations/ipconfig1"
+    $targetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/networkInterfaces/target/ipConfigurations/ipconfig2"
+
+    $item = New-AzMoveIpConfigurationItem -SourceIpConfigurationId $sourceId -TargetIpConfigurationId $targetId
+
+    Assert-NotNull $item
+    Assert-AreEqual $sourceId $item.SourceIpConfigurationId
+    Assert-AreEqual $targetId $item.TargetIpConfigurationId
+}
+
+<#
+.SYNOPSIS
+Tests moving virtual network IP configurations.
+#>
+function Test-MoveVirtualNetworkIpConfiguration
+{
+    $subscriptionId = "00000000-0000-0000-0000-000000000000"
+    $resourceGroupName = "move-ip-configurations-rg"
+    $virtualNetworkName = "move-ip-configurations-vnet"
+
+    $moveItems = @(
+        New-AzMoveIpConfigurationItem `
+            -SourceIpConfigurationId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Network/networkInterfaces/source-nic-1/ipConfigurations/ipconfig1" `
+            -TargetIpConfigurationId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Network/networkInterfaces/target-nic-1/ipConfigurations/ipconfig1"
+        New-AzMoveIpConfigurationItem `
+            -SourceIpConfigurationId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Network/networkInterfaces/source-nic-2/ipConfigurations/ipconfig2" `
+            -TargetIpConfigurationId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Network/networkInterfaces/target-nic-2/ipConfigurations/ipconfig2"
+    )
+
+    $result = Move-AzVirtualNetworkIpConfiguration `
+        -ResourceGroupName $resourceGroupName `
+        -VirtualNetworkName $virtualNetworkName `
+        -MoveIpConfigurationItem $moveItems `
+        -PassThru `
+        -WhatIf
+
+    Assert-Null $result
+
+    $moveItemsWithNull = @($moveItems[0], $null)
+    Assert-ThrowsLike {
+        Move-AzVirtualNetworkIpConfiguration `
+            -ResourceGroupName $resourceGroupName `
+            -VirtualNetworkName $virtualNetworkName `
+            -MoveIpConfigurationItem $moveItemsWithNull `
+            -WhatIf
+    } "*element of the argument collection contains a null value*"
+}
 
 <#
 .SYNOPSIS
@@ -51,6 +105,11 @@ function Test-VirtualNetworkCRUD
         Assert-AreEqual 1 @($expected.Subnets).Count
         Assert-AreEqual $subnetName $expected.Subnets[0].Name
         Assert-AreEqual "10.0.1.0/24" $expected.Subnets[0].AddressPrefix
+
+        # Verify SummarizedGatewayPrefixes property is accessible (read-only, may be null for new VNets)
+        $sgp = $expected.SummarizedGatewayPrefixes
+        # Property should exist on the object even if value is null
+        Assert-True { $expected.PSObject.Properties.Name -contains "SummarizedGatewayPrefixes" }
         
         # List virtual Network
         $list = Get-AzVirtualNetwork -ResourceGroupName $rgname
@@ -1653,7 +1712,11 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
         $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet;
         $subnet = $vnet.Subnets[0];
 
-        Assert-Null $subnet.serviceEndpoints;
+        # Clearing the user-specified service endpoint and policy removes both. Azure implicitly
+        # adds a platform-managed Microsoft.AzureActiveDirectory service endpoint when a service
+        # endpoint policy is attached to the subnet, and that endpoint is retained after the policy
+        # is removed. Assert the user-specified Microsoft.Storage endpoint and the policies are gone.
+        Assert-Null ($subnet.serviceEndpoints | Where-Object { $_.Service -eq $serviceEndpoint });
         Assert-Null $subnet.ServiceEndpointPolicies;
 
         Remove-AzServiceEndpointPolicyDefinition -ServiceEndpointPolicy $serviceEndpointPolicy -Name $serviceEndpointPolicyDefinitionName;
@@ -2211,6 +2274,54 @@ function Test-VirtualNetworkPrivateEndpointVNetPolicies
         $vnet3 | Set-AzVirtualNetwork
         $vnet3 = Get-AzVirtualNetwork -Name $vnet3Name -ResourceGroupName $rgname
         Assert-AreEqual "Disabled" $vnet3.PrivateEndpointVNetPolicies
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests VirtualNetwork SummarizedGatewayPrefixes property
+#>
+function Test-VirtualNetworkSummarizedGatewayPrefixes
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        # Create VNet
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Get VNet and verify SummarizedGatewayPrefixes property exists
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+
+        Assert-NotNull $vnet
+        Assert-AreEqual "Succeeded" $vnet.ProvisioningState
+
+        # SummarizedGatewayPrefixes should exist as a property on the object
+        Assert-True { $vnet.PSObject.Properties.Name -contains "SummarizedGatewayPrefixes" }
+
+        # For a VNet without a gateway, SummarizedGatewayPrefixes may be null
+        # If populated, it should be an AddressSpace with AddressPrefixes
+        if ($null -ne $vnet.SummarizedGatewayPrefixes) {
+            Assert-NotNull $vnet.SummarizedGatewayPrefixes.AddressPrefixes
+        }
+
+        # Delete VNet
+        Remove-AzVirtualNetwork -ResourceGroupName $rgname -Name $vnetName -PassThru -Force
     }
     finally
     {

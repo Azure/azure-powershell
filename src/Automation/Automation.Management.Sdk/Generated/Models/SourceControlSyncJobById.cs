@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="exception">The exceptions that occurred while running the sync job.
         /// </param>
-        public SourceControlSyncJobById(string id = default(string), string provisioningState = default(string), string syncType = default(string), string sourceControlSyncJobId = default(string), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string exception = default(string))
+        public SourceControlSyncJobById(string id = default(string), string provisioningState = default(string), string syncType = default(string), string sourceControlSyncJobId = default(string), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string exception = default(string))
 
         {
             this.Id = id;
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets the creation time of the job.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.creationTime")]
-        public System.DateTimeOffset CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets the start time of the job.

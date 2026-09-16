@@ -27,13 +27,17 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="protectionMode">The DDoS protection mode of the public IP
         /// Possible values include: &#39;VirtualNetworkInherited&#39;, &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
+        /// <param name="ddosCustomPolicy">The DDoS custom policy associated with the public IP.
+        /// </param>
+
         /// <param name="ddosProtectionPlan">The DDoS protection plan associated with the public IP. Can only be set if
         /// ProtectionMode is Enabled
         /// </param>
-        public DdosSettings(string protectionMode = default(string), SubResource ddosProtectionPlan = default(SubResource))
+        public DdosSettings(string protectionMode = default(string), SubResource ddosCustomPolicy = default(SubResource), SubResource ddosProtectionPlan = default(SubResource))
 
         {
             this.ProtectionMode = protectionMode;
+            this.DdosCustomPolicy = ddosCustomPolicy;
             this.DdosProtectionPlan = ddosProtectionPlan;
             CustomInit();
         }
@@ -49,6 +53,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "protectionMode")]
         public string ProtectionMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets the DDoS custom policy associated with the public IP.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ddosCustomPolicy")]
+        public SubResource DdosCustomPolicy {get; set; }
 
         /// <summary>
         /// Gets or sets the DDoS protection plan associated with the public IP. Can

@@ -13,172 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class NetworkManagersOperationsExtensions
     {
         /// <summary>
-        /// Gets the specified Network Manager.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        public static NetworkManager Get(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName)
-        {
-                return ((INetworkManagersOperations)operations).GetAsync(resourceGroupName, networkManagerName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified Network Manager.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NetworkManager> GetAsync(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkManagerName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates a Network Manager.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        public static NetworkManager CreateOrUpdate(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, NetworkManager parameters)
-        {
-                return ((INetworkManagersOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkManagerName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates a Network Manager.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NetworkManager> CreateOrUpdateAsync(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, NetworkManager parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkManagerName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes a network manager.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='force'>
-        /// Deletes the resource even if it is part of a deployed configuration. If the
-        /// configuration has been deployed, the service will do a cleanup deployment
-        /// in the background, prior to the delete.
-        /// </param>
-        public static NetworkManagersDeleteHeaders Delete(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?))
-        {
-                return ((INetworkManagersOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, force).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a network manager.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='force'>
-        /// Deletes the resource even if it is part of a deployed configuration. If the
-        /// configuration has been deployed, the service will do a cleanup deployment
-        /// in the background, prior to the delete.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NetworkManagersDeleteHeaders> DeleteAsync(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// Patch NetworkManager.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        public static NetworkManager Patch(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, PatchObject parameters)
-        {
-                return ((INetworkManagersOperations)operations).PatchAsync(resourceGroupName, networkManagerName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Patch NetworkManager.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NetworkManager> PatchAsync(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, PatchObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.PatchWithHttpMessagesAsync(resourceGroupName, networkManagerName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// List all network managers in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -232,7 +66,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='top'>
         /// An optional query parameter which specifies the maximum number of records
@@ -256,7 +90,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='top'>
         /// An optional query parameter which specifies the maximum number of records
@@ -279,13 +113,130 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Gets the specified Network Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        public static NetworkManager Get(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName)
+        {
+                return ((INetworkManagersOperations)operations).GetAsync(resourceGroupName, networkManagerName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified Network Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkManager> GetAsync(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkManagerName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates a Network Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        public static NetworkManager CreateOrUpdate(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, NetworkManager parameters)
+        {
+                return ((INetworkManagersOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkManagerName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates a Network Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkManager> CreateOrUpdateAsync(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, NetworkManager parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkManagerName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Patch NetworkManager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        public static NetworkManager Patch(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, PatchObject parameters)
+        {
+                return ((INetworkManagersOperations)operations).PatchAsync(resourceGroupName, networkManagerName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Patch NetworkManager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkManager> PatchAsync(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, PatchObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.PatchWithHttpMessagesAsync(resourceGroupName, networkManagerName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes a network manager.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -295,9 +246,9 @@ namespace Microsoft.Azure.Management.Network
         /// configuration has been deployed, the service will do a cleanup deployment
         /// in the background, prior to the delete.
         /// </param>
-        public static NetworkManagersDeleteHeaders BeginDelete(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?))
+        public static void Delete(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?))
         {
-                return ((INetworkManagersOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, force).GetAwaiter().GetResult();
+                ((INetworkManagersOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, force).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -307,7 +258,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -320,12 +271,55 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkManagersDeleteHeaders> BeginDeleteAsync(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Deletes a network manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='force'>
+        /// Deletes the resource even if it is part of a deployed configuration. If the
+        /// configuration has been deployed, the service will do a cleanup deployment
+        /// in the background, prior to the delete.
+        /// </param>
+        public static void BeginDelete(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?))
+        {
+                ((INetworkManagersOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, force).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a network manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='force'>
+        /// Deletes the resource even if it is part of a deployed configuration. If the
+        /// configuration has been deployed, the service will do a cleanup deployment
+        /// in the background, prior to the delete.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// List all network managers in a subscription.

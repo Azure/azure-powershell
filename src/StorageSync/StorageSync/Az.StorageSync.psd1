@@ -89,7 +89,7 @@ CmdletsToExport = 'Get-AzStorageSyncCloudEndpoint', 'Get-AzStorageSyncGroup',
                'Set-AzStorageSyncServer', 'Set-AzStorageSyncServerEndpoint', 
                'Set-AzStorageSyncServerEndpointPermission', 
                'Set-AzStorageSyncService', 'Set-AzStorageSyncServiceIdentity', 
-               'Unregister-AzStorageSyncServer'
+               'Unregister-AzStorageSyncServer','Set-AzStorageSyncCloudEndpoint'
 
 # Variables to export from this module
 # VariablesToExport = @()

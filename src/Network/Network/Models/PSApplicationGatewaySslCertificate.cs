@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public SecureString Password { get; set; }
         public string PublicCertData { get; set; }
         public string KeyVaultSecretId { get; set; }
+        public PSApplicationGatewayManagedHsm Hsm { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         public string Type { get; set; }

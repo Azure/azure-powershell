@@ -1,7 +1,7 @@
 @{
   GUID = '41d5c7d4-9068-4baf-9995-db228e7600b3'
   RootModule = './Az.Datadog.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.3.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Datadog.private.dll'
   FormatsToProcess = './Az.Datadog.format.ps1xml'
-  FunctionsToExport = 'Get-AzDatadogBillingInfo', 'Get-AzDatadogCreationSupported', 'Get-AzDatadogMarketplaceAgreement', 'Get-AzDatadogMonitor', 'Get-AzDatadogMonitorApiKey', 'Get-AzDatadogMonitorDefaultKey', 'Get-AzDatadogMonitoredSubscription', 'Get-AzDatadogMonitorHost', 'Get-AzDatadogMonitorLinkedResource', 'Get-AzDatadogMonitorMonitoredResource', 'Get-AzDatadogSingleSignOnConfiguration', 'Get-AzDatadogTagRule', 'Invoke-AzDatadogResubscribeOrganization', 'New-AzDatadogFilteringTagObject', 'New-AzDatadogMarketplaceAgreement', 'New-AzDatadogMonitor', 'New-AzDatadogSingleSignOnConfiguration', 'New-AzDatadogTagRule', 'Remove-AzDatadogMonitor', 'Remove-AzDatadogMonitoredSubscription', 'Set-AzDatadogMonitorDefaultKey', 'Set-AzDatadogMonitoredSubscriptionCreateor', 'Update-AzDatadogMonitor', 'Update-AzDatadogMonitoredSubscription', 'Update-AzDatadogMonitorSetPasswordLink', 'Update-AzDatadogSingleSignOnConfiguration', 'Update-AzDatadogTagRule'
+  FunctionsToExport = 'Get-AzDatadogBillingInfo', 'Get-AzDatadogCreationSupported', 'Get-AzDatadogMarketplaceAgreement', 'Get-AzDatadogMonitor', 'Get-AzDatadogMonitorApiKey', 'Get-AzDatadogMonitorDefaultApplicationKey', 'Get-AzDatadogMonitorDefaultKey', 'Get-AzDatadogMonitoredSubscription', 'Get-AzDatadogMonitorHost', 'Get-AzDatadogMonitorLinkedResource', 'Get-AzDatadogMonitorMonitoredResource', 'Get-AzDatadogSingleSignOnConfiguration', 'Get-AzDatadogTagRule', 'Initialize-AzDatadogSaaSOperationGroupResource', 'Invoke-AzDatadogLatestDatadogMonitorResourceLinkedSaaS', 'Invoke-AzDatadogLinkDatadogMonitorResourceSaaS', 'Invoke-AzDatadogManageMonitorSreAgentConnector', 'Invoke-AzDatadogResubscribeOrganization', 'New-AzDatadogFilteringTagObject', 'New-AzDatadogMarketplaceAgreement', 'New-AzDatadogMonitor', 'New-AzDatadogSingleSignOnConfiguration', 'New-AzDatadogTagRule', 'Remove-AzDatadogMonitor', 'Remove-AzDatadogMonitoredSubscription', 'Set-AzDatadogMonitorDefaultKey', 'Set-AzDatadogMonitoredSubscriptionCreateor', 'Update-AzDatadogMonitor', 'Update-AzDatadogMonitoredSubscription', 'Update-AzDatadogMonitorSetPasswordLink', 'Update-AzDatadogSingleSignOnConfiguration', 'Update-AzDatadogTagRule'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Datadog'

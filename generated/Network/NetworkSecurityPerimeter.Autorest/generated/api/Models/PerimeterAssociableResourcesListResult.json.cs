@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Extensions;
 
-    /// <summary>Paged list of perimeter associable resources.</summary>
+    /// <summary>Paged collection of PerimeterAssociableResource items</summary>
     public partial class PerimeterAssociableResourcesListResult
     {
 

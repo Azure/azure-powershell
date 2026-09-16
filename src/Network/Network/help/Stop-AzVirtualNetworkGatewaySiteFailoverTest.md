@@ -17,7 +17,7 @@ Stop-AzVirtualNetworkGatewaySiteFailoverTest -ResourceGroupName <String> -Virtua
  -PeeringLocation <String> -WasSimulationSuccessful <Boolean>
  -Detail <System.Collections.Generic.List`1[Microsoft.Azure.Management.Network.Models.FailoverConnectionDetails]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +54,36 @@ Detail: The failover connection details are provided, including the name, locati
 WasSimulationSuccessful: Indicates that the failover simulation was successful ($true).
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

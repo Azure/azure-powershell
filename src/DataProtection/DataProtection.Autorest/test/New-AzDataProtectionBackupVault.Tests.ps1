@@ -26,11 +26,11 @@ Describe 'New-AzDataProtectionBackupVault' {
     It 'ImmutabilityCSRSoftDelete' {
         $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -Type LocallyRedundant -DataStoreType VaultStore
         
-        $vault = New-AzDataProtectionBackupVault -SubscriptionId $env.TestBackupVault.CreateSubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewCSRVault -Location centraluseuap -StorageSetting $storagesetting -CrossSubscriptionRestoreState Enabled -ImmutabilityState Unlocked -SoftDeleteRetentionDurationInDay 100 -SoftDeleteState AlwaysOn
+        $vault = New-AzDataProtectionBackupVault -SubscriptionId $env.TestBackupVault.CreateSubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewCSRVault -Location westus -StorageSetting $storagesetting -CrossSubscriptionRestoreState Enabled -ImmutabilityState Unlocked -SoftDeleteRetentionDurationInDay 100 -SoftDeleteState AlwaysOn
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $env.TestBackupVault.CreateSubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewCSRVault
         
-        $vault.Location | Should be "centraluseuap"
+        $vault.Location | Should be "westus"
         $vault.Name | Should be $env.TestBackupVault.NewCSRVault
         
         $vault.CrossSubscriptionRestoreState | Should be "Enabled"        

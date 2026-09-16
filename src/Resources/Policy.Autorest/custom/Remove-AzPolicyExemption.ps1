@@ -136,10 +136,6 @@ begin {
     if ($writeln) {
         Write-Host -ForegroundColor Cyan "begin:Remove-AzPolicyExemption(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
-
-    $mapping = @{
-        Delete = 'Az.Policy.private\Remove-AzPolicyExemption_Delete';
-    }
 }
 
 process {
@@ -178,19 +174,11 @@ process {
 
         $PSBoundParameters.Name = $resolved.Name
         $PSBoundParameters.Scope = $resolved.Scope
-        $calledParameterSet = 'Delete'
 
         $null = $PSBoundParameters.Remove('Id')
 
-        if ($writeln) {
-            Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $PSBoundParameters ')'
-        }
-
-        $cmdInfo = Get-Command -Name $mapping[$calledParameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $calledParameterSet, $PSCmdlet)
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$calledParameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $result = Invoke-Command -ScriptBlock $scriptCmd
+        # call the internal cmdlet with the parsed parameters
+        $result = Az.Policy.internal\Remove-AzPolicyExemption @PSBoundParameters
     }
 
     if ($PassThru) {

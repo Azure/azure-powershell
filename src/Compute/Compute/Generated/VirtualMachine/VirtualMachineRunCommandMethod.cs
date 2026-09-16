@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         {
                             RunCommandInputParameter p = new RunCommandInputParameter();
                             p.Name = key.ToString();
-                            p.Value = this.Parameter[key].ToString();
+                            p.Value = RunCommandParameterValueEscaper.Escape(this.CommandId, this.Parameter[key].ToString());
                             vParameter.Add(p);
                         }
                         parameters.Parameters = vParameter;

@@ -28,10 +28,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpProjectDetails Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpProjectEnvironmentInternal.ProjectDetail { get => (this._projectDetail = this._projectDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.Security.Models.GcpProjectDetails()); set { {_projectDetail = value;} } }
 
         /// <summary>Internal Acessors for ProjectDetailProjectName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpProjectEnvironmentInternal.ProjectDetailProjectName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpProjectDetailsInternal)ProjectDetail).ProjectName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpProjectDetailsInternal)ProjectDetail).ProjectName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpProjectEnvironmentInternal.ProjectDetailProjectName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpProjectDetailsInternal)ProjectDetail).ProjectName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpProjectDetailsInternal)ProjectDetail).ProjectName = value ?? null; }
 
         /// <summary>Internal Acessors for ProjectDetailWorkloadIdentityPoolId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpProjectEnvironmentInternal.ProjectDetailWorkloadIdentityPoolId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpProjectDetailsInternal)ProjectDetail).WorkloadIdentityPoolId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpProjectDetailsInternal)ProjectDetail).WorkloadIdentityPoolId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpProjectEnvironmentInternal.ProjectDetailWorkloadIdentityPoolId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpProjectDetailsInternal)ProjectDetail).WorkloadIdentityPoolId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpProjectDetailsInternal)ProjectDetail).WorkloadIdentityPoolId = value ?? null; }
 
         /// <summary>Backing field for <see cref="OrganizationalData" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpOrganizationalData _organizationalData;

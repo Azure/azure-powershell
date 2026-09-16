@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewaySslPolicyType
     {
+        /// <summary>
+        /// Predefined
+        /// </summary>
         public const string Predefined = "Predefined";
+        /// <summary>
+        /// Custom
+        /// </summary>
         public const string Custom = "Custom";
+        /// <summary>
+        /// CustomV2
+        /// </summary>
         public const string CustomV2 = "CustomV2";
     }
 }

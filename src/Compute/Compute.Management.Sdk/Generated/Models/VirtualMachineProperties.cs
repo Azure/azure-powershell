@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="priority">Specifies the priority for the virtual machine. Minimum api-version:
         /// 2019-03-01
-        /// Possible values include: &#39;Regular&#39;, &#39;Low&#39;, &#39;Spot&#39;</param>
+        /// Possible values include: &#39;Regular&#39;, &#39;Low&#39;, &#39;Spot&#39;, &#39;SpotPlus&#39;</param>
 
         /// <param name="evictionPolicy">Specifies the eviction policy for the Azure Spot virtual machine and Azure
         /// Spot scale set. For Azure Spot virtual machines, both &#39;Deallocate&#39; and
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets specifies the priority for the virtual machine. Minimum
-        /// api-version: 2019-03-01 Possible values include: &#39;Regular&#39;, &#39;Low&#39;, &#39;Spot&#39;
+        /// api-version: 2019-03-01 Possible values include: &#39;Regular&#39;, &#39;Low&#39;, &#39;Spot&#39;, &#39;SpotPlus&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "priority")]
         public string Priority {get; set; }

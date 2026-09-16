@@ -16,24 +16,22 @@ This command creates an Azure File Sync cloud endpoint in a sync group.
 ```
 New-AzStorageSyncCloudEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
  [-SyncGroupName] <String> -Name <String> -StorageAccountResourceId <String> -AzureFileShareName <String>
- [-StorageAccountTenantId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-StorageAccountTenantId <String>] [-ChangeEnumerationIntervalDay <Int32>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameterSet
 ```
 New-AzStorageSyncCloudEndpoint [-ParentObject] <PSSyncGroup> -Name <String> -StorageAccountResourceId <String>
- -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-ChangeEnumerationIntervalDay <Int32>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentStringParameterSet
 ```
 New-AzStorageSyncCloudEndpoint [-ParentResourceId] <String> -Name <String> -StorageAccountResourceId <String>
- -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-ChangeEnumerationIntervalDay <Int32>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +41,7 @@ This command creates an Azure File Sync cloud endpoint. A cloud endpoint is a re
 
 ### Example 1
 ```powershell
+$storageAccountResourceId = (Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -Name "myStorageAccountName").Id
 New-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName" -StorageAccountResourceId $storageAccountResourceId -AzureFileShareName "myAzureFileShareName" -StorageAccountTenantId "myStorageAccountTenantId"
 ```
 
@@ -74,6 +73,21 @@ Parameter Sets: (All)
 Aliases: StorageAccountShareName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeEnumerationIntervalDay
+Interval in days between change enumeration operations for the cloud endpoint. Valid values range from 1 to 20 days.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

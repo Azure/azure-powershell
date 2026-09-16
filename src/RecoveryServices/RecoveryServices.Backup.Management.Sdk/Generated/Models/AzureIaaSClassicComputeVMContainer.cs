@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="protectableObjectType">Type of the protectable object associated with this container
         /// </param>
 
+        /// <param name="sourceLocation">Source location of the container
+        /// </param>
+
         /// <param name="virtualMachineId">Fully qualified ARM url of the virtual machine represented by this Azure
         /// IaaS VM container.
         /// </param>
@@ -53,9 +56,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="resourceGroup">Resource group name of Recovery Services Vault.
         /// </param>
-        public AzureIaaSClassicComputeVMContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string virtualMachineId = default(string), string virtualMachineVersion = default(string), string resourceGroup = default(string))
+        public AzureIaaSClassicComputeVMContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string sourceLocation = default(string), string virtualMachineId = default(string), string virtualMachineVersion = default(string), string resourceGroup = default(string))
 
-        : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType, virtualMachineId, virtualMachineVersion, resourceGroup)
+        : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType, sourceLocation, virtualMachineId, virtualMachineVersion, resourceGroup)
         {
             CustomInit();
         }

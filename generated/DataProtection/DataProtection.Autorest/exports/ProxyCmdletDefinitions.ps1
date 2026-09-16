@@ -6599,6 +6599,13 @@ param(
     # Security alerts cannot be disabled.
     ${AzureMonitorAlertsForAllJobFailure},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("VaultLevel", "ProtectedItemLevel", "ProtectedItemWithParentTag")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Settings for granularity level
+    ${CostManagementSettingGranularityLevel},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
@@ -6772,6 +6779,13 @@ param(
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Cost Management Granularity of the vault.
+    # Allowed values are VaultLevel, ProtectedItemLevel, ProtectedItemWithParentTag.
+    ${CostManagementGranularity},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
@@ -6971,7 +6985,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName]
     # Retention Rule Name.
-    # Note: Default and Default_OperationalStore are default retention rules and cannot be removed.
+    # Note: "Default" retention rules cannot be removed, regardless of lifecycle.
     ${Name},
 
     [Parameter(ParameterSetName='RemoveRetention', Mandatory)]
@@ -6995,7 +7009,8 @@ param(
     [Parameter(ParameterSetName='AddRetention')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.Nullable[System.Boolean]]
-    # Specifies whether to modify an existing LifeCycle.
+    # [Deprecated] Optional; this parameter will be removed in an upcoming release.
+    # Setting -OverwriteLifeCycle $false blocks updating an existing retention rule; when $true or omitted, the existing rule lifecycles are replaced in place — the default behavior once this parameter is removed.
     ${OverwriteLifeCycle}
 )
 
@@ -9255,6 +9270,13 @@ param(
     # Immutability state of the vault.
     # Allowed values are Disabled, Unlocked, Locked.
     ${ImmutabilityState},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Cost Management Granularity of the vault.
+    # Allowed values are VaultLevel, ProtectedItemLevel, ProtectedItemWithParentTag.
+    ${CostManagementGranularity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]

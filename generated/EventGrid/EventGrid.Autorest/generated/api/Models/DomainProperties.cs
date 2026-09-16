@@ -154,7 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models
         Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IInputSchemaMapping Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDomainPropertiesInternal.InputSchemaMapping { get => (this._inputSchemaMapping = this._inputSchemaMapping ?? new Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.InputSchemaMapping()); set { {_inputSchemaMapping = value;} } }
 
         /// <summary>Internal Acessors for InputSchemaMappingInputSchemaMappingType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDomainPropertiesInternal.InputSchemaMappingInputSchemaMappingType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IInputSchemaMappingInternal)InputSchemaMapping).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IInputSchemaMappingInternal)InputSchemaMapping).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDomainPropertiesInternal.InputSchemaMappingInputSchemaMappingType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IInputSchemaMappingInternal)InputSchemaMapping).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IInputSchemaMappingInternal)InputSchemaMapping).Type = value ?? null; }
 
         /// <summary>Internal Acessors for MetricResourceId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDomainPropertiesInternal.MetricResourceId { get => this._metricResourceId; set { {_metricResourceId = value;} } }

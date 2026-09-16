@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -57,6 +58,12 @@ namespace Microsoft.Azure.Commands.Compute
         public string WireServerProfile { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether the Wire Server endpoint should load additional access control rules from a local file.")]
+        public bool? WireServerUseLocalFileRules { get; set; }
+
+        [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Specifies the IMDS endpoint execution mode. In Audit mode, the system acts as if it is enforcing the access control policy, including emitting access denial entries in the logs but it does not actually deny any requests to host endpoints. In Enforce mode, the system will enforce the access control and it is the recommended mode of operation.")]
@@ -68,6 +75,12 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the InVMAccessControlProfileVersion resource id in the IMDS enpoint. Format of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}")]
         public string ImdsProfile { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether the IMDS endpoint should load additional access control rules from a local file.")]
+        public bool? ImdsUseLocalFileRules { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -90,15 +103,17 @@ namespace Microsoft.Azure.Commands.Compute
             this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings = new ProxyAgentSettings
             {
                 Enabled = this.EnableProxyAgent,
-                WireServer = (this.WireServerMode == null && this.WireServerProfile == null ? null : new HostEndpointSettings()
+                WireServer = (this.WireServerMode == null && this.WireServerProfile == null && !this.IsParameterBound(c => c.WireServerUseLocalFileRules) ? null : new HostEndpointSettings()
                 {
                     Mode = this.WireServerMode,
-                    InVMAccessControlProfileReferenceId = this.WireServerProfile
+                    InVMAccessControlProfileReferenceId = this.WireServerProfile,
+                    UseLocalFileRules = this.WireServerUseLocalFileRules
                 }),
-                Imds = (this.ImdsMode == null && this.ImdsProfile == null ? null : new HostEndpointSettings()
+                Imds = (this.ImdsMode == null && this.ImdsProfile == null && !this.IsParameterBound(c => c.ImdsUseLocalFileRules) ? null : new HostEndpointSettings()
                 {
                     Mode = this.ImdsMode,
-                    InVMAccessControlProfileReferenceId = this.ImdsProfile
+                    InVMAccessControlProfileReferenceId = this.ImdsProfile,
+                    UseLocalFileRules = this.ImdsUseLocalFileRules
                 })
             };
 

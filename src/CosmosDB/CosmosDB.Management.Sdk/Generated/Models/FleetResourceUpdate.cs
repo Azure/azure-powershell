@@ -25,13 +25,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Initializes a new instance of the FleetResourceUpdate class.
         /// </summary>
 
+        /// <param name="tags">Resource tags.
+        /// </param>
+
         /// <param name="provisioningState">A provisioning state of the Fleet.
         /// Possible values include: &#39;Uninitialized&#39;, &#39;Initializing&#39;,
-        /// &#39;InternallyReady&#39;, &#39;Online&#39;, &#39;Deleting&#39;, &#39;Creating&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;,
-        /// &#39;Canceled&#39;, &#39;Updating&#39;</param>
-        public FleetResourceUpdate(string provisioningState = default(string))
+        /// &#39;InternallyReady&#39;, &#39;Online&#39;, &#39;Deleting&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;,
+        /// &#39;Updating&#39;, &#39;Creating&#39;</param>
+        public FleetResourceUpdate(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string provisioningState = default(string))
 
         {
+            this.Tags = tags;
             this.ProvisioningState = provisioningState;
             CustomInit();
         }
@@ -43,9 +47,15 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
 
         /// <summary>
-        /// Gets or sets a provisioning state of the Fleet. Possible values include: &#39;Uninitialized&#39;, &#39;Initializing&#39;, &#39;InternallyReady&#39;, &#39;Online&#39;, &#39;Deleting&#39;, &#39;Creating&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Updating&#39;
+        /// Gets or sets resource tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets a provisioning state of the Fleet. Possible values include: &#39;Uninitialized&#39;, &#39;Initializing&#39;, &#39;InternallyReady&#39;, &#39;Online&#39;, &#39;Deleting&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Updating&#39;, &#39;Creating&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState {get; set; }
+        public string ProvisioningState {get; private set; }
     }
 }
