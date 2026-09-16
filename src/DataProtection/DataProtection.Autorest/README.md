@@ -727,6 +727,7 @@ directive:
     - ItemLevelRestoreTargetInfo
     - PolicyParameters
     - ResourceDeletionInfo
+    - ResourceListSelectionCriteria
     - RestoreFilesTargetInfo
     - RestoreTargetInfo
     - RestoreTargetInfoBase
