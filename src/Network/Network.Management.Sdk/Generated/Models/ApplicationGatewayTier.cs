@@ -33,5 +33,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Basic
         /// </summary>
         public const string Basic = "Basic";
+        /// <summary>
+        /// Basic tier Application Gateway.
+        /// </summary>
+        public const string BasicV2 = "Basic_v2";
+        /// <summary>
+        /// Basic tier Application Gateway with WAF enabled.
+        /// </summary>
+        public const string BasicWAFV2 = "Basic_WAF_v2";
     }
 }
