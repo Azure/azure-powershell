@@ -334,6 +334,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.RestoreVM.TargetSubscriptionId)]
         [Parameter(Mandatory = false, ParameterSetName = AzureFileShareParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreFS.TargetSubscriptionId)]
+        [ValidateNotNullOrEmpty]
         public string TargetSubscriptionId { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMCreateNewParameterSet,

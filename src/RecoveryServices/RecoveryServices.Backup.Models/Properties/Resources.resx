@@ -661,6 +661,9 @@ Please contact Microsoft for further assistance.</value>
   <data name="AFSRegisterParameterCombinationInvalid" xml:space="preserve">
     <value>Azure Files registration requires -StorageAccountName with -BackupManagementType AzureStorage and -WorkloadType AzureFiles. The -ResourceId and -Container parameter sets support AzureWorkload registration only.</value>
   </data>
+  <data name="AFSRegisterStorageAccountRequiresAzureFileTypes" xml:space="preserve">
+    <value>-StorageAccountName supports Azure Files registration only. Specify -BackupManagementType AzureStorage and -WorkloadType AzureFiles.</value>
+  </data>
   <data name="AFSIdentityBasedRequiresIdentity" xml:space="preserve">
     <value>-AccessType 'IdentityBased' requires an identity. Specify either -IsSystemAssignedIdentity (to use the vault's system-assigned managed identity) or -UserAssignedIdentityArmUrl (to use a user-assigned managed identity).</value>
   </data>

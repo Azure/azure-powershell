@@ -2010,6 +2010,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("AFSRegisterParameterCombinationInvalid", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to -StorageAccountName supports Azure Files registration only. Specify -BackupManagementType AzureStorage and -WorkloadType AzureFiles.
+        /// </summary>
+        public static string AFSRegisterStorageAccountRequiresAzureFileTypes
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSRegisterStorageAccountRequiresAzureFileTypes", resourceCulture);
+            }
+        }
         /// <summary>
         ///   Looks up a localized string similar to -AccessType &apos;IdentityBased&apos; requires an identity.
         /// </summary>

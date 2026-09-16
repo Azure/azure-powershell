@@ -126,9 +126,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     BackupManagementType == Models.BackupManagementType.AzureStorage &&
                     WorkloadType == Models.WorkloadType.AzureFiles;
 
-                if (isAzureFileRegistration != hasAzureFileTypes)
+                if (hasAzureFileTypes && !isAzureFileRegistration)
                 {
                     throw new ArgumentException(Resources.AFSRegisterParameterCombinationInvalid);
+                }
+
+                if (isAzureFileRegistration && !hasAzureFileTypes)
+                {
+                    throw new ArgumentException(Resources.AFSRegisterStorageAccountRequiresAzureFileTypes);
                 }
 
                 // Azure Files (AFS) storage-account registration path.

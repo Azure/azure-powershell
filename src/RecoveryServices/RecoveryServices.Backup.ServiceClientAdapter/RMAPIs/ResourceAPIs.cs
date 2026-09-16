@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string subscriptionContext = RMAdapter.Client.SubscriptionId;
             try
             {
-                RMAdapter.Client.SubscriptionId = (subscriptionId != null) ?
+                RMAdapter.Client.SubscriptionId = !string.IsNullOrEmpty(subscriptionId) ?
                     subscriptionId : RMAdapter.Client.SubscriptionId;
 
                 Func<RestAzureNS.IPage<GenericResource>> listAsync =

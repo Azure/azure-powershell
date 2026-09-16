@@ -140,6 +140,7 @@ function Test-AzureFSRegisterParameterValidation
 		-ResourceGroupName $resourceGroupName `
 		-Name $vaultName
 	$resourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm"
+	$uamiId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/afs-msi-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/afs-msi-test-uami"
 
 	Assert-ThrowsContains {
 		Register-AzRecoveryServicesBackupContainer `
@@ -159,7 +160,54 @@ function Test-AzureFSRegisterParameterValidation
 			-WorkloadType MSSQL `
 			-Confirm:$false `
 			-ErrorAction Stop
-	} "Azure Files registration requires -StorageAccountName"
+	} "-StorageAccountName supports Azure Files registration only"
+
+	Assert-ThrowsContains {
+		Register-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-StorageAccountName $saName `
+			-BackupManagementType AzureStorage `
+			-WorkloadType AzureFiles `
+			-AccessType IdentityBased `
+			-IsSystemAssignedIdentity `
+			-UserAssignedIdentityArmUrl $uamiId `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "Both -IsSystemAssignedIdentity and -UserAssignedIdentityArmUrl"
+
+	Assert-ThrowsContains {
+		Register-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-StorageAccountName $saName `
+			-BackupManagementType AzureStorage `
+			-WorkloadType AzureFiles `
+			-IsSystemAssignedIdentity `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "An identity was specified without -AccessType"
+
+	Assert-ThrowsContains {
+		Register-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-StorageAccountName $saName `
+			-BackupManagementType AzureStorage `
+			-WorkloadType AzureFiles `
+			-AccessType IdentityBased `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "-AccessType 'IdentityBased' requires an identity"
+
+	Assert-ThrowsContains {
+		Register-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-StorageAccountName $saName `
+			-BackupManagementType AzureStorage `
+			-WorkloadType AzureFiles `
+			-AccessType KeyBased `
+			-IsSystemAssignedIdentity `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "-AccessType 'KeyBased' cannot be combined with an identity"
 }
 
 function Test-AzureFSManagedIdentityRegisterAndReregister

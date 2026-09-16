@@ -885,13 +885,21 @@ function Wait-AzureFSMsiJob
 	$terminalStates = @("Completed", "CompletedWithWarnings", "Failed", "Cancelled")
 	$from = $Job.StartTime.ToUniversalTime().AddHours(-1)
 	$to = $Job.StartTime.ToUniversalTime().AddDays(1)
+	$attempt = 0
+	$maxAttempts = 360
 	while ($Job.Status -notin $terminalStates)
 	{
+		if ($attempt -ge $maxAttempts)
+		{
+			throw "Timed out waiting for backup job $($Job.JobId) after $attempt attempts. Last status: $($Job.Status)"
+		}
+
 		if ($env:AZURE_TEST_MODE -eq "Record")
 		{
 			Start-Sleep -Seconds 15
 		}
 
+		$attempt++
 		$Job = Get-AzRecoveryServicesBackupJob `
 			-VaultId $VaultId `
 			-JobId $Job.JobId `
@@ -1060,6 +1068,53 @@ function Test-AzureFSManagedIdentityEnableProtection
 		-VaultId $vault.ID `
 		-Name $policyName
 
+	Assert-ThrowsContains {
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-StorageAccountName $uamiStorageAccountName `
+			-Name $uamiFileShareName `
+			-AccessType IdentityBased `
+			-IsSystemAssignedIdentity `
+			-UserAssignedIdentityArmUrl $uamiId `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "Both -IsSystemAssignedIdentity and -UserAssignedIdentityArmUrl"
+
+	Assert-ThrowsContains {
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-StorageAccountName $uamiStorageAccountName `
+			-Name $uamiFileShareName `
+			-IsSystemAssignedIdentity `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "An identity was specified without -AccessType"
+
+	Assert-ThrowsContains {
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-StorageAccountName $uamiStorageAccountName `
+			-Name $uamiFileShareName `
+			-AccessType IdentityBased `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "-AccessType 'IdentityBased' requires an identity"
+
+	Assert-ThrowsContains {
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-StorageAccountName $uamiStorageAccountName `
+			-Name $uamiFileShareName `
+			-AccessType KeyBased `
+			-IsSystemAssignedIdentity `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "-AccessType 'KeyBased' cannot be combined with an identity"
+
 	Enable-AzRecoveryServicesBackupProtection `
 		-VaultId $vault.ID `
 		-Policy $policy `
@@ -1149,6 +1204,18 @@ function Test-AzureFSCrossSubscriptionRestoreTargetLookup
 		-StartDate $recoveryPointStartDate `
 		-EndDate $recoveryPointEndDate |
 		Select-Object -First 1
+
+	Assert-ThrowsContains {
+		Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-RecoveryPoint $recoveryPoint `
+			-ResolveConflict Overwrite `
+			-TargetSubscriptionId "" `
+			-TargetStorageAccountName $storageAccountName `
+			-TargetFileShareName $fileShareName `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "argument is null or empty"
 
 	Assert-ThrowsContains {
 		Restore-AzRecoveryServicesBackupItem `
@@ -1248,13 +1315,21 @@ function Test-AzureFSCrossRegionCrossSubscriptionRestore
 	$terminalStates = @("Completed", "CompletedWithWarnings", "Failed", "Cancelled")
 	$jobQueryStart = $recoveryPoint.RecoveryPointTime.ToUniversalTime().AddMinutes(-1)
 	$jobQueryEnd = $recoveryPoint.RecoveryPointTime.ToUniversalTime().AddDays(7)
+	$attempt = 0
+	$maxAttempts = 270
 	while ($restoreJob.Status -notin $terminalStates)
 	{
+		if ($attempt -ge $maxAttempts)
+		{
+			throw "Timed out waiting for cross-region restore job $($restoreJob.JobId) after $attempt attempts. Last status: $($restoreJob.Status)"
+		}
+
 		if ($env:AZURE_TEST_MODE -eq "Record")
 		{
 			Start-Sleep -Seconds 20
 		}
 
+		$attempt++
 		$restoreJob = Get-AzRecoveryServicesBackupJob `
 			-VaultId $vault.ID `
 			-VaultLocation $vault.Location `
