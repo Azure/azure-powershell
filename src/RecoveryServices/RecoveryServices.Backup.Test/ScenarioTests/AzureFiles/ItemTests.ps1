@@ -1150,6 +1150,16 @@ function Test-AzureFSCrossSubscriptionRestoreTargetLookup
 		-EndDate $recoveryPointEndDate |
 		Select-Object -First 1
 
+	Assert-ThrowsContains {
+		Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-RecoveryPoint $recoveryPoint `
+			-ResolveConflict Overwrite `
+			-TargetSubscriptionId $targetSubscriptionId `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "Provide TargetStorageAccountName when using TargetSubscriptionId"
+
 	Assert-Throws {
 		Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `

@@ -206,6 +206,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Provide TargetStorageAccountName when using TargetSubscriptionId for Azure File Share restore.
+        /// </summary>
+        public static string AzureFileTargetSubscriptionRequiresStorageAccount
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileTargetSubscriptionRequiresStorageAccount", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to BackupManagementType value should be empty for WorkloadType AzureFiles..
         /// </summary>
         public static string AzureFileUnsupportedBackupManagementTypeException

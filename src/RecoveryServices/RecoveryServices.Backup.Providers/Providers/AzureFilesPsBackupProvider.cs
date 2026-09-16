@@ -273,6 +273,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string targetSubscriptionId = ProviderData.ContainsKey(RestoreFSBackupItemParams.TargetSubscriptionId) ?
                 (string)ProviderData[RestoreFSBackupItemParams.TargetSubscriptionId] : null;
 
+            if (!string.IsNullOrEmpty(targetSubscriptionId) && string.IsNullOrEmpty(targetStorageAccountName))
+            {
+                throw new ArgumentException(Resources.AzureFileTargetSubscriptionRequiresStorageAccount);
+            }
+
             //validate file recovery request
             ValidateFileRestoreRequest(sourceFilePath, sourceFileType, multipleSourceFilePaths);
 

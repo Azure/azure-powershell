@@ -568,6 +568,9 @@ Please contact Microsoft for further assistance.</value>
   <data name="AzureFileTargetSANameMissingException" xml:space="preserve">
     <value>Provide TargetStorageAccountName for Alternate Location restore or remove TargetFileShareName for Original Location restore</value>
   </data>
+  <data name="AzureFileTargetSubscriptionRequiresStorageAccount" xml:space="preserve">
+    <value>Provide TargetStorageAccountName when using TargetSubscriptionId for Azure File Share restore</value>
+  </data>
   <data name="UnRegisterFailureErrorCode" xml:space="preserve">
     <value>UnRegister operation failed with ErrorCode: {0}</value>
   </data>
