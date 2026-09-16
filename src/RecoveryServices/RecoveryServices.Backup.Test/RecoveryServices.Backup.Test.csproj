@@ -21,7 +21,6 @@
 		<ProjectReference Include="..\RecoveryServices.Backup.Management.Sdk\RecoveryServices.Backup.Management.Sdk.csproj" />
 		<ProjectReference Include="..\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk.csproj" />
 		<ProjectReference Include="..\RecoveryServices.Backup.Models\RecoveryServices.Backup.Models.csproj" />
-		<ProjectReference Include="..\RecoveryServices.Backup.ServiceClientAdapter\RecoveryServices.Backup.ServiceClientAdapter.csproj" />
 		<ProjectReference Include="..\..\Compute\Compute.Helpers\Compute.Helpers.csproj" />
 	</ItemGroup>
 

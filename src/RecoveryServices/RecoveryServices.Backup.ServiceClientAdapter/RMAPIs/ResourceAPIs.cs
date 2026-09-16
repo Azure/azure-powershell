@@ -14,13 +14,9 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Rest;
 using Microsoft.Rest.Azure.OData;
-using Microsoft.Rest.Serialization;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using RestAzureNS = Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
@@ -97,100 +93,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             return storageAccount;
         }
 
-        /// <summary>
-        /// Gets the VM as a generic resource in the given subscription. Used to validate a
-        /// cross-subscription (CSB) VM's existence and region before enabling backup, since discovery
-        /// does not run cross-subscription.
-        /// </summary>
-        /// <param name="vmName">Name of the virtual machine</param>
-        /// <param name="vmResourceGroupName">Resource group of the virtual machine</param>
-        /// <param name="subscriptionId">Subscription the virtual machine resides in</param>
-        /// <returns>Generic resource returned from the service</returns>
-        public GenericResource GetVmResource(string vmName, string vmResourceGroupName, string subscriptionId)
-        {
-            string vmResourceId = string.Format(
-                "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}",
-                subscriptionId, vmResourceGroupName, vmName);
-
-            string requestUri = string.Format(
-                "{0}{1}?api-version=2023-03-01",
-                RMAdapter.Client.BaseUri.AbsoluteUri.TrimEnd('/'),
-                vmResourceId);
-
-            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUri))
-            {
-                if (RMAdapter.Client.GenerateClientRequestId.HasValue &&
-                    RMAdapter.Client.GenerateClientRequestId.Value)
-                {
-                    request.Headers.TryAddWithoutValidation(
-                        "x-ms-client-request-id", Guid.NewGuid().ToString());
-                }
-
-                if (!string.IsNullOrEmpty(RMAdapter.Client.AcceptLanguage))
-                {
-                    request.Headers.TryAddWithoutValidation(
-                        "accept-language", RMAdapter.Client.AcceptLanguage);
-                }
-
-                if (RMAdapter.Client.Credentials != null)
-                {
-                    RMAdapter.Client.Credentials.ProcessHttpRequestAsync(
-                        request,
-                        RMAdapter.CmdletCancellationToken).GetAwaiter().GetResult();
-                }
-
-                using (HttpResponseMessage response = RMAdapter.Client.HttpClient.SendAsync(
-                    request,
-                    RMAdapter.CmdletCancellationToken).GetAwaiter().GetResult())
-                {
-                    string responseContent = response.Content.ReadAsStringAsync()
-                        .GetAwaiter().GetResult();
-
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        RestAzureNS.CloudError errorBody = null;
-                        try
-                        {
-                            errorBody = SafeJsonConvert.DeserializeObject<RestAzureNS.CloudError>(
-                                responseContent,
-                                RMAdapter.Client.DeserializationSettings);
-                        }
-                        catch (Newtonsoft.Json.JsonException)
-                        {
-                        }
-
-                        string errorMessage = errorBody != null &&
-                            !string.IsNullOrEmpty(errorBody.Message)
-                                ? errorBody.Message
-                                : string.Format(
-                                    "Operation returned an invalid status code '{0}'",
-                                    response.StatusCode);
-
-                        RestAzureNS.CloudException exception =
-                            new RestAzureNS.CloudException(errorMessage)
-                            {
-                                Body = errorBody,
-                                Request = new HttpRequestMessageWrapper(request, null),
-                                Response = new HttpResponseMessageWrapper(response, responseContent)
-                            };
-
-                        throw exception;
-                    }
-
-                    return DeserializeVmResource(responseContent);
-                }
-            }
-        }
-
-        internal static GenericResource DeserializeVmResource(string responseContent)
-        {
-            JObject resource = JObject.Parse(responseContent);
-
-            return new GenericResource(
-                resource.Value<string>("id"),
-                resource.Value<string>("name"),
-                resource.Value<string>("type"),
-                resource.Value<string>("location"));
-        }
     }
 }

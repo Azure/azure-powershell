@@ -43,4 +43,3 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.0")]
 [assembly: AssemblyVersion("7.14.1")]
 [assembly: AssemblyFileVersion("7.14.1")]
-[assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Test")]
