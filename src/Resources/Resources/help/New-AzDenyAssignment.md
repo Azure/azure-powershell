@@ -16,26 +16,27 @@ Alternatively, use -PrincipalId and -PrincipalType to target a specific user or 
 
 ### EveryoneParameterSet (Default)
 ```
-New-AzDenyAssignment -DenyAssignmentName <String> -Scope <String> -ExcludePrincipalId <String[]>
- [-Description <String>] [-Action <String[]>] [-NotAction <String[]>] [-DataAction <String[]>]
- [-NotDataAction <String[]>] [-ExcludePrincipalType <String[]>] [-DoNotApplyToChildScope]
- [-DenyAssignmentId <Guid>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDenyAssignment -DenyAssignmentName <String> [-Description <String>] -Scope <String> [-Action <String[]>]
+ [-NotAction <String[]>] [-DataAction <String[]>] [-NotDataAction <String[]>] -ExcludePrincipalId <String[]>
+ [-ExcludePrincipalType <String[]>] [-DoNotApplyToChildScope] [-DenyAssignmentId <Guid>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### PerPrincipalParameterSet
 ```
-New-AzDenyAssignment -DenyAssignmentName <String> -Scope <String> -PrincipalId <String>
- -PrincipalType <String> [-Description <String>] [-Action <String[]>] [-NotAction <String[]>]
- [-DataAction <String[]>] [-NotDataAction <String[]>] [-ExcludePrincipalId <String[]>]
- [-ExcludePrincipalType <String[]>] [-DoNotApplyToChildScope] [-DenyAssignmentId <Guid>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDenyAssignment -DenyAssignmentName <String> [-Description <String>] -Scope <String> [-Action <String[]>]
+ [-NotAction <String[]>] [-DataAction <String[]>] [-NotDataAction <String[]>] [-ExcludePrincipalId <String[]>]
+ [-ExcludePrincipalType <String[]>] -PrincipalId <String> -PrincipalType <String> [-DoNotApplyToChildScope]
+ [-DenyAssignmentId <Guid>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### InputFileParameterSet
 ```
 New-AzDenyAssignment -Scope <String> -InputFile <String> [-DenyAssignmentId <Guid>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,6 +104,21 @@ Creates a deny assignment that denies write actions for everyone, excluding a us
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Action
 Actions to deny. Wildcards supported (e.g., */delete, Microsoft.Storage/storageAccounts/*).
 
@@ -115,6 +131,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -204,7 +235,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

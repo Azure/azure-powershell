@@ -20,7 +20,7 @@ New-AzNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protoco
  [-DestinationAddressPrefix <String[]>] [-SourceApplicationSecurityGroup <PSApplicationSecurityGroup[]>]
  [-DestinationApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-Access <String>] [-Priority <Int32>]
  [-Direction <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -30,7 +30,7 @@ New-AzNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protoco
  [-DestinationAddressPrefix <String[]>] [-SourceApplicationSecurityGroupId <String[]>]
  [-DestinationApplicationSecurityGroupId <String[]>] [-Access <String>] [-Priority <Int32>]
  [-Direction <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,6 +67,36 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Allow, Deny
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

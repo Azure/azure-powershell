@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.FrontDoor",
-  "ModuleVersion": "2.2.0",
+  "ModuleVersion": "2.3.0",
   "Cmdlets": [
     {
       "VerbName": "Disable",
@@ -18745,6 +18745,16 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "ExceptionListException",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[], Az.FrontDoor.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ManagedRuleSet",
           "AliasList": [
             "ManagedRule"
@@ -19262,6 +19272,22 @@
                     "ScrubbingRule": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallScrubbingRules]",
                     "State": "System.String"
                   }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ExceptionListException",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[], Az.FrontDoor.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -27556,6 +27582,16 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "ExceptionListException",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[], Az.FrontDoor.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ManagedRuleSet",
           "AliasList": [
             "ManagedRule"
@@ -27855,6 +27891,22 @@
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ExceptionListException",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[], Az.FrontDoor.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -28305,6 +28357,22 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ExceptionListException",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[], Az.FrontDoor.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ManagedRuleSet",
                 "AliasList": [
                   "ManagedRule"
@@ -28723,6 +28791,22 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ExceptionListException",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[], Az.FrontDoor.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ManagedRuleSet",
                 "AliasList": [
                   "ManagedRule"
@@ -29105,6 +29189,22 @@
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ExceptionListException",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[], Az.FrontDoor.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException"
                 },
                 "ValidateNotNullOrEmpty": false
               },

@@ -75,10 +75,19 @@ Using FriendlyName parameter can result in returning more than one Azure File Sh
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -FriendlyName "StorageAccount1" -VaultId $vault.ID
-$softDeletedItems = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -DeleteState SoftDeleted
+$softDeletedItems = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -DeleteState ToBeDeleted
 ```
 
 Lists Azure File Share backup items that have been disabled with `Disable-AzRecoveryServicesBackupProtection -RemoveRecoveryPoints` and are currently in the soft-deleted state. These items can be rehydrated with `Undo-AzRecoveryServicesBackupItemDeletion` while still within the soft-delete retention window.
+
+### Example 4: Get an Azure File Share Item from the secondary region (Cross Region Restore)
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureStorage -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "FileShareName" -UseSecondaryRegion
+```
+
+The returned item can be used with `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion` and `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion` to perform a Cross Region Restore.
 
 ## PARAMETERS
 

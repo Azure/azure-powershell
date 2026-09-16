@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class SyncMode
     {
+        /// <summary>
+        /// Automatic
+        /// </summary>
         public const string Automatic = "Automatic";
+        /// <summary>
+        /// Manual
+        /// </summary>
         public const string Manual = "Manual";
     }
 }

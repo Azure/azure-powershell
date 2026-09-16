@@ -33,6 +33,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="allowRemoteVnetToUseHubVnetGateways">Deprecated: Allow RemoteVnet to use Virtual Hub&#39;s gateways.
         /// </param>
 
+        /// <param name="connectionPolicy">The resource id of the ConnectionPolicy associated with this
+        /// HubVirtualNetworkConnection.
+        /// </param>
+
         /// <param name="enableInternetSecurity">Enable internet security.
         /// </param>
 
@@ -40,17 +44,22 @@ namespace Microsoft.Azure.Management.Network.Models
         /// tables on this connection.
         /// </param>
 
+        /// <param name="enableOnlyIpv6Peering">Enable Only IPv6 Peering for this connection.
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the hub virtual network connection resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public HubVirtualNetworkConnectionProperties(SubResource remoteVirtualNetwork = default(SubResource), bool? allowHubToRemoteVnetTransit = default(bool?), bool? allowRemoteVnetToUseHubVnetGateways = default(bool?), bool? enableInternetSecurity = default(bool?), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string provisioningState = default(string))
+        public HubVirtualNetworkConnectionProperties(SubResource remoteVirtualNetwork = default(SubResource), bool? allowHubToRemoteVnetTransit = default(bool?), bool? allowRemoteVnetToUseHubVnetGateways = default(bool?), SubResource connectionPolicy = default(SubResource), bool? enableInternetSecurity = default(bool?), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), bool? enableOnlyIpv6Peering = default(bool?), string provisioningState = default(string))
 
         {
             this.RemoteVirtualNetwork = remoteVirtualNetwork;
             this.AllowHubToRemoteVnetTransit = allowHubToRemoteVnetTransit;
             this.AllowRemoteVnetToUseHubVnetGateways = allowRemoteVnetToUseHubVnetGateways;
+            this.ConnectionPolicy = connectionPolicy;
             this.EnableInternetSecurity = enableInternetSecurity;
             this.RoutingConfiguration = routingConfiguration;
+            this.EnableOnlyIpv6Peering = enableOnlyIpv6Peering;
             this.ProvisioningState = provisioningState;
             CustomInit();
         }
@@ -81,6 +90,13 @@ namespace Microsoft.Azure.Management.Network.Models
         public bool? AllowRemoteVnetToUseHubVnetGateways {get; set; }
 
         /// <summary>
+        /// Gets or sets the resource id of the ConnectionPolicy associated with this
+        /// HubVirtualNetworkConnection.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "connectionPolicy")]
+        public SubResource ConnectionPolicy {get; set; }
+
+        /// <summary>
         /// Gets or sets enable internet security.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enableInternetSecurity")]
@@ -92,6 +108,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "routingConfiguration")]
         public RoutingConfiguration RoutingConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets or sets enable Only IPv6 Peering for this connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableOnlyIpv6Peering")]
+        public bool? EnableOnlyIpv6Peering {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the hub virtual network connection resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

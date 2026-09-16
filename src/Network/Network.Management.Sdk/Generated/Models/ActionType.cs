@@ -13,11 +13,29 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ActionType
     {
+        /// <summary>
+        /// AnomalyScoring
+        /// </summary>
         public const string AnomalyScoring = "AnomalyScoring";
+        /// <summary>
+        /// Allow
+        /// </summary>
         public const string Allow = "Allow";
+        /// <summary>
+        /// Block
+        /// </summary>
         public const string Block = "Block";
+        /// <summary>
+        /// Log
+        /// </summary>
         public const string Log = "Log";
+        /// <summary>
+        /// JSChallenge
+        /// </summary>
         public const string JSChallenge = "JSChallenge";
+        /// <summary>
+        /// CAPTCHA
+        /// </summary>
         public const string Captcha = "CAPTCHA";
     }
 }

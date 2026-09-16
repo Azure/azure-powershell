@@ -40,33 +40,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<RestorableDatabaseAccountGetResult>>> ListByLocationWithHttpMessagesAsync(string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Lists all the restorable Azure Cosmos DB database accounts available under
-        /// the subscription. This call requires
-        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
-        /// permission.
-        /// </summary>
-        /// <remarks>
-        /// Lists all the restorable Azure Cosmos DB database accounts available under
-        /// the subscription. This call requires
-        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
-        /// permission.
-        /// </remarks>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<RestorableDatabaseAccountGetResult>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RestorableDatabaseAccountGetResult>>> ListByLocationWithHttpMessagesAsync(string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieves the properties of an existing Azure Cosmos DB restorable database
@@ -99,6 +73,90 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RestorableDatabaseAccountGetResult>> GetByLocationWithHttpMessagesAsync(string location, string instanceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription. This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
+        /// </summary>
+        /// <remarks>
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription. This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
+        /// </remarks>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RestorableDatabaseAccountGetResult>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription and in a region.  This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
+        /// </summary>
+        /// <remarks>
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription and in a region.  This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RestorableDatabaseAccountGetResult>>> ListByLocationNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription. This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
+        /// </summary>
+        /// <remarks>
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription. This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RestorableDatabaseAccountGetResult>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

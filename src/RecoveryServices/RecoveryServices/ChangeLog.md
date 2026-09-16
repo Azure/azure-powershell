@@ -19,6 +19,20 @@
 -->
 
 ## Upcoming Release
+* Fixed `New-AzRecoveryServicesVault` and `Update-AzRecoveryServicesVault` to use the AsPerPolicy configuration by default when enabling vault immutability.
+* Added Microsoft Defender for Cloud Source Scan configuration for Recovery Services vaults and Azure Virtual Machine backup items.
+    - Added support in `Update-AzRecoveryServicesVault -SourceScanState` to enable or disable vault-level Source Scan.
+    - Added support in `Set-AzRecoveryServicesBackupItemSourceScanConfiguration`, or its `Set-AzRecoveryServicesBISourceScanConfiguration` alias, to enable or disable Source Scan for a protected item.
+    - Updated `Set-AzRecoveryServicesBackupItemSourceScanConfiguration` to wait for the Source Scan operation to complete, return no output by default, and return the updated backup item when `-PassThru` is specified.
+    - Added Source Scan and threat details to backup item and recovery point output.
+
+## Version 7.14.1
+* Added Cross Region Restore for Azure File Share backups through `Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, and `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`.
+* Refined soft delete behavior for Azure File Share backup items
+    - `Undo-AzRecoveryServicesBackupItemDeletion` now errors unless the item is soft-deleted (`ToBeDeleted`), avoiding an invalid undelete request.
+    - Corrected `DateOfPurge` to use the remaining deferred-delete window returned by the service instead of a fixed 14 days.
+
+## Version 7.14.0
 * Added Cross Subscription Backup (CSB) support for Azure VM:
     - Added optional `-ContainerSubscriptionId` parameter in `Enable-AzRecoveryServicesBackupProtection` to configure backup for a VM residing in a different subscription than the vault.
     - Added Original Location Recovery (OLR) support for cross-subscription protected items in `Restore-AzRecoveryServicesBackupItem` (the container subscription is derived from the recovery point, no additional input required).
@@ -39,7 +53,7 @@
 
 ## Version 7.12.0
 * Added ChangeSafety Support
-* Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` `Get-AzRecoveryServicesBackupItem -DeleteState SoftDeleted`)
+* Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` `Get-AzRecoveryServicesBackupItem -DeleteState ToBeDeleted`)
 
 ## Version 7.11.2
 * Added Cross region restore support for upcoming regions Southeast Asia 3

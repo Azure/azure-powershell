@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets list of Static CIDR resources at Network Manager level.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -58,48 +58,13 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StaticCidr>>> ListWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, string skipToken = default(string), int? skip = default(int?), int? top = default(int?), string sortKey = default(string), string sortValue = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates/Updates the Static CIDR resource.
-        /// </summary>
-        /// <remarks>
-        /// Creates/Updates the Static CIDR resource.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='poolName'>
-        /// IP Address Manager Pool resource name.
-        /// </param>
-        /// <param name='staticCidrName'>
-        /// Static Cidr allocation name.
-        /// </param>
-        /// <param name='body'>
-        /// StaticCidr resource object to create/update.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticCidr>> CreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, StaticCidr body = default(StaticCidr), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Gets the specific Static CIDR resource.
         /// </summary>
         /// <remarks>
         /// Gets the specific Static CIDR resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -125,22 +90,25 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticCidr>> GetWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Delete the Static CIDR resource.
+        /// Creates/Updates the Static CIDR resource.
         /// </summary>
         /// <remarks>
-        /// Delete the Static CIDR resource.
+        /// Creates/Updates the Static CIDR resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
-        /// The name of the network manager.
+        /// 
         /// </param>
         /// <param name='poolName'>
-        /// Pool resource name.
+        /// The name of the IPAM pool.
         /// </param>
         /// <param name='staticCidrName'>
-        /// StaticCidr resource name to delete.
+        /// Name for the static CIDR.
+        /// </param>
+        /// <param name='body'>
+        /// StaticCidr resource object to create/update.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -151,7 +119,10 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticCidrsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StaticCidr>> CreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, StaticCidr body = default(StaticCidr), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete the Static CIDR resource.
@@ -160,7 +131,7 @@ namespace Microsoft.Azure.Management.Network
         /// Delete the Static CIDR resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -169,7 +140,7 @@ namespace Microsoft.Azure.Management.Network
         /// Pool resource name.
         /// </param>
         /// <param name='staticCidrName'>
-        /// StaticCidr resource name to delete.
+        /// StaticCidr resource name to retrieve.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -180,7 +151,36 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StaticCidrsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete the Static CIDR resource.
+        /// </summary>
+        /// <remarks>
+        /// Delete the Static CIDR resource.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='poolName'>
+        /// Pool resource name.
+        /// </param>
+        /// <param name='staticCidrName'>
+        /// StaticCidr resource name to retrieve.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets list of Static CIDR resources at Network Manager level.

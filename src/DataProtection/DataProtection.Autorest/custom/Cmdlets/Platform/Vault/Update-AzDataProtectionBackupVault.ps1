@@ -174,6 +174,7 @@ function Update-AzDataProtectionBackupVault
         $hasCostManagementGranularity = $PSBoundParameters.Remove("CostManagementGranularity")
 
         if (-not $hasCmkEncryptionState -and -not $hasCmkIdentityType -and -not $hasCmkUserAssignedIdentityId -and -not $hasCmkEncryptionKeyUri) {
+            if ($hasCostManagementGranularity) { $PSBoundParameters.Add("CostManagementSettingGranularityLevel", $CostManagementGranularity) }
             Az.DataProtection.Internal\Update-AzDataProtectionBackupVault @PSBoundParameters
             return
         }
@@ -214,13 +215,13 @@ function Update-AzDataProtectionBackupVault
         if ($hasEnableSystemAssignedIdentity) { $PSBoundParameters.Add("EnableSystemAssignedIdentity", $EnableSystemAssignedIdentity) }
         if ($hasAzureMonitorAlertsForAllJobFailure) { $PSBoundParameters.Add("AzureMonitorAlertsForAllJobFailure", $AzureMonitorAlertsForAllJobFailure) }
         if ($hasImmutabilityState) { $PSBoundParameters.Add("ImmutabilityState", $ImmutabilityState) }
-        if ($hasCostManagementGranularity) { $PSBoundParameters.Add("CostManagementSettingGranularityLevel", $CostManagementGranularity) }
         if ($hasCrossRegionRestoreState) { $PSBoundParameters.Add("CrossRegionRestoreState", $CrossRegionRestoreState) }
         if ($hasCrossSubscriptionRestoreState) { $PSBoundParameters.Add("CrossSubscriptionRestoreState", $CrossSubscriptionRestoreState) }
         if ($hasSoftDeleteRetentionDurationInDay) { $PSBoundParameters.Add("SoftDeleteRetentionDurationInDay", $SoftDeleteRetentionDurationInDay) }
         if ($hasSoftDeleteState) { $PSBoundParameters.Add("SoftDeleteState", $SoftDeleteState) }
         if ($hasTag) { $PSBoundParameters.Add("Tag", $Tag) }
         if ($hasUserAssignedIdentity) { $PSBoundParameters.Add("UserAssignedIdentity", $UserAssignedIdentity) }
+        if ($hasCostManagementGranularity) { $PSBoundParameters.Add("CostManagementSettingGranularityLevel", $CostManagementGranularity) }
 
         Az.DataProtection.Internal\Update-AzDataProtectionBackupVault @PSBoundParameters
     }

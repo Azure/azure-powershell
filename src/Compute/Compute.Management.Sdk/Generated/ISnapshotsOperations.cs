@@ -229,6 +229,78 @@ namespace Microsoft.Azure.Management.Compute
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RevokeAccessWithHttpMessagesAsync(string resourceGroupName, string snapshotName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Updates the immutability policy of a snapshot. Sets or extends an unlocked
+        /// immutability policy with the specified duration and type. If the snapshot
+        /// already has a locked policy, the request will be rejected. Use
+        /// updateImmutabilityPolicyLock to lock an immutability policy.
+        /// </summary>
+        /// <remarks>
+        /// Updates the immutability policy of a snapshot. Sets or extends an unlocked
+        /// immutability policy with the specified duration and type. If the snapshot
+        /// already has a locked policy, the request will be rejected. Use
+        /// updateImmutabilityPolicyLock to lock an immutability policy.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='snapshotName'>
+        /// The name of the snapshot that is being created. The name can&#39;t be changed
+        /// after the snapshot is created. Supported characters for the name are a-z,
+        /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+        /// </param>
+        /// <param name='immutabilityPolicyData'>
+        /// Immutability policy data supplied in the body of the update immutability
+        /// policy operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Snapshot,SnapshotsUpdateImmutabilityPolicyHeaders>> UpdateImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string snapshotName, ImmutabilityPolicyData immutabilityPolicyData, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Locks the immutability policy of a snapshot. Once locked, the policy cannot
+        /// be reduced or removed until the lock period expires.
+        /// </summary>
+        /// <remarks>
+        /// Locks the immutability policy of a snapshot. Once locked, the policy cannot
+        /// be reduced or removed until the lock period expires.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='snapshotName'>
+        /// The name of the snapshot that is being created. The name can&#39;t be changed
+        /// after the snapshot is created. Supported characters for the name are a-z,
+        /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+        /// </param>
+        /// <param name='immutabilityPolicyData'>
+        /// Immutability policy data supplied in the body of the update immutability
+        /// policy lock operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Snapshot,SnapshotsUpdateImmutabilityPolicyLockHeaders>> UpdateImmutabilityPolicyLockWithHttpMessagesAsync(string resourceGroupName, string snapshotName, ImmutabilityPolicyLockData immutabilityPolicyData, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Creates or updates a snapshot.
         /// </summary>
         /// <remarks>
@@ -371,6 +443,78 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginRevokeAccessWithHttpMessagesAsync(string resourceGroupName, string snapshotName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Updates the immutability policy of a snapshot. Sets or extends an unlocked
+        /// immutability policy with the specified duration and type. If the snapshot
+        /// already has a locked policy, the request will be rejected. Use
+        /// updateImmutabilityPolicyLock to lock an immutability policy.
+        /// </summary>
+        /// <remarks>
+        /// Updates the immutability policy of a snapshot. Sets or extends an unlocked
+        /// immutability policy with the specified duration and type. If the snapshot
+        /// already has a locked policy, the request will be rejected. Use
+        /// updateImmutabilityPolicyLock to lock an immutability policy.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='snapshotName'>
+        /// The name of the snapshot that is being created. The name can&#39;t be changed
+        /// after the snapshot is created. Supported characters for the name are a-z,
+        /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+        /// </param>
+        /// <param name='immutabilityPolicyData'>
+        /// Immutability policy data supplied in the body of the update immutability
+        /// policy operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Snapshot,SnapshotsUpdateImmutabilityPolicyHeaders>> BeginUpdateImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string snapshotName, ImmutabilityPolicyData immutabilityPolicyData, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Locks the immutability policy of a snapshot. Once locked, the policy cannot
+        /// be reduced or removed until the lock period expires.
+        /// </summary>
+        /// <remarks>
+        /// Locks the immutability policy of a snapshot. Once locked, the policy cannot
+        /// be reduced or removed until the lock period expires.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='snapshotName'>
+        /// The name of the snapshot that is being created. The name can&#39;t be changed
+        /// after the snapshot is created. Supported characters for the name are a-z,
+        /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+        /// </param>
+        /// <param name='immutabilityPolicyData'>
+        /// Immutability policy data supplied in the body of the update immutability
+        /// policy lock operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Snapshot,SnapshotsUpdateImmutabilityPolicyLockHeaders>> BeginUpdateImmutabilityPolicyLockWithHttpMessagesAsync(string resourceGroupName, string snapshotName, ImmutabilityPolicyLockData immutabilityPolicyData, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists snapshots under a subscription.

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
     [Cmdlet(
         VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolumeQuotaRule",
-        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVolume))]
+        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVolumeQuotaRule))]
     [Alias("Get-AnfVolumeQuotaRule")]
     [CmdletPreview(PreviewMessage)]
     public class GetAzureRmNetAppFilesVolumeQuotaRule : AzureNetAppFilesCmdletBase

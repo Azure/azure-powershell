@@ -13,46 +13,45 @@ namespace Microsoft.Azure.Management.Network
     public static partial class VirtualApplianceSitesOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified site from a Virtual Appliance.
+        /// Lists all Network Virtual Appliance Sites in a Network Virtual Appliance
+        /// resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
-        /// <param name='siteName'>
-        /// The name of the site.
-        /// </param>
-        public static void Delete(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName)
+        public static Microsoft.Rest.Azure.IPage<VirtualApplianceSite> List(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName)
         {
-                ((IVirtualApplianceSitesOperations)operations).DeleteAsync(resourceGroupName, networkVirtualApplianceName, siteName).GetAwaiter().GetResult();
+                return ((IVirtualApplianceSitesOperations)operations).ListAsync(resourceGroupName, networkVirtualApplianceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes the specified site from a Virtual Appliance.
+        /// Lists all Network Virtual Appliance Sites in a Network Virtual Appliance
+        /// resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
-        /// </param>
-        /// <param name='siteName'>
-        /// The name of the site.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualApplianceSite>> ListAsync(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, siteName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Gets the specified Virtual Appliance Site.
@@ -61,13 +60,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='siteName'>
-        /// The name of the site.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static VirtualApplianceSite Get(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName)
         {
@@ -81,13 +81,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='siteName'>
-        /// The name of the site.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -106,13 +107,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='siteName'>
-        /// The name of the site.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static VirtualApplianceSite CreateOrUpdate(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName, VirtualApplianceSite parameters)
         {
@@ -126,13 +128,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='siteName'>
-        /// The name of the site.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -145,64 +148,24 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Lists all Network Virtual Appliance Sites in a Network Virtual Appliance
-        /// resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<VirtualApplianceSite> List(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName)
-        {
-                return ((IVirtualApplianceSitesOperations)operations).ListAsync(resourceGroupName, networkVirtualApplianceName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all Network Virtual Appliance Sites in a Network Virtual Appliance
-        /// resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualApplianceSite>> ListAsync(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Deletes the specified site from a Virtual Appliance.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='siteName'>
-        /// The name of the site.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
-        public static void BeginDelete(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName)
+        public static void Delete(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName)
         {
-                ((IVirtualApplianceSitesOperations)operations).BeginDeleteAsync(resourceGroupName, networkVirtualApplianceName, siteName).GetAwaiter().GetResult();
+                ((IVirtualApplianceSitesOperations)operations).DeleteAsync(resourceGroupName, networkVirtualApplianceName, siteName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -212,20 +175,21 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='siteName'>
-        /// The name of the site.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, siteName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, siteName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates the specified Network Virtual Appliance Site.
@@ -234,13 +198,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='siteName'>
-        /// The name of the site.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static VirtualApplianceSite BeginCreateOrUpdate(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName, VirtualApplianceSite parameters)
         {
@@ -254,13 +219,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='siteName'>
-        /// The name of the site.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -271,6 +237,50 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Deletes the specified site from a Virtual Appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='siteName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static void BeginDelete(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName)
+        {
+                ((IVirtualApplianceSitesOperations)operations).BeginDeleteAsync(resourceGroupName, networkVirtualApplianceName, siteName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified site from a Virtual Appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='siteName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, siteName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all Network Virtual Appliance Sites in a Network Virtual Appliance

@@ -13,134 +13,13 @@ namespace Microsoft.Azure.Management.Network
     public static partial class ManagementGroupNetworkManagerConnectionsOperationsExtensions
     {
         /// <summary>
-        /// Create a network manager connection on this management group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='managementGroupId'>
-        /// The management group Id which uniquely identify the Microsoft Azure
-        /// management group.
-        /// </param>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        public static NetworkManagerConnection CreateOrUpdate(this IManagementGroupNetworkManagerConnectionsOperations operations, string managementGroupId, string networkManagerConnectionName, NetworkManagerConnection parameters)
-        {
-                return ((IManagementGroupNetworkManagerConnectionsOperations)operations).CreateOrUpdateAsync(managementGroupId, networkManagerConnectionName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Create a network manager connection on this management group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='managementGroupId'>
-        /// The management group Id which uniquely identify the Microsoft Azure
-        /// management group.
-        /// </param>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NetworkManagerConnection> CreateOrUpdateAsync(this IManagementGroupNetworkManagerConnectionsOperations operations, string managementGroupId, string networkManagerConnectionName, NetworkManagerConnection parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(managementGroupId, networkManagerConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Get a specified connection created by this management group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='managementGroupId'>
-        /// The management group Id which uniquely identify the Microsoft Azure
-        /// management group.
-        /// </param>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        public static NetworkManagerConnection Get(this IManagementGroupNetworkManagerConnectionsOperations operations, string managementGroupId, string networkManagerConnectionName)
-        {
-                return ((IManagementGroupNetworkManagerConnectionsOperations)operations).GetAsync(managementGroupId, networkManagerConnectionName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Get a specified connection created by this management group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='managementGroupId'>
-        /// The management group Id which uniquely identify the Microsoft Azure
-        /// management group.
-        /// </param>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NetworkManagerConnection> GetAsync(this IManagementGroupNetworkManagerConnectionsOperations operations, string managementGroupId, string networkManagerConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(managementGroupId, networkManagerConnectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Delete specified pending connection created by this management group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='managementGroupId'>
-        /// The management group Id which uniquely identify the Microsoft Azure
-        /// management group.
-        /// </param>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        public static void Delete(this IManagementGroupNetworkManagerConnectionsOperations operations, string managementGroupId, string networkManagerConnectionName)
-        {
-                ((IManagementGroupNetworkManagerConnectionsOperations)operations).DeleteAsync(managementGroupId, networkManagerConnectionName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Delete specified pending connection created by this management group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='managementGroupId'>
-        /// The management group Id which uniquely identify the Microsoft Azure
-        /// management group.
-        /// </param>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IManagementGroupNetworkManagerConnectionsOperations operations, string managementGroupId, string networkManagerConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(managementGroupId, networkManagerConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// List all network manager connections created by this management group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// The management group Id which uniquely identify the Microsoft Azure
-        /// management group.
+        /// The management group ID.
         /// </param>
         /// <param name='top'>
         /// An optional query parameter which specifies the maximum number of records
@@ -164,8 +43,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// The management group Id which uniquely identify the Microsoft Azure
-        /// management group.
+        /// The management group ID.
         /// </param>
         /// <param name='top'>
         /// An optional query parameter which specifies the maximum number of records
@@ -186,6 +64,120 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Get a specified connection created by this management group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='managementGroupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        public static NetworkManagerConnection Get(this IManagementGroupNetworkManagerConnectionsOperations operations, string managementGroupId, string networkManagerConnectionName)
+        {
+                return ((IManagementGroupNetworkManagerConnectionsOperations)operations).GetAsync(managementGroupId, networkManagerConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get a specified connection created by this management group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='managementGroupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkManagerConnection> GetAsync(this IManagementGroupNetworkManagerConnectionsOperations operations, string managementGroupId, string networkManagerConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(managementGroupId, networkManagerConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Create a network manager connection on this management group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='managementGroupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        public static NetworkManagerConnection CreateOrUpdate(this IManagementGroupNetworkManagerConnectionsOperations operations, string managementGroupId, string networkManagerConnectionName, NetworkManagerConnection parameters)
+        {
+                return ((IManagementGroupNetworkManagerConnectionsOperations)operations).CreateOrUpdateAsync(managementGroupId, networkManagerConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Create a network manager connection on this management group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='managementGroupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkManagerConnection> CreateOrUpdateAsync(this IManagementGroupNetworkManagerConnectionsOperations operations, string managementGroupId, string networkManagerConnectionName, NetworkManagerConnection parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(managementGroupId, networkManagerConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Delete specified pending connection created by this management group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='managementGroupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        public static void Delete(this IManagementGroupNetworkManagerConnectionsOperations operations, string managementGroupId, string networkManagerConnectionName)
+        {
+                ((IManagementGroupNetworkManagerConnectionsOperations)operations).DeleteAsync(managementGroupId, networkManagerConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete specified pending connection created by this management group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='managementGroupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IManagementGroupNetworkManagerConnectionsOperations operations, string managementGroupId, string networkManagerConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(managementGroupId, networkManagerConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// List all network manager connections created by this management group.

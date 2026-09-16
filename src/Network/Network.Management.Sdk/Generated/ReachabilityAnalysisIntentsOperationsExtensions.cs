@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='skipToken'>
         /// Optional skip token.
@@ -54,13 +54,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='skipToken'>
         /// Optional skip token.
@@ -94,13 +94,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisIntentName'>
         /// Reachability Analysis Intent name.
@@ -117,13 +117,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisIntentName'>
         /// Reachability Analysis Intent name.
@@ -145,13 +145,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisIntentName'>
         /// Reachability Analysis Intent name.
@@ -168,13 +168,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisIntentName'>
         /// Reachability Analysis Intent name.
@@ -196,13 +196,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisIntentName'>
         /// Reachability Analysis Intent name.
@@ -219,13 +219,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisIntentName'>
         /// Reachability Analysis Intent name.

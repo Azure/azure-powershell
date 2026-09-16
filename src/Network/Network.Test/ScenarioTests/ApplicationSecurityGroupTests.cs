@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -39,6 +41,21 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestApplicationSecurityGroupCollections()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupCollections"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsgdev)]
+        public void TestAddressPrefixSetModelValidation()
+        {
+            var properties = new AddressPrefixSetPropertiesFormat(
+                new List<string> { "10.0.0.0/16", "2001:db8::/32" });
+            properties.Validate();
+
+            Assert.Throws<Microsoft.Rest.ValidationException>(
+                () => new AddressPrefixSetPropertiesFormat(null).Validate());
+            Assert.Throws<Microsoft.Rest.ValidationException>(
+                () => new AddressPrefixSetPropertiesFormat(new List<string>()).Validate());
         }
 
         [Fact]

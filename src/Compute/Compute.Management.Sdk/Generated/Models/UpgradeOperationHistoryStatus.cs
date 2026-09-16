@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
 
         /// <param name="code">Code indicating the current status of the upgrade.
-        /// Possible values include: &#39;RollingForward&#39;, &#39;Cancelled&#39;, &#39;Completed&#39;,
-        /// &#39;Faulted&#39;</param>
+        /// Possible values include: &#39;RollingForward&#39;, &#39;RollingBack&#39;, &#39;Cancelled&#39;,
+        /// &#39;Completed&#39;, &#39;Faulted&#39;</param>
 
         /// <param name="startTime">Start time of the upgrade.
         /// </param>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
 
         /// <summary>
-        /// Gets code indicating the current status of the upgrade. Possible values include: &#39;RollingForward&#39;, &#39;Cancelled&#39;, &#39;Completed&#39;, &#39;Faulted&#39;
+        /// Gets code indicating the current status of the upgrade. Possible values include: &#39;RollingForward&#39;, &#39;RollingBack&#39;, &#39;Cancelled&#39;, &#39;Completed&#39;, &#39;Faulted&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "code")]
         public UpgradeState? Code {get; private set; }

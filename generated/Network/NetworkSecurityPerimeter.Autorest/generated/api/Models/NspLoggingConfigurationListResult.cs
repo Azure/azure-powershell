@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list NSP logging configuration. Contains a list of NSP logging configurations and a URL link
-    /// to get the next set of results.
-    /// </summary>
+    /// <summary>The response of a NspLoggingConfiguration list operation.</summary>
     public partial class NspLoggingConfigurationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfigurationListResult,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfigurationListResultInternal
@@ -19,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>Gets the URL to get the next page of results.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration> _value;
 
-        /// <summary>Gets a page of NSP logging configuration</summary>
+        /// <summary>The NspLoggingConfiguration items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration> Value { get => this._value; set => this._value = value; }
 
@@ -36,43 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 
         }
     }
-    /// Result of the request to list NSP logging configuration. Contains a list of NSP logging configurations and a URL link
-    /// to get the next set of results.
+    /// The response of a NspLoggingConfiguration list operation.
     public partial interface INspLoggingConfigurationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IJsonSerializable
     {
-        /// <summary>Gets the URL to get the next page of results.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Gets the URL to get the next page of results.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>Gets a page of NSP logging configuration</summary>
+        /// <summary>The NspLoggingConfiguration items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Gets a page of NSP logging configuration",
+        Description = @"The NspLoggingConfiguration items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration> Value { get; set; }
 
     }
-    /// Result of the request to list NSP logging configuration. Contains a list of NSP logging configurations and a URL link
-    /// to get the next set of results.
+    /// The response of a NspLoggingConfiguration list operation.
     internal partial interface INspLoggingConfigurationListResultInternal
 
     {
-        /// <summary>Gets the URL to get the next page of results.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>Gets a page of NSP logging configuration</summary>
+        /// <summary>The NspLoggingConfiguration items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration> Value { get; set; }
 
     }

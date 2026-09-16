@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// dictionary key references will be ARM resource ids in the form:
         /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
         /// </param>
-        public ManagedServiceIdentity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), System.Collections.Generic.IDictionary<string, Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties> userAssignedIdentities = default(System.Collections.Generic.IDictionary<string, Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties>))
+        public ManagedServiceIdentity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), System.Collections.Generic.IDictionary<string, ManagedServiceIdentityUserAssignedIdentities> userAssignedIdentities = default(System.Collections.Generic.IDictionary<string, ManagedServiceIdentityUserAssignedIdentities>))
 
         {
             this.PrincipalId = principalId;
@@ -88,6 +88,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "userAssignedIdentities")]
-        public System.Collections.Generic.IDictionary<string, Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties> UserAssignedIdentities {get; set; }
+        public System.Collections.Generic.IDictionary<string, ManagedServiceIdentityUserAssignedIdentities> UserAssignedIdentities {get; set; }
     }
 }

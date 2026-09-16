@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class InstanceRole
     {
+        /// <summary>
+        /// Primary
+        /// </summary>
         public const string Primary = "Primary";
+        /// <summary>
+        /// Secondary
+        /// </summary>
         public const string Secondary = "Secondary";
     }
 }

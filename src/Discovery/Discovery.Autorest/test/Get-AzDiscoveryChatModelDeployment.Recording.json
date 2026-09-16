@@ -1,0 +1,182 @@
+{
+  "Get-AzDiscoveryChatModelDeployment+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/chatModelDeployments/pstest-chat-get01?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/chatModelDeployments/pstest-chat-get01?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "100" ],
+        "x-ms-client-request-id": [ "244a5afa-d3f3-4242-8462-a897ab2eef7b" ],
+        "CommandName": [ "Get-AzDiscoveryChatModelDeployment" ],
+        "FullCommandName": [ "Get-AzDiscoveryChatModelDeployment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"33040a39-0000-1000-0000-6a6238df0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "0062d765-13b8-45b0-ae89-6b77146a4e48" ],
+        "x-ms-correlation-request-id": [ "3fb3b674-f28a-447d-946b-4a5856c7dfee" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164742Z:3fb3b674-f28a-447d-946b-4a5856c7dfee" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6917E39D36BF4AFBB95252194130311F Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:47:42Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:47:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "746" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/chatModelDeployments/pstest-chat-get01\",\"name\":\"pstest-chat-get01\",\"type\":\"microsoft.discovery/workspaces/chatmodeldeployments\",\"location\":\"uksouth\",\"tags\":{\"psTest\":\"true\"},\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-22T14:25:01.4918509Z\",\"lastModifiedBy\":\"bc51a560-ae79-4282-99f5-9346aecfc860\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-23T15:53:03.3836596Z\"},\"properties\":{\"modelFormat\":\"OpenAI\",\"modelName\":\"gpt-4o\",\"modelVersion\":\"2024-11-20\",\"skuName\":\"GlobalStandard\",\"capacity\":1,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryChatModelDeployment+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/chatModelDeployments?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/chatModelDeployments?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "101" ],
+        "x-ms-client-request-id": [ "957f4a24-a648-47ff-8bea-9c975bc28316" ],
+        "CommandName": [ "Get-AzDiscoveryChatModelDeployment" ],
+        "FullCommandName": [ "Get-AzDiscoveryChatModelDeployment_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "66832691-fa7b-47ec-b9b5-0a057c85164d" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "89e004aa-4beb-4325-add6-5dabe2f2f9bc" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-request-id": [ "89e004aa-4beb-4325-add6-5dabe2f2f9bc" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164743Z:89e004aa-4beb-4325-add6-5dabe2f2f9bc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 241AD42D07D847E8B49F839414013221 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:47:43Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:47:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "758" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/chatModelDeployments/pstest-chat-get01\",\"name\":\"pstest-chat-get01\",\"type\":\"microsoft.discovery/workspaces/chatmodeldeployments\",\"location\":\"uksouth\",\"tags\":{\"psTest\":\"true\"},\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-22T14:25:01.4918509Z\",\"lastModifiedBy\":\"bc51a560-ae79-4282-99f5-9346aecfc860\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-23T15:53:03.3836596Z\"},\"properties\":{\"modelFormat\":\"OpenAI\",\"modelName\":\"gpt-4o\",\"modelVersion\":\"2024-11-20\",\"skuName\":\"GlobalStandard\",\"capacity\":1,\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryChatModelDeployment+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/chatModelDeployments/pstest-chat-get01?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/chatModelDeployments/pstest-chat-get01?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "102" ],
+        "x-ms-client-request-id": [ "55c1a4c9-bd41-4837-9cdc-7de3f29693f2" ],
+        "CommandName": [ "Get-AzDiscoveryChatModelDeployment" ],
+        "FullCommandName": [ "Get-AzDiscoveryChatModelDeployment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"33040a39-0000-1000-0000-6a6238df0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "71552250-6f78-48ca-98ff-353dceb48b00" ],
+        "x-ms-correlation-request-id": [ "3724cf35-1ad6-425a-b47a-ddc7b2e82f51" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164744Z:3724cf35-1ad6-425a-b47a-ddc7b2e82f51" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8525C505DF1C48B589C23B089C444E5B Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:47:44Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:47:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "746" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/chatModelDeployments/pstest-chat-get01\",\"name\":\"pstest-chat-get01\",\"type\":\"microsoft.discovery/workspaces/chatmodeldeployments\",\"location\":\"uksouth\",\"tags\":{\"psTest\":\"true\"},\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-22T14:25:01.4918509Z\",\"lastModifiedBy\":\"bc51a560-ae79-4282-99f5-9346aecfc860\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-23T15:53:03.3836596Z\"},\"properties\":{\"modelFormat\":\"OpenAI\",\"modelName\":\"gpt-4o\",\"modelVersion\":\"2024-11-20\",\"skuName\":\"GlobalStandard\",\"capacity\":1,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryChatModelDeployment+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/chatModelDeployments/pstest-chat-get01?api-version=2026-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/chatModelDeployments/pstest-chat-get01?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "103" ],
+        "x-ms-client-request-id": [ "593e91bc-0df8-4617-843e-48672989dcc8" ],
+        "CommandName": [ "Get-AzDiscoveryChatModelDeployment" ],
+        "FullCommandName": [ "Get-AzDiscoveryChatModelDeployment_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"33040a39-0000-1000-0000-6a6238df0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "2b2bcb5d-553d-4abc-b431-8992e4ab0e24" ],
+        "x-ms-correlation-request-id": [ "dc24850c-dc91-46a9-90b9-9c39b37fb62c" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164744Z:dc24850c-dc91-46a9-90b9-9c39b37fb62c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FCC26687B0BA448D904C21F3B82D0605 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:47:44Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:47:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "746" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/chatModelDeployments/pstest-chat-get01\",\"name\":\"pstest-chat-get01\",\"type\":\"microsoft.discovery/workspaces/chatmodeldeployments\",\"location\":\"uksouth\",\"tags\":{\"psTest\":\"true\"},\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-22T14:25:01.4918509Z\",\"lastModifiedBy\":\"bc51a560-ae79-4282-99f5-9346aecfc860\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-23T15:53:03.3836596Z\"},\"properties\":{\"modelFormat\":\"OpenAI\",\"modelName\":\"gpt-4o\",\"modelVersion\":\"2024-11-20\",\"skuName\":\"GlobalStandard\",\"capacity\":1,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

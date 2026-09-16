@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     /// Private endpoint connection resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class MhsmPrivateEndpointConnection : Microsoft.Rest.Azure.IResource
+    public partial class MhsmPrivateEndpointConnection : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the MhsmPrivateEndpointConnection class.
@@ -25,8 +25,35 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// Initializes a new instance of the MhsmPrivateEndpointConnection class.
         /// </summary>
 
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
+        /// </param>
+
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
+        /// <param name="sku">SKU details
+        /// </param>
+
+        /// <param name="identity">Managed service identity
+        /// </param>
+
         /// <param name="etag">Modified whenever there is a change in the state of private endpoint
         /// connection.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
+        /// </param>
+
+        /// <param name="tags">Resource tags.
         /// </param>
 
         /// <param name="privateEndpoint">Properties of the private endpoint object.
@@ -38,10 +65,15 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// <param name="provisioningState">Provisioning state of the private endpoint connection.
         /// Possible values include: &#39;Succeeded&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;,
         /// &#39;Failed&#39;, &#39;Disconnected&#39;</param>
-        public MhsmPrivateEndpointConnection(string etag = default(string), MhsmPrivateEndpoint privateEndpoint = default(MhsmPrivateEndpoint), MhsmPrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(MhsmPrivateLinkServiceConnectionState), string provisioningState = default(string))
+        public MhsmPrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), ManagedHsmSku sku = default(ManagedHsmSku), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string etag = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), MhsmPrivateEndpoint privateEndpoint = default(MhsmPrivateEndpoint), MhsmPrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(MhsmPrivateLinkServiceConnectionState), string provisioningState = default(string))
 
+        : base(id, name, type, systemData)
         {
+            this.Sku = sku;
+            this.Identity = identity;
             this.Etag = etag;
+            this.Location = location;
+            this.Tags = tags;
             this.PrivateEndpoint = privateEndpoint;
             this.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
             this.ProvisioningState = provisioningState;
@@ -55,11 +87,35 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
 
         /// <summary>
+        /// Gets or sets sKU details
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
+        public ManagedHsmSku Sku {get; set; }
+
+        /// <summary>
+        /// Gets or sets managed service identity
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity {get; set; }
+
+        /// <summary>
         /// Gets or sets modified whenever there is a change in the state of private
         /// endpoint connection.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; set; }
+
+        /// <summary>
+        /// Gets or sets the geo-location where the resource lives
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
+
+        /// <summary>
+        /// Gets or sets resource tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
         /// Gets or sets properties of the private endpoint object.
@@ -74,9 +130,32 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         public MhsmPrivateLinkServiceConnectionState PrivateLinkServiceConnectionState {get; set; }
 
         /// <summary>
-        /// Gets or sets provisioning state of the private endpoint connection. Possible values include: &#39;Succeeded&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;, &#39;Disconnected&#39;
+        /// Gets provisioning state of the private endpoint connection. Possible values include: &#39;Succeeded&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;, &#39;Disconnected&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState {get; set; }
+        public string ProvisioningState {get; private set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Sku != null)
+            {
+                this.Sku.Validate();
+            }
+            if (this.Identity != null)
+            {
+                this.Identity.Validate();
+            }
+
+
+
+
+
+
+        }
     }
 }

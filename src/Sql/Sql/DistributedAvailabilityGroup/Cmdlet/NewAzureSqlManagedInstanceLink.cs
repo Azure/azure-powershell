@@ -129,6 +129,17 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         public string SeedingMode { get; set; }
 
         /// <summary>
+        /// Gets or sets whether the link operates in single-database or
+        /// multi-database mode. Possible values include: 'SingleDatabase',
+        /// 'MultiDatabase'
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Specifies whether the link operates in single-database or multi-database mode.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Specifies whether the link operates in single-database or multi-database mode.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("SingleDatabase", "MultiDatabase")]
+        public string LinkMode { get; set; }
+
+        /// <summary>
         /// Gets or sets the instance Object
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Instance input object.")]
@@ -220,7 +231,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                     InstanceLinkRole = InstanceLinkRole,
                     FailoverMode = FailoverMode,
                     PartnerEndpoint = PartnerEndpoint,
-                    SeedingMode = SeedingMode
+                    SeedingMode = SeedingMode,
+                    LinkMode = LinkMode
                 }
             };
             return newEntity;
