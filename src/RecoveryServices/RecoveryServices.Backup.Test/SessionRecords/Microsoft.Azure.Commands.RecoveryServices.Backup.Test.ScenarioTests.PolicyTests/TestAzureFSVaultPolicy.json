@@ -73,8 +73,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -145,8 +145,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -217,8 +217,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -289,8 +289,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -361,8 +361,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -433,8 +433,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept-Language": [
@@ -514,8 +514,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept-Language": [
@@ -595,8 +595,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "Accept-Language": [
@@ -667,8 +667,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies?api-version=2026-07-01&$filter=backupManagementType%20eq%20%27AzureStorage%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXM/YXBpLXZlcnNpb249MjAyNi0wNy0wMSYkZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAlMjdBenVyZVN0b3JhZ2UlMjc=",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies?api-version=2026-08-01&$filter=backupManagementType%20eq%20%27AzureStorage%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXM/YXBpLXZlcnNpb249MjAyNi0wOC0wMSYkZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAlMjdBenVyZVN0b3JhZ2UlMjc=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [

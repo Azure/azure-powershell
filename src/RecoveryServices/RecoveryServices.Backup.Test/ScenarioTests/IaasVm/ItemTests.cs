@@ -108,7 +108,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             );
         }
 
-        [Fact(Skip = "Live-only: re-record against api-version 2026-08-01 once an ILR-capable vault is available. Exercises the dedicated listInstantItemRecoveryOperationResult mount-script path (MSRC-114273). Assertions live in Test-AzureVMRPMountScript in ItemTests.ps1.")]
+        // Exercises the dedicated listInstantItemRecoveryOperationResult mount-script path
+        // (MSRC-114273 CHAP redaction). Recorded live at api-version 2026-08-01 against a
+        // pre-provisioned ILR-capable vault; see Test-AzureVMRPMountScript in ItemTests.ps1
+        // for the setup subscription/vault/VM and re-record instructions.
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMRPMountScript()
