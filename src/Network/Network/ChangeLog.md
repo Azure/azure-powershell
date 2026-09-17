@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Upgraded Network SDK to API version `2026-01-01`.
 * Added minimum and maximum allocation size bounds to IPAM pool creation, update, and output.
     - Use `-MinAllocationSize` and `-MaxAllocationSize` with `New-AzNetworkManagerIpamPool` or `Set-AzNetworkManagerIpamPool`.
     - Specify an empty string with either `Set-AzNetworkManagerIpamPool` parameter to clear that bound.
