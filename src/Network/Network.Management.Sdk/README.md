@@ -27,7 +27,7 @@ use-extension:
 
 ###
 ``` yaml
-commit: a48bb3329f0d841f42232e6f0086b6e43bc242ef
+commit: 7afe363b414887a01671fc8c2b460c6ac47eb95d
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/applicationGateway.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/azureWebCategory.json
@@ -95,13 +95,6 @@ directive:
           $["FirstPartyServiceTagPropertiesFormat"].properties.resourceGuid;
         delete $["FirstPartyServiceTagPropertiesFormat"].properties.resourceGuid;
       }
-# NRP wire format uses boolean for enableOnlyIpv6Peering, override the shared swagger enum.
-  - from: common.json
-    where: $.definitions.EnableOnlyIpv6PeeringState
-    transform: >
-      $.type = "boolean";
-      delete $.enum;
-      delete $["x-ms-enum"];
 # start of directives added by xiaogang
 # Remove lro response headers. Srijani, you may ignore this part.
   - from: swagger-document

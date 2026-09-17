@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Fixed the `HubVirtualNetworkConnection` IPv6 peering contract to match the service response, which returns a boolean `enableOnlyIPv6Peering`.
+    - Regenerated the Network SDK from the corrected specification and removed the temporary generator override and serialization workaround.
+    - Changed `-EnableOnlyIPv6Peering` on `New-AzVirtualHubVnetConnection`, and the corresponding output property, from a string to a boolean.
 * Added minimum and maximum allocation size bounds to IPAM pool creation, update, and output.
     - Use `-MinAllocationSize` and `-MaxAllocationSize` with `New-AzNetworkManagerIpamPool` or `Set-AzNetworkManagerIpamPool`.
     - Specify an empty string with either `Set-AzNetworkManagerIpamPool` parameter to clear that bound.
