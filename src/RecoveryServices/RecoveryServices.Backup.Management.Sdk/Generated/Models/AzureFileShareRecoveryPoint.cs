@@ -25,6 +25,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the AzureFileShareRecoveryPoint class.
         /// </summary>
 
+        /// <param name="threatStatus">Threat status of the recovery point
+        /// Possible values include: &#39;Unknown&#39;, &#39;Healthy&#39;, &#39;UnHealthy&#39;, &#39;Warning&#39;,
+        /// &#39;NotAvailable&#39;</param>
+
+        /// <param name="threatInfo">Recovery point threat information.
+        /// </param>
+
         /// <param name="recoveryPointType">Type of the backup copy. Specifies whether it is a crash consistent backup
         /// or app consistent.
         /// </param>
@@ -43,8 +50,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="recoveryPointTierDetails">Recovery point tier information.
         /// </param>
-        public AzureFileShareRecoveryPoint(string recoveryPointType = default(string), System.DateTime? recoveryPointTime = default(System.DateTime?), string fileShareSnapshotUri = default(string), int? recoveryPointSizeInGb = default(int?), RecoveryPointProperties recoveryPointProperties = default(RecoveryPointProperties), System.Collections.Generic.IList<RecoveryPointTierInformation> recoveryPointTierDetails = default(System.Collections.Generic.IList<RecoveryPointTierInformation>))
+        public AzureFileShareRecoveryPoint(string threatStatus = default(string), System.Collections.Generic.IList<ThreatInfo> threatInfo = default(System.Collections.Generic.IList<ThreatInfo>), string recoveryPointType = default(string), System.DateTime? recoveryPointTime = default(System.DateTime?), string fileShareSnapshotUri = default(string), int? recoveryPointSizeInGb = default(int?), RecoveryPointProperties recoveryPointProperties = default(RecoveryPointProperties), System.Collections.Generic.IList<RecoveryPointTierInformation> recoveryPointTierDetails = default(System.Collections.Generic.IList<RecoveryPointTierInformation>))
 
+        : base(threatStatus, threatInfo)
         {
             this.RecoveryPointType = recoveryPointType;
             this.RecoveryPointTime = recoveryPointTime;
@@ -97,5 +105,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryPointTierDetails")]
         public System.Collections.Generic.IList<RecoveryPointTierInformation> RecoveryPointTierDetails {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+            if (this.RecoveryPointProperties != null)
+            {
+                this.RecoveryPointProperties.Validate();
+            }
+
+        }
     }
 }

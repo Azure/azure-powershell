@@ -475,6 +475,50 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Configuring Source Scan for the item.
+        /// </summary>
+        public static string ConfigureSourceScanMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("ConfigureSourceScanMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to set Source Scan state to &apos;{0}&apos; for the item &apos;{1}&apos;.
+        /// </summary>
+        public static string ConfigureSourceScanWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("ConfigureSourceScanWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Configure Source Scan Operation.
+        /// </summary>
+        public static string ConfigureSourceScanOperation
+        {
+            get
+            {
+                return ResourceManager.GetString("ConfigureSourceScanOperation", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Source Scan is currently only supported for Azure Virtual Machine backup items.
+        /// </summary>
+        public static string SourceScanNotSupportedForItem
+        {
+            get
+            {
+                return ResourceManager.GetString("SourceScanNotSupportedForItem", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to disable protection for the item &apos;{0}&apos;.
         /// </summary>
         public static string DisableProtectionWarning
@@ -1886,6 +1930,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             }
         }
         /// <summary>
+        ///   Looks up a localized string similar to Cross Region Restore for Azure File Share supports only Alternate Location Restore. Please provide -TargetStorageAccountName and -TargetFileShareName.
+        /// </summary>
+        public static string AzureFileShareCrossRegionRestoreAlrOnly
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareCrossRegionRestoreAlrOnly", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Item-level restore is not supported for Cross Region Restore of Azure File Share. Please remove -SourceFilePath/-MultipleSourceFilePath and retry a full-share restore.
+        /// </summary>
+        public static string AzureFileShareCrossRegionRestoreItemLevelNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareCrossRegionRestoreItemLevelNotSupported", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to construct the cross-region restore request: the target or source details were not populated. This indicates an internal error. Please retry; if the issue persists, contact support.
+        /// </summary>
+        public static string AzureFileShareCrossRegionRestoreRequestBuildFailed
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareCrossRegionRestoreRequestBuildFailed", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to The Azure File Share item &apos;{0}&apos; is not in a soft-deleted state. Undo-AzRecoveryServicesBackupItemDeletion can only be run on an item whose DeleteState is &apos;ToBeDeleted&apos;.
+        /// </summary>
+        public static string AzureFileShareUndeleteItemNotInSoftDeletedState
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareUndeleteItemNotInSoftDeletedState", resourceCulture);
+            }
+        }
+        /// <summary>
         ///   Looks up a localized string similar to Please ensure that the Recovery point is Zone pinned or remove TargetZone.
         /// </summary>
         public static string RecoveryPointZonePinnedException
@@ -2773,6 +2857,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("CRRAccessTokenCouldNotBeFetchedException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The target storage account location should be same as the secondary (paired) region when restoring to the secondary region.
+        /// </summary>
+        public static string CrossRegionRestoreIncorrectTargetRegion
+        {
+            get
+            {
+                return ResourceManager.GetString("CrossRegionRestoreIncorrectTargetRegion", resourceCulture);
             }
         }
 

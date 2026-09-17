@@ -21,7 +21,8 @@ Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId <String> [-P
 ### GetByName
 ```
 Get-AzManagementGroupDeploymentStackWhatIfResult -Name <String> -ManagementGroupId <String>
- [-IncludePropertyChange] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IncludePropertyChange] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByResourceId
@@ -70,9 +71,24 @@ Gets the deployment stack WhatIf result by its fully-qualified resource ID.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludePropertyChange
+If set, returns the WhatIf result with resource property changes (delta) populated.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GetByName, GetByResourceId
+Aliases:
 
 Required: False
 Position: Named
@@ -85,7 +101,7 @@ Accept wildcard characters: False
 The ID of the management group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, GetByName
 Aliases:
 
@@ -100,7 +116,7 @@ Accept wildcard characters: False
 The name of the WhatIf result to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByName
 Aliases:
 
@@ -115,7 +131,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +146,7 @@ Accept wildcard characters: False
 The fully-qualified resource ID of the WhatIf result to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceId
 Aliases: Id
 
@@ -138,21 +154,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IncludePropertyChange
-If set, returns the WhatIf result with resource property changes (delta) populated.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: GetByName, GetByResourceId
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -170,4 +171,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

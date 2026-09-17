@@ -54,6 +54,16 @@ namespace Microsoft.Azure.Commands.Sql.Server.Model
         public string OriginalId { get; set; }
 
         /// <summary>
+        /// Gets or sets the Azure region where the deleted server was located
+        /// </summary>
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date and time when the deleted server will be permanently deleted
+        /// </summary>
+        public DateTime? ScheduledPurgeTime { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the resource group the server was in (extracted from OriginalId)
         /// </summary>
         public string ResourceGroupName { get; set; }

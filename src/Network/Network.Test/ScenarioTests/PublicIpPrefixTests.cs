@@ -57,5 +57,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-PublicIpPrefixInEdgeZone");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestPublicIpPrefixStandardV2UpgradedToV2()
+        {
+            TestRunner.RunTestScript("Test-PublicIpPrefixStandardV2UpgradedToV2");
+        }
     }
 }

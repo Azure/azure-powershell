@@ -1,0 +1,548 @@
+# ----------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+Stand up a ready-to-use Chaos Studio workspace end to end.
+.Description
+Stand up a ready-to-use Chaos Studio workspace end to end. This is a first-day
+workflow cmdlet that runs the five setup steps: ensure the resource group exists,
+create the workspace with a system-assigned managed identity, grant that identity
+the Reader role on each scope, evaluate scenarios, and report the discovered
+scenarios plus suggested next commands. Discovery and evaluation run under the
+workspace identity and cannot enumerate resources without the Reader grant. Pass
+-SkipPermission to opt out of the RBAC grant. Pass -SkipEvaluationWait to run a
+single evaluation attempt instead of waiting out Azure Resource Graph propagation.
+The default Reader grant enables discovery and evaluation only; most run actions
+need additional permissions. Use Repair-AzChaosScenarioConfigurationResourcePermission
+after creating a scenario configuration to inspect or grant those permissions.
+.Example
+Initialize-AzChaosWorkspace -ResourceGroupName rg -WorkspaceName ws -Location eastus -Scope '/subscriptions/00000000-0000-0000-0000-000000000000'
+.Example
+Initialize-AzChaosWorkspace -ResourceGroupName rg -WorkspaceName ws -Location eastus -Scope $scopes -SkipPermission -SkipEvaluationWait
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenario
+.Link
+https://learn.microsoft.com/powershell/module/az.chaos/initialize-azchaosworkspace
+#>
+function Initialize-AzChaosWorkspace {
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenario')]
+    [CmdletBinding(DefaultParameterSetName='InitializeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    param(
+        [Parameter(Mandatory, HelpMessage='Name of the workspace.')]
+        [System.String]
+        ${WorkspaceName},
+
+        [Parameter(Mandatory, HelpMessage='Name of the resource group. The resource group is created in -Location if it does not already exist.')]
+        [System.String]
+        ${ResourceGroupName},
+
+        [Parameter(Mandatory, HelpMessage='The geo-location where the workspace lives.')]
+        [System.String]
+        ${Location},
+
+        [Parameter(Mandatory, HelpMessage='The list of ARM resource scopes the workspace discovers and evaluates.')]
+        [System.String[]]
+        ${Scope},
+
+        [Parameter(HelpMessage='The ID of the target subscription.')]
+        [System.String]
+        ${SubscriptionId},
+
+        [Parameter(HelpMessage='Resource tags applied to the workspace.')]
+        [System.Collections.Hashtable]
+        ${Tag},
+
+        [Parameter(HelpMessage='The role definition name granted to the workspace identity on each scope. Defaults to Reader.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='"Reader"')]
+        [System.String]
+        ${RoleDefinitionName} = 'Reader',
+
+        [Parameter(HelpMessage='Do not grant the workspace identity an RBAC role on the scopes.')]
+        [System.Management.Automation.SwitchParameter]
+        ${SkipPermission},
+
+        [Parameter(HelpMessage='Run a single evaluation attempt instead of waiting for Azure Resource Graph propagation.')]
+        [System.Management.Automation.SwitchParameter]
+        ${SkipEvaluationWait},
+
+        [Parameter(HelpMessage='The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.')]
+        [Alias('AzureRMContext','AzureCredential')]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        ${DefaultProfile}
+    )
+
+    process {
+        # Emit errors through $PSCmdlet so PowerShell attributes them to the cmdlet and
+        # the caller's own command line. A bare `throw` raised inside one of the private
+        # helpers below reports this file's path, line number and the private function's
+        # name instead -- none of which the caller can act on. See DEV-040.
+        function New-AzChaosErrorRecord {
+            param(
+                [string]$Message,
+                [string]$ErrorId,
+                [System.Management.Automation.ErrorCategory]$Category = [System.Management.Automation.ErrorCategory]::InvalidOperation,
+                [object]$TargetObject
+            )
+
+            return [System.Management.Automation.ErrorRecord]::new(
+                [System.InvalidOperationException]::new($Message),
+                $ErrorId,
+                $Category,
+                $TargetObject)
+        }
+
+        function Assert-AzChaosAzResourcesAvailable {
+            $moduleName = 'Az.Resources'
+            $requiredCommands = @('Get-AzResourceGroup', 'New-AzResourceGroup', 'New-AzRoleAssignment')
+
+            if (-not (Get-Module -Name $moduleName)) {
+                $availableModule = Get-Module -ListAvailable -Name $moduleName | Select-Object -First 1
+                if ($null -eq $availableModule) {
+                    $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                        -Message "Initialize-AzChaosWorkspace requires the $moduleName module for resource group and role assignment operations. Install it with: Install-Module $moduleName -Scope CurrentUser" `
+                        -ErrorId 'RequiredModuleNotInstalled' `
+                        -Category ([System.Management.Automation.ErrorCategory]::NotInstalled) `
+                        -TargetObject $moduleName))
+                }
+
+                try {
+                    Import-Module -Name $moduleName -ErrorAction Stop
+                }
+                catch {
+                    $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                        -Message "Initialize-AzChaosWorkspace found $moduleName but could not load it: $($_.Exception.Message). Update $moduleName or resolve conflicting Az.Accounts versions, then retry." `
+                        -ErrorId 'RequiredModuleNotLoadable' `
+                        -Category ([System.Management.Automation.ErrorCategory]::ResourceUnavailable) `
+                        -TargetObject $moduleName))
+                }
+            }
+
+            $missingCommands = @($requiredCommands | Where-Object { -not (Get-Command -Name $_ -ErrorAction SilentlyContinue) })
+            if ($missingCommands.Count -gt 0) {
+                $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                    -Message "Initialize-AzChaosWorkspace requires $moduleName commands that are not available: $($missingCommands -join ', '). Reinstall or update $moduleName, then retry." `
+                    -ErrorId 'RequiredModuleCommandMissing' `
+                    -Category ([System.Management.Automation.ErrorCategory]::ResourceUnavailable) `
+                    -TargetObject $moduleName))
+            }
+        }
+
+        function Test-AzChaosScenarioRecommendationPending {
+            param([object[]]$Scenario)
+
+            foreach ($item in @($Scenario)) {
+                $status = $item.RecommendationStatus
+                $isCatalogScenario = -not [System.String]::IsNullOrEmpty($item.CreatedFrom)
+                # Keep in sync with generated\api\Models\ScenarioProperties.cs:178.
+                if ($status -in @('NotEvaluated', 'Evaluating') -or ($isCatalogScenario -and [System.String]::IsNullOrEmpty($status))) {
+                    return $true
+                }
+
+                if (-not [System.String]::IsNullOrEmpty($status) -and $status -notin @('Recommended', 'NotApplicable', 'EvaluationFailed', 'EvaluationCancelled')) {
+                    return $true
+                }
+            }
+
+            return $false
+        }
+
+        function Get-AzChaosObjectPropertyValue {
+            param(
+                [object]$InputObject,
+                [string[]]$Name
+            )
+
+            if ($null -eq $InputObject) {
+                return $null
+            }
+
+            foreach ($candidate in $Name) {
+                $property = $InputObject.PSObject.Properties[$candidate]
+                if ($null -ne $property) {
+                    return $property.Value
+                }
+            }
+
+            $properties = $InputObject.PSObject.Properties['Properties']
+            if ($null -ne $properties -and $null -ne $properties.Value -and -not [object]::ReferenceEquals($InputObject, $properties.Value)) {
+                foreach ($candidate in $Name) {
+                    $property = $properties.Value.PSObject.Properties[$candidate]
+                    if ($null -ne $property) {
+                        return $property.Value
+                    }
+                }
+            }
+
+            return $null
+        }
+
+        function ConvertTo-AzChaosCollection {
+            param([object]$InputObject)
+
+            if ($null -eq $InputObject) {
+                return @()
+            }
+
+            if ($InputObject -is [string]) {
+                return @($InputObject)
+            }
+
+            if ($InputObject -is [System.Collections.IEnumerable]) {
+                return @($InputObject)
+            }
+
+            return @($InputObject)
+        }
+
+        function Test-AzChaosErrorObjectHasContent {
+            param(
+                [object]$InputObject,
+                [string[]]$Name
+            )
+
+            if ($null -eq $InputObject) {
+                return $false
+            }
+
+            foreach ($candidate in $Name) {
+                $value = Get-AzChaosObjectPropertyValue -InputObject $InputObject -Name @($candidate)
+                if ($value -is [System.Collections.IEnumerable] -and $value -isnot [string]) {
+                    if (@($value | Where-Object { -not [System.String]::IsNullOrWhiteSpace([string]$_) }).Count -gt 0) {
+                        return $true
+                    }
+                }
+                elseif (-not [System.String]::IsNullOrWhiteSpace([string]$value)) {
+                    return $true
+                }
+            }
+
+            return $false
+        }
+
+        function Format-AzChaosWorkspaceEvaluationFailure {
+            param(
+                [string]$WorkspaceName,
+                [object]$Evaluation
+            )
+
+            $status = Get-AzChaosObjectPropertyValue -InputObject $Evaluation -Name @('Status')
+            $errors = @(ConvertTo-AzChaosCollection -InputObject (Get-AzChaosObjectPropertyValue -InputObject $Evaluation -Name @('Errors', 'Error')) | Where-Object { Test-AzChaosErrorObjectHasContent -InputObject $_ -Name @('ErrorCode', 'Code', 'ErrorMessage', 'Message') })
+            $details = @()
+            foreach ($errorItem in $errors) {
+                $code = Get-AzChaosObjectPropertyValue -InputObject $errorItem -Name @('ErrorCode', 'Code')
+                $message = Get-AzChaosObjectPropertyValue -InputObject $errorItem -Name @('ErrorMessage', 'Message')
+                if ([System.String]::IsNullOrWhiteSpace($code)) {
+                    $details += $message
+                }
+                elseif ([System.String]::IsNullOrWhiteSpace($message)) {
+                    $details += $code
+                }
+                else {
+                    $details += "$code`: $message"
+                }
+            }
+
+            if ($details.Count -eq 0) {
+                $details += 'No detailed evaluation errors were returned.'
+            }
+
+            return "Workspace evaluation for workspace '$WorkspaceName' returned status '$status'. $($details -join ' ')"
+        }
+
+        function Test-AzChaosWorkspaceEvaluationHasRbacPropagationError {
+            param([object]$Evaluation)
+
+            $errors = @(ConvertTo-AzChaosCollection -InputObject (Get-AzChaosObjectPropertyValue -InputObject $Evaluation -Name @('Errors', 'Error')) | Where-Object { Test-AzChaosErrorObjectHasContent -InputObject $_ -Name @('ErrorCode', 'Code', 'ErrorMessage', 'Message') })
+            foreach ($errorItem in $errors) {
+                $code = Get-AzChaosObjectPropertyValue -InputObject $errorItem -Name @('ErrorCode', 'Code')
+                # Chaos.Workspaces.Worker/ErrorCodes.cs emits this when discovery cannot read scopes under a just-created role assignment.
+                if ($code -eq 'ResourceDiscoveryPermissionError') {
+                    return $true
+                }
+            }
+
+            return $false
+        }
+
+        function Assert-AzChaosWorkspaceEvaluationNotFailed {
+            param(
+                [string]$WorkspaceName,
+                [object]$Evaluation
+            )
+
+            if ($null -eq $Evaluation -or $Evaluation -is [bool]) {
+                return
+            }
+
+            # Keep status list in sync with generated\api\Models\WorkspaceEvaluationProperties.cs:246.
+            $knownStatuses = @('Pending', 'Queued', 'InProgress', 'Succeeded', 'PartiallySucceeded', 'Failed', 'Canceled')
+            $status = Get-AzChaosObjectPropertyValue -InputObject $Evaluation -Name @('Status')
+            if (-not [System.String]::IsNullOrEmpty($status) -and $status -notin $knownStatuses) {
+                $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                    -Message "Workspace evaluation for workspace '$WorkspaceName' returned unrecognized status '$status'." `
+                    -ErrorId 'WorkspaceEvaluationUnrecognizedStatus' `
+                    -TargetObject $WorkspaceName))
+            }
+
+            if ($status -in @('Failed', 'Canceled')) {
+                $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                    -Message (Format-AzChaosWorkspaceEvaluationFailure -WorkspaceName $WorkspaceName -Evaluation $Evaluation) `
+                    -ErrorId 'WorkspaceEvaluationFailed' `
+                    -TargetObject $WorkspaceName))
+            }
+        }
+
+        function Invoke-AzChaosWorkspaceScenarioEvaluationWithRetry {
+            param(
+                [hashtable]$EvaluationParameter,
+                [string]$WorkspaceName,
+                [bool]$RetryRbacPropagation
+            )
+
+            $retryIntervalSeconds = 15
+            # 21 attempts: the initial evaluation plus twenty retries, so five minutes for
+            # just-created RBAC assignments to propagate. Sized from a measured 222-second
+            # worst case on the scenario-validation path; this discovery path shares the
+            # same underlying ARM RBAC propagation but was not separately measured. The
+            # previous 90-second budget was under half the measured figure. See DEV-041.
+            $maxAttempts = 21
+            for ($attempt = 1; $attempt -le $maxAttempts; $attempt++) {
+                # Re-attribute plumbing failures to this cmdlet. Without the catch, PowerShell
+                # names the internal generated cmdlet variant and this file's line, which points
+                # the user at a command they did not call. See DEV-044.
+                try { $evaluation = Invoke-AzChaosWorkspaceScenarioEvaluation @EvaluationParameter }
+                catch { $PSCmdlet.ThrowTerminatingError($_) }
+                $status = Get-AzChaosObjectPropertyValue -InputObject $evaluation -Name @('Status')
+                if ($status -in @('Failed', 'Canceled') -and $RetryRbacPropagation -and (Test-AzChaosWorkspaceEvaluationHasRbacPropagationError -Evaluation $evaluation) -and $attempt -lt $maxAttempts) {
+                    Write-Verbose "Workspace evaluation for '$WorkspaceName' failed with an RBAC propagation error. Waiting $retryIntervalSeconds seconds before retrying evaluation."
+                    Start-Sleep -Seconds $retryIntervalSeconds
+                    continue
+                }
+
+                Assert-AzChaosWorkspaceEvaluationNotFailed -WorkspaceName $WorkspaceName -Evaluation $evaluation
+                return $evaluation
+            }
+        }
+
+        function Get-AzChaosLatestWorkspaceEvaluationIfAvailable {
+            param(
+                [hashtable]$CommonParameter,
+                [string]$ResourceGroupName,
+                [string]$WorkspaceName
+            )
+
+            if (-not (Get-Command -Name Get-AzChaosWorkspaceEvaluation -ErrorAction SilentlyContinue)) {
+                return $null
+            }
+
+            try {
+                return Get-AzChaosWorkspaceEvaluation @CommonParameter -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -ErrorAction Stop
+            }
+            catch {
+                Write-Verbose "Get-AzChaosWorkspaceEvaluation failed while checking workspace '$WorkspaceName': $($_.Exception.Message). Continuing scenario recommendation polling."
+                return $null
+            }
+        }
+
+        function Wait-AzChaosWorkspaceScenarioRecommendation {
+            param(
+                [hashtable]$CommonParameter,
+                [hashtable]$EvaluationParameter,
+                [string]$ResourceGroupName,
+                [string]$WorkspaceName,
+                [bool]$RetryRbacPropagation
+            )
+
+            $deadline = [System.DateTimeOffset]::UtcNow.AddMinutes(10)
+            $intervalSeconds = 15
+            $evaluationRetryCount = 0
+            $maxEvaluationRetryCount = 20 # Twenty re-runs at 15 seconds each: five minutes for just-created RBAC assignments to propagate (DEV-041). The 10-minute deadline above still bounds the whole wait.
+            $knownStatuses = @('NotEvaluated', 'Recommended', 'NotApplicable', 'Evaluating', 'EvaluationFailed', 'EvaluationCancelled')
+            $warnedUnknownStatus = @{}
+            $lastErrorMessage = $null
+
+            do {
+                $evaluation = Get-AzChaosLatestWorkspaceEvaluationIfAvailable -CommonParameter $CommonParameter -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName
+                $evaluationStatus = Get-AzChaosObjectPropertyValue -InputObject $evaluation -Name @('Status')
+                if ($evaluationStatus -in @('Failed', 'Canceled')) {
+                    if ($evaluationStatus -eq 'Failed' -and $RetryRbacPropagation -and (Test-AzChaosWorkspaceEvaluationHasRbacPropagationError -Evaluation $evaluation) -and $evaluationRetryCount -lt $maxEvaluationRetryCount) {
+                        $evaluationRetryCount++
+                        Write-Verbose "Workspace evaluation for '$WorkspaceName' failed with ResourceDiscoveryPermissionError. Waiting $intervalSeconds seconds before re-running evaluation."
+                        Start-Sleep -Seconds $intervalSeconds
+                        try { $null = Invoke-AzChaosWorkspaceScenarioEvaluation @EvaluationParameter }
+                        catch { $PSCmdlet.ThrowTerminatingError($_) }
+                        continue
+                    }
+
+                    Assert-AzChaosWorkspaceEvaluationNotFailed -WorkspaceName $WorkspaceName -Evaluation $evaluation
+                }
+
+                if ($evaluationStatus -in @('Pending', 'Queued', 'InProgress')) {
+                    if ([System.DateTimeOffset]::UtcNow -ge $deadline) {
+                        $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                            -Message "Timed out waiting for workspace evaluation in workspace '$WorkspaceName' to finish after 10 minutes. Re-run Get-AzChaosWorkspaceEvaluation to inspect current status, or use -SkipEvaluationWait to skip this propagation wait." `
+                            -ErrorId 'WorkspaceEvaluationTimedOut' `
+                            -Category ([System.Management.Automation.ErrorCategory]::OperationTimeout) `
+                            -TargetObject $WorkspaceName))
+                    }
+
+                    Write-Verbose "Workspace evaluation for '$WorkspaceName' is '$evaluationStatus'. Waiting $intervalSeconds seconds before checking again."
+                    Start-Sleep -Seconds $intervalSeconds
+                    continue
+                }
+
+                try {
+                    $scenarios = Get-AzChaosScenario @CommonParameter -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -ErrorAction Stop
+                    $lastErrorMessage = $null
+                }
+                catch {
+                    $lastErrorMessage = $_.Exception.Message
+                    if ([System.DateTimeOffset]::UtcNow -ge $deadline) {
+                        $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                            -Message "Timed out waiting for scenario recommendations in workspace '$WorkspaceName' after 10 minutes. The last Get-AzChaosScenario attempt failed: $lastErrorMessage" `
+                            -ErrorId 'ScenarioRecommendationTimedOut' `
+                            -Category ([System.Management.Automation.ErrorCategory]::OperationTimeout) `
+                            -TargetObject $WorkspaceName))
+                    }
+
+                    Write-Verbose "Get-AzChaosScenario failed while waiting for workspace '$WorkspaceName': $lastErrorMessage. Waiting $intervalSeconds seconds before retrying."
+                    Start-Sleep -Seconds $intervalSeconds
+                    continue
+                }
+
+                foreach ($scenario in @($scenarios)) {
+                    $status = $scenario.RecommendationStatus
+                    if (-not [System.String]::IsNullOrEmpty($status) -and $status -notin $knownStatuses -and -not $warnedUnknownStatus.ContainsKey($status)) {
+                        Write-Warning "Scenario '$($scenario.Name)' in workspace '$WorkspaceName' returned unrecognized recommendation status '$status'. Continuing to poll until the wait timeout."
+                        $warnedUnknownStatus[$status] = $true
+                    }
+                }
+
+                if (-not (Test-AzChaosScenarioRecommendationPending -Scenario $scenarios)) {
+                    if ($null -eq $scenarios -or 0 -eq @($scenarios).Count) {
+                        Write-Verbose "No scenarios were discovered for workspace '$WorkspaceName'."
+                    }
+                    else {
+                        Write-Verbose "Scenario recommendations for workspace '$WorkspaceName' reached a terminal state."
+                    }
+                    return $scenarios
+                }
+
+                if ([System.DateTimeOffset]::UtcNow -ge $deadline) {
+                    $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                        -Message "Timed out waiting for scenario recommendations in workspace '$WorkspaceName' to reach Recommended, NotApplicable, EvaluationFailed, or EvaluationCancelled after 10 minutes. Re-run Get-AzChaosScenario to inspect current status, or use -SkipEvaluationWait to skip this propagation wait." `
+                        -ErrorId 'ScenarioRecommendationTimedOut' `
+                        -Category ([System.Management.Automation.ErrorCategory]::OperationTimeout) `
+                        -TargetObject $WorkspaceName))
+                }
+
+                Write-Verbose "Waiting $intervalSeconds seconds for Azure Resource Graph propagation before checking scenario recommendations again."
+                Start-Sleep -Seconds $intervalSeconds
+            } while ($true)
+        }
+
+        $common = @{}
+        if ($PSBoundParameters.ContainsKey('SubscriptionId')) { $common['SubscriptionId'] = $SubscriptionId }
+        if ($PSBoundParameters.ContainsKey('DefaultProfile')) { $common['DefaultProfile'] = $DefaultProfile }
+
+        # This dependency is unconditional: -SkipPermission avoids New-AzRoleAssignment,
+        # but resource-group discovery/creation still needs Az.Resources.
+        Assert-AzChaosAzResourcesAvailable
+
+        # Resolve the resource group before ShouldProcess so the confirmation and -WhatIf can
+        # disclose everything this operation creates. This is a read and is safe to run under
+        # -WhatIf. Previously ShouldProcess named only the workspace, so a user who typo'd
+        # -ResourceGroupName was not told a resource group would be created, and then it was.
+        # See DEV-045.
+        # SilentlyContinue covers the expected not-found case; the catch re-attributes anything
+        # genuinely terminating, such as an auth or subscription failure, which it does not suppress.
+        try { $resourceGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue }
+        catch { $PSCmdlet.ThrowTerminatingError($_) }
+        $mustCreateResourceGroup = ($null -eq $resourceGroup)
+
+        $shouldProcessTargets = @("workspace '$WorkspaceName'")
+        if ($mustCreateResourceGroup) {
+            $shouldProcessTargets += "new resource group '$ResourceGroupName' in '$Location'"
+        }
+        $shouldProcessTargets += 'a system-assigned managed identity'
+        if (-not $SkipPermission) {
+            $shouldProcessTargets += "a '$RoleDefinitionName' role assignment on $(@($Scope).Count) scope(s)"
+        }
+
+        if (-not $PSCmdlet.ShouldProcess(($shouldProcessTargets -join ', '), 'Initialize Chaos Studio workspace')) {
+            return
+        }
+
+        # Step 1: create the resource group if it does not exist. Announce it rather than only
+        # writing it to the verbose stream, which is invisible unless the user asked for it.
+        if ($mustCreateResourceGroup) {
+            Write-Host "Creating resource group '$ResourceGroupName' in '$Location'."
+            try { $null = New-AzResourceGroup -Name $ResourceGroupName -Location $Location }
+            catch { $PSCmdlet.ThrowTerminatingError($_) }
+        }
+
+        # Step 2: create the workspace with a system-assigned managed identity.
+        $workspaceParams = @{
+            Name                         = $WorkspaceName
+            ResourceGroupName            = $ResourceGroupName
+            Location                     = $Location
+            Scope                        = $Scope
+            EnableSystemAssignedIdentity = $true
+        }
+        if ($PSBoundParameters.ContainsKey('Tag')) { $workspaceParams['Tag'] = $Tag }
+        try { $workspace = New-AzChaosWorkspace @common @workspaceParams }
+        catch { $PSCmdlet.ThrowTerminatingError($_) }
+
+        # Step 3: grant the workspace identity the Reader role on each scope.
+        if (-not $SkipPermission) {
+            $principalId = $workspace.IdentityPrincipalId
+            if ([System.String]::IsNullOrEmpty($principalId)) {
+                Write-Warning "Workspace '$WorkspaceName' has no system-assigned identity principal id. Skipping the RBAC grant. Discovery and evaluation may not enumerate resources."
+            }
+            else {
+                foreach ($resourceScope in $Scope) {
+                    Write-Verbose "Granting '$RoleDefinitionName' to identity '$principalId' on '$resourceScope'."
+                    try { $null = New-AzRoleAssignment -ObjectId $principalId -RoleDefinitionName $RoleDefinitionName -Scope $resourceScope -ErrorAction Stop }
+                    catch { $PSCmdlet.ThrowTerminatingError($_) }
+                }
+            }
+        }
+
+        # Step 4: evaluate scenarios. Wait for the evaluation and ARG propagation unless a single attempt is requested.
+        $evaluationParams = @{
+            ResourceGroupName = $ResourceGroupName
+            WorkspaceName     = $WorkspaceName
+        }
+        if ($PSBoundParameters.ContainsKey('SubscriptionId')) { $evaluationParams['SubscriptionId'] = $SubscriptionId }
+        if ($PSBoundParameters.ContainsKey('DefaultProfile')) { $evaluationParams['DefaultProfile'] = $DefaultProfile }
+        $null = Invoke-AzChaosWorkspaceScenarioEvaluationWithRetry -EvaluationParameter $evaluationParams -WorkspaceName $WorkspaceName -RetryRbacPropagation:(-not $SkipPermission -and -not $SkipEvaluationWait)
+
+        if (-not $SkipEvaluationWait) {
+            $scenarios = Wait-AzChaosWorkspaceScenarioRecommendation -CommonParameter $common -EvaluationParameter $evaluationParams -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -RetryRbacPropagation:(-not $SkipPermission)
+        }
+        else {
+            try { $scenarios = Get-AzChaosScenario @common -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -ErrorAction SilentlyContinue }
+            catch { $PSCmdlet.ThrowTerminatingError($_) }
+        }
+
+        # Step 5: report the discovered scenarios and suggest next commands.
+        Write-Host "Workspace '$WorkspaceName' is ready. Suggested next commands:"
+        Write-Host "  Get-AzChaosScenario -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName"
+        Write-Host "  Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -ScenarioName <name> -Name <configuration> -WhatIfMode"
+        Write-Host "  Start-AzChaosScenarioRun -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -ScenarioName <name> -Name <configuration>"
+
+        return $scenarios
+    }
+}

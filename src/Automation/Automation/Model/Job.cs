@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             if (job == null) return;
 
-            this.JobId = job.JobId;
-            this.CreationTime = job.CreationTime.ToLocalTime();
+            this.JobId = job.JobId.GetValueOrDefault();
+            this.CreationTime = job.CreationTime.GetValueOrDefault().ToLocalTime();
             this.LastModifiedTime = job.LastModifiedTime.HasValue ? job.LastModifiedTime.Value.ToLocalTime() : new DateTimeOffset();
             this.StartTime = job.StartTime.HasValue ? job.StartTime.Value.ToLocalTime() : (DateTimeOffset?)null;
             this.Status = job.Status;
@@ -97,8 +97,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             if (job == null) return;
 
-            this.JobId = job.JobId;
-            this.CreationTime = job.CreationTime.ToLocalTime();
+            this.JobId = job.JobId.GetValueOrDefault();
+            this.CreationTime = job.CreationTime.GetValueOrDefault().ToLocalTime();
             this.LastModifiedTime = job.LastModifiedTime.HasValue ? job.LastModifiedTime.Value.ToLocalTime() : DateTimeOffset.MinValue;
             this.StartTime = job.StartTime.HasValue ? job.StartTime.Value.ToLocalTime() : (DateTimeOffset?)null;
             this.Status = job.Status;

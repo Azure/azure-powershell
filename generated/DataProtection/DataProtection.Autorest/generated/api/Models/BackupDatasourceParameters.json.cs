@@ -104,6 +104,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
                 {
                     return new BlobBackupDatasourceParametersForAutoProtection(json);
                 }
+                case "GenericBackupDatasourceParameters":
+                {
+                    return new GenericBackupDatasourceParameters(json);
+                }
                 case "KubernetesClusterBackupDatasourceParameters":
                 {
                     return new KubernetesClusterBackupDatasourceParameters(json);

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="location">The geo-location where the resource lives
         /// </param>
-        public SecurityPerimeterTrackedResource(string location, string id = default(string), string name = default(string), string type = default(string), SecurityPerimeterSystemData systemData = default(SecurityPerimeterSystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        public SecurityPerimeterTrackedResource(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
 
         : base(id, name, type, systemData)
         {

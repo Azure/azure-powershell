@@ -42,7 +42,25 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="supportsMultipleExtensions">Whether the handler can support multiple extensions.
         /// </param>
-        public VirtualMachineExtensionImageProperties(string operatingSystem, string computeRole, string handlerSchema, bool? vmScaleSetEnabled = default(bool?), bool? supportsMultipleExtensions = default(bool?))
+
+        /// <param name="releaseNotes">Summary of changes or updates in this extension version.
+        /// </param>
+
+        /// <param name="releaseCategory">Categorizes the type of change introduced (e.g., BugFix, SecurityFix,
+        /// CompatibilityUpdate, NewFeature, Other).
+        /// Possible values include: &#39;Other&#39;, &#39;BugFix&#39;, &#39;SecurityFix&#39;,
+        /// &#39;CompatibilityUpdate&#39;, &#39;NewFeature&#39;</param>
+
+        /// <param name="urgencyLevel">Indicates the urgency level for applying this extension update.
+        /// Possible values include: &#39;Regular&#39;, &#39;Expedited&#39;, &#39;Emergency&#39;</param>
+
+        /// <param name="runProfile">Specifies when and how the extension should be executed.
+        /// Possible values include: &#39;Other&#39;, &#39;RunOnce&#39;, &#39;LongRunning&#39;, &#39;Hybrid&#39;</param>
+
+        /// <param name="extensionFeatureMetadata">Additional metadata about extension features, including compliance and
+        /// capability tags.
+        /// </param>
+        public VirtualMachineExtensionImageProperties(string operatingSystem, string computeRole, string handlerSchema, bool? vmScaleSetEnabled = default(bool?), bool? supportsMultipleExtensions = default(bool?), string releaseNotes = default(string), string releaseCategory = default(string), string urgencyLevel = default(string), string runProfile = default(string), ExtensionFeatureMetadata extensionFeatureMetadata = default(ExtensionFeatureMetadata))
 
         {
             this.OperatingSystem = operatingSystem;
@@ -50,6 +68,11 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.HandlerSchema = handlerSchema;
             this.VmScaleSetEnabled = vmScaleSetEnabled;
             this.SupportsMultipleExtensions = supportsMultipleExtensions;
+            this.ReleaseNotes = releaseNotes;
+            this.ReleaseCategory = releaseCategory;
+            this.UrgencyLevel = urgencyLevel;
+            this.RunProfile = runProfile;
+            this.ExtensionFeatureMetadata = extensionFeatureMetadata;
             CustomInit();
         }
 
@@ -92,6 +115,38 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "supportsMultipleExtensions")]
         public bool? SupportsMultipleExtensions {get; set; }
+
+        /// <summary>
+        /// Gets summary of changes or updates in this extension version.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "releaseNotes")]
+        public string ReleaseNotes {get; private set; }
+
+        /// <summary>
+        /// Gets categorizes the type of change introduced (e.g., BugFix, SecurityFix,
+        /// CompatibilityUpdate, NewFeature, Other). Possible values include: &#39;Other&#39;, &#39;BugFix&#39;, &#39;SecurityFix&#39;, &#39;CompatibilityUpdate&#39;, &#39;NewFeature&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "releaseCategory")]
+        public string ReleaseCategory {get; private set; }
+
+        /// <summary>
+        /// Gets indicates the urgency level for applying this extension update. Possible values include: &#39;Regular&#39;, &#39;Expedited&#39;, &#39;Emergency&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "urgencyLevel")]
+        public string UrgencyLevel {get; private set; }
+
+        /// <summary>
+        /// Gets specifies when and how the extension should be executed. Possible values include: &#39;Other&#39;, &#39;RunOnce&#39;, &#39;LongRunning&#39;, &#39;Hybrid&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "runProfile")]
+        public string RunProfile {get; private set; }
+
+        /// <summary>
+        /// Gets additional metadata about extension features, including compliance and
+        /// capability tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "extensionFeatureMetadata")]
+        public ExtensionFeatureMetadata ExtensionFeatureMetadata {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -112,6 +167,11 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "HandlerSchema");
             }
+
+
+
+
+
 
 
 

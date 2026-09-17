@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="version">The version of the NSP logging configuration.
         /// </param>
-        public NspLoggingConfiguration(string id = default(string), string name = default(string), string type = default(string), SecurityPerimeterSystemData systemData = default(SecurityPerimeterSystemData), System.Collections.Generic.IList<string> enabledLogCategories = default(System.Collections.Generic.IList<string>), string version = default(string))
+        public NspLoggingConfiguration(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IList<string> enabledLogCategories = default(System.Collections.Generic.IList<string>), string version = default(string))
 
         : base(id, name, type, systemData)
         {

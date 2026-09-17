@@ -16,7 +16,7 @@
 $administrator = "2f153a9e-5be9-4f43-abd2-04561777c8b0"
 
 # @NOTE: Replace with sub Id that operator has access to (populate with own value):
-$subscriptionId = "0e745469-49f8-48c9-873b-24ca87143db1"
+$subscriptionId = "f758ac53-3e63-4317-a956-0997793808d7"
 
 # @NOTE: need to create a resource group to assign the managed identity to (populate with own values):
 $manangedRgName = "yash-rg"

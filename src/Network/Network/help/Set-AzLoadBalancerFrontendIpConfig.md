@@ -17,7 +17,7 @@ Updates a front-end IP configuration for a load balancer.
 ```
 Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-PrivateIpAddress <String>]
  [-PrivateIpAddressVersion <String>] [-Zone <String[]>] -Subnet <PSSubnet> [-GatewayLoadBalancerId <String>]
- [-DdosCustomPolicyId <String>] [-RemoveDdosCustomPolicy] [-DefaultProfile <IAzureContextContainer>]
+ [-DdosCustomPolicyId <String>] [-RemoveDdosCustomPolicy] [-EnableConnectionTracking] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
 ```
 Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-PrivateIpAddress <String>]
  [-PrivateIpAddressVersion <String>] [-Zone <String[]>] -SubnetId <String> [-GatewayLoadBalancerId <String>]
- [-DdosCustomPolicyId <String>] [-RemoveDdosCustomPolicy] [-DefaultProfile <IAzureContextContainer>]
+ [-DdosCustomPolicyId <String>] [-RemoveDdosCustomPolicy] [-EnableConnectionTracking] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
@@ -35,7 +35,7 @@ Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
 ```
 Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
  -PublicIpAddressId <String> [-GatewayLoadBalancerId <String>] [-DdosCustomPolicyId <String>]
- [-RemoveDdosCustomPolicy] [-DefaultProfile <IAzureContextContainer>]
+ [-RemoveDdosCustomPolicy] [-EnableConnectionTracking] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
 ```
 Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
  -PublicIpAddress <PSPublicIpAddress> [-GatewayLoadBalancerId <String>] [-DdosCustomPolicyId <String>]
- [-RemoveDdosCustomPolicy] [-DefaultProfile <IAzureContextContainer>]
+ [-RemoveDdosCustomPolicy] [-EnableConnectionTracking] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
 ```
 Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
  -PublicIpAddressPrefixId <String> [-GatewayLoadBalancerId <String>] [-DdosCustomPolicyId <String>]
- [-RemoveDdosCustomPolicy] [-DefaultProfile <IAzureContextContainer>]
+ [-RemoveDdosCustomPolicy] [-EnableConnectionTracking] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -59,7 +59,7 @@ Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
 ```
 Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
  -PublicIpAddressPrefix <PSPublicIpPrefix> [-GatewayLoadBalancerId <String>] [-DdosCustomPolicyId <String>]
- [-RemoveDdosCustomPolicy] [-DefaultProfile <IAzureContextContainer>]
+ [-RemoveDdosCustomPolicy] [-EnableConnectionTracking] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -150,6 +150,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableConnectionTracking
+Enables UDP flow tracking for traffic associated with the frontend IP configuration. When enabled, packets belonging to the same UDP flow are consistently directed to the same backend instance. This setting applies to all associated load balancing rules and takes precedence over rule-level connection tracking settings.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase
 {
     using System;
+    using System.Collections;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
@@ -68,6 +69,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                 existing = null;
             }
 
+            PreserveExistingTags(parameters, existing);
+
             Action executeAction = () =>
             {
                 PSDeploymentStackWhatIfResult whatIfResult = this.ExecuteWhatIf(parameters);
@@ -96,6 +99,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
             else
             {
                 executeAction();
+            }
+        }
+
+        internal static void PreserveExistingTags(
+            PSDeploymentStackWhatIfParameters parameters,
+            PSDeploymentStackWhatIfResult existing)
+        {
+            // Preserve existing tags when -Tag has no value; non-null tag values replace the existing set rather than being merged.
+            if (parameters.Tags == null && existing?.Tags != null)
+            {
+                parameters.Tags = new Hashtable();
+                foreach (var tag in existing.Tags)
+                {
+                    parameters.Tags[tag.Key] = tag.Value;
+                }
             }
         }
 
