@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added `-VerifyClientAuthMode` to `New-AzApplicationGatewayClientAuthConfiguration` and `Set-AzApplicationGatewayClientAuthConfiguration` to select the client certificate verification mode (`Strict` or `Passthrough`) for Application Gateway frontend mutual TLS (mTLS). In `Passthrough` mode the client certificate is forwarded to the backend without being verified by the application gateway.
 
 ## Version 8.2.0
 * Added `Get-AzExpressRouteLag`, `New-AzExpressRouteLag`, `Set-AzExpressRouteLag`, `Remove-AzExpressRouteLag`, `New-AzExpressRouteLagLOA`, `Get-AzExpressRouteLagLink`, and `Get-AzExpressRouteLagMember` for `ExpressRouteLag` resources (Microsoft.Network 2025-09-01 API).

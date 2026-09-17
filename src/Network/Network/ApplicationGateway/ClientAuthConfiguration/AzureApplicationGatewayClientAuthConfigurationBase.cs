@@ -30,6 +30,12 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet("None", "OCSP", IgnoreCase = true)]
         public string VerifyClientRevocation { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Client certificate verification mode. In Passthrough mode the application gateway forwards the client certificate to the backend without verifying it.")]
+        [ValidateSet("Strict", "Passthrough", IgnoreCase = true)]
+        public string VerifyClientAuthMode { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -51,6 +57,11 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 config.VerifyClientRevocation = "None";
+            }
+
+            if (!string.IsNullOrEmpty(this.VerifyClientAuthMode))
+            {
+                config.VerifyClientAuthMode = this.VerifyClientAuthMode;
             }
 
             return config;

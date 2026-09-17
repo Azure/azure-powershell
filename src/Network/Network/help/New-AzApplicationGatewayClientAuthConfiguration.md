@@ -14,7 +14,7 @@ Creates a new client authentication configuration for SSL profile.
 
 ```
 New-AzApplicationGatewayClientAuthConfiguration [-VerifyClientCertIssuerDN] [-VerifyClientRevocation <String>]
- [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-VerifyClientAuthMode <String>] [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
  [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -29,6 +29,13 @@ $clientAuthConfig = New-AzApplicationGatewayClientAuthConfiguration -VerifyClien
 ```
 
 The command create a new client auth configuration and stores it in $clientAuthConfig variable to be used in a SSL profile.
+
+### Example 2: Create a client auth configuration for mutual TLS (mTLS) passthrough
+```powershell
+$clientAuthConfig = New-AzApplicationGatewayClientAuthConfiguration -VerifyClientAuthMode Passthrough
+```
+
+The command creates a new client auth configuration in Passthrough mode. The application gateway requests the client certificate and forwards it to the backend without verifying it, leaving client certificate authentication to the backend.
 
 ## PARAMETERS
 
@@ -69,6 +76,23 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VerifyClientAuthMode
+Client certificate verification mode.
+In Passthrough mode the application gateway forwards the client certificate to the backend without verifying it.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Strict, Passthrough
 
 Required: False
 Position: Named
