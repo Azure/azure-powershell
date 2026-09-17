@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PowerShell;
 
-    /// <summary>Model that represents the base Target properties model.</summary>
+    /// <summary>The properties of the target resource.</summary>
     [System.ComponentModel.TypeConverter(typeof(TargetPropertiesTypeConverter))]
     public partial class TargetProperties
     {
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             return ToJsonString();
         }
     }
-    /// Model that represents the base Target properties model.
+    /// The properties of the target resource.
     [System.ComponentModel.TypeConverter(typeof(TargetPropertiesTypeConverter))]
     public partial interface ITargetProperties
 
