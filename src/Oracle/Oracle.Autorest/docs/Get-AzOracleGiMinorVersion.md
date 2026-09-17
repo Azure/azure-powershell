@@ -15,7 +15,8 @@ Get a GiMinorVersion
 ### List (Default)
 ```
 Get-AzOracleGiMinorVersion -Giversionname <String> -Location <String> [-SubscriptionId <String[]>]
- [-ShapeFamily <String>] [-Zone <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-IsGiVersionForProvisioning] [-Shape <String>] [-ShapeFamily <String>] [-SortOrder <String>]
+ [-Zone <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -124,6 +125,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -IsGiVersionForProvisioning
+If true, filters the results to GI minor versions supported during VM cluster provisioning.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The name of the Azure region.
 
@@ -169,8 +185,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Shape
+If provided, filters the results to the set of GI minor versions supported for the given shape.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ShapeFamily
 If provided, filters the results to the set of database versions which are supported for the given shape family.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SortOrder
+Sort order for the returned GI minor versions.
 
 ```yaml
 Type: System.String

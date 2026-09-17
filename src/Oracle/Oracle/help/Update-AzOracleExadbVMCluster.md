@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/update-azoracleexadbvmcluster
 schema: 2.0.0
@@ -16,28 +16,27 @@ Update a ExadbVmCluster
 ```
 Update-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-NodeCount <Int32>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzOracleExadbVMCluster -InputObject <IOracleIdentity> [-NodeCount <Int32>] [-Tag <Hashtable>]
- [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -180,7 +179,7 @@ The name of the ExadbVmCluster
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: ExadbVMClusterName
 
 Required: True
@@ -226,7 +225,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -242,7 +241,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -327,3 +326,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
