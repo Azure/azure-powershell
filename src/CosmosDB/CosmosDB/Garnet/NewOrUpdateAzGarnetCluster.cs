@@ -39,5 +39,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.GarnetClusterPersistenceModeHelpMessage)]
         [ValidateSet("None", "AofAndRdb", IgnoreCase = true)]
         public string PersistenceMode { get; set; }
+
+        protected bool? Persistence => PersistenceMode == null
+            ? (bool?)null
+            : PersistenceMode.Equals("AofAndRdb", System.StringComparison.OrdinalIgnoreCase);
     }
 }

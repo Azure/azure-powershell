@@ -35,7 +35,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             NodeSku = properties.NodeSku;
             AvailabilityZone = properties.AvailabilityZone;
             AuthenticationMethod = properties.AuthenticationMethod;
-            PersistenceMode = properties.PersistenceMode;
+            PersistenceMode = properties.Persistence.HasValue
+                ? properties.Persistence.Value ? "AofAndRdb" : "None"
+                : null;
             AllocationState = properties.AllocationState;
             ClusterType = properties.ClusterType;
             Extensions = properties.Extensions;

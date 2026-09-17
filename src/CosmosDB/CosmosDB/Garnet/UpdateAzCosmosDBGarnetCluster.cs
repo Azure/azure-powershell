@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     NodeSku = existingCluster.Properties?.NodeSku,
                     AvailabilityZone = existingCluster.Properties?.AvailabilityZone,
                     AuthenticationMethod = AuthenticationMethod ?? existingCluster.Properties?.AuthenticationMethod,
-                    PersistenceMode = PersistenceMode ?? existingCluster.Properties?.PersistenceMode,
+                    Persistence = Persistence ?? existingCluster.Properties?.Persistence,
                     Extensions = extensionsList,
                 },
                 Location = existingCluster.Location,
