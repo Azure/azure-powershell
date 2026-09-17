@@ -774,4 +774,14 @@ directive:
         deprecated-by-azversion: 14.4.0
         change-effective-date: 2025/11/01
 
+  - where:
+      subjectPrefix: Cdn
+      subject: ^EdgeAction.*$
+    set:
+      breaking-change:
+        change-description: The standalone Az.Cdn EdgeAction resource cmdlets are deprecated and will be removed in the next breaking-change release. This removes the standalone EdgeAction resource API from Az.Cdn, not EdgeAction delivery-rule actions or URL signing. Update scripts that depend on these cmdlets before upgrading to the removal release.
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 17.0.0
+        change-effective-date: 2026/11/15
+
 ```
