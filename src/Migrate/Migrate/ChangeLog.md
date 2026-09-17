@@ -20,7 +20,7 @@
 ## Upcoming Release
 * Updated Azure Data Replication API version from 2024-09-01 to 2026-05-01
 * Added 'MigrateAsArcVM' parameter to 'New-AzMigrateLocalServerReplication' to support migrating VMs as Azure Arc-enabled VMs
-* Added 'TargetVMSecurityOption' parameter to 'New-AzMigrateLocalServerReplication' and 'Set-AzMigrateLocalServerReplication' to configure Secure Boot and Trusted Launch on the target virtual machine (VM). Supported values are 'None', 'SecureBootEnabled' and 'TrustedLaunch'; only Generation 2 target VMs are supported
+* Added 'TargetVMSecurityOption' and 'EnableSecureBoot' parameters to 'New-AzMigrateLocalServerReplication' and 'Set-AzMigrateLocalServerReplication' to configure Secure Boot and Trusted Launch on the target virtual machine (VM). 'TargetVMSecurityOption' accepts 'Standard' or 'TrustedLaunch', where 'TrustedLaunch' enables both Secure Boot and virtual Trusted Platform Module (vTPM). Only Generation 2 target VMs are supported
 * Updated 'Initialize-AzMigrateLocalReplicationInfrastructure' to grant the 'Storage Account Contributor' role instead of 'Contributor' on the cache storage account to the replication vault managed identity and to the source and target appliance applications
 
 ## Version 3.0.0

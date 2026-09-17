@@ -16,10 +16,10 @@ Starts replication for the specified server.
 ```
 New-AzMigrateLocalServerReplication -MachineId <String> -OSDiskID <String> -SourceApplianceName <String>
  -TargetApplianceName <String> -TargetResourceGroupId <String> -TargetStoragePathId <String>
- -TargetVirtualSwitchId <String> -TargetVMName <String> [-IsDynamicMemoryEnabled <String>]
- [-MigrateAsArcVM <String>] [-SubscriptionId <String>] [-TargetTestVirtualSwitchId <String>]
- [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-TargetVMSecurityOption <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -TargetVirtualSwitchId <String> -TargetVMName <String> [-EnableSecureBoot <String>]
+ [-IsDynamicMemoryEnabled <String>] [-MigrateAsArcVM <String>] [-SubscriptionId <String>]
+ [-TargetTestVirtualSwitchId <String>] [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>]
+ [-TargetVMSecurityOption <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
@@ -27,9 +27,9 @@ New-AzMigrateLocalServerReplication -MachineId <String> -OSDiskID <String> -Sour
 New-AzMigrateLocalServerReplication -DiskToInclude <AzLocalDiskInput[]> -MachineId <String>
  -NicToInclude <AzLocalNicInput[]> -SourceApplianceName <String> -TargetApplianceName <String>
  -TargetResourceGroupId <String> -TargetStoragePathId <String> -TargetVMName <String>
- [-IsDynamicMemoryEnabled <String>] [-MigrateAsArcVM <String>] [-SubscriptionId <String>]
- [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-TargetVMSecurityOption <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnableSecureBoot <String>] [-IsDynamicMemoryEnabled <String>] [-MigrateAsArcVM <String>]
+ [-SubscriptionId <String>] [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>]
+ [-TargetVMSecurityOption <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -145,6 +145,23 @@ Parameter Sets: ByIdPowerUser
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSecureBoot
+Specifies whether Secure Boot is enabled on the target VM.
+Only supported for Generation 2 target VMs.
+When omitted, the target VM inherits the Secure Boot setting of the source server.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -378,9 +395,8 @@ Accept wildcard characters: False
 ```
 
 ### -TargetVMSecurityOption
-Specifies the security configuration of the target VM.
-'SecureBootEnabled' enables Secure Boot.
-'TrustedLaunch' enables Secure Boot and vTPM.
+Specifies the security type of the target VM.
+'TrustedLaunch' enables Secure Boot and vTPM, and implies -EnableSecureBoot 'true'.
 Only supported for Generation 2 target VMs.
 
 ```yaml

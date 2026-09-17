@@ -109,7 +109,14 @@ $OsTypes = @{
     OtherGuestFamily = "otherguestfamily";
 }
 
-# 'EnablevTPM' is omitted deliberately: the service always rejects it (error 2109020).
+# User-facing security types on the Local replication cmdlets.
+$TargetVMSecurityTypes = @{
+    Standard      = "Standard";
+    TrustedLaunch = "TrustedLaunch";
+}
+
+# Wire values for the service 'securityOption' field. 'EnablevTPM' is omitted deliberately:
+# it means vTPM without Secure Boot, which the service always rejects (error 2109020).
 $SecurityOptions = @{
     None              = "None";
     SecureBootEnabled = "SecureBootEnabled";

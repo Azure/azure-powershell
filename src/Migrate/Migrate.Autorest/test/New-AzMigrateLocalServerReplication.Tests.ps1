@@ -37,26 +37,22 @@ Describe 'New-AzMigrateLocalServerReplication' {
     }
 
     It 'TargetVMSecurityOption-ParameterExists' {
-        $cmd = Get-Command New-AzMigrateLocalServerReplication
-        $param = $cmd.Parameters['TargetVMSecurityOption']
-        $param | Should -Not -BeNullOrEmpty
-        $param.ParameterType.Name | Should -Be 'String'
-    }
-
-    It 'TargetVMSecurityOption-OnSetCmdlet' {
-        $cmd = Get-Command Set-AzMigrateLocalServerReplication
-        $param = $cmd.Parameters['TargetVMSecurityOption']
-        $param | Should -Not -BeNullOrEmpty
-        $param.ParameterType.Name | Should -Be 'String'
+        foreach ($name in 'New-AzMigrateLocalServerReplication', 'Set-AzMigrateLocalServerReplication') {
+            foreach ($paramName in 'TargetVMSecurityOption', 'EnableSecureBoot') {
+                $param = (Get-Command $name).Parameters[$paramName]
+                $param | Should -Not -BeNullOrEmpty
+                $param.ParameterType.Name | Should -Be 'String'
+            }
+        }
     }
 
     It 'TargetVMSecurityOption-OffersOnlySupportedValues' {
-        # EnablevTPM is always rejected by the service, so it must not be reachable from the cmdlet.
+        # 'EnablevTPM' and 'SecureBootEnabled' are wire values, not user-facing security types.
         foreach ($name in 'New-AzMigrateLocalServerReplication', 'Set-AzMigrateLocalServerReplication') {
             $completer = (Get-Command $name).Parameters['TargetVMSecurityOption'].Attributes |
                 Where-Object { $_ -is [System.Management.Automation.ArgumentCompleterAttribute] }
             $values = & $completer.ScriptBlock
-            $values | Should -Be @('None', 'SecureBootEnabled', 'TrustedLaunch')
+            $values | Should -Be @('Standard', 'TrustedLaunch')
             $values | Should -Not -Contain 'EnablevTPM'
         }
     }
@@ -83,5 +79,29 @@ Describe 'New-AzMigrateLocalServerReplication' {
 
         $err | Should -Not -BeNullOrEmpty
         $err.Exception.Message | Should -BeLike '*does not belong to the set*'
+    }
+
+    It 'EnableSecureBoot-RejectsTrustedLaunchOptOut' {
+        $err = $null
+        try {
+            New-AzMigrateLocalServerReplication `
+                -MachineId 'machine' `
+                -TargetStoragePathId 'storagePath' `
+                -TargetResourceGroupId 'resourceGroup' `
+                -TargetVMName 'vm' `
+                -SourceApplianceName 'source' `
+                -TargetApplianceName 'target' `
+                -TargetVirtualSwitchId 'switch' `
+                -OSDiskID 'osDisk' `
+                -TargetVMSecurityOption 'TrustedLaunch' `
+                -EnableSecureBoot 'false' `
+                -ErrorAction Stop
+        }
+        catch {
+            $err = $_
+        }
+
+        $err | Should -Not -BeNullOrEmpty
+        $err.Exception.Message | Should -BeLike '*Trusted Launch requires Secure Boot*'
     }
 }
