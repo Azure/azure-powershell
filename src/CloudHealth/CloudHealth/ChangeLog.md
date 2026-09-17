@@ -23,4 +23,5 @@
     - Create health models with their entities, relationships and settings.
     - Query entity history, signal history, and signal recommendations.
     - Add data annotations and send health reports.
+* Target CloudHealth API 2026-09-01-preview
 * First preview release for module Az.CloudHealth
