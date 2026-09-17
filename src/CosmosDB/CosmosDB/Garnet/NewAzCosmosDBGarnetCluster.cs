@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     NodeSku = NodeSku,
                     AvailabilityZone = AvailabilityZone,
                     AuthenticationMethod = AuthenticationMethod,
-                    PersistenceMode = PersistenceMode,
+                    Persistence = Persistence,
                     Extensions = extensionsList,
                 },
                 Location = Location,

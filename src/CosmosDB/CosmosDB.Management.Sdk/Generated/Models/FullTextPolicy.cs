@@ -27,12 +27,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="defaultLanguage">The default language for a full text paths.
         /// </param>
 
+        /// <param name="package">The full text package type.
+        /// Possible values include: &#39;legacy&#39;, &#39;standard&#39;</param>
+
+        /// <param name="defaultSpec">The default full text analysis specification inherited by full text paths
+        /// that omit these settings.
+        /// </param>
+
         /// <param name="fullTextPaths">List of FullText Paths
         /// </param>
-        public FullTextPolicy(string defaultLanguage = default(string), System.Collections.Generic.IList<FullTextPath> fullTextPaths = default(System.Collections.Generic.IList<FullTextPath>))
+        public FullTextPolicy(string defaultLanguage = default(string), string package = default(string), FullTextSpec defaultSpec = default(FullTextSpec), System.Collections.Generic.IList<FullTextPath> fullTextPaths = default(System.Collections.Generic.IList<FullTextPath>))
 
         {
             this.DefaultLanguage = defaultLanguage;
+            this.Package = package;
+            this.DefaultSpec = defaultSpec;
             this.FullTextPaths = fullTextPaths;
             CustomInit();
         }
@@ -48,6 +57,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "defaultLanguage")]
         public string DefaultLanguage {get; set; }
+
+        /// <summary>
+        /// Gets or sets the full text package type. Possible values include: &#39;legacy&#39;, &#39;standard&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "package")]
+        public string Package {get; set; }
+
+        /// <summary>
+        /// Gets or sets the default full text analysis specification inherited by full
+        /// text paths that omit these settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "defaultSpec")]
+        public FullTextSpec DefaultSpec {get; set; }
 
         /// <summary>
         /// Gets or sets list of FullText Paths

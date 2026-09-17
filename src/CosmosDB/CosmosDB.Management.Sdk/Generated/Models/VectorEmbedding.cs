@@ -36,13 +36,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="dimensions">The number of dimensions in the vector.
         /// </param>
-        public VectorEmbedding(string path, string dataType, string distanceFunction, int dimensions)
+
+        /// <param name="embeddingSource">The embedding source configuration to automatically generate embeddings at
+        /// the configured paths.
+        /// </param>
+        public VectorEmbedding(string path, string dataType, string distanceFunction, int dimensions, EmbeddingSource embeddingSource = default(EmbeddingSource))
 
         {
             this.Path = path;
             this.DataType = dataType;
             this.DistanceFunction = distanceFunction;
             this.Dimensions = dimensions;
+            this.EmbeddingSource = embeddingSource;
             CustomInit();
         }
 
@@ -76,6 +81,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "dimensions")]
         public int Dimensions {get; set; }
+
+        /// <summary>
+        /// Gets or sets the embedding source configuration to automatically generate
+        /// embeddings at the configured paths.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "embeddingSource")]
+        public EmbeddingSource EmbeddingSource {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -99,6 +111,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
 
 
+            if (this.EmbeddingSource != null)
+            {
+                this.EmbeddingSource.Validate();
+            }
         }
     }
 }

@@ -34,15 +34,15 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="authenticationMethod">The authentication method used for the Garnet cluster.
         /// Possible values include: &#39;Entra&#39;</param>
 
-        /// <param name="persistenceMode">The persistence mode for the Garnet cluster.
-        /// Possible values include: &#39;None&#39;, &#39;AofAndRdb&#39;</param>
-        public GarnetClusterResourcePatchProperties(string clusterType = default(string), System.Collections.Generic.IList<string> extensions = default(System.Collections.Generic.IList<string>), string authenticationMethod = default(string), string persistenceMode = default(string))
+        /// <param name="persistence">Flag to indicate if persistence is enabled for the Garnet cluster.
+        /// </param>
+        public GarnetClusterResourcePatchProperties(string clusterType = default(string), System.Collections.Generic.IList<string> extensions = default(System.Collections.Generic.IList<string>), string authenticationMethod = default(string), bool? persistence = default(bool?))
 
         {
             this.ClusterType = clusterType;
             this.Extensions = extensions;
             this.AuthenticationMethod = authenticationMethod;
-            this.PersistenceMode = persistenceMode;
+            this.Persistence = persistence;
             CustomInit();
         }
 
@@ -72,9 +72,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string AuthenticationMethod {get; set; }
 
         /// <summary>
-        /// Gets or sets the persistence mode for the Garnet cluster. Possible values include: &#39;None&#39;, &#39;AofAndRdb&#39;
+        /// Gets or sets flag to indicate if persistence is enabled for the Garnet
+        /// cluster.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "persistenceMode")]
-        public string PersistenceMode {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "persistence")]
+        public bool? Persistence {get; set; }
     }
 }

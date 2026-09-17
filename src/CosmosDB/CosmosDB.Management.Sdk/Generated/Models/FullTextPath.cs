@@ -29,11 +29,31 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="language">The language of the full text field in the document.
         /// </param>
-        public FullTextPath(string path, string language = default(string))
+
+        /// <param name="tokenizer">The tokenizer method for this path.
+        /// Possible values include: &#39;word&#39;</param>
+
+        /// <param name="filters">The filter pipeline applied to this path.
+        /// </param>
+
+        /// <param name="stopWordListKind">The stop word list kind for this path.
+        /// Possible values include: &#39;none&#39;, &#39;extended&#39;, &#39;basic&#39;</param>
+
+        /// <param name="addStopWords">Custom words to add to the stop word list for this path.
+        /// </param>
+
+        /// <param name="removeStopWords">Words to remove from the built-in stop word list for this path.
+        /// </param>
+        public FullTextPath(string path, string language = default(string), string tokenizer = default(string), System.Collections.Generic.IList<string> filters = default(System.Collections.Generic.IList<string>), string stopWordListKind = default(string), System.Collections.Generic.IList<string> addStopWords = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> removeStopWords = default(System.Collections.Generic.IList<string>))
 
         {
             this.Path = path;
             this.Language = language;
+            this.Tokenizer = tokenizer;
+            this.Filters = filters;
+            this.StopWordListKind = stopWordListKind;
+            this.AddStopWords = addStopWords;
+            this.RemoveStopWords = removeStopWords;
             CustomInit();
         }
 
@@ -54,6 +74,37 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "language")]
         public string Language {get; set; }
+
+        /// <summary>
+        /// Gets or sets the tokenizer method for this path. Possible values include: &#39;word&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tokenizer")]
+        public string Tokenizer {get; set; }
+
+        /// <summary>
+        /// Gets or sets the filter pipeline applied to this path.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "filters")]
+        public System.Collections.Generic.IList<string> Filters {get; set; }
+
+        /// <summary>
+        /// Gets or sets the stop word list kind for this path. Possible values include: &#39;none&#39;, &#39;extended&#39;, &#39;basic&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "stopWordListKind")]
+        public string StopWordListKind {get; set; }
+
+        /// <summary>
+        /// Gets or sets custom words to add to the stop word list for this path.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "addStopWords")]
+        public System.Collections.Generic.IList<string> AddStopWords {get; set; }
+
+        /// <summary>
+        /// Gets or sets words to remove from the built-in stop word list for this
+        /// path.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "removeStopWords")]
+        public System.Collections.Generic.IList<string> RemoveStopWords {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -66,6 +117,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Path");
             }
+
+
+
+
+
 
 
         }
