@@ -33,6 +33,7 @@ $ApiVersions = @{
 # Role definition GUIDs for storage account creation
 $RoleDefinitionIds = @{
     ContributorId                = "b24988ac-6180-42a0-ab88-20f7382dd24c";
+    StorageAccountContributorId  = "17d1049b-9a84-46fb-8f53-869881c3d3ab";
     StorageBlobDataContributorId = "ba92f5b4-2d11-453d-a403-e96b0029c9fe";
 }
 
@@ -106,6 +107,20 @@ $OsTypes = @{
     LinuxGuest = "linuxguest";
     WindowsGuest = "windowsguest";
     OtherGuestFamily = "otherguestfamily";
+}
+
+# User-facing security types on the Local replication cmdlets.
+$TargetVMSecurityTypes = @{
+    Standard      = "Standard";
+    TrustedLaunch = "TrustedLaunch";
+}
+
+# Wire values for the service 'securityOption' field. 'EnablevTPM' is omitted deliberately:
+# it means vTPM without Secure Boot, which the service always rejects (error 2109020).
+$SecurityOptions = @{
+    None              = "None";
+    SecureBootEnabled = "SecureBootEnabled";
+    TrustedLaunch     = "TrustedLaunch";
 }
 
 $VmReplicationValidationMessage = "Replication could not be initiated. Please ensure the necessary changes are made, and allow up to 30 minutes before re-trying."

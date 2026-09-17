@@ -73,6 +73,22 @@ function Set-AzMigrateLocalServerReplication {
         ${OsType},
 
         [Parameter()]
+        [ValidateSet("Standard", "TrustedLaunch")]
+        [ArgumentCompleter( { "Standard", "TrustedLaunch" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the security type of the target VM. 'TrustedLaunch' enables Secure Boot and vTPM, and implies -EnableSecureBoot 'true'. Only supported for Generation 2 target VMs.
+        ${TargetVMSecurityOption},
+
+        [Parameter()]
+        [ValidateSet("true" , "false")]
+        [ArgumentCompleter( { "true" , "false" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies whether Secure Boot is enabled on the target VM. Only supported for Generation 2 target VMs.
+        ${EnableSecureBoot},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -145,6 +161,17 @@ function Set-AzMigrateLocalServerReplication {
             $isDynamicRamEnabled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
         }
         $HasOsType = $PSBoundParameters.ContainsKey('OsType')
+        $HasTargetVMSecurityOption = $PSBoundParameters.ContainsKey('TargetVMSecurityOption')
+        $HasEnableSecureBoot = $PSBoundParameters.ContainsKey('EnableSecureBoot')
+        if ($HasEnableSecureBoot) {
+            $secureBootEnabled = [System.Convert]::ToBoolean($EnableSecureBoot)
+        }
+
+        # Purely a contradiction between parameters, so reject it before any service lookups.
+        if ($HasTargetVMSecurityOption -and $TargetVMSecurityOption -eq $TargetVMSecurityTypes.TrustedLaunch -and
+            $HasEnableSecureBoot -and -not $secureBootEnabled) {
+            throw "-EnableSecureBoot 'false' cannot be used with -TargetVMSecurityOption 'TrustedLaunch'. Trusted Launch requires Secure Boot."
+        }
 
         $null = $PSBoundParameters.Remove('TargetVMCPUCore')
         $null = $PSBoundParameters.Remove('IsDynamicMemoryEnabled')
@@ -153,6 +180,8 @@ function Set-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('NicToInclude')
         $null = $PSBoundParameters.Remove('TargetObjectID')
         $null = $PSBoundParameters.Remove('OsType')
+        $null = $PSBoundParameters.Remove('TargetVMSecurityOption')
+        $null = $PSBoundParameters.Remove('EnableSecureBoot')
         $null = $PSBoundParameters.Remove('WhatIf')
         $null = $PSBoundParameters.Remove('Confirm')
 
@@ -207,6 +236,26 @@ function Set-AzMigrateLocalServerReplication {
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
             $customPropertiesUpdate = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHCIProtectedItemModelCustomPropertiesUpdate]::new()
             $customPropertiesUpdate.InstanceType = $AzLocalInstanceTypes.VMwareToAzLocal
+        }
+
+        # Gen 1 target VMs do not support Secure Boot or vTPM; fail before the service round-trip.
+        if ($HasTargetVMSecurityOption -or $HasEnableSecureBoot) {
+            $securityType = if ($HasTargetVMSecurityOption) { $TargetVMSecurityOption } else { $TargetVMSecurityTypes.Standard }
+
+            # Trusted Launch always includes Secure Boot; moving to Standard drops vTPM but keeps it, matching the portal.
+            if ($securityType -eq $TargetVMSecurityTypes.TrustedLaunch -or -not $HasEnableSecureBoot) {
+                $secureBootEnabled = $true
+            }
+
+            if ($customProperties.HyperVGeneration -eq "1" -and
+                ($securityType -eq $TargetVMSecurityTypes.TrustedLaunch -or $secureBootEnabled)) {
+                throw "Secure Boot and Trusted Launch require a Generation 2 target VM. Protected item '$TargetObjectID' has a Generation 1 target VM."
+            }
+
+            $customPropertiesUpdate.SecurityOption =
+                if ($securityType -eq $TargetVMSecurityTypes.TrustedLaunch) { $SecurityOptions.TrustedLaunch }
+                elseif ($secureBootEnabled) { $SecurityOptions.SecureBootEnabled }
+                else { $SecurityOptions.None }
         }
 
         # Update target CPU core

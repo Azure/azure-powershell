@@ -14,9 +14,10 @@ Updates the target properties for the replicating server.
 
 ```
 Set-AzMigrateLocalServerReplication -TargetObjectID <String>
- [-DynamicMemoryConfig <ProtectedItemDynamicMemoryConfig>] [-IsDynamicMemoryEnabled <String>]
- [-NicToInclude <AzLocalNicInput[]>] [-OsType <String>] [-SubscriptionId <String>] [-TargetVMCPUCore <Int32>]
- [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DynamicMemoryConfig <ProtectedItemDynamicMemoryConfig>] [-EnableSecureBoot <String>]
+ [-IsDynamicMemoryEnabled <String>] [-NicToInclude <AzLocalNicInput[]>] [-OsType <String>]
+ [-SubscriptionId <String>] [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>]
+ [-TargetVMSecurityOption <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,6 +89,22 @@ Specifies the dynamic memory configuration of RAM.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemDynamicMemoryConfig
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSecureBoot
+Specifies whether Secure Boot is enabled on the target VM.
+Only supported for Generation 2 target VMs.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -194,6 +211,23 @@ Specifies the target RAM size in MB.
 
 ```yaml
 Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetVMSecurityOption
+Specifies the security type of the target VM.
+'TrustedLaunch' enables Secure Boot and vTPM, and implies -EnableSecureBoot 'true'.
+Only supported for Generation 2 target VMs.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
