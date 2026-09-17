@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.ThroughputPoolAccounts = new ThroughputPoolAccountsOperations(this);
             this.ThroughputPoolAccount = new ThroughputPoolAccountOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2026-04-01-preview";
+            this.ApiVersion = "2026-09-01-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

@@ -133,6 +133,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// account
         /// </param>
 
+        /// <param name="enableEmbeddingGenerator">Flag to indicate whether to enable Integrated Embeddings on the Cosmos DB
+        /// account. This property is supported only for existing API for NoSQL
+        /// accounts with continuous backup and all versions and deletes change feed
+        /// enabled. Integrated Embeddings cannot be disabled after it is enabled.
+        /// </param>
+
         /// <param name="keysMetadata">This property is ignored during the update operation, as the metadata is
         /// read-only. The object represents the metadata for the Account Keys of the
         /// Cosmos DB account.
@@ -176,7 +182,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="enforceHierarchicalPartitionKeyIdLastLevel">Flag to indicate enabling/disabling of hierarchical partition key ID last
         /// level enforcement on the account.
         /// </param>
-        public DatabaseAccountUpdateParameters(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), string connectorOffer = default(string), ApiProperties apiProperties = default(ApiProperties), BackupPolicy backupPolicy = default(BackupPolicy), Capacity capacity = default(Capacity), string capacityMode = default(string), System.Collections.Generic.IList<Location> locations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), DiagnosticLogSettings diagnosticLogSettings = default(DiagnosticLogSettings), bool? disableLocalAuth = default(bool?), bool? enableMaterializedViews = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), bool? enableBurstCapacity = default(bool?), string minimalTlsVersion = default(string), string customerManagedKeyStatus = default(string), bool? enablePriorityBasedExecution = default(bool?), string defaultPriorityLevel = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?), bool? enableAllVersionsAndDeletesChangeFeed = default(bool?), SoftDeleteConfiguration softDeleteConfiguration = default(SoftDeleteConfiguration), bool? enforceHierarchicalPartitionKeyIdLastLevel = default(bool?))
+        public DatabaseAccountUpdateParameters(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), string connectorOffer = default(string), ApiProperties apiProperties = default(ApiProperties), BackupPolicy backupPolicy = default(BackupPolicy), Capacity capacity = default(Capacity), string capacityMode = default(string), System.Collections.Generic.IList<Location> locations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), DiagnosticLogSettings diagnosticLogSettings = default(DiagnosticLogSettings), bool? disableLocalAuth = default(bool?), bool? enableMaterializedViews = default(bool?), bool? enableEmbeddingGenerator = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), bool? enableBurstCapacity = default(bool?), string minimalTlsVersion = default(string), string customerManagedKeyStatus = default(string), bool? enablePriorityBasedExecution = default(bool?), string defaultPriorityLevel = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?), bool? enableAllVersionsAndDeletesChangeFeed = default(bool?), SoftDeleteConfiguration softDeleteConfiguration = default(SoftDeleteConfiguration), bool? enforceHierarchicalPartitionKeyIdLastLevel = default(bool?))
 
         {
             this.Tags = tags;
@@ -209,6 +215,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.DiagnosticLogSettings = diagnosticLogSettings;
             this.DisableLocalAuth = disableLocalAuth;
             this.EnableMaterializedViews = enableMaterializedViews;
+            this.EnableEmbeddingGenerator = enableEmbeddingGenerator;
             this.KeysMetadata = keysMetadata;
             this.EnablePartitionMerge = enablePartitionMerge;
             this.EnableBurstCapacity = enableBurstCapacity;
@@ -434,6 +441,15 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableMaterializedViews")]
         public bool? EnableMaterializedViews {get; set; }
+
+        /// <summary>
+        /// Gets or sets flag to indicate whether to enable Integrated Embeddings on
+        /// the Cosmos DB account. This property is supported only for existing API for
+        /// NoSQL accounts with continuous backup and all versions and deletes change
+        /// feed enabled. Integrated Embeddings cannot be disabled after it is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableEmbeddingGenerator")]
+        public bool? EnableEmbeddingGenerator {get; set; }
 
         /// <summary>
         /// Gets this property is ignored during the update operation, as the metadata

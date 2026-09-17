@@ -26,10 +26,10 @@ title: CosmosDBManagementClient
 
 ### 
 ``` yaml 
-commit: e939f1954da28bf8957a6486571e9db24b22d07c
-previewapiversion: "2026-04-01-preview"
+commit: 4e7bdd0d0f908762fa1f1da726f31542d0e2f731
+previewapiversion: "2026-09-01-preview"
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/$(previewapiversion)/openapi.json
+  - https://github.com/pjohari-ms/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/$(previewapiversion)/openapi.json
 
 output-folder: Generated
 
