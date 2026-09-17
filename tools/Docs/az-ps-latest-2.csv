@@ -34,7 +34,7 @@ pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Reservations.0.14.1.zip;sourceType=sa]Az.Reservations,0.14.1
 pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceGraph.1.3.0.zip;sourceType=sa]Az.ResourceGraph,1.3.0
 pac35,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceMover.2.0.0.zip;sourceType=sa]Az.ResourceMover,2.0.0
-pac36,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Resources.10.2.0.zip;sourceType=sa]Az.Resources,10.2.0
+pac36,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Resources.10.2.1.zip;sourceType=sa]Az.Resources,10.2.1
 pac37,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ScVmm.0.1.1.zip;sourceType=sa]Az.ScVmm,0.1.1
 pac38,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Search.0.12.1.zip;sourceType=sa]Az.Search,0.12.1
 pac39,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Security.1.10.0.zip;sourceType=sa]Az.Security,1.10.0
