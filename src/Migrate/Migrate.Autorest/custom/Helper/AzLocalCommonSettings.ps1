@@ -33,6 +33,7 @@ $ApiVersions = @{
 # Role definition GUIDs for storage account creation
 $RoleDefinitionIds = @{
     ContributorId                = "b24988ac-6180-42a0-ab88-20f7382dd24c";
+    StorageAccountContributorId  = "17d1049b-9a84-46fb-8f53-869881c3d3ab";
     StorageBlobDataContributorId = "ba92f5b4-2d11-453d-a403-e96b0029c9fe";
 }
 
