@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 
+* Clarified the planned removal of standalone EdgeAction resource cmdlets in the next breaking-change window. This documentation-only announcement preserved the current commands and excluded EdgeAction delivery-rule actions and URL signing; the effective date and release versions remain pending release-owner confirmation.
+
 ## Version 6.2.0
 * Added ChangeSafety Support
 
