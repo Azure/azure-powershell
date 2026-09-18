@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Issue Sentinel
-        uses: Azure/issue-sentinel@v1
+        uses: Azure/issue-sentinel@d1e433f192aa9442d44292b9b6d5d31419639aba # v1.6.1
         with:
           password: ${{secrets.ISSUE_SENTINEL_PASSWORD}}
           enable-similar-issues-scanning: true # Scan similar issues in your repo, default: true
