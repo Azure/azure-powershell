@@ -19,11 +19,16 @@ Invoke-AzDevCenterAdminExecuteCheckNameAvailability [-SubscriptionId <String>] [
  [<CommonParameters>]
 ```
 
-### ExecuteViaIdentityExpanded
+### ExecuteViaJsonFilePath
 ```
-Invoke-AzDevCenterAdminExecuteCheckNameAvailability -InputObject <IDevCenterIdentity> [-Name <String>]
- [-Type <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-AzDevCenterAdminExecuteCheckNameAvailability [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ExecuteViaJsonString
+```
+Invoke-AzDevCenterAdminExecuteCheckNameAvailability [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,19 +61,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Execute operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: ExecuteViaIdentityExpanded
+Type: System.String
+Parameter Sets: ExecuteViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Execute operation
+
+```yaml
+Type: System.String
+Parameter Sets: ExecuteViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -77,7 +96,7 @@ The name of the resource for which availability needs to be checked.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ExecuteExpanded
 Aliases:
 
 Required: False
@@ -92,7 +111,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ExecuteExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -107,7 +126,7 @@ The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ExecuteExpanded
 Aliases:
 
 Required: False
@@ -153,11 +172,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ICheckNameAvailabilityResponse
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ICheckNameAvailabilityResponse
 
 ## NOTES
 

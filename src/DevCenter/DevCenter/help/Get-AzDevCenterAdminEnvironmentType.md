@@ -26,6 +26,12 @@ Get-AzDevCenterAdminEnvironmentType -DevCenterName <String> -Name <String> -Reso
  [<CommonParameters>]
 ```
 
+### GetViaIdentityDevcenter
+```
+Get-AzDevCenterAdminEnvironmentType -Name <String> -DevcenterInputObject <IDevCenterIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzDevCenterAdminEnvironmentType -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
@@ -85,6 +91,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevcenterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: GetViaIdentityDevcenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DevCenterName
 The name of the devcenter.
 
@@ -102,7 +123,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
@@ -121,7 +141,7 @@ The name of the environment type.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityDevcenter
 Aliases: EnvironmentTypeName
 
 Required: True
@@ -171,7 +191,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IEnvironmentType
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IEnvironmentType
 
 ## NOTES
 

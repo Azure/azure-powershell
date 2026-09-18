@@ -1,51 +1,80 @@
 ---
 external help file: Az.DevCenter-help.xml
 Module Name: Az.DevCenter
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruserdelayenvironmentaction
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradmingallery
 schema: 2.0.0
 ---
 
-# Invoke-AzDevCenterUserDelayEnvironmentAction
+# Update-AzDevCenterAdminGallery
 
 ## SYNOPSIS
-Delays the occurrence of an action.
+Update a gallery.
 
 ## SYNTAX
 
-### Delay (Default)
+### UpdateExpanded (Default)
 ```
-Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint <String> -EnvironmentName <String> -Name <String>
- -ProjectName <String> [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>]
+Update-AzDevCenterAdminGallery -DevCenterName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DelayByDevCenter
+### UpdateViaIdentityDevcenterExpanded
 ```
-Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName <String> -EnvironmentName <String> -Name <String>
- -ProjectName <String> [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDevCenterAdminGallery -Name <String> -DevcenterInputObject <IDevCenterIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzDevCenterAdminGallery -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delays the occurrence of an action.
+Update a gallery.
 
 ## EXAMPLES
 
-### Example 1: Delay an action on the environment by endpoint
+### Example 1: {{ Add title here }}
 ```powershell
-Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -EnvironmentName myEnvironment -ProjectName DevProject -Name "myEnvironment-Delete" -DelayTime "00:30"
+{{ Add code here }}
 ```
 
-This command delays the action "schedule-default" for the environment "myEnvironment" for 30 minutes.
-
-### Example 2: Delay an action on the environment by dev center
-```powershell
-Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName Contoso -EnvironmentName myEnvironment -UserId "me" -ProjectName DevProject -Name "myEnvironment-Delete" -DelayTime "05:15"
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command delays the action "myEnvironment-Delete" for the environment "myEnvironment" for 5 hours and 15 minutes.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -63,43 +92,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DelayTime
-The delayed timespan from the scheduled action time.
-Format HH:MM.
+### -DevcenterInputObject
+Identity Parameter
 
 ```yaml
-Type: System.TimeSpan
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: UpdateViaIdentityDevcenterExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -DevCenterName
-The DevCenter upon which to execute operations.
+The name of the devcenter.
 
 ```yaml
 Type: System.String
-Parameter Sets: DelayByDevCenter
-Aliases: DevCenter
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Endpoint
-The DevCenter-specific URI to operate on.
-
-```yaml
-Type: System.String
-Parameter Sets: Delay
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -109,28 +122,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnvironmentName
-Environment name.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-Uniquely identifies the action.
+The name of the gallery.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: ActionName
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDevcenterExpanded
+Aliases: GalleryName
 
 Required: True
 Position: Named
@@ -139,33 +152,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProjectName
-Name of the project.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserId
-The AAD object id of the user.
-If value is 'me', the identity is taken from the authentication context.
-
-```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: "me"
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -206,11 +234,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentAction
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IGallery
 
 ## NOTES
 
