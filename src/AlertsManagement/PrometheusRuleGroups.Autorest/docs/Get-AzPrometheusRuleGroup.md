@@ -12,7 +12,7 @@ Retrieve a Prometheus rule group definition.
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
 Get-AzPrometheusRuleGroup [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -29,7 +29,7 @@ Get-AzPrometheusRuleGroup -InputObject <IPrometheusRuleGroupsIdentity> [-Default
  [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
 Get-AzPrometheusRuleGroup -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -106,7 +106,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -133,6 +133,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
