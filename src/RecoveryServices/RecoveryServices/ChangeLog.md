@@ -24,6 +24,7 @@
     - `New-AzRecoveryServicesAsrReplicationProtectedItem` accepts `-RecoveryConfidentialDataDiskEncryptionIdentity` to specify the confidential data disk encryption (CDDE) user-assigned managed identity used at failover.
     - `Set-AzRecoveryServicesAsrReplicationProtectedItem` (update) accepts `-RecoveryConfidentialDataDiskEncryptionIdentity` and honors the per-disk target confidential disk encryption set.
     - `Update-AzRecoveryServicesAsrProtectionDirection` (reprotect) accepts `-RecoveryConfidentialDataDiskEncryptionIdentity` and forwards the per-disk confidential disk encryption sets on the switch-protection call.
+    - Protected item output exposes `RecoveryConfidentialDataDiskEncryptionIdentity` and per-disk `ReplicaConfidentialDiskEncryptionSetId` and `TargetConfidentialDiskEncryptionSetId`.
 * Fixed `New-AzRecoveryServicesVault` and `Update-AzRecoveryServicesVault` to use the AsPerPolicy configuration by default when enabling vault immutability.
 * Added Microsoft Defender for Cloud Source Scan configuration for Recovery Services vaults and Azure Virtual Machine backup items.
     - Added support in `Update-AzRecoveryServicesVault -SourceScanState` to enable or disable vault-level Source Scan.

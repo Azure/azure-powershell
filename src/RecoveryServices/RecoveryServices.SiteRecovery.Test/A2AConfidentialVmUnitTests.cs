@@ -266,5 +266,77 @@ namespace RecoveryServices.SiteRecovery.Test
 
             Assert.Null(sdk.ConfidentialDiskEncryptionInfo);
         }
+
+        /// <summary>
+        /// The confidential data disk encryption identity must be readable from the
+        /// protected item PS object. Without this the field is write-only through
+        /// PowerShell: callers can set it but cannot confirm the service kept it.
+        /// </summary>
+        [Fact]
+        public void RpiDetails_ExposesRecoveryConfidentialDataDiskEncryptionIdentity()
+        {
+            var details = new A2AReplicationDetails
+            {
+                RecoveryConfidentialDataDiskEncryptionIdentity = CddeIdentityId,
+            };
+
+            var psObject = new ASRAzureToAzureSpecificRPIDetails(details);
+
+            Assert.Equal(CddeIdentityId, psObject.RecoveryConfidentialDataDiskEncryptionIdentity);
+        }
+
+        /// <summary>
+        /// A non-confidential protected item carries no identity, so the PS object
+        /// must surface null rather than an empty string.
+        /// </summary>
+        [Fact]
+        public void RpiDetails_ConfidentialIdentity_IsNullWhenServiceOmitsIt()
+        {
+            var psObject = new ASRAzureToAzureSpecificRPIDetails(new A2AReplicationDetails());
+
+            Assert.Null(psObject.RecoveryConfidentialDataDiskEncryptionIdentity);
+        }
+
+        /// <summary>
+        /// Both per-disk confidential encryption set ids must be readable from the
+        /// protected disk PS object, flattened the same way the input PS object
+        /// exposes them.
+        /// </summary>
+        [Fact]
+        public void ProtectedDiskDetails_ExposesConfidentialDiskEncryptionSets()
+        {
+            var disk = new A2AProtectedManagedDiskDetails
+            {
+                DiskName = "osdisk-1",
+                ConfidentialDiskEncryptionInfo = new ConfidentialDiskEncryptionInfo
+                {
+                    RecoveryReplicaConfidentialDiskEncryptionSetId = ReplicaDesId,
+                    RecoveryTargetConfidentialDiskEncryptionSetId = TargetDesId,
+                },
+            };
+
+            var psObject = new ASRAzureToAzureProtectedDiskDetails(disk);
+
+            Assert.Equal(ReplicaDesId, psObject.ReplicaConfidentialDiskEncryptionSetId);
+            Assert.Equal(TargetDesId, psObject.TargetConfidentialDiskEncryptionSetId);
+        }
+
+        /// <summary>
+        /// A disk with no confidential encryption info must map to nulls and must not
+        /// throw, since the service omits the field for every non-confidential disk.
+        /// </summary>
+        [Fact]
+        public void ProtectedDiskDetails_ConfidentialDes_AreNullForNonConfidentialDisk()
+        {
+            var disk = new A2AProtectedManagedDiskDetails
+            {
+                DiskName = "datadisk-plain",
+            };
+
+            var psObject = new ASRAzureToAzureProtectedDiskDetails(disk);
+
+            Assert.Null(psObject.ReplicaConfidentialDiskEncryptionSetId);
+            Assert.Null(psObject.TargetConfidentialDiskEncryptionSetId);
+        }
     }
 }
