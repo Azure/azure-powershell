@@ -114,6 +114,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).OperationId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -121,6 +129,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             if (content.Contains("NetworkSecurityPerimeterName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).NetworkSecurityPerimeterName = (string) content.GetValueForProperty("NetworkSecurityPerimeterName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).NetworkSecurityPerimeterName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinkReferenceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkReferenceName = (string) content.GetValueForProperty("LinkReferenceName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkReferenceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkName = (string) content.GetValueForProperty("LinkName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LoggingConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LoggingConfigurationName = (string) content.GetValueForProperty("LoggingConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LoggingConfigurationName, global::System.Convert.ToString);
             }
             if (content.Contains("ProfileName"))
             {
@@ -133,26 +153,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             if (content.Contains("AssociationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).AssociationName = (string) content.GetValueForProperty("AssociationName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).AssociationName, global::System.Convert.ToString);
-            }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("LinkName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkName = (string) content.GetValueForProperty("LinkName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkName, global::System.Convert.ToString);
-            }
-            if (content.Contains("LinkReferenceName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkReferenceName = (string) content.GetValueForProperty("LinkReferenceName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkReferenceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("LoggingConfigurationName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LoggingConfigurationName = (string) content.GetValueForProperty("LoggingConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LoggingConfigurationName, global::System.Convert.ToString);
-            }
-            if (content.Contains("OperationId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).OperationId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -179,6 +179,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).OperationId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -186,6 +194,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             if (content.Contains("NetworkSecurityPerimeterName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).NetworkSecurityPerimeterName = (string) content.GetValueForProperty("NetworkSecurityPerimeterName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).NetworkSecurityPerimeterName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinkReferenceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkReferenceName = (string) content.GetValueForProperty("LinkReferenceName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkReferenceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkName = (string) content.GetValueForProperty("LinkName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LoggingConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LoggingConfigurationName = (string) content.GetValueForProperty("LoggingConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LoggingConfigurationName, global::System.Convert.ToString);
             }
             if (content.Contains("ProfileName"))
             {
@@ -198,26 +218,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             if (content.Contains("AssociationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).AssociationName = (string) content.GetValueForProperty("AssociationName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).AssociationName, global::System.Convert.ToString);
-            }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("LinkName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkName = (string) content.GetValueForProperty("LinkName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkName, global::System.Convert.ToString);
-            }
-            if (content.Contains("LinkReferenceName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkReferenceName = (string) content.GetValueForProperty("LinkReferenceName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LinkReferenceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("LoggingConfigurationName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LoggingConfigurationName = (string) content.GetValueForProperty("LoggingConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).LoggingConfigurationName, global::System.Convert.ToString);
-            }
-            if (content.Contains("OperationId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentityInternal)this).OperationId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

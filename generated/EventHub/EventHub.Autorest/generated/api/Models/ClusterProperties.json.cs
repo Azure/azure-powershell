@@ -65,12 +65,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 return;
             }
+            {_platformCapability = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject>("platformCapabilities"), out var __jsonPlatformCapabilities) ? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.PlatformCapabilities.FromJson(__jsonPlatformCapabilities) : _platformCapability;}
             {_createdAt = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("createdAt"), out var __jsonCreatedAt) ? (string)__jsonCreatedAt : (string)_createdAt;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_updatedAt = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("updatedAt"), out var __jsonUpdatedAt) ? (string)__jsonUpdatedAt : (string)_updatedAt;}
             {_metricId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("metricId"), out var __jsonMetricId) ? (string)__jsonMetricId : (string)_metricId;}
             {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)_status;}
             {_supportsScaling = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonBoolean>("supportsScaling"), out var __jsonSupportsScaling) ? (bool?)__jsonSupportsScaling : _supportsScaling;}
+            {_zoneRedundant = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonBoolean>("zoneRedundant"), out var __jsonZoneRedundant) ? (bool?)__jsonZoneRedundant : _zoneRedundant;}
             AfterFromJson(json);
         }
 
@@ -105,6 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 return container;
             }
+            AddIf( null != this._platformCapability ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) this._platformCapability.ToJson(null,serializationMode) : null, "platformCapabilities" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._createdAt)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._createdAt.ToString()) : null, "createdAt" ,container.Add );
@@ -126,6 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
                 AddIf( null != (((object)this._status)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._status.ToString()) : null, "status" ,container.Add );
             }
             AddIf( null != this._supportsScaling ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonBoolean((bool)this._supportsScaling) : null, "supportsScaling" ,container.Add );
+            AddIf( null != this._zoneRedundant ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonBoolean((bool)this._zoneRedundant) : null, "zoneRedundant" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

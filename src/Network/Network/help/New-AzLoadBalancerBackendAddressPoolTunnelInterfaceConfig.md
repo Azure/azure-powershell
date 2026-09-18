@@ -15,7 +15,7 @@ Creates a tunnel interface in a backend address pool of a load balancer.
 ```
 New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol <String> -Type <String> -Identifier <Int32>
  -Port <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +39,36 @@ $pool = Set-AzLoadBalancerBackendAddressPool -Name "BackendAddressPool02" -Tunne
 If the properties are not provided then they will be replaced with default values.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

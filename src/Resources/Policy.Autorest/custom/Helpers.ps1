@@ -222,6 +222,15 @@ function ParsePolicyExemptionId {
     ParsePolicyId $ResourceId 'policyExemptions'
 }
 
+# split policy enrollment resourceId into its parts
+function ParsePolicyEnrollmentId {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
+    # the resource Id of a policy enrollment
+    param($ResourceId)
+
+    ParsePolicyId $ResourceId 'policyEnrollments'
+}
+
 # Wrapper for JSON -> PSObject conversion that works on both Core and Desktop editions
 function ConvertFrom-JsonSafe
 {
@@ -745,6 +754,27 @@ function ResolvePolicyExemption {
     }
 
     resolvePolicyArtifact $null $null $null $resourceId 'policyExemptions'
+}
+
+function ResolvePolicyEnrollment {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
+    param(
+        [string]$Name,
+        [string]$Scope,
+        [string]$Id
+    )
+
+    if ($Id) {
+        $resourceId = $Id
+    }
+    elseif ($Scope) {
+        $resourceId = "$($Scope)/providers/Microsoft.Authorization/policyEnrollments/$($Name)"
+    }
+    else {
+        $resourceId = "/subscriptions/$($(Get-SubscriptionId))/providers/Microsoft.Authorization/policyEnrollments/$($Name)"
+    }
+
+    resolvePolicyArtifact $null $null $null $resourceId 'policyEnrollments'
 }
 
 function LocationCompleter(

@@ -13,13 +13,37 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class DhGroup
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// DHGroup1
+        /// </summary>
         public const string DHGroup1 = "DHGroup1";
+        /// <summary>
+        /// DHGroup2
+        /// </summary>
         public const string DHGroup2 = "DHGroup2";
+        /// <summary>
+        /// DHGroup14
+        /// </summary>
         public const string DHGroup14 = "DHGroup14";
+        /// <summary>
+        /// DHGroup2048
+        /// </summary>
         public const string DHGroup2048 = "DHGroup2048";
+        /// <summary>
+        /// ECP256
+        /// </summary>
         public const string ECP256 = "ECP256";
+        /// <summary>
+        /// ECP384
+        /// </summary>
         public const string ECP384 = "ECP384";
+        /// <summary>
+        /// DHGroup24
+        /// </summary>
         public const string DHGroup24 = "DHGroup24";
     }
 }

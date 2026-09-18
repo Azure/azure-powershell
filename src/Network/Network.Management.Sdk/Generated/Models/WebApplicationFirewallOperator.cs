@@ -13,17 +13,53 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class WebApplicationFirewallOperator
     {
+        /// <summary>
+        /// IPMatch
+        /// </summary>
         public const string IPMatch = "IPMatch";
+        /// <summary>
+        /// Equal
+        /// </summary>
         public const string Equal = "Equal";
+        /// <summary>
+        /// Contains
+        /// </summary>
         public const string Contains = "Contains";
+        /// <summary>
+        /// LessThan
+        /// </summary>
         public const string LessThan = "LessThan";
+        /// <summary>
+        /// GreaterThan
+        /// </summary>
         public const string GreaterThan = "GreaterThan";
+        /// <summary>
+        /// LessThanOrEqual
+        /// </summary>
         public const string LessThanOrEqual = "LessThanOrEqual";
+        /// <summary>
+        /// GreaterThanOrEqual
+        /// </summary>
         public const string GreaterThanOrEqual = "GreaterThanOrEqual";
+        /// <summary>
+        /// BeginsWith
+        /// </summary>
         public const string BeginsWith = "BeginsWith";
+        /// <summary>
+        /// EndsWith
+        /// </summary>
         public const string EndsWith = "EndsWith";
+        /// <summary>
+        /// Regex
+        /// </summary>
         public const string Regex = "Regex";
+        /// <summary>
+        /// GeoMatch
+        /// </summary>
         public const string GeoMatch = "GeoMatch";
+        /// <summary>
+        /// Any
+        /// </summary>
         public const string Any = "Any";
     }
 }

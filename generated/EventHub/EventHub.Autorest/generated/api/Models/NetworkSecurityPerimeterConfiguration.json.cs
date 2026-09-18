@@ -79,6 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             }
             __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ProxyResource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.NetworkSecurityPerimeterConfigurationProperties.FromJson(__jsonProperties) : _property;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
             AfterFromJson(json);
         }
 
@@ -103,9 +104,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
                 return container;
             }
             __proxyResource?.ToJson(container, serializationMode);
+            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+                AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

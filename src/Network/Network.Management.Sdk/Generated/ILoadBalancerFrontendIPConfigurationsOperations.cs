@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets all the load balancer frontend IP configurations.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -46,13 +46,15 @@ namespace Microsoft.Azure.Management.Network
         /// Gets load balancer frontend IP configuration.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
         /// <param name='frontendIPConfigurationName'>
-        /// The name of the frontend IP configuration.
+        /// The name of the resource that is unique within the set of frontend IP
+        /// configurations used by the load balancer. This name can be used to access
+        /// the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

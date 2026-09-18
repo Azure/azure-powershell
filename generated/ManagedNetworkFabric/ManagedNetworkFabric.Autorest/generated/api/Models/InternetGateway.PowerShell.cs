@@ -165,6 +165,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("LastOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).LastOperation = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties) content.GetValueForProperty("LastOperation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).LastOperation, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Annotation"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).Annotation, global::System.Convert.ToString);
@@ -185,9 +189,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).PropertiesType = (string) content.GetValueForProperty("PropertiesType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).PropertiesType, global::System.Convert.ToString);
             }
+            if (content.Contains("InternetGatewayType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).InternetGatewayType = (string) content.GetValueForProperty("InternetGatewayType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).InternetGatewayType, global::System.Convert.ToString);
+            }
             if (content.Contains("NetworkFabricControllerId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).NetworkFabricControllerId = (string) content.GetValueForProperty("NetworkFabricControllerId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).NetworkFabricControllerId, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastOperationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).LastOperationDetail = (string) content.GetValueForProperty("LastOperationDetail",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).LastOperationDetail, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -262,6 +274,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("LastOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).LastOperation = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties) content.GetValueForProperty("LastOperation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).LastOperation, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Annotation"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).Annotation, global::System.Convert.ToString);
@@ -282,9 +298,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).PropertiesType = (string) content.GetValueForProperty("PropertiesType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).PropertiesType, global::System.Convert.ToString);
             }
+            if (content.Contains("InternetGatewayType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).InternetGatewayType = (string) content.GetValueForProperty("InternetGatewayType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).InternetGatewayType, global::System.Convert.ToString);
+            }
             if (content.Contains("NetworkFabricControllerId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).NetworkFabricControllerId = (string) content.GetValueForProperty("NetworkFabricControllerId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).NetworkFabricControllerId, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastOperationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).LastOperationDetail = (string) content.GetValueForProperty("LastOperationDetail",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayInternal)this).LastOperationDetail, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

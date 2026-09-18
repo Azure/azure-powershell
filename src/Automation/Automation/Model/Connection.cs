@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
             if (connection == null) return;
 
             this.Description = connection.Description;
-            this.CreationTime = connection.CreationTime.ToLocalTime();
-            this.LastModifiedTime = connection.LastModifiedTime.ToLocalTime();
+            this.CreationTime = connection.CreationTime.GetValueOrDefault().ToLocalTime();
+            this.LastModifiedTime = connection.LastModifiedTime.GetValueOrDefault().ToLocalTime();
             this.ConnectionTypeName = connection.ConnectionType.Name;
             this.FieldDefinitionValues = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             if (connection.FieldDefinitionValues != null)

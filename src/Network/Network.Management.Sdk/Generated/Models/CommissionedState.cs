@@ -13,13 +13,37 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class CommissionedState
     {
+        /// <summary>
+        /// Provisioning
+        /// </summary>
         public const string Provisioning = "Provisioning";
+        /// <summary>
+        /// Provisioned
+        /// </summary>
         public const string Provisioned = "Provisioned";
+        /// <summary>
+        /// Commissioning
+        /// </summary>
         public const string Commissioning = "Commissioning";
+        /// <summary>
+        /// CommissionedNoInternetAdvertise
+        /// </summary>
         public const string CommissionedNoInternetAdvertise = "CommissionedNoInternetAdvertise";
+        /// <summary>
+        /// Commissioned
+        /// </summary>
         public const string Commissioned = "Commissioned";
+        /// <summary>
+        /// Decommissioning
+        /// </summary>
         public const string Decommissioning = "Decommissioning";
+        /// <summary>
+        /// Deprovisioning
+        /// </summary>
         public const string Deprovisioning = "Deprovisioning";
+        /// <summary>
+        /// Deprovisioned
+        /// </summary>
         public const string Deprovisioned = "Deprovisioned";
     }
 }

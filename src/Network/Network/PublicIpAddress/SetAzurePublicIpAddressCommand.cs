@@ -31,6 +31,19 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The DDoS custom policy ID to associate with the Public IP address.")]
+        [ValidateNotNullOrEmpty]
+        public string DdosCustomPolicyId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Removes the DDoS custom policy association from the Public IP address.")]
+        public SwitchParameter RemoveDdosCustomPolicy { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -38,9 +51,31 @@ namespace Microsoft.Azure.Commands.Network
         {
 
             base.Execute();
+            if (this.RemoveDdosCustomPolicy.IsPresent && !string.IsNullOrEmpty(this.DdosCustomPolicyId))
+            {
+                throw new ArgumentException("Specify either DdosCustomPolicyId or RemoveDdosCustomPolicy, but not both.");
+            }
+
             if (!this.IsPublicIpAddressPresent(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+            }
+
+            if (!string.IsNullOrEmpty(this.DdosCustomPolicyId))
+            {
+                if (this.PublicIpAddress.DdosSettings == null)
+                {
+                    this.PublicIpAddress.DdosSettings = new PSDdosSettings();
+                }
+
+                this.PublicIpAddress.DdosSettings.DdosCustomPolicy = new PSResourceId { Id = this.DdosCustomPolicyId };
+            }
+            else if (this.RemoveDdosCustomPolicy.IsPresent)
+            {
+                if (this.PublicIpAddress.DdosSettings != null)
+                {
+                    this.PublicIpAddress.DdosSettings.DdosCustomPolicy = null;
+                }
             }
 
             // Map to the sdk object

@@ -77,6 +77,11 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateRange(5,1440)]
         public int? JSChallengeCookieExpirationInMins { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Web Application Firewall CAPTCHA Cookie Expiration time in minutes.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateRange(5,1440)]
+        public int? CaptchaExpirationInMins { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -133,6 +138,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.JSChallengeCookieExpirationInMins = (int?)null;
             }
+
+            if (!this.MyInvocation.BoundParameters.ContainsKey("CaptchaExpirationInMins"))
+            {
+                this.CaptchaExpirationInMins = (int?)null;
+            }
         }
 
         protected PSApplicationGatewayFirewallPolicySettings NewObject()
@@ -169,7 +179,8 @@ namespace Microsoft.Azure.Commands.Network
                 CustomBlockResponseBody = this.CustomBlockResponseBody,
                 CustomBlockResponseStatusCode = this.CustomBlockResponseStatusCode,
                 LogScrubbing = this.LogScrubbing,
-                JSChallengeCookieExpirationInMins = this.JSChallengeCookieExpirationInMins
+                JSChallengeCookieExpirationInMins = this.JSChallengeCookieExpirationInMins,
+                CaptchaExpirationInMins = this.CaptchaExpirationInMins
             };
         }
     }

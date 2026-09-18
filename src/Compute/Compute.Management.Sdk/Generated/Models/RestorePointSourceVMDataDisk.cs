@@ -106,5 +106,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "writeAcceleratorEnabled")]
         public bool? WriteAcceleratorEnabled {get; private set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+            if (this.ManagedDisk != null)
+            {
+                this.ManagedDisk.Validate();
+            }
+
+        }
     }
 }

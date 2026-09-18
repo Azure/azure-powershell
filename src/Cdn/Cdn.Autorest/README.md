@@ -43,6 +43,8 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
+# Change Safety: opt in -AcquirePolicyToken / -ChangeReference on write cmdlets
+enable-change-safety: true
 commit: 9e9079a5d235e0c804e7fbb188258a84b4221571
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 

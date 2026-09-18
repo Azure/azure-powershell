@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
 
-    /// <summary>The result to the List Consumer Group operation.</summary>
+    /// <summary>The response of a ConsumerGroup list operation.</summary>
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.DoNotFormat]
     public partial class ConsumerGroupListResult :
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroupListResult,
@@ -17,16 +17,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// Link to the next set of results. Not empty if Value contains incomplete list of Consumer Group
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup> _value;
 
-        /// <summary>Result of the List Consumer Group operation.</summary>
+        /// <summary>The ConsumerGroup items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup> Value { get => this._value; set => this._value = value; }
 
@@ -36,45 +34,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 
         }
     }
-    /// The result to the List Consumer Group operation.
+    /// The response of a ConsumerGroup list operation.
     public partial interface IConsumerGroupListResult :
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Link to the next set of results. Not empty if Value contains incomplete list of Consumer Group
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Link to the next set of results. Not empty if Value contains incomplete list of Consumer Group",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>Result of the List Consumer Group operation.</summary>
+        /// <summary>The ConsumerGroup items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Result of the List Consumer Group operation.",
+        Description = @"The ConsumerGroup items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup> Value { get; set; }
 
     }
-    /// The result to the List Consumer Group operation.
+    /// The response of a ConsumerGroup list operation.
     internal partial interface IConsumerGroupListResultInternal
 
     {
-        /// <summary>
-        /// Link to the next set of results. Not empty if Value contains incomplete list of Consumer Group
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>Result of the List Consumer Group operation.</summary>
+        /// <summary>The ConsumerGroup items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup> Value { get; set; }
 
     }

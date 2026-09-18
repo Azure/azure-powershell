@@ -10,68 +10,151 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     /// <summary>Network Device Patch properties.</summary>
     public partial class NetworkDevicePatchParametersProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource __annotationResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AnnotationResource();
 
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchableProperties"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchableProperties __networkDevicePatchableProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkDevicePatchableProperties();
+        /// <summary>Backing field for <see cref="Annotation" /> property.</summary>
+        private string _annotation;
 
         /// <summary>Switch configuration description.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string Annotation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string Annotation { get => this._annotation; set => this._annotation = value; }
+
+        /// <summary>Backing field for <see cref="HostName" /> property.</summary>
+        private string _hostName;
 
         /// <summary>The host name of the device.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string HostName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchablePropertiesInternal)__networkDevicePatchableProperties).HostName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchablePropertiesInternal)__networkDevicePatchableProperties).HostName = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string HostName { get => this._hostName; set => this._hostName = value; }
+
+        /// <summary>Backing field for <see cref="IdentitySelector" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatch _identitySelector;
+
+        /// <summary>
+        /// The selection of the managed identity to use with this storage account. The identity type must be either system assigned
+        /// or user assigned.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatch IdentitySelector { get => (this._identitySelector = this._identitySelector ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IdentitySelectorPatch()); set => this._identitySelector = value; }
+
+        /// <summary>The type of managed identity that is being selected.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string IdentitySelectorIdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatchInternal)IdentitySelector).IdentityType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatchInternal)IdentitySelector).IdentityType = value ?? null; }
+
+        /// <summary>
+        /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string IdentitySelectorUserAssignedIdentityResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatchInternal)IdentitySelector).UserAssignedIdentityResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatchInternal)IdentitySelector).UserAssignedIdentityResourceId = value ?? null; }
+
+        /// <summary>Internal Acessors for IdentitySelector</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatch Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal.IdentitySelector { get => (this._identitySelector = this._identitySelector ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IdentitySelectorPatch()); set { {_identitySelector = value;} } }
+
+        /// <summary>Backing field for <see cref="SerialNumber" /> property.</summary>
+        private string _serialNumber;
 
         /// <summary>
         /// Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string SerialNumber { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchablePropertiesInternal)__networkDevicePatchableProperties).SerialNumber; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchablePropertiesInternal)__networkDevicePatchableProperties).SerialNumber = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string SerialNumber { get => this._serialNumber; set => this._serialNumber = value; }
 
         /// <summary>Creates an new <see cref="NetworkDevicePatchParametersProperties" /> instance.</summary>
         public NetworkDevicePatchParametersProperties()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__annotationResource), __annotationResource);
-            await eventListener.AssertObjectIsValid(nameof(__annotationResource), __annotationResource);
-            await eventListener.AssertNotNull(nameof(__networkDevicePatchableProperties), __networkDevicePatchableProperties);
-            await eventListener.AssertObjectIsValid(nameof(__networkDevicePatchableProperties), __networkDevicePatchableProperties);
-        }
     }
     /// Network Device Patch properties.
     public partial interface INetworkDevicePatchParametersProperties :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchableProperties
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable
     {
+        /// <summary>Switch configuration description.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Switch configuration description.",
+        SerializedName = @"annotation",
+        PossibleTypes = new [] { typeof(string) })]
+        string Annotation { get; set; }
+        /// <summary>The host name of the device.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The host name of the device.",
+        SerializedName = @"hostName",
+        PossibleTypes = new [] { typeof(string) })]
+        string HostName { get; set; }
+        /// <summary>The type of managed identity that is being selected.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The type of managed identity that is being selected.",
+        SerializedName = @"identityType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        string IdentitySelectorIdentityType { get; set; }
+        /// <summary>
+        /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.",
+        SerializedName = @"userAssignedIdentityResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentitySelectorUserAssignedIdentityResourceId { get; set; }
+        /// <summary>
+        /// Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.",
+        SerializedName = @"serialNumber",
+        PossibleTypes = new [] { typeof(string) })]
+        string SerialNumber { get; set; }
 
     }
     /// Network Device Patch properties.
-    internal partial interface INetworkDevicePatchParametersPropertiesInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchablePropertiesInternal
+    internal partial interface INetworkDevicePatchParametersPropertiesInternal
+
     {
+        /// <summary>Switch configuration description.</summary>
+        string Annotation { get; set; }
+        /// <summary>The host name of the device.</summary>
+        string HostName { get; set; }
+        /// <summary>
+        /// The selection of the managed identity to use with this storage account. The identity type must be either system assigned
+        /// or user assigned.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatch IdentitySelector { get; set; }
+        /// <summary>The type of managed identity that is being selected.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        string IdentitySelectorIdentityType { get; set; }
+        /// <summary>
+        /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+        /// </summary>
+        string IdentitySelectorUserAssignedIdentityResourceId { get; set; }
+        /// <summary>
+        /// Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
+        /// </summary>
+        string SerialNumber { get; set; }
 
     }
 }

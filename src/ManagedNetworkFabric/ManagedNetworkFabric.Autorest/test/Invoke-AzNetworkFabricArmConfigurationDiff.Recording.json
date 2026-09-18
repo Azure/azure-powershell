@@ -1,0 +1,63 @@
+{
+  "Invoke-AzNetworkFabricArmConfigurationDiff+[NoContext]+Arm+$POST+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/jnarvaez-nf/armConfigurationDiff?api-version=2025-07-15+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/jnarvaez-nf/armConfigurationDiff?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "1"
+        ],
+        "x-ms-client-request-id": [
+          "0141cb52-07b5-498d-b3f2-118a9bddc2d6"
+        ],
+        "CommandName": [
+          "Invoke-AzNetworkFabricArmConfigurationDiff"
+        ],
+        "FullCommandName": [
+          "Invoke-AzNetworkFabricArmConfigurationDiff_Arm"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.3",
+          "Az.ManagedNetworkFabric/0.1.3"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "mock"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "22"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  }
+}

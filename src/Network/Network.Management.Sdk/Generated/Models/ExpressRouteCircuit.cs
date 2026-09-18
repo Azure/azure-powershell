@@ -40,11 +40,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="tags">Resource tags.
         /// </param>
 
+        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
+        /// </param>
+
         /// <param name="sku">The SKU.
         /// </param>
 
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
+        /// <param name="resiliencyLevel">The resiliency level of the ExpressRoute circuit.
+        /// Possible values include: &#39;Standard&#39;, &#39;High&#39;, &#39;Maximum&#39;</param>
 
         /// <param name="provisioningState">The provisioning state of the express route circuit resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
@@ -58,7 +61,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="serviceProviderProvisioningState">The ServiceProviderProvisioningState state of the resource.
         /// Possible values include: &#39;NotProvisioned&#39;, &#39;Provisioning&#39;, &#39;Provisioned&#39;,
-        /// &#39;Deprovisioning&#39;</param>
+        /// &#39;Deprovisioning&#39;, &#39;DeProvisioned&#39;</param>
 
         /// <param name="authorizations">The list of authorizations.
         /// </param>
@@ -86,6 +89,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="stag">The identifier of the circuit traffic. Outer tag for QinQ encapsulation.
         /// </param>
 
+        /// <param name="partnerAccountId">Account ID of customer account on partner cloud provider.
+        /// </param>
+
+        /// <param name="activationKey">Activation Key from partner cloud provider.
+        /// </param>
+
         /// <param name="gatewayManagerEtag">The GatewayManager Etag.
         /// </param>
 
@@ -100,12 +109,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="enableDirectPortRateLimit">Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
         /// </param>
-        public ExpressRouteCircuit(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExpressRouteCircuitSku sku = default(ExpressRouteCircuitSku), string etag = default(string), string provisioningState = default(string), bool? allowClassicOperations = default(bool?), string circuitProvisioningState = default(string), string serviceProviderProvisioningState = default(string), System.Collections.Generic.IList<ExpressRouteCircuitAuthorization> authorizations = default(System.Collections.Generic.IList<ExpressRouteCircuitAuthorization>), System.Collections.Generic.IList<ExpressRouteCircuitPeering> peerings = default(System.Collections.Generic.IList<ExpressRouteCircuitPeering>), string serviceKey = default(string), string serviceProviderNotes = default(string), ExpressRouteCircuitServiceProviderProperties serviceProviderProperties = default(ExpressRouteCircuitServiceProviderProperties), SubResource expressRoutePort = default(SubResource), double? bandwidthInGbps = default(double?), int? stag = default(int?), string gatewayManagerEtag = default(string), bool? globalReachEnabled = default(bool?), string authorizationKey = default(string), string authorizationStatus = default(string), bool? enableDirectPortRateLimit = default(bool?))
+        public ExpressRouteCircuit(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), ExpressRouteCircuitSku sku = default(ExpressRouteCircuitSku), string resiliencyLevel = default(string), string provisioningState = default(string), bool? allowClassicOperations = default(bool?), string circuitProvisioningState = default(string), string serviceProviderProvisioningState = default(string), System.Collections.Generic.IList<ExpressRouteCircuitAuthorization> authorizations = default(System.Collections.Generic.IList<ExpressRouteCircuitAuthorization>), System.Collections.Generic.IList<ExpressRouteCircuitPeering> peerings = default(System.Collections.Generic.IList<ExpressRouteCircuitPeering>), string serviceKey = default(string), string serviceProviderNotes = default(string), ExpressRouteCircuitServiceProviderProperties serviceProviderProperties = default(ExpressRouteCircuitServiceProviderProperties), SubResource expressRoutePort = default(SubResource), double? bandwidthInGbps = default(double?), int? stag = default(int?), string partnerAccountId = default(string), string activationKey = default(string), string gatewayManagerEtag = default(string), bool? globalReachEnabled = default(bool?), string authorizationKey = default(string), string authorizationStatus = default(string), bool? enableDirectPortRateLimit = default(bool?))
 
         : base(id, name, type, location, tags)
         {
-            this.Sku = sku;
             this.Etag = etag;
+            this.Sku = sku;
+            this.ResiliencyLevel = resiliencyLevel;
             this.ProvisioningState = provisioningState;
             this.AllowClassicOperations = allowClassicOperations;
             this.CircuitProvisioningState = circuitProvisioningState;
@@ -118,6 +128,8 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ExpressRoutePort = expressRoutePort;
             this.BandwidthInGbps = bandwidthInGbps;
             this.Stag = stag;
+            this.PartnerAccountId = partnerAccountId;
+            this.ActivationKey = activationKey;
             this.GatewayManagerEtag = gatewayManagerEtag;
             this.GlobalReachEnabled = globalReachEnabled;
             this.AuthorizationKey = authorizationKey;
@@ -133,17 +145,23 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
+        /// Gets a unique read-only string that changes whenever the resource is
+        /// updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
+        public string Etag {get; private set; }
+
+        /// <summary>
         /// Gets or sets the SKU.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
         public ExpressRouteCircuitSku Sku {get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource is
-        /// updated.
+        /// Gets the resiliency level of the ExpressRoute circuit. Possible values include: &#39;Standard&#39;, &#39;High&#39;, &#39;Maximum&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
-        public string Etag {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resiliencyLevel")]
+        public string ResiliencyLevel {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the express route circuit resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
@@ -164,7 +182,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string CircuitProvisioningState {get; set; }
 
         /// <summary>
-        /// Gets or sets the ServiceProviderProvisioningState state of the resource. Possible values include: &#39;NotProvisioned&#39;, &#39;Provisioning&#39;, &#39;Provisioned&#39;, &#39;Deprovisioning&#39;
+        /// Gets or sets the ServiceProviderProvisioningState state of the resource. Possible values include: &#39;NotProvisioned&#39;, &#39;Provisioning&#39;, &#39;Provisioned&#39;, &#39;Deprovisioning&#39;, &#39;DeProvisioned&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serviceProviderProvisioningState")]
         public string ServiceProviderProvisioningState {get; set; }
@@ -219,6 +237,18 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.stag")]
         public int? Stag {get; private set; }
+
+        /// <summary>
+        /// Gets or sets account ID of customer account on partner cloud provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.partnerAccountId")]
+        public string PartnerAccountId {get; set; }
+
+        /// <summary>
+        /// Gets or sets activation Key from partner cloud provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.activationKey")]
+        public string ActivationKey {get; set; }
 
         /// <summary>
         /// Gets or sets the GatewayManager Etag.

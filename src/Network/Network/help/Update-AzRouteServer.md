@@ -18,7 +18,7 @@ Update-AzRouteServer -ResourceGroupName <String> -RouteServerName <String>
  [-AllowBranchToBranchTraffic <Boolean>] [-HubRoutingPreference <String>]
  [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### RouteServerResourceIdParameterSet
@@ -27,7 +27,7 @@ Update-AzRouteServer [-AllowBranchToBranchTraffic <Boolean>] -ResourceId <String
  [-HubRoutingPreference <String>]
  [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,11 +66,41 @@ To update the Routing Infrastructure Units to 3.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AllowBranchToBranchTraffic
 Flag to allow branch to branch traffic for route server.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

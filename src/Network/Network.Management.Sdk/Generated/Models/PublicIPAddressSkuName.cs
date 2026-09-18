@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class PublicIPAddressSkuName
     {
+        /// <summary>
+        /// Basic
+        /// </summary>
         public const string Basic = "Basic";
+        /// <summary>
+        /// Standard
+        /// </summary>
         public const string Standard = "Standard";
+        /// <summary>
+        /// StandardV2
+        /// </summary>
         public const string StandardV2 = "StandardV2";
     }
 }

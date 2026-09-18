@@ -13,435 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class ExpressRouteCircuitsOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified express route circuit.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the express route circuit.
-        /// </param>
-        public static void Delete(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName)
-        {
-                ((IExpressRouteCircuitsOperations)operations).DeleteAsync(resourceGroupName, circuitName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified express route circuit.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the express route circuit.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, circuitName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets information about the specified express route circuit.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of express route circuit.
-        /// </param>
-        public static ExpressRouteCircuit Get(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName)
-        {
-                return ((IExpressRouteCircuitsOperations)operations).GetAsync(resourceGroupName, circuitName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets information about the specified express route circuit.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of express route circuit.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCircuit> GetAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, circuitName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates an express route circuit.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the circuit.
-        /// </param>
-        public static ExpressRouteCircuit CreateOrUpdate(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, ExpressRouteCircuit parameters)
-        {
-                return ((IExpressRouteCircuitsOperations)operations).CreateOrUpdateAsync(resourceGroupName, circuitName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates an express route circuit.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the circuit.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCircuit> CreateOrUpdateAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, ExpressRouteCircuit parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, circuitName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates an express route circuit tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the circuit.
-        /// </param>
-        public static ExpressRouteCircuit UpdateTags(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, TagsObject parameters)
-        {
-                return ((IExpressRouteCircuitsOperations)operations).UpdateTagsAsync(resourceGroupName, circuitName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates an express route circuit tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the circuit.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCircuit> UpdateTagsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, circuitName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets the currently advertised ARP table associated with the express route
-        /// circuit in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the express route circuit.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='devicePath'>
-        /// The path of the device.
-        /// </param>
-        public static ExpressRouteCircuitsArpTableListResult ListArpTable(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath)
-        {
-                return ((IExpressRouteCircuitsOperations)operations).ListArpTableAsync(resourceGroupName, circuitName, peeringName, devicePath).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the currently advertised ARP table associated with the express route
-        /// circuit in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the express route circuit.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='devicePath'>
-        /// The path of the device.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCircuitsArpTableListResult> ListArpTableAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListArpTableWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, devicePath, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets the currently advertised routes table associated with the express
-        /// route circuit in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the express route circuit.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='devicePath'>
-        /// The path of the device.
-        /// </param>
-        public static ExpressRouteCircuitsRoutesTableListResult ListRoutesTable(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath)
-        {
-                return ((IExpressRouteCircuitsOperations)operations).ListRoutesTableAsync(resourceGroupName, circuitName, peeringName, devicePath).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the currently advertised routes table associated with the express
-        /// route circuit in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the express route circuit.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='devicePath'>
-        /// The path of the device.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCircuitsRoutesTableListResult> ListRoutesTableAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListRoutesTableWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, devicePath, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets the currently advertised routes table summary associated with the
-        /// express route circuit in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the express route circuit.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='devicePath'>
-        /// The path of the device.
-        /// </param>
-        public static ExpressRouteCircuitsRoutesTableSummaryListResult ListRoutesTableSummary(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath)
-        {
-                return ((IExpressRouteCircuitsOperations)operations).ListRoutesTableSummaryAsync(resourceGroupName, circuitName, peeringName, devicePath).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the currently advertised routes table summary associated with the
-        /// express route circuit in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the express route circuit.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='devicePath'>
-        /// The path of the device.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCircuitsRoutesTableSummaryListResult> ListRoutesTableSummaryAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListRoutesTableSummaryWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, devicePath, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets all the stats from an express route circuit in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the express route circuit.
-        /// </param>
-        public static ExpressRouteCircuitStats GetStats(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName)
-        {
-                return ((IExpressRouteCircuitsOperations)operations).GetStatsAsync(resourceGroupName, circuitName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all the stats from an express route circuit in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the express route circuit.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCircuitStats> GetStatsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetStatsWithHttpMessagesAsync(resourceGroupName, circuitName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets all stats from an express route circuit in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the express route circuit.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        public static ExpressRouteCircuitStats GetPeeringStats(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName)
-        {
-                return ((IExpressRouteCircuitsOperations)operations).GetPeeringStatsAsync(resourceGroupName, circuitName, peeringName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all stats from an express route circuit in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the express route circuit.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCircuitStats> GetPeeringStatsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetPeeringStatsWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets all the express route circuits in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<ExpressRouteCircuit> List(this IExpressRouteCircuitsOperations operations, string resourceGroupName)
-        {
-                return ((IExpressRouteCircuitsOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all the express route circuits in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ExpressRouteCircuit>> ListAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all the express route circuits in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -469,20 +40,170 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Gets all the express route circuits in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ExpressRouteCircuit> List(this IExpressRouteCircuitsOperations operations, string resourceGroupName)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all the express route circuits in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ExpressRouteCircuit>> ListAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets information about the specified express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        public static ExpressRouteCircuit Get(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).GetAsync(resourceGroupName, circuitName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets information about the specified express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ExpressRouteCircuit> GetAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, circuitName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        public static ExpressRouteCircuit CreateOrUpdate(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, ExpressRouteCircuit parameters)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).CreateOrUpdateAsync(resourceGroupName, circuitName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ExpressRouteCircuit> CreateOrUpdateAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, ExpressRouteCircuit parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, circuitName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates an express route circuit tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        public static ExpressRouteCircuit UpdateTags(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, TagsObject parameters)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).UpdateTagsAsync(resourceGroupName, circuitName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates an express route circuit tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ExpressRouteCircuit> UpdateTagsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, circuitName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified express route circuit.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of express route circuit.
         /// </param>
-        public static void BeginDelete(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName)
+        public static void Delete(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName)
         {
-                ((IExpressRouteCircuitsOperations)operations).BeginDeleteAsync(resourceGroupName, circuitName).GetAwaiter().GetResult();
+                ((IExpressRouteCircuitsOperations)operations).DeleteAsync(resourceGroupName, circuitName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -492,17 +213,464 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, circuitName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, circuitName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Retrieves the details of all the link failover tests performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='failoverTestType'>
+        /// The type of failover test.
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests.
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteLinkFailoverAllTestsDetails> GetCircuitLinkFailoverAllTestsDetails(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string failoverTestType = default(string), bool? fetchLatest = default(bool?))
+        {
+                return ((IExpressRouteCircuitsOperations)operations).GetCircuitLinkFailoverAllTestsDetailsAsync(resourceGroupName, circuitName, failoverTestType, fetchLatest).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of all the link failover tests performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='failoverTestType'>
+        /// The type of failover test.
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteLinkFailoverAllTestsDetails>> GetCircuitLinkFailoverAllTestsDetailsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string failoverTestType = default(string), bool? fetchLatest = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetCircuitLinkFailoverAllTestsDetailsWithHttpMessagesAsync(resourceGroupName, circuitName, failoverTestType, fetchLatest, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the details of a particular link failover test performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test.
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteLinkFailoverSingleTestDetails> GetCircuitLinkFailoverSingleTestDetails(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory, string failoverTestId)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).GetCircuitLinkFailoverSingleTestDetailsAsync(resourceGroupName, circuitName, linkType, circuitTestCategory, failoverTestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of a particular link failover test performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteLinkFailoverSingleTestDetails>> GetCircuitLinkFailoverSingleTestDetailsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory, string failoverTestId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetCircuitLinkFailoverSingleTestDetailsWithHttpMessagesAsync(resourceGroupName, circuitName, linkType, circuitTestCategory, failoverTestId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the currently advertised ARP table associated with the express route
+        /// circuit in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of the express route port.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        /// <param name='devicePath'>
+        /// The name of the arpTables.
+        /// </param>
+        public static ExpressRouteCircuitsArpTableListResult ListArpTable(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).ListArpTableAsync(resourceGroupName, circuitName, peeringName, devicePath).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the currently advertised ARP table associated with the express route
+        /// circuit in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of the express route port.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        /// <param name='devicePath'>
+        /// The name of the arpTables.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ExpressRouteCircuitsArpTableListResult> ListArpTableAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListArpTableWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, devicePath, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the currently advertised routes table associated with the express
+        /// route circuit in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of the express route port.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        /// <param name='devicePath'>
+        /// The name of the routeTables.
+        /// </param>
+        public static ExpressRouteCircuitsRoutesTableListResult ListRoutesTable(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).ListRoutesTableAsync(resourceGroupName, circuitName, peeringName, devicePath).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the currently advertised routes table associated with the express
+        /// route circuit in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of the express route port.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        /// <param name='devicePath'>
+        /// The name of the routeTables.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ExpressRouteCircuitsRoutesTableListResult> ListRoutesTableAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListRoutesTableWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, devicePath, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the currently advertised routes table summary associated with the
+        /// express route circuit in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of the express route port.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        /// <param name='devicePath'>
+        /// The name of the routeTablesSummary.
+        /// </param>
+        public static ExpressRouteCircuitsRoutesTableSummaryListResult ListRoutesTableSummary(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).ListRoutesTableSummaryAsync(resourceGroupName, circuitName, peeringName, devicePath).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the currently advertised routes table summary associated with the
+        /// express route circuit in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of the express route port.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        /// <param name='devicePath'>
+        /// The name of the routeTablesSummary.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ExpressRouteCircuitsRoutesTableSummaryListResult> ListRoutesTableSummaryAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListRoutesTableSummaryWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, devicePath, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets all stats from an express route circuit in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        public static ExpressRouteCircuitStats GetPeeringStats(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).GetPeeringStatsAsync(resourceGroupName, circuitName, peeringName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all stats from an express route circuit in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ExpressRouteCircuitStats> GetPeeringStatsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetPeeringStatsWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Starts link failover simulation on the express route circuit for the
+        /// specified link type and test category.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
+        /// </param>
+        public static string StartCircuitLinkFailoverTest(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).StartCircuitLinkFailoverTestAsync(resourceGroupName, circuitName, linkType, circuitTestCategory).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Starts link failover simulation on the express route circuit for the
+        /// specified link type and test category.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<string> StartCircuitLinkFailoverTestAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.StartCircuitLinkFailoverTestWithHttpMessagesAsync(resourceGroupName, circuitName, linkType, circuitTestCategory, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets all the stats from an express route circuit in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        public static ExpressRouteCircuitStats GetStats(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).GetStatsAsync(resourceGroupName, circuitName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all the stats from an express route circuit in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ExpressRouteCircuitStats> GetStatsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetStatsWithHttpMessagesAsync(resourceGroupName, circuitName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Stops link failover simulation on the express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        public static string StopCircuitLinkFailoverTest(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, ExpressRouteLinkFailoverStopApiParameters stopParameters)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).StopCircuitLinkFailoverTestAsync(resourceGroupName, circuitName, stopParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Stops link failover simulation on the express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<string> StopCircuitLinkFailoverTestAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, ExpressRouteLinkFailoverStopApiParameters stopParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.StopCircuitLinkFailoverTestWithHttpMessagesAsync(resourceGroupName, circuitName, stopParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Creates or updates an express route circuit.
@@ -511,10 +679,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the circuit.
+        /// The name of express route circuit.
         /// </param>
         public static ExpressRouteCircuit BeginCreateOrUpdate(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, ExpressRouteCircuit parameters)
         {
@@ -528,10 +696,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -544,6 +712,154 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Deletes the specified express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        public static void BeginDelete(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName)
+        {
+                ((IExpressRouteCircuitsOperations)operations).BeginDeleteAsync(resourceGroupName, circuitName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, circuitName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Retrieves the details of all the link failover tests performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='failoverTestType'>
+        /// The type of failover test.
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests.
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteLinkFailoverAllTestsDetails> BeginGetCircuitLinkFailoverAllTestsDetails(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string failoverTestType = default(string), bool? fetchLatest = default(bool?))
+        {
+                return ((IExpressRouteCircuitsOperations)operations).BeginGetCircuitLinkFailoverAllTestsDetailsAsync(resourceGroupName, circuitName, failoverTestType, fetchLatest).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of all the link failover tests performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='failoverTestType'>
+        /// The type of failover test.
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteLinkFailoverAllTestsDetails>> BeginGetCircuitLinkFailoverAllTestsDetailsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string failoverTestType = default(string), bool? fetchLatest = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetCircuitLinkFailoverAllTestsDetailsWithHttpMessagesAsync(resourceGroupName, circuitName, failoverTestType, fetchLatest, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the details of a particular link failover test performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test.
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteLinkFailoverSingleTestDetails> BeginGetCircuitLinkFailoverSingleTestDetails(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory, string failoverTestId)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).BeginGetCircuitLinkFailoverSingleTestDetailsAsync(resourceGroupName, circuitName, linkType, circuitTestCategory, failoverTestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of a particular link failover test performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteLinkFailoverSingleTestDetails>> BeginGetCircuitLinkFailoverSingleTestDetailsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory, string failoverTestId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetCircuitLinkFailoverSingleTestDetailsWithHttpMessagesAsync(resourceGroupName, circuitName, linkType, circuitTestCategory, failoverTestId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets the currently advertised ARP table associated with the express route
         /// circuit in a resource group.
         /// </summary>
@@ -551,16 +867,16 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of the express route port.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
         /// </param>
         /// <param name='devicePath'>
-        /// The path of the device.
+        /// The name of the arpTables.
         /// </param>
         public static ExpressRouteCircuitsArpTableListResult BeginListArpTable(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath)
         {
@@ -575,16 +891,16 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of the express route port.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
         /// </param>
         /// <param name='devicePath'>
-        /// The path of the device.
+        /// The name of the arpTables.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -604,16 +920,16 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of the express route port.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
         /// </param>
         /// <param name='devicePath'>
-        /// The path of the device.
+        /// The name of the routeTables.
         /// </param>
         public static ExpressRouteCircuitsRoutesTableListResult BeginListRoutesTable(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath)
         {
@@ -628,16 +944,16 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of the express route port.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
         /// </param>
         /// <param name='devicePath'>
-        /// The path of the device.
+        /// The name of the routeTables.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -657,16 +973,16 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of the express route port.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
         /// </param>
         /// <param name='devicePath'>
-        /// The path of the device.
+        /// The name of the routeTablesSummary.
         /// </param>
         public static ExpressRouteCircuitsRoutesTableSummaryListResult BeginListRoutesTableSummary(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath)
         {
@@ -681,16 +997,16 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of the express route port.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
         /// </param>
         /// <param name='devicePath'>
-        /// The path of the device.
+        /// The name of the routeTablesSummary.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -703,34 +1019,93 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Gets all the express route circuits in a resource group.
+        /// Starts link failover simulation on the express route circuit for the
+        /// specified link type and test category.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ExpressRouteCircuit> ListNext(this IExpressRouteCircuitsOperations operations, string nextPageLink)
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
+        /// </param>
+        public static string BeginStartCircuitLinkFailoverTest(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory)
         {
-                return ((IExpressRouteCircuitsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return ((IExpressRouteCircuitsOperations)operations).BeginStartCircuitLinkFailoverTestAsync(resourceGroupName, circuitName, linkType, circuitTestCategory).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Gets all the express route circuits in a resource group.
+        /// Starts link failover simulation on the express route circuit for the
+        /// specified link type and test category.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ExpressRouteCircuit>> ListNextAsync(this IExpressRouteCircuitsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<string> BeginStartCircuitLinkFailoverTestAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginStartCircuitLinkFailoverTestWithHttpMessagesAsync(resourceGroupName, circuitName, linkType, circuitTestCategory, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Stops link failover simulation on the express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        public static string BeginStopCircuitLinkFailoverTest(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, ExpressRouteLinkFailoverStopApiParameters stopParameters)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).BeginStopCircuitLinkFailoverTestAsync(resourceGroupName, circuitName, stopParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Stops link failover simulation on the express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<string> BeginStopCircuitLinkFailoverTestAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, ExpressRouteLinkFailoverStopApiParameters stopParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginStopCircuitLinkFailoverTestWithHttpMessagesAsync(resourceGroupName, circuitName, stopParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -764,6 +1139,39 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ExpressRouteCircuit>> ListAllNextAsync(this IExpressRouteCircuitsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets all the express route circuits in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ExpressRouteCircuit> ListNext(this IExpressRouteCircuitsOperations operations, string nextPageLink)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all the express route circuits in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ExpressRouteCircuit>> ListNextAsync(this IExpressRouteCircuitsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

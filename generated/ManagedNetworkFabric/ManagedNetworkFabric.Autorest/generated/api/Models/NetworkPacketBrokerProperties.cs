@@ -13,6 +13,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkPacketBrokerPropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="ConfigurationState" /> property.</summary>
+        private string _configurationState;
+
+        /// <summary>Configuration state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string ConfigurationState { get => this._configurationState; }
+
+        /// <summary>Backing field for <see cref="LastOperation" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties _lastOperation;
+
+        /// <summary>Details of the last operation performed on the resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties LastOperation { get => (this._lastOperation = this._lastOperation ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationProperties()); }
+
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string LastOperationDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationPropertiesInternal)LastOperation).Detail; }
+
+        /// <summary>Internal Acessors for ConfigurationState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkPacketBrokerPropertiesInternal.ConfigurationState { get => this._configurationState; set { {_configurationState = value;} } }
+
+        /// <summary>Internal Acessors for LastOperation</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkPacketBrokerPropertiesInternal.LastOperation { get => (this._lastOperation = this._lastOperation ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationProperties()); set { {_lastOperation = value;} } }
+
+        /// <summary>Internal Acessors for LastOperationDetail</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkPacketBrokerPropertiesInternal.LastOperationDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationPropertiesInternal)LastOperation).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationPropertiesInternal)LastOperation).Detail = value ?? null; }
+
         /// <summary>Internal Acessors for NeighborGroupId</summary>
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkPacketBrokerPropertiesInternal.NeighborGroupId { get => this._neighborGroupId; set { {_neighborGroupId = value;} } }
 
@@ -82,6 +109,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     public partial interface INetworkPacketBrokerProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable
     {
+        /// <summary>Configuration state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Configuration state of the resource.",
+        SerializedName = @"configurationState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl", "Provisioning", "PendingCommit", "PendingAdministrativeUpdate")]
+        string ConfigurationState { get;  }
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Details status of the last operation performed on the resource.",
+        SerializedName = @"details",
+        PossibleTypes = new [] { typeof(string) })]
+        string LastOperationDetail { get;  }
         /// <summary>List of neighbor group IDs configured on NPB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -106,7 +156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         System.Collections.Generic.List<string> NetworkDeviceId { get;  }
         /// <summary>ARM resource ID of the Network Fabric.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -157,6 +207,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     internal partial interface INetworkPacketBrokerPropertiesInternal
 
     {
+        /// <summary>Configuration state of the resource.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl", "Provisioning", "PendingCommit", "PendingAdministrativeUpdate")]
+        string ConfigurationState { get; set; }
+        /// <summary>Details of the last operation performed on the resource</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties LastOperation { get; set; }
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        string LastOperationDetail { get; set; }
         /// <summary>List of neighbor group IDs configured on NPB.</summary>
         System.Collections.Generic.List<string> NeighborGroupId { get; set; }
         /// <summary>List of ARM resource IDs of Network Devices [NPB].</summary>

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ConnectivityTopology
     {
+        /// <summary>
+        /// HubAndSpoke
+        /// </summary>
         public const string HubAndSpoke = "HubAndSpoke";
+        /// <summary>
+        /// Mesh
+        /// </summary>
         public const string Mesh = "Mesh";
     }
 }

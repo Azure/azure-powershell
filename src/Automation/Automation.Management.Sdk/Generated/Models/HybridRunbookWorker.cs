@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Automation.Models
     /// Definition of hybrid runbook worker.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class HybridRunbookWorker : Resource
+    public partial class HybridRunbookWorker : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the HybridRunbookWorker class.
@@ -25,16 +25,25 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the HybridRunbookWorker class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource Id for the resource
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="systemData">Resource system metadata.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
+        /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="workerType">Type of the HybridWorker.
@@ -54,11 +63,10 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="workerName">Name of the HybridWorker.
         /// </param>
-        public HybridRunbookWorker(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string workerType = default(string), string ip = default(string), System.DateTimeOffset registeredDateTime = default(System.DateTimeOffset), System.DateTimeOffset lastSeenDateTime = default(System.DateTimeOffset), string vmResourceId = default(string), string workerName = default(string))
+        public HybridRunbookWorker(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string workerType = default(string), string ip = default(string), System.DateTimeOffset registeredDateTime = default(System.DateTimeOffset), System.DateTimeOffset lastSeenDateTime = default(System.DateTimeOffset), string vmResourceId = default(string), string workerName = default(string))
 
-        : base(id, name, type)
+        : base(location, id, name, type, systemData, tags)
         {
-            this.SystemData = systemData;
             this.WorkerType = workerType;
             this.IP = ip;
             this.RegisteredDateTime = registeredDateTime;
@@ -73,12 +81,6 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets resource system metadata.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
 
         /// <summary>
         /// Gets or sets type of the HybridWorker. Possible values include: &#39;HybridV1&#39;, &#39;HybridV2&#39;
@@ -115,5 +117,19 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.workerName")]
         public string WorkerName {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+
+
+
+
+        }
     }
 }

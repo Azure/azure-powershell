@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>List of RoutePolicies.</summary>
+    /// <summary>Paged collection of RoutePolicy items</summary>
     [System.ComponentModel.TypeConverter(typeof(RoutePoliciesListResultTypeConverter))]
     public partial class RoutePoliciesListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// List of RoutePolicies.
+    /// Paged collection of RoutePolicy items
     [System.ComponentModel.TypeConverter(typeof(RoutePoliciesListResultTypeConverter))]
     public partial interface IRoutePoliciesListResult
 

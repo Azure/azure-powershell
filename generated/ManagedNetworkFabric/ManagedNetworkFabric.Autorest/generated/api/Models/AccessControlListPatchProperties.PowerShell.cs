@@ -76,29 +76,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("GlobalAccessControlListAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).GlobalAccessControlListAction = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalAccessControlListActionPatchProperties) content.GetValueForProperty("GlobalAccessControlListAction",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).GlobalAccessControlListAction, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.GlobalAccessControlListActionPatchPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ConfigurationType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).ConfigurationType = (string) content.GetValueForProperty("ConfigurationType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).ConfigurationType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).ConfigurationType = (string) content.GetValueForProperty("ConfigurationType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).ConfigurationType, global::System.Convert.ToString);
             }
             if (content.Contains("AclsUrl"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).AclsUrl = (string) content.GetValueForProperty("AclsUrl",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).AclsUrl, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).AclsUrl = (string) content.GetValueForProperty("AclsUrl",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).AclsUrl, global::System.Convert.ToString);
             }
             if (content.Contains("DefaultAction"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).DefaultAction = (string) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).DefaultAction, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).DefaultAction = (string) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).DefaultAction, global::System.Convert.ToString);
             }
             if (content.Contains("MatchConfiguration"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).MatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfiguration>) content.GetValueForProperty("MatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).MatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AccessControlListMatchConfigurationTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).MatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfigurationPatch>) content.GetValueForProperty("MatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).MatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfigurationPatch>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AccessControlListMatchConfigurationPatchTypeConverter.ConvertFrom));
             }
             if (content.Contains("DynamicMatchConfiguration"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).DynamicMatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration>) content.GetValueForProperty("DynamicMatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).DynamicMatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.CommonDynamicMatchConfigurationTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).DynamicMatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfigurationPatch>) content.GetValueForProperty("DynamicMatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).DynamicMatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfigurationPatch>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.CommonDynamicMatchConfigurationPatchTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ControlPlaneAclConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).ControlPlaneAclConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControlPlaneAclPatchProperties>) content.GetValueForProperty("ControlPlaneAclConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).ControlPlaneAclConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControlPlaneAclPatchProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ControlPlaneAclPatchPropertiesTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AclType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).AclType = (string) content.GetValueForProperty("AclType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).AclType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeviceRole"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).DeviceRole = (string) content.GetValueForProperty("DeviceRole",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).DeviceRole, global::System.Convert.ToString);
             }
             if (content.Contains("Annotation"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).Annotation, global::System.Convert.ToString);
+            }
+            if (content.Contains("GlobalAccessControlListActionEnableCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).GlobalAccessControlListActionEnableCount = (string) content.GetValueForProperty("GlobalAccessControlListActionEnableCount",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).GlobalAccessControlListActionEnableCount, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -117,29 +137,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("GlobalAccessControlListAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).GlobalAccessControlListAction = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalAccessControlListActionPatchProperties) content.GetValueForProperty("GlobalAccessControlListAction",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).GlobalAccessControlListAction, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.GlobalAccessControlListActionPatchPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ConfigurationType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).ConfigurationType = (string) content.GetValueForProperty("ConfigurationType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).ConfigurationType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).ConfigurationType = (string) content.GetValueForProperty("ConfigurationType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).ConfigurationType, global::System.Convert.ToString);
             }
             if (content.Contains("AclsUrl"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).AclsUrl = (string) content.GetValueForProperty("AclsUrl",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).AclsUrl, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).AclsUrl = (string) content.GetValueForProperty("AclsUrl",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).AclsUrl, global::System.Convert.ToString);
             }
             if (content.Contains("DefaultAction"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).DefaultAction = (string) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).DefaultAction, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).DefaultAction = (string) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).DefaultAction, global::System.Convert.ToString);
             }
             if (content.Contains("MatchConfiguration"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).MatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfiguration>) content.GetValueForProperty("MatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).MatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AccessControlListMatchConfigurationTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).MatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfigurationPatch>) content.GetValueForProperty("MatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).MatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfigurationPatch>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AccessControlListMatchConfigurationPatchTypeConverter.ConvertFrom));
             }
             if (content.Contains("DynamicMatchConfiguration"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).DynamicMatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration>) content.GetValueForProperty("DynamicMatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)this).DynamicMatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.CommonDynamicMatchConfigurationTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).DynamicMatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfigurationPatch>) content.GetValueForProperty("DynamicMatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).DynamicMatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfigurationPatch>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.CommonDynamicMatchConfigurationPatchTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ControlPlaneAclConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).ControlPlaneAclConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControlPlaneAclPatchProperties>) content.GetValueForProperty("ControlPlaneAclConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).ControlPlaneAclConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControlPlaneAclPatchProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ControlPlaneAclPatchPropertiesTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AclType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).AclType = (string) content.GetValueForProperty("AclType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).AclType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeviceRole"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).DeviceRole = (string) content.GetValueForProperty("DeviceRole",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).DeviceRole, global::System.Convert.ToString);
             }
             if (content.Contains("Annotation"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).Annotation, global::System.Convert.ToString);
+            }
+            if (content.Contains("GlobalAccessControlListActionEnableCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).GlobalAccessControlListActionEnableCount = (string) content.GetValueForProperty("GlobalAccessControlListActionEnableCount",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)this).GlobalAccessControlListActionEnableCount, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

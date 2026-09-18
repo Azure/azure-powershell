@@ -65,9 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return;
             }
-            __ipExtendedCommunityAddOperationProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPExtendedCommunityAddOperationProperties(json);
-            __ipExtendedCommunityDeleteOperationProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPExtendedCommunityDeleteOperationProperties(json);
-            __ipExtendedCommunitySetOperationProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPExtendedCommunitySetOperationProperties(json);
+            {_add = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("add"), out var __jsonAdd) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPExtendedCommunityIdList.FromJson(__jsonAdd) : _add;}
+            {_delete = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("delete"), out var __jsonDelete) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPExtendedCommunityIdList.FromJson(__jsonDelete) : _delete;}
+            {_set = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("set"), out var __jsonSet) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPExtendedCommunityIdList.FromJson(__jsonSet) : _set;}
             AfterFromJson(json);
         }
 
@@ -103,9 +103,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return container;
             }
-            __ipExtendedCommunityAddOperationProperties?.ToJson(container, serializationMode);
-            __ipExtendedCommunityDeleteOperationProperties?.ToJson(container, serializationMode);
-            __ipExtendedCommunitySetOperationProperties?.ToJson(container, serializationMode);
+            AddIf( null != this._add ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._add.ToJson(null,serializationMode) : null, "add" ,container.Add );
+            AddIf( null != this._delete ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._delete.ToJson(null,serializationMode) : null, "delete" ,container.Add );
+            AddIf( null != this._set ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._set.ToJson(null,serializationMode) : null, "set" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

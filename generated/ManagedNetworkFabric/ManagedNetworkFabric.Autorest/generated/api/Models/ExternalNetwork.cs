@@ -25,7 +25,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 
         /// <summary>Switch configuration description.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string Annotation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)Property).Annotation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)Property).Annotation = value ?? null; }
+        public string Annotation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).Annotation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).Annotation = value ?? null; }
+
+        /// <summary>BMP Configuration State.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string BmpConfigurationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).BmpConfigurationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).BmpConfigurationState = value ?? null; }
 
         /// <summary>Configuration state of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
@@ -33,13 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 
         /// <summary>Export Route Policy either IPv4 or IPv6.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicy ExportRoutePolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchablePropertiesInternal)Property).ExportRoutePolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchablePropertiesInternal)Property).ExportRoutePolicy = value ?? null /* model class */; }
-
-        /// <summary>
-        /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string ExportRoutePolicyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchablePropertiesInternal)Property).ExportRoutePolicyId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchablePropertiesInternal)Property).ExportRoutePolicyId = value ?? null; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicy ExportRoutePolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).ExportRoutePolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).ExportRoutePolicy = value ?? null /* model class */; }
 
         /// <summary>
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -49,58 +47,128 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 
         /// <summary>Import Route Policy either IPv4 or IPv6.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IImportRoutePolicy ImportRoutePolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchablePropertiesInternal)Property).ImportRoutePolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchablePropertiesInternal)Property).ImportRoutePolicy = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IImportRoutePolicy ImportRoutePolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).ImportRoutePolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).ImportRoutePolicy = value ?? null /* model class */; }
 
-        /// <summary>
-        /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
-        /// </summary>
+        /// <summary>Details status of the last operation performed on the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string ImportRoutePolicyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchablePropertiesInternal)Property).ImportRoutePolicyId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchablePropertiesInternal)Property).ImportRoutePolicyId = value ?? null; }
+        public string LastOperationDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).LastOperationDetail; }
 
         /// <summary>Internal Acessors for AdministrativeState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.AdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).AdministrativeState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).AdministrativeState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.AdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).AdministrativeState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).AdministrativeState = value ?? null; }
 
         /// <summary>Internal Acessors for ConfigurationState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.ConfigurationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).ConfigurationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).ConfigurationState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.ConfigurationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).ConfigurationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).ConfigurationState = value ?? null; }
 
-        /// <summary>Internal Acessors for NetworkToNetworkInterconnectId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.NetworkToNetworkInterconnectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).NetworkToNetworkInterconnectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).NetworkToNetworkInterconnectId = value; }
+        /// <summary>Internal Acessors for LastOperation</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.LastOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).LastOperation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).LastOperation = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for LastOperationDetail</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.LastOperationDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).LastOperationDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).LastOperationDetail = value ?? null; }
+
+        /// <summary>Internal Acessors for NetworkFabricId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.NetworkFabricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).NetworkFabricId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).NetworkFabricId = value ?? null; }
+
+        /// <summary>Internal Acessors for OptionAPropertiesBfdConfigurationAdministrativeState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.OptionAPropertiesBfdConfigurationAdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertiesBfdConfigurationAdministrativeState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertiesBfdConfigurationAdministrativeState = value ?? null; }
 
         /// <summary>Internal Acessors for OptionAProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesOptionAProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.OptionAProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesOptionAProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.OptionAProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAProperty = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for OptionAPropertyBfdConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.OptionAPropertyBfdConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyBfdConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyBfdConfiguration = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for OptionAPropertyBmpConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkBmpProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.OptionAPropertyBmpConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyBmpConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyBmpConfiguration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for OptionAPropertyFabricAsn</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.OptionAPropertyFabricAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyFabricAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyFabricAsn = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.OptionAPropertyFabricAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyFabricAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyFabricAsn = value ?? default(long); }
+
+        /// <summary>Internal Acessors for OptionAPropertyNativeIpv4PrefixLimit</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INativeIpv4PrefixLimitProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.OptionAPropertyNativeIpv4PrefixLimit { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyNativeIpv4PrefixLimit; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyNativeIpv4PrefixLimit = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for OptionAPropertyNativeIpv6PrefixLimit</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INativeIpv6PrefixLimitProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.OptionAPropertyNativeIpv6PrefixLimit { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyNativeIpv6PrefixLimit; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyNativeIpv6PrefixLimit = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExternalNetworkProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).ProvisioningState = value ?? null; }
+
+        /// <summary>Internal Acessors for StaticRouteConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkStaticRouteConfiguration Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.StaticRouteConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).StaticRouteConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).StaticRouteConfiguration = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for StaticRouteConfigurationBfdConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.StaticRouteConfigurationBfdConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).StaticRouteConfigurationBfdConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).StaticRouteConfigurationBfdConfiguration = value ?? null /* model class */; }
+
+        /// <summary>
+        /// Internal Acessors for StaticRouteConfigurationBfdConfigurationAdministrativeState
+        /// </summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkInternal.StaticRouteConfigurationBfdConfigurationAdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).StaticRouteConfigurationBfdConfigurationAdministrativeState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).StaticRouteConfigurationBfdConfigurationAdministrativeState = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).Name; }
 
-        /// <summary>Gets the networkToNetworkInterconnectId of the resource.</summary>
+        /// <summary>Prefix limits</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string NetworkToNetworkInterconnectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).NetworkToNetworkInterconnectId; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties> NativeIpv4PrefixLimit { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).NativeIpv4PrefixLimit; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).NativeIpv4PrefixLimit = value ?? null /* arrayOf */; }
 
-        /// <summary>BFD configuration properties</summary>
+        /// <summary>Prefix limits</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration OptionAPropertyBfdConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyBfdConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyBfdConfiguration = value ?? null /* model class */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties> NativeIpv6PrefixLimit { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).NativeIpv6PrefixLimit; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).NativeIpv6PrefixLimit = value ?? null /* arrayOf */; }
+
+        /// <summary>Associated Network Fabric Resource ID</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string NetworkFabricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).NetworkFabricId; }
+
+        /// <summary>
+        /// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string NetworkToNetworkInterconnectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).NetworkToNetworkInterconnectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).NetworkToNetworkInterconnectId = value ?? null; }
+
+        /// <summary>Administrative state of the BfdConfiguration. Example: Enabled | Disabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string OptionAPropertiesBfdConfigurationAdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertiesBfdConfigurationAdministrativeState; }
+
+        /// <summary>Interval in milliseconds. Example: 300.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public int? OptionAPropertiesBfdConfigurationIntervalInMilliSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertiesBfdConfigurationIntervalInMilliSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertiesBfdConfigurationIntervalInMilliSecond = value ?? default(int); }
+
+        /// <summary>Multiplier for the Bfd Configuration. Example: 5.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public int? OptionAPropertiesBfdConfigurationMultiplier { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertiesBfdConfigurationMultiplier; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertiesBfdConfigurationMultiplier = value ?? default(int); }
 
         /// <summary>Egress Acl. ARM resource ID of Access Control Lists.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
@@ -138,6 +206,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
         public string OptionAPropertySecondaryIpv6Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertySecondaryIpv6Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertySecondaryIpv6Prefix = value ?? null; }
 
+        /// <summary>V4OverV6 BGP Session state</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string OptionAPropertyV4OverV6BgpSession { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyV4OverV6BgpSession; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyV4OverV6BgpSession = value ?? null; }
+
+        /// <summary>V6OverV4 BGP Session state</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string OptionAPropertyV6OverV4BgpSession { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyV6OverV4BgpSession; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyV6OverV4BgpSession = value ?? null; }
+
         /// <summary>Vlan identifier. Example : 501</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
         public int? OptionAPropertyVlanId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyVlanId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).OptionAPropertyVlanId = value ?? default(int); }
@@ -153,7 +229,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkProperties _property;
 
-        /// <summary>Resource properties.</summary>
+        /// <summary>External Network Properties</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExternalNetworkProperties()); set => this._property = value; }
 
@@ -165,35 +241,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
+        /// <summary>Administrative state of the BfdConfiguration. Example: Enabled | Disabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string StaticRouteConfigurationBfdConfigurationAdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).StaticRouteConfigurationBfdConfigurationAdministrativeState; }
+
+        /// <summary>Interval in milliseconds. Example: 300.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public int? StaticRouteConfigurationBfdConfigurationIntervalInMilliSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).StaticRouteConfigurationBfdConfigurationIntervalInMilliSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).StaticRouteConfigurationBfdConfigurationIntervalInMilliSecond = value ?? default(int); }
+
+        /// <summary>Multiplier for the Bfd Configuration. Example: 5.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public int? StaticRouteConfigurationBfdConfigurationMultiplier { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).StaticRouteConfigurationBfdConfigurationMultiplier; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).StaticRouteConfigurationBfdConfigurationMultiplier = value ?? default(int); }
+
+        /// <summary>List of IPv4 Routes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties> StaticRouteConfigurationIpv4Route { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).StaticRouteConfigurationIpv4Route; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).StaticRouteConfigurationIpv4Route = value ?? null /* arrayOf */; }
+
+        /// <summary>List of IPv6 Routes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties> StaticRouteConfigurationIpv6Route { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).StaticRouteConfigurationIpv6Route; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal)Property).StaticRouteConfigurationIpv6Route = value ?? null /* arrayOf */; }
+
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -234,7 +330,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Administrative state of the resource.",
         SerializedName = @"administrativeState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA", "UnderMaintenance", "EnabledDegraded")]
         string AdministrativeState { get;  }
         /// <summary>Switch configuration description.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
@@ -247,6 +343,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"annotation",
         PossibleTypes = new [] { typeof(string) })]
         string Annotation { get; set; }
+        /// <summary>BMP Configuration State.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"BMP Configuration State.",
+        SerializedName = @"configurationState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string BmpConfigurationState { get; set; }
         /// <summary>Configuration state of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -257,7 +365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Configuration state of the resource.",
         SerializedName = @"configurationState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl", "Provisioning", "PendingCommit", "PendingAdministrativeUpdate")]
         string ConfigurationState { get;  }
         /// <summary>Export Route Policy either IPv4 or IPv6.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
@@ -270,19 +378,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"exportRoutePolicy",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicy) })]
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicy ExportRoutePolicy { get; set; }
-        /// <summary>
-        /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.",
-        SerializedName = @"exportRoutePolicyId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ExportRoutePolicyId { get; set; }
         /// <summary>Import Route Policy either IPv4 or IPv6.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -294,8 +389,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"importRoutePolicy",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IImportRoutePolicy) })]
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IImportRoutePolicy ImportRoutePolicy { get; set; }
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Details status of the last operation performed on the resource.",
+        SerializedName = @"details",
+        PossibleTypes = new [] { typeof(string) })]
+        string LastOperationDetail { get;  }
+        /// <summary>Prefix limits</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Prefix limits",
+        SerializedName = @"prefixLimits",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties> NativeIpv4PrefixLimit { get; set; }
+        /// <summary>Prefix limits</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Prefix limits",
+        SerializedName = @"prefixLimits",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties> NativeIpv6PrefixLimit { get; set; }
+        /// <summary>Associated Network Fabric Resource ID</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Associated Network Fabric Resource ID",
+        SerializedName = @"networkFabricId",
+        PossibleTypes = new [] { typeof(string) })]
+        string NetworkFabricId { get;  }
         /// <summary>
-        /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+        /// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -303,32 +442,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.",
-        SerializedName = @"importRoutePolicyId",
+        Description = @"ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.",
+        SerializedName = @"networkToNetworkInterconnectId",
         PossibleTypes = new [] { typeof(string) })]
-        string ImportRoutePolicyId { get; set; }
-        /// <summary>Gets the networkToNetworkInterconnectId of the resource.</summary>
+        string NetworkToNetworkInterconnectId { get; set; }
+        /// <summary>Administrative state of the BfdConfiguration. Example: Enabled | Disabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Gets the networkToNetworkInterconnectId of the resource.",
-        SerializedName = @"networkToNetworkInterconnectId",
+        Description = @"Administrative state of the BfdConfiguration. Example: Enabled | Disabled.",
+        SerializedName = @"administrativeState",
         PossibleTypes = new [] { typeof(string) })]
-        string NetworkToNetworkInterconnectId { get;  }
-        /// <summary>BFD configuration properties</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA")]
+        string OptionAPropertiesBfdConfigurationAdministrativeState { get;  }
+        /// <summary>Interval in milliseconds. Example: 300.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"BFD configuration properties",
-        SerializedName = @"bfdConfiguration",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration OptionAPropertyBfdConfiguration { get; set; }
+        Description = @"Interval in milliseconds. Example: 300.",
+        SerializedName = @"intervalInMilliSeconds",
+        PossibleTypes = new [] { typeof(int) })]
+        int? OptionAPropertiesBfdConfigurationIntervalInMilliSecond { get; set; }
+        /// <summary>Multiplier for the Bfd Configuration. Example: 5.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Multiplier for the Bfd Configuration. Example: 5.",
+        SerializedName = @"multiplier",
+        PossibleTypes = new [] { typeof(int) })]
+        int? OptionAPropertiesBfdConfigurationMultiplier { get; set; }
         /// <summary>Egress Acl. ARM resource ID of Access Control Lists.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -347,7 +498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Fabric ASN number. Example 65001 ",
+        Description = @"Fabric ASN number. Example 65001",
         SerializedName = @"fabricASN",
         PossibleTypes = new [] { typeof(long) })]
         long? OptionAPropertyFabricAsn { get;  }
@@ -428,6 +579,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"secondaryIpv6Prefix",
         PossibleTypes = new [] { typeof(string) })]
         string OptionAPropertySecondaryIpv6Prefix { get; set; }
+        /// <summary>V4OverV6 BGP Session state</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"V4OverV6 BGP Session state",
+        SerializedName = @"v4OverV6BgpSession",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string OptionAPropertyV4OverV6BgpSession { get; set; }
+        /// <summary>V6OverV4 BGP Session state</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"V6OverV4 BGP Session state",
+        SerializedName = @"v6OverV4BgpSession",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string OptionAPropertyV6OverV4BgpSession { get; set; }
         /// <summary>Vlan identifier. Example : 501</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -474,6 +649,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Accepted", "Succeeded", "Updating", "Deleting", "Failed", "Canceled")]
         string ProvisioningState { get;  }
+        /// <summary>Administrative state of the BfdConfiguration. Example: Enabled | Disabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Administrative state of the BfdConfiguration. Example: Enabled | Disabled.",
+        SerializedName = @"administrativeState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA")]
+        string StaticRouteConfigurationBfdConfigurationAdministrativeState { get;  }
+        /// <summary>Interval in milliseconds. Example: 300.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Interval in milliseconds. Example: 300.",
+        SerializedName = @"intervalInMilliSeconds",
+        PossibleTypes = new [] { typeof(int) })]
+        int? StaticRouteConfigurationBfdConfigurationIntervalInMilliSecond { get; set; }
+        /// <summary>Multiplier for the Bfd Configuration. Example: 5.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Multiplier for the Bfd Configuration. Example: 5.",
+        SerializedName = @"multiplier",
+        PossibleTypes = new [] { typeof(int) })]
+        int? StaticRouteConfigurationBfdConfigurationMultiplier { get; set; }
+        /// <summary>List of IPv4 Routes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of IPv4 Routes.",
+        SerializedName = @"ipv4Routes",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties> StaticRouteConfigurationIpv4Route { get; set; }
+        /// <summary>List of IPv6 Routes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of IPv6 Routes.",
+        SerializedName = @"ipv6Routes",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties> StaticRouteConfigurationIpv6Route { get; set; }
 
     }
     /// Defines the External Network resource.
@@ -481,31 +712,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IProxyResourceInternal
     {
         /// <summary>Administrative state of the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA", "UnderMaintenance", "EnabledDegraded")]
         string AdministrativeState { get; set; }
         /// <summary>Switch configuration description.</summary>
         string Annotation { get; set; }
+        /// <summary>BMP Configuration State.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string BmpConfigurationState { get; set; }
         /// <summary>Configuration state of the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl", "Provisioning", "PendingCommit", "PendingAdministrativeUpdate")]
         string ConfigurationState { get; set; }
         /// <summary>Export Route Policy either IPv4 or IPv6.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicy ExportRoutePolicy { get; set; }
-        /// <summary>
-        /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
-        /// </summary>
-        string ExportRoutePolicyId { get; set; }
         /// <summary>Import Route Policy either IPv4 or IPv6.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IImportRoutePolicy ImportRoutePolicy { get; set; }
+        /// <summary>Details of the last operation performed on the resource</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties LastOperation { get; set; }
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        string LastOperationDetail { get; set; }
+        /// <summary>Prefix limits</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties> NativeIpv4PrefixLimit { get; set; }
+        /// <summary>Prefix limits</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties> NativeIpv6PrefixLimit { get; set; }
+        /// <summary>Associated Network Fabric Resource ID</summary>
+        string NetworkFabricId { get; set; }
         /// <summary>
-        /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+        /// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
         /// </summary>
-        string ImportRoutePolicyId { get; set; }
-        /// <summary>Gets the networkToNetworkInterconnectId of the resource.</summary>
         string NetworkToNetworkInterconnectId { get; set; }
+        /// <summary>Administrative state of the BfdConfiguration. Example: Enabled | Disabled.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA")]
+        string OptionAPropertiesBfdConfigurationAdministrativeState { get; set; }
+        /// <summary>Interval in milliseconds. Example: 300.</summary>
+        int? OptionAPropertiesBfdConfigurationIntervalInMilliSecond { get; set; }
+        /// <summary>Multiplier for the Bfd Configuration. Example: 5.</summary>
+        int? OptionAPropertiesBfdConfigurationMultiplier { get; set; }
         /// <summary>option A properties object</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesOptionAProperties OptionAProperty { get; set; }
         /// <summary>BFD configuration properties</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration OptionAPropertyBfdConfiguration { get; set; }
+        /// <summary>BMP Monitor Configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkBmpProperties OptionAPropertyBmpConfiguration { get; set; }
         /// <summary>Egress Acl. ARM resource ID of Access Control Lists.</summary>
         string OptionAPropertyEgressAclId { get; set; }
         /// <summary>Fabric ASN number. Example 65001</summary>
@@ -514,6 +761,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         string OptionAPropertyIngressAclId { get; set; }
         /// <summary>MTU to use for option A peering.</summary>
         int? OptionAPropertyMtu { get; set; }
+        /// <summary>Native IPv4 prefix limits configuration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INativeIpv4PrefixLimitProperties OptionAPropertyNativeIpv4PrefixLimit { get; set; }
+        /// <summary>Native IPv6 prefix limits configuration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INativeIpv6PrefixLimitProperties OptionAPropertyNativeIpv6PrefixLimit { get; set; }
         /// <summary>Peer ASN number.Example : 28</summary>
         long? OptionAPropertyPeerAsn { get; set; }
         /// <summary>IPv4 Address Prefix.</summary>
@@ -524,6 +775,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         string OptionAPropertySecondaryIpv4Prefix { get; set; }
         /// <summary>Secondary IPv6 Address Prefix.</summary>
         string OptionAPropertySecondaryIpv6Prefix { get; set; }
+        /// <summary>V4OverV6 BGP Session state</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string OptionAPropertyV4OverV6BgpSession { get; set; }
+        /// <summary>V6OverV4 BGP Session state</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string OptionAPropertyV6OverV4BgpSession { get; set; }
         /// <summary>Vlan identifier. Example : 501</summary>
         int? OptionAPropertyVlanId { get; set; }
         /// <summary>option B properties object</summary>
@@ -531,11 +788,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Peering option list.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("OptionA", "OptionB")]
         string PeeringOption { get; set; }
-        /// <summary>Resource properties.</summary>
+        /// <summary>External Network Properties</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkProperties Property { get; set; }
         /// <summary>Provisioning state of the resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Accepted", "Succeeded", "Updating", "Deleting", "Failed", "Canceled")]
         string ProvisioningState { get; set; }
+        /// <summary>Static Route Configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkStaticRouteConfiguration StaticRouteConfiguration { get; set; }
+        /// <summary>BFD configuration properties</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration StaticRouteConfigurationBfdConfiguration { get; set; }
+        /// <summary>Administrative state of the BfdConfiguration. Example: Enabled | Disabled.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA")]
+        string StaticRouteConfigurationBfdConfigurationAdministrativeState { get; set; }
+        /// <summary>Interval in milliseconds. Example: 300.</summary>
+        int? StaticRouteConfigurationBfdConfigurationIntervalInMilliSecond { get; set; }
+        /// <summary>Multiplier for the Bfd Configuration. Example: 5.</summary>
+        int? StaticRouteConfigurationBfdConfigurationMultiplier { get; set; }
+        /// <summary>List of IPv4 Routes.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties> StaticRouteConfigurationIpv4Route { get; set; }
+        /// <summary>List of IPv6 Routes.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties> StaticRouteConfigurationIpv6Route { get; set; }
 
     }
 }

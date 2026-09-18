@@ -32,10 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Backing field for <see cref="MatchConfigurationName" /> property.</summary>
         private string _matchConfigurationName;
 
-        /// <summary>
-        /// The name of the match configuration. This is used when Goto type is provided. If Goto type is selected and no match configuration
-        /// name is provided. It goes to next configuration.
-        /// </summary>
+        /// <summary>The name of the match configuration. This is used when Goto type is provided.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public string MatchConfigurationName { get => this._matchConfigurationName; set => this._matchConfigurationName = value; }
 
@@ -88,17 +85,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
         string IsTimestampEnabled { get; set; }
-        /// <summary>
-        /// The name of the match configuration. This is used when Goto type is provided. If Goto type is selected and no match configuration
-        /// name is provided. It goes to next configuration.
-        /// </summary>
+        /// <summary>The name of the match configuration. This is used when Goto type is provided.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The name of the match configuration. This is used when Goto type is provided. If Goto type is selected and no match configuration name is provided. It goes to next configuration.",
+        Description = @"The name of the match configuration. This is used when Goto type is provided.",
         SerializedName = @"matchConfigurationName",
         PossibleTypes = new [] { typeof(string) })]
         string MatchConfigurationName { get; set; }
@@ -138,10 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>The parameter to enable or disable the timestamp.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
         string IsTimestampEnabled { get; set; }
-        /// <summary>
-        /// The name of the match configuration. This is used when Goto type is provided. If Goto type is selected and no match configuration
-        /// name is provided. It goes to next configuration.
-        /// </summary>
+        /// <summary>The name of the match configuration. This is used when Goto type is provided.</summary>
         string MatchConfigurationName { get; set; }
         /// <summary>Truncate. 0 indicates do not truncate.</summary>
         string Truncate { get; set; }

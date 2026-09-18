@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PowerShell;
 
-    /// <summary>Paged list of perimeter associable resources.</summary>
+    /// <summary>Paged collection of PerimeterAssociableResource items</summary>
     [System.ComponentModel.TypeConverter(typeof(PerimeterAssociableResourcesListResultTypeConverter))]
     public partial class PerimeterAssociableResourcesListResult
     {
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             return ToJsonString();
         }
     }
-    /// Paged list of perimeter associable resources.
+    /// Paged collection of PerimeterAssociableResource items
     [System.ComponentModel.TypeConverter(typeof(PerimeterAssociableResourcesListResultTypeConverter))]
     public partial interface IPerimeterAssociableResourcesListResult
 

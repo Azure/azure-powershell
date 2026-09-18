@@ -46,12 +46,15 @@ INPUTOBJECT <IManagedNetworkFabricIdentity>: Identity Parameter
   [L2IsolationDomainName <String>]: Name of the L2 Isolation Domain.
   [L3IsolationDomainName <String>]: Name of the L3 Isolation Domain.
   [NeighborGroupName <String>]: Name of the Neighbor Group.
+  [NetworkBootstrapDeviceName <String>]: Name of the Network Bootstrap Device.
+  [NetworkBootstrapInterfaceName <String>]: Name of the Network Bootstrap Interface.
   [NetworkDeviceName <String>]: Name of the Network Device.
   [NetworkDeviceSkuName <String>]: Name of the Network Device SKU.
   [NetworkFabricControllerName <String>]: Name of the Network Fabric Controller.
   [NetworkFabricName <String>]: Name of the Network Fabric.
   [NetworkFabricSkuName <String>]: Name of the Network Fabric SKU.
   [NetworkInterfaceName <String>]: Name of the Network Interface.
+  [NetworkMonitorName <String>]: Name of the Network Monitor.
   [NetworkPacketBrokerName <String>]: Name of the Network Packet Broker.
   [NetworkRackName <String>]: Name of the Network Rack.
   [NetworkTapName <String>]: Name of the Network Tap.
@@ -113,7 +116,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITagsUpdateTags]))]
     [System.Collections.Hashtable]
-    # Resource tags
+    # Resource tags.
     ${Tag},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
@@ -196,6 +199,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -221,8 +232,6 @@ begin {
             UpdateViaJsonString = 'Az.ManagedNetworkFabric.private\Update-AzNetworkFabricInternetGateway_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -236,6 +245,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

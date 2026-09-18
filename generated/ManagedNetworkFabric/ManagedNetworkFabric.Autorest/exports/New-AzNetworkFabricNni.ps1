@@ -20,14 +20,8 @@ Configuration used to setup CE-PE connectivity PUT Method.
 .Description
 Configuration used to setup CE-PE connectivity PUT Method.
 .Example
-$optionBLayer3Configuration = @{
-    PrimaryIpv4Prefix = "172.31.0.0/31"
-    SecondaryIpv4Prefix = "172.31.0.20/31"
-    PeerAsn = 28
-    VlanId = 501
-}
 $layer2Configuration = @{
-    Interface = @("/subscriptions//resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-interface")
+    Interface = @("/subscriptions/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-interface")
     Mtu = 1500
 }
 $importRoutePolicy = @{
@@ -39,7 +33,7 @@ $exportRoutePolicy = @{
     ExportIpv6RoutePolicyId = $global:config.nni.exportIpv6RoutePolicyId
 }
 
-New-AzNetworkFabricNni -Name $name -NetworkFabricName $nfName -ResourceGroupName $resourceGroupName -UseOptionB "True" -IsManagementType "True" -Layer2Configuration $layer2Configuration -NniType "CE" -OptionBLayer3Configuration $optionBLayer3Configuration -ExportRoutePolicy $ExportRoutePolicy -ImportRoutePolicy $importRoutePolicy
+New-AzNetworkFabricNni -Name $name -NetworkFabricName $nfName -ResourceGroupName $resourceGroupName -UseOptionB "True" -IsManagementType "True" -Layer2Configuration $layer2Configuration -NniType "CE" -OptionBLayer3ConfigurationPeerAsn 28 -OptionBLayer3ConfigurationPrimaryIpv4Prefix "172.31.0.0/31" -OptionBLayer3ConfigurationSecondaryIpv4Prefix "172.31.0.20/31" -OptionBLayer3ConfigurationVlanId 501 -ExportRoutePolicy $ExportRoutePolicy -ImportRoutePolicy $importRoutePolicy
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
@@ -54,11 +48,18 @@ To create the parameters described below, construct a hash table containing the 
 
 BODY <INetworkToNetworkInterconnect>: The Network To Network Interconnect resource definition.
   UseOptionB <String>: Based on this option layer3 parameters are mandatory. Example: True/False
+  [BfdConfigurationIntervalInMilliSecond <Int32?>]: Interval in milliseconds. Example: 300.
+  [BfdConfigurationMultiplier <Int32?>]: Multiplier for the Bfd Configuration. Example: 5.
+  [BmpConfigurationState <String>]: BGP Monitoring Protocol (BMP) Configuration State.
+  [ConditionalDefaultRouteConfigurationIpv4Route <List<IStaticRouteProperties>>]: List of IPv4 Routes.
+    NextHop <List<String>>: List of next hop addresses.
+    Prefix <String>: Prefix of the route.
+  [ConditionalDefaultRouteConfigurationIpv6Route <List<IStaticRouteProperties>>]: List of IPv6 Routes.
   [EgressAclId <String>]: Egress Acl. ARM resource ID of Access Control Lists.
-  [ExportRoutePolicy <IExportRoutePolicyInformation>]: Export Route Policy configuration.
+  [ExportRoutePolicy <IExportRoutePolicyInformation>]: Export Route Policy information
     [ExportIpv4RoutePolicyId <String>]: Export IPv4 Route Policy Id.
     [ExportIpv6RoutePolicyId <String>]: Export IPv6 Route Policy Id.
-  [ImportRoutePolicy <IImportRoutePolicyInformation>]: Import Route Policy configuration.
+  [ImportRoutePolicy <IImportRoutePolicyInformation>]: Import Route Policy information.
     [ImportIpv4RoutePolicyId <String>]: Import IPv4 Route Policy Id.
     [ImportIpv6RoutePolicyId <String>]: Import IPv6 Route Policy Id.
   [IngressAclId <String>]: Ingress Acl. ARM resource ID of Access Control Lists.
@@ -66,28 +67,39 @@ BODY <INetworkToNetworkInterconnect>: The Network To Network Interconnect resour
   [Layer2Configuration <ILayer2Configuration>]: Common properties for Layer2 Configuration.
     [Interface <List<String>>]: List of network device interfaces resource IDs.
     [Mtu <Int32?>]: MTU of the packets between PE & CE.
+  [MicroBfdState <String>]: Micro Bidirectional Forwarding Detection (BFD) enabled/disabled state.
   [NniType <String>]: Type of NNI used. Example: CE | NPB
   [NpbStaticRouteConfiguration <INpbStaticRouteConfiguration>]: NPB Static Route Configuration properties.
     [BfdConfiguration <IBfdConfiguration>]: BFD Configuration properties.
       [IntervalInMilliSecond <Int32?>]: Interval in milliseconds. Example: 300.
       [Multiplier <Int32?>]: Multiplier for the Bfd Configuration. Example: 5.
     [Ipv4Route <List<IStaticRouteProperties>>]: List of IPv4 Routes.
-      NextHop <List<String>>: List of next hop addresses.
-      Prefix <String>: Prefix of the route.
     [Ipv6Route <List<IStaticRouteProperties>>]: List of IPv6 Routes.
-  [OptionBLayer3Configuration <INetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration>]: Common properties for Layer3Configuration.
-    [PeerAsn <Int64?>]: ASN of PE devices for CE/PE connectivity.Example : 28
-    [VlanId <Int32?>]: VLAN for CE/PE Layer 3 connectivity.Example : 501
-    [PrimaryIpv4Prefix <String>]: IPv4 Address Prefix.
-    [PrimaryIpv6Prefix <String>]: IPv6 Address Prefix.
-    [SecondaryIpv4Prefix <String>]: Secondary IPv4 Address Prefix.
-    [SecondaryIpv6Prefix <String>]: Secondary IPv6 Address Prefix.
+  [OptionBLayer3ConfigurationPeLoopbackIpaddress <List<String>>]: Provider Edge (PE) Loopback IP Address.
+  [OptionBLayer3ConfigurationPeerAsn <Int64?>]: ASN of PE devices for CE/PE connectivity.Example : 28
+  [OptionBLayer3ConfigurationPrefixLimit <List<IOptionBLayer3PrefixLimitProperties>>]: OptionB Layer3 prefix limit configuration.
+    [MaximumRoute <Int32?>]: Maximum number of routes allowed.
+  [OptionBLayer3ConfigurationPrimaryIpv4Prefix <String>]: IPv4 Address Prefix.
+  [OptionBLayer3ConfigurationPrimaryIpv6Prefix <String>]: IPv6 Address Prefix.
+  [OptionBLayer3ConfigurationSecondaryIpv4Prefix <String>]: Secondary IPv4 Address Prefix.
+  [OptionBLayer3ConfigurationSecondaryIpv6Prefix <String>]: Secondary IPv6 Address Prefix.
+  [OptionBLayer3ConfigurationVlanId <Int32?>]: VLAN for CE/PE Layer 3 connectivity.Example : 501
+  [StaticRouteConfigurationIpv4Route <List<IStaticRouteProperties>>]: List of IPv4 Routes.
+  [StaticRouteConfigurationIpv6Route <List<IStaticRouteProperties>>]: List of IPv6 Routes.
 
-EXPORTROUTEPOLICY <IExportRoutePolicyInformation>: Export Route Policy configuration.
+CONDITIONALDEFAULTROUTECONFIGURATIONIPV4ROUTE <IStaticRouteProperties[]>: List of IPv4 Routes.
+  NextHop <List<String>>: List of next hop addresses.
+  Prefix <String>: Prefix of the route.
+
+CONDITIONALDEFAULTROUTECONFIGURATIONIPV6ROUTE <IStaticRouteProperties[]>: List of IPv6 Routes.
+  NextHop <List<String>>: List of next hop addresses.
+  Prefix <String>: Prefix of the route.
+
+EXPORTROUTEPOLICY <IExportRoutePolicyInformation>: Export Route Policy information
   [ExportIpv4RoutePolicyId <String>]: Export IPv4 Route Policy Id.
   [ExportIpv6RoutePolicyId <String>]: Export IPv6 Route Policy Id.
 
-IMPORTROUTEPOLICY <IImportRoutePolicyInformation>: Import Route Policy configuration.
+IMPORTROUTEPOLICY <IImportRoutePolicyInformation>: Import Route Policy information.
   [ImportIpv4RoutePolicyId <String>]: Import IPv4 Route Policy Id.
   [ImportIpv6RoutePolicyId <String>]: Import IPv6 Route Policy Id.
 
@@ -108,12 +120,15 @@ NETWORKFABRICINPUTOBJECT <IManagedNetworkFabricIdentity>: Identity Parameter
   [L2IsolationDomainName <String>]: Name of the L2 Isolation Domain.
   [L3IsolationDomainName <String>]: Name of the L3 Isolation Domain.
   [NeighborGroupName <String>]: Name of the Neighbor Group.
+  [NetworkBootstrapDeviceName <String>]: Name of the Network Bootstrap Device.
+  [NetworkBootstrapInterfaceName <String>]: Name of the Network Bootstrap Interface.
   [NetworkDeviceName <String>]: Name of the Network Device.
   [NetworkDeviceSkuName <String>]: Name of the Network Device SKU.
   [NetworkFabricControllerName <String>]: Name of the Network Fabric Controller.
   [NetworkFabricName <String>]: Name of the Network Fabric.
   [NetworkFabricSkuName <String>]: Name of the Network Fabric SKU.
   [NetworkInterfaceName <String>]: Name of the Network Interface.
+  [NetworkMonitorName <String>]: Name of the Network Monitor.
   [NetworkPacketBrokerName <String>]: Name of the Network Packet Broker.
   [NetworkRackName <String>]: Name of the Network Rack.
   [NetworkTapName <String>]: Name of the Network Tap.
@@ -132,13 +147,16 @@ NPBSTATICROUTECONFIGURATION <INpbStaticRouteConfiguration>: NPB Static Route Con
     Prefix <String>: Prefix of the route.
   [Ipv6Route <List<IStaticRouteProperties>>]: List of IPv6 Routes.
 
-OPTIONBLAYER3CONFIGURATION <INetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration>: Common properties for Layer3Configuration.
-  [PeerAsn <Int64?>]: ASN of PE devices for CE/PE connectivity.Example : 28
-  [VlanId <Int32?>]: VLAN for CE/PE Layer 3 connectivity.Example : 501
-  [PrimaryIpv4Prefix <String>]: IPv4 Address Prefix.
-  [PrimaryIpv6Prefix <String>]: IPv6 Address Prefix.
-  [SecondaryIpv4Prefix <String>]: Secondary IPv4 Address Prefix.
-  [SecondaryIpv6Prefix <String>]: Secondary IPv6 Address Prefix.
+OPTIONBLAYER3CONFIGURATIONPREFIXLIMIT <IOptionBLayer3PrefixLimitProperties[]>: OptionB Layer3 prefix limit configuration.
+  [MaximumRoute <Int32?>]: Maximum number of routes allowed.
+
+STATICROUTECONFIGURATIONIPV4ROUTE <IStaticRouteProperties[]>: List of IPv4 Routes.
+  NextHop <List<String>>: List of next hop addresses.
+  Prefix <String>: Prefix of the route.
+
+STATICROUTECONFIGURATIONIPV6ROUTE <IStaticRouteProperties[]>: List of IPv6 Routes.
+  NextHop <List<String>>: List of next hop addresses.
+  Prefix <String>: Prefix of the route.
 .Link
 https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricnni
 #>
@@ -199,6 +217,46 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.Int32]
+    # Interval in milliseconds.
+    # Example: 300.
+    ${BfdConfigurationInterval},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.Int32]
+    # Multiplier for the Bfd Configuration.
+    # Example: 5.
+    ${BfdConfigurationMultiplier},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # BGP Monitoring Protocol (BMP) Configuration State.
+    ${BmpConfigurationState},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties[]]
+    # List of IPv4 Routes.
+    ${ConditionalDefaultRouteConfigurationIpv4Route},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties[]]
+    # List of IPv6 Routes.
+    ${ConditionalDefaultRouteConfigurationIpv6Route},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [System.String]
     # Egress Acl.
     # ARM resource ID of Access Control Lists.
@@ -208,14 +266,14 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicyInformation]
-    # Export Route Policy configuration.
+    # Export Route Policy information
     ${ExportRoutePolicy},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IImportRoutePolicyInformation]
-    # Import Route Policy configuration.
+    # Import Route Policy information.
     ${ImportRoutePolicy},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -244,6 +302,14 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # Micro Bidirectional Forwarding Detection (BFD) enabled/disabled state.
+    ${MicroBfdState},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("CE", "NPB")]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [System.String]
@@ -260,10 +326,77 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration]
-    # Common properties for Layer3Configuration.
-    ${OptionBLayer3Configuration},
+    [System.String[]]
+    # Provider Edge (PE) Loopback IP Address.
+    ${OptionBLayer3ConfigurationPeLoopbackIpAddress},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.Int64]
+    # ASN of PE devices for CE/PE connectivity.Example : 28
+    ${OptionBLayer3ConfigurationPeerAsn},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3PrefixLimitProperties[]]
+    # OptionB Layer3 prefix limit configuration.
+    ${OptionBLayer3ConfigurationPrefixLimit},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # IPv4 Address Prefix.
+    ${OptionBLayer3ConfigurationPrimaryIpv4Prefix},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # IPv6 Address Prefix.
+    ${OptionBLayer3ConfigurationPrimaryIpv6Prefix},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # Secondary IPv4 Address Prefix.
+    ${OptionBLayer3ConfigurationSecondaryIpv4Prefix},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # Secondary IPv6 Address Prefix.
+    ${OptionBLayer3ConfigurationSecondaryIpv6Prefix},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.Int32]
+    # VLAN for CE/PE Layer 3 connectivity.Example : 501
+    ${OptionBLayer3ConfigurationVlanId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties[]]
+    # List of IPv4 Routes.
+    ${StaticRouteConfigurationIpv4Route},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkFabricExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties[]]
+    # List of IPv6 Routes.
+    ${StaticRouteConfigurationIpv6Route},
 
     [Parameter(ParameterSetName='CreateViaIdentityNetworkFabric', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
@@ -351,6 +484,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -377,8 +518,6 @@ begin {
             CreateViaJsonString = 'Az.ManagedNetworkFabric.private\New-AzNetworkFabricNni_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -392,6 +531,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

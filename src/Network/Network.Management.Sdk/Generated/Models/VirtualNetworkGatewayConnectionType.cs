@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VirtualNetworkGatewayConnectionType
     {
+        /// <summary>
+        /// IPsec
+        /// </summary>
         public const string IPsec = "IPsec";
+        /// <summary>
+        /// Vnet2Vnet
+        /// </summary>
         public const string Vnet2Vnet = "Vnet2Vnet";
+        /// <summary>
+        /// ExpressRoute
+        /// </summary>
         public const string ExpressRoute = "ExpressRoute";
+        /// <summary>
+        /// VPNClient
+        /// </summary>
         public const string VPNClient = "VPNClient";
     }
 }

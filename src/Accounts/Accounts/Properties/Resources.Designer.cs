@@ -761,6 +761,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
                 return ResourceManager.GetString("MSITenantDomainNotFound", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The current context is using Managed Service Identity (MSI) authentication which only supports the tenant of the Managed Identity ({0}). The requested TenantId &apos;{1}&apos; does not match and cannot be used. Remove the -TenantId parameter or use Connect-AzAccount with a different authentication method to target a different tenant..
+        /// </summary>
+        internal static string MSITenantMismatch {
+            get {
+                return ResourceManager.GetString("MSITenantMismatch", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to (no account provided).

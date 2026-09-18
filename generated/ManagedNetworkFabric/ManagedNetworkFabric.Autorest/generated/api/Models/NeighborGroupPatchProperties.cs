@@ -10,62 +10,91 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     /// <summary>Neighbor Group Patch properties.</summary>
     public partial class NeighborGroupPatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupPatchProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupPatchPropertiesInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupPatchPropertiesInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource __annotationResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AnnotationResource();
 
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupPatchableProperties"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupPatchableProperties __neighborGroupPatchableProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NeighborGroupPatchableProperties();
+        /// <summary>Backing field for <see cref="Annotation" /> property.</summary>
+        private string _annotation;
 
         /// <summary>Switch configuration description.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string Annotation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string Annotation { get => this._annotation; set => this._annotation = value; }
+
+        /// <summary>Backing field for <see cref="Destination" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupDestinationPatch _destination;
 
         /// <summary>An array of destination IPv4 Addresses or IPv6 Addresses.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupDestination Destination { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupPatchablePropertiesInternal)__neighborGroupPatchableProperties).Destination; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupPatchablePropertiesInternal)__neighborGroupPatchableProperties).Destination = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupDestinationPatch Destination { get => (this._destination = this._destination ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NeighborGroupDestinationPatch()); set => this._destination = value; }
+
+        /// <summary>Array of IPv4 Addresses.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> DestinationIpv4Address { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupDestinationPatchInternal)Destination).Ipv4Address; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupDestinationPatchInternal)Destination).Ipv4Address = value ?? null /* arrayOf */; }
+
+        /// <summary>Array of IPv6 Addresses.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> DestinationIpv6Address { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupDestinationPatchInternal)Destination).Ipv6Address; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupDestinationPatchInternal)Destination).Ipv6Address = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for Destination</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupDestinationPatch Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupPatchPropertiesInternal.Destination { get => (this._destination = this._destination ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NeighborGroupDestinationPatch()); set { {_destination = value;} } }
 
         /// <summary>Creates an new <see cref="NeighborGroupPatchProperties" /> instance.</summary>
         public NeighborGroupPatchProperties()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__annotationResource), __annotationResource);
-            await eventListener.AssertObjectIsValid(nameof(__annotationResource), __annotationResource);
-            await eventListener.AssertNotNull(nameof(__neighborGroupPatchableProperties), __neighborGroupPatchableProperties);
-            await eventListener.AssertObjectIsValid(nameof(__neighborGroupPatchableProperties), __neighborGroupPatchableProperties);
-        }
     }
     /// Neighbor Group Patch properties.
     public partial interface INeighborGroupPatchProperties :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupPatchableProperties
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable
     {
+        /// <summary>Switch configuration description.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Switch configuration description.",
+        SerializedName = @"annotation",
+        PossibleTypes = new [] { typeof(string) })]
+        string Annotation { get; set; }
+        /// <summary>Array of IPv4 Addresses.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Array of IPv4 Addresses.",
+        SerializedName = @"ipv4Addresses",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> DestinationIpv4Address { get; set; }
+        /// <summary>Array of IPv6 Addresses.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Array of IPv6 Addresses.",
+        SerializedName = @"ipv6Addresses",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> DestinationIpv6Address { get; set; }
 
     }
     /// Neighbor Group Patch properties.
-    internal partial interface INeighborGroupPatchPropertiesInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupPatchablePropertiesInternal
+    internal partial interface INeighborGroupPatchPropertiesInternal
+
     {
+        /// <summary>Switch configuration description.</summary>
+        string Annotation { get; set; }
+        /// <summary>An array of destination IPv4 Addresses or IPv6 Addresses.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupDestinationPatch Destination { get; set; }
+        /// <summary>Array of IPv4 Addresses.</summary>
+        System.Collections.Generic.List<string> DestinationIpv4Address { get; set; }
+        /// <summary>Array of IPv6 Addresses.</summary>
+        System.Collections.Generic.List<string> DestinationIpv6Address { get; set; }
 
     }
 }

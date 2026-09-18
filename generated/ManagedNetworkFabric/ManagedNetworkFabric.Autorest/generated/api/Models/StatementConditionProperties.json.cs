@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return;
             }
-            __ipCommunityIdList = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPCommunityIdList(json);
-            __ipExtendedCommunityIdList = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPExtendedCommunityIdList(json);
+            {_iPCommunityId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("ipCommunityIds"), out var __jsonIPCommunityIds) ? If( __jsonIPCommunityIds as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _iPCommunityId;}
+            {_iPExtendedCommunityId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("ipExtendedCommunityIds"), out var __jsonIPExtendedCommunityIds) ? If( __jsonIPExtendedCommunityIds as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _iPExtendedCommunityId;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
             {_iPPrefixId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("ipPrefixId"), out var __jsonIPPrefixId) ? (string)__jsonIPPrefixId : (string)_iPPrefixId;}
             AfterFromJson(json);
@@ -103,8 +103,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return container;
             }
-            __ipCommunityIdList?.ToJson(container, serializationMode);
-            __ipExtendedCommunityIdList?.ToJson(container, serializationMode);
+            if (null != this._iPCommunityId)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __x in this._iPCommunityId )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("ipCommunityIds",__w);
+            }
+            if (null != this._iPExtendedCommunityId)
+            {
+                var __r = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __s in this._iPExtendedCommunityId )
+                {
+                    AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
+                }
+                container.Add("ipExtendedCommunityIds",__r);
+            }
             AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
             AddIf( null != (((object)this._iPPrefixId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._iPPrefixId.ToString()) : null, "ipPrefixId" ,container.Add );
             AfterToJson(ref container);

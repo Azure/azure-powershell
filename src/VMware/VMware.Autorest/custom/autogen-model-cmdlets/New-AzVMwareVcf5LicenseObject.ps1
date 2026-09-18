@@ -18,10 +18,7 @@
 .Synopsis
 Create an in-memory object for Vcf5License.
 .Description
-Create an in-memory object for a VMware Cloud Foundation (VCF) 5.0 license, to be passed to New-AzVMwarePrivateCloud via the -VcfLicense parameter.
-.Example
-$license = New-AzVMwareVcf5LicenseObject -Core 16 -EndDate (Get-Date "2027-01-01") -LicenseKey "12345-12345-12345-12345-12345" -BroadcomSiteId "site123" -BroadcomContractNumber "contract123"
-New-AzVMwarePrivateCloud -Name mycloud -ResourceGroupName myrg -Location eastus -Sku av36 -ManagementClusterSize 3 -NetworkBlock 192.168.48.0/22 -VcfLicense $license -AcceptEULA
+Create an in-memory object for Vcf5License.
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Vcf5License
@@ -33,42 +30,49 @@ function New-AzVMwareVcf5LicenseObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Vcf5License')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-        [Parameter(Mandatory, HelpMessage="Number of cores included in the license.")]
-        [int]
-        $Core,
-
-        [Parameter(Mandatory, HelpMessage="UTC datetime when the license expires.")]
-        [System.DateTime]
-        $EndDate,
-
-        [Parameter(HelpMessage="License key.")]
-        [System.Security.SecureString]
-        $LicenseKey,
-
-        [Parameter(HelpMessage="The Broadcom site ID associated with the license.")]
-        [string]
-        $BroadcomSiteId,
 
         [Parameter(HelpMessage="The Broadcom contract number associated with the license.")]
         [string]
-        $BroadcomContractNumber
+        $BroadcomContractNumber,
+        [Parameter(HelpMessage="The Broadcom site ID associated with the license.")]
+        [string]
+        $BroadcomSiteId,
+        [Parameter(Mandatory, HelpMessage="Number of cores included in the license.")]
+        [int]
+        $Core,
+        [Parameter(Mandatory, HelpMessage="UTC datetime when the license expires.")]
+        [System.DateTime]
+        $EndDate,
+        [Parameter(HelpMessage="Additional labels passed through for license reporting.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel[]]
+        $Label,
+        [Parameter(HelpMessage="License key.")]
+        [System.Security.SecureString]
+        $LicenseKey
     )
 
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Vcf5License]::New()
 
-        $Object.Core = $Core
-        $Object.EndDate = $EndDate
-
-        if ($PSBoundParameters.ContainsKey('LicenseKey')) {
-            $Object.LicenseKey = $LicenseKey
+        if ($PSBoundParameters.ContainsKey('BroadcomContractNumber')) {
+            $Object.BroadcomContractNumber = $BroadcomContractNumber
         }
         if ($PSBoundParameters.ContainsKey('BroadcomSiteId')) {
             $Object.BroadcomSiteId = $BroadcomSiteId
         }
-        if ($PSBoundParameters.ContainsKey('BroadcomContractNumber')) {
-            $Object.BroadcomContractNumber = $BroadcomContractNumber
+        if ($PSBoundParameters.ContainsKey('Core')) {
+            $Object.Core = $Core
+        }
+        if ($PSBoundParameters.ContainsKey('EndDate')) {
+            $Object.EndDate = $EndDate
+        }
+        if ($PSBoundParameters.ContainsKey('Label')) {
+            $Object.Label = $Label
+        }
+        if ($PSBoundParameters.ContainsKey('LicenseKey')) {
+            $Object.LicenseKey = $LicenseKey
         }
         return $Object
     }
 }
+

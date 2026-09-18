@@ -420,6 +420,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         PossibleTypes = new [] { typeof(System.Security.SecureString) })]
         public System.Security.SecureString VcenterPassword { get => _privateCloudBody.VcenterPassword ?? null; set => _privateCloudBody.VcenterPassword = value; }
 
+        /// <summary>The private cloud license</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The private cloud license")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The private cloud license",
+        SerializedName = @"vcfLicense",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense VcfLicense { get => _privateCloudBody.VcfLicense ?? null /* object */; set => _privateCloudBody.VcfLicense = value; }
+
         /// <summary>The availability zones.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The availability zones.")]
@@ -773,6 +784,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Zone")))
             {
                 this.Zone = (string[])(this.MyInvocation?.BoundParameters["Zone"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("VcfLicense")))
+            {
+                this.VcfLicense = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense)(this.MyInvocation?.BoundParameters["VcfLicense"]);
             }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SkuName")))
             {

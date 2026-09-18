@@ -15,20 +15,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Provides the details of the backup policies associated to Recovery Services
-        /// Vault. This is an asynchronous operation. Status of the operation can be
-        /// fetched using GetPolicyOperationResult API.
+        /// Vault. This is an asynchronous
+        /// operation. Status of the operation can be fetched using
+        /// GetPolicyOperationResult API.
         /// </summary>
         /// <remarks>
         /// Provides the details of the backup policies associated to Recovery Services
-        /// Vault. This is an asynchronous operation. Status of the operation can be
-        /// fetched using GetPolicyOperationResult API.
+        /// Vault. This is an asynchronous
+        /// operation. Status of the operation can be fetched using
+        /// GetPolicyOperationResult API.
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='policyName'>
         /// Backup policy information to be fetched.
@@ -45,25 +46,26 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, string policyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource>> GetWithHttpMessagesAsync(string resourceGroupName, string vaultName, string policyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or modifies a backup policy. This is an asynchronous operation.
-        /// Status of the operation can be fetched using GetPolicyOperationResult API.
+        /// Status of the operation can be fetched
+        /// using GetPolicyOperationResult API.
         /// </summary>
         /// <remarks>
         /// Creates or modifies a backup policy. This is an asynchronous operation.
-        /// Status of the operation can be fetched using GetPolicyOperationResult API.
+        /// Status of the operation can be fetched
+        /// using GetPolicyOperationResult API.
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='policyName'>
-        /// Backup policy to be created.
+        /// Backup policy information to be fetched.
         /// </param>
         /// <param name='xMsAuthorizationAuxiliary'>
         /// 
@@ -83,27 +85,26 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource>> CreateOrUpdateWithHttpMessagesAsync(string vaultName, string resourceGroupName, string policyName, ProtectionPolicyResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, string policyName, ProtectionPolicyResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes specified backup policy from your Recovery Services Vault. This is
-        /// an asynchronous operation. Status of the operation can be fetched using
-        /// GetProtectionPolicyOperationResult API.
+        /// an asynchronous operation. Status of the
+        /// operation can be fetched using GetProtectionPolicyOperationResult API.
         /// </summary>
         /// <remarks>
         /// Deletes specified backup policy from your Recovery Services Vault. This is
-        /// an asynchronous operation. Status of the operation can be fetched using
-        /// GetProtectionPolicyOperationResult API.
+        /// an asynchronous operation. Status of the
+        /// operation can be fetched using GetProtectionPolicyOperationResult API.
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='policyName'>
-        /// Backup policy to be deleted.
+        /// Backup policy information to be fetched.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -114,27 +115,26 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string vaultName, string resourceGroupName, string policyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ProtectionPoliciesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string vaultName, string policyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes specified backup policy from your Recovery Services Vault. This is
-        /// an asynchronous operation. Status of the operation can be fetched using
-        /// GetProtectionPolicyOperationResult API.
+        /// an asynchronous operation. Status of the
+        /// operation can be fetched using GetProtectionPolicyOperationResult API.
         /// </summary>
         /// <remarks>
         /// Deletes specified backup policy from your Recovery Services Vault. This is
-        /// an asynchronous operation. Status of the operation can be fetched using
-        /// GetProtectionPolicyOperationResult API.
+        /// an asynchronous operation. Status of the
+        /// operation can be fetched using GetProtectionPolicyOperationResult API.
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='policyName'>
-        /// Backup policy to be deleted.
+        /// Backup policy information to be fetched.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string vaultName, string resourceGroupName, string policyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ProtectionPoliciesDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string vaultName, string policyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

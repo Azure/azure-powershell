@@ -109,14 +109,14 @@ Describe 'Set-AzEventHubNamespaceV2' {
         $eventhubNamespace.IdentityType | Should -Be $null
 
         # Remove Replica 
-        $primaryReplica = New-AzEventHubLocationsNameObject -LocationName centraluseuap -RoleType Primary
-        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 -SkuName Premium -Location centraluseuap -GeoDataReplicationLocation $primaryReplica
+        $primaryReplica = New-AzEventHubLocationsNameObject -LocationName westus -RoleType Primary
+        $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 -GeoDataReplicationLocation $primaryReplica
         $eventHubNamespace.GeoDataReplicationLocation.Count | Should -Be 1
 
         # Add Replica
-        $primaryReplica = New-AzEventHubLocationsNameObject -LocationName centraluseuap -RoleType Primary
-        $secondaryReplica =  New-AzEventHubLocationsNameObject -LocationName eastus2euap -RoleType Secondary
-        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 -SkuName Premium -Location centraluseuap -GeoDataReplicationLocation $primaryReplica, $secondaryReplica
+        $primaryReplica = New-AzEventHubLocationsNameObject -LocationName westus -RoleType Primary
+        $secondaryReplica =  New-AzEventHubLocationsNameObject -LocationName southcentralus -RoleType Secondary
+        $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 -GeoDataReplicationLocation $primaryReplica,$secondaryReplica
         $eventHubNamespace.GeoDataReplicationLocation.Count | Should -Be 2
     }
     It 'SetViaIdentityExpanded' {

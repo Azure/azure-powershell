@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewayRuleSetStatusOptions
     {
+        /// <summary>
+        /// Preview
+        /// </summary>
         public const string Preview = "Preview";
+        /// <summary>
+        /// GA
+        /// </summary>
         public const string GA = "GA";
+        /// <summary>
+        /// Supported
+        /// </summary>
         public const string Supported = "Supported";
+        /// <summary>
+        /// Deprecated
+        /// </summary>
         public const string Deprecated = "Deprecated";
     }
 }

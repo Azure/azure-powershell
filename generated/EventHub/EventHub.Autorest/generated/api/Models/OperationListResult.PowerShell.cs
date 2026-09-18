@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell;
 
-    /// <summary>
-    /// Result of the request to list Event Hub operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
-    /// </summary>
+    /// <summary>Paged collection of Operation items</summary>
     [System.ComponentModel.TypeConverter(typeof(OperationListResultTypeConverter))]
     public partial class OperationListResult
     {
@@ -165,8 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             return ToJsonString();
         }
     }
-    /// Result of the request to list Event Hub operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
+    /// Paged collection of Operation items
     [System.ComponentModel.TypeConverter(typeof(OperationListResultTypeConverter))]
     public partial interface IOperationListResult
 

@@ -82,7 +82,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="customNetworkInterfaceName">The custom name of the network interface attached to the private endpoint.
         /// </param>
-        public PrivateEndpoint(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), Subnet subnet = default(Subnet), string provisioningState = default(string), System.Collections.Generic.IList<NetworkInterface> networkInterfaces = default(System.Collections.Generic.IList<NetworkInterface>), string ipVersionType = default(string), System.Collections.Generic.IList<PrivateLinkServiceConnection> privateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<PrivateLinkServiceConnection> manualPrivateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat> customDnsConfigs = default(System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat>), System.Collections.Generic.IList<ApplicationSecurityGroup> applicationSecurityGroups = default(System.Collections.Generic.IList<ApplicationSecurityGroup>), System.Collections.Generic.IList<PrivateEndpointIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<PrivateEndpointIPConfiguration>), string customNetworkInterfaceName = default(string))
+
+        /// <param name="billingSku">The billing sku of the private endpoint.
+        /// Possible values include: &#39;PayAsYouGo&#39;, &#39;Fixed&#39;</param>
+        public PrivateEndpoint(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), Subnet subnet = default(Subnet), string provisioningState = default(string), System.Collections.Generic.IList<NetworkInterface> networkInterfaces = default(System.Collections.Generic.IList<NetworkInterface>), string ipVersionType = default(string), System.Collections.Generic.IList<PrivateLinkServiceConnection> privateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<PrivateLinkServiceConnection> manualPrivateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat> customDnsConfigs = default(System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat>), System.Collections.Generic.IList<ApplicationSecurityGroup> applicationSecurityGroups = default(System.Collections.Generic.IList<ApplicationSecurityGroup>), System.Collections.Generic.IList<PrivateEndpointIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<PrivateEndpointIPConfiguration>), string customNetworkInterfaceName = default(string), string billingSku = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -98,6 +101,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ApplicationSecurityGroups = applicationSecurityGroups;
             this.IPConfigurations = ipConfigurations;
             this.CustomNetworkInterfaceName = customNetworkInterfaceName;
+            this.BillingSku = billingSku;
             CustomInit();
         }
 
@@ -188,5 +192,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.customNetworkInterfaceName")]
         public string CustomNetworkInterfaceName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the billing sku of the private endpoint. Possible values include: &#39;PayAsYouGo&#39;, &#39;Fixed&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.billingSku")]
+        public string BillingSku {get; set; }
     }
 }

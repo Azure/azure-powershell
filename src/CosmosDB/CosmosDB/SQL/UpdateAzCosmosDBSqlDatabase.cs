@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 readSqlDatabaseGetResults = CosmosDBManagementClient.SqlResources.GetSqlDatabase(ResourceGroupName, AccountName, Name);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {

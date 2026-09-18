@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell;
 
-    /// <summary>The response of the List NetworkRuleSet operation</summary>
+    /// <summary>Paged collection of NetworkRuleSet items</summary>
     [System.ComponentModel.TypeConverter(typeof(NetworkRuleSetListResultTypeConverter))]
     public partial class NetworkRuleSetListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             return ToJsonString();
         }
     }
-    /// The response of the List NetworkRuleSet operation
+    /// Paged collection of NetworkRuleSet items
     [System.ComponentModel.TypeConverter(typeof(NetworkRuleSetListResultTypeConverter))]
     public partial interface INetworkRuleSetListResult
 

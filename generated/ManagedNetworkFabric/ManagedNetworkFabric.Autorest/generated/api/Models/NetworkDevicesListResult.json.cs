@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
-    /// <summary>List of NetworkDevices.</summary>
+    /// <summary>Paged collection of NetworkDevice items</summary>
     public partial class NetworkDevicesListResult
     {
 

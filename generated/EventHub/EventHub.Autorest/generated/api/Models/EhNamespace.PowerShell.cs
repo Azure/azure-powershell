@@ -102,6 +102,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.EhNamespacePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.SkuTypeConverter.ConvertFrom);
@@ -110,13 +114,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IdentityTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.EhNamespaceTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("SystemData"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.SystemDataTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.EhNamespacePropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -130,13 +162,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("Location"))
+            if (content.Contains("Encryption"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.EncryptionTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Tag"))
+            if (content.Contains("PlatformCapability"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapability = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilities) content.GetValueForProperty("PlatformCapability",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapability, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.PlatformCapabilitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("SkuName"))
             {
@@ -157,46 +189,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             if (content.Contains("TenantId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).TenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("Encryption"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.EncryptionTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PlatformCapability"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapability = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilities) content.GetValueForProperty("PlatformCapability",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapability, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.PlatformCapabilitiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("IdentityType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("UserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("GeoDataReplication"))
             {
@@ -266,6 +258,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).AlternateName = (string) content.GetValueForProperty("AlternateName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).AlternateName, global::System.Convert.ToString);
             }
+            if (content.Contains("IPAddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IPAddressType = (string) content.GetValueForProperty("IPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IPAddressType, global::System.Convert.ToString);
+            }
             if (content.Contains("KeySource"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).KeySource = (string) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).KeySource, global::System.Convert.ToString);
@@ -273,6 +269,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             if (content.Contains("PlatformCapabilityConfidentialCompute"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapabilityConfidentialCompute = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConfidentialCompute) content.GetValueForProperty("PlatformCapabilityConfidentialCompute",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapabilityConfidentialCompute, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ConfidentialComputeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("KeyVaultProperty"))
             {
@@ -311,6 +315,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.EhNamespacePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.SkuTypeConverter.ConvertFrom);
@@ -319,13 +327,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IdentityTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.EhNamespaceTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("SystemData"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.SystemDataTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.EhNamespacePropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -339,13 +375,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("Location"))
+            if (content.Contains("Encryption"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.EncryptionTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Tag"))
+            if (content.Contains("PlatformCapability"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapability = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilities) content.GetValueForProperty("PlatformCapability",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapability, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.PlatformCapabilitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("SkuName"))
             {
@@ -366,46 +402,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             if (content.Contains("TenantId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).TenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("Encryption"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.EncryptionTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PlatformCapability"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapability = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilities) content.GetValueForProperty("PlatformCapability",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapability, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.PlatformCapabilitiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("IdentityType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("UserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("GeoDataReplication"))
             {
@@ -475,6 +471,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).AlternateName = (string) content.GetValueForProperty("AlternateName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).AlternateName, global::System.Convert.ToString);
             }
+            if (content.Contains("IPAddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IPAddressType = (string) content.GetValueForProperty("IPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IPAddressType, global::System.Convert.ToString);
+            }
             if (content.Contains("KeySource"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).KeySource = (string) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).KeySource, global::System.Convert.ToString);
@@ -482,6 +482,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             if (content.Contains("PlatformCapabilityConfidentialCompute"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapabilityConfidentialCompute = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConfidentialCompute) content.GetValueForProperty("PlatformCapabilityConfidentialCompute",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapabilityConfidentialCompute, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ConfidentialComputeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("KeyVaultProperty"))
             {
