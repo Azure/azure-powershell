@@ -28,10 +28,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="migrationState">The object representing the state of the migration between the backup
         /// policies.
         /// </param>
-        public BackupPolicy(BackupPolicyMigrationState migrationState = default(BackupPolicyMigrationState))
+
+        /// <param name="backupRetentionLockExpirationTimestamp">The UTC timestamp until which changes that reduce backup retention are
+        /// locked.
+        /// While active, this timestamp can only be extended.
+        /// </param>
+        public BackupPolicy(BackupPolicyMigrationState migrationState = default(BackupPolicyMigrationState), System.DateTime? backupRetentionLockExpirationTimestamp = default(System.DateTime?))
 
         {
             this.MigrationState = migrationState;
+            this.BackupRetentionLockExpirationTimestamp = backupRetentionLockExpirationTimestamp;
             CustomInit();
         }
 
@@ -47,5 +53,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "migrationState")]
         public BackupPolicyMigrationState MigrationState {get; set; }
+
+        /// <summary>
+        /// Gets or sets the UTC timestamp until which changes that reduce backup
+        /// retention are locked.
+        /// While active, this timestamp can only be extended.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "backupRetentionLockExpirationTimestamp")]
+        public System.DateTime? BackupRetentionLockExpirationTimestamp {get; set; }
     }
 }
