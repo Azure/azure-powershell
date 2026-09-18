@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.0
 * Upgraded the DataProtection API version to `2026-06-01` (general availability), which natively models the Azure Elastic SAN (Storage Area Network) backup and restore types
 * Added `AzureElasticSAN` datasource support for backup and restore
     - Added `-ResourceSelector` parameter to `New-AzDataProtectionBackupConfigurationClientObject` for selecting the volume to back up (the service currently supports one volume per backup instance)
