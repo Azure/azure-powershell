@@ -37,6 +37,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ManagedDatabaseShortTermRetentionLockImmutability()
+        {
+            TestRunner.RunTestScript("Test-ManagedDatabaseShortTermRetentionLockImmutability");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagedDeletedDatabaseShortTermRetentionPolicy()
         {
             TestRunner.RunTestScript("Test-ManagedDeletedDatabaseShortTermRetentionPolicy");

@@ -15,25 +15,32 @@ Sets a backup short term retention policy.
 ### PolicyByResourceInstanceDatabaseSet (Default)
 ```
 Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-ResourceGroupName] <String> [-InstanceName] <String>
- [-DatabaseName] <String> [-DeletionDate <DateTime>] [-RetentionDays] <Int32>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DatabaseName] <String> [-DeletionDate <DateTime>] [-RetentionDays] <Int32> [-LockImmutability <Boolean>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### PolicyByInputObjectSet
 ```
 Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-InputObject] <AzureSqlManagedDatabaseBaseModel>
- [-RetentionDays] <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RetentionDays] <Int32> [-LockImmutability <Boolean>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### PolicyByResourceIdSet
 ```
 Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-ResourceId] <String> [-RetentionDays] <Int32>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LockImmutability <Boolean>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy** cmdlet sets the short term retention policy for this database.
 The policy is the retention period, in days, for point-in-time restore backups.
+Backup immutability can be locked only for live managed databases.
+The cmdlet returns an error if `LockImmutability` is specified for a restorable dropped managed database.
 
 ## EXAMPLES
 
@@ -86,9 +93,57 @@ DeletionDate      : 2019-03-02 11:00:16 PM
 RetentionDays     : 8
 ```
 
-This command sets the short term retention policy for all deleted databases named DB1 via piping in a deleted database object. Note you can only reduce retention period on deleted databases.
+This command sets the short term retention policy for all deleted databases named DB1 via piping in a deleted database object.
+Note you can reduce the retention period only for deleted databases whose backup immutability was not locked before deletion. You cannot specify `LockImmutability` for a deleted database.
+
+### Example 4
+```powershell
+Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup01 -InstanceName server01 -DatabaseName database01 -RetentionDays 7 -LockImmutability $true -Force
+```
+
+```output
+ResourceGroupName : resourcegroup01
+InstanceName      : server01
+DatabaseName      : database01
+DeletionDate      :
+RetentionDays     : 7
+ImmutabilityStatus : Locked
+```
+
+This command sets the short term retention policy for the live database database01 to 7 days and locks backup immutability.
+The `-Force` parameter skips the confirmation prompt for this irreversible action.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DatabaseName
 The name of the Azure SQL Instance Database to retrieve backups for.
@@ -135,6 +190,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Skip confirmation when locking backup immutability.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The live or deleted database object to get/set the policy for.
 
@@ -160,6 +230,37 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LockImmutability
+Whether to lock the immutability of backups governed by this policy.
+This parameter is supported only for live managed databases and cannot be used with restorable dropped managed databases.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
