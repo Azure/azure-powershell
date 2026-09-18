@@ -300,9 +300,75 @@ function Invoke-ExternalCommand {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Command,
-        [array]$Arguments
+        [array]$Arguments,
+        [switch]$PassThruResult
     )
+
+    if ($PassThruResult) {
+        # Prevent native stderr from terminating the capture in Windows PowerShell 5.1
+        # or PowerShell 7, then use the native exit code to determine success.
+        $ErrorActionPreference = "Continue"
+        $PSNativeCommandUseErrorActionPreference = $false
+        $commandOutput = @(& $Command $Arguments 2>&1)
+        $exitCode = $LASTEXITCODE
+
+        return [PSCustomObject]@{
+            ExitCode = $exitCode
+            Output   = [string[]]@($commandOutput | ForEach-Object { $_.ToString() })
+        }
+    }
+
     & $Command $Arguments
+}
+
+function Invoke-HelmDelete {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$ReleaseName,
+        [Parameter(Mandatory = $true)]
+        [string]$ReleaseNamespace,
+        [Parameter(Mandatory = $true)]
+        [string]$KubeConfig,
+        [Parameter(Mandatory = $true)]
+        [string]$KubeContext
+    )
+
+    $arguments = @(
+        "delete",
+        $ReleaseName,
+        "--namespace",
+        $ReleaseNamespace,
+        "--kubeconfig",
+        $KubeConfig,
+        "--kube-context",
+        $KubeContext
+    )
+    Write-Verbose "Deleting Helm release '$ReleaseName' from namespace '$ReleaseNamespace' using kube context '$KubeContext'."
+
+    $result = Invoke-ExternalCommand -Command "helm" -Arguments $arguments -PassThruResult
+    $output = if ($result.Output.Count -gt 0) {
+        $result.Output -join [Environment]::NewLine
+    }
+    else {
+        "No output was returned by Helm."
+    }
+
+    if ($result.ExitCode -ne 0) {
+        $recoveryCommand = "helm uninstall $ReleaseName --namespace `"$ReleaseNamespace`" --kubeconfig `"$KubeConfig`" --kube-context `"$KubeContext`""
+        $message = "Helm cleanup failed after the Azure connected cluster resource was deleted. Release: '$ReleaseName'. Namespace: '$ReleaseNamespace'. Kube context: '$KubeContext'. Helm exit code: $($result.ExitCode). Helm output: $output To retry the in-cluster cleanup, run: $recoveryCommand"
+        $exception = [System.InvalidOperationException]::new($message)
+        $errorRecord = [System.Management.Automation.ErrorRecord]::new(
+            $exception,
+            "HelmUninstallFailed",
+            [System.Management.Automation.ErrorCategory]::OperationStopped,
+            $ReleaseName
+        )
+        $PSCmdlet.ThrowTerminatingError($errorRecord)
+    }
+
+    Write-Verbose $output
 }
 
 function Set-HelmModulesAndRepository {
