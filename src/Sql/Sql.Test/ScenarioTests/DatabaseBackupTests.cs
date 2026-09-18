@@ -220,6 +220,19 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ShortTermRetentionPolicy");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestShortTermRetentionLockImmutability()
+        {
+            // There's a delay between a database creation and the enabling of short term retention lock immutability.
+            // The test may fail if run immediately after database creation due to this delay.
+            // Once a fix for this is in place, the test can be enabled for Playback.
+            if (TestMockSupport.RunningMocked)
+            {
+                TestRunner.RunTestScript("Test-ShortTermRetentionLockImmutability");
+            }
+        }
+
         [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateRestoreRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
