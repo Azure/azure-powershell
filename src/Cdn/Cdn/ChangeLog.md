@@ -20,8 +20,8 @@
 
 ## Upcoming Release
 
-* Added post-migration endpoint cutover guidance for Azure Front Door (classic) and Azure CDN from Microsoft (classic) migrations.
 * Documented the planned removal of standalone EdgeAction resource cmdlets in Az.Cdn 7.0.0 and Az 17.0.0 on November 15, 2026. This advance announcement did not change cmdlet behavior or add runtime warnings; EdgeAction delivery-rule actions and URL signing are not affected.
+* Added post-migration endpoint cutover guidance for Azure Front Door (classic) and Azure CDN from Microsoft (classic) migrations.
 
 ## Version 6.2.0
 * Added ChangeSafety Support
@@ -31,81 +31,66 @@
 * Fixed CDN long-running operations that returned completed resource responses without a Location header.
 
 ## Version 6.0.2
-
-- Announced upcoming breaking changes for all `Az*CdnEdgeAction*` cmdlets and the `SubjectAlternativeName` parameter of `New-AzCdnSecretCustomerCertificateParametersObject`, which will be removed in a future release.
+* Announced upcoming breaking changes for all `Az*CdnEdgeAction*` cmdlets and the `SubjectAlternativeName` parameter of `New-AzCdnSecretCustomerCertificateParametersObject`, which will be removed in a future release.
 
 ## Version 6.0.1
-
-- Bug fix for https://github.com/Azure/azure-powershell/issues/29231
+* Bug fix for https://github.com/Azure/azure-powershell/issues/29231
 
 ## Version 6.0.0
-
-- Added support for edge action
-- Upgraded Api version to 2025-06-01
+* Added support for edge action
+* Upgraded Api version to 2025-06-01
 
 ## Version 5.0.1
-
-- Fixed content types comtent bug with null content
-- Added breaking change message for 2025-06-01
+* Fixed content types comtent bug with null content
+* Added breaking change message for 2025-06-01
 
 ## Version 5.0.0
-
-- Upgraded Api version to 2025-04-15
-- Added support for cipher
-- Added support for migration from classic cdn to afdx
+* Upgraded Api version to 2025-04-15
+* Added support for cipher
+* Added support for migration from classic cdn to afdx
 
 ## Version 3.3.1
-
-- This upgrade contains no changes in cdn powershell commandline tool, it only notifies user that we are going to upgrade the version of autorest, and will bring some breaking changes.
+* This upgrade contains no changes in cdn powershell commandline tool, it only notifies user that we are going to upgrade the version of autorest, and will bring some breaking changes.
 
 ## Version 3.3.0
-
-- Upgraded nuget package to signed package.
+* Upgraded nuget package to signed package.
 
 ## Version 3.2.2
-
-- Added support to enable ManagedIdentity when no BYOC in the classic front door during migration
+* Added support to enable ManagedIdentity when no BYOC in the classic front door during migration
 
 ## Version 3.2.1
-
-- Bypassed object id validation for KeyVault access policy during `Start-AzFrontDoorCdnProfilePrepareMigration`
+* Bypassed object id validation for KeyVault access policy during `Start-AzFrontDoorCdnProfilePrepareMigration`
 
 ## Version 3.2.0
-
-- Introduced secrets detection feature to safeguard sensitive data.
-- Upgrade API version to 2024-02-01
-- Added support to configure rules to scrub PII values from the AFDx logs when new or update a AFDx resource.
-
+* Introduced secrets detection feature to safeguard sensitive data.
+* Upgrade API version to 2024-02-01
+* Added support to configure rules to scrub PII values from the AFDx logs when new or update a AFDx resource.
+  
 ## Version 3.1.2
-
-- Fixed the case sensitive issue when do preparing migration steps for `Start-AzFrontDoorCdnProfilePrepareMigration`
+* Fixed the case sensitive issue when do preparing migration steps for `Start-AzFrontDoorCdnProfilePrepareMigration`
 
 ## Version 3.1.1
-
-- Customized output property for `Get-AzCdnEdgeNode` command
+* Customized output property for `Get-AzCdnEdgeNode` command
 
 ## Version 3.1.0
-
-- Upgraded API version to 2023-05-01
-- Fixed known issue for `Update-AzCdnProfile`, `Update-AzFrontDoorCdnProfile`, `Remove-AzCdnProfile`, `Remove-AzCdnProfile`
+* Upgraded API version to 2023-05-01
+* Fixed known issue for `Update-AzCdnProfile`, `Update-AzFrontDoorCdnProfile`, `Remove-AzCdnProfile`, `Remove-AzCdnProfile`
 
 ## Version 3.0.0
-
-- Upgraded API version to 2022-11-01-preview
-- Added support to migrate from Azure Front Door (classic) to Azure Front Door Standard and Premium.
-- Added support for AFDX upgrade from Standard tier to Premium tier.
+* Upgraded API version to 2022-11-01-preview
+* Added support to migrate from Azure Front Door (classic) to Azure Front Door Standard and Premium.
+* Added support for AFDX upgrade from Standard tier to Premium tier.
 
 ## Version 2.1.0
-
-- Upgraded API version to 2021-06-01
-- Removed deprecated cmdlets
+* Upgraded API version to 2021-06-01
+* Removed deprecated cmdlets
   - Disable-AzCdnCustomDomain
   - Enable-AzCdnCustomDomain
   - Get-AzCdnEdgeNodes
   - Get-AzCdnProfileSsoUrl
   - New-AzCdnDeliveryPolicy
   - Set-AzFrontDoorCdnSecret
-- Added new cmdlets
+* Added new cmdlets
   - Clear-AzFrontDoorCdnEndpointContent
   - Get-AzFrontDoorCdnEndpointResourceUsage
   - Get-AzFrontDoorCdnOriginGroupResourceUsage
@@ -116,78 +101,62 @@
   - Test-AzFrontDoorCdnProfileHostNameAvailability
   - Update-AzFrontDoorCdnCustomDomainValidationToken
   - Update-AzFrontDoorCdnRule
-- Renamed Set cmdlets to Update cmdlets
-- Renamed `Unpublish-AzCdnEndpointContent` cmdlets to `Clear-AzCdnEndpointContent`
-- Added `Object` suffix to memory object creation cmdlets
+* Renamed Set cmdlets to Update cmdlets
+* Renamed `Unpublish-AzCdnEndpointContent` cmdlets to `Clear-AzCdnEndpointContent`
+* Added `Object` suffix to memory object creation cmdlets
 
 ## Version 1.8.3
-
-- Added breaking change messages for all cmdlets in Az.CDN module
+* Added breaking change messages for all cmdlets in Az.CDN module
 
 ## Version 1.8.2
-
-- Added breaking change messages for upcoming breaking change release of version 2.0.0
+* Added breaking change messages for upcoming breaking change release of version 2.0.0
 
 ## Version 1.8.1
-
-- Fixed null reference exception and typos in `New-AzFrontDoorCdnRule` cmdlet
+* Fixed null reference exception and typos in `New-AzFrontDoorCdnRule` cmdlet
 
 ## Version 1.8.0
-
-- Fixed mandatory parameters issue in `Get-AzCdnEndpointResourceUsage` cmdlet
+* Fixed mandatory parameters issue in `Get-AzCdnEndpointResourceUsage` cmdlet
 
 ## Version 1.7.1
-
-- Fixed profile missing issue in `Remove-AzCdnProfile` cmdlet
+* Fixed profile missing issue in `Remove-AzCdnProfile` cmdlet
 
 ## Version 1.7.0
-
-- Added cmdlets to support new AFD Premium / Standard SKUs
-
+* Added cmdlets to support new AFD Premium / Standard SKUs
+  
 ## Version 1.6.0
-
-- Added cmdlets to support multi-origin and private link functionality
+* Added cmdlets to support multi-origin and private link functionality 
 
 ## Version 1.4.3
-
-- Fixed ChinaCDN related pricing SKU display
+* Fixed ChinaCDN related pricing SKU display
 
 ## Version 1.4.2
-
-- Display error response detail in New-AzCdnEndpoint cmdlet
+* Display error response detail in New-AzCdnEndpoint cmdlet
 
 ## Version 1.4.1
-
-- Update references in .psd1 to use relative path
+* Update references in .psd1 to use relative path
 
 ## Version 1.4.0
-
-- Introduced UrlRewriteAction and CacheKeyQueryStringAction to RulesEngine.
-- Fixed several bugs like missing "Selector" Input in New-AzDeliveryRuleCondition cmdlet.
+* Introduced UrlRewriteAction and CacheKeyQueryStringAction to RulesEngine.
+* Fixed several bugs like missing "Selector" Input in New-AzDeliveryRuleCondition cmdlet.
 
 Fixed enabling CDN custom domain HTTPS for Microsoft and Akamai SKU's
 
 ## Version 1.3.1
-
-- Fixed miscellaneous typos across module
-- Fixed a typo in CDN module conversion helper
+* Fixed miscellaneous typos across module
+* Fixed a typo in CDN module conversion helper
 
 ## Version 1.3.0
-
-- Updated cmdlets to support rulesEngine feature based on API version 2019-04-15.
+* Updated cmdlets to support rulesEngine feature based on API version 2019-04-15.
 
 ## Version 1.2.0
-
-- Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
 
 ## Version 1.1.0
-
-- Added new Powershell cmdlets for Enable/Disable Custom Domain Https and deprecated the old ones
+* Added new Powershell cmdlets for Enable/Disable Custom Domain Https and deprecated the old ones
 
 ## Version 1.0.1
-
-- Update incorrect online help URLs
+* Update incorrect online help URLs
 
 ## Version 1.0.0
+* General availability of `Az.Cdn` module
 
-- General availability of `Az.Cdn` module
