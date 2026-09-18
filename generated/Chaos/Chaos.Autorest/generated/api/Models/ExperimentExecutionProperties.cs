@@ -13,6 +13,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal
     {
 
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
         /// <summary>Internal Acessors for StartedAt</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal.StartedAt { get => this._startedAt; set { {_startedAt = value;} } }
 
@@ -21,6 +24,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 
         /// <summary>Internal Acessors for StoppedAt</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal.StoppedAt { get => this._stoppedAt; set { {_stoppedAt = value;} } }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private string _provisioningState;
+
+        /// <summary>Resource provisioning state. Not currently in use for executions.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
+        public string ProvisioningState { get => this._provisioningState; }
 
         /// <summary>Backing field for <see cref="StartedAt" /> property.</summary>
         private global::System.DateTime? _startedAt;
@@ -53,6 +63,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
     public partial interface IExperimentExecutionProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IJsonSerializable
     {
+        /// <summary>Resource provisioning state. Not currently in use for executions.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Resource provisioning state. Not currently in use for executions.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Updating", "Deleting", "Running")]
+        string ProvisioningState { get;  }
         /// <summary>String that represents the start date time.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
@@ -92,6 +114,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
     internal partial interface IExperimentExecutionPropertiesInternal
 
     {
+        /// <summary>Resource provisioning state. Not currently in use for executions.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Updating", "Deleting", "Running")]
+        string ProvisioningState { get; set; }
         /// <summary>String that represents the start date time.</summary>
         global::System.DateTime? StartedAt { get; set; }
         /// <summary>The status of the execution.</summary>
