@@ -1,0 +1,45 @@
+{
+  "Get-AzConnectedExtensionType+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.HybridCompute/locations/eastus/publishers/Microsoft.Azure.NetworkWatcher/extensionTypes?api-version=2026-06-16-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridCompute/locations/eastus/publishers/Microsoft.Azure.NetworkWatcher/extensionTypes?api-version=2026-06-16-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "2ba9b1b9-815d-49be-9b31-9aa07a63afaa" ],
+        "CommandName": [ "Get-AzConnectedExtensionType" ],
+        "FullCommandName": [ "Get-AzConnectedExtensionType_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.4", "Az.ConnectedMachine/1.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "bd0dd473-824e-4917-8d8d-ba1037f163f0" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-correlation-request-id": [ "6da80398-5ccd-4339-b9b7-c22e7747856c" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20260727T181255Z:6da80398-5ccd-4339-b9b7-c22e7747856c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0CD58D5AE4B346B1B0BE9594AB01E68C Ref B: BL2AA2030101005 Ref C: 2026-07-27T18:12:55Z" ],
+        "Date": [ "Mon, 27 Jul 2026 18:12:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "369" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.networkwatcher/extensionTypes/networkwatcheragentlinux\",\"name\":\"networkwatcheragentlinux\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.networkwatcher/extensionTypes/networkwatcheragentwindows\",\"name\":\"networkwatcheragentwindows\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

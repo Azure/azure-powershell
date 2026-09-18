@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzConnectedPrivateLinkScope
 
 ## SYNOPSIS
-update (or update  a Azure Arc PrivateLinkScope.
+Update (or update  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ## SYNTAX
@@ -16,8 +16,8 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 ### UpdateExpanded (Default)
 ```
 Set-AzConnectedPrivateLinkScope -ResourceGroupName <String> -ScopeName <String> -Location <String>
- [-SubscriptionId <String>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-PublicNetworkAccess <String>] [-ServiceExtension <IServiceExtension[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -40,14 +40,15 @@ Set-AzConnectedPrivateLinkScope -ResourceGroupName <String> -ScopeName <String> 
 ```
 
 ## DESCRIPTION
-update (or update  a Azure Arc PrivateLinkScope.
+Update (or update  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ## EXAMPLES
 
 ### Example 1: Set a private link scope in a subscription by name
 ```powershell
-Set-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location $location
+$tags = @{"Tag1"="tag1"; "Tag2"="tag2"}
+Set-AzConnectedPrivateLinkScope -ResourceGroupName "myResourceGroup" -ScopeName "myPrivateLinkScope" -PublicNetworkAccess "Disabled" -Tag $tags -Location "eastus"
 ```
 
 ```output
@@ -107,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Resource location
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
@@ -182,8 +183,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServiceExtension
+Enable private link validation for an Azure Arc Extension.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -198,7 +215,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable

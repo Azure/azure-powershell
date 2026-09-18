@@ -29,8 +29,8 @@ Describe 'Update-AzConnectedMachineExtension' {
 
     It 'Update' {
         $splat = @{
-            ResourceGroupName = "ytongtest"
-            MachineName = "testmachine"
+            ResourceGroupName = "yao_test"
+            MachineName = "LAPTOP-4GNU2K3H"
             Name = "networkWatcher"
             Settings = @{
                 commandToExecute = "powershell.exe ls"
