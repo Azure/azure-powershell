@@ -15,10 +15,11 @@ Create a ExascaleDbStorageVault
 ### CreateExpanded (Default)
 ```
 New-AzOracleExascaleDbStorageVault -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AdditionalFlashCacheInPercent <Int32>] [-Description <String>]
- [-DisplayName <String>] [-ExadataInfrastructureId <String>]
- [-HighCapacityDatabaseStorageInputTotalSizeInGb <Int32>] [-Tag <Hashtable>] [-TimeZone <String>]
- [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AdditionalFlashCacheInPercent <Int32>] [-AutoscaleLimitInGb <Int32>]
+ [-Description <String>] [-DisplayName <String>] [-ExadataInfrastructureId <String>]
+ [-HighCapacityDatabaseStorageInputTotalSizeInGb <Int32>] [-IsAutoscaleEnabled] [-Tag <Hashtable>]
+ [-TimeZone <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -110,6 +111,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AutoscaleLimitInGb
+Maximum limit storage size in gigabytes, that is applicable for the Database Storage Vault.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -177,6 +193,22 @@ Total Capacity
 
 ```yaml
 Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsAutoscaleEnabled
+Indicates if autoscale feature is enabled for the Storage Vault.
+The default value is: false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CreateExpanded
 Aliases:
 

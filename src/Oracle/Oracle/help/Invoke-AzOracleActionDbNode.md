@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/invoke-azoracleactiondbnode
 schema: 2.0.0
@@ -15,35 +15,34 @@ VM actions on DbNode of VM Cluster by the provided filter
 ### ActionExpanded (Default)
 ```
 Invoke-AzOracleActionDbNode -Cloudvmclustername <String> -Dbnodeocid <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Action <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ActionViaJsonString
-```
-Invoke-AzOracleActionDbNode -Cloudvmclustername <String> -Dbnodeocid <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ActionViaJsonFilePath
-```
-Invoke-AzOracleActionDbNode -Cloudvmclustername <String> -Dbnodeocid <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Action <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ActionViaIdentityCloudVMClusterExpanded
 ```
-Invoke-AzOracleActionDbNode -Dbnodeocid <String> -CloudVMClusterInputObject <IOracleIdentity> -Action <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-AzOracleActionDbNode -CloudVMClusterInputObject <IOracleIdentity> -Dbnodeocid <String> -Action <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ActionViaIdentityExpanded
 ```
 Invoke-AzOracleActionDbNode -InputObject <IOracleIdentity> -Action <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ActionViaJsonFilePath
+```
+Invoke-AzOracleActionDbNode -Cloudvmclustername <String> -Dbnodeocid <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### ActionViaJsonString
+```
+Invoke-AzOracleActionDbNode -Cloudvmclustername <String> -Dbnodeocid <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,7 +96,7 @@ TimeMaintenanceWindowEnd     :
 TimeMaintenanceWindowStart   : 
 Type                         : Oracle.Database/cloudVmClusters/dbNodes
 Vnic2Id                      : ocid1.vnic.fake.1.1
-VnicId                       :
+VnicId                       : 
 ```
 
 Stop a VM in a Cloud VM Cluster resource.
@@ -149,7 +148,7 @@ TimeMaintenanceWindowEnd     :
 TimeMaintenanceWindowStart   : 
 Type                         : Oracle.Database/cloudVmClusters/dbNodes
 Vnic2Id                      : ocid1.vnic.fake.1.1
-VnicId                       :
+VnicId                       : 
 ```
 
 Start a VM in a Cloud VM Cluster resource.
@@ -207,7 +206,7 @@ CloudVmCluster name
 
 ```yaml
 Type: System.String
-Parameter Sets: ActionExpanded, ActionViaJsonString, ActionViaJsonFilePath
+Parameter Sets: ActionExpanded, ActionViaJsonFilePath, ActionViaJsonString
 Aliases:
 
 Required: True
@@ -222,7 +221,7 @@ DbNode OCID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ActionExpanded, ActionViaJsonString, ActionViaJsonFilePath, ActionViaIdentityCloudVMClusterExpanded
+Parameter Sets: ActionExpanded, ActionViaIdentityCloudVMClusterExpanded, ActionViaJsonFilePath, ActionViaJsonString
 Aliases:
 
 Required: True
@@ -314,7 +313,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ActionExpanded, ActionViaJsonString, ActionViaJsonFilePath
+Parameter Sets: ActionExpanded, ActionViaJsonFilePath, ActionViaJsonString
 Aliases:
 
 Required: True
@@ -330,7 +329,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ActionExpanded, ActionViaJsonString, ActionViaJsonFilePath
+Parameter Sets: ActionExpanded, ActionViaJsonFilePath, ActionViaJsonString
 Aliases:
 
 Required: False
@@ -385,3 +384,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

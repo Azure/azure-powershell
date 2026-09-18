@@ -20,11 +20,15 @@ New-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> -Location 
  [-DataCollectionOptionIsHealthMonitoringEnabled] [-DataCollectionOptionIsIncidentLogsEnabled]
  [-DataStoragePercentage <Int32>] [-DataStorageSizeInTb <Double>] [-DbNodeStorageSizeInGb <Int32>]
  [-DbServer <String[]>] [-DisplayName <String>] [-Domain <String>] [-ExascaleDbStorageVaultId <String>]
- [-GiVersion <String>] [-Hostname <String>] [-IsLocalBackupEnabled] [-IsSparseDiskgroupEnabled]
- [-LicenseModel <String>] [-MemorySizeInGb <Int32>] [-NsgCidr <INsgCidr[]>] [-OcpuCount <Single>]
- [-ScanListenerPortTcp <Int32>] [-ScanListenerPortTcpSsl <Int32>] [-SshPublicKey <String[]>]
- [-SubnetId <String>] [-SystemVersion <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VnetId <String>]
- [-ZoneId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GiVersion <String>] [-HostnameV2 <String>] [-IsAcceleratedNetworkEnabled] [-IsLocalBackupEnabled]
+ [-IsSparseDiskgroupEnabled] [-LicenseModel <String>] [-MemorySizeInGb <Int32>] [-NetworkAnchorId <String>]
+ [-NsgCidr <INsgCidr[]>] [-OcpuCount <Single>] [-ProximityPlacementGroupEntityTypeIntendedToUse <String>]
+ [-ProximityPlacementGroupProximityAnchorId <String>]
+ [-ProximityPlacementGroupProximityPlacementGroupId <String>] [-RecoStoragePercentage <Int32>]
+ [-ResourceAnchorId <String>] [-ScanListenerPortTcp <Int32>] [-ScanListenerPortTcpSsl <Int32>]
+ [-SparseStoragePercentage <Int32>] [-SshPublicKey <String[]>] [-SubnetId <String>] [-SystemVersion <String>]
+ [-Tag <Hashtable>] [-TimeZone <String>] [-VnetId <String>] [-ZoneId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -381,11 +385,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Hostname
+### -HostnameV2
 The hostname for the cloud VM cluster.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsAcceleratedNetworkEnabled
+Indicates if the Accelerated Networking feature is enabled or disabled for provisioning an Exadata VM cluster.
+The default value is: false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -519,6 +539,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkAnchorId
+Azure Network Anchor ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -566,6 +601,82 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProximityPlacementGroupEntityTypeIntendedToUse
+Entity type intended to use the proximity placement group
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProximityPlacementGroupProximityAnchorId
+Proximity Anchor ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProximityPlacementGroupProximityPlacementGroupId
+Proximity placement group ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoStoragePercentage
+The percentage assigned to RECO storage (database redo logs, archive logs, and recovery manager backups).
+See [Storage Configuration](/Content/Database/Concepts/exaoverview.htm#Exadata) in the Exadata documentation for details on the impact of the configuration settings on storage.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceAnchorId
+Azure Resource Anchor ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -601,6 +712,22 @@ Accept wildcard characters: False
 ### -ScanListenerPortTcpSsl
 The TCPS Single Client Access Name (SCAN) port.
 The default port is 2484.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SparseStoragePercentage
+The percentage assigned to SPARSE storage (Exadata snapshots).
+See [Storage Configuration](/Content/Database/Concepts/exaoverview.htm#Exadata) in the Exadata documentation for details on the impact of the configuration settings on storage.
 
 ```yaml
 Type: System.Int32
