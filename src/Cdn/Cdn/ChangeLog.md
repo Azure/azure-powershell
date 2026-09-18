@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 
-* Added breaking-change warnings for all standalone EdgeAction resource cmdlets, announcing their planned removal in Az.Cdn 7.0.0 and Az 17.0.0 on November 15, 2026. Existing commands remain available; EdgeAction delivery-rule actions and URL signing are not affected.
+* Documented the planned removal of standalone EdgeAction resource cmdlets in Az.Cdn 7.0.0 and Az 17.0.0 on November 15, 2026. This advance announcement did not change cmdlet behavior or add runtime warnings; EdgeAction delivery-rule actions and URL signing are not affected.
 
 ## Version 6.2.0
 * Added ChangeSafety Support

@@ -12,10 +12,10 @@ Preview modules are not included in this list. Read more about [module version t
 ### Standalone EdgeAction resource cmdlets
 
 The standalone EdgeAction resource cmdlets listed below are planned for removal
-in the next breaking-change window. The exact effective date and Az/Az.Cdn
-release versions require confirmation from the release owner before removal.
-This is an advance announcement only; the cmdlets remain available in the
-current release.
+in Az.Cdn 7.0.0 and Az 17.0.0, with a planned effective date of November 15, 2026.
+This is a documentation-only advance announcement; the cmdlets remain available
+in the current release. No cmdlet attributes or runtime warnings are added by
+this announcement.
 
 - `Add-AzCdnEdgeActionAttachment`
 - `Deploy-AzCdnEdgeActionVersionCode`
